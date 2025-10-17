@@ -2,7 +2,7 @@
  * Moves each point (vertex) of a Triangle by a given offset, thus moving the entire Triangle by that offset.
  *
  * @function Phaser.Geom.Triangle.Offset
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Triangle} O - [triangle,$return]
  *

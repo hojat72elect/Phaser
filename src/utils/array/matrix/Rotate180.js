@@ -18,7 +18,7 @@ var RotateMatrix = require('./RotateMatrix');
  * ```
  *
  * @function Phaser.Utils.Array.Matrix.Rotate180
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[][]} - [matrix,$return]

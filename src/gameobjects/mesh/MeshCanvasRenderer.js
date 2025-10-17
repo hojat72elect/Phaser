@@ -2,7 +2,7 @@
  * This is a stub function for Mesh.Render. There is no Canvas renderer for Mesh objects.
  *
  * @method Phaser.GameObjects.Mesh#renderCanvas
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.Canvas.CanvasRenderer} renderer - A reference to the current active Canvas renderer.

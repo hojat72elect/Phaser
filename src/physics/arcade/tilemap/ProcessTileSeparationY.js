@@ -2,7 +2,7 @@
  * Internal function to process the separation of a physics body from a tile.
  *
  * @function Phaser.Physics.Arcade.Tilemap.ProcessTileSeparationY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.Body} body - The Body object to separate.
  * @param {number} y - The y separation amount.

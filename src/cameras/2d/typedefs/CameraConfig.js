@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Cameras.Scene2D.CameraConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} [name=''] - The name of the Camera.
  * @property {number} [x=0] - The horizontal position of the Camera viewport.

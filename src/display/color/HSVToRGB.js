@@ -28,7 +28,7 @@ function ConvertValue(n, h, s, v) {
  * Assumes HSV values are contained in the set [0, 1].
  *
  * @function Phaser.Display.Color.HSVToRGB
- * @since 3.0.0
+ * 
  *
  * @param {number} h - The hue, in the range 0 - 1. This is the base color.
  * @param {number} s - The saturation, in the range 0 - 1. This controls how much of the hue will be in the final color, where 1 is fully saturated and 0 will give you white.

@@ -6,7 +6,7 @@
  * The resulting Interactive Object is mapped to the Game Object's `input` property.
  *
  * @function Phaser.Input.CreateInteractiveObject
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to which this Interactive Object is bound.
  * @param {any} hitArea - The hit area for this Interactive Object. Typically a geometry shape, like a Rectangle or Circle.

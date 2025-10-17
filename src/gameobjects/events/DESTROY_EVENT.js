@@ -7,7 +7,7 @@
  *
  * @event Phaser.GameObjects.Events#DESTROY
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object which is being destroyed.
  * @param {boolean} fromScene - `True` if this Game Object is being destroyed by the Scene, `false` if not.

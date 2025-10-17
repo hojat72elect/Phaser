@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Group.GroupConfig
- * @since 3.0.0
+ * 
  *
  * @property {?Function} [classType=Sprite] - Sets {@link Phaser.GameObjects.Group#classType}.
  * @property {?string} [name=''] - Sets {@link Phaser.GameObjects.Group#name}.

@@ -18,7 +18,7 @@ var Settings = require('./Settings');
  * @class Systems
  * @memberof Phaser.Scenes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene that owns this Systems instance.
  * @param {(string|Phaser.Types.Scenes.SettingsConfig)} config - Scene specific configuration settings.
@@ -33,7 +33,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -42,7 +42,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#game
              * @type {Phaser.Game}
-             * @since 3.0.0
+             * 
              */
             this.game;
 
@@ -71,7 +71,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#config
              * @type {(string|Phaser.Types.Scenes.SettingsConfig)}
-             * @since 3.0.0
+             * 
              */
             this.config = config;
 
@@ -80,7 +80,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#settings
              * @type {Phaser.Types.Scenes.SettingsObject}
-             * @since 3.0.0
+             * 
              */
             this.settings = Settings.create(config);
 
@@ -89,7 +89,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#canvas
              * @type {HTMLCanvasElement}
-             * @since 3.0.0
+             * 
              */
             this.canvas;
 
@@ -98,7 +98,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#context
              * @type {CanvasRenderingContext2D}
-             * @since 3.0.0
+             * 
              */
             this.context;
 
@@ -111,7 +111,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#anims
              * @type {Phaser.Animations.AnimationManager}
-             * @since 3.0.0
+             * 
              */
             this.anims;
 
@@ -123,7 +123,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#cache
              * @type {Phaser.Cache.CacheManager}
-             * @since 3.0.0
+             * 
              */
             this.cache;
 
@@ -134,7 +134,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#plugins
              * @type {Phaser.Plugins.PluginManager}
-             * @since 3.0.0
+             * 
              */
             this.plugins;
 
@@ -146,7 +146,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#registry
              * @type {Phaser.Data.DataManager}
-             * @since 3.0.0
+             * 
              */
             this.registry;
 
@@ -168,7 +168,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#sound
              * @type {(Phaser.Sound.NoAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager)}
-             * @since 3.0.0
+             * 
              */
             this.sound;
 
@@ -179,7 +179,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#textures
              * @type {Phaser.Textures.TextureManager}
-             * @since 3.0.0
+             * 
              */
             this.textures;
 
@@ -194,7 +194,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#add
              * @type {Phaser.GameObjects.GameObjectFactory}
-             * @since 3.0.0
+             * 
              */
             this.add;
 
@@ -207,7 +207,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#cameras
              * @type {Phaser.Cameras.Scene2D.CameraManager}
-             * @since 3.0.0
+             * 
              */
             this.cameras;
 
@@ -220,7 +220,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#displayList
              * @type {Phaser.GameObjects.DisplayList}
-             * @since 3.0.0
+             * 
              */
             this.displayList;
 
@@ -233,7 +233,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events;
 
@@ -248,7 +248,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#make
              * @type {Phaser.GameObjects.GameObjectCreator}
-             * @since 3.0.0
+             * 
              */
             this.make;
 
@@ -262,7 +262,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#scenePlugin
              * @type {Phaser.Scenes.ScenePlugin}
-             * @since 3.0.0
+             * 
              */
             this.scenePlugin;
 
@@ -278,7 +278,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#updateList
              * @type {Phaser.GameObjects.UpdateList}
-             * @since 3.0.0
+             * 
              */
             this.updateList;
 
@@ -304,7 +304,7 @@ var Systems = new Class({
      * @method Phaser.Scenes.Systems#init
      * @protected
      * @fires Phaser.Scenes.Events#BOOT
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Game} game - A reference to the Phaser Game instance.
      */
@@ -339,7 +339,7 @@ var Systems = new Class({
      * @fires Phaser.Scenes.Events#PRE_UPDATE
      * @fires Phaser.Scenes.Events#UPDATE
      * @fires Phaser.Scenes.Events#POST_UPDATE
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The time value from the most recent Game step. Typically a high-resolution timer value, or Date.now().
      * @param {number} delta - The delta value since the last frame. This is smoothed to avoid delta spikes by the TimeStep class.
@@ -363,7 +363,7 @@ var Systems = new Class({
      * @method Phaser.Scenes.Systems#render
      * @fires Phaser.Scenes.Events#PRE_RENDER
      * @fires Phaser.Scenes.Events#RENDER
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The renderer that invoked the render call.
      */
@@ -383,7 +383,7 @@ var Systems = new Class({
      * Force a sort of the display list on the next render.
      *
      * @method Phaser.Scenes.Systems#queueDepthSort
-     * @since 3.0.0
+     * 
      */
     queueDepthSort: function () {
         this.displayList.queueDepthSort();
@@ -393,7 +393,7 @@ var Systems = new Class({
      * Immediately sorts the display list if the flag is set.
      *
      * @method Phaser.Scenes.Systems#depthSort
-     * @since 3.0.0
+     * 
      */
     depthSort: function () {
         this.displayList.depthSort();
@@ -406,7 +406,7 @@ var Systems = new Class({
      *
      * @method Phaser.Scenes.Systems#pause
      * @fires Phaser.Scenes.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @param {object} [data] - A data object that will be passed in the 'pause' event.
      *
@@ -434,7 +434,7 @@ var Systems = new Class({
      *
      * @method Phaser.Scenes.Systems#resume
      * @fires Phaser.Scenes.Events#RESUME
-     * @since 3.0.0
+     * 
      *
      * @param {object} [data] - A data object that will be passed in the 'resume' event.
      *
@@ -465,7 +465,7 @@ var Systems = new Class({
      *
      * @method Phaser.Scenes.Systems#sleep
      * @fires Phaser.Scenes.Events#SLEEP
-     * @since 3.0.0
+     * 
      *
      * @param {object} [data] - A data object that will be passed in the 'sleep' event.
      *
@@ -494,7 +494,7 @@ var Systems = new Class({
      *
      * @method Phaser.Scenes.Systems#wake
      * @fires Phaser.Scenes.Events#WAKE
-     * @since 3.0.0
+     * 
      *
      * @param {object} [data] - A data object that will be passed in the 'wake' event.
      *
@@ -563,7 +563,7 @@ var Systems = new Class({
      * Is this Scene sleeping?
      *
      * @method Phaser.Scenes.Systems#isSleeping
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if this Scene is asleep, otherwise `false`.
      */
@@ -575,7 +575,7 @@ var Systems = new Class({
      * Is this Scene running?
      *
      * @method Phaser.Scenes.Systems#isActive
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if this Scene is running, otherwise `false`.
      */
@@ -635,7 +635,7 @@ var Systems = new Class({
      * Is this Scene visible and rendering?
      *
      * @method Phaser.Scenes.Systems#isVisible
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if this Scene is visible, otherwise `false`.
      */
@@ -648,7 +648,7 @@ var Systems = new Class({
      * An invisible Scene will not render, but will still process updates.
      *
      * @method Phaser.Scenes.Systems#setVisible
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - `true` to render this Scene, otherwise `false`.
      *
@@ -666,7 +666,7 @@ var Systems = new Class({
      * An active Scene will run its core update loop.
      *
      * @method Phaser.Scenes.Systems#setActive
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - If `true` the Scene will be resumed, if previously paused. If `false` it will be paused.
      * @param {object} [data] - A data object that will be passed in the 'resume' or 'pause' events.
@@ -688,7 +688,7 @@ var Systems = new Class({
      * @method Phaser.Scenes.Systems#start
      * @fires Phaser.Scenes.Events#START
      * @fires Phaser.Scenes.Events#READY
-     * @since 3.0.0
+     * 
      *
      * @param {object} data - Optional data object that may have been passed to this Scene from another.
      */
@@ -721,7 +721,7 @@ var Systems = new Class({
      *
      * @method Phaser.Scenes.Systems#shutdown
      * @fires Phaser.Scenes.Events#SHUTDOWN
-     * @since 3.0.0
+     * 
      *
      * @param {object} [data] - A data object that will be passed in the 'shutdown' event.
      */
@@ -750,7 +750,7 @@ var Systems = new Class({
      * @method Phaser.Scenes.Systems#destroy
      * @private
      * @fires Phaser.Scenes.Events#DESTROY
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         var events = this.events;

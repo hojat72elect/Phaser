@@ -2,7 +2,7 @@
  * Takes an array of objects and passes each of them to the given callback.
  *
  * @function Phaser.Actions.Call
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

@@ -19,7 +19,7 @@ var PathFollower = {
      *
      * @name Phaser.GameObjects.Components.PathFollower#path
      * @type {Phaser.Curves.Path}
-     * @since 3.0.0
+     * 
      */
     path: null,
 
@@ -29,7 +29,7 @@ var PathFollower = {
      * @name Phaser.GameObjects.Components.PathFollower#rotateToPath
      * @type {boolean}
      * @default false
-     * @since 3.0.0
+     * 
      */
     rotateToPath: false,
 
@@ -41,7 +41,7 @@ var PathFollower = {
      * @name Phaser.GameObjects.PathFollower#pathRotationOffset
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     pathRotationOffset: 0,
 
@@ -51,7 +51,7 @@ var PathFollower = {
      *
      * @name Phaser.GameObjects.PathFollower#pathOffset
      * @type {Phaser.Math.Vector2}
-     * @since 3.0.0
+     * 
      */
     pathOffset: null,
 
@@ -60,7 +60,7 @@ var PathFollower = {
      *
      * @name Phaser.GameObjects.PathFollower#pathVector
      * @type {Phaser.Math.Vector2}
-     * @since 3.0.0
+     * 
      */
     pathVector: null,
 
@@ -78,7 +78,7 @@ var PathFollower = {
      *
      * @name Phaser.GameObjects.PathFollower#pathTween
      * @type {Phaser.Tweens.Tween}
-     * @since 3.0.0
+     * 
      */
     pathTween: null,
 
@@ -88,7 +88,7 @@ var PathFollower = {
      * @name Phaser.GameObjects.PathFollower#pathConfig
      * @type {?Phaser.Types.GameObjects.PathFollower.PathConfig}
      * @default null
-     * @since 3.0.0
+     * 
      */
     pathConfig: null,
 
@@ -98,7 +98,7 @@ var PathFollower = {
      * @name Phaser.GameObjects.PathFollower#_prevDirection
      * @type {number}
      * @private
-     * @since 3.0.0
+     * 
      */
     _prevDirection: TWEEN_CONST.PLAYING_FORWARD,
 
@@ -108,7 +108,7 @@ var PathFollower = {
      * Optionally accepts {@link Phaser.Types.GameObjects.PathFollower.PathConfig} settings.
      *
      * @method Phaser.GameObjects.Components.PathFollower#setPath
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Curves.Path} path - The Path this PathFollower is following. It can only follow one Path at a time.
      * @param {(number|Phaser.Types.GameObjects.PathFollower.PathConfig|Phaser.Types.Tweens.NumberTweenBuilderConfig)} [config] - Settings for the PathFollower.
@@ -139,7 +139,7 @@ var PathFollower = {
      * Set whether the PathFollower should automatically rotate to point in the direction of the Path.
      *
      * @method Phaser.GameObjects.Components.PathFollower#setRotateToPath
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - Whether the PathFollower should automatically rotate to point in the direction of the Path.
      * @param {number} [offset=0] - Rotation offset in degrees.
@@ -164,7 +164,7 @@ var PathFollower = {
      * To be considered as `isFollowing` it must be currently moving on a Path, and not paused.
      *
      * @method Phaser.GameObjects.Components.PathFollower#isFollowing
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` is this PathFollower is actively following a Path, otherwise `false`.
      */

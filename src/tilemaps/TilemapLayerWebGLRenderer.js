@@ -6,7 +6,7 @@ var Utils = require('../renderer/webgl/Utils');
  * This method should not be called directly. It is a utility function of the Render module.
  *
  * @method Phaser.Tilemaps.TilemapLayer#renderWebGL
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the current active WebGL renderer.

@@ -15,7 +15,7 @@
  *
  * @event Phaser.Physics.Matter.Events#AFTER_UPDATE
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Matter.Events.AfterUpdateEvent} event - The Update Event object.
  */

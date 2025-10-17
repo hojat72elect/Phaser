@@ -19,7 +19,7 @@ var CheckMatrix = require('./CheckMatrix');
  * ```
  *
  * @function Phaser.Utils.Array.Matrix.MatrixToString
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[][]} - [matrix]

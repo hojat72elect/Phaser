@@ -19,7 +19,7 @@ var tmpVec3 = new Vector3();
  * @extends Phaser.Cameras.Sprite3D.Camera
  * @memberOf Phaser.Cameras.Sprite3D
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - [description]
  * @param {integer} [viewportWidth=0] - [description]
@@ -46,7 +46,7 @@ var OrthographicCamera = new Class({
              *
              * @name Phaser.Cameras.Sprite3D.OrthographicCamera#viewportWidth
              * @type {integer}
-             * @since 3.0.0
+             * 
              */
             this.viewportWidth = viewportWidth;
 
@@ -55,7 +55,7 @@ var OrthographicCamera = new Class({
              *
              * @name Phaser.Cameras.Sprite3D.OrthographicCamera#viewportHeight
              * @type {integer}
-             * @since 3.0.0
+             * 
              */
             this.viewportHeight = viewportHeight;
 
@@ -65,7 +65,7 @@ var OrthographicCamera = new Class({
              * @name Phaser.Cameras.Sprite3D.OrthographicCamera#_zoom
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._zoom = 1.0;
 
@@ -75,7 +75,7 @@ var OrthographicCamera = new Class({
              * @name Phaser.Cameras.Sprite3D.OrthographicCamera#near
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.near = 0;
 
@@ -86,7 +86,7 @@ var OrthographicCamera = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.OrthographicCamera#setToOrtho
-     * @since 3.0.0
+     * 
      *
      * @param {number} yDown - [description]
      * @param {number} [viewportWidth] - [description]
@@ -118,7 +118,7 @@ var OrthographicCamera = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.OrthographicCamera#update
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Cameras.Sprite3D.OrthographicCamera} [description]
      */
@@ -164,7 +164,7 @@ var OrthographicCamera = new Class({
      *
      * @name Phaser.Cameras.Sprite3D.OrthographicCamera#zoom
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     zoom: {
 

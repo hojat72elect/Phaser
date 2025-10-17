@@ -8,7 +8,7 @@
  * `key` is required. {@link Phaser.GameObjects.Group#defaultKey} is not used.
  *
  * @typedef {object} Phaser.Types.GameObjects.Group.GroupCreateConfig
- * @since 3.0.0
+ * 
  *
  * @property {(string|string[])} key - The texture key of each new Game Object. Must be provided or not objects will be created.
  * @property {?Function} [classType] - The class of each new Game Object.

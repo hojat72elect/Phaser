@@ -6,6 +6,6 @@
  *
  * @event Phaser.Core.Events#FOCUS
  * @type {string}
- * @since 3.0.0
+ * 
  */
 module.exports = 'focus';

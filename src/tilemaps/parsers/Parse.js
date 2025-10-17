@@ -11,7 +11,7 @@ var ParseWeltmeister = require('./impact/ParseWeltmeister');
  * the map data.
  *
  * @function Phaser.Tilemaps.Parsers.Parse
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the tilemap, used to set the name on the MapData.
  * @param {number} mapFormat - See ../Formats.js.

@@ -55,7 +55,7 @@ if (typeof WEBGL_DEBUG) {
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Renderer.WebGL
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - The Game instance which owns this WebGL Renderer.
  */
@@ -88,7 +88,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#config
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.config = {
                 clearBeforeRender: gameConfig.clearBeforeRender,
@@ -108,7 +108,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#game
              * @type {Phaser.Game}
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -117,7 +117,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#type
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.type = CONST.WEBGL;
 
@@ -144,7 +144,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = 0;
 
@@ -154,7 +154,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = 0;
 
@@ -163,7 +163,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#canvas
              * @type {HTMLCanvasElement}
-             * @since 3.0.0
+             * 
              */
             this.canvas = game.canvas;
 
@@ -175,7 +175,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#blendModes
              * @type {array}
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.blendModes = [];
 
@@ -185,7 +185,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#contextLost
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.contextLost = false;
 
@@ -196,7 +196,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#snapshotState
              * @type {Phaser.Types.Renderer.Snapshot.SnapshotState}
-             * @since 3.0.0
+             * 
              */
             this.snapshotState = {
                 x: 0,
@@ -293,7 +293,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentFramebuffer
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.currentFramebuffer = null;
 
@@ -312,7 +312,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentProgram
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.currentProgram = null;
 
@@ -321,7 +321,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentBlendMode
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.currentBlendMode = Infinity;
 
@@ -331,7 +331,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentScissorEnabled
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.currentScissorEnabled = false;
 
@@ -340,7 +340,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentScissor
              * @type {Uint32Array}
-             * @since 3.0.0
+             * 
              */
             this.currentScissor = null;
 
@@ -349,7 +349,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#scissorStack
              * @type {Uint32Array}
-             * @since 3.0.0
+             * 
              */
             this.scissorStack = [];
 
@@ -399,7 +399,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#gl
              * @type {WebGLRenderingContext}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.gl = null;
 
@@ -410,7 +410,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#supportedExtensions
              * @type {string[]}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.supportedExtensions = null;
 
@@ -446,7 +446,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#extensions
              * @type {object}
              * @default {}
-             * @since 3.0.0
+             * 
              */
             this.extensions = {};
 
@@ -738,7 +738,7 @@ var WebGLRenderer = new Class({
      * Creates a new WebGLRenderingContext and initializes all internal state.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#init
-     * @since 3.0.0
+     * 
      *
      * @param {object} config - The configuration object for the renderer.
      *
@@ -1374,7 +1374,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#resize
      * @fires Phaser.Renderer.Events#RESIZE
-     * @since 3.0.0
+     * 
      *
      * @param {number} [width] - The new width of the renderer.
      * @param {number} [height] - The new height of the renderer.
@@ -1546,7 +1546,7 @@ var WebGLRenderer = new Class({
      * Checks if a WebGL extension is supported
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#hasExtension
-     * @since 3.0.0
+     * 
      *
      * @param {string} extensionName - Name of the WebGL extension
      *
@@ -1560,7 +1560,7 @@ var WebGLRenderer = new Class({
      * Loads a WebGL extension
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getExtension
-     * @since 3.0.0
+     * 
      *
      * @param {string} extensionName - The name of the extension to load.
      *
@@ -1582,7 +1582,7 @@ var WebGLRenderer = new Class({
      * Flushes the current pipeline if the pipeline is bound
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#flush
-     * @since 3.0.0
+     * 
      */
     flush: function () {
         this.pipelines.flush();
@@ -1592,7 +1592,7 @@ var WebGLRenderer = new Class({
      * Pushes a new scissor state. This is used to set nested scissor states.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#pushScissor
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x position of the scissor.
      * @param {number} y - The y position of the scissor.
@@ -1624,7 +1624,7 @@ var WebGLRenderer = new Class({
      * Sets the current scissor state.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setScissor
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x position of the scissor.
      * @param {number} y - The y position of the scissor.
@@ -1690,7 +1690,7 @@ var WebGLRenderer = new Class({
      * Pops the last scissor state and sets it.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#popScissor
-     * @since 3.0.0
+     * 
      */
     popScissor: function () {
         var scissorStack = this.scissorStack;
@@ -1744,7 +1744,7 @@ var WebGLRenderer = new Class({
      * blend mode is enabled.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setBlendMode
-     * @since 3.0.0
+     * 
      *
      * @param {number} blendModeId - The blend mode to be set. Can be a `BlendModes` const or an integer value.
      * @param {boolean} [force=false] - Force the blend mode to be set, regardless of the currently set blend mode.
@@ -1785,7 +1785,7 @@ var WebGLRenderer = new Class({
      * See https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Constants#Blending_modes
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#addBlendMode
-     * @since 3.0.0
+     * 
      *
      * @param {GLenum[]} func - An array containing the WebGL functions to use for the source and the destination blending factors, respectively. See the possible constants for {@link WebGLRenderingContext#blendFunc()}.
      * @param {GLenum} equation - The equation to use for combining the RGB and alpha components of a new pixel with a rendered one. See the possible constants for {@link WebGLRenderingContext#blendEquation()}.
@@ -1802,7 +1802,7 @@ var WebGLRenderer = new Class({
      * Updates the function bound to a given custom blend mode.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#updateBlendMode
-     * @since 3.0.0
+     * 
      *
      * @param {number} index - The index of the custom blend mode.
      * @param {function} func - The function to use for the blend mode.
@@ -1827,7 +1827,7 @@ var WebGLRenderer = new Class({
      * Any Game Objects still using this blend mode will error, so be sure to clear them first.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#removeBlendMode
-     * @since 3.0.0
+     * 
      *
      * @param {number} index - The index of the custom blend mode to be removed.
      *
@@ -1877,7 +1877,7 @@ var WebGLRenderer = new Class({
      * Typically, you should call `pushFramebuffer` instead of this method.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setFramebuffer
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper|null)} framebuffer - The framebuffer that needs to be bound, or `null` to bind back to the default framebuffer.
      * @param {boolean} [updateScissor=false] - If a framebuffer is given, set the gl scissor to match the frame buffer size? Or, if `null` given, pop the scissor from the stack.
@@ -2028,7 +2028,7 @@ var WebGLRenderer = new Class({
      * will take place and this method will return `false`.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setProgram
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper} program - The program that needs to be bound.
      *
@@ -2067,7 +2067,7 @@ var WebGLRenderer = new Class({
      * Creates a texture from an image source. If the source is not valid it creates an empty texture.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createTextureFromSource
-     * @since 3.0.0
+     * 
      *
      * @param {object} source - The source of the texture.
      * @param {number} width - The width of the texture.
@@ -2122,7 +2122,7 @@ var WebGLRenderer = new Class({
      * A wrapper for creating a WebGLTextureWrapper. If no pixel data is passed it will create an empty texture.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createTexture2D
-     * @since 3.0.0
+     * 
      *
      * @param {number} mipLevel - Mip level of the texture.
      * @param {number} minFilter - Filtering of the texture.
@@ -2160,7 +2160,7 @@ var WebGLRenderer = new Class({
      * This will unbind any currently bound framebuffer.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createFramebuffer
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - If `addDepthStencilBuffer` is true, this controls the width of the depth stencil.
      * @param {number} height - If `addDepthStencilBuffer` is true, this controls the height of the depth stencil.
@@ -2255,7 +2255,7 @@ var WebGLRenderer = new Class({
      * Then compiles, attaches and links the program before wrapping and returning it.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createProgram
-     * @since 3.0.0
+     * 
      *
      * @param {string} vertexShader - The vertex shader source code as a single string.
      * @param {string} fragmentShader - The fragment shader source code as a single string.
@@ -2272,7 +2272,7 @@ var WebGLRenderer = new Class({
      * Wrapper for creating a vertex buffer.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createVertexBuffer
-     * @since 3.0.0
+     * 
      *
      * @param {ArrayBuffer} initialDataOrSize - It's either ArrayBuffer or an integer indicating the size of the vbo
      * @param {number} bufferUsage - How the buffer is used. gl.DYNAMIC_DRAW, gl.STATIC_DRAW or gl.STREAM_DRAW
@@ -2320,7 +2320,7 @@ var WebGLRenderer = new Class({
      * Wrapper for creating a vertex buffer.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createIndexBuffer
-     * @since 3.0.0
+     * 
      *
      * @param {ArrayBuffer} initialDataOrSize - Either ArrayBuffer or an integer indicating the size of the vbo.
      * @param {number} bufferUsage - How the buffer is used. gl.DYNAMIC_DRAW, gl.STATIC_DRAW or gl.STREAM_DRAW.
@@ -2338,7 +2338,7 @@ var WebGLRenderer = new Class({
      * Removes a texture from the GPU.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#deleteTexture
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The WebGL Texture to be deleted.
      *
@@ -2357,7 +2357,7 @@ var WebGLRenderer = new Class({
      * Deletes a Framebuffer from the GL instance.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#deleteFramebuffer
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper|null)} framebuffer - The Framebuffer to be deleted.
      *
@@ -2377,7 +2377,7 @@ var WebGLRenderer = new Class({
      * Deletes a WebGLProgram from the GL instance.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#deleteProgram
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper} program - The shader program to be deleted.
      *
@@ -2428,7 +2428,7 @@ var WebGLRenderer = new Class({
      * Deletes a WebGLBuffer from the GL instance.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#deleteBuffer
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper} vertexBuffer - The WebGLBuffer to be deleted.
      *
@@ -2448,7 +2448,7 @@ var WebGLRenderer = new Class({
      * Handles any clipping needed by the camera and renders the background color if a color is visible.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#preRenderCamera
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to pre-render.
      */
@@ -2511,7 +2511,7 @@ var WebGLRenderer = new Class({
      * Renders the foreground camera effects like flash and fading, then resets the current scissor state.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#postRenderCamera
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to post-render.
      */
@@ -2547,7 +2547,7 @@ var WebGLRenderer = new Class({
      * @method Phaser.Renderer.WebGL.WebGLRenderer#preRender
      * @fires Phaser.Renderer.Events#PRE_RENDER_CLEAR
      * @fires Phaser.Renderer.Events#PRE_RENDER
-     * @since 3.0.0
+     * 
      */
     preRender: function () {
         if (this.contextLost) {
@@ -2599,7 +2599,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#render
      * @fires Phaser.Renderer.Events#RENDER
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Scene} scene - The Scene to render.
      * @param {Phaser.GameObjects.GameObject[]} children - An array of filtered Game Objects that can be rendered by the given Camera.
@@ -2690,7 +2690,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#postRender
      * @fires Phaser.Renderer.Events#POST_RENDER
-     * @since 3.0.0
+     * 
      */
     postRender: function () {
         if (this.contextLost) {
@@ -2762,7 +2762,7 @@ var WebGLRenderer = new Class({
      * which gets more expensive the larger the canvas size gets, so please be careful how you employ this in your game.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#snapshot
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Renderer.Snapshot.SnapshotCallback} callback - The Function to invoke after the snapshot image is created.
      * @param {string} [type='image/png'] - The format of the image to create, usually `image/png` or `image/jpeg`.
@@ -2927,7 +2927,7 @@ var WebGLRenderer = new Class({
      * If the `dstTexture` parameter is given, the WebGL Texture is updated, rather than created fresh.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#canvasToTexture
-     * @since 3.0.0
+     * 
      *
      * @param {HTMLCanvasElement} srcCanvas - The Canvas to create the WebGL Texture from
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [dstTexture] - The destination WebGLTextureWrapper to set.
@@ -3152,7 +3152,7 @@ var WebGLRenderer = new Class({
      * Sets the minification and magnification filter for a texture.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setTextureFilter
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The texture to set the filter for.
      * @param {number} filter - The filter to set. 0 for linear filtering, 1 for nearest neighbor (blocky) filtering.
@@ -3202,7 +3202,7 @@ var WebGLRenderer = new Class({
      * Destroy this WebGLRenderer, cleaning up all related resources such as pipelines, native textures, etc.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.canvas.removeEventListener('webglcontextlost', this.contextLostHandler, false);

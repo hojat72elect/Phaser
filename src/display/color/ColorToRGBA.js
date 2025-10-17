@@ -2,7 +2,7 @@
  * Converts the given color value into an Object containing r,g,b and a properties.
  *
  * @function Phaser.Display.Color.ColorToRGBA
- * @since 3.0.0
+ * 
  *
  * @param {number} color - A color value, optionally including the alpha value.
  *

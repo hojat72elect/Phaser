@@ -29,7 +29,7 @@ var GetValue = require('../../utils/object/GetValue');
  * @class SmoothedKeyControl
  * @memberof Phaser.Cameras.Controls
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Cameras.Controls.SmoothedKeyControlConfig} config - The Smoothed Key Control configuration object.
  */
@@ -44,7 +44,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#camera
              * @type {?Phaser.Cameras.Scene2D.Camera}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.camera = GetValue(config, 'camera', null);
 
@@ -54,7 +54,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#left
              * @type {?Phaser.Input.Keyboard.Key}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.left = GetValue(config, 'left', null);
 
@@ -64,7 +64,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#right
              * @type {?Phaser.Input.Keyboard.Key}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.right = GetValue(config, 'right', null);
 
@@ -74,7 +74,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#up
              * @type {?Phaser.Input.Keyboard.Key}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.up = GetValue(config, 'up', null);
 
@@ -84,7 +84,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#down
              * @type {?Phaser.Input.Keyboard.Key}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.down = GetValue(config, 'down', null);
 
@@ -94,7 +94,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#zoomIn
              * @type {?Phaser.Input.Keyboard.Key}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.zoomIn = GetValue(config, 'zoomIn', null);
 
@@ -104,7 +104,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#zoomOut
              * @type {?Phaser.Input.Keyboard.Key}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.zoomOut = GetValue(config, 'zoomOut', null);
 
@@ -114,7 +114,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#zoomSpeed
              * @type {number}
              * @default 0.01
-             * @since 3.0.0
+             * 
              */
             this.zoomSpeed = GetValue(config, 'zoomSpeed', 0.01);
 
@@ -144,7 +144,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#accelX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.accelX = 0;
 
@@ -154,7 +154,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#accelY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.accelY = 0;
 
@@ -174,7 +174,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#dragX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.dragX = 0;
 
@@ -184,7 +184,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#dragY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.dragY = 0;
 
@@ -204,7 +204,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#maxSpeedX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.maxSpeedX = 0;
 
@@ -214,7 +214,7 @@ var SmoothedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#maxSpeedY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.maxSpeedY = 0;
 
@@ -235,7 +235,7 @@ var SmoothedKeyControl = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._speedX = 0;
 
@@ -246,7 +246,7 @@ var SmoothedKeyControl = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._speedY = 0;
 
@@ -257,7 +257,7 @@ var SmoothedKeyControl = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._zoom = 0;
 
@@ -266,7 +266,7 @@ var SmoothedKeyControl = new Class({
              *
              * @name Phaser.Cameras.Controls.SmoothedKeyControl#active
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.active = (this.camera !== null);
         },
@@ -275,7 +275,7 @@ var SmoothedKeyControl = new Class({
      * Starts the Key Control running, providing it has been linked to a camera.
      *
      * @method Phaser.Cameras.Controls.SmoothedKeyControl#start
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Key Control instance.
      */
@@ -289,7 +289,7 @@ var SmoothedKeyControl = new Class({
      * Stops this Key Control from running. Call `start` to start it again.
      *
      * @method Phaser.Cameras.Controls.SmoothedKeyControl#stop
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Key Control instance.
      */
@@ -303,7 +303,7 @@ var SmoothedKeyControl = new Class({
      * Binds this Key Control to a camera.
      *
      * @method Phaser.Cameras.Controls.SmoothedKeyControl#setCamera
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera to bind this Key Control to.
      *
@@ -321,7 +321,7 @@ var SmoothedKeyControl = new Class({
      * You must call this every step, it is not called automatically.
      *
      * @method Phaser.Cameras.Controls.SmoothedKeyControl#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
@@ -431,7 +431,7 @@ var SmoothedKeyControl = new Class({
      * Destroys this Key Control.
      *
      * @method Phaser.Cameras.Controls.SmoothedKeyControl#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.camera = null;

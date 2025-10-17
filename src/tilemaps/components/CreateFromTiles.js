@@ -9,7 +9,7 @@ var ReplaceByIndex = require('./ReplaceByIndex');
  * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
  *
  * @function Phaser.Tilemaps.Components.CreateFromTiles
- * @since 3.0.0
+ * 
  *
  * @param {(number|number[])} indexes - The tile index, or array of indexes, to create Sprites from.
  * @param {?(number|number[])} replacements - The tile index, or array of indexes, to change a converted tile to. Set to `null` to leave the tiles unchanged. If an array is given, it is assumed to be a one-to-one mapping with the indexes array.

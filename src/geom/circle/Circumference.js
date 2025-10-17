@@ -2,7 +2,7 @@
  * Returns the circumference of the given Circle.
  *
  * @function Phaser.Geom.Circle.Circumference
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The Circle to get the circumference of.
  *

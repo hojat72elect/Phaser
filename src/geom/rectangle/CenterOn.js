@@ -2,7 +2,7 @@
  * Moves the top-left corner of a Rectangle so that its center is at the given coordinates.
  *
  * @function Phaser.Geom.Rectangle.CenterOn
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [rect,$return]
  *

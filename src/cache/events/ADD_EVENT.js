@@ -5,7 +5,7 @@
  *
  * @event Phaser.Cache.Events#ADD
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Cache.BaseCache} cache - The cache to which the object was added.
  * @param {string} key - The key of the object added to the cache.

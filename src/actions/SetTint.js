@@ -2,7 +2,7 @@
  * Takes an array of Game Objects, or any objects that have the public method setTint() and then updates it to the given value(s). You can specify tint color per corner or provide only one color value for `topLeft` parameter, in which case whole item will be tinted with that color.
  *
  * @function Phaser.Actions.SetTint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

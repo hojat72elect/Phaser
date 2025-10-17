@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Get the midpoint of the given line.
  *
  * @function Phaser.Geom.Line.GetMidPoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

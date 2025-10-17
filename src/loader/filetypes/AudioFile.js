@@ -18,7 +18,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.AudioFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -61,7 +61,7 @@ var AudioFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.AudioFile#onProcess
-     * @since 3.0.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -196,7 +196,7 @@ AudioFile.getAudioURL = function (game, urls) {
  *
  * @method Phaser.Loader.LoaderPlugin#audio
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.AudioFileConfig|Phaser.Types.Loader.FileTypes.AudioFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {(string|string[]|Phaser.Types.Loader.FileTypes.AudioFileURLConfig|Phaser.Types.Loader.FileTypes.AudioFileURLConfig[])} [urls] - The absolute or relative URL to load the audio files from.

@@ -2,7 +2,7 @@
  * Force a value within the boundaries by clamping it to the range `min`, `max`.
  *
  * @function Phaser.Math.Clamp
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to be clamped.
  * @param {number} min - The minimum bounds.

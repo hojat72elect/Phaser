@@ -5,7 +5,7 @@ var IsInLayerBounds = require('./IsInLayerBounds');
  * false if there is no tile or if the tile at that location has an index of -1.
  *
  * @function Phaser.Tilemaps.Components.HasTileAt
- * @since 3.0.0
+ * 
  *
  * @param {number} tileX - X position to get the tile from (given in tile units, not pixels).
  * @param {number} tileY - Y position to get the tile from (given in tile units, not pixels).

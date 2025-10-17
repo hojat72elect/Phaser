@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Arcade.PhysicsGroupDefaults
- * @since 3.0.0
+ * 
  *
  * @property {boolean} setCollideWorldBounds - As {@link Phaser.Physics.Arcade.Body#setCollideWorldBounds}.
  * @property {Phaser.Geom.Rectangle} setBoundsRectangle - As {@link Phaser.Physics.Arcade.Body#setBoundsRectangle}.

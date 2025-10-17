@@ -2,7 +2,7 @@
  * Calculates the area of the circle.
  *
  * @function Phaser.Geom.Circle.Area
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The Circle to get the area of.
  *

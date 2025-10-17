@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Returns the center of a Rectangle as a Point.
  *
  * @function Phaser.Geom.Rectangle.GetCenter
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

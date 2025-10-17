@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Input.InteractiveObject
- * @since 3.0.0
+ * 
  *
  * @property {Phaser.GameObjects.GameObject} gameObject - The Game Object to which this Interactive Object is bound.
  * @property {boolean} enabled - Is this Interactive Object currently enabled for input events?

@@ -5,7 +5,7 @@
  * Based on code by Michael Jackson (https://github.com/mjijackson)
  *
  * @function Phaser.Display.Color.RGBToHSV
- * @since 3.0.0
+ * 
  *
  * @param {number} r - The red color value. A number between 0 and 255.
  * @param {number} g - The green color value. A number between 0 and 255.

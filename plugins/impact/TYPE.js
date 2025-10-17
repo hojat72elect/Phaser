@@ -15,7 +15,7 @@
  *
  * @namespace Phaser.Physics.Impact.TYPE
  * @memberof Phaser.Physics.Impact
- * @since 3.0.0
+ * 
  */
 module.exports = {
 
@@ -25,7 +25,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.TYPE.NONE
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     NONE: 0,
 
@@ -35,7 +35,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.TYPE.A
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     A: 1,
 
@@ -45,7 +45,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.TYPE.B
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     B: 2,
 
@@ -55,7 +55,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.TYPE.BOTH
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     BOTH: 3
 

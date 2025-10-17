@@ -2,7 +2,7 @@
  * Provides methods used for getting and setting the size of a Game Object.
  *
  * @namespace Phaser.GameObjects.Components.Size
- * @since 3.0.0
+ * 
  */
 
 var Size = {
@@ -27,7 +27,7 @@ var Size = {
      *
      * @name Phaser.GameObjects.Components.Size#width
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     width: 0,
 
@@ -40,7 +40,7 @@ var Size = {
      *
      * @name Phaser.GameObjects.Components.Size#height
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     height: 0,
 
@@ -53,7 +53,7 @@ var Size = {
      *
      * @name Phaser.GameObjects.Components.Size#displayWidth
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayWidth: {
 
@@ -76,7 +76,7 @@ var Size = {
      *
      * @name Phaser.GameObjects.Components.Size#displayHeight
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayHeight: {
 
@@ -102,7 +102,7 @@ var Size = {
      * size of the hit area. To do this you should adjust the `input.hitArea` object directly.
      *
      * @method Phaser.GameObjects.Components.Size#setSizeToFrame
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Textures.Frame|boolean} [frame] - The frame to base the size of this Game Object on.
      *
@@ -138,7 +138,7 @@ var Size = {
      * size of the hit area. To do this you should adjust the `input.hitArea` object directly.
      *
      * @method Phaser.GameObjects.Components.Size#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -158,7 +158,7 @@ var Size = {
      * Calling this will adjust the scale.
      *
      * @method Phaser.GameObjects.Components.Size#setDisplaySize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.

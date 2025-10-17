@@ -2,7 +2,7 @@
  * Generate a random floating point number between the two given bounds, minimum inclusive, maximum exclusive.
  *
  * @function Phaser.Math.FloatBetween
- * @since 3.0.0
+ * 
  *
  * @param {number} min - The lower bound for the float, inclusive.
  * @param {number} max - The upper bound for the float exclusive.

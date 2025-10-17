@@ -35,7 +35,7 @@ var Render = require('./BitmapTextRender');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Alpha
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -99,7 +99,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#font
              * @type {string}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.font = font;
 
@@ -115,7 +115,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#fontData
              * @type {Phaser.Types.GameObjects.BitmapText.BitmapFontData}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.fontData = entry.data;
 
@@ -125,7 +125,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_text
              * @type {string}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._text = '';
 
@@ -135,7 +135,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_fontSize
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._fontSize = size || this.fontData.size;
 
@@ -189,7 +189,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_bounds
              * @type {Phaser.Types.GameObjects.BitmapText.BitmapTextSize}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._bounds = GetBitmapTextSize();
 
@@ -351,7 +351,7 @@ var BitmapText = new Class({
      * Set the font size of this Bitmap Text.
      *
      * @method Phaser.GameObjects.BitmapText#setFontSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} size - The font size to set.
      *
@@ -420,7 +420,7 @@ var BitmapText = new Class({
      * An array of strings will be converted into multi-line text. Use the align methods to change multi-line alignment.
      *
      * @method Phaser.GameObjects.BitmapText#setText
-     * @since 3.0.0
+     * 
      *
      * @param {(string|string[])} value - The string, or array of strings, to be set as the content of this BitmapText.
      *
@@ -681,7 +681,7 @@ var BitmapText = new Class({
      * Also in the object is data regarding the length of each line, should this be a multi-line BitmapText.
      *
      * @method Phaser.GameObjects.BitmapText#getTextBounds
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [round=false] - Whether to round the results up to the nearest integer.
      *
@@ -754,7 +754,7 @@ var BitmapText = new Class({
      * You don't usually call this directly, but it is exposed for edge-cases where you may.
      *
      * @method Phaser.GameObjects.BitmapText#updateDisplayOrigin
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -903,7 +903,7 @@ var BitmapText = new Class({
      *
      * @name Phaser.GameObjects.BitmapText#text
      * @type {string}
-     * @since 3.0.0
+     * 
      */
     text: {
 
@@ -924,7 +924,7 @@ var BitmapText = new Class({
      *
      * @name Phaser.GameObjects.BitmapText#fontSize
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     fontSize: {
 
@@ -948,7 +948,7 @@ var BitmapText = new Class({
      *
      * @name Phaser.GameObjects.BitmapText#letterSpacing
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     letterSpacing: {
 
@@ -1022,7 +1022,7 @@ var BitmapText = new Class({
      * @name Phaser.GameObjects.BitmapText#width
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     width: {
 
@@ -1042,7 +1042,7 @@ var BitmapText = new Class({
      * @name Phaser.GameObjects.BitmapText#height
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     height: {
 
@@ -1118,7 +1118,7 @@ var BitmapText = new Class({
      * Build a JSON representation of this Bitmap Text.
      *
      * @method Phaser.GameObjects.BitmapText#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.GameObjects.BitmapText.JSONBitmapText} A JSON representation of this Bitmap Text.
      */
@@ -1189,7 +1189,7 @@ BitmapText.ALIGN_RIGHT = 2;
  * Adds the parsed Bitmap Font data to the cache with the `fontName` key.
  *
  * @method Phaser.GameObjects.BitmapText.ParseFromAtlas
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to parse the Bitmap Font for.
  * @param {string} fontName - The key of the font to add to the Bitmap Font cache.

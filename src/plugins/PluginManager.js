@@ -46,7 +46,7 @@ var CONST = require('../const');
  * @class PluginManager
  * @memberof Phaser.Plugins
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - The game instance that owns this Plugin Manager.
  */
@@ -64,7 +64,7 @@ var PluginManager = new Class({
              *
              * @name Phaser.Plugins.PluginManager#game
              * @type {Phaser.Game}
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -119,7 +119,7 @@ var PluginManager = new Class({
      *
      * @method Phaser.Plugins.PluginManager#boot
      * @protected
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         var i;

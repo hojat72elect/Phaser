@@ -14,7 +14,7 @@
  *
  * @event Phaser.Physics.Matter.Events#SLEEP_END
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Matter.Events.SleepEndEvent} event - The Sleep Event object.
  * @param {MatterJS.BodyType} body - The body that has stopped sleeping.

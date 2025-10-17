@@ -2,7 +2,7 @@
  * Checks for intersection between a circle and a rectangle.
  *
  * @function Phaser.Geom.Intersects.CircleToRectangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The circle to be checked.
  * @param {Phaser.Geom.Rectangle} rect - The rectangle to be checked.

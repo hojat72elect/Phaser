@@ -3,7 +3,7 @@
  * Useful for checking texture dimensions.
  *
  * @function Phaser.Math.Pow2.IsSize
- * @since 3.0.0
+ * 
  *
  * @param {number} width - The width.
  * @param {number} height - The height.

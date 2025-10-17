@@ -2,7 +2,7 @@
  * Checks if the two values are within the given `tolerance` of each other.
  *
  * @function Phaser.Math.Within
- * @since 3.0.0
+ * 
  *
  * @param {number} a - The first value to use in the calculation.
  * @param {number} b - The second value to use in the calculation.

@@ -5,7 +5,7 @@
  * via `this.sys.game.device.os` from within any Scene.
  *
  * @typedef {object} Phaser.Device.OS
- * @since 3.0.0
+ * 
  *
  * @property {boolean} android - Is running on android?
  * @property {boolean} chromeOS - Is running on chromeOS?

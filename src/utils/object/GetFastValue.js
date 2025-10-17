@@ -2,7 +2,7 @@
  * Finds the key within the top level of the {@link source} object, or returns {@link defaultValue}
  *
  * @function Phaser.Utils.Objects.GetFastValue
- * @since 3.0.0
+ * 
  *
  * @param {object} source - The object to search
  * @param {string} key - The key for the property on source. Must exist at the top level of the source object (no periods)

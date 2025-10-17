@@ -8,7 +8,7 @@ var _FLAG = 2; // 0010
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.Alpha
- * @since 3.0.0
+ * 
  */
 
 var Alpha = {
@@ -20,7 +20,7 @@ var Alpha = {
      * @type {number}
      * @private
      * @default 1
-     * @since 3.0.0
+     * 
      */
     _alpha: 1,
 
@@ -31,7 +31,7 @@ var Alpha = {
      * @type {number}
      * @private
      * @default 1
-     * @since 3.0.0
+     * 
      */
     _alphaTL: 1,
 
@@ -42,7 +42,7 @@ var Alpha = {
      * @type {number}
      * @private
      * @default 1
-     * @since 3.0.0
+     * 
      */
     _alphaTR: 1,
 
@@ -53,7 +53,7 @@ var Alpha = {
      * @type {number}
      * @private
      * @default 1
-     * @since 3.0.0
+     * 
      */
     _alphaBL: 1,
 
@@ -64,7 +64,7 @@ var Alpha = {
      * @type {number}
      * @private
      * @default 1
-     * @since 3.0.0
+     * 
      */
     _alphaBR: 1,
 
@@ -74,7 +74,7 @@ var Alpha = {
      * Immediately sets the alpha levels back to 1 (fully opaque).
      *
      * @method Phaser.GameObjects.Components.Alpha#clearAlpha
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -90,7 +90,7 @@ var Alpha = {
      * correspond to the four corners of the Game Object. Under Canvas only the `topLeft` value given is used.
      *
      * @method Phaser.GameObjects.Components.Alpha#setAlpha
-     * @since 3.0.0
+     * 
      *
      * @param {number} [topLeft=1] - The alpha value used for the top-left of the Game Object. If this is the only value given it's applied across the whole Game Object.
      * @param {number} [topRight] - The alpha value used for the top-right of the Game Object. WebGL only.
@@ -124,7 +124,7 @@ var Alpha = {
      *
      * @name Phaser.GameObjects.Components.Alpha#alpha
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     alpha: {
 
@@ -157,7 +157,7 @@ var Alpha = {
      * @name Phaser.GameObjects.Components.Alpha#alphaTopLeft
      * @type {number}
      * @webglOnly
-     * @since 3.0.0
+     * 
      */
     alphaTopLeft: {
 
@@ -184,7 +184,7 @@ var Alpha = {
      * @name Phaser.GameObjects.Components.Alpha#alphaTopRight
      * @type {number}
      * @webglOnly
-     * @since 3.0.0
+     * 
      */
     alphaTopRight: {
 
@@ -211,7 +211,7 @@ var Alpha = {
      * @name Phaser.GameObjects.Components.Alpha#alphaBottomLeft
      * @type {number}
      * @webglOnly
-     * @since 3.0.0
+     * 
      */
     alphaBottomLeft: {
 
@@ -238,7 +238,7 @@ var Alpha = {
      * @name Phaser.GameObjects.Components.Alpha#alphaBottomRight
      * @type {number}
      * @webglOnly
-     * @since 3.0.0
+     * 
      */
     alphaBottomRight: {
 

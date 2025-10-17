@@ -14,7 +14,7 @@ var Tween = require('../tween/Tween');
  * Creates a new Number Tween.
  *
  * @function Phaser.Tweens.Builders.NumberTweenBuilder
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Tweens.TweenManager} parent - The owner of the new Tween.
  * @param {Phaser.Types.Tweens.NumberTweenBuilderConfig} config - Configuration for the new Tween.

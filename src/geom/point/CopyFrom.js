@@ -2,7 +2,7 @@
  * Copy the values of one Point to a destination Point.
  *
  * @function Phaser.Geom.Point.CopyFrom
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [dest,$return]
  *

@@ -6,7 +6,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
  *
  * @function Phaser.Tilemaps.Components.FilterTiles
- * @since 3.0.0
+ * 
  *
  * @param {function} callback - The callback. Each tile in the given area will be passed to this
  * callback as the first and only parameter. The callback should return true for tiles that pass the

@@ -8,7 +8,7 @@ var SetTileCollision = require('./SetTileCollision');
  * Collision information in the region will be recalculated.
  *
  * @function Phaser.Tilemaps.Components.Fill
- * @since 3.0.0
+ * 
  *
  * @param {number} index - The tile index to fill the area with.
  * @param {number} tileX - The left most tile index (in tile coordinates) to use as the origin of the area.

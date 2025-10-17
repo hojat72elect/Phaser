@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Textures.SpriteSheetFromAtlasConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} atlas - The key of the Texture Atlas in which this Sprite Sheet can be found.
  * @property {string} frame - The key of the Texture Atlas Frame in which this Sprite Sheet can be found.

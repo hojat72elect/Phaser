@@ -11,7 +11,7 @@ var GetFastValue = require('../utils/object/GetFastValue');
  * In Phaser 3.20 the properties were renamed to drop the 'Video' suffix.
  *
  * @typedef {object} Phaser.Device.Video
- * @since 3.0.0
+ * 
  *
  * @property {boolean} h264 - Can this device play h264 mp4 video files?
  * @property {boolean} hls - Can this device play hls video files?

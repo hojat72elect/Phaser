@@ -6,7 +6,7 @@ var MathSmootherStep = require('../math/SmootherStep');
  * The function depends on three parameters, the input x, the "left edge" and the "right edge", with the left edge being assumed smaller than the right edge. The function receives a real number x as an argument and returns 0 if x is less than or equal to the left edge, 1 if x is greater than or equal to the right edge, and smoothly interpolates, using a Hermite polynomial, between 0 and 1 otherwise. The slope of the smoothstep function is zero at both edges. This is convenient for creating a sequence of transitions using smoothstep to interpolate each segment as an alternative to using more sophisticated or expensive interpolation techniques.
  *
  * @function Phaser.Actions.SmootherStep
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

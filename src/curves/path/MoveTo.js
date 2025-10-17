@@ -9,7 +9,7 @@ var Vector2 = require('../../math/Vector2');
  * @class MoveTo
  * @memberof Phaser.Curves
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x=0] - `x` pixel coordinate.
  * @param {number} [y=0] - `y` pixel coordinate.
@@ -25,7 +25,7 @@ var MoveTo = new Class({
              * @name Phaser.Curves.MoveTo#active
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.active = false;
 
@@ -34,7 +34,7 @@ var MoveTo = new Class({
              *
              * @name Phaser.Curves.MoveTo#p0
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.p0 = new Vector2(x, y);
         },
@@ -43,7 +43,7 @@ var MoveTo = new Class({
      * Get point at relative position in curve according to length.
      *
      * @method Phaser.Curves.MoveTo#getPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -64,7 +64,7 @@ var MoveTo = new Class({
      * Retrieves the point at given position in the curve. This will always return this curve's only point.
      *
      * @method Phaser.Curves.MoveTo#getPointAt
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -81,7 +81,7 @@ var MoveTo = new Class({
      * Gets the resolution of this curve.
      *
      * @method Phaser.Curves.MoveTo#getResolution
-     * @since 3.0.0
+     * 
      *
      * @return {number} The resolution of this curve. For a MoveTo the value is always 1.
      */
@@ -93,7 +93,7 @@ var MoveTo = new Class({
      * Gets the length of this curve.
      *
      * @method Phaser.Curves.MoveTo#getLength
-     * @since 3.0.0
+     * 
      *
      * @return {number} The length of this curve. For a MoveTo the value is always 0.
      */
@@ -105,7 +105,7 @@ var MoveTo = new Class({
      * Converts this curve into a JSON-serializable object.
      *
      * @method Phaser.Curves.MoveTo#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.Curves.JSONCurve} A primitive object with the curve's type and only point.
      */

@@ -4,7 +4,7 @@
  * You can pass either an animation key, or an animation configuration object for more control over the playback.
  *
  * @function Phaser.Actions.PlayAnimation
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

@@ -14,7 +14,7 @@ var RectangleToRectangle = require('./RectangleToRectangle');
  * A Rectangle intersects another Rectangle if any part of its bounds is within the other Rectangle's bounds. As such, the two Rectangles are considered "solid". A Rectangle with no width or no height will never intersect another Rectangle.
  *
  * @function Phaser.Geom.Intersects.GetRectangleToRectangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rectA - The first Rectangle to check for intersection.
  * @param {Phaser.Geom.Rectangle} rectB - The second Rectangle to check for intersection.

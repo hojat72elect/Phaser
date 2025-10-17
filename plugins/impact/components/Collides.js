@@ -19,7 +19,7 @@ var COLLIDES = require('../COLLIDES');
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.Collides
- * @since 3.0.0
+ * 
  */
 var Collides = {
 
@@ -30,7 +30,7 @@ var Collides = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Collides#setCollideCallback
-     * @since 3.0.0
+     * 
      *
      * @param {CollideCallback} callback - [description]
      * @param {*} scope - [description]
@@ -51,7 +51,7 @@ var Collides = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Collides#setCollidesNever
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -122,7 +122,7 @@ var Collides = {
      *
      * @name Phaser.Physics.Impact.Components.Collides#collides
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     collides: {
 

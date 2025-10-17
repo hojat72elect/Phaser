@@ -2,7 +2,7 @@
  * Calculates the width/height ratio of a rectangle.
  *
  * @function Phaser.Geom.Rectangle.GetAspectRatio
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The rectangle.
  *

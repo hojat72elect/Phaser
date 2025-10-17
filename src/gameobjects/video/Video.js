@@ -1467,7 +1467,7 @@ var Video = new Class({
      * size of the hit area. To do this you should adjust the `input.hitArea` object directly.
      *
      * @method Phaser.GameObjects.Video#setSizeToFrame
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Textures.Frame|boolean} [frame] - The frame to base the size of this Game Object on.
      *

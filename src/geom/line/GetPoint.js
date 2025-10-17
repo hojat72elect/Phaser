@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Get a point on a line that's a given percentage along its length.
  *
  * @function Phaser.Geom.Line.GetPoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

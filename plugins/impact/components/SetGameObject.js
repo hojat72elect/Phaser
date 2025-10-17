@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.SetGameObject
- * @since 3.0.0
+ * 
  */
 var SetGameObject = {
 
@@ -17,7 +17,7 @@ var SetGameObject = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.SetGameObject#setGameObject
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - [description]
      * @param {boolean} [sync=true] - [description]
@@ -46,7 +46,7 @@ var SetGameObject = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.SetGameObject#syncGameObject
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */

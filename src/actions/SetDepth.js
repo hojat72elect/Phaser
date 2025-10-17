@@ -9,7 +9,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  * To use this with a Group: `SetDepth(group.getChildren(), value, step)`
  *
  * @function Phaser.Actions.SetDepth
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

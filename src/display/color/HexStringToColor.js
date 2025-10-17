@@ -8,7 +8,7 @@ var Color = require('./Color');
  * An alpha channel is _not_ supported.
  *
  * @function Phaser.Display.Color.HexStringToColor
- * @since 3.0.0
+ * 
  *
  * @param {string} hex - The hex color value to convert, such as `#0033ff` or the short-hand format: `#03f`.
  *

@@ -5,6 +5,6 @@
  *
  * @event Phaser.Input.Events#SHUTDOWN
  * @type {string}
- * @since 3.0.0
+ * 
  */
 module.exports = 'shutdown';

@@ -10,7 +10,7 @@ var Systems = require('./Systems');
  * @class Scene
  * @memberof Phaser
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Scenes.SettingsConfig)} [config] - The scene key or scene specific configuration settings.
  */
@@ -24,7 +24,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#sys
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.sys = new Systems(this, config);
 
@@ -35,7 +35,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#game
              * @type {Phaser.Game}
-             * @since 3.0.0
+             * 
              */
             this.game;
 
@@ -46,7 +46,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#anims
              * @type {Phaser.Animations.AnimationManager}
-             * @since 3.0.0
+             * 
              */
             this.anims;
 
@@ -57,7 +57,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#cache
              * @type {Phaser.Cache.CacheManager}
-             * @since 3.0.0
+             * 
              */
             this.cache;
 
@@ -68,7 +68,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#registry
              * @type {Phaser.Data.DataManager}
-             * @since 3.0.0
+             * 
              */
             this.registry;
 
@@ -79,7 +79,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#sound
              * @type {(Phaser.Sound.NoAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager)}
-             * @since 3.0.0
+             * 
              */
             this.sound;
 
@@ -90,7 +90,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#textures
              * @type {Phaser.Textures.TextureManager}
-             * @since 3.0.0
+             * 
              */
             this.textures;
 
@@ -101,7 +101,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events;
 
@@ -112,7 +112,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#cameras
              * @type {Phaser.Cameras.Scene2D.CameraManager}
-             * @since 3.0.0
+             * 
              */
             this.cameras;
 
@@ -123,7 +123,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#add
              * @type {Phaser.GameObjects.GameObjectFactory}
-             * @since 3.0.0
+             * 
              */
             this.add;
 
@@ -134,7 +134,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#make
              * @type {Phaser.GameObjects.GameObjectCreator}
-             * @since 3.0.0
+             * 
              */
             this.make;
 
@@ -145,7 +145,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#scene
              * @type {Phaser.Scenes.ScenePlugin}
-             * @since 3.0.0
+             * 
              */
             this.scene;
 
@@ -156,7 +156,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#children
              * @type {Phaser.GameObjects.DisplayList}
-             * @since 3.0.0
+             * 
              */
             this.children;
 
@@ -167,7 +167,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#lights
              * @type {Phaser.GameObjects.LightsManager}
-             * @since 3.0.0
+             * 
              */
             this.lights;
 
@@ -180,7 +180,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#data
              * @type {Phaser.Data.DataManager}
-             * @since 3.0.0
+             * 
              */
             this.data;
 
@@ -191,7 +191,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#input
              * @type {Phaser.Input.InputPlugin}
-             * @since 3.0.0
+             * 
              */
             this.input;
 
@@ -202,7 +202,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#load
              * @type {Phaser.Loader.LoaderPlugin}
-             * @since 3.0.0
+             * 
              */
             this.load;
 
@@ -213,7 +213,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#time
              * @type {Phaser.Time.Clock}
-             * @since 3.0.0
+             * 
              */
             this.time;
 
@@ -224,7 +224,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#tweens
              * @type {Phaser.Tweens.TweenManager}
-             * @since 3.0.0
+             * 
              */
             this.tweens;
 
@@ -235,7 +235,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#physics
              * @type {Phaser.Physics.Arcade.ArcadePhysics}
-             * @since 3.0.0
+             * 
              */
             this.physics;
 
@@ -246,7 +246,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#matter
              * @type {Phaser.Physics.Matter.MatterPhysics}
-             * @since 3.0.0
+             * 
              */
             this.matter;
 
@@ -282,7 +282,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#plugins
              * @type {Phaser.Plugins.PluginManager}
-             * @since 3.0.0
+             * 
              */
             this.plugins;
 
@@ -302,7 +302,7 @@ var Scene = new Class({
      * This method is called once per game step while the scene is running.
      *
      * @method Phaser.Scene#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.

@@ -11,7 +11,7 @@
  *
  * @event Phaser.Input.Events#GAMEOBJECT_DROP
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Pointer} pointer - The Pointer responsible for triggering this event.
  * @param {Phaser.GameObjects.GameObject} target - The Drag Target the `gameObject` has been dropped on.

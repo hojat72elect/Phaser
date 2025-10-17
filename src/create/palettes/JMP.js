@@ -2,7 +2,7 @@
  * A 16 color JMP palette by [Arne](http://androidarts.com/palette/16pal.htm)
  *
  * @name Phaser.Create.Palettes.JMP
- * @since 3.0.0
+ * 
  *
  * @type {Phaser.Types.Create.Palette}
  */

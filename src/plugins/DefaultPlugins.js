@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Plugins.DefaultPlugins
  * @memberof Phaser.Plugins
- * @since 3.0.0
+ * 
  */
 
 var DefaultPlugins = {
@@ -14,7 +14,7 @@ var DefaultPlugins = {
      *
      * @name Phaser.Plugins.DefaultPlugins.Global
      * @type {array}
-     * @since 3.0.0
+     * 
      */
     Global: [
 
@@ -38,7 +38,7 @@ var DefaultPlugins = {
      *
      * @name Phaser.Plugins.DefaultPlugins.CoreScene
      * @type {array}
-     * @since 3.0.0
+     * 
      */
     CoreScene: [
 
@@ -66,7 +66,7 @@ var DefaultPlugins = {
      *
      * @name Phaser.Plugins.DefaultPlugins.DefaultScene
      * @type {array}
-     * @since 3.0.0
+     * 
      */
     DefaultScene: [
 

@@ -2,7 +2,7 @@
  * Check to see if the Ellipse contains the given x / y coordinates.
  *
  * @function Phaser.Geom.Ellipse.Contains
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Ellipse} ellipse - The Ellipse to check.
  * @param {number} x - The x coordinate to check within the ellipse.

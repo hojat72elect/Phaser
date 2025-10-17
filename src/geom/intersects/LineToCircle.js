@@ -9,7 +9,7 @@ var tmp = new Point();
  * Based on code by [Matt DesLauriers](https://github.com/mattdesl/line-circle-collision/blob/master/LICENSE.md).
  *
  * @function Phaser.Geom.Intersects.LineToCircle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line segment to check.
  * @param {Phaser.Geom.Circle} circle - The circle to check against the line.

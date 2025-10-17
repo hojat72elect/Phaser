@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterWorldConfig
- * @since 3.0.0
+ * 
  *
  * @property {Phaser.Types.Math.Vector2Like} [gravity] - Sets {@link Phaser.Physics.Matter.World#gravity}.
  * @property {(object|boolean)} [setBounds] - Should the world have bounds enabled by default?

@@ -5,7 +5,7 @@ var ProcessTileSeparationY = require('./ProcessTileSeparationY');
  * Used internally by the SeparateTile function.
  *
  * @function Phaser.Physics.Arcade.Tilemap.TileCheckY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.Body} body - The Body object to separate.
  * @param {Phaser.Tilemaps.Tile} tile - The tile to check.

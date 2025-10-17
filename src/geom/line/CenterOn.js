@@ -2,7 +2,7 @@
  * Center a line on the given coordinates.
  *
  * @function Phaser.Geom.Line.CenterOn
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line to center.
  * @param {number} x - The horizontal coordinate to center the line on.

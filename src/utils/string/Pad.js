@@ -19,7 +19,7 @@
  * Would return: `**c64**`
  *
  * @function Phaser.Utils.String.Pad
- * @since 3.0.0
+ * 
  *
  * @param {string|number|object} str - The target string. `toString()` will be called on the string, which means you can also pass in common data types like numbers.
  * @param {number} [len=0] - The number of characters to be added.

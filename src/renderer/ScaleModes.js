@@ -2,7 +2,7 @@
  * Phaser Scale Modes.
  *
  * @namespace Phaser.ScaleModes
- * @since 3.0.0
+ * 
  */
 
 var ScaleModes = {
@@ -13,7 +13,7 @@ var ScaleModes = {
      * @name Phaser.ScaleModes.DEFAULT
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     DEFAULT: 0,
 
@@ -23,7 +23,7 @@ var ScaleModes = {
      * @name Phaser.ScaleModes.LINEAR
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     LINEAR: 0,
 
@@ -33,7 +33,7 @@ var ScaleModes = {
      * @name Phaser.ScaleModes.NEAREST
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     NEAREST: 1
 

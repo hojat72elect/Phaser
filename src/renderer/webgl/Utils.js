@@ -8,7 +8,7 @@
 
 /**
  * @namespace Phaser.Renderer.WebGL.Utils
- * @since 3.0.0
+ * 
  */
 module.exports = {
 
@@ -16,7 +16,7 @@ module.exports = {
      * Packs four floats on a range from 0.0 to 1.0 into a single Uint32
      *
      * @function Phaser.Renderer.WebGL.Utils.getTintFromFloats
-     * @since 3.0.0
+     * 
      *
      * @param {number} r - Red component in a range from 0.0 to 1.0
      * @param {number} g - Green component in a range from 0.0 to 1.0
@@ -39,7 +39,7 @@ module.exports = {
      * the alpha component, with a range between 0.0 and 1.0 and return a Uint32
      *
      * @function Phaser.Renderer.WebGL.Utils.getTintAppendFloatAlpha
-     * @since 3.0.0
+     * 
      *
      * @param {number} rgb - Uint24 representing RGB components
      * @param {number} a - Float32 representing Alpha component
@@ -58,7 +58,7 @@ module.exports = {
      * swizzled Uint32
      *
      * @function Phaser.Renderer.WebGL.Utils.getTintAppendFloatAlphaAndSwap
-     * @since 3.0.0
+     * 
      *
      * @param {number} rgb - Uint24 representing RGB components
      * @param {number} a - Float32 representing Alpha component
@@ -78,7 +78,7 @@ module.exports = {
      * Unpacks a Uint24 RGB into an array of floats of ranges of 0.0 and 1.0
      *
      * @function Phaser.Renderer.WebGL.Utils.getFloatsFromUintRGB
-     * @since 3.0.0
+     * 
      *
      * @param {number} rgb - RGB packed as a Uint24
      *

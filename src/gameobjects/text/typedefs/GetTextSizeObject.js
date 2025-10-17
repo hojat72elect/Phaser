@@ -2,7 +2,7 @@
  * Results object from a call to GetTextSize.
  *
  * @typedef {object} Phaser.Types.GameObjects.Text.GetTextSizeObject
- * @since 3.0.0
+ * 
  *
  * @property {number} width - The width of the longest line in the Text object.
  * @property {number} height - The height of the Text object.

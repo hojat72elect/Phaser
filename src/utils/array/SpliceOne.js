@@ -3,7 +3,7 @@
  * Based on code by Mike Reinstein.
  *
  * @function Phaser.Utils.Array.SpliceOne
- * @since 3.0.0
+ * 
  *
  * @param {array} array - The array to splice from.
  * @param {number} index - The index of the item which should be spliced.

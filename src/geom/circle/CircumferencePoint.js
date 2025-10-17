@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Returns a Point object containing the coordinates of a point on the circumference of the Circle based on the given angle.
  *
  * @function Phaser.Geom.Circle.CircumferencePoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

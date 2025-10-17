@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.Offset
- * @since 3.0.0
+ * 
  */
 var Offset = {
 
@@ -17,7 +17,7 @@ var Offset = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Offset#setOffset
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - [description]
      * @param {number} y - [description]

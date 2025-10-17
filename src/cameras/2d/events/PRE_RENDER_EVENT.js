@@ -8,7 +8,7 @@
  *
  * @event Phaser.Cameras.Scene2D.Events#PRE_RENDER
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Cameras.Scene2D.BaseCamera} camera - The camera that is about to render to a texture.
  */

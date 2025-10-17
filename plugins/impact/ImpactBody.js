@@ -14,7 +14,7 @@ var Components = require('./components');
  * @class ImpactBody
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Impact.Components.Acceleration
  * @extends Phaser.Physics.Impact.Components.BodyScale
@@ -60,7 +60,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#body
              * @type {Phaser.Physics.Impact.Body}
-             * @since 3.0.0
+             * 
              */
             this.body = world.create(x, y, width, height);
 
@@ -71,7 +71,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#size
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.size = this.body.size;
 
@@ -80,7 +80,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#offset
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.offset = this.body.offset;
 
@@ -89,7 +89,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#vel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.vel = this.body.vel;
 
@@ -98,7 +98,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#accel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.accel = this.body.accel;
 
@@ -107,7 +107,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#friction
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.friction = this.body.friction;
 
@@ -116,7 +116,7 @@ var ImpactBody = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactBody#maxVel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.maxVel = this.body.maxVel;
         }

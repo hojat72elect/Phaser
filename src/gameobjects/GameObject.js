@@ -15,7 +15,7 @@ var SceneEvents = require('../scene/events');
  * @memberof Phaser.GameObjects
  * @extends Phaser.Events.EventEmitter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs.
  * @param {string} type - A textual representation of the type of Game Object, i.e. `sprite`.
@@ -39,7 +39,7 @@ var GameObject = new Class({
              *
              * @name Phaser.GameObjects.GameObject#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -63,7 +63,7 @@ var GameObject = new Class({
              *
              * @name Phaser.GameObjects.GameObject#type
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.type = type;
 
@@ -99,7 +99,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#name
              * @type {string}
              * @default ''
-             * @since 3.0.0
+             * 
              */
             this.name = '';
 
@@ -111,7 +111,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#active
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.active = true;
 
@@ -122,7 +122,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#tabIndex
              * @type {number}
              * @default -1
-             * @since 3.0.0
+             * 
              */
             this.tabIndex = -1;
 
@@ -134,7 +134,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#data
              * @type {Phaser.Data.DataManager}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.data = null;
 
@@ -146,7 +146,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#renderFlags
              * @type {number}
              * @default 15
-             * @since 3.0.0
+             * 
              */
             this.renderFlags = 15;
 
@@ -161,7 +161,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#cameraFilter
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.cameraFilter = 0;
 
@@ -172,7 +172,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#input
              * @type {?Phaser.Types.Input.InteractiveObject}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.input = null;
 
@@ -182,7 +182,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#body
              * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody|MatterJS.BodyType)}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.body = null;
 
@@ -211,7 +211,7 @@ var GameObject = new Class({
      * A Game Object with its `active` property set to `true` will be updated by the Scenes UpdateList.
      *
      * @method Phaser.GameObjects.GameObject#setActive
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - True if this Game Object should be set as active, false if not.
      *
@@ -228,7 +228,7 @@ var GameObject = new Class({
      * The `name` property is not populated by Phaser and is presented for your own use.
      *
      * @method Phaser.GameObjects.GameObject#setName
-     * @since 3.0.0
+     * 
      *
      * @param {string} value - The name to be given to this Game Object.
      *
@@ -267,7 +267,7 @@ var GameObject = new Class({
      * Adds a Data Manager component to this Game Object.
      *
      * @method Phaser.GameObjects.GameObject#setDataEnabled
-     * @since 3.0.0
+     * 
      * @see Phaser.Data.DataManager
      *
      * @return {this} This GameObject.
@@ -320,7 +320,7 @@ var GameObject = new Class({
      * This means the keys `gold` and `Gold` are treated as two unique values within the Data Manager.
      *
      * @method Phaser.GameObjects.GameObject#setData
-     * @since 3.0.0
+     * 
      *
      * @generic {any} T
      * @genericUse {(string|T)} - [key]
@@ -419,7 +419,7 @@ var GameObject = new Class({
      * This approach is useful for destructuring arrays in ES6.
      *
      * @method Phaser.GameObjects.GameObject#getData
-     * @since 3.0.0
+     * 
      *
      * @param {(string|string[])} key - The key of the value to retrieve, or an array of keys.
      *
@@ -456,7 +456,7 @@ var GameObject = new Class({
      * graphics.setInteractive(new Phaser.Geom.Rectangle(0, 0, 128, 128), Phaser.Geom.Rectangle.Contains);
      *
      * @method Phaser.GameObjects.GameObject#setInteractive
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Types.Input.InputConfiguration|any)} [hitArea] - Either an input configuration object, or a geometric shape that defines the hit area for the Game Object. If not given it will try to create a Rectangle based on the texture frame.
      * @param {Phaser.Types.Input.HitAreaCallback} [callback] - The callback that determines if the pointer is within the Hit Area shape or not. If you provide a shape you must also provide a callback.
@@ -571,7 +571,7 @@ var GameObject = new Class({
      * To be overridden by custom GameObjects. Allows base objects to be used in a Pool.
      *
      * @method Phaser.GameObjects.GameObject#update
-     * @since 3.0.0
+     * 
      *
      * @param {...*} [args] - args
      */
@@ -582,7 +582,7 @@ var GameObject = new Class({
      * Returns a JSON representation of the Game Object.
      *
      * @method Phaser.GameObjects.GameObject#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Game Object.
      */
@@ -595,7 +595,7 @@ var GameObject = new Class({
      * Also checks the Game Object against the given Cameras exclusion list.
      *
      * @method Phaser.GameObjects.GameObject#willRender
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to check against this Game Object.
      *
@@ -823,7 +823,7 @@ var GameObject = new Class({
      *
      * @method Phaser.GameObjects.GameObject#destroy
      * @fires Phaser.GameObjects.Events#DESTROY
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [fromScene=false] - `True` if this Game Object is being destroyed by the Scene, `false` if not.
      */

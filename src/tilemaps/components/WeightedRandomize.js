@@ -17,7 +17,7 @@ var MATH = require('../../math');
  * method only modifies tile indexes and does not change collision information.
  *
  * @function Phaser.Tilemaps.Components.WeightedRandomize
- * @since 3.0.0
+ * 
  *
  * @param {number} tileX - The left most tile index (in tile coordinates) to use as the origin of the area.
  * @param {number} tileY - The top most tile index (in tile coordinates) to use as the origin of the area.

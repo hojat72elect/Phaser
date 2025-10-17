@@ -19,7 +19,7 @@ var XMLFile = require('./XMLFile');
  * @extends Phaser.Loader.MultiFile
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.BitmapFontFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -185,7 +185,7 @@ var BitmapFontFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#bitmapFont
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.BitmapFontFileConfig|Phaser.Types.Loader.FileTypes.BitmapFontFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string|string[]} [textureURL] - The absolute or relative URL to load the font image file from. If undefined or `null` it will be set to `<key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".

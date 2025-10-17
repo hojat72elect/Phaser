@@ -4,7 +4,7 @@
  * Example: if you have an interval gap of `5` and a position of `12`... you will snap to `10` whereas `14` will snap to `15`.
  *
  * @function Phaser.Math.Snap.To
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to snap.
  * @param {number} gap - The interval gap of the grid.

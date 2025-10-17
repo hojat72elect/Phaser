@@ -4,7 +4,7 @@
  * Two numbers are fuzzily equal if their difference is less than `epsilon`.
  *
  * @function Phaser.Math.Fuzzy.Equal
- * @since 3.0.0
+ * 
  *
  * @param {number} a - The first value.
  * @param {number} b - The second value.

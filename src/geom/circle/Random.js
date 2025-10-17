@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Returns a uniformly distributed random point from anywhere within the given Circle.
  *
  * @function Phaser.Geom.Circle.Random
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

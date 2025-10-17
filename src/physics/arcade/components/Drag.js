@@ -2,7 +2,7 @@
  * Provides methods used for setting the drag properties of an Arcade Physics Body.
  *
  * @namespace Phaser.Physics.Arcade.Components.Drag
- * @since 3.0.0
+ * 
  */
 var Drag = {
 
@@ -21,7 +21,7 @@ var Drag = {
      * Drag is applied only when `acceleration` is zero.
      *
      * @method Phaser.Physics.Arcade.Components.Drag#setDrag
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The amount of horizontal drag to apply.
      * @param {number} [y=x] - The amount of vertical drag to apply.
@@ -49,7 +49,7 @@ var Drag = {
      * Drag is applied only when `acceleration` is zero.
      *
      * @method Phaser.Physics.Arcade.Components.Drag#setDragX
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The amount of horizontal drag to apply.
      *
@@ -76,7 +76,7 @@ var Drag = {
      * Drag is applied only when `acceleration` is zero.
      *
      * @method Phaser.Physics.Arcade.Components.Drag#setDragY
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The amount of vertical drag to apply.
      *

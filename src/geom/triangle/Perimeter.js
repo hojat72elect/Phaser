@@ -5,7 +5,7 @@ var Length = require('../line/Length');
  * Calculated by adding together the length of each of the three sides.
  *
  * @function Phaser.Geom.Triangle.Perimeter
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Triangle} triangle - The Triangle to get the length from.
  *

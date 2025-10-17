@@ -19,7 +19,7 @@ var tmpVec3 = new Vector3();
  * @extends Phaser.Cameras.Sprite3D.Camera
  * @memberOf Phaser.Cameras.Sprite3D
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - [description]
  * @param {integer} [fieldOfView=80] - [description]
@@ -52,7 +52,7 @@ var PerspectiveCamera = new Class({
              * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#viewportWidth
              * @type {integer}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.viewportWidth = viewportWidth;
 
@@ -62,7 +62,7 @@ var PerspectiveCamera = new Class({
              * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#viewportHeight
              * @type {integer}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.viewportHeight = viewportHeight;
 
@@ -72,7 +72,7 @@ var PerspectiveCamera = new Class({
              * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#fieldOfView
              * @type {integer}
              * @default 80
-             * @since 3.0.0
+             * 
              */
             this.fieldOfView = fieldOfView * Math.PI / 180;
 
@@ -83,7 +83,7 @@ var PerspectiveCamera = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.PerspectiveCamera#setFOV
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - [description]
      *
@@ -99,7 +99,7 @@ var PerspectiveCamera = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.PerspectiveCamera#update
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */

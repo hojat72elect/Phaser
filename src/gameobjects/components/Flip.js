@@ -3,7 +3,7 @@
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.Flip
- * @since 3.0.0
+ * 
  */
 
 var Flip = {
@@ -18,7 +18,7 @@ var Flip = {
      * @name Phaser.GameObjects.Components.Flip#flipX
      * @type {boolean}
      * @default false
-     * @since 3.0.0
+     * 
      */
     flipX: false,
 
@@ -32,7 +32,7 @@ var Flip = {
      * @name Phaser.GameObjects.Components.Flip#flipY
      * @type {boolean}
      * @default false
-     * @since 3.0.0
+     * 
      */
     flipY: false,
 
@@ -44,7 +44,7 @@ var Flip = {
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
      *
      * @method Phaser.GameObjects.Components.Flip#toggleFlipX
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -58,7 +58,7 @@ var Flip = {
      * Toggles the vertical flipped state of this Game Object.
      *
      * @method Phaser.GameObjects.Components.Flip#toggleFlipY
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -76,7 +76,7 @@ var Flip = {
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
      *
      * @method Phaser.GameObjects.Components.Flip#setFlipX
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The flipped state. `false` for no flip, or `true` to be flipped.
      *
@@ -92,7 +92,7 @@ var Flip = {
      * Sets the vertical flipped state of this Game Object.
      *
      * @method Phaser.GameObjects.Components.Flip#setFlipY
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The flipped state. `false` for no flip, or `true` to be flipped.
      *
@@ -112,7 +112,7 @@ var Flip = {
      * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
      *
      * @method Phaser.GameObjects.Components.Flip#setFlip
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} x - The horizontal flipped state. `false` for no flip, or `true` to be flipped.
      * @param {boolean} y - The horizontal flipped state. `false` for no flip, or `true` to be flipped.
@@ -130,7 +130,7 @@ var Flip = {
      * Resets the horizontal and vertical flipped state of this Game Object back to their default un-flipped state.
      *
      * @method Phaser.GameObjects.Components.Flip#resetFlip
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

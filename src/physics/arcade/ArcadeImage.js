@@ -13,7 +13,7 @@ var Image = require('../../gameobjects/image/Image');
  * @extends Phaser.GameObjects.Image
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Arcade.Components.Acceleration
  * @extends Phaser.Physics.Arcade.Components.Angular
@@ -83,7 +83,7 @@ var ArcadeImage = new Class({
              * @name Phaser.Physics.Arcade.Image#body
              * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.body = null;
         }

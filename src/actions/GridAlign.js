@@ -11,7 +11,7 @@ var tempZone = new Zone({sys: {queueDepthSort: NOOP, events: {once: NOOP}}}, 0, 
  * and then aligns them based on the grid configuration given to this action.
  *
  * @function Phaser.Actions.GridAlign
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

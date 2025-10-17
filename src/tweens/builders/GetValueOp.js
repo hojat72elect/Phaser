@@ -50,7 +50,7 @@ function hasGetters(def) {
  * property is provided, the property will be used as the effective value under the same rules described here.
  *
  * @function Phaser.Tweens.Builders.GetValueOp
- * @since 3.0.0
+ * 
  *
  * @param {string} key - The name of the property to modify.
  * @param {*} propertyValue - The ending value of the property, as described above.

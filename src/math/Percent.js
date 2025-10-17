@@ -5,7 +5,7 @@
  * You can optionally specify an `upperMax` value, which is a mid-way point in the range that represents 100%, after which the % starts to go down to zero again.
  *
  * @function Phaser.Math.Percent
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to determine the percentage of.
  * @param {number} min - The minimum value.

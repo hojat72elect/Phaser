@@ -34,7 +34,7 @@ var GameObjectFactory = require('../../gameobjects/GameObjectFactory');
  * @class BitmapMask
  * @memberof Phaser.Display.Masks
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this mask is being added.
  * @param {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)} [maskObject] - The Game Object or Dynamic Texture that will be used as the mask. If `null` it will generate an Image Game Object using the rest of the arguments.
@@ -57,7 +57,7 @@ var BitmapMask = new Class({
              *
              * @name Phaser.Display.Masks.BitmapMask#bitmapMask
              * @type {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)}
-             * @since 3.0.0
+             * 
              */
             this.bitmapMask = maskObject;
 
@@ -93,7 +93,7 @@ var BitmapMask = new Class({
      * You can update the source of the mask as often as you like.
      *
      * @method Phaser.Display.Masks.BitmapMask#setBitmap
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)} maskObject - The Game Object or Dynamic Texture that will be used as the mask. If a Game Object, it must have a texture, such as a Sprite.
      */
@@ -107,7 +107,7 @@ var BitmapMask = new Class({
      * This renders the masking Game Object to the mask framebuffer and switches to the main framebuffer so that the masked Game Object will be rendered to it instead of being rendered directly to the frame.
      *
      * @method Phaser.Display.Masks.BitmapMask#preRenderWebGL
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The WebGL Renderer to prepare.
      * @param {Phaser.GameObjects.GameObject} maskedObject - The masked Game Object which will be drawn.
@@ -123,7 +123,7 @@ var BitmapMask = new Class({
      * This resets the previously bound framebuffer and switches the WebGL Renderer to the Bitmap Mask Pipeline, which uses a special fragment shader to apply the masking effect.
      *
      * @method Phaser.Display.Masks.BitmapMask#postRenderWebGL
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The WebGL Renderer to clean up.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
@@ -137,7 +137,7 @@ var BitmapMask = new Class({
      * This is a NOOP method. Bitmap Masks are not supported by the Canvas Renderer.
      *
      * @method Phaser.Display.Masks.BitmapMask#preRenderCanvas
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The Canvas Renderer which would be rendered to.
      * @param {Phaser.GameObjects.GameObject} mask - The masked Game Object which would be rendered.
@@ -151,7 +151,7 @@ var BitmapMask = new Class({
      * This is a NOOP method. Bitmap Masks are not supported by the Canvas Renderer.
      *
      * @method Phaser.Display.Masks.BitmapMask#postRenderCanvas
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The Canvas Renderer which would be rendered to.
      */

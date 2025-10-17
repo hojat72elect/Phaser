@@ -9,7 +9,7 @@ var Events = require('./events');
  * @class Button
  * @memberof Phaser.Input.Gamepad
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Gamepad.Gamepad} pad - A reference to the Gamepad that this Button belongs to.
  * @param {number} index - The index of this Button.
@@ -24,7 +24,7 @@ var Button = new Class({
              *
              * @name Phaser.Input.Gamepad.Button#pad
              * @type {Phaser.Input.Gamepad.Gamepad}
-             * @since 3.0.0
+             * 
              */
             this.pad = pad;
 
@@ -33,7 +33,7 @@ var Button = new Class({
              *
              * @name Phaser.Input.Gamepad.Button#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events = pad.manager;
 
@@ -42,7 +42,7 @@ var Button = new Class({
              *
              * @name Phaser.Input.Gamepad.Button#index
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.index = index;
 
@@ -52,7 +52,7 @@ var Button = new Class({
              * @name Phaser.Input.Gamepad.Button#value
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.value = 0;
 
@@ -63,7 +63,7 @@ var Button = new Class({
              * @name Phaser.Input.Gamepad.Button#threshold
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.threshold = 1;
 
@@ -73,7 +73,7 @@ var Button = new Class({
              * @name Phaser.Input.Gamepad.Button#pressed
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.pressed = false;
         },
@@ -88,7 +88,7 @@ var Button = new Class({
      * @fires Phaser.Input.Gamepad.Events#GAMEPAD_BUTTON_DOWN
      * @fires Phaser.Input.Gamepad.Events#GAMEPAD_BUTTON_UP
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The value of the button. Between 0 and 1.
      */

@@ -13,7 +13,7 @@ var SceneEvents = require('../scene/events');
  * @extends Phaser.Data.DataManager
  * @memberof Phaser.Data
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene that this DataManager belongs to.
  */
@@ -31,7 +31,7 @@ var DataManagerPlugin = new Class({
              *
              * @name Phaser.Data.DataManagerPlugin#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -40,7 +40,7 @@ var DataManagerPlugin = new Class({
              *
              * @name Phaser.Data.DataManagerPlugin#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 

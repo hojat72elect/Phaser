@@ -4,7 +4,7 @@ var Rectangle = require('../rectangle/Rectangle');
  * Calculates the bounding AABB rectangle of a polygon.
  *
  * @function Phaser.Geom.Polygon.GetAABB
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [out,$return]
  *

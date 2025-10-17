@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Core.FPSConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [min=5] - The minimum acceptable rendering rate, in frames per second.
  * @property {number} [target=60] - The optimum rendering rate, in frames per second. This does not enforce the fps rate, it merely tells Phaser what rate is considered optimal for this game.

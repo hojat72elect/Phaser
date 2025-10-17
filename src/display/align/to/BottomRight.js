@@ -7,7 +7,7 @@ var SetTop = require('../../bounds/SetTop');
  * Takes given Game Object and aligns it so that it is positioned next to the bottom right position of the other.
  *
  * @function Phaser.Display.Align.To.BottomRight
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject} G - [gameObject,$return]
  *

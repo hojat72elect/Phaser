@@ -384,7 +384,7 @@ var Shader = new Class({
      * Also checks the Game Object against the given Cameras exclusion list.
      *
      * @method Phaser.GameObjects.Shader#willRender
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to check against this Game Object.
      *

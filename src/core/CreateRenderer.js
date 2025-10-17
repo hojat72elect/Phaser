@@ -9,7 +9,7 @@ var Features = require('../device/Features');
  * Relies upon two webpack global flags to be defined: `WEBGL_RENDERER` and `CANVAS_RENDERER` during build time, but not at run-time.
  *
  * @function Phaser.Core.CreateRenderer
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - The Phaser.Game instance on which the renderer will be set.
  */

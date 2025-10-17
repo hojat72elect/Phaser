@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.TweenConfigDefaults
- * @since 3.0.0
+ * 
  *
  * @property {(object|object[])} targets - The object, or an array of objects, to run the tween on.
  * @property {number} [delay=0] - The number of milliseconds to delay before the tween will start.

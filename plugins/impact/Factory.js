@@ -17,7 +17,7 @@ var ImpactSprite = require('./ImpactSprite');
  * @class Factory
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Impact.World} world - A reference to the Impact Physics world.
  */
@@ -31,7 +31,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Impact.Factory#world
              * @type {Phaser.Physics.Impact.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -40,7 +40,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Impact.Factory#sys
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.sys = world.scene.sys;
         },
@@ -49,7 +49,7 @@ var Factory = new Class({
      * Creates a new ImpactBody object and adds it to the physics simulation.
      *
      * @method Phaser.Physics.Impact.Factory#body
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of the body in the physics world.
      * @param {number} y - The vertical position of the body in the physics world.
@@ -66,7 +66,7 @@ var Factory = new Class({
      * Adds an Impact Physics Body to the given Game Object.
      *
      * @method Phaser.Physics.Impact.Factory#existing
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to receive the physics body.
      *
@@ -90,7 +90,7 @@ var Factory = new Class({
      * Creates a new ImpactImage object and adds it to the physics world.
      *
      * @method Phaser.Physics.Impact.Factory#image
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
@@ -111,7 +111,7 @@ var Factory = new Class({
      * Creates a new ImpactSprite object and adds it to the physics world.
      *
      * @method Phaser.Physics.Impact.Factory#sprite
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.

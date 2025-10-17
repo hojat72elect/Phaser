@@ -3,7 +3,7 @@
  * A plain object is an object whose internal class property is [object Object].
  *
  * @function Phaser.Utils.Objects.IsPlainObject
- * @since 3.0.0
+ * 
  *
  * @param {object} obj - The object to inspect.
  *

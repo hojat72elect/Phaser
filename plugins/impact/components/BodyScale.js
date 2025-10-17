@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.BodyScale
- * @since 3.0.0
+ * 
  */
 var BodyScale = {
 
@@ -17,7 +17,7 @@ var BodyScale = {
      * Sets the size of the physics body.
      *
      * @method Phaser.Physics.Impact.Components.BodyScale#setBodySize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of the body in pixels.
      * @param {number} [height=width] - The height of the body in pixels.
@@ -39,7 +39,7 @@ var BodyScale = {
      * Sets the scale of the physics body.
      *
      * @method Phaser.Physics.Impact.Components.BodyScale#setBodyScale
-     * @since 3.0.0
+     * 
      *
      * @param {number} scaleX - The horizontal scale of the body.
      * @param {number} [scaleY] - The vertical scale of the body. If not given, will use the horizontal scale value.

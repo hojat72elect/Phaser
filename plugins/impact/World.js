@@ -25,7 +25,7 @@ var TYPE = require('./TYPE');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Impact World instance belongs.
  * @param {Phaser.Types.Physics.Impact.WorldConfig} config - [description]
@@ -44,7 +44,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -53,7 +53,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#bodies
              * @type {Phaser.Structs.Set.<Phaser.Physics.Impact.Body>}
-             * @since 3.0.0
+             * 
              */
             this.bodies = new Set();
 
@@ -63,7 +63,7 @@ var World = new Class({
              * @name Phaser.Physics.Impact.World#gravity
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.gravity = GetFastValue(config, 'gravity', 0);
 
@@ -73,7 +73,7 @@ var World = new Class({
              * @name Phaser.Physics.Impact.World#cellSize
              * @type {integer}
              * @default 64
-             * @since 3.0.0
+             * 
              */
             this.cellSize = GetFastValue(config, 'cellSize', 64);
 
@@ -82,7 +82,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#collisionMap
              * @type {Phaser.Physics.Impact.CollisionMap}
-             * @since 3.0.0
+             * 
              */
             this.collisionMap = new CollisionMap();
 
@@ -92,7 +92,7 @@ var World = new Class({
              * @name Phaser.Physics.Impact.World#timeScale
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.timeScale = GetFastValue(config, 'timeScale', 1);
 
@@ -102,7 +102,7 @@ var World = new Class({
              * @name Phaser.Physics.Impact.World#maxStep
              * @type {number}
              * @default 0.05
-             * @since 3.0.0
+             * 
              */
             this.maxStep = GetFastValue(config, 'maxStep', 0.05);
 
@@ -112,7 +112,7 @@ var World = new Class({
              * @name Phaser.Physics.Impact.World#enabled
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.enabled = true;
 
@@ -121,7 +121,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#drawDebug
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.drawDebug = GetFastValue(config, 'debug', false);
 
@@ -130,7 +130,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#debugGraphic
              * @type {Phaser.GameObjects.Graphics}
-             * @since 3.0.0
+             * 
              */
             this.debugGraphic;
 
@@ -141,7 +141,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#defaults
              * @type {Phaser.Types.Physics.Impact.WorldDefaults}
-             * @since 3.0.0
+             * 
              */
             this.defaults = {
                 debugShowBody: GetFastValue(config, 'debugShowBody', true),
@@ -160,7 +160,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Impact.World#walls
              * @type {Phaser.Types.Physics.Impact.WorldWalls}
-             * @since 3.0.0
+             * 
              */
             this.walls = {left: null, right: null, top: null, bottom: null};
 
@@ -170,7 +170,7 @@ var World = new Class({
              * @name Phaser.Physics.Impact.World#delta
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.delta = 0;
 
@@ -181,7 +181,7 @@ var World = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._lastId = 0;
 
@@ -215,7 +215,7 @@ var World = new Class({
      * a 2D array. If loading from a Weltmeister level, the map must have a layer called "collision".
      *
      * @method Phaser.Physics.Impact.World#setCollisionMap
-     * @since 3.0.0
+     * 
      *
      * @param {(string|integer[][])} key - Either a string key that corresponds to a Weltmeister level
      * in the cache, or a 2D array of collision IDs.
@@ -264,7 +264,7 @@ var World = new Class({
      * manually create a slopeMap that stores the mapping between tile indices and slope IDs.
      *
      * @method Phaser.Physics.Impact.World#setCollisionMapFromTilemapLayer
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Tilemaps.DynamicTilemapLayer|Phaser.Tilemaps.StaticTilemapLayer)} tilemapLayer - The tilemap layer to use.
      * @param {Phaser.Types.Physics.Impact.CollisionOptions} [options] - Options for controlling the mapping from tiles to slope IDs.
@@ -320,7 +320,7 @@ var World = new Class({
      * Explicitly state them in the parameters to override this.
      *
      * @method Phaser.Physics.Impact.World#setBounds
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x] - The x coordinate of the top-left corner of the bounds.
      * @param {number} [y] - The y coordinate of the top-left corner of the bounds.
@@ -375,7 +375,7 @@ var World = new Class({
      * position = 'left', 'right', 'top' or 'bottom'
      *
      * @method Phaser.Physics.Impact.World#updateWall
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} add - [description]
      * @param {string} position - [description]
@@ -409,7 +409,7 @@ var World = new Class({
      * Creates a Graphics Game Object used for debug display and enables the world for debug drawing.
      *
      * @method Phaser.Physics.Impact.World#createDebugGraphic
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object created that will have the debug visuals drawn to it.
      */
@@ -429,7 +429,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#getNextID
-     * @since 3.0.0
+     * 
      *
      * @return {integer} [description]
      */
@@ -441,7 +441,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#create
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - [description]
      * @param {number} y - [description]
@@ -462,7 +462,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#remove
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body} object - The Body to remove from this World.
      */
@@ -475,7 +475,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Impact.World#pause
      * @fires Phaser.Physics.Impact.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
@@ -492,7 +492,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Impact.World#resume
      * @fires Phaser.Physics.Impact.Events#RESUME
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
@@ -508,7 +508,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -570,7 +570,7 @@ var World = new Class({
      * Check the body against the spatial hash.
      *
      * @method Phaser.Physics.Impact.World#checkHash
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body} body - [description]
      * @param {object} hash - [description]
@@ -612,7 +612,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#checkBodies
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body} bodyA - [description]
      * @param {Phaser.Physics.Impact.Body} bodyB - [description]
@@ -641,7 +641,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setCollidesNever
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the collides value on.
      *
@@ -659,7 +659,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setLite
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the collides value on.
      *
@@ -677,7 +677,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setPassive
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the collides value on.
      *
@@ -695,7 +695,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setActive
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the collides value on.
      *
@@ -713,7 +713,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setFixed
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the collides value on.
      *
@@ -731,7 +731,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setTypeNone
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -749,7 +749,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setTypeA
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -767,7 +767,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setTypeB
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -785,7 +785,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setAvsB
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -804,7 +804,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setBvsA
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -823,7 +823,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setCheckAgainstNone
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -841,7 +841,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setCheckAgainstA
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -859,7 +859,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#setCheckAgainstB
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body[]} bodies - An Array of Impact Bodies to set the type value on.
      *
@@ -877,7 +877,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.removeAllListeners();
@@ -887,7 +887,7 @@ var World = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.World#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.removeAllListeners();

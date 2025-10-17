@@ -17,7 +17,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.AudioFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -60,7 +60,7 @@ var HTML5AudioFile = new Class({
      * Called when the file finishes loading.
      *
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#onLoad
-     * @since 3.0.0
+     * 
      */
     onLoad: function () {
         if (this.loaded) {
@@ -76,7 +76,7 @@ var HTML5AudioFile = new Class({
      * Called if the file errors while loading.
      *
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#onError
-     * @since 3.0.0
+     * 
      */
     onError: function () {
         for (var i = 0; i < this.data.length; i++) {
@@ -94,7 +94,7 @@ var HTML5AudioFile = new Class({
      *
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#onProgress
      * @fires Phaser.Loader.Events#FILE_PROGRESS
-     * @since 3.0.0
+     * 
      */
     onProgress: function (event) {
         var audio = event.target;
@@ -119,7 +119,7 @@ var HTML5AudioFile = new Class({
      * You shouldn't normally call this method directly, it's meant to be invoked by the Loader.
      *
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#load
-     * @since 3.0.0
+     * 
      */
     load: function () {
         this.data = [];

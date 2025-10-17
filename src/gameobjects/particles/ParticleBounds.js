@@ -111,7 +111,7 @@ var ParticleBounds = new Class({
      * Takes a Particle and updates it against the bounds.
      *
      * @method Phaser.GameObjects.Particles.ParticleBounds#update
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The Particle to update.
      */

@@ -2,7 +2,7 @@
  * A comparison of two `Point` objects to see if they are equal.
  *
  * @function Phaser.Geom.Point.Equals
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Point} point - The original `Point` to compare against.
  * @param {Phaser.Geom.Point} toCompare - The second `Point` to compare.

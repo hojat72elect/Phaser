@@ -15,7 +15,7 @@
  *
  * @namespace Phaser.Physics.Impact.COLLIDES
  * @memberof Phaser.Physics.Impact
- * @since 3.0.0
+ * 
  */
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.COLLIDES.NEVER
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     NEVER: 0,
 
@@ -36,7 +36,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.COLLIDES.LITE
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     LITE: 1,
 
@@ -46,7 +46,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.COLLIDES.PASSIVE
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     PASSIVE: 2,
 
@@ -56,7 +56,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.COLLIDES.ACTIVE
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     ACTIVE: 4,
 
@@ -66,7 +66,7 @@ module.exports = {
      * @name Phaser.Physics.Impact.COLLIDES.FIXED
      * @type {integer}
      * @const
-     * @since 3.0.0
+     * 
      */
     FIXED: 8
 

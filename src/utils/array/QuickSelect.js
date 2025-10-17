@@ -25,7 +25,7 @@ function defaultCompare(a, b) {
  * Based on code by [Vladimir Agafonkin](https://www.npmjs.com/~mourner)
  *
  * @function Phaser.Utils.Array.QuickSelect
- * @since 3.0.0
+ * 
  *
  * @param {array} arr - The array to sort.
  * @param {number} k - The k-th element index.

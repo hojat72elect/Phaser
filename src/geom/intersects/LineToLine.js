@@ -5,7 +5,7 @@
  * Checks if two Lines intersect. If the Lines are identical, they will be treated as parallel and thus non-intersecting.
  *
  * @function Phaser.Geom.Intersects.LineToLine
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line1 - The first Line to check.
  * @param {Phaser.Geom.Line} line2 - The second Line to check.

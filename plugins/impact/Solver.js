@@ -14,7 +14,7 @@ var SeparateY = require('./SeparateY');
  *
  * @function Phaser.Physics.Impact.Solver
  * @fires Phaser.Physics.Impact.Events#COLLIDE
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Impact.World} world - The Impact simulation to run the solver in.
  * @param {Phaser.Physics.Impact.Body} bodyA - The first body in the collision.

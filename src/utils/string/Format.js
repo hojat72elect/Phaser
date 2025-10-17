@@ -5,7 +5,7 @@
  * `Format("The %1 is worth %2 gold", [ 'Sword', 500 ])`
  *
  * @function Phaser.Utils.String.Format
- * @since 3.0.0
+ * 
  *
  * @param {string} string - The string containing the replacement markers.
  * @param {array} values - An array containing values that will replace the markers. If no value exists an empty string is inserted instead.

@@ -6,7 +6,7 @@ var Point = require('../point/Point');
  * on either the `step` value, or the `quantity`.
  *
  * @function Phaser.Geom.Rectangle.MarchingAnts
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point[]} O - [out,$return]
  *

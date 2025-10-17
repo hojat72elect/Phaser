@@ -24,7 +24,7 @@
  *
  * @event Phaser.Input.Events#GAMEOBJECT_OUT
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Pointer} pointer - The Pointer responsible for triggering this event.
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object the pointer moved out of.

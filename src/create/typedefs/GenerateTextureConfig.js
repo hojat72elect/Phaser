@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.Create.GenerateTextureCallback
- * @since 3.0.0
+ * 
  *
  * @param {HTMLCanvasElement} canvas - The HTML Canvas element to operate on.
  * @param {CanvasRenderingContext2D} context - The context of the HTML Canvas element.
@@ -8,7 +8,7 @@
 
 /**
  * @typedef {object} Phaser.Types.Create.GenerateTextureConfig
- * @since 3.0.0
+ * 
  *
  * @property {array} [data=[]] - An array of data, where each row is a string of single values 0-9A-F, or the period character.
  * @property {HTMLCanvasElement} [canvas=null] - The HTML Canvas to draw the texture to.

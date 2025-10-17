@@ -15,7 +15,7 @@
  *
  * @event Phaser.Input.Keyboard.Events#UP
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Keyboard.Key} key - The Key object that was released.
  * @param {KeyboardEvent} event - The native DOM Keyboard Event. You can inspect this to learn more about any modifiers, etc.

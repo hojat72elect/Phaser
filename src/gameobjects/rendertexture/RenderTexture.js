@@ -121,7 +121,7 @@ var RenderTexture = new Class({
      * size of the hit area, unless you have defined a custom hit area.
      *
      * @method Phaser.GameObjects.RenderTexture#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.

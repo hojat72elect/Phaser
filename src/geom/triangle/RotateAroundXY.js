@@ -2,7 +2,7 @@
  * Rotates an entire Triangle at a given angle about a specific point.
  *
  * @function Phaser.Geom.Triangle.RotateAroundXY
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Triangle} O - [triangle,$return]
  *

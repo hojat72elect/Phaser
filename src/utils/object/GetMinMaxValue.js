@@ -5,7 +5,7 @@ var Clamp = require('../../math/Clamp');
  * Retrieves and clamps a numerical value from an object.
  *
  * @function Phaser.Utils.Objects.GetMinMaxValue
- * @since 3.0.0
+ * 
  *
  * @param {object} source - The object to retrieve the value from.
  * @param {string} key - The name of the property to retrieve from the object. If a property is nested, the names of its preceding properties should be separated by a dot (`.`).

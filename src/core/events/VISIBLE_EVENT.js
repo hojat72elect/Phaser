@@ -8,6 +8,6 @@
  *
  * @event Phaser.Core.Events#VISIBLE
  * @type {string}
- * @since 3.0.0
+ * 
  */
 module.exports = 'visible';

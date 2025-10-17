@@ -7,7 +7,7 @@ var SetRight = require('../../bounds/SetRight');
  * Takes given Game Object and aligns it so that it is positioned next to the top right position of the other.
  *
  * @function Phaser.Display.Align.To.TopRight
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject} G - [gameObject,$return]
  *

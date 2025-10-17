@@ -2,7 +2,7 @@
  * Offsets the Circle by the values given.
  *
  * @function Phaser.Geom.Circle.Offset
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Circle} O - [circle,$return]
  *

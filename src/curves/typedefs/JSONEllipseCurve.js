@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Curves.JSONEllipseCurve
- * @since 3.0.0
+ * 
  *
  * @property {string} type - The of the curve.
  * @property {number} x - The x coordinate of the ellipse.

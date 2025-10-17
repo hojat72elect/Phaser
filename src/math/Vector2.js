@@ -13,7 +13,7 @@ var FuzzyEqual = require('../math/fuzzy/Equal');
  * @class Vector2
  * @memberof Phaser.Math
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number|Phaser.Types.Math.Vector2Like} [x=0] - The x component, or an object with `x` and `y` properties.
  * @param {number} [y=x] - The y component.
@@ -29,7 +29,7 @@ var Vector2 = new Class({
              * @name Phaser.Math.Vector2#x
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x = 0;
 
@@ -39,7 +39,7 @@ var Vector2 = new Class({
              * @name Phaser.Math.Vector2#y
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y = 0;
 
@@ -60,7 +60,7 @@ var Vector2 = new Class({
      * Make a clone of this Vector2.
      *
      * @method Phaser.Math.Vector2#clone
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Vector2} A clone of this Vector2.
      */
@@ -72,7 +72,7 @@ var Vector2 = new Class({
      * Copy the components of a given Vector into this Vector.
      *
      * @method Phaser.Math.Vector2#copy
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to copy the components from.
      *
@@ -89,7 +89,7 @@ var Vector2 = new Class({
      * Set the component values of this Vector from a given Vector2Like object.
      *
      * @method Phaser.Math.Vector2#setFromObject
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} obj - The object containing the component values to set for this Vector.
      *
@@ -106,7 +106,7 @@ var Vector2 = new Class({
      * Set the `x` and `y` components of the this Vector to the given `x` and `y` values.
      *
      * @method Phaser.Math.Vector2#set
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x value to set for this Vector.
      * @param {number} [y=x] - The y value to set for this Vector.
@@ -143,7 +143,7 @@ var Vector2 = new Class({
      * Sets the `x` and `y` values of this object from a given polar coordinate.
      *
      * @method Phaser.Math.Vector2#setToPolar
-     * @since 3.0.0
+     * 
      *
      * @param {number} azimuth - The angular coordinate, in radians.
      * @param {number} [radius=1] - The radial coordinate (length).
@@ -167,7 +167,7 @@ var Vector2 = new Class({
      * Performs a strict equality check against each Vector's components.
      *
      * @method Phaser.Math.Vector2#equals
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} v - The vector to compare with this Vector.
      *
@@ -196,7 +196,7 @@ var Vector2 = new Class({
      * Calculate the angle between this Vector and the positive x-axis, in radians.
      *
      * @method Phaser.Math.Vector2#angle
-     * @since 3.0.0
+     * 
      *
      * @return {number} The angle between this Vector, and the positive x-axis, given in radians.
      */
@@ -230,7 +230,7 @@ var Vector2 = new Class({
      * Add a given Vector to this Vector. Addition is component-wise.
      *
      * @method Phaser.Math.Vector2#add
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to add to this Vector.
      *
@@ -247,7 +247,7 @@ var Vector2 = new Class({
      * Subtract the given Vector from this Vector. Subtraction is component-wise.
      *
      * @method Phaser.Math.Vector2#subtract
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to subtract from this Vector.
      *
@@ -266,7 +266,7 @@ var Vector2 = new Class({
      * Multiplies this Vector by the given Vector.
      *
      * @method Phaser.Math.Vector2#multiply
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to multiply this Vector by.
      *
@@ -283,7 +283,7 @@ var Vector2 = new Class({
      * Scale this Vector by the given value.
      *
      * @method Phaser.Math.Vector2#scale
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The value to scale this Vector by.
      *
@@ -307,7 +307,7 @@ var Vector2 = new Class({
      * Divides this Vector by the given Vector.
      *
      * @method Phaser.Math.Vector2#divide
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to divide this Vector by.
      *
@@ -324,7 +324,7 @@ var Vector2 = new Class({
      * Negate the `x` and `y` components of this Vector.
      *
      * @method Phaser.Math.Vector2#negate
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -339,7 +339,7 @@ var Vector2 = new Class({
      * Calculate the distance between this Vector and the given Vector.
      *
      * @method Phaser.Math.Vector2#distance
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to calculate the distance to.
      *
@@ -356,7 +356,7 @@ var Vector2 = new Class({
      * Calculate the distance between this Vector and the given Vector, squared.
      *
      * @method Phaser.Math.Vector2#distanceSq
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector to calculate the distance to.
      *
@@ -373,7 +373,7 @@ var Vector2 = new Class({
      * Calculate the length (or magnitude) of this Vector.
      *
      * @method Phaser.Math.Vector2#length
-     * @since 3.0.0
+     * 
      *
      * @return {number} The length of this Vector.
      */
@@ -402,7 +402,7 @@ var Vector2 = new Class({
      * Calculate the length of this Vector squared.
      *
      * @method Phaser.Math.Vector2#lengthSq
-     * @since 3.0.0
+     * 
      *
      * @return {number} The length of this Vector, squared.
      */
@@ -419,7 +419,7 @@ var Vector2 = new Class({
      * Makes the vector a unit length vector (magnitude of 1) in the same direction.
      *
      * @method Phaser.Math.Vector2#normalize
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -442,7 +442,7 @@ var Vector2 = new Class({
      * Rotate this Vector to its perpendicular, in the positive direction.
      *
      * @method Phaser.Math.Vector2#normalizeRightHand
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -476,7 +476,7 @@ var Vector2 = new Class({
      * Calculate the dot product of this Vector and the given Vector.
      *
      * @method Phaser.Math.Vector2#dot
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector2 to dot product with this Vector2.
      *
@@ -490,7 +490,7 @@ var Vector2 = new Class({
      * Calculate the cross product of this Vector and the given Vector.
      *
      * @method Phaser.Math.Vector2#cross
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector2 to cross with this Vector2.
      *
@@ -506,7 +506,7 @@ var Vector2 = new Class({
      * Interpolates this Vector towards the given Vector.
      *
      * @method Phaser.Math.Vector2#lerp
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} src - The Vector2 to interpolate towards.
      * @param {number} [t=0] - The interpolation percentage, between 0 and 1.
@@ -531,7 +531,7 @@ var Vector2 = new Class({
      * Transform this Vector with the given Matrix.
      *
      * @method Phaser.Math.Vector2#transformMat3
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix3} mat - The Matrix3 to transform this Vector2 with.
      *
@@ -552,7 +552,7 @@ var Vector2 = new Class({
      * Transform this Vector with the given Matrix.
      *
      * @method Phaser.Math.Vector2#transformMat4
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} mat - The Matrix4 to transform this Vector2 with.
      *
@@ -573,7 +573,7 @@ var Vector2 = new Class({
      * Make this Vector the zero vector (0, 0).
      *
      * @method Phaser.Math.Vector2#reset
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */

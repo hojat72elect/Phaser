@@ -35,7 +35,7 @@ var Render = require('./DynamicBitmapTextRender');
  * @extends Phaser.GameObjects.BitmapText
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. It can only belong to one Scene at any given time.
  * @param {number} x - The x coordinate of this Game Object in world space.
@@ -66,7 +66,7 @@ var DynamicBitmapText = new Class({
              * @name Phaser.GameObjects.DynamicBitmapText#scrollX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.scrollX = 0;
 
@@ -76,7 +76,7 @@ var DynamicBitmapText = new Class({
              * @name Phaser.GameObjects.DynamicBitmapText#scrollY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.scrollY = 0;
 
@@ -86,7 +86,7 @@ var DynamicBitmapText = new Class({
              * @name Phaser.GameObjects.DynamicBitmapText#cropWidth
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.cropWidth = 0;
 
@@ -96,7 +96,7 @@ var DynamicBitmapText = new Class({
              * @name Phaser.GameObjects.DynamicBitmapText#cropHeight
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.cropHeight = 0;
 
@@ -105,7 +105,7 @@ var DynamicBitmapText = new Class({
              *
              * @name Phaser.GameObjects.DynamicBitmapText#displayCallback
              * @type {Phaser.Types.GameObjects.BitmapText.DisplayCallback}
-             * @since 3.0.0
+             * 
              */
             this.displayCallback;
 
@@ -144,7 +144,7 @@ var DynamicBitmapText = new Class({
      * Set the crop size of this Bitmap Text.
      *
      * @method Phaser.GameObjects.DynamicBitmapText#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of the crop.
      * @param {number} height - The height of the crop.
@@ -168,7 +168,7 @@ var DynamicBitmapText = new Class({
      * usual values when rendering.
      *
      * @method Phaser.GameObjects.DynamicBitmapText#setDisplayCallback
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.GameObjects.BitmapText.DisplayCallback} callback - The display callback to set.
      *
@@ -184,7 +184,7 @@ var DynamicBitmapText = new Class({
      * Set the horizontal scroll position of this Bitmap Text.
      *
      * @method Phaser.GameObjects.DynamicBitmapText#setScrollX
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The horizontal scroll position to set.
      *
@@ -200,7 +200,7 @@ var DynamicBitmapText = new Class({
      * Set the vertical scroll position of this Bitmap Text.
      *
      * @method Phaser.GameObjects.DynamicBitmapText#setScrollY
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The vertical scroll position to set.
      *

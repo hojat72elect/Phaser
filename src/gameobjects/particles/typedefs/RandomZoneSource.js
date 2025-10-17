@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Particles.RandomZoneSource
- * @since 3.0.0
+ * 
  *
  * @property {Phaser.Types.GameObjects.Particles.RandomZoneSourceCallback} getRandomPoint - A function modifying its point argument.
  *

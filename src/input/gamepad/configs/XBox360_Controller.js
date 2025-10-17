@@ -3,7 +3,7 @@
  *
  * @name Phaser.Input.Gamepad.Configs.XBOX_360
  * @namespace
- * @since 3.0.0
+ * 
  */
 module.exports = {
 
@@ -13,7 +13,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.UP
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     UP: 12,
 
@@ -23,7 +23,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.DOWN
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DOWN: 13,
 
@@ -33,7 +33,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.LEFT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT: 14,
 
@@ -43,7 +43,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.RIGHT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT: 15,
 
@@ -53,7 +53,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.MENU
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     MENU: 16,
 
@@ -63,7 +63,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.A
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     A: 0,
 
@@ -73,7 +73,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.B
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     B: 1,
 
@@ -83,7 +83,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.X
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     X: 2,
 
@@ -93,7 +93,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.Y
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     Y: 3,
 
@@ -103,7 +103,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.LB
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LB: 4,
 
@@ -113,7 +113,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.RB
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RB: 5,
 
@@ -123,7 +123,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.LT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LT: 6,
 
@@ -133,7 +133,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.RT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RT: 7,
 
@@ -143,7 +143,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.BACK
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     BACK: 8,
 
@@ -153,7 +153,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.START
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     START: 9,
 
@@ -163,7 +163,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.LS
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LS: 10,
 
@@ -173,7 +173,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.RS
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RS: 11,
 
@@ -183,7 +183,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.LEFT_STICK_H
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT_STICK_H: 0,
 
@@ -193,7 +193,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.LEFT_STICK_V
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT_STICK_V: 1,
 
@@ -203,7 +203,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.RIGHT_STICK_H
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT_STICK_H: 2,
 
@@ -213,7 +213,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.XBOX_360.RIGHT_STICK_V
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT_STICK_V: 3
 

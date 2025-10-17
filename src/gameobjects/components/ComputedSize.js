@@ -3,7 +3,7 @@
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.ComputedSize
- * @since 3.0.0
+ * 
  */
 
 var ComputedSize = {
@@ -17,7 +17,7 @@ var ComputedSize = {
      *
      * @name Phaser.GameObjects.Components.ComputedSize#width
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     width: 0,
 
@@ -30,7 +30,7 @@ var ComputedSize = {
      *
      * @name Phaser.GameObjects.Components.ComputedSize#height
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     height: 0,
 
@@ -43,7 +43,7 @@ var ComputedSize = {
      *
      * @name Phaser.GameObjects.Components.ComputedSize#displayWidth
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayWidth: {
 
@@ -66,7 +66,7 @@ var ComputedSize = {
      *
      * @name Phaser.GameObjects.Components.ComputedSize#displayHeight
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayHeight: {
 

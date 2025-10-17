@@ -9,7 +9,7 @@
  * The local position and size just takes into account the font data.
  *
  * @function GetBitmapTextSize
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {(Phaser.GameObjects.DynamicBitmapText|Phaser.GameObjects.BitmapText)} src - The BitmapText to calculate the bounds values for.

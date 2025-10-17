@@ -11,7 +11,7 @@
  * // returns ''
  *
  * @function Phaser.Utils.String.UppercaseFirst
- * @since 3.0.0
+ * 
  *
  * @param {string} str - The string to capitalize.
  *

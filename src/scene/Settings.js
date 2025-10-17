@@ -13,7 +13,7 @@ var Settings = {
      * Takes a Scene configuration object and returns a fully formed System Settings object.
      *
      * @function Phaser.Scenes.Settings.create
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Types.Scenes.SettingsConfig)} config - The Scene configuration object used to create this Scene Settings.
      *

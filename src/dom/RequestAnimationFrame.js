@@ -10,7 +10,7 @@ var NOOP = require('../utils/NOOP');
  * @class RequestAnimationFrame
  * @memberof Phaser.DOM
  * @constructor
- * @since 3.0.0
+ * 
  */
 var RequestAnimationFrame = new Class({
 
@@ -23,7 +23,7 @@ var RequestAnimationFrame = new Class({
              * @name Phaser.DOM.RequestAnimationFrame#isRunning
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.isRunning = false;
 
@@ -32,7 +32,7 @@ var RequestAnimationFrame = new Class({
              *
              * @name Phaser.DOM.RequestAnimationFrame#callback
              * @type {FrameRequestCallback}
-             * @since 3.0.0
+             * 
              */
             this.callback = NOOP;
 
@@ -42,7 +42,7 @@ var RequestAnimationFrame = new Class({
              * @name Phaser.DOM.RequestAnimationFrame#isSetTimeOut
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.isSetTimeOut = false;
 
@@ -52,7 +52,7 @@ var RequestAnimationFrame = new Class({
              * @name Phaser.DOM.RequestAnimationFrame#timeOutID
              * @type {?number}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.timeOutID = null;
 
@@ -75,7 +75,7 @@ var RequestAnimationFrame = new Class({
              *
              * @name Phaser.DOM.RequestAnimationFrame#step
              * @type {FrameRequestCallback}
-             * @since 3.0.0
+             * 
              *
              * @param {number} time - The timestamp passed in from RequestAnimationFrame.
              */
@@ -94,7 +94,7 @@ var RequestAnimationFrame = new Class({
              *
              * @name Phaser.DOM.RequestAnimationFrame#stepTimeout
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.stepTimeout = function stepTimeout() {
                 if (_this.isRunning) {
@@ -110,7 +110,7 @@ var RequestAnimationFrame = new Class({
      * Starts the requestAnimationFrame or setTimeout process running.
      *
      * @method Phaser.DOM.RequestAnimationFrame#start
-     * @since 3.0.0
+     * 
      *
      * @param {FrameRequestCallback} callback - The callback to invoke each step.
      * @param {boolean} forceSetTimeOut - Should it use SetTimeout, even if RAF is available?
@@ -136,7 +136,7 @@ var RequestAnimationFrame = new Class({
      * Stops the requestAnimationFrame or setTimeout from running.
      *
      * @method Phaser.DOM.RequestAnimationFrame#stop
-     * @since 3.0.0
+     * 
      */
     stop: function () {
         this.isRunning = false;
@@ -152,7 +152,7 @@ var RequestAnimationFrame = new Class({
      * Stops the step from running and clears the callback reference.
      *
      * @method Phaser.DOM.RequestAnimationFrame#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.stop();

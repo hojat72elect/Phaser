@@ -9,7 +9,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  * To use this with a Group: `SetRotation(group.getChildren(), value, step)`
  *
  * @function Phaser.Actions.SetRotation
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

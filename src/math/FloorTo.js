@@ -4,7 +4,7 @@
  * The `place` is represented by the power applied to `base` to get that place.
  *
  * @function Phaser.Math.FloorTo
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to round.
  * @param {number} [place=0] - The place to round to.

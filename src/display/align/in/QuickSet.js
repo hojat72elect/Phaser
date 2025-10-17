@@ -21,7 +21,7 @@ AlignInMap[ALIGN_CONST.RIGHT_TOP] = AlignInMap[ALIGN_CONST.TOP_RIGHT];
  * The alignment used is based on the `position` argument, which is an `ALIGN_CONST` value, such as `LEFT_CENTER` or `TOP_RIGHT`.
  *
  * @function Phaser.Display.Align.In.QuickSet
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject} G - [child,$return]
  *

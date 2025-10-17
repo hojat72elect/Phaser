@@ -5,7 +5,7 @@
  * travels down the screen.
  *
  * @function Phaser.Math.Angle.BetweenPointsY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Math.Vector2Like} point1 - The first point.
  * @param {Phaser.Types.Math.Vector2Like} point2 - The second point.

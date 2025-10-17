@@ -2,7 +2,7 @@
  * Generate a series of sine and cosine values.
  *
  * @function Phaser.Math.SinCosTableGenerator
- * @since 3.0.0
+ * 
  *
  * @param {number} length - The number of values to generate.
  * @param {number} [sinAmp=1] - The sine value amplitude.

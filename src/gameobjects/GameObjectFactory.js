@@ -13,7 +13,7 @@ var SceneEvents = require('../scene/events');
  * @class GameObjectFactory
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object Factory belongs.
  */
@@ -28,7 +28,7 @@ var GameObjectFactory = new Class({
              * @name Phaser.GameObjects.GameObjectFactory#scene
              * @type {Phaser.Scene}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -38,7 +38,7 @@ var GameObjectFactory = new Class({
              * @name Phaser.GameObjects.GameObjectFactory#systems
              * @type {Phaser.Scenes.Systems}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -58,7 +58,7 @@ var GameObjectFactory = new Class({
              * @name Phaser.GameObjects.GameObjectFactory#displayList
              * @type {Phaser.GameObjects.DisplayList}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.displayList;
 
@@ -68,7 +68,7 @@ var GameObjectFactory = new Class({
              * @name Phaser.GameObjects.GameObjectFactory#updateList
              * @type {Phaser.GameObjects.UpdateList}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.updateList;
 
@@ -111,7 +111,7 @@ var GameObjectFactory = new Class({
      * If it has a `preUpdate` method, it will be added to the Update List.
      *
      * @method Phaser.GameObjects.GameObjectFactory#existing
-     * @since 3.0.0
+     * 
      *
      * @generic {(Phaser.GameObjects.GameObject|Phaser.GameObjects.Group|Phaser.GameObjects.Layer)} G - [child,$return]
      *
@@ -139,7 +139,7 @@ var GameObjectFactory = new Class({
      *
      * @method Phaser.GameObjects.GameObjectFactory#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.events.off(SceneEvents.SHUTDOWN, this.shutdown, this);
@@ -151,7 +151,7 @@ var GameObjectFactory = new Class({
      *
      * @method Phaser.GameObjects.GameObjectFactory#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();
@@ -176,7 +176,7 @@ var GameObjectFactory = new Class({
  *
  * @method Phaser.GameObjects.GameObjectFactory.register
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {string} factoryType - The key of the factory that you will use to call to Phaser.Scene.add[ factoryType ] method.
  * @param {function} factoryFunction - The constructor function to be called when you invoke to the Phaser.Scene.add method.
@@ -194,7 +194,7 @@ GameObjectFactory.register = function (factoryType, factoryFunction) {
  *
  * @method Phaser.GameObjects.GameObjectFactory.remove
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {string} factoryType - The key of the factory that you want to remove from the GameObjectFactory.
  */

@@ -19,7 +19,7 @@ var PluginCache = require('../plugins/PluginCache');
  * @class ScenePlugin
  * @memberof Phaser.Scenes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene that this ScenePlugin belongs to.
  */
@@ -33,7 +33,7 @@ var ScenePlugin = new Class({
              *
              * @name Phaser.Scenes.ScenePlugin#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -42,7 +42,7 @@ var ScenePlugin = new Class({
              *
              * @name Phaser.Scenes.ScenePlugin#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -51,7 +51,7 @@ var ScenePlugin = new Class({
              *
              * @name Phaser.Scenes.ScenePlugin#settings
              * @type {Phaser.Types.Scenes.SettingsObject}
-             * @since 3.0.0
+             * 
              */
             this.settings = scene.sys.settings;
 
@@ -60,7 +60,7 @@ var ScenePlugin = new Class({
              *
              * @name Phaser.Scenes.ScenePlugin#key
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.key = scene.sys.settings.key;
 
@@ -69,7 +69,7 @@ var ScenePlugin = new Class({
              *
              * @name Phaser.Scenes.ScenePlugin#manager
              * @type {Phaser.Scenes.SceneManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = scene.sys.game.scene;
 
@@ -163,7 +163,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#boot
      * @private
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         this.systems.events.once(Events.DESTROY, this.destroy, this);
@@ -190,7 +190,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#start
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -420,7 +420,7 @@ var ScenePlugin = new Class({
      * Add the Scene into the Scene Manager and start it if 'autoStart' is true or the Scene config 'active' property is set.
      *
      * @method Phaser.Scenes.ScenePlugin#add
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - A unique key used to reference the Scene, i.e. `MainMenu` or `Level1`.
      * @param {(Phaser.Types.Scenes.SceneType)} sceneConfig - The config for the Scene
@@ -439,7 +439,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#launch
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -493,7 +493,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#pause
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -519,7 +519,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#resume
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -545,7 +545,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#sleep
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -571,7 +571,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#wake
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -597,7 +597,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#switch
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -621,7 +621,7 @@ var ScenePlugin = new Class({
      * This happens at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#stop
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -645,7 +645,7 @@ var ScenePlugin = new Class({
      * Sets the active state of the given Scene.
      *
      * @method Phaser.Scenes.ScenePlugin#setActive
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -674,7 +674,7 @@ var ScenePlugin = new Class({
      * Sets the visible state of the given Scene.
      *
      * @method Phaser.Scenes.ScenePlugin#setVisible
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -702,7 +702,7 @@ var ScenePlugin = new Class({
      * Checks if the given Scene is sleeping or not?
      *
      * @method Phaser.Scenes.ScenePlugin#isSleeping
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -723,7 +723,7 @@ var ScenePlugin = new Class({
      * Checks if the given Scene is running or not?
      *
      * @method Phaser.Scenes.ScenePlugin#isActive
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -765,7 +765,7 @@ var ScenePlugin = new Class({
      * Checks if the given Scene is visible or not?
      *
      * @method Phaser.Scenes.ScenePlugin#isVisible
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -901,7 +901,7 @@ var ScenePlugin = new Class({
      * Moves a Scene up one position in the Scenes list.
      *
      * @method Phaser.Scenes.ScenePlugin#moveUp
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -924,7 +924,7 @@ var ScenePlugin = new Class({
      * Moves a Scene down one position in the Scenes list.
      *
      * @method Phaser.Scenes.ScenePlugin#moveDown
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -949,7 +949,7 @@ var ScenePlugin = new Class({
      * This means it will render above all other Scenes.
      *
      * @method Phaser.Scenes.ScenePlugin#bringToTop
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -974,7 +974,7 @@ var ScenePlugin = new Class({
      * This means it will render below all other Scenes.
      *
      * @method Phaser.Scenes.ScenePlugin#sendToBack
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -1004,7 +1004,7 @@ var ScenePlugin = new Class({
      * @genericUse {T} - [$return]
      *
      * @method Phaser.Scenes.ScenePlugin#get
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Scene)} key - The Scene to retrieve.
      *
@@ -1063,7 +1063,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var eventEmitter = this.systems.events;
@@ -1079,7 +1079,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

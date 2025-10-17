@@ -5,7 +5,7 @@
 
 /**
  * @namespace Phaser.Device
- * @since 3.0.0
+ * 
  */
 
 /**

@@ -2,7 +2,7 @@
  * Offsets the Ellipse by the values given.
  *
  * @function Phaser.Geom.Ellipse.Offset
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Ellipse} O - [ellipse,$return]
  *

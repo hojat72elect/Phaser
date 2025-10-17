@@ -3,7 +3,7 @@
  * updates LayerData.collideIndexes to either contain or not contain the given `tileIndex`.
  *
  * @function Phaser.Tilemaps.Components.SetLayerCollisionIndex
- * @since 3.0.0
+ * 
  *
  * @param {number} tileIndex - The tile index to set the collision boolean for.
  * @param {boolean} collides - Should the tile index collide or not?

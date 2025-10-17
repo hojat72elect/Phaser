@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Arcade.ArcadeWorldDefaults
- * @since 3.0.0
+ * 
  *
  * @property {boolean} debugShowBody - Set to `true` to render dynamic body outlines to the debug display.
  * @property {boolean} debugShowStaticBody - Set to `true` to render static body outlines to the debug display.

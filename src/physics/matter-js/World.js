@@ -33,7 +33,7 @@ var Vector = require('./lib/geometry/Vector');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Matter World instance belongs.
  * @param {Phaser.Types.Physics.Matter.MatterWorldConfig} config - The Matter World configuration object.
@@ -52,7 +52,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Matter.World#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -61,7 +61,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Matter.World#engine
              * @type {MatterJS.Engine}
-             * @since 3.0.0
+             * 
              */
             this.engine = Engine.create(config);
 
@@ -70,7 +70,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Matter.World#localWorld
              * @type {MatterJS.World}
-             * @since 3.0.0
+             * 
              */
             this.localWorld = this.engine.world;
 
@@ -87,7 +87,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Matter.World#walls
              * @type {Phaser.Types.Physics.Matter.MatterWalls}
-             * @since 3.0.0
+             * 
              */
             this.walls = {left: null, right: null, top: null, bottom: null};
 
@@ -97,7 +97,7 @@ var World = new Class({
              * @name Phaser.Physics.Matter.World#enabled
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.enabled = GetValue(config, 'enabled', true);
 
@@ -171,7 +171,7 @@ var World = new Class({
              * @name Phaser.Physics.Matter.World#drawDebug
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.drawDebug = (typeof (debugConfig) === 'object') ? true : debugConfig;
 
@@ -180,7 +180,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Matter.World#debugGraphic
              * @type {Phaser.GameObjects.Graphics}
-             * @since 3.0.0
+             * 
              */
             this.debugGraphic;
 
@@ -512,7 +512,7 @@ var World = new Class({
      * via this class.
      *
      * @method Phaser.Physics.Matter.World#setEventsProxy
-     * @since 3.0.0
+     * 
      */
     setEventsProxy: function () {
         var _this = this;
@@ -689,7 +689,7 @@ var World = new Class({
      * Explicitly state them in the parameters to override this.
      *
      * @method Phaser.Physics.Matter.World#setBounds
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The x coordinate of the top-left corner of the bounds.
      * @param {number} [y=0] - The y coordinate of the top-left corner of the bounds.
@@ -745,7 +745,7 @@ var World = new Class({
      * the new positions and sizes. This method is usually only called internally via the `setBounds` method.
      *
      * @method Phaser.Physics.Matter.World#updateWall
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} add - `true` if the walls are being added or updated, `false` to remove them from the world.
      * @param {string} [position] - Either `left`, `right`, `top` or `bottom`. Only optional if `add` is `false`.
@@ -787,7 +787,7 @@ var World = new Class({
      * The Graphics object is assigned to the `debugGraphic` property of this class and `drawDebug` is enabled.
      *
      * @method Phaser.Physics.Matter.World#createDebugGraphic
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.Graphics} The newly created Graphics object.
      */
@@ -807,7 +807,7 @@ var World = new Class({
      * Sets the world gravity and gravity scale to 0.
      *
      * @method Phaser.Physics.Matter.World#disableGravity
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matter World object.
      */
@@ -825,7 +825,7 @@ var World = new Class({
      * Gravity effects all bodies in the world, unless they have the `ignoreGravity` flag set.
      *
      * @method Phaser.Physics.Matter.World#setGravity
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The world gravity x component.
      * @param {number} [y=1] - The world gravity y component.
@@ -855,7 +855,7 @@ var World = new Class({
      * Creates a rectangle Matter body and adds it to the world.
      *
      * @method Phaser.Physics.Matter.World#create
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of the body in the world.
      * @param {number} y - The vertical position of the body in the world.
@@ -881,7 +881,7 @@ var World = new Class({
      * Triggers `beforeAdd` and `afterAdd` events.
      *
      * @method Phaser.Physics.Matter.World#add
-     * @since 3.0.0
+     * 
      *
      * @param {(object|object[])} object - Can be single object, or an array, and can be a body, composite or constraint.
      *
@@ -901,7 +901,7 @@ var World = new Class({
      * Triggers `beforeRemove` and `afterRemove` events.
      *
      * @method Phaser.Physics.Matter.World#remove
-     * @since 3.0.0
+     * 
      *
      * @param {(object|object[])} object - Can be single object, or an array, and can be a body, composite or constraint.
      * @param {boolean} [deep=false] - Optionally search the objects children and recursively remove those as well.
@@ -930,7 +930,7 @@ var World = new Class({
      * Triggers `beforeRemove` and `afterRemove` events.
      *
      * @method Phaser.Physics.Matter.World#removeConstraint
-     * @since 3.0.0
+     * 
      *
      * @param {(MatterJS.ConstraintType|MatterJS.ConstraintType[])} constraint - A Matter JS Constraint, or an array of constraints, to be removed.
      * @param {boolean} [deep=false] - Optionally search the objects children and recursively remove those as well.
@@ -953,7 +953,7 @@ var World = new Class({
      * it an array of the tiles you've added to your map.
      *
      * @method Phaser.Physics.Matter.World#convertTilemapLayer
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Tilemaps.TilemapLayer} tilemapLayer - An array of tiles.
      * @param {object} [options] - Options to be passed to the MatterTileBody constructor. {@see Phaser.Physics.Matter.TileBody}
@@ -976,7 +976,7 @@ var World = new Class({
      * If you wish to pass an array of tiles that may already have bodies, you should filter the array before hand.
      *
      * @method Phaser.Physics.Matter.World#convertTiles
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Tilemaps.Tile[]} tiles - An array of tiles.
      * @param {object} [options] - Options to be passed to the MatterTileBody constructor. {@see Phaser.Physics.Matter.TileBody}
@@ -1000,7 +1000,7 @@ var World = new Class({
      * If `isNonColliding` is `true`, returns the next unique group index for which bodies will not collide.
      *
      * @method Phaser.Physics.Matter.World#nextGroup
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [isNonColliding=false] - If `true`, returns the next unique group index for which bodies will _not_ collide.
      *
@@ -1015,7 +1015,7 @@ var World = new Class({
      * There are 32 available.
      *
      * @method Phaser.Physics.Matter.World#nextCategory
-     * @since 3.0.0
+     * 
      *
      * @return {number} Unique category bitfield
      */
@@ -1030,7 +1030,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Matter.World#pause
      * @fires Phaser.Physics.Matter.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matter World object.
      */
@@ -1047,7 +1047,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Matter.World#resume
      * @fires Phaser.Physics.Matter.Events#RESUME
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matter World object.
      */
@@ -1076,7 +1076,7 @@ var World = new Class({
      * If the World is paused, `update` is still run, but exits early and does not update the Matter Engine.
      *
      * @method Phaser.Physics.Matter.World#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -1281,7 +1281,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Matter.World#postUpdate
      * @private
-     * @since 3.0.0
+     * 
      */
     postUpdate: function () {
         if (!this.drawDebug) {
@@ -2073,7 +2073,7 @@ var World = new Class({
      * engine and any debug graphics, if any.
      *
      * @method Phaser.Physics.Matter.World#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         MatterEvents.off(this.engine);
@@ -2096,7 +2096,7 @@ var World = new Class({
      * After destroying the world it cannot be re-used again.
      *
      * @method Phaser.Physics.Matter.World#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

@@ -27,7 +27,7 @@ var World = require('./World');
  * @class ArcadePhysics
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene that this Plugin belongs to.
  */
@@ -41,7 +41,7 @@ var ArcadePhysics = new Class({
              *
              * @name Phaser.Physics.Arcade.ArcadePhysics#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -50,7 +50,7 @@ var ArcadePhysics = new Class({
              *
              * @name Phaser.Physics.Arcade.ArcadePhysics#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -59,7 +59,7 @@ var ArcadePhysics = new Class({
              *
              * @name Phaser.Physics.Arcade.ArcadePhysics#config
              * @type {Phaser.Types.Physics.Arcade.ArcadeWorldConfig}
-             * @since 3.0.0
+             * 
              */
             this.config = this.getConfig();
 
@@ -68,7 +68,7 @@ var ArcadePhysics = new Class({
              *
              * @name Phaser.Physics.Arcade.ArcadePhysics#world
              * @type {Phaser.Physics.Arcade.World}
-             * @since 3.0.0
+             * 
              */
             this.world;
 
@@ -77,7 +77,7 @@ var ArcadePhysics = new Class({
              *
              * @name Phaser.Physics.Arcade.ArcadePhysics#add
              * @type {Phaser.Physics.Arcade.Factory}
-             * @since 3.0.0
+             * 
              */
             this.add;
 
@@ -169,7 +169,7 @@ var ArcadePhysics = new Class({
      * Creates the physics configuration for the current Scene.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#getConfig
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.Physics.Arcade.ArcadeWorldConfig} The physics configuration.
      */
@@ -210,7 +210,7 @@ var ArcadePhysics = new Class({
      * Tests if Game Objects overlap. See {@link Phaser.Physics.Arcade.World#overlap}
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#overlap
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object or array of objects to check.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} [object2] - The second object or array of objects to check, or `undefined`.
@@ -257,7 +257,7 @@ var ArcadePhysics = new Class({
      * require a high level of stability please consider using an alternative physics system, such as Matter.js.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#collide
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object or array of objects to check.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} [object2] - The second object or array of objects to check, or `undefined`.
@@ -346,7 +346,7 @@ var ArcadePhysics = new Class({
      * Pauses the simulation.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#pause
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.World} The simulation.
      */
@@ -358,7 +358,7 @@ var ArcadePhysics = new Class({
      * Resumes the simulation (if paused).
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#resume
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.World} The simulation.
      */
@@ -375,7 +375,7 @@ var ArcadePhysics = new Class({
      * Note: The game object doesn't stop moving once it reaches the destination coordinates.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#accelerateTo
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Any Game Object with an Arcade Physics body.
      * @param {number} x - The x coordinate to accelerate towards.
@@ -411,7 +411,7 @@ var ArcadePhysics = new Class({
      * Note: The game object doesn't stop moving once it reaches the destination coordinates.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#accelerateToObject
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Any Game Object with an Arcade Physics body.
      * @param {Phaser.GameObjects.GameObject} destination - The Game Object to move towards. Can be any object but must have visible x/y properties.
@@ -437,7 +437,7 @@ var ArcadePhysics = new Class({
      * is returned.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#closest
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody|Phaser.GameObjects.GameObject} Target
      * @param {Phaser.Types.Math.Vector2Like} source - Any object with public `x` and `y` properties, such as a Game Object or Geometry object.
@@ -487,7 +487,7 @@ var ArcadePhysics = new Class({
      * is returned.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#furthest
-     * @since 3.0.0
+     * 
      *
      * @param {any} source - Any object with public `x` and `y` properties, such as a Game Object or Geometry object.
      * @param {(Phaser.Physics.Arcade.Body[]|Phaser.Physics.Arcade.StaticBody[]|Phaser.GameObjects.GameObject[])} [targets] - The targets.
@@ -534,7 +534,7 @@ var ArcadePhysics = new Class({
      * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#moveTo
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Any Game Object with an Arcade Physics body.
      * @param {number} x - The x coordinate to move towards.
@@ -573,7 +573,7 @@ var ArcadePhysics = new Class({
      * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#moveToObject
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Any Game Object with an Arcade Physics body.
      * @param {object} destination - Any object with public `x` and `y` properties, such as a Game Object or Geometry object.
@@ -591,7 +591,7 @@ var ArcadePhysics = new Class({
      * One way to use this is: velocityFromAngle(angle, 200, sprite.body.velocity) which will set the values directly to the sprite's velocity and not create a new vector object.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#velocityFromAngle
-     * @since 3.0.0
+     * 
      *
      * @param {number} angle - The angle in degrees calculated in clockwise positive direction (down = 90 degrees positive, right = 0 degrees positive, up = 90 degrees negative)
      * @param {number} [speed=60] - The speed it will move, in pixels per second squared.
@@ -615,7 +615,7 @@ var ArcadePhysics = new Class({
      * One way to use this is: velocityFromRotation(rotation, 200, sprite.body.velocity) which will set the values directly to the sprite's velocity and not create a new vector object.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#velocityFromRotation
-     * @since 3.0.0
+     * 
      *
      * @param {number} rotation - The angle in radians.
      * @param {number} [speed=60] - The speed it will move, in pixels per second squared
@@ -690,7 +690,7 @@ var ArcadePhysics = new Class({
      * We need to kill and reset all internal properties as well as stop listening to Scene events.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         if (!this.world) {
@@ -717,7 +717,7 @@ var ArcadePhysics = new Class({
      * We need to shutdown and then kill off all external references.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

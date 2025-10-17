@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Particles.EdgeZoneSource
- * @since 3.0.0
+ * 
  *
  * @property {Phaser.Types.GameObjects.Particles.EdgeZoneSourceCallback} getPoints - A function placing points on the sources edge or edges.
  *

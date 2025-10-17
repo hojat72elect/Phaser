@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Core.InputConfig
- * @since 3.0.0
+ * 
  *
  * @property {(boolean|Phaser.Types.Core.KeyboardInputConfig)} [keyboard=true] - Keyboard input configuration. `true` uses the default configuration and `false` disables keyboard input.
  * @property {(boolean|Phaser.Types.Core.MouseInputConfig)} [mouse=true] - Mouse input configuration. `true` uses the default configuration and `false` disables mouse input.

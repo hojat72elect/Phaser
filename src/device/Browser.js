@@ -7,7 +7,7 @@ var OS = require('./OS');
  * via `this.sys.game.device.browser` from within any Scene.
  *
  * @typedef {object} Phaser.Device.Browser
- * @since 3.0.0
+ * 
  *
  * @property {boolean} chrome - Set to true if running in Chrome.
  * @property {boolean} edge - Set to true if running in Microsoft Edge browser.

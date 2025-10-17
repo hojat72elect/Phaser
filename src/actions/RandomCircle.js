@@ -6,7 +6,7 @@ var Random = require('../geom/circle/Random');
  * If you wish to pass a `Phaser.GameObjects.Circle` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomCircle
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

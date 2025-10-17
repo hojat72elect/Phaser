@@ -6,7 +6,7 @@ var ParseXMLBitmapFont = require('./ParseXMLBitmapFont');
  * Adds the parsed Bitmap Font data to the cache with the `fontName` key.
  *
  * @function ParseFromAtlas
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {Phaser.Scene} scene - The Scene to parse the Bitmap Font for.

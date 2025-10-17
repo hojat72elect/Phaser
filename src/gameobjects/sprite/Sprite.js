@@ -20,7 +20,7 @@ var SpriteRender = require('./SpriteRender');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Alpha
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -91,7 +91,7 @@ var Sprite = new Class({
              *
              * @name Phaser.GameObjects.Sprite#anims
              * @type {Phaser.Animations.AnimationState}
-             * @since 3.0.0
+             * 
              */
             this.anims = new AnimationState(this);
 
@@ -118,7 +118,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#preUpdate
      * @protected
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
@@ -180,7 +180,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#play
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
@@ -429,7 +429,7 @@ var Sprite = new Class({
      * Build a JSON representation of this Sprite.
      *
      * @method Phaser.GameObjects.Sprite#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Game Object.
      */

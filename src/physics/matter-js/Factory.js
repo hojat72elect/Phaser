@@ -30,7 +30,7 @@ var Vertices = require('./lib/geometry/Vertices');
  * @class Factory
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Matter.World} world - The Matter World which this Factory adds to.
  */
@@ -44,7 +44,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Matter.Factory#world
              * @type {Phaser.Physics.Matter.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -53,7 +53,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Matter.Factory#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = world.scene;
 
@@ -62,7 +62,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Matter.Factory#sys
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.sys = world.scene.sys;
         },
@@ -71,7 +71,7 @@ var Factory = new Class({
      * Creates a new rigid rectangular Body and adds it to the World.
      *
      * @method Phaser.Physics.Matter.Factory#rectangle
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The X coordinate of the center of the Body.
      * @param {number} y - The Y coordinate of the center of the Body.
@@ -93,7 +93,7 @@ var Factory = new Class({
      * Creates a new rigid trapezoidal Body and adds it to the World.
      *
      * @method Phaser.Physics.Matter.Factory#trapezoid
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The X coordinate of the center of the Body.
      * @param {number} y - The Y coordinate of the center of the Body.
@@ -116,7 +116,7 @@ var Factory = new Class({
      * Creates a new rigid circular Body and adds it to the World.
      *
      * @method Phaser.Physics.Matter.Factory#circle
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The X coordinate of the center of the Body.
      * @param {number} y - The Y coordinate of the center of the Body.
@@ -138,7 +138,7 @@ var Factory = new Class({
      * Creates a new rigid polygonal Body and adds it to the World.
      *
      * @method Phaser.Physics.Matter.Factory#polygon
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The X coordinate of the center of the Body.
      * @param {number} y - The Y coordinate of the center of the Body.
@@ -161,7 +161,7 @@ var Factory = new Class({
      * If the vertices are convex, they will pass through as supplied. Otherwise, if the vertices are concave, they will be decomposed. Note that this process is not guaranteed to support complex sets of vertices, e.g. ones with holes.
      *
      * @method Phaser.Physics.Matter.Factory#fromVertices
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The X coordinate of the center of the Body.
      * @param {number} y - The Y coordinate of the center of the Body.
@@ -368,7 +368,7 @@ var Factory = new Class({
      * This function uses the body bounds to prevent overlaps.
      *
      * @method Phaser.Physics.Matter.Factory#imageStack
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager.
      * @param {(string|number)} frame - An optional frame from the Texture this Game Object is rendering with. Set to `null` to skip this value.
@@ -417,7 +417,7 @@ var Factory = new Class({
      * This function uses the body bounds to prevent overlaps.
      *
      * @method Phaser.Physics.Matter.Factory#stack
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this composite in the world.
      * @param {number} y - The vertical position of this composite in the world.
@@ -442,7 +442,7 @@ var Factory = new Class({
      * This function uses the body bounds to prevent overlaps.
      *
      * @method Phaser.Physics.Matter.Factory#pyramid
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this composite in the world.
      * @param {number} y - The vertical position of this composite in the world.
@@ -466,7 +466,7 @@ var Factory = new Class({
      * Chains all bodies in the given composite together using constraints.
      *
      * @method Phaser.Physics.Matter.Factory#chain
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.CompositeType} composite - The composite in which all bodies will be chained together sequentially.
      * @param {number} xOffsetA - The horizontal offset of the BodyA constraint. This is a percentage based on the body size, not a world position.
@@ -485,7 +485,7 @@ var Factory = new Class({
      * Connects bodies in the composite with constraints in a grid pattern, with optional cross braces.
      *
      * @method Phaser.Physics.Matter.Factory#mesh
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.CompositeType} composite - The composite in which all bodies will be chained together.
      * @param {number} columns - The number of columns in the mesh.
@@ -503,7 +503,7 @@ var Factory = new Class({
      * Creates a composite with a Newton's Cradle setup of bodies and constraints.
      *
      * @method Phaser.Physics.Matter.Factory#newtonsCradle
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of the start of the cradle.
      * @param {number} y - The vertical position of the start of the cradle.
@@ -525,7 +525,7 @@ var Factory = new Class({
      * Creates a composite with simple car setup of bodies and constraints.
      *
      * @method Phaser.Physics.Matter.Factory#car
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of the car in the world.
      * @param {number} y - The vertical position of the car in the world.
@@ -547,7 +547,7 @@ var Factory = new Class({
      * Creates a simple soft body like object.
      *
      * @method Phaser.Physics.Matter.Factory#softBody
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this composite in the world.
      * @param {number} y - The vertical position of this composite in the world.
@@ -587,7 +587,7 @@ var Factory = new Class({
      * For compound bodies, constraints must be applied to the parent body and not one of its parts.
      *
      * @method Phaser.Physics.Matter.Factory#joint
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.BodyType} bodyA - The first possible `Body` that this constraint is attached to.
      * @param {MatterJS.BodyType} bodyB - The second possible `Body` that this constraint is attached to.
@@ -618,7 +618,7 @@ var Factory = new Class({
      * For compound bodies, constraints must be applied to the parent body and not one of its parts.
      *
      * @method Phaser.Physics.Matter.Factory#spring
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.BodyType} bodyA - The first possible `Body` that this constraint is attached to.
      * @param {MatterJS.BodyType} bodyB - The second possible `Body` that this constraint is attached to.
@@ -647,7 +647,7 @@ var Factory = new Class({
      * For compound bodies, constraints must be applied to the parent body and not one of its parts.
      *
      * @method Phaser.Physics.Matter.Factory#constraint
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.BodyType} bodyA - The first possible `Body` that this constraint is attached to.
      * @param {MatterJS.BodyType} bodyB - The second possible `Body` that this constraint is attached to.
@@ -699,7 +699,7 @@ var Factory = new Class({
      * For compound bodies, constraints must be applied to the parent body and not one of its parts.
      *
      * @method Phaser.Physics.Matter.Factory#worldConstraint
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.BodyType} body - The Matter `Body` that this constraint is attached to.
      * @param {number} [length] - A number that specifies the target resting length of the constraint. If not given it is calculated automatically in `Constraint.create` from initial positions of the `constraint.bodyA` and `constraint.bodyB`.
@@ -744,7 +744,7 @@ var Factory = new Class({
      * the `options` object on creation.
      *
      * @method Phaser.Physics.Matter.Factory#mouseSpring
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterConstraintConfig} [options] - An optional Constraint configuration object that is used to set initial Constraint properties on creation.
      *
@@ -765,7 +765,7 @@ var Factory = new Class({
      * the `options` object on creation.
      *
      * @method Phaser.Physics.Matter.Factory#pointerConstraint
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterConstraintConfig} [options] - An optional Constraint configuration object that is used to set initial Constraint properties on creation.
      *
@@ -796,7 +796,7 @@ var Factory = new Class({
      * Image and a Sprite is that you cannot animate an Image as they do not have the Animation component.
      *
      * @method Phaser.Physics.Matter.Factory#image
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
@@ -827,7 +827,7 @@ var Factory = new Class({
      * Phaser.Physics.Matter.TileBody#setFromTileCollision for more information.
      *
      * @method Phaser.Physics.Matter.Factory#tileBody
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Tilemaps.Tile} tile - The target tile that should have a Matter body.
      * @param {Phaser.Types.Physics.Matter.MatterTileOptions} [options] - Options to be used when creating the Matter body.
@@ -850,7 +850,7 @@ var Factory = new Class({
      * Component. If you do not require animation then you can safely use Images to replace Sprites in all cases.
      *
      * @method Phaser.Physics.Matter.Factory#sprite
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.

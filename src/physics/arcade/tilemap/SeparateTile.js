@@ -6,7 +6,7 @@ var TileIntersectsBody = require('./TileIntersectsBody');
  * The core separation function to separate a physics body and a tile.
  *
  * @function Phaser.Physics.Arcade.Tilemap.SeparateTile
- * @since 3.0.0
+ * 
  *
  * @param {number} i - The index of the tile within the map data.
  * @param {Phaser.Physics.Arcade.Body} body - The Body object to separate.

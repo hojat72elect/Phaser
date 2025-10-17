@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Animations.GenerateFrameNumbers
- * @since 3.0.0
+ * 
  *
  * @property {number} [start=0] - The starting frame of the animation.
  * @property {number} [end=-1] - The ending frame of the animation.

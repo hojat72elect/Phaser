@@ -6,7 +6,7 @@ var Angle = require('./Angle');
  * The normal of a line is a vector that points perpendicular from it.
  *
  * @function Phaser.Geom.Line.NormalY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line to calculate the normal of.
  *

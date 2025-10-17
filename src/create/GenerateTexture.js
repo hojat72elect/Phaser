@@ -34,7 +34,7 @@ var GetValue = require('../utils/object/GetValue');
  * The default palette is Arne16, but you can specify your own using the `palette` property.
  *
  * @function Phaser.Create.GenerateTexture
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Create.GenerateTextureConfig} config - The Generate Texture Configuration object.
  *

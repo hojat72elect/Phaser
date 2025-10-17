@@ -152,7 +152,7 @@ var LightPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#onRender
      * @ignore
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Scene} scene - The Scene being rendered.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Scene Camera being rendered with.

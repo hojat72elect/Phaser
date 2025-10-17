@@ -14,7 +14,7 @@ var GetTriangleToLine = require('./GetTriangleToLine');
  * A Triangle intersects another Triangle if any pair of their lines intersects or if any point of one Triangle is within the other Triangle. Thus, the Triangles are considered "solid".
  *
  * @function Phaser.Geom.Intersects.GetTriangleToTriangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Triangle} triangleA - The first Triangle to check for intersection.
  * @param {Phaser.Geom.Triangle} triangleB - The second Triangle to check for intersection.

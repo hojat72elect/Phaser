@@ -6,7 +6,7 @@ var Circle = require('../circle/Circle');
  * Finds the circumscribed circle (circumcircle) of a Triangle object. The circumcircle is the circle which touches all of the triangle's vertices.
  *
  * @function Phaser.Geom.Triangle.CircumCircle
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Circle} O - [out,$return]
  *

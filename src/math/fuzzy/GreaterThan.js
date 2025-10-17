@@ -4,7 +4,7 @@
  * `a` is fuzzily greater than `b` if it is more than `b - epsilon`.
  *
  * @function Phaser.Math.Fuzzy.GreaterThan
- * @since 3.0.0
+ * 
  *
  * @param {number} a - The first value.
  * @param {number} b - The second value.

@@ -2,7 +2,7 @@
  * Check to see if the Circle contains the given x / y coordinates.
  *
  * @function Phaser.Geom.Circle.Contains
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The Circle to check.
  * @param {number} x - The x coordinate to check within the circle.

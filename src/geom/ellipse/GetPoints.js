@@ -8,7 +8,7 @@ var MATH_CONST = require('../../math/const');
  * based on the given quantity or stepRate values.
  *
  * @function Phaser.Geom.Ellipse.GetPoints
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point[]} O - [out,$return]
  *

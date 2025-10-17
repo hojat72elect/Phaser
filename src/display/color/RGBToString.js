@@ -4,7 +4,7 @@ var ComponentToHex = require('./ComponentToHex');
  * Converts the color values into an HTML compatible color string, prefixed with either `#` or `0x`.
  *
  * @function Phaser.Display.Color.RGBToString
- * @since 3.0.0
+ * 
  *
  * @param {number} r - The red color value. A number between 0 and 255.
  * @param {number} g - The green color value. A number between 0 and 255.

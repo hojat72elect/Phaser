@@ -196,7 +196,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = 0;
 

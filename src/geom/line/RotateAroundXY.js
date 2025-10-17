@@ -2,7 +2,7 @@
  * Rotate a line around the given coordinates by the given angle in radians.
  *
  * @function Phaser.Geom.Line.RotateAroundXY
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Line} O - [line,$return]
  *

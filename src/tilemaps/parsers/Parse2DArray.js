@@ -7,7 +7,7 @@ var Tile = require('../Tile');
  * Parses a 2D array of tile indexes into a new MapData object with a single layer.
  *
  * @function Phaser.Tilemaps.Parsers.Parse2DArray
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the tilemap, used to set the name on the MapData.
  * @param {number[][]} data - 2D array, CSV string or Tiled JSON object.

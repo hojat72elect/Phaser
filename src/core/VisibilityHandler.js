@@ -10,7 +10,7 @@ var Events = require('./events');
  * @fires Phaser.Core.Events#FOCUS
  * @fires Phaser.Core.Events#HIDDEN
  * @fires Phaser.Core.Events#VISIBLE
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - The Game instance this Visibility Handler is working on.
  */

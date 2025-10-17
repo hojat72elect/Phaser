@@ -17,7 +17,7 @@ var StableSort = require('../utils/array/StableSort');
  * @extends Phaser.Structs.List.<Phaser.GameObjects.GameObject>
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene that this Display List belongs to.
  */
@@ -36,7 +36,7 @@ var DisplayList = new Class({
              * @name Phaser.GameObjects.DisplayList#sortChildrenFlag
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.sortChildrenFlag = false;
 
@@ -45,7 +45,7 @@ var DisplayList = new Class({
              *
              * @name Phaser.GameObjects.DisplayList#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -54,7 +54,7 @@ var DisplayList = new Class({
              *
              * @name Phaser.GameObjects.DisplayList#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -156,7 +156,7 @@ var DisplayList = new Class({
      * Force a sort of the display list on the next call to depthSort.
      *
      * @method Phaser.GameObjects.DisplayList#queueDepthSort
-     * @since 3.0.0
+     * 
      */
     queueDepthSort: function () {
         this.sortChildrenFlag = true;
@@ -166,7 +166,7 @@ var DisplayList = new Class({
      * Immediately sorts the display list if the flag is set.
      *
      * @method Phaser.GameObjects.DisplayList#depthSort
-     * @since 3.0.0
+     * 
      */
     depthSort: function () {
         if (this.sortChildrenFlag) {
@@ -180,7 +180,7 @@ var DisplayList = new Class({
      * Compare the depth of two Game Objects.
      *
      * @method Phaser.GameObjects.DisplayList#sortByDepth
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} childA - The first Game Object.
      * @param {Phaser.GameObjects.GameObject} childB - The second Game Object.
@@ -211,7 +211,7 @@ var DisplayList = new Class({
      *
      * @method Phaser.GameObjects.DisplayList#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var list = this.list;
@@ -234,7 +234,7 @@ var DisplayList = new Class({
      *
      * @method Phaser.GameObjects.DisplayList#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

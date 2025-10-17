@@ -16,7 +16,7 @@
  * ```
  *
  * @function Phaser.Utils.Array.Matrix.ReverseColumns
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[][]} - [matrix,$return]

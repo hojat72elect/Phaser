@@ -6,7 +6,7 @@
  * A Rectangle with no width or no height will never intersect another Rectangle.
  *
  * @function Phaser.Geom.Intersects.RectangleToRectangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rectA - The first Rectangle to check for intersection.
  * @param {Phaser.Geom.Rectangle} rectB - The second Rectangle to check for intersection.

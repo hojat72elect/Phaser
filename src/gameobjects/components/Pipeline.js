@@ -5,7 +5,7 @@ var DeepCopy = require('../../utils/object/DeepCopy');
  *
  * @namespace Phaser.GameObjects.Components.Pipeline
  * @webglOnly
- * @since 3.0.0
+ * 
  */
 
 var Pipeline = {
@@ -19,7 +19,7 @@ var Pipeline = {
      * @type {Phaser.Renderer.WebGL.WebGLPipeline}
      * @default null
      * @webglOnly
-     * @since 3.0.0
+     * 
      */
     defaultPipeline: null,
 
@@ -30,7 +30,7 @@ var Pipeline = {
      * @type {Phaser.Renderer.WebGL.WebGLPipeline}
      * @default null
      * @webglOnly
-     * @since 3.0.0
+     * 
      */
     pipeline: null,
 
@@ -51,7 +51,7 @@ var Pipeline = {
      *
      * @method Phaser.GameObjects.Components.Pipeline#initPipeline
      * @webglOnly
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Renderer.WebGL.WebGLPipeline)} [pipeline] - Either the string-based name of the pipeline, or a pipeline instance to set.
      *
@@ -93,7 +93,7 @@ var Pipeline = {
      *
      * @method Phaser.GameObjects.Components.Pipeline#setPipeline
      * @webglOnly
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Renderer.WebGL.WebGLPipeline)} pipeline - Either the string-based name of the pipeline, or a pipeline instance to set.
      * @param {object} [pipelineData] - Optional pipeline data object that is set in to the `pipelineData` property of this Game Object.
@@ -158,7 +158,7 @@ var Pipeline = {
      *
      * @method Phaser.GameObjects.Components.Pipeline#resetPipeline
      * @webglOnly
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [resetData=false] - Reset the `pipelineData` object to being an empty object?
      *
@@ -183,7 +183,7 @@ var Pipeline = {
      *
      * @method Phaser.GameObjects.Components.Pipeline#getPipelineName
      * @webglOnly
-     * @since 3.0.0
+     * 
      *
      * @return {?string} The string-based name of the pipeline being used by this Game Object, or null.
      */

@@ -2,7 +2,7 @@
  * Wrap the given `value` between `min` and `max`.
  *
  * @function Phaser.Math.Wrap
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to wrap.
  * @param {number} min - The minimum value.

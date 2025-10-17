@@ -7,7 +7,7 @@
  *
  * @event Phaser.Input.Gamepad.Events#DISCONNECTED
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Gamepad} pad - A reference to the Gamepad which was disconnected.
  * @param {Event} event - The native DOM Event that triggered the disconnection.

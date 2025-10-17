@@ -17,7 +17,7 @@ var ValueToColor = require('../display/color/ValueToColor');
  * @class Config
  * @memberof Phaser.Core
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Core.GameConfig} [GameConfig] - The configuration object for your Phaser Game instance.
  *

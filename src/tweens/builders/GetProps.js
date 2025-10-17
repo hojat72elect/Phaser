@@ -7,7 +7,7 @@ var RESERVED = require('../tween/ReservedProps');
  * none of the direct properties are on the Reserved list.
  *
  * @function Phaser.Tweens.Builders.GetProps
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Tweens.TweenBuilderConfig} config - The configuration object of the Tween to get the properties from.
  *

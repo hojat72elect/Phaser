@@ -8,7 +8,7 @@ var MATH_CONST = require('../../math/const');
  * based on the given quantity or stepRate values.
  *
  * @function Phaser.Geom.Circle.GetPoints
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The Circle to get the points from.
  * @param {number} quantity - The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.

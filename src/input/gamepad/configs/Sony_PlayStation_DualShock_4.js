@@ -4,7 +4,7 @@
  *
  * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4
  * @namespace
- * @since 3.0.0
+ * 
  */
 module.exports = {
 
@@ -14,7 +14,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.UP
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     UP: 12,
 
@@ -24,7 +24,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.DOWN
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DOWN: 13,
 
@@ -34,7 +34,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.LEFT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT: 14,
 
@@ -44,7 +44,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.RIGHT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT: 15,
 
@@ -54,7 +54,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.SHARE
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SHARE: 8,
 
@@ -64,7 +64,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.OPTIONS
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     OPTIONS: 9,
 
@@ -74,7 +74,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.PS
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PS: 16,
 
@@ -84,7 +84,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.TOUCHBAR
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     TOUCHBAR: 17,
 
@@ -94,7 +94,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.X
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     X: 0,
 
@@ -104,7 +104,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.CIRCLE
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     CIRCLE: 1,
 
@@ -114,7 +114,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.SQUARE
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SQUARE: 2,
 
@@ -124,7 +124,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.TRIANGLE
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     TRIANGLE: 3,
 
@@ -134,7 +134,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.L1
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     L1: 4,
 
@@ -144,7 +144,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.R1
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     R1: 5,
 
@@ -154,7 +154,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.L2
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     L2: 6,
 
@@ -164,7 +164,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.R2
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     R2: 7,
 
@@ -174,7 +174,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.L3
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     L3: 10,
 
@@ -184,7 +184,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.R3
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     R3: 11,
 
@@ -194,7 +194,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.LEFT_STICK_H
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT_STICK_H: 0,
 
@@ -204,7 +204,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.LEFT_STICK_V
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT_STICK_V: 1,
 
@@ -214,7 +214,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.RIGHT_STICK_H
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT_STICK_H: 2,
 
@@ -224,7 +224,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.DUALSHOCK_4.RIGHT_STICK_V
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT_STICK_V: 3
 

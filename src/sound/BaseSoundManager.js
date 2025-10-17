@@ -23,7 +23,7 @@ var Vector2 = require('../math/Vector2');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - Reference to the current game instance.
  *
@@ -46,7 +46,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#game
              * @type {Phaser.Game}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -67,7 +67,7 @@ var BaseSoundManager = new Class({
              * @type {Phaser.Sound.BaseSound[]}
              * @default []
              * @private
-             * @since 3.0.0
+             * 
              */
             this.sounds = [];
 
@@ -77,7 +77,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#mute
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.mute = false;
 
@@ -87,7 +87,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#volume
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.volume = 1;
 
@@ -98,7 +98,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#pauseOnBlur
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.pauseOnBlur = true;
 
@@ -109,7 +109,7 @@ var BaseSoundManager = new Class({
              * @type {number}
              * @private
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this._rate = 1;
 
@@ -120,7 +120,7 @@ var BaseSoundManager = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._detune = 0;
 
@@ -132,7 +132,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#locked
              * @type {boolean}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.locked = this.locked || false;
 
@@ -144,7 +144,7 @@ var BaseSoundManager = new Class({
              * @type {boolean}
              * @default false
              * @private
-             * @since 3.0.0
+             * 
              */
             this.unlocked = false;
 
@@ -185,7 +185,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#add
      * @override
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - An optional config object containing default sound settings.
@@ -200,7 +200,7 @@ var BaseSoundManager = new Class({
      * The JSON follows the format of that created by https://github.com/tonistiigi/audiosprite
      *
      * @method Phaser.Sound.BaseSoundManager#addAudioSprite
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - An optional config object containing default sound settings.
@@ -306,7 +306,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#play
      * @listens Phaser.Sound.Events#COMPLETE
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {(Phaser.Types.Sound.SoundConfig|Phaser.Types.Sound.SoundMarker)} [extra] - An optional additional object containing settings to be applied to the sound. It could be either config or marker object.
@@ -338,7 +338,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#playAudioSprite
      * @listens Phaser.Sound.Events#COMPLETE
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {string} spriteName - The name of the sound sprite to play.
@@ -359,7 +359,7 @@ var BaseSoundManager = new Class({
      * The removed sound is destroyed before removal.
      *
      * @method Phaser.Sound.BaseSoundManager#remove
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Sound.BaseSound} sound - The sound object to remove.
      *
@@ -398,7 +398,7 @@ var BaseSoundManager = new Class({
      * The removed sounds are destroyed before removal.
      *
      * @method Phaser.Sound.BaseSoundManager#removeByKey
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The key to match when removing sound objects.
      *
@@ -427,7 +427,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#pauseAll
      * @fires Phaser.Sound.Events#PAUSE_ALL
-     * @since 3.0.0
+     * 
      */
     pauseAll: function () {
         this.forEachActiveSound(function (sound) {
@@ -442,7 +442,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#resumeAll
      * @fires Phaser.Sound.Events#RESUME_ALL
-     * @since 3.0.0
+     * 
      */
     resumeAll: function () {
         this.forEachActiveSound(function (sound) {
@@ -474,7 +474,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#stopAll
      * @fires Phaser.Sound.Events#STOP_ALL
-     * @since 3.0.0
+     * 
      */
     stopAll: function () {
         this.forEachActiveSound(function (sound) {
@@ -553,7 +553,7 @@ var BaseSoundManager = new Class({
      * @method Phaser.Sound.BaseSoundManager#unlock
      * @override
      * @protected
-     * @since 3.0.0
+     * 
      */
     unlock: NOOP,
 
@@ -564,7 +564,7 @@ var BaseSoundManager = new Class({
      * @method Phaser.Sound.BaseSoundManager#onBlur
      * @override
      * @protected
-     * @since 3.0.0
+     * 
      */
     onBlur: NOOP,
 
@@ -575,7 +575,7 @@ var BaseSoundManager = new Class({
      * @method Phaser.Sound.BaseSoundManager#onFocus
      * @override
      * @protected
-     * @since 3.0.0
+     * 
      */
     onFocus: NOOP,
 
@@ -616,7 +616,7 @@ var BaseSoundManager = new Class({
      * @method Phaser.Sound.BaseSoundManager#update
      * @protected
      * @fires Phaser.Sound.Events#UNLOCKED
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time elapsed since the last frame.
@@ -644,7 +644,7 @@ var BaseSoundManager = new Class({
      * Destroys all the sounds in the game and all associated events.
      *
      * @method Phaser.Sound.BaseSoundManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.game.events.off(GameEvents.BLUR, this.onGameBlur, this);
@@ -666,7 +666,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#forEachActiveSound
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Sound.EachActiveSoundCallback} callback - Callback function. (manager: Phaser.Sound.BaseSoundManager, sound: Phaser.Sound.BaseSound, index: number, sounds: Phaser.Manager.BaseSound[]) => void
      * @param {*} [scope] - Callback context.
@@ -709,7 +709,7 @@ var BaseSoundManager = new Class({
      * @name Phaser.Sound.BaseSoundManager#rate
      * @type {number}
      * @default 1
-     * @since 3.0.0
+     * 
      */
     rate: {
 
@@ -754,7 +754,7 @@ var BaseSoundManager = new Class({
      * @name Phaser.Sound.BaseSoundManager#detune
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     detune: {
 

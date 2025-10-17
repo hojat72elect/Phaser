@@ -3,7 +3,7 @@
  * interesting faces.
  *
  * @function Phaser.Tilemaps.Components.SetTileCollision
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Tilemaps.Tile} tile - The Tile to set the collision on.
  * @param {boolean} [collides=true] - Should the tile index collide or not?

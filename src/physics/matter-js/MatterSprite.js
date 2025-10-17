@@ -23,7 +23,7 @@ var Vector2 = require('../../math/Vector2');
  * @extends Phaser.GameObjects.Sprite
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Matter.Components.Bounce
  * @extends Phaser.Physics.Matter.Components.Collision
@@ -106,7 +106,7 @@ var MatterSprite = new Class({
              *
              * @name Phaser.Physics.Matter.Sprite#world
              * @type {Phaser.Physics.Matter.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -116,7 +116,7 @@ var MatterSprite = new Class({
              * @name Phaser.Physics.Matter.Sprite#_tempVec2
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._tempVec2 = new Vector2(x, y);
 

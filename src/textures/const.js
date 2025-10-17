@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Textures.FilterMode
  * @memberof Phaser.Textures
- * @since 3.0.0
+ * 
  */
 var CONST = {
 
@@ -13,7 +13,7 @@ var CONST = {
      * @name Phaser.Textures.FilterMode.LINEAR
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     LINEAR: 0,
 
@@ -23,7 +23,7 @@ var CONST = {
      * @name Phaser.Textures.FilterMode.NEAREST
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     NEAREST: 1
 

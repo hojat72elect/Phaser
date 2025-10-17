@@ -10,7 +10,7 @@
  *
  * @event Phaser.Textures.Events#LOAD
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {string} key - The key of the Texture that was loaded by the Texture Manager.
  * @param {Phaser.Textures.Texture} texture - A reference to the Texture that was loaded by the Texture Manager.

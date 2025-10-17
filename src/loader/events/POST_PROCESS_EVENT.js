@@ -11,7 +11,7 @@
  *
  * @event Phaser.Loader.Events#POST_PROCESS
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader Plugin that dispatched this event.
  */

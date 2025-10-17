@@ -5,7 +5,7 @@
  * Checks if a point is within the bounds of a Polygon.
  *
  * @function Phaser.Geom.Polygon.Contains
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Polygon} polygon - The Polygon to check against.
  * @param {number} x - The X coordinate of the point to check.

@@ -9,7 +9,7 @@ var Class = require('../utils/Class');
  * @class ImageCollection
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the image collection in the map data.
  * @param {number} firstgid - The first image index this image collection contains.
@@ -42,7 +42,7 @@ var ImageCollection = new Class({
              *
              * @name Phaser.Tilemaps.ImageCollection#name
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.name = name;
 
@@ -52,7 +52,7 @@ var ImageCollection = new Class({
              *
              * @name Phaser.Tilemaps.ImageCollection#firstgid
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.firstgid = firstgid | 0;
 
@@ -62,7 +62,7 @@ var ImageCollection = new Class({
              * @name Phaser.Tilemaps.ImageCollection#imageWidth
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.imageWidth = width | 0;
 
@@ -72,7 +72,7 @@ var ImageCollection = new Class({
              * @name Phaser.Tilemaps.ImageCollection#imageHeight
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.imageHeight = height | 0;
 
@@ -83,7 +83,7 @@ var ImageCollection = new Class({
              * @name Phaser.Tilemaps.ImageCollection#imageMarge
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.imageMargin = margin | 0;
 
@@ -94,7 +94,7 @@ var ImageCollection = new Class({
              * @name Phaser.Tilemaps.ImageCollection#imageSpacing
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.imageSpacing = spacing | 0;
 
@@ -103,7 +103,7 @@ var ImageCollection = new Class({
              *
              * @name Phaser.Tilemaps.ImageCollection#properties
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.properties = properties || {};
 
@@ -113,7 +113,7 @@ var ImageCollection = new Class({
              * @name Phaser.Tilemaps.ImageCollection#images
              * @type {array}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.images = [];
 
@@ -123,7 +123,7 @@ var ImageCollection = new Class({
              * @name Phaser.Tilemaps.ImageCollection#total
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.total = 0;
         },
@@ -132,7 +132,7 @@ var ImageCollection = new Class({
      * Returns true if and only if this image collection contains the given image index.
      *
      * @method Phaser.Tilemaps.ImageCollection#containsImageIndex
-     * @since 3.0.0
+     * 
      *
      * @param {number} imageIndex - The image index to search for.
      *
@@ -146,7 +146,7 @@ var ImageCollection = new Class({
      * Add an image to this Image Collection.
      *
      * @method Phaser.Tilemaps.ImageCollection#addImage
-     * @since 3.0.0
+     * 
      *
      * @param {number} gid - The gid of the image in the Image Collection.
      * @param {string} image - The the key of the image in the Image Collection and in the cache.

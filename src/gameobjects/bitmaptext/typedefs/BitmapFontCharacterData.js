@@ -6,7 +6,7 @@
  * As of version 3.50 it also includes the WebGL texture uv data.
  *
  * @typedef {object} Phaser.Types.GameObjects.BitmapText.BitmapFontCharacterData
- * @since 3.0.0
+ * 
  *
  * @property {number} x - The x position of the character.
  * @property {number} y - The y position of the character.

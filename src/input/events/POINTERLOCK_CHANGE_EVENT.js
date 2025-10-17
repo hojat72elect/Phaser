@@ -5,7 +5,7 @@
  *
  * @event Phaser.Input.Events#POINTERLOCK_CHANGE
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Event} event - The native DOM Event.
  * @param {boolean} locked - The locked state of the Mouse Pointer.

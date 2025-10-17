@@ -2,7 +2,7 @@
  * Find the angle of a segment from (x1, y1) -> (x2, y2).
  *
  * @function Phaser.Math.Angle.Between
- * @since 3.0.0
+ * 
  *
  * @param {number} x1 - The x coordinate of the first point.
  * @param {number} y1 - The y coordinate of the first point.

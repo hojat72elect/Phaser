@@ -5,7 +5,7 @@ var Parse2DArray = require('./Parse2DArray');
  * Parses a CSV string of tile indexes into a new MapData object with a single layer.
  *
  * @function Phaser.Tilemaps.Parsers.ParseCSV
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the tilemap, used to set the name on the MapData.
  * @param {string} data - CSV string of tile indexes.

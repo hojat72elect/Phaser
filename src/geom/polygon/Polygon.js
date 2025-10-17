@@ -16,7 +16,7 @@ var GEOM_CONST = require('../const');
  * @class Polygon
  * @memberof Phaser.Geom
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {(string|number[]|Phaser.Types.Math.Vector2Like[])} [points] - List of points defining the perimeter of this Polygon. Several formats are supported:
  * - A string containing paired x y values separated by a single space: `'40 0 40 20 100 20 100 80 40 80 40 100 0 50'`
@@ -47,7 +47,7 @@ var Polygon = new Class({
              * @name Phaser.Geom.Polygon#area
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.area = 0;
 
@@ -56,7 +56,7 @@ var Polygon = new Class({
              *
              * @name Phaser.Geom.Polygon#points
              * @type {Phaser.Geom.Point[]}
-             * @since 3.0.0
+             * 
              */
             this.points = [];
 
@@ -69,7 +69,7 @@ var Polygon = new Class({
      * Check to see if the Polygon contains the given x / y coordinates.
      *
      * @method Phaser.Geom.Polygon#contains
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate to check within the polygon.
      * @param {number} y - The y coordinate to check within the polygon.
@@ -94,7 +94,7 @@ var Polygon = new Class({
      * `setTo` may also be called without any arguments to remove all points.
      *
      * @method Phaser.Geom.Polygon#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number[]|Phaser.Types.Math.Vector2Like[])} [points] - Points defining the perimeter of this polygon. Please check function description above for the different supported formats.
      *
@@ -143,7 +143,7 @@ var Polygon = new Class({
      * Calculates the area of the Polygon. This is available in the property Polygon.area
      *
      * @method Phaser.Geom.Polygon#calculateArea
-     * @since 3.0.0
+     * 
      *
      * @return {number} The area of the polygon.
      */

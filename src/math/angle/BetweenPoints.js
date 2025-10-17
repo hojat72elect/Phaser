@@ -4,7 +4,7 @@
  * Calculates the angle of the vector from the first point to the second point.
  *
  * @function Phaser.Math.Angle.BetweenPoints
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Math.Vector2Like} point1 - The first point.
  * @param {Phaser.Types.Math.Vector2Like} point2 - The second point.

@@ -22,7 +22,7 @@ var TEXTURE_MISSING_ERROR = 'Texture "%s" has no frame "%s"';
  * @class Texture
  * @memberof Phaser.Textures
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Textures.TextureManager} manager - A reference to the Texture Manager this Texture belongs to.
  * @param {string} key - The unique string-based key of this Texture.
@@ -44,7 +44,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#manager
              * @type {Phaser.Textures.TextureManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = manager;
 
@@ -53,7 +53,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#key
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.key = key;
 
@@ -63,7 +63,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#source
              * @type {Phaser.Textures.TextureSource[]}
-             * @since 3.0.0
+             * 
              */
             this.source = [];
 
@@ -73,7 +73,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#dataSource
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.dataSource = [];
 
@@ -82,7 +82,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#frames
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.frames = {};
 
@@ -92,7 +92,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#customData
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.customData = {};
 
@@ -101,7 +101,7 @@ var Texture = new Class({
              *
              * @name Phaser.Textures.Texture#firstFrame
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.firstFrame = '__BASE';
 
@@ -114,7 +114,7 @@ var Texture = new Class({
              * @name Phaser.Textures.Texture#frameTotal
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.frameTotal = 0;
 
@@ -132,7 +132,7 @@ var Texture = new Class({
      * The name given must be unique within this Texture. If it already exists, this method will return `null`.
      *
      * @method Phaser.Textures.Texture#add
-     * @since 3.0.0
+     * 
      *
      * @param {(number|string)} name - The name of this Frame. The name is unique within the Texture.
      * @param {number} sourceIndex - The index of the TextureSource that this Frame is a part of.
@@ -196,7 +196,7 @@ var Texture = new Class({
      * Checks to see if a Frame matching the given key exists within this Texture.
      *
      * @method Phaser.Textures.Texture#has
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - The key of the Frame to check for.
      *
@@ -214,7 +214,7 @@ var Texture = new Class({
      * Passing no value for the name returns the base texture.
      *
      * @method Phaser.Textures.Texture#get
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number)} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
      *
@@ -244,7 +244,7 @@ var Texture = new Class({
      * method will always return zero or -1.
      *
      * @method Phaser.Textures.Texture#getTextureSourceIndex
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Textures.TextureSource} source - The TextureSource to check.
      *
@@ -264,7 +264,7 @@ var Texture = new Class({
      * Returns an array of all the Frames in the given TextureSource.
      *
      * @method Phaser.Textures.Texture#getFramesFromTextureSource
-     * @since 3.0.0
+     * 
      *
      * @param {number} sourceIndex - The index of the TextureSource to get the Frames from.
      * @param {boolean} [includeBase=false] - Include the `__BASE` Frame in the output array?
@@ -351,7 +351,7 @@ var Texture = new Class({
      * pick a random element from the returned array.
      *
      * @method Phaser.Textures.Texture#getFrameNames
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [includeBase=false] - Include the `__BASE` Frame in the output array?
      *
@@ -381,7 +381,7 @@ var Texture = new Class({
      * This will return the actual DOM Image or Canvas element.
      *
      * @method Phaser.Textures.Texture#getSourceImage
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number)} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
      *
@@ -442,7 +442,7 @@ var Texture = new Class({
      * equally apply to the normal map.
      *
      * @method Phaser.Textures.Texture#setDataSource
-     * @since 3.0.0
+     * 
      *
      * @param {(HTMLImageElement|HTMLCanvasElement|HTMLImageElement[]|HTMLCanvasElement[])} data - The source image.
      */
@@ -468,7 +468,7 @@ var Texture = new Class({
      * The mode applies to the entire Texture, not just a specific Frame of it.
      *
      * @method Phaser.Textures.Texture#setFilter
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Textures.FilterMode} filterMode - The Filter Mode.
      */
@@ -488,7 +488,7 @@ var Texture = new Class({
      * Destroys this Texture and releases references to its sources and frames.
      *
      * @method Phaser.Textures.Texture#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         var i;

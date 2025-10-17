@@ -2,7 +2,7 @@
  * Compare two lines for strict equality.
  *
  * @function Phaser.Geom.Line.Equals
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The first line to compare.
  * @param {Phaser.Geom.Line} toCompare - The second line to compare.

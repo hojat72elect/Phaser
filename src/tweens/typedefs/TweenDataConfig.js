@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.TweenDataConfig
- * @since 3.0.0
+ * 
  *
  * @property {any} target - The target to tween.
  * @property {number} index - The target index within the Tween targets array.

@@ -38,7 +38,7 @@ var _FLAG = 8; // 1000
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Alpha
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -145,7 +145,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#dirty
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.dirty = false;
 
@@ -154,7 +154,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.0.0
+             * 
              */
             this.renderer = renderer;
 
@@ -223,7 +223,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#texture
              * @type {Phaser.Textures.Texture|Phaser.Textures.CanvasTexture}
-             * @since 3.0.0
+             * 
              */
             this.texture = scene.sys.textures.addCanvas(this._textureKey, this.canvas);
 
@@ -232,7 +232,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#frame
              * @type {Phaser.Textures.Frame}
-             * @since 3.0.0
+             * 
              */
             this.frame = this.texture.get();
 
@@ -241,7 +241,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#potWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.potWidth = GetPowerOfTwo(displayFrame.width);
 
@@ -250,7 +250,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#potHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.potHeight = GetPowerOfTwo(displayFrame.height);
 
@@ -297,7 +297,7 @@ var TileSprite = new Class({
      * Textures are referenced by their string-based keys, as stored in the Texture Manager.
      *
      * @method Phaser.GameObjects.TileSprite#setTexture
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture.
@@ -318,7 +318,7 @@ var TileSprite = new Class({
      * It can be either a string or an index.
      *
      * @method Phaser.GameObjects.TileSprite#setFrame
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number)} frame - The name or index of the frame within the Texture.
      *
@@ -401,7 +401,7 @@ var TileSprite = new Class({
      *
      * @method Phaser.GameObjects.TileSprite#updateTileTexture
      * @private
-     * @since 3.0.0
+     * 
      */
     updateTileTexture: function () {
         if (!this.dirty || !this.renderer) {
@@ -550,7 +550,7 @@ var TileSprite = new Class({
      * @name Phaser.GameObjects.TileSprite#tilePositionX
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     tilePositionX: {
 
@@ -571,7 +571,7 @@ var TileSprite = new Class({
      * @name Phaser.GameObjects.TileSprite#tilePositionY
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     tilePositionY: {
 

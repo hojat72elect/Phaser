@@ -8,7 +8,7 @@ var SetLayerCollisionIndex = require('./SetLayerCollisionIndex');
  * disabled (false). Tile indexes not currently in the layer are not affected.
  *
  * @function Phaser.Tilemaps.Components.SetCollisionByExclusion
- * @since 3.0.0
+ * 
  *
  * @param {number[]} indexes - An array of the tile indexes to not be counted for collision.
  * @param {boolean} collides - If true it will enable collision. If false it will clear collision.

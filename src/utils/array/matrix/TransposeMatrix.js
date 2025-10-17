@@ -18,7 +18,7 @@
  * ```
  *
  * @function Phaser.Utils.Array.Matrix.TransposeMatrix
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[][]} - [array,$return]

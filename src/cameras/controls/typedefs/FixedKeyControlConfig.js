@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Cameras.Controls.FixedKeyControlConfig
- * @since 3.0.0
+ * 
  *
  * @property {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera that this Control will update.
  * @property {Phaser.Input.Keyboard.Key} [left] - The Key to be pressed that will move the Camera left.

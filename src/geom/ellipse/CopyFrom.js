@@ -3,7 +3,7 @@
  * into the given `dest` Ellipse, then returns the `dest` Ellipse.
  *
  * @function Phaser.Geom.Ellipse.CopyFrom
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Ellipse} O - [dest,$return]
  *

@@ -4,7 +4,7 @@
  * Alpha will only be set if it exists in the given color (0xAARRGGBB)
  *
  * @function Phaser.Display.Color.IntegerToRGB
- * @since 3.0.0
+ * 
  *
  * @param {number} input - The color value to convert into a Color object.
  *

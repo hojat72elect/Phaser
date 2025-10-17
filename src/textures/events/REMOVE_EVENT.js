@@ -10,7 +10,7 @@
  *
  * @event Phaser.Textures.Events#REMOVE
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {string} key - The key of the Texture that was removed from the Texture Manager.
  */

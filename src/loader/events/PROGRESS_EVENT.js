@@ -7,7 +7,7 @@
  *
  * @event Phaser.Loader.Events#PROGRESS
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {number} progress - The current progress of the load. A value between 0 and 1.
  */

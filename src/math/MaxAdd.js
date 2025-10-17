@@ -2,7 +2,7 @@
  * Add an `amount` to a `value`, limiting the maximum result to `max`.
  *
  * @function Phaser.Math.MaxAdd
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to add to.
  * @param {number} amount - The amount to add.

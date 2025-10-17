@@ -2,7 +2,7 @@
  * Offset a line by the given amount.
  *
  * @function Phaser.Geom.Line.Offset
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Line} O - [line,$return]
  *

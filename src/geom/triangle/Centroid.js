@@ -10,7 +10,7 @@ var Point = require('../point/Point');
  * The centroid is the point in a Triangle at which its three medians (the lines drawn from the vertices to the bisectors of the opposite sides) meet. It divides each one in a 2:1 ratio.
  *
  * @function Phaser.Geom.Triangle.Centroid
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

@@ -5,7 +5,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.LOADER_IDLE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADER_IDLE: 0,
 
@@ -14,7 +14,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.LOADER_LOADING
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADER_LOADING: 1,
 
@@ -23,7 +23,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.LOADER_PROCESSING
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADER_PROCESSING: 2,
 
@@ -32,7 +32,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.LOADER_COMPLETE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADER_COMPLETE: 3,
 
@@ -41,7 +41,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.LOADER_SHUTDOWN
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADER_SHUTDOWN: 4,
 
@@ -50,7 +50,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.LOADER_DESTROYED
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADER_DESTROYED: 5,
 
@@ -59,7 +59,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_PENDING
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_PENDING: 10,
 
@@ -68,7 +68,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_LOADING
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_LOADING: 11,
 
@@ -77,7 +77,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_LOADED
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_LOADED: 12,
 
@@ -86,7 +86,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_FAILED
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_FAILED: 13,
 
@@ -95,7 +95,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_PROCESSING
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_PROCESSING: 14,
 
@@ -104,7 +104,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_ERRORED
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_ERRORED: 16,
 
@@ -113,7 +113,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_COMPLETE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_COMPLETE: 17,
 
@@ -122,7 +122,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_DESTROYED
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_DESTROYED: 18,
 
@@ -131,7 +131,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_POPULATED
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FILE_POPULATED: 19,
 

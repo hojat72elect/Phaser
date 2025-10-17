@@ -6,7 +6,7 @@ var _FLAG = 1; // 0001
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.Visible
- * @since 3.0.0
+ * 
  */
 
 var Visible = {
@@ -18,7 +18,7 @@ var Visible = {
      * @type {boolean}
      * @private
      * @default true
-     * @since 3.0.0
+     * 
      */
     _visible: true,
 
@@ -29,7 +29,7 @@ var Visible = {
      *
      * @name Phaser.GameObjects.Components.Visible#visible
      * @type {boolean}
-     * @since 3.0.0
+     * 
      */
     visible: {
 
@@ -55,7 +55,7 @@ var Visible = {
      * An invisible Game Object will skip rendering, but will still process update logic.
      *
      * @method Phaser.GameObjects.Components.Visible#setVisible
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The visible state of the Game Object.
      *

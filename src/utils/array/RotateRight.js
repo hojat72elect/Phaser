@@ -3,7 +3,7 @@
  * The "rotation" happens to the right.
  *
  * @function Phaser.Utils.Array.RotateRight
- * @since 3.0.0
+ * 
  *
  * @param {array} array - The array to shift to the right. This array is modified in place.
  * @param {number} [total=1] - The number of times to shift the array.

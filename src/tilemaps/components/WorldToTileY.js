@@ -8,7 +8,7 @@ var tempVec = new Vector2();
  * layer's position, scale and scroll.
  *
  * @function Phaser.Tilemaps.Components.WorldToTileY
- * @since 3.0.0
+ * 
  *
  * @param {number} worldY - The y coordinate to be converted, in pixels, not tiles.
  * @param {boolean} snapToFloor - Whether or not to round the tile coordinate down to the nearest integer.

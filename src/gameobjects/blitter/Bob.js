@@ -20,7 +20,7 @@ var Frame = require('../../textures/Frame');
  * @class Bob
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.Blitter} blitter - The parent Blitter object is responsible for updating this Bob.
  * @param {number} x - The horizontal position of this Game Object in the world, relative to the parent Blitter position.
@@ -38,7 +38,7 @@ var Bob = new Class({
              *
              * @name Phaser.GameObjects.Bob#parent
              * @type {Phaser.GameObjects.Blitter}
-             * @since 3.0.0
+             * 
              */
             this.parent = blitter;
 
@@ -47,7 +47,7 @@ var Bob = new Class({
              *
              * @name Phaser.GameObjects.Bob#x
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.x = x;
 
@@ -56,7 +56,7 @@ var Bob = new Class({
              *
              * @name Phaser.GameObjects.Bob#y
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.y = y;
 
@@ -67,7 +67,7 @@ var Bob = new Class({
              * @name Phaser.GameObjects.Bob#frame
              * @type {Phaser.Textures.Frame}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.frame = frame;
 
@@ -77,7 +77,7 @@ var Bob = new Class({
              * @name Phaser.GameObjects.Bob#data
              * @type {object}
              * @default {}
-             * @since 3.0.0
+             * 
              */
             this.data = {};
 
@@ -97,7 +97,7 @@ var Bob = new Class({
              * @name Phaser.GameObjects.Bob#_visible
              * @type {boolean}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._visible = visible;
 
@@ -108,7 +108,7 @@ var Bob = new Class({
              * @type {number}
              * @private
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this._alpha = 1;
 
@@ -119,7 +119,7 @@ var Bob = new Class({
              *
              * @name Phaser.GameObjects.Bob#flipX
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.flipX = false;
 
@@ -130,7 +130,7 @@ var Bob = new Class({
              *
              * @name Phaser.GameObjects.Bob#flipY
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.flipY = false;
 
@@ -152,7 +152,7 @@ var Bob = new Class({
      * If no value is given it will use the default frame of the Blitter parent.
      *
      * @method Phaser.GameObjects.Bob#setFrame
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number|Phaser.Textures.Frame)} [frame] - The frame to be used during rendering.
      *
@@ -174,7 +174,7 @@ var Bob = new Class({
      * Resets the horizontal and vertical flipped state of this Bob back to their default un-flipped state.
      *
      * @method Phaser.GameObjects.Bob#resetFlip
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Bob Game Object.
      */
@@ -193,7 +193,7 @@ var Bob = new Class({
      * Also resets the flipX and flipY values, sets alpha back to 1 and visible to true.
      *
      * @method Phaser.GameObjects.Bob#reset
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x position of the Bob. Bob coordinate are relative to the position of the Blitter object.
      * @param {number} y - The y position of the Bob. Bob coordinate are relative to the position of the Blitter object.
@@ -242,7 +242,7 @@ var Bob = new Class({
      * Sets the horizontal flipped state of this Bob.
      *
      * @method Phaser.GameObjects.Bob#setFlipX
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The flipped state. `false` for no flip, or `true` to be flipped.
      *
@@ -258,7 +258,7 @@ var Bob = new Class({
      * Sets the vertical flipped state of this Bob.
      *
      * @method Phaser.GameObjects.Bob#setFlipY
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The flipped state. `false` for no flip, or `true` to be flipped.
      *
@@ -274,7 +274,7 @@ var Bob = new Class({
      * Sets the horizontal and vertical flipped state of this Bob.
      *
      * @method Phaser.GameObjects.Bob#setFlip
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} x - The horizontal flipped state. `false` for no flip, or `true` to be flipped.
      * @param {boolean} y - The horizontal flipped state. `false` for no flip, or `true` to be flipped.
@@ -294,7 +294,7 @@ var Bob = new Class({
      * An invisible Bob will skip rendering.
      *
      * @method Phaser.GameObjects.Bob#setVisible
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The visible state of the Game Object.
      *
@@ -313,7 +313,7 @@ var Bob = new Class({
      * A Bob with alpha 0 will skip rendering.
      *
      * @method Phaser.GameObjects.Bob#setAlpha
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The alpha value used for this Bob. Between 0 and 1.
      *
@@ -346,7 +346,7 @@ var Bob = new Class({
      * Removes itself from the Blitter and clears the parent, frame and data properties.
      *
      * @method Phaser.GameObjects.Bob#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.parent.dirty = true;
@@ -365,7 +365,7 @@ var Bob = new Class({
      *
      * @name Phaser.GameObjects.Bob#visible
      * @type {boolean}
-     * @since 3.0.0
+     * 
      */
     visible: {
 
@@ -387,7 +387,7 @@ var Bob = new Class({
      *
      * @name Phaser.GameObjects.Bob#alpha
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     alpha: {
 

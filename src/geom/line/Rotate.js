@@ -4,7 +4,7 @@ var RotateAroundXY = require('./RotateAroundXY');
  * Rotate a line around its midpoint by the given angle in radians.
  *
  * @function Phaser.Geom.Line.Rotate
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Line} O - [line,$return]
  *

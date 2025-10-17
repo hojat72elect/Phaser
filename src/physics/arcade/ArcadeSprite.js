@@ -14,7 +14,7 @@ var Sprite = require('../../gameobjects/sprite/Sprite');
  * @extends Phaser.GameObjects.Sprite
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Arcade.Components.Acceleration
  * @extends Phaser.Physics.Arcade.Components.Angular
@@ -84,7 +84,7 @@ var ArcadeSprite = new Class({
              * @name Phaser.Physics.Arcade.Sprite#body
              * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.body = null;
         }

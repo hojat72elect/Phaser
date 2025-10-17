@@ -13,7 +13,7 @@ var Wrap = require('../math/Wrap');
  * area.
  *
  * @function Phaser.Actions.WrapInRectangle
- * @since 3.0.0
+ * 
  * @see Phaser.Math.Wrap
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]

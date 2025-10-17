@@ -13,7 +13,7 @@ var GameEvents = require('../core/events');
  * @class CacheManager
  * @memberof Phaser.Cache
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser.Game instance that owns this CacheManager.
  */
@@ -28,7 +28,7 @@ var CacheManager = new Class({
              * @name Phaser.Cache.CacheManager#game
              * @type {Phaser.Game}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -37,7 +37,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#binary
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.binary = new BaseCache();
 
@@ -47,7 +47,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#bitmapFont
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.bitmapFont = new BaseCache();
 
@@ -56,7 +56,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#json
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.json = new BaseCache();
 
@@ -65,7 +65,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#physics
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.physics = new BaseCache();
 
@@ -74,7 +74,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#shader
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.shader = new BaseCache();
 
@@ -83,7 +83,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#audio
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.audio = new BaseCache();
 
@@ -101,7 +101,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#text
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.text = new BaseCache();
 
@@ -119,7 +119,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#obj
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.obj = new BaseCache();
 
@@ -129,7 +129,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#tilemap
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.tilemap = new BaseCache();
 
@@ -138,7 +138,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#xml
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.0.0
+             * 
              */
             this.xml = new BaseCache();
 
@@ -148,7 +148,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#custom
              * @type {Object.<Phaser.Cache.BaseCache>}
-             * @since 3.0.0
+             * 
              */
             this.custom = {};
 
@@ -161,7 +161,7 @@ var CacheManager = new Class({
      * The cache will only be created if the key is not already in use.
      *
      * @method Phaser.Cache.CacheManager#addCustom
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The unique key of your custom cache.
      *
@@ -179,7 +179,7 @@ var CacheManager = new Class({
      * Removes all entries from all BaseCaches and destroys all custom caches.
      *
      * @method Phaser.Cache.CacheManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         var keys = [

@@ -8,7 +8,7 @@ var ParseToTilemap = require('./ParseToTilemap');
  * data. For an empty map, you should specify tileWidth, tileHeight, width & height.
  *
  * @method Phaser.GameObjects.GameObjectCreator#tilemap
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Tilemaps.TilemapConfig} [config] - The config options for the Tilemap.
  *

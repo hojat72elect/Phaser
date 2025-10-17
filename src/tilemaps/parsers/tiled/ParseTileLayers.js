@@ -11,7 +11,7 @@ var Tile = require('../../Tile');
  * Parses all tilemap layers in a Tiled JSON object into new LayerData objects.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseTileLayers
- * @since 3.0.0
+ * 
  *
  * @param {object} json - The Tiled JSON object.
  * @param {boolean} insertNull - Controls how empty tiles, tiles with an index of -1, in the map

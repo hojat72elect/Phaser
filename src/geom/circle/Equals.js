@@ -3,7 +3,7 @@
  * Returns `true` if they all match, otherwise returns `false`.
  *
  * @function Phaser.Geom.Circle.Equals
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The first Circle to compare.
  * @param {Phaser.Geom.Circle} toCompare - The second Circle to compare.

@@ -15,7 +15,7 @@ var MATH_CONST = require('../../math/const');
  * ```
  *
  * @function Phaser.Geom.Rectangle.FromPoints
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [out,$return]
  *

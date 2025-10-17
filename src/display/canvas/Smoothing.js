@@ -3,14 +3,14 @@ var prefix = '';
 
 /**
  * @namespace Phaser.Display.Canvas.Smoothing
- * @since 3.0.0
+ * 
  */
 var Smoothing = function () {
     /**
      * Gets the Smoothing Enabled vendor prefix being used on the given context, or null if not set.
      *
      * @function Phaser.Display.Canvas.Smoothing.getPrefix
-     * @since 3.0.0
+     * 
      *
      * @param {(CanvasRenderingContext2D|WebGLRenderingContext)} context - The canvas context to check.
      *
@@ -38,7 +38,7 @@ var Smoothing = function () {
      * patchy on earlier browsers, especially on mobile.
      *
      * @function Phaser.Display.Canvas.Smoothing.enable
-     * @since 3.0.0
+     * 
      *
      * @param {(CanvasRenderingContext2D|WebGLRenderingContext)} context - The context on which to enable smoothing.
      *
@@ -64,7 +64,7 @@ var Smoothing = function () {
      * patchy on earlier browsers, especially on mobile.
      *
      * @function Phaser.Display.Canvas.Smoothing.disable
-     * @since 3.0.0
+     * 
      *
      * @param {(CanvasRenderingContext2D|WebGLRenderingContext)} context - The context on which to disable smoothing.
      *
@@ -87,7 +87,7 @@ var Smoothing = function () {
      * Returns null if no smoothing prefix is available.
      *
      * @function Phaser.Display.Canvas.Smoothing.isEnabled
-     * @since 3.0.0
+     * 
      *
      * @param {(CanvasRenderingContext2D|WebGLRenderingContext)} context - The context to check.
      *

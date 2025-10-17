@@ -2,7 +2,7 @@
  * A Text Shadow configuration object as used by the Text Style.
  *
  * @typedef {object} Phaser.Types.GameObjects.Text.TextShadow
- * @since 3.0.0
+ * 
  *
  * @property {number} [offsetX=0] - The horizontal offset of the shadow.
  * @property {number} [offsetY=0] - The vertical offset of the shadow.

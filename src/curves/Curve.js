@@ -12,7 +12,7 @@ var Vector2 = require('../math/Vector2');
  * @class Curve
  * @memberof Phaser.Curves
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {string} type - The curve type.
  */
@@ -26,7 +26,7 @@ var Curve = new Class({
              *
              * @name Phaser.Curves.Curve#type
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.type = type;
 
@@ -36,7 +36,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#defaultDivisions
              * @type {number}
              * @default 5
-             * @since 3.0.0
+             * 
              */
             this.defaultDivisions = 5;
 
@@ -46,7 +46,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#arcLengthDivisions
              * @type {number}
              * @default 100
-             * @since 3.0.0
+             * 
              */
             this.arcLengthDivisions = 100;
 
@@ -56,7 +56,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#cacheArcLengths
              * @type {number[]}
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.cacheArcLengths = [];
 
@@ -66,7 +66,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#needsUpdate
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.needsUpdate = true;
 
@@ -76,7 +76,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#active
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.active = true;
 
@@ -86,7 +86,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#_tmpVec2A
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._tmpVec2A = new Vector2();
 
@@ -96,7 +96,7 @@ var Curve = new Class({
              * @name Phaser.Curves.Curve#_tmpVec2B
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._tmpVec2B = new Vector2();
         },
@@ -108,7 +108,7 @@ var Curve = new Class({
      * The Graphics object is not cleared before the draw, so the curve will appear on-top of anything else already rendered to it.
      *
      * @method Phaser.Curves.Curve#draw
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.GameObjects.Graphics} G - [graphics,$return]
      *
@@ -133,7 +133,7 @@ var Curve = new Class({
      * to plot across the curve. Higher values are more accurate at the cost of calculation speed.
      *
      * @method Phaser.Curves.Curve#getBounds
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Geom.Rectangle} [out] - The Rectangle to store the bounds in. If falsey a new object will be created.
      * @param {number} [accuracy=16] - The accuracy of the bounds calculations.
@@ -167,7 +167,7 @@ var Curve = new Class({
      * The smaller the distance, the larger the array will be.
      *
      * @method Phaser.Curves.Curve#getDistancePoints
-     * @since 3.0.0
+     * 
      *
      * @param {number} distance - The distance, in pixels, between each point along the curve.
      *
@@ -185,7 +185,7 @@ var Curve = new Class({
      * Get a point at the end of the curve.
      *
      * @method Phaser.Curves.Curve#getEndPoint
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Vector2} [out] - Optional Vector object to store the result in.
      *
@@ -203,7 +203,7 @@ var Curve = new Class({
      * Get total curve arc length
      *
      * @method Phaser.Curves.Curve#getLength
-     * @since 3.0.0
+     * 
      *
      * @return {number} The total length of the curve.
      */
@@ -226,7 +226,7 @@ var Curve = new Class({
      * - [divisions] All segments
      *
      * @method Phaser.Curves.Curve#getLengths
-     * @since 3.0.0
+     * 
      *
      * @param {number} [divisions] - The number of divisions or segments.
      *
@@ -273,7 +273,7 @@ var Curve = new Class({
      * Get a point at a relative position on the curve, by arc length.
      *
      * @method Phaser.Curves.Curve#getPointAt
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -304,7 +304,7 @@ var Curve = new Class({
      * `1 + divisions` points will be returned.
      *
      * @method Phaser.Curves.Curve#getPoints
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2[]} O - [out,$return]
      *
@@ -339,7 +339,7 @@ var Curve = new Class({
      * Get a random point from the curve.
      *
      * @method Phaser.Curves.Curve#getRandomPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -363,7 +363,7 @@ var Curve = new Class({
      * `1 + divisions` points will be returned.
      *
      * @method Phaser.Curves.Curve#getSpacedPoints
-     * @since 3.0.0
+     * 
      *
      * @param {number} [divisions=this.defaultDivisions] - The number of divisions to make.
      * @param {number} [stepRate] - Step between points. Used to calculate the number of points to return when divisions is falsy. Ignored if divisions is positive.
@@ -398,7 +398,7 @@ var Curve = new Class({
      * Get a point at the start of the curve.
      *
      * @method Phaser.Curves.Curve#getStartPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -421,7 +421,7 @@ var Curve = new Class({
      * which seems to give a reasonable approximation
      *
      * @method Phaser.Curves.Curve#getTangent
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -459,7 +459,7 @@ var Curve = new Class({
      * Get a unit vector tangent at a relative position on the curve, by arc length.
      *
      * @method Phaser.Curves.Curve#getTangentAt
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -478,7 +478,7 @@ var Curve = new Class({
      * Given a distance in pixels, get a t to find p.
      *
      * @method Phaser.Curves.Curve#getTFromDistance
-     * @since 3.0.0
+     * 
      *
      * @param {number} distance - The distance, in pixels.
      * @param {number} [divisions] - Optional amount of divisions.
@@ -497,7 +497,7 @@ var Curve = new Class({
      * Given u ( 0 .. 1 ), get a t to find p. This gives you points which are equidistant.
      *
      * @method Phaser.Curves.Curve#getUtoTmapping
-     * @since 3.0.0
+     * 
      *
      * @param {number} u - A float between 0 and 1.
      * @param {number} distance - The distance, in pixels.
@@ -567,7 +567,7 @@ var Curve = new Class({
      * Calculate and cache the arc lengths.
      *
      * @method Phaser.Curves.Curve#updateArcLengths
-     * @since 3.0.0
+     * 
      *
      * @see Phaser.Curves.Curve#getLengths()
      */

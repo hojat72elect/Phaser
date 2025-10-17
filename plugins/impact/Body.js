@@ -12,7 +12,7 @@ var UpdateMotion = require('./UpdateMotion');
 
 /**
  * @callback Phaser.Types.Physics.Impact.BodyUpdateCallback
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Impact.Body} body - [description]
  */
@@ -25,7 +25,7 @@ var UpdateMotion = require('./UpdateMotion');
  * @class Body
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Impact.World} world - [description]
  * @param {number} x - [description]
@@ -50,7 +50,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#world
              * @type {Phaser.Physics.Impact.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -60,7 +60,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#gameObject
              * @type {Phaser.GameObjects.GameObject}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.gameObject = null;
 
@@ -70,7 +70,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#enabled
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.enabled = true;
 
@@ -79,7 +79,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#parent
              * @type {?(Phaser.Physics.Impact.ImpactBody|Phaser.Physics.Impact.ImpactImage|Phaser.Physics.Impact.ImpactSprite)}
-             * @since 3.0.0
+             * 
              */
             this.parent;
 
@@ -88,7 +88,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#id
              * @type {integer}
-             * @since 3.0.0
+             * 
              */
             this.id = world.getNextID();
 
@@ -98,7 +98,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#name
              * @type {string}
              * @default ''
-             * @since 3.0.0
+             * 
              */
             this.name = '';
 
@@ -107,7 +107,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#size
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.size = {x: sx, y: sy};
 
@@ -116,7 +116,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#offset
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.offset = {x: 0, y: 0};
 
@@ -125,7 +125,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#pos
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.pos = {x: x, y: y};
 
@@ -134,7 +134,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#last
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.last = {x: x, y: y};
 
@@ -143,7 +143,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#vel
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.vel = {x: 0, y: 0};
 
@@ -152,7 +152,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#accel
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.accel = {x: 0, y: 0};
 
@@ -161,7 +161,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#friction
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.friction = {x: 0, y: 0};
 
@@ -170,7 +170,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#maxVel
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.0.0
+             * 
              */
             this.maxVel = {x: world.defaults.maxVelocityX, y: world.defaults.maxVelocityY};
 
@@ -180,7 +180,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#standing
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.standing = false;
 
@@ -189,7 +189,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#gravityFactor
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.gravityFactor = world.defaults.gravityFactor;
 
@@ -198,7 +198,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#bounciness
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.bounciness = world.defaults.bounciness;
 
@@ -207,7 +207,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#minBounceVelocity
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.minBounceVelocity = world.defaults.minBounceVelocity;
 
@@ -217,7 +217,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#accelGround
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.accelGround = 0;
 
@@ -227,7 +227,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#accelAir
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.accelAir = 0;
 
@@ -237,7 +237,7 @@ var Body = new Class({
              * @name Phaser.Physics.Impact.Body#jumpSpeed
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.jumpSpeed = 0;
 
@@ -246,7 +246,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#type
              * @type {Phaser.Physics.Impact.TYPE}
-             * @since 3.0.0
+             * 
              */
             this.type = TYPE.NONE;
 
@@ -255,7 +255,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#checkAgainst
              * @type {Phaser.Physics.Impact.TYPE}
-             * @since 3.0.0
+             * 
              */
             this.checkAgainst = TYPE.NONE;
 
@@ -264,7 +264,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#collides
              * @type {Phaser.Physics.Impact.COLLIDES}
-             * @since 3.0.0
+             * 
              */
             this.collides = COLLIDES.NEVER;
 
@@ -273,7 +273,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#debugShowBody
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.debugShowBody = world.defaults.debugShowBody;
 
@@ -282,7 +282,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#debugShowVelocity
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.debugShowVelocity = world.defaults.debugShowVelocity;
 
@@ -291,7 +291,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#debugBodyColor
              * @type {integer}
-             * @since 3.0.0
+             * 
              */
             this.debugBodyColor = world.defaults.bodyDebugColor;
 
@@ -300,7 +300,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#updateCallback
              * @type {?Phaser.Types.Physics.Impact.BodyUpdateCallback}
-             * @since 3.0.0
+             * 
              */
             this.updateCallback;
 
@@ -309,7 +309,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Impact.Body#slopeStanding
              * @type {{ min: number, max: number }}
-             * @since 3.0.0
+             * 
              */
             this.slopeStanding = {min: 0.767944870877505, max: 2.3736477827122884};
         },
@@ -318,7 +318,7 @@ var Body = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.Body#reset
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - [description]
      * @param {number} y - [description]
@@ -350,7 +350,7 @@ var Body = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.Body#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
@@ -390,7 +390,7 @@ var Body = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.Body#drawDebug
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} graphic - [description]
      */
@@ -415,7 +415,7 @@ var Body = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.Body#willDrawDebug
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} [description]
      */
@@ -427,7 +427,7 @@ var Body = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.Body#skipHash
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} [description]
      */
@@ -439,7 +439,7 @@ var Body = new Class({
      * Determines whether the body collides with the `other` one or not.
      *
      * @method Phaser.Physics.Impact.Body#touches
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body} other - [description]
      *
@@ -458,7 +458,7 @@ var Body = new Class({
      * Reset the size and position of the physics body.
      *
      * @method Phaser.Physics.Impact.Body#resetSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate to position the body.
      * @param {number} y - The y coordinate to position the body.
@@ -480,7 +480,7 @@ var Body = new Class({
      * Export this body object to JSON.
      *
      * @method Phaser.Physics.Impact.Body#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.Physics.Impact.JSONImpactBody} JSON representation of this body object.
      */
@@ -509,7 +509,7 @@ var Body = new Class({
      *
      * @method Phaser.Physics.Impact.Body#fromJSON
      * @todo Code it!
-     * @since 3.0.0
+     * 
      *
      * @param {object} config - [description]
      */
@@ -520,7 +520,7 @@ var Body = new Class({
      * Can be overridden by user code
      *
      * @method Phaser.Physics.Impact.Body#check
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body} other - [description]
      */
@@ -531,7 +531,7 @@ var Body = new Class({
      * Can be overridden by user code
      *
      * @method Phaser.Physics.Impact.Body#collideWith
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Impact.Body} other - [description]
      * @param {string} axis - [description]
@@ -546,7 +546,7 @@ var Body = new Class({
      * Can be overridden by user code but must return a boolean.
      *
      * @method Phaser.Physics.Impact.Body#handleMovementTrace
-     * @since 3.0.0
+     * 
      *
      * @param {number} res - [description]
      *
@@ -560,7 +560,7 @@ var Body = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.Body#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.world.remove(this);

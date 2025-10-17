@@ -7,7 +7,7 @@
  *
  * @event Phaser.Textures.Events#ADD
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {string} key - The key of the Texture that was added to the Texture Manager.
  * @param {Phaser.Textures.Texture} texture - A reference to the Texture that was added to the Texture Manager.

@@ -5,7 +5,7 @@ var Length = require('../line/Length');
  * Returns a Point from around the perimeter of a Triangle.
  *
  * @function Phaser.Geom.Triangle.GetPoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

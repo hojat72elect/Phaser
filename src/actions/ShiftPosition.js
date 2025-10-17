@@ -21,7 +21,7 @@ var Vector2 = require('../math/Vector2');
  * each body piece is moved into the space of the previous piece.
  *
  * @function Phaser.Actions.ShiftPosition
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items]
  * @generic {Phaser.Math.Vector2} O - [output,$return]

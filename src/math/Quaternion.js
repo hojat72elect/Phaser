@@ -25,7 +25,7 @@ var tmpMat3 = new Matrix3();
  * @class Quaternion
  * @memberof Phaser.Math
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x=0] - The x component.
  * @param {number} [y=0] - The y component.
@@ -96,7 +96,7 @@ var Quaternion = new Class({
      * @name Phaser.Math.Quaternion#x
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     x: {
         get: function () {
@@ -116,7 +116,7 @@ var Quaternion = new Class({
      * @name Phaser.Math.Quaternion#y
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     y: {
         get: function () {
@@ -136,7 +136,7 @@ var Quaternion = new Class({
      * @name Phaser.Math.Quaternion#z
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     z: {
         get: function () {
@@ -156,7 +156,7 @@ var Quaternion = new Class({
      * @name Phaser.Math.Quaternion#w
      * @type {number}
      * @default 0
-     * @since 3.0.0
+     * 
      */
     w: {
         get: function () {
@@ -174,7 +174,7 @@ var Quaternion = new Class({
      * Copy the components of a given Quaternion or Vector into this Quaternion.
      *
      * @method Phaser.Math.Quaternion#copy
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} src - The Quaternion or Vector to copy the components from.
      *
@@ -188,7 +188,7 @@ var Quaternion = new Class({
      * Set the components of this Quaternion and optionally call the `onChangeCallback`.
      *
      * @method Phaser.Math.Quaternion#set
-     * @since 3.0.0
+     * 
      *
      * @param {(number|object)} [x=0] - The x component, or an object containing x, y, z, and w components.
      * @param {number} [y=0] - The y component.
@@ -226,7 +226,7 @@ var Quaternion = new Class({
      * Add a given Quaternion or Vector to this Quaternion. Addition is component-wise.
      *
      * @method Phaser.Math.Quaternion#add
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} v - The Quaternion or Vector to add to this Quaternion.
      *
@@ -247,7 +247,7 @@ var Quaternion = new Class({
      * Subtract a given Quaternion or Vector from this Quaternion. Subtraction is component-wise.
      *
      * @method Phaser.Math.Quaternion#subtract
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} v - The Quaternion or Vector to subtract from this Quaternion.
      *
@@ -268,7 +268,7 @@ var Quaternion = new Class({
      * Scale this Quaternion by the given value.
      *
      * @method Phaser.Math.Quaternion#scale
-     * @since 3.0.0
+     * 
      *
      * @param {number} scale - The value to scale this Quaternion by.
      *
@@ -289,7 +289,7 @@ var Quaternion = new Class({
      * Calculate the length of this Quaternion.
      *
      * @method Phaser.Math.Quaternion#length
-     * @since 3.0.0
+     * 
      *
      * @return {number} The length of this Quaternion.
      */
@@ -306,7 +306,7 @@ var Quaternion = new Class({
      * Calculate the length of this Quaternion squared.
      *
      * @method Phaser.Math.Quaternion#lengthSq
-     * @since 3.0.0
+     * 
      *
      * @return {number} The length of this Quaternion, squared.
      */
@@ -323,7 +323,7 @@ var Quaternion = new Class({
      * Normalize this Quaternion.
      *
      * @method Phaser.Math.Quaternion#normalize
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Quaternion} This Quaternion.
      */
@@ -352,7 +352,7 @@ var Quaternion = new Class({
      * Calculate the dot product of this Quaternion and the given Quaternion or Vector.
      *
      * @method Phaser.Math.Quaternion#dot
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} v - The Quaternion or Vector to dot product with this Quaternion.
      *
@@ -366,7 +366,7 @@ var Quaternion = new Class({
      * Linearly interpolate this Quaternion towards the given Quaternion or Vector.
      *
      * @method Phaser.Math.Quaternion#lerp
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} v - The Quaternion or Vector to interpolate towards.
      * @param {number} [t=0] - The percentage of interpolation.
@@ -395,7 +395,7 @@ var Quaternion = new Class({
      * Rotates this Quaternion based on the two given vectors.
      *
      * @method Phaser.Math.Quaternion#rotationTo
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Vector3} a - The transform rotation vector.
      * @param {Phaser.Math.Vector3} b - The target rotation vector.
@@ -432,7 +432,7 @@ var Quaternion = new Class({
      * Set the axes of this Quaternion.
      *
      * @method Phaser.Math.Quaternion#setAxes
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Vector3} view - The view axis.
      * @param {Phaser.Math.Vector3} right - The right axis.
@@ -462,7 +462,7 @@ var Quaternion = new Class({
      * Reset this Matrix to an identity (default) Quaternion.
      *
      * @method Phaser.Math.Quaternion#identity
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Quaternion} This Quaternion.
      */
@@ -474,7 +474,7 @@ var Quaternion = new Class({
      * Set the axis angle of this Quaternion.
      *
      * @method Phaser.Math.Quaternion#setAxisAngle
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Vector3} axis - The axis.
      * @param {number} rad - The angle in radians.
@@ -498,7 +498,7 @@ var Quaternion = new Class({
      * Multiply this Quaternion by the given Quaternion or Vector.
      *
      * @method Phaser.Math.Quaternion#multiply
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} b - The Quaternion or Vector to multiply this Quaternion by.
      *
@@ -527,7 +527,7 @@ var Quaternion = new Class({
      * Smoothly linearly interpolate this Quaternion towards the given Quaternion or Vector.
      *
      * @method Phaser.Math.Quaternion#slerp
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Quaternion|Phaser.Math.Vector4)} b - The Quaternion or Vector to interpolate towards.
      * @param {number} t - The percentage of interpolation.
@@ -587,7 +587,7 @@ var Quaternion = new Class({
      * Invert this Quaternion.
      *
      * @method Phaser.Math.Quaternion#invert
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Quaternion} This Quaternion.
      */
@@ -614,7 +614,7 @@ var Quaternion = new Class({
      * Sets the x, y and z components.
      *
      * @method Phaser.Math.Quaternion#conjugate
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Quaternion} This Quaternion.
      */
@@ -632,7 +632,7 @@ var Quaternion = new Class({
      * Rotate this Quaternion on the X axis.
      *
      * @method Phaser.Math.Quaternion#rotateX
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The rotation angle in radians.
      *
@@ -661,7 +661,7 @@ var Quaternion = new Class({
      * Rotate this Quaternion on the Y axis.
      *
      * @method Phaser.Math.Quaternion#rotateY
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The rotation angle in radians.
      *
@@ -690,7 +690,7 @@ var Quaternion = new Class({
      * Rotate this Quaternion on the Z axis.
      *
      * @method Phaser.Math.Quaternion#rotateZ
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The rotation angle in radians.
      *
@@ -721,7 +721,7 @@ var Quaternion = new Class({
      * Sets the w component.
      *
      * @method Phaser.Math.Quaternion#calculateW
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Quaternion} This Quaternion.
      */
@@ -907,7 +907,7 @@ var Quaternion = new Class({
      * Convert the given Matrix into this Quaternion.
      *
      * @method Phaser.Math.Quaternion#fromMat3
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix3} mat - The Matrix to convert from.
      *

@@ -29,7 +29,7 @@ var RoundAwayFromZero = require('../../math/RoundAwayFromZero');
  * // => []
  *
  * @function Phaser.Utils.Array.NumberArrayStep
- * @since 3.0.0
+ * 
  *
  * @param {number} [start=0] - The start of the range.
  * @param {number} [end=null] - The end of the range.

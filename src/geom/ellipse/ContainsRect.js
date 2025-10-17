@@ -4,7 +4,7 @@ var Contains = require('./Contains');
  * Check to see if the Ellipse contains all four points of the given Rectangle object.
  *
  * @function Phaser.Geom.Ellipse.ContainsRect
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Ellipse} ellipse - The Ellipse to check.
  * @param {(Phaser.Geom.Rectangle|object)} rect - The Rectangle object to check if it's within the Ellipse or not.

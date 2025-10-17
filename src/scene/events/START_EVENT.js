@@ -7,7 +7,7 @@
  *
  * @event Phaser.Scenes.Events#START
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scenes.Systems} sys - A reference to the Scene Systems class of the Scene that emitted this event.
  */

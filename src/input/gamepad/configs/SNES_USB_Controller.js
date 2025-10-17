@@ -4,7 +4,7 @@
  *
  * @name Phaser.Input.Gamepad.Configs.SNES_USB
  * @namespace
- * @since 3.0.0
+ * 
  */
 module.exports = {
 
@@ -14,7 +14,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.UP
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     UP: 12,
 
@@ -24,7 +24,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.DOWN
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DOWN: 13,
 
@@ -34,7 +34,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.LEFT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT: 14,
 
@@ -44,7 +44,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.RIGHT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT: 15,
 
@@ -54,7 +54,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.SELECT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SELECT: 8,
 
@@ -64,7 +64,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.START
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     START: 9,
 
@@ -74,7 +74,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.B
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     B: 0,
 
@@ -84,7 +84,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.A
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     A: 1,
 
@@ -94,7 +94,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.Y
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     Y: 2,
 
@@ -104,7 +104,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.X
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     X: 3,
 
@@ -114,7 +114,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.LEFT_SHOULDER
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT_SHOULDER: 4,
 
@@ -124,7 +124,7 @@ module.exports = {
      * @name Phaser.Input.Gamepad.Configs.SNES_USB.RIGHT_SHOULDER
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT_SHOULDER: 5
 

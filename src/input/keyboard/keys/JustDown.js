@@ -7,7 +7,7 @@
  * This allows you to use it in situations where you want to check if this key is down without using an event, such as in a core game loop.
  *
  * @function Phaser.Input.Keyboard.JustDown
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Keyboard.Key} key - The Key to check to see if it's just down or not.
  *

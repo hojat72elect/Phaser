@@ -18,7 +18,7 @@ var GetURL = require('../GetURL');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.ImageFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -287,7 +287,7 @@ var ImageFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#image
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.ImageFileConfig|Phaser.Types.Loader.FileTypes.ImageFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string|string[]} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".

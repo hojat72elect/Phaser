@@ -3,7 +3,7 @@
  *
  * @function Phaser.Input.Keyboard.ResetKeyCombo
  * @private
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Keyboard.KeyCombo} combo - The KeyCombo to reset.
  *

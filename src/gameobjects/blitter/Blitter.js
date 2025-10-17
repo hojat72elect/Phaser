@@ -33,7 +33,7 @@ var List = require('../../structs/List');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Alpha
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -88,7 +88,7 @@ var Blitter = new Class({
              *
              * @name Phaser.GameObjects.Blitter#children
              * @type {Phaser.Structs.List.<Phaser.GameObjects.Bob>}
-             * @since 3.0.0
+             * 
              */
             this.children = new List();
 
@@ -100,7 +100,7 @@ var Blitter = new Class({
              * @type {Phaser.GameObjects.Bob[]}
              * @default []
              * @private
-             * @since 3.0.0
+             * 
              */
             this.renderList = [];
 
@@ -110,7 +110,7 @@ var Blitter = new Class({
              *
              * @name Phaser.GameObjects.Blitter#dirty
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.dirty = false;
         },
@@ -122,7 +122,7 @@ var Blitter = new Class({
      * A Bob can use any frame belonging to the texture bound to the Blitter.
      *
      * @method Phaser.GameObjects.Blitter#create
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x position of the Bob. Bob coordinate are relative to the position of the Blitter object.
      * @param {number} y - The y position of the Bob. Bob coordinate are relative to the position of the Blitter object.
@@ -159,7 +159,7 @@ var Blitter = new Class({
      * Creates multiple Bob objects within this Blitter and then passes each of them to the specified callback.
      *
      * @method Phaser.GameObjects.Blitter#createFromCallback
-     * @since 3.0.0
+     * 
      *
      * @param {CreateCallback} callback - The callback to invoke after creating a bob. It will be sent two arguments: The Bob and the index of the Bob.
      * @param {number} quantity - The quantity of Bob objects to create.
@@ -189,7 +189,7 @@ var Blitter = new Class({
      * frame and 10 with the second.
      *
      * @method Phaser.GameObjects.Blitter#createMultiple
-     * @since 3.0.0
+     * 
      *
      * @param {number} quantity - The quantity of Bob objects to create.
      * @param {(string|number|Phaser.Textures.Frame|string[]|number[]|Phaser.Textures.Frame[])} [frame] - The Frame the Bobs will use. It must be part of the Blitter Texture.
@@ -225,7 +225,7 @@ var Blitter = new Class({
      * Checks if the given child can render or not, by checking its `visible` and `alpha` values.
      *
      * @method Phaser.GameObjects.Blitter#childCanRender
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Bob} child - The Bob to check for rendering.
      *
@@ -240,7 +240,7 @@ var Blitter = new Class({
      * If the Blitter is dirty then a new list is generated and stored in `renderList`.
      *
      * @method Phaser.GameObjects.Blitter#getRenderList
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.Bob[]} An array of Bob objects that will be rendered this frame.
      */
@@ -257,7 +257,7 @@ var Blitter = new Class({
      * Removes all Bobs from the children List and clears the dirty flag.
      *
      * @method Phaser.GameObjects.Blitter#clear
-     * @since 3.0.0
+     * 
      */
     clear: function () {
         this.children.removeAll();

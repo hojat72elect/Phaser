@@ -2,7 +2,7 @@
  * Copy the values of one Triangle to a destination Triangle.
  *
  * @function Phaser.Geom.Triangle.CopyFrom
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Triangle} O - [dest,$return]
  *

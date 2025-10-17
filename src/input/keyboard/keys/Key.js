@@ -11,7 +11,7 @@ var Events = require('../events');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Input.Keyboard
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Keyboard.KeyboardPlugin} plugin - The Keyboard Plugin instance that owns this Key object.
  * @param {number} keyCode - The keycode of this key.
@@ -39,7 +39,7 @@ var Key = new Class({
              *
              * @name Phaser.Input.Keyboard.Key#keyCode
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.keyCode = keyCode;
 
@@ -48,7 +48,7 @@ var Key = new Class({
              *
              * @name Phaser.Input.Keyboard.Key#originalEvent
              * @type {KeyboardEvent}
-             * @since 3.0.0
+             * 
              */
             this.originalEvent = undefined;
 
@@ -58,7 +58,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#enabled
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.enabled = true;
 
@@ -68,7 +68,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#isDown
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.isDown = false;
 
@@ -78,7 +78,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#isUp
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.isUp = true;
 
@@ -88,7 +88,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#altKey
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.altKey = false;
 
@@ -98,7 +98,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#ctrlKey
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.ctrlKey = false;
 
@@ -108,7 +108,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#shiftKey
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.shiftKey = false;
 
@@ -129,7 +129,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#location
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.location = 0;
 
@@ -139,7 +139,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#timeDown
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.timeDown = 0;
 
@@ -151,7 +151,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#duration
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.duration = 0;
 
@@ -161,7 +161,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#timeUp
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.timeUp = 0;
 
@@ -184,7 +184,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#repeats
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.repeats = 0;
 
@@ -195,7 +195,7 @@ var Key = new Class({
              * @type {boolean}
              * @private
              * @default false
-             * @since 3.0.0
+             * 
              */
             this._justDown = false;
 
@@ -206,7 +206,7 @@ var Key = new Class({
              * @type {boolean}
              * @private
              * @default false
-             * @since 3.0.0
+             * 
              */
             this._justUp = false;
 

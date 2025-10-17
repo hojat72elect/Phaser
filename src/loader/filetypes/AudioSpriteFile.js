@@ -211,7 +211,7 @@ var AudioSpriteFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#audioSprite
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.AudioSpriteFileConfig|Phaser.Types.Loader.FileTypes.AudioSpriteFileConfig[])} key - The key to use for this file, or a file configuration object, or an array of objects.
  * @param {string} jsonURL - The absolute or relative URL to load the json file from. Or a well formed JSON object to use instead.

@@ -4,7 +4,7 @@
  * @see {@link Phaser.GameObjects.GameObject#setInteractive}
  *
  * @function Phaser.Actions.SetHitArea
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

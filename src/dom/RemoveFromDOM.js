@@ -2,7 +2,7 @@
  * Attempts to remove the element from its parentNode in the DOM.
  *
  * @function Phaser.DOM.RemoveFromDOM
- * @since 3.0.0
+ * 
  *
  * @param {HTMLElement} element - The DOM element to remove from its parent node.
  */

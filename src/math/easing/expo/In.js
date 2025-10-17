@@ -2,7 +2,7 @@
  * Exponential ease-in.
  *
  * @function Phaser.Math.Easing.Expo.In
- * @since 3.0.0
+ * 
  *
  * @param {number} v - The value to be tweened.
  *

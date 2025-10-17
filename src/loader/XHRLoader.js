@@ -6,7 +6,7 @@ var MergeXHRSettings = require('./MergeXHRSettings');
  * with the global XHRSettings object to set the xhr values before download.
  *
  * @function Phaser.Loader.XHRLoader
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.File} file - The File to download.
  * @param {Phaser.Types.Loader.XHRSettingsObject} globalXHRSettings - The global XHRSettings object.

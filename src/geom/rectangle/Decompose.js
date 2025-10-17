@@ -3,7 +3,7 @@
  * If an array is specified, each point object will be added to the end of the array, otherwise a new array will be created.
  *
  * @function Phaser.Geom.Rectangle.Decompose
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The Rectangle object to be decomposed.
  * @param {array} [out] - If provided, each point will be added to this array.

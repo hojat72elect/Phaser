@@ -5,7 +5,7 @@ var BlendModes = require('../../renderer/BlendModes');
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.BlendMode
- * @since 3.0.0
+ * 
  */
 
 var BlendMode = {
@@ -17,7 +17,7 @@ var BlendMode = {
      * @type {number}
      * @private
      * @default 0
-     * @since 3.0.0
+     * 
      */
     _blendMode: BlendModes.NORMAL,
 
@@ -45,7 +45,7 @@ var BlendMode = {
      *
      * @name Phaser.GameObjects.Components.BlendMode#blendMode
      * @type {(Phaser.BlendModes|string|number)}
-     * @since 3.0.0
+     * 
      */
     blendMode: {
 
@@ -90,7 +90,7 @@ var BlendMode = {
      * are used.
      *
      * @method Phaser.GameObjects.Components.BlendMode#setBlendMode
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.BlendModes|number)} value - The BlendMode value. Either a string, a CONST or a number.
      *

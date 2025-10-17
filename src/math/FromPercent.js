@@ -4,7 +4,7 @@ var Clamp = require('./Clamp');
  * Return a value based on the range between `min` and `max` and the percentage given.
  *
  * @function Phaser.Math.FromPercent
- * @since 3.0.0
+ * 
  *
  * @param {number} percent - A value between 0 and 1 representing the percentage.
  * @param {number} min - The minimum value.

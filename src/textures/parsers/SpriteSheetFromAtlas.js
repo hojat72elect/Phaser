@@ -9,7 +9,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * @function Phaser.Textures.Parsers.SpriteSheetFromAtlas
  * @memberof Phaser.Textures.Parsers
  * @private
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Textures.Texture} texture - The Texture to add the Frames to.
  * @param {Phaser.Textures.Frame} frame - The Frame that contains the Sprite Sheet.

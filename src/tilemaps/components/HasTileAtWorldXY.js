@@ -8,7 +8,7 @@ var point = new Vector2();
  * false if there is no tile or if the tile at that location has an index of -1.
  *
  * @function Phaser.Tilemaps.Components.HasTileAtWorldXY
- * @since 3.0.0
+ * 
  *
  * @param {number} worldX - The X coordinate of the world position.
  * @param {number} worldY - The Y coordinate of the world position.

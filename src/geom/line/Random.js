@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Returns a random point on a given Line.
  *
  * @function Phaser.Geom.Line.Random
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

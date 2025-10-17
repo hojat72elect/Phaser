@@ -4,7 +4,7 @@ var GetColor = require('./GetColor');
 /**
  * @namespace Phaser.Display.Color.Interpolate
  * @memberof Phaser.Display.Color
- * @since 3.0.0
+ * 
  */
 
 /**
@@ -13,7 +13,7 @@ var GetColor = require('./GetColor');
  * @function Phaser.Display.Color.Interpolate.RGBWithRGB
  * @memberof Phaser.Display.Color.Interpolate
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {number} r1 - Red value.
  * @param {number} g1 - Blue value.
@@ -54,7 +54,7 @@ var RGBWithRGB = function (r1, g1, b1, r2, g2, b2, length, index) {
  * @function Phaser.Display.Color.Interpolate.ColorWithColor
  * @memberof Phaser.Display.Color.Interpolate
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Display.Color} color1 - The first Color object.
  * @param {Phaser.Display.Color} color2 - The second Color object.
@@ -80,7 +80,7 @@ var ColorWithColor = function (color1, color2, length, index) {
  * @function Phaser.Display.Color.Interpolate.ColorWithRGB
  * @memberof Phaser.Display.Color.Interpolate
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Display.Color} color1 - The first Color object.
  * @param {number} r - Red value.

@@ -6,7 +6,7 @@
  * To use this with a Group: `GetFirst(group.getChildren(), compare, index)`
  *
  * @function Phaser.Actions.GetFirst
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items]
  *

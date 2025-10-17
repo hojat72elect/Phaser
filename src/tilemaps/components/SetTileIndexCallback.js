@@ -5,7 +5,7 @@
  * at a specific location on the map then see setTileLocationCallback.
  *
  * @function Phaser.Tilemaps.Components.SetTileIndexCallback
- * @since 3.0.0
+ * 
  *
  * @param {(number|array)} indexes - Either a single tile index, or an array of tile indexes to have a collision callback set for.
  * @param {function} callback - The callback that will be invoked when the tile is collided with.

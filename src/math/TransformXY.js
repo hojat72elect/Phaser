@@ -5,7 +5,7 @@ var Vector2 = require('./Vector2');
  * defined by the position, rotation and scale values.
  *
  * @function Phaser.Math.TransformXY
- * @since 3.0.0
+ * 
  *
  * @param {number} x - The x coordinate to be transformed.
  * @param {number} y - The y coordinate to be transformed.

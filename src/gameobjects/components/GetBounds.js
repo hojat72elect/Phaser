@@ -7,7 +7,7 @@ var Vector2 = require('../../math/Vector2');
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.GetBounds
- * @since 3.0.0
+ * 
  */
 
 var GetBounds = {
@@ -51,7 +51,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getCenter
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -78,7 +78,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getTopLeft
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -132,7 +132,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getTopRight
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -213,7 +213,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getBottomLeft
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -267,7 +267,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getBottomRight
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -293,7 +293,7 @@ var GetBounds = {
      * The values are stored and returned in a Rectangle, or Rectangle-like, object.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getBounds
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Rectangle} O - [output,$return]
      *

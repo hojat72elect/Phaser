@@ -11,7 +11,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * @class MapData
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Tilemaps.MapDataConfig} [config] - The Map configuration object.
  */
@@ -29,7 +29,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#name
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.name = GetFastValue(config, 'name', 'map');
 
@@ -38,7 +38,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = GetFastValue(config, 'width', 0);
 
@@ -47,7 +47,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = GetFastValue(config, 'height', 0);
 
@@ -65,7 +65,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#tileWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.tileWidth = GetFastValue(config, 'tileWidth', 0);
 
@@ -74,7 +74,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#tileHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.tileHeight = GetFastValue(config, 'tileHeight', 0);
 
@@ -83,7 +83,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#widthInPixels
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.widthInPixels = GetFastValue(config, 'widthInPixels', this.width * this.tileWidth);
 
@@ -92,7 +92,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#heightInPixels
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.heightInPixels = GetFastValue(config, 'heightInPixels', this.height * this.tileHeight);
 
@@ -101,7 +101,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#format
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.format = GetFastValue(config, 'format', null);
 
@@ -133,7 +133,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#version
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.version = GetFastValue(config, 'version', '1');
 
@@ -142,7 +142,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#properties
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.properties = GetFastValue(config, 'properties', {});
 
@@ -151,7 +151,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#layers
              * @type {(Phaser.Tilemaps.LayerData[]|Phaser.Tilemaps.ObjectLayer)}
-             * @since 3.0.0
+             * 
              */
             this.layers = GetFastValue(config, 'layers', []);
 
@@ -160,7 +160,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#images
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.images = GetFastValue(config, 'images', []);
 
@@ -169,7 +169,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#objects
              * @type {Phaser.Types.Tilemaps.ObjectLayerConfig[]}
-             * @since 3.0.0
+             * 
              */
             this.objects = GetFastValue(config, 'objects', []);
 
@@ -183,7 +183,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#collision
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.collision = GetFastValue(config, 'collision', {});
 
@@ -192,7 +192,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#tilesets
              * @type {Phaser.Tilemaps.Tileset[]}
-             * @since 3.0.0
+             * 
              */
             this.tilesets = GetFastValue(config, 'tilesets', []);
 
@@ -201,7 +201,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#imageCollections
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.imageCollections = GetFastValue(config, 'imageCollections', []);
 
@@ -210,7 +210,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#tiles
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.tiles = GetFastValue(config, 'tiles', []);
 

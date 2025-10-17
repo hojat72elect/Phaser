@@ -14,7 +14,7 @@ var Vector2 = require('../math/Vector2');
  * @extends Phaser.Curves.Curve
  * @memberof Phaser.Curves
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Math.Vector2|number[])} p0 - The first endpoint.
  * @param {Phaser.Math.Vector2} [p1] - The second endpoint.
@@ -39,7 +39,7 @@ var LineCurve = new Class({
              *
              * @name Phaser.Curves.Line#p0
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.p0 = p0;
 
@@ -48,7 +48,7 @@ var LineCurve = new Class({
              *
              * @name Phaser.Curves.Line#p1
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.p1 = p1;
 
@@ -60,7 +60,7 @@ var LineCurve = new Class({
              * @name Phaser.Curves.Line#arcLengthDivisions
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.arcLengthDivisions = 1;
         },
@@ -69,7 +69,7 @@ var LineCurve = new Class({
      * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
      *
      * @method Phaser.Curves.Line#getBounds
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Rectangle} O - [out,$return]
      *
@@ -89,7 +89,7 @@ var LineCurve = new Class({
      * Gets the starting point on the curve.
      *
      * @method Phaser.Curves.Line#getStartPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -109,7 +109,7 @@ var LineCurve = new Class({
      * Gets the resolution of the line.
      *
      * @method Phaser.Curves.Line#getResolution
-     * @since 3.0.0
+     * 
      *
      * @param {number} [divisions=1] - The number of divisions to consider.
      *
@@ -127,7 +127,7 @@ var LineCurve = new Class({
      * Get point at relative position in curve according to length.
      *
      * @method Phaser.Curves.Line#getPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -156,7 +156,7 @@ var LineCurve = new Class({
      * Gets a point at a given position on the line.
      *
      * @method Phaser.Curves.Line#getPointAt
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -173,7 +173,7 @@ var LineCurve = new Class({
      * Gets the slope of the line as a unit vector.
      *
      * @method Phaser.Curves.Line#getTangent
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -196,7 +196,7 @@ var LineCurve = new Class({
      * Given u ( 0 .. 1 ), get a t to find p. This gives you points which are equidistant.
      *
      * @method Phaser.Curves.Line#getUtoTmapping
-     * @since 3.0.0
+     * 
      *
      * @param {number} u - A float between 0 and 1.
      * @param {number} distance - The distance, in pixels.
@@ -231,7 +231,7 @@ var LineCurve = new Class({
      * The Graphics object is not cleared before the draw, so the curve will appear on-top of anything else already rendered to it.
      *
      * @method Phaser.Curves.Line#draw
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.GameObjects.Graphics} G - [graphics,$return]
      *
@@ -250,7 +250,7 @@ var LineCurve = new Class({
      * Gets a JSON representation of the line.
      *
      * @method Phaser.Curves.Line#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.Curves.JSONCurve} The JSON object containing this curve data.
      */
@@ -270,7 +270,7 @@ var LineCurve = new Class({
  * Configures this line from a JSON representation.
  *
  * @function Phaser.Curves.Line.fromJSON
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Curves.JSONCurve} data - The JSON object containing this curve data.
  *

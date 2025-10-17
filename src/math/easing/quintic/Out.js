@@ -2,7 +2,7 @@
  * Quintic ease-out.
  *
  * @function Phaser.Math.Easing.Quintic.Out
- * @since 3.0.0
+ * 
  *
  * @param {number} v - The value to be tweened.
  *

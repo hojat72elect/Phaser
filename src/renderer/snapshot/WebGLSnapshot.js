@@ -9,7 +9,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * to the callback provided in the Snapshot Configuration object.
  *
  * @function Phaser.Renderer.Snapshot.WebGL
- * @since 3.0.0
+ * 
  *
  * @param {WebGLRenderingContext} sourceContext - The WebGL context to take a snapshot of.
  * @param {Phaser.Types.Renderer.Snapshot.SnapshotState} config - The snapshot configuration object.

@@ -4,7 +4,7 @@ var GetMagnitude = require('./GetMagnitude');
  * Changes the magnitude (length) of a two-dimensional vector without changing its direction.
  *
  * @function Phaser.Geom.Point.SetMagnitude
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [point,$return]
  *

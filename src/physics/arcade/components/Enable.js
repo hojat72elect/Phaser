@@ -2,7 +2,7 @@
  * Provides methods used for setting the enable properties of an Arcade Physics Body.
  *
  * @namespace Phaser.Physics.Arcade.Components.Enable
- * @since 3.0.0
+ * 
  */
 var Enable = {
 
@@ -32,7 +32,7 @@ var Enable = {
      * If you reset the Body you must also pass `x` and `y`.
      *
      * @method Phaser.Physics.Arcade.Components.Enable#enableBody
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [reset] - Also reset the Body and place the Game Object at (x, y).
      * @param {number} [x] - The horizontal position to place the Game Object, if `reset` is true.
@@ -71,7 +71,7 @@ var Enable = {
      * Stops and disables this Game Object's Body.
      *
      * @method Phaser.Physics.Arcade.Components.Enable#disableBody
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [disableGameObject=false] - Also set this Game Object's `active` to false.
      * @param {boolean} [hideGameObject=false] - Also set this Game Object's `visible` to false.

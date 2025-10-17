@@ -12,7 +12,7 @@ var Class = require('../../../utils/Class');
  * @class DeathZone
  * @memberof Phaser.GameObjects.Particles.Zones
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Particles.DeathZoneSource} source - An object instance that has a `contains` method that returns a boolean when given `x` and `y` arguments.
  * @param {boolean} killOnEnter - Should the Particle be killed when it enters the zone? `true` or leaves it? `false`
@@ -28,7 +28,7 @@ var DeathZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.DeathZone#source
              * @type {Phaser.Types.GameObjects.Particles.DeathZoneSource}
-             * @since 3.0.0
+             * 
              */
             this.source = source;
 
@@ -38,7 +38,7 @@ var DeathZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.DeathZone#killOnEnter
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.killOnEnter = killOnEnter;
         },
@@ -47,7 +47,7 @@ var DeathZone = new Class({
      * Checks if the given Particle will be killed or not by this zone.
      *
      * @method Phaser.GameObjects.Particles.Zones.DeathZone#willKill
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The particle to test against this Death Zones.
      *

@@ -12,7 +12,7 @@ var Crop = {
      *
      * @name Phaser.GameObjects.Components.Crop#texture
      * @type {Phaser.Textures.Texture|Phaser.Textures.CanvasTexture}
-     * @since 3.0.0
+     * 
      */
     texture: null,
 
@@ -21,7 +21,7 @@ var Crop = {
      *
      * @name Phaser.GameObjects.Components.Crop#frame
      * @type {Phaser.Textures.Frame}
-     * @since 3.0.0
+     * 
      */
     frame: null,
 

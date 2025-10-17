@@ -21,7 +21,7 @@ var Class = require('../../utils/Class');
  * @class GeometryMask
  * @memberof Phaser.Display.Masks
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - This parameter is not used.
  * @param {Phaser.GameObjects.Graphics} graphicsGeometry - The Graphics Game Object to use for the Geometry Mask. Doesn't have to be in the Display List.
@@ -36,7 +36,7 @@ var GeometryMask = new Class({
              *
              * @name Phaser.Display.Masks.GeometryMask#geometryMask
              * @type {Phaser.GameObjects.Graphics}
-             * @since 3.0.0
+             * 
              */
             this.geometryMask = graphicsGeometry;
 
@@ -77,7 +77,7 @@ var GeometryMask = new Class({
      * Sets a new Graphics object for the Geometry Mask.
      *
      * @method Phaser.Display.Masks.GeometryMask#setShape
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} graphicsGeometry - The Graphics object which will be used for the Geometry Mask.
      *
@@ -117,7 +117,7 @@ var GeometryMask = new Class({
      * Renders the Geometry Mask's underlying Graphics object to the OpenGL stencil buffer and enables the stencil test, which clips rendered pixels according to the mask.
      *
      * @method Phaser.Display.Masks.GeometryMask#preRenderWebGL
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - The WebGL Renderer instance to draw to.
      * @param {Phaser.GameObjects.GameObject} child - The Game Object being rendered.
@@ -197,7 +197,7 @@ var GeometryMask = new Class({
      * Flushes all rendered pixels and disables the stencil test of a WebGL context, thus disabling the mask for it.
      *
      * @method Phaser.Display.Masks.GeometryMask#postRenderWebGL
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - The WebGL Renderer instance to draw flush.
      */
@@ -236,7 +236,7 @@ var GeometryMask = new Class({
      * Sets the clipping path of a 2D canvas context to the Geometry Mask's underlying Graphics object.
      *
      * @method Phaser.Display.Masks.GeometryMask#preRenderCanvas
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.Canvas.CanvasRenderer} renderer - The Canvas Renderer instance to set the clipping path on.
      * @param {Phaser.GameObjects.GameObject} mask - The Game Object being rendered.
@@ -256,7 +256,7 @@ var GeometryMask = new Class({
      * Restore the canvas context's previous clipping path, thus turning off the mask for it.
      *
      * @method Phaser.Display.Masks.GeometryMask#postRenderCanvas
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.Canvas.CanvasRenderer} renderer - The Canvas Renderer instance being restored.
      */

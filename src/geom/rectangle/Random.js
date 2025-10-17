@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Returns a random point within a Rectangle.
  *
  * @function Phaser.Geom.Rectangle.Random
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

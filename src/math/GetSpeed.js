@@ -2,7 +2,7 @@
  * Calculate a per-ms speed from a distance and time (given in seconds).
  *
  * @function Phaser.Math.GetSpeed
- * @since 3.0.0
+ * 
  *
  * @param {number} distance - The distance.
  * @param {number} time - The time, in seconds.

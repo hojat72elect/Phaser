@@ -5,7 +5,7 @@ var Triangle = require('./Triangle');
  * The x/y specifies the top-middle of the triangle (x1/y1) and length is the length of each side.
  *
  * @function Phaser.Geom.Triangle.BuildEquilateral
- * @since 3.0.0
+ * 
  *
  * @param {number} x - x coordinate of the top point of the triangle.
  * @param {number} y - y coordinate of the top point of the triangle.

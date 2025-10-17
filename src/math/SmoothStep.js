@@ -6,7 +6,7 @@
  * between 0 and 1 otherwise.
  *
  * @function Phaser.Math.SmoothStep
- * @since 3.0.0
+ * 
  * @see {@link https://en.wikipedia.org/wiki/Smoothstep}
  *
  * @param {number} x - The input value.

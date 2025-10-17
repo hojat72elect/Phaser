@@ -2,7 +2,7 @@
  * Calculates a linear (interpolation) value over t.
  *
  * @function Phaser.Math.Linear
- * @since 3.0.0
+ * 
  *
  * @param {number} p0 - The first point.
  * @param {number} p1 - The second point.

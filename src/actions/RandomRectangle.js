@@ -4,7 +4,7 @@ var Random = require('../geom/rectangle/Random');
  * Takes an array of Game Objects and positions them at random locations within the Rectangle.
  *
  * @function Phaser.Actions.RandomRectangle
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

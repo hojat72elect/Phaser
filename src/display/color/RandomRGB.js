@@ -6,7 +6,7 @@ var Color = require('./Color');
  * based on the given min max values.
  *
  * @function Phaser.Display.Color.RandomRGB
- * @since 3.0.0
+ * 
  *
  * @param {number} [min=0] - The minimum value to set the random range from (between 0 and 255)
  * @param {number} [max=255] - The maximum value to set the random range from (between 0 and 255)

@@ -15,7 +15,7 @@ var Random = require('./Random');
  * @class Triangle
  * @memberof Phaser.Geom
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x1=0] - `x` coordinate of the first point.
  * @param {number} [y1=0] - `y` coordinate of the first point.
@@ -65,7 +65,7 @@ var Triangle = new Class({
              * @name Phaser.Geom.Triangle#x1
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x1 = x1;
 
@@ -75,7 +75,7 @@ var Triangle = new Class({
              * @name Phaser.Geom.Triangle#y1
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y1 = y1;
 
@@ -85,7 +85,7 @@ var Triangle = new Class({
              * @name Phaser.Geom.Triangle#x2
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x2 = x2;
 
@@ -95,7 +95,7 @@ var Triangle = new Class({
              * @name Phaser.Geom.Triangle#y2
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y2 = y2;
 
@@ -105,7 +105,7 @@ var Triangle = new Class({
              * @name Phaser.Geom.Triangle#x3
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x3 = x3;
 
@@ -115,7 +115,7 @@ var Triangle = new Class({
              * @name Phaser.Geom.Triangle#y3
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y3 = y3;
         },
@@ -124,7 +124,7 @@ var Triangle = new Class({
      * Checks whether a given points lies within the triangle.
      *
      * @method Phaser.Geom.Triangle#contains
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate of the point to check.
      * @param {number} y - The y coordinate of the point to check.
@@ -139,7 +139,7 @@ var Triangle = new Class({
      * Returns a specific point  on the triangle.
      *
      * @method Phaser.Geom.Triangle#getPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [output,$return]
      *
@@ -156,7 +156,7 @@ var Triangle = new Class({
      * Calculates a list of evenly distributed points on the triangle. It is either possible to pass an amount of points to be generated (`quantity`) or the distance between two points (`stepRate`).
      *
      * @method Phaser.Geom.Triangle#getPoints
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point[]} O - [output,$return]
      *
@@ -174,7 +174,7 @@ var Triangle = new Class({
      * Returns a random point along the triangle.
      *
      * @method Phaser.Geom.Triangle#getRandomPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [point,$return]
      *
@@ -190,7 +190,7 @@ var Triangle = new Class({
      * Sets all three points of the triangle. Leaving out any coordinate sets it to be `0`.
      *
      * @method Phaser.Geom.Triangle#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x1=0] - `x` coordinate of the first point.
      * @param {number} [y1=0] - `y` coordinate of the first point.
@@ -237,7 +237,7 @@ var Triangle = new Class({
      * Returns a Line object that corresponds to Line A of this Triangle.
      *
      * @method Phaser.Geom.Triangle#getLineA
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Line} O - [line,$return]
      *
@@ -259,7 +259,7 @@ var Triangle = new Class({
      * Returns a Line object that corresponds to Line B of this Triangle.
      *
      * @method Phaser.Geom.Triangle#getLineB
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Line} O - [line,$return]
      *
@@ -281,7 +281,7 @@ var Triangle = new Class({
      * Returns a Line object that corresponds to Line C of this Triangle.
      *
      * @method Phaser.Geom.Triangle#getLineC
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Line} O - [line,$return]
      *
@@ -304,7 +304,7 @@ var Triangle = new Class({
      *
      * @name Phaser.Geom.Triangle#left
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     left: {
 
@@ -335,7 +335,7 @@ var Triangle = new Class({
      *
      * @name Phaser.Geom.Triangle#right
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     right: {
 
@@ -366,7 +366,7 @@ var Triangle = new Class({
      *
      * @name Phaser.Geom.Triangle#top
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     top: {
 
@@ -397,7 +397,7 @@ var Triangle = new Class({
      *
      * @name Phaser.Geom.Triangle#bottom
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     bottom: {
 

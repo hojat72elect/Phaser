@@ -4,7 +4,7 @@ var Point = require('../point/Point');
  * Returns a random Point from within the area of the given Triangle.
  *
  * @function Phaser.Geom.Triangle.Random
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

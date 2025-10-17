@@ -15,7 +15,7 @@ var MathSmoothStep = require('../math/SmoothStep');
  * each segment as an alternative to using more sophisticated or expensive interpolation techniques.
  *
  * @function Phaser.Actions.SmoothStep
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

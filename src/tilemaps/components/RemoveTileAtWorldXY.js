@@ -8,7 +8,7 @@ var point = new Vector2();
  * collision information.
  *
  * @function Phaser.Tilemaps.Components.RemoveTileAtWorldXY
- * @since 3.0.0
+ * 
  *
  * @param {number} worldX - The x coordinate, in pixels.
  * @param {number} worldY - The y coordinate, in pixels.

@@ -2,7 +2,7 @@
  * Provides methods used for getting and setting the Scroll Factor of a Game Object.
  *
  * @namespace Phaser.GameObjects.Components.ScrollFactor
- * @since 3.0.0
+ * 
  */
 
 var ScrollFactor = {
@@ -27,7 +27,7 @@ var ScrollFactor = {
      * @name Phaser.GameObjects.Components.ScrollFactor#scrollFactorX
      * @type {number}
      * @default 1
-     * @since 3.0.0
+     * 
      */
     scrollFactorX: 1,
 
@@ -51,7 +51,7 @@ var ScrollFactor = {
      * @name Phaser.GameObjects.Components.ScrollFactor#scrollFactorY
      * @type {number}
      * @default 1
-     * @since 3.0.0
+     * 
      */
     scrollFactorY: 1,
 
@@ -73,7 +73,7 @@ var ScrollFactor = {
      * them from physics bodies if not accounted for in your code.
      *
      * @method Phaser.GameObjects.Components.ScrollFactor#setScrollFactor
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal scroll factor of this Game Object.
      * @param {number} [y=x] - The vertical scroll factor of this Game Object. If not set it will use the `x` value.

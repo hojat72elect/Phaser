@@ -36,7 +36,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.WebGLPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -80,7 +80,7 @@ var BitmapMaskPipeline = new Class({
      * The framebuffer for the masked object is also bound for further use.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline#beginMask
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Display.Masks.BitmapMask} mask - The BitmapMask instance that called beginMask.
      * @param {Phaser.GameObjects.GameObject} maskedObject - GameObject masked by the mask GameObject.
@@ -97,7 +97,7 @@ var BitmapMaskPipeline = new Class({
      * masking effect is applied.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline#endMask
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Display.Masks.BitmapMask} mask - The BitmapMask instance that called endMask.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.

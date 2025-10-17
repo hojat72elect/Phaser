@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Arcade.ArcadeWorldConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [fps=60] - Sets {@link Phaser.Physics.Arcade.World#fps}.
  * @property {boolean} [fixedStep=true] - Sets {@link Phaser.Physics.Arcade.World#fixedStep}.

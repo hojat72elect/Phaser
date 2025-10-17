@@ -4,7 +4,7 @@ var Rectangle = require('../rectangle/Rectangle');
  * Returns the bounds of the Circle object.
  *
  * @function Phaser.Geom.Circle.GetBounds
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [out,$return]
  *

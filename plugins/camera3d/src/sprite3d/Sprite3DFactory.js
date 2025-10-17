@@ -13,7 +13,7 @@ var GameObjectFactory = require('../../../../src/gameobjects/GameObjectFactory')
  * Note: This method will only be available if the Sprite3D Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#sprite3D
- * @since 3.0.0
+ * 
  *
  * @param {number} x - The horizontal position of this Game Object.
  * @param {number} y - The vertical position of this Game Object.

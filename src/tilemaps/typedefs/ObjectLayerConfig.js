@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tilemaps.ObjectLayerConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} [name='object layer'] - The name of the Object Layer.
  * @property {number} [opacity=1] - The opacity of the layer, between 0 and 1.

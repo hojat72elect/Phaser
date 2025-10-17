@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.Bounce
- * @since 3.0.0
+ * 
  */
 var Bounce = {
 
@@ -17,7 +17,7 @@ var Bounce = {
      * Sets the impact physics bounce, or restitution, value.
      *
      * @method Phaser.Physics.Impact.Components.Bounce#setBounce
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - A value between 0 (no rebound) and 1 (full rebound)
      *
@@ -33,7 +33,7 @@ var Bounce = {
      * Sets the minimum velocity the body is allowed to be moving to be considered for rebound.
      *
      * @method Phaser.Physics.Impact.Components.Bounce#setMinBounceVelocity
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The minimum allowed velocity.
      *
@@ -51,7 +51,7 @@ var Bounce = {
      *
      * @name Phaser.Physics.Impact.Components.Bounce#bounce
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     bounce: {
 

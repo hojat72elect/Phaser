@@ -2,7 +2,7 @@
  * Returns a Random element from the array.
  *
  * @function Phaser.Utils.Array.GetRandom
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[]} - [array]

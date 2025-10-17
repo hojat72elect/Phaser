@@ -9,7 +9,7 @@ var PropertyValueInc = require('./PropertyValueInc');
  * To use this with a Group: `IncY(group.getChildren(), value, step)`
  *
  * @function Phaser.Actions.IncY
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

@@ -4,7 +4,7 @@ var CONST = require('./const');
  * Convert the given angle in radians, to the equivalent angle in degrees.
  *
  * @function Phaser.Math.RadToDeg
- * @since 3.0.0
+ * 
  *
  * @param {number} radians - The angle in radians to convert ot degrees.
  *

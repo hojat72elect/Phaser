@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Input.Keyboard.KeyCodes
  * @memberof Phaser.Input.Keyboard
- * @since 3.0.0
+ * 
  */
 
 var KeyCodes = {
@@ -13,7 +13,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.BACKSPACE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     BACKSPACE: 8,
 
@@ -22,7 +22,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.TAB
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     TAB: 9,
 
@@ -31,7 +31,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.ENTER
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     ENTER: 13,
 
@@ -40,7 +40,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.SHIFT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SHIFT: 16,
 
@@ -49,7 +49,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.CTRL
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     CTRL: 17,
 
@@ -58,7 +58,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.ALT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     ALT: 18,
 
@@ -67,7 +67,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.PAUSE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PAUSE: 19,
 
@@ -76,7 +76,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.CAPS_LOCK
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     CAPS_LOCK: 20,
 
@@ -85,7 +85,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.ESC
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     ESC: 27,
 
@@ -94,7 +94,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.SPACE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SPACE: 32,
 
@@ -103,7 +103,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.PAGE_UP
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PAGE_UP: 33,
 
@@ -112,7 +112,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.PAGE_DOWN
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PAGE_DOWN: 34,
 
@@ -121,7 +121,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.END
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     END: 35,
 
@@ -130,7 +130,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.HOME
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     HOME: 36,
 
@@ -139,7 +139,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.LEFT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT: 37,
 
@@ -148,7 +148,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.UP
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     UP: 38,
 
@@ -157,7 +157,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.RIGHT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT: 39,
 
@@ -166,7 +166,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.DOWN
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DOWN: 40,
 
@@ -175,7 +175,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.PRINT_SCREEN
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PRINT_SCREEN: 42,
 
@@ -184,7 +184,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.INSERT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     INSERT: 45,
 
@@ -193,7 +193,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.DELETE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DELETE: 46,
 
@@ -202,7 +202,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.ZERO
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     ZERO: 48,
 
@@ -211,7 +211,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.ONE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     ONE: 49,
 
@@ -220,7 +220,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.TWO
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     TWO: 50,
 
@@ -229,7 +229,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.THREE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     THREE: 51,
 
@@ -238,7 +238,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.FOUR
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FOUR: 52,
 
@@ -247,7 +247,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.FIVE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FIVE: 53,
 
@@ -256,7 +256,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.SIX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SIX: 54,
 
@@ -265,7 +265,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.SEVEN
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SEVEN: 55,
 
@@ -274,7 +274,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.EIGHT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     EIGHT: 56,
 
@@ -283,7 +283,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NINE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NINE: 57,
 
@@ -292,7 +292,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_ZERO
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_ZERO: 96,
 
@@ -301,7 +301,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_ONE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_ONE: 97,
 
@@ -310,7 +310,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_TWO
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_TWO: 98,
 
@@ -319,7 +319,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_THREE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_THREE: 99,
 
@@ -328,7 +328,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_FOUR
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_FOUR: 100,
 
@@ -337,7 +337,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_FIVE: 101,
 
@@ -346,7 +346,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_SIX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_SIX: 102,
 
@@ -355,7 +355,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_SEVEN: 103,
 
@@ -364,7 +364,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_EIGHT
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_EIGHT: 104,
 
@@ -373,7 +373,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_NINE
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NUMPAD_NINE: 105,
 
@@ -400,7 +400,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.A
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     A: 65,
 
@@ -409,7 +409,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.B
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     B: 66,
 
@@ -418,7 +418,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.C
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     C: 67,
 
@@ -427,7 +427,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.D
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     D: 68,
 
@@ -436,7 +436,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.E
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     E: 69,
 
@@ -445,7 +445,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F: 70,
 
@@ -454,7 +454,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.G
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     G: 71,
 
@@ -463,7 +463,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.H
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     H: 72,
 
@@ -472,7 +472,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.I
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     I: 73,
 
@@ -481,7 +481,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.J
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     J: 74,
 
@@ -490,7 +490,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.K
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     K: 75,
 
@@ -499,7 +499,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.L
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     L: 76,
 
@@ -508,7 +508,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.M
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     M: 77,
 
@@ -517,7 +517,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.N
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     N: 78,
 
@@ -526,7 +526,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.O
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     O: 79,
 
@@ -535,7 +535,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.P
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     P: 80,
 
@@ -544,7 +544,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.Q
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     Q: 81,
 
@@ -553,7 +553,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.R
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     R: 82,
 
@@ -562,7 +562,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.S
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     S: 83,
 
@@ -571,7 +571,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.T
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     T: 84,
 
@@ -580,7 +580,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.U
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     U: 85,
 
@@ -589,7 +589,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.V
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     V: 86,
 
@@ -598,7 +598,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.W
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     W: 87,
 
@@ -607,7 +607,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.X
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     X: 88,
 
@@ -616,7 +616,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.Y
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     Y: 89,
 
@@ -625,7 +625,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.Z
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     Z: 90,
 
@@ -634,7 +634,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F1
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F1: 112,
 
@@ -643,7 +643,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F2
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F2: 113,
 
@@ -652,7 +652,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F3
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F3: 114,
 
@@ -661,7 +661,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F4
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F4: 115,
 
@@ -670,7 +670,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F5
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F5: 116,
 
@@ -679,7 +679,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F6
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F6: 117,
 
@@ -688,7 +688,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F7
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F7: 118,
 
@@ -697,7 +697,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F8
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F8: 119,
 
@@ -706,7 +706,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F9
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F9: 120,
 
@@ -715,7 +715,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F10
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F10: 121,
 
@@ -724,7 +724,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F11
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F11: 122,
 
@@ -733,7 +733,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.F12
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     F12: 123,
 
@@ -742,7 +742,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.SEMICOLON
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SEMICOLON: 186,
 
@@ -751,7 +751,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.PLUS
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PLUS: 187,
 
@@ -760,7 +760,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.COMMA
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     COMMA: 188,
 
@@ -769,7 +769,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.MINUS
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     MINUS: 189,
 
@@ -778,7 +778,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.PERIOD
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PERIOD: 190,
 
@@ -787,7 +787,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.FORWARD_SLASH
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FORWARD_SLASH: 191,
 
@@ -796,7 +796,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.BACK_SLASH
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     BACK_SLASH: 220,
 
@@ -805,7 +805,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.QUOTES
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     QUOTES: 222,
 
@@ -814,7 +814,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.BACKTICK
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     BACKTICK: 192,
 
@@ -823,7 +823,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.OPEN_BRACKET
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     OPEN_BRACKET: 219,
 
@@ -832,7 +832,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.CLOSED_BRACKET
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     CLOSED_BRACKET: 221,
 
@@ -841,7 +841,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.SEMICOLON_FIREFOX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SEMICOLON_FIREFOX: 59,
 
@@ -850,7 +850,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.COLON
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     COLON: 58,
 
@@ -859,7 +859,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.COMMA_FIREFOX_WINDOWS
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     COMMA_FIREFOX_WINDOWS: 60,
 
@@ -868,7 +868,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.COMMA_FIREFOX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     COMMA_FIREFOX: 62,
 
@@ -877,7 +877,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.BRACKET_RIGHT_FIREFOX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     BRACKET_RIGHT_FIREFOX: 174,
 
@@ -886,7 +886,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.BRACKET_LEFT_FIREFOX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     BRACKET_LEFT_FIREFOX: 175
 };

@@ -4,7 +4,7 @@
  * If you wish to pass a `Phaser.GameObjects.Ellipse` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.PlaceOnEllipse
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

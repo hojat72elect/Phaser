@@ -2,7 +2,7 @@
  * Check if a given value is an even number.
  *
  * @function Phaser.Math.IsEven
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The number to perform the check with.
  *

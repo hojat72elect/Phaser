@@ -9,7 +9,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  * To use this with a Group: `SetScaleY(group.getChildren(), value, step)`
  *
  * @function Phaser.Actions.SetScaleY
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

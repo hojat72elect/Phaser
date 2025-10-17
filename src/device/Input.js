@@ -7,7 +7,7 @@ var Browser = require('./Browser');
  * via `this.sys.game.device.input` from within any Scene.
  *
  * @typedef {object} Phaser.Device.Input
- * @since 3.0.0
+ * 
  *
  * @property {?string} wheelType - The newest type of Wheel/Scroll event supported: 'wheel', 'mousewheel', 'DOMMouseScroll'
  * @property {boolean} gamepads - Is navigator.getGamepads available?

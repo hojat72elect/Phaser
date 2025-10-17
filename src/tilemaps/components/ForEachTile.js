@@ -13,7 +13,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  * callback. Similar to Array.prototype.forEach in vanilla JS.
  *
  * @function Phaser.Tilemaps.Components.ForEachTile
- * @since 3.0.0
+ * 
  *
  * @param {EachTileCallback} callback - The callback. Each tile in the given area will be passed to this callback as the first and only parameter.
  * @param {object} context - The context under which the callback should be run.

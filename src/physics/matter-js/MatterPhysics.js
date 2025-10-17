@@ -82,7 +82,7 @@ Common.setDecomp(require('./poly-decomp'));
  * @class MatterPhysics
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Phaser Scene that owns this Matter Physics instance.
  */
@@ -96,7 +96,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -105,7 +105,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -114,7 +114,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#config
              * @type {Phaser.Types.Physics.Matter.MatterWorldConfig}
-             * @since 3.0.0
+             * 
              */
             this.config = this.getConfig();
 
@@ -124,7 +124,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#world
              * @type {Phaser.Physics.Matter.World}
-             * @since 3.0.0
+             * 
              */
             this.world;
 
@@ -138,7 +138,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#add
              * @type {Phaser.Physics.Matter.Factory}
-             * @since 3.0.0
+             * 
              */
             this.add;
 
@@ -430,7 +430,7 @@ var MatterPhysics = new Class({
      * This internal method is called when this class starts and retrieves the final Matter World Config.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#getConfig
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.Physics.Matter.MatterWorldConfig} The Matter World Config.
      */
@@ -453,7 +453,7 @@ var MatterPhysics = new Class({
      *
      * @method Phaser.Physics.Matter.MatterPhysics#pause
      * @fires Phaser.Physics.Matter.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Matter.World} The Matter World object.
      */
@@ -465,7 +465,7 @@ var MatterPhysics = new Class({
      * Resumes this Matter World instance from a paused state and sets `enabled` to `true`.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#resume
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Matter.World} The Matter World object.
      */
@@ -1229,7 +1229,7 @@ var MatterPhysics = new Class({
      *
      * @method Phaser.Physics.Matter.MatterPhysics#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var eventEmitter = this.systems.events;
@@ -1259,7 +1259,7 @@ var MatterPhysics = new Class({
      *
      * @method Phaser.Physics.Matter.MatterPhysics#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

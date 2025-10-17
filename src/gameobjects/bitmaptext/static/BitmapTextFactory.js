@@ -27,7 +27,7 @@ var GameObjectFactory = require('../../GameObjectFactory');
  * Note: This method will only be available if the Bitmap Text Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#bitmapText
- * @since 3.0.0
+ * 
  *
  * @param {number} x - The x position of the Game Object.
  * @param {number} y - The y position of the Game Object.

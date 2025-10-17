@@ -15,7 +15,7 @@ var SceneEvents = require('../scene/events');
  * @extends Phaser.Structs.ProcessQueue.<Phaser.GameObjects.GameObject>
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene that the Update List belongs to.
  */
@@ -36,7 +36,7 @@ var UpdateList = new Class({
              *
              * @name Phaser.GameObjects.UpdateList#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -45,7 +45,7 @@ var UpdateList = new Class({
              *
              * @name Phaser.GameObjects.UpdateList#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -86,7 +86,7 @@ var UpdateList = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
 
             scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
@@ -152,7 +152,7 @@ var UpdateList = new Class({
      * We need to kill and reset all internal properties as well as stop listening to Scene events.
      *
      * @method Phaser.GameObjects.UpdateList#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var i = this._active.length;
@@ -194,7 +194,7 @@ var UpdateList = new Class({
      * We need to shutdown and then kill off all external references.
      *
      * @method Phaser.GameObjects.UpdateList#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();
@@ -211,7 +211,7 @@ var UpdateList = new Class({
      * The item is added to the pending list and made active in the next update.
      *
      * @method Phaser.GameObjects.UpdateList#add
-     * @since 3.0.0
+     * 
      *
      * @param {*} item - The item to add to the queue.
      *
@@ -224,7 +224,7 @@ var UpdateList = new Class({
      * The item is added to the pending destroy and fully removed in the next update.
      *
      * @method Phaser.GameObjects.UpdateList#remove
-     * @since 3.0.0
+     * 
      *
      * @param {*} item - The item to be removed from the queue.
      *
@@ -249,7 +249,7 @@ var UpdateList = new Class({
      * active state. Finally, it will return a list of active items for further processing.
      *
      * @method Phaser.GameObjects.UpdateList#update
-     * @since 3.0.0
+     * 
      *
      * @return {Array.<*>} A list of active items.
      */
@@ -261,7 +261,7 @@ var UpdateList = new Class({
      * Therefore, be careful to not modify this array outside of the ProcessQueue.
      *
      * @method Phaser.GameObjects.UpdateList#getActive
-     * @since 3.0.0
+     * 
      *
      * @return {Array.<*>} A list of active items.
      */

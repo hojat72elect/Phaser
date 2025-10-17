@@ -19,7 +19,7 @@ var Vector2 = require('../../math/Vector2');
  * @extends Phaser.GameObjects.Image
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Matter.Components.Bounce
  * @extends Phaser.Physics.Matter.Components.Collision
@@ -100,7 +100,7 @@ var MatterImage = new Class({
              *
              * @name Phaser.Physics.Matter.Image#world
              * @type {Phaser.Physics.Matter.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -110,7 +110,7 @@ var MatterImage = new Class({
              * @name Phaser.Physics.Matter.Image#_tempVec2
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._tempVec2 = new Vector2(x, y);
 

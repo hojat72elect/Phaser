@@ -9,7 +9,7 @@ var ProcessY = require('./ProcessY');
  * The bodies won't be separated if there is no vertical overlap between them, if they are static, or if either one uses custom logic for its separation.
  *
  * @function Phaser.Physics.Arcade.SeparateY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.Body} body1 - The first Body to separate.
  * @param {Phaser.Physics.Arcade.Body} body2 - The second Body to separate.

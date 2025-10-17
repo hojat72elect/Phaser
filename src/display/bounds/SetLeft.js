@@ -2,7 +2,7 @@
  * Positions the Game Object so that the left of its bounds aligns with the given coordinate.
  *
  * @function Phaser.Display.Bounds.SetLeft
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject} G - [gameObject,$return]
  *

@@ -2,7 +2,7 @@
  * Returns the top coordinate from the bounds of the Game Object.
  *
  * @function Phaser.Display.Bounds.GetTop
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to get the bounds value from.
  *

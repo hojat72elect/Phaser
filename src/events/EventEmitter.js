@@ -9,7 +9,7 @@ var PluginCache = require('../plugins/PluginCache');
  * @class EventEmitter
  * @memberof Phaser.Events
  * @constructor
- * @since 3.0.0
+ * 
  */
 var EventEmitter = new Class({
 
@@ -25,7 +25,7 @@ var EventEmitter = new Class({
      * Removes all listeners.
      *
      * @method Phaser.Events.EventEmitter#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.removeAllListeners();
@@ -35,7 +35,7 @@ var EventEmitter = new Class({
      * Removes all listeners.
      *
      * @method Phaser.Events.EventEmitter#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.removeAllListeners();
@@ -47,7 +47,7 @@ var EventEmitter = new Class({
  * Return an array listing the events for which the emitter has registered listeners.
  *
  * @method Phaser.Events.EventEmitter#eventNames
- * @since 3.0.0
+ * 
  *
  * @return {Array.<string|symbol>}
  */
@@ -56,7 +56,7 @@ var EventEmitter = new Class({
  * Return the listeners registered for a given event.
  *
  * @method Phaser.Events.EventEmitter#listeners
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  *
@@ -67,7 +67,7 @@ var EventEmitter = new Class({
  * Return the number of listeners listening to a given event.
  *
  * @method Phaser.Events.EventEmitter#listenerCount
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  *
@@ -78,7 +78,7 @@ var EventEmitter = new Class({
  * Calls each of the listeners registered for a given event.
  *
  * @method Phaser.Events.EventEmitter#emit
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  * @param {...*} [args] - Additional arguments that will be passed to the event handler.
@@ -90,7 +90,7 @@ var EventEmitter = new Class({
  * Add a listener for a given event.
  *
  * @method Phaser.Events.EventEmitter#on
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  * @param {function} fn - The listener function.
@@ -103,7 +103,7 @@ var EventEmitter = new Class({
  * Add a listener for a given event.
  *
  * @method Phaser.Events.EventEmitter#addListener
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  * @param {function} fn - The listener function.
@@ -116,7 +116,7 @@ var EventEmitter = new Class({
  * Add a one-time listener for a given event.
  *
  * @method Phaser.Events.EventEmitter#once
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  * @param {function} fn - The listener function.
@@ -129,7 +129,7 @@ var EventEmitter = new Class({
  * Remove the listeners of a given event.
  *
  * @method Phaser.Events.EventEmitter#removeListener
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  * @param {function} [fn] - Only remove the listeners that match this function.
@@ -143,7 +143,7 @@ var EventEmitter = new Class({
  * Remove the listeners of a given event.
  *
  * @method Phaser.Events.EventEmitter#off
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} event - The event name.
  * @param {function} [fn] - Only remove the listeners that match this function.
@@ -157,7 +157,7 @@ var EventEmitter = new Class({
  * Remove all listeners, or those of the specified event.
  *
  * @method Phaser.Events.EventEmitter#removeAllListeners
- * @since 3.0.0
+ * 
  *
  * @param {(string|symbol)} [event] - The event name.
  *

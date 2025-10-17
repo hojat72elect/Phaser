@@ -2,7 +2,7 @@
  * Copy the values of one Rectangle to a destination Rectangle.
  *
  * @function Phaser.Geom.Rectangle.CopyFrom
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [dest,$return]
  *

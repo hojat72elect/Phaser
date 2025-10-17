@@ -4,7 +4,7 @@
  * The `start` and `end` points are rounded before this runs as the algorithm works on integers.
  *
  * @function Phaser.Geom.Line.BresenhamPoints
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line.
  * @param {number} [stepRate=1] - The optional step rate for the points on the line.

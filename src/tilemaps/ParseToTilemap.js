@@ -10,7 +10,7 @@ var Tilemap = require('./Tilemap');
  * an empty map, you should specify tileWidth, tileHeight, width & height.
  *
  * @function Phaser.Tilemaps.ParseToTilemap
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Tilemap belongs.
  * @param {string} [key] - The key in the Phaser cache that corresponds to the loaded tilemap data.

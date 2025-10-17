@@ -7,7 +7,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  * To use this with a Group: `SetBlendMode(group.getChildren(), value)`
  *
  * @function Phaser.Actions.SetBlendMode
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

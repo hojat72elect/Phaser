@@ -14,7 +14,7 @@ var SceneEvents = require('../scene/events');
  * @class GameObjectCreator
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object Factory belongs.
  */
@@ -29,7 +29,7 @@ var GameObjectCreator = new Class({
              * @name Phaser.GameObjects.GameObjectCreator#scene
              * @type {Phaser.Scene}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -39,7 +39,7 @@ var GameObjectCreator = new Class({
              * @name Phaser.GameObjects.GameObjectCreator#systems
              * @type {Phaser.Scenes.Systems}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -59,7 +59,7 @@ var GameObjectCreator = new Class({
              * @name Phaser.GameObjects.GameObjectCreator#displayList
              * @type {Phaser.GameObjects.DisplayList}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.displayList;
 
@@ -69,7 +69,7 @@ var GameObjectCreator = new Class({
              * @name Phaser.GameObjects.GameObjectCreator#updateList
              * @type {Phaser.GameObjects.UpdateList}
              * @protected
-             * @since 3.0.0
+             * 
              */
             this.updateList;
 
@@ -111,7 +111,7 @@ var GameObjectCreator = new Class({
      *
      * @method Phaser.GameObjects.GameObjectCreator#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.events.off(SceneEvents.SHUTDOWN, this.shutdown, this);
@@ -123,7 +123,7 @@ var GameObjectCreator = new Class({
      *
      * @method Phaser.GameObjects.GameObjectCreator#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();
@@ -148,7 +148,7 @@ var GameObjectCreator = new Class({
  *
  * @method Phaser.GameObjects.GameObjectCreator.register
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {string} factoryType - The key of the factory that you will use to call to Phaser.Scene.make[ factoryType ] method.
  * @param {function} factoryFunction - The constructor function to be called when you invoke to the Phaser.Scene.make method.
@@ -167,7 +167,7 @@ GameObjectCreator.register = function (factoryType, factoryFunction) {
  *
  * @method Phaser.GameObjects.GameObjectCreator.remove
  * @static
- * @since 3.0.0
+ * 
  *
  * @param {string} factoryType - The key of the factory that you want to remove from the GameObjectCreator.
  */

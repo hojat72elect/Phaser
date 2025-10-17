@@ -6,7 +6,7 @@ var CenterOn = require('./CenterOn');
  * The center of the Rectangle stays the same. The amounts are added to each side, so the actual increase in width or height is two times bigger than the respective argument.
  *
  * @function Phaser.Geom.Rectangle.Inflate
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [rect,$return]
  *

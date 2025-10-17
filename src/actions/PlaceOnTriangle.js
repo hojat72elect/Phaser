@@ -6,7 +6,7 @@ var BresenhamPoints = require('../geom/line/BresenhamPoints');
  * If you wish to pass a `Phaser.GameObjects.Triangle` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.PlaceOnTriangle
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

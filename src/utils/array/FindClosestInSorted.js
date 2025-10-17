@@ -5,7 +5,7 @@
  * and will check for the closest value of those to the given number.
  *
  * @function Phaser.Utils.Array.FindClosestInSorted
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to search for in the array.
  * @param {array} array - The array to search, which must be sorted.

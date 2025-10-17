@@ -16,7 +16,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  * true. Similar to Array.prototype.find in vanilla JS.
  *
  * @function Phaser.Tilemaps.Components.FindTile
- * @since 3.0.0
+ * 
  *
  * @param {FindTileCallback} callback - The callback. Each tile in the given area will be passed to this callback as the first and only parameter.
  * @param {object} context - The context under which the callback should be run.

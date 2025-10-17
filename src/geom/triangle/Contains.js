@@ -4,7 +4,7 @@
  * Checks if a point (as a pair of coordinates) is inside a Triangle's bounds.
  *
  * @function Phaser.Geom.Triangle.Contains
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Triangle} triangle - The Triangle to check.
  * @param {number} x - The X coordinate of the point to check.

@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tilemaps.TilemapConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} [key] - The key in the Phaser cache that corresponds to the loaded tilemap data.
  * @property {number[][]} [data] - Instead of loading from the cache, you can also load directly from a 2D array of tile indexes.

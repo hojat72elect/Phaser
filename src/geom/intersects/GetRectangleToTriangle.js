@@ -13,7 +13,7 @@ var GetLineToRectangle = require('./GetLineToRectangle');
  * and returns the intersection points as a Point object array.
  *
  * @function Phaser.Geom.Intersects.GetRectangleToTriangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - Rectangle object to test.
  * @param {Phaser.Geom.Triangle} triangle - Triangle object to test.

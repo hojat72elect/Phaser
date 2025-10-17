@@ -9,7 +9,7 @@ var tempMatrix = new TransformMatrix();
  * This method should not be called directly. It is a utility function of the Render module.
  *
  * @method Phaser.GameObjects.Blitter#renderWebGL
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the current active WebGL renderer.

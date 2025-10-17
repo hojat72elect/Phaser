@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Actions.GridAlignConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [width=-1] - The width of the grid in items (not pixels). -1 means lay all items out horizontally, regardless of quantity.
  *                                  If both this value and height are set to -1 then this value overrides it and the `height` value is ignored.

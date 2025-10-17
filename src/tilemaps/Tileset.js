@@ -9,7 +9,7 @@ var Vector2 = require('../math/Vector2');
  * @class Tileset
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the tileset in the map data.
  * @param {number} firstgid - The first tile index this tileset contains.
@@ -51,7 +51,7 @@ var Tileset = new Class({
              *
              * @name Phaser.Tilemaps.Tileset#name
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.name = name;
 
@@ -60,7 +60,7 @@ var Tileset = new Class({
              *
              * @name Phaser.Tilemaps.Tileset#firstgid
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.firstgid = firstgid;
 
@@ -70,7 +70,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#tileWidth
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.tileWidth = tileWidth;
 
@@ -80,7 +80,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#tileHeight
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.tileHeight = tileHeight;
 
@@ -90,7 +90,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#tileMargin
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.tileMargin = tileMargin;
 
@@ -100,7 +100,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#tileSpacing
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.tileSpacing = tileSpacing;
 
@@ -110,7 +110,7 @@ var Tileset = new Class({
              *
              * @name Phaser.Tilemaps.Tileset#tileProperties
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.tileProperties = tileProperties;
 
@@ -120,7 +120,7 @@ var Tileset = new Class({
              *
              * @name Phaser.Tilemaps.Tileset#tileData
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.tileData = tileData;
 
@@ -144,7 +144,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#image
              * @type {?Phaser.Textures.Texture}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.image = null;
 
@@ -164,7 +164,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#rows
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.rows = 0;
 
@@ -174,7 +174,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#columns
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.columns = 0;
 
@@ -184,7 +184,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#total
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.total = 0;
 
@@ -195,7 +195,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#texCoordinates
              * @type {object[]}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.texCoordinates = [];
         },
@@ -205,7 +205,7 @@ var Tileset = new Class({
      * contained in this Tileset. This is typically defined in Tiled under the Tileset editor.
      *
      * @method Phaser.Tilemaps.Tileset#getTileProperties
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileIndex - The unique id of the tile across all tilesets in the map.
      *
@@ -225,7 +225,7 @@ var Tileset = new Class({
      * info and terrain mapping.
      *
      * @method Phaser.Tilemaps.Tileset#getTileData
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileIndex - The unique id of the tile across all tilesets in the map.
      *
@@ -244,7 +244,7 @@ var Tileset = new Class({
      * contained in this Tileset. This is typically defined within Tiled's tileset collision editor.
      *
      * @method Phaser.Tilemaps.Tileset#getTileCollisionGroup
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileIndex - The unique id of the tile across all tilesets in the map.
      *
@@ -260,7 +260,7 @@ var Tileset = new Class({
      * Returns true if and only if this Tileset contains the given tile index.
      *
      * @method Phaser.Tilemaps.Tileset#containsTileIndex
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileIndex - The unique id of the tile across all tilesets in the map.
      *
@@ -278,7 +278,7 @@ var Tileset = new Class({
      * Returns null if tile index is not contained in this Tileset.
      *
      * @method Phaser.Tilemaps.Tileset#getTileTextureCoordinates
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileIndex - The unique id of the tile across all tilesets in the map.
      *
@@ -297,7 +297,7 @@ var Tileset = new Class({
      * Sets the image associated with this Tileset and updates the tile data (rows, columns, etc.).
      *
      * @method Phaser.Tilemaps.Tileset#setImage
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Textures.Texture} texture - The image that contains the tiles.
      *
@@ -325,7 +325,7 @@ var Tileset = new Class({
      * Sets the tile width & height and updates the tile data (rows, columns, etc.).
      *
      * @method Phaser.Tilemaps.Tileset#setTileSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} [tileWidth] - The width of a tile in pixels.
      * @param {number} [tileHeight] - The height of a tile in pixels.
@@ -351,7 +351,7 @@ var Tileset = new Class({
      * Sets the tile margin and spacing and updates the tile data (rows, columns, etc.).
      *
      * @method Phaser.Tilemaps.Tileset#setSpacing
-     * @since 3.0.0
+     * 
      *
      * @param {number} [margin] - The margin around the tiles in the sheet (in pixels).
      * @param {number} [spacing] - The spacing between the tiles in the sheet (in pixels).
@@ -377,7 +377,7 @@ var Tileset = new Class({
      * Updates tile texture coordinates and tileset data.
      *
      * @method Phaser.Tilemaps.Tileset#updateTileData
-     * @since 3.0.0
+     * 
      *
      * @param {number} imageWidth - The (expected) width of the image to slice.
      * @param {number} imageHeight - The (expected) height of the image to slice.

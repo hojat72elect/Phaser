@@ -5,7 +5,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.PI2
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PI2: Math.PI * 2,
 
@@ -18,7 +18,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.TAU
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     TAU: Math.PI * 0.5,
 
@@ -27,7 +27,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.EPSILON
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     EPSILON: 1.0e-6,
 
@@ -36,7 +36,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.DEG_TO_RAD
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DEG_TO_RAD: Math.PI / 180,
 
@@ -45,7 +45,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.RAD_TO_DEG
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RAD_TO_DEG: 180 / Math.PI,
 
@@ -55,7 +55,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.RND
      * @type {Phaser.Math.RandomDataGenerator}
-     * @since 3.0.0
+     * 
      */
     RND: null,
 

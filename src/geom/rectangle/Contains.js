@@ -2,7 +2,7 @@
  * Checks if a given point is inside a Rectangle's bounds.
  *
  * @function Phaser.Geom.Rectangle.Contains
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The Rectangle to check.
  * @param {number} x - The X coordinate of the point to check.

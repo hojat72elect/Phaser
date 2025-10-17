@@ -23,7 +23,7 @@ var Utils = require('../../renderer/webgl/Utils');
  * @class LightsManager
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  */
 var LightsManager = new Class({
 
@@ -36,7 +36,7 @@ var LightsManager = new Class({
              * @name Phaser.GameObjects.LightsManager#lights
              * @type {Phaser.GameObjects.Light[]}
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.lights = [];
 
@@ -55,7 +55,7 @@ var LightsManager = new Class({
              * @name Phaser.GameObjects.LightsManager#active
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.active = false;
 
@@ -130,7 +130,7 @@ var LightsManager = new Class({
      * Enable the Lights Manager.
      *
      * @method Phaser.GameObjects.LightsManager#enable
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Lights Manager instance.
      */
@@ -148,7 +148,7 @@ var LightsManager = new Class({
      * Disable the Lights Manager.
      *
      * @method Phaser.GameObjects.LightsManager#disable
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Lights Manager instance.
      */
@@ -213,7 +213,7 @@ var LightsManager = new Class({
      * Set the ambient light color.
      *
      * @method Phaser.GameObjects.LightsManager#setAmbientColor
-     * @since 3.0.0
+     * 
      *
      * @param {number} rgb - The integer RGB color of the ambient light.
      *
@@ -231,7 +231,7 @@ var LightsManager = new Class({
      * Returns the maximum number of Lights allowed to appear at once.
      *
      * @method Phaser.GameObjects.LightsManager#getMaxVisibleLights
-     * @since 3.0.0
+     * 
      *
      * @return {number} The maximum number of Lights allowed to appear at once.
      */
@@ -243,7 +243,7 @@ var LightsManager = new Class({
      * Get the number of Lights managed by this Lights Manager.
      *
      * @method Phaser.GameObjects.LightsManager#getLightCount
-     * @since 3.0.0
+     * 
      *
      * @return {number} The number of Lights managed by this Lights Manager.
      */
@@ -255,7 +255,7 @@ var LightsManager = new Class({
      * Add a Light.
      *
      * @method Phaser.GameObjects.LightsManager#addLight
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The horizontal position of the Light.
      * @param {number} [y=0] - The vertical position of the Light.
@@ -295,7 +295,7 @@ var LightsManager = new Class({
      * Remove a Light.
      *
      * @method Phaser.GameObjects.LightsManager#removeLight
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Light} light - The Light to remove.
      *
@@ -318,7 +318,7 @@ var LightsManager = new Class({
      * culled Lights.
      *
      * @method Phaser.GameObjects.LightsManager#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.lights.length = 0;
@@ -330,7 +330,7 @@ var LightsManager = new Class({
      * Cleans up all references by calling {@link Phaser.GameObjects.LightsManager#shutdown}.
      *
      * @method Phaser.GameObjects.LightsManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

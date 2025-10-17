@@ -2,7 +2,7 @@
  * A 16 color palette inspired by Japanese computers like the MSX.
  *
  * @name Phaser.Create.Palettes.MSX
- * @since 3.0.0
+ * 
  *
  * @type {Phaser.Types.Create.Palette}
  */

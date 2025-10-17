@@ -5,7 +5,7 @@ var GetValue = require('../../utils/object/GetValue');
  * and create a BitmapText object using a fixed-width retro font.
  *
  * @function Phaser.GameObjects.RetroFont.Parse
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Phaser Scene.
  * @param {Phaser.Types.GameObjects.BitmapText.RetroFontConfig} config - The font configuration object.

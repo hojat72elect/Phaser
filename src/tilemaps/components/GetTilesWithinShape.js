@@ -20,7 +20,7 @@ var pointEnd = new Vector2();
  * **Note:** This method currently only works with orthogonal tilemap layers.
  *
  * @function Phaser.Tilemaps.Components.GetTilesWithinShape
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Geom.Circle|Phaser.Geom.Line|Phaser.Geom.Rectangle|Phaser.Geom.Triangle)} shape - A shape in world (pixel) coordinates
  * @param {Phaser.Types.Tilemaps.FilteringOptions} filteringOptions - Optional filters to apply when getting the tiles.

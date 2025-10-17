@@ -27,7 +27,7 @@ var TransformXY = require('../math/TransformXY');
  * @class InputManager
  * @memberof Phaser.Input
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - The Game instance that owns the Input Manager.
  * @param {object} config - The Input Configuration object, as set in the Game Config.
@@ -44,7 +44,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#game
              * @type {Phaser.Game}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -63,7 +63,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#canvas
              * @type {HTMLCanvasElement}
-             * @since 3.0.0
+             * 
              */
             this.canvas;
 
@@ -72,7 +72,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#config
              * @type {Phaser.Core.Config}
-             * @since 3.0.0
+             * 
              */
             this.config = config;
 
@@ -82,7 +82,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#enabled
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.enabled = true;
 
@@ -91,7 +91,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events = new EventEmitter();
 
@@ -131,7 +131,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#mouse
              * @type {?Phaser.Input.Mouse.MouseManager}
-             * @since 3.0.0
+             * 
              */
             this.mouse = (config.inputMouse) ? new Mouse(this) : null;
 
@@ -140,7 +140,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#touch
              * @type {Phaser.Input.Touch.TouchManager}
-             * @since 3.0.0
+             * 
              */
             this.touch = (config.inputTouch) ? new Touch(this) : null;
 
@@ -199,7 +199,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#activePointer
              * @type {Phaser.Input.Pointer}
-             * @since 3.0.0
+             * 
              */
             this.activePointer = this.pointers[0];
 
@@ -212,7 +212,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#globalTopOnly
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.globalTopOnly = true;
 
@@ -233,7 +233,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#_tempPoint
              * @type {{x:number, y:number}}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._tempPoint = {x: 0, y: 0};
 
@@ -244,7 +244,7 @@ var InputManager = new Class({
              * @type {array}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._tempHitTest = [];
 
@@ -298,7 +298,7 @@ var InputManager = new Class({
      * @method Phaser.Input.InputManager#boot
      * @protected
      * @fires Phaser.Input.Events#MANAGER_BOOT
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         var game = this.game;
@@ -821,7 +821,7 @@ var InputManager = new Class({
      * This method is called automatically by InputPlugin.hitTestPointer and doesn't usually need to be invoked directly.
      *
      * @method Phaser.Input.InputManager#hitTest
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to test against.
      * @param {array} gameObjects - An array of interactive Game Objects to check.
@@ -892,7 +892,7 @@ var InputManager = new Class({
      * If the coordinates are within the hit area they are set into the Game Objects Input `localX` and `localY` properties.
      *
      * @method Phaser.Input.InputManager#pointWithinHitArea
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The interactive Game Object to check against.
      * @param {number} x - The translated x coordinate for the hit test.
@@ -925,7 +925,7 @@ var InputManager = new Class({
      * If the coordinates are within the hit area they are set into the Interactive Objects Input `localX` and `localY` properties.
      *
      * @method Phaser.Input.InputManager#pointWithinInteractiveObject
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Input.InteractiveObject} object - The Interactive Object to check against.
      * @param {number} x - The translated x coordinate for the hit test.
@@ -990,7 +990,7 @@ var InputManager = new Class({
      * There is no way to recover from doing this.
      *
      * @method Phaser.Input.InputManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.events.removeAllListeners();

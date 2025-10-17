@@ -15,7 +15,7 @@ var LoaderEvents = require('../events');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.JSONFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -153,7 +153,7 @@ var AnimationJSONFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#animation
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.JSONFileConfig|Phaser.Types.Loader.FileTypes.JSONFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".

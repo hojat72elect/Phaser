@@ -2,7 +2,7 @@
  * Calculate the width of the given line.
  *
  * @function Phaser.Geom.Line.Width
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line to calculate the width of.
  *

@@ -289,7 +289,7 @@ var TilemapLayer = new Class({
              * @type {number}
              * @default 0
              * @readOnly
-             * @since 3.0.0
+             * 
              */
 
             /**
@@ -299,7 +299,7 @@ var TilemapLayer = new Class({
              * @type {number}
              * @default 0
              * @readOnly
-             * @since 3.0.0
+             * 
              */
 
             /**
@@ -309,7 +309,7 @@ var TilemapLayer = new Class({
              * @type {number}
              * @default 0
              * @readOnly
-             * @since 3.0.0
+             * 
              */
 
             /**
@@ -319,7 +319,7 @@ var TilemapLayer = new Class({
              * @type {number}
              * @default 0
              * @readOnly
-             * @since 3.0.0
+             * 
              */
 
             this.setTilesets(tileset);

@@ -20,7 +20,7 @@ var TweenFrameData = require('./TweenFrameData');
  * @memberof Phaser.Tweens
  * @extends Phaser.Tweens.BaseTween
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Tweens.TweenManager} parent - A reference to the Tween Manager that owns this Tween.
  * @param {object[]} targets - An array of targets to be tweened. This array should not be manipulated outside of this Tween.
@@ -41,7 +41,7 @@ var Tween = new Class({
              *
              * @name Phaser.Tweens.Tween#targets
              * @type {object[]}
-             * @since 3.0.0
+             * 
              */
             this.targets = targets;
 
@@ -54,7 +54,7 @@ var Tween = new Class({
              *
              * @name Phaser.Tweens.Tween#totalTargets
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.totalTargets = targets.length;
 
@@ -229,7 +229,7 @@ var Tween = new Class({
      * If this Tween has been destroyed, it will return `null`.
      *
      * @method Phaser.Tweens.Tween#getValue
-     * @since 3.0.0
+     * 
      *
      * @param {number} [index=0] - The Tween Data to return the value from.
      *
@@ -253,7 +253,7 @@ var Tween = new Class({
      * See if this Tween is currently acting upon the given target.
      *
      * @method Phaser.Tweens.Tween#hasTarget
-     * @since 3.0.0
+     * 
      *
      * @param {object} target - The target to check against this Tween.
      *
@@ -277,7 +277,7 @@ var Tween = new Class({
      * starting and ending values.
      *
      * @method Phaser.Tweens.Tween#updateTo
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The property to set the new value for. You cannot update the 'texture' property via this method.
      * @param {number} value - The new value of the property.
@@ -315,7 +315,7 @@ var Tween = new Class({
      * If you wish to restart the Tween from a specific point, use the `Tween.seek` method instead.
      *
      * @method Phaser.Tweens.Tween#restart
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tween instance.
      */
@@ -353,7 +353,7 @@ var Tween = new Class({
      * @method Phaser.Tweens.Tween#nextState
      * @fires Phaser.Tweens.Events#TWEEN_COMPLETE
      * @fires Phaser.Tweens.Events#TWEEN_LOOP
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if this Tween has completed, otherwise `false`.
      */
@@ -413,7 +413,7 @@ var Tween = new Class({
      * This is the same as calling `Tween.seek(0)` and then `Tween.play()`.
      *
      * @method Phaser.Tweens.Tween#play
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tween instance.
      */
@@ -461,7 +461,7 @@ var Tween = new Class({
      * to the desired point and then pause it again.
      *
      * @method Phaser.Tweens.Tween#seek
-     * @since 3.0.0
+     * 
      *
      * @param {number} [amount=0] - The number of milliseconds to seek into the Tween from the beginning.
      * @param {number} [delta=16.6] - The size of each step when seeking through the Tween. A higher value completes faster but at the cost of less precision.
@@ -612,7 +612,7 @@ var Tween = new Class({
      * @fires Phaser.Tweens.Events#TWEEN_COMPLETE
      * @fires Phaser.Tweens.Events#TWEEN_LOOP
      * @fires Phaser.Tweens.Events#TWEEN_START
-     * @since 3.0.0
+     * 
      *
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      *
@@ -781,7 +781,7 @@ var Tween = new Class({
  * Note: This method will only be available if Tweens have been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#tween
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Tweens.TweenBuilderConfig|Phaser.Types.Tweens.TweenChainBuilderConfig|Phaser.Tweens.Tween|Phaser.Tweens.TweenChain} config - A Tween Configuration object, or a Tween or TweenChain instance.
  *
@@ -797,7 +797,7 @@ GameObjectFactory.register('tween', function (config) {
  * Note: This method will only be available if Tweens have been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#tween
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Tweens.TweenBuilderConfig|Phaser.Types.Tweens.TweenChainBuilderConfig|Phaser.Tweens.Tween|Phaser.Tweens.TweenChain} config - A Tween Configuration object, or a Tween or TweenChain instance.
  *

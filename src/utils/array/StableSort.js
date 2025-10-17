@@ -128,7 +128,7 @@ function RunPass(arr, comp, chk, result) {
  * Function based on the Two-Screen/stable sort 0.1.8 from https://github.com/Two-Screen/stable
  *
  * @function Phaser.Utils.Array.StableSort
- * @since 3.0.0
+ * 
  *
  * @param {array} array - The input array to be sorted.
  * @param {function} [compare] - The comparison function.

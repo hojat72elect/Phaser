@@ -6,6 +6,6 @@
  *
  * @event Phaser.Input.Events#PRE_UPDATE
  * @type {string}
- * @since 3.0.0
+ * 
  */
 module.exports = 'preupdate';

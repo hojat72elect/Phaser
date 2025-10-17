@@ -14,7 +14,7 @@ var Events = require('./events');
  * @class BaseCache
  * @memberof Phaser.Cache
  * @constructor
- * @since 3.0.0
+ * 
  */
 var BaseCache = new Class({
 
@@ -28,7 +28,7 @@ var BaseCache = new Class({
              *
              * @name Phaser.Cache.BaseCache#entries
              * @type {Phaser.Structs.Map.<String, *>}
-             * @since 3.0.0
+             * 
              */
             this.entries = new CustomMap();
 
@@ -37,7 +37,7 @@ var BaseCache = new Class({
              *
              * @name Phaser.Cache.BaseCache#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events = new EventEmitter();
         },
@@ -48,7 +48,7 @@ var BaseCache = new Class({
      *
      * @method Phaser.Cache.BaseCache#add
      * @fires Phaser.Cache.Events#ADD
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The unique key by which the data added to the cache will be referenced.
      * @param {*} data - The data to be stored in the cache.
@@ -68,7 +68,7 @@ var BaseCache = new Class({
      * This performs the same action as `BaseCache.exists`.
      *
      * @method Phaser.Cache.BaseCache#has
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The unique key of the item to be checked in this cache.
      *
@@ -97,7 +97,7 @@ var BaseCache = new Class({
      * Gets an item from this cache based on the given key.
      *
      * @method Phaser.Cache.BaseCache#get
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The unique key of the item to be retrieved from this cache.
      *
@@ -116,7 +116,7 @@ var BaseCache = new Class({
      *
      * @method Phaser.Cache.BaseCache#remove
      * @fires Phaser.Cache.Events#REMOVE
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The unique key of the item to remove from the cache.
      *
@@ -150,7 +150,7 @@ var BaseCache = new Class({
      * Destroys this cache and all items within it.
      *
      * @method Phaser.Cache.BaseCache#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.entries.clear();

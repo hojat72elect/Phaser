@@ -5,7 +5,7 @@ var GetAdvancedValue = require('../utils/object/GetAdvancedValue');
  * Builds a Game Object using the provided configuration object.
  *
  * @function Phaser.GameObjects.BuildGameObject
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene.
  * @param {Phaser.GameObjects.GameObject} gameObject - The initial GameObject.

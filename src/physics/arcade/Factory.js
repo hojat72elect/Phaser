@@ -15,7 +15,7 @@ var StaticPhysicsGroup = require('./StaticPhysicsGroup');
  * @class Factory
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.World} world - The Arcade Physics World instance.
  */
@@ -29,7 +29,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Arcade.Factory#world
              * @type {Phaser.Physics.Arcade.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -38,7 +38,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Arcade.Factory#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = world.scene;
 
@@ -47,7 +47,7 @@ var Factory = new Class({
              *
              * @name Phaser.Physics.Arcade.Factory#sys
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.sys = world.scene.sys;
         },
@@ -56,7 +56,7 @@ var Factory = new Class({
      * Creates a new Arcade Physics Collider object.
      *
      * @method Phaser.Physics.Arcade.Factory#collider
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object to check for collision.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object2 - The second object to check for collision.
@@ -74,7 +74,7 @@ var Factory = new Class({
      * Creates a new Arcade Physics Collider Overlap object.
      *
      * @method Phaser.Physics.Arcade.Factory#overlap
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object to check for overlap.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object2 - The second object to check for overlap.
@@ -92,7 +92,7 @@ var Factory = new Class({
      * Adds an Arcade Physics Body to the given Game Object.
      *
      * @method Phaser.Physics.Arcade.Factory#existing
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.GameObjects.GameObject} G - [gameObject,$return]
      *
@@ -113,7 +113,7 @@ var Factory = new Class({
      * Creates a new Arcade Image object with a Static body.
      *
      * @method Phaser.Physics.Arcade.Factory#staticImage
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
@@ -136,7 +136,7 @@ var Factory = new Class({
      * Creates a new Arcade Image object with a Dynamic body.
      *
      * @method Phaser.Physics.Arcade.Factory#image
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
@@ -159,7 +159,7 @@ var Factory = new Class({
      * Creates a new Arcade Sprite object with a Static body.
      *
      * @method Phaser.Physics.Arcade.Factory#staticSprite
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
@@ -183,7 +183,7 @@ var Factory = new Class({
      * Creates a new Arcade Sprite object with a Dynamic body.
      *
      * @method Phaser.Physics.Arcade.Factory#sprite
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object in the world.
      * @param {number} y - The vertical position of this Game Object in the world.
@@ -208,7 +208,7 @@ var Factory = new Class({
      * All Game Objects created by this Group will automatically be static Arcade Physics objects.
      *
      * @method Phaser.Physics.Arcade.Factory#staticGroup
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject[]|Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig)} [children] - Game Objects to add to this group; or the `config` argument.
      * @param {Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig} [config] - Settings for this group.
@@ -224,7 +224,7 @@ var Factory = new Class({
      * All Game Objects created by this Group will automatically be dynamic Arcade Physics objects.
      *
      * @method Phaser.Physics.Arcade.Factory#group
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject[]|Phaser.Types.Physics.Arcade.PhysicsGroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig)} [children] - Game Objects to add to this group; or the `config` argument.
      * @param {Phaser.Types.Physics.Arcade.PhysicsGroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig} [config] - Settings for this group.

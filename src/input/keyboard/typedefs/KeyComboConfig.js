@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Input.Keyboard.KeyComboConfig
- * @since 3.0.0
+ * 
  *
  * @property {boolean} [resetOnWrongKey=true] - If they press the wrong key do we reset the combo?
  * @property {number} [maxKeyDelay=0] - The max delay in ms between each key press. Above this the combo is reset. 0 means disabled.

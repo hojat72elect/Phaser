@@ -2,7 +2,7 @@
  * Cubic ease-out.
  *
  * @function Phaser.Math.Easing.Cubic.Out
- * @since 3.0.0
+ * 
  *
  * @param {number} v - The value to be tweened.
  *

@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.TileSprite.TileSpriteConfig
  * @extends Phaser.Types.GameObjects.GameObjectConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [x=0] - The x coordinate of the Tile Sprite.
  * @property {number} [y=0] - The y coordinate of the Tile Sprite.

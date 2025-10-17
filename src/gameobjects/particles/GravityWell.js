@@ -16,7 +16,7 @@ var ParticleProcessor = require('./ParticleProcessor');
  * @extends Phaser.GameObjects.Particles.ParticleProcessor
  * @memberof Phaser.GameObjects.Particles
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {(number|Phaser.Types.GameObjects.Particles.GravityWellConfig)} [x=0] - The x coordinate of the Gravity Well, in world space.
  * @param {number} [y=0] - The y coordinate of the Gravity Well, in world space.
@@ -65,7 +65,7 @@ var GravityWell = new Class({
              * @name Phaser.GameObjects.Particles.GravityWell#_gravity
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._gravity = gravity;
 
@@ -76,7 +76,7 @@ var GravityWell = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._power = power * gravity;
 
@@ -87,7 +87,7 @@ var GravityWell = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._epsilon = epsilon * epsilon;
         },
@@ -96,7 +96,7 @@ var GravityWell = new Class({
      * Takes a Particle and updates it based on the properties of this Gravity Well.
      *
      * @method Phaser.GameObjects.Particles.GravityWell#update
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The Particle to update.
      * @param {number} delta - The delta time in ms.
@@ -130,7 +130,7 @@ var GravityWell = new Class({
      *
      * @name Phaser.GameObjects.Particles.GravityWell#epsilon
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     epsilon: {
 
@@ -151,7 +151,7 @@ var GravityWell = new Class({
      *
      * @name Phaser.GameObjects.Particles.GravityWell#power
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     power: {
 
@@ -172,7 +172,7 @@ var GravityWell = new Class({
      *
      * @name Phaser.GameObjects.Particles.GravityWell#gravity
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     gravity: {
 

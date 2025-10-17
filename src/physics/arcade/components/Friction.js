@@ -4,7 +4,7 @@
  * In Arcade Physics, friction is a special case of motion transfer from an "immovable" body to a riding body.
  *
  * @namespace Phaser.Physics.Arcade.Components.Friction
- * @since 3.0.0
+ * 
  *
  * @see Phaser.Physics.Arcade.Body#friction
  */
@@ -15,7 +15,7 @@ var Friction = {
      * In Arcade Physics, friction is a special case of motion transfer from an "immovable" body to a riding body.
      *
      * @method Phaser.Physics.Arcade.Components.Friction#setFriction
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The amount of horizontal friction to apply, [0, 1].
      * @param {number} [y=x] - The amount of vertical friction to apply, [0, 1].
@@ -35,7 +35,7 @@ var Friction = {
      * This can move a riding body horizontally when it collides with this one on the vertical axis.
      *
      * @method Phaser.Physics.Arcade.Components.Friction#setFrictionX
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The amount of friction to apply, [0, 1].
      *
@@ -54,7 +54,7 @@ var Friction = {
      * This can move a riding body vertically when it collides with this one on the horizontal axis.
      *
      * @method Phaser.Physics.Arcade.Components.Friction#setFrictionY
-     * @since 3.0.0
+     * 
      *
      * @param {number} y - The amount of friction to apply, [0, 1].
      *

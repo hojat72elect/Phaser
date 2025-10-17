@@ -16,7 +16,7 @@ var Class = require('../utils/Class');
  * @class Set
  * @memberof Phaser.Structs
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[]} - [elements]
@@ -36,7 +36,7 @@ var Set = new Class({
              * @name Phaser.Structs.Set#entries
              * @type {Array.<*>}
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.entries = [];
 
@@ -51,7 +51,7 @@ var Set = new Class({
      * Inserts the provided value into this Set. If the value is already contained in this Set this method will have no effect.
      *
      * @method Phaser.Structs.Set#set
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T} - [value]
      * @genericUse {Phaser.Structs.Set.<T>} - [$return]
@@ -73,7 +73,7 @@ var Set = new Class({
      * If no elements of this Set satisfy the condition then this method will return `null`.
      *
      * @method Phaser.Structs.Set#get
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T} - [value,$return]
      *
@@ -96,7 +96,7 @@ var Set = new Class({
      * Returns an array containing all the values in this Set.
      *
      * @method Phaser.Structs.Set#getArray
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T[]} - [$return]
      *
@@ -110,7 +110,7 @@ var Set = new Class({
      * Removes the given value from this Set if this Set contains that value.
      *
      * @method Phaser.Structs.Set#delete
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T} - [value]
      * @genericUse {Phaser.Structs.Set.<T>} - [$return]
@@ -133,7 +133,7 @@ var Set = new Class({
      * Dumps the contents of this Set to the console via `console.group`.
      *
      * @method Phaser.Structs.Set#dump
-     * @since 3.0.0
+     * 
      */
     dump: function () {
         // eslint-disable-next-line no-console
@@ -153,7 +153,7 @@ var Set = new Class({
      * Use this function when you know this Set will be modified during the iteration, otherwise use `iterate`.
      *
      * @method Phaser.Structs.Set#each
-     * @since 3.0.0
+     * 
      *
      * @genericUse {EachSetCallback.<T>} - [callback]
      * @genericUse {Phaser.Structs.Set.<T>} - [$return]
@@ -195,7 +195,7 @@ var Set = new Class({
      * iterating the next child in the Set.
      *
      * @method Phaser.Structs.Set#iterate
-     * @since 3.0.0
+     * 
      *
      * @genericUse {EachSetCallback.<T>} - [callback]
      * @genericUse {Phaser.Structs.Set.<T>} - [$return]
@@ -230,7 +230,7 @@ var Set = new Class({
      * Goes through each entry in this Set and invokes the given function on them, passing in the arguments.
      *
      * @method Phaser.Structs.Set#iterateLocal
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Set.<T>} - [$return]
      *
@@ -262,7 +262,7 @@ var Set = new Class({
      * Clears this Set so that it no longer contains any values.
      *
      * @method Phaser.Structs.Set#clear
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Set.<T>} - [$return]
      *
@@ -278,7 +278,7 @@ var Set = new Class({
      * Returns `true` if this Set contains the given value, otherwise returns `false`.
      *
      * @method Phaser.Structs.Set#contains
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T} - [value]
      *
@@ -294,7 +294,7 @@ var Set = new Class({
      * Returns a new Set containing all values that are either in this Set or in the Set provided as an argument.
      *
      * @method Phaser.Structs.Set#union
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Set.<T>} - [set,$return]
      *
@@ -320,7 +320,7 @@ var Set = new Class({
      * Returns a new Set that contains only the values which are in this Set and that are also in the given Set.
      *
      * @method Phaser.Structs.Set#intersect
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Set.<T>} - [set,$return]
      *
@@ -344,7 +344,7 @@ var Set = new Class({
      * Returns a new Set containing all the values in this Set which are *not* also in the given Set.
      *
      * @method Phaser.Structs.Set#difference
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Set.<T>} - [set,$return]
      *
@@ -371,7 +371,7 @@ var Set = new Class({
      *
      * @name Phaser.Structs.Set#size
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     size: {
 

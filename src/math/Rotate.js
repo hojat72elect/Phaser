@@ -2,7 +2,7 @@
  * Rotate a given point by a given angle around the origin (0, 0), in an anti-clockwise direction.
  *
  * @function Phaser.Math.Rotate
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Geom.Point|object)} point - The point to be rotated.
  * @param {number} angle - The angle to be rotated by in an anticlockwise direction.

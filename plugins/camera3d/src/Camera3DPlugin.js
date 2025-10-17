@@ -55,7 +55,7 @@ var Camera3DPlugin = new Class({
              *
              * @name Camera3DPlugin#cameras
              * @type {Phaser.Cameras.Sprite3D.Camera[]}
-             * @since 3.0.0
+             * 
              */
             this.cameras = [];
 
@@ -67,7 +67,7 @@ var Camera3DPlugin = new Class({
      * Creates a new Sprite3D Game Object and adds it to the Scene.
      *
      * @method Phaser.GameObjects.GameObjectFactory#sprite3D
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal position of this Game Object.
      * @param {number} y - The vertical position of this Game Object.
@@ -90,7 +90,7 @@ var Camera3DPlugin = new Class({
      * Creates a new Sprite3D Game Object and returns it.
      *
      * @method Phaser.GameObjects.GameObjectCreator#sprite3D
-     * @since 3.0.0
+     * 
      *
      * @param {object} config - The configuration object this Game Object will use to create itself.
      * @param {boolean} [addToScene] - Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
@@ -152,7 +152,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#add
-     * @since 3.0.0
+     * 
      *
      * @param {number} [fieldOfView=80] - [description]
      * @param {number} [width] - [description]
@@ -168,7 +168,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#addOrthographicCamera
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - [description]
      * @param {number} height - [description]
@@ -196,7 +196,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#addPerspectiveCamera
-     * @since 3.0.0
+     * 
      *
      * @param {number} [fieldOfView=80] - [description]
      * @param {number} [width] - [description]
@@ -228,7 +228,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#getCamera
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - [description]
      *
@@ -248,7 +248,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#removeCamera
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} camera - [description]
      */
@@ -264,7 +264,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#removeAll
-     * @since 3.0.0
+     * 
      *
      * @return {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} [description]
      */
@@ -282,7 +282,7 @@ var Camera3DPlugin = new Class({
      * [description]
      *
      * @method Camera3DPlugin#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} timestep - [description]
      * @param {number} delta - [description]
@@ -299,7 +299,7 @@ var Camera3DPlugin = new Class({
      *
      * @method Camera3DPlugin#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var eventEmitter = this.systems.events;
@@ -316,7 +316,7 @@ var Camera3DPlugin = new Class({
      *
      * @method Camera3DPlugin#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

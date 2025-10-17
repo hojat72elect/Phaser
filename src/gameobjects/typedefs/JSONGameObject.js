@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.JSONGameObject
- * @since 3.0.0
+ * 
  *
  * @property {string} name - The name of this Game Object.
  * @property {string} type - A textual representation of this Game Object, i.e. `sprite`.

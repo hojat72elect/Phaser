@@ -6,7 +6,7 @@ var MathWrap = require('../Wrap');
  * Wraps the angle to a value in the range of -PI to PI.
  *
  * @function Phaser.Math.Angle.Wrap
- * @since 3.0.0
+ * 
  *
  * @param {number} angle - The angle to wrap, in radians.
  *

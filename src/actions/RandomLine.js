@@ -6,7 +6,7 @@ var Random = require('../geom/line/Random');
  * If you wish to pass a `Phaser.GameObjects.Line` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomLine
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

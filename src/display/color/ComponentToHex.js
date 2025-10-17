@@ -2,7 +2,7 @@
  * Returns a string containing a hex representation of the given color component.
  *
  * @function Phaser.Display.Color.ComponentToHex
- * @since 3.0.0
+ * 
  *
  * @param {number} color - The color channel to get the hex value for, must be a value between 0 and 255.
  *

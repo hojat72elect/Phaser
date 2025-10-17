@@ -3,7 +3,7 @@
  * game clock time. Or returns `false` if it either isn't up, or was released longer ago than the given duration.
  *
  * @function Phaser.Input.Keyboard.UpDuration
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Keyboard.Key} key - The Key object to test.
  * @param {number} [duration=50] - The duration, in ms, within which the key must have been released.

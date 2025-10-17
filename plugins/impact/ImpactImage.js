@@ -21,7 +21,7 @@ var Image = require('../../gameobjects/image/Image');
  * @extends Phaser.GameObjects.Image
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Impact.Components.Acceleration
  * @extends Phaser.Physics.Impact.Components.BodyScale
@@ -84,7 +84,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#body
              * @type {Phaser.Physics.Impact.Body}
-             * @since 3.0.0
+             * 
              */
             this.body = world.create(x - this.frame.centerX, y - this.frame.centerY, this.width, this.height);
 
@@ -96,7 +96,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#size
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.size = this.body.size;
 
@@ -105,7 +105,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#offset
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.offset = this.body.offset;
 
@@ -114,7 +114,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#vel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.vel = this.body.vel;
 
@@ -123,7 +123,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#accel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.accel = this.body.accel;
 
@@ -132,7 +132,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#friction
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.friction = this.body.friction;
 
@@ -141,7 +141,7 @@ var ImpactImage = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactImage#maxVel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.maxVel = this.body.maxVel;
         }

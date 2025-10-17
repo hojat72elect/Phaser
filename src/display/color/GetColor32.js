@@ -2,7 +2,7 @@
  * Given an alpha and 3 color values this will return an integer representation of it.
  *
  * @function Phaser.Display.Color.GetColor32
- * @since 3.0.0
+ * 
  *
  * @param {number} red - The red color value. A number between 0 and 255.
  * @param {number} green - The green color value. A number between 0 and 255.

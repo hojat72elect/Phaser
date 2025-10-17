@@ -13,7 +13,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * @class ObjectLayer
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Tilemaps.ObjectLayerConfig} [config] - The data for the layer from the Tiled JSON object.
  */
@@ -31,7 +31,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#name
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.name = GetFastValue(config, 'name', 'object layer');
 
@@ -49,7 +49,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#opacity
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.opacity = GetFastValue(config, 'opacity', 1);
 
@@ -58,7 +58,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#properties
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.properties = GetFastValue(config, 'properties', {});
 
@@ -67,7 +67,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#propertyTypes
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.propertyTypes = GetFastValue(config, 'propertytypes', {});
 
@@ -76,7 +76,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#type
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.type = GetFastValue(config, 'type', 'objectgroup');
 
@@ -85,7 +85,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#visible
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.visible = GetFastValue(config, 'visible', true);
 
@@ -110,7 +110,7 @@ var ObjectLayer = new Class({
              *
              * @name Phaser.Tilemaps.ObjectLayer#objects
              * @type {Phaser.Types.Tilemaps.TiledObject[]}
-             * @since 3.0.0
+             * 
              */
             this.objects = GetFastValue(config, 'objects', []);
 

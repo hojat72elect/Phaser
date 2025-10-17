@@ -2,7 +2,7 @@
  * Rounds a Rectangle's position and size down to the largest integer less than or equal to each current coordinate or dimension.
  *
  * @function Phaser.Geom.Rectangle.FloorAll
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [rect,$return]
  *

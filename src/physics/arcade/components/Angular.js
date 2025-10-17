@@ -2,7 +2,7 @@
  * Provides methods used for setting the angular acceleration properties of an Arcade Physics Body.
  *
  * @namespace Phaser.Physics.Arcade.Components.Angular
- * @since 3.0.0
+ * 
  */
 var Angular = {
 
@@ -14,7 +14,7 @@ var Angular = {
      * causing them to visually rotate, even though the body remains axis-aligned.
      *
      * @method Phaser.Physics.Arcade.Components.Angular#setAngularVelocity
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The amount of angular velocity.
      *
@@ -34,7 +34,7 @@ var Angular = {
      * causing them to visually rotate, even though the body remains axis-aligned.
      *
      * @method Phaser.Physics.Arcade.Components.Angular#setAngularAcceleration
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The amount of angular acceleration.
      *
@@ -50,7 +50,7 @@ var Angular = {
      * Sets the angular drag of the body. Drag is applied to the current velocity, providing a form of deceleration.
      *
      * @method Phaser.Physics.Arcade.Components.Angular#setAngularDrag
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The amount of drag.
      *

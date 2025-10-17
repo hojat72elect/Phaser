@@ -30,7 +30,7 @@ var HTML5AudioSound = require('./HTML5AudioSound');
  * @extends Phaser.Sound.BaseSoundManager
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - Reference to the current game instance.
  */
@@ -50,7 +50,7 @@ var HTML5AudioSoundManager = new Class({
              * @name Phaser.Sound.HTML5AudioSoundManager#override
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.override = true;
 
@@ -65,7 +65,7 @@ var HTML5AudioSoundManager = new Class({
              * @name Phaser.Sound.HTML5AudioSoundManager#audioPlayDelay
              * @type {number}
              * @default 0.1
-             * @since 3.0.0
+             * 
              */
             this.audioPlayDelay = 0.1;
 
@@ -80,7 +80,7 @@ var HTML5AudioSoundManager = new Class({
              * @name Phaser.Sound.HTML5AudioSoundManager#loopEndOffset
              * @type {number}
              * @default 0.05
-             * @since 3.0.0
+             * 
              */
             this.loopEndOffset = 0.05;
 
@@ -92,7 +92,7 @@ var HTML5AudioSoundManager = new Class({
              * @type {Phaser.Sound.HTML5AudioSound[]}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.onBlurPausedSounds = [];
 
@@ -107,7 +107,7 @@ var HTML5AudioSoundManager = new Class({
              * @name Phaser.Sound.HTML5AudioSoundManager#lockedActionsQueue
              * @type {array}
              * @private
-             * @since 3.0.0
+             * 
              */
             this.lockedActionsQueue = this.locked ? [] : null;
 
@@ -119,7 +119,7 @@ var HTML5AudioSoundManager = new Class({
              * @type {boolean}
              * @private
              * @default false
-             * @since 3.0.0
+             * 
              */
             this._mute = false;
 
@@ -131,7 +131,7 @@ var HTML5AudioSoundManager = new Class({
              * @type {boolean}
              * @private
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this._volume = 1;
 
@@ -142,7 +142,7 @@ var HTML5AudioSoundManager = new Class({
      * Adds a new sound into the sound manager.
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#add
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - An optional config object containing default sound settings.
@@ -162,7 +162,7 @@ var HTML5AudioSoundManager = new Class({
      * devices on the initial explicit user interaction.
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#unlock
-     * @since 3.0.0
+     * 
      */
     unlock: function () {
         this.locked = false;
@@ -266,7 +266,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#onBlur
      * @protected
-     * @since 3.0.0
+     * 
      */
     onBlur: function () {
         this.forEachActiveSound(function (sound) {
@@ -283,7 +283,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#onFocus
      * @protected
-     * @since 3.0.0
+     * 
      */
     onFocus: function () {
         this.onBlurPausedSounds.forEach(function (sound) {
@@ -298,7 +298,7 @@ var HTML5AudioSoundManager = new Class({
      * and cleans up all HTML5 Audio related stuff.
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         BaseSoundManager.prototype.destroy.call(this);
@@ -314,7 +314,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#isLocked
      * @protected
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Sound.HTML5AudioSound} sound - Sound object on which to perform queued action.
      * @param {string} prop - Name of the method to be called or property to be assigned a value to.
@@ -357,7 +357,7 @@ var HTML5AudioSoundManager = new Class({
      * @name Phaser.Sound.HTML5AudioSoundManager#mute
      * @type {boolean}
      * @fires Phaser.Sound.Events#GLOBAL_MUTE
-     * @since 3.0.0
+     * 
      */
     mute: {
 
@@ -398,7 +398,7 @@ var HTML5AudioSoundManager = new Class({
      * @name Phaser.Sound.HTML5AudioSoundManager#volume
      * @type {number}
      * @fires Phaser.Sound.Events#GLOBAL_VOLUME
-     * @since 3.0.0
+     * 
      */
     volume: {
 

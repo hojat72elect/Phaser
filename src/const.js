@@ -12,7 +12,7 @@ var CONST = {
      * @name Phaser.VERSION
      * @const
      * @type {string}
-     * @since 3.0.0
+     * 
      */
     VERSION: '3.90.0',
 
@@ -37,7 +37,7 @@ var CONST = {
      * @name Phaser.AUTO
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     AUTO: 0,
 
@@ -48,7 +48,7 @@ var CONST = {
      * @name Phaser.CANVAS
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     CANVAS: 1,
 
@@ -60,7 +60,7 @@ var CONST = {
      * @name Phaser.WEBGL
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     WEBGL: 2,
 
@@ -72,7 +72,7 @@ var CONST = {
      * @name Phaser.HEADLESS
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     HEADLESS: 3,
 
@@ -83,7 +83,7 @@ var CONST = {
      * @name Phaser.FOREVER
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     FOREVER: -1,
 
@@ -93,7 +93,7 @@ var CONST = {
      * @name Phaser.NONE
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     NONE: 4,
 
@@ -103,7 +103,7 @@ var CONST = {
      * @name Phaser.UP
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     UP: 5,
 
@@ -113,7 +113,7 @@ var CONST = {
      * @name Phaser.DOWN
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DOWN: 6,
 
@@ -123,7 +123,7 @@ var CONST = {
      * @name Phaser.LEFT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LEFT: 7,
 
@@ -133,7 +133,7 @@ var CONST = {
      * @name Phaser.RIGHT
      * @const
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RIGHT: 8
 

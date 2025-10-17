@@ -2,7 +2,7 @@
  * Calculate the distance between two sets of coordinates (points), squared.
  *
  * @function Phaser.Math.Distance.Squared
- * @since 3.0.0
+ * 
  *
  * @param {number} x1 - The x coordinate of the first point.
  * @param {number} y1 - The y coordinate of the first point.

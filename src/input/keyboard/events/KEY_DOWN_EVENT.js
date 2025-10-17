@@ -21,7 +21,7 @@
  *
  * @event Phaser.Input.Keyboard.Events#KEY_DOWN
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {KeyboardEvent} event - The native DOM Keyboard Event. You can inspect this to learn more about the key that was pressed, any modifiers, etc.
  */

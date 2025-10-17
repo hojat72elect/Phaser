@@ -5,7 +5,7 @@
  * travels down the screen.
  *
  * @function Phaser.Math.Angle.BetweenY
- * @since 3.0.0
+ * 
  *
  * @param {number} x1 - The x coordinate of the first point.
  * @param {number} y1 - The y coordinate of the first point.

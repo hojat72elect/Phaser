@@ -52,7 +52,7 @@ var Vertex = require('../../geom/mesh/Vertex');
  * @memberof Phaser.GameObjects
  * @constructor
  * @webglOnly
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode

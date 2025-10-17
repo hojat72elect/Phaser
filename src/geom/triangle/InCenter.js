@@ -15,7 +15,7 @@ function getLength(x1, y1, x2, y2) {
  * Calculates the position of the incenter of a Triangle object. This is the point where its three angle bisectors meet and it's also the center of the incircle, which is the circle inscribed in the triangle.
  *
  * @function Phaser.Geom.Triangle.InCenter
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

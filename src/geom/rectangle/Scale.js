@@ -2,7 +2,7 @@
  * Scales the width and height of this Rectangle by the given amounts.
  *
  * @function Phaser.Geom.Rectangle.Scale
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [rect,$return]
  *

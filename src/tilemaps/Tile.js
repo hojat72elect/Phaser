@@ -13,7 +13,7 @@ var Rectangle = require('../geom/rectangle');
  * @class Tile
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.Flip
@@ -48,7 +48,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#layer
              * @type {Phaser.Tilemaps.LayerData}
-             * @since 3.0.0
+             * 
              */
             this.layer = layer;
 
@@ -58,7 +58,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#index
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.index = index;
 
@@ -67,7 +67,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#x
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.x = x;
 
@@ -76,7 +76,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#y
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.y = y;
 
@@ -85,7 +85,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = width;
 
@@ -94,7 +94,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = height;
 
@@ -126,7 +126,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#baseWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.baseWidth = (baseWidth !== undefined) ? baseWidth : width;
 
@@ -136,7 +136,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#baseHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.baseHeight = (baseHeight !== undefined) ? baseHeight : height;
 
@@ -147,7 +147,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#pixelX
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.pixelX = 0;
 
@@ -158,7 +158,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#pixelY
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.pixelY = 0;
 
@@ -169,7 +169,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#properties
              * @type {any}
-             * @since 3.0.0
+             * 
              */
             this.properties = {};
 
@@ -178,7 +178,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#rotation
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.rotation = 0;
 
@@ -190,7 +190,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#collideLeft
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.collideLeft = false;
 
@@ -202,7 +202,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#collideRight
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.collideRight = false;
 
@@ -214,7 +214,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#collideUp
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.collideUp = false;
 
@@ -226,7 +226,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#collideDown
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.collideDown = false;
 
@@ -235,7 +235,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#faceLeft
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.faceLeft = false;
 
@@ -244,7 +244,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#faceRight
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.faceRight = false;
 
@@ -253,7 +253,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#faceTop
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.faceTop = false;
 
@@ -262,7 +262,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#faceBottom
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.faceBottom = false;
 
@@ -271,7 +271,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#collisionCallback
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.collisionCallback = undefined;
 
@@ -280,7 +280,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#collisionCallbackContext
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.collisionCallbackContext = this;
 
@@ -291,7 +291,7 @@ var Tile = new Class({
              * @name Phaser.Tilemaps.Tile#tint
              * @type {number}
              * @default
-             * @since 3.0.0
+             * 
              */
             this.tint = 0xffffff;
 
@@ -313,7 +313,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#physics
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.physics = {};
         },
@@ -323,7 +323,7 @@ var Tile = new Class({
      * camera scroll, layer scale or layer position.
      *
      * @method Phaser.Tilemaps.Tile#containsPoint
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate to test.
      * @param {number} y - The y coordinate to test.
@@ -339,7 +339,7 @@ var Tile = new Class({
      * except for position and interesting face calculations.
      *
      * @method Phaser.Tilemaps.Tile#copy
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Tilemaps.Tile} tile - The tile to copy from.
      *
@@ -369,7 +369,7 @@ var Tile = new Class({
      * will impact all tiles that have the same index as this tile.
      *
      * @method Phaser.Tilemaps.Tile#getCollisionGroup
-     * @since 3.0.0
+     * 
      *
      * @return {?object} The collision group for this Tile, as defined in the Tileset, or `null` if no group was defined.
      */
@@ -384,7 +384,7 @@ var Tile = new Class({
      * tiles that have the same index as this tile.
      *
      * @method Phaser.Tilemaps.Tile#getTileData
-     * @since 3.0.0
+     * 
      *
      * @return {?object} The tile data for this Tile, as defined in the Tileset, or `null` if no data was defined.
      */
@@ -397,7 +397,7 @@ var Tile = new Class({
      * scale and scroll.
      *
      * @method Phaser.Tilemaps.Tile#getLeft
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      *
@@ -420,7 +420,7 @@ var Tile = new Class({
      * scale and scroll.
      *
      * @method Phaser.Tilemaps.Tile#getRight
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      *
@@ -437,7 +437,7 @@ var Tile = new Class({
      * scale and scroll.
      *
      * @method Phaser.Tilemaps.Tile#getTop
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      *
@@ -463,7 +463,7 @@ var Tile = new Class({
      * scale and scroll.
 
      * @method Phaser.Tilemaps.Tile#getBottom
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      *
@@ -482,7 +482,7 @@ var Tile = new Class({
      * scale and scroll.
      *
      * @method Phaser.Tilemaps.Tile#getBounds
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      * @param {Phaser.Geom.Rectangle} [output] - Optional Rectangle object to store the results in.
@@ -507,7 +507,7 @@ var Tile = new Class({
      * scale and scroll.
      *
      * @method Phaser.Tilemaps.Tile#getCenterX
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      *
@@ -522,7 +522,7 @@ var Tile = new Class({
      * scale and scroll.
      *
      * @method Phaser.Tilemaps.Tile#getCenterY
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use to perform the check.
      *
@@ -537,7 +537,7 @@ var Tile = new Class({
      * layer position.
      *
      * @method Phaser.Tilemaps.Tile#intersects
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x axis in pixels.
      * @param {number} y - The y axis in pixels.
@@ -557,7 +557,7 @@ var Tile = new Class({
      * Checks if the tile is interesting.
      *
      * @method Phaser.Tilemaps.Tile#isInteresting
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} collides - If true, will consider the tile interesting if it collides on any side.
      * @param {boolean} faces - If true, will consider the tile interesting if it has an interesting face.
@@ -580,7 +580,7 @@ var Tile = new Class({
      * Reset collision status flags.
      *
      * @method Phaser.Tilemaps.Tile#resetCollision
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [recalculateFaces=true] - Whether or not to recalculate interesting faces for this tile and its neighbors.
      *
@@ -616,7 +616,7 @@ var Tile = new Class({
      * Reset faces.
      *
      * @method Phaser.Tilemaps.Tile#resetFaces
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tile object instance.
      */
@@ -633,7 +633,7 @@ var Tile = new Class({
      * Sets the collision flags for each side of this tile and updates the interesting faces list.
      *
      * @method Phaser.Tilemaps.Tile#setCollision
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} left - Indicating collide with any object on the left.
      * @param {boolean} [right] - Indicating collide with any object on the right.
@@ -683,7 +683,7 @@ var Tile = new Class({
      * collision processing to take place.
      *
      * @method Phaser.Tilemaps.Tile#setCollisionCallback
-     * @since 3.0.0
+     * 
      *
      * @param {function} callback - Callback function.
      * @param {object} context - Callback will be called within this context.
@@ -706,7 +706,7 @@ var Tile = new Class({
      * Sets the size of the tile and updates its pixelX and pixelY.
      *
      * @method Phaser.Tilemaps.Tile#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileWidth - The width of the tile in pixels.
      * @param {number} tileHeight - The height of the tile in pixels.
@@ -738,7 +738,7 @@ var Tile = new Class({
      * Used internally. Updates the tiles world XY position based on the current tile size.
      *
      * @method Phaser.Tilemaps.Tile#updatePixelXY
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tile object instance.
      */
@@ -801,7 +801,7 @@ var Tile = new Class({
      * Clean up memory.
      *
      * @method Phaser.Tilemaps.Tile#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.collisionCallback = undefined;
@@ -815,7 +815,7 @@ var Tile = new Class({
      * @name Phaser.Tilemaps.Tile#canCollide
      * @type {boolean}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     canCollide: {
 
@@ -831,7 +831,7 @@ var Tile = new Class({
      * @name Phaser.Tilemaps.Tile#collides
      * @type {boolean}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     collides: {
 
@@ -847,7 +847,7 @@ var Tile = new Class({
      * @name Phaser.Tilemaps.Tile#hasInterestingFace
      * @type {boolean}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     hasInterestingFace: {
 
@@ -865,7 +865,7 @@ var Tile = new Class({
      * @name Phaser.Tilemaps.Tile#tileset
      * @type {?Phaser.Tilemaps.Tileset}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     tileset: {
 
@@ -892,7 +892,7 @@ var Tile = new Class({
      * @name Phaser.Tilemaps.Tile#tilemapLayer
      * @type {?Phaser.Tilemaps.TilemapLayer}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     tilemapLayer: {
 
@@ -909,7 +909,7 @@ var Tile = new Class({
      * @name Phaser.Tilemaps.Tile#tilemap
      * @type {?Phaser.Tilemaps.Tilemap}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     tilemap: {
 

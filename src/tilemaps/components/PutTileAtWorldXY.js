@@ -10,7 +10,7 @@ var point = new Vector2();
  * changed. Collision information will be recalculated at the specified location.
  *
  * @function Phaser.Tilemaps.Components.PutTileAtWorldXY
- * @since 3.0.0
+ * 
  *
  * @param {(number|Phaser.Tilemaps.Tile)} tile - The index of this tile to set or a Tile object.
  * @param {number} worldX - The x coordinate, in pixels.

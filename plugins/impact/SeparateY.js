@@ -8,7 +8,7 @@
  * [description]
  *
  * @function Phaser.Physics.Impact.SeparateY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Impact.World} world - [description]
  * @param {Phaser.Physics.Impact.Body} top - [description]

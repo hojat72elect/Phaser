@@ -2,7 +2,7 @@
  * Set a line to a given position, angle and length.
  *
  * @function Phaser.Geom.Line.SetToAngle
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Line} O - [line,$return]
  *

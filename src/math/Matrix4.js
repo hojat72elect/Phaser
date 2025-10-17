@@ -16,7 +16,7 @@ var EPSILON = 0.000001;
  * @class Matrix4
  * @memberof Phaser.Math
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Math.Matrix4} [m] - Optional Matrix4 to copy values from.
  */
@@ -30,7 +30,7 @@ var Matrix4 = new Class({
              *
              * @name Phaser.Math.Matrix4#val
              * @type {Float32Array}
-             * @since 3.0.0
+             * 
              */
             this.val = new Float32Array(16);
 
@@ -47,7 +47,7 @@ var Matrix4 = new Class({
      * Make a clone of this Matrix4.
      *
      * @method Phaser.Math.Matrix4#clone
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Matrix4} A clone of this Matrix4.
      */
@@ -59,7 +59,7 @@ var Matrix4 = new Class({
      * This method is an alias for `Matrix4.copy`.
      *
      * @method Phaser.Math.Matrix4#set
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} src - The Matrix to set the values of this Matrix's from.
      *
@@ -121,7 +121,7 @@ var Matrix4 = new Class({
      * Copy the values of a given Matrix into this Matrix.
      *
      * @method Phaser.Math.Matrix4#copy
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} src - The Matrix to copy the values from.
      *
@@ -137,7 +137,7 @@ var Matrix4 = new Class({
      * Set the values of this Matrix from the given array.
      *
      * @method Phaser.Math.Matrix4#fromArray
-     * @since 3.0.0
+     * 
      *
      * @param {number[]} a - The array to copy the values from. Must have at least 16 elements.
      *
@@ -153,7 +153,7 @@ var Matrix4 = new Class({
      * Sets all values to `0`.
      *
      * @method Phaser.Math.Matrix4#zero
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Math.Matrix4} This Matrix4.
      */
@@ -209,7 +209,7 @@ var Matrix4 = new Class({
      * Set the `x`, `y` and `z` values of this Matrix.
      *
      * @method Phaser.Math.Matrix4#xyz
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
@@ -233,7 +233,7 @@ var Matrix4 = new Class({
      * Set the scaling values of this Matrix.
      *
      * @method Phaser.Math.Matrix4#scaling
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x scaling value.
      * @param {number} y - The y scaling value.
@@ -258,7 +258,7 @@ var Matrix4 = new Class({
      * Reset this Matrix to an identity (default) matrix.
      *
      * @method Phaser.Math.Matrix4#identity
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matrix4.
      */
@@ -270,7 +270,7 @@ var Matrix4 = new Class({
      * Transpose this Matrix.
      *
      * @method Phaser.Math.Matrix4#transpose
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matrix4.
      */
@@ -320,7 +320,7 @@ var Matrix4 = new Class({
      * Invert this Matrix.
      *
      * @method Phaser.Math.Matrix4#invert
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matrix4.
      */
@@ -395,7 +395,7 @@ var Matrix4 = new Class({
      * Calculate the adjoint, or adjugate, of this Matrix.
      *
      * @method Phaser.Math.Matrix4#adjoint
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Matrix4.
      */
@@ -446,7 +446,7 @@ var Matrix4 = new Class({
      * Calculate the determinant of this Matrix.
      *
      * @method Phaser.Math.Matrix4#determinant
-     * @since 3.0.0
+     * 
      *
      * @return {number} The determinant of this Matrix.
      */
@@ -494,7 +494,7 @@ var Matrix4 = new Class({
      * Multiply this Matrix by the given Matrix.
      *
      * @method Phaser.Math.Matrix4#multiply
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} src - The Matrix to multiply this Matrix by.
      *
@@ -573,7 +573,7 @@ var Matrix4 = new Class({
      * Multiply the values of this Matrix4 by those given in the `src` argument.
      *
      * @method Phaser.Math.Matrix4#multiplyLocal
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} src - The source Matrix4 that this Matrix4 is multiplied by.
      *
@@ -695,7 +695,7 @@ var Matrix4 = new Class({
      * Translate this Matrix using the given Vector.
      *
      * @method Phaser.Math.Matrix4#translate
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Vector3|Phaser.Math.Vector4)} v - The Vector to translate this Matrix with.
      *
@@ -734,7 +734,7 @@ var Matrix4 = new Class({
      * Uses the `x`, `y` and `z` components of the given Vector to scale the Matrix.
      *
      * @method Phaser.Math.Matrix4#scale
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Vector3|Phaser.Math.Vector4)} v - The Vector to scale this Matrix with.
      *
@@ -781,7 +781,7 @@ var Matrix4 = new Class({
      * Derive a rotation matrix around the given axis.
      *
      * @method Phaser.Math.Matrix4#makeRotationAxis
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Math.Vector3|Phaser.Math.Vector4)} axis - The rotation axis.
      * @param {number} angle - The rotation angle in radians.
@@ -812,7 +812,7 @@ var Matrix4 = new Class({
      * Apply a rotation transformation to this Matrix.
      *
      * @method Phaser.Math.Matrix4#rotate
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The angle in radians to rotate by.
      * @param {Phaser.Math.Vector3} axis - The axis to rotate upon.
@@ -894,7 +894,7 @@ var Matrix4 = new Class({
      * Rotate this matrix on its X axis.
      *
      * @method Phaser.Math.Matrix4#rotateX
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The angle in radians to rotate by.
      *
@@ -932,7 +932,7 @@ var Matrix4 = new Class({
      * Rotate this matrix on its Y axis.
      *
      * @method Phaser.Math.Matrix4#rotateY
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The angle to rotate by, in radians.
      *
@@ -970,7 +970,7 @@ var Matrix4 = new Class({
      * Rotate this matrix on its Z axis.
      *
      * @method Phaser.Math.Matrix4#rotateZ
-     * @since 3.0.0
+     * 
      *
      * @param {number} rad - The angle to rotate by, in radians.
      *
@@ -1008,7 +1008,7 @@ var Matrix4 = new Class({
      * Set the values of this Matrix from the given rotation Quaternion and translation Vector.
      *
      * @method Phaser.Math.Matrix4#fromRotationTranslation
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Quaternion} q - The Quaternion to set rotation from.
      * @param {Phaser.Math.Vector3} v - The Vector to set translation from.
@@ -1065,7 +1065,7 @@ var Matrix4 = new Class({
      * Set the values of this Matrix from the given Quaternion.
      *
      * @method Phaser.Math.Matrix4#fromQuat
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Quaternion} q - The Quaternion to set the values of this Matrix from.
      *
@@ -1120,7 +1120,7 @@ var Matrix4 = new Class({
      * Generate a frustum matrix with the given bounds.
      *
      * @method Phaser.Math.Matrix4#frustum
-     * @since 3.0.0
+     * 
      *
      * @param {number} left - The left bound of the frustum.
      * @param {number} right - The right bound of the frustum.
@@ -1163,7 +1163,7 @@ var Matrix4 = new Class({
      * Generate a perspective projection matrix with the given bounds.
      *
      * @method Phaser.Math.Matrix4#perspective
-     * @since 3.0.0
+     * 
      *
      * @param {number} fovy - Vertical field of view in radians
      * @param {number} aspect - Aspect ratio. Typically viewport width  /height.
@@ -1203,7 +1203,7 @@ var Matrix4 = new Class({
      * Generate a perspective projection matrix with the given bounds.
      *
      * @method Phaser.Math.Matrix4#perspectiveLH
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of the frustum.
      * @param {number} height - The height of the frustum.
@@ -1240,7 +1240,7 @@ var Matrix4 = new Class({
      * Generate an orthogonal projection matrix with the given bounds.
      *
      * @method Phaser.Math.Matrix4#ortho
-     * @since 3.0.0
+     * 
      *
      * @param {number} left - The left bound of the frustum.
      * @param {number} right - The right bound of the frustum.
@@ -1342,7 +1342,7 @@ var Matrix4 = new Class({
      * Generate a look-at matrix with the given eye position, focal point, and up axis.
      *
      * @method Phaser.Math.Matrix4#lookAt
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Vector3} eye - Position of the viewer
      * @param {Phaser.Math.Vector3} center - Point the viewer is looking at
@@ -1440,7 +1440,7 @@ var Matrix4 = new Class({
      * Set the values of this matrix from the given `yaw`, `pitch` and `roll` values.
      *
      * @method Phaser.Math.Matrix4#yawPitchRoll
-     * @since 3.0.0
+     * 
      *
      * @param {number} yaw - The yaw value.
      * @param {number} pitch - The pitch value.
@@ -1500,7 +1500,7 @@ var Matrix4 = new Class({
      * Generate a world matrix from the given rotation, position, scale, view matrix and projection matrix.
      *
      * @method Phaser.Math.Matrix4#setWorldMatrix
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Math.Vector3} rotation - The rotation of the world matrix.
      * @param {Phaser.Math.Vector3} position - The position of the world matrix.

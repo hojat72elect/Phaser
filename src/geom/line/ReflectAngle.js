@@ -7,7 +7,7 @@ var NormalAngle = require('./NormalAngle');
  * This is the outgoing angle based on the angle of Line 1 and the normalAngle of Line 2.
  *
  * @function Phaser.Geom.Line.ReflectAngle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} lineA - The first line.
  * @param {Phaser.Geom.Line} lineB - The second line.

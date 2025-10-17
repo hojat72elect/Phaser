@@ -8,7 +8,7 @@ var GetAspectRatio = require('./GetAspectRatio');
  * Unlike the `FitOutside` function, there may be some space inside the source area not covered.
  *
  * @function Phaser.Geom.Rectangle.FitInside
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [target,$return]
  *

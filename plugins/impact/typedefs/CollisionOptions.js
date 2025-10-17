@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Impact.CollisionOptions
- * @since 3.0.0
+ * 
  *
  * @property {string} [slopeTileProperty=null] - Slope IDs can be stored on tiles directly
  * using Impacts tileset editor. If a tile has a property with the given slopeTileProperty string

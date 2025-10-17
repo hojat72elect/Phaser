@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Cameras.Scene2D.JSONCamera
- * @since 3.0.0
+ * 
  *
  * @property {string} name - The name of the camera
  * @property {number} x - The horizontal position of camera

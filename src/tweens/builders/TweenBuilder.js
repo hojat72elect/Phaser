@@ -17,7 +17,7 @@ var Tween = require('../tween/Tween');
  * Creates a new Tween.
  *
  * @function Phaser.Tweens.Builders.TweenBuilder
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Tweens.TweenManager} parent - The owner of the new Tween.
  * @param {Phaser.Types.Tweens.TweenBuilderConfig|object} config - Configuration for the new Tween.

@@ -47,7 +47,7 @@ if (typeof PLUGIN_FBINSTANT) {
  * @fires Phaser.Core.Events#FOCUS
  * @fires Phaser.Core.Events#HIDDEN
  * @fires Phaser.Core.Events#VISIBLE
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Core.GameConfig} [GameConfig] - The configuration object for your Phaser Game instance.
  */
@@ -64,7 +64,7 @@ var Game = new Class({
              * @name Phaser.Game#config
              * @type {Phaser.Core.Config}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.config = new Config(config);
 
@@ -73,7 +73,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.0.0
+             * 
              */
             this.renderer = null;
 
@@ -98,7 +98,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#canvas
              * @type {HTMLCanvasElement}
-             * @since 3.0.0
+             * 
              */
             this.canvas = null;
 
@@ -111,7 +111,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#context
              * @type {(CanvasRenderingContext2D|WebGLRenderingContext)}
-             * @since 3.0.0
+             * 
              */
             this.context = null;
 
@@ -121,7 +121,7 @@ var Game = new Class({
              * @name Phaser.Game#isBooted
              * @type {boolean}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isBooted = false;
 
@@ -131,7 +131,7 @@ var Game = new Class({
              * @name Phaser.Game#isRunning
              * @type {boolean}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isRunning = false;
 
@@ -140,7 +140,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events = new EventEmitter();
 
@@ -151,7 +151,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#anims
              * @type {Phaser.Animations.AnimationManager}
-             * @since 3.0.0
+             * 
              */
             this.anims = new AnimationManager(this);
 
@@ -162,7 +162,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#textures
              * @type {Phaser.Textures.TextureManager}
-             * @since 3.0.0
+             * 
              */
             this.textures = new TextureManager(this);
 
@@ -173,7 +173,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#cache
              * @type {Phaser.Cache.CacheManager}
-             * @since 3.0.0
+             * 
              */
             this.cache = new CacheManager(this);
 
@@ -184,7 +184,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#registry
              * @type {Phaser.Data.DataManager}
-             * @since 3.0.0
+             * 
              */
             this.registry = new DataManager(this, new EventEmitter());
 
@@ -195,7 +195,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#input
              * @type {Phaser.Input.InputManager}
-             * @since 3.0.0
+             * 
              */
             this.input = new InputManager(this, this.config);
 
@@ -206,7 +206,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#scene
              * @type {Phaser.Scenes.SceneManager}
-             * @since 3.0.0
+             * 
              */
             this.scene = new SceneManager(this, this.config.sceneConfig);
 
@@ -218,7 +218,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#device
              * @type {Phaser.DeviceConf}
-             * @since 3.0.0
+             * 
              */
             this.device = Device;
 
@@ -242,7 +242,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#sound
              * @type {(Phaser.Sound.NoAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager)}
-             * @since 3.0.0
+             * 
              */
             this.sound = null;
 
@@ -258,7 +258,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#loop
              * @type {Phaser.Core.TimeStep}
-             * @since 3.0.0
+             * 
              */
             this.loop = new TimeStep(this, this.config.fps);
 
@@ -270,7 +270,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#plugins
              * @type {Phaser.Plugins.PluginManager}
-             * @since 3.0.0
+             * 
              */
             this.plugins = new PluginManager(this, this.config);
 
@@ -354,7 +354,7 @@ var Game = new Class({
      * @protected
      * @fires Phaser.Core.Events#BOOT
      * @listens Phaser.Textures.Events#READY
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         if (!PluginCache.hasCore('EventEmitter')) {
@@ -410,7 +410,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#start
      * @protected
-     * @since 3.0.0
+     * 
      */
     start: function () {
         this.isRunning = true;
@@ -447,7 +447,7 @@ var Game = new Class({
      * @fires Phaser.Core.Events#POST_STEP
      * @fires Phaser.Core.Events#PRE_RENDER
      * @fires Phaser.Core.Events#POST_RENDER
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -560,7 +560,7 @@ var Game = new Class({
      * @method Phaser.Game#onHidden
      * @protected
      * @fires Phaser.Core.Events#PAUSE
-     * @since 3.0.0
+     * 
      */
     onHidden: function () {
         this.loop.pause();
@@ -596,7 +596,7 @@ var Game = new Class({
      * @method Phaser.Game#onVisible
      * @protected
      * @fires Phaser.Core.Events#RESUME
-     * @since 3.0.0
+     * 
      */
     onVisible: function () {
         this.loop.resume();
@@ -629,7 +629,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#onBlur
      * @protected
-     * @since 3.0.0
+     * 
      */
     onBlur: function () {
         this.hasFocus = false;
@@ -643,7 +643,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#onFocus
      * @protected
-     * @since 3.0.0
+     * 
      */
     onFocus: function () {
         this.hasFocus = true;
@@ -689,7 +689,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#destroy
      * @fires Phaser.Core.Events#DESTROY
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} removeCanvas - Set to `true` if you would like the parent canvas element removed from the DOM, or `false` to leave it in place.
      * @param {boolean} [noReturn=false] - If `true` all the core Phaser plugins are destroyed. You cannot create another instance of Phaser on the same web page if you do this.

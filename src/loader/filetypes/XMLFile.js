@@ -18,7 +18,7 @@ var ParseXML = require('../../dom/ParseXML');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.XMLFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -136,7 +136,7 @@ var XMLFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#xml
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.XMLFileConfig|Phaser.Types.Loader.FileTypes.XMLFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.xml`, i.e. if `key` was "alien" then the URL will be "alien.xml".

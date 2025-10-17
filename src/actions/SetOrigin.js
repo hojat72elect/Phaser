@@ -9,7 +9,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  * To use this with a Group: `SetOrigin(group.getChildren(), originX, originY, stepX, stepY)`
  *
  * @function Phaser.Actions.SetOrigin
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

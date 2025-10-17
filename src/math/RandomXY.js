@@ -6,7 +6,7 @@
  * Optionally accepts a scale value to scale the resulting vector by.
  *
  * @function Phaser.Math.RandomXY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Math.Vector2} vector - The Vector to compute random values for.
  * @param {number} [scale=1] - The scale of the random values.

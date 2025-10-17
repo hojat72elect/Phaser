@@ -16,7 +16,7 @@ var Random = require('./Random');
  * @class Ellipse
  * @memberof Phaser.Geom
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x=0] - The x position of the center of the ellipse.
  * @param {number} [y=0] - The y position of the center of the ellipse.
@@ -58,7 +58,7 @@ var Ellipse = new Class({
              * @name Phaser.Geom.Ellipse#x
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x = x;
 
@@ -68,7 +68,7 @@ var Ellipse = new Class({
              * @name Phaser.Geom.Ellipse#y
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y = y;
 
@@ -78,7 +78,7 @@ var Ellipse = new Class({
              * @name Phaser.Geom.Ellipse#width
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.width = width;
 
@@ -88,7 +88,7 @@ var Ellipse = new Class({
              * @name Phaser.Geom.Ellipse#height
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.height = height;
         },
@@ -97,7 +97,7 @@ var Ellipse = new Class({
      * Check to see if the Ellipse contains the given x / y coordinates.
      *
      * @method Phaser.Geom.Ellipse#contains
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate to check within the ellipse.
      * @param {number} y - The y coordinate to check within the ellipse.
@@ -114,7 +114,7 @@ var Ellipse = new Class({
      * at 180 degrees around the circle.
      *
      * @method Phaser.Geom.Ellipse#getPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [out,$return]
      *
@@ -132,7 +132,7 @@ var Ellipse = new Class({
      * based on the given quantity or stepRate values.
      *
      * @method Phaser.Geom.Ellipse#getPoints
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point[]} O - [output,$return]
      *
@@ -150,7 +150,7 @@ var Ellipse = new Class({
      * Returns a uniformly distributed random point from anywhere within the given Ellipse.
      *
      * @method Phaser.Geom.Ellipse#getRandomPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [point,$return]
      *
@@ -166,7 +166,7 @@ var Ellipse = new Class({
      * Sets the x, y, width and height of this ellipse.
      *
      * @method Phaser.Geom.Ellipse#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x position of the center of the ellipse.
      * @param {number} y - The y position of the center of the ellipse.
@@ -189,7 +189,7 @@ var Ellipse = new Class({
      * Does not change its position.
      *
      * @method Phaser.Geom.Ellipse#setEmpty
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Ellipse object.
      */
@@ -204,7 +204,7 @@ var Ellipse = new Class({
      * Sets the position of this Ellipse.
      *
      * @method Phaser.Geom.Ellipse#setPosition
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x position of the center of the ellipse.
      * @param {number} y - The y position of the center of the ellipse.
@@ -227,7 +227,7 @@ var Ellipse = new Class({
      * Does not change its position.
      *
      * @method Phaser.Geom.Ellipse#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of the ellipse.
      * @param {number} [height=width] - The height of the ellipse.
@@ -249,7 +249,7 @@ var Ellipse = new Class({
      * Checks to see if the Ellipse is empty: has a width or height equal to zero.
      *
      * @method Phaser.Geom.Ellipse#isEmpty
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} True if the Ellipse is empty, otherwise false.
      */
@@ -261,7 +261,7 @@ var Ellipse = new Class({
      * Returns the minor radius of the ellipse. Also known as the Semi Minor Axis.
      *
      * @method Phaser.Geom.Ellipse#getMinorRadius
-     * @since 3.0.0
+     * 
      *
      * @return {number} The minor radius.
      */
@@ -273,7 +273,7 @@ var Ellipse = new Class({
      * Returns the major radius of the ellipse. Also known as the Semi Major Axis.
      *
      * @method Phaser.Geom.Ellipse#getMajorRadius
-     * @since 3.0.0
+     * 
      *
      * @return {number} The major radius.
      */
@@ -286,7 +286,7 @@ var Ellipse = new Class({
      *
      * @name Phaser.Geom.Ellipse#left
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     left: {
 
@@ -305,7 +305,7 @@ var Ellipse = new Class({
      *
      * @name Phaser.Geom.Ellipse#right
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     right: {
 
@@ -324,7 +324,7 @@ var Ellipse = new Class({
      *
      * @name Phaser.Geom.Ellipse#top
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     top: {
 
@@ -343,7 +343,7 @@ var Ellipse = new Class({
      *
      * @name Phaser.Geom.Ellipse#bottom
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     bottom: {
 

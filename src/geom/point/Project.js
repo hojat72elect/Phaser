@@ -6,7 +6,7 @@ var GetMagnitudeSq = require('./GetMagnitudeSq');
  * orthogonal projection of `pointA` onto a straight line parallel to `pointB`.
  *
  * @function Phaser.Geom.Point.Project
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

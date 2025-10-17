@@ -7,7 +7,7 @@ var FLIPPED_ANTI_DIAGONAL = 0x20000000; // Top-right is swapped with bottom-left
  * http://docs.mapeditor.org/en/latest/reference/tmx-map-format/
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseGID
- * @since 3.0.0
+ * 
  *
  * @param {number} gid - A Tiled GID.
  *

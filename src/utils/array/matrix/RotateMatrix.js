@@ -24,7 +24,7 @@ var TransposeMatrix = require('./TransposeMatrix');
  * ```
  *
  * @function Phaser.Utils.Array.Matrix.RotateMatrix
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[][]} - [matrix,$return]

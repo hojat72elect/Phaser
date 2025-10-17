@@ -15,7 +15,7 @@ var WebGLTextureWrapper = require('../renderer/webgl/wrappers/WebGLTextureWrappe
  * @class TextureSource
  * @memberof Phaser.Textures
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Textures.Texture} texture - The Texture this TextureSource belongs to.
  * @param {(HTMLImageElement|HTMLCanvasElement|HTMLVideoElement|Phaser.GameObjects.RenderTexture|Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper|Phaser.Types.Textures.CompressedTextureData|Phaser.Textures.DynamicTexture)} source - The source image data.
@@ -48,7 +48,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#texture
              * @type {Phaser.Textures.Texture}
-             * @since 3.0.0
+             * 
              */
             this.texture = texture;
 
@@ -72,7 +72,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#image
              * @type {(HTMLImageElement|HTMLCanvasElement|HTMLVideoElement|Uint8Array)}
-             * @since 3.0.0
+             * 
              */
             this.image = (source.compressed) ? null : source;
 
@@ -84,7 +84,7 @@ var TextureSource = new Class({
              * @name Phaser.Textures.TextureSource#compressionAlgorithm
              * @type {number}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.compressionAlgorithm = (source.compressed) ? source.format : null;
 
@@ -94,7 +94,7 @@ var TextureSource = new Class({
              * @name Phaser.Textures.TextureSource#resolution
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.resolution = 1;
 
@@ -104,7 +104,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = width || source.naturalWidth || source.videoWidth || source.width || 0;
 
@@ -114,7 +114,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = height || source.naturalHeight || source.videoHeight || source.height || 0;
 
@@ -124,7 +124,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#scaleMode
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.scaleMode = ScaleModes.DEFAULT;
 
@@ -133,7 +133,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#isCanvas
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.isCanvas = (source instanceof HTMLCanvasElement);
 
@@ -169,7 +169,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#isPowerOf2
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.isPowerOf2 = IsSizePowerOfTwo(this.width, this.height);
 
@@ -181,7 +181,7 @@ var TextureSource = new Class({
              * @name Phaser.Textures.TextureSource#glTexture
              * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.glTexture = null;
 
@@ -201,7 +201,7 @@ var TextureSource = new Class({
      * Creates a WebGL Texture, if required, and sets the Texture filter mode.
      *
      * @method Phaser.Textures.TextureSource#init
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Game} game - A reference to the Phaser Game instance.
      */
@@ -255,7 +255,7 @@ var TextureSource = new Class({
      * For pixel-art you should use Nearest.
      *
      * @method Phaser.Textures.TextureSource#setFilter
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Textures.FilterMode} filterMode - The Filter Mode.
      */
@@ -314,7 +314,7 @@ var TextureSource = new Class({
      * Destroys this Texture Source and nulls the references.
      *
      * @method Phaser.Textures.TextureSource#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         if (this.glTexture) {

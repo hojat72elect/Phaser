@@ -12,7 +12,7 @@
  * For calculation in radians use {@link Phaser.Math.Angle.GetShortestDistance} instead.
  *
  * @function Phaser.Math.Angle.ShortestBetween
- * @since 3.0.0
+ * 
  *
  * @param {number} angle1 - The first angle in the range -180 to 180.
  * @param {number} angle2 - The second angle in the range -180 to 180.

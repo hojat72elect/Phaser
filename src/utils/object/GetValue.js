@@ -25,7 +25,7 @@
  * The `height` value will be 600, the default value, because it is missing from the `render.screen` object.
  *
  * @function Phaser.Utils.Objects.GetValue
- * @since 3.0.0
+ * 
  *
  * @param {object} source - The primary object to try to retrieve the value from. If not found in here, `altSource` is checked.
  * @param {string} key - The name of the property to retrieve from the object. If a property is nested, the names of its preceding properties should be separated by a dot (`.`) - `banner.hideBanner` would return the value of the `hideBanner` property from the object stored in the `banner` property of the `source` object.

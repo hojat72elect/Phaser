@@ -4,7 +4,7 @@ var Point = require('./Point');
  * Inverts a Point's coordinates.
  *
  * @function Phaser.Geom.Point.Negative
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

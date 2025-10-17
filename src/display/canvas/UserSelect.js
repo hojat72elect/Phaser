@@ -2,7 +2,7 @@
  * Sets the user-select property on the canvas style. Can be used to disable default browser selection actions.
  *
  * @function Phaser.Display.Canvas.UserSelect
- * @since 3.0.0
+ * 
  *
  * @param {HTMLCanvasElement} canvas - The canvas element to have the style applied to.
  * @param {string} [value='none'] - The touch callout value to set on the canvas. Set to `none` to disable touch callouts.

@@ -24,7 +24,7 @@ var OS = require('../device/OS');
  * @class Pointer
  * @memberof Phaser.Input
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.InputManager} manager - A reference to the Input Manager.
  * @param {number} id - The internal ID of this Pointer.
@@ -39,7 +39,7 @@ var Pointer = new Class({
              *
              * @name Phaser.Input.Pointer#manager
              * @type {Phaser.Input.InputManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = manager;
 
@@ -49,7 +49,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#id
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.id = id;
 
@@ -58,7 +58,7 @@ var Pointer = new Class({
              *
              * @name Phaser.Input.Pointer#event
              * @type {(TouchEvent|MouseEvent|WheelEvent)}
-             * @since 3.0.0
+             * 
              */
             this.event;
 
@@ -93,7 +93,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#camera
              * @type {Phaser.Cameras.Scene2D.Camera}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.camera = null;
 
@@ -129,7 +129,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#buttons
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.buttons = 0;
 
@@ -139,7 +139,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#position
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.position = new Vector2();
 
@@ -283,7 +283,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#moveTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.moveTime = 0;
 
@@ -293,7 +293,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#downX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.downX = 0;
 
@@ -303,7 +303,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#downY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.downY = 0;
 
@@ -313,7 +313,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#downTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.downTime = 0;
 
@@ -323,7 +323,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#upX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.upX = 0;
 
@@ -333,7 +333,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#upY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.upY = 0;
 
@@ -343,7 +343,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#upTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.upTime = 0;
 
@@ -353,7 +353,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#primaryDown
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.primaryDown = false;
 
@@ -363,7 +363,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#isDown
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.isDown = false;
 
@@ -373,7 +373,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#wasTouch
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.wasTouch = false;
 
@@ -395,7 +395,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#movementX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.movementX = 0;
 
@@ -405,7 +405,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#movementY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.movementY = 0;
 
@@ -515,7 +515,7 @@ var Pointer = new Class({
      * within that Camera. This can be used to convert this Pointers position into camera space.
      *
      * @method Phaser.Input.Pointer#positionToCamera
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use for the translation.
      * @param {(Phaser.Math.Vector2|object)} [output] - A Vector2-like object in which to store the translated position.
@@ -575,7 +575,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#up
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {MouseEvent} event - The Mouse Event to process.
      */
@@ -615,7 +615,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#down
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {MouseEvent} event - The Mouse Event to process.
      */
@@ -660,7 +660,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#move
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {MouseEvent} event - The Mouse Event to process.
      */
@@ -716,7 +716,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#touchstart
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
@@ -757,7 +757,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#touchmove
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
@@ -780,7 +780,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#touchend
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
@@ -847,7 +847,7 @@ var Pointer = new Class({
      * Checks to see if any buttons are being held down on this Pointer.
      *
      * @method Phaser.Input.Pointer#noButtonDown
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if no buttons are being held down.
      */
@@ -859,7 +859,7 @@ var Pointer = new Class({
      * Checks to see if the left button is being held down on this Pointer.
      *
      * @method Phaser.Input.Pointer#leftButtonDown
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the left button is being held down.
      */
@@ -871,7 +871,7 @@ var Pointer = new Class({
      * Checks to see if the right button is being held down on this Pointer.
      *
      * @method Phaser.Input.Pointer#rightButtonDown
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the right button is being held down.
      */
@@ -883,7 +883,7 @@ var Pointer = new Class({
      * Checks to see if the middle button is being held down on this Pointer.
      *
      * @method Phaser.Input.Pointer#middleButtonDown
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the middle button is being held down.
      */
@@ -895,7 +895,7 @@ var Pointer = new Class({
      * Checks to see if the back button is being held down on this Pointer.
      *
      * @method Phaser.Input.Pointer#backButtonDown
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the back button is being held down.
      */
@@ -907,7 +907,7 @@ var Pointer = new Class({
      * Checks to see if the forward button is being held down on this Pointer.
      *
      * @method Phaser.Input.Pointer#forwardButtonDown
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the forward button is being held down.
      */
@@ -1184,7 +1184,7 @@ var Pointer = new Class({
      * Destroys this Pointer instance and resets its external references.
      *
      * @method Phaser.Input.Pointer#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.camera = null;
@@ -1199,7 +1199,7 @@ var Pointer = new Class({
      *
      * @name Phaser.Input.Pointer#x
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     x: {
 
@@ -1220,7 +1220,7 @@ var Pointer = new Class({
      *
      * @name Phaser.Input.Pointer#y
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     y: {
 

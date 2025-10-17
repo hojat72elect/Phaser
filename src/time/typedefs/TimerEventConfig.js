@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Time.TimerEventConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [delay=0] - The delay after which the Timer Event should fire, in milliseconds.
  * @property {number} [repeat=0] - The total number of times the Timer Event will repeat before finishing.

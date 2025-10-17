@@ -17,7 +17,7 @@ var Vector2 = require('../../math/Vector2');
  * @class TransformMatrix
  * @memberof Phaser.GameObjects.Components
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [a=1] - The Scale X value.
  * @param {number} [b=0] - The Skew Y value.
@@ -55,7 +55,7 @@ var TransformMatrix = new Class({
              *
              * @name Phaser.GameObjects.Components.TransformMatrix#matrix
              * @type {Float32Array}
-             * @since 3.0.0
+             * 
              */
             this.matrix = new Float32Array([a, b, c, d, tx, ty, 0, 0, 1]);
 
@@ -64,7 +64,7 @@ var TransformMatrix = new Class({
              *
              * @name Phaser.GameObjects.Components.TransformMatrix#decomposedMatrix
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.decomposedMatrix = {
                 translateX: 0,
@@ -322,7 +322,7 @@ var TransformMatrix = new Class({
      * Reset the Matrix to an identity matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#loadIdentity
-     * @since 3.0.0
+     * 
      *
      * @return {this} This TransformMatrix.
      */
@@ -343,7 +343,7 @@ var TransformMatrix = new Class({
      * Translate the Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#translate
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal translation value.
      * @param {number} y - The vertical translation value.
@@ -363,7 +363,7 @@ var TransformMatrix = new Class({
      * Scale the Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#scale
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal scale value.
      * @param {number} y - The vertical scale value.
@@ -385,7 +385,7 @@ var TransformMatrix = new Class({
      * Rotate the Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#rotate
-     * @since 3.0.0
+     * 
      *
      * @param {number} angle - The angle of rotation in radians.
      *
@@ -418,7 +418,7 @@ var TransformMatrix = new Class({
      * Use an `out` Matrix if you do not wish to mutate this matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#multiply
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} rhs - The Matrix to multiply by.
      * @param {Phaser.GameObjects.Components.TransformMatrix} [out] - An optional Matrix to store the results in.
@@ -505,7 +505,7 @@ var TransformMatrix = new Class({
      * Transform the Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#transform
-     * @since 3.0.0
+     * 
      *
      * @param {number} a - The Scale X value.
      * @param {number} b - The Shear Y value.
@@ -540,7 +540,7 @@ var TransformMatrix = new Class({
      * Transform a point in to the local space of this Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#transformPoint
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate of the point to transform.
      * @param {number} y - The y coordinate of the point to transform.
@@ -572,7 +572,7 @@ var TransformMatrix = new Class({
      * Invert the Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#invert
-     * @since 3.0.0
+     * 
      *
      * @return {this} This TransformMatrix.
      */
@@ -715,7 +715,7 @@ var TransformMatrix = new Class({
      * Set the values of this Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#setTransform
-     * @since 3.0.0
+     * 
      *
      * @param {number} a - The Scale X value.
      * @param {number} b - The Shear Y value.
@@ -747,7 +747,7 @@ var TransformMatrix = new Class({
      * translate -> rotate -> scale
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#decomposeMatrix
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.GameObjects.DecomposeMatrixResults} The decomposed Matrix.
      */
@@ -796,7 +796,7 @@ var TransformMatrix = new Class({
      * Apply the identity, translate, rotate and scale operations on the Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#applyITRS
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The horizontal translation.
      * @param {number} y - The vertical translation.

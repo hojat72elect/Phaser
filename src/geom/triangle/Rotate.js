@@ -5,7 +5,7 @@ var InCenter = require('./InCenter');
  * Rotates a Triangle about its incenter, which is the point at which its three angle bisectors meet.
  *
  * @function Phaser.Geom.Triangle.Rotate
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Triangle} O - [triangle,$return]
  *

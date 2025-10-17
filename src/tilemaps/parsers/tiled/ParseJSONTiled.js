@@ -14,7 +14,7 @@ var ParseTilesets = require('./ParseTilesets');
  * Parses a Tiled JSON object into a new MapData object.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseJSONTiled
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the tilemap, used to set the name on the MapData.
  * @param {object} source - The original Tiled JSON object. This is deep copied by this function.

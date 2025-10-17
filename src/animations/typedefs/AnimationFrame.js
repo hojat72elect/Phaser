@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Animations.AnimationFrame
- * @since 3.0.0
+ * 
  *
  * @property {string} [key] - The key of the texture within the Texture Manager to use for this Animation Frame.
  * @property {(string|number)} [frame] - The key, or index number, of the frame within the texture to use for this Animation Frame.

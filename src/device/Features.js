@@ -9,7 +9,7 @@ var CanvasPool = require('../display/canvas/CanvasPool');
  * via `this.sys.game.device.features` from within any Scene.
  *
  * @typedef {object} Phaser.Device.Features
- * @since 3.0.0
+ * 
  *
  * @property {boolean} canvas - Is canvas available?
  * @property {?boolean} canvasBitBltShift - True if canvas supports a 'copy' bitblt onto itself when the source and destination regions overlap.

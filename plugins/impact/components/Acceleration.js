@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.Acceleration
- * @since 3.0.0
+ * 
  */
 var Acceleration = {
 
@@ -17,7 +17,7 @@ var Acceleration = {
      * Sets the horizontal acceleration of this body.
      *
      * @method Phaser.Physics.Impact.Components.Acceleration#setAccelerationX
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The amount of acceleration to apply.
      *
@@ -33,7 +33,7 @@ var Acceleration = {
      * Sets the vertical acceleration of this body.
      *
      * @method Phaser.Physics.Impact.Components.Acceleration#setAccelerationY
-     * @since 3.0.0
+     * 
      *
      * @param {number} y - The amount of acceleration to apply.
      *
@@ -49,7 +49,7 @@ var Acceleration = {
      * Sets the horizontal and vertical acceleration of this body.
      *
      * @method Phaser.Physics.Impact.Components.Acceleration#setAcceleration
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The amount of horizontal acceleration to apply.
      * @param {number} y - The amount of vertical acceleration to apply.

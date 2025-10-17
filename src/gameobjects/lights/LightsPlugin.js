@@ -31,7 +31,7 @@ var SceneEvents = require('../../scene/events');
  * @extends Phaser.GameObjects.LightsManager
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene that this Lights Plugin belongs to.
  */
@@ -47,7 +47,7 @@ var LightsPlugin = new Class({
              *
              * @name Phaser.GameObjects.LightsPlugin#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -56,7 +56,7 @@ var LightsPlugin = new Class({
              *
              * @name Phaser.GameObjects.LightsPlugin#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -71,7 +71,7 @@ var LightsPlugin = new Class({
      * Boot the Lights Plugin.
      *
      * @method Phaser.GameObjects.LightsPlugin#boot
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         var eventEmitter = this.systems.events;
@@ -86,7 +86,7 @@ var LightsPlugin = new Class({
      * Cleans up all references.
      *
      * @method Phaser.GameObjects.LightsPlugin#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

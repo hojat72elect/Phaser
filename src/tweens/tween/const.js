@@ -22,7 +22,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.CREATED
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     CREATED: 0,
 
@@ -34,7 +34,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.DELAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DELAY: 2,
 
@@ -46,7 +46,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.PENDING_RENDER
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     PENDING_RENDER: 4,
 
@@ -56,7 +56,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.PLAYING_FORWARD
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     PLAYING_FORWARD: 5,
 
@@ -66,7 +66,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.PLAYING_BACKWARD
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     PLAYING_BACKWARD: 6,
 
@@ -76,7 +76,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.HOLD_DELAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     HOLD_DELAY: 7,
 
@@ -86,7 +86,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.REPEAT_DELAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     REPEAT_DELAY: 8,
 
@@ -96,7 +96,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.COMPLETE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     COMPLETE: 9,
 
@@ -108,7 +108,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.PENDING
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     PENDING: 20,
 
@@ -120,7 +120,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.ACTIVE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     ACTIVE: 21,
 
@@ -130,7 +130,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.LOOP_DELAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     LOOP_DELAY: 22,
 
@@ -140,7 +140,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.COMPLETE_DELAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     COMPLETE_DELAY: 23,
 
@@ -150,7 +150,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.START_DELAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     START_DELAY: 24,
 
@@ -160,7 +160,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.PENDING_REMOVE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     PENDING_REMOVE: 25,
 
@@ -170,7 +170,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.REMOVED
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     REMOVED: 26,
 

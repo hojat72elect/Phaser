@@ -2,7 +2,7 @@
  * Copy the values of one line to a destination line.
  *
  * @function Phaser.Geom.Line.CopyFrom
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Line} O - [dest,$return]
  *

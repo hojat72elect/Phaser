@@ -17,7 +17,7 @@ var NOOP = require('../../utils/NOOP');
  * @class TouchManager
  * @memberof Phaser.Input.Touch
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.InputManager} inputManager - A reference to the Input Manager.
  */
@@ -31,7 +31,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#manager
              * @type {Phaser.Input.InputManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = inputManager;
 
@@ -41,7 +41,7 @@ var TouchManager = new Class({
              * @name Phaser.Input.Touch.TouchManager#capture
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.capture = true;
 
@@ -52,7 +52,7 @@ var TouchManager = new Class({
              * @name Phaser.Input.Touch.TouchManager#enabled
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.enabled = false;
 
@@ -62,7 +62,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#target
              * @type {any}
-             * @since 3.0.0
+             * 
              */
             this.target;
 
@@ -72,7 +72,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchStart
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.onTouchStart = NOOP;
 
@@ -92,7 +92,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchMove
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.onTouchMove = NOOP;
 
@@ -102,7 +102,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchEnd
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.onTouchEnd = NOOP;
 
@@ -158,7 +158,7 @@ var TouchManager = new Class({
      *
      * @method Phaser.Input.Touch.TouchManager#boot
      * @private
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         var config = this.manager.config;
@@ -211,7 +211,7 @@ var TouchManager = new Class({
      * delay input capturing until later in the game.
      *
      * @method Phaser.Input.Touch.TouchManager#startListeners
-     * @since 3.0.0
+     * 
      */
     startListeners: function () {
         var target = this.target;
@@ -320,7 +320,7 @@ var TouchManager = new Class({
      * This is called automatically and does not need to be manually invoked.
      *
      * @method Phaser.Input.Touch.TouchManager#stopListeners
-     * @since 3.0.0
+     * 
      */
     stopListeners: function () {
         var target = this.target;
@@ -343,7 +343,7 @@ var TouchManager = new Class({
      * Destroys this Touch Manager instance.
      *
      * @method Phaser.Input.Touch.TouchManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.stopListeners();

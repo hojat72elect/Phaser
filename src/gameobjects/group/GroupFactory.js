@@ -7,7 +7,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  * Note: This method will only be available if the Group Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#group
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.GameObjects.GameObject[]|Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupConfig[]|Phaser.Types.GameObjects.Group.GroupCreateConfig)} [children] - Game Objects to add to this Group; or the `config` argument.
  * @param {Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig} [config] - A Group Configuration object.

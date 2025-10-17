@@ -6,7 +6,7 @@ var Triangle = require('./Triangle');
  * of Triangle instances, where the given vertices have been decomposed into a series of triangles.
  *
  * @function Phaser.Geom.Triangle.BuildFromPolygon
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Triangle[]} O - [out,$return]
  *

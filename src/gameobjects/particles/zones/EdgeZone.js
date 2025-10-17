@@ -7,7 +7,7 @@ var Class = require('../../../utils/Class');
  * @class EdgeZone
  * @memberof Phaser.GameObjects.Particles.Zones
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Particles.EdgeZoneSource} source - An object instance with a `getPoints(quantity, stepRate)` method returning an array of points.
  * @param {number} quantity - The number of particles to place on the source edge. Set to 0 to use `stepRate` instead.
@@ -36,7 +36,7 @@ var EdgeZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#source
              * @type {Phaser.Types.GameObjects.Particles.EdgeZoneSource|Phaser.Types.GameObjects.Particles.RandomZoneSource}
-             * @since 3.0.0
+             * 
              */
             this.source = source;
 
@@ -46,7 +46,7 @@ var EdgeZone = new Class({
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#points
              * @type {Phaser.Geom.Point[]}
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.points = [];
 
@@ -55,7 +55,7 @@ var EdgeZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#quantity
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.quantity = quantity;
 
@@ -64,7 +64,7 @@ var EdgeZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#stepRate
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.stepRate = stepRate;
 
@@ -73,7 +73,7 @@ var EdgeZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#yoyo
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.yoyo = yoyo;
 
@@ -83,7 +83,7 @@ var EdgeZone = new Class({
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#counter
              * @type {number}
              * @default -1
-             * @since 3.0.0
+             * 
              */
             this.counter = -1;
 
@@ -92,7 +92,7 @@ var EdgeZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#seamless
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.seamless = seamless;
 
@@ -103,7 +103,7 @@ var EdgeZone = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._length = 0;
 
@@ -116,7 +116,7 @@ var EdgeZone = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._direction = 0;
 
@@ -148,7 +148,7 @@ var EdgeZone = new Class({
      * Also updates internal properties.
      *
      * @method Phaser.GameObjects.Particles.Zones.EdgeZone#updateSource
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Edge Zone.
      */
@@ -181,7 +181,7 @@ var EdgeZone = new Class({
      * Change the source of the EdgeZone.
      *
      * @method Phaser.GameObjects.Particles.Zones.EdgeZone#changeSource
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.GameObjects.Particles.EdgeZoneSource} source - An object instance with a `getPoints(quantity, stepRate)` method returning an array of points.
      *
@@ -197,7 +197,7 @@ var EdgeZone = new Class({
      * Get the next point in the Zone and set its coordinates on the given Particle.
      *
      * @method Phaser.GameObjects.Particles.Zones.EdgeZone#getPoint
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The Particle.
      */

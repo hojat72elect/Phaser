@@ -8,7 +8,7 @@ var Point = require('../point/Point');
  * The normal of a line is a vector that points perpendicular from it.
  *
  * @function Phaser.Geom.Line.GetNormal
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

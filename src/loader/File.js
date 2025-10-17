@@ -15,7 +15,7 @@ var XHRSettings = require('./XHRSettings');
  * @class File
  * @memberof Phaser.Loader
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - The Loader that is going to load this File.
  * @param {Phaser.Types.Loader.FileConfig} fileConfig - The file configuration object, as created by the file type.
@@ -30,7 +30,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#loader
              * @type {Phaser.Loader.LoaderPlugin}
-             * @since 3.0.0
+             * 
              */
             this.loader = loader;
 
@@ -48,7 +48,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#type
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.type = GetFastValue(fileConfig, 'type', false);
 
@@ -61,7 +61,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#key
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.key = GetFastValue(fileConfig, 'key', false);
 
@@ -92,7 +92,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#url
              * @type {object|string}
-             * @since 3.0.0
+             * 
              */
             this.url = url;
 
@@ -102,7 +102,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#src
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.src = '';
 
@@ -111,7 +111,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#xhrSettings
              * @type {Phaser.Types.Loader.XHRSettingsObject}
-             * @since 3.0.0
+             * 
              */
             this.xhrSettings = XHRSettings(GetFastValue(fileConfig, 'responseType', undefined));
 
@@ -124,7 +124,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#xhrLoader
              * @type {?XMLHttpRequest}
-             * @since 3.0.0
+             * 
              */
             this.xhrLoader = null;
 
@@ -133,7 +133,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#state
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.state = (typeof (this.url) === 'function') ? CONST.FILE_POPULATED : CONST.FILE_PENDING;
 
@@ -144,7 +144,7 @@ var File = new Class({
              * @name Phaser.Loader.File#bytesTotal
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.bytesTotal = 0;
 
@@ -155,7 +155,7 @@ var File = new Class({
              * @name Phaser.Loader.File#bytesLoaded
              * @type {number}
              * @default -1
-             * @since 3.0.0
+             * 
              */
             this.bytesLoaded = -1;
 
@@ -166,7 +166,7 @@ var File = new Class({
              * @name Phaser.Loader.File#percentComplete
              * @type {number}
              * @default -1
-             * @since 3.0.0
+             * 
              */
             this.percentComplete = -1;
 
@@ -176,7 +176,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#crossOrigin
              * @type {(string|undefined)}
-             * @since 3.0.0
+             * 
              */
             this.crossOrigin = undefined;
 
@@ -185,7 +185,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#data
              * @type {*}
-             * @since 3.0.0
+             * 
              */
             this.data = undefined;
 
@@ -194,7 +194,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#config
              * @type {*}
-             * @since 3.0.0
+             * 
              */
             this.config = GetFastValue(fileConfig, 'config', {});
 
@@ -266,7 +266,7 @@ var File = new Class({
      * Resets the XHRLoader instance this file is using.
      *
      * @method Phaser.Loader.File#resetXHR
-     * @since 3.0.0
+     * 
      */
     resetXHR: function () {
         if (this.xhrLoader) {
@@ -282,7 +282,7 @@ var File = new Class({
      * You shouldn't normally call this method directly, it's meant to be invoked by the Loader.
      *
      * @method Phaser.Loader.File#load
-     * @since 3.0.0
+     * 
      */
     load: function () {
         if (this.state === CONST.FILE_POPULATED) {
@@ -309,7 +309,7 @@ var File = new Class({
      * Called when the file finishes loading, is sent a DOM ProgressEvent.
      *
      * @method Phaser.Loader.File#onLoad
-     * @since 3.0.0
+     * 
      *
      * @param {XMLHttpRequest} xhr - The XMLHttpRequest that caused this onload event.
      * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this load.
@@ -359,7 +359,7 @@ var File = new Class({
      * Called if the file errors while loading, is sent a DOM ProgressEvent.
      *
      * @method Phaser.Loader.File#onError
-     * @since 3.0.0
+     * 
      *
      * @param {XMLHttpRequest} xhr - The XMLHttpRequest that caused this onload event.
      * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this error.
@@ -381,7 +381,7 @@ var File = new Class({
      *
      * @method Phaser.Loader.File#onProgress
      * @fires Phaser.Loader.Events#FILE_PROGRESS
-     * @since 3.0.0
+     * 
      *
      * @param {ProgressEvent} event - The DOM ProgressEvent.
      */
@@ -401,7 +401,7 @@ var File = new Class({
      * This method controls what extra work this File does with its loaded data, for example a JSON file will parse itself during this stage.
      *
      * @method Phaser.Loader.File#onProcess
-     * @since 3.0.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;

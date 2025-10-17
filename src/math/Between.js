@@ -2,7 +2,7 @@
  * Compute a random integer between the `min` and `max` values, inclusive.
  *
  * @function Phaser.Math.Between
- * @since 3.0.0
+ * 
  *
  * @param {number} min - The minimum value.
  * @param {number} max - The maximum value.

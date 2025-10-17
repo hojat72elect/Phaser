@@ -5,7 +5,7 @@ var Point = require('./Point');
  * orthogonal projection of `pointA` onto a straight line paralle to `pointB`.
  *
  * @function Phaser.Geom.Point.ProjectUnit
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

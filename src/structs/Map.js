@@ -24,7 +24,7 @@ var Class = require('../utils/Class');
  * @class Map
  * @memberof Phaser.Structs
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @generic K
  * @generic V
@@ -45,7 +45,7 @@ var Map = new Class({
              * @name Phaser.Structs.Map#entries
              * @type {Object.<string, *>}
              * @default {}
-             * @since 3.0.0
+             * 
              */
             this.entries = {};
 
@@ -55,7 +55,7 @@ var Map = new Class({
              * @name Phaser.Structs.Map#size
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.size = 0;
 
@@ -96,7 +96,7 @@ var Map = new Class({
      * If you wish to add multiple elements in a single call, use the `setAll` method instead.
      *
      * @method Phaser.Structs.Map#set
-     * @since 3.0.0
+     * 
      *
      * @genericUse {K} - [key]
      * @genericUse {V} - [value]
@@ -121,7 +121,7 @@ var Map = new Class({
      * Returns the value associated to the `key`, or `undefined` if there is none.
      *
      * @method Phaser.Structs.Map#get
-     * @since 3.0.0
+     * 
      *
      * @genericUse {K} - [key]
      * @genericUse {V} - [$return]
@@ -140,7 +140,7 @@ var Map = new Class({
      * Returns an `Array` of all the values stored in this Map.
      *
      * @method Phaser.Structs.Map#getArray
-     * @since 3.0.0
+     * 
      *
      * @genericUse {V[]} - [$return]
      *
@@ -161,7 +161,7 @@ var Map = new Class({
      * Returns a boolean indicating whether an element with the specified key exists or not.
      *
      * @method Phaser.Structs.Map#has
-     * @since 3.0.0
+     * 
      *
      * @genericUse {K} - [key]
      *
@@ -177,7 +177,7 @@ var Map = new Class({
      * Delete the specified element from this Map.
      *
      * @method Phaser.Structs.Map#delete
-     * @since 3.0.0
+     * 
      *
      * @genericUse {K} - [key]
      * @genericUse {Phaser.Structs.Map.<K, V>} - [$return]
@@ -199,7 +199,7 @@ var Map = new Class({
      * Delete all entries from this Map.
      *
      * @method Phaser.Structs.Map#clear
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Map.<K, V>} - [$return]
      *
@@ -220,7 +220,7 @@ var Map = new Class({
      * Returns all entries keys in this Map.
      *
      * @method Phaser.Structs.Map#keys
-     * @since 3.0.0
+     * 
      *
      * @genericUse {K[]} - [$return]
      *
@@ -234,7 +234,7 @@ var Map = new Class({
      * Returns an `Array` of all entries.
      *
      * @method Phaser.Structs.Map#values
-     * @since 3.0.0
+     * 
      *
      * @genericUse {V[]} - [$return]
      *
@@ -255,7 +255,7 @@ var Map = new Class({
      * Dumps the contents of this Map to the console via `console.group`.
      *
      * @method Phaser.Structs.Map#dump
-     * @since 3.0.0
+     * 
      */
     dump: function () {
         var entries = this.entries;
@@ -277,7 +277,7 @@ var Map = new Class({
      * If the callback returns `false`, the iteration will break.
      *
      * @method Phaser.Structs.Map#each
-     * @since 3.0.0
+     * 
      *
      * @genericUse {EachMapCallback.<V>} - [callback]
      * @genericUse {Phaser.Structs.Map.<K, V>} - [$return]
@@ -302,7 +302,7 @@ var Map = new Class({
      * Returns `true` if the value exists within this Map. Otherwise, returns `false`.
      *
      * @method Phaser.Structs.Map#contains
-     * @since 3.0.0
+     * 
      *
      * @genericUse {V} - [value]
      *
@@ -327,7 +327,7 @@ var Map = new Class({
      * If it encounters a key that already exists it will be skipped unless override is set to `true`.
      *
      * @method Phaser.Structs.Map#merge
-     * @since 3.0.0
+     * 
      *
      * @genericUse {Phaser.Structs.Map.<K, V>} - [map,$return]
      *

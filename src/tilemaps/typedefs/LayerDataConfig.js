@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tilemaps.LayerDataConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} [name] - The name of the layer, if specified in Tiled.
  * @property {number} [x=0] - The x offset of where to draw from the top left.

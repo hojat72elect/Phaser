@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.Debug
- * @since 3.0.0
+ * 
  */
 var Debug = {
 
@@ -17,7 +17,7 @@ var Debug = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Debug#setDebug
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} showBody - [description]
      * @param {boolean} showVelocity - [description]
@@ -37,7 +37,7 @@ var Debug = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Debug#setDebugBodyColor
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - [description]
      *
@@ -54,7 +54,7 @@ var Debug = {
      *
      * @name Phaser.Physics.Impact.Components.Debug#debugShowBody
      * @type {boolean}
-     * @since 3.0.0
+     * 
      */
     debugShowBody: {
 
@@ -73,7 +73,7 @@ var Debug = {
      *
      * @name Phaser.Physics.Impact.Components.Debug#debugShowVelocity
      * @type {boolean}
-     * @since 3.0.0
+     * 
      */
     debugShowVelocity: {
 
@@ -92,7 +92,7 @@ var Debug = {
      *
      * @name Phaser.Physics.Impact.Components.Debug#debugBodyColor
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     debugBodyColor: {
 

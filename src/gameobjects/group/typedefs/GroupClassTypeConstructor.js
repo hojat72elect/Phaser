@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.GameObjects.Group.GroupClassTypeConstructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs.
  * @param {number} x - The horizontal position of this Game Object in the world.

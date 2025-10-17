@@ -10,7 +10,7 @@
  * The for the purposes of this function rectangles are considered 'solid'.
  *
  * @function Phaser.Geom.Intersects.LineToRectangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The Line to check for intersection.
  * @param {(Phaser.Geom.Rectangle|object)} rect - The Rectangle to check for intersection.

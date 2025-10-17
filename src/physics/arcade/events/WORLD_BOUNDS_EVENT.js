@@ -10,7 +10,7 @@
  *
  * @event Phaser.Physics.Arcade.Events#WORLD_BOUNDS
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.Body} body - The Arcade Physics Body that hit the world bounds.
  * @param {boolean} up - Is the Body blocked up? I.e. collided with the top of the world bounds.

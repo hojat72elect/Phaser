@@ -3,7 +3,7 @@
  * Those previously `visible = false` will become `visible = true`, and vice versa.
  *
  * @function Phaser.Actions.ToggleVisible
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

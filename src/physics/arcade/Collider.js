@@ -11,7 +11,7 @@ var Class = require('../../utils/Class');
  * @class Collider
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.World} world - The Arcade physics World that will manage the collisions.
  * @param {boolean} overlapOnly - Whether to check for collisions or overlaps.
@@ -31,7 +31,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#world
              * @type {Phaser.Physics.Arcade.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -50,7 +50,7 @@ var Collider = new Class({
              * @name Phaser.Physics.Arcade.Collider#active
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.active = true;
 
@@ -59,7 +59,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#overlapOnly
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.overlapOnly = overlapOnly;
 
@@ -68,7 +68,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#object1
              * @type {Phaser.Types.Physics.Arcade.ArcadeColliderType}
-             * @since 3.0.0
+             * 
              */
             this.object1 = object1;
 
@@ -77,7 +77,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#object2
              * @type {Phaser.Types.Physics.Arcade.ArcadeColliderType}
-             * @since 3.0.0
+             * 
              */
             this.object2 = object2;
 
@@ -86,7 +86,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#collideCallback
              * @type {Phaser.Types.Physics.Arcade.ArcadePhysicsCallback}
-             * @since 3.0.0
+             * 
              */
             this.collideCallback = collideCallback;
 
@@ -95,7 +95,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#processCallback
              * @type {Phaser.Types.Physics.Arcade.ArcadePhysicsCallback}
-             * @since 3.0.0
+             * 
              */
             this.processCallback = processCallback;
 
@@ -104,7 +104,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#callbackContext
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.callbackContext = callbackContext;
         },
@@ -131,7 +131,7 @@ var Collider = new Class({
      * Called by World as part of its step processing, initial operation of collision checking.
      *
      * @method Phaser.Physics.Arcade.Collider#update
-     * @since 3.0.0
+     * 
      */
     update: function () {
         this.world.collideObjects(
@@ -148,7 +148,7 @@ var Collider = new Class({
      * Removes Collider from World and disposes of its resources.
      *
      * @method Phaser.Physics.Arcade.Collider#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.world.removeCollider(this);

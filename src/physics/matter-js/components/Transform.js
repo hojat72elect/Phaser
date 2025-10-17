@@ -12,7 +12,7 @@ var _FLAG = 4; // 0100
  * Provides methods used for getting and setting the position, scale and rotation of a Game Object.
  *
  * @namespace Phaser.Physics.Matter.Components.Transform
- * @since 3.0.0
+ * 
  */
 var Transform = {
 
@@ -21,7 +21,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#x
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     x: {
 
@@ -42,7 +42,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#y
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     y: {
 
@@ -86,7 +86,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#scaleX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     scaleX: {
 
@@ -119,7 +119,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#scaleY
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     scaleY: {
 
@@ -152,7 +152,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#angle
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     angle: {
 
@@ -172,7 +172,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#rotation
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     rotation: {
 
@@ -194,7 +194,7 @@ var Transform = {
      * Velocity, angle, force etc. are unchanged.
      *
      * @method Phaser.Physics.Matter.Components.Transform#setPosition
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The horizontal position of the body.
      * @param {number} [y=x] - The vertical position of the body.
@@ -221,7 +221,7 @@ var Transform = {
      * Angular velocity, position, force etc. are unchanged.
      *
      * @method Phaser.Physics.Matter.Components.Transform#setRotation
-     * @since 3.0.0
+     * 
      *
      * @param {number} [radians=0] - The angle of the body, in radians.
      *
@@ -244,7 +244,7 @@ var Transform = {
      * from being able to rotate when forces are applied to it.
      *
      * @method Phaser.Physics.Matter.Components.Transform#setFixedRotation
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -259,7 +259,7 @@ var Transform = {
      * Angular velocity, position, force etc. are unchanged.
      *
      * @method Phaser.Physics.Matter.Components.Transform#setAngle
-     * @since 3.0.0
+     * 
      *
      * @param {number} [degrees=0] - The angle to set, in degrees.
      *
@@ -281,7 +281,7 @@ var Transform = {
      * Sets the scale of this Game Object.
      *
      * @method Phaser.Physics.Matter.Components.Transform#setScale
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=1] - The horizontal scale of this Game Object.
      * @param {number} [y=x] - The vertical scale of this Game Object. If not set it will use the x value.

@@ -36,7 +36,7 @@ function P3(t, p) {
  * https://medium.com/@adrian_cooney/bezier-interpolation-13b68563313a
  *
  * @function Phaser.Math.Interpolation.CubicBezier
- * @since 3.0.0
+ * 
  *
  * @param {number} t - The percentage of interpolation, between 0 and 1.
  * @param {number} p0 - The start point.

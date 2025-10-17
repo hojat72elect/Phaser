@@ -7,7 +7,7 @@ var CalculateFacesAt = require('./CalculateFacesAt');
  * collision information.
  *
  * @function Phaser.Tilemaps.Components.RemoveTileAt
- * @since 3.0.0
+ * 
  *
  * @param {number} tileX - The x coordinate.
  * @param {number} tileY - The y coordinate.

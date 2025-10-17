@@ -88,7 +88,7 @@ var Tileset = require('./Tileset');
  * @class Tilemap
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Tilemap belongs.
  * @param {Phaser.Tilemaps.MapData} mapData - A MapData instance containing Tilemap data.
@@ -101,7 +101,7 @@ var Tilemap = new Class({
             /**
              * @name Phaser.Tilemaps.Tilemap#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -111,7 +111,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#tileWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.tileWidth = mapData.tileWidth;
 
@@ -121,7 +121,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#tileHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.tileHeight = mapData.tileHeight;
 
@@ -130,7 +130,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = mapData.width;
 
@@ -139,7 +139,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = mapData.height;
 
@@ -148,7 +148,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#orientation
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.orientation = mapData.orientation;
 
@@ -175,7 +175,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#format
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.format = mapData.format;
 
@@ -184,7 +184,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#version
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.version = mapData.version;
 
@@ -196,7 +196,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#properties
              * @type {object|object[]}
-             * @since 3.0.0
+             * 
              */
             this.properties = mapData.properties;
 
@@ -205,7 +205,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#widthInPixels
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.widthInPixels = mapData.widthInPixels;
 
@@ -214,7 +214,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#heightInPixels
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.heightInPixels = mapData.heightInPixels;
 
@@ -223,7 +223,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#imageCollections
              * @type {Phaser.Tilemaps.ImageCollection[]}
-             * @since 3.0.0
+             * 
              */
             this.imageCollections = mapData.imageCollections;
 
@@ -232,7 +232,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#images
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.images = mapData.images;
 
@@ -241,7 +241,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#layers
              * @type {Phaser.Tilemaps.LayerData[]}
-             * @since 3.0.0
+             * 
              */
             this.layers = mapData.layers;
 
@@ -260,7 +260,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#tilesets
              * @type {Phaser.Tilemaps.Tileset[]}
-             * @since 3.0.0
+             * 
              */
             this.tilesets = mapData.tilesets;
 
@@ -269,7 +269,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#objects
              * @type {Phaser.Tilemaps.ObjectLayer[]}
-             * @since 3.0.0
+             * 
              */
             this.objects = mapData.objects;
 
@@ -278,7 +278,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#currentLayerIndex
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.currentLayerIndex = 0;
 
@@ -363,7 +363,7 @@ var Tilemap = new Class({
      * editor.
      *
      * @method Phaser.Tilemaps.Tilemap#addTilesetImage
-     * @since 3.0.0
+     * 
      *
      * @param {string} tilesetName - The name of the tileset as specified in the map data.
      * @param {string} [key] - The key of the Phaser.Cache image used for this tileset. If
@@ -464,7 +464,7 @@ var Tilemap = new Class({
      * If no layer specified, the map's current layer is used. This cannot be applied to StaticTilemapLayers.
      *
      * @method Phaser.Tilemaps.Tilemap#copy
-     * @since 3.0.0
+     * 
      *
      * @param {number} srcTileX - The x coordinate of the area to copy from, in tiles, not pixels.
      * @param {number} srcTileY - The y coordinate of the area to copy from, in tiles, not pixels.
@@ -500,7 +500,7 @@ var Tilemap = new Class({
      * Prior to v3.50.0 this method was called `createBlankDynamicLayer`.
      *
      * @method Phaser.Tilemaps.Tilemap#createBlankLayer
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - The name of this layer. Must be unique within the map.
      * @param {(string|string[]|Phaser.Tilemaps.Tileset|Phaser.Tilemaps.Tileset[])} tileset - The tileset, or an array of tilesets, used to render this layer. Can be a string or a Tileset object.
@@ -586,7 +586,7 @@ var Tilemap = new Class({
      * Prior to v3.50.0 this method was called `createDynamicLayer`.
      *
      * @method Phaser.Tilemaps.Tilemap#createLayer
-     * @since 3.0.0
+     * 
      *
      * @param {(number|string)} layerID - The layer array index value, or if a string is given, the layer name from Tiled.
      * @param {(string|string[]|Phaser.Tilemaps.Tileset|Phaser.Tilemaps.Tileset[])} tileset - The tileset, or an array of tilesets, used to render this layer. Can be a string or a Tileset object.
@@ -771,7 +771,7 @@ var Tilemap = new Class({
      * The signature of this method changed significantly in v3.60.0. Prior to this, it did not take config objects.
      *
      * @method Phaser.Tilemaps.Tilemap#createFromObjects
-     * @since 3.0.0
+     * 
      *
      * @param {string} objectLayerName - The name of the Tiled object layer to create the Game Objects from.
      * @param {Phaser.Types.Tilemaps.CreateFromObjectLayerConfig|Phaser.Types.Tilemaps.CreateFromObjectLayerConfig[]} config - A CreateFromObjects configuration object, or an array of them.
@@ -930,7 +930,7 @@ var Tilemap = new Class({
      * set the Sprite key and frame to match the sprite texture and tile index.
      *
      * @method Phaser.Tilemaps.Tilemap#createFromTiles
-     * @since 3.0.0
+     * 
      *
      * @param {(number|array)} indexes - The tile index, or array of indexes, to create Sprites from.
      * @param {?(number|array)} replacements - The tile index, or array of indexes, to change a converted
@@ -962,7 +962,7 @@ var Tilemap = new Class({
      * This cannot be applied to StaticTilemapLayers.
      *
      * @method Phaser.Tilemaps.Tilemap#fill
-     * @since 3.0.0
+     * 
      *
      * @param {number} index - The tile index to fill the area with.
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
@@ -996,7 +996,7 @@ var Tilemap = new Class({
      * new array. Similar to Array.prototype.Filter in vanilla JS.
      *
      * @method Phaser.Tilemaps.Tilemap#filterObjects
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Tilemaps.ObjectLayer|string)} objectLayer - The name of an object layer (from Tiled) or an ObjectLayer instance.
      * @param {TilemapFilterCallback} callback - The callback. Each object in the given area will be passed to this callback as the first and only parameter.
@@ -1026,7 +1026,7 @@ var Tilemap = new Class({
      * If no layer specified, the map's current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#filterTiles
-     * @since 3.0.0
+     * 
      *
      * @param {function} callback - The callback. Each tile in the given area will be passed to this
      * callback as the first and only parameter. The callback should return true for tiles that pass the
@@ -1060,7 +1060,7 @@ var Tilemap = new Class({
      * If no layer specified, the map's current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#findByIndex
-     * @since 3.0.0
+     * 
      *
      * @param {number} index - The tile index value to search for.
      * @param {number} [skip=0] - The number of times to skip a matching tile before returning.
@@ -1085,7 +1085,7 @@ var Tilemap = new Class({
      * Array.prototype.find in vanilla JS.
      *
      * @method Phaser.Tilemaps.Tilemap#findObject
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Tilemaps.ObjectLayer|string)} objectLayer - The name of an object layer (from Tiled) or an ObjectLayer instance.
      * @param {TilemapFindCallback} callback - The callback. Each object in the given area will be passed to this callback as the first and only parameter.
@@ -1115,7 +1115,7 @@ var Tilemap = new Class({
      * If no layer specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#findTile
-     * @since 3.0.0
+     * 
      *
      * @param {FindTileCallback} callback - The callback. Each tile in the given area will be passed to this callback as the first and only parameter.
      * @param {object} [context] - The context under which the callback should be run.
@@ -1145,7 +1145,7 @@ var Tilemap = new Class({
      * If no layer specified, the map's current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#forEachTile
-     * @since 3.0.0
+     * 
      *
      * @param {EachTileCallback} callback - The callback. Each tile in the given area will be passed to this callback as the first and only parameter.
      * @param {object} [context] - The context under which the callback should be run.
@@ -1174,7 +1174,7 @@ var Tilemap = new Class({
      * Gets the image layer index based on its name.
      *
      * @method Phaser.Tilemaps.Tilemap#getImageIndex
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - The name of the image to get.
      *
@@ -1207,7 +1207,7 @@ var Tilemap = new Class({
      * property matches the given `name`.
      *
      * @method Phaser.Tilemaps.Tilemap#getIndex
-     * @since 3.0.0
+     * 
      *
      * @param {array} location - The Tilemap array to search.
      * @param {string} name - The name of the array element to get.
@@ -1228,7 +1228,7 @@ var Tilemap = new Class({
      * Gets the LayerData from `this.layers` that is associated with the given `layer`, or null if the layer is invalid.
      *
      * @method Phaser.Tilemaps.Tilemap#getLayer
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The name of the layer from Tiled, the index of the layer in the map or Tilemap Layer. If not given will default to the maps current layer index.
      *
@@ -1244,7 +1244,7 @@ var Tilemap = new Class({
      * Gets the ObjectLayer from `this.objects` that has the given `name`, or null if no ObjectLayer is found with that name.
      *
      * @method Phaser.Tilemaps.Tilemap#getObjectLayer
-     * @since 3.0.0
+     * 
      *
      * @param {string} [name] - The name of the object layer from Tiled.
      *
@@ -1279,7 +1279,7 @@ var Tilemap = new Class({
      * `layer` is given.
      *
      * @method Phaser.Tilemaps.Tilemap#getLayerIndex
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The name of the layer from Tiled, the index of the layer in the map or a Tilemap Layer. If not given will default to the map's current layer index.
      *
@@ -1304,7 +1304,7 @@ var Tilemap = new Class({
      * invalid `name` is given.
      *
      * @method Phaser.Tilemaps.Tilemap#getLayerIndexByName
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - The name of the layer to get.
      *
@@ -1320,7 +1320,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#getTileAt
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - X position to get the tile from (given in tile units, not pixels).
      * @param {number} tileY - Y position to get the tile from (given in tile units, not pixels).
@@ -1345,7 +1345,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#getTileAtWorldXY
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldX - X position to get the tile from (given in pixels)
      * @param {number} worldY - Y position to get the tile from (given in pixels)
@@ -1389,7 +1389,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#getTilesWithin
-     * @since 3.0.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -1417,7 +1417,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#getTilesWithinShape
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Geom.Circle|Phaser.Geom.Line|Phaser.Geom.Rectangle|Phaser.Geom.Triangle)} shape - A shape in world (pixel) coordinates
      * @param {Phaser.Types.Tilemaps.FilteringOptions} [filteringOptions] - Optional filters to apply when getting the tiles.
@@ -1442,7 +1442,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#getTilesWithinWorldXY
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldX - The world x coordinate for the top-left of the area.
      * @param {number} worldY - The world y coordinate for the top-left of the area.
@@ -1485,7 +1485,7 @@ var Tilemap = new Class({
      * invalid `name` is given.
      *
      * @method Phaser.Tilemaps.Tilemap#getTilesetIndex
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - The name of the Tileset to get.
      *
@@ -1502,7 +1502,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#hasTileAt
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -1527,7 +1527,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#hasTileAtWorldXY
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldX - The x coordinate, in pixels.
      * @param {number} worldY - The y coordinate, in pixels.
@@ -1552,7 +1552,7 @@ var Tilemap = new Class({
      *
      * @name Phaser.Tilemaps.Tilemap#layer
      * @type {Phaser.Tilemaps.LayerData}
-     * @since 3.0.0
+     * 
      */
     layer: {
         get: function () {
@@ -1573,7 +1573,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#putTileAt
-     * @since 3.0.0
+     * 
      *
      * @param {(number|Phaser.Tilemaps.Tile)} tile - The index of this tile to set or a Tile object.
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
@@ -1606,7 +1606,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#putTileAtWorldXY
-     * @since 3.0.0
+     * 
      *
      * @param {(number|Phaser.Tilemaps.Tile)} tile - The index of this tile to set or a Tile object.
      * @param {number} worldX - The x coordinate, in pixels.
@@ -1641,7 +1641,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#putTilesAt
-     * @since 3.0.0
+     * 
      *
      * @param {(number[]|number[][]|Phaser.Tilemaps.Tile[]|Phaser.Tilemaps.Tile[][])} tile - A row (array) or grid (2D array) of Tiles or tile indexes to place.
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
@@ -1677,7 +1677,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#randomize
-     * @since 3.0.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -1708,7 +1708,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#calculateFacesAt
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -1736,7 +1736,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#calculateFacesWithin
-     * @since 3.0.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -1828,7 +1828,7 @@ var Tilemap = new Class({
      * Removes all Tilemap Layers from this Tilemap and calls `destroy` on each of them.
      *
      * @method Phaser.Tilemaps.Tilemap#removeAllLayers
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tilemap object.
      */
@@ -1894,7 +1894,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#removeTileAt
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -1927,7 +1927,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#removeTileAtWorldXY
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldX - The x coordinate, in pixels.
      * @param {number} worldY - The y coordinate, in pixels.
@@ -1966,7 +1966,7 @@ var Tilemap = new Class({
      * **Note:** This method currently only works with orthogonal tilemap layers.
      *
      * @method Phaser.Tilemaps.Tilemap#renderDebug
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} graphics - The target Graphics object to draw upon.
      * @param {Phaser.Types.Tilemaps.StyleConfig} [styleConfig] - An object specifying the colors to use for the debug drawing.
@@ -2021,7 +2021,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#replaceByIndex
-     * @since 3.0.0
+     * 
      *
      * @param {number} findIndex - The index of the tile to search for.
      * @param {number} newIndex - The index of the tile to replace it with.
@@ -2053,7 +2053,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setCollision
-     * @since 3.0.0
+     * 
      *
      * @param {(number|array)} indexes - Either a single tile index, or an array of tile indexes.
      * @param {boolean} [collides] - If true it will enable collision. If false it will clear collision.
@@ -2094,7 +2094,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setCollisionBetween
-     * @since 3.0.0
+     * 
      *
      * @param {number} start - The first index of the tile to be set for collision.
      * @param {number} stop - The last index of the tile to be set for collision.
@@ -2135,7 +2135,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setCollisionByProperty
-     * @since 3.0.0
+     * 
      *
      * @param {object} properties - An object with tile properties and corresponding values that should be checked.
      * @param {boolean} [collides] - If true it will enable collision. If false it will clear collision.
@@ -2171,7 +2171,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setCollisionByExclusion
-     * @since 3.0.0
+     * 
      *
      * @param {number[]} indexes - An array of the tile indexes to not be counted for collision.
      * @param {boolean} [collides] - If true it will enable collision. If false it will clear collision.
@@ -2208,7 +2208,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setCollisionFromCollisionGroup
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [collides] - If true it will enable collision. If false it will clear collision.
      * @param {boolean} [recalculateFaces] - Whether or not to recalculate the tile faces after the update.
@@ -2244,7 +2244,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setTileIndexCallback
-     * @since 3.0.0
+     * 
      *
      * @param {(number|number[])} indexes - Either a single tile index, or an array of tile indexes to have a collision callback set for. All values should be integers.
      * @param {function} callback - The callback that will be invoked when the tile is collided with.
@@ -2273,7 +2273,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#setTileLocationCallback
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} tileY - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -2301,7 +2301,7 @@ var Tilemap = new Class({
      * Sets the current layer to the LayerData associated with `layer`.
      *
      * @method Phaser.Tilemaps.Tilemap#setLayer
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The name of the layer from Tiled, the index of the layer in the map or a TilemapLayer. If not given will default to the maps current layer index.
      *
@@ -2322,7 +2322,7 @@ var Tilemap = new Class({
      * tileHeight for all layers. This also updates the base size on all tiles across all layers.
      *
      * @method Phaser.Tilemaps.Tilemap#setBaseTileSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileWidth - The width of the tiles the map uses for calculations.
      * @param {number} tileHeight - The height of the tiles the map uses for calculations.
@@ -2364,7 +2364,7 @@ var Tilemap = new Class({
      * tiles the layer has.
      *
      * @method Phaser.Tilemaps.Tilemap#setLayerTileSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileWidth - The width of the tiles (in pixels) in the layer.
      * @param {number} tileHeight - The height of the tiles (in pixels) in the layer.
@@ -2408,7 +2408,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#shuffle
-     * @since 3.0.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -2438,7 +2438,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#swapByIndex
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileA - First tile index.
      * @param {number} tileB - Second tile index.
@@ -2469,7 +2469,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#tileToWorldX
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use when calculating the tile index from the world values.
@@ -2494,7 +2494,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#tileToWorldY
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use when calculating the tile index from the world values.
@@ -2520,7 +2520,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#tileToWorldXY
-     * @since 3.0.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -2592,7 +2592,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#weightedRandomize
-     * @since 3.0.0
+     * 
      *
      * @param {object[]} weightedIndexes - An array of objects to randomly draw from during randomization. They should be in the form: { index: 0, weight: 4 } or { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
@@ -2626,7 +2626,7 @@ var Tilemap = new Class({
      * should use the `worldToTileXY` method.
      *
      * @method Phaser.Tilemaps.Tilemap#worldToTileX
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldX - The x coordinate to be converted, in pixels, not tiles.
      * @param {boolean} [snapToFloor] - Whether or not to round the tile coordinate down to the nearest integer.
@@ -2656,7 +2656,7 @@ var Tilemap = new Class({
      * should use the `worldToTileXY` method.
      *
      * @method Phaser.Tilemaps.Tilemap#worldToTileY
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldY - The y coordinate to be converted, in pixels, not tiles.
      * @param {boolean} [snapToFloor] - Whether or not to round the tile coordinate down to the nearest integer.
@@ -2683,7 +2683,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#worldToTileXY
-     * @since 3.0.0
+     * 
      *
      * @param {number} worldX - The x coordinate to be converted, in pixels, not tiles.
      * @param {number} worldY - The y coordinate to be converted, in pixels, not tiles.
@@ -2709,7 +2709,7 @@ var Tilemap = new Class({
      * TilemapLayers that have been created.
      *
      * @method Phaser.Tilemaps.Tilemap#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.removeAllLayers();

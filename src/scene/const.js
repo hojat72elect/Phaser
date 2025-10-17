@@ -12,7 +12,7 @@ var CONST = {
      * @name Phaser.Scenes.PENDING
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PENDING: 0,
 
@@ -22,7 +22,7 @@ var CONST = {
      * @name Phaser.Scenes.INIT
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     INIT: 1,
 
@@ -32,7 +32,7 @@ var CONST = {
      * @name Phaser.Scenes.START
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     START: 2,
 
@@ -42,7 +42,7 @@ var CONST = {
      * @name Phaser.Scenes.LOADING
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     LOADING: 3,
 
@@ -52,7 +52,7 @@ var CONST = {
      * @name Phaser.Scenes.CREATING
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     CREATING: 4,
 
@@ -62,7 +62,7 @@ var CONST = {
      * @name Phaser.Scenes.RUNNING
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     RUNNING: 5,
 
@@ -72,7 +72,7 @@ var CONST = {
      * @name Phaser.Scenes.PAUSED
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     PAUSED: 6,
 
@@ -82,7 +82,7 @@ var CONST = {
      * @name Phaser.Scenes.SLEEPING
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SLEEPING: 7,
 
@@ -92,7 +92,7 @@ var CONST = {
      * @name Phaser.Scenes.SHUTDOWN
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     SHUTDOWN: 8,
 
@@ -102,7 +102,7 @@ var CONST = {
      * @name Phaser.Scenes.DESTROYED
      * @readonly
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     DESTROYED: 9
 

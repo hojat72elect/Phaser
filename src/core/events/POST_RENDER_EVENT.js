@@ -8,7 +8,7 @@
  *
  * @event Phaser.Core.Events#POST_RENDER
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - A reference to the current renderer being used by the Game instance.
  */

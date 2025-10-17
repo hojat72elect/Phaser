@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Scenes.SettingsConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} [key] - The unique key of this Scene. Must be unique within the entire Game instance.
  * @property {boolean} [active=false] - Does the Scene start as active or not? An active Scene updates each step.

@@ -9,7 +9,7 @@ var SetLayerCollisionIndex = require('./SetLayerCollisionIndex');
  * enabled (true) or disabled (false).
  *
  * @function Phaser.Tilemaps.Components.SetCollisionBetween
- * @since 3.0.0
+ * 
  *
  * @param {number} start - The first index of the tile to be set for collision.
  * @param {number} stop - The last index of the tile to be set for collision.

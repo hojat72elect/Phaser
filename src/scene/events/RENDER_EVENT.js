@@ -20,7 +20,7 @@
  *
  * @event Phaser.Scenes.Events#RENDER
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The renderer that rendered the Scene.
  */

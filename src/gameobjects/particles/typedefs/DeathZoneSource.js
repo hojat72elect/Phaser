@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Particles.DeathZoneSource
- * @since 3.0.0
+ * 
  *
  * @property {Phaser.Types.GameObjects.Particles.DeathZoneSourceCallback} contains
  *

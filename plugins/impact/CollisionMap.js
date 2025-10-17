@@ -14,7 +14,7 @@ var DefaultDefs = require('./DefaultDefs');
  * @class CollisionMap
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {integer} [tilesize=32] - [description]
  * @param {array} [data] - [description]
@@ -34,7 +34,7 @@ var CollisionMap = new Class({
              * @name Phaser.Physics.Impact.CollisionMap#tilesize
              * @type {integer}
              * @default 32
-             * @since 3.0.0
+             * 
              */
             this.tilesize = tilesize;
 
@@ -43,7 +43,7 @@ var CollisionMap = new Class({
              *
              * @name Phaser.Physics.Impact.CollisionMap#data
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.data = (Array.isArray(data)) ? data : [];
 
@@ -52,7 +52,7 @@ var CollisionMap = new Class({
              *
              * @name Phaser.Physics.Impact.CollisionMap#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = (Array.isArray(data)) ? data[0].length : 0;
 
@@ -61,7 +61,7 @@ var CollisionMap = new Class({
              *
              * @name Phaser.Physics.Impact.CollisionMap#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = (Array.isArray(data)) ? data.length : 0;
 
@@ -71,7 +71,7 @@ var CollisionMap = new Class({
              * @name Phaser.Physics.Impact.CollisionMap#lastSlope
              * @type {integer}
              * @default 55
-             * @since 3.0.0
+             * 
              */
             this.lastSlope = 55;
 
@@ -80,7 +80,7 @@ var CollisionMap = new Class({
              *
              * @name Phaser.Physics.Impact.CollisionMap#tiledef
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.tiledef = DefaultDefs;
         },
@@ -89,7 +89,7 @@ var CollisionMap = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.CollisionMap#trace
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - [description]
      * @param {number} y - [description]
@@ -149,7 +149,7 @@ var CollisionMap = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.CollisionMap#step
-     * @since 3.0.0
+     * 
      *
      * @param {object} res - [description]
      * @param {number} x - [description]
@@ -263,7 +263,7 @@ var CollisionMap = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.CollisionMap#checkDef
-     * @since 3.0.0
+     * 
      *
      * @param {object} res - [description]
      * @param {number} t - [description]

@@ -12,7 +12,7 @@ var Point = require('../point/Point');
  * See also `GetEasedPoints` for a way to distribute the points across the line according to an ease type or input function.
  *
  * @function Phaser.Geom.Line.GetPoints
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point[]} O - [out,$return]
  *

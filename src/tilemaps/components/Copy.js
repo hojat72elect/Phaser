@@ -9,7 +9,7 @@ var Tile = require('../Tile');
  * information in the destination region.
  *
  * @function Phaser.Tilemaps.Components.Copy
- * @since 3.0.0
+ * 
  *
  * @param {number} srcTileX - The x coordinate of the area to copy from, in tiles, not pixels.
  * @param {number} srcTileY - The y coordinate of the area to copy from, in tiles, not pixels.

@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Loader.FileConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} type - The name of the Loader method that loads this file, e.g., 'image', 'json', 'spritesheet'.
  * @property {string} key - Unique cache key (unique within its file type)

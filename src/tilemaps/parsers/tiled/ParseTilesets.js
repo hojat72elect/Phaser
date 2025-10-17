@@ -7,7 +7,7 @@ var ParseWangsets = require('./ParseWangsets');
  * Tilesets and Image Collections.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseTilesets
- * @since 3.0.0
+ * 
  *
  * @param {object} json - The Tiled JSON data.
  *

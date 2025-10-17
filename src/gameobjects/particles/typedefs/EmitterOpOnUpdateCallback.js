@@ -2,7 +2,7 @@
  * The returned value updates the property for the duration of the particle's life.
  *
  * @callback Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.Particles.Particle} particle - The particle.
  * @param {string} key - The name of the property.

@@ -5,7 +5,7 @@ var CONST = require('./const');
  * accordingly, including: `touching.left`, `touching.right`, `touching.none` and `overlapX'.
  *
  * @function Phaser.Physics.Arcade.GetOverlapX
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.Body} body1 - The first Body to separate.
  * @param {Phaser.Physics.Arcade.Body} body2 - The second Body to separate.

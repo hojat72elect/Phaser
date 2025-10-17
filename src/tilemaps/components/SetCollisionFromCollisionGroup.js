@@ -8,7 +8,7 @@ var CalculateFacesWithin = require('./CalculateFacesWithin');
  * controls if collision will be enabled (true) or disabled (false).
  *
  * @function Phaser.Tilemaps.Components.SetCollisionFromCollisionGroup
- * @since 3.0.0
+ * 
  *
  * @param {boolean} collides - If true it will enable collision. If false it will clear collision.
  * @param {boolean} recalculateFaces - Whether or not to recalculate the tile faces after the update.

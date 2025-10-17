@@ -4,7 +4,7 @@
  * This value will only be > 0 if `origin.y` is not equal to zero.
  *
  * @function Phaser.Display.Bounds.GetOffsetY
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to get the bounds value from.
  *

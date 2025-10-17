@@ -4,7 +4,7 @@ var Extend = require('../../../utils/object/Extend');
  * Copy properties from tileset to tiles.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.AssignTileProperties
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Tilemaps.MapData} mapData - The Map Data object.
  */

@@ -2,7 +2,7 @@
  * Calculates the area of the given Rectangle object.
  *
  * @function Phaser.Geom.Rectangle.Area
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The rectangle to calculate the area of.
  *

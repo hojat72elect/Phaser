@@ -21,7 +21,7 @@ var Vector4 = require('../../../../src/math/Vector4');
  * @extends Phaser.GameObjects.Sprite
  * @memberOf Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} x - The x position of this Game Object.
@@ -44,7 +44,7 @@ var Sprite3D = new Class({
              *
              * @name Phaser.GameObjects.Sprite3D#gameObject
              * @type {Phaser.GameObjects.GameObject}
-             * @since 3.0.0
+             * 
              */
             this.gameObject = new Sprite(scene, 0, 0, texture, frame);
 
@@ -53,7 +53,7 @@ var Sprite3D = new Class({
              *
              * @name Phaser.GameObjects.Sprite3D#position
              * @type {Phaser.Math.Vector4}
-             * @since 3.0.0
+             * 
              */
             this.position = new Vector4(x, y, z);
 
@@ -62,7 +62,7 @@ var Sprite3D = new Class({
              *
              * @name Phaser.GameObjects.Sprite3D#size
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.size = new Vector2(this.gameObject.width, this.gameObject.height);
 
@@ -71,7 +71,7 @@ var Sprite3D = new Class({
              *
              * @name Phaser.GameObjects.Sprite3D#scale
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.scale = new Vector2(1, 1);
 
@@ -81,7 +81,7 @@ var Sprite3D = new Class({
              * @name Phaser.GameObjects.Sprite3D#adjustScaleX
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.adjustScaleX = true;
 
@@ -91,7 +91,7 @@ var Sprite3D = new Class({
              * @name Phaser.GameObjects.Sprite3D#adjustScaleY
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.adjustScaleY = true;
 
@@ -102,7 +102,7 @@ var Sprite3D = new Class({
              * @type {boolean}
              * @default true
              * @private
-             * @since 3.0.0
+             * 
              */
             this._visible = true;
         },
@@ -111,7 +111,7 @@ var Sprite3D = new Class({
      * Project this Sprite onto the given 3D Camera.
      *
      * @method Phaser.GameObjects.Sprite3D#project
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Cameras.Sprite3D.Camera} camera - The 3D Camera onto which to project this Sprite.
      */
@@ -147,7 +147,7 @@ var Sprite3D = new Class({
      * Set the visible state of the Game Object.
      *
      * @method Phaser.GameObjects.Sprite3D#setVisible
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - The visible state of the Game Object.
      *
@@ -166,7 +166,7 @@ var Sprite3D = new Class({
      *
      * @name Phaser.GameObjects.Sprite3D#visible
      * @type {boolean}
-     * @since 3.0.0
+     * 
      */
     visible: {
 
@@ -186,7 +186,7 @@ var Sprite3D = new Class({
      *
      * @name Phaser.GameObjects.Sprite3D#x
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     x: {
 
@@ -205,7 +205,7 @@ var Sprite3D = new Class({
      *
      * @name Phaser.GameObjects.Sprite3D#y
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     y: {
 
@@ -224,7 +224,7 @@ var Sprite3D = new Class({
      *
      * @name Phaser.GameObjects.Sprite3D#z
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     z: {
 

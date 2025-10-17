@@ -18,7 +18,7 @@ var TILEMAP_FORMATS = require('../../tilemaps/Formats');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.TilemapCSVFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -148,7 +148,7 @@ var TilemapCSVFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#tilemapCSV
  * @fires Phaser.Loader.Events#ADD
- * @since 3.0.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.TilemapCSVFileConfig|Phaser.Types.Loader.FileTypes.TilemapCSVFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.csv`, i.e. if `key` was "alien" then the URL will be "alien.csv".

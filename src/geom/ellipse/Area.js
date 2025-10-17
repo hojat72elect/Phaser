@@ -2,7 +2,7 @@
  * Calculates the area of the Ellipse.
  *
  * @function Phaser.Geom.Ellipse.Area
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Ellipse} ellipse - The Ellipse to get the area of.
  *

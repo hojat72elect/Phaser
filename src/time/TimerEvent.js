@@ -10,7 +10,7 @@ var GetFastValue = require('../utils/object/GetFastValue');
  * @class TimerEvent
  * @memberof Phaser.Time
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Time.TimerEventConfig} config - The configuration for the Timer Event, including its delay and callback.
  */
@@ -26,7 +26,7 @@ var TimerEvent = new Class({
              * @type {number}
              * @default 0
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.delay = 0;
 
@@ -37,7 +37,7 @@ var TimerEvent = new Class({
              * @type {number}
              * @default 0
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.repeat = 0;
 
@@ -47,7 +47,7 @@ var TimerEvent = new Class({
              * @name Phaser.Time.TimerEvent#repeatCount
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.repeatCount = 0;
 
@@ -58,7 +58,7 @@ var TimerEvent = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.loop = false;
 
@@ -67,7 +67,7 @@ var TimerEvent = new Class({
              *
              * @name Phaser.Time.TimerEvent#callback
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.callback;
 
@@ -76,7 +76,7 @@ var TimerEvent = new Class({
              *
              * @name Phaser.Time.TimerEvent#callbackScope
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.callbackScope;
 
@@ -85,7 +85,7 @@ var TimerEvent = new Class({
              *
              * @name Phaser.Time.TimerEvent#args
              * @type {array}
-             * @since 3.0.0
+             * 
              */
             this.args;
 
@@ -95,7 +95,7 @@ var TimerEvent = new Class({
              * @name Phaser.Time.TimerEvent#timeScale
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.timeScale = 1;
 
@@ -105,7 +105,7 @@ var TimerEvent = new Class({
              * @name Phaser.Time.TimerEvent#startAt
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.startAt = 0;
 
@@ -117,7 +117,7 @@ var TimerEvent = new Class({
              * @name Phaser.Time.TimerEvent#elapsed
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.elapsed = 0;
 
@@ -127,7 +127,7 @@ var TimerEvent = new Class({
              * @name Phaser.Time.TimerEvent#paused
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.paused = false;
 
@@ -139,7 +139,7 @@ var TimerEvent = new Class({
              * @name Phaser.Time.TimerEvent#hasDispatched
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.hasDispatched = false;
 
@@ -150,7 +150,7 @@ var TimerEvent = new Class({
      * Completely reinitializes the Timer Event, regardless of its current state, according to a configuration object.
      *
      * @method Phaser.Time.TimerEvent#reset
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Time.TimerEventConfig} config - The new state for the Timer Event.
      *
@@ -191,7 +191,7 @@ var TimerEvent = new Class({
      * Gets the progress of the current iteration, not factoring in repeats.
      *
      * @method Phaser.Time.TimerEvent#getProgress
-     * @since 3.0.0
+     * 
      *
      * @return {number} A number between 0 and 1 representing the current progress.
      */
@@ -203,7 +203,7 @@ var TimerEvent = new Class({
      * Gets the progress of the timer overall, factoring in repeats.
      *
      * @method Phaser.Time.TimerEvent#getOverallProgress
-     * @since 3.0.0
+     * 
      *
      * @return {number} The overall progress of the Timer Event, between 0 and 1.
      */
@@ -224,7 +224,7 @@ var TimerEvent = new Class({
      * This should not be confused with the number of times the Timer Event will fire before finishing. A return value of 0 doesn't indicate that the Timer Event has finished running - it indicates that it will not repeat after the next time it fires.
      *
      * @method Phaser.Time.TimerEvent#getRepeatCount
-     * @since 3.0.0
+     * 
      *
      * @return {number} How many times the Timer Event will repeat.
      */
@@ -236,7 +236,7 @@ var TimerEvent = new Class({
      * Returns the local elapsed time for the current iteration of the Timer Event.
      *
      * @method Phaser.Time.TimerEvent#getElapsed
-     * @since 3.0.0
+     * 
      *
      * @return {number} The local elapsed time in milliseconds.
      */
@@ -248,7 +248,7 @@ var TimerEvent = new Class({
      * Returns the local elapsed time for the current iteration of the Timer Event in seconds.
      *
      * @method Phaser.Time.TimerEvent#getElapsedSeconds
-     * @since 3.0.0
+     * 
      *
      * @return {number} The local elapsed time in seconds.
      */
@@ -308,7 +308,7 @@ var TimerEvent = new Class({
      * Forces the Timer Event to immediately expire, thus scheduling its removal in the next frame.
      *
      * @method Phaser.Time.TimerEvent#remove
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [dispatchCallback=false] - If `true`, the function of the Timer Event will be called before its removal.
      */
@@ -330,7 +330,7 @@ var TimerEvent = new Class({
      * Normally, this method is only called by the Clock when it shuts down. As such, it doesn't stop the Timer Event. If called manually, the Timer Event will still be updated by the Clock, but it won't do anything when it fires.
      *
      * @method Phaser.Time.TimerEvent#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.callback = undefined;

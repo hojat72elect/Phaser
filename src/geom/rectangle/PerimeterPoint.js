@@ -5,7 +5,7 @@ var DegToRad = require('../../math/DegToRad');
  * Returns a Point from the perimeter of a Rectangle based on the given angle.
  *
  * @function Phaser.Geom.Rectangle.PerimeterPoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

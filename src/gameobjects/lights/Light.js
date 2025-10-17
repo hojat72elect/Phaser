@@ -20,7 +20,7 @@ var Utils = require('../../renderer/webgl/Utils');
  * @extends Phaser.Geom.Circle
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Origin
  * @extends Phaser.GameObjects.Components.ScrollFactor
@@ -75,7 +75,7 @@ var Light = new Class({
              * @name Phaser.GameObjects.Light#renderFlags
              * @type {number}
              * @default 15
-             * @since 3.0.0
+             * 
              */
             this.renderFlags = 15;
 
@@ -90,7 +90,7 @@ var Light = new Class({
              * @name Phaser.GameObjects.Light#cameraFilter
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.cameraFilter = 0;
 
@@ -194,7 +194,7 @@ var Light = new Class({
      * Set the color of the light from a single integer RGB value.
      *
      * @method Phaser.GameObjects.Light#setColor
-     * @since 3.0.0
+     * 
      *
      * @param {number} rgb - The integer RGB color of the light.
      *
@@ -212,7 +212,7 @@ var Light = new Class({
      * Set the intensity of the light.
      *
      * @method Phaser.GameObjects.Light#setIntensity
-     * @since 3.0.0
+     * 
      *
      * @param {number} intensity - The intensity of the light.
      *
@@ -228,7 +228,7 @@ var Light = new Class({
      * Set the radius of the light.
      *
      * @method Phaser.GameObjects.Light#setRadius
-     * @since 3.0.0
+     * 
      *
      * @param {number} radius - The radius of the light.
      *

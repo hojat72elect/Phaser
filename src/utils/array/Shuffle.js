@@ -4,7 +4,7 @@
  * The original array is modified directly and returned.
  *
  * @function Phaser.Utils.Array.Shuffle
- * @since 3.0.0
+ * 
  *
  * @generic T
  * @genericUse {T[]} - [array,$return]

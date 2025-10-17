@@ -6,7 +6,7 @@ var GetEasedPoints = require('../geom/line/GetEasedPoints');
  * If the ease parameter is supplied, it will space the points based on that easing function along the line.
  *
  * @function Phaser.Actions.PlaceOnLine
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

@@ -4,7 +4,7 @@ var Tileset = require('../../Tileset');
  * Master list of tiles -> x, y, index in tileset.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.BuildTilesetIndex
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Tilemaps.MapData|Phaser.Tilemaps.Tilemap)} mapData - The Map Data object.
  *

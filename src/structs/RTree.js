@@ -23,7 +23,7 @@ var quickselect = require('../utils/array/QuickSelect');
  * @class RTree
  * @memberof Phaser.Structs
  * @constructor
- * @since 3.0.0
+ * 
  */
 
 function rbush(maxEntries) {

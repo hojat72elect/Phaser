@@ -2,7 +2,7 @@
  * A 16 color palette inspired by the Commodore 64.
  *
  * @name Phaser.Create.Palettes.C64
- * @since 3.0.0
+ * 
  *
  * @type {Phaser.Types.Create.Palette}
  */

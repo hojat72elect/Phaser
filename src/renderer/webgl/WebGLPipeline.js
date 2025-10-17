@@ -38,7 +38,7 @@ var WebGLShader = require('./WebGLShader');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Renderer.WebGL
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration object for this WebGL Pipeline.
  */
@@ -60,7 +60,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#name
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.name = GetFastValue(config, 'name', 'WebGLPipeline');
 
@@ -69,7 +69,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#game
              * @type {Phaser.Game}
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -78,7 +78,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#renderer
              * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-             * @since 3.0.0
+             * 
              */
             this.renderer = renderer;
 
@@ -99,7 +99,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#gl
              * @type {WebGLRenderingContext}
-             * @since 3.0.0
+             * 
              */
             this.gl = gl;
 
@@ -108,7 +108,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#view
              * @type {HTMLCanvasElement}
-             * @since 3.0.0
+             * 
              */
             this.view = game.canvas;
 
@@ -117,7 +117,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = 0;
 
@@ -126,7 +126,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = 0;
 
@@ -136,7 +136,7 @@ var WebGLPipeline = new Class({
              * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexCount
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.vertexCount = 0;
 
@@ -147,7 +147,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexCapacity
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.vertexCapacity = 0;
 
@@ -160,7 +160,7 @@ var WebGLPipeline = new Class({
              * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexData
              * @type {ArrayBuffer}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.vertexData;
 
@@ -173,7 +173,7 @@ var WebGLPipeline = new Class({
              * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexBuffer
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.vertexBuffer;
 
@@ -193,7 +193,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#topology
              * @type {GLenum}
-             * @since 3.0.0
+             * 
              */
             this.topology = GetFastValue(config, 'topology', gl.TRIANGLES);
 
@@ -202,7 +202,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#bytes
              * @type {Uint8Array}
-             * @since 3.0.0
+             * 
              */
             this.bytes;
 
@@ -211,7 +211,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexViewF32
              * @type {Float32Array}
-             * @since 3.0.0
+             * 
              */
             this.vertexViewF32;
 
@@ -220,7 +220,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexViewU32
              * @type {Uint32Array}
-             * @since 3.0.0
+             * 
              */
             this.vertexViewU32;
 
@@ -874,7 +874,7 @@ var WebGLPipeline = new Class({
      * flush before populating the batch.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#shouldFlush
-     * @since 3.0.0
+     * 
      *
      * @param {number} [amount=0] - Will the batch need to flush if this many vertices are added to it?
      *
@@ -908,7 +908,7 @@ var WebGLPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#resize
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#RESIZE
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The new width of this WebGL Pipeline.
      * @param {number} height - The new height of this WebGL Pipeline.
@@ -1049,7 +1049,7 @@ var WebGLPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#bind
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#BIND
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLShader} [currentShader] - The shader to set as being current.
      *
@@ -1096,7 +1096,7 @@ var WebGLPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#rebind
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#REBIND
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLShader} [currentShader] - The shader to set as being current.
      *
@@ -1283,7 +1283,7 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#flush
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#BEFORE_FLUSH
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#AFTER_FLUSH
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [isPostFlush=false] - Was this flush invoked as part of a post-process, or not?
      *
@@ -2512,7 +2512,7 @@ var WebGLPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#destroy
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#DESTROY
-     * @since 3.0.0
+     * 
      *
      * @return {this} This WebGLPipeline instance.
      */

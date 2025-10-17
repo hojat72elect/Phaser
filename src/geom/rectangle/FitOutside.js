@@ -8,7 +8,7 @@ var GetAspectRatio = require('./GetAspectRatio');
  * Unlike the `FitInside` function, the target rectangle may extend further out than the source.
  *
  * @function Phaser.Geom.Rectangle.FitOutside
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [target,$return]
  *

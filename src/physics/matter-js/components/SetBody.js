@@ -10,7 +10,7 @@ var Vertices = require('../lib/geometry/Vertices');
  * Enables a Matter-enabled Game Object to set its Body. Should be used as a mixin and not directly.
  *
  * @namespace Phaser.Physics.Matter.Components.SetBody
- * @since 3.0.0
+ * 
  */
 var SetBody = {
 
@@ -21,7 +21,7 @@ var SetBody = {
      * plugins, mass, friction, collision categories, etc. So be sure to re-apply these as needed.
      *
      * @method Phaser.Physics.Matter.Components.SetBody#setRectangle
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - Width of the rectangle.
      * @param {number} height - Height of the rectangle.
@@ -40,7 +40,7 @@ var SetBody = {
      * plugins, mass, friction, collision categories, etc. So be sure to re-apply these as needed.
      *
      * @method Phaser.Physics.Matter.Components.SetBody#setCircle
-     * @since 3.0.0
+     * 
      *
      * @param {number} radius - The radius of the circle.
      * @param {Phaser.Types.Physics.Matter.MatterBodyConfig} [options] - An optional Body configuration object that is used to set initial Body properties on creation.
@@ -58,7 +58,7 @@ var SetBody = {
      * plugins, mass, friction, collision categories, etc. So be sure to re-apply these as needed.
      *
      * @method Phaser.Physics.Matter.Components.SetBody#setPolygon
-     * @since 3.0.0
+     * 
      *
      * @param {number} radius - The "radius" of the polygon, i.e. the distance from its center to any vertex. This is also the radius of its circumcircle.
      * @param {number} sides - The number of sides the polygon will have.
@@ -77,7 +77,7 @@ var SetBody = {
      * plugins, mass, friction, collision categories, etc. So be sure to re-apply these as needed.
      *
      * @method Phaser.Physics.Matter.Components.SetBody#setTrapezoid
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of the trapezoid Body.
      * @param {number} height - The height of the trapezoid Body.
@@ -96,7 +96,7 @@ var SetBody = {
      * The body is first removed from the world before being added to this Game Object.
      *
      * @method Phaser.Physics.Matter.Components.SetBody#setExistingBody
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.BodyType} body - The Body this Game Object should use.
      * @param {boolean} [addToWorld=true] - Should the body be immediately added to the World?
@@ -161,7 +161,7 @@ var SetBody = {
      * plugins, mass, friction, collision categories, etc. So be sure to re-apply these as needed.
      *
      * @method Phaser.Physics.Matter.Components.SetBody#setBody
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Types.Physics.Matter.MatterSetBodyConfig)} config - Either a string, such as `circle`, or a Matter Set Body Configuration object.
      * @param {Phaser.Types.Physics.Matter.MatterBodyConfig} [options] - An optional Body configuration object that is used to set initial Body properties on creation.

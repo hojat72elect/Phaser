@@ -33,7 +33,7 @@ var GetValue = require('./GetValue');
  *
  *
  * @function Phaser.Utils.Objects.GetAdvancedValue
- * @since 3.0.0
+ * 
  *
  * @param {object} source - The object to retrieve the value from.
  * @param {string} key - The name of the property to retrieve from the object. If a property is nested, the names of its preceding properties should be separated by a dot (`.`) - `banner.hideBanner` would return the value of the `hideBanner` property from the object stored in the `banner` property of the `source` object.

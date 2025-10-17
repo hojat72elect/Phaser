@@ -8,7 +8,7 @@ var Class = require('../../utils/Class');
  * @class Axis
  * @memberof Phaser.Input.Gamepad
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Gamepad.Gamepad} pad - A reference to the Gamepad that this Axis belongs to.
  * @param {number} index - The index of this Axis.
@@ -23,7 +23,7 @@ var Axis = new Class({
              *
              * @name Phaser.Input.Gamepad.Axis#pad
              * @type {Phaser.Input.Gamepad.Gamepad}
-             * @since 3.0.0
+             * 
              */
             this.pad = pad;
 
@@ -32,7 +32,7 @@ var Axis = new Class({
              *
              * @name Phaser.Input.Gamepad.Axis#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events = pad.events;
 
@@ -41,7 +41,7 @@ var Axis = new Class({
              *
              * @name Phaser.Input.Gamepad.Axis#index
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.index = index;
 
@@ -52,7 +52,7 @@ var Axis = new Class({
              * @name Phaser.Input.Gamepad.Axis#value
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.value = 0;
 
@@ -62,7 +62,7 @@ var Axis = new Class({
              * @name Phaser.Input.Gamepad.Axis#threshold
              * @type {number}
              * @default 0.1
-             * @since 3.0.0
+             * 
              */
             this.threshold = 0.1;
         },
@@ -73,7 +73,7 @@ var Axis = new Class({
      *
      * @method Phaser.Input.Gamepad.Axis#update
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The value of the axis movement.
      */
@@ -85,7 +85,7 @@ var Axis = new Class({
      * Applies the `threshold` value to the axis and returns it.
      *
      * @method Phaser.Input.Gamepad.Axis#getValue
-     * @since 3.0.0
+     * 
      *
      * @return {number} The axis value, adjusted for the movement threshold.
      */

@@ -2,7 +2,7 @@
  * Returns an object containing dimensions of the Text object.
  *
  * @function Phaser.GameObjects.GetTextSize
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.Text} text - The Text object to calculate the size from.
  * @param {Phaser.Types.GameObjects.Text.TextMetrics} size - The Text metrics to use when calculating the size.

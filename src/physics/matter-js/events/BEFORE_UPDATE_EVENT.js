@@ -15,7 +15,7 @@
  *
  * @event Phaser.Physics.Matter.Events#BEFORE_UPDATE
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Matter.Events.BeforeUpdateEvent} event - The Update Event object.
  */

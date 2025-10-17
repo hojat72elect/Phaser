@@ -7,7 +7,7 @@ var Group = require('./Group');
  * Note: This method will only be available if the Group Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#group
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig} config - The configuration object this Game Object will use to create itself.
  *

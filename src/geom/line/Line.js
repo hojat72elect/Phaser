@@ -12,7 +12,7 @@ var Vector2 = require('../../math/Vector2');
  * @class Line
  * @memberof Phaser.Geom
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x1=0] - The x coordinate of the lines starting point.
  * @param {number} [y1=0] - The y coordinate of the lines starting point.
@@ -53,7 +53,7 @@ var Line = new Class({
              *
              * @name Phaser.Geom.Line#x1
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.x1 = x1;
 
@@ -62,7 +62,7 @@ var Line = new Class({
              *
              * @name Phaser.Geom.Line#y1
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.y1 = y1;
 
@@ -71,7 +71,7 @@ var Line = new Class({
              *
              * @name Phaser.Geom.Line#x2
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.x2 = x2;
 
@@ -80,7 +80,7 @@ var Line = new Class({
              *
              * @name Phaser.Geom.Line#y2
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.y2 = y2;
         },
@@ -89,7 +89,7 @@ var Line = new Class({
      * Get a point on a line that's a given percentage along its length.
      *
      * @method Phaser.Geom.Line#getPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [output,$return]
      *
@@ -111,7 +111,7 @@ var Line = new Class({
      * providing a `stepRate`.
      *
      * @method Phaser.Geom.Line#getPoints
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point[]} O - [output,$return]
      *
@@ -129,7 +129,7 @@ var Line = new Class({
      * Get a random Point on the Line.
      *
      * @method Phaser.Geom.Line#getRandomPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [point,$return]
      *
@@ -145,7 +145,7 @@ var Line = new Class({
      * Set new coordinates for the line endpoints.
      *
      * @method Phaser.Geom.Line#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x1=0] - The x coordinate of the lines starting point.
      * @param {number} [y1=0] - The y coordinate of the lines starting point.
@@ -202,7 +202,7 @@ var Line = new Class({
      * Returns a Vector2 object that corresponds to the start of this Line.
      *
      * @method Phaser.Geom.Line#getPointA
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [vec2,$return]
      *
@@ -224,7 +224,7 @@ var Line = new Class({
      * Returns a Vector2 object that corresponds to the end of this Line.
      *
      * @method Phaser.Geom.Line#getPointB
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [vec2,$return]
      *
@@ -247,7 +247,7 @@ var Line = new Class({
      *
      * @name Phaser.Geom.Line#left
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     left: {
 
@@ -270,7 +270,7 @@ var Line = new Class({
      *
      * @name Phaser.Geom.Line#right
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     right: {
 
@@ -293,7 +293,7 @@ var Line = new Class({
      *
      * @name Phaser.Geom.Line#top
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     top: {
 
@@ -316,7 +316,7 @@ var Line = new Class({
      *
      * @name Phaser.Geom.Line#bottom
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     bottom: {
 

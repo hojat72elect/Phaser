@@ -19,7 +19,7 @@ var Events = require('./events');
  * @class DataManager
  * @memberof Phaser.Data
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {object} parent - The object that this DataManager belongs to.
  * @param {Phaser.Events.EventEmitter} [eventEmitter] - The DataManager's event emitter.
@@ -34,7 +34,7 @@ var DataManager = new Class({
              *
              * @name Phaser.Data.DataManager#parent
              * @type {*}
-             * @since 3.0.0
+             * 
              */
             this.parent = parent;
 
@@ -43,7 +43,7 @@ var DataManager = new Class({
              *
              * @name Phaser.Data.DataManager#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.0.0
+             * 
              */
             this.events = eventEmitter;
 
@@ -57,7 +57,7 @@ var DataManager = new Class({
              * @name Phaser.Data.DataManager#list
              * @type {Object.<string, *>}
              * @default {}
-             * @since 3.0.0
+             * 
              */
             this.list = {};
 
@@ -95,7 +95,7 @@ var DataManager = new Class({
              * @type {boolean}
              * @private
              * @default false
-             * @since 3.0.0
+             * 
              */
             this._frozen = false;
 
@@ -128,7 +128,7 @@ var DataManager = new Class({
      * This approach is useful for destructuring arrays in ES6.
      *
      * @method Phaser.Data.DataManager#get
-     * @since 3.0.0
+     * 
      *
      * @param {(string|string[])} key - The key of the value to retrieve, or an array of keys.
      *
@@ -154,7 +154,7 @@ var DataManager = new Class({
      * Retrieves all data values in a new object.
      *
      * @method Phaser.Data.DataManager#getAll
-     * @since 3.0.0
+     * 
      *
      * @return {Object.<string, *>} All data values.
      */
@@ -174,7 +174,7 @@ var DataManager = new Class({
      * Queries the DataManager for the values of keys matching the given regular expression.
      *
      * @method Phaser.Data.DataManager#query
-     * @since 3.0.0
+     * 
      *
      * @param {RegExp} search - A regular expression object. If a non-RegExp object obj is passed, it is implicitly converted to a RegExp by using new RegExp(obj).
      *
@@ -230,7 +230,7 @@ var DataManager = new Class({
      * @fires Phaser.Data.Events#SET_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA_KEY
-     * @since 3.0.0
+     * 
      *
      * @generic {any} T
      * @genericUse {(string|T)} - [key]
@@ -380,7 +380,7 @@ var DataManager = new Class({
      * Passes all data entries to the given callback.
      *
      * @method Phaser.Data.DataManager#each
-     * @since 3.0.0
+     * 
      *
      * @param {DataEachCallback} callback - The function to call.
      * @param {*} [context] - Value to use as `this` when executing callback.
@@ -415,7 +415,7 @@ var DataManager = new Class({
      * @fires Phaser.Data.Events#SET_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA_KEY
-     * @since 3.0.0
+     * 
      *
      * @param {Object.<string, *>} data - The data to merge.
      * @param {boolean} [overwrite=true] - Whether to overwrite existing data. Defaults to true.
@@ -451,7 +451,7 @@ var DataManager = new Class({
      *
      * @method Phaser.Data.DataManager#remove
      * @fires Phaser.Data.Events#REMOVE_DATA
-     * @since 3.0.0
+     * 
      *
      * @param {(string|string[])} key - The key to remove, or an array of keys to remove.
      *
@@ -503,7 +503,7 @@ var DataManager = new Class({
      *
      * @method Phaser.Data.DataManager#pop
      * @fires Phaser.Data.Events#REMOVE_DATA
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The key of the value to retrieve and delete.
      *
@@ -531,7 +531,7 @@ var DataManager = new Class({
      * This means the keys `gold` and `Gold` are treated as two unique values within the Data Manager.
      *
      * @method Phaser.Data.DataManager#has
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The key to check.
      *
@@ -546,7 +546,7 @@ var DataManager = new Class({
      * to create new values or update existing ones.
      *
      * @method Phaser.Data.DataManager#setFreeze
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} value - Whether to freeze or unfreeze the Data Manager.
      *
@@ -562,7 +562,7 @@ var DataManager = new Class({
      * Delete all data in this Data Manager and unfreeze it.
      *
      * @method Phaser.Data.DataManager#reset
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Data Manager instance.
      */
@@ -581,7 +581,7 @@ var DataManager = new Class({
      * Destroy this data manager.
      *
      * @method Phaser.Data.DataManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.reset();
@@ -599,7 +599,7 @@ var DataManager = new Class({
      *
      * @name Phaser.Data.DataManager#freeze
      * @type {boolean}
-     * @since 3.0.0
+     * 
      */
     freeze: {
 
@@ -618,7 +618,7 @@ var DataManager = new Class({
      *
      * @name Phaser.Data.DataManager#count
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     count: {
 

@@ -3,7 +3,7 @@
  * Based on code by Michael Jackson (https://github.com/mjijackson)
  *
  * @function Phaser.Display.Color.HueToComponent
- * @since 3.0.0
+ * 
  *
  * @param {number} p
  * @param {number} q

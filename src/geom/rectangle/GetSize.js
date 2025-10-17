@@ -5,7 +5,7 @@ var Point = require('../point/Point');
  * With the value of the `width` as the `x` property and the `height` as the `y` property.
  *
  * @function Phaser.Geom.Rectangle.GetSize
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

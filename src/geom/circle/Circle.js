@@ -16,7 +16,7 @@ var Random = require('./Random');
  * @class Circle
  * @memberof Phaser.Geom
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x=0] - The x position of the center of the circle.
  * @param {number} [y=0] - The y position of the center of the circle.
@@ -54,7 +54,7 @@ var Circle = new Class({
              * @name Phaser.Geom.Circle#x
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x = x;
 
@@ -64,7 +64,7 @@ var Circle = new Class({
              * @name Phaser.Geom.Circle#y
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y = y;
 
@@ -74,7 +74,7 @@ var Circle = new Class({
              * @name Phaser.Geom.Circle#_radius
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._radius = radius;
 
@@ -84,7 +84,7 @@ var Circle = new Class({
              * @name Phaser.Geom.Circle#_diameter
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._diameter = radius * 2;
         },
@@ -93,7 +93,7 @@ var Circle = new Class({
      * Check to see if the Circle contains the given x / y coordinates.
      *
      * @method Phaser.Geom.Circle#contains
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate to check within the circle.
      * @param {number} y - The y coordinate to check within the circle.
@@ -110,7 +110,7 @@ var Circle = new Class({
      * at 180 degrees around the circle.
      *
      * @method Phaser.Geom.Circle#getPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [out,$return]
      *
@@ -128,7 +128,7 @@ var Circle = new Class({
      * based on the given quantity or stepRate values.
      *
      * @method Phaser.Geom.Circle#getPoints
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point[]} O - [output,$return]
      *
@@ -146,7 +146,7 @@ var Circle = new Class({
      * Returns a uniformly distributed random point from anywhere within the Circle.
      *
      * @method Phaser.Geom.Circle#getRandomPoint
-     * @since 3.0.0
+     * 
      *
      * @generic {Phaser.Geom.Point} O - [point,$return]
      *
@@ -162,7 +162,7 @@ var Circle = new Class({
      * Sets the x, y and radius of this circle.
      *
      * @method Phaser.Geom.Circle#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The x position of the center of the circle.
      * @param {number} [y=0] - The y position of the center of the circle.
@@ -184,7 +184,7 @@ var Circle = new Class({
      * Does not change its position.
      *
      * @method Phaser.Geom.Circle#setEmpty
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Circle object.
      */
@@ -199,7 +199,7 @@ var Circle = new Class({
      * Sets the position of this Circle.
      *
      * @method Phaser.Geom.Circle#setPosition
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The x position of the center of the circle.
      * @param {number} [y=0] - The y position of the center of the circle.
@@ -221,7 +221,7 @@ var Circle = new Class({
      * Checks to see if the Circle is empty: has a radius of zero.
      *
      * @method Phaser.Geom.Circle#isEmpty
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} True if the Circle is empty, otherwise false.
      */
@@ -234,7 +234,7 @@ var Circle = new Class({
      *
      * @name Phaser.Geom.Circle#radius
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     radius: {
 
@@ -254,7 +254,7 @@ var Circle = new Class({
      *
      * @name Phaser.Geom.Circle#diameter
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     diameter: {
 
@@ -274,7 +274,7 @@ var Circle = new Class({
      *
      * @name Phaser.Geom.Circle#left
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     left: {
 
@@ -293,7 +293,7 @@ var Circle = new Class({
      *
      * @name Phaser.Geom.Circle#right
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     right: {
 
@@ -312,7 +312,7 @@ var Circle = new Class({
      *
      * @name Phaser.Geom.Circle#top
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     top: {
 
@@ -331,7 +331,7 @@ var Circle = new Class({
      *
      * @name Phaser.Geom.Circle#bottom
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     bottom: {
 

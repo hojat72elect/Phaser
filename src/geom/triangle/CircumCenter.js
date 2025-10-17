@@ -7,7 +7,7 @@ var Vector2 = require('../../math/Vector2');
  *
  * @function det
  * @private
- * @since 3.0.0
+ * 
  *
  * @param {number} m00 - The [0,0] entry of the matrix.
  * @param {number} m01 - The [0,1] entry of the matrix.
@@ -28,7 +28,7 @@ function det(m00, m01, m10, m11) {
  * vertices of the triangle.
  *
  * @function Phaser.Geom.Triangle.CircumCenter
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Math.Vector2} O - [out,$return]
  *

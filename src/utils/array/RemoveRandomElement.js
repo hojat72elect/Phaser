@@ -5,7 +5,7 @@ var SpliceOne = require('./SpliceOne');
  * Will return null if there are no array items that fall within the specified range or if there is no item for the randomly chosen index.
  *
  * @function Phaser.Utils.Array.RemoveRandomElement
- * @since 3.0.0
+ * 
  *
  * @param {array} array - The array to removed a random element from.
  * @param {number} [start=0] - The array index to start the search from.

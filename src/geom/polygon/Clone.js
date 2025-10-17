@@ -4,7 +4,7 @@ var Polygon = require('./Polygon');
  * Create a new polygon which is a copy of the specified polygon
  *
  * @function Phaser.Geom.Polygon.Clone
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Polygon} polygon - The polygon to create a clone of
  *

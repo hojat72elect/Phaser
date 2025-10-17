@@ -4,7 +4,7 @@
  * The parsed XML object is returned, or `null` if there was an error while parsing the data.
  *
  * @function Phaser.DOM.ParseXML
- * @since 3.0.0
+ * 
  *
  * @param {string} data - The XML source stored in a string.
  *

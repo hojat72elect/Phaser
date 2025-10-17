@@ -18,7 +18,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * @extends Phaser.Sound.BaseSound
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Sound.WebAudioSoundManager} manager - Reference to the WebAudio Sound Manager that owns this Sound instance.
  * @param {string} key - Asset key for the sound.
@@ -40,7 +40,7 @@ var WebAudioSound = new Class({
              *
              * @name Phaser.Sound.WebAudioSound#audioBuffer
              * @type {AudioBuffer}
-             * @since 3.0.0
+             * 
              */
             this.audioBuffer = manager.game.cache.audio.get(key);
 
@@ -55,7 +55,7 @@ var WebAudioSound = new Class({
              * @name Phaser.Sound.WebAudioSound#source
              * @type {AudioBufferSourceNode}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.source = null;
 
@@ -65,7 +65,7 @@ var WebAudioSound = new Class({
              * @name Phaser.Sound.WebAudioSound#loopSource
              * @type {AudioBufferSourceNode}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.loopSource = null;
 
@@ -74,7 +74,7 @@ var WebAudioSound = new Class({
              *
              * @name Phaser.Sound.WebAudioSound#muteNode
              * @type {GainNode}
-             * @since 3.0.0
+             * 
              */
             this.muteNode = manager.context.createGain();
 
@@ -83,7 +83,7 @@ var WebAudioSound = new Class({
              *
              * @name Phaser.Sound.WebAudioSound#volumeNode
              * @type {GainNode}
-             * @since 3.0.0
+             * 
              */
             this.volumeNode = manager.context.createGain();
 
@@ -127,7 +127,7 @@ var WebAudioSound = new Class({
              * @name Phaser.Sound.WebAudioSound#playTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.playTime = 0;
 
@@ -141,7 +141,7 @@ var WebAudioSound = new Class({
              * @name Phaser.Sound.WebAudioSound#startTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.startTime = 0;
 
@@ -153,7 +153,7 @@ var WebAudioSound = new Class({
              * @name Phaser.Sound.WebAudioSound#loopTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.loopTime = 0;
 
@@ -167,7 +167,7 @@ var WebAudioSound = new Class({
              * @name Phaser.Sound.WebAudioSound#rateUpdates
              * @type {array}
              * @default []
-             * @since 3.0.0
+             * 
              */
             this.rateUpdates = [];
 
@@ -179,7 +179,7 @@ var WebAudioSound = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.hasEnded = false;
 
@@ -191,7 +191,7 @@ var WebAudioSound = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.hasLooped = false;
 
@@ -237,7 +237,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#play
      * @fires Phaser.Sound.Events#PLAY
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Types.Sound.SoundConfig)} [markerName=''] - If you want to play a marker then provide the marker name here. Alternatively, this parameter can be a SoundConfig object.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
@@ -263,7 +263,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#pause
      * @fires Phaser.Sound.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was paused successfully.
      */
@@ -290,7 +290,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#resume
      * @fires Phaser.Sound.Events#RESUME
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was resumed successfully.
      */
@@ -316,7 +316,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#stop
      * @fires Phaser.Sound.Events#STOP
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was stopped successfully.
      */
@@ -338,7 +338,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#createAndStartBufferSource
      * @private
-     * @since 3.0.0
+     * 
      */
     createAndStartBufferSource: function () {
         var seek = this.currentConfig.seek;
@@ -362,7 +362,7 @@ var WebAudioSound = new Class({
      * This method is only used internally and it creates a looping buffer source.
      *
      * @method Phaser.Sound.WebAudioSound#createAndStartLoopBufferSource
-     * @since 3.0.0
+     * 
      */
     createAndStartLoopBufferSource: function () {
         var when = this.getLoopTime();
@@ -379,7 +379,7 @@ var WebAudioSound = new Class({
      * This method is only used internally and it creates a buffer source.
      *
      * @method Phaser.Sound.WebAudioSound#createBufferSource
-     * @since 3.0.0
+     * 
      *
      * @return {AudioBufferSourceNode}
      */
@@ -413,7 +413,7 @@ var WebAudioSound = new Class({
      * This method is only used internally and it stops and removes a buffer source.
      *
      * @method Phaser.Sound.WebAudioSound#stopAndRemoveBufferSource
-     * @since 3.0.0
+     * 
      */
     stopAndRemoveBufferSource: function () {
         if (this.source) {
@@ -436,7 +436,7 @@ var WebAudioSound = new Class({
      * This method is only used internally and it stops and removes a looping buffer source.
      *
      * @method Phaser.Sound.WebAudioSound#stopAndRemoveLoopBufferSource
-     * @since 3.0.0
+     * 
      */
     stopAndRemoveLoopBufferSource: function () {
         if (this.loopSource) {
@@ -452,7 +452,7 @@ var WebAudioSound = new Class({
      * Method used internally for applying config values to some of the sound properties.
      *
      * @method Phaser.Sound.WebAudioSound#applyConfig
-     * @since 3.0.0
+     * 
      */
     applyConfig: function () {
         this.rateUpdates.length = 0;
@@ -561,7 +561,7 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#update
      * @fires Phaser.Sound.Events#COMPLETE
      * @fires Phaser.Sound.Events#LOOPED
-     * @since 3.0.0
+     * 
      */
     update: function () {
         if (this.isPlaying && this.spatialSource) {
@@ -605,7 +605,7 @@ var WebAudioSound = new Class({
      * and cleans up all Web Audio API related stuff.
      *
      * @method Phaser.Sound.WebAudioSound#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         if (this.pendingRemove) {
@@ -640,7 +640,7 @@ var WebAudioSound = new Class({
      * Method used internally to calculate total playback rate of the sound.
      *
      * @method Phaser.Sound.WebAudioSound#calculateRate
-     * @since 3.0.0
+     * 
      */
     calculateRate: function () {
         BaseSound.prototype.calculateRate.call(this);
@@ -668,7 +668,7 @@ var WebAudioSound = new Class({
      * Method used internally for calculating current playback time of a playing sound.
      *
      * @method Phaser.Sound.WebAudioSound#getCurrentTime
-     * @since 3.0.0
+     * 
      */
     getCurrentTime: function () {
         var currentTime = 0;
@@ -693,7 +693,7 @@ var WebAudioSound = new Class({
      * at witch the loop source should start playing.
      *
      * @method Phaser.Sound.WebAudioSound#getLoopTime
-     * @since 3.0.0
+     * 
      */
     getLoopTime: function () {
         var lastRateUpdateCurrentTime = 0;
@@ -716,7 +716,7 @@ var WebAudioSound = new Class({
      * @type {number}
      * @default 1
      * @fires Phaser.Sound.Events#RATE
-     * @since 3.0.0
+     * 
      */
     rate: {
 
@@ -762,7 +762,7 @@ var WebAudioSound = new Class({
      * @type {number}
      * @default 0
      * @fires Phaser.Sound.Events#DETUNE
-     * @since 3.0.0
+     * 
      */
     detune: {
 
@@ -806,7 +806,7 @@ var WebAudioSound = new Class({
      * @type {boolean}
      * @default false
      * @fires Phaser.Sound.Events#MUTE
-     * @since 3.0.0
+     * 
      */
     mute: {
 
@@ -847,7 +847,7 @@ var WebAudioSound = new Class({
      * @type {number}
      * @default 1
      * @fires Phaser.Sound.Events#VOLUME
-     * @since 3.0.0
+     * 
      */
     volume: {
 
@@ -889,7 +889,7 @@ var WebAudioSound = new Class({
      * @name Phaser.Sound.WebAudioSound#seek
      * @type {number}
      * @fires Phaser.Sound.Events#SEEK
-     * @since 3.0.0
+     * 
      */
     seek: {
 
@@ -951,7 +951,7 @@ var WebAudioSound = new Class({
      * @type {boolean}
      * @default false
      * @fires Phaser.Sound.Events#LOOP
-     * @since 3.0.0
+     * 
      */
     loop: {
 

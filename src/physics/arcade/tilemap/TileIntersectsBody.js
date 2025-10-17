@@ -2,7 +2,7 @@
  * Checks for intersection between the given tile rectangle-like object and an Arcade Physics body.
  *
  * @function Phaser.Physics.Arcade.Tilemap.TileIntersectsBody
- * @since 3.0.0
+ * 
  *
  * @param {{ left: number, right: number, top: number, bottom: number }} tileWorldRect - A rectangle object that defines the tile placement in the world.
  * @param {Phaser.Physics.Arcade.Body} body - The body to check for intersection against.

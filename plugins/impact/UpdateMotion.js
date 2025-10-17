@@ -13,7 +13,7 @@
  * };
  *
  * @function Phaser.Physics.Impact.UpdateMotion
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Physics.Impact.Body} body - [description]
  * @param {object} res - [description]

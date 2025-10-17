@@ -9,7 +9,7 @@ var Extend = require('../utils/object/Extend');
  * @class Frame
  * @memberof Phaser.Textures
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Textures.Texture} texture - The Texture this Frame is a part of.
  * @param {(number|string)} name - The name of this Frame. The name is unique within the Texture.
@@ -29,7 +29,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#texture
              * @type {Phaser.Textures.Texture}
-             * @since 3.0.0
+             * 
              */
             this.texture = texture;
 
@@ -39,7 +39,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#name
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.name = name;
 
@@ -48,7 +48,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#source
              * @type {Phaser.Textures.TextureSource}
-             * @since 3.0.0
+             * 
              */
             this.source = texture.source[sourceIndex];
 
@@ -57,7 +57,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#sourceIndex
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.sourceIndex = sourceIndex;
 
@@ -66,7 +66,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#cutX
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.cutX;
 
@@ -75,7 +75,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#cutY
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.cutY;
 
@@ -84,7 +84,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#cutWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.cutWidth;
 
@@ -93,7 +93,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#cutHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.cutHeight;
 
@@ -103,7 +103,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#x
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x = 0;
 
@@ -113,7 +113,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#y
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y = 0;
 
@@ -122,7 +122,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width;
 
@@ -131,7 +131,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height;
 
@@ -141,7 +141,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#halfWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.halfWidth;
 
@@ -151,7 +151,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#halfHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.halfHeight;
 
@@ -160,7 +160,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#centerX
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.centerX;
 
@@ -169,7 +169,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#centerY
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.centerY;
 
@@ -179,7 +179,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#pivotX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.pivotX = 0;
 
@@ -189,7 +189,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#pivotY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.pivotY = 0;
 
@@ -199,7 +199,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#customPivot
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.customPivot = false;
 
@@ -213,7 +213,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#rotated
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.rotated = false;
 
@@ -226,7 +226,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#autoRound
              * @type {number}
              * @default -1
-             * @since 3.0.0
+             * 
              */
             this.autoRound = -1;
 
@@ -235,7 +235,7 @@ var Frame = new Class({
              *
              * @name Phaser.Textures.Frame#customData
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.customData = {};
 
@@ -285,7 +285,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#data
              * @type {object}
              * @private
-             * @since 3.0.0
+             * 
              */
             this.data = {
                 cut: {
@@ -440,7 +440,7 @@ var Frame = new Class({
      * If the frame was trimmed when added to the Texture Atlas, this records the trim and source data.
      *
      * @method Phaser.Textures.Frame#setTrim
-     * @since 3.0.0
+     * 
      *
      * @param {number} actualWidth - The width of the frame before being trimmed.
      * @param {number} actualHeight - The height of the frame before being trimmed.
@@ -702,7 +702,7 @@ var Frame = new Class({
      * Updates the internal WebGL UV cache and the drawImage cache.
      *
      * @method Phaser.Textures.Frame#updateUVs
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Frame object.
      */
@@ -737,7 +737,7 @@ var Frame = new Class({
      * Updates the internal WebGL UV cache.
      *
      * @method Phaser.Textures.Frame#updateUVsInverted
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Frame object.
      */
@@ -758,7 +758,7 @@ var Frame = new Class({
      * Clones this Frame into a new Frame object.
      *
      * @method Phaser.Textures.Frame#clone
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Textures.Frame} A clone of this Frame.
      */
@@ -795,7 +795,7 @@ var Frame = new Class({
      * Destroys this Frame by nulling its reference to the parent Texture and and data objects.
      *
      * @method Phaser.Textures.Frame#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.texture = null;
@@ -826,7 +826,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#realWidth
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     realWidth: {
 
@@ -843,7 +843,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#realHeight
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     realHeight: {
 
@@ -859,7 +859,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#radius
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     radius: {
 
@@ -875,7 +875,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#trimmed
      * @type {boolean}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     trimmed: {
 
@@ -923,7 +923,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#canvasData
      * @type {object}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     canvasData: {
 

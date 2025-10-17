@@ -3,7 +3,7 @@
  * Neither rectangle should have a negative width or height.
  *
  * @function Phaser.Geom.Rectangle.MergeRect
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [target,$return]
  *

@@ -20,7 +20,7 @@ var Vector2 = require('../../math/Vector2');
  * @class StaticBody
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Arcade.Components.Collision
  *
@@ -66,7 +66,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#world
              * @type {Phaser.Physics.Arcade.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -77,7 +77,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#gameObject
              * @type {Phaser.GameObjects.GameObject}
-             * @since 3.0.0
+             * 
              */
             this.gameObject = (hasGameObject) ? gameObject : undefined;
 
@@ -96,7 +96,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#debugShowBody
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.debugShowBody = world.defaults.debugShowStaticBody;
 
@@ -105,7 +105,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#debugBodyColor
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.debugBodyColor = world.defaults.staticBodyDebugColor;
 
@@ -115,7 +115,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#enable
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.enable = true;
 
@@ -125,7 +125,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#isCircle
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.isCircle = false;
 
@@ -136,7 +136,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#radius
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.radius = 0;
 
@@ -148,7 +148,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#offset
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.offset = new Vector2();
 
@@ -157,7 +157,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#position
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.position = new Vector2(gameObject.x - (width * gameObject.originX), gameObject.y - (height * gameObject.originY));
 
@@ -167,7 +167,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = width;
 
@@ -177,7 +177,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = height;
 
@@ -187,7 +187,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#halfWidth
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.halfWidth = Math.abs(this.width / 2);
 
@@ -197,7 +197,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#halfHeight
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.halfHeight = Math.abs(this.height / 2);
 
@@ -207,7 +207,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#center
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.center = new Vector2(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
 
@@ -217,7 +217,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#velocity
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.velocity = Vector2.ZERO;
 
@@ -228,7 +228,7 @@ var StaticBody = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.allowGravity = false;
 
@@ -238,7 +238,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#gravity
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.gravity = Vector2.ZERO;
 
@@ -248,7 +248,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#bounce
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.bounce = Vector2.ZERO;
 
@@ -262,7 +262,7 @@ var StaticBody = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.onWorldBounds = false;
 
@@ -272,7 +272,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#onCollide
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.onCollide = false;
 
@@ -282,7 +282,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#onOverlap
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.onOverlap = false;
 
@@ -292,7 +292,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#mass
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.mass = 1;
 
@@ -302,7 +302,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#immovable
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.immovable = true;
 
@@ -331,7 +331,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#customSeparateX
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.customSeparateX = false;
 
@@ -341,7 +341,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#customSeparateY
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.customSeparateY = false;
 
@@ -351,7 +351,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#overlapX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.overlapX = 0;
 
@@ -361,7 +361,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#overlapY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.overlapY = 0;
 
@@ -371,7 +371,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#overlapR
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.overlapR = 0;
 
@@ -381,7 +381,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#embedded
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.embedded = false;
 
@@ -393,7 +393,7 @@ var StaticBody = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.collideWorldBounds = false;
 
@@ -402,7 +402,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#checkCollision
              * @type {Phaser.Types.Physics.Arcade.ArcadeBodyCollision}
-             * @since 3.0.0
+             * 
              */
             this.checkCollision = SetCollisionObject(false);
 
@@ -412,7 +412,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#touching
              * @type {Phaser.Types.Physics.Arcade.ArcadeBodyCollision}
-             * @since 3.0.0
+             * 
              */
             this.touching = SetCollisionObject(true);
 
@@ -423,7 +423,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#wasTouching
              * @type {Phaser.Types.Physics.Arcade.ArcadeBodyCollision}
-             * @since 3.0.0
+             * 
              */
             this.wasTouching = SetCollisionObject(true);
 
@@ -433,7 +433,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#blocked
              * @type {Phaser.Types.Physics.Arcade.ArcadeBodyCollision}
-             * @since 3.0.0
+             * 
              */
             this.blocked = SetCollisionObject(true);
 
@@ -443,7 +443,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#physicsType
              * @type {number}
              * @default Phaser.Physics.Arcade.STATIC_BODY
-             * @since 3.0.0
+             * 
              */
             this.physicsType = CONST.STATIC_BODY;
 
@@ -625,7 +625,7 @@ var StaticBody = new Class({
      * Resets the width and height to match current frame, if no width and height provided and a frame is found.
      *
      * @method Phaser.Physics.Arcade.StaticBody#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} [width] - The width of the Static Body in pixels. Cannot be zero. If not given, and the parent Game Object has a frame, it will use the frame width.
      * @param {number} [height] - The height of the Static Body in pixels. Cannot be zero. If not given, and the parent Game Object has a frame, it will use the frame height.
@@ -685,7 +685,7 @@ var StaticBody = new Class({
      * Sets this Static Body to have a circular body and sets its size and position.
      *
      * @method Phaser.Physics.Arcade.StaticBody#setCircle
-     * @since 3.0.0
+     * 
      *
      * @param {number} radius - The radius of the StaticBody, in pixels.
      * @param {number} [offsetX] - The horizontal offset of the StaticBody from its Game Object, in pixels.
@@ -730,7 +730,7 @@ var StaticBody = new Class({
      * Updates the StaticBody's `center` from its `position` and dimensions.
      *
      * @method Phaser.Physics.Arcade.StaticBody#updateCenter
-     * @since 3.0.0
+     * 
      */
     updateCenter: function () {
         this.center.set(this.position.x + this.halfWidth, this.position.y + this.halfHeight);
@@ -743,7 +743,7 @@ var StaticBody = new Class({
      * Otherwise this Static Body is centered on the Game Object's current position.
      *
      * @method Phaser.Physics.Arcade.StaticBody#reset
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x] - The x coordinate to reset the body to. If not given will use the parent Game Object's coordinate.
      * @param {number} [y] - The y coordinate to reset the body to. If not given will use the parent Game Object's coordinate.
@@ -776,7 +776,7 @@ var StaticBody = new Class({
      * NOOP function. A Static Body cannot be stopped.
      *
      * @method Phaser.Physics.Arcade.StaticBody#stop
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.StaticBody} This Static Body object.
      */
@@ -788,7 +788,7 @@ var StaticBody = new Class({
      * Returns the x and y coordinates of the top left and bottom right points of the StaticBody.
      *
      * @method Phaser.Physics.Arcade.StaticBody#getBounds
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeBodyBounds} obj - The object which will hold the coordinates of the bounds.
      *
@@ -807,7 +807,7 @@ var StaticBody = new Class({
      * Checks to see if a given x,y coordinate is colliding with this Static Body.
      *
      * @method Phaser.Physics.Arcade.StaticBody#hitTest
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The x coordinate to check against this body.
      * @param {number} y - The y coordinate to check against this body.
@@ -831,7 +831,7 @@ var StaticBody = new Class({
      * The absolute (non-negative) change in this StaticBody's horizontal position from the previous step. Always zero.
      *
      * @method Phaser.Physics.Arcade.StaticBody#deltaAbsX
-     * @since 3.0.0
+     * 
      *
      * @return {number} Always zero for a Static Body.
      */
@@ -843,7 +843,7 @@ var StaticBody = new Class({
      * The absolute (non-negative) change in this StaticBody's vertical position from the previous step. Always zero.
      *
      * @method Phaser.Physics.Arcade.StaticBody#deltaAbsY
-     * @since 3.0.0
+     * 
      *
      * @return {number} Always zero for a Static Body.
      */
@@ -855,7 +855,7 @@ var StaticBody = new Class({
      * The change in this StaticBody's horizontal position from the previous step. Always zero.
      *
      * @method Phaser.Physics.Arcade.StaticBody#deltaX
-     * @since 3.0.0
+     * 
      *
      * @return {number} The change in this StaticBody's velocity from the previous step. Always zero.
      */
@@ -867,7 +867,7 @@ var StaticBody = new Class({
      * The change in this StaticBody's vertical position from the previous step. Always zero.
      *
      * @method Phaser.Physics.Arcade.StaticBody#deltaY
-     * @since 3.0.0
+     * 
      *
      * @return {number} The change in this StaticBody's velocity from the previous step. Always zero.
      */
@@ -879,7 +879,7 @@ var StaticBody = new Class({
      * The change in this StaticBody's rotation from the previous step. Always zero.
      *
      * @method Phaser.Physics.Arcade.StaticBody#deltaZ
-     * @since 3.0.0
+     * 
      *
      * @return {number} The change in this StaticBody's rotation from the previous step. Always zero.
      */
@@ -891,7 +891,7 @@ var StaticBody = new Class({
      * Disables this Body and marks it for destruction during the next step.
      *
      * @method Phaser.Physics.Arcade.StaticBody#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.enable = false;
@@ -903,7 +903,7 @@ var StaticBody = new Class({
      * Draws a graphical representation of the StaticBody for visual debugging purposes.
      *
      * @method Phaser.Physics.Arcade.StaticBody#drawDebug
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} graphic - The Graphics object to use for the debug drawing of the StaticBody.
      */
@@ -929,7 +929,7 @@ var StaticBody = new Class({
      * Indicates whether the StaticBody is going to be showing a debug visualization during postUpdate.
      *
      * @method Phaser.Physics.Arcade.StaticBody#willDrawDebug
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether or not the StaticBody is going to show the debug visualization during postUpdate.
      */
@@ -941,7 +941,7 @@ var StaticBody = new Class({
      * Sets the Mass of the StaticBody. Will set the Mass to 0.1 if the value passed is less than or equal to zero.
      *
      * @method Phaser.Physics.Arcade.StaticBody#setMass
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The value to set the Mass to. Values of zero or less are changed to 0.1.
      *
@@ -963,7 +963,7 @@ var StaticBody = new Class({
      *
      * @name Phaser.Physics.Arcade.StaticBody#x
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     x: {
 
@@ -986,7 +986,7 @@ var StaticBody = new Class({
      *
      * @name Phaser.Physics.Arcade.StaticBody#y
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     y: {
 
@@ -1010,7 +1010,7 @@ var StaticBody = new Class({
      * @name Phaser.Physics.Arcade.StaticBody#left
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     left: {
 
@@ -1026,7 +1026,7 @@ var StaticBody = new Class({
      * @name Phaser.Physics.Arcade.StaticBody#right
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     right: {
 
@@ -1042,7 +1042,7 @@ var StaticBody = new Class({
      * @name Phaser.Physics.Arcade.StaticBody#top
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     top: {
 
@@ -1058,7 +1058,7 @@ var StaticBody = new Class({
      * @name Phaser.Physics.Arcade.StaticBody#bottom
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     bottom: {
 

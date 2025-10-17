@@ -2,7 +2,7 @@
  * Returns true if two triangles have the same coordinates.
  *
  * @function Phaser.Geom.Triangle.Equals
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Triangle} triangle - The first triangle to check.
  * @param {Phaser.Geom.Triangle} toCompare - The second triangle to check.

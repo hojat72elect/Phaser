@@ -23,7 +23,7 @@ var RequestAnimationFrame = require('../dom/RequestAnimationFrame');
  * @class TimeStep
  * @memberof Phaser.Core
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser.Game instance that owns this Time Step.
  * @param {Phaser.Types.Core.FPSConfig} config
@@ -39,7 +39,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#game
              * @type {Phaser.Game}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.game = game;
 
@@ -49,7 +49,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#raf
              * @type {Phaser.DOM.RequestAnimationFrame}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.raf = new RequestAnimationFrame();
 
@@ -60,7 +60,7 @@ var TimeStep = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.started = false;
 
@@ -74,7 +74,7 @@ var TimeStep = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.running = false;
 
@@ -87,7 +87,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#minFps
              * @type {number}
              * @default 5
-             * @since 3.0.0
+             * 
              */
             this.minFps = GetValue(config, 'min', 5);
 
@@ -101,7 +101,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#targetFps
              * @type {number}
              * @default 60
-             * @since 3.0.0
+             * 
              */
             this.targetFps = GetValue(config, 'target', 60);
 
@@ -162,7 +162,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#_min
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._min = 1000 / this.minFps;
 
@@ -174,7 +174,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#_target
              * @type {number}
              * @private
-             * @since 3.0.0
+             * 
              */
             this._target = 1000 / this.targetFps;
 
@@ -185,7 +185,7 @@ var TimeStep = new Class({
              * @type {number}
              * @readonly
              * @default 60
-             * @since 3.0.0
+             * 
              */
             this.actualFps = this.targetFps;
 
@@ -198,7 +198,7 @@ var TimeStep = new Class({
              * @type {number}
              * @readonly
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.nextFpsUpdate = 0;
 
@@ -209,7 +209,7 @@ var TimeStep = new Class({
              * @type {number}
              * @readonly
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.framesThisSecond = 0;
 
@@ -219,7 +219,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#callback
              * @type {Phaser.Types.Core.TimeStepCallback}
              * @default NOOP
-             * @since 3.0.0
+             * 
              */
             this.callback = NOOP;
 
@@ -231,7 +231,7 @@ var TimeStep = new Class({
              * @type {boolean}
              * @readonly
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.forceSetTimeOut = GetValue(config, 'forceSetTimeOut', false);
 
@@ -244,7 +244,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#time
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.time = 0;
 
@@ -256,7 +256,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#startTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.startTime = 0;
 
@@ -268,7 +268,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#lastTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.lastTime = 0;
 
@@ -280,7 +280,7 @@ var TimeStep = new Class({
              * @type {number}
              * @readonly
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.frame = 0;
 
@@ -293,7 +293,7 @@ var TimeStep = new Class({
              * @type {boolean}
              * @readonly
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.inFocus = true;
 
@@ -315,7 +315,7 @@ var TimeStep = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._pauseTime = 0;
 
@@ -326,7 +326,7 @@ var TimeStep = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._coolDown = 0;
 
@@ -336,7 +336,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#delta
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.delta = 0;
 
@@ -346,7 +346,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#deltaIndex
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.deltaIndex = 0;
 
@@ -355,7 +355,7 @@ var TimeStep = new Class({
              *
              * @name Phaser.Core.TimeStep#deltaHistory
              * @type {number[]}
-             * @since 3.0.0
+             * 
              */
             this.deltaHistory = [];
 
@@ -367,7 +367,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#deltaSmoothingMax
              * @type {number}
              * @default 10
-             * @since 3.0.0
+             * 
              */
             this.deltaSmoothingMax = GetValue(config, 'deltaHistory', 10);
 
@@ -380,7 +380,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#panicMax
              * @type {number}
              * @default 120
-             * @since 3.0.0
+             * 
              */
             this.panicMax = GetValue(config, 'panicMax', 120);
 
@@ -393,7 +393,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#rawDelta
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.rawDelta = 0;
 
@@ -432,7 +432,7 @@ var TimeStep = new Class({
      * Called by the Game instance when the DOM window.onBlur event triggers.
      *
      * @method Phaser.Core.TimeStep#blur
-     * @since 3.0.0
+     * 
      */
     blur: function () {
         this.inFocus = false;
@@ -442,7 +442,7 @@ var TimeStep = new Class({
      * Called by the Game instance when the DOM window.onFocus event triggers.
      *
      * @method Phaser.Core.TimeStep#focus
-     * @since 3.0.0
+     * 
      */
     focus: function () {
         this.inFocus = true;
@@ -454,7 +454,7 @@ var TimeStep = new Class({
      * Called when the visibility API says the game is 'hidden' (tab switch out of view, etc)
      *
      * @method Phaser.Core.TimeStep#pause
-     * @since 3.0.0
+     * 
      */
     pause: function () {
         this._pauseTime = window.performance.now();
@@ -464,7 +464,7 @@ var TimeStep = new Class({
      * Called when the visibility API says the game is 'visible' again (tab switch back into view, etc)
      *
      * @method Phaser.Core.TimeStep#resume
-     * @since 3.0.0
+     * 
      */
     resume: function () {
         this.resetDelta();
@@ -478,7 +478,7 @@ var TimeStep = new Class({
      * Called automatically when a browser sleeps them resumes.
      *
      * @method Phaser.Core.TimeStep#resetDelta
-     * @since 3.0.0
+     * 
      */
     resetDelta: function () {
         var now = window.performance.now();
@@ -505,7 +505,7 @@ var TimeStep = new Class({
      * Called automatically by the Game Boot process.
      *
      * @method Phaser.Core.TimeStep#start
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Core.TimeStepCallback} callback - The callback to be invoked each time the Time Step steps.
      */
@@ -678,7 +678,7 @@ var TimeStep = new Class({
      * You generally should never call this method directly.
      *
      * @method Phaser.Core.TimeStep#step
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The timestamp passed in from RequestAnimationFrame or setTimeout.
      */
@@ -719,7 +719,7 @@ var TimeStep = new Class({
      * Manually calls `TimeStep.step`.
      *
      * @method Phaser.Core.TimeStep#tick
-     * @since 3.0.0
+     * 
      */
     tick: function () {
         var now = window.performance.now();
@@ -735,7 +735,7 @@ var TimeStep = new Class({
      * Sends the TimeStep to sleep, stopping Request Animation Frame (or SetTimeout) and toggling the `running` flag to false.
      *
      * @method Phaser.Core.TimeStep#sleep
-     * @since 3.0.0
+     * 
      */
     sleep: function () {
         if (this.running) {
@@ -750,7 +750,7 @@ var TimeStep = new Class({
      * The `seamless` argument controls if the wake-up should adjust the start time or not.
      *
      * @method Phaser.Core.TimeStep#wake
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [seamless=false] - Adjust the startTime based on the lastTime values.
      */
@@ -808,7 +808,7 @@ var TimeStep = new Class({
      * Stops the TimeStep running.
      *
      * @method Phaser.Core.TimeStep#stop
-     * @since 3.0.0
+     * 
      *
      * @return {this} The TimeStep object.
      */
@@ -826,7 +826,7 @@ var TimeStep = new Class({
      * any objects.
      *
      * @method Phaser.Core.TimeStep#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.stop();

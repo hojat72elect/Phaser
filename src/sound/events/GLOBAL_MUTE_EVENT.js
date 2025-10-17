@@ -8,7 +8,7 @@
  *
  * @event Phaser.Sound.Events#GLOBAL_MUTE
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {(Phaser.Sound.WebAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager)} soundManager - A reference to the Sound Manager that emitted the event.
  * @param {boolean} mute - The mute value. `true` if the Sound Manager is now muted, otherwise `false`.

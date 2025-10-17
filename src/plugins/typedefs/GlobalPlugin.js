@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Plugins.GlobalPlugin
- * @since 3.0.0
+ * 
  *
  * @property {string} key - The unique name of this plugin within the plugin cache.
  * @property {function} plugin - An instance of the plugin.

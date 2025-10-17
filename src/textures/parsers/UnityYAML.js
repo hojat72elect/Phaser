@@ -3,7 +3,7 @@ var imageHeight = 0;
 /**
  * @function addFrame
  * @private
- * @since 3.0.0
+ * 
  */
 var addFrame = function (texture, sourceIndex, name, frame) {
     //  The frame values are the exact coordinates to cut the frame out of the atlas from
@@ -35,7 +35,7 @@ var addFrame = function (texture, sourceIndex, name, frame) {
  * @function Phaser.Textures.Parsers.UnityYAML
  * @memberof Phaser.Textures.Parsers
  * @private
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Textures.Texture} texture - The Texture to add the Frames to.
  * @param {number} sourceIndex - The index of the TextureSource.

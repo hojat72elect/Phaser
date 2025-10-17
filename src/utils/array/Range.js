@@ -47,7 +47,7 @@ var BuildChunk = function (a, b, qty) {
  * a1, a2, a3, b1, b2, b3, b3, b2, b1, a3, a2, a1
  *
  * @function Phaser.Utils.Array.Range
- * @since 3.0.0
+ * 
  *
  * @param {array} a - The first array of range elements.
  * @param {array} b - The second array of range elements.

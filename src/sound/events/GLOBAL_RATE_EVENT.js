@@ -9,7 +9,7 @@
  *
  * @event Phaser.Sound.Events#GLOBAL_RATE
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Sound.BaseSoundManager} soundManager - A reference to the sound manager that emitted the event.
  * @param {number} rate - The updated rate value.

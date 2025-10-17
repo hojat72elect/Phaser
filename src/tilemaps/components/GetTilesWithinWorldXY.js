@@ -8,7 +8,7 @@ var pointEnd = new Vector2();
  * Gets the tiles in the given rectangular area (in world coordinates) of the layer.
  *
  * @function Phaser.Tilemaps.Components.GetTilesWithinWorldXY
- * @since 3.0.0
+ * 
  *
  * @param {number} worldX - The world x coordinate for the top-left of the area.
  * @param {number} worldY - The world y coordinate for the top-left of the area.

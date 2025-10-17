@@ -3,7 +3,7 @@
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.Depth
- * @since 3.0.0
+ * 
  */
 
 var ArrayUtils = require('../../utils/array');
@@ -17,7 +17,7 @@ var Depth = {
      * @type {number}
      * @private
      * @default 0
-     * @since 3.0.0
+     * 
      */
     _depth: 0,
 
@@ -34,7 +34,7 @@ var Depth = {
      *
      * @name Phaser.GameObjects.Components.Depth#depth
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     depth: {
 
@@ -64,7 +64,7 @@ var Depth = {
      * Setting the depth will queue a depth sort event within the Scene.
      *
      * @method Phaser.GameObjects.Components.Depth#setDepth
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The depth of this Game Object. Ensure this value is only ever a number data-type.
      *

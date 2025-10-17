@@ -24,7 +24,7 @@ var Vertices = require('./lib/geometry/Vertices');
  * @class PointerConstraint
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene to which this Pointer Constraint belongs.
  * @param {Phaser.Physics.Matter.World} world - A reference to the Matter World instance to which this Constraint belongs.
@@ -60,7 +60,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -69,7 +69,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#world
              * @type {Phaser.Physics.Matter.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -79,7 +79,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#camera
              * @type {Phaser.Cameras.Scene2D.Camera}
-             * @since 3.0.0
+             * 
              */
             this.camera = null;
 
@@ -90,7 +90,7 @@ var PointerConstraint = new Class({
              * @name Phaser.Physics.Matter.PointerConstraint#pointer
              * @type {Phaser.Input.Pointer}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.pointer = null;
 
@@ -103,7 +103,7 @@ var PointerConstraint = new Class({
              * @name Phaser.Physics.Matter.PointerConstraint#active
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.active = true;
 
@@ -112,7 +112,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#position
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.position = new Vector2();
 
@@ -139,7 +139,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#constraint
              * @type {MatterJS.ConstraintType}
-             * @since 3.0.0
+             * 
              */
             this.constraint = Constraint.create(Merge(options, defaults));
 
@@ -157,7 +157,7 @@ var PointerConstraint = new Class({
      * If a body is found, it is bound to this constraint and the drag begins.
      *
      * @method Phaser.Physics.Matter.PointerConstraint#onDown
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - A reference to the Pointer that was pressed.
      */
@@ -264,7 +264,7 @@ var PointerConstraint = new Class({
      *
      * @method Phaser.Physics.Matter.PointerConstraint#update
      * @fires Phaser.Physics.Matter.Events#DRAG
-     * @since 3.0.0
+     * 
      */
     update: function () {
         var pointer = this.pointer;
@@ -335,7 +335,7 @@ var PointerConstraint = new Class({
      * Destroys this Pointer Constraint instance and all of its references.
      *
      * @method Phaser.Physics.Matter.PointerConstraint#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.world.removeConstraint(this.constraint);

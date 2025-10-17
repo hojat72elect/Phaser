@@ -15,7 +15,7 @@ var RGBToHSV = require('./RGBToHSV');
  * @class Color
  * @memberof Phaser.Display
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [red=0] - The red color value. A number between 0 and 255.
  * @param {number} [green=0] - The green color value. A number between 0 and 255.
@@ -47,7 +47,7 @@ var Color = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.r = 0;
 
@@ -58,7 +58,7 @@ var Color = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.g = 0;
 
@@ -69,7 +69,7 @@ var Color = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.b = 0;
 
@@ -80,7 +80,7 @@ var Color = new Class({
              * @type {number}
              * @private
              * @default 255
-             * @since 3.0.0
+             * 
              */
             this.a = 255;
 
@@ -135,7 +135,7 @@ var Color = new Class({
              *
              * @name Phaser.Display.Color#gl
              * @type {number[]}
-             * @since 3.0.0
+             * 
              */
             this.gl = [0, 0, 0, 1];
 
@@ -146,7 +146,7 @@ var Color = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._color = 0;
 
@@ -157,7 +157,7 @@ var Color = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._color32 = 0;
 
@@ -168,7 +168,7 @@ var Color = new Class({
              * @type {string}
              * @private
              * @default ''
-             * @since 3.0.0
+             * 
              */
             this._rgba = '';
 
@@ -179,7 +179,7 @@ var Color = new Class({
      * Sets this color to be transparent. Sets all values to zero.
      *
      * @method Phaser.Display.Color#transparent
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Display.Color} This Color object.
      */
@@ -200,7 +200,7 @@ var Color = new Class({
      * Sets the color of this Color component.
      *
      * @method Phaser.Display.Color#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} red - The red color value. A number between 0 and 255.
      * @param {number} green - The green color value. A number between 0 and 255.
@@ -234,7 +234,7 @@ var Color = new Class({
      * Sets the red, green, blue and alpha GL values of this Color component.
      *
      * @method Phaser.Display.Color#setGLTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} red - The red color value. A number between 0 and 1.
      * @param {number} green - The green color value. A number between 0 and 1.
@@ -264,7 +264,7 @@ var Color = new Class({
      * Sets the color based on the color object given.
      *
      * @method Phaser.Display.Color#setFromRGB
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Display.InputColorObject} color - An object containing `r`, `g`, `b` and optionally `a` values in the range 0 to 255.
      *
@@ -307,7 +307,7 @@ var Color = new Class({
      *
      * @method Phaser.Display.Color#update
      * @private
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Display.Color} This Color object.
      */
@@ -359,7 +359,7 @@ var Color = new Class({
      * Returns a new Color component using the values from this one.
      *
      * @method Phaser.Display.Color#clone
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Display.Color} A new Color object.
      */
@@ -525,7 +525,7 @@ var Color = new Class({
      * @name Phaser.Display.Color#color
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     color: {
 
@@ -541,7 +541,7 @@ var Color = new Class({
      * @name Phaser.Display.Color#color32
      * @type {number}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     color32: {
 
@@ -557,7 +557,7 @@ var Color = new Class({
      * @name Phaser.Display.Color#rgba
      * @type {string}
      * @readonly
-     * @since 3.0.0
+     * 
      */
     rgba: {
 
@@ -572,7 +572,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#redGL
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     redGL: {
 
@@ -595,7 +595,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#greenGL
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     greenGL: {
 
@@ -618,7 +618,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#blueGL
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     blueGL: {
 
@@ -641,7 +641,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#alphaGL
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     alphaGL: {
 
@@ -664,7 +664,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#red
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     red: {
 
@@ -689,7 +689,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#green
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     green: {
 
@@ -714,7 +714,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#blue
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     blue: {
 
@@ -739,7 +739,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#alpha
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     alpha: {
 

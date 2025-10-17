@@ -9,7 +9,7 @@ var PropertyValueInc = require('./PropertyValueInc');
  * To use this with a Group: `IncAlpha(group.getChildren(), value, step)`
  *
  * @function Phaser.Actions.IncAlpha
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

@@ -14,7 +14,7 @@ var Vector2 = require('../../math/Vector2');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Input.Gamepad
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Gamepad.GamepadPlugin} manager - A reference to the Gamepad Plugin.
  * @param {Phaser.Types.Input.Gamepad.Pad} pad - The Gamepad object, as extracted from GamepadEvent.
@@ -33,7 +33,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#manager
              * @type {Phaser.Input.Gamepad.GamepadPlugin}
-             * @since 3.0.0
+             * 
              */
             this.manager = manager;
 
@@ -57,7 +57,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#id
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.id = pad.id;
 
@@ -68,7 +68,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#index
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.index = pad.index;
 
@@ -83,7 +83,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#buttons
              * @type {Phaser.Input.Gamepad.Button[]}
-             * @since 3.0.0
+             * 
              */
             this.buttons = buttons;
 
@@ -98,7 +98,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#axes
              * @type {Phaser.Input.Gamepad.Axis[]}
-             * @since 3.0.0
+             * 
              */
             this.axes = axes;
 
@@ -410,7 +410,7 @@ var Gamepad = new Class({
      *
      * @method Phaser.Input.Gamepad.Gamepad#update
      * @private
-     * @since 3.0.0
+     * 
      */
     update: function (pad) {
         if (pad.timestamp < this._created) {
@@ -482,7 +482,7 @@ var Gamepad = new Class({
      * @name Phaser.Input.Gamepad.Gamepad#connected
      * @type {boolean}
      * @default true
-     * @since 3.0.0
+     * 
      */
     connected: {
 
@@ -497,7 +497,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#timestamp
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     timestamp: {
 

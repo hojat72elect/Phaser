@@ -2,7 +2,7 @@
  * Provides methods used for setting the immovable properties of an Arcade Physics Body.
  *
  * @namespace Phaser.Physics.Arcade.Components.Immovable
- * @since 3.0.0
+ * 
  */
 var Immovable = {
 
@@ -14,7 +14,7 @@ var Immovable = {
      * the `setPushable` method instead.
      *
      * @method Phaser.Physics.Arcade.Components.Immovable#setImmovable
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [value=true] - Sets if this body will be separated during collisions with other bodies.
      *

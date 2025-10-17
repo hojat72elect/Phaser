@@ -5,7 +5,7 @@ var DistanceBetween = require('../math/distance/DistanceBetween');
  * Rotates each item around the given point by the given angle.
  *
  * @function Phaser.Actions.RotateAround
- * @since 3.0.0
+ * 
  * @see Phaser.Math.RotateAroundDistance
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]

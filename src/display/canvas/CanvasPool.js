@@ -16,14 +16,14 @@ var _disableContextSmoothing = false;
  * Which means all instances of Phaser Games on the same page can share the one single pool.
  *
  * @namespace Phaser.Display.Canvas.CanvasPool
- * @since 3.0.0
+ * 
  */
 var CanvasPool = function () {
     /**
      * Creates a new Canvas DOM element, or pulls one from the pool if free.
      *
      * @function Phaser.Display.Canvas.CanvasPool.create
-     * @since 3.0.0
+     * 
      *
      * @param {*} parent - The parent of the Canvas object.
      * @param {number} [width=1] - The width of the Canvas.
@@ -86,7 +86,7 @@ var CanvasPool = function () {
      * Creates a new Canvas DOM element, or pulls one from the pool if free.
      *
      * @function Phaser.Display.Canvas.CanvasPool.create2D
-     * @since 3.0.0
+     * 
      *
      * @param {*} parent - The parent of the Canvas object.
      * @param {number} [width=1] - The width of the Canvas.
@@ -102,7 +102,7 @@ var CanvasPool = function () {
      * Creates a new Canvas DOM element, or pulls one from the pool if free.
      *
      * @function Phaser.Display.Canvas.CanvasPool.createWebGL
-     * @since 3.0.0
+     * 
      *
      * @param {*} parent - The parent of the Canvas object.
      * @param {number} [width=1] - The width of the Canvas.
@@ -118,7 +118,7 @@ var CanvasPool = function () {
      * Gets the first free canvas index from the pool.
      *
      * @function Phaser.Display.Canvas.CanvasPool.first
-     * @since 3.0.0
+     * 
      *
      * @param {number} [canvasType=Phaser.CANVAS] - The type of the Canvas. Either `Phaser.CANVAS` or `Phaser.WEBGL`.
      *
@@ -149,7 +149,7 @@ var CanvasPool = function () {
      * The canvas has its width and height set to 1, and its parent attribute nulled.
      *
      * @function Phaser.Display.Canvas.CanvasPool.remove
-     * @since 3.0.0
+     * 
      *
      * @param {*} parent - The canvas or the parent of the canvas to free.
      */
@@ -170,7 +170,7 @@ var CanvasPool = function () {
      * Gets the total number of used canvas elements in the pool.
      *
      * @function Phaser.Display.Canvas.CanvasPool.total
-     * @since 3.0.0
+     * 
      *
      * @return {number} The number of used canvases.
      */
@@ -190,7 +190,7 @@ var CanvasPool = function () {
      * Gets the total number of free canvas elements in the pool.
      *
      * @function Phaser.Display.Canvas.CanvasPool.free
-     * @since 3.0.0
+     * 
      *
      * @return {number} The number of free canvases.
      */
@@ -202,7 +202,7 @@ var CanvasPool = function () {
      * Disable context smoothing on any new Canvas element created.
      *
      * @function Phaser.Display.Canvas.CanvasPool.disableSmoothing
-     * @since 3.0.0
+     * 
      */
     var disableSmoothing = function () {
         _disableContextSmoothing = true;
@@ -212,7 +212,7 @@ var CanvasPool = function () {
      * Enable context smoothing on any new Canvas element created.
      *
      * @function Phaser.Display.Canvas.CanvasPool.enableSmoothing
-     * @since 3.0.0
+     * 
      */
     var enableSmoothing = function () {
         _disableContextSmoothing = false;

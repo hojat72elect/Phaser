@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Particles.GravityWellConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [x=0] - The x coordinate of the Gravity Well, in world space.
  * @property {number} [y=0] - The y coordinate of the Gravity Well, in world space.

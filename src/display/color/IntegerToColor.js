@@ -5,7 +5,7 @@ var IntegerToRGB = require('./IntegerToRGB');
  * Converts the given color value into an instance of a Color object.
  *
  * @function Phaser.Display.Color.IntegerToColor
- * @since 3.0.0
+ * 
  *
  * @param {number} input - The color value to convert into a Color object.
  *

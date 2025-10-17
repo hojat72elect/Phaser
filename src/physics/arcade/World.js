@@ -42,7 +42,7 @@ var Wrap = require('../../math/Wrap');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this World instance belongs.
  * @param {Phaser.Types.Physics.Arcade.ArcadeWorldConfig} config - An Arcade Physics Configuration object.
@@ -61,7 +61,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -70,7 +70,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#bodies
              * @type {Phaser.Structs.Set.<Phaser.Physics.Arcade.Body>}
-             * @since 3.0.0
+             * 
              */
             this.bodies = new Set();
 
@@ -79,7 +79,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#staticBodies
              * @type {Phaser.Structs.Set.<Phaser.Physics.Arcade.StaticBody>}
-             * @since 3.0.0
+             * 
              */
             this.staticBodies = new Set();
 
@@ -97,7 +97,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#colliders
              * @type {Phaser.Structs.ProcessQueue.<Phaser.Physics.Arcade.Collider>}
-             * @since 3.0.0
+             * 
              */
             this.colliders = new ProcessQueue();
 
@@ -106,7 +106,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#gravity
              * @type {Phaser.Math.Vector2}
-             * @since 3.0.0
+             * 
              */
             this.gravity = new Vector2(GetValue(config, 'gravity.x', 0), GetValue(config, 'gravity.y', 0));
 
@@ -115,7 +115,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#bounds
              * @type {Phaser.Geom.Rectangle}
-             * @since 3.0.0
+             * 
              */
             this.bounds = new Rectangle(
                 GetValue(config, 'x', 0),
@@ -129,7 +129,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#checkCollision
              * @type {Phaser.Types.Physics.Arcade.CheckCollisionObject}
-             * @since 3.0.0
+             * 
              */
             this.checkCollision = {
                 up: GetValue(config, 'checkCollision.up', true),
@@ -224,7 +224,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#OVERLAP_BIAS
              * @type {number}
              * @default 4
-             * @since 3.0.0
+             * 
              */
             this.OVERLAP_BIAS = GetValue(config, 'overlapBias', 4);
 
@@ -237,7 +237,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#TILE_BIAS
              * @type {number}
              * @default 16
-             * @since 3.0.0
+             * 
              */
             this.TILE_BIAS = GetValue(config, 'tileBias', 16);
 
@@ -248,7 +248,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#forceX
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.forceX = GetValue(config, 'forceX', false);
 
@@ -258,7 +258,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#isPaused
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.isPaused = GetValue(config, 'isPaused', false);
 
@@ -269,7 +269,7 @@ var World = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._total = 0;
 
@@ -279,7 +279,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#drawDebug
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.drawDebug = GetValue(config, 'debug', false);
 
@@ -288,7 +288,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#debugGraphic
              * @type {Phaser.GameObjects.Graphics}
-             * @since 3.0.0
+             * 
              */
             this.debugGraphic;
 
@@ -297,7 +297,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#defaults
              * @type {Phaser.Types.Physics.Arcade.ArcadeWorldDefaults}
-             * @since 3.0.0
+             * 
              */
             this.defaults = {
                 debugShowBody: GetValue(config, 'debugShowBody', true),
@@ -318,7 +318,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#maxEntries
              * @type {number}
              * @default 16
-             * @since 3.0.0
+             * 
              */
             this.maxEntries = GetValue(config, 'maxEntries', 16);
 
@@ -351,7 +351,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#tree
              * @type {Phaser.Structs.RTree}
-             * @since 3.0.0
+             * 
              */
             this.tree = new RTree(this.maxEntries);
 
@@ -360,7 +360,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#staticTree
              * @type {Phaser.Structs.RTree}
-             * @since 3.0.0
+             * 
              */
             this.staticTree = new RTree(this.maxEntries);
 
@@ -369,7 +369,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#treeMinMax
              * @type {Phaser.Types.Physics.Arcade.ArcadeWorldTreeMinMax}
-             * @since 3.0.0
+             * 
              */
             this.treeMinMax = {minX: 0, minY: 0, maxX: 0, maxY: 0};
 
@@ -431,7 +431,7 @@ var World = new Class({
      * method to have their bodies created.
      *
      * @method Phaser.Physics.Arcade.World#enable
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.GameObjects.GameObject[]|Phaser.GameObjects.Group|Phaser.GameObjects.Group[])} object - The object, or objects, on which to create the bodies.
      * @param {number} [bodyType] - The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
@@ -490,7 +490,7 @@ var World = new Class({
      * method to have their bodies created.
      *
      * @method Phaser.Physics.Arcade.World#enableBody
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} object - The Game Object on which to create the body.
      * @param {number} [bodyType] - The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
@@ -553,7 +553,7 @@ var World = new Class({
      * means you can re-enable it again at any point by passing it to enable `World.enable` or `World.add`.
      *
      * @method Phaser.Physics.Arcade.World#disable
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.GameObjects.GameObject[]|Phaser.GameObjects.Group|Phaser.GameObjects.Group[])} object - The object, or objects, on which to disable the bodies.
      */
@@ -593,7 +593,7 @@ var World = new Class({
      * means you can re-enable it again at any point by passing it to enable `World.enable` or `World.add`.
      *
      * @method Phaser.Physics.Arcade.World#disableBody
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)} body - The Body to be disabled.
      */
@@ -612,7 +612,7 @@ var World = new Class({
      * means you can re-enable it again at any point by passing it to enable `enable` or `add`.
      *
      * @method Phaser.Physics.Arcade.World#remove
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)} body - The body to be removed from the simulation.
      */
@@ -639,7 +639,7 @@ var World = new Class({
      * You should not typically use this in a production game. Use it to aid during debugging.
      *
      * @method Phaser.Physics.Arcade.World#createDebugGraphic
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object that was created for use by the World.
      */
@@ -664,7 +664,7 @@ var World = new Class({
      * should be checked against.
      *
      * @method Phaser.Physics.Arcade.World#setBounds
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - The top-left x coordinate of the boundary.
      * @param {number} y - The top-left y coordinate of the boundary.
@@ -691,7 +691,7 @@ var World = new Class({
      * Enables or disables collisions on each edge of the World boundary.
      *
      * @method Phaser.Physics.Arcade.World#setBoundsCollision
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [left=true] - Should bodies check against the left edge of the boundary?
      * @param {boolean} [right=true] - Should bodies check against the right edge of the boundary?
@@ -732,7 +732,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#pause
      * @fires Phaser.Physics.Arcade.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
@@ -749,7 +749,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#resume
      * @fires Phaser.Physics.Arcade.Events#RESUME
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
@@ -773,7 +773,7 @@ var World = new Class({
      * as it will be handled for you automatically.
      *
      * @method Phaser.Physics.Arcade.World#addCollider
-     * @since 3.0.0
+     * 
      * @see Phaser.Physics.Arcade.World#collide
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object to check for collision.
@@ -814,7 +814,7 @@ var World = new Class({
      * as it will be handled for you automatically.
      *
      * @method Phaser.Physics.Arcade.World#addOverlap
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object to check for overlap.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object2 - The second object to check for overlap.
@@ -853,7 +853,7 @@ var World = new Class({
      * a Collider you _don't_ need to pass it to this method too.
      *
      * @method Phaser.Physics.Arcade.World#removeCollider
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Collider} collider - The Collider to remove from the simulation.
      *
@@ -899,7 +899,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#update
      * @fires Phaser.Physics.Arcade.Events#WORLD_STEP
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
@@ -1032,7 +1032,7 @@ var World = new Class({
      * Updates bodies, draws the debug display, and handles pending queue operations.
      *
      * @method Phaser.Physics.Arcade.World#postUpdate
-     * @since 3.0.0
+     * 
      */
     postUpdate: function () {
         var i;
@@ -1113,7 +1113,7 @@ var World = new Class({
      * Calculates a Body's velocity and updates its position.
      *
      * @method Phaser.Physics.Arcade.World#updateMotion
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} body - The Body to be updated.
      * @param {number} delta - The delta value to be used in the motion calculations, in seconds.
@@ -1167,7 +1167,7 @@ var World = new Class({
      * Calculates a Body's per-axis velocity.
      *
      * @method Phaser.Physics.Arcade.World#computeVelocity
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} body - The Body to compute the velocity for.
      * @param {number} delta - The delta value to be used in the calculation, in seconds.
@@ -1268,7 +1268,7 @@ var World = new Class({
      * @method Phaser.Physics.Arcade.World#separate
      * @fires Phaser.Physics.Arcade.Events#COLLIDE
      * @fires Phaser.Physics.Arcade.Events#OVERLAP
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} body1 - The first Body to be separated.
      * @param {Phaser.Physics.Arcade.Body} body2 - The second Body to be separated.
@@ -1365,7 +1365,7 @@ var World = new Class({
      * @method Phaser.Physics.Arcade.World#separateCircle
      * @fires Phaser.Physics.Arcade.Events#COLLIDE
      * @fires Phaser.Physics.Arcade.Events#OVERLAP
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} body1 - The first Body to be separated.
      * @param {Phaser.Physics.Arcade.Body} body2 - The second Body to be separated.
@@ -1543,7 +1543,7 @@ var World = new Class({
      * Checks to see if two Bodies intersect at all.
      *
      * @method Phaser.Physics.Arcade.World#intersects
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} body1 - The first body to check.
      * @param {Phaser.Physics.Arcade.Body} body2 - The second body to check.
@@ -1581,7 +1581,7 @@ var World = new Class({
      * Tests if a circular Body intersects with another Body.
      *
      * @method Phaser.Physics.Arcade.World#circleBodyIntersects
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} circle - The circular body to test.
      * @param {Phaser.Physics.Arcade.Body} body - The rectangular body to test.
@@ -1604,7 +1604,7 @@ var World = new Class({
      * See details in {@link Phaser.Physics.Arcade.World#collide}.
      *
      * @method Phaser.Physics.Arcade.World#overlap
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object or array of objects to check.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} [object2] - The second object or array of objects to check, or `undefined`.
@@ -1652,7 +1652,7 @@ var World = new Class({
      * require a high level of stability please consider using an alternative physics system, such as Matter.js.
      *
      * @method Phaser.Physics.Arcade.World#collide
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object or array of objects to check.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} [object2] - The second object or array of objects to check, or `undefined`.
@@ -1681,7 +1681,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideObjects
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object to check for collision.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} [object2] - The second object to check for collision.
@@ -1754,7 +1754,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideHandler
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object1 - The first object or array of objects to check.
      * @param {Phaser.Types.Physics.Arcade.ArcadeColliderType} object2 - The second object or array of objects to check, or `undefined`.
@@ -1835,7 +1835,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideSpriteVsSprite
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite1 - The first object to check for collision.
      * @param {Phaser.GameObjects.GameObject} sprite2 - The second object to check for collision.
@@ -1871,7 +1871,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideSpriteVsGroup
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.GameObjects.Group} group - The second object to check for collision.
@@ -1951,7 +1951,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideGroupVsTilemapLayer
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Group} group - The first object to check for collision.
      * @param {Phaser.Tilemaps.TilemapLayer} tilemapLayer - The second object to check for collision.
@@ -2064,7 +2064,7 @@ var World = new Class({
      * @method Phaser.Physics.Arcade.World#collideSpriteVsTilemapLayer
      * @fires Phaser.Physics.Arcade.Events#TILE_COLLIDE
      * @fires Phaser.Physics.Arcade.Events#TILE_OVERLAP
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.Tilemaps.TilemapLayer} tilemapLayer - The second object to check for collision.
@@ -2174,7 +2174,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideGroupVsGroup
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Group} group1 - The first object to check for collision.
      * @param {Phaser.GameObjects.Group} group2 - The second object to check for collision.
@@ -2257,7 +2257,7 @@ var World = new Class({
      * Shuts down the simulation, clearing physics data and removing listeners.
      *
      * @method Phaser.Physics.Arcade.World#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.tree.clear();
@@ -2273,7 +2273,7 @@ var World = new Class({
      * Shuts down the simulation and disconnects it from the current scene.
      *
      * @method Phaser.Physics.Arcade.World#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

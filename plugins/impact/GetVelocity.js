@@ -10,7 +10,7 @@ var Clamp = require('../../math/Clamp');
  * [description]
  *
  * @function Phaser.Physics.Impact.GetVelocity
- * @since 3.0.0
+ * 
  *
  * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
  * @param {number} vel - [description]

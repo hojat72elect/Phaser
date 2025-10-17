@@ -2,7 +2,7 @@
  * Read an integer value from an XML Node.
  *
  * @function getValue
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {Node} node - The XML Node.
@@ -18,7 +18,7 @@ function getValue(node, attribute) {
  * Parse an XML font to Bitmap Font data for the Bitmap Font cache.
  *
  * @function ParseXMLBitmapFont
- * @since 3.0.0
+ * 
  * @private
  *
  * @param {XMLDocument} xml - The XML Document to parse the font from.

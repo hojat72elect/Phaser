@@ -2,7 +2,7 @@
  * Merges a Rectangle with a list of points by repositioning and/or resizing it such that all points are located on or within its bounds.
  *
  * @function Phaser.Geom.Rectangle.MergePoints
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [target,$return]
  *

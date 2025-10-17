@@ -10,7 +10,7 @@ var OS = require('../device/OS');
  * Called automatically by the Phaser.Game instance. Should not usually be accessed directly.
  *
  * @function Phaser.DOM.DOMContentLoaded
- * @since 3.0.0
+ * 
  *
  * @param {ContentLoadedCallback} callback - The callback to be invoked when the device is ready and the DOM content is loaded.
  */

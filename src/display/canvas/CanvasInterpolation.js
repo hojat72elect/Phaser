@@ -1,6 +1,6 @@
 /**
  * @namespace Phaser.Display.Canvas.CanvasInterpolation
- * @since 3.0.0
+ * 
  */
 var CanvasInterpolation = {
 
@@ -8,7 +8,7 @@ var CanvasInterpolation = {
      * Sets the CSS image-rendering property on the given canvas to be 'crisp' (aka 'optimize contrast' on webkit).
      *
      * @function Phaser.Display.Canvas.CanvasInterpolation.setCrisp
-     * @since 3.0.0
+     * 
      *
      * @param {HTMLCanvasElement} canvas - The canvas object to have the style set on.
      *
@@ -30,7 +30,7 @@ var CanvasInterpolation = {
      * Sets the CSS image-rendering property on the given canvas to be 'bicubic' (aka 'auto').
      *
      * @function Phaser.Display.Canvas.CanvasInterpolation.setBicubic
-     * @since 3.0.0
+     * 
      *
      * @param {HTMLCanvasElement} canvas - The canvas object to have the style set on.
      *

@@ -5,7 +5,7 @@ var Perimeter = require('./Perimeter');
  * Return an array of points from the perimeter of the rectangle, each spaced out based on the quantity or step required.
  *
  * @function Phaser.Geom.Rectangle.GetPoints
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point[]} O - [out,$return]
  *

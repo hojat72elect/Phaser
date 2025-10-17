@@ -2,7 +2,7 @@
  * Calculates the perimeter of a Rectangle.
  *
  * @function Phaser.Geom.Rectangle.Perimeter
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The Rectangle to use.
  *

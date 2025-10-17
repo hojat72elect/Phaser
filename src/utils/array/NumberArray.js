@@ -15,7 +15,7 @@
  * `var array = Phaser.Utils.Array.NumberArray(5, 7, 'HD-', '.png'); // array = ["HD-5.png", "HD-6.png", "HD-7.png"]`
  *
  * @function Phaser.Utils.Array.NumberArray
- * @since 3.0.0
+ * 
  *
  * @param {number} start - The minimum value the array starts with.
  * @param {number} end - The maximum value the array contains.

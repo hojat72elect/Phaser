@@ -7,7 +7,7 @@ var CreateGroupLayer = require('./CreateGroupLayer');
  * Parses a Tiled JSON object into an array of ObjectLayer objects.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseObjectLayers
- * @since 3.0.0
+ * 
  *
  * @param {object} json - The Tiled JSON object.
  *

@@ -5,7 +5,7 @@ var Point = require('../point/Point');
  * Returns an array of evenly spaced points on the perimeter of a Triangle.
  *
  * @function Phaser.Geom.Triangle.GetPoints
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

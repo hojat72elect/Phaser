@@ -19,7 +19,7 @@ var World = require('./World');
  * @class ImpactPhysics
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - [description]
  */
@@ -33,7 +33,7 @@ var ImpactPhysics = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactPhysics#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -42,7 +42,7 @@ var ImpactPhysics = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactPhysics#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -51,7 +51,7 @@ var ImpactPhysics = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactPhysics#config
              * @type {object}
-             * @since 3.0.0
+             * 
              */
             this.config = this.getConfig();
 
@@ -60,7 +60,7 @@ var ImpactPhysics = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactPhysics#world
              * @type {Phaser.Physics.Impact.World}
-             * @since 3.0.0
+             * 
              */
             this.world;
 
@@ -69,7 +69,7 @@ var ImpactPhysics = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactPhysics#add
              * @type {Phaser.Physics.Impact.Factory}
-             * @since 3.0.0
+             * 
              */
             this.add;
 
@@ -117,7 +117,7 @@ var ImpactPhysics = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#getConfig
-     * @since 3.0.0
+     * 
      *
      * @return {object} [description]
      */
@@ -137,7 +137,7 @@ var ImpactPhysics = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#pause
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Impact.World} The Impact World object.
      */
@@ -149,7 +149,7 @@ var ImpactPhysics = new Class({
      * [description]
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#resume
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Impact.World} The Impact World object.
      */
@@ -163,7 +163,7 @@ var ImpactPhysics = new Class({
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var eventEmitter = this.systems.events;
@@ -184,7 +184,7 @@ var ImpactPhysics = new Class({
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

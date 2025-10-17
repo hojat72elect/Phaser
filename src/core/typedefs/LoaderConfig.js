@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Core.LoaderConfig
- * @since 3.0.0
+ * 
  *
  * @property {string} [baseURL] - A URL used to resolve paths given to the loader. Example: 'http://labs.phaser.io/assets/'.
  * @property {string} [path] - A URL path used to resolve relative paths given to the loader. Example: 'images/sprites/'.

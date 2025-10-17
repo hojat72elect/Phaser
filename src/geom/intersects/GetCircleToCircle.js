@@ -12,7 +12,7 @@ var CircleToCircle = require('./CircleToCircle');
  * Checks if two Circles intersect and returns the intersection points as a Point object array.
  *
  * @function Phaser.Geom.Intersects.GetCircleToCircle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circleA - The first Circle to check for intersection.
  * @param {Phaser.Geom.Circle} circleB - The second Circle to check for intersection.

@@ -3,7 +3,7 @@
  * the given value from the source.
  *
  * @function Phaser.Tweens.Builders.GetNewValue
- * @since 3.0.0
+ * 
  *
  * @param {any} source - The source object to get the value from.
  * @param {string} key - The property to get from the source.

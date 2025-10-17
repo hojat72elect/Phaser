@@ -25,7 +25,7 @@ var RectangleContains = require('../../geom/rectangle/Contains');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Depth
  * @extends Phaser.GameObjects.Components.GetBounds
@@ -72,7 +72,7 @@ var Zone = new Class({
              *
              * @name Phaser.GameObjects.Zone#width
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.width = width;
 
@@ -81,7 +81,7 @@ var Zone = new Class({
              *
              * @name Phaser.GameObjects.Zone#height
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.height = height;
 
@@ -92,7 +92,7 @@ var Zone = new Class({
              *
              * @name Phaser.GameObjects.Zone#blendMode
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.blendMode = BlendModes.NORMAL;
 
@@ -105,7 +105,7 @@ var Zone = new Class({
      *
      * @name Phaser.GameObjects.Zone#displayWidth
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayWidth: {
 
@@ -125,7 +125,7 @@ var Zone = new Class({
      *
      * @name Phaser.GameObjects.Zone#displayHeight
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayHeight: {
 
@@ -143,7 +143,7 @@ var Zone = new Class({
      * Sets the size of this Game Object.
      *
      * @method Phaser.GameObjects.Zone#setSize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -176,7 +176,7 @@ var Zone = new Class({
      * Calling this will adjust the scale.
      *
      * @method Phaser.GameObjects.Zone#setDisplaySize
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -195,7 +195,7 @@ var Zone = new Class({
      * The circle is centered on this Zones `x` and `y` coordinates.
      *
      * @method Phaser.GameObjects.Zone#setCircleDropZone
-     * @since 3.0.0
+     * 
      *
      * @param {number} radius - The radius of the Circle that will form the Drop Zone.
      *
@@ -210,7 +210,7 @@ var Zone = new Class({
      * The rectangle is centered on this Zones `x` and `y` coordinates.
      *
      * @method Phaser.GameObjects.Zone#setRectangleDropZone
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - The width of the rectangle drop zone.
      * @param {number} height - The height of the rectangle drop zone.
@@ -225,7 +225,7 @@ var Zone = new Class({
      * Allows you to define your own Geometry shape to be used as a Drop Zone.
      *
      * @method Phaser.GameObjects.Zone#setDropZone
-     * @since 3.0.0
+     * 
      *
      * @param {object} [hitArea] - A Geometry shape instance, such as Phaser.Geom.Ellipse, or your own custom shape. If not given it will try to create a Rectangle based on the size of this zone.
      * @param {Phaser.Types.Input.HitAreaCallback} [hitAreaCallback] - A function that will return `true` if the given x/y coords it is sent are within the shape. If you provide a shape you must also provide a callback.

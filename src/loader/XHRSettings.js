@@ -2,7 +2,7 @@
  * Creates an XHRSettings Object with default values.
  *
  * @function Phaser.Loader.XHRSettings
- * @since 3.0.0
+ * 
  *
  * @param {XMLHttpRequestResponseType} [responseType=''] - The responseType, such as 'text'.
  * @param {boolean} [async=true] - Should the XHR request use async or not?

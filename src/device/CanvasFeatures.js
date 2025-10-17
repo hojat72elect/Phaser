@@ -7,7 +7,7 @@ var CanvasPool = require('../display/canvas/CanvasPool');
  * via `this.sys.game.device.canvasFeatures` from within any Scene.
  *
  * @typedef {object} Phaser.Device.CanvasFeatures
- * @since 3.0.0
+ * 
  *
  * @property {boolean} supportInverseAlpha - Set to true if the browser supports inversed alpha.
  * @property {boolean} supportNewBlendModes - Set to true if the browser supports new canvas blend modes.

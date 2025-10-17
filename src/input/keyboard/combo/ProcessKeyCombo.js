@@ -5,7 +5,7 @@ var AdvanceKeyCombo = require('./AdvanceKeyCombo');
  *
  * @function Phaser.Input.Keyboard.ProcessKeyCombo
  * @private
- * @since 3.0.0
+ * 
  *
  * @param {KeyboardEvent} event - The native Keyboard Event.
  * @param {Phaser.Input.Keyboard.KeyCombo} combo - The KeyCombo object to be processed.

@@ -10,7 +10,7 @@ var SetTileCollision = require('./SetTileCollision');
  * Collision information will be recalculated at the specified location.
  *
  * @function Phaser.Tilemaps.Components.PutTileAt
- * @since 3.0.0
+ * 
  *
  * @param {(number|Phaser.Tilemaps.Tile)} tile - The index of this tile to set or a Tile object.
  * @param {number} tileX - The x coordinate, in tiles, not pixels.

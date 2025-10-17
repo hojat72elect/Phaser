@@ -4,7 +4,7 @@
  * This is typically extended further by Game Object specific implementations.
  *
  * @method Phaser.GameObjects.Components.ToJSON
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to export as JSON.
  *

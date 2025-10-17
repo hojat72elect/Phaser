@@ -5,7 +5,7 @@ var Point = require('./Point');
  * Informally, it is the point at which a cutout of the shape could be perfectly balanced on the tip of a pin.
  *
  * @function Phaser.Geom.Point.GetCentroid
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

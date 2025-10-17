@@ -3,7 +3,7 @@
  * Returns `true` if they all match, otherwise returns `false`.
  *
  * @function Phaser.Geom.Ellipse.Equals
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Ellipse} ellipse - The first Ellipse to compare.
  * @param {Phaser.Geom.Ellipse} toCompare - The second Ellipse to compare.

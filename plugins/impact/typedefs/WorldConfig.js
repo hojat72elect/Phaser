@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Impact.WorldConfig
- * @since 3.0.0
+ * 
  *
  * @property {number} [gravity=0] - Sets {@link Phaser.Physics.Impact.World#gravity}
  * @property {number} [cellSize=64] - The size of the cells used for the broadphase pass. Increase this value if you have lots of large objects in the world.

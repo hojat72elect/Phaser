@@ -6,7 +6,7 @@ var Random = require('../geom/ellipse/Random');
  * If you wish to pass a `Phaser.GameObjects.Ellipse` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomEllipse
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

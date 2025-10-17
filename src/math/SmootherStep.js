@@ -8,7 +8,7 @@
  * Produces an even smoother interpolation than {@link Phaser.Math.SmoothStep}.
  *
  * @function Phaser.Math.SmootherStep
- * @since 3.0.0
+ * 
  * @see {@link https://en.wikipedia.org/wiki/Smoothstep#Variations}
  *
  * @param {number} x - The input value.

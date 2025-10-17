@@ -8,7 +8,7 @@ var Clone = require('./Clone');
  * function on shallow objects.
  *
  * @function Phaser.Utils.Objects.Merge
- * @since 3.0.0
+ * 
  *
  * @param {object} obj1 - The first object.
  * @param {object} obj2 - The second object.

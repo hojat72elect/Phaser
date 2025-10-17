@@ -287,7 +287,7 @@ var MultiPipeline = new Class({
      * Takes a Sprite Game Object, or any object that extends it, and adds it to the batch.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchSprite
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.GameObjects.Image|Phaser.GameObjects.Sprite)} gameObject - The texture based Game Object to add to the batch.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use for the rendering transform.
@@ -414,7 +414,7 @@ var MultiPipeline = new Class({
      * Generic function for batching a textured quad using argument values instead of a Game Object.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchTexture
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Source GameObject.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - Texture associated with the quad.

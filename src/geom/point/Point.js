@@ -8,7 +8,7 @@ var GEOM_CONST = require('../const');
  * @class Point
  * @memberof Phaser.Geom
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {number} [x=0] - The x coordinate of this Point.
  * @param {number} [y=x] - The y coordinate of this Point.
@@ -42,7 +42,7 @@ var Point = new Class({
              * @name Phaser.Geom.Point#x
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x = x;
 
@@ -52,7 +52,7 @@ var Point = new Class({
              * @name Phaser.Geom.Point#y
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y = y;
         },
@@ -61,7 +61,7 @@ var Point = new Class({
      * Set the x and y coordinates of the point to the given values.
      *
      * @method Phaser.Geom.Point#setTo
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The x coordinate of this Point.
      * @param {number} [y=x] - The y coordinate of this Point.

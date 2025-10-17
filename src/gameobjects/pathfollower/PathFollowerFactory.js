@@ -7,7 +7,7 @@ var PathFollower = require('./PathFollower');
  * Note: This method will only be available if the PathFollower Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#follower
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Curves.Path} path - The Path this PathFollower is connected to.
  * @param {number} x - The horizontal position of this Game Object in the world.

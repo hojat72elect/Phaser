@@ -2,7 +2,7 @@
  * Contains methods for changing the collision filter of a Matter Body. Should be used as a mixin and not called directly.
  *
  * @namespace Phaser.Physics.Matter.Components.Collision
- * @since 3.0.0
+ * 
  */
 var Collision = {
 
@@ -12,7 +12,7 @@ var Collision = {
      * categories are included in their collision masks (see {@link #setCollidesWith}).
      *
      * @method Phaser.Physics.Matter.Components.Collision#setCollisionCategory
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - Unique category bitfield.
      *
@@ -31,7 +31,7 @@ var Collision = {
      * they will never collide.
      *
      * @method Phaser.Physics.Matter.Components.Collision#setCollisionGroup
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - Unique group index.
      *
@@ -49,7 +49,7 @@ var Collision = {
      * and `(categoryB & maskA) !== 0` are both true.
      *
      * @method Phaser.Physics.Matter.Components.Collision#setCollidesWith
-     * @since 3.0.0
+     * 
      *
      * @param {(number|number[])} categories - A unique category bitfield, or an array of them.
      *

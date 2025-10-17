@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.Input.HitAreaCallback
- * @since 3.0.0
+ * 
  *
  * @param {any} hitArea - The hit area object.
  * @param {number} x - The translated x coordinate of the hit test event.

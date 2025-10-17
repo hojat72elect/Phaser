@@ -2,7 +2,7 @@
  * Apply `Math.ceil()` to each coordinate of the given Point.
  *
  * @function Phaser.Geom.Point.Ceil
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [point,$return]
  *

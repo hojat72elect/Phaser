@@ -5,6 +5,6 @@
  *
  * @event Phaser.Input.Events#MANAGER_BOOT
  * @type {string}
- * @since 3.0.0
+ * 
  */
 module.exports = 'boot';

@@ -6,7 +6,7 @@ var CONST = require('../const');
  * You can customize or disable the header via the Game Config object.
  *
  * @function Phaser.Core.DebugHeader
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - The Phaser.Game instance which will output this debug header.
  */

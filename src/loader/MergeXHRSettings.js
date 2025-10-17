@@ -8,7 +8,7 @@ var XHRSettings = require('./XHRSettings');
  * the local object overrides the global ones.
  *
  * @function Phaser.Loader.MergeXHRSettings
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.Loader.XHRSettingsObject} global - The global XHRSettings object.
  * @param {Phaser.Types.Loader.XHRSettingsObject} local - The local XHRSettings object.

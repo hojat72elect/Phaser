@@ -16,7 +16,7 @@ var Class = require('../../utils/Class');
  * @class RandomDataGenerator
  * @memberof Phaser.Math
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {(string|string[])} [seeds] - The seeds to use for the random number generator.
  */
@@ -36,7 +36,7 @@ var RandomDataGenerator = new Class({
              * @type {number}
              * @default 1
              * @private
-             * @since 3.0.0
+             * 
              */
             this.c = 1;
 
@@ -47,7 +47,7 @@ var RandomDataGenerator = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.0.0
+             * 
              */
             this.s0 = 0;
 
@@ -58,7 +58,7 @@ var RandomDataGenerator = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.0.0
+             * 
              */
             this.s1 = 0;
 
@@ -69,7 +69,7 @@ var RandomDataGenerator = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.0.0
+             * 
              */
             this.s2 = 0;
 
@@ -89,7 +89,7 @@ var RandomDataGenerator = new Class({
              *
              * @name Phaser.Math.RandomDataGenerator#signs
              * @type {number[]}
-             * @since 3.0.0
+             * 
              */
             this.signs = [-1, 1];
 
@@ -102,7 +102,7 @@ var RandomDataGenerator = new Class({
      * Private random helper.
      *
      * @method Phaser.Math.RandomDataGenerator#rnd
-     * @since 3.0.0
+     * 
      * @private
      *
      * @return {number} A random number.
@@ -122,7 +122,7 @@ var RandomDataGenerator = new Class({
      * Internal method that creates a seed hash.
      *
      * @method Phaser.Math.RandomDataGenerator#hash
-     * @since 3.0.0
+     * 
      * @private
      *
      * @param {string} data - The value to hash.
@@ -155,7 +155,7 @@ var RandomDataGenerator = new Class({
      * Initialize the state of the random data generator.
      *
      * @method Phaser.Math.RandomDataGenerator#init
-     * @since 3.0.0
+     * 
      *
      * @param {(string|string[])} seeds - The seeds to initialize the random data generator with.
      */
@@ -173,7 +173,7 @@ var RandomDataGenerator = new Class({
      * _Note_: the seed array is only processed up to the first `undefined` (or `null`) value, should such be present.
      *
      * @method Phaser.Math.RandomDataGenerator#sow
-     * @since 3.0.0
+     * 
      *
      * @param {string[]} seeds - The array of seeds: the `toString()` of each value is used.
      */
@@ -206,7 +206,7 @@ var RandomDataGenerator = new Class({
      * Returns a random integer between 0 and 2^32.
      *
      * @method Phaser.Math.RandomDataGenerator#integer
-     * @since 3.0.0
+     * 
      *
      * @return {number} A random integer between 0 and 2^32.
      */
@@ -219,7 +219,7 @@ var RandomDataGenerator = new Class({
      * Returns a random real number between 0 and 1.
      *
      * @method Phaser.Math.RandomDataGenerator#frac
-     * @since 3.0.0
+     * 
      *
      * @return {number} A random real number between 0 and 1.
      */
@@ -232,7 +232,7 @@ var RandomDataGenerator = new Class({
      * Returns a random real number between 0 and 2^32.
      *
      * @method Phaser.Math.RandomDataGenerator#real
-     * @since 3.0.0
+     * 
      *
      * @return {number} A random real number between 0 and 2^32.
      */
@@ -244,7 +244,7 @@ var RandomDataGenerator = new Class({
      * Returns a random integer between and including min and max.
      *
      * @method Phaser.Math.RandomDataGenerator#integerInRange
-     * @since 3.0.0
+     * 
      *
      * @param {number} min - The minimum value in the range.
      * @param {number} max - The maximum value in the range.
@@ -260,7 +260,7 @@ var RandomDataGenerator = new Class({
      * This method is an alias for RandomDataGenerator.integerInRange.
      *
      * @method Phaser.Math.RandomDataGenerator#between
-     * @since 3.0.0
+     * 
      *
      * @param {number} min - The minimum value in the range.
      * @param {number} max - The maximum value in the range.
@@ -275,7 +275,7 @@ var RandomDataGenerator = new Class({
      * Returns a random real number between min and max.
      *
      * @method Phaser.Math.RandomDataGenerator#realInRange
-     * @since 3.0.0
+     * 
      *
      * @param {number} min - The minimum value in the range.
      * @param {number} max - The maximum value in the range.
@@ -290,7 +290,7 @@ var RandomDataGenerator = new Class({
      * Returns a random real number between -1 and 1.
      *
      * @method Phaser.Math.RandomDataGenerator#normal
-     * @since 3.0.0
+     * 
      *
      * @return {number} A random real number between -1 and 1.
      */
@@ -302,7 +302,7 @@ var RandomDataGenerator = new Class({
      * Returns a valid RFC4122 version4 ID hex string from https://gist.github.com/1308368
      *
      * @method Phaser.Math.RandomDataGenerator#uuid
-     * @since 3.0.0
+     * 
      *
      * @return {string} A valid RFC4122 version4 ID hex string
      */
@@ -321,7 +321,7 @@ var RandomDataGenerator = new Class({
      * Returns a random element from within the given array.
      *
      * @method Phaser.Math.RandomDataGenerator#pick
-     * @since 3.0.0
+     * 
      *
      * @generic T
      * @genericUse {T[]} - [array]
@@ -339,7 +339,7 @@ var RandomDataGenerator = new Class({
      * Returns a sign to be used with multiplication operator.
      *
      * @method Phaser.Math.RandomDataGenerator#sign
-     * @since 3.0.0
+     * 
      *
      * @return {number} -1 or +1.
      */
@@ -351,7 +351,7 @@ var RandomDataGenerator = new Class({
      * Returns a random element from within the given array, favoring the earlier entries.
      *
      * @method Phaser.Math.RandomDataGenerator#weightedPick
-     * @since 3.0.0
+     * 
      *
      * @generic T
      * @genericUse {T[]} - [array]
@@ -369,7 +369,7 @@ var RandomDataGenerator = new Class({
      * Returns a random timestamp between min and max, or between the beginning of 2000 and the end of 2020 if min and max aren't specified.
      *
      * @method Phaser.Math.RandomDataGenerator#timestamp
-     * @since 3.0.0
+     * 
      *
      * @param {number} min - The minimum value in the range.
      * @param {number} max - The maximum value in the range.
@@ -384,7 +384,7 @@ var RandomDataGenerator = new Class({
      * Returns a random angle between -180 and 180.
      *
      * @method Phaser.Math.RandomDataGenerator#angle
-     * @since 3.0.0
+     * 
      *
      * @return {number} A random number between -180 and 180.
      */
@@ -396,7 +396,7 @@ var RandomDataGenerator = new Class({
      * Returns a random rotation in radians, between -3.141 and 3.141
      *
      * @method Phaser.Math.RandomDataGenerator#rotation
-     * @since 3.0.0
+     * 
      *
      * @return {number} A random number between -3.141 and 3.141
      */
@@ -418,7 +418,7 @@ var RandomDataGenerator = new Class({
      * `s0`, `s1` and `s2` values respectively, each comma-delimited.
      *
      * @method Phaser.Math.RandomDataGenerator#state
-     * @since 3.0.0
+     * 
      *
      * @param {string} [state] - Generator state to be set.
      *

@@ -5,7 +5,7 @@
  * via `this.sys.game.device.fullscreen` from within any Scene.
  *
  * @typedef {object} Phaser.Device.Fullscreen
- * @since 3.0.0
+ * 
  *
  * @property {boolean} available - Does the browser support the Full Screen API?
  * @property {boolean} keyboard - Does the browser support access to the Keyboard during Full Screen mode?

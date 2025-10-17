@@ -11,7 +11,7 @@ var TYPE = require('../TYPE');
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.CheckAgainst
- * @since 3.0.0
+ * 
  */
 var CheckAgainst = {
 
@@ -19,7 +19,7 @@ var CheckAgainst = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.CheckAgainst#setAvsB
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -33,7 +33,7 @@ var CheckAgainst = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.CheckAgainst#setBvsA
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -47,7 +47,7 @@ var CheckAgainst = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.CheckAgainst#setCheckAgainstNone
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -61,7 +61,7 @@ var CheckAgainst = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.CheckAgainst#setCheckAgainstA
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -75,7 +75,7 @@ var CheckAgainst = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.CheckAgainst#setCheckAgainstB
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -90,7 +90,7 @@ var CheckAgainst = {
      *
      * @name Phaser.Physics.Impact.Components.CheckAgainst#checkAgainst
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     checkAgainst: {
 

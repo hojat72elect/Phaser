@@ -18,7 +18,7 @@ var Clamp = require('../../math/Clamp');
  * @extends Phaser.Sound.BaseSound
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Sound.HTML5AudioSoundManager} manager - Reference to the current sound manager instance.
  * @param {string} key - Asset key for the sound.
@@ -42,7 +42,7 @@ var HTML5AudioSound = new Class({
              *
              * @name Phaser.Sound.HTML5AudioSound#tags
              * @type {HTMLAudioElement[]}
-             * @since 3.0.0
+             * 
              */
             this.tags = manager.game.cache.audio.get(key);
 
@@ -56,7 +56,7 @@ var HTML5AudioSound = new Class({
              * @name Phaser.Sound.HTML5AudioSound#audio
              * @type {HTMLAudioElement}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.audio = null;
 
@@ -68,7 +68,7 @@ var HTML5AudioSound = new Class({
              * @name Phaser.Sound.HTML5AudioSound#startTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.startTime = 0;
 
@@ -79,7 +79,7 @@ var HTML5AudioSound = new Class({
              * @name Phaser.Sound.HTML5AudioSound#previousTime
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.previousTime = 0;
 
@@ -102,7 +102,7 @@ var HTML5AudioSound = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSound#play
      * @fires Phaser.Sound.Events#PLAY
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Types.Sound.SoundConfig)} [markerName=''] - If you want to play a marker then provide the marker name here. Alternatively, this parameter can be a SoundConfig object.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
@@ -133,7 +133,7 @@ var HTML5AudioSound = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSound#pause
      * @fires Phaser.Sound.Events#PAUSE
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was paused successfully.
      */
@@ -165,7 +165,7 @@ var HTML5AudioSound = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSound#resume
      * @fires Phaser.Sound.Events#RESUME
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was resumed successfully.
      */
@@ -197,7 +197,7 @@ var HTML5AudioSound = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSound#stop
      * @fires Phaser.Sound.Events#STOP
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was stopped successfully.
      */
@@ -222,7 +222,7 @@ var HTML5AudioSound = new Class({
      * This method is used internally to pick and play the next available audio tag.
      *
      * @method Phaser.Sound.HTML5AudioSound#pickAndPlayAudioTag
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was assigned an audio tag successfully.
      */
@@ -268,7 +268,7 @@ var HTML5AudioSound = new Class({
      * does nothing.
      *
      * @method Phaser.Sound.HTML5AudioSound#pickAudioTag
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was assigned an audio tag successfully.
      */
@@ -324,7 +324,7 @@ var HTML5AudioSound = new Class({
      * thrown from rejected Promise returned from play method call.
      *
      * @method Phaser.Sound.HTML5AudioSound#playCatchPromise
-     * @since 3.0.0
+     * 
      */
     playCatchPromise: function () {
         var playPromise = this.audio.play();
@@ -341,7 +341,7 @@ var HTML5AudioSound = new Class({
      * This method is used internally to stop and release the current audio tag.
      *
      * @method Phaser.Sound.HTML5AudioSound#stopAndReleaseAudioTag
-     * @since 3.0.0
+     * 
      */
     stopAndReleaseAudioTag: function () {
         this.startTime = 0;
@@ -359,7 +359,7 @@ var HTML5AudioSound = new Class({
      * or when hijacking audio tag from another sound.
      *
      * @method Phaser.Sound.HTML5AudioSound#reset
-     * @since 3.0.0
+     * 
      */
     reset: function () {
         BaseSound.prototype.stop.call(this);
@@ -370,7 +370,7 @@ var HTML5AudioSound = new Class({
      * Phaser.Sound.HTML5AudioSoundManager#pauseOnBlur is set to true.
      *
      * @method Phaser.Sound.HTML5AudioSound#onBlur
-     * @since 3.0.0
+     * 
      */
     onBlur: function () {
         this.isPlaying = false;
@@ -388,7 +388,7 @@ var HTML5AudioSound = new Class({
      * Phaser.Sound.HTML5AudioSoundManager#pauseOnBlur is set to true.
      *
      * @method Phaser.Sound.HTML5AudioSound#onFocus
-     * @since 3.0.0
+     * 
      */
     onFocus: function () {
         this.isPlaying = true;
@@ -402,7 +402,7 @@ var HTML5AudioSound = new Class({
      * @method Phaser.Sound.HTML5AudioSound#update
      * @fires Phaser.Sound.Events#COMPLETE
      * @fires Phaser.Sound.Events#LOOPED
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      */
@@ -458,7 +458,7 @@ var HTML5AudioSound = new Class({
      * and cleans up all HTML5 Audio related stuff.
      *
      * @method Phaser.Sound.HTML5AudioSound#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         BaseSound.prototype.destroy.call(this);
@@ -474,7 +474,7 @@ var HTML5AudioSound = new Class({
      * This method is used internally to update the mute setting of this sound.
      *
      * @method Phaser.Sound.HTML5AudioSound#updateMute
-     * @since 3.0.0
+     * 
      */
     updateMute: function () {
         if (this.audio) {
@@ -486,7 +486,7 @@ var HTML5AudioSound = new Class({
      * This method is used internally to update the volume of this sound.
      *
      * @method Phaser.Sound.HTML5AudioSound#updateVolume
-     * @since 3.0.0
+     * 
      */
     updateVolume: function () {
         if (this.audio) {
@@ -498,7 +498,7 @@ var HTML5AudioSound = new Class({
      * This method is used internally to update the playback rate of this sound.
      *
      * @method Phaser.Sound.HTML5AudioSound#calculateRate
-     * @since 3.0.0
+     * 
      */
     calculateRate: function () {
         BaseSound.prototype.calculateRate.call(this);
@@ -516,7 +516,7 @@ var HTML5AudioSound = new Class({
      * @type {boolean}
      * @default false
      * @fires Phaser.Sound.Events#MUTE
-     * @since 3.0.0
+     * 
      */
     mute: {
 
@@ -561,7 +561,7 @@ var HTML5AudioSound = new Class({
      * @type {number}
      * @default 1
      * @fires Phaser.Sound.Events#VOLUME
-     * @since 3.0.0
+     * 
      */
     volume: {
 
@@ -608,7 +608,7 @@ var HTML5AudioSound = new Class({
      * @type {number}
      * @default 1
      * @fires Phaser.Sound.Events#RATE
-     * @since 3.0.0
+     * 
      */
     rate: {
 
@@ -658,7 +658,7 @@ var HTML5AudioSound = new Class({
      * @type {number}
      * @default 0
      * @fires Phaser.Sound.Events#DETUNE
-     * @since 3.0.0
+     * 
      */
     detune: {
 
@@ -707,7 +707,7 @@ var HTML5AudioSound = new Class({
      * @name Phaser.Sound.HTML5AudioSound#seek
      * @type {number}
      * @fires Phaser.Sound.Events#SEEK
-     * @since 3.0.0
+     * 
      */
     seek: {
 
@@ -769,7 +769,7 @@ var HTML5AudioSound = new Class({
      * @type {boolean}
      * @default false
      * @fires Phaser.Sound.Events#LOOP
-     * @since 3.0.0
+     * 
      */
     loop: {
 

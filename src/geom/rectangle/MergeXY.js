@@ -2,7 +2,7 @@
  * Merges a Rectangle with a point by repositioning and/or resizing it so that the point is on or within its bounds.
  *
  * @function Phaser.Geom.Rectangle.MergeXY
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [target,$return]
  *

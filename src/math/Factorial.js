@@ -2,7 +2,7 @@
  * Calculates the factorial of a given number for integer values greater than 0.
  *
  * @function Phaser.Math.Factorial
- * @since 3.0.0
+ * 
  *
  * @param {number} value - A positive integer to calculate the factorial of.
  *

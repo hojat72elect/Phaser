@@ -36,7 +36,7 @@ var returnThis = function () {
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Sound.NoAudioSoundManager} manager - Reference to the current sound manager instance.
  * @param {string} key - Asset key for the sound.
@@ -60,7 +60,7 @@ var NoAudioSound = new Class({
              *
              * @name Phaser.Sound.NoAudioSound#manager
              * @type {Phaser.Sound.BaseSoundManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = manager;
 
@@ -70,7 +70,7 @@ var NoAudioSound = new Class({
              * @name Phaser.Sound.NoAudioSound#key
              * @type {string}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.key = key;
 
@@ -81,7 +81,7 @@ var NoAudioSound = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isPlaying = false;
 
@@ -92,7 +92,7 @@ var NoAudioSound = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isPaused = false;
 
@@ -105,7 +105,7 @@ var NoAudioSound = new Class({
              * @type {number}
              * @default 1
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.totalRate = 1;
 
@@ -116,7 +116,7 @@ var NoAudioSound = new Class({
              * @name Phaser.Sound.NoAudioSound#duration
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.duration = 0;
 
@@ -126,7 +126,7 @@ var NoAudioSound = new Class({
              * @name Phaser.Sound.NoAudioSound#totalDuration
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.totalDuration = 0;
 
@@ -136,7 +136,7 @@ var NoAudioSound = new Class({
              *
              * @name Phaser.Sound.NoAudioSound#config
              * @type {Phaser.Types.Sound.SoundConfig}
-             * @since 3.0.0
+             * 
              */
             this.config = Extend({
                 mute: false,
@@ -155,7 +155,7 @@ var NoAudioSound = new Class({
              *
              * @name Phaser.Sound.NoAudioSound#currentConfig
              * @type {Phaser.Types.Sound.SoundConfig}
-             * @since 3.0.0
+             * 
              */
             this.currentConfig = this.config;
 
@@ -167,7 +167,7 @@ var NoAudioSound = new Class({
              * @type {boolean}
              * @default false
              * @fires Phaser.Sound.Events#MUTE
-             * @since 3.0.0
+             * 
              */
             this.mute = false;
 
@@ -178,7 +178,7 @@ var NoAudioSound = new Class({
              * @type {number}
              * @default 1
              * @fires Phaser.Sound.Events#VOLUME
-             * @since 3.0.0
+             * 
              */
             this.volume = 1;
 
@@ -191,7 +191,7 @@ var NoAudioSound = new Class({
              * @type {number}
              * @default 1
              * @fires Phaser.Sound.Events#RATE
-             * @since 3.0.0
+             * 
              */
             this.rate = 1;
 
@@ -203,7 +203,7 @@ var NoAudioSound = new Class({
              * @type {number}
              * @default 0
              * @fires Phaser.Sound.Events#DETUNE
-             * @since 3.0.0
+             * 
              */
             this.detune = 0;
 
@@ -216,7 +216,7 @@ var NoAudioSound = new Class({
              * @name Phaser.Sound.NoAudioSound#seek
              * @type {number}
              * @fires Phaser.Sound.Events#SEEK
-             * @since 3.0.0
+             * 
              */
             this.seek = 0;
 
@@ -227,7 +227,7 @@ var NoAudioSound = new Class({
              * @type {boolean}
              * @default false
              * @fires Phaser.Sound.Events#LOOP
-             * @since 3.0.0
+             * 
              */
             this.loop = false;
 
@@ -251,7 +251,7 @@ var NoAudioSound = new Class({
              * @type {Object.<string, Phaser.Types.Sound.SoundMarker>}
              * @default {}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.markers = {};
 
@@ -263,7 +263,7 @@ var NoAudioSound = new Class({
              * @type {Phaser.Types.Sound.SoundMarker}
              * @default null
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.currentMarker = null;
 
@@ -273,14 +273,14 @@ var NoAudioSound = new Class({
              * @name Phaser.Sound.NoAudioSound#pendingRemove
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.pendingRemove = false;
         },
 
     /**
      * @method Phaser.Sound.NoAudioSound#addMarker
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Sound.SoundMarker} marker - Marker object.
      *
@@ -290,7 +290,7 @@ var NoAudioSound = new Class({
 
     /**
      * @method Phaser.Sound.NoAudioSound#updateMarker
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Sound.SoundMarker} marker - Marker object with updated values.
      *
@@ -300,7 +300,7 @@ var NoAudioSound = new Class({
 
     /**
      * @method Phaser.Sound.NoAudioSound#removeMarker
-     * @since 3.0.0
+     * 
      *
      * @param {string} markerName - The name of the marker to remove.
      *
@@ -310,7 +310,7 @@ var NoAudioSound = new Class({
 
     /**
      * @method Phaser.Sound.NoAudioSound#play
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Types.Sound.SoundConfig)} [markerName=''] - If you want to play a marker then provide the marker name here. Alternatively, this parameter can be a SoundConfig object.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
@@ -321,7 +321,7 @@ var NoAudioSound = new Class({
 
     /**
      * @method Phaser.Sound.NoAudioSound#pause
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} false
      */
@@ -331,7 +331,7 @@ var NoAudioSound = new Class({
      * Resumes the sound.
      *
      * @method Phaser.Sound.NoAudioSound#resume
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} false
      */
@@ -341,7 +341,7 @@ var NoAudioSound = new Class({
      * Stop playing this sound.
      *
      * @method Phaser.Sound.NoAudioSound#stop
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} false
      */
@@ -441,7 +441,7 @@ var NoAudioSound = new Class({
      * Method used internally for applying config values to some of the sound properties.
      *
      * @method Phaser.Sound.NoAudioSound#applyConfig
-     * @since 3.0.0
+     * 
      */
     applyConfig: returnNull,
 
@@ -449,7 +449,7 @@ var NoAudioSound = new Class({
      * Method used internally for resetting values of some of the config properties.
      *
      * @method Phaser.Sound.NoAudioSound#resetConfig
-     * @since 3.0.0
+     * 
      */
     resetConfig: returnNull,
 
@@ -458,7 +458,7 @@ var NoAudioSound = new Class({
      *
      * @method Phaser.Sound.NoAudioSound#update
      * @override
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time elapsed since the last frame.
@@ -469,7 +469,7 @@ var NoAudioSound = new Class({
      * Method used internally to calculate total playback rate of the sound.
      *
      * @method Phaser.Sound.NoAudioSound#calculateRate
-     * @since 3.0.0
+     * 
      */
     calculateRate: returnNull,
 
@@ -478,7 +478,7 @@ var NoAudioSound = new Class({
      *
      * @method Phaser.Sound.NoAudioSound#destroy
      * @fires Phaser.Sound.Events#DESTROY
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         BaseSound.prototype.destroy.call(this);

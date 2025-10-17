@@ -2,7 +2,7 @@
  * A 16 color CGA inspired palette by [Arne](http://androidarts.com/palette/16pal.htm)
  *
  * @name Phaser.Create.Palettes.CGA
- * @since 3.0.0
+ * 
  *
  * @type {Phaser.Types.Create.Palette}
  */

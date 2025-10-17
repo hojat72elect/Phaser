@@ -4,7 +4,7 @@ var Rectangle = require('../rectangle/Rectangle');
  * Returns the bounds of the Ellipse object.
  *
  * @function Phaser.Geom.Ellipse.GetBounds
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [out,$return]
  *

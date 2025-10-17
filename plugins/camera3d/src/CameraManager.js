@@ -16,7 +16,7 @@ var PluginCache = require('../../../src/plugins/PluginCache');
  * @class CameraManager
  * @memberOf Phaser.Cameras.Sprite3D
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - [description]
  */
@@ -30,7 +30,7 @@ var CameraManager = new Class({
              *
              * @name Phaser.Cameras.Sprite3D.CameraManager#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -39,7 +39,7 @@ var CameraManager = new Class({
              *
              * @name Phaser.Cameras.Sprite3D.CameraManager#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -48,7 +48,7 @@ var CameraManager = new Class({
              *
              * @name Phaser.Cameras.Sprite3D.CameraManager#cameras
              * @type {Phaser.Cameras.Sprite3D.Camera[]}
-             * @since 3.0.0
+             * 
              */
             this.cameras = [];
 
@@ -88,7 +88,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#add
-     * @since 3.0.0
+     * 
      *
      * @param {number} [fieldOfView=80] - [description]
      * @param {number} [width] - [description]
@@ -104,7 +104,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#addOrthographicCamera
-     * @since 3.0.0
+     * 
      *
      * @param {number} width - [description]
      * @param {number} height - [description]
@@ -132,7 +132,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#addPerspectiveCamera
-     * @since 3.0.0
+     * 
      *
      * @param {number} [fieldOfView=80] - [description]
      * @param {number} [width] - [description]
@@ -164,7 +164,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#getCamera
-     * @since 3.0.0
+     * 
      *
      * @param {string} name - [description]
      *
@@ -184,7 +184,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#removeCamera
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} camera - [description]
      */
@@ -200,7 +200,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#removeAll
-     * @since 3.0.0
+     * 
      *
      * @return {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} [description]
      */
@@ -218,7 +218,7 @@ var CameraManager = new Class({
      * [description]
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} timestep - [description]
      * @param {number} delta - [description]
@@ -235,7 +235,7 @@ var CameraManager = new Class({
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var eventEmitter = this.systems.events;
@@ -252,7 +252,7 @@ var CameraManager = new Class({
      *
      * @method Phaser.Cameras.Sprite3D.CameraManager#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

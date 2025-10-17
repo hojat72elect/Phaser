@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tilemaps.TiledObject
- * @since 3.0.0
+ * 
  *
  * @property {number} id - The unique object ID.
  * @property {string} name - The name this object was assigned in Tiled.

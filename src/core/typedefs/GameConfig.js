@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Core.GameConfig
- * @since 3.0.0
+ * 
  *
  * @property {(number|string)} [width=1024] - The width of the game, in game pixels.
  * @property {(number|string)} [height=768] - The height of the game, in game pixels.

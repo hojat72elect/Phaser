@@ -11,7 +11,7 @@ var Remove = require('../utils/array/Remove');
  * @class Clock
  * @memberof Phaser.Time
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene which owns this Clock.
  */
@@ -25,7 +25,7 @@ var Clock = new Class({
              *
              * @name Phaser.Time.Clock#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -34,7 +34,7 @@ var Clock = new Class({
              *
              * @name Phaser.Time.Clock#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -45,7 +45,7 @@ var Clock = new Class({
              *
              * @name Phaser.Time.Clock#now
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.now = 0;
 
@@ -68,7 +68,7 @@ var Clock = new Class({
              * @name Phaser.Time.Clock#timeScale
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.timeScale = 1;
 
@@ -80,7 +80,7 @@ var Clock = new Class({
              * @name Phaser.Time.Clock#paused
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.paused = false;
 
@@ -91,7 +91,7 @@ var Clock = new Class({
              * @type {Phaser.Time.TimerEvent[]}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._active = [];
 
@@ -102,7 +102,7 @@ var Clock = new Class({
              * @type {Phaser.Time.TimerEvent[]}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._pendingInsertion = [];
 
@@ -113,7 +113,7 @@ var Clock = new Class({
              * @type {Phaser.Time.TimerEvent[]}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._pendingRemoval = [];
 
@@ -169,7 +169,7 @@ var Clock = new Class({
      * it will still be updated by that Clock as well, so be careful when using this feature.
      *
      * @method Phaser.Time.Clock#addEvent
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Time.TimerEvent | Phaser.Types.Time.TimerEventConfig)} config - The configuration for the Timer Event, or an existing Timer Event object.
      *
@@ -205,7 +205,7 @@ var Clock = new Class({
      * This is a shortcut for {@link #addEvent} which can be shorter and is compatible with the syntax of the GreenSock Animation Platform (GSAP).
      *
      * @method Phaser.Time.Clock#delayedCall
-     * @since 3.0.0
+     * 
      *
      * @param {number} delay - The delay of the function call, in milliseconds.
      * @param {function} callback - The function to call after the delay expires.
@@ -222,7 +222,7 @@ var Clock = new Class({
      * Clears and recreates the array of pending Timer Events.
      *
      * @method Phaser.Time.Clock#clearPendingEvents
-     * @since 3.0.0
+     * 
      *
      * @return {this} - This Clock instance.
      */
@@ -265,7 +265,7 @@ var Clock = new Class({
      * Schedules all active Timer Events for removal at the start of the frame.
      *
      * @method Phaser.Time.Clock#removeAllEvents
-     * @since 3.0.0
+     * 
      *
      * @return {this} - This Clock instance.
      */
@@ -279,7 +279,7 @@ var Clock = new Class({
      * Updates the arrays of active and pending Timer Events. Called at the start of the frame.
      *
      * @method Phaser.Time.Clock#preUpdate
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -325,7 +325,7 @@ var Clock = new Class({
      * Updates the Clock's internal time and all of its Timer Events.
      *
      * @method Phaser.Time.Clock#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -394,7 +394,7 @@ var Clock = new Class({
      *
      * @method Phaser.Time.Clock#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         var i;
@@ -428,7 +428,7 @@ var Clock = new Class({
      *
      * @method Phaser.Time.Clock#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

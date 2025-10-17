@@ -96,7 +96,7 @@ var Shake = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._offsetX = 0;
 
@@ -107,7 +107,7 @@ var Shake = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._offsetY = 0;
 

@@ -8,7 +8,7 @@ var Triangle = require('./Triangle');
  * Builds a right triangle, i.e. one which has a 90-degree angle and two acute angles.
  *
  * @function Phaser.Geom.Triangle.BuildRight
- * @since 3.0.0
+ * 
  *
  * @param {number} x - The X coordinate of the right angle, which will also be the first X coordinate of the constructed Triangle.
  * @param {number} y - The Y coordinate of the right angle, which will also be the first Y coordinate of the constructed Triangle.

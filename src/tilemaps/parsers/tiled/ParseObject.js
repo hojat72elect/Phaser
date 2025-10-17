@@ -11,7 +11,7 @@ var commonObjectProps = ['id', 'name', 'type', 'rotation', 'properties', 'visibl
  * Convert a Tiled object to an internal parsed object normalising and copying properties over, while applying optional x and y offsets. The parsed object will always have the properties `id`, `name`, `type`, `rotation`, `properties`, `visible`, `x`, `y`, `width` and `height`. Other properties will be added according to the object type (such as text, polyline, gid etc.)
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseObject
- * @since 3.0.0
+ * 
  *
  * @param {object} tiledObject - Tiled object to convert to an internal parsed object normalising and copying properties over.
  * @param {number} [offsetX=0] - Optional additional offset to apply to the object's x property. Defaults to 0.

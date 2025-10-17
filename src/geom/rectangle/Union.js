@@ -4,7 +4,7 @@ var Rectangle = require('./Rectangle');
  * Creates a new Rectangle or repositions and/or resizes an existing Rectangle so that it encompasses the two given Rectangles, i.e. calculates their union.
  *
  * @function Phaser.Geom.Rectangle.Union
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [out,$return]
  *

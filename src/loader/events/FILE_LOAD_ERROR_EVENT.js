@@ -7,7 +7,7 @@
  *
  * @event Phaser.Loader.Events#FILE_LOAD_ERROR
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Loader.File} file - A reference to the File which errored during load.
  */

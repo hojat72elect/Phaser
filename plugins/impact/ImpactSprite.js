@@ -24,7 +24,7 @@ var Sprite = require('../../gameobjects/sprite/Sprite');
  * @extends Phaser.GameObjects.Sprite
  * @memberof Phaser.Physics.Impact
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Impact.Components.Acceleration
  * @extends Phaser.Physics.Impact.Components.BodyScale
@@ -87,7 +87,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#body
              * @type {Phaser.Physics.Impact.Body}
-             * @since 3.0.0
+             * 
              */
             this.body = world.create(x - this.frame.centerX, y - this.frame.centerY, this.width, this.height);
 
@@ -99,7 +99,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#size
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.size = this.body.size;
 
@@ -108,7 +108,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#offset
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.offset = this.body.offset;
 
@@ -117,7 +117,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#vel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.vel = this.body.vel;
 
@@ -126,7 +126,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#accel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.accel = this.body.accel;
 
@@ -135,7 +135,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#friction
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.friction = this.body.friction;
 
@@ -144,7 +144,7 @@ var ImpactSprite = new Class({
              *
              * @name Phaser.Physics.Impact.ImpactSprite#maxVel
              * @type {{x: number, y: number}}
-             * @since 3.0.0
+             * 
              */
             this.maxVel = this.body.maxVel;
         }

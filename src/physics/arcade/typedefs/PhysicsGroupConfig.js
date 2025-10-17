@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Arcade.PhysicsGroupConfig
  * @extends Phaser.Types.GameObjects.Group.GroupConfig
- * @since 3.0.0
+ * 
  *
  * @property {boolean} [collideWorldBounds=false] - Sets {@link Phaser.Physics.Arcade.Body#collideWorldBounds}.
  * @property {Phaser.Geom.Rectangle} [customBoundsRectangle=null] - Sets {@link Phaser.Physics.Arcade.Body#setBoundsRectangle setBoundsRectangle}.

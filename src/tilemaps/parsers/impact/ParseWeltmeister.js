@@ -7,7 +7,7 @@ var ParseTilesets = require('./ParseTilesets');
  * Parses a Weltmeister JSON object into a new MapData object.
  *
  * @function Phaser.Tilemaps.Parsers.Impact.ParseWeltmeister
- * @since 3.0.0
+ * 
  *
  * @param {string} name - The name of the tilemap, used to set the name on the MapData.
  * @param {object} json - The Weltmeister JSON object.

@@ -24,7 +24,7 @@ var NOOP = require('../../utils/NOOP');
  * @extends Phaser.Sound.BaseSoundManager
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Game} game - Reference to the current game instance.
  */
@@ -126,7 +126,7 @@ var NoAudioSoundManager = new Class({
      * compatibility with the other Sound Managers.
      *
      * @method Phaser.Sound.NoAudioSoundManager#play
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {(Phaser.Types.Sound.SoundConfig|Phaser.Types.Sound.SoundMarker)} [extra] - An optional additional object containing settings to be applied to the sound. It could be either config or marker object.
@@ -143,7 +143,7 @@ var NoAudioSoundManager = new Class({
      * compatibility with the other Sound Managers.
      *
      * @method Phaser.Sound.NoAudioSoundManager#playAudioSprite
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {string} spriteName - The name of the sound sprite to play.
@@ -161,7 +161,7 @@ var NoAudioSoundManager = new Class({
      * The removed sound is destroyed before removal.
      *
      * @method Phaser.Sound.NoAudioSoundManager#remove
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Sound.BaseSound} sound - The sound object to remove.
      *
@@ -186,7 +186,7 @@ var NoAudioSoundManager = new Class({
      * The removed sounds are destroyed before removal.
      *
      * @method Phaser.Sound.NoAudioSoundManager#removeByKey
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The key to match when removing sound objects.
      *
@@ -214,7 +214,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#onBlur
-     * @since 3.0.0
+     * 
      */
     onBlur: NOOP,
 
@@ -222,7 +222,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#onFocus
-     * @since 3.0.0
+     * 
      */
     onFocus: NOOP,
 
@@ -230,7 +230,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#onGameBlur
-     * @since 3.0.0
+     * 
      */
     onGameBlur: NOOP,
 
@@ -238,7 +238,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#onGameFocus
-     * @since 3.0.0
+     * 
      */
     onGameFocus: NOOP,
 
@@ -246,7 +246,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#pauseAll
-     * @since 3.0.0
+     * 
      */
     pauseAll: NOOP,
 
@@ -254,7 +254,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#resumeAll
-     * @since 3.0.0
+     * 
      */
     resumeAll: NOOP,
 
@@ -262,7 +262,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#stopAll
-     * @since 3.0.0
+     * 
      */
     stopAll: NOOP,
 
@@ -270,7 +270,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#update
-     * @since 3.0.0
+     * 
      */
     update: NOOP,
 
@@ -278,7 +278,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#setRate
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Sound Manager.
      */
@@ -288,7 +288,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#setDetune
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Sound Manager.
      */
@@ -298,7 +298,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#setMute
-     * @since 3.0.0
+     * 
      */
     setMute: NOOP,
 
@@ -306,7 +306,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#setVolume
-     * @since 3.0.0
+     * 
      */
     setVolume: NOOP,
 
@@ -314,7 +314,7 @@ var NoAudioSoundManager = new Class({
      * Empty function for the No Audio Sound Manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#unlock
-     * @since 3.0.0
+     * 
      */
     unlock: NOOP,
 
@@ -323,7 +323,7 @@ var NoAudioSoundManager = new Class({
      *
      * @method Phaser.Sound.NoAudioSoundManager#forEachActiveSound
      * @private
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Sound.EachActiveSoundCallback} callback - Callback function. (manager: Phaser.Sound.BaseSoundManager, sound: Phaser.Sound.BaseSound, index: number, sounds: Phaser.Manager.BaseSound[]) => void
      * @param {*} [scope] - Callback context.
@@ -336,7 +336,7 @@ var NoAudioSoundManager = new Class({
      * Destroys all the sounds in the game and all associated events.
      *
      * @method Phaser.Sound.NoAudioSoundManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         BaseSoundManager.prototype.destroy.call(this);

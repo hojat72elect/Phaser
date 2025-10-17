@@ -13,7 +13,7 @@ var Offset = require('./Offset');
  * Positions the Triangle so that it is centered on the given coordinates.
  *
  * @function Phaser.Geom.Triangle.CenterOn
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Triangle} O - [triangle,$return]
  *

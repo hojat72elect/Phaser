@@ -7,7 +7,7 @@ var Browser = require('./Browser');
  * via `this.sys.game.device.audio` from within any Scene.
  *
  * @typedef {object} Phaser.Device.Audio
- * @since 3.0.0
+ * 
  *
  * @property {boolean} audioData - Can this device play HTML Audio tags?
  * @property {boolean} dolby - Can this device play EC-3 Dolby Digital Plus files?

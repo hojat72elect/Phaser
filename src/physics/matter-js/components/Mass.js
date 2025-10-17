@@ -5,7 +5,7 @@ var Vector2 = require('../../../math/Vector2');
  * Allows accessing the mass, density, and center of mass of a Matter-enabled Game Object. Should be used as a mixin and not directly.
  *
  * @namespace Phaser.Physics.Matter.Components.Mass
- * @since 3.0.0
+ * 
  */
 var Mass = {
 
@@ -13,7 +13,7 @@ var Mass = {
      * Sets the mass of the Game Object's Matter Body.
      *
      * @method Phaser.Physics.Matter.Components.Mass#setMass
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The new mass of the body.
      *
@@ -29,7 +29,7 @@ var Mass = {
      * Sets density of the body.
      *
      * @method Phaser.Physics.Matter.Components.Mass#setDensity
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The new density of the body.
      *

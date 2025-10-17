@@ -2,7 +2,7 @@
  * Nudges (translates) the top-left corner of a Rectangle by the coordinates of a point (translation vector).
  *
  * @function Phaser.Geom.Rectangle.OffsetPoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [rect,$return]
  *

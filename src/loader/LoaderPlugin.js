@@ -41,7 +41,7 @@ var XHRSettings = require('./XHRSettings');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Loader
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene which owns this Loader instance.
  */
@@ -62,7 +62,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -71,7 +71,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.0.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -140,7 +140,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#path
              * @type {string}
              * @default ''
-             * @since 3.0.0
+             * 
              */
             this.path = '';
 
@@ -154,7 +154,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#baseURL
              * @type {string}
              * @default ''
-             * @since 3.0.0
+             * 
              */
             this.baseURL = '';
 
@@ -173,7 +173,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#maxParallelDownloads
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.maxParallelDownloads = GetFastValue(sceneConfig, 'maxParallelDownloads', gameConfig.loaderMaxParallelDownloads);
 
@@ -182,7 +182,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#xhr
              * @type {Phaser.Types.Loader.XHRSettingsObject}
-             * @since 3.0.0
+             * 
              */
             this.xhr = XHRSettings(
                 GetFastValue(sceneConfig, 'responseType', gameConfig.loaderResponseType),
@@ -198,7 +198,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#crossOrigin
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.crossOrigin = GetFastValue(sceneConfig, 'crossOrigin', gameConfig.loaderCrossOrigin);
 
@@ -230,7 +230,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#totalToLoad
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.totalToLoad = 0;
 
@@ -242,7 +242,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#progress
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.progress = 0;
 
@@ -256,7 +256,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#list
              * @type {Phaser.Structs.Set.<Phaser.Loader.File>}
-             * @since 3.0.0
+             * 
              */
             this.list = new CustomSet();
 
@@ -269,7 +269,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#inflight
              * @type {Phaser.Structs.Set.<Phaser.Loader.File>}
-             * @since 3.0.0
+             * 
              */
             this.inflight = new CustomSet();
 
@@ -283,7 +283,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#queue
              * @type {Phaser.Structs.Set.<Phaser.Loader.File>}
-             * @since 3.0.0
+             * 
              */
             this.queue = new CustomSet();
 
@@ -326,7 +326,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#state
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.state = CONST.LOADER_IDLE;
 
@@ -396,7 +396,7 @@ var LoaderPlugin = new Class({
      * file _already_ being loaded. To reset it, call this method with no arguments.
      *
      * @method Phaser.Loader.LoaderPlugin#setBaseURL
-     * @since 3.0.0
+     * 
      *
      * @param {string} [url] - The URL to use. Leave empty to reset.
      *
@@ -436,7 +436,7 @@ var LoaderPlugin = new Class({
      * file _already_ in the load queue. To reset it, call this method with no arguments.
      *
      * @method Phaser.Loader.LoaderPlugin#setPath
-     * @since 3.0.0
+     * 
      *
      * @param {string} [path] - The path to use. Leave empty to reset.
      *
@@ -492,7 +492,7 @@ var LoaderPlugin = new Class({
      * For more details about CORs see https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
      *
      * @method Phaser.Loader.LoaderPlugin#setCORS
-     * @since 3.0.0
+     * 
      *
      * @param {string} [crossOrigin] - The value to use for the `crossOrigin` property in the load request.
      *
@@ -517,7 +517,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#addFile
      * @fires Phaser.Loader.Events#ADD
-     * @since 3.0.0
+     * 
      *
      * @param {(Phaser.Loader.File|Phaser.Loader.File[])} file - The file, or array of files, to be added to the load queue.
      */
@@ -821,7 +821,7 @@ var LoaderPlugin = new Class({
      * Is the Loader actively loading, or processing loaded files?
      *
      * @method Phaser.Loader.LoaderPlugin#isLoading
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the Loader is busy loading or processing, otherwise `false`.
      */
@@ -833,7 +833,7 @@ var LoaderPlugin = new Class({
      * Is the Loader ready to start a new load?
      *
      * @method Phaser.Loader.LoaderPlugin#isReady
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if the Loader is ready to start a new load, otherwise `false`.
      */
@@ -854,7 +854,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#start
      * @fires Phaser.Loader.Events#START
-     * @since 3.0.0
+     * 
      */
     start: function () {
         if (!this.isReady()) {
@@ -892,7 +892,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#updateProgress
      * @fires Phaser.Loader.Events#PROGRESS
-     * @since 3.0.0
+     * 
      */
     updateProgress: function () {
         this.progress = 1 - ((this.list.size + this.inflight.size) / this.totalToLoad);
@@ -956,7 +956,7 @@ var LoaderPlugin = new Class({
      * @method Phaser.Loader.LoaderPlugin#nextFile
      * @fires Phaser.Loader.Events#FILE_LOAD
      * @fires Phaser.Loader.Events#FILE_LOAD_ERROR
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The File that just finished loading, or errored during load.
      * @param {boolean} success - `true` if the file loaded successfully, otherwise `false`.
@@ -1087,7 +1087,7 @@ var LoaderPlugin = new Class({
      * The data must be well formed JSON and ready-parsed, not a JavaScript object.
      *
      * @method Phaser.Loader.LoaderPlugin#saveJSON
-     * @since 3.0.0
+     * 
      *
      * @param {*} data - The JSON data, ready parsed.
      * @param {string} [filename=file.json] - The name to save the JSON file as.
@@ -1105,7 +1105,7 @@ var LoaderPlugin = new Class({
      * to be an ObjectURL based on the given data, and then invokes a click event.
      *
      * @method Phaser.Loader.LoaderPlugin#save
-     * @since 3.0.0
+     * 
      *
      * @param {*} data - The data to be saved. Will be passed through URL.createObjectURL.
      * @param {string} [filename=file.json] - The filename to save the file as.
@@ -1143,7 +1143,7 @@ var LoaderPlugin = new Class({
      * Warning: If the Loader is currently downloading files, or has files in its queue, they will be aborted.
      *
      * @method Phaser.Loader.LoaderPlugin#reset
-     * @since 3.0.0
+     * 
      */
     reset: function () {
         this.list.clear();
@@ -1166,7 +1166,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#shutdown
      * @private
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.reset();
@@ -1185,7 +1185,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#destroy
      * @private
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

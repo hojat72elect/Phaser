@@ -6,7 +6,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  * remove it.
  *
  * @function Phaser.Tilemaps.Components.SetTileLocationCallback
- * @since 3.0.0
+ * 
  *
  * @param {number} tileX - The left most tile index (in tile coordinates) to use as the origin of the area.
  * @param {number} tileY - The top most tile index (in tile coordinates) to use as the origin of the area.

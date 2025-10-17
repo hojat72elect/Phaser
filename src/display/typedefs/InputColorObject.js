@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Display.InputColorObject
- * @since 3.0.0
+ * 
  *
  * @property {number} [r] - The red color value in the range 0 to 255.
  * @property {number} [g] - The green color value in the range 0 to 255.

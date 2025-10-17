@@ -2,7 +2,7 @@
  * Bitmap Font data that can be used by a BitmapText Game Object.
  *
  * @typedef {object} Phaser.Types.GameObjects.BitmapText.BitmapFontData
- * @since 3.0.0
+ * 
  *
  * @property {string} font - The name of the font.
  * @property {number} size - The size of the font.

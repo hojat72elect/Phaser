@@ -17,7 +17,7 @@ var NOOP = require('../../utils/NOOP');
  * @class MouseManager
  * @memberof Phaser.Input.Mouse
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.InputManager} inputManager - A reference to the Input Manager.
  */
@@ -31,7 +31,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#manager
              * @type {Phaser.Input.InputManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = inputManager;
 
@@ -82,7 +82,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#enabled
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.enabled = false;
 
@@ -92,7 +92,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#target
              * @type {any}
-             * @since 3.0.0
+             * 
              */
             this.target;
 
@@ -102,7 +102,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#locked
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.locked = false;
 
@@ -201,7 +201,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#pointerLockChange
              * @type {function}
-             * @since 3.0.0
+             * 
              */
             this.pointerLockChange = NOOP;
 
@@ -227,7 +227,7 @@ var MouseManager = new Class({
      *
      * @method Phaser.Input.Mouse.MouseManager#boot
      * @private
-     * @since 3.0.0
+     * 
      */
     boot: function () {
         var config = this.manager.config;
@@ -265,7 +265,7 @@ var MouseManager = new Class({
      * menu keeps getting in the way.
      *
      * @method Phaser.Input.Mouse.MouseManager#disableContextMenu
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Mouse Manager instance.
      */
@@ -297,7 +297,7 @@ var MouseManager = new Class({
      * the error.
      *
      * @method Phaser.Input.Mouse.MouseManager#requestPointerLock
-     * @since 3.0.0
+     * 
      */
     requestPointerLock: function () {
         if (Features.pointerLock) {
@@ -315,7 +315,7 @@ var MouseManager = new Class({
      * dispatched - from the game's input manager - with an `isPointerLocked` property.
      *
      * @method Phaser.Input.Mouse.MouseManager#releasePointerLock
-     * @since 3.0.0
+     * 
      */
     releasePointerLock: function () {
         if (Features.pointerLock) {
@@ -329,7 +329,7 @@ var MouseManager = new Class({
      * This is called automatically and does not need to be manually invoked.
      *
      * @method Phaser.Input.Mouse.MouseManager#startListeners
-     * @since 3.0.0
+     * 
      */
     startListeners: function () {
         var target = this.target;
@@ -469,7 +469,7 @@ var MouseManager = new Class({
      * This is called automatically and does not need to be manually invoked.
      *
      * @method Phaser.Input.Mouse.MouseManager#stopListeners
-     * @since 3.0.0
+     * 
      */
     stopListeners: function () {
         var target = this.target;
@@ -498,7 +498,7 @@ var MouseManager = new Class({
      * Destroys this Mouse Manager instance.
      *
      * @method Phaser.Input.Mouse.MouseManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.stopListeners();

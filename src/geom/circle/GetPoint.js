@@ -9,7 +9,7 @@ var Point = require('../point/Point');
  * at 180 degrees around the circle.
  *
  * @function Phaser.Geom.Circle.GetPoint
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

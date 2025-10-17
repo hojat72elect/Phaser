@@ -25,7 +25,7 @@ var Vertices = require('./lib/geometry/Vertices');
  * @memberof Phaser.Physics.Matter
  * @extends Phaser.Events.EventEmitter
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Matter.Components.Bounce
  * @extends Phaser.Physics.Matter.Components.Collision
@@ -65,7 +65,7 @@ var MatterTileBody = new Class({
              *
              * @name Phaser.Physics.Matter.TileBody#tile
              * @type {Phaser.Tilemaps.Tile}
-             * @since 3.0.0
+             * 
              */
             this.tile = tile;
 
@@ -74,7 +74,7 @@ var MatterTileBody = new Class({
              *
              * @name Phaser.Physics.Matter.TileBody#world
              * @type {Phaser.Physics.Matter.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -118,7 +118,7 @@ var MatterTileBody = new Class({
      * Sets the current body to a rectangle that matches the bounds of the tile.
      *
      * @method Phaser.Physics.Matter.TileBody#setFromTileRectangle
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBodyTileOptions} [options] - Options to be used when creating the Matter body. See MatterJS.Body for a list of what Matter accepts.
      *
@@ -157,7 +157,7 @@ var MatterTileBody = new Class({
      * polygon into multiple convex polygons yourself.
      *
      * @method Phaser.Physics.Matter.TileBody#setFromTileCollision
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBodyTileOptions} [options] - Options to be used when creating the Matter body. See MatterJS.Body for a list of what Matter accepts.
      *
@@ -244,7 +244,7 @@ var MatterTileBody = new Class({
      * exists.
      *
      * @method Phaser.Physics.Matter.TileBody#setBody
-     * @since 3.0.0
+     * 
      *
      * @param {MatterJS.BodyType} body - The new Matter body to use.
      * @param {boolean} [addToWorld=true] - Whether or not to add the body to the Matter world.
@@ -274,7 +274,7 @@ var MatterTileBody = new Class({
      * Removes the current body from the TileBody and from the Matter world
      *
      * @method Phaser.Physics.Matter.TileBody#removeBody
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */
@@ -292,7 +292,7 @@ var MatterTileBody = new Class({
      * Removes the current body from the tile and the world.
      *
      * @method Phaser.Physics.Matter.TileBody#destroy
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */

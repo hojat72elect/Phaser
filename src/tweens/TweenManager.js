@@ -46,7 +46,7 @@ var TweenChainBuilder = require('./builders/TweenChainBuilder');
  * @class TweenManager
  * @memberof Phaser.Tweens
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene which owns this Tween Manager.
  */
@@ -60,7 +60,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -81,7 +81,7 @@ var TweenManager = new Class({
              * @name Phaser.Tweens.TweenManager#timeScale
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.timeScale = 1;
 
@@ -241,7 +241,7 @@ var TweenManager = new Class({
      * one Tween per entry in the array. If an array is given, an array of tweens is returned.
      *
      * @method Phaser.Tweens.TweenManager#create
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Tweens.TweenBuilderConfig|Phaser.Types.Tweens.TweenBuilderConfig[]|object|object[]} config - A Tween Configuration object. Or an array of Tween Configuration objects.
      *
@@ -301,7 +301,7 @@ var TweenManager = new Class({
      * If you wish to chain Tweens together for sequential playback, see the `TweenManager.chain` method.
      *
      * @method Phaser.Tweens.TweenManager#add
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Tweens.TweenBuilderConfig|Phaser.Types.Tweens.TweenChainBuilderConfig|Phaser.Tweens.Tween|Phaser.Tweens.TweenChain} config - A Tween Configuration object, or a Tween or TweenChain instance.
      *
@@ -444,7 +444,7 @@ var TweenManager = new Class({
      * Playback will start immediately unless the tween has been configured to be paused.
      *
      * @method Phaser.Tweens.TweenManager#existing
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to add.
      *
@@ -472,7 +472,7 @@ var TweenManager = new Class({
      * Please note that a Tween will not manipulate any target property that begins with an underscore.
      *
      * @method Phaser.Tweens.TweenManager#addCounter
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Tweens.NumberTweenBuilderConfig} config - The configuration object for the Number Tween.
      *
@@ -653,7 +653,7 @@ var TweenManager = new Class({
      * been paused.
      *
      * @method Phaser.Tweens.TweenManager#update
-     * @since 3.0.0
+     * 
      */
     update: function () {
         if (!this.paused) {
@@ -781,7 +781,7 @@ var TweenManager = new Class({
      * Checks if a Tween is active and adds it to the Tween Manager at the start of the frame if it isn't.
      *
      * @method Phaser.Tweens.TweenManager#makeActive
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to check.
      *
@@ -799,7 +799,7 @@ var TweenManager = new Class({
      * Passes all Tweens to the given callback.
      *
      * @method Phaser.Tweens.TweenManager#each
-     * @since 3.0.0
+     * 
      *
      * @param {function} callback - The function to call.
      * @param {object} [scope] - The scope (`this` object) to call the function with.
@@ -834,7 +834,7 @@ var TweenManager = new Class({
      * If you wish to get tweens for a specific target, see `getTweensOf`.
      *
      * @method Phaser.Tweens.TweenManager#getTweens
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Tweens.Tween[]} A new array containing references to all Tweens.
      */
@@ -850,7 +850,7 @@ var TweenManager = new Class({
      * upon it.
      *
      * @method Phaser.Tweens.TweenManager#getTweensOf
-     * @since 3.0.0
+     * 
      *
      * @param {(object|object[])} target - The target to look for. Provide an array to look for multiple targets.
      *
@@ -885,7 +885,7 @@ var TweenManager = new Class({
      * Returns the scale of the time delta for all Tweens owned by this Tween Manager.
      *
      * @method Phaser.Tweens.TweenManager#getGlobalTimeScale
-     * @since 3.0.0
+     * 
      *
      * @return {number} The scale of the time delta, usually 1.
      */
@@ -899,7 +899,7 @@ var TweenManager = new Class({
      * The time delta is the time elapsed between two consecutive frames and influences the speed of time for this Tween Manager and all Tweens it owns. Values higher than 1 increase the speed of time, while values smaller than 1 decrease it. A value of 0 freezes time and is effectively equivalent to pausing all Tweens.
      *
      * @method Phaser.Tweens.TweenManager#setGlobalTimeScale
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The new scale of the time delta, where 1 is the normal speed.
      *
@@ -917,7 +917,7 @@ var TweenManager = new Class({
      * If the Tween is paused, this method will return false.
      *
      * @method Phaser.Tweens.TweenManager#isTweening
-     * @since 3.0.0
+     * 
      *
      * @param {object} target - The object to check if a tween is active for it, or not.
      *
@@ -949,7 +949,7 @@ var TweenManager = new Class({
      * the next frame. Outside of this, they are removed immediately.
      *
      * @method Phaser.Tweens.TweenManager#killAll
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tween Manager instance.
      */
@@ -980,7 +980,7 @@ var TweenManager = new Class({
      * @see {@link #getTweensOf}
      *
      * @method Phaser.Tweens.TweenManager#killTweensOf
-     * @since 3.0.0
+     * 
      *
      * @param {(object|array)} target - The target to kill the tweens of. Provide an array to use multiple targets.
      *
@@ -1006,7 +1006,7 @@ var TweenManager = new Class({
      * As of Phaser 3.60 you can also toggle the boolean property `TweenManager.paused`.
      *
      * @method Phaser.Tweens.TweenManager#pauseAll
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tween Manager instance.
      */
@@ -1026,7 +1026,7 @@ var TweenManager = new Class({
      * As of Phaser 3.60 you can also toggle the boolean property `TweenManager.paused`.
      *
      * @method Phaser.Tweens.TweenManager#resumeAll
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Tween Manager instance.
      */
@@ -1042,7 +1042,7 @@ var TweenManager = new Class({
      * We need to kill and reset all internal properties as well as stop listening to Scene events.
      *
      * @method Phaser.Tweens.TweenManager#shutdown
-     * @since 3.0.0
+     * 
      */
     shutdown: function () {
         this.killAll();
@@ -1058,7 +1058,7 @@ var TweenManager = new Class({
      * We need to shutdown and then kill off all external references.
      *
      * @method Phaser.Tweens.TweenManager#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.shutdown();

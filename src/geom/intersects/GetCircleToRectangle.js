@@ -13,7 +13,7 @@ var CircleToRectangle = require('./CircleToRectangle');
  * and returns the intersection points as a Point object array.
  *
  * @function Phaser.Geom.Intersects.GetCircleToRectangle
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Circle} circle - The circle to be checked.
  * @param {Phaser.Geom.Rectangle} rect - The rectangle to be checked.

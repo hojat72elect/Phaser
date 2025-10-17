@@ -5,7 +5,7 @@
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.Origin
- * @since 3.0.0
+ * 
  */
 
 var Origin = {
@@ -32,7 +32,7 @@ var Origin = {
      * @type {number}
      * @readonly
      * @default 0.5
-     * @since 3.0.0
+     * 
      */
     originX: 0.5,
 
@@ -47,7 +47,7 @@ var Origin = {
      * @type {number}
      * @readonly
      * @default 0.5
-     * @since 3.0.0
+     * 
      */
     originY: 0.5,
 
@@ -62,7 +62,7 @@ var Origin = {
      *
      * @name Phaser.GameObjects.Components.Origin#displayOriginX
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayOriginX: {
 
@@ -84,7 +84,7 @@ var Origin = {
      *
      * @name Phaser.GameObjects.Components.Origin#displayOriginY
      * @type {number}
-     * @since 3.0.0
+     * 
      */
     displayOriginY: {
 
@@ -105,7 +105,7 @@ var Origin = {
      * The values are given in the range 0 to 1.
      *
      * @method Phaser.GameObjects.Components.Origin#setOrigin
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0.5] - The horizontal origin value.
      * @param {number} [y=x] - The vertical origin value. If not defined it will be set to the value of `x`.
@@ -130,7 +130,7 @@ var Origin = {
      * Sets the origin of this Game Object based on the Pivot values in its Frame.
      *
      * @method Phaser.GameObjects.Components.Origin#setOriginFromFrame
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -150,7 +150,7 @@ var Origin = {
      * The difference between this and setting the origin is that you can use pixel values for setting the display origin.
      *
      * @method Phaser.GameObjects.Components.Origin#setDisplayOrigin
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The horizontal display origin value.
      * @param {number} [y=x] - The vertical display origin value. If not defined it will be set to the value of `x`.
@@ -176,7 +176,7 @@ var Origin = {
      * You don't usually call this directly, but it is exposed for edge-cases where you may.
      *
      * @method Phaser.GameObjects.Components.Origin#updateDisplayOrigin
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

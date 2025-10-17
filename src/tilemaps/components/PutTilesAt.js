@@ -9,7 +9,7 @@ var PutTileAt = require('./PutTileAt');
  * within the region tiles were changed.
  *
  * @function Phaser.Tilemaps.Components.PutTilesAt
- * @since 3.0.0
+ * 
  *
  * @param {(number[]|number[][]|Phaser.Tilemaps.Tile[]|Phaser.Tilemaps.Tile[][])} tile - A row (array) or grid (2D array) of Tiles or tile indexes to place.
  * @param {number} tileX - The x coordinate, in tiles, not pixels.

@@ -2,7 +2,7 @@
  * Compares the `x`, `y`, `width` and `height` properties of two rectangles.
  *
  * @function Phaser.Geom.Rectangle.Equals
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - Rectangle A
  * @param {Phaser.Geom.Rectangle} toCompare - Rectangle B

@@ -8,7 +8,7 @@ var ShuffleArray = require('../../utils/array/Shuffle');
  * information.
  *
  * @function Phaser.Tilemaps.Components.Shuffle
- * @since 3.0.0
+ * 
  *
  * @param {number} tileX - The left most tile index (in tile coordinates) to use as the origin of the area.
  * @param {number} tileY - The top most tile index (in tile coordinates) to use as the origin of the area.

@@ -2,7 +2,7 @@
  * Check if rectangle intersects with values.
  *
  * @function Phaser.Geom.Intersects.RectangleToValues
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The rectangle object
  * @param {number} left - The x coordinate of the left of the Rectangle.

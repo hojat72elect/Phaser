@@ -19,7 +19,7 @@ var NOOP = require('../utils/NOOP');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Sound
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Sound.BaseSoundManager} manager - Reference to the current sound manager instance.
  * @param {string} key - Asset key for the sound.
@@ -39,7 +39,7 @@ var BaseSound = new Class({
              *
              * @name Phaser.Sound.BaseSound#manager
              * @type {Phaser.Sound.BaseSoundManager}
-             * @since 3.0.0
+             * 
              */
             this.manager = manager;
 
@@ -49,7 +49,7 @@ var BaseSound = new Class({
              * @name Phaser.Sound.BaseSound#key
              * @type {string}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.key = key;
 
@@ -60,7 +60,7 @@ var BaseSound = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isPlaying = false;
 
@@ -71,7 +71,7 @@ var BaseSound = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isPaused = false;
 
@@ -84,7 +84,7 @@ var BaseSound = new Class({
              * @type {number}
              * @default 1
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.totalRate = 1;
 
@@ -95,7 +95,7 @@ var BaseSound = new Class({
              * @name Phaser.Sound.BaseSound#duration
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.duration = this.duration || 0;
 
@@ -105,7 +105,7 @@ var BaseSound = new Class({
              * @name Phaser.Sound.BaseSound#totalDuration
              * @type {number}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.totalDuration = this.totalDuration || 0;
 
@@ -116,7 +116,7 @@ var BaseSound = new Class({
              * @name Phaser.Sound.BaseSound#config
              * @type {Phaser.Types.Sound.SoundConfig}
              * @private
-             * @since 3.0.0
+             * 
              */
             this.config = {
 
@@ -138,7 +138,7 @@ var BaseSound = new Class({
              * @name Phaser.Sound.BaseSound#currentConfig
              * @type {Phaser.Types.Sound.SoundConfig}
              * @private
-             * @since 3.0.0
+             * 
              */
             this.currentConfig = this.config;
 
@@ -151,7 +151,7 @@ var BaseSound = new Class({
              * @type {Object.<string, Phaser.Types.Sound.SoundMarker>}
              * @default {}
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.markers = {};
 
@@ -163,7 +163,7 @@ var BaseSound = new Class({
              * @type {Phaser.Types.Sound.SoundMarker}
              * @default null
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.currentMarker = null;
 
@@ -173,7 +173,7 @@ var BaseSound = new Class({
              * @name Phaser.Sound.BaseSound#pendingRemove
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              */
             this.pendingRemove = false;
         },
@@ -183,7 +183,7 @@ var BaseSound = new Class({
      * This allows you to bundle multiple sounds together into a single audio file and use markers to jump between them for playback.
      *
      * @method Phaser.Sound.BaseSound#addMarker
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Sound.SoundMarker} marker - Marker object.
      *
@@ -226,7 +226,7 @@ var BaseSound = new Class({
      * Updates previously added marker.
      *
      * @method Phaser.Sound.BaseSound#updateMarker
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.Sound.SoundMarker} marker - Marker object with updated values.
      *
@@ -253,7 +253,7 @@ var BaseSound = new Class({
      * Removes a marker from the sound.
      *
      * @method Phaser.Sound.BaseSound#removeMarker
-     * @since 3.0.0
+     * 
      *
      * @param {string} markerName - The name of the marker to remove.
      *
@@ -278,7 +278,7 @@ var BaseSound = new Class({
      * you can set 'seek' setting of the config object, provided to this call, to that value.
      *
      * @method Phaser.Sound.BaseSound#play
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Types.Sound.SoundConfig)} [markerName=''] - If you want to play a marker then provide the marker name here. Alternatively, this parameter can be a SoundConfig object.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - Optional sound config object to be applied to this marker or entire sound if no marker name is provided. It gets memorized for future plays of current section of the sound.
@@ -332,7 +332,7 @@ var BaseSound = new Class({
      * You can inspect the `isPlaying` and `isPaused` properties to check the state.
      *
      * @method Phaser.Sound.BaseSound#pause
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was paused successfully.
      */
@@ -353,7 +353,7 @@ var BaseSound = new Class({
      * You can inspect the `isPlaying` and `isPaused` properties to check the state.
      *
      * @method Phaser.Sound.BaseSound#resume
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was resumed successfully.
      */
@@ -372,7 +372,7 @@ var BaseSound = new Class({
      * Stop playing this sound.
      *
      * @method Phaser.Sound.BaseSound#stop
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} Whether the sound was stopped successfully.
      */
@@ -393,7 +393,7 @@ var BaseSound = new Class({
      * Method used internally for applying config values to some of the sound properties.
      *
      * @method Phaser.Sound.BaseSound#applyConfig
-     * @since 3.0.0
+     * 
      */
     applyConfig: function () {
         this.mute = this.currentConfig.mute;
@@ -408,7 +408,7 @@ var BaseSound = new Class({
      * Method used internally for resetting values of some of the config properties.
      *
      * @method Phaser.Sound.BaseSound#resetConfig
-     * @since 3.0.0
+     * 
      */
     resetConfig: function () {
         this.currentConfig.seek = 0;
@@ -419,7 +419,7 @@ var BaseSound = new Class({
      * Update method called automatically by sound manager on every game step.
      *
      * @method Phaser.Sound.BaseSound#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time elapsed since the last frame.
@@ -430,7 +430,7 @@ var BaseSound = new Class({
      * Method used internally to calculate total playback rate of the sound.
      *
      * @method Phaser.Sound.BaseSound#calculateRate
-     * @since 3.0.0
+     * 
      */
     calculateRate: function () {
         var cent = 1.0005777895065548; // Math.pow(2, 1/1200);
@@ -445,7 +445,7 @@ var BaseSound = new Class({
      *
      * @method Phaser.Sound.BaseSound#destroy
      * @fires Phaser.Sound.Events#DESTROY
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         if (this.pendingRemove) {

@@ -2,7 +2,7 @@
  * Phaser Blend Modes.
  *
  * @namespace Phaser.BlendModes
- * @since 3.0.0
+ * 
  */
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
      * @name Phaser.BlendModes.SKIP_CHECK
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SKIP_CHECK: -1,
 
@@ -24,7 +24,7 @@ module.exports = {
      * @name Phaser.BlendModes.NORMAL
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     NORMAL: 0,
 
@@ -35,7 +35,7 @@ module.exports = {
      * @name Phaser.BlendModes.ADD
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     ADD: 1,
 
@@ -46,7 +46,7 @@ module.exports = {
      * @name Phaser.BlendModes.MULTIPLY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     MULTIPLY: 2,
 
@@ -57,7 +57,7 @@ module.exports = {
      * @name Phaser.BlendModes.SCREEN
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SCREEN: 3,
 
@@ -68,7 +68,7 @@ module.exports = {
      * @name Phaser.BlendModes.OVERLAY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     OVERLAY: 4,
 
@@ -79,7 +79,7 @@ module.exports = {
      * @name Phaser.BlendModes.DARKEN
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DARKEN: 5,
 
@@ -90,7 +90,7 @@ module.exports = {
      * @name Phaser.BlendModes.LIGHTEN
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     LIGHTEN: 6,
 
@@ -101,7 +101,7 @@ module.exports = {
      * @name Phaser.BlendModes.COLOR_DODGE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     COLOR_DODGE: 7,
 
@@ -112,7 +112,7 @@ module.exports = {
      * @name Phaser.BlendModes.COLOR_BURN
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     COLOR_BURN: 8,
 
@@ -123,7 +123,7 @@ module.exports = {
      * @name Phaser.BlendModes.HARD_LIGHT
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     HARD_LIGHT: 9,
 
@@ -134,7 +134,7 @@ module.exports = {
      * @name Phaser.BlendModes.SOFT_LIGHT
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SOFT_LIGHT: 10,
 
@@ -145,7 +145,7 @@ module.exports = {
      * @name Phaser.BlendModes.DIFFERENCE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DIFFERENCE: 11,
 
@@ -156,7 +156,7 @@ module.exports = {
      * @name Phaser.BlendModes.EXCLUSION
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     EXCLUSION: 12,
 
@@ -167,7 +167,7 @@ module.exports = {
      * @name Phaser.BlendModes.HUE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     HUE: 13,
 
@@ -178,7 +178,7 @@ module.exports = {
      * @name Phaser.BlendModes.SATURATION
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SATURATION: 14,
 
@@ -189,7 +189,7 @@ module.exports = {
      * @name Phaser.BlendModes.COLOR
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     COLOR: 15,
 
@@ -200,7 +200,7 @@ module.exports = {
      * @name Phaser.BlendModes.LUMINOSITY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     LUMINOSITY: 16,
 
@@ -210,7 +210,7 @@ module.exports = {
      * @name Phaser.BlendModes.ERASE
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     ERASE: 17,
 
@@ -221,7 +221,7 @@ module.exports = {
      * @name Phaser.BlendModes.SOURCE_IN
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SOURCE_IN: 18,
 
@@ -232,7 +232,7 @@ module.exports = {
      * @name Phaser.BlendModes.SOURCE_OUT
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SOURCE_OUT: 19,
 
@@ -243,7 +243,7 @@ module.exports = {
      * @name Phaser.BlendModes.SOURCE_ATOP
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     SOURCE_ATOP: 20,
 
@@ -254,7 +254,7 @@ module.exports = {
      * @name Phaser.BlendModes.DESTINATION_OVER
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DESTINATION_OVER: 21,
 
@@ -265,7 +265,7 @@ module.exports = {
      * @name Phaser.BlendModes.DESTINATION_IN
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DESTINATION_IN: 22,
 
@@ -276,7 +276,7 @@ module.exports = {
      * @name Phaser.BlendModes.DESTINATION_OUT
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DESTINATION_OUT: 23,
 
@@ -287,7 +287,7 @@ module.exports = {
      * @name Phaser.BlendModes.DESTINATION_ATOP
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     DESTINATION_ATOP: 24,
 
@@ -298,7 +298,7 @@ module.exports = {
      * @name Phaser.BlendModes.LIGHTER
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     LIGHTER: 25,
 
@@ -309,7 +309,7 @@ module.exports = {
      * @name Phaser.BlendModes.COPY
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     COPY: 26,
 
@@ -320,7 +320,7 @@ module.exports = {
      * @name Phaser.BlendModes.XOR
      * @type {number}
      * @const
-     * @since 3.0.0
+     * 
      */
     XOR: 27
 

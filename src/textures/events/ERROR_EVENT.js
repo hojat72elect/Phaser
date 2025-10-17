@@ -8,7 +8,7 @@
  *
  * @event Phaser.Textures.Events#ERROR
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {string} key - The key of the Texture that failed to load into the Texture Manager.
  */

@@ -8,7 +8,7 @@ var Zone = require('./Zone');
  * Note: This method will only be available if the Zone Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#zone
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Zone.ZoneConfig} config - The configuration object this Game Object will use to create itself.
  *

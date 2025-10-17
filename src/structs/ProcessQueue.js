@@ -19,7 +19,7 @@ var Events = require('./events');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Structs
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @generic T
  */
@@ -41,7 +41,7 @@ var ProcessQueue = new Class({
              * @type {Array.<*>}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._pending = [];
 
@@ -54,7 +54,7 @@ var ProcessQueue = new Class({
              * @type {Array.<*>}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._active = [];
 
@@ -67,7 +67,7 @@ var ProcessQueue = new Class({
              * @type {Array.<*>}
              * @private
              * @default []
-             * @since 3.0.0
+             * 
              */
             this._destroy = [];
 
@@ -78,7 +78,7 @@ var ProcessQueue = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this._toProcess = 0;
 
@@ -149,7 +149,7 @@ var ProcessQueue = new Class({
      * The item is added to the pending list and made active in the next update.
      *
      * @method Phaser.Structs.ProcessQueue#add
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T} - [item]
      * @genericUse {Phaser.Structs.ProcessQueue.<T>} - [$return]
@@ -177,7 +177,7 @@ var ProcessQueue = new Class({
      * The item is added to the 'destroy' list and is fully removed in the next update.
      *
      * @method Phaser.Structs.ProcessQueue#remove
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T} - [item]
      * @genericUse {Phaser.Structs.ProcessQueue.<T>} - [$return]
@@ -241,7 +241,7 @@ var ProcessQueue = new Class({
      * active state. Finally, it will return a list of active items for further processing.
      *
      * @method Phaser.Structs.ProcessQueue#update
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T[]} - [$return]
      *
@@ -304,7 +304,7 @@ var ProcessQueue = new Class({
      * Therefore, be careful to not modify this array outside of the ProcessQueue.
      *
      * @method Phaser.Structs.ProcessQueue#getActive
-     * @since 3.0.0
+     * 
      *
      * @genericUse {T[]} - [$return]
      *
@@ -334,7 +334,7 @@ var ProcessQueue = new Class({
      * Immediately destroys this process queue, clearing all of its internal arrays and resetting the process totals.
      *
      * @method Phaser.Structs.ProcessQueue#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this._toProcess = 0;

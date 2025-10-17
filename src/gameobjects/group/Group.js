@@ -23,7 +23,7 @@ var Sprite = require('../sprite/Sprite');
  * @memberof Phaser.GameObjects
  * @extends Phaser.Events.EventEmitter
  * @constructor
- * @since 3.0.0
+ * 
  * @param {Phaser.Scene} scene - The scene this group belongs to.
  * @param {(Phaser.GameObjects.GameObject[]|Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig)} [children] - Game Objects to add to this group; or the `config` argument.
  * @param {Phaser.Types.GameObjects.Group.GroupConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig} [config] - Settings for this group. If `key` is set, Phaser.GameObjects.Group#createMultiple is also called with these settings.
@@ -74,7 +74,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#scene
              * @type {Phaser.Scene}
-             * @since 3.0.0
+             * 
              */
             this.scene = scene;
 
@@ -83,7 +83,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#children
              * @type {Phaser.Structs.Set.<Phaser.GameObjects.GameObject>}
-             * @since 3.0.0
+             * 
              */
             this.children = new Set();
 
@@ -93,7 +93,7 @@ var Group = new Class({
              * @name Phaser.GameObjects.Group#isParent
              * @type {boolean}
              * @default true
-             * @since 3.0.0
+             * 
              */
             this.isParent = true;
 
@@ -113,7 +113,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#classType
              * @type {function}
-             * @since 3.0.0
+             * 
              * @default Phaser.GameObjects.Sprite
              * @see Phaser.Types.GameObjects.Group.GroupClassTypeConstructor
              */
@@ -135,7 +135,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#active
              * @type {boolean}
-             * @since 3.0.0
+             * 
              */
             this.active = GetFastValue(config, 'active', true);
 
@@ -144,7 +144,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#maxSize
              * @type {number}
-             * @since 3.0.0
+             * 
              * @default -1
              */
             this.maxSize = GetFastValue(config, 'maxSize', -1);
@@ -157,7 +157,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#defaultKey
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.defaultKey = GetFastValue(config, 'defaultKey', null);
 
@@ -166,7 +166,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#defaultFrame
              * @type {(string|number)}
-             * @since 3.0.0
+             * 
              */
             this.defaultFrame = GetFastValue(config, 'defaultFrame', null);
 
@@ -176,7 +176,7 @@ var Group = new Class({
              * @name Phaser.GameObjects.Group#runChildUpdate
              * @type {boolean}
              * @default false
-             * @since 3.0.0
+             * 
              * @see Phaser.GameObjects.Group#preUpdate
              */
             this.runChildUpdate = GetFastValue(config, 'runChildUpdate', false);
@@ -186,7 +186,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#createCallback
              * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
-             * @since 3.0.0
+             * 
              */
             this.createCallback = GetFastValue(config, 'createCallback', null);
 
@@ -195,7 +195,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#removeCallback
              * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
-             * @since 3.0.0
+             * 
              */
             this.removeCallback = GetFastValue(config, 'removeCallback', null);
 
@@ -204,7 +204,7 @@ var Group = new Class({
              *
              * @name Phaser.GameObjects.Group#createMultipleCallback
              * @type {?Phaser.Types.GameObjects.Group.GroupMultipleCreateCallback}
-             * @since 3.0.0
+             * 
              */
             this.createMultipleCallback = GetFastValue(config, 'createMultipleCallback', null);
 
@@ -258,7 +258,7 @@ var Group = new Class({
      * Calls {@link Phaser.GameObjects.Group#createCallback}.
      *
      * @method Phaser.GameObjects.Group#create
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x=0] - The horizontal position of the new Game Object in the world.
      * @param {number} [y=0] - The vertical position of the new Game Object in the world.
@@ -315,7 +315,7 @@ var Group = new Class({
      * Calls {@link Phaser.GameObjects.Group#createMultipleCallback} and {@link Phaser.GameObjects.Group#createCallback}.
      *
      * @method Phaser.GameObjects.Group#createMultiple
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.GameObjects.Group.GroupCreateConfig|Phaser.Types.GameObjects.Group.GroupCreateConfig[]} config - Creation settings. This can be a single configuration object or an array of such objects, which will be applied in turn.
      *
@@ -347,7 +347,7 @@ var Group = new Class({
      * A helper for {@link Phaser.GameObjects.Group#createMultiple}.
      *
      * @method Phaser.GameObjects.Group#createFromConfig
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.Types.GameObjects.Group.GroupCreateConfig} options - Creation settings.
      *
@@ -510,7 +510,7 @@ var Group = new Class({
      * Updates any group members, if {@link Phaser.GameObjects.Group#runChildUpdate} is enabled.
      *
      * @method Phaser.GameObjects.Group#preUpdate
-     * @since 3.0.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time elapsed since the last frame.
@@ -538,7 +538,7 @@ var Group = new Class({
      * Calls {@link Phaser.GameObjects.Group#createCallback}.
      *
      * @method Phaser.GameObjects.Group#add
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} child - The Game Object to add.
      * @param {boolean} [addToScene=false] - Also add the Game Object to the scene.
@@ -580,7 +580,7 @@ var Group = new Class({
      * Calls {@link Phaser.GameObjects.Group#createCallback}.
      *
      * @method Phaser.GameObjects.Group#addMultiple
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject[]} children - The Game Objects to add.
      * @param {boolean} [addToScene=false] - Also add the Game Objects to the scene.
@@ -607,7 +607,7 @@ var Group = new Class({
      * Calls {@link Phaser.GameObjects.Group#removeCallback}.
      *
      * @method Phaser.GameObjects.Group#remove
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} child - The Game Object to remove.
      * @param {boolean} [removeFromScene=false] - Optionally remove the Group member from the Scene it belongs to.
@@ -655,7 +655,7 @@ var Group = new Class({
      * Does not call {@link Phaser.GameObjects.Group#removeCallback}.
      *
      * @method Phaser.GameObjects.Group#clear
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [removeFromScene=false] - Optionally remove each Group member from the Scene.
      * @param {boolean} [destroyChild=false] - Optionally call destroy on the removed Group members.
@@ -694,7 +694,7 @@ var Group = new Class({
      * Tests if a Game Object is a member of this group.
      *
      * @method Phaser.GameObjects.Group#contains
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} child - A Game Object.
      *
@@ -708,7 +708,7 @@ var Group = new Class({
      * All members of the group.
      *
      * @method Phaser.GameObjects.Group#getChildren
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject[]} The group members.
      */
@@ -720,7 +720,7 @@ var Group = new Class({
      * The number of members of the group.
      *
      * @method Phaser.GameObjects.Group#getLength
-     * @since 3.0.0
+     * 
      *
      * @return {number}
      */
@@ -759,7 +759,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#getFirst
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [state=false] - The {@link Phaser.GameObjects.GameObject#active} value to match.
      * @param {boolean} [createIfNull=false] - Create a new Game Object if no matching members are found, using the following arguments.
@@ -945,7 +945,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#get
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x] - The horizontal position of the Game Object in the world.
      * @param {number} [y] - The vertical position of the Game Object in the world.
@@ -967,7 +967,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#getFirstAlive
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [createIfNull=false] - Create a new Game Object if no matching members are found, using the following arguments.
      * @param {number} [x] - The horizontal position of the Game Object in the world.
@@ -991,7 +991,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#getFirstDead
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [createIfNull=false] - Create a new Game Object if no matching members are found, using the following arguments.
      * @param {number} [x] - The horizontal position of the Game Object in the world.
@@ -1010,7 +1010,7 @@ var Group = new Class({
      * {@link Phaser.Animations.AnimationState#play Plays} an animation for all members of this group.
      *
      * @method Phaser.GameObjects.Group#playAnimation
-     * @since 3.0.0
+     * 
      *
      * @param {string} key - The string-based key of the animation to play.
      * @param {string} [startFrame=0] - Optionally start the animation playing from this frame index.
@@ -1027,7 +1027,7 @@ var Group = new Class({
      * Whether this group's size at its {@link Phaser.GameObjects.Group#maxSize maximum}.
      *
      * @method Phaser.GameObjects.Group#isFull
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} True if the number of members equals {@link Phaser.GameObjects.Group#maxSize}.
      */
@@ -1043,7 +1043,7 @@ var Group = new Class({
      * Counts the number of active (or inactive) group members.
      *
      * @method Phaser.GameObjects.Group#countActive
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [value=true] - Count active (true) or inactive (false) group members.
      *
@@ -1069,7 +1069,7 @@ var Group = new Class({
      * Counts the number of in-use (active) group members.
      *
      * @method Phaser.GameObjects.Group#getTotalUsed
-     * @since 3.0.0
+     * 
      *
      * @return {number} The number of group members with an active state of true.
      */
@@ -1083,7 +1083,7 @@ var Group = new Class({
      * This represents the number of group members that could be created or reactivated before reaching the size limit.
      *
      * @method Phaser.GameObjects.Group#getTotalFree
-     * @since 3.0.0
+     * 
      *
      * @return {number} maxSize minus the number of active group numbers; or a large number (if maxSize is -1).
      */
@@ -1476,7 +1476,7 @@ var Group = new Class({
      * Sets the depth of each group member.
      *
      * @method Phaser.GameObjects.Group#setDepth
-     * @since 3.0.0
+     * 
      *
      * @param {number} value - The amount to set the property to.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1540,7 +1540,7 @@ var Group = new Class({
      * Deactivates a member of this group.
      *
      * @method Phaser.GameObjects.Group#kill
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - A member of this group.
      */
@@ -1554,7 +1554,7 @@ var Group = new Class({
      * Deactivates and hides a member of this group.
      *
      * @method Phaser.GameObjects.Group#killAndHide
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - A member of this group.
      */
@@ -1587,7 +1587,7 @@ var Group = new Class({
      * Toggles (flips) the visible state of each member of this group.
      *
      * @method Phaser.GameObjects.Group#toggleVisible
-     * @since 3.0.0
+     * 
      *
      * @return {this} This Group object.
      */
@@ -1609,7 +1609,7 @@ var Group = new Class({
      * unless you specify the `destroyChildren` parameter.
      *
      * @method Phaser.GameObjects.Group#destroy
-     * @since 3.0.0
+     * 
      *
      * @param {boolean} [destroyChildren=false] - Also {@link Phaser.GameObjects.GameObject#destroy} each Group member.
      * @param {boolean} [removeFromScene=false] - Optionally remove each Group member from the Scene.

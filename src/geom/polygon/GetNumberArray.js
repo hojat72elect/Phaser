@@ -6,7 +6,7 @@
  * array for the point's X and Y coordinate.
  *
  * @function Phaser.Geom.Polygon.GetNumberArray
- * @since 3.0.0
+ * 
  *
  * @generic {number[]} O - [output,$return]
  *

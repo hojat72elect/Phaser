@@ -9,7 +9,7 @@
  * Should be applied as a mixin.
  *
  * @namespace Phaser.Physics.Impact.Components.Friction
- * @since 3.0.0
+ * 
  */
 var Friction = {
 
@@ -17,7 +17,7 @@ var Friction = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Friction#setFrictionX
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - [description]
      *
@@ -33,7 +33,7 @@ var Friction = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Friction#setFrictionY
-     * @since 3.0.0
+     * 
      *
      * @param {number} y - [description]
      *
@@ -49,7 +49,7 @@ var Friction = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Friction#setFriction
-     * @since 3.0.0
+     * 
      *
      * @param {number} x - [description]
      * @param {number} y - [description]

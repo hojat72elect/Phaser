@@ -16,7 +16,7 @@ var Vector2 = require('../../math/Vector2');
  * @class Particle
  * @memberof Phaser.GameObjects.Particles
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - The Emitter to which this Particle belongs.
  */
@@ -32,7 +32,7 @@ var Particle = new Class({
              *
              * @name Phaser.GameObjects.Particles.Particle#emitter
              * @type {Phaser.GameObjects.Particles.ParticleEmitter}
-             * @since 3.0.0
+             * 
              */
             this.emitter = emitter;
 
@@ -52,7 +52,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#frame
              * @type {Phaser.Textures.Frame}
              * @default null
-             * @since 3.0.0
+             * 
              */
             this.frame = null;
 
@@ -62,7 +62,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#x
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.x = 0;
 
@@ -72,7 +72,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#y
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.y = 0;
 
@@ -93,7 +93,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#velocityX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.velocityX = 0;
 
@@ -103,7 +103,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#velocityY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.velocityY = 0;
 
@@ -113,7 +113,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#accelerationX
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.accelerationX = 0;
 
@@ -123,7 +123,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#accelerationY
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.accelerationY = 0;
 
@@ -133,7 +133,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#maxVelocityX
              * @type {number}
              * @default 10000
-             * @since 3.0.0
+             * 
              */
             this.maxVelocityX = 10000;
 
@@ -143,7 +143,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#maxVelocityY
              * @type {number}
              * @default 10000
-             * @since 3.0.0
+             * 
              */
             this.maxVelocityY = 10000;
 
@@ -153,7 +153,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#bounce
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.bounce = 0;
 
@@ -163,7 +163,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#scaleX
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.scaleX = 1;
 
@@ -173,7 +173,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#scaleY
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.scaleY = 1;
 
@@ -183,7 +183,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#alpha
              * @type {number}
              * @default 1
-             * @since 3.0.0
+             * 
              */
             this.alpha = 1;
 
@@ -193,7 +193,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#angle
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.angle = 0;
 
@@ -203,7 +203,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#rotation
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.rotation = 0;
 
@@ -213,7 +213,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#tint
              * @type {number}
              * @webglOnly
-             * @since 3.0.0
+             * 
              */
             this.tint = 0xffffff;
 
@@ -223,7 +223,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#life
              * @type {number}
              * @default 1000
-             * @since 3.0.0
+             * 
              */
             this.life = 1000;
 
@@ -233,7 +233,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#lifeCurrent
              * @type {number}
              * @default 1000
-             * @since 3.0.0
+             * 
              */
             this.lifeCurrent = 1000;
 
@@ -243,7 +243,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#delayCurrent
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.delayCurrent = 0;
 
@@ -263,7 +263,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#lifeT
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.lifeT = 0;
 
@@ -272,7 +272,7 @@ var Particle = new Class({
              *
              * @name Phaser.GameObjects.Particles.Particle#data
              * @type {Phaser.Types.GameObjects.Particles.ParticleData}
-             * @since 3.0.0
+             * 
              */
             this.data = {
                 tint: {min: 0xffffff, max: 0xffffff},
@@ -372,7 +372,7 @@ var Particle = new Class({
      * Checks to see if this Particle is alive and updating.
      *
      * @method Phaser.GameObjects.Particles.Particle#isAlive
-     * @since 3.0.0
+     * 
      *
      * @return {boolean} `true` if this Particle is alive and updating, otherwise `false`.
      */
@@ -418,7 +418,7 @@ var Particle = new Class({
      * Starts this Particle from the given coordinates.
      *
      * @method Phaser.GameObjects.Particles.Particle#fire
-     * @since 3.0.0
+     * 
      *
      * @param {number} [x] - The x coordinate to launch this Particle from.
      * @param {number} [y] - The y coordinate to launch this Particle from.
@@ -533,7 +533,7 @@ var Particle = new Class({
      * Updates its life values, computes the velocity and repositions the Particle.
      *
      * @method Phaser.GameObjects.Particles.Particle#update
-     * @since 3.0.0
+     * 
      *
      * @param {number} delta - The delta time in ms.
      * @param {number} step - The delta value divided by 1000.
@@ -623,7 +623,7 @@ var Particle = new Class({
      * that are set on the Emitter.
      *
      * @method Phaser.GameObjects.Particles.Particle#computeVelocity
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - The Emitter that is updating this Particle.
      * @param {number} delta - The delta time in ms.

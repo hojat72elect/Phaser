@@ -3,7 +3,7 @@
  * If no parent was given it falls back to using `document.body`.
  *
  * @function Phaser.DOM.AddToDOM
- * @since 3.0.0
+ * 
  *
  * @param {HTMLElement} element - The element to be added to the DOM. Usually a Canvas object.
  * @param {(string|HTMLElement)} [parent] - The parent in which to add the element. Can be a string which is passed to `getElementById` or an actual DOM object.

@@ -9,7 +9,7 @@ var RotateRight = require('../utils/array/RotateRight');
  * If the `shift` parameter is given you can offset where placement begins.
  *
  * @function Phaser.Actions.PlaceOnRectangle
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

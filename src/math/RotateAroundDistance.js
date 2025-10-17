@@ -4,7 +4,7 @@
  * In polar notation, this maps a point from (r, t) to (distance, t + angle), vs. the origin (x, y).
  *
  * @function Phaser.Math.RotateAroundDistance
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Types.Math.Vector2Like} T - [point,$return]
  *

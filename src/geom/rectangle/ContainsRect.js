@@ -2,7 +2,7 @@
  * Tests if one rectangle fully contains another.
  *
  * @function Phaser.Geom.Rectangle.ContainsRect
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rectA - The first rectangle.
  * @param {Phaser.Geom.Rectangle} rectB - The second rectangle.

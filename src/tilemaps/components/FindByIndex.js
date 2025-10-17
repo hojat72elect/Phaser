@@ -6,7 +6,7 @@
  * the top-left.
  *
  * @function Phaser.Tilemaps.Components.FindByIndex
- * @since 3.0.0
+ * 
  *
  * @param {number} index - The tile index value to search for.
  * @param {number} skip - The number of times to skip a matching tile before returning.

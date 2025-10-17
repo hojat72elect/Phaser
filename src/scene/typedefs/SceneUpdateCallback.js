@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.Scenes.SceneUpdateCallback
- * @since 3.0.0
+ * 
  *
  * @this Phaser.Scene
  * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.

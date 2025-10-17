@@ -3,7 +3,7 @@
  * into the given `dest` Circle, then returns the `dest` Circle.
  *
  * @function Phaser.Geom.Circle.CopyFrom
- * @since 3.0.0
+ * 
  *
  * @generic {Phaser.Geom.Circle} O - [dest,$return]
  *

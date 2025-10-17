@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Animations.Animation
- * @since 3.0.0
+ * 
  *
  * @property {string} [key] - The key that the animation will be associated with. i.e. sprite.animations.play(key)
  * @property {string|Phaser.Types.Animations.AnimationFrame[]} [frames] - Either a string, in which case it will use all frames from a texture with the matching key, or an array of Animation Frame configuration objects.

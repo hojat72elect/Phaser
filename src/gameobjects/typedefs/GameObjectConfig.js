@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.GameObjectConfig
- * @since 3.0.0
+ * 
  *
  * @property {(number|object)} [x=0] - The x position of the Game Object.
  * @property {(number|object)} [y=0] - The y position of the Game Object.

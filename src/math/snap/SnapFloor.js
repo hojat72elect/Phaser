@@ -5,7 +5,7 @@
  * As will `14` snap to `10`... but `16` will snap to `15`.
  *
  * @function Phaser.Math.Snap.Floor
- * @since 3.0.0
+ * 
  *
  * @param {number} value - The value to snap.
  * @param {number} gap - The interval gap of the grid.

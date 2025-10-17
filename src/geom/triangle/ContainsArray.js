@@ -9,7 +9,7 @@
  * If `returnFirst` is true, will return an array containing only the first point in the provided array that is within the triangle (or an empty array if there are no such points).
  *
  * @function Phaser.Geom.Triangle.ContainsArray
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Triangle} triangle - The triangle that the points are being checked in.
  * @param {Phaser.Geom.Point[]} points - An array of point-like objects (objects that have an `x` and `y` property)

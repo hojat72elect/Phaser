@@ -7,7 +7,7 @@ var CanvasFeatures = require('../../../device/CanvasFeatures');
  * If the browser doesn't support a blend mode, it will default to the normal `source-over` blend mode.
  *
  * @function Phaser.Renderer.Canvas.GetBlendModes
- * @since 3.0.0
+ * 
  *
  * @return {array} Which Canvas blend mode corresponds to which default Phaser blend mode.
  */

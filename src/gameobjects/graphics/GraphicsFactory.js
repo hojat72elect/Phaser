@@ -7,7 +7,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  * Note: This method will only be available if the Graphics Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#graphics
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Graphics.Options} [config] - The Graphics configuration.
  *

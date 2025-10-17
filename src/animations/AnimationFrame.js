@@ -12,7 +12,7 @@ var Class = require('../utils/Class');
  * @class AnimationFrame
  * @memberof Phaser.Animations
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @param {string} textureKey - The key of the Texture this AnimationFrame uses.
  * @param {(string|number)} textureFrame - The key of the Frame within the Texture that this AnimationFrame uses.
@@ -34,7 +34,7 @@ var AnimationFrame = new Class({
              *
              * @name Phaser.Animations.AnimationFrame#textureKey
              * @type {string}
-             * @since 3.0.0
+             * 
              */
             this.textureKey = textureKey;
 
@@ -43,7 +43,7 @@ var AnimationFrame = new Class({
              *
              * @name Phaser.Animations.AnimationFrame#textureFrame
              * @type {(string|number)}
-             * @since 3.0.0
+             * 
              */
             this.textureFrame = textureFrame;
 
@@ -52,7 +52,7 @@ var AnimationFrame = new Class({
              *
              * @name Phaser.Animations.AnimationFrame#index
              * @type {number}
-             * @since 3.0.0
+             * 
              */
             this.index = index;
 
@@ -61,7 +61,7 @@ var AnimationFrame = new Class({
              *
              * @name Phaser.Animations.AnimationFrame#frame
              * @type {Phaser.Textures.Frame}
-             * @since 3.0.0
+             * 
              */
             this.frame = frame;
 
@@ -72,7 +72,7 @@ var AnimationFrame = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isFirst = false;
 
@@ -83,7 +83,7 @@ var AnimationFrame = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.isLast = false;
 
@@ -94,7 +94,7 @@ var AnimationFrame = new Class({
              * @type {?Phaser.Animations.AnimationFrame}
              * @default null
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.prevFrame = null;
 
@@ -105,7 +105,7 @@ var AnimationFrame = new Class({
              * @type {?Phaser.Animations.AnimationFrame}
              * @default null
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.nextFrame = null;
 
@@ -115,7 +115,7 @@ var AnimationFrame = new Class({
              * @name Phaser.Animations.AnimationFrame#duration
              * @type {number}
              * @default 0
-             * @since 3.0.0
+             * 
              */
             this.duration = 0;
 
@@ -127,7 +127,7 @@ var AnimationFrame = new Class({
              * @type {number}
              * @default 0
              * @readonly
-             * @since 3.0.0
+             * 
              */
             this.progress = 0;
 
@@ -145,7 +145,7 @@ var AnimationFrame = new Class({
      * Generates a JavaScript object suitable for converting to JSON.
      *
      * @method Phaser.Animations.AnimationFrame#toJSON
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Types.Animations.JSONAnimationFrame} The AnimationFrame data.
      */
@@ -162,7 +162,7 @@ var AnimationFrame = new Class({
      * Destroys this object by removing references to external resources and callbacks.
      *
      * @method Phaser.Animations.AnimationFrame#destroy
-     * @since 3.0.0
+     * 
      */
     destroy: function () {
         this.frame = undefined;

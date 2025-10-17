@@ -18,7 +18,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.GameObjects.Group
  * @memberof Phaser.Physics.Arcade
  * @constructor
- * @since 3.0.0
+ * 
  *
  * @extends Phaser.Physics.Arcade.Components.Collision
  *
@@ -78,7 +78,7 @@ var StaticPhysicsGroup = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticGroup#world
              * @type {Phaser.Physics.Arcade.World}
-             * @since 3.0.0
+             * 
              */
             this.world = world;
 
@@ -88,7 +88,7 @@ var StaticPhysicsGroup = new Class({
              * @name Phaser.Physics.Arcade.StaticGroup#physicsType
              * @type {number}
              * @default Phaser.Physics.Arcade.STATIC_BODY
-             * @since 3.0.0
+             * 
              */
             this.physicsType = CONST.STATIC_BODY;
 
@@ -134,7 +134,7 @@ var StaticPhysicsGroup = new Class({
      * Adds a static physics body to the new group member (if it lacks one) and adds it to the simulation.
      *
      * @method Phaser.Physics.Arcade.StaticGroup#createCallbackHandler
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} child - The new group member.
      *
@@ -150,7 +150,7 @@ var StaticPhysicsGroup = new Class({
      * Disables the group member's physics body, removing it from the simulation.
      *
      * @method Phaser.Physics.Arcade.StaticGroup#removeCallbackHandler
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} child - The group member being removed.
      *
@@ -166,7 +166,7 @@ var StaticPhysicsGroup = new Class({
      * Refreshes the group.
      *
      * @method Phaser.Physics.Arcade.StaticGroup#createMultipleCallbackHandler
-     * @since 3.0.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject[]} entries - The newly created group members.
      *
@@ -181,7 +181,7 @@ var StaticPhysicsGroup = new Class({
      * Body sizes aren't changed (use {@link Phaser.Physics.Arcade.Components.Enable#refreshBody} for that).
      *
      * @method Phaser.Physics.Arcade.StaticGroup#refresh
-     * @since 3.0.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.StaticGroup} This group.
      *

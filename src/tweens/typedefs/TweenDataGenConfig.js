@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.TweenDataGenConfig
- * @since 3.0.0
+ * 
  *
  * @property {function} delay - Time in milliseconds before tween will start.
  * @property {function} duration - Duration of the tween in milliseconds, excludes time for yoyo or repeats.

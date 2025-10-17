@@ -7,7 +7,7 @@ var _FLAG = 8; // 1000
  * Provides methods used for getting and setting the texture of a Game Object.
  *
  * @namespace Phaser.GameObjects.Components.Texture
- * @since 3.0.0
+ * 
  */
 
 var Texture = {
@@ -17,7 +17,7 @@ var Texture = {
      *
      * @name Phaser.GameObjects.Components.Texture#texture
      * @type {Phaser.Textures.Texture|Phaser.Textures.CanvasTexture}
-     * @since 3.0.0
+     * 
      */
     texture: null,
 
@@ -26,7 +26,7 @@ var Texture = {
      *
      * @name Phaser.GameObjects.Components.Texture#frame
      * @type {Phaser.Textures.Frame}
-     * @since 3.0.0
+     * 
      */
     frame: null,
 
@@ -50,7 +50,7 @@ var Texture = {
      * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
      *
      * @method Phaser.GameObjects.Components.Texture#setTexture
-     * @since 3.0.0
+     * 
      *
      * @param {(string|Phaser.Textures.Texture)} key - The key of the texture to be used, as stored in the Texture Manager, or a Texture instance.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture.
@@ -78,7 +78,7 @@ var Texture = {
      * It will also change the `origin` if the Frame has a custom pivot point, as exported from packages like Texture Packer.
      *
      * @method Phaser.GameObjects.Components.Texture#setFrame
-     * @since 3.0.0
+     * 
      *
      * @param {(string|number|Phaser.Textures.Frame)} frame - The name or index of the frame within the Texture, or a Frame instance.
      * @param {boolean} [updateSize=true] - Should this call adjust the size of the Game Object?

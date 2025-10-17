@@ -5,7 +5,7 @@ var GeometryMask = require('../../display/mask/GeometryMask');
  * Provides methods used for getting and setting the mask of a Game Object.
  *
  * @namespace Phaser.GameObjects.Components.Mask
- * @since 3.0.0
+ * 
  */
 
 var Mask = {
@@ -15,7 +15,7 @@ var Mask = {
      *
      * @name Phaser.GameObjects.Components.Mask#mask
      * @type {Phaser.Display.Masks.BitmapMask|Phaser.Display.Masks.GeometryMask}
-     * @since 3.0.0
+     * 
      */
     mask: null,
 

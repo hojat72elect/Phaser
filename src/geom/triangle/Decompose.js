@@ -2,7 +2,7 @@
  * Decomposes a Triangle into an array of its points.
  *
  * @function Phaser.Geom.Triangle.Decompose
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Geom.Triangle} triangle - The Triangle to decompose.
  * @param {array} [out] - An array to store the points into.

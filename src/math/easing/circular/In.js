@@ -2,7 +2,7 @@
  * Circular ease-in.
  *
  * @function Phaser.Math.Easing.Circular.In
- * @since 3.0.0
+ * 
  *
  * @param {number} v - The value to be tweened.
  *

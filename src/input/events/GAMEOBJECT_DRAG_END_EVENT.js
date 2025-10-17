@@ -11,7 +11,7 @@
  *
  * @event Phaser.Input.Events#GAMEOBJECT_DRAG_END
  * @type {string}
- * @since 3.0.0
+ * 
  *
  * @param {Phaser.Input.Pointer} pointer - The Pointer responsible for triggering this event.
  * @param {number} dragX - The x coordinate where the Pointer stopped dragging the Game Object, in world space.
