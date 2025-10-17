@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Geom.Line} The destination line.
  */
-var CopyFrom = function (source, dest)
-{
+var CopyFrom = function (source, dest) {
     return dest.setTo(source.x1, source.y1, source.x2, source.y2);
 };
 

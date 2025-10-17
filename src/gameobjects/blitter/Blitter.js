@@ -80,47 +80,46 @@ var Blitter = new Class({
 
     initialize:
 
-    function Blitter (scene, x, y, texture, frame)
-    {
-        GameObject.call(this, scene, 'Blitter');
+        function Blitter(scene, x, y, texture, frame) {
+            GameObject.call(this, scene, 'Blitter');
 
-        this.setTexture(texture, frame);
-        this.setPosition(x, y);
-        this.initPipeline();
-        this.initPostPipeline();
+            this.setTexture(texture, frame);
+            this.setPosition(x, y);
+            this.initPipeline();
+            this.initPostPipeline();
 
-        /**
-         * The children of this Blitter.
-         * This List contains all of the Bob objects created by the Blitter.
-         *
-         * @name Phaser.GameObjects.Blitter#children
-         * @type {Phaser.Structs.List.<Phaser.GameObjects.Bob>}
-         * @since 3.0.0
-         */
-        this.children = new List();
+            /**
+             * The children of this Blitter.
+             * This List contains all of the Bob objects created by the Blitter.
+             *
+             * @name Phaser.GameObjects.Blitter#children
+             * @type {Phaser.Structs.List.<Phaser.GameObjects.Bob>}
+             * @since 3.0.0
+             */
+            this.children = new List();
 
-        /**
-         * A transient array that holds all of the Bobs that will be rendered this frame.
-         * The array is re-populated whenever the dirty flag is set.
-         *
-         * @name Phaser.GameObjects.Blitter#renderList
-         * @type {Phaser.GameObjects.Bob[]}
-         * @default []
-         * @private
-         * @since 3.0.0
-         */
-        this.renderList = [];
+            /**
+             * A transient array that holds all of the Bobs that will be rendered this frame.
+             * The array is re-populated whenever the dirty flag is set.
+             *
+             * @name Phaser.GameObjects.Blitter#renderList
+             * @type {Phaser.GameObjects.Bob[]}
+             * @default []
+             * @private
+             * @since 3.0.0
+             */
+            this.renderList = [];
 
-        /**
-         * Is the Blitter considered dirty?
-         * A 'dirty' Blitter has had its child count changed since the last frame.
-         *
-         * @name Phaser.GameObjects.Blitter#dirty
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.dirty = false;
-    },
+            /**
+             * Is the Blitter considered dirty?
+             * A 'dirty' Blitter has had its child count changed since the last frame.
+             *
+             * @name Phaser.GameObjects.Blitter#dirty
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.dirty = false;
+        },
 
     /**
      * Creates a new Bob in this Blitter.
@@ -139,17 +138,17 @@ var Blitter = new Class({
      *
      * @return {Phaser.GameObjects.Bob} The newly created Bob object.
      */
-    create: function (x, y, frame, visible, index)
-    {
-        if (visible === undefined) { visible = true; }
-        if (index === undefined) { index = this.children.length; }
-
-        if (frame === undefined)
-        {
-            frame = this.frame;
+    create: function (x, y, frame, visible, index) {
+        if (visible === undefined) {
+            visible = true;
         }
-        else if (!(frame instanceof Frame))
-        {
+        if (index === undefined) {
+            index = this.children.length;
+        }
+
+        if (frame === undefined) {
+            frame = this.frame;
+        } else if (!(frame instanceof Frame)) {
             frame = this.texture.get(frame);
         }
 
@@ -175,12 +174,10 @@ var Blitter = new Class({
      *
      * @return {Phaser.GameObjects.Bob[]} An array of Bob objects that were created.
      */
-    createFromCallback: function (callback, quantity, frame, visible)
-    {
+    createFromCallback: function (callback, quantity, frame, visible) {
         var bobs = this.createMultiple(quantity, frame, visible);
 
-        for (var i = 0; i < bobs.length; i++)
-        {
+        for (var i = 0; i < bobs.length; i++) {
             var bob = bobs[i];
 
             callback.call(this, bob, i);
@@ -206,23 +203,23 @@ var Blitter = new Class({
      *
      * @return {Phaser.GameObjects.Bob[]} An array of Bob objects that were created.
      */
-    createMultiple: function (quantity, frame, visible)
-    {
-        if (frame === undefined) { frame = this.frame.name; }
-        if (visible === undefined) { visible = true; }
+    createMultiple: function (quantity, frame, visible) {
+        if (frame === undefined) {
+            frame = this.frame.name;
+        }
+        if (visible === undefined) {
+            visible = true;
+        }
 
-        if (!Array.isArray(frame))
-        {
-            frame = [ frame ];
+        if (!Array.isArray(frame)) {
+            frame = [frame];
         }
 
         var bobs = [];
         var _this = this;
 
-        frame.forEach(function (singleFrame)
-        {
-            for (var i = 0; i < quantity; i++)
-            {
+        frame.forEach(function (singleFrame) {
+            for (var i = 0; i < quantity; i++) {
                 bobs.push(_this.create(0, 0, singleFrame, visible));
             }
         });
@@ -240,8 +237,7 @@ var Blitter = new Class({
      *
      * @return {boolean} Returns `true` if the given child can render, otherwise `false`.
      */
-    childCanRender: function (child)
-    {
+    childCanRender: function (child) {
         return (child.visible && child.alpha > 0);
     },
 
@@ -254,10 +250,8 @@ var Blitter = new Class({
      *
      * @return {Phaser.GameObjects.Bob[]} An array of Bob objects that will be rendered this frame.
      */
-    getRenderList: function ()
-    {
-        if (this.dirty)
-        {
+    getRenderList: function () {
+        if (this.dirty) {
             this.renderList = this.children.list.filter(this.childCanRender, this);
             this.dirty = false;
         }
@@ -271,8 +265,7 @@ var Blitter = new Class({
      * @method Phaser.GameObjects.Blitter#clear
      * @since 3.0.0
      */
-    clear: function ()
-    {
+    clear: function () {
         this.children.removeAll();
         this.dirty = true;
     },
@@ -284,8 +277,7 @@ var Blitter = new Class({
      * @protected
      * @since 3.9.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.children.destroy();
 
         this.renderList = [];

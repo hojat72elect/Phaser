@@ -39,45 +39,41 @@ var FontFile = new Class({
 
     initialize:
 
-    function FontFile (loader, key, url, format, descriptors, xhrSettings)
-    {
-        var extension = 'ttf';
+        function FontFile(loader, key, url, format, descriptors, xhrSettings) {
+            var extension = 'ttf';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            format = GetFastValue(config, 'format', 'truetype');
-            descriptors = GetFastValue(config, 'descriptors', null);
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
-        else if (format === undefined)
-        {
-            format = 'truetype';
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                format = GetFastValue(config, 'format', 'truetype');
+                descriptors = GetFastValue(config, 'descriptors', null);
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            } else if (format === undefined) {
+                format = 'truetype';
+            }
 
-        var fileConfig = {
-            type: 'font',
-            cache: false,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: 'font',
+                cache: false,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
+            File.call(this, loader, fileConfig);
 
-        this.data = {
-            format: format,
-            descriptors: descriptors
-        };
+            this.data = {
+                format: format,
+                descriptors: descriptors
+            };
 
-        this.state = CONST.FILE_POPULATED;
-    },
+            this.state = CONST.FILE_POPULATED;
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -86,8 +82,7 @@ var FontFile = new Class({
      * @method Phaser.Loader.FileTypes.FontFile#onProcess
      * @since 3.87.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.src = GetURL(this, this.loader.baseURL);
@@ -96,26 +91,21 @@ var FontFile = new Class({
         var key = this.key;
         var source = 'url(' + this.src + ') format("' + this.data.format + '")';
 
-        if (this.data.descriptors)
-        {
+        if (this.data.descriptors) {
             font = new FontFace(key, source, this.data.descriptors);
-        }
-        else
-        {
+        } else {
             font = new FontFace(key, source);
         }
 
         var _this = this;
 
-        font.load().then(function ()
-        {
+        font.load().then(function () {
             document.fonts.add(font);
             document.body.classList.add("fonts-loaded");
-            
+
             _this.onProcessComplete();
 
-        }).catch(function ()
-        {
+        }).catch(function () {
             console.warn('Font failed to load', source);
 
             _this.onProcessComplete();
@@ -167,17 +157,17 @@ var FontFile = new Class({
  * ```
  *
  * See the documentation for `Phaser.Types.Loader.FileTypes.FontFileConfig` for more details.
- * 
+ *
  * See the MDN documentation at https://developer.mozilla.org/en-US/docs/Web/API/FontFace/FontFace#descriptors for details about the descriptors.
- * 
+ *
  * When this file is handled by the Loader, it will create a new Font Face DOM element for it and add it to the document.
- * 
+ *
  * You should use the same key given for the font in your Text objects, such as:
- * 
+ *
  * ```javascript
  * this.add.text(x, y, 'Hello World', { fontFamily: 'Nokia', fontSize: 48 });
  * ```
- * 
+ *
  * See https://developer.mozilla.org/en-US/docs/Web/API/FontFace for more details.
  *
  * The URL can be relative or absolute. If the URL is relative the `Loader.baseURL` and `Loader.path` values will be prepended to it.
@@ -201,18 +191,13 @@ var FontFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('font', function (key, url, format, descriptors, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('font', function (key, url, format, descriptors, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new FontFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new FontFile(this, key, url, format, descriptors, xhrSettings));
     }
 

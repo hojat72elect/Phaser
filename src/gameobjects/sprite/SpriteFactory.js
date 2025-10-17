@@ -22,8 +22,7 @@ var Sprite = require('./Sprite');
  *
  * @return {Phaser.GameObjects.Sprite} The Game Object that was created.
  */
-GameObjectFactory.register('sprite', function (x, y, texture, frame)
-{
+GameObjectFactory.register('sprite', function (x, y, texture, frame) {
     return this.displayList.add(new Sprite(this.scene, x, y, texture, frame));
 });
 

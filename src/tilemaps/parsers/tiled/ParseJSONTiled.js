@@ -33,8 +33,7 @@ var ParseTilesets = require('./ParseTilesets');
  *
  * @return {?Phaser.Tilemaps.MapData} The created MapData object, or `null` if the data can't be parsed.
  */
-var ParseJSONTiled = function (name, source, insertNull)
-{
+var ParseJSONTiled = function (name, source, insertNull) {
     var json = DeepCopy(source);
 
     //  Map data will consist of: layers, objects, images, tilesets, sizes
@@ -52,20 +51,16 @@ var ParseJSONTiled = function (name, source, insertNull)
         infinite: json.infinite
     });
 
-    if (mapData.orientation === CONST.HEXAGONAL)
-    {
+    if (mapData.orientation === CONST.HEXAGONAL) {
         mapData.hexSideLength = json.hexsidelength;
         mapData.staggerAxis = json.staggeraxis;
         mapData.staggerIndex = json.staggerindex;
 
-        if (mapData.staggerAxis === 'y')
-        {
+        if (mapData.staggerAxis === 'y') {
             var triangleHeight = (mapData.tileHeight - mapData.hexSideLength) / 2;
             mapData.widthInPixels = mapData.tileWidth * (mapData.width + 0.5);
             mapData.heightInPixels = mapData.height * (mapData.hexSideLength + triangleHeight) + triangleHeight;
-        }
-        else
-        {
+        } else {
             var triangleWidth = (mapData.tileWidth - mapData.hexSideLength) / 2;
             mapData.widthInPixels = mapData.width * (mapData.hexSideLength + triangleWidth) + triangleWidth;
             mapData.heightInPixels = mapData.tileHeight * (mapData.height + 0.5);

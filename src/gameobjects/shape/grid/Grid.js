@@ -53,113 +53,123 @@ var Grid = new Class({
 
     initialize:
 
-    function Grid (scene, x, y, width, height, cellWidth, cellHeight, fillColor, fillAlpha, outlineFillColor, outlineFillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = 128; }
-        if (height === undefined) { height = 128; }
-        if (cellWidth === undefined) { cellWidth = 32; }
-        if (cellHeight === undefined) { cellHeight = 32; }
+        function Grid(scene, x, y, width, height, cellWidth, cellHeight, fillColor, fillAlpha, outlineFillColor, outlineFillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (width === undefined) {
+                width = 128;
+            }
+            if (height === undefined) {
+                height = 128;
+            }
+            if (cellWidth === undefined) {
+                cellWidth = 32;
+            }
+            if (cellHeight === undefined) {
+                cellHeight = 32;
+            }
 
-        Shape.call(this, scene, 'Grid', null);
+            Shape.call(this, scene, 'Grid', null);
 
-        /**
-         * The width of each grid cell.
-         * Must be a positive value.
-         *
-         * @name Phaser.GameObjects.Grid#cellWidth
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.cellWidth = cellWidth;
+            /**
+             * The width of each grid cell.
+             * Must be a positive value.
+             *
+             * @name Phaser.GameObjects.Grid#cellWidth
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.cellWidth = cellWidth;
 
-        /**
-         * The height of each grid cell.
-         * Must be a positive value.
-         *
-         * @name Phaser.GameObjects.Grid#cellHeight
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.cellHeight = cellHeight;
+            /**
+             * The height of each grid cell.
+             * Must be a positive value.
+             *
+             * @name Phaser.GameObjects.Grid#cellHeight
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.cellHeight = cellHeight;
 
-        /**
-         * Will the grid render its cells in the `fillColor`?
-         *
-         * @name Phaser.GameObjects.Grid#showCells
-         * @type {boolean}
-         * @since 3.13.0
-         */
-        this.showCells = true;
+            /**
+             * Will the grid render its cells in the `fillColor`?
+             *
+             * @name Phaser.GameObjects.Grid#showCells
+             * @type {boolean}
+             * @since 3.13.0
+             */
+            this.showCells = true;
 
-        /**
-         * The color of the lines between each grid cell.
-         *
-         * @name Phaser.GameObjects.Grid#outlineFillColor
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.outlineFillColor = 0;
+            /**
+             * The color of the lines between each grid cell.
+             *
+             * @name Phaser.GameObjects.Grid#outlineFillColor
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.outlineFillColor = 0;
 
-        /**
-         * The alpha value for the color of the lines between each grid cell.
-         *
-         * @name Phaser.GameObjects.Grid#outlineFillAlpha
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.outlineFillAlpha = 0;
+            /**
+             * The alpha value for the color of the lines between each grid cell.
+             *
+             * @name Phaser.GameObjects.Grid#outlineFillAlpha
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.outlineFillAlpha = 0;
 
-        /**
-         * Will the grid display the lines between each cell when it renders?
-         *
-         * @name Phaser.GameObjects.Grid#showOutline
-         * @type {boolean}
-         * @since 3.13.0
-         */
-        this.showOutline = true;
+            /**
+             * Will the grid display the lines between each cell when it renders?
+             *
+             * @name Phaser.GameObjects.Grid#showOutline
+             * @type {boolean}
+             * @since 3.13.0
+             */
+            this.showOutline = true;
 
-        /**
-         * Will the grid render the alternating cells in the `altFillColor`?
-         *
-         * @name Phaser.GameObjects.Grid#showAltCells
-         * @type {boolean}
-         * @since 3.13.0
-         */
-        this.showAltCells = false;
+            /**
+             * Will the grid render the alternating cells in the `altFillColor`?
+             *
+             * @name Phaser.GameObjects.Grid#showAltCells
+             * @type {boolean}
+             * @since 3.13.0
+             */
+            this.showAltCells = false;
 
-        /**
-         * The color the alternating grid cells will be filled with, i.e. 0xff0000 for red.
-         *
-         * @name Phaser.GameObjects.Grid#altFillColor
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.altFillColor;
+            /**
+             * The color the alternating grid cells will be filled with, i.e. 0xff0000 for red.
+             *
+             * @name Phaser.GameObjects.Grid#altFillColor
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.altFillColor;
 
-        /**
-         * The alpha the alternating grid cells will be filled with.
-         * You can also set the alpha of the overall Shape using its `alpha` property.
-         *
-         * @name Phaser.GameObjects.Grid#altFillAlpha
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.altFillAlpha;
+            /**
+             * The alpha the alternating grid cells will be filled with.
+             * You can also set the alpha of the overall Shape using its `alpha` property.
+             *
+             * @name Phaser.GameObjects.Grid#altFillAlpha
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.altFillAlpha;
 
-        this.setPosition(x, y);
-        this.setSize(width, height);
+            this.setPosition(x, y);
+            this.setSize(width, height);
 
-        this.setFillStyle(fillColor, fillAlpha);
+            this.setFillStyle(fillColor, fillAlpha);
 
-        if (outlineFillColor !== undefined)
-        {
-            this.setOutlineStyle(outlineFillColor, outlineFillAlpha);
-        }
+            if (outlineFillColor !== undefined) {
+                this.setOutlineStyle(outlineFillColor, outlineFillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-    },
+            this.updateDisplayOrigin();
+        },
 
     /**
      * Sets the fill color and alpha level the grid cells will use when rendering.
@@ -179,16 +189,14 @@ var Grid = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setFillStyle: function (fillColor, fillAlpha)
-    {
-        if (fillAlpha === undefined) { fillAlpha = 1; }
-
-        if (fillColor === undefined)
-        {
-            this.showCells = false;
+    setFillStyle: function (fillColor, fillAlpha) {
+        if (fillAlpha === undefined) {
+            fillAlpha = 1;
         }
-        else
-        {
+
+        if (fillColor === undefined) {
+            this.showCells = false;
+        } else {
             this.fillColor = fillColor;
             this.fillAlpha = fillAlpha;
             this.showCells = true;
@@ -214,16 +222,14 @@ var Grid = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setAltFillStyle: function (fillColor, fillAlpha)
-    {
-        if (fillAlpha === undefined) { fillAlpha = 1; }
-
-        if (fillColor === undefined)
-        {
-            this.showAltCells = false;
+    setAltFillStyle: function (fillColor, fillAlpha) {
+        if (fillAlpha === undefined) {
+            fillAlpha = 1;
         }
-        else
-        {
+
+        if (fillColor === undefined) {
+            this.showAltCells = false;
+        } else {
             this.altFillColor = fillColor;
             this.altFillAlpha = fillAlpha;
             this.showAltCells = true;
@@ -250,16 +256,14 @@ var Grid = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setOutlineStyle: function (fillColor, fillAlpha)
-    {
-        if (fillAlpha === undefined) { fillAlpha = 1; }
-
-        if (fillColor === undefined)
-        {
-            this.showOutline = false;
+    setOutlineStyle: function (fillColor, fillAlpha) {
+        if (fillAlpha === undefined) {
+            fillAlpha = 1;
         }
-        else
-        {
+
+        if (fillColor === undefined) {
+            this.showOutline = false;
+        } else {
             this.outlineFillColor = fillColor;
             this.outlineFillAlpha = fillAlpha;
             this.showOutline = true;

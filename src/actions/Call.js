@@ -18,10 +18,8 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that was passed to this Action.
  */
-var Call = function (items, callback, context)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var Call = function (items, callback, context) {
+    for (var i = 0; i < items.length; i++) {
         var item = items[i];
 
         callback.call(context, item);

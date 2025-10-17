@@ -14,8 +14,7 @@ var Extend = require('../../../utils/object/Extend');
  *
  * @param {Phaser.Tilemaps.MapData} mapData - The Map Data object.
  */
-var AssignTileProperties = function (mapData)
-{
+var AssignTileProperties = function (mapData) {
     var layerData;
     var tile;
     var sid;
@@ -23,24 +22,20 @@ var AssignTileProperties = function (mapData)
     var row;
 
     // go through each of the map data layers
-    for (var i = 0; i < mapData.layers.length; i++)
-    {
+    for (var i = 0; i < mapData.layers.length; i++) {
         layerData = mapData.layers[i];
 
         set = null;
 
         // rows of tiles
-        for (var j = 0; j < layerData.data.length; j++)
-        {
+        for (var j = 0; j < layerData.data.length; j++) {
             row = layerData.data[j];
 
             // individual tiles
-            for (var k = 0; k < row.length; k++)
-            {
+            for (var k = 0; k < row.length; k++) {
                 tile = row[k];
 
-                if (tile === null || tile.index < 0)
-                {
+                if (tile === null || tile.index < 0) {
                     continue;
                 }
 
@@ -53,8 +48,7 @@ var AssignTileProperties = function (mapData)
                 tile.height = set.tileHeight;
 
                 // if that tile type has any properties, add them to the tile object
-                if (set.tileProperties && set.tileProperties[tile.index - set.firstgid])
-                {
+                if (set.tileProperties && set.tileProperties[tile.index - set.firstgid]) {
                     tile.properties = Extend(
                         tile.properties, set.tileProperties[tile.index - set.firstgid]
                     );

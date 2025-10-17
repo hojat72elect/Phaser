@@ -1,11 +1,11 @@
 /**
-* The `Matter.Composites` module contains factory methods for creating composite bodies
-* with commonly used configurations (such as stacks and chains).
-*
-* See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-*
-* @class Composites
-*/
+ * The `Matter.Composites` module contains factory methods for creating composite bodies
+ * with commonly used configurations (such as stacks and chains).
+ *
+ * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+ *
+ * @class Composites
+ */
 
 var Composites = {};
 
@@ -17,7 +17,7 @@ var Common = require('../core/Common');
 var Body = require('../body/Body');
 var Bodies = require('./Bodies');
 
-(function() {
+(function () {
 
     /**
      * Create a new composite containing bodies created in the callback in a grid arrangement.
@@ -32,8 +32,8 @@ var Bodies = require('./Bodies');
      * @param {function} callback
      * @return {composite} A new composite containing objects created in the callback
      */
-    Composites.stack = function(x, y, columns, rows, columnGap, rowGap, callback) {
-        var stack = Composite.create({ label: 'Stack' }),
+    Composites.stack = function (x, y, columns, rows, columnGap, rowGap, callback) {
+        var stack = Composite.create({label: 'Stack'}),
             currentX = x,
             currentY = y,
             lastBody,
@@ -52,7 +52,7 @@ var Bodies = require('./Bodies');
                     if (bodyHeight > maxHeight)
                         maxHeight = bodyHeight;
 
-                    Body.translate(body, { x: bodyWidth * 0.5, y: bodyHeight * 0.5 });
+                    Body.translate(body, {x: bodyWidth * 0.5, y: bodyHeight * 0.5});
 
                     currentX = body.bounds.max.x + columnGap;
 
@@ -83,7 +83,7 @@ var Bodies = require('./Bodies');
      * @param {object} options
      * @return {composite} A new composite containing objects chained together with constraints
      */
-    Composites.chain = function(composite, xOffsetA, yOffsetA, xOffsetB, yOffsetB, options) {
+    Composites.chain = function (composite, xOffsetA, yOffsetA, xOffsetB, yOffsetB, options) {
         var bodies = composite.bodies;
 
         for (var i = 1; i < bodies.length; i++) {
@@ -96,9 +96,9 @@ var Bodies = require('./Bodies');
 
             var defaults = {
                 bodyA: bodyA,
-                pointA: { x: bodyAWidth * xOffsetA, y: bodyAHeight * yOffsetA },
+                pointA: {x: bodyAWidth * xOffsetA, y: bodyAHeight * yOffsetA},
                 bodyB: bodyB,
-                pointB: { x: bodyBWidth * xOffsetB, y: bodyBHeight * yOffsetB }
+                pointB: {x: bodyBWidth * xOffsetB, y: bodyBHeight * yOffsetB}
             };
 
             var constraint = Common.extend(defaults, options);
@@ -121,7 +121,7 @@ var Bodies = require('./Bodies');
      * @param {object} options
      * @return {composite} The composite containing objects meshed together with constraints
      */
-    Composites.mesh = function(composite, columns, rows, crossBrace, options) {
+    Composites.mesh = function (composite, columns, rows, crossBrace, options) {
         var bodies = composite.bodies,
             row,
             col,
@@ -133,23 +133,23 @@ var Bodies = require('./Bodies');
             for (col = 1; col < columns; col++) {
                 bodyA = bodies[(col - 1) + (row * columns)];
                 bodyB = bodies[col + (row * columns)];
-                Composite.addConstraint(composite, Constraint.create(Common.extend({ bodyA: bodyA, bodyB: bodyB }, options)));
+                Composite.addConstraint(composite, Constraint.create(Common.extend({bodyA: bodyA, bodyB: bodyB}, options)));
             }
 
             if (row > 0) {
                 for (col = 0; col < columns; col++) {
                     bodyA = bodies[col + ((row - 1) * columns)];
                     bodyB = bodies[col + (row * columns)];
-                    Composite.addConstraint(composite, Constraint.create(Common.extend({ bodyA: bodyA, bodyB: bodyB }, options)));
+                    Composite.addConstraint(composite, Constraint.create(Common.extend({bodyA: bodyA, bodyB: bodyB}, options)));
 
                     if (crossBrace && col > 0) {
                         bodyC = bodies[(col - 1) + ((row - 1) * columns)];
-                        Composite.addConstraint(composite, Constraint.create(Common.extend({ bodyA: bodyC, bodyB: bodyB }, options)));
+                        Composite.addConstraint(composite, Constraint.create(Common.extend({bodyA: bodyC, bodyB: bodyB}, options)));
                     }
 
                     if (crossBrace && col < columns - 1) {
                         bodyC = bodies[(col + 1) + ((row - 1) * columns)];
-                        Composite.addConstraint(composite, Constraint.create(Common.extend({ bodyA: bodyC, bodyB: bodyB }, options)));
+                        Composite.addConstraint(composite, Constraint.create(Common.extend({bodyA: bodyC, bodyB: bodyB}, options)));
                     }
                 }
             }
@@ -173,8 +173,8 @@ var Bodies = require('./Bodies');
      * @param {function} callback
      * @return {composite} A new composite containing objects created in the callback
      */
-    Composites.pyramid = function(x, y, columns, rows, columnGap, rowGap, callback) {
-        return Composites.stack(x, y, columns, rows, columnGap, rowGap, function(stackX, stackY, column, row, lastBody, i) {
+    Composites.pyramid = function (x, y, columns, rows, columnGap, rowGap, callback) {
+        return Composites.stack(x, y, columns, rows, columnGap, rowGap, function (stackX, stackY, column, row, lastBody, i) {
             var actualRows = Math.min(rows, Math.ceil(columns / 2)),
                 lastBodyWidth = lastBody ? lastBody.bounds.max.x - lastBody.bounds.min.x : 0;
 
@@ -192,7 +192,7 @@ var Bodies = require('./Bodies');
 
             // retroactively fix the first body's position, since width was unknown
             if (i === 1) {
-                Body.translate(lastBody, { x: (column + (columns % 2 === 1 ? 1 : -1)) * lastBodyWidth, y: 0 });
+                Body.translate(lastBody, {x: (column + (columns % 2 === 1 ? 1 : -1)) * lastBodyWidth, y: 0});
             }
 
             var xOffset = lastBody ? column * lastBodyWidth : 0;
@@ -212,14 +212,14 @@ var Bodies = require('./Bodies');
      * @param {number} length
      * @return {composite} A new composite newtonsCradle body
      */
-    Composites.newtonsCradle = function(x, y, number, size, length) {
-        var newtonsCradle = Composite.create({ label: 'Newtons Cradle' });
+    Composites.newtonsCradle = function (x, y, number, size, length) {
+        var newtonsCradle = Composite.create({label: 'Newtons Cradle'});
 
         for (var i = 0; i < number; i++) {
             var separation = 1.9,
                 circle = Bodies.circle(x + i * (size * separation), y + length, size,
-                    { inertia: Infinity, restitution: 1, friction: 0, frictionAir: 0.0001, slop: 1 }),
-                constraint = Constraint.create({ pointA: { x: x + i * (size * separation), y: y }, bodyB: circle });
+                    {inertia: Infinity, restitution: 1, friction: 0, frictionAir: 0.0001, slop: 1}),
+                constraint = Constraint.create({pointA: {x: x + i * (size * separation), y: y}, bodyB: circle});
 
             Composite.addBody(newtonsCradle, circle);
             Composite.addConstraint(newtonsCradle, constraint);
@@ -239,14 +239,14 @@ var Bodies = require('./Bodies');
      * @param {number} wheelSize
      * @return {composite} A new composite car body
      */
-    Composites.car = function(x, y, width, height, wheelSize) {
+    Composites.car = function (x, y, width, height, wheelSize) {
         var group = Body.nextGroup(true),
             wheelBase = 20,
             wheelAOffset = -width * 0.5 + wheelBase,
             wheelBOffset = width * 0.5 - wheelBase,
             wheelYOffset = 0;
 
-        var car = Composite.create({ label: 'Car' }),
+        var car = Composite.create({label: 'Car'}),
             body = Bodies.rectangle(x, y, width, height, {
                 collisionFilter: {
                     group: group
@@ -273,7 +273,7 @@ var Bodies = require('./Bodies');
 
         var axelA = Constraint.create({
             bodyB: body,
-            pointB: { x: wheelAOffset, y: wheelYOffset },
+            pointB: {x: wheelAOffset, y: wheelYOffset},
             bodyA: wheelA,
             stiffness: 1,
             length: 0
@@ -281,7 +281,7 @@ var Bodies = require('./Bodies');
 
         var axelB = Constraint.create({
             bodyB: body,
-            pointB: { x: wheelBOffset, y: wheelYOffset },
+            pointB: {x: wheelBOffset, y: wheelYOffset},
             bodyA: wheelB,
             stiffness: 1,
             length: 0
@@ -313,11 +313,11 @@ var Bodies = require('./Bodies');
      * @param {} constraintOptions
      * @return {composite} A new composite softBody
      */
-    Composites.softBody = function(x, y, columns, rows, columnGap, rowGap, crossBrace, particleRadius, particleOptions, constraintOptions) {
-        particleOptions = Common.extend({ inertia: Infinity }, particleOptions);
-        constraintOptions = Common.extend({ stiffness: 0.2, render: { type: 'line', anchors: false } }, constraintOptions);
+    Composites.softBody = function (x, y, columns, rows, columnGap, rowGap, crossBrace, particleRadius, particleOptions, constraintOptions) {
+        particleOptions = Common.extend({inertia: Infinity}, particleOptions);
+        constraintOptions = Common.extend({stiffness: 0.2, render: {type: 'line', anchors: false}}, constraintOptions);
 
-        var softBody = Composites.stack(x, y, columns, rows, columnGap, rowGap, function(stackX, stackY) {
+        var softBody = Composites.stack(x, y, columns, rows, columnGap, rowGap, function (stackX, stackY) {
             return Bodies.circle(stackX, stackY, particleRadius, particleOptions);
         });
 

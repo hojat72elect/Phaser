@@ -14,18 +14,13 @@
  *
  * @return {object} A new object with the same properties as the input object.
  */
-var Clone = function (obj)
-{
+var Clone = function (obj) {
     var clone = {};
 
-    for (var key in obj)
-    {
-        if (Array.isArray(obj[key]))
-        {
+    for (var key in obj) {
+        if (Array.isArray(obj[key])) {
             clone[key] = obj[key].slice(0);
-        }
-        else
-        {
+        } else {
             clone[key] = obj[key];
         }
     }

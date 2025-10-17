@@ -9,15 +9,13 @@ var GetCalcMatrix = require('../GetCalcMatrix');
 var TransformMatrix = require('../components/TransformMatrix');
 var Utils = require('../../renderer/webgl/Utils');
 
-var Point = function (x, y, width)
-{
+var Point = function (x, y, width) {
     this.x = x;
     this.y = y;
     this.width = width;
 };
 
-var Path = function (x, y, width)
-{
+var Path = function (x, y, width) {
     this.points = [];
     this.pointsLength = 1;
     this.points[0] = new Point(x, y, width);
@@ -40,10 +38,8 @@ var tempMatrix = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
-    if (src.commandBuffer.length === 0)
-    {
+var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix) {
+    if (src.commandBuffer.length === 0) {
         return;
     }
 
@@ -79,35 +75,28 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var getTint = Utils.getTintAppendFloatAlpha;
 
-    for (var cmdIndex = 0; cmdIndex < commands.length; cmdIndex++)
-    {
+    for (var cmdIndex = 0; cmdIndex < commands.length; cmdIndex++) {
         cmd = commands[cmdIndex];
 
-        switch (cmd)
-        {
-            case Commands.BEGIN_PATH:
-            {
+        switch (cmd) {
+            case Commands.BEGIN_PATH: {
                 path.length = 0;
                 lastPath = null;
                 pathOpen = true;
                 break;
             }
 
-            case Commands.CLOSE_PATH:
-            {
+            case Commands.CLOSE_PATH: {
                 pathOpen = false;
 
-                if (lastPath && lastPath.points.length)
-                {
+                if (lastPath && lastPath.points.length) {
                     lastPath.points.push(lastPath.points[0]);
                 }
                 break;
             }
 
-            case Commands.FILL_PATH:
-            {
-                for (pathIndex = 0; pathIndex < path.length; pathIndex++)
-                {
+            case Commands.FILL_PATH: {
+                for (pathIndex = 0; pathIndex < path.length; pathIndex++) {
                     pipeline.batchFillPath(
                         path[pathIndex].points,
                         currentMatrix,
@@ -117,10 +106,8 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.STROKE_PATH:
-            {
-                for (pathIndex = 0; pathIndex < path.length; pathIndex++)
-                {
+            case Commands.STROKE_PATH: {
+                for (pathIndex = 0; pathIndex < path.length; pathIndex++) {
                     pipeline.batchStrokePath(
                         path[pathIndex].points,
                         lineWidth,
@@ -132,8 +119,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.LINE_STYLE:
-            {
+            case Commands.LINE_STYLE: {
                 lineWidth = commands[++cmdIndex];
                 var strokeColor = commands[++cmdIndex];
                 var strokeAlpha = commands[++cmdIndex] * alpha;
@@ -145,8 +131,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.FILL_STYLE:
-            {
+            case Commands.FILL_STYLE: {
                 var fillColor = commands[++cmdIndex];
                 var fillAlpha = commands[++cmdIndex] * alpha;
                 var fillTintColor = getTint(fillColor, fillAlpha);
@@ -157,8 +142,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.GRADIENT_FILL_STYLE:
-            {
+            case Commands.GRADIENT_FILL_STYLE: {
                 var alphaTL = commands[++cmdIndex] * alpha;
                 var alphaTR = commands[++cmdIndex] * alpha;
                 var alphaBL = commands[++cmdIndex] * alpha;
@@ -171,8 +155,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.GRADIENT_LINE_STYLE:
-            {
+            case Commands.GRADIENT_LINE_STYLE: {
                 lineWidth = commands[++cmdIndex];
                 var gradientLineAlpha = commands[++cmdIndex] * alpha;
                 strokeTint.TL = getTint(commands[++cmdIndex], gradientLineAlpha);
@@ -182,8 +165,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.ARC:
-            {
+            case Commands.ARC: {
                 var iteration = 0;
                 var x = commands[++cmdIndex];
                 var y = commands[++cmdIndex];
@@ -195,35 +177,25 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
                 endAngle -= startAngle;
 
-                if (anticlockwise)
-                {
-                    if (endAngle < -PI2)
-                    {
+                if (anticlockwise) {
+                    if (endAngle < -PI2) {
                         endAngle = -PI2;
-                    }
-                    else if (endAngle > 0)
-                    {
+                    } else if (endAngle > 0) {
                         endAngle = -PI2 + endAngle % PI2;
                     }
-                }
-                else if (endAngle > PI2)
-                {
+                } else if (endAngle > PI2) {
                     endAngle = PI2;
-                }
-                else if (endAngle < 0)
-                {
+                } else if (endAngle < 0) {
                     endAngle = PI2 + endAngle % PI2;
                 }
 
-                if (lastPath === null)
-                {
+                if (lastPath === null) {
                     lastPath = new Path(x + Math.cos(startAngle) * radius, y + Math.sin(startAngle) * radius, lineWidth);
                     path.push(lastPath);
                     iteration += iterStep;
                 }
 
-                while (iteration < 1 + overshoot)
-                {
+                while (iteration < 1 + overshoot) {
                     ta = endAngle * iteration + startAngle;
                     tx = x + Math.cos(ta) * radius;
                     ty = y + Math.sin(ta) * radius;
@@ -242,8 +214,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.FILL_RECT:
-            {
+            case Commands.FILL_RECT: {
                 pipeline.batchFillRect(
                     commands[++cmdIndex],
                     commands[++cmdIndex],
@@ -255,8 +226,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.FILL_TRIANGLE:
-            {
+            case Commands.FILL_TRIANGLE: {
                 pipeline.batchFillTriangle(
                     commands[++cmdIndex],
                     commands[++cmdIndex],
@@ -270,8 +240,7 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.STROKE_TRIANGLE:
-            {
+            case Commands.STROKE_TRIANGLE: {
                 pipeline.batchStrokeTriangle(
                     commands[++cmdIndex],
                     commands[++cmdIndex],
@@ -286,57 +255,47 @@ var GraphicsWebGLRenderer = function (renderer, src, camera, parentMatrix)
                 break;
             }
 
-            case Commands.LINE_TO:
-            {
-                if (lastPath !== null)
-                {
+            case Commands.LINE_TO: {
+                if (lastPath !== null) {
                     lastPath.points.push(new Point(commands[++cmdIndex], commands[++cmdIndex], lineWidth));
-                }
-                else
-                {
+                } else {
                     lastPath = new Path(commands[++cmdIndex], commands[++cmdIndex], lineWidth);
                     path.push(lastPath);
                 }
                 break;
             }
 
-            case Commands.MOVE_TO:
-            {
+            case Commands.MOVE_TO: {
                 lastPath = new Path(commands[++cmdIndex], commands[++cmdIndex], lineWidth);
                 path.push(lastPath);
                 break;
             }
 
-            case Commands.SAVE:
-            {
+            case Commands.SAVE: {
                 matrixStack.push(currentMatrix.copyToArray());
                 break;
             }
 
-            case Commands.RESTORE:
-            {
+            case Commands.RESTORE: {
                 currentMatrix.copyFromArray(matrixStack.pop());
                 break;
             }
 
-            case Commands.TRANSLATE:
-            {
+            case Commands.TRANSLATE: {
                 x = commands[++cmdIndex];
                 y = commands[++cmdIndex];
                 currentMatrix.translate(x, y);
                 break;
             }
 
-            case Commands.SCALE:
-            {
+            case Commands.SCALE: {
                 x = commands[++cmdIndex];
                 y = commands[++cmdIndex];
                 currentMatrix.scale(x, y);
                 break;
             }
 
-            case Commands.ROTATE:
-            {
+            case Commands.ROTATE: {
                 currentMatrix.rotate(commands[++cmdIndex]);
                 break;
             }

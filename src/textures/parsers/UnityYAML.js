@@ -11,8 +11,7 @@ var imageHeight = 0;
  * @private
  * @since 3.0.0
  */
-var addFrame = function (texture, sourceIndex, name, frame)
-{
+var addFrame = function (texture, sourceIndex, name, frame) {
     //  The frame values are the exact coordinates to cut the frame out of the atlas from
 
     var y = imageHeight - frame.y - frame.height;
@@ -50,8 +49,7 @@ var addFrame = function (texture, sourceIndex, name, frame)
  *
  * @return {Phaser.Textures.Texture} The Texture modified by this parser.
  */
-var UnityYAML = function (texture, sourceIndex, yaml)
-{
+var UnityYAML = function (texture, sourceIndex, yaml) {
     //  Add in a __BASE entry (for the entire atlas)
     var source = texture.source[sourceIndex];
 
@@ -65,17 +63,15 @@ var UnityYAML = function (texture, sourceIndex, yaml)
 
     var prevSprite = '';
     var currentSprite = '';
-    var rect = { x: 0, y: 0, width: 0, height: 0 };
+    var rect = {x: 0, y: 0, width: 0, height: 0};
 
     // var pivot = { x: 0, y: 0 };
     // var border = { x: 0, y: 0, z: 0, w: 0 };
 
-    for (var i = 0; i < data.length; i++)
-    {
+    for (var i = 0; i < data.length; i++) {
         var results = data[i].match(lineRegExp);
 
-        if (!results)
-        {
+        if (!results) {
             continue;
         }
 
@@ -83,27 +79,23 @@ var UnityYAML = function (texture, sourceIndex, yaml)
         var key = results[2];
         var value = results[3];
 
-        if (isList)
-        {
-            if (currentSprite !== prevSprite)
-            {
+        if (isList) {
+            if (currentSprite !== prevSprite) {
                 addFrame(texture, sourceIndex, currentSprite, rect);
 
                 prevSprite = currentSprite;
             }
 
-            rect = { x: 0, y: 0, width: 0, height: 0 };
+            rect = {x: 0, y: 0, width: 0, height: 0};
         }
 
-        if (key === 'name')
-        {
+        if (key === 'name') {
             //  Start new list
             currentSprite = value;
             continue;
         }
 
-        switch (key)
-        {
+        switch (key) {
             case 'x':
             case 'y':
             case 'width':
@@ -121,8 +113,7 @@ var UnityYAML = function (texture, sourceIndex, yaml)
         }
     }
 
-    if (currentSprite !== prevSprite)
-    {
+    if (currentSprite !== prevSprite) {
         addFrame(texture, sourceIndex, currentSprite, rect);
     }
 

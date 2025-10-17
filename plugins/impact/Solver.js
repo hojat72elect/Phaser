@@ -20,27 +20,19 @@ var SeparateY = require('./SeparateY');
  * @param {Phaser.Physics.Impact.Body} bodyA - The first body in the collision.
  * @param {Phaser.Physics.Impact.Body} bodyB - The second body in the collision.
  */
-var Solver = function (world, bodyA, bodyB)
-{
+var Solver = function (world, bodyA, bodyB) {
     var weak = null;
 
-    if (bodyA.collides === COLLIDES.LITE || bodyB.collides === COLLIDES.FIXED)
-    {
+    if (bodyA.collides === COLLIDES.LITE || bodyB.collides === COLLIDES.FIXED) {
         weak = bodyA;
-    }
-    else if (bodyB.collides === COLLIDES.LITE || bodyA.collides === COLLIDES.FIXED)
-    {
+    } else if (bodyB.collides === COLLIDES.LITE || bodyA.collides === COLLIDES.FIXED) {
         weak = bodyB;
     }
 
-    if (bodyA.last.x + bodyA.size.x > bodyB.last.x && bodyA.last.x < bodyB.last.x + bodyB.size.x)
-    {
-        if (bodyA.last.y < bodyB.last.y)
-        {
+    if (bodyA.last.x + bodyA.size.x > bodyB.last.x && bodyA.last.x < bodyB.last.x + bodyB.size.x) {
+        if (bodyA.last.y < bodyB.last.y) {
             SeparateY(world, bodyA, bodyB, weak);
-        }
-        else
-        {
+        } else {
             SeparateY(world, bodyB, bodyA, weak);
         }
 
@@ -48,15 +40,10 @@ var Solver = function (world, bodyA, bodyB)
         bodyB.collideWith(bodyA, 'y');
 
         world.emit(Events.COLLIDE, bodyA, bodyB, 'y');
-    }
-    else if (bodyA.last.y + bodyA.size.y > bodyB.last.y && bodyA.last.y < bodyB.last.y + bodyB.size.y)
-    {
-        if (bodyA.last.x < bodyB.last.x)
-        {
+    } else if (bodyA.last.y + bodyA.size.y > bodyB.last.y && bodyA.last.y < bodyB.last.y + bodyB.size.y) {
+        if (bodyA.last.x < bodyB.last.x) {
             SeparateX(world, bodyA, bodyB, weak);
-        }
-        else
-        {
+        } else {
             SeparateX(world, bodyB, bodyA, weak);
         }
 

@@ -39,459 +39,458 @@ var Pointer = new Class({
 
     initialize:
 
-    function Pointer (manager, id)
-    {
-        /**
-         * A reference to the Input Manager.
-         *
-         * @name Phaser.Input.Pointer#manager
-         * @type {Phaser.Input.InputManager}
-         * @since 3.0.0
-         */
-        this.manager = manager;
+        function Pointer(manager, id) {
+            /**
+             * A reference to the Input Manager.
+             *
+             * @name Phaser.Input.Pointer#manager
+             * @type {Phaser.Input.InputManager}
+             * @since 3.0.0
+             */
+            this.manager = manager;
 
-        /**
-         * The internal ID of this Pointer.
-         *
-         * @name Phaser.Input.Pointer#id
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.id = id;
+            /**
+             * The internal ID of this Pointer.
+             *
+             * @name Phaser.Input.Pointer#id
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.id = id;
 
-        /**
-         * The most recent native DOM Event this Pointer has processed.
-         *
-         * @name Phaser.Input.Pointer#event
-         * @type {(TouchEvent|MouseEvent|WheelEvent)}
-         * @since 3.0.0
-         */
-        this.event;
+            /**
+             * The most recent native DOM Event this Pointer has processed.
+             *
+             * @name Phaser.Input.Pointer#event
+             * @type {(TouchEvent|MouseEvent|WheelEvent)}
+             * @since 3.0.0
+             */
+            this.event;
 
-        /**
-         * The DOM element the Pointer was pressed down on, taken from the DOM event.
-         * In a default set-up this will be the Canvas that Phaser is rendering to, or the Window element.
-         *
-         * @name Phaser.Input.Pointer#downElement
-         * @type {any}
-         * @readonly
-         * @since 3.16.0
-         */
-        this.downElement;
+            /**
+             * The DOM element the Pointer was pressed down on, taken from the DOM event.
+             * In a default set-up this will be the Canvas that Phaser is rendering to, or the Window element.
+             *
+             * @name Phaser.Input.Pointer#downElement
+             * @type {any}
+             * @readonly
+             * @since 3.16.0
+             */
+            this.downElement;
 
-        /**
-         * The DOM element the Pointer was released on, taken from the DOM event.
-         * In a default set-up this will be the Canvas that Phaser is rendering to, or the Window element.
-         *
-         * @name Phaser.Input.Pointer#upElement
-         * @type {any}
-         * @readonly
-         * @since 3.16.0
-         */
-        this.upElement;
+            /**
+             * The DOM element the Pointer was released on, taken from the DOM event.
+             * In a default set-up this will be the Canvas that Phaser is rendering to, or the Window element.
+             *
+             * @name Phaser.Input.Pointer#upElement
+             * @type {any}
+             * @readonly
+             * @since 3.16.0
+             */
+            this.upElement;
 
-        /**
-         * The camera the Pointer interacted with during its last update.
-         *
-         * A Pointer can only ever interact with one camera at once, which will be the top-most camera
-         * in the list should multiple cameras be positioned on-top of each other.
-         *
-         * @name Phaser.Input.Pointer#camera
-         * @type {Phaser.Cameras.Scene2D.Camera}
-         * @default null
-         * @since 3.0.0
-         */
-        this.camera = null;
+            /**
+             * The camera the Pointer interacted with during its last update.
+             *
+             * A Pointer can only ever interact with one camera at once, which will be the top-most camera
+             * in the list should multiple cameras be positioned on-top of each other.
+             *
+             * @name Phaser.Input.Pointer#camera
+             * @type {Phaser.Cameras.Scene2D.Camera}
+             * @default null
+             * @since 3.0.0
+             */
+            this.camera = null;
 
-        /**
-         * A read-only property that indicates which button was pressed, or released, on the pointer
-         * during the most recent event. It is only set during `up` and `down` events.
-         *
-         * On Touch devices the value is always 0.
-         *
-         * Users may change the configuration of buttons on their pointing device so that if an event's button property
-         * is zero, it may not have been caused by the button that is physically left–most on the pointing device;
-         * however, it should behave as if the left button was clicked in the standard button layout.
-         *
-         * @name Phaser.Input.Pointer#button
-         * @type {number}
-         * @readonly
-         * @default 0
-         * @since 3.18.0
-         */
-        this.button = 0;
+            /**
+             * A read-only property that indicates which button was pressed, or released, on the pointer
+             * during the most recent event. It is only set during `up` and `down` events.
+             *
+             * On Touch devices the value is always 0.
+             *
+             * Users may change the configuration of buttons on their pointing device so that if an event's button property
+             * is zero, it may not have been caused by the button that is physically left–most on the pointing device;
+             * however, it should behave as if the left button was clicked in the standard button layout.
+             *
+             * @name Phaser.Input.Pointer#button
+             * @type {number}
+             * @readonly
+             * @default 0
+             * @since 3.18.0
+             */
+            this.button = 0;
 
-        /**
-         * 0: No button or un-initialized
-         * 1: Left button
-         * 2: Right button
-         * 4: Wheel button or middle button
-         * 8: 4th button (typically the "Browser Back" button)
-         * 16: 5th button (typically the "Browser Forward" button)
-         *
-         * For a mouse configured for left-handed use, the button actions are reversed.
-         * In this case, the values are read from right to left.
-         *
-         * @name Phaser.Input.Pointer#buttons
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.buttons = 0;
+            /**
+             * 0: No button or un-initialized
+             * 1: Left button
+             * 2: Right button
+             * 4: Wheel button or middle button
+             * 8: 4th button (typically the "Browser Back" button)
+             * 16: 5th button (typically the "Browser Forward" button)
+             *
+             * For a mouse configured for left-handed use, the button actions are reversed.
+             * In this case, the values are read from right to left.
+             *
+             * @name Phaser.Input.Pointer#buttons
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.buttons = 0;
 
-        /**
-         * The position of the Pointer in screen space.
-         *
-         * @name Phaser.Input.Pointer#position
-         * @type {Phaser.Math.Vector2}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.position = new Vector2();
+            /**
+             * The position of the Pointer in screen space.
+             *
+             * @name Phaser.Input.Pointer#position
+             * @type {Phaser.Math.Vector2}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.position = new Vector2();
 
-        /**
-         * The previous position of the Pointer in screen space.
-         *
-         * The old x and y values are stored in here during the InputManager.transformPointer call.
-         *
-         * Use the properties `velocity`, `angle` and `distance` to create your own gesture recognition.
-         *
-         * @name Phaser.Input.Pointer#prevPosition
-         * @type {Phaser.Math.Vector2}
-         * @readonly
-         * @since 3.11.0
-         */
-        this.prevPosition = new Vector2();
+            /**
+             * The previous position of the Pointer in screen space.
+             *
+             * The old x and y values are stored in here during the InputManager.transformPointer call.
+             *
+             * Use the properties `velocity`, `angle` and `distance` to create your own gesture recognition.
+             *
+             * @name Phaser.Input.Pointer#prevPosition
+             * @type {Phaser.Math.Vector2}
+             * @readonly
+             * @since 3.11.0
+             */
+            this.prevPosition = new Vector2();
 
-        /**
-         * An internal vector used for calculations of the pointer speed and angle.
-         *
-         * @name Phaser.Input.Pointer#midPoint
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.16.0
-         */
-        this.midPoint = new Vector2(-1, -1);
+            /**
+             * An internal vector used for calculations of the pointer speed and angle.
+             *
+             * @name Phaser.Input.Pointer#midPoint
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.16.0
+             */
+            this.midPoint = new Vector2(-1, -1);
 
-        /**
-         * The current velocity of the Pointer, based on its current and previous positions.
-         *
-         * This value is smoothed out each frame, according to the `motionFactor` property.
-         *
-         * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
-         * it changes based on movement alone - a button doesn't have to be pressed first.
-         *
-         * @name Phaser.Input.Pointer#velocity
-         * @type {Phaser.Math.Vector2}
-         * @readonly
-         * @since 3.16.0
-         */
-        this.velocity = new Vector2();
+            /**
+             * The current velocity of the Pointer, based on its current and previous positions.
+             *
+             * This value is smoothed out each frame, according to the `motionFactor` property.
+             *
+             * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
+             * it changes based on movement alone - a button doesn't have to be pressed first.
+             *
+             * @name Phaser.Input.Pointer#velocity
+             * @type {Phaser.Math.Vector2}
+             * @readonly
+             * @since 3.16.0
+             */
+            this.velocity = new Vector2();
 
-        /**
-         * The current angle the Pointer is moving, in radians, based on its previous and current position.
-         *
-         * The angle is based on the old position facing to the current position.
-         *
-         * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
-         * it changes based on movement alone - a button doesn't have to be pressed first.
-         *
-         * @name Phaser.Input.Pointer#angle
-         * @type {number}
-         * @readonly
-         * @since 3.16.0
-         */
-        this.angle = 0;
+            /**
+             * The current angle the Pointer is moving, in radians, based on its previous and current position.
+             *
+             * The angle is based on the old position facing to the current position.
+             *
+             * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
+             * it changes based on movement alone - a button doesn't have to be pressed first.
+             *
+             * @name Phaser.Input.Pointer#angle
+             * @type {number}
+             * @readonly
+             * @since 3.16.0
+             */
+            this.angle = 0;
 
-        /**
-         * The distance the Pointer has moved, based on its previous and current position.
-         *
-         * This value is smoothed out each frame, according to the `motionFactor` property.
-         *
-         * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
-         * it changes based on movement alone - a button doesn't have to be pressed first.
-         *
-         * If you need the total distance travelled since the primary buttons was pressed down,
-         * then use the `Pointer.getDistance` method.
-         *
-         * @name Phaser.Input.Pointer#distance
-         * @type {number}
-         * @readonly
-         * @since 3.16.0
-         */
-        this.distance = 0;
+            /**
+             * The distance the Pointer has moved, based on its previous and current position.
+             *
+             * This value is smoothed out each frame, according to the `motionFactor` property.
+             *
+             * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
+             * it changes based on movement alone - a button doesn't have to be pressed first.
+             *
+             * If you need the total distance travelled since the primary buttons was pressed down,
+             * then use the `Pointer.getDistance` method.
+             *
+             * @name Phaser.Input.Pointer#distance
+             * @type {number}
+             * @readonly
+             * @since 3.16.0
+             */
+            this.distance = 0;
 
-        /**
-         * The smoothing factor to apply to the Pointer position.
-         *
-         * Due to their nature, pointer positions are inherently noisy. While this is fine for lots of games, if you need cleaner positions
-         * then you can set this value to apply an automatic smoothing to the positions as they are recorded.
-         *
-         * The default value of zero means 'no smoothing'.
-         * Set to a small value, such as 0.2, to apply an average level of smoothing between positions. You can do this by changing this
-         * value directly, or by setting the `input.smoothFactor` property in the Game Config.
-         *
-         * Positions are only smoothed when the pointer moves. If the primary button on this Pointer enters an Up or Down state, then the position
-         * is always precise, and not smoothed.
-         *
-         * @name Phaser.Input.Pointer#smoothFactor
-         * @type {number}
-         * @default 0
-         * @since 3.16.0
-         */
-        this.smoothFactor = 0;
+            /**
+             * The smoothing factor to apply to the Pointer position.
+             *
+             * Due to their nature, pointer positions are inherently noisy. While this is fine for lots of games, if you need cleaner positions
+             * then you can set this value to apply an automatic smoothing to the positions as they are recorded.
+             *
+             * The default value of zero means 'no smoothing'.
+             * Set to a small value, such as 0.2, to apply an average level of smoothing between positions. You can do this by changing this
+             * value directly, or by setting the `input.smoothFactor` property in the Game Config.
+             *
+             * Positions are only smoothed when the pointer moves. If the primary button on this Pointer enters an Up or Down state, then the position
+             * is always precise, and not smoothed.
+             *
+             * @name Phaser.Input.Pointer#smoothFactor
+             * @type {number}
+             * @default 0
+             * @since 3.16.0
+             */
+            this.smoothFactor = 0;
 
-        /**
-         * The factor applied to the motion smoothing each frame.
-         *
-         * This value is passed to the Smooth Step Interpolation that is used to calculate the velocity,
-         * angle and distance of the Pointer. It's applied every frame, until the midPoint reaches the current
-         * position of the Pointer. 0.2 provides a good average but can be increased if you need a
-         * quicker update and are working in a high performance environment. Never set this value to
-         * zero.
-         *
-         * @name Phaser.Input.Pointer#motionFactor
-         * @type {number}
-         * @default 0.2
-         * @since 3.16.0
-         */
-        this.motionFactor = 0.2;
+            /**
+             * The factor applied to the motion smoothing each frame.
+             *
+             * This value is passed to the Smooth Step Interpolation that is used to calculate the velocity,
+             * angle and distance of the Pointer. It's applied every frame, until the midPoint reaches the current
+             * position of the Pointer. 0.2 provides a good average but can be increased if you need a
+             * quicker update and are working in a high performance environment. Never set this value to
+             * zero.
+             *
+             * @name Phaser.Input.Pointer#motionFactor
+             * @type {number}
+             * @default 0.2
+             * @since 3.16.0
+             */
+            this.motionFactor = 0.2;
 
-        /**
-         * The x position of this Pointer, translated into the coordinate space of the most recent Camera it interacted with.
-         *
-         * If you wish to use this value _outside_ of an input event handler then you should update it first by calling
-         * the `Pointer.updateWorldPoint` method.
-         *
-         * @name Phaser.Input.Pointer#worldX
-         * @type {number}
-         * @default 0
-         * @since 3.10.0
-         */
-        this.worldX = 0;
+            /**
+             * The x position of this Pointer, translated into the coordinate space of the most recent Camera it interacted with.
+             *
+             * If you wish to use this value _outside_ of an input event handler then you should update it first by calling
+             * the `Pointer.updateWorldPoint` method.
+             *
+             * @name Phaser.Input.Pointer#worldX
+             * @type {number}
+             * @default 0
+             * @since 3.10.0
+             */
+            this.worldX = 0;
 
-        /**
-         * The y position of this Pointer, translated into the coordinate space of the most recent Camera it interacted with.
-         *
-         * If you wish to use this value _outside_ of an input event handler then you should update it first by calling
-         * the `Pointer.updateWorldPoint` method.
-         *
-         * @name Phaser.Input.Pointer#worldY
-         * @type {number}
-         * @default 0
-         * @since 3.10.0
-         */
-        this.worldY = 0;
+            /**
+             * The y position of this Pointer, translated into the coordinate space of the most recent Camera it interacted with.
+             *
+             * If you wish to use this value _outside_ of an input event handler then you should update it first by calling
+             * the `Pointer.updateWorldPoint` method.
+             *
+             * @name Phaser.Input.Pointer#worldY
+             * @type {number}
+             * @default 0
+             * @since 3.10.0
+             */
+            this.worldY = 0;
 
-        /**
-         * Time when this Pointer was most recently moved (regardless of the state of its buttons, if any)
-         *
-         * @name Phaser.Input.Pointer#moveTime
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.moveTime = 0;
+            /**
+             * Time when this Pointer was most recently moved (regardless of the state of its buttons, if any)
+             *
+             * @name Phaser.Input.Pointer#moveTime
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.moveTime = 0;
 
-        /**
-         * X coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging objects.
-         *
-         * @name Phaser.Input.Pointer#downX
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.downX = 0;
+            /**
+             * X coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging objects.
+             *
+             * @name Phaser.Input.Pointer#downX
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.downX = 0;
 
-        /**
-         * Y coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging objects.
-         *
-         * @name Phaser.Input.Pointer#downY
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.downY = 0;
+            /**
+             * Y coordinate of the Pointer when Button 1 (left button), or Touch, was pressed, used for dragging objects.
+             *
+             * @name Phaser.Input.Pointer#downY
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.downY = 0;
 
-        /**
-         * The Event timestamp when the first button, or Touch input, was pressed. Used for dragging objects.
-         *
-         * @name Phaser.Input.Pointer#downTime
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.downTime = 0;
+            /**
+             * The Event timestamp when the first button, or Touch input, was pressed. Used for dragging objects.
+             *
+             * @name Phaser.Input.Pointer#downTime
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.downTime = 0;
 
-        /**
-         * X coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging objects.
-         *
-         * @name Phaser.Input.Pointer#upX
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.upX = 0;
+            /**
+             * X coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging objects.
+             *
+             * @name Phaser.Input.Pointer#upX
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.upX = 0;
 
-        /**
-         * Y coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging objects.
-         *
-         * @name Phaser.Input.Pointer#upY
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.upY = 0;
+            /**
+             * Y coordinate of the Pointer when Button 1 (left button), or Touch, was released, used for dragging objects.
+             *
+             * @name Phaser.Input.Pointer#upY
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.upY = 0;
 
-        /**
-         * The Event timestamp when the final button, or Touch input, was released. Used for dragging objects.
-         *
-         * @name Phaser.Input.Pointer#upTime
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.upTime = 0;
+            /**
+             * The Event timestamp when the final button, or Touch input, was released. Used for dragging objects.
+             *
+             * @name Phaser.Input.Pointer#upTime
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.upTime = 0;
 
-        /**
-         * Is the primary button down? (usually button 0, the left mouse button)
-         *
-         * @name Phaser.Input.Pointer#primaryDown
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.primaryDown = false;
+            /**
+             * Is the primary button down? (usually button 0, the left mouse button)
+             *
+             * @name Phaser.Input.Pointer#primaryDown
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.primaryDown = false;
 
-        /**
-         * Is _any_ button on this pointer considered as being down?
-         *
-         * @name Phaser.Input.Pointer#isDown
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.isDown = false;
+            /**
+             * Is _any_ button on this pointer considered as being down?
+             *
+             * @name Phaser.Input.Pointer#isDown
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.isDown = false;
 
-        /**
-         * Did the previous input event come from a Touch input (true) or Mouse? (false)
-         *
-         * @name Phaser.Input.Pointer#wasTouch
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.wasTouch = false;
+            /**
+             * Did the previous input event come from a Touch input (true) or Mouse? (false)
+             *
+             * @name Phaser.Input.Pointer#wasTouch
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.wasTouch = false;
 
-        /**
-         * Did this Pointer get canceled by a touchcancel event?
-         *
-         * Note: "canceled" is the American-English spelling of "cancelled". Please don't submit PRs correcting it!
-         *
-         * @name Phaser.Input.Pointer#wasCanceled
-         * @type {boolean}
-         * @default false
-         * @since 3.15.0
-         */
-        this.wasCanceled = false;
+            /**
+             * Did this Pointer get canceled by a touchcancel event?
+             *
+             * Note: "canceled" is the American-English spelling of "cancelled". Please don't submit PRs correcting it!
+             *
+             * @name Phaser.Input.Pointer#wasCanceled
+             * @type {boolean}
+             * @default false
+             * @since 3.15.0
+             */
+            this.wasCanceled = false;
 
-        /**
-         * If the mouse is locked, the horizontal relative movement of the Pointer in pixels since last frame.
-         *
-         * @name Phaser.Input.Pointer#movementX
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.movementX = 0;
+            /**
+             * If the mouse is locked, the horizontal relative movement of the Pointer in pixels since last frame.
+             *
+             * @name Phaser.Input.Pointer#movementX
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.movementX = 0;
 
-        /**
-         * If the mouse is locked, the vertical relative movement of the Pointer in pixels since last frame.
-         *
-         * @name Phaser.Input.Pointer#movementY
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.movementY = 0;
+            /**
+             * If the mouse is locked, the vertical relative movement of the Pointer in pixels since last frame.
+             *
+             * @name Phaser.Input.Pointer#movementY
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.movementY = 0;
 
-        /**
-         * The identifier property of the Pointer as set by the DOM event when this Pointer is started.
-         *
-         * @name Phaser.Input.Pointer#identifier
-         * @type {number}
-         * @since 3.10.0
-         */
-        this.identifier = 0;
+            /**
+             * The identifier property of the Pointer as set by the DOM event when this Pointer is started.
+             *
+             * @name Phaser.Input.Pointer#identifier
+             * @type {number}
+             * @since 3.10.0
+             */
+            this.identifier = 0;
 
-        /**
-         * The pointerId property of the Pointer as set by the DOM event when this Pointer is started.
-         * The browser can and will recycle this value.
-         *
-         * @name Phaser.Input.Pointer#pointerId
-         * @type {number}
-         * @since 3.10.0
-         */
-        this.pointerId = null;
+            /**
+             * The pointerId property of the Pointer as set by the DOM event when this Pointer is started.
+             * The browser can and will recycle this value.
+             *
+             * @name Phaser.Input.Pointer#pointerId
+             * @type {number}
+             * @since 3.10.0
+             */
+            this.pointerId = null;
 
-        /**
-         * An active Pointer is one that is currently pressed down on the display.
-         * A Mouse is always considered as active.
-         *
-         * @name Phaser.Input.Pointer#active
-         * @type {boolean}
-         * @since 3.10.0
-         */
-        this.active = (id === 0) ? true : false;
+            /**
+             * An active Pointer is one that is currently pressed down on the display.
+             * A Mouse is always considered as active.
+             *
+             * @name Phaser.Input.Pointer#active
+             * @type {boolean}
+             * @since 3.10.0
+             */
+            this.active = (id === 0) ? true : false;
 
-        /**
-         * Is this pointer Pointer Locked?
-         *
-         * Only a mouse pointer can be locked and it only becomes locked when requested via
-         * the browsers Pointer Lock API.
-         *
-         * You can request this by calling the `this.input.mouse.requestPointerLock()` method from
-         * a `pointerdown` or `pointerup` event handler.
-         *
-         * @name Phaser.Input.Pointer#locked
-         * @readonly
-         * @type {boolean}
-         * @since 3.19.0
-         */
-        this.locked = false;
+            /**
+             * Is this pointer Pointer Locked?
+             *
+             * Only a mouse pointer can be locked and it only becomes locked when requested via
+             * the browsers Pointer Lock API.
+             *
+             * You can request this by calling the `this.input.mouse.requestPointerLock()` method from
+             * a `pointerdown` or `pointerup` event handler.
+             *
+             * @name Phaser.Input.Pointer#locked
+             * @readonly
+             * @type {boolean}
+             * @since 3.19.0
+             */
+            this.locked = false;
 
-        /**
-         * The horizontal scroll amount that occurred due to the user moving a mouse wheel or similar input device.
-         *
-         * @name Phaser.Input.Pointer#deltaX
-         * @type {number}
-         * @default 0
-         * @since 3.18.0
-         */
-        this.deltaX = 0;
+            /**
+             * The horizontal scroll amount that occurred due to the user moving a mouse wheel or similar input device.
+             *
+             * @name Phaser.Input.Pointer#deltaX
+             * @type {number}
+             * @default 0
+             * @since 3.18.0
+             */
+            this.deltaX = 0;
 
-        /**
-         * The vertical scroll amount that occurred due to the user moving a mouse wheel or similar input device.
-         * This value will typically be less than 0 if the user scrolls up and greater than zero if scrolling down.
-         *
-         * @name Phaser.Input.Pointer#deltaY
-         * @type {number}
-         * @default 0
-         * @since 3.18.0
-         */
-        this.deltaY = 0;
+            /**
+             * The vertical scroll amount that occurred due to the user moving a mouse wheel or similar input device.
+             * This value will typically be less than 0 if the user scrolls up and greater than zero if scrolling down.
+             *
+             * @name Phaser.Input.Pointer#deltaY
+             * @type {number}
+             * @default 0
+             * @since 3.18.0
+             */
+            this.deltaY = 0;
 
-        /**
-         * The z-axis scroll amount that occurred due to the user moving a mouse wheel or similar input device.
-         *
-         * @name Phaser.Input.Pointer#deltaZ
-         * @type {number}
-         * @default 0
-         * @since 3.18.0
-         */
-        this.deltaZ = 0;
-    },
+            /**
+             * The z-axis scroll amount that occurred due to the user moving a mouse wheel or similar input device.
+             *
+             * @name Phaser.Input.Pointer#deltaZ
+             * @type {number}
+             * @default 0
+             * @since 3.18.0
+             */
+            this.deltaZ = 0;
+        },
 
     /**
      * Takes a Camera and updates this Pointer's `worldX` and `worldY` values so they are
@@ -507,8 +506,7 @@ var Pointer = new Class({
      *
      * @return {this} This Pointer object.
      */
-    updateWorldPoint: function (camera)
-    {
+    updateWorldPoint: function (camera) {
         //  Stores the world point inside of tempPoint
         var temp = camera.getWorldPoint(this.x, this.y);
 
@@ -530,8 +528,7 @@ var Pointer = new Class({
      *
      * @return {(Phaser.Math.Vector2|object)} A Vector2 containing the translated coordinates of this Pointer, based on the given camera.
      */
-    positionToCamera: function (camera, output)
-    {
+    positionToCamera: function (camera, output) {
         return camera.getWorldPoint(this.x, this.y, output);
     },
 
@@ -543,16 +540,14 @@ var Pointer = new Class({
      * @private
      * @since 3.16.0
      */
-    updateMotion: function ()
-    {
+    updateMotion: function () {
         var cx = this.position.x;
         var cy = this.position.y;
 
         var mx = this.midPoint.x;
         var my = this.midPoint.y;
 
-        if (cx === mx && cy === my)
-        {
+        if (cx === mx && cy === my) {
             //  Nothing to do here
             return;
         }
@@ -561,13 +556,11 @@ var Pointer = new Class({
         var vx = SmoothStepInterpolation(this.motionFactor, mx, cx);
         var vy = SmoothStepInterpolation(this.motionFactor, my, cy);
 
-        if (FuzzyEqual(vx, cx, 0.1))
-        {
+        if (FuzzyEqual(vx, cx, 0.1)) {
             vx = cx;
         }
 
-        if (FuzzyEqual(vy, cy, 0.1))
-        {
+        if (FuzzyEqual(vy, cy, 0.1)) {
             vy = cy;
         }
 
@@ -592,10 +585,8 @@ var Pointer = new Class({
      *
      * @param {MouseEvent} event - The Mouse Event to process.
      */
-    up: function (event)
-    {
-        if ('buttons' in event)
-        {
+    up: function (event) {
+        if ('buttons' in event) {
             this.buttons = event.buttons;
         }
 
@@ -609,15 +600,13 @@ var Pointer = new Class({
         this.manager.transformPointer(this, event.pageX, event.pageY, false);
 
         //  0: Main button pressed, usually the left button or the un-initialized state
-        if (event.button === 0)
-        {
+        if (event.button === 0) {
             this.primaryDown = false;
             this.upX = this.x;
             this.upY = this.y;
         }
 
-        if (this.buttons === 0)
-        {
+        if (this.buttons === 0) {
             //  No more buttons are still down
             this.isDown = false;
 
@@ -636,10 +625,8 @@ var Pointer = new Class({
      *
      * @param {MouseEvent} event - The Mouse Event to process.
      */
-    down: function (event)
-    {
-        if ('buttons' in event)
-        {
+    down: function (event) {
+        if ('buttons' in event) {
             this.buttons = event.buttons;
         }
 
@@ -653,22 +640,19 @@ var Pointer = new Class({
         this.manager.transformPointer(this, event.pageX, event.pageY, false);
 
         //  0: Main button pressed, usually the left button or the un-initialized state
-        if (event.button === 0)
-        {
+        if (event.button === 0) {
             this.primaryDown = true;
             this.downX = this.x;
             this.downY = this.y;
         }
 
-        if (OS.macOS && event.ctrlKey)
-        {
+        if (OS.macOS && event.ctrlKey) {
             //  Override button settings on macOS
             this.buttons = 2;
             this.primaryDown = false;
         }
 
-        if (!this.isDown)
-        {
+        if (!this.isDown) {
             this.isDown = true;
 
             this.downTime = event.timeStamp;
@@ -686,10 +670,8 @@ var Pointer = new Class({
      *
      * @param {MouseEvent} event - The Mouse Event to process.
      */
-    move: function (event)
-    {
-        if ('buttons' in event)
-        {
+    move: function (event) {
+        if ('buttons' in event) {
             this.buttons = event.buttons;
         }
 
@@ -698,8 +680,7 @@ var Pointer = new Class({
         //  Sets the local x/y properties
         this.manager.transformPointer(this, event.pageX, event.pageY, true);
 
-        if (this.locked)
-        {
+        if (this.locked) {
             //  Multiple DOM events may occur within one frame, but only one Phaser event will fire
             this.movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
             this.movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
@@ -719,10 +700,8 @@ var Pointer = new Class({
      *
      * @param {WheelEvent} event - The Wheel Event to process.
      */
-    wheel: function (event)
-    {
-        if ('buttons' in event)
-        {
+    wheel: function (event) {
+        if ('buttons' in event) {
             this.buttons = event.buttons;
         }
 
@@ -748,10 +727,8 @@ var Pointer = new Class({
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
      */
-    touchstart: function (touch, event)
-    {
-        if (touch['pointerId'])
-        {
+    touchstart: function (touch, event) {
+        if (touch['pointerId']) {
             this.pointerId = touch.pointerId;
         }
 
@@ -791,8 +768,7 @@ var Pointer = new Class({
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
      */
-    touchmove: function (touch, event)
-    {
+    touchmove: function (touch, event) {
         this.event = event;
 
         //  Sets the local x/y properties
@@ -815,8 +791,7 @@ var Pointer = new Class({
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
      */
-    touchend: function (touch, event)
-    {
+    touchend: function (touch, event) {
         this.buttons = 0;
 
         this.event = event;
@@ -851,8 +826,7 @@ var Pointer = new Class({
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
      */
-    touchcancel: function (touch, event)
-    {
+    touchcancel: function (touch, event) {
         this.buttons = 0;
 
         this.event = event;
@@ -883,8 +857,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if no buttons are being held down.
      */
-    noButtonDown: function ()
-    {
+    noButtonDown: function () {
         return (this.buttons === 0);
     },
 
@@ -896,8 +869,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the left button is being held down.
      */
-    leftButtonDown: function ()
-    {
+    leftButtonDown: function () {
         return (this.buttons & 1) ? true : false;
     },
 
@@ -909,8 +881,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the right button is being held down.
      */
-    rightButtonDown: function ()
-    {
+    rightButtonDown: function () {
         return (this.buttons & 2) ? true : false;
     },
 
@@ -922,8 +893,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the middle button is being held down.
      */
-    middleButtonDown: function ()
-    {
+    middleButtonDown: function () {
         return (this.buttons & 4) ? true : false;
     },
 
@@ -935,8 +905,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the back button is being held down.
      */
-    backButtonDown: function ()
-    {
+    backButtonDown: function () {
         return (this.buttons & 8) ? true : false;
     },
 
@@ -948,8 +917,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the forward button is being held down.
      */
-    forwardButtonDown: function ()
-    {
+    forwardButtonDown: function () {
         return (this.buttons & 16) ? true : false;
     },
 
@@ -961,8 +929,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the release of the left button was the most recent activity on this Pointer.
      */
-    leftButtonReleased: function ()
-    {
+    leftButtonReleased: function () {
         return this.buttons === 0 ? (this.button === 0 && !this.isDown) : this.button === 0;
     },
 
@@ -974,8 +941,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the release of the right button was the most recent activity on this Pointer.
      */
-    rightButtonReleased: function ()
-    {
+    rightButtonReleased: function () {
         return this.buttons === 0 ? (this.button === 2 && !this.isDown) : this.button === 2;
     },
 
@@ -987,8 +953,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the release of the middle button was the most recent activity on this Pointer.
      */
-    middleButtonReleased: function ()
-    {
+    middleButtonReleased: function () {
         return this.buttons === 0 ? (this.button === 1 && !this.isDown) : this.button === 1;
     },
 
@@ -1000,8 +965,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the release of the back button was the most recent activity on this Pointer.
      */
-    backButtonReleased: function ()
-    {
+    backButtonReleased: function () {
         return this.buttons === 0 ? (this.button === 3 && !this.isDown) : this.button === 3;
     },
 
@@ -1013,8 +977,7 @@ var Pointer = new Class({
      *
      * @return {boolean} `true` if the release of the forward button was the most recent activity on this Pointer.
      */
-    forwardButtonReleased: function ()
-    {
+    forwardButtonReleased: function () {
         return this.buttons === 0 ? (this.button === 4 && !this.isDown) : this.button === 4;
     },
 
@@ -1033,14 +996,10 @@ var Pointer = new Class({
      *
      * @return {number} The distance the Pointer moved.
      */
-    getDistance: function ()
-    {
-        if (this.isDown)
-        {
+    getDistance: function () {
+        if (this.isDown) {
             return Distance(this.downX, this.downY, this.x, this.y);
-        }
-        else
-        {
+        } else {
             return Distance(this.downX, this.downY, this.upX, this.upY);
         }
     },
@@ -1057,14 +1016,10 @@ var Pointer = new Class({
      *
      * @return {number} The horizontal distance the Pointer moved.
      */
-    getDistanceX: function ()
-    {
-        if (this.isDown)
-        {
+    getDistanceX: function () {
+        if (this.isDown) {
             return Math.abs(this.downX - this.x);
-        }
-        else
-        {
+        } else {
             return Math.abs(this.downX - this.upX);
         }
     },
@@ -1081,14 +1036,10 @@ var Pointer = new Class({
      *
      * @return {number} The vertical distance the Pointer moved.
      */
-    getDistanceY: function ()
-    {
-        if (this.isDown)
-        {
+    getDistanceY: function () {
+        if (this.isDown) {
             return Math.abs(this.downY - this.y);
-        }
-        else
-        {
+        } else {
             return Math.abs(this.downY - this.upY);
         }
     },
@@ -1105,14 +1056,10 @@ var Pointer = new Class({
      *
      * @return {number} The duration the Pointer was held down for in milliseconds.
      */
-    getDuration: function ()
-    {
-        if (this.isDown)
-        {
+    getDuration: function () {
+        if (this.isDown) {
             return (this.manager.time - this.downTime);
-        }
-        else
-        {
+        } else {
             return (this.upTime - this.downTime);
         }
     },
@@ -1134,14 +1081,10 @@ var Pointer = new Class({
      *
      * @return {number} The angle between the Pointer's coordinates in radians.
      */
-    getAngle: function ()
-    {
-        if (this.isDown)
-        {
+    getAngle: function () {
+        if (this.isDown) {
             return Angle(this.downX, this.downY, this.x, this.y);
-        }
-        else
-        {
+        } else {
             return Angle(this.downX, this.downY, this.upX, this.upY);
         }
     },
@@ -1176,10 +1119,13 @@ var Pointer = new Class({
      *
      * @return {array} An array of interpolated values.
      */
-    getInterpolatedPosition: function (steps, out)
-    {
-        if (steps === undefined) { steps = 10; }
-        if (out === undefined) { out = []; }
+    getInterpolatedPosition: function (steps, out) {
+        if (steps === undefined) {
+            steps = 10;
+        }
+        if (out === undefined) {
+            out = [];
+        }
 
         var prevX = this.prevPosition.x;
         var prevY = this.prevPosition.y;
@@ -1187,11 +1133,10 @@ var Pointer = new Class({
         var curX = this.position.x;
         var curY = this.position.y;
 
-        for (var i = 0; i < steps; i++)
-        {
+        for (var i = 0; i < steps; i++) {
             var t = (1 / steps) * i;
 
-            out[i] = { x: SmoothStepInterpolation(t, prevX, curX), y: SmoothStepInterpolation(t, prevY, curY) };
+            out[i] = {x: SmoothStepInterpolation(t, prevX, curX), y: SmoothStepInterpolation(t, prevY, curY)};
         }
 
         return out;
@@ -1203,8 +1148,7 @@ var Pointer = new Class({
      * @method Phaser.Input.Pointer#reset
      * @since 3.60.0
      */
-    reset: function ()
-    {
+    reset: function () {
         this.event = null;
         this.downElement = null;
         this.upElement = null;
@@ -1248,8 +1192,7 @@ var Pointer = new Class({
      * @method Phaser.Input.Pointer#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.camera = null;
         this.manager = null;
         this.position = null;
@@ -1266,13 +1209,11 @@ var Pointer = new Class({
      */
     x: {
 
-        get: function ()
-        {
+        get: function () {
             return this.position.x;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.position.x = value;
         }
 
@@ -1289,13 +1230,11 @@ var Pointer = new Class({
      */
     y: {
 
-        get: function ()
-        {
+        get: function () {
             return this.position.y;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.position.y = value;
         }
 
@@ -1313,8 +1252,7 @@ var Pointer = new Class({
      */
     time: {
 
-        get: function ()
-        {
+        get: function () {
             return (this.event) ? this.event.timeStamp : 0;
         }
 

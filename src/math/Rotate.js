@@ -15,8 +15,7 @@
  *
  * @return {Phaser.Geom.Point} The given point, rotated by the given angle in an anticlockwise direction.
  */
-var Rotate = function (point, angle)
-{
+var Rotate = function (point, angle) {
     var x = point.x;
     var y = point.y;
 

@@ -14,16 +14,12 @@
  *
  * @return {number} The normalized angle, in radians.
  */
-var Normalize = function (angle)
-{
+var Normalize = function (angle) {
     angle = angle % (2 * Math.PI);
 
-    if (angle >= 0)
-    {
+    if (angle >= 0) {
         return angle;
-    }
-    else
-    {
+    } else {
         return angle + 2 * Math.PI;
     }
 };

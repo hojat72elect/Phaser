@@ -42,262 +42,260 @@ var InputManager = new Class({
 
     initialize:
 
-    function InputManager (game, config)
-    {
-        /**
-         * The Game instance that owns the Input Manager.
-         * A Game only maintains one instance of the Input Manager at any time.
-         *
-         * @name Phaser.Input.InputManager#game
-         * @type {Phaser.Game}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.game = game;
+        function InputManager(game, config) {
+            /**
+             * The Game instance that owns the Input Manager.
+             * A Game only maintains one instance of the Input Manager at any time.
+             *
+             * @name Phaser.Input.InputManager#game
+             * @type {Phaser.Game}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.game = game;
 
-        /**
-         * A reference to the global Game Scale Manager.
-         * Used for all bounds checks and pointer scaling.
-         *
-         * @name Phaser.Input.InputManager#scaleManager
-         * @type {Phaser.Scale.ScaleManager}
-         * @since 3.16.0
-         */
-        this.scaleManager;
+            /**
+             * A reference to the global Game Scale Manager.
+             * Used for all bounds checks and pointer scaling.
+             *
+             * @name Phaser.Input.InputManager#scaleManager
+             * @type {Phaser.Scale.ScaleManager}
+             * @since 3.16.0
+             */
+            this.scaleManager;
 
-        /**
-         * The Canvas that is used for all DOM event input listeners.
-         *
-         * @name Phaser.Input.InputManager#canvas
-         * @type {HTMLCanvasElement}
-         * @since 3.0.0
-         */
-        this.canvas;
+            /**
+             * The Canvas that is used for all DOM event input listeners.
+             *
+             * @name Phaser.Input.InputManager#canvas
+             * @type {HTMLCanvasElement}
+             * @since 3.0.0
+             */
+            this.canvas;
 
-        /**
-         * The Game Configuration object, as set during the game boot.
-         *
-         * @name Phaser.Input.InputManager#config
-         * @type {Phaser.Core.Config}
-         * @since 3.0.0
-         */
-        this.config = config;
+            /**
+             * The Game Configuration object, as set during the game boot.
+             *
+             * @name Phaser.Input.InputManager#config
+             * @type {Phaser.Core.Config}
+             * @since 3.0.0
+             */
+            this.config = config;
 
-        /**
-         * If set, the Input Manager will run its update loop every frame.
-         *
-         * @name Phaser.Input.InputManager#enabled
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.enabled = true;
+            /**
+             * If set, the Input Manager will run its update loop every frame.
+             *
+             * @name Phaser.Input.InputManager#enabled
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.enabled = true;
 
-        /**
-         * The Event Emitter instance that the Input Manager uses to emit events from.
-         *
-         * @name Phaser.Input.InputManager#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.0.0
-         */
-        this.events = new EventEmitter();
+            /**
+             * The Event Emitter instance that the Input Manager uses to emit events from.
+             *
+             * @name Phaser.Input.InputManager#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.0.0
+             */
+            this.events = new EventEmitter();
 
-        /**
-         * Are any mouse or touch pointers currently over the game canvas?
-         * This is updated automatically by the canvas over and out handlers.
-         *
-         * @name Phaser.Input.InputManager#isOver
-         * @type {boolean}
-         * @readonly
-         * @since 3.16.0
-         */
-        this.isOver = true;
+            /**
+             * Are any mouse or touch pointers currently over the game canvas?
+             * This is updated automatically by the canvas over and out handlers.
+             *
+             * @name Phaser.Input.InputManager#isOver
+             * @type {boolean}
+             * @readonly
+             * @since 3.16.0
+             */
+            this.isOver = true;
 
-        /**
-         * The default CSS cursor to be used when interacting with your game.
-         *
-         * See the `setDefaultCursor` method for more details.
-         *
-         * @name Phaser.Input.InputManager#defaultCursor
-         * @type {string}
-         * @since 3.10.0
-         */
-        this.defaultCursor = '';
+            /**
+             * The default CSS cursor to be used when interacting with your game.
+             *
+             * See the `setDefaultCursor` method for more details.
+             *
+             * @name Phaser.Input.InputManager#defaultCursor
+             * @type {string}
+             * @since 3.10.0
+             */
+            this.defaultCursor = '';
 
-        /**
-         * A reference to the Keyboard Manager class, if enabled via the `input.keyboard` Game Config property.
-         *
-         * @name Phaser.Input.InputManager#keyboard
-         * @type {?Phaser.Input.Keyboard.KeyboardManager}
-         * @since 3.16.0
-         */
-        this.keyboard = (config.inputKeyboard) ? new Keyboard(this) : null;
+            /**
+             * A reference to the Keyboard Manager class, if enabled via the `input.keyboard` Game Config property.
+             *
+             * @name Phaser.Input.InputManager#keyboard
+             * @type {?Phaser.Input.Keyboard.KeyboardManager}
+             * @since 3.16.0
+             */
+            this.keyboard = (config.inputKeyboard) ? new Keyboard(this) : null;
 
-        /**
-         * A reference to the Mouse Manager class, if enabled via the `input.mouse` Game Config property.
-         *
-         * @name Phaser.Input.InputManager#mouse
-         * @type {?Phaser.Input.Mouse.MouseManager}
-         * @since 3.0.0
-         */
-        this.mouse = (config.inputMouse) ? new Mouse(this) : null;
+            /**
+             * A reference to the Mouse Manager class, if enabled via the `input.mouse` Game Config property.
+             *
+             * @name Phaser.Input.InputManager#mouse
+             * @type {?Phaser.Input.Mouse.MouseManager}
+             * @since 3.0.0
+             */
+            this.mouse = (config.inputMouse) ? new Mouse(this) : null;
 
-        /**
-         * A reference to the Touch Manager class, if enabled via the `input.touch` Game Config property.
-         *
-         * @name Phaser.Input.InputManager#touch
-         * @type {Phaser.Input.Touch.TouchManager}
-         * @since 3.0.0
-         */
-        this.touch = (config.inputTouch) ? new Touch(this) : null;
+            /**
+             * A reference to the Touch Manager class, if enabled via the `input.touch` Game Config property.
+             *
+             * @name Phaser.Input.InputManager#touch
+             * @type {Phaser.Input.Touch.TouchManager}
+             * @since 3.0.0
+             */
+            this.touch = (config.inputTouch) ? new Touch(this) : null;
 
-        /**
-         * An array of Pointers that have been added to the game.
-         * The first entry is reserved for the Mouse Pointer, the rest are Touch Pointers.
-         *
-         * By default there is 1 touch pointer enabled. If you need more use the `addPointer` method to start them,
-         * or set the `input.activePointers` property in the Game Config.
-         *
-         * @name Phaser.Input.InputManager#pointers
-         * @type {Phaser.Input.Pointer[]}
-         * @since 3.10.0
-         */
-        this.pointers = [];
+            /**
+             * An array of Pointers that have been added to the game.
+             * The first entry is reserved for the Mouse Pointer, the rest are Touch Pointers.
+             *
+             * By default there is 1 touch pointer enabled. If you need more use the `addPointer` method to start them,
+             * or set the `input.activePointers` property in the Game Config.
+             *
+             * @name Phaser.Input.InputManager#pointers
+             * @type {Phaser.Input.Pointer[]}
+             * @since 3.10.0
+             */
+            this.pointers = [];
 
-        /**
-         * The number of touch objects activated and being processed each update.
-         *
-         * You can change this by either calling `addPointer` at run-time, or by
-         * setting the `input.activePointers` property in the Game Config.
-         *
-         * @name Phaser.Input.InputManager#pointersTotal
-         * @type {number}
-         * @readonly
-         * @since 3.10.0
-         */
-        this.pointersTotal = config.inputActivePointers;
+            /**
+             * The number of touch objects activated and being processed each update.
+             *
+             * You can change this by either calling `addPointer` at run-time, or by
+             * setting the `input.activePointers` property in the Game Config.
+             *
+             * @name Phaser.Input.InputManager#pointersTotal
+             * @type {number}
+             * @readonly
+             * @since 3.10.0
+             */
+            this.pointersTotal = config.inputActivePointers;
 
-        for (var i = 0; i <= this.pointersTotal; i++)
-        {
-            var pointer = new Pointer(this, i);
+            for (var i = 0; i <= this.pointersTotal; i++) {
+                var pointer = new Pointer(this, i);
 
-            pointer.smoothFactor = config.inputSmoothFactor;
+                pointer.smoothFactor = config.inputSmoothFactor;
 
-            this.pointers.push(pointer);
-        }
+                this.pointers.push(pointer);
+            }
 
-        /**
-         * The mouse has its own unique Pointer object, which you can reference directly if making a _desktop specific game_.
-         * If you are supporting both desktop and touch devices then do not use this property, instead use `activePointer`
-         * which will always map to the most recently interacted pointer.
-         *
-         * @name Phaser.Input.InputManager#mousePointer
-         * @type {?Phaser.Input.Pointer}
-         * @since 3.10.0
-         */
-        this.mousePointer = (config.inputMouse) ? this.pointers[0] : null;
+            /**
+             * The mouse has its own unique Pointer object, which you can reference directly if making a _desktop specific game_.
+             * If you are supporting both desktop and touch devices then do not use this property, instead use `activePointer`
+             * which will always map to the most recently interacted pointer.
+             *
+             * @name Phaser.Input.InputManager#mousePointer
+             * @type {?Phaser.Input.Pointer}
+             * @since 3.10.0
+             */
+            this.mousePointer = (config.inputMouse) ? this.pointers[0] : null;
 
-        /**
-         * The most recently active Pointer object.
-         *
-         * If you've only 1 Pointer in your game then this will accurately be either the first finger touched, or the mouse.
-         *
-         * If your game doesn't need to support multi-touch then you can safely use this property in all of your game
-         * code and it will adapt to be either the mouse or the touch, based on device.
-         *
-         * @name Phaser.Input.InputManager#activePointer
-         * @type {Phaser.Input.Pointer}
-         * @since 3.0.0
-         */
-        this.activePointer = this.pointers[0];
+            /**
+             * The most recently active Pointer object.
+             *
+             * If you've only 1 Pointer in your game then this will accurately be either the first finger touched, or the mouse.
+             *
+             * If your game doesn't need to support multi-touch then you can safely use this property in all of your game
+             * code and it will adapt to be either the mouse or the touch, based on device.
+             *
+             * @name Phaser.Input.InputManager#activePointer
+             * @type {Phaser.Input.Pointer}
+             * @since 3.0.0
+             */
+            this.activePointer = this.pointers[0];
 
-        /**
-         * If the top-most Scene in the Scene List receives an input it will stop input from
-         * propagating any lower down the scene list, i.e. if you have a UI Scene at the top
-         * and click something on it, that click will not then be passed down to any other
-         * Scene below. Disable this to have input events passed through all Scenes, all the time.
-         *
-         * @name Phaser.Input.InputManager#globalTopOnly
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.globalTopOnly = true;
+            /**
+             * If the top-most Scene in the Scene List receives an input it will stop input from
+             * propagating any lower down the scene list, i.e. if you have a UI Scene at the top
+             * and click something on it, that click will not then be passed down to any other
+             * Scene below. Disable this to have input events passed through all Scenes, all the time.
+             *
+             * @name Phaser.Input.InputManager#globalTopOnly
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.globalTopOnly = true;
 
-        /**
-         * The time this Input Manager was last updated.
-         * This value is populated by the Game Step each frame.
-         *
-         * @name Phaser.Input.InputManager#time
-         * @type {number}
-         * @readonly
-         * @since 3.16.2
-         */
-        this.time = 0;
+            /**
+             * The time this Input Manager was last updated.
+             * This value is populated by the Game Step each frame.
+             *
+             * @name Phaser.Input.InputManager#time
+             * @type {number}
+             * @readonly
+             * @since 3.16.2
+             */
+            this.time = 0;
 
-        /**
-         * A re-cycled point-like object to store hit test values in.
-         *
-         * @name Phaser.Input.InputManager#_tempPoint
-         * @type {{x:number, y:number}}
-         * @private
-         * @since 3.0.0
-         */
-        this._tempPoint = { x: 0, y: 0 };
+            /**
+             * A re-cycled point-like object to store hit test values in.
+             *
+             * @name Phaser.Input.InputManager#_tempPoint
+             * @type {{x:number, y:number}}
+             * @private
+             * @since 3.0.0
+             */
+            this._tempPoint = {x: 0, y: 0};
 
-        /**
-         * A re-cycled array to store hit results in.
-         *
-         * @name Phaser.Input.InputManager#_tempHitTest
-         * @type {array}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._tempHitTest = [];
+            /**
+             * A re-cycled array to store hit results in.
+             *
+             * @name Phaser.Input.InputManager#_tempHitTest
+             * @type {array}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._tempHitTest = [];
 
-        /**
-         * A re-cycled matrix used in hit test calculations.
-         *
-         * @name Phaser.Input.InputManager#_tempMatrix
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @private
-         * @since 3.4.0
-         */
-        this._tempMatrix = new TransformMatrix();
+            /**
+             * A re-cycled matrix used in hit test calculations.
+             *
+             * @name Phaser.Input.InputManager#_tempMatrix
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @private
+             * @since 3.4.0
+             */
+            this._tempMatrix = new TransformMatrix();
 
-        /**
-         * A re-cycled matrix used in hit test calculations.
-         *
-         * @name Phaser.Input.InputManager#_tempMatrix2
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @private
-         * @since 3.12.0
-         */
-        this._tempMatrix2 = new TransformMatrix();
+            /**
+             * A re-cycled matrix used in hit test calculations.
+             *
+             * @name Phaser.Input.InputManager#_tempMatrix2
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @private
+             * @since 3.12.0
+             */
+            this._tempMatrix2 = new TransformMatrix();
 
-        /**
-         * An internal private var that records Scenes aborting event processing.
-         *
-         * @name Phaser.Input.InputManager#_tempSkip
-         * @type {boolean}
-         * @private
-         * @since 3.18.0
-         */
-        this._tempSkip = false;
+            /**
+             * An internal private var that records Scenes aborting event processing.
+             *
+             * @name Phaser.Input.InputManager#_tempSkip
+             * @type {boolean}
+             * @private
+             * @since 3.18.0
+             */
+            this._tempSkip = false;
 
-        /**
-         * An internal private array that avoids needing to create a new array on every DOM mouse event.
-         *
-         * @name Phaser.Input.InputManager#mousePointerContainer
-         * @type {Phaser.Input.Pointer[]}
-         * @private
-         * @since 3.18.0
-         */
-        this.mousePointerContainer = [ this.mousePointer ];
+            /**
+             * An internal private array that avoids needing to create a new array on every DOM mouse event.
+             *
+             * @name Phaser.Input.InputManager#mousePointerContainer
+             * @type {Phaser.Input.Pointer[]}
+             * @private
+             * @since 3.18.0
+             */
+            this.mousePointerContainer = [this.mousePointer];
 
-        game.events.once(GameEvents.BOOT, this.boot, this);
-    },
+            game.events.once(GameEvents.BOOT, this.boot, this);
+        },
 
     /**
      * The Boot handler is called by Phaser.Game when it first starts up.
@@ -308,8 +306,7 @@ var InputManager = new Class({
      * @fires Phaser.Input.Events#MANAGER_BOOT
      * @since 3.0.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var game = this.game;
         var events = game.events;
 
@@ -334,8 +331,7 @@ var InputManager = new Class({
      *
      * @param {(MouseEvent|TouchEvent)} event - The DOM Event.
      */
-    setCanvasOver: function (event)
-    {
+    setCanvasOver: function (event) {
         this.isOver = true;
 
         this.events.emit(Events.GAME_OVER, event);
@@ -351,8 +347,7 @@ var InputManager = new Class({
      *
      * @param {(MouseEvent|TouchEvent)} event - The DOM Event.
      */
-    setCanvasOut: function (event)
-    {
+    setCanvasOut: function (event) {
         this.isOver = false;
 
         this.events.emit(Events.GAME_OUT, event);
@@ -365,8 +360,7 @@ var InputManager = new Class({
      * @private
      * @since 3.18.0
      */
-    preRender: function ()
-    {
+    preRender: function () {
         var time = this.game.loop.now;
         var delta = this.game.loop.delta;
         var scenes = this.game.scene.getScenes(true, true);
@@ -375,12 +369,10 @@ var InputManager = new Class({
 
         this.events.emit(Events.MANAGER_UPDATE);
 
-        for (var i = 0; i < scenes.length; i++)
-        {
+        for (var i = 0; i < scenes.length; i++) {
             var scene = scenes[i];
 
-            if (scene.sys.input && scene.sys.input.updatePoll(time, delta) && this.globalTopOnly)
-            {
+            if (scene.sys.input && scene.sys.input.updatePoll(time, delta) && this.globalTopOnly) {
                 //  If the Scene returns true, it means it captured some input that no other Scene should get, so we bail out
                 return;
             }
@@ -412,12 +404,10 @@ var InputManager = new Class({
      *
      * @param {string} cursor - The CSS to be used when setting the default cursor.
      */
-    setDefaultCursor: function (cursor)
-    {
+    setDefaultCursor: function (cursor) {
         this.defaultCursor = cursor;
 
-        if (this.canvas.style.cursor !== cursor)
-        {
+        if (this.canvas.style.cursor !== cursor) {
             this.canvas.style.cursor = cursor;
         }
     },
@@ -435,10 +425,8 @@ var InputManager = new Class({
      *
      * @param {Phaser.Types.Input.InteractiveObject} interactiveObject - The Interactive Object that called this method.
      */
-    setCursor: function (interactiveObject)
-    {
-        if (interactiveObject.cursor)
-        {
+    setCursor: function (interactiveObject) {
+        if (interactiveObject.cursor) {
             this.canvas.style.cursor = interactiveObject.cursor;
         }
     },
@@ -455,10 +443,8 @@ var InputManager = new Class({
      * @param {Phaser.Types.Input.InteractiveObject} interactiveObject - The Interactive Object that called this method. Pass `null` if you just want to set the force value.
      * @param {boolean} [forceReset=false] - Should the reset happen regardless of the object's cursor state? Default false.
      */
-    resetCursor: function (interactiveObject, forceReset)
-    {
-        if ((forceReset || (interactiveObject && interactiveObject.cursor)) && this.canvas)
-        {
+    resetCursor: function (interactiveObject, forceReset) {
+        if ((forceReset || (interactiveObject && interactiveObject.cursor)) && this.canvas) {
             this.canvas.style.cursor = this.defaultCursor;
         }
     },
@@ -481,19 +467,18 @@ var InputManager = new Class({
      *
      * @return {Phaser.Input.Pointer[]} An array containing all of the new Pointer objects that were created.
      */
-    addPointer: function (quantity)
-    {
-        if (quantity === undefined) { quantity = 1; }
+    addPointer: function (quantity) {
+        if (quantity === undefined) {
+            quantity = 1;
+        }
 
         var output = [];
 
-        if (this.pointersTotal + quantity > 10)
-        {
+        if (this.pointersTotal + quantity > 10) {
             quantity = 10 - this.pointersTotal;
         }
 
-        for (var i = 0; i < quantity; i++)
-        {
+        for (var i = 0; i < quantity; i++) {
             var id = this.pointers.length;
 
             var pointer = new Pointer(this, id);
@@ -521,22 +506,18 @@ var InputManager = new Class({
      * @param {number} type - The type of event to process.
      * @param {Phaser.Input.Pointer[]} pointers - An array of Pointers on which the event occurred.
      */
-    updateInputPlugins: function (type, pointers)
-    {
+    updateInputPlugins: function (type, pointers) {
         var scenes = this.game.scene.getScenes(false, true);
 
         this._tempSkip = false;
 
-        for (var i = 0; i < scenes.length; i++)
-        {
+        for (var i = 0; i < scenes.length; i++) {
             var scene = scenes[i];
 
-            if (scene.sys.input)
-            {
+            if (scene.sys.input) {
                 var capture = scene.sys.input.update(type, pointers);
 
-                if ((capture && this.globalTopOnly) || this._tempSkip)
-                {
+                if ((capture && this.globalTopOnly) || this._tempSkip) {
                     //  If the Scene returns true, or called stopPropagation, it means it captured some input that no other Scene should get, so we bail out
                     return;
                 }
@@ -557,21 +538,17 @@ var InputManager = new Class({
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
-    onTouchStart: function (event)
-    {
+    onTouchStart: function (event) {
         var pointers = this.pointers;
         var changed = [];
 
-        for (var c = 0; c < event.changedTouches.length; c++)
-        {
+        for (var c = 0; c < event.changedTouches.length; c++) {
             var changedTouch = event.changedTouches[c];
 
-            for (var i = 1; i < pointers.length; i++)
-            {
+            for (var i = 1; i < pointers.length; i++) {
                 var pointer = pointers[i];
 
-                if (!pointer.active)
-                {
+                if (!pointer.active) {
                     pointer.touchstart(changedTouch, event);
 
                     this.activePointer = pointer;
@@ -595,35 +572,27 @@ var InputManager = new Class({
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
-    onTouchMove: function (event)
-    {
+    onTouchMove: function (event) {
         var pointers = this.pointers;
         var changed = [];
 
-        for (var c = 0; c < event.changedTouches.length; c++)
-        {
+        for (var c = 0; c < event.changedTouches.length; c++) {
             var changedTouch = event.changedTouches[c];
 
-            for (var i = 1; i < pointers.length; i++)
-            {
+            for (var i = 1; i < pointers.length; i++) {
                 var pointer = pointers[i];
 
-                if (pointer.active && pointer.identifier === changedTouch.identifier)
-                {
+                if (pointer.active && pointer.identifier === changedTouch.identifier) {
                     var element = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
                     var overCanvas = element === this.canvas;
 
-                    if (!this.isOver && overCanvas)
-                    {
+                    if (!this.isOver && overCanvas) {
                         this.setCanvasOver(event);
-                    }
-                    else if (this.isOver && !overCanvas)
-                    {
+                    } else if (this.isOver && !overCanvas) {
                         this.setCanvasOut(event);
                     }
 
-                    if (this.isOver)
-                    {
+                    if (this.isOver) {
                         pointer.touchmove(changedTouch, event);
 
                         this.activePointer = pointer;
@@ -652,21 +621,17 @@ var InputManager = new Class({
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
-    onTouchEnd: function (event)
-    {
+    onTouchEnd: function (event) {
         var pointers = this.pointers;
         var changed = [];
 
-        for (var c = 0; c < event.changedTouches.length; c++)
-        {
+        for (var c = 0; c < event.changedTouches.length; c++) {
             var changedTouch = event.changedTouches[c];
 
-            for (var i = 1; i < pointers.length; i++)
-            {
+            for (var i = 1; i < pointers.length; i++) {
                 var pointer = pointers[i];
 
-                if (pointer.active && pointer.identifier === changedTouch.identifier)
-                {
+                if (pointer.active && pointer.identifier === changedTouch.identifier) {
                     pointer.touchend(changedTouch, event);
 
                     changed.push(pointer);
@@ -688,21 +653,17 @@ var InputManager = new Class({
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
-    onTouchCancel: function (event)
-    {
+    onTouchCancel: function (event) {
         var pointers = this.pointers;
         var changed = [];
 
-        for (var c = 0; c < event.changedTouches.length; c++)
-        {
+        for (var c = 0; c < event.changedTouches.length; c++) {
             var changedTouch = event.changedTouches[c];
 
-            for (var i = 1; i < pointers.length; i++)
-            {
+            for (var i = 1; i < pointers.length; i++) {
                 var pointer = pointers[i];
 
-                if (pointer.active && pointer.identifier === changedTouch.identifier)
-                {
+                if (pointer.active && pointer.identifier === changedTouch.identifier) {
                     pointer.touchcancel(changedTouch, event);
 
                     changed.push(pointer);
@@ -724,8 +685,7 @@ var InputManager = new Class({
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
-    onMouseDown: function (event)
-    {
+    onMouseDown: function (event) {
         var mousePointer = this.mousePointer;
 
         mousePointer.down(event);
@@ -746,8 +706,7 @@ var InputManager = new Class({
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
-    onMouseMove: function (event)
-    {
+    onMouseMove: function (event) {
         var mousePointer = this.mousePointer;
 
         mousePointer.move(event);
@@ -768,8 +727,7 @@ var InputManager = new Class({
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
-    onMouseUp: function (event)
-    {
+    onMouseUp: function (event) {
         var mousePointer = this.mousePointer;
 
         mousePointer.up(event);
@@ -790,8 +748,7 @@ var InputManager = new Class({
      *
      * @param {WheelEvent} event - The native DOM Wheel event.
      */
-    onMouseWheel: function (event)
-    {
+    onMouseWheel: function (event) {
         var mousePointer = this.mousePointer;
 
         mousePointer.wheel(event);
@@ -811,8 +768,7 @@ var InputManager = new Class({
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
-    onPointerLockChange: function (event)
-    {
+    onPointerLockChange: function (event) {
         var isLocked = this.mouse.locked;
 
         this.mousePointer.locked = isLocked;
@@ -835,24 +791,19 @@ var InputManager = new Class({
      *
      * @return {boolean} `true` if the Game Object should be considered for input, otherwise `false`.
      */
-    inputCandidate: function (gameObject, camera)
-    {
+    inputCandidate: function (gameObject, camera) {
         var input = gameObject.input;
 
-        if (!input || !input.enabled || !gameObject.willRender(camera))
-        {
+        if (!input || !input.enabled || !gameObject.willRender(camera)) {
             return false;
         }
 
         var visible = true;
         var parent = gameObject.parentContainer;
 
-        if (parent)
-        {
-            do
-            {
-                if (!parent.willRender(camera))
-                {
+        if (parent) {
+            do {
+                if (!parent.willRender(camera)) {
                     visible = false;
                     break;
                 }
@@ -885,9 +836,10 @@ var InputManager = new Class({
      *
      * @return {array} An array of the Game Objects that were hit during this hit test.
      */
-    hitTest: function (pointer, gameObjects, camera, output)
-    {
-        if (output === undefined) { output = this._tempHitTest; }
+    hitTest: function (pointer, gameObjects, camera, output) {
+        if (output === undefined) {
+            output = this._tempHitTest;
+        }
 
         var tempPoint = this._tempPoint;
 
@@ -905,38 +857,32 @@ var InputManager = new Class({
         pointer.worldX = tempPoint.x;
         pointer.worldY = tempPoint.y;
 
-        var point = { x: 0, y: 0 };
+        var point = {x: 0, y: 0};
 
         var matrix = this._tempMatrix;
         var parentMatrix = this._tempMatrix2;
 
-        for (var i = 0; i < gameObjects.length; i++)
-        {
+        for (var i = 0; i < gameObjects.length; i++) {
             var gameObject = gameObjects[i];
 
             //  Checks if the Game Object can receive input (isn't being ignored by the camera, invisible, etc)
             //  and also checks all of its parents, if any
-            if (!this.inputCandidate(gameObject, camera))
-            {
+            if (!this.inputCandidate(gameObject, camera)) {
                 continue;
             }
 
             var px = tempPoint.x + (csx * gameObject.scrollFactorX) - csx;
             var py = tempPoint.y + (csy * gameObject.scrollFactorY) - csy;
 
-            if (gameObject.parentContainer)
-            {
+            if (gameObject.parentContainer) {
                 gameObject.getWorldTransformMatrix(matrix, parentMatrix);
 
                 matrix.applyInverse(px, py, point);
-            }
-            else
-            {
+            } else {
                 TransformXY(px, py, gameObject.x, gameObject.y, gameObject.rotation, gameObject.scaleX, gameObject.scaleY, point);
             }
 
-            if (this.pointWithinHitArea(gameObject, point.x, point.y))
-            {
+            if (this.pointWithinHitArea(gameObject, point.x, point.y)) {
                 output.push(gameObject);
             }
         }
@@ -960,23 +906,19 @@ var InputManager = new Class({
      *
      * @return {boolean} `true` if the coordinates were inside the Game Objects hit area, otherwise `false`.
      */
-    pointWithinHitArea: function (gameObject, x, y)
-    {
+    pointWithinHitArea: function (gameObject, x, y) {
         //  Normalize the origin
         x += gameObject.displayOriginX;
         y += gameObject.displayOriginY;
 
         var input = gameObject.input;
 
-        if (input && input.hitAreaCallback(input.hitArea, x, y, gameObject))
-        {
+        if (input && input.hitAreaCallback(input.hitArea, x, y, gameObject)) {
             input.localX = x;
             input.localY = y;
 
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     },
@@ -997,10 +939,8 @@ var InputManager = new Class({
      *
      * @return {boolean} `true` if the coordinates were inside the Game Objects hit area, otherwise `false`.
      */
-    pointWithinInteractiveObject: function (object, x, y)
-    {
-        if (!object.hitArea)
-        {
+    pointWithinInteractiveObject: function (object, x, y) {
+        if (!object.hitArea) {
             return false;
         }
 
@@ -1025,8 +965,7 @@ var InputManager = new Class({
      * @param {number} pageY - The Page Y value.
      * @param {boolean} wasMove - Are we transforming the Pointer from a move event, or an up / down event?
      */
-    transformPointer: function (pointer, pageX, pageY, wasMove)
-    {
+    transformPointer: function (pointer, pageX, pageY, wasMove) {
         var p0 = pointer.position;
         var p1 = pointer.prevPosition;
 
@@ -1040,14 +979,11 @@ var InputManager = new Class({
 
         var a = pointer.smoothFactor;
 
-        if (!wasMove || a === 0)
-        {
+        if (!wasMove || a === 0) {
             //  Set immediately
             p0.x = x;
             p0.y = y;
-        }
-        else
-        {
+        } else {
             //  Apply smoothing
             p0.x = x * a + p1.x * (1 - a);
             p0.y = y * a + p1.y * (1 - a);
@@ -1062,29 +998,24 @@ var InputManager = new Class({
      * @method Phaser.Input.InputManager#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.events.removeAllListeners();
 
         this.game.events.off(GameEvents.PRE_RENDER);
 
-        if (this.keyboard)
-        {
+        if (this.keyboard) {
             this.keyboard.destroy();
         }
 
-        if (this.mouse)
-        {
+        if (this.mouse) {
             this.mouse.destroy();
         }
 
-        if (this.touch)
-        {
+        if (this.touch) {
             this.touch.destroy();
         }
 
-        for (var i = 0; i < this.pointers.length; i++)
-        {
+        for (var i = 0; i < this.pointers.length; i++) {
             this.pointers[i].destroy();
         }
 

@@ -1,8 +1,8 @@
 /**
-* The `Matter.Pairs` module contains methods for creating and manipulating collision pair sets.
-*
-* @class Pairs
-*/
+ * The `Matter.Pairs` module contains methods for creating and manipulating collision pair sets.
+ *
+ * @class Pairs
+ */
 
 var Pairs = {};
 
@@ -11,7 +11,7 @@ module.exports = Pairs;
 var Pair = require('./Pair');
 var Common = require('../core/Common');
 
-(function() {
+(function () {
 
     /**
      * Creates a new pairs structure.
@@ -19,8 +19,8 @@ var Common = require('../core/Common');
      * @param {object} options
      * @return {pairs} A new pairs structure
      */
-    Pairs.create = function(options) {
-        return Common.extend({ 
+    Pairs.create = function (options) {
+        return Common.extend({
             table: {},
             list: [],
             collisionStart: [],
@@ -36,7 +36,7 @@ var Common = require('../core/Common');
      * @param {collision[]} collisions
      * @param {number} timestamp
      */
-    Pairs.update = function(pairs, collisions, timestamp) {
+    Pairs.update = function (pairs, collisions, timestamp) {
         var pairUpdate = Pair.update,
             pairCreate = Pair.create,
             pairSetActive = Pair.setActive,
@@ -89,7 +89,7 @@ var Common = require('../core/Common');
 
         for (i = 0; i < pairsListLength; i++) {
             pair = pairsList[i];
-            
+
             if (pair.timeUpdated >= timestamp) {
                 pairsList[pairsListIndex++] = pair;
             } else {
@@ -125,7 +125,7 @@ var Common = require('../core/Common');
      * @param {pairs} pairs
      * @return {pairs} pairs
      */
-    Pairs.clear = function(pairs) {
+    Pairs.clear = function (pairs) {
         pairs.table = {};
         pairs.list.length = 0;
         pairs.collisionStart.length = 0;

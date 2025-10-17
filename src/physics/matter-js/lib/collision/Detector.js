@@ -1,8 +1,8 @@
 /**
-* The `Matter.Detector` module contains methods for efficiently detecting collisions between a list of bodies using a broadphase algorithm.
-*
-* @class Detector
-*/
+ * The `Matter.Detector` module contains methods for efficiently detecting collisions between a list of bodies using a broadphase algorithm.
+ *
+ * @class Detector
+ */
 
 var Detector = {};
 
@@ -11,7 +11,7 @@ module.exports = Detector;
 var Common = require('../core/Common');
 var Collision = require('./Collision');
 
-(function() {
+(function () {
 
     /**
      * Creates a new collision detector.
@@ -19,7 +19,7 @@ var Collision = require('./Collision');
      * @param {} options
      * @return {detector} A new collision detector
      */
-    Detector.create = function(options) {
+    Detector.create = function (options) {
         var defaults = {
             bodies: [],
             collisions: [],
@@ -35,7 +35,7 @@ var Collision = require('./Collision');
      * @param {detector} detector
      * @param {body[]} bodies
      */
-    Detector.setBodies = function(detector, bodies) {
+    Detector.setBodies = function (detector, bodies) {
         detector.bodies = bodies.slice(0);
     };
 
@@ -44,21 +44,21 @@ var Collision = require('./Collision');
      * @method clear
      * @param {detector} detector
      */
-    Detector.clear = function(detector) {
+    Detector.clear = function (detector) {
         detector.bodies = [];
         detector.collisions = [];
     };
 
     /**
      * Efficiently finds all collisions among all the bodies in `detector.bodies` using a broadphase algorithm.
-     * 
+     *
      * _Note:_ The specific ordering of collisions returned is not guaranteed between releases and may change for performance reasons.
      * If a specific ordering is required then apply a sort to the resulting array.
      * @method collisions
      * @param {detector} detector
      * @return {collision[]} collisions
      */
-    Detector.collisions = function(detector) {
+    Detector.collisions = function (detector) {
         var pairs = detector.pairs,
             bodies = detector.bodies,
             bodiesLength = bodies.length,
@@ -112,7 +112,7 @@ var Collision = require('./Collision');
                 } else {
                     var partsAStart = partsALength > 1 ? 1 : 0,
                         partsBStart = partsBLength > 1 ? 1 : 0;
-                    
+
                     for (var k = partsAStart; k < partsALength; k++) {
                         var partA = bodyA.parts[k],
                             boundsA = partA.bounds;
@@ -151,7 +151,7 @@ var Collision = require('./Collision');
      * @param {} filterB
      * @return {bool} `true` if collision can occur
      */
-    Detector.canCollide = function(filterA, filterB) {
+    Detector.canCollide = function (filterA, filterB) {
         if (filterA.group === filterB.group && filterA.group !== 0)
             return filterA.group > 0;
 
@@ -167,7 +167,7 @@ var Collision = require('./Collision');
      * @param {body} bodyB
      * @return {number} The signed delta used for sorting
      */
-    Detector._compareBoundsX = function(bodyA, bodyB) {
+    Detector._compareBoundsX = function (bodyA, bodyB) {
         return bodyA.bounds.min.x - bodyB.bounds.min.x;
     };
 
@@ -179,7 +179,7 @@ var Collision = require('./Collision');
 
     /**
      * The array of `Matter.Body` between which the detector finds collisions.
-     * 
+     *
      * _Note:_ The order of bodies in this array _is not fixed_ and will be continually managed by the detector.
      * @property bodies
      * @type body[]
@@ -192,7 +192,7 @@ var Collision = require('./Collision');
      * @type collision[]
      * @default []
      */
-     
+
     /**
      * Optional. A `Matter.Pairs` object from which previous collision objects may be reused. Intended for internal `Matter.Engine` usage.
      * @property pairs

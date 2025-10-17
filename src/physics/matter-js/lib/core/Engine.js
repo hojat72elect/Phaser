@@ -1,12 +1,12 @@
 /**
-* The `Matter.Engine` module contains methods for creating and manipulating engines.
-* An engine is a controller that manages updating the simulation of the world.
-* See `Matter.Runner` for an optional game loop utility.
-*
-* See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-*
-* @class Engine
-*/
+ * The `Matter.Engine` module contains methods for creating and manipulating engines.
+ * An engine is a controller that manages updating the simulation of the world.
+ * See `Matter.Runner` for an optional game loop utility.
+ *
+ * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+ *
+ * @class Engine
+ */
 
 var Engine = {};
 
@@ -22,7 +22,7 @@ var Constraint = require('../constraint/Constraint');
 var Common = require('./Common');
 var Body = require('../body/Body');
 
-(function() {
+(function () {
 
     Engine._deltaMax = 1000 / 60;
     /**
@@ -33,7 +33,7 @@ var Body = require('../body/Body');
      * @param {object} [options]
      * @return {engine} engine
      */
-    Engine.create = function(options) {
+    Engine.create = function (options) {
         options = options || {};
 
         var defaults = {
@@ -59,13 +59,13 @@ var Body = require('../body/Body');
 
         var engine = Common.extend(defaults, options);
 
-        engine.world = options.world || Composite.create({ label: 'World' });
+        engine.world = options.world || Composite.create({label: 'World'});
         engine.pairs = options.pairs || Pairs.create();
         engine.detector = options.detector || Detector.create();
         engine.detector.pairs = engine.pairs;
 
         // for temporary back compatibility only
-        engine.grid = { buckets: [] };
+        engine.grid = {buckets: []};
         engine.world.gravity = engine.gravity;
         engine.broadphase = engine.grid;
         engine.metrics = {};
@@ -81,7 +81,7 @@ var Body = require('../body/Body');
      * @param {engine} engine
      * @param {number} [delta=16.666]
      */
-    Engine.update = function(engine, delta) {
+    Engine.update = function (engine, delta) {
         var startTime = Common.now();
 
         var world = engine.world,
@@ -134,7 +134,7 @@ var Body = require('../body/Body');
 
         Engine.wrap(allBodies, allComposites);
         Engine.attractors(allBodies);
-        
+
         // update all body position and rotation by integration
         if (delta > 0) {
             Engine._bodiesUpdate(allBodies, delta);
@@ -227,7 +227,7 @@ var Body = require('../body/Body');
      * @param {engine} engineA
      * @param {engine} engineB
      */
-    Engine.merge = function(engineA, engineB) {
+    Engine.merge = function (engineA, engineB) {
         Common.extend(engineA, engineB);
 
         if (engineB.world) {
@@ -250,7 +250,7 @@ var Body = require('../body/Body');
      * @method clear
      * @param {engine} engine
      */
-    Engine.clear = function(engine) {
+    Engine.clear = function (engine) {
         Pairs.clear(engine.pairs);
         Detector.clear(engine.detector);
     };
@@ -261,7 +261,7 @@ var Body = require('../body/Body');
      * @private
      * @param {body[]} bodies
      */
-    Engine._bodiesClearForces = function(bodies) {
+    Engine._bodiesClearForces = function (bodies) {
         var bodiesLength = bodies.length;
         for (var i = 0; i < bodiesLength; i++) {
             var body = bodies[i];
@@ -280,7 +280,7 @@ var Body = require('../body/Body');
      * @param {body[]} bodies
      * @param {vector} gravity
      */
-    Engine._bodiesApplyGravity = function(bodies, gravity) {
+    Engine._bodiesApplyGravity = function (bodies, gravity) {
         var gravityScale = typeof gravity.scale !== 'undefined' ? gravity.scale : 0.001,
             bodiesLength = bodies.length;
 
@@ -307,7 +307,7 @@ var Body = require('../body/Body');
      * @param {body[]} bodies
      * @param {number} delta The amount of time elapsed between updates
      */
-    Engine._bodiesUpdate = function(bodies, delta) {
+    Engine._bodiesUpdate = function (bodies, delta) {
         var bodiesLength = bodies.length;
 
         for (var i = 0; i < bodiesLength; i++) {
@@ -326,7 +326,7 @@ var Body = require('../body/Body');
      * @private
      * @param {body[]} bodies
      */
-    Engine._bodiesUpdateVelocities = function(bodies) {
+    Engine._bodiesUpdateVelocities = function (bodies) {
         var bodiesLength = bodies.length;
 
         for (var i = 0; i < bodiesLength; i++) {
@@ -340,13 +340,13 @@ var Body = require('../body/Body');
      * @private
      * @param {body[]} bodies
      */
-    Engine.wrap = function(bodies, composites) {
+    Engine.wrap = function (bodies, composites) {
         // wrap bodies within the wrapBounds parameters
         for (var i = 0; i < bodies.length; i += 1) {
             var body = bodies[i];
-    
+
             if (body.wrapBounds !== null) {
-              Body.wrap(body, body.wrapBounds);
+                Body.wrap(body, body.wrapBounds);
             }
         }
 
@@ -367,32 +367,25 @@ var Body = require('../body/Body');
      * @private
      * @param {body[]} bodies
      */
-    Engine.attractors = function(bodies) {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    Engine.attractors = function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             var bodyA = bodies[i];
             var attractors = bodyA.attractors;
 
-            if (attractors && attractors.length > 0)
-            {
-                for (var j = 0; j < bodies.length; j++)
-                {
+            if (attractors && attractors.length > 0) {
+                for (var j = 0; j < bodies.length; j++) {
                     var bodyB = bodies[j];
 
-                    if (i !== j)
-                    {
-                        for (var k = 0; k < attractors.length; k++)
-                        {
+                    if (i !== j) {
+                        for (var k = 0; k < attractors.length; k++) {
                             var attractor = attractors[k];
                             var forceVector = attractor;
 
-                            if (Common.isFunction(attractor))
-                            {
+                            if (Common.isFunction(attractor)) {
                                 forceVector = attractor(bodyA, bodyB);
                             }
 
-                            if (forceVector)
-                            {
+                            if (forceVector) {
                                 Body.applyForce(bodyB, bodyB.position, forceVector);
                             }
                         }
@@ -410,57 +403,57 @@ var Body = require('../body/Body');
      */
 
     /**
-    * Fired just before an update
-    *
-    * @event beforeUpdate
-    * @param {object} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {engine} event.source The source object of the event
-    * @param {string} event.name The name of the event
-    */
+     * Fired just before an update
+     *
+     * @event beforeUpdate
+     * @param {object} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {engine} event.source The source object of the event
+     * @param {string} event.name The name of the event
+     */
 
     /**
-    * Fired after engine update and all collision events
-    *
-    * @event afterUpdate
-    * @param {object} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {engine} event.source The source object of the event
-    * @param {string} event.name The name of the event
-    */
+     * Fired after engine update and all collision events
+     *
+     * @event afterUpdate
+     * @param {object} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {engine} event.source The source object of the event
+     * @param {string} event.name The name of the event
+     */
 
     /**
-    * Fired after engine update, provides a list of all pairs that have started to collide in the current tick (if any)
-    *
-    * @event collisionStart
-    * @param {object} event An event object
-    * @param {pair[]} event.pairs List of affected pairs
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {engine} event.source The source object of the event
-    * @param {string} event.name The name of the event
-    */
+     * Fired after engine update, provides a list of all pairs that have started to collide in the current tick (if any)
+     *
+     * @event collisionStart
+     * @param {object} event An event object
+     * @param {pair[]} event.pairs List of affected pairs
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {engine} event.source The source object of the event
+     * @param {string} event.name The name of the event
+     */
 
     /**
-    * Fired after engine update, provides a list of all pairs that are colliding in the current tick (if any)
-    *
-    * @event collisionActive
-    * @param {object} event An event object
-    * @param {pair[]} event.pairs List of affected pairs
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {engine} event.source The source object of the event
-    * @param {string} event.name The name of the event
-    */
+     * Fired after engine update, provides a list of all pairs that are colliding in the current tick (if any)
+     *
+     * @event collisionActive
+     * @param {object} event An event object
+     * @param {pair[]} event.pairs List of affected pairs
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {engine} event.source The source object of the event
+     * @param {string} event.name The name of the event
+     */
 
     /**
-    * Fired after engine update, provides a list of all pairs that have ended collision in the current tick (if any)
-    *
-    * @event collisionEnd
-    * @param {object} event An event object
-    * @param {pair[]} event.pairs List of affected pairs
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {engine} event.source The source object of the event
-    * @param {string} event.name The name of the event
-    */
+     * Fired after engine update, provides a list of all pairs that have ended collision in the current tick (if any)
+     *
+     * @event collisionEnd
+     * @param {object} event An event object
+     * @param {pair[]} event.pairs List of affected pairs
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {engine} event.source The source object of the event
+     * @param {string} event.name The name of the event
+     */
 
     /*
     *

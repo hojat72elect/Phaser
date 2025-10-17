@@ -24,27 +24,26 @@ var MoveTo = new Class({
 
     initialize:
 
-    function MoveTo (x, y)
-    {
-        /**
-         * Denotes that this Curve does not influence the bounds, points, and drawing of its parent Path. Must be `false` or some methods in the parent Path will throw errors.
-         *
-         * @name Phaser.Curves.MoveTo#active
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.active = false;
+        function MoveTo(x, y) {
+            /**
+             * Denotes that this Curve does not influence the bounds, points, and drawing of its parent Path. Must be `false` or some methods in the parent Path will throw errors.
+             *
+             * @name Phaser.Curves.MoveTo#active
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.active = false;
 
-        /**
-         * The lone point which this curve consists of.
-         *
-         * @name Phaser.Curves.MoveTo#p0
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p0 = new Vector2(x, y);
-    },
+            /**
+             * The lone point which this curve consists of.
+             *
+             * @name Phaser.Curves.MoveTo#p0
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p0 = new Vector2(x, y);
+        },
 
     /**
      * Get point at relative position in curve according to length.
@@ -59,9 +58,10 @@ var MoveTo = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getPoint: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getPoint: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return out.copy(this.p0);
     },
@@ -79,8 +79,7 @@ var MoveTo = new Class({
      *
      * @return {Phaser.Math.Vector2} The modified `out` vector, or a new `Vector2` if none was provided.
      */
-    getPointAt: function (u, out)
-    {
+    getPointAt: function (u, out) {
         return this.getPoint(u, out);
     },
 
@@ -92,8 +91,7 @@ var MoveTo = new Class({
      *
      * @return {number} The resolution of this curve. For a MoveTo the value is always 1.
      */
-    getResolution: function ()
-    {
+    getResolution: function () {
         return 1;
     },
 
@@ -105,8 +103,7 @@ var MoveTo = new Class({
      *
      * @return {number} The length of this curve. For a MoveTo the value is always 0.
      */
-    getLength: function ()
-    {
+    getLength: function () {
         return 0;
     },
 
@@ -118,8 +115,7 @@ var MoveTo = new Class({
      *
      * @return {Phaser.Types.Curves.JSONCurve} A primitive object with the curve's type and only point.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return {
             type: 'MoveTo',
             points: [

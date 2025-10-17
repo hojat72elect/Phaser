@@ -15,8 +15,7 @@
  * @param {Phaser.GameObjects.Mesh} src - The Game Object being rendered in this call.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  */
-var MeshCanvasRenderer = function ()
-{
+var MeshCanvasRenderer = function () {
 };
 
 module.exports = MeshCanvasRenderer;

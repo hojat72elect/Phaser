@@ -31,74 +31,73 @@ var UpdateList = new Class({
 
     initialize:
 
-    function UpdateList (scene)
-    {
-        ProcessQueue.call(this);
+        function UpdateList(scene) {
+            ProcessQueue.call(this);
 
-        //  No duplicates in this list
-        this.checkQueue = true;
+            //  No duplicates in this list
+            this.checkQueue = true;
 
-        /**
-         * The Scene that the Update List belongs to.
-         *
-         * @name Phaser.GameObjects.UpdateList#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * The Scene that the Update List belongs to.
+             *
+             * @name Phaser.GameObjects.UpdateList#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * The Scene's Systems.
-         *
-         * @name Phaser.GameObjects.UpdateList#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * The Scene's Systems.
+             *
+             * @name Phaser.GameObjects.UpdateList#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * The `pending` list is a selection of items which are due to be made 'active' in the next update.
-         *
-         * @name Phaser.GameObjects.UpdateList#_pending
-         * @type {Array.<*>}
-         * @private
-         * @default []
-         * @since 3.20.0
-         */
+            /**
+             * The `pending` list is a selection of items which are due to be made 'active' in the next update.
+             *
+             * @name Phaser.GameObjects.UpdateList#_pending
+             * @type {Array.<*>}
+             * @private
+             * @default []
+             * @since 3.20.0
+             */
 
-        /**
-         * The `active` list is a selection of items which are considered active and should be updated.
-         *
-         * @name Phaser.GameObjects.UpdateList#_active
-         * @type {Array.<*>}
-         * @private
-         * @default []
-         * @since 3.20.0
-         */
+            /**
+             * The `active` list is a selection of items which are considered active and should be updated.
+             *
+             * @name Phaser.GameObjects.UpdateList#_active
+             * @type {Array.<*>}
+             * @private
+             * @default []
+             * @since 3.20.0
+             */
 
-        /**
-         * The `destroy` list is a selection of items that were active and are awaiting being destroyed in the next update.
-         *
-         * @name Phaser.GameObjects.UpdateList#_destroy
-         * @type {Array.<*>}
-         * @private
-         * @default []
-         * @since 3.20.0
-         */
+            /**
+             * The `destroy` list is a selection of items that were active and are awaiting being destroyed in the next update.
+             *
+             * @name Phaser.GameObjects.UpdateList#_destroy
+             * @type {Array.<*>}
+             * @private
+             * @default []
+             * @since 3.20.0
+             */
 
-        /**
-         * The total number of items awaiting processing.
-         *
-         * @name Phaser.GameObjects.UpdateList#_toProcess
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
+            /**
+             * The total number of items awaiting processing.
+             *
+             * @name Phaser.GameObjects.UpdateList#_toProcess
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
 
-        scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-        scene.sys.events.on(SceneEvents.START, this.start, this);
-    },
+            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+            scene.sys.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -108,8 +107,7 @@ var UpdateList = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.systems.events.once(SceneEvents.DESTROY, this.destroy, this);
     },
 
@@ -122,8 +120,7 @@ var UpdateList = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.on(SceneEvents.PRE_UPDATE, this.update, this);
@@ -142,17 +139,14 @@ var UpdateList = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time elapsed since the last frame.
      */
-    sceneUpdate: function (time, delta)
-    {
+    sceneUpdate: function (time, delta) {
         var list = this._active;
         var length = list.length;
 
-        for (var i = 0; i < length; i++)
-        {
+        for (var i = 0; i < length; i++) {
             var gameObject = list[i];
 
-            if (gameObject.active)
-            {
+            if (gameObject.active) {
                 gameObject.preUpdate.call(gameObject, time, delta);
             }
         }
@@ -166,26 +160,22 @@ var UpdateList = new Class({
      * @method Phaser.GameObjects.UpdateList#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var i = this._active.length;
 
-        while (i--)
-        {
+        while (i--) {
             this._active[i].destroy(true);
         }
 
         i = this._pending.length;
 
-        while (i--)
-        {
+        while (i--) {
             this._pending[i].destroy(true);
         }
 
         i = this._destroy.length;
 
-        while (i--)
-        {
+        while (i--) {
             this._destroy[i].destroy(true);
         }
 
@@ -212,8 +202,7 @@ var UpdateList = new Class({
      * @method Phaser.GameObjects.UpdateList#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.systems.events.off(SceneEvents.START, this.start, this);

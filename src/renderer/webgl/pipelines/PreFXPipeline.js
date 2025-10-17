@@ -49,182 +49,178 @@ var PreFXPipeline = new Class({
 
     initialize:
 
-    function PreFXPipeline (config)
-    {
-        var fragShader = GetFastValue(config, 'fragShader', PostFXFS);
-        var vertShader = GetFastValue(config, 'vertShader', SingleQuadVS);
-        var drawShader = GetFastValue(config, 'drawShader', PostFXFS);
+        function PreFXPipeline(config) {
+            var fragShader = GetFastValue(config, 'fragShader', PostFXFS);
+            var vertShader = GetFastValue(config, 'vertShader', SingleQuadVS);
+            var drawShader = GetFastValue(config, 'drawShader', PostFXFS);
 
-        var defaultShaders = [
-            {
-                name: 'DrawSprite',
-                fragShader: SingleQuadFS,
-                vertShader: SingleQuadVS
-            },
-            {
-                name: 'CopySprite',
-                fragShader: fragShader,
-                vertShader: vertShader
-            },
-            {
-                name: 'DrawGame',
-                fragShader: drawShader,
-                vertShader: SingleQuadVS
-            },
-            {
-                name: 'ColorMatrix',
-                fragShader: ColorMatrixFS
+            var defaultShaders = [
+                {
+                    name: 'DrawSprite',
+                    fragShader: SingleQuadFS,
+                    vertShader: SingleQuadVS
+                },
+                {
+                    name: 'CopySprite',
+                    fragShader: fragShader,
+                    vertShader: vertShader
+                },
+                {
+                    name: 'DrawGame',
+                    fragShader: drawShader,
+                    vertShader: SingleQuadVS
+                },
+                {
+                    name: 'ColorMatrix',
+                    fragShader: ColorMatrixFS
+                }
+            ];
+
+            var configShaders = GetFastValue(config, 'shaders', []);
+
+            config.shaders = defaultShaders.concat(configShaders);
+
+            if (!config.vertShader) {
+                config.vertShader = vertShader;
             }
-        ];
 
-        var configShaders = GetFastValue(config, 'shaders', []);
+            config.batchSize = 1;
 
-        config.shaders = defaultShaders.concat(configShaders);
+            MultiPipeline.call(this, config);
 
-        if (!config.vertShader)
-        {
-            config.vertShader = vertShader;
-        }
+            this.isPreFX = true;
 
-        config.batchSize = 1;
+            this.customMainSampler = null;
 
-        MultiPipeline.call(this, config);
+            /**
+             * A reference to the Draw Sprite Shader belonging to this Pipeline.
+             *
+             * This shader is used when the sprite is drawn to this fbo (or to the game if drawToFrame is false)
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#drawSpriteShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @default null
+             * @since 3.60.0
+             */
+            this.drawSpriteShader;
 
-        this.isPreFX = true;
+            /**
+             * A reference to the Copy Shader belonging to this Pipeline.
+             *
+             * This shader is used when you call the `copySprite` method.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#copyShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @default null
+             * @since 3.60.0
+             */
+            this.copyShader;
 
-        this.customMainSampler = null;
+            /**
+             * A reference to the Game Draw Shader belonging to this Pipeline.
+             *
+             * This shader draws the fbo to the game.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#gameShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @default null
+             * @since 3.60.0
+             */
+            this.gameShader;
 
-        /**
-         * A reference to the Draw Sprite Shader belonging to this Pipeline.
-         *
-         * This shader is used when the sprite is drawn to this fbo (or to the game if drawToFrame is false)
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#drawSpriteShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @default null
-         * @since 3.60.0
-         */
-        this.drawSpriteShader;
+            /**
+             * A reference to the Color Matrix Shader belonging to this Pipeline.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#colorMatrixShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @since 3.60.0
+             */
+            this.colorMatrixShader;
 
-        /**
-         * A reference to the Copy Shader belonging to this Pipeline.
-         *
-         * This shader is used when you call the `copySprite` method.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#copyShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @default null
-         * @since 3.60.0
-         */
-        this.copyShader;
+            /**
+             * Raw byte buffer of vertices used specifically during the copySprite method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#quadVertexData
+             * @type {ArrayBuffer}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.quadVertexData;
 
-        /**
-         * A reference to the Game Draw Shader belonging to this Pipeline.
-         *
-         * This shader draws the fbo to the game.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#gameShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @default null
-         * @since 3.60.0
-         */
-        this.gameShader;
+            /**
+             * The WebGLBuffer that holds the quadVertexData.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#quadVertexBuffer
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.quadVertexBuffer;
 
-        /**
-         * A reference to the Color Matrix Shader belonging to this Pipeline.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#colorMatrixShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @since 3.60.0
-         */
-        this.colorMatrixShader;
+            /**
+             * Float32 view of the quad array buffer.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#quadVertexViewF32
+             * @type {Float32Array}
+             * @since 3.60.0
+             */
+            this.quadVertexViewF32;
 
-        /**
-         * Raw byte buffer of vertices used specifically during the copySprite method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#quadVertexData
-         * @type {ArrayBuffer}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.quadVertexData;
+            /**
+             * A temporary Rectangle object re-used internally during sprite drawing.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#spriteBounds
+             * @type {Phaser.Geom.Rectangle}
+             * @private
+             * @since 3.60.0
+             */
+            this.spriteBounds = new Rectangle();
 
-        /**
-         * The WebGLBuffer that holds the quadVertexData.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#quadVertexBuffer
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.quadVertexBuffer;
+            /**
+             * A temporary Rectangle object re-used internally during sprite drawing.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#targetBounds
+             * @type {Phaser.Geom.Rectangle}
+             * @private
+             * @since 3.60.0
+             */
+            this.targetBounds = new Rectangle();
 
-        /**
-         * Float32 view of the quad array buffer.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#quadVertexViewF32
-         * @type {Float32Array}
-         * @since 3.60.0
-         */
-        this.quadVertexViewF32;
+            /**
+             * The full-screen Render Target that the sprite is first drawn to.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#fsTarget
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.60.0
+             */
+            this.fsTarget;
 
-        /**
-         * A temporary Rectangle object re-used internally during sprite drawing.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#spriteBounds
-         * @type {Phaser.Geom.Rectangle}
-         * @private
-         * @since 3.60.0
-         */
-        this.spriteBounds = new Rectangle();
+            /**
+             * The most recent Game Object drawn.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#tempSprite
+             * @type {Phaser.GameObjects.Sprite}
+             * @private
+             * @since 3.60.0
+             */
+            this.tempSprite;
 
-        /**
-         * A temporary Rectangle object re-used internally during sprite drawing.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#targetBounds
-         * @type {Phaser.Geom.Rectangle}
-         * @private
-         * @since 3.60.0
-         */
-        this.targetBounds = new Rectangle();
+            if (this.renderer.isBooted) {
+                this.manager = this.renderer.pipelines;
 
-        /**
-         * The full-screen Render Target that the sprite is first drawn to.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#fsTarget
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.60.0
-         */
-        this.fsTarget;
+                this.boot();
+            }
+        },
 
-        /**
-         * The most recent Game Object drawn.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#tempSprite
-         * @type {Phaser.GameObjects.Sprite}
-         * @private
-         * @since 3.60.0
-         */
-        this.tempSprite;
-
-        if (this.renderer.isBooted)
-        {
-            this.manager = this.renderer.pipelines;
-
-            this.boot();
-        }
-    },
-
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         var shaders = this.shaders;
@@ -267,8 +263,7 @@ var PreFXPipeline = new Class({
      * @param {number} width - The new width of the quad.
      * @param {number} height - The new height of the quad.
      */
-    onResize: function (width, height)
-    {
+    onResize: function (width, height) {
         var vertexViewF32 = this.quadVertexViewF32;
 
         //  vertexBuffer indexes:
@@ -333,8 +328,7 @@ var PreFXPipeline = new Class({
      *
      * @return {boolean} `true` if this method caused the batch to flush, otherwise `false`.
      */
-    batchQuad: function (gameObject, x0, y0, x1, y1, x2, y2, x3, y3, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintBR, tintEffect, texture)
-    {
+    batchQuad: function (gameObject, x0, y0, x1, y1, x2, y2, x3, y3, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintBR, tintEffect, texture) {
         var bx = Math.min(x0, x1, x2, x3);
         var by = Math.min(y0, y1, y2, y3);
         var br = Math.max(x0, x1, x2, x3);
@@ -372,8 +366,7 @@ var PreFXPipeline = new Class({
 
         this.flipProjectionMatrix(true);
 
-        if (gameObject)
-        {
+        if (gameObject) {
             this.onDrawSprite(gameObject, target);
 
             gameObject.preFX.onFX(this);
@@ -442,8 +435,7 @@ var PreFXPipeline = new Class({
      * @param {Phaser.GameObjects.Sprite} gameObject - The Sprite being drawn.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The Render Target the Sprite will be drawn to.
      */
-    onDrawSprite: function ()
-    {
+    onDrawSprite: function () {
     },
 
     /**
@@ -461,8 +453,7 @@ var PreFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target that will be copied to.
      * @param {Phaser.GameObjects.Sprite} gameObject - The Sprite being copied.
      */
-    onCopySprite: function ()
-    {
+    onCopySprite: function () {
     },
 
     /**
@@ -490,18 +481,24 @@ var PreFXPipeline = new Class({
      * @param {Phaser.Display.ColorMatrix} [colorMatrix] - Optional ColorMatrix to use when copying the Sprite.
      * @param {Phaser.Renderer.WebGL.WebGLShader} [shader] - The shader to use to copy the target. Defaults to the `copyShader`.
      */
-    copySprite: function (source, target, clear, clearAlpha, eraseMode, colorMatrix, shader)
-    {
-        if (clear === undefined) { clear = true; }
-        if (clearAlpha === undefined) { clearAlpha = true; }
-        if (eraseMode === undefined) { eraseMode = false; }
-        if (shader === undefined) { shader = this.copyShader; }
+    copySprite: function (source, target, clear, clearAlpha, eraseMode, colorMatrix, shader) {
+        if (clear === undefined) {
+            clear = true;
+        }
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
+        if (eraseMode === undefined) {
+            eraseMode = false;
+        }
+        if (shader === undefined) {
+            shader = this.copyShader;
+        }
 
         var gl = this.gl;
         var sprite = this.tempSprite;
 
-        if (colorMatrix)
-        {
+        if (colorMatrix) {
             shader = this.colorMatrixShader;
         }
 
@@ -520,8 +517,7 @@ var PreFXPipeline = new Class({
 
         this.onCopySprite(source, target, sprite);
 
-        if (colorMatrix)
-        {
+        if (colorMatrix) {
             this.set1fv('uColorMatrix', colorMatrix.getData());
             this.set1f('uAlpha', colorMatrix.alpha);
         }
@@ -529,14 +525,11 @@ var PreFXPipeline = new Class({
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, source.texture.webGLTexture);
 
-        if (source.height > target.height)
-        {
+        if (source.height > target.height) {
             gl.viewport(0, 0, source.width, source.height);
 
             this.setTargetUVs(source, target);
-        }
-        else
-        {
+        } else {
             var diff = target.height - source.height;
 
             gl.viewport(0, diff, source.width, source.height);
@@ -547,15 +540,13 @@ var PreFXPipeline = new Class({
         gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target.texture.webGLTexture, 0);
 
-        if (clear)
-        {
+        if (clear) {
             gl.clearColor(0, 0, 0, Number(!clearAlpha));
 
             gl.clear(gl.COLOR_BUFFER_BIT);
         }
 
-        if (eraseMode)
-        {
+        if (eraseMode) {
             var blendMode = this.renderer.currentBlendMode;
 
             this.renderer.setBlendMode(BlendModes.ERASE);
@@ -564,8 +555,7 @@ var PreFXPipeline = new Class({
         gl.bufferData(gl.ARRAY_BUFFER, this.quadVertexData, gl.STATIC_DRAW);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-        if (eraseMode)
-        {
+        if (eraseMode) {
             this.renderer.setBlendMode(blendMode);
         }
 
@@ -588,8 +578,7 @@ var PreFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
      */
-    copy: function (source, target)
-    {
+    copy: function (source, target) {
         var gl = this.gl;
 
         this.set1i('uMainSampler', 0);
@@ -627,8 +616,7 @@ var PreFXPipeline = new Class({
      * @param {number} [strength=1] - The strength of the blend.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    blendFrames: function (source1, source2, target, strength, clearAlpha)
-    {
+    blendFrames: function (source1, source2, target, strength, clearAlpha) {
         this.manager.blendFrames(source1, source2, target, strength, clearAlpha);
     },
 
@@ -645,8 +633,7 @@ var PreFXPipeline = new Class({
      * @param {number} [strength=1] - The strength of the blend.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    blendFramesAdditive: function (source1, source2, target, strength, clearAlpha)
-    {
+    blendFramesAdditive: function (source1, source2, target, strength, clearAlpha) {
         this.manager.blendFramesAdditive(source1, source2, target, strength, clearAlpha);
     },
 
@@ -664,8 +651,7 @@ var PreFXPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw to the game.
      */
-    drawToGame: function (source)
-    {
+    drawToGame: function (source) {
         this.currentShader = null;
 
         this.setShader(this.copyShader);
@@ -689,8 +675,7 @@ var PreFXPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to copy to the game.
      */
-    copyToGame: function (source)
-    {
+    copyToGame: function (source) {
         this.currentShader = null;
 
         this.setShader(this.gameShader);
@@ -713,19 +698,15 @@ var PreFXPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw to the game.
      */
-    bindAndDraw: function (source)
-    {
+    bindAndDraw: function (source) {
         var gl = this.gl;
         var renderer = this.renderer;
 
         this.set1i('uMainSampler', 0);
 
-        if (this.customMainSampler)
-        {
+        if (this.customMainSampler) {
             this.setTexture2D(this.customMainSampler);
-        }
-        else
-        {
+        } else {
             this.setTexture2D(source.texture);
         }
 
@@ -765,8 +746,7 @@ var PreFXPipeline = new Class({
 
         renderer.restoreFramebuffer(false, true);
 
-        if (!renderer.currentFramebuffer)
-        {
+        if (!renderer.currentFramebuffer) {
             gl.viewport(0, 0, renderer.width, renderer.height);
         }
 
@@ -799,8 +779,7 @@ var PreFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} [swapTarget] - The Swap Render Target, useful for double-buffer effects.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [altSwapTarget] - The Swap Render Target, useful for double-buffer effects.
      */
-    onDraw: function (target)
-    {
+    onDraw: function (target) {
         this.drawToGame(target);
     },
 
@@ -821,8 +800,7 @@ var PreFXPipeline = new Class({
      * @param {number} uD - The u value of vertex D.
      * @param {number} vD - The v value of vertex D.
      */
-    setUVs: function (uA, vA, uB, vB, uC, vC, uD, vD)
-    {
+    setUVs: function (uA, vA, uB, vB, uC, vC, uD, vD) {
         var vertexViewF32 = this.quadVertexViewF32;
 
         vertexViewF32[2] = uA;
@@ -856,16 +834,12 @@ var PreFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
      */
-    setTargetUVs: function (source, target)
-    {
+    setTargetUVs: function (source, target) {
         var diff = (target.height / source.height);
 
-        if (diff > 0.5)
-        {
+        if (diff > 0.5) {
             diff = 0.5 - (diff - 0.5);
-        }
-        else
-        {
+        } else {
             diff = 0.5 + (0.5 - diff);
         }
 
@@ -880,8 +854,7 @@ var PreFXPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.PreFXPipeline#resetUVs
      * @since 3.60.0
      */
-    resetUVs: function ()
-    {
+    resetUVs: function () {
         this.setUVs(0, 0, 0, 1, 1, 1, 1, 0);
     },
 
@@ -894,8 +867,7 @@ var PreFXPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.renderer.deleteBuffer(this.quadVertexBuffer);
 
         this.drawSpriteShader = null;

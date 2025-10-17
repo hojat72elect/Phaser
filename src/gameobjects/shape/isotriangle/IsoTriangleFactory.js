@@ -41,7 +41,6 @@ var IsoTriangle = require('./IsoTriangle');
  *
  * @return {Phaser.GameObjects.IsoTriangle} The Game Object that was created.
  */
-GameObjectFactory.register('isotriangle', function (x, y, size, height, reversed, fillTop, fillLeft, fillRight)
-{
+GameObjectFactory.register('isotriangle', function (x, y, size, height, reversed, fillTop, fillLeft, fillRight) {
     return this.displayList.add(new IsoTriangle(this.scene, x, y, size, height, reversed, fillTop, fillLeft, fillRight));
 });

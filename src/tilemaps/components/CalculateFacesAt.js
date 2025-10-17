@@ -18,8 +18,7 @@ var GetTileAt = require('./GetTileAt');
  * @param {number} tileY - The y coordinate.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var CalculateFacesAt = function (tileX, tileY, layer)
-{
+var CalculateFacesAt = function (tileX, tileY, layer) {
     var tile = GetTileAt(tileX, tileY, true, layer);
     var above = GetTileAt(tileX, tileY - 1, true, layer);
     var below = GetTileAt(tileX, tileY + 1, true, layer);
@@ -28,8 +27,7 @@ var CalculateFacesAt = function (tileX, tileY, layer)
     var tileCollides = tile && tile.collides;
 
     // Assume the changed tile has all interesting edges
-    if (tileCollides)
-    {
+    if (tileCollides) {
         tile.faceTop = true;
         tile.faceBottom = true;
         tile.faceLeft = true;
@@ -37,48 +35,39 @@ var CalculateFacesAt = function (tileX, tileY, layer)
     }
 
     // Reset edges that are shared between tile and its neighbors
-    if (above && above.collides)
-    {
-        if (tileCollides)
-        {
+    if (above && above.collides) {
+        if (tileCollides) {
             tile.faceTop = false;
         }
 
         above.faceBottom = !tileCollides;
     }
 
-    if (below && below.collides)
-    {
-        if (tileCollides)
-        {
+    if (below && below.collides) {
+        if (tileCollides) {
             tile.faceBottom = false;
         }
 
         below.faceTop = !tileCollides;
     }
 
-    if (left && left.collides)
-    {
-        if (tileCollides)
-        {
+    if (left && left.collides) {
+        if (tileCollides) {
             tile.faceLeft = false;
         }
 
         left.faceRight = !tileCollides;
     }
 
-    if (right && right.collides)
-    {
-        if (tileCollides)
-        {
+    if (right && right.collides) {
+        if (tileCollides) {
             tile.faceRight = false;
         }
 
         right.faceLeft = !tileCollides;
     }
 
-    if (tile && !tile.collides)
-    {
+    if (tile && !tile.collides) {
         tile.resetFaces();
     }
 

@@ -37,38 +37,36 @@ var SVGFile = new Class({
 
     initialize:
 
-    function SVGFile (loader, key, url, svgConfig, xhrSettings)
-    {
-        var extension = 'svg';
+        function SVGFile(loader, key, url, svgConfig, xhrSettings) {
+            var extension = 'svg';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            svgConfig = GetFastValue(config, 'svgConfig', {});
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
-
-        var fileConfig = {
-            type: 'svg',
-            cache: loader.textureManager,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: {
-                width: GetFastValue(svgConfig, 'width'),
-                height: GetFastValue(svgConfig, 'height'),
-                scale: GetFastValue(svgConfig, 'scale')
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                svgConfig = GetFastValue(config, 'svgConfig', {});
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
             }
-        };
 
-        File.call(this, loader, fileConfig);
-    },
+            var fileConfig = {
+                type: 'svg',
+                cache: loader.textureManager,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: {
+                    width: GetFastValue(svgConfig, 'width'),
+                    height: GetFastValue(svgConfig, 'height'),
+                    scale: GetFastValue(svgConfig, 'scale')
+                }
+            };
+
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -77,18 +75,16 @@ var SVGFile = new Class({
      * @method Phaser.Loader.FileTypes.SVGFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         var text = this.xhrLoader.responseText;
-        var svg = [ text ];
+        var svg = [text];
         var width = this.config.width;
         var height = this.config.height;
         var scale = this.config.scale;
 
-        resize: if (width && height || scale)
-        {
+        resize: if (width && height || scale) {
             var xml = null;
             var parser = new DOMParser();
             xml = parser.parseFromString(text, 'text/xml');
@@ -98,13 +94,10 @@ var SVGFile = new Class({
             var svgWidth = parseFloat(svgXML.getAttribute('width'));
             var svgHeight = parseFloat(svgXML.getAttribute('height'));
 
-            if (!hasViewBox && svgWidth && svgHeight)
-            {
+            if (!hasViewBox && svgWidth && svgHeight) {
                 //  If there's no viewBox attribute, set one
                 svgXML.setAttribute('viewBox', '0  0 ' + svgWidth + ' ' + svgHeight);
-            }
-            else if (hasViewBox && !svgWidth && !svgHeight)
-            {
+            } else if (hasViewBox && !svgWidth && !svgHeight) {
                 //  Get the w/h from the viewbox
                 var viewBox = svgXML.getAttribute('viewBox').split(/\s+|,/);
 
@@ -112,15 +105,11 @@ var SVGFile = new Class({
                 svgHeight = viewBox[3];
             }
 
-            if (scale)
-            {
-                if (svgWidth && svgHeight)
-                {
+            if (scale) {
+                if (svgWidth && svgHeight) {
                     width = svgWidth * scale;
                     height = svgHeight * scale;
-                }
-                else
-                {
+                } else {
                     break resize;
                 }
             }
@@ -128,15 +117,12 @@ var SVGFile = new Class({
             svgXML.setAttribute('width', width.toString() + 'px');
             svgXML.setAttribute('height', height.toString() + 'px');
 
-            svg = [ (new XMLSerializer()).serializeToString(svgXML) ];
+            svg = [(new XMLSerializer()).serializeToString(svgXML)];
         }
 
-        try
-        {
-            var blob = new window.Blob(svg, { type: 'image/svg+xml;charset=utf-8' });
-        }
-        catch (e)
-        {
+        try {
+            var blob = new window.Blob(svg, {type: 'image/svg+xml;charset=utf-8'});
+        } catch (e) {
             this.onProcessError();
 
             return;
@@ -149,29 +135,23 @@ var SVGFile = new Class({
         var _this = this;
         var retry = false;
 
-        this.data.onload = function ()
-        {
-            if (!retry)
-            {
+        this.data.onload = function () {
+            if (!retry) {
                 File.revokeObjectURL(_this.data);
             }
 
             _this.onProcessComplete();
         };
 
-        this.data.onerror = function ()
-        {
+        this.data.onerror = function () {
             //  Safari 8 re-try
-            if (!retry)
-            {
+            if (!retry) {
                 retry = true;
 
                 File.revokeObjectURL(_this.data);
 
                 _this.data.src = 'data:image/svg+xml,' + encodeURIComponent(svg.join(''));
-            }
-            else
-            {
+            } else {
                 _this.onProcessError();
             }
         };
@@ -185,8 +165,7 @@ var SVGFile = new Class({
      * @method Phaser.Loader.FileTypes.SVGFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
+    addToCache: function () {
         this.cache.addImage(this.key, this.data);
     }
 
@@ -309,18 +288,13 @@ var SVGFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('svg', function (key, url, svgConfig, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('svg', function (key, url, svgConfig, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new SVGFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new SVGFile(this, key, url, svgConfig, xhrSettings));
     }
 

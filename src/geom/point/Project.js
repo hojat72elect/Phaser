@@ -22,15 +22,15 @@ var GetMagnitudeSq = require('./GetMagnitudeSq');
  *
  * @return {Phaser.Geom.Point} A Point object holding the coordinates of the vector projection of `pointA` onto `pointB`.
  */
-var Project = function (pointA, pointB, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Project = function (pointA, pointB, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var dot = ((pointA.x * pointB.x) + (pointA.y * pointB.y));
     var amt = dot / GetMagnitudeSq(pointB);
 
-    if (amt !== 0)
-    {
+    if (amt !== 0) {
         out.x = amt * pointB.x;
         out.y = amt * pointB.y;
     }

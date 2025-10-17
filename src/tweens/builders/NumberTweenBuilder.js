@@ -28,21 +28,16 @@ var Tween = require('../tween/Tween');
  *
  * @return {Phaser.Tweens.Tween} The new tween.
  */
-var NumberTweenBuilder = function (parent, config, defaults)
-{
-    if (config instanceof Tween)
-    {
+var NumberTweenBuilder = function (parent, config, defaults) {
+    if (config instanceof Tween) {
         config.parent = parent;
 
         return config;
     }
 
-    if (defaults === undefined)
-    {
+    if (defaults === undefined) {
         defaults = Defaults;
-    }
-    else
-    {
+    } else {
         defaults = MergeRight(Defaults, defaults);
     }
 
@@ -59,7 +54,7 @@ var NumberTweenBuilder = function (parent, config, defaults)
     var from = GetFastValue(config, 'from', 0);
     var to = GetFastValue(config, 'to', 1);
 
-    var targets = [ { value: from } ];
+    var targets = [{value: from}];
 
     var delay = GetFastValue(config, 'delay', defaults.delay);
     var easeParams = GetFastValue(config, 'easeParams', defaults.easeParams);
@@ -101,14 +96,12 @@ var NumberTweenBuilder = function (parent, config, defaults)
 
     var callbacks = BaseTween.TYPES;
 
-    for (var i = 0; i < callbacks.length; i++)
-    {
+    for (var i = 0; i < callbacks.length; i++) {
         var type = callbacks[i];
 
         var callback = GetValue(config, type, false);
 
-        if (callback)
-        {
+        if (callback) {
             var callbackParams = GetValue(config, type + 'Params', []);
 
             tween.setCallback(type, callback, callbackParams);

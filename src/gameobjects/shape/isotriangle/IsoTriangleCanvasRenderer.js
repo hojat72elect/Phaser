@@ -21,14 +21,12 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var IsoTriangleCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var IsoTriangleCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var ctx = renderer.currentContext;
 
-    if (SetTransform(renderer, ctx, src, camera, parentMatrix) && src.isFilled)
-    {
+    if (SetTransform(renderer, ctx, src, camera, parentMatrix) && src.isFilled) {
         var size = src.width;
         var height = src.height;
 
@@ -39,8 +37,7 @@ var IsoTriangleCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Top Face
 
-        if (src.showTop && reversed)
-        {
+        if (src.showTop && reversed) {
             FillStyleCanvas(ctx, src, src.fillTop);
 
             ctx.beginPath();
@@ -55,20 +52,16 @@ var IsoTriangleCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Left Face
 
-        if (src.showLeft)
-        {
+        if (src.showLeft) {
             FillStyleCanvas(ctx, src, src.fillLeft);
 
             ctx.beginPath();
 
-            if (reversed)
-            {
+            if (reversed) {
                 ctx.moveTo(-sizeA, -height);
                 ctx.lineTo(0, sizeB);
                 ctx.lineTo(0, sizeB - height);
-            }
-            else
-            {
+            } else {
                 ctx.moveTo(-sizeA, 0);
                 ctx.lineTo(0, sizeB);
                 ctx.lineTo(0, sizeB - height);
@@ -79,20 +72,16 @@ var IsoTriangleCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Right Face
 
-        if (src.showRight)
-        {
+        if (src.showRight) {
             FillStyleCanvas(ctx, src, src.fillRight);
 
             ctx.beginPath();
 
-            if (reversed)
-            {
+            if (reversed) {
                 ctx.moveTo(sizeA, -height);
                 ctx.lineTo(0, sizeB);
                 ctx.lineTo(0, sizeB - height);
-            }
-            else
-            {
+            } else {
                 ctx.moveTo(sizeA, 0);
                 ctx.lineTo(0, sizeB);
                 ctx.lineTo(0, sizeB - height);

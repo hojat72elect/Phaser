@@ -490,14 +490,14 @@ declare namespace MatterJS {
          */
         visible?: boolean;
 
-		/**
+        /**
          * Sets the opacity. 1.0 is fully opaque. 0.0 is fully translucent.
          *
          * @property opacity
          * @type number
          * @default 1
-		 */
-		opacity?: number;
+         */
+        opacity?: number;
 
         /**
          * An `Object` that defines the sprite properties to use when rendering, if any.
@@ -983,7 +983,8 @@ declare namespace MatterJS {
 
     }
 
-    interface IGridDefinition {}
+    interface IGridDefinition {
+    }
 
     interface IPair {
 
@@ -1432,8 +1433,8 @@ declare namespace MatterJS {
         angle: number;
 
         /**
-        * A `Number` specifying the delta time, in ms, since the last game step
-        */
+         * A `Number` specifying the delta time, in ms, since the last game step
+         */
         deltaTime: number;
 
         /**
@@ -1983,7 +1984,7 @@ declare namespace MatterJS {
      * @method use
      * @param ...plugin {Function} The plugin(s) to install on `base` (multi-argument).
      */
-    function use (...plugins: (Plugin | string)[]): void;
+    function use(...plugins: (Plugin | string)[]): void;
 
     /**
      * The `Matter.Axes` module contains methods for creating and manipulating sets of axes.
@@ -1998,7 +1999,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {axes} A new axes from the given vertices
          */
-        static fromVertices (vertices: Array<Vector>): Array<Vector>;
+        static fromVertices(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Rotates a set of axes by the given angle.
@@ -2006,7 +2007,7 @@ declare namespace MatterJS {
          * @param {axes} axes
          * @param {number} angle
          */
-        static rotate (axes: Array<Vector>, angle: number): void;
+        static rotate(axes: Array<Vector>, angle: number): void;
 
     }
 
@@ -2018,7 +2019,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {axes} A new axes from the given vertices
          */
-        fromVertices (vertices: Array<Vector>): Array<Vector>;
+        fromVertices(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Rotates a set of axes by the given angle.
@@ -2026,7 +2027,7 @@ declare namespace MatterJS {
          * @param {axes} axes
          * @param {number} angle
          */
-        rotate (axes: Array<Vector>, angle: number): void;
+        rotate(axes: Array<Vector>, angle: number): void;
 
     }
 
@@ -2050,7 +2051,7 @@ declare namespace MatterJS {
          * @param {number} [maxSides]
          * @return {body} A new circle body
          */
-        static circle (x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number): BodyType;
+        static circle(x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number): BodyType;
 
         /**
          * Creates a new rigid body model with a regular polygon hull with the given number of sides.
@@ -2064,7 +2065,7 @@ declare namespace MatterJS {
          * @param {object} [options]
          * @return {body} A new regular polygon body
          */
-        static polygon (x: number, y: number, sides: number, radius: number, options?: IChamferableBodyDefinition): BodyType;
+        static polygon(x: number, y: number, sides: number, radius: number, options?: IChamferableBodyDefinition): BodyType;
 
         /**
          * Creates a new rigid body model with a rectangle hull.
@@ -2078,7 +2079,7 @@ declare namespace MatterJS {
          * @param {object} [options]
          * @return {body} A new rectangle body
          */
-        static rectangle (x: number, y: number, width: number, height: number, options?: IChamferableBodyDefinition): BodyType;
+        static rectangle(x: number, y: number, width: number, height: number, options?: IChamferableBodyDefinition): BodyType;
 
         /**
          * Creates a new rigid body model with a trapezoid hull.
@@ -2094,7 +2095,7 @@ declare namespace MatterJS {
          * @param {object} [options]
          * @return {body} A new trapezoid body
          */
-        static trapezoid (x: number, y: number, width: number, height: number, slope: number, options?: IChamferableBodyDefinition): BodyType;
+        static trapezoid(x: number, y: number, width: number, height: number, slope: number, options?: IChamferableBodyDefinition): BodyType;
 
         /**
          * Creates a body using the supplied vertices (or an array containing multiple sets of vertices).
@@ -2116,7 +2117,7 @@ declare namespace MatterJS {
          * @param {number} [minimumArea=10]
          * @return {body}
          */
-        static fromVertices (x: number, y: number, vertexSets: Array<Array<Vector>>, options?: IBodyDefinition, flagInternal?: boolean, removeCollinear?: number, minimumArea?: number): BodyType;
+        static fromVertices(x: number, y: number, vertexSets: Array<Array<Vector>>, options?: IBodyDefinition, flagInternal?: boolean, removeCollinear?: number, minimumArea?: number): BodyType;
 
         /**
          * Takes an array of Body objects and flags all internal edges (coincident parts) based on the maxDistance
@@ -2127,7 +2128,7 @@ declare namespace MatterJS {
          * @param {number} [maxDistance=5]
          * @return {body[]} The modified `parts` parameter.
          */
-        static flagCoincidentParts (parts: Array<BodyType>, maxDistance?: number): Array<BodyType>;
+        static flagCoincidentParts(parts: Array<BodyType>, maxDistance?: number): Array<BodyType>;
     }
 
     class BodiesFactory {
@@ -2144,7 +2145,7 @@ declare namespace MatterJS {
          * @param {number} [maxSides]
          * @return {body} A new circle body
          */
-        circle (x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number): BodyType;
+        circle(x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number): BodyType;
 
         /**
          * Creates a new rigid body model with a regular polygon hull with the given number of sides.
@@ -2158,7 +2159,7 @@ declare namespace MatterJS {
          * @param {object} [options]
          * @return {body} A new regular polygon body
          */
-        polygon (x: number, y: number, sides: number, radius: number, options?: IChamferableBodyDefinition): BodyType;
+        polygon(x: number, y: number, sides: number, radius: number, options?: IChamferableBodyDefinition): BodyType;
 
         /**
          * Creates a new rigid body model with a rectangle hull.
@@ -2172,7 +2173,7 @@ declare namespace MatterJS {
          * @param {object} [options]
          * @return {body} A new rectangle body
          */
-        rectangle (x: number, y: number, width: number, height: number, options?: IChamferableBodyDefinition): BodyType;
+        rectangle(x: number, y: number, width: number, height: number, options?: IChamferableBodyDefinition): BodyType;
 
         /**
          * Creates a new rigid body model with a trapezoid hull.
@@ -2188,7 +2189,7 @@ declare namespace MatterJS {
          * @param {object} [options]
          * @return {body} A new trapezoid body
          */
-        trapezoid (x: number, y: number, width: number, height: number, slope: number, options?: IChamferableBodyDefinition): BodyType;
+        trapezoid(x: number, y: number, width: number, height: number, slope: number, options?: IChamferableBodyDefinition): BodyType;
 
         /**
          * Creates a body using the supplied vertices (or an array containing multiple sets of vertices).
@@ -2210,7 +2211,7 @@ declare namespace MatterJS {
          * @param {number} [minimumArea=10]
          * @return {body}
          */
-        fromVertices (x: number, y: number, vertexSets: Array<Array<Vector>>, options?: IBodyDefinition, flagInternal?: boolean, removeCollinear?: number, minimumArea?: number): BodyType;
+        fromVertices(x: number, y: number, vertexSets: Array<Array<Vector>>, options?: IBodyDefinition, flagInternal?: boolean, removeCollinear?: number, minimumArea?: number): BodyType;
 
         /**
          * Takes an array of Body objects and flags all internal edges (coincident parts) based on the maxDistance
@@ -2221,7 +2222,7 @@ declare namespace MatterJS {
          * @param {number} [maxDistance=5]
          * @return {body[]} The modified `parts` parameter.
          */
-        flagCoincidentParts (parts: Array<BodyType>, maxDistance?: number): Array<BodyType>;
+        flagCoincidentParts(parts: Array<BodyType>, maxDistance?: number): Array<BodyType>;
 
     }
 
@@ -2243,14 +2244,14 @@ declare namespace MatterJS {
          * @param {vector} position
          * @param {vector} force
          */
-        static applyForce (body: BodyType, position: Vector, force: Vector): void;
+        static applyForce(body: BodyType, position: Vector, force: Vector): void;
 
         /**
          * Updates properties `body.velocity`, `body.speed`, `body.angularVelocity` and `body.angularSpeed` which are normalised in relation to `Body._baseDelta`.
          * @method updateVelocities
          * @param {body} body
          */
-        static updateVelocities (body: BodyType): void;
+        static updateVelocities(body: BodyType): void;
 
         /**
          * Creates a new rigid body model. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -2260,7 +2261,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {body} body
          */
-        static create (options: IChamferableBodyDefinition): Body;
+        static create(options: IChamferableBodyDefinition): Body;
 
         /**
          * Rotates a body by a given angle relative to its current angle, without imparting any angular velocity.
@@ -2269,7 +2270,7 @@ declare namespace MatterJS {
          * @param {number} rotation
          * @param {boolean} [updateVelocity=false]
          */
-        static rotate (body: BodyType, rotation: number, updateVelocity?: boolean): void;
+        static rotate(body: BodyType, rotation: number, updateVelocity?: boolean): void;
 
         /**
          * Returns the next unique group index for which bodies will collide.
@@ -2279,7 +2280,7 @@ declare namespace MatterJS {
          * @param {bool} [isNonColliding=false]
          * @return {Number} Unique group index
          */
-        static nextGroup (isNonColliding: boolean): number;
+        static nextGroup(isNonColliding: boolean): number;
 
         /**
          * Returns the next unique category bitfield (starting after the initial default category `0x0001`).
@@ -2287,7 +2288,7 @@ declare namespace MatterJS {
          * @method nextCategory
          * @return {Number} Unique category bitfield
          */
-        static nextCategory (): number;
+        static nextCategory(): number;
 
         /**
          * Given a property and a value (or map of), sets the property(s) on the body, using the appropriate setter functions if they exist.
@@ -2297,7 +2298,7 @@ declare namespace MatterJS {
          * @param {} settings A property name (or map of properties and values) to set on the body.
          * @param {} value The value to set if `settings` is a single property name.
          */
-        static set (body: BodyType, settings: any, value?: any): void;
+        static set(body: BodyType, settings: any, value?: any): void;
 
         /**
          * Sets the mass of the body. Inverse mass and density are automatically updated to reflect the change.
@@ -2305,7 +2306,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} mass
          */
-        static setMass (body: BodyType, mass: number): void;
+        static setMass(body: BodyType, mass: number): void;
 
         /**
          * Sets the density of the body. Mass is automatically updated to reflect the change.
@@ -2313,7 +2314,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} density
          */
-        static setDensity (body: BodyType, density: number): void;
+        static setDensity(body: BodyType, density: number): void;
 
         /**
          * Sets the moment of inertia (i.e. second moment of area) of the body of the body.
@@ -2322,7 +2323,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} inertia
          */
-        static setInertia (body: BodyType, inertia: number): void;
+        static setInertia(body: BodyType, inertia: number): void;
 
         /**
          * Sets the body's vertices and updates body properties accordingly, including inertia, area and mass (with respect to `body.density`).
@@ -2336,7 +2337,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {vector[]} vertices
          */
-        static setVertices (body: BodyType, vertices: Array<Vector>): void;
+        static setVertices(body: BodyType, vertices: Array<Vector>): void;
 
         /**
          * Sets the parts of the `body` and updates mass, inertia and centroid.
@@ -2348,7 +2349,7 @@ declare namespace MatterJS {
          * @param {body[]} parts
          * @param {bool} [autoHull=true]
          */
-        static setParts (body: BodyType, parts: BodyType[], autoHull?: boolean): void;
+        static setParts(body: BodyType, parts: BodyType[], autoHull?: boolean): void;
 
         /**
          * Set the centre of mass of the body.
@@ -2361,7 +2362,7 @@ declare namespace MatterJS {
          * @param {vector} centre
          * @param {bool} relative
          */
-        static setCentre (body: BodyType, centre: Vector, relative: boolean): void;
+        static setCentre(body: BodyType, centre: Vector, relative: boolean): void;
 
         /**
          * Sets the position of the body instantly. Velocity, angle, force etc. are unchanged.
@@ -2370,7 +2371,7 @@ declare namespace MatterJS {
          * @param {vector} position
          * @param {boolean} [updateVelocity=false]
          */
-        static setPosition (body: BodyType, position: Vector, updateVelocity?: boolean): void;
+        static setPosition(body: BodyType, position: Vector, updateVelocity?: boolean): void;
 
         /**
          * Sets the angle of the body instantly. Angular velocity, position, force etc. are unchanged.
@@ -2379,7 +2380,7 @@ declare namespace MatterJS {
          * @param {number} angle
          * @param {boolean} [updateVelocity=false]
          */
-        static setAngle (body: BodyType, angle: number, updateVelocity?: boolean): void;
+        static setAngle(body: BodyType, angle: number, updateVelocity?: boolean): void;
 
         /**
          * Sets the linear velocity of the body instantly. Position, angle, force etc. are unchanged. See also `Body.applyForce`.
@@ -2387,7 +2388,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {vector} velocity
          */
-        static setVelocity (body: BodyType, velocity: Vector): void;
+        static setVelocity(body: BodyType, velocity: Vector): void;
 
         /**
          * Sets the angular velocity of the body instantly. Position, angle, force etc. are unchanged. See also `Body.applyForce`.
@@ -2395,7 +2396,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} velocity
          */
-        static setAngularVelocity (body: BodyType, velocity: number): void;
+        static setAngularVelocity(body: BodyType, velocity: number): void;
 
         /**
          * Sets the body as static, including isStatic flag and setting mass and inertia to Infinity.
@@ -2403,7 +2404,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {bool} isStatic
          */
-        static setStatic (body: BodyType, isStatic: boolean): void;
+        static setStatic(body: BodyType, isStatic: boolean): void;
 
         /**
          * Scales the body, including updating physical properties (mass, area, axes, inertia), from a world-space point (default is body centre).
@@ -2413,7 +2414,7 @@ declare namespace MatterJS {
          * @param {number} scaleY
          * @param {vector} [point]
          */
-        static scale (body: BodyType, scaleX: number, scaleY: number, point?: Vector): void;
+        static scale(body: BodyType, scaleX: number, scaleY: number, point?: Vector): void;
 
         /**
          * Moves a body by a given vector relative to its current position, without imparting any velocity.
@@ -2422,7 +2423,7 @@ declare namespace MatterJS {
          * @param {vector} translation
          * @param {boolean} [updateVelocity=false]
          */
-        static translate (body: BodyType, translation: Vector, updateVelocity?: boolean): void;
+        static translate(body: BodyType, translation: Vector, updateVelocity?: boolean): void;
 
         /**
          * Performs a simulation step for the given `body`, including updating position and angle using Verlet integration.
@@ -2430,7 +2431,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} deltaTime
          */
-        static update (body: BodyType, deltaTime: number): void;
+        static update(body: BodyType, deltaTime: number): void;
 
         /**
          * Gets the current linear speed of the body.
@@ -2439,7 +2440,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {number} speed
          */
-        static getSpeed (body: BodyType): number;
+        static getSpeed(body: BodyType): number;
 
         /**
          * Sets the current linear speed of the body.
@@ -2448,7 +2449,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} speed
          */
-        static setSpeed (body: BodyType, speed: number): void;
+        static setSpeed(body: BodyType, speed: number): void;
 
         /**
          * Gets the current rotational velocity of the body.
@@ -2456,7 +2457,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {number} angular velocity
          */
-        static getAngularVelocity (body: BodyType): number;
+        static getAngularVelocity(body: BodyType): number;
 
         /**
          * Gets the current rotational velocity of the body.
@@ -2464,7 +2465,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {number} angular velocity
          */
-        static getAngularSpeed (body: BodyType): number;
+        static getAngularSpeed(body: BodyType): number;
 
         /**
          * Sets the angular velocity of the body instantly. Position, angle, force etc. are unchanged. See also `Body.applyForce`.
@@ -2472,7 +2473,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} velocity
          */
-        static setAngularSpeed (body: BodyType, velocity: number): void;
+        static setAngularSpeed(body: BodyType, velocity: number): void;
     }
 
     class BodyFactory {
@@ -2484,14 +2485,14 @@ declare namespace MatterJS {
          * @param {vector} position
          * @param {vector} force
          */
-        applyForce (body: BodyType, position: Vector, force: Vector): void;
+        applyForce(body: BodyType, position: Vector, force: Vector): void;
 
         /**
          * Updates properties `body.velocity`, `body.speed`, `body.angularVelocity` and `body.angularSpeed` which are normalised in relation to `Body._baseDelta`.
          * @method updateVelocities
          * @param {body} body
          */
-        updateVelocities (body: BodyType): void;
+        updateVelocities(body: BodyType): void;
 
         /**
          * Creates a new rigid body model. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -2501,7 +2502,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {body} body
          */
-        create (options: IChamferableBodyDefinition): BodyType;
+        create(options: IChamferableBodyDefinition): BodyType;
 
         /**
          * Rotates a body by a given angle relative to its current angle, without imparting any angular velocity.
@@ -2510,7 +2511,7 @@ declare namespace MatterJS {
          * @param {number} rotation
          * @param {boolean} [updateVelocity=false]
          */
-        rotate (body: BodyType, rotation: number, updateVelocity?: boolean): void;
+        rotate(body: BodyType, rotation: number, updateVelocity?: boolean): void;
 
         /**
          * Returns the next unique group index for which bodies will collide.
@@ -2520,7 +2521,7 @@ declare namespace MatterJS {
          * @param {bool} [isNonColliding=false]
          * @return {Number} Unique group index
          */
-        nextGroup (isNonColliding: boolean): number;
+        nextGroup(isNonColliding: boolean): number;
 
         /**
          * Returns the next unique category bitfield (starting after the initial default category `0x0001`).
@@ -2528,7 +2529,7 @@ declare namespace MatterJS {
          * @method nextCategory
          * @return {Number} Unique category bitfield
          */
-        nextCategory (): number;
+        nextCategory(): number;
 
         /**
          * Given a property and a value (or map of), sets the property(s) on the body, using the appropriate setter functions if they exist.
@@ -2538,7 +2539,7 @@ declare namespace MatterJS {
          * @param {} settings A property name (or map of properties and values) to set on the body.
          * @param {} value The value to set if `settings` is a single property name.
          */
-        set (body: BodyType, settings: any, value?: any): void;
+        set(body: BodyType, settings: any, value?: any): void;
 
         /**
          * Sets the mass of the body. Inverse mass and density are automatically updated to reflect the change.
@@ -2546,7 +2547,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} mass
          */
-        setMass (body: BodyType, mass: number): void;
+        setMass(body: BodyType, mass: number): void;
 
         /**
          * Sets the density of the body. Mass is automatically updated to reflect the change.
@@ -2554,7 +2555,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} density
          */
-        setDensity (body: BodyType, density: number): void;
+        setDensity(body: BodyType, density: number): void;
 
         /**
          * Sets the moment of inertia (i.e. second moment of area) of the body of the body.
@@ -2563,7 +2564,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} inertia
          */
-        setInertia (body: BodyType, inertia: number): void;
+        setInertia(body: BodyType, inertia: number): void;
 
         /**
          * Sets the body's vertices and updates body properties accordingly, including inertia, area and mass (with respect to `body.density`).
@@ -2577,7 +2578,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {vector[]} vertices
          */
-        setVertices (body: BodyType, vertices: Array<Vector>): void;
+        setVertices(body: BodyType, vertices: Array<Vector>): void;
 
         /**
          * Sets the parts of the `body` and updates mass, inertia and centroid.
@@ -2589,7 +2590,7 @@ declare namespace MatterJS {
          * @param [body] parts
          * @param {bool} [autoHull=true]
          */
-        setParts (body: BodyType, parts: BodyType[], autoHull?: boolean): void;
+        setParts(body: BodyType, parts: BodyType[], autoHull?: boolean): void;
 
         /**
          * Set the centre of mass of the body.
@@ -2602,7 +2603,7 @@ declare namespace MatterJS {
          * @param {vector} centre
          * @param {bool} relative
          */
-        setCentre (body: BodyType, centre: Vector, relative: boolean): void;
+        setCentre(body: BodyType, centre: Vector, relative: boolean): void;
 
         /**
          * Sets the position of the body instantly. Velocity, angle, force etc. are unchanged.
@@ -2611,7 +2612,7 @@ declare namespace MatterJS {
          * @param {vector} position
          * @param {boolean} [updateVelocity=false]
          */
-        setPosition (body: BodyType, position: Vector, updateVelocity?: boolean): void;
+        setPosition(body: BodyType, position: Vector, updateVelocity?: boolean): void;
 
         /**
          * Sets the angle of the body instantly. Angular velocity, position, force etc. are unchanged.
@@ -2620,7 +2621,7 @@ declare namespace MatterJS {
          * @param {number} angle
          * @param {boolean} [updateVelocity=false]
          */
-        setAngle (body: BodyType, angle: number, updateVelocity?: boolean): void;
+        setAngle(body: BodyType, angle: number, updateVelocity?: boolean): void;
 
         /**
          * Sets the linear velocity of the body instantly. Position, angle, force etc. are unchanged. See also `Body.applyForce`.
@@ -2628,7 +2629,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {vector} velocity
          */
-        setVelocity (body: BodyType, velocity: Vector): void;
+        setVelocity(body: BodyType, velocity: Vector): void;
 
         /**
          * Gets the current linear velocity of the body.
@@ -2636,7 +2637,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {vector} velocity
          */
-        getVelocity (body: BodyType): Vector;
+        getVelocity(body: BodyType): Vector;
 
         /**
          * Sets the angular velocity of the body instantly. Position, angle, force etc. are unchanged. See also `Body.applyForce`.
@@ -2644,7 +2645,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} velocity
          */
-        setAngularVelocity (body: BodyType, velocity: number): void;
+        setAngularVelocity(body: BodyType, velocity: number): void;
 
         /**
          * Sets the body as static, including isStatic flag and setting mass and inertia to Infinity.
@@ -2652,7 +2653,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {bool} isStatic
          */
-        setStatic (body: BodyType, isStatic: boolean): void;
+        setStatic(body: BodyType, isStatic: boolean): void;
 
         /**
          * Scales the body, including updating physical properties (mass, area, axes, inertia), from a world-space point (default is body centre).
@@ -2662,7 +2663,7 @@ declare namespace MatterJS {
          * @param {number} scaleY
          * @param {vector} [point]
          */
-        scale (body: BodyType, scaleX: number, scaleY: number, point?: Vector): void;
+        scale(body: BodyType, scaleX: number, scaleY: number, point?: Vector): void;
 
         /**
          * Moves a body by a given vector relative to its current position, without imparting any velocity.
@@ -2671,7 +2672,7 @@ declare namespace MatterJS {
          * @param {vector} translation
          * @param {boolean} [updateVelocity=false]
          */
-        translate (body: BodyType, translation: Vector, updateVelocity?: boolean): void;
+        translate(body: BodyType, translation: Vector, updateVelocity?: boolean): void;
 
         /**
          * Performs a simulation step for the given `body`, including updating position and angle using Verlet integration.
@@ -2679,7 +2680,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} deltaTime
          */
-        update (body: BodyType, deltaTime: number): void;
+        update(body: BodyType, deltaTime: number): void;
 
         /**
          * Gets the current linear speed of the body.
@@ -2688,7 +2689,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {number} speed
          */
-        getSpeed (body: BodyType): number;
+        getSpeed(body: BodyType): number;
 
         /**
          * Sets the current linear speed of the body.
@@ -2697,7 +2698,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} speed
          */
-        setSpeed (body: BodyType, speed: number): void;
+        setSpeed(body: BodyType, speed: number): void;
 
         /**
          * Gets the current rotational velocity of the body.
@@ -2705,7 +2706,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {number} angular velocity
          */
-        getAngularVelocity (body: BodyType): number;
+        getAngularVelocity(body: BodyType): number;
 
         /**
          * Gets the current rotational velocity of the body.
@@ -2713,7 +2714,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {number} angular velocity
          */
-        getAngularSpeed (body: BodyType): number;
+        getAngularSpeed(body: BodyType): number;
 
         /**
          * Sets the angular velocity of the body instantly. Position, angle, force etc. are unchanged. See also `Body.applyForce`.
@@ -2721,14 +2722,14 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {number} velocity
          */
-        setAngularSpeed (body: BodyType, velocity: number): void;
+        setAngularSpeed(body: BodyType, velocity: number): void;
     }
 
     /**
-    * The `Matter.Bounds` module contains methods for creating and manipulating axis-aligned bounding boxes (AABB).
-    *
-    * @class Bounds
-    */
+     * The `Matter.Bounds` module contains methods for creating and manipulating axis-aligned bounding boxes (AABB).
+     *
+     * @class Bounds
+     */
     class Bounds {
 
         /**
@@ -2737,7 +2738,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {IBound} A new bounds object
          */
-        static create (vertices: Vertices): IBound;
+        static create(vertices: Vertices): IBound;
 
         /**
          * Updates bounds using the given vertices and extends the bounds given a velocity.
@@ -2746,7 +2747,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @param {vector} velocity
          */
-        static update (bounds: IBound, vertices: Vertices, velocity: Vector): void;
+        static update(bounds: IBound, vertices: Vertices, velocity: Vector): void;
 
         /**
          * Returns true if the bounds contains the given point.
@@ -2755,7 +2756,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @return {boolean} True if the bounds contain the point, otherwise false
          */
-        static contains (bounds: IBound, point: Vector): boolean;
+        static contains(bounds: IBound, point: Vector): boolean;
 
         /**
          * Returns true if the two bounds intersect.
@@ -2764,15 +2765,15 @@ declare namespace MatterJS {
          * @param {IBound} boundsB
          * @return {boolean} True if the bounds overlap, otherwise false
          */
-        static overlaps (boundsA: IBound, boundsB: IBound): boolean;
+        static overlaps(boundsA: IBound, boundsB: IBound): boolean;
 
         /**
-        * Translates the bounds by the given vector.
-        * @method translate
-        * @param {IBound} bounds
-        * @param {vector} vector
-        */
-       static translate (bounds: IBound, vector: Vector): void;
+         * Translates the bounds by the given vector.
+         * @method translate
+         * @param {IBound} bounds
+         * @param {vector} vector
+         */
+        static translate(bounds: IBound, vector: Vector): void;
 
         /**
          * Shifts the bounds to the given position.
@@ -2780,7 +2781,7 @@ declare namespace MatterJS {
          * @param {IBound} bounds
          * @param {vector} position
          */
-        static shift (bounds: IBound, position: Vector): void;
+        static shift(bounds: IBound, position: Vector): void;
 
     }
 
@@ -2792,7 +2793,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {IBound} A new bounds object
          */
-        create (vertices: Vertices): IBound;
+        create(vertices: Vertices): IBound;
 
         /**
          * Updates bounds using the given vertices and extends the bounds given a velocity.
@@ -2801,7 +2802,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @param {vector} velocity
          */
-        update (bounds: IBound, vertices: Vertices, velocity: Vector): void;
+        update(bounds: IBound, vertices: Vertices, velocity: Vector): void;
 
         /**
          * Returns true if the bounds contains the given point.
@@ -2810,7 +2811,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @return {boolean} True if the bounds contain the point, otherwise false
          */
-        contains (bounds: IBound, point: Vector): boolean;
+        contains(bounds: IBound, point: Vector): boolean;
 
         /**
          * Returns true if the two bounds intersect.
@@ -2819,15 +2820,15 @@ declare namespace MatterJS {
          * @param {IBound} boundsB
          * @return {boolean} True if the bounds overlap, otherwise false
          */
-        overlaps (boundsA: IBound, boundsB: IBound): boolean;
+        overlaps(boundsA: IBound, boundsB: IBound): boolean;
 
         /**
-        * Translates the bounds by the given vector.
-        * @method translate
-        * @param {IBound} bounds
-        * @param {vector} vector
-        */
-       translate (bounds: IBound, vector: Vector): void;
+         * Translates the bounds by the given vector.
+         * @method translate
+         * @param {IBound} bounds
+         * @param {vector} vector
+         */
+        translate(bounds: IBound, vector: Vector): void;
 
         /**
          * Shifts the bounds to the given position.
@@ -2835,20 +2836,20 @@ declare namespace MatterJS {
          * @param {IBound} bounds
          * @param {vector} position
          */
-        shift (bounds: IBound, position: Vector): void;
+        shift(bounds: IBound, position: Vector): void;
 
     }
 
     /**
-    * The `Matter.Composite` module contains methods for creating and manipulating composite bodies.
-    * A composite body is a collection of `Matter.Body`, `Matter.Constraint` and other `Matter.Composite`, therefore composites form a tree structure.
-    * It is important to use the functions in this module to modify composites, rather than directly modifying their properties.
-    * Note that the `Matter.World` object is also a type of `Matter.Composite` and as such all composite methods here can also operate on a `Matter.World`.
-    *
-    * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-    *
-    * @class Composite
-    */
+     * The `Matter.Composite` module contains methods for creating and manipulating composite bodies.
+     * A composite body is a collection of `Matter.Body`, `Matter.Constraint` and other `Matter.Composite`, therefore composites form a tree structure.
+     * It is important to use the functions in this module to modify composites, rather than directly modifying their properties.
+     * Note that the `Matter.World` object is also a type of `Matter.Composite` and as such all composite methods here can also operate on a `Matter.World`.
+     *
+     * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+     *
+     * @class Composite
+     */
     class Composite {
 
         /**
@@ -2859,7 +2860,7 @@ declare namespace MatterJS {
          * @param {} object
          * @return {composite} The original composite with the objects added
          */
-        static add (composite: CompositeType, object: BodyType | CompositeType | ConstraintType): CompositeType;
+        static add(composite: CompositeType, object: BodyType | CompositeType | ConstraintType): CompositeType;
 
         /**
          * Returns all bodies in the given composite, including all bodies in its children, recursively.
@@ -2867,7 +2868,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {body[]} All the bodies
          */
-        static allBodies (composite: CompositeType): Array<BodyType>;
+        static allBodies(composite: CompositeType): Array<BodyType>;
 
         /**
          * Returns all composites in the given composite, including all composites in its children, recursively.
@@ -2875,7 +2876,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {composite[]} All the composites
          */
-        static allComposites (composite: CompositeType): Array<CompositeType>;
+        static allComposites(composite: CompositeType): Array<CompositeType>;
 
         /**
          * Returns all constraints in the given composite, including all constraints in its children, recursively.
@@ -2883,7 +2884,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {constraint[]} All the constraints
          */
-        static allConstraints (composite: CompositeType): Array<ConstraintType>;
+        static allConstraints(composite: CompositeType): Array<ConstraintType>;
 
         /**
          * Removes all bodies, constraints and composites from the given composite.
@@ -2893,7 +2894,7 @@ declare namespace MatterJS {
          * @param {boolean} keepStatic
          * @param {boolean} [deep=false]
          */
-        static clear (composite: CompositeType, keepStatic: boolean, deep?: boolean): void;
+        static clear(composite: CompositeType, keepStatic: boolean, deep?: boolean): void;
 
         /**
          * Creates a new composite. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -2902,7 +2903,7 @@ declare namespace MatterJS {
          * @param {} [options]
          * @return {composite} A new composite
          */
-        static create (options?: ICompositeDefinition): CompositeType;
+        static create(options?: ICompositeDefinition): CompositeType;
 
         /**
          * Searches the composite recursively for an object matching the type and id supplied, null if not found.
@@ -2912,7 +2913,7 @@ declare namespace MatterJS {
          * @param {string} type
          * @return {object} The requested object, if found
          */
-        static get (composite: CompositeType, id: number, type: string): BodyType | CompositeType | ConstraintType;
+        static get(composite: CompositeType, id: number, type: string): BodyType | CompositeType | ConstraintType;
 
         /**
          * Moves the given object(s) from compositeA to compositeB (equal to a remove followed by an add).
@@ -2922,7 +2923,7 @@ declare namespace MatterJS {
          * @param {compositeB} compositeB
          * @return {composite} Returns compositeA
          */
-        static move (compositeA: CompositeType, objects: Array<BodyType | CompositeType | ConstraintType>, compositeB: CompositeType): CompositeType;
+        static move(compositeA: CompositeType, objects: Array<BodyType | CompositeType | ConstraintType>, compositeB: CompositeType): CompositeType;
 
         /**
          * Assigns new ids for all objects in the composite, recursively.
@@ -2930,7 +2931,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {composite} Returns composite
          */
-        static rebase (composite: CompositeType): CompositeType;
+        static rebase(composite: CompositeType): CompositeType;
 
         /**
          * Generic remove function. Removes one or many body(s), constraint(s) or a composite(s) to the given composite.
@@ -2942,7 +2943,7 @@ declare namespace MatterJS {
          * @param {boolean} [deep=false]
          * @return {composite} The original composite with the objects removed
          */
-        static remove (composite: CompositeType, object: BodyType | CompositeType | ConstraintType, deep?: boolean): CompositeType;
+        static remove(composite: CompositeType, object: BodyType | CompositeType | ConstraintType, deep?: boolean): CompositeType;
 
         /**
          * Sets the composite's `isModified` flag.
@@ -2954,7 +2955,7 @@ declare namespace MatterJS {
          * @param {boolean} [updateParents=false]
          * @param {boolean} [updateChildren=false]
          */
-        static setModified (composite: CompositeType, isModified: boolean, updateParents?: boolean, updateChildren?: boolean): void;
+        static setModified(composite: CompositeType, isModified: boolean, updateParents?: boolean, updateChildren?: boolean): void;
 
         /**
          * Translates all children in the composite by a given vector relative to their current positions,
@@ -2964,7 +2965,7 @@ declare namespace MatterJS {
          * @param {vector} translation
          * @param {bool} [recursive=true]
          */
-        static translate (composite: CompositeType, translation: Vector, recursive?: boolean): void;
+        static translate(composite: CompositeType, translation: Vector, recursive?: boolean): void;
 
         /**
          * Rotates all children in the composite by a given angle about the given point, without imparting any angular velocity.
@@ -2974,7 +2975,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @param {bool} [recursive=true]
          */
-        static rotate (composite: CompositeType, rotation: number, point: Vector, recursive?: boolean): void;
+        static rotate(composite: CompositeType, rotation: number, point: Vector, recursive?: boolean): void;
 
         /**
          * Scales all children in the composite, including updating physical properties (mass, area, axes, inertia), from a world-space point.
@@ -2985,7 +2986,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @param {bool} [recursive=true]
          */
-        static scale (composite: CompositeType, scaleX: number, scaleY: number, point: Vector, recursive?: boolean): void;
+        static scale(composite: CompositeType, scaleX: number, scaleY: number, point: Vector, recursive?: boolean): void;
 
     }
 
@@ -2999,7 +3000,7 @@ declare namespace MatterJS {
          * @param {} object
          * @return {composite} The original composite with the objects added
          */
-        add (composite: CompositeType, object: BodyType | CompositeType | ConstraintType): CompositeType;
+        add(composite: CompositeType, object: BodyType | CompositeType | ConstraintType): CompositeType;
 
         /**
          * Returns all bodies in the given composite, including all bodies in its children, recursively.
@@ -3007,7 +3008,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {body[]} All the bodies
          */
-        allBodies (composite: CompositeType): Array<BodyType>;
+        allBodies(composite: CompositeType): Array<BodyType>;
 
         /**
          * Returns all composites in the given composite, including all composites in its children, recursively.
@@ -3015,7 +3016,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {composite[]} All the composites
          */
-        allComposites (composite: CompositeType): Array<CompositeType>;
+        allComposites(composite: CompositeType): Array<CompositeType>;
 
         /**
          * Returns all constraints in the given composite, including all constraints in its children, recursively.
@@ -3023,7 +3024,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {constraint[]} All the constraints
          */
-        allConstraints (composite: CompositeType): Array<ConstraintType>;
+        allConstraints(composite: CompositeType): Array<ConstraintType>;
 
         /**
          * Removes all bodies, constraints and composites from the given composite.
@@ -3033,7 +3034,7 @@ declare namespace MatterJS {
          * @param {boolean} keepStatic
          * @param {boolean} [deep=false]
          */
-        clear (composite: CompositeType, keepStatic: boolean, deep?: boolean): void;
+        clear(composite: CompositeType, keepStatic: boolean, deep?: boolean): void;
 
         /**
          * Creates a new composite. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -3042,7 +3043,7 @@ declare namespace MatterJS {
          * @param {} [options]
          * @return {composite} A new composite
          */
-        create (options?: ICompositeDefinition): CompositeType;
+        create(options?: ICompositeDefinition): CompositeType;
 
         /**
          * Searches the composite recursively for an object matching the type and id supplied, null if not found.
@@ -3052,7 +3053,7 @@ declare namespace MatterJS {
          * @param {string} type
          * @return {object} The requested object, if found
          */
-        get (composite: CompositeType, id: number, type: string): BodyType | CompositeType | ConstraintType;
+        get(composite: CompositeType, id: number, type: string): BodyType | CompositeType | ConstraintType;
 
         /**
          * Moves the given object(s) from compositeA to compositeB (equal to a remove followed by an add).
@@ -3062,7 +3063,7 @@ declare namespace MatterJS {
          * @param {compositeB} compositeB
          * @return {composite} Returns compositeA
          */
-        move (compositeA: CompositeType, objects: Array<BodyType | CompositeType | ConstraintType>, compositeB: CompositeType): CompositeType;
+        move(compositeA: CompositeType, objects: Array<BodyType | CompositeType | ConstraintType>, compositeB: CompositeType): CompositeType;
 
         /**
          * Assigns new ids for all objects in the composite, recursively.
@@ -3070,7 +3071,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {composite} Returns composite
          */
-        rebase (composite: CompositeType): CompositeType;
+        rebase(composite: CompositeType): CompositeType;
 
         /**
          * Generic remove function. Removes one or many body(s), constraint(s) or a composite(s) to the given composite.
@@ -3082,7 +3083,7 @@ declare namespace MatterJS {
          * @param {boolean} [deep=false]
          * @return {composite} The original composite with the objects removed
          */
-        remove (composite: CompositeType, object: BodyType | CompositeType | ConstraintType, deep?: boolean): CompositeType;
+        remove(composite: CompositeType, object: BodyType | CompositeType | ConstraintType, deep?: boolean): CompositeType;
 
         /**
          * Sets the composite's `isModified` flag.
@@ -3094,7 +3095,7 @@ declare namespace MatterJS {
          * @param {boolean} [updateParents=false]
          * @param {boolean} [updateChildren=false]
          */
-        setModified (composite: CompositeType, isModified: boolean, updateParents?: boolean, updateChildren?: boolean): void;
+        setModified(composite: CompositeType, isModified: boolean, updateParents?: boolean, updateChildren?: boolean): void;
 
         /**
          * Translates all children in the composite by a given vector relative to their current positions,
@@ -3104,7 +3105,7 @@ declare namespace MatterJS {
          * @param {vector} translation
          * @param {bool} [recursive=true]
          */
-        translate (composite: CompositeType, translation: Vector, recursive?: boolean): void;
+        translate(composite: CompositeType, translation: Vector, recursive?: boolean): void;
 
         /**
          * Rotates all children in the composite by a given angle about the given point, without imparting any angular velocity.
@@ -3114,7 +3115,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @param {bool} [recursive=true]
          */
-        rotate (composite: CompositeType, rotation: number, point: Vector, recursive?: boolean): void;
+        rotate(composite: CompositeType, rotation: number, point: Vector, recursive?: boolean): void;
 
         /**
          * Scales all children in the composite, including updating physical properties (mass, area, axes, inertia), from a world-space point.
@@ -3125,7 +3126,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @param {bool} [recursive=true]
          */
-        scale (composite: CompositeType, scaleX: number, scaleY: number, point: Vector, recursive?: boolean): void;
+        scale(composite: CompositeType, scaleX: number, scaleY: number, point: Vector, recursive?: boolean): void;
 
     }
 
@@ -3149,7 +3150,7 @@ declare namespace MatterJS {
          * @param {number} wheelSize
          * @return {composite} A new composite car body
          */
-        static car (x: number, y: number, width: number, height: number, wheelSize: number): CompositeType;
+        static car(x: number, y: number, width: number, height: number, wheelSize: number): CompositeType;
 
         /**
          * Chains all bodies in the given composite together using constraints.
@@ -3162,7 +3163,7 @@ declare namespace MatterJS {
          * @param {object} options
          * @return {composite} A new composite containing objects chained together with constraints
          */
-        static chain (composite: CompositeType, xOffsetA: number, yOffsetA: number, xOffsetB: number, yOffsetB: number, options: any): CompositeType;
+        static chain(composite: CompositeType, xOffsetA: number, yOffsetA: number, xOffsetB: number, yOffsetB: number, options: any): CompositeType;
 
         /**
          * Connects bodies in the composite with constraints in a grid pattern, with optional cross braces.
@@ -3174,7 +3175,7 @@ declare namespace MatterJS {
          * @param {object} options
          * @return {composite} The composite containing objects meshed together with constraints
          */
-        static mesh (composite: CompositeType, columns: number, rows: number, crossBrace: boolean, options: any): CompositeType;
+        static mesh(composite: CompositeType, columns: number, rows: number, crossBrace: boolean, options: any): CompositeType;
 
         /**
          * Creates a composite with a Newton's Cradle setup of bodies and constraints.
@@ -3186,7 +3187,7 @@ declare namespace MatterJS {
          * @param {number} length
          * @return {composite} A new composite newtonsCradle body
          */
-        static newtonsCradle (x: number, y: number, number: number, size: number, length: number): CompositeType;
+        static newtonsCradle(x: number, y: number, number: number, size: number, length: number): CompositeType;
 
         /**
          * Create a new composite containing bodies created in the callback in a pyramid arrangement.
@@ -3201,7 +3202,7 @@ declare namespace MatterJS {
          * @param {function} callback
          * @return {composite} A new composite containing objects created in the callback
          */
-        static pyramid (x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
+        static pyramid(x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
 
         /**
          * Creates a simple soft body like object.
@@ -3218,7 +3219,7 @@ declare namespace MatterJS {
          * @param {} constraintOptions
          * @return {composite} A new composite softBody
          */
-        static softBody (x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, crossBrace: boolean, particleRadius: number, particleOptions: any, constraintOptions: any): CompositeType;
+        static softBody(x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, crossBrace: boolean, particleRadius: number, particleOptions: any, constraintOptions: any): CompositeType;
 
         /**
          * Create a new composite containing bodies created in the callback in a grid arrangement.
@@ -3233,7 +3234,7 @@ declare namespace MatterJS {
          * @param {function} callback
          * @return {composite} A new composite containing objects created in the callback
          */
-        static stack (x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
+        static stack(x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
 
     }
 
@@ -3249,7 +3250,7 @@ declare namespace MatterJS {
          * @param {number} wheelSize
          * @return {composite} A new composite car body
          */
-        car (x: number, y: number, width: number, height: number, wheelSize: number): CompositeType;
+        car(x: number, y: number, width: number, height: number, wheelSize: number): CompositeType;
 
         /**
          * Chains all bodies in the given composite together using constraints.
@@ -3262,7 +3263,7 @@ declare namespace MatterJS {
          * @param {object} options
          * @return {composite} A new composite containing objects chained together with constraints
          */
-        chain (composite: CompositeType, xOffsetA: number, yOffsetA: number, xOffsetB: number, yOffsetB: number, options: any): CompositeType;
+        chain(composite: CompositeType, xOffsetA: number, yOffsetA: number, xOffsetB: number, yOffsetB: number, options: any): CompositeType;
 
         /**
          * Connects bodies in the composite with constraints in a grid pattern, with optional cross braces.
@@ -3274,7 +3275,7 @@ declare namespace MatterJS {
          * @param {object} options
          * @return {composite} The composite containing objects meshed together with constraints
          */
-        mesh (composite: CompositeType, columns: number, rows: number, crossBrace: boolean, options: any): CompositeType;
+        mesh(composite: CompositeType, columns: number, rows: number, crossBrace: boolean, options: any): CompositeType;
 
         /**
          * Creates a composite with a Newton's Cradle setup of bodies and constraints.
@@ -3286,7 +3287,7 @@ declare namespace MatterJS {
          * @param {number} length
          * @return {composite} A new composite newtonsCradle body
          */
-        newtonsCradle (x: number, y: number, number: number, size: number, length: number): CompositeType;
+        newtonsCradle(x: number, y: number, number: number, size: number, length: number): CompositeType;
 
         /**
          * Create a new composite containing bodies created in the callback in a pyramid arrangement.
@@ -3301,7 +3302,7 @@ declare namespace MatterJS {
          * @param {function} callback
          * @return {composite} A new composite containing objects created in the callback
          */
-        pyramid (x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
+        pyramid(x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
 
         /**
          * Creates a simple soft body like object.
@@ -3318,7 +3319,7 @@ declare namespace MatterJS {
          * @param {} constraintOptions
          * @return {composite} A new composite softBody
          */
-        softBody (x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, crossBrace: boolean, particleRadius: number, particleOptions: any, constraintOptions: any): CompositeType;
+        softBody(x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, crossBrace: boolean, particleRadius: number, particleOptions: any, constraintOptions: any): CompositeType;
 
         /**
          * Create a new composite containing bodies created in the callback in a grid arrangement.
@@ -3333,7 +3334,7 @@ declare namespace MatterJS {
          * @param {function} callback
          * @return {composite} A new composite containing objects created in the callback
          */
-        stack (x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
+        stack(x: number, y: number, columns: number, rows: number, columnGap: number, rowGap: number, callback: Function): CompositeType;
 
     }
 
@@ -3356,7 +3357,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {constraint} constraint
          */
-        static create (options: IConstraintDefinition): ConstraintType;
+        static create(options: IConstraintDefinition): ConstraintType;
 
         /**
          * Returns the current length of the constraint.
@@ -3366,7 +3367,7 @@ declare namespace MatterJS {
          * @param {constraint} ConstraintType
          * @return {number} the current length
          */
-        static currentLength (constraint: ConstraintType): number;
+        static currentLength(constraint: ConstraintType): number;
     }
 
     class ConstraintFactory {
@@ -3379,7 +3380,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {constraint} constraint
          */
-        create (options: IConstraintDefinition): ConstraintType;
+        create(options: IConstraintDefinition): ConstraintType;
 
         /**
          * Returns the current length of the constraint.
@@ -3389,7 +3390,7 @@ declare namespace MatterJS {
          * @param {constraint} ConstraintType
          * @return {number} the current length
          */
-        currentLength (constraint: ConstraintType): number;
+        currentLength(constraint: ConstraintType): number;
     }
 
     /**
@@ -3404,11 +3405,80 @@ declare namespace MatterJS {
     class Engine {
 
         /**
+         * An instance of a broadphase controller. The default value is a `Matter.Grid` instance created by `Engine.create`.
+         *
+         * @property broadphase
+         * @type grid
+         * @default a Matter.Grid instance
+         */
+        broadphase: Grid;
+        /**
+         * An integer `Number` that specifies the number of constraint iterations to perform each update.
+         * The higher the value, the higher quality the simulation will be at the expense of performance.
+         * The default value of `2` is usually very adequate.
+         *
+         * @property constraintIterations
+         * @type number
+         * @default 2
+         */
+        constraintIterations: number;
+        /**
+         * A flag that specifies whether the engine is running or not.
+         */
+        enabled: boolean;
+        /**
+         * A flag that specifies whether the engine should allow sleeping via the `Matter.Sleeping` module.
+         * Sleeping can improve stability and performance, but often at the expense of accuracy.
+         *
+         * @property enableSleeping
+         * @type boolean
+         * @default false
+         */
+        enableSleeping: boolean;
+        /**
+         * Collision pair set for this `Engine`.
+         */
+        pairs: any;
+        /**
+         * An integer `Number` that specifies the number of position iterations to perform each update.
+         * The higher the value, the higher quality the simulation will be at the expense of performance.
+         *
+         * @property positionIterations
+         * @type number
+         * @default 6
+         */
+        positionIterations: number;
+        /**
+         * An `Object` containing properties regarding the timing systems of the engine.
+         *
+         * @property timing
+         * @type object
+         */
+        timing: IEngineTimingOptions;
+        /**
+         * An integer `Number` that specifies the number of velocity iterations to perform each update.
+         * The higher the value, the higher quality the simulation will be at the expense of performance.
+         *
+         * @property velocityIterations
+         * @type number
+         * @default 4
+         */
+        velocityIterations: number;
+        /**
+         * A `World` composite object that will contain all simulated bodies and constraints.
+         *
+         * @property world
+         * @type world
+         * @default a Matter.World instance
+         */
+        world: World;
+
+        /**
          * Clears the engine including the world, pairs and broadphase.
          * @method clear
          * @param {engine} engine
          */
-        static clear (engine: Engine): void;
+        static clear(engine: Engine): void;
 
         /**
          * Creates a new engine. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -3420,7 +3490,7 @@ declare namespace MatterJS {
          * @return {engine} engine
          * @deprecated
          */
-        static create (element?: HTMLElement | IEngineDefinition, options?: IEngineDefinition): Engine;
+        static create(element?: HTMLElement | IEngineDefinition, options?: IEngineDefinition): Engine;
 
         /**
          * Creates a new engine. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -3431,7 +3501,7 @@ declare namespace MatterJS {
          * @return {engine} engine
          * @deprecated
          */
-        static create (options?: IEngineDefinition): Engine;
+        static create(options?: IEngineDefinition): Engine;
 
         /**
          * Merges two engines by keeping the configuration of `engineA` but replacing the world with the one from `engineB`.
@@ -3439,7 +3509,7 @@ declare namespace MatterJS {
          * @param {engine} engineA
          * @param {engine} engineB
          */
-        static merge (engineA: Engine, engineB: Engine): void;
+        static merge(engineA: Engine, engineB: Engine): void;
 
         /**
          * Moves the simulation forward in time by `delta` ms.
@@ -3449,91 +3519,14 @@ declare namespace MatterJS {
          * @param {engine} engine
          * @param {number} [delta=16.666]
          */
-        static update (engine: Engine, delta?: number): Engine;
+        static update(engine: Engine, delta?: number): Engine;
 
         /**
          * An alias for `Runner.run`, see `Matter.Runner` for more information.
          * @method run
          * @param {engine} engine
          */
-        static run (engine: Engine): void;
-
-        /**
-         * An instance of a broadphase controller. The default value is a `Matter.Grid` instance created by `Engine.create`.
-         *
-         * @property broadphase
-         * @type grid
-         * @default a Matter.Grid instance
-         */
-        broadphase: Grid;
-
-        /**
-         * An integer `Number` that specifies the number of constraint iterations to perform each update.
-         * The higher the value, the higher quality the simulation will be at the expense of performance.
-         * The default value of `2` is usually very adequate.
-         *
-         * @property constraintIterations
-         * @type number
-         * @default 2
-         */
-        constraintIterations: number;
-
-        /**
-         * A flag that specifies whether the engine is running or not.
-         */
-        enabled: boolean;
-
-        /**
-         * A flag that specifies whether the engine should allow sleeping via the `Matter.Sleeping` module.
-         * Sleeping can improve stability and performance, but often at the expense of accuracy.
-         *
-        * @property enableSleeping
-        * @type boolean
-        * @default false
-        */
-        enableSleeping: boolean;
-
-        /**
-         * Collision pair set for this `Engine`.
-         */
-        pairs: any;
-
-        /**
-         * An integer `Number` that specifies the number of position iterations to perform each update.
-         * The higher the value, the higher quality the simulation will be at the expense of performance.
-         *
-         * @property positionIterations
-         * @type number
-         * @default 6
-         */
-        positionIterations: number;
-
-        /**
-         * An `Object` containing properties regarding the timing systems of the engine.
-         *
-         * @property timing
-         * @type object
-         */
-        timing: IEngineTimingOptions;
-
-        /**
-         * An integer `Number` that specifies the number of velocity iterations to perform each update.
-         * The higher the value, the higher quality the simulation will be at the expense of performance.
-         *
-         * @property velocityIterations
-         * @type number
-         * @default 4
-         */
-        velocityIterations: number;
-
-        /**
-         * A `World` composite object that will contain all simulated bodies and constraints.
-         *
-         * @property world
-         * @type world
-         * @default a Matter.World instance
-         */
-        world: World;
+        static run(engine: Engine): void;
 
     }
 
@@ -3550,7 +3543,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {grid} A new grid
          */
-        static create (options?: IGridDefinition): Grid;
+        static create(options?: IGridDefinition): Grid;
 
         /**
          * Updates the grid.
@@ -3560,14 +3553,14 @@ declare namespace MatterJS {
          * @param {engine} engine
          * @param {boolean} forceUpdate
          */
-        static update (grid: Grid, bodies: Array<BodyType>, engine: Engine, forceUpdate: boolean): void;
+        static update(grid: Grid, bodies: Array<BodyType>, engine: Engine, forceUpdate: boolean): void;
 
         /**
          * Clears the grid.
          * @method clear
          * @param {grid} grid
          */
-        static clear (grid: Grid): void;
+        static clear(grid: Grid): void;
 
     }
 
@@ -3579,7 +3572,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {grid} A new grid
          */
-        create (options?: IGridDefinition): Grid;
+        create(options?: IGridDefinition): Grid;
 
         /**
          * Updates the grid.
@@ -3589,14 +3582,14 @@ declare namespace MatterJS {
          * @param {engine} engine
          * @param {boolean} forceUpdate
          */
-        update (grid: Grid, bodies: Array<BodyType>, engine: Engine, forceUpdate: boolean): void;
+        update(grid: Grid, bodies: Array<BodyType>, engine: Engine, forceUpdate: boolean): void;
 
         /**
          * Clears the grid.
          * @method clear
          * @param {grid} grid
          */
-        clear (grid: Grid): void;
+        clear(grid: Grid): void;
 
     }
 
@@ -3611,24 +3604,12 @@ declare namespace MatterJS {
     class MouseConstraint {
 
         /**
-         * Creates a new mouse constraint.
-         * All properties have default values, and many are pre-calculated automatically based on other properties.
-         * See the properties section below for detailed information on what you can pass via the `options` object.
-         * @method create
-         * @param {engine} engine
-         * @param {} options
-         * @return {MouseConstraint} A new MouseConstraint
-         */
-        static create (engine: Engine, options?: IMouseConstraintDefinition): MouseConstraint;
-
-        /**
          * The `Constraint` object that is used to move the body during interaction.
          *
          * @property constraint
          * @type constraint
          */
         constraint: ConstraintType;
-
         /**
          * An `Object` that specifies the collision filter properties.
          * The collision filter allows the user to define which types of body this mouse constraint can interact with.
@@ -3638,7 +3619,6 @@ declare namespace MatterJS {
          * @type object
          */
         collisionFilter: ICollisionFilter;
-
         /**
          * The `Body` that is currently being moved by the user, or `null` if no body.
          *
@@ -3647,7 +3627,6 @@ declare namespace MatterJS {
          * @default null
          */
         body: BodyType;
-
         /**
          * A `String` denoting the type of object.
          *
@@ -3656,6 +3635,17 @@ declare namespace MatterJS {
          * @default "constraint"
          */
         type: string;
+
+        /**
+         * Creates a new mouse constraint.
+         * All properties have default values, and many are pre-calculated automatically based on other properties.
+         * See the properties section below for detailed information on what you can pass via the `options` object.
+         * @method create
+         * @param {engine} engine
+         * @param {} options
+         * @return {MouseConstraint} A new MouseConstraint
+         */
+        static create(engine: Engine, options?: IMouseConstraintDefinition): MouseConstraint;
 
     }
 
@@ -3672,7 +3662,7 @@ declare namespace MatterJS {
          * @param {pairs} pairs
          * @return {pairs} pairs
          */
-        static clear (pairs: any): any;
+        static clear(pairs: any): any;
     }
 
     class PairsFactory {
@@ -3683,7 +3673,7 @@ declare namespace MatterJS {
          * @param {pairs} pairs
          * @return {pairs} pairs
          */
-        clear (pairs: any): any;
+        clear(pairs: any): any;
     }
 
     /**
@@ -3700,7 +3690,7 @@ declare namespace MatterJS {
          * @param {number} timestamp
          * @return {IPair} A new pair
          */
-        static create (collision: ICollisionData, timestamp: number): IPair;
+        static create(collision: ICollisionData, timestamp: number): IPair;
 
         /**
          * Updates a pair given a collision.
@@ -3709,7 +3699,7 @@ declare namespace MatterJS {
          * @param {ICollisionData} collision
          * @param {number} timestamp
          */
-        static update (pair: IPair, collision: ICollisionData, timestamp: number): void;
+        static update(pair: IPair, collision: ICollisionData, timestamp: number): void;
 
         /**
          * Set a pair as active or inactive.
@@ -3718,7 +3708,7 @@ declare namespace MatterJS {
          * @param {boolean} isActive
          * @param {number} timestamp
          */
-        static setActive (pair: IPair, isActive: boolean, timestamp: number): void;
+        static setActive(pair: IPair, isActive: boolean, timestamp: number): void;
 
         /**
          * Get the id for the given pair.
@@ -3727,7 +3717,7 @@ declare namespace MatterJS {
          * @param {Body} bodyB
          * @return {string} Unique pairId
          */
-        static id (bodyA: BodyType, bodyB: BodyType): string;
+        static id(bodyA: BodyType, bodyB: BodyType): string;
 
     }
 
@@ -3740,7 +3730,7 @@ declare namespace MatterJS {
          * @param {number} timestamp
          * @return {IPair} A new pair
          */
-        create (collision: ICollisionData, timestamp: number): IPair;
+        create(collision: ICollisionData, timestamp: number): IPair;
 
         /**
          * Updates a pair given a collision.
@@ -3749,7 +3739,7 @@ declare namespace MatterJS {
          * @param {ICollisionData} collision
          * @param {number} timestamp
          */
-        update (pair: IPair, collision: ICollisionData, timestamp: number): void;
+        update(pair: IPair, collision: ICollisionData, timestamp: number): void;
 
         /**
          * Set a pair as active or inactive.
@@ -3758,7 +3748,7 @@ declare namespace MatterJS {
          * @param {boolean} isActive
          * @param {number} timestamp
          */
-        setActive (pair: IPair, isActive: boolean, timestamp: number): void;
+        setActive(pair: IPair, isActive: boolean, timestamp: number): void;
 
         /**
          * Get the id for the given pair.
@@ -3767,7 +3757,7 @@ declare namespace MatterJS {
          * @param {Body} bodyB
          * @return {string} Unique pairId
          */
-        id (bodyA: BodyType, bodyB: BodyType): string;
+        id(bodyA: BodyType, bodyB: BodyType): string;
 
     }
 
@@ -3785,7 +3775,7 @@ declare namespace MatterJS {
          * @param {engine} engine
          * @return {ICollisionData[]} collisions
          */
-        static collisions (broadphasePairs: IPair[], engine: Engine): ICollisionData[];
+        static collisions(broadphasePairs: IPair[], engine: Engine): ICollisionData[];
 
         /**
          * Returns `true` if both supplied collision filters will allow a collision to occur.
@@ -3795,7 +3785,7 @@ declare namespace MatterJS {
          * @param {} filterB
          * @return {bool} `true` if collision can occur
          */
-        static canCollide (filterA: ICollisionFilter, filterB: ICollisionFilter): boolean;
+        static canCollide(filterA: ICollisionFilter, filterB: ICollisionFilter): boolean;
 
     }
 
@@ -3808,7 +3798,7 @@ declare namespace MatterJS {
          * @param {engine} engine
          * @return {ICollisionData[]} collisions
          */
-        collisions (broadphasePairs: IPair[], engine: Engine): ICollisionData[];
+        collisions(broadphasePairs: IPair[], engine: Engine): ICollisionData[];
 
         /**
          * Returns `true` if both supplied collision filters will allow a collision to occur.
@@ -3818,7 +3808,7 @@ declare namespace MatterJS {
          * @param {} filterB
          * @return {bool} `true` if collision can occur
          */
-        canCollide (filterA: ICollisionFilter, filterB: ICollisionFilter): boolean;
+        canCollide(filterA: ICollisionFilter, filterB: ICollisionFilter): boolean;
 
     }
 
@@ -3834,7 +3824,7 @@ declare namespace MatterJS {
          * @method preSolvePosition
          * @param {pair[]} pairs
          */
-        static preSolvePosition (pairs: IPair[]): void;
+        static preSolvePosition(pairs: IPair[]): void;
 
         /**
          * Find a solution for pair positions.
@@ -3843,21 +3833,21 @@ declare namespace MatterJS {
          * @param {number} delta
          * @param {number} [damping=1]
          */
-        static solvePosition (pairs: IPair[], delta: number, damping?: number): void;
+        static solvePosition(pairs: IPair[], delta: number, damping?: number): void;
 
         /**
          * Apply position resolution.
          * @method postSolvePosition
          * @param {body[]} bodies
          */
-        static postSolvePosition (bodies: BodyType[]): void;
+        static postSolvePosition(bodies: BodyType[]): void;
 
         /**
          * Prepare pairs for velocity solving.
          * @method preSolveVelocity
          * @param {pair[]} pairs
          */
-        static preSolveVelocity (pairs: IPair[]): void;
+        static preSolveVelocity(pairs: IPair[]): void;
 
         /**
          * Find a solution for pair velocities.
@@ -3865,7 +3855,7 @@ declare namespace MatterJS {
          * @param {pair[]} pairs
          * @param {number} delta
          */
-        static solveVelocity (pairs: IPair[], delta: number): void;
+        static solveVelocity(pairs: IPair[], delta: number): void;
 
     }
 
@@ -3876,7 +3866,7 @@ declare namespace MatterJS {
          * @method preSolvePosition
          * @param {pair[]} pairs
          */
-        preSolvePosition (pairs: IPair[]): void;
+        preSolvePosition(pairs: IPair[]): void;
 
         /**
          * Find a solution for pair positions.
@@ -3885,21 +3875,21 @@ declare namespace MatterJS {
          * @param {number} delta
          * @param {number} [damping=1]
          */
-        solvePosition (pairs: IPair[], delta: number, damping?: number): void;
+        solvePosition(pairs: IPair[], delta: number, damping?: number): void;
 
         /**
          * Apply position resolution.
          * @method postSolvePosition
          * @param {body[]} bodies
          */
-        postSolvePosition (bodies: BodyType[]): void;
+        postSolvePosition(bodies: BodyType[]): void;
 
         /**
          * Prepare pairs for velocity solving.
          * @method preSolveVelocity
          * @param {pair[]} pairs
          */
-        preSolveVelocity (pairs: IPair[]): void;
+        preSolveVelocity(pairs: IPair[]): void;
 
         /**
          * Find a solution for pair velocities.
@@ -3907,7 +3897,7 @@ declare namespace MatterJS {
          * @param {pair[]} pairs
          * @param {number} delta
          */
-        solveVelocity (pairs: IPair[], delta: number): void;
+        solveVelocity(pairs: IPair[], delta: number): void;
 
     }
 
@@ -3926,7 +3916,7 @@ declare namespace MatterJS {
          * @param {ICollisionData} previousCollision
          * @return {ICollisionData} collision
          */
-        static collides (bodyA: BodyType, bodyB: BodyType, previousCollision: ICollisionData): ICollisionData;
+        static collides(bodyA: BodyType, bodyB: BodyType, previousCollision: ICollisionData): ICollisionData;
 
     }
 
@@ -3940,7 +3930,7 @@ declare namespace MatterJS {
          * @param {ICollisionData} previousCollision
          * @return {ICollisionData} collision
          */
-        collides (bodyA: BodyType, bodyB: BodyType, previousCollision: ICollisionData): ICollisionData;
+        collides(bodyA: BodyType, bodyB: BodyType, previousCollision: ICollisionData): ICollisionData;
 
     }
 
@@ -3962,7 +3952,7 @@ declare namespace MatterJS {
          * @param {number} [rayWidth]
          * @return {object[]} Collisions
          */
-        static ray (bodies: Array<BodyType>, startPoint: Vector, endPoint: Vector, rayWidth?: number): Array<ICollisionData>;
+        static ray(bodies: Array<BodyType>, startPoint: Vector, endPoint: Vector, rayWidth?: number): Array<ICollisionData>;
 
         /**
          * Returns all bodies whose bounds are inside (or outside if set) the given set of bounds, from the given set of bodies.
@@ -3972,7 +3962,7 @@ declare namespace MatterJS {
          * @param {bool} [outside=false]
          * @return {body[]} The bodies matching the query
          */
-        static region (bodies: Array<BodyType>, bounds: Bounds, outside?: boolean): Array<BodyType>;
+        static region(bodies: Array<BodyType>, bounds: Bounds, outside?: boolean): Array<BodyType>;
 
         /**
          * Returns all bodies whose vertices contain the given point, from the given set of bodies.
@@ -3981,7 +3971,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @return {body[]} The bodies matching the query
          */
-        static point (bodies: Array<BodyType>, point: Vector): Array<BodyType>;
+        static point(bodies: Array<BodyType>, point: Vector): Array<BodyType>;
 
     }
 
@@ -3996,7 +3986,7 @@ declare namespace MatterJS {
          * @param {number} [rayWidth]
          * @return {object[]} Collisions
          */
-        ray (bodies: Array<BodyType>, startPoint: Vector, endPoint: Vector, rayWidth?: number): Array<ICollisionData>;
+        ray(bodies: Array<BodyType>, startPoint: Vector, endPoint: Vector, rayWidth?: number): Array<ICollisionData>;
 
         /**
          * Returns all bodies whose bounds are inside (or outside if set) the given set of bounds, from the given set of bodies.
@@ -4006,7 +3996,7 @@ declare namespace MatterJS {
          * @param {bool} [outside=false]
          * @return {body[]} The bodies matching the query
          */
-        region (bodies: Array<BodyType>, bounds: Bounds, outside?: boolean): Array<BodyType>;
+        region(bodies: Array<BodyType>, bounds: Bounds, outside?: boolean): Array<BodyType>;
 
         /**
          * Returns all bodies whose vertices contain the given point, from the given set of bodies.
@@ -4015,7 +4005,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @return {body[]} The bodies matching the query
          */
-        point (bodies: Array<BodyType>, point: Vector): Array<BodyType>;
+        point(bodies: Array<BodyType>, point: Vector): Array<BodyType>;
 
     }
 
@@ -4034,25 +4024,54 @@ declare namespace MatterJS {
     class Runner {
 
         /**
+         * A flag that specifies whether the runner is running or not.
+         *
+         * @property enabled
+         * @type boolean
+         * @default true
+         */
+        enabled: boolean;
+        /**
+         * A `Boolean` that specifies if the runner should use a fixed timestep (otherwise it is variable).
+         * If timing is fixed, then the apparent simulation speed will change depending on the frame rate (but behaviour will be deterministic).
+         * If the timing is variable, then the apparent simulation speed will be constant (approximately, but at the cost of determininism).
+         *
+         * @property isFixed
+         * @type boolean
+         * @default false
+         */
+        isFixed: boolean;
+        /**
+         * A `Number` that specifies the time step between updates in milliseconds.
+         * If `engine.timing.isFixed` is set to `true`, then `delta` is fixed.
+         * If it is `false`, then `delta` can dynamically change to maintain the correct apparent simulation speed.
+         *
+         * @property delta
+         * @type number
+         * @default 1000 / 60
+         */
+        delta: number;
+
+        /**
          * Creates a new Runner. The options parameter is an object that specifies any properties you wish to override the defaults.
          * @method create
          * @param {} options
          */
-        static create (options: IRunnerOptions): Runner;
+        static create(options: IRunnerOptions): Runner;
 
         /**
          * Continuously ticks a `Matter.Engine` by calling `Runner.tick` on the `requestAnimationFrame` event.
          * @method run
          * @param {engine} engine
          */
-        static run (runner: Runner, engine: Engine): Runner;
+        static run(runner: Runner, engine: Engine): Runner;
 
         /**
          * Continuously ticks a `Matter.Engine` by calling `Runner.tick` on the `requestAnimationFrame` event.
          * @method run
          * @param {engine} engine
          */
-        static run (engine: Engine): Runner;
+        static run(engine: Engine): Runner;
 
         /**
          * A game loop utility that updates the engine and renderer by one step (a 'tick').
@@ -4064,7 +4083,7 @@ declare namespace MatterJS {
          * @param {engine} engine
          * @param {number} time
          */
-        static tick (runner: Runner, engine: Engine, time: number): void;
+        static tick(runner: Runner, engine: Engine, time: number): void;
 
         /**
          * Ends execution of `Runner.run` on the given `runner`, by canceling the animation frame request event loop.
@@ -4072,7 +4091,7 @@ declare namespace MatterJS {
          * @method stop
          * @param {runner} runner
          */
-        static stop (runner: Runner): void;
+        static stop(runner: Runner): void;
 
         /**
          * Alias for `Runner.run`.
@@ -4080,38 +4099,7 @@ declare namespace MatterJS {
          * @param {runner} runner
          * @param {engine} engine
          */
-        static start (runner: Runner, engine: Engine): void;
-
-        /**
-         * A flag that specifies whether the runner is running or not.
-         *
-         * @property enabled
-         * @type boolean
-         * @default true
-         */
-        enabled: boolean;
-
-        /**
-         * A `Boolean` that specifies if the runner should use a fixed timestep (otherwise it is variable).
-         * If timing is fixed, then the apparent simulation speed will change depending on the frame rate (but behaviour will be deterministic).
-         * If the timing is variable, then the apparent simulation speed will be constant (approximately, but at the cost of determininism).
-         *
-         * @property isFixed
-         * @type boolean
-         * @default false
-         */
-        isFixed: boolean;
-
-        /**
-         * A `Number` that specifies the time step between updates in milliseconds.
-         * If `engine.timing.isFixed` is set to `true`, then `delta` is fixed.
-         * If it is `false`, then `delta` can dynamically change to maintain the correct apparent simulation speed.
-         *
-         * @property delta
-         * @type number
-         * @default 1000 / 60
-         */
-        delta: number;
+        static start(runner: Runner, engine: Engine): void;
 
     }
 
@@ -4128,7 +4116,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {boolean} isSleeping
          */
-        static set (body: BodyType, isSleeping: boolean): void;
+        static set(body: BodyType, isSleeping: boolean): void;
 
         /**
          * Puts bodies to sleep or wakes them up depending on their motion.
@@ -4136,14 +4124,14 @@ declare namespace MatterJS {
          * @param {body[]} bodies
          * @param {number} delta
          */
-        static update (bodies: Array<BodyType>, delta: number): void;
+        static update(bodies: Array<BodyType>, delta: number): void;
 
         /**
          * Given a set of colliding pairs, wakes the sleeping bodies involved.
          * @method afterCollisions
          * @param {pair[]} pairs
          */
-        static afterCollisions (pairs: Array<IPair>): void;
+        static afterCollisions(pairs: Array<IPair>): void;
 
     }
 
@@ -4155,7 +4143,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @param {boolean} isSleeping
          */
-        set (body: BodyType, isSleeping: boolean): void;
+        set(body: BodyType, isSleeping: boolean): void;
 
         /**
          * Puts bodies to sleep or wakes them up depending on their motion.
@@ -4163,14 +4151,14 @@ declare namespace MatterJS {
          * @param {body[]} bodies
          * @param {number} delta
          */
-        update (bodies: Array<BodyType>, delta: number): void;
+        update(bodies: Array<BodyType>, delta: number): void;
 
         /**
          * Given a set of colliding pairs, wakes the sleeping bodies involved.
          * @method afterCollisions
          * @param {pair[]} pairs
          */
-        afterCollisions (pairs: Array<IPair>): void;
+        afterCollisions(pairs: Array<IPair>): void;
 
     }
 
@@ -4193,7 +4181,7 @@ declare namespace MatterJS {
          * @param {Number} [sampleLength=15]
          * @return {Vector[]} points
          */
-        static pathToVertices (path: SVGPathElement, sampleLength: number): Array<Vector>;
+        static pathToVertices(path: SVGPathElement, sampleLength: number): Array<Vector>;
 
     }
 
@@ -4209,19 +4197,19 @@ declare namespace MatterJS {
          * @param {Number} [sampleLength=15]
          * @return {Vector[]} points
          */
-        pathToVertices (path: SVGPathElement, sampleLength: number): Array<Vector>;
+        pathToVertices(path: SVGPathElement, sampleLength: number): Array<Vector>;
 
     }
 
     /**
-    * The `Matter.Vector` module contains methods for creating and manipulating vectors.
-    * Vectors are the basis of all the geometry related operations in the engine.
-    * A `Matter.Vector` object is of the form `{ x: 0, y: 0 }`.
-    *
-    * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-    *
-    * @class Vector
-    */
+     * The `Matter.Vector` module contains methods for creating and manipulating vectors.
+     * Vectors are the basis of all the geometry related operations in the engine.
+     * A `Matter.Vector` object is of the form `{ x: 0, y: 0 }`.
+     *
+     * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+     *
+     * @class Vector
+     */
     class Vector {
 
         x: number;
@@ -4234,7 +4222,7 @@ declare namespace MatterJS {
          * @param {number} y
          * @return {vector} A new vector
          */
-        static create (x?: number, y?: number): Vector;
+        static create(x?: number, y?: number): Vector;
 
         /**
          * Returns a new vector with `x` and `y` copied from the given `vector`.
@@ -4242,7 +4230,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {vector} A new cloned vector
          */
-        static clone (vector: Vector): Vector;
+        static clone(vector: Vector): Vector;
 
         /**
          * Returns the cross-product of three vectors.
@@ -4252,7 +4240,7 @@ declare namespace MatterJS {
          * @param {vector} vectorC
          * @return {number} The cross product of the three vectors
          */
-        static cross3 (vectorA: Vector, vectorB: Vector, vectorC: Vector): number;
+        static cross3(vectorA: Vector, vectorB: Vector, vectorC: Vector): number;
 
         /**
          * Adds the two vectors.
@@ -4262,7 +4250,7 @@ declare namespace MatterJS {
          * @param {vector} [output]
          * @return {vector} A new vector of vectorA and vectorB added
          */
-        static add (vectorA: Vector, vectorB: Vector, output?: Vector): Vector;
+        static add(vectorA: Vector, vectorB: Vector, output?: Vector): Vector;
 
         /**
          * Returns the angle in radians between the two vectors relative to the x-axis.
@@ -4271,7 +4259,7 @@ declare namespace MatterJS {
          * @param {vector} vectorB
          * @return {number} The angle in radians
          */
-        static angle (vectorA: Vector, vectorB: Vector): number;
+        static angle(vectorA: Vector, vectorB: Vector): number;
 
         /**
          * Returns the cross-product of two vectors.
@@ -4280,7 +4268,7 @@ declare namespace MatterJS {
          * @param {vector} vectorB
          * @return {number} The cross product of the two vectors
          */
-        static cross (vectorA: Vector, vectorB: Vector): number;
+        static cross(vectorA: Vector, vectorB: Vector): number;
 
         /**
          * Divides a vector and a scalar.
@@ -4289,7 +4277,7 @@ declare namespace MatterJS {
          * @param {number} scalar
          * @return {vector} A new vector divided by scalar
          */
-        static div (vector: Vector, scalar: number): Vector;
+        static div(vector: Vector, scalar: number): Vector;
 
         /**
          * Returns the dot-product of two vectors.
@@ -4298,7 +4286,7 @@ declare namespace MatterJS {
          * @param {vector} vectorB
          * @return {number} The dot product of the two vectors
          */
-        static dot (vectorA: Vector, vectorB: Vector): Number;
+        static dot(vectorA: Vector, vectorB: Vector): Number;
 
         /**
          * Returns the magnitude (length) of a vector.
@@ -4306,7 +4294,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {number} The magnitude of the vector
          */
-        static magnitude (vector: Vector): number;
+        static magnitude(vector: Vector): number;
 
         /**
          * Returns the magnitude (length) of a vector (therefore saving a `sqrt` operation).
@@ -4314,7 +4302,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {number} The squared magnitude of the vector
          */
-        static magnitudeSquared (vector: Vector): number;
+        static magnitudeSquared(vector: Vector): number;
 
         /**
          * Multiplies a vector and a scalar.
@@ -4323,7 +4311,7 @@ declare namespace MatterJS {
          * @param {number} scalar
          * @return {vector} A new vector multiplied by scalar
          */
-        static mult (vector: Vector, scalar: number): Vector;
+        static mult(vector: Vector, scalar: number): Vector;
 
         /**
          * Negates both components of a vector such that it points in the opposite direction.
@@ -4331,7 +4319,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {vector} The negated vector
          */
-        static neg (vector: Vector): Vector;
+        static neg(vector: Vector): Vector;
 
         /**
          * Normalises a vector (such that its magnitude is `1`).
@@ -4339,7 +4327,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {vector} A new vector normalised
          */
-        static normalise (vector: Vector): Vector;
+        static normalise(vector: Vector): Vector;
 
         /**
          * Returns the perpendicular vector. Set `negate` to true for the perpendicular in the opposite direction.
@@ -4348,7 +4336,7 @@ declare namespace MatterJS {
          * @param {bool} [negate=false]
          * @return {vector} The perpendicular vector
          */
-        static perp (vector: Vector, negate?: boolean): Vector;
+        static perp(vector: Vector, negate?: boolean): Vector;
 
         /**
          * Rotates the vector about (0, 0) by specified angle.
@@ -4357,7 +4345,7 @@ declare namespace MatterJS {
          * @param {number} angle
          * @return {vector} A new vector rotated about (0, 0)
          */
-        static rotate (vector: Vector, angle: number): Vector;
+        static rotate(vector: Vector, angle: number): Vector;
 
         /**
          * Rotates the vector about a specified point by specified angle.
@@ -4368,7 +4356,7 @@ declare namespace MatterJS {
          * @param {vector} [output]
          * @return {vector} A new vector rotated about the point
          */
-        static rotateAbout (vector: Vector, angle: number, point: Vector, output?: Vector): Vector;
+        static rotateAbout(vector: Vector, angle: number, point: Vector, output?: Vector): Vector;
 
         /**
          * Subtracts the two vectors.
@@ -4378,7 +4366,7 @@ declare namespace MatterJS {
          * @param {vector} [output]
          * @return {vector} A new vector of vectorA and vectorB subtracted
          */
-        static sub (vectorA: Vector, vectorB: Vector, optional?: Vector): Vector;
+        static sub(vectorA: Vector, vectorB: Vector, optional?: Vector): Vector;
 
     }
 
@@ -4391,7 +4379,7 @@ declare namespace MatterJS {
          * @param {number} y
          * @return {vector} A new vector
          */
-        create (x?: number, y?: number): Vector;
+        create(x?: number, y?: number): Vector;
 
         /**
          * Returns a new vector with `x` and `y` copied from the given `vector`.
@@ -4399,7 +4387,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {vector} A new cloned vector
          */
-        clone (vector: Vector): Vector;
+        clone(vector: Vector): Vector;
 
         /**
          * Returns the cross-product of three vectors.
@@ -4409,7 +4397,7 @@ declare namespace MatterJS {
          * @param {vector} vectorC
          * @return {number} The cross product of the three vectors
          */
-        cross3 (vectorA: Vector, vectorB: Vector, vectorC: Vector): number;
+        cross3(vectorA: Vector, vectorB: Vector, vectorC: Vector): number;
 
         /**
          * Adds the two vectors.
@@ -4419,7 +4407,7 @@ declare namespace MatterJS {
          * @param {vector} [output]
          * @return {vector} A new vector of vectorA and vectorB added
          */
-        add (vectorA: Vector, vectorB: Vector, output?: Vector): Vector;
+        add(vectorA: Vector, vectorB: Vector, output?: Vector): Vector;
 
         /**
          * Returns the angle in radians between the two vectors relative to the x-axis.
@@ -4428,7 +4416,7 @@ declare namespace MatterJS {
          * @param {vector} vectorB
          * @return {number} The angle in radians
          */
-        angle (vectorA: Vector, vectorB: Vector): number;
+        angle(vectorA: Vector, vectorB: Vector): number;
 
         /**
          * Returns the cross-product of two vectors.
@@ -4437,7 +4425,7 @@ declare namespace MatterJS {
          * @param {vector} vectorB
          * @return {number} The cross product of the two vectors
          */
-        cross (vectorA: Vector, vectorB: Vector): number;
+        cross(vectorA: Vector, vectorB: Vector): number;
 
         /**
          * Divides a vector and a scalar.
@@ -4446,7 +4434,7 @@ declare namespace MatterJS {
          * @param {number} scalar
          * @return {vector} A new vector divided by scalar
          */
-        div (vector: Vector, scalar: number): Vector;
+        div(vector: Vector, scalar: number): Vector;
 
         /**
          * Returns the dot-product of two vectors.
@@ -4455,7 +4443,7 @@ declare namespace MatterJS {
          * @param {vector} vectorB
          * @return {number} The dot product of the two vectors
          */
-        dot (vectorA: Vector, vectorB: Vector): number;
+        dot(vectorA: Vector, vectorB: Vector): number;
 
         /**
          * Returns the magnitude (length) of a vector.
@@ -4463,7 +4451,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {number} The magnitude of the vector
          */
-        magnitude (vector: Vector): number;
+        magnitude(vector: Vector): number;
 
         /**
          * Returns the magnitude (length) of a vector (therefore saving a `sqrt` operation).
@@ -4471,7 +4459,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {number} The squared magnitude of the vector
          */
-        magnitudeSquared (vector: Vector): number;
+        magnitudeSquared(vector: Vector): number;
 
         /**
          * Multiplies a vector and a scalar.
@@ -4480,7 +4468,7 @@ declare namespace MatterJS {
          * @param {number} scalar
          * @return {vector} A new vector multiplied by scalar
          */
-        mult (vector: Vector, scalar: number): Vector;
+        mult(vector: Vector, scalar: number): Vector;
 
         /**
          * Negates both components of a vector such that it points in the opposite direction.
@@ -4488,7 +4476,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {vector} The negated vector
          */
-        neg (vector: Vector): Vector;
+        neg(vector: Vector): Vector;
 
         /**
          * Normalises a vector (such that its magnitude is `1`).
@@ -4496,7 +4484,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @return {vector} A new vector normalised
          */
-        normalise (vector: Vector): Vector;
+        normalise(vector: Vector): Vector;
 
         /**
          * Returns the perpendicular vector. Set `negate` to true for the perpendicular in the opposite direction.
@@ -4505,7 +4493,7 @@ declare namespace MatterJS {
          * @param {bool} [negate=false]
          * @return {vector} The perpendicular vector
          */
-        perp (vector: Vector, negate?: boolean): Vector;
+        perp(vector: Vector, negate?: boolean): Vector;
 
         /**
          * Rotates the vector about (0, 0) by specified angle.
@@ -4514,7 +4502,7 @@ declare namespace MatterJS {
          * @param {number} angle
          * @return {vector} A new vector rotated about (0, 0)
          */
-        rotate (vector: Vector, angle: number): Vector;
+        rotate(vector: Vector, angle: number): Vector;
 
         /**
          * Rotates the vector about a specified point by specified angle.
@@ -4525,7 +4513,7 @@ declare namespace MatterJS {
          * @param {vector} [output]
          * @return {vector} A new vector rotated about the point
          */
-        rotateAbout (vector: Vector, angle: number, point: Vector, output?: Vector): Vector;
+        rotateAbout(vector: Vector, angle: number, point: Vector, output?: Vector): Vector;
 
         /**
          * Subtracts the two vectors.
@@ -4535,7 +4523,7 @@ declare namespace MatterJS {
          * @param {vector} [output]
          * @return {vector} A new vector of vectorA and vectorB subtracted
          */
-        sub (vectorA: Vector, vectorB: Vector, optional?: Vector): Vector;
+        sub(vectorA: Vector, vectorB: Vector, optional?: Vector): Vector;
 
     }
 
@@ -4556,7 +4544,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {vector} The average point
          */
-        static mean (vertices: Array<Vector>): Array<Vector>;
+        static mean(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Sorts the input vertices into clockwise order in place.
@@ -4564,7 +4552,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {vertices} vertices
          */
-        static clockwiseSort (vertices: Array<Vector>): Array<Vector>;
+        static clockwiseSort(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Returns true if the vertices form a convex shape (vertices must be in clockwise order).
@@ -4572,7 +4560,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {bool} `true` if the `vertices` are convex, `false` if not (or `null` if not computable).
          */
-        static isConvex (vertices: Array<Vector>): boolean;
+        static isConvex(vertices: Array<Vector>): boolean;
 
         /**
          * Returns the convex hull of the input vertices as a new array of points.
@@ -4580,7 +4568,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return [vertex] vertices
          */
-        static hull (vertices: Array<Vector>): Array<Vector>;
+        static hull(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Returns the area of the set of vertices.
@@ -4589,7 +4577,7 @@ declare namespace MatterJS {
          * @param {bool} signed
          * @return {number} The area
          */
-        static area (vertices: Array<Vector>, signed: boolean): number;
+        static area(vertices: Array<Vector>, signed: boolean): number;
 
         /**
          * Returns the centre (centroid) of the set of vertices.
@@ -4597,7 +4585,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {vector} The centre point
          */
-        static centre (vertices: Array<Vector>): Vector;
+        static centre(vertices: Array<Vector>): Vector;
 
         /**
          * Chamfers a set of vertices by giving them rounded corners, returns a new set of vertices.
@@ -4609,7 +4597,7 @@ declare namespace MatterJS {
          * @param {number} qualityMin
          * @param {number} qualityMax
          */
-        static chamfer (vertices: Array<Vector>, radius: number | Array<number>, quality: number, qualityMin: number, qualityMax: number): void;
+        static chamfer(vertices: Array<Vector>, radius: number | Array<number>, quality: number, qualityMin: number, qualityMax: number): void;
 
         /**
          * Returns `true` if the `point` is inside the set of `vertices`.
@@ -4618,7 +4606,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @return {boolean} True if the vertices contains point, otherwise false
          */
-        static contains (vertices: Array<Vector>, point: Vector): boolean;
+        static contains(vertices: Array<Vector>, point: Vector): boolean;
 
         /**
          * Creates a new set of `Matter.Body` compatible vertices.
@@ -4635,7 +4623,7 @@ declare namespace MatterJS {
          * @param {vector[]} points
          * @param {body} body
          */
-        static create (points: Array<Vector>, body: BodyType): Array<Vector>;
+        static create(points: Array<Vector>, body: BodyType): Array<Vector>;
 
         /**
          * Parses a string containing ordered x y pairs separated by spaces (and optionally commas),
@@ -4646,7 +4634,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {vertices} vertices
          */
-        static fromPath (path: string, body: BodyType): Array<Vector>;
+        static fromPath(path: string, body: BodyType): Array<Vector>;
 
         /**
          * Returns the moment of inertia (second moment of area) of the set of vertices given the total mass.
@@ -4655,7 +4643,7 @@ declare namespace MatterJS {
          * @param {number} mass
          * @return {number} The polygon's moment of inertia
          */
-        static inertia (vertices: Array<Vector>, mass: number): number;
+        static inertia(vertices: Array<Vector>, mass: number): number;
 
         /**
          * Rotates the set of vertices in-place.
@@ -4664,7 +4652,7 @@ declare namespace MatterJS {
          * @param {number} angle
          * @param {vector} point
          */
-        static rotate (vertices: Array<Vector>, angle: number, point: Vector): void;
+        static rotate(vertices: Array<Vector>, angle: number, point: Vector): void;
 
         /**
          * Scales the vertices from a point (default is centre) in-place.
@@ -4674,7 +4662,7 @@ declare namespace MatterJS {
          * @param {number} scaleY
          * @param {vector} point
          */
-        static scale (vertices: Array<Vector>, scaleX: number, scaleY: number, point: Vector): void;
+        static scale(vertices: Array<Vector>, scaleX: number, scaleY: number, point: Vector): void;
 
         /**
          * Translates the set of vertices in-place.
@@ -4683,7 +4671,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @param {number} scalar
          */
-        static translate (vertices: Array<Vector>, vector: Vector, scalar: number): void;
+        static translate(vertices: Array<Vector>, vector: Vector, scalar: number): void;
 
     }
 
@@ -4695,7 +4683,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {vector} The average point
          */
-        mean (vertices: Array<Vector>): Array<Vector>;
+        mean(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Sorts the input vertices into clockwise order in place.
@@ -4703,7 +4691,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {vertices} vertices
          */
-        clockwiseSort (vertices: Array<Vector>): Array<Vector>;
+        clockwiseSort(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Returns true if the vertices form a convex shape (vertices must be in clockwise order).
@@ -4711,7 +4699,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {bool} `true` if the `vertices` are convex, `false` if not (or `null` if not computable).
          */
-        isConvex (vertices: Array<Vector>): boolean;
+        isConvex(vertices: Array<Vector>): boolean;
 
         /**
          * Returns the convex hull of the input vertices as a new array of points.
@@ -4719,7 +4707,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return [vertex] vertices
          */
-        hull (vertices: Array<Vector>): Array<Vector>;
+        hull(vertices: Array<Vector>): Array<Vector>;
 
         /**
          * Returns the area of the set of vertices.
@@ -4728,7 +4716,7 @@ declare namespace MatterJS {
          * @param {bool} signed
          * @return {number} The area
          */
-        area (vertices: Array<Vector>, signed: boolean): number;
+        area(vertices: Array<Vector>, signed: boolean): number;
 
         /**
          * Returns the centre (centroid) of the set of vertices.
@@ -4736,7 +4724,7 @@ declare namespace MatterJS {
          * @param {vertices} vertices
          * @return {vector} The centre point
          */
-        centre (vertices: Array<Vector>): Vector;
+        centre(vertices: Array<Vector>): Vector;
 
         /**
          * Chamfers a set of vertices by giving them rounded corners, returns a new set of vertices.
@@ -4748,7 +4736,7 @@ declare namespace MatterJS {
          * @param {number} qualityMin
          * @param {number} qualityMax
          */
-        chamfer (vertices: Array<Vector>, radius: number | Array<number>, quality: number, qualityMin: number, qualityMax: number): void;
+        chamfer(vertices: Array<Vector>, radius: number | Array<number>, quality: number, qualityMin: number, qualityMax: number): void;
 
         /**
          * Returns `true` if the `point` is inside the set of `vertices`.
@@ -4757,7 +4745,7 @@ declare namespace MatterJS {
          * @param {vector} point
          * @return {boolean} True if the vertices contains point, otherwise false
          */
-        contains (vertices: Array<Vector>, point: Vector): boolean;
+        contains(vertices: Array<Vector>, point: Vector): boolean;
 
         /**
          * Creates a new set of `Matter.Body` compatible vertices.
@@ -4774,7 +4762,7 @@ declare namespace MatterJS {
          * @param {vector[]} points
          * @param {body} body
          */
-        create (points: Array<Vector>, body: BodyType): Array<Vector>;
+        create(points: Array<Vector>, body: BodyType): Array<Vector>;
 
         /**
          * Parses a string containing ordered x y pairs separated by spaces (and optionally commas),
@@ -4785,7 +4773,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {vertices} vertices
          */
-        fromPath (path: string, body: BodyType): Array<Vector>;
+        fromPath(path: string, body: BodyType): Array<Vector>;
 
         /**
          * Returns the moment of inertia (second moment of area) of the set of vertices given the total mass.
@@ -4794,7 +4782,7 @@ declare namespace MatterJS {
          * @param {number} mass
          * @return {number} The polygon's moment of inertia
          */
-        inertia (vertices: Array<Vector>, mass: number): number;
+        inertia(vertices: Array<Vector>, mass: number): number;
 
         /**
          * Rotates the set of vertices in-place.
@@ -4803,7 +4791,7 @@ declare namespace MatterJS {
          * @param {number} angle
          * @param {vector} point
          */
-        rotate (vertices: Array<Vector>, angle: number, point: Vector): void;
+        rotate(vertices: Array<Vector>, angle: number, point: Vector): void;
 
         /**
          * Scales the vertices from a point (default is centre) in-place.
@@ -4813,7 +4801,7 @@ declare namespace MatterJS {
          * @param {number} scaleY
          * @param {vector} point
          */
-        scale (vertices: Array<Vector>, scaleX: number, scaleY: number, point: Vector): void;
+        scale(vertices: Array<Vector>, scaleX: number, scaleY: number, point: Vector): void;
 
         /**
          * Translates the set of vertices in-place.
@@ -4822,7 +4810,7 @@ declare namespace MatterJS {
          * @param {vector} vector
          * @param {number} scalar
          */
-        translate (vertices: Array<Vector>, vector: Vector, scalar: number): void;
+        translate(vertices: Array<Vector>, vector: Vector, scalar: number): void;
 
     }
 
@@ -4840,13 +4828,16 @@ declare namespace MatterJS {
      */
     class World {
 
+        gravity: Gravity;
+        bounds: Bounds;
+
         /**
          * Add objects or arrays of objects of types: Body, Constraint, Composite
          * @param world
          * @param body
          * @returns world
          */
-        static add (world: World, body: BodyType | Array<BodyType> | CompositeType | Array<CompositeType> | ConstraintType | Array<ConstraintType> | MouseConstraint): World;
+        static add(world: World, body: BodyType | Array<BodyType> | CompositeType | Array<CompositeType> | ConstraintType | Array<ConstraintType> | MouseConstraint): World;
 
         /**
          * An alias for Composite.addBody since World is also a Composite
@@ -4855,7 +4846,7 @@ declare namespace MatterJS {
          * @param {body} body
          * @return {world} The original world with the body added
          */
-        static addBody (world: World, body: BodyType): World;
+        static addBody(world: World, body: BodyType): World;
 
         /**
          * An alias for Composite.add since World is also a Composite
@@ -4864,7 +4855,7 @@ declare namespace MatterJS {
          * @param {composite} composite
          * @return {world} The original world with the objects from composite added
          */
-        static addComposite (world: World, composite: CompositeType): World;
+        static addComposite(world: World, composite: CompositeType): World;
 
         /**
          * An alias for Composite.addConstraint since World is also a Composite
@@ -4873,7 +4864,7 @@ declare namespace MatterJS {
          * @param {constraint} constraint
          * @return {world} The original world with the constraint added
          */
-        static addConstraint (world: World, constraint: ConstraintType): World;
+        static addConstraint(world: World, constraint: ConstraintType): World;
 
         /**
          * An alias for Composite.clear since World is also a Composite
@@ -4881,7 +4872,7 @@ declare namespace MatterJS {
          * @param {world} world
          * @param {boolean} keepStatic
          */
-        static clear (world: World, keepStatic: boolean): void;
+        static clear(world: World, keepStatic: boolean): void;
 
         /**
          * Creates a new world composite. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -4891,11 +4882,7 @@ declare namespace MatterJS {
          * @param {} options
          * @return {world} A new world
          */
-        static create (options: IWorldDefinition): World;
-
-        gravity: Gravity;
-
-        bounds: Bounds;
+        static create(options: IWorldDefinition): World;
 
     }
 
@@ -4910,7 +4897,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: BodyType, name: "sleepStart", callback: (e: IEvent<BodyType>) => void): void;
+        static on(obj: BodyType, name: "sleepStart", callback: (e: IEvent<BodyType>) => void): void;
 
         /**
          * Fired when a body ends sleeping (where `this` is the body).
@@ -4921,7 +4908,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: BodyType, name: "sleepEnd", callback: (e: IEvent<BodyType>) => void): void;
+        static on(obj: BodyType, name: "sleepEnd", callback: (e: IEvent<BodyType>) => void): void;
 
         /**
          * Fired when a call to `Composite.add` is made, before objects have been added.
@@ -4932,7 +4919,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "beforeAdd", callback: (e: IEventComposite<CompositeType>) => void): void;
+        static on(obj: Engine, name: "beforeAdd", callback: (e: IEventComposite<CompositeType>) => void): void;
 
         /**
          * Fired when a call to `Composite.add` is made, after objects have been added.
@@ -4943,7 +4930,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "afterAdd", callback: (e: IEventComposite<CompositeType>) => void): void;
+        static on(obj: Engine, name: "afterAdd", callback: (e: IEventComposite<CompositeType>) => void): void;
 
         /**
          * Fired when a call to `Composite.remove` is made, before objects have been removed.
@@ -4954,7 +4941,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "beforeRemove", callback: (e: IEventComposite<CompositeType>) => void): void;
+        static on(obj: Engine, name: "beforeRemove", callback: (e: IEventComposite<CompositeType>) => void): void;
 
         /**
          * Fired when a call to `Composite.remove` is made, after objects have been removed.
@@ -4965,7 +4952,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "afterRemove", callback: (e: IEventComposite<CompositeType>) => void): void;
+        static on(obj: Engine, name: "afterRemove", callback: (e: IEventComposite<CompositeType>) => void): void;
 
         /**
          * Fired after engine update and all collision events
@@ -4976,7 +4963,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "afterUpdate", callback: (e: IEventTimestamped<Engine>) => void): void;
+        static on(obj: Engine, name: "afterUpdate", callback: (e: IEventTimestamped<Engine>) => void): void;
 
         /**
          * Fired just before an update
@@ -4987,7 +4974,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "beforeUpdate", callback: (e: IEventTimestamped<Engine>) => void): void;
+        static on(obj: Engine, name: "beforeUpdate", callback: (e: IEventTimestamped<Engine>) => void): void;
 
         /**
          * Fired after engine update, provides a list of all pairs that are colliding in the current tick (if any)
@@ -4999,7 +4986,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "collisionActive", callback: (e: IEventCollision<Engine>) => void): void;
+        static on(obj: Engine, name: "collisionActive", callback: (e: IEventCollision<Engine>) => void): void;
 
         /**
          * Fired after engine update, provides a list of all pairs that have ended collision in the current tick (if any)
@@ -5011,7 +4998,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "collisionEnd", callback: (e: IEventCollision<Engine>) => void): void;
+        static on(obj: Engine, name: "collisionEnd", callback: (e: IEventCollision<Engine>) => void): void;
 
         /**
          * Fired after engine update, provides a list of all pairs that have started to collide in the current tick (if any)
@@ -5023,7 +5010,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "collisionStart", callback: (e: IEventCollision<Engine>) => void): void;
+        static on(obj: Engine, name: "collisionStart", callback: (e: IEventCollision<Engine>) => void): void;
 
         /**
          * Fired at the start of a tick, before any updates to the engine or timing
@@ -5034,7 +5021,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "beforeTick", callback: (e: IEventTimestamped<Runner>) => void): void;
+        static on(obj: Engine, name: "beforeTick", callback: (e: IEventTimestamped<Runner>) => void): void;
 
         /**
          * Fired after engine timing updated, but just before update
@@ -5045,7 +5032,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "tick", callback: (e: IEventTimestamped<Runner>) => void): void;
+        static on(obj: Engine, name: "tick", callback: (e: IEventTimestamped<Runner>) => void): void;
 
         /**
          * Fired at the end of a tick, after engine update and after rendering
@@ -5056,7 +5043,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "afterTick", callback: (e: IEventTimestamped<Runner>) => void): void;
+        static on(obj: Engine, name: "afterTick", callback: (e: IEventTimestamped<Runner>) => void): void;
 
         /**
          * Fired before rendering
@@ -5067,7 +5054,7 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "beforeRender", callback: (e: IEventTimestamped<Runner>) => void): void;
+        static on(obj: Engine, name: "beforeRender", callback: (e: IEventTimestamped<Runner>) => void): void;
 
         /**
          * Fired after rendering
@@ -5078,9 +5065,9 @@ declare namespace MatterJS {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on (obj: Engine, name: "afterRender", callback: (e: IEventTimestamped<Runner>) => void): void;
+        static on(obj: Engine, name: "afterRender", callback: (e: IEventTimestamped<Runner>) => void): void;
 
-        static on (obj: any, name: string, callback: (e: any) => void): void;
+        static on(obj: any, name: string, callback: (e: any) => void): void;
 
         /**
          * Removes the given event callback. If no callback, clears all callbacks in eventNames. If no eventNames, clears all events.
@@ -5102,7 +5089,7 @@ declare namespace MatterJS {
 
     }
 
-    type Dependency = {name: string, range: string} | {name: string, version: string} | string;
+    type Dependency = { name: string, range: string } | { name: string, version: string } | string;
 
     class Plugin {
 
@@ -5117,7 +5104,7 @@ declare namespace MatterJS {
          * @param plugin {} The plugin to register.
          * @return {object} The plugin.
          */
-        static register (plugin: Plugin): Plugin;
+        static register(plugin: Plugin): Plugin;
 
         /**
          * Resolves a dependency to a plugin object from the registry if it exists.
@@ -5126,7 +5113,7 @@ declare namespace MatterJS {
          * @param dependency {string} The dependency.
          * @return {object} The plugin if resolved, otherwise `undefined`.
          */
-        static resolve (dependency: string): Plugin | undefined;
+        static resolve(dependency: string): Plugin | undefined;
 
         /**
          * Returns `true` if the object meets the minimum standard to be considered a plugin.
@@ -5138,7 +5125,7 @@ declare namespace MatterJS {
          * @param obj {} The obj to test.
          * @return {boolean} `true` if the object can be considered a plugin otherwise `false`.
          */
-        static isPlugin (obj: {}): boolean;
+        static isPlugin(obj: {}): boolean;
 
         /**
          * Returns a pretty printed plugin name and version.
@@ -5146,7 +5133,7 @@ declare namespace MatterJS {
          * @param plugin {} The plugin.
          * @return {string} Pretty printed plugin name and version.
          */
-        static toString (plugin: string | Plugin): string;
+        static toString(plugin: string | Plugin): string;
 
         /**
          * Returns `true` if `plugin.for` is applicable to `module` by comparing against `module.name` and `module.version`.
@@ -5157,7 +5144,7 @@ declare namespace MatterJS {
          * @param module {} The module.
          * @return {boolean} `true` if `plugin.for` is applicable to `module`, otherwise `false`.
          */
-        static isFor (plugin: Plugin, module: {name?: string, [_: string]: any}): boolean;
+        static isFor(plugin: Plugin, module: { name?: string, [_: string]: any }): boolean;
 
         /**
          * Installs the plugins by calling `plugin.install` on each plugin specified in `plugins` if passed, otherwise `module.uses`.
@@ -5175,7 +5162,7 @@ declare namespace MatterJS {
          * @param module {} The module install plugins on.
          * @param [plugins=module.uses] {} The plugins to install on module (optional, defaults to `module.uses`).
          */
-        static use (module: {uses?: (Plugin | string)[]; [_: string]: any}, plugins: (Plugin | string)[]): void;
+        static use(module: { uses?: (Plugin | string)[]; [_: string]: any }, plugins: (Plugin | string)[]): void;
 
         /**
          * Recursively finds all of a module's dependencies and returns a flat dependency graph.
@@ -5183,7 +5170,9 @@ declare namespace MatterJS {
          * @param module {} The module.
          * @return {object} A dependency graph.
          */
-        static dependencies (module: Dependency, tracked?: {[_: string]: string[]}): {[_: string]: string[]} | string | undefined;
+        static dependencies(module: Dependency, tracked?: { [_: string]: string[] }): {
+            [_: string]: string[]
+        } | string | undefined;
 
         /**
          * Parses a dependency string into its components.
@@ -5194,7 +5183,7 @@ declare namespace MatterJS {
          * @param dependency {string} The dependency of the format `'module-name'` or `'module-name@version'`.
          * @return {object} The dependency parsed into its components.
          */
-        static dependencyParse (dependency: Dependency) : {name: string, range: string};
+        static dependencyParse(dependency: Dependency): { name: string, range: string };
 
         /**
          * Parses a version string into its components.
@@ -5210,7 +5199,7 @@ declare namespace MatterJS {
          * @param range {string} The version string.
          * @return {object} The version range parsed into its components.
          */
-        static versionParse (range: string) : {
+        static versionParse(range: string): {
             isRange: boolean,
             version: string,
             range: string,
@@ -5229,7 +5218,7 @@ declare namespace MatterJS {
          * @param range {string} The range string.
          * @return {boolean} `true` if `version` satisfies `range`, otherwise `false`.
          */
-        static versionSatisfies (version: string, range: string): boolean;
+        static versionSatisfies(version: string, range: string): boolean;
 
     }
 
@@ -5244,7 +5233,7 @@ declare namespace MatterJS {
          * @param {BodyType} bodyB The second body part represented by the collision record
          * @return {collision} A new collision record
          */
-        create (bodyA: BodyType, bodyB: BodyType): any;
+        create(bodyA: BodyType, bodyB: BodyType): any;
 
         /**
          * Detect collision between two bodies.
@@ -5254,7 +5243,7 @@ declare namespace MatterJS {
          * @param {Pairs | null} [pairs] Optionally reuse collision records from existing pairs, pass null to create new records.
          * @return {collision|null} A collision record if detected, otherwise null
          */
-        collides (bodyA: BodyType, bodyB: BodyType, pairs: Pairs | null): any;
+        collides(bodyA: BodyType, bodyB: BodyType, pairs: Pairs | null): any;
 
     }
 }

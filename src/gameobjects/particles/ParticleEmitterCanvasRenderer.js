@@ -26,23 +26,19 @@ var tempMatrix4 = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var ParticleEmitterCanvasRenderer = function (renderer, emitter, camera, parentMatrix)
-{
+var ParticleEmitterCanvasRenderer = function (renderer, emitter, camera, parentMatrix) {
     var camMatrix = tempMatrix1;
     var calcMatrix = tempMatrix2;
     var particleMatrix = tempMatrix3;
     var managerMatrix = tempMatrix4;
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         managerMatrix.loadIdentity();
         managerMatrix.multiply(parentMatrix);
         managerMatrix.translate(emitter.x, emitter.y);
         managerMatrix.rotate(emitter.rotation);
         managerMatrix.scale(emitter.scaleX, emitter.scaleY);
-    }
-    else
-    {
+    } else {
         managerMatrix.applyITRS(emitter.x, emitter.y, emitter.rotation, emitter.scaleX, emitter.scaleY);
     }
 
@@ -55,13 +51,11 @@ var ParticleEmitterCanvasRenderer = function (renderer, emitter, camera, parentM
     var particleCount = particles.length;
     var viewBounds = emitter.viewBounds;
 
-    if (!emitter.visible || particleCount === 0 || (viewBounds && !RectangleToRectangle(viewBounds, camera.worldView)))
-    {
+    if (!emitter.visible || particleCount === 0 || (viewBounds && !RectangleToRectangle(viewBounds, camera.worldView))) {
         return;
     }
 
-    if (emitter.sortCallback)
-    {
+    if (emitter.sortCallback) {
         emitter.depthSort();
     }
 
@@ -74,14 +68,12 @@ var ParticleEmitterCanvasRenderer = function (renderer, emitter, camera, parentM
 
     ctx.globalCompositeOperation = renderer.blendModes[emitter.blendMode];
 
-    for (var i = 0; i < particleCount; i++)
-    {
+    for (var i = 0; i < particleCount; i++) {
         var particle = particles[i];
 
         var alpha = particle.alpha * emitterAlpha * camerAlpha;
 
-        if (alpha <= 0 || particle.scaleX === 0 || particle.scaleY === 0)
-        {
+        if (alpha <= 0 || particle.scaleX === 0 || particle.scaleY === 0) {
             continue;
         }
 
@@ -101,8 +93,7 @@ var ParticleEmitterCanvasRenderer = function (renderer, emitter, camera, parentM
         var frame = particle.frame;
         var cd = frame.canvasData;
 
-        if (cd.width > 0 && cd.height > 0)
-        {
+        if (cd.width > 0 && cd.height > 0) {
             var x = -(frame.halfWidth);
             var y = -(frame.halfHeight);
 
@@ -112,8 +103,7 @@ var ParticleEmitterCanvasRenderer = function (renderer, emitter, camera, parentM
 
             calcMatrix.setToContext(ctx);
 
-            if (roundPixels)
-            {
+            if (roundPixels) {
                 x = Math.round(x);
                 y = Math.round(y);
             }

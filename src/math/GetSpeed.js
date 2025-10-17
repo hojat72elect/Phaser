@@ -19,8 +19,7 @@
  * // 400px over 1 second is 0.4 px/ms
  * Phaser.Math.GetSpeed(400, 1) // -> 0.4
  */
-var GetSpeed = function (distance, time)
-{
+var GetSpeed = function (distance, time) {
     return (distance / time) / 1000;
 };
 

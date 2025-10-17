@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Geom.Rectangle} The adjusted Rectangle.
  */
-var FloorAll = function (rect)
-{
+var FloorAll = function (rect) {
     rect.x = Math.floor(rect.x);
     rect.y = Math.floor(rect.y);
     rect.width = Math.floor(rect.width);

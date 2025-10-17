@@ -13,8 +13,7 @@
  * @property {boolean} video - Is this a video ad?
  */
 
-var AdInstance = function (placementID, instance, video)
-{
+var AdInstance = function (placementID, instance, video) {
     return {
         instance: instance,
         placementID: placementID,

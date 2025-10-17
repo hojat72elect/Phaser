@@ -14,8 +14,7 @@
  *
  * @return {boolean} Returns `true` if `value` is a power of two, otherwise `false`.
  */
-var IsValuePowerOfTwo = function (value)
-{
+var IsValuePowerOfTwo = function (value) {
     return (value > 0 && (value & (value - 1)) === 0);
 };
 

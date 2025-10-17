@@ -31,117 +31,116 @@ var KeyboardManager = new Class({
 
     initialize:
 
-    function KeyboardManager (inputManager)
-    {
-        /**
-         * A reference to the Input Manager.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#manager
-         * @type {Phaser.Input.InputManager}
-         * @since 3.16.0
-         */
-        this.manager = inputManager;
+        function KeyboardManager(inputManager) {
+            /**
+             * A reference to the Input Manager.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#manager
+             * @type {Phaser.Input.InputManager}
+             * @since 3.16.0
+             */
+            this.manager = inputManager;
 
-        /**
-         * An internal event queue.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#queue
-         * @type {KeyboardEvent[]}
-         * @private
-         * @since 3.16.0
-         */
-        this.queue = [];
+            /**
+             * An internal event queue.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#queue
+             * @type {KeyboardEvent[]}
+             * @private
+             * @since 3.16.0
+             */
+            this.queue = [];
 
-        /**
-         * A flag that controls if the non-modified keys, matching those stored in the `captures` array,
-         * have `preventDefault` called on them or not.
-         *
-         * A non-modified key is one that doesn't have a modifier key held down with it. The modifier keys are
-         * shift, control, alt and the meta key (Command on a Mac, the Windows Key on Windows).
-         * Therefore, if the user presses shift + r, it won't prevent this combination, because of the modifier.
-         * However, if the user presses just the r key on its own, it will have its event prevented.
-         *
-         * If you wish to stop capturing the keys, for example switching out to a DOM based element, then
-         * you can toggle this property at run-time.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#preventDefault
-         * @type {boolean}
-         * @since 3.16.0
-         */
-        this.preventDefault = true;
+            /**
+             * A flag that controls if the non-modified keys, matching those stored in the `captures` array,
+             * have `preventDefault` called on them or not.
+             *
+             * A non-modified key is one that doesn't have a modifier key held down with it. The modifier keys are
+             * shift, control, alt and the meta key (Command on a Mac, the Windows Key on Windows).
+             * Therefore, if the user presses shift + r, it won't prevent this combination, because of the modifier.
+             * However, if the user presses just the r key on its own, it will have its event prevented.
+             *
+             * If you wish to stop capturing the keys, for example switching out to a DOM based element, then
+             * you can toggle this property at run-time.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#preventDefault
+             * @type {boolean}
+             * @since 3.16.0
+             */
+            this.preventDefault = true;
 
-        /**
-         * An array of Key Code values that will automatically have `preventDefault` called on them,
-         * as long as the `KeyboardManager.preventDefault` boolean is set to `true`.
-         *
-         * By default the array is empty.
-         *
-         * The key must be non-modified when pressed in order to be captured.
-         *
-         * A non-modified key is one that doesn't have a modifier key held down with it. The modifier keys are
-         * shift, control, alt and the meta key (Command on a Mac, the Windows Key on Windows).
-         * Therefore, if the user presses shift + r, it won't prevent this combination, because of the modifier.
-         * However, if the user presses just the r key on its own, it will have its event prevented.
-         *
-         * If you wish to stop capturing the keys, for example switching out to a DOM based element, then
-         * you can toggle the `KeyboardManager.preventDefault` boolean at run-time.
-         *
-         * If you need more specific control, you can create Key objects and set the flag on each of those instead.
-         *
-         * This array can be populated via the Game Config by setting the `input.keyboard.capture` array, or you
-         * can call the `addCapture` method. See also `removeCapture` and `clearCaptures`.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#captures
-         * @type {number[]}
-         * @since 3.16.0
-         */
-        this.captures = [];
+            /**
+             * An array of Key Code values that will automatically have `preventDefault` called on them,
+             * as long as the `KeyboardManager.preventDefault` boolean is set to `true`.
+             *
+             * By default the array is empty.
+             *
+             * The key must be non-modified when pressed in order to be captured.
+             *
+             * A non-modified key is one that doesn't have a modifier key held down with it. The modifier keys are
+             * shift, control, alt and the meta key (Command on a Mac, the Windows Key on Windows).
+             * Therefore, if the user presses shift + r, it won't prevent this combination, because of the modifier.
+             * However, if the user presses just the r key on its own, it will have its event prevented.
+             *
+             * If you wish to stop capturing the keys, for example switching out to a DOM based element, then
+             * you can toggle the `KeyboardManager.preventDefault` boolean at run-time.
+             *
+             * If you need more specific control, you can create Key objects and set the flag on each of those instead.
+             *
+             * This array can be populated via the Game Config by setting the `input.keyboard.capture` array, or you
+             * can call the `addCapture` method. See also `removeCapture` and `clearCaptures`.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#captures
+             * @type {number[]}
+             * @since 3.16.0
+             */
+            this.captures = [];
 
-        /**
-         * A boolean that controls if the Keyboard Manager is enabled or not.
-         * Can be toggled on the fly.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#enabled
-         * @type {boolean}
-         * @default false
-         * @since 3.16.0
-         */
-        this.enabled = false;
+            /**
+             * A boolean that controls if the Keyboard Manager is enabled or not.
+             * Can be toggled on the fly.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#enabled
+             * @type {boolean}
+             * @default false
+             * @since 3.16.0
+             */
+            this.enabled = false;
 
-        /**
-         * The Keyboard Event target, as defined in the Game Config.
-         * Typically the window in which the game is rendering, but can be any interactive DOM element.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#target
-         * @type {any}
-         * @since 3.16.0
-         */
-        this.target;
+            /**
+             * The Keyboard Event target, as defined in the Game Config.
+             * Typically the window in which the game is rendering, but can be any interactive DOM element.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#target
+             * @type {any}
+             * @since 3.16.0
+             */
+            this.target;
 
-        /**
-         * The Key Down Event handler.
-         * This function is sent the native DOM KeyEvent.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#onKeyDown
-         * @type {function}
-         * @since 3.16.00
-         */
-        this.onKeyDown = NOOP;
+            /**
+             * The Key Down Event handler.
+             * This function is sent the native DOM KeyEvent.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#onKeyDown
+             * @type {function}
+             * @since 3.16.00
+             */
+            this.onKeyDown = NOOP;
 
-        /**
-         * The Key Up Event handler.
-         * This function is sent the native DOM KeyEvent.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardManager#onKeyUp
-         * @type {function}
-         * @since 3.16.00
-         */
-        this.onKeyUp = NOOP;
+            /**
+             * The Key Up Event handler.
+             * This function is sent the native DOM KeyEvent.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardManager#onKeyUp
+             * @type {function}
+             * @since 3.16.00
+             */
+            this.onKeyUp = NOOP;
 
-        inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
-    },
+            inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
+        },
 
     /**
      * The Keyboard Manager boot process.
@@ -150,8 +149,7 @@ var KeyboardManager = new Class({
      * @private
      * @since 3.16.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var config = this.manager.config;
 
         this.enabled = config.inputKeyboard;
@@ -159,13 +157,11 @@ var KeyboardManager = new Class({
 
         this.addCapture(config.inputKeyboardCapture);
 
-        if (!this.target && window)
-        {
+        if (!this.target && window) {
             this.target = window;
         }
 
-        if (this.enabled && this.target)
-        {
+        if (this.enabled && this.target) {
             this.startListeners();
         }
 
@@ -179,14 +175,11 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#startListeners
      * @since 3.16.0
      */
-    startListeners: function ()
-    {
+    startListeners: function () {
         var _this = this;
 
-        this.onKeyDown = function (event)
-        {
-            if (event.defaultPrevented || !_this.enabled || !_this.manager)
-            {
+        this.onKeyDown = function (event) {
+            if (event.defaultPrevented || !_this.enabled || !_this.manager) {
                 // Do nothing if event already handled
                 return;
             }
@@ -197,16 +190,13 @@ var KeyboardManager = new Class({
 
             var modified = (event.altKey || event.ctrlKey || event.shiftKey || event.metaKey);
 
-            if (_this.preventDefault && !modified && _this.captures.indexOf(event.keyCode) > -1)
-            {
+            if (_this.preventDefault && !modified && _this.captures.indexOf(event.keyCode) > -1) {
                 event.preventDefault();
             }
         };
 
-        this.onKeyUp = function (event)
-        {
-            if (event.defaultPrevented || !_this.enabled || !_this.manager)
-            {
+        this.onKeyUp = function (event) {
+            if (event.defaultPrevented || !_this.enabled || !_this.manager) {
                 // Do nothing if event already handled
                 return;
             }
@@ -217,16 +207,14 @@ var KeyboardManager = new Class({
 
             var modified = (event.altKey || event.ctrlKey || event.shiftKey || event.metaKey);
 
-            if (_this.preventDefault && !modified && _this.captures.indexOf(event.keyCode) > -1)
-            {
+            if (_this.preventDefault && !modified && _this.captures.indexOf(event.keyCode) > -1) {
                 event.preventDefault();
             }
         };
 
         var target = this.target;
 
-        if (target)
-        {
+        if (target) {
             target.addEventListener('keydown', this.onKeyDown, false);
             target.addEventListener('keyup', this.onKeyUp, false);
 
@@ -241,8 +229,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#stopListeners
      * @since 3.16.0
      */
-    stopListeners: function ()
-    {
+    stopListeners: function () {
         var target = this.target;
 
         target.removeEventListener('keydown', this.onKeyDown, false);
@@ -259,8 +246,7 @@ var KeyboardManager = new Class({
      * @private
      * @since 3.16.0
      */
-    postUpdate: function ()
-    {
+    postUpdate: function () {
         this.queue = [];
     },
 
@@ -303,31 +289,25 @@ var KeyboardManager = new Class({
      *
      * @param {(string|number|number[]|any[])} keycode - The Key Codes to enable capture for, preventing them reaching the browser.
      */
-    addCapture: function (keycode)
-    {
-        if (typeof keycode === 'string')
-        {
+    addCapture: function (keycode) {
+        if (typeof keycode === 'string') {
             keycode = keycode.split(',');
         }
 
-        if (!Array.isArray(keycode))
-        {
-            keycode = [ keycode ];
+        if (!Array.isArray(keycode)) {
+            keycode = [keycode];
         }
 
         var captures = this.captures;
 
-        for (var i = 0; i < keycode.length; i++)
-        {
+        for (var i = 0; i < keycode.length; i++) {
             var code = keycode[i];
 
-            if (typeof code === 'string')
-            {
+            if (typeof code === 'string') {
                 code = KeyCodes[code.trim().toUpperCase()];
             }
 
-            if (captures.indexOf(code) === -1)
-            {
+            if (captures.indexOf(code) === -1) {
                 captures.push(code);
             }
         }
@@ -370,26 +350,21 @@ var KeyboardManager = new Class({
      *
      * @param {(string|number|number[]|any[])} keycode - The Key Codes to disable capture for, allowing them reaching the browser again.
      */
-    removeCapture: function (keycode)
-    {
-        if (typeof keycode === 'string')
-        {
+    removeCapture: function (keycode) {
+        if (typeof keycode === 'string') {
             keycode = keycode.split(',');
         }
 
-        if (!Array.isArray(keycode))
-        {
-            keycode = [ keycode ];
+        if (!Array.isArray(keycode)) {
+            keycode = [keycode];
         }
 
         var captures = this.captures;
 
-        for (var i = 0; i < keycode.length; i++)
-        {
+        for (var i = 0; i < keycode.length; i++) {
             var code = keycode[i];
 
-            if (typeof code === 'string')
-            {
+            if (typeof code === 'string') {
                 code = KeyCodes[code.toUpperCase()];
             }
 
@@ -405,8 +380,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#clearCaptures
      * @since 3.16.0
      */
-    clearCaptures: function ()
-    {
+    clearCaptures: function () {
         this.captures = [];
 
         this.preventDefault = false;
@@ -418,8 +392,7 @@ var KeyboardManager = new Class({
      * @method Phaser.Input.Keyboard.KeyboardManager#destroy
      * @since 3.16.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.stopListeners();
 
         this.clearCaptures();

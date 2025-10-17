@@ -61,147 +61,146 @@ var Camera = new Class({
 
     initialize:
 
-    function Camera (x, y, width, height)
-    {
-        BaseCamera.call(this, x, y, width, height);
+        function Camera(x, y, width, height) {
+            BaseCamera.call(this, x, y, width, height);
 
-        this.initPostPipeline();
+            this.initPostPipeline();
 
-        /**
-         * Does this Camera allow the Game Objects it renders to receive input events?
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#inputEnabled
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.inputEnabled = true;
+            /**
+             * Does this Camera allow the Game Objects it renders to receive input events?
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#inputEnabled
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.inputEnabled = true;
 
-        /**
-         * The Camera Fade effect handler.
-         * To fade this camera see the `Camera.fade` methods.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#fadeEffect
-         * @type {Phaser.Cameras.Scene2D.Effects.Fade}
-         * @since 3.5.0
-         */
-        this.fadeEffect = new Effects.Fade(this);
+            /**
+             * The Camera Fade effect handler.
+             * To fade this camera see the `Camera.fade` methods.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#fadeEffect
+             * @type {Phaser.Cameras.Scene2D.Effects.Fade}
+             * @since 3.5.0
+             */
+            this.fadeEffect = new Effects.Fade(this);
 
-        /**
-         * The Camera Flash effect handler.
-         * To flash this camera see the `Camera.flash` method.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#flashEffect
-         * @type {Phaser.Cameras.Scene2D.Effects.Flash}
-         * @since 3.5.0
-         */
-        this.flashEffect = new Effects.Flash(this);
+            /**
+             * The Camera Flash effect handler.
+             * To flash this camera see the `Camera.flash` method.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#flashEffect
+             * @type {Phaser.Cameras.Scene2D.Effects.Flash}
+             * @since 3.5.0
+             */
+            this.flashEffect = new Effects.Flash(this);
 
-        /**
-         * The Camera Shake effect handler.
-         * To shake this camera see the `Camera.shake` method.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#shakeEffect
-         * @type {Phaser.Cameras.Scene2D.Effects.Shake}
-         * @since 3.5.0
-         */
-        this.shakeEffect = new Effects.Shake(this);
+            /**
+             * The Camera Shake effect handler.
+             * To shake this camera see the `Camera.shake` method.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#shakeEffect
+             * @type {Phaser.Cameras.Scene2D.Effects.Shake}
+             * @since 3.5.0
+             */
+            this.shakeEffect = new Effects.Shake(this);
 
-        /**
-         * The Camera Pan effect handler.
-         * To pan this camera see the `Camera.pan` method.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#panEffect
-         * @type {Phaser.Cameras.Scene2D.Effects.Pan}
-         * @since 3.11.0
-         */
-        this.panEffect = new Effects.Pan(this);
+            /**
+             * The Camera Pan effect handler.
+             * To pan this camera see the `Camera.pan` method.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#panEffect
+             * @type {Phaser.Cameras.Scene2D.Effects.Pan}
+             * @since 3.11.0
+             */
+            this.panEffect = new Effects.Pan(this);
 
-        /**
-         * The Camera Rotate To effect handler.
-         * To rotate this camera see the `Camera.rotateTo` method.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#rotateToEffect
-         * @type {Phaser.Cameras.Scene2D.Effects.RotateTo}
-         * @since 3.23.0
-         */
-        this.rotateToEffect = new Effects.RotateTo(this);
+            /**
+             * The Camera Rotate To effect handler.
+             * To rotate this camera see the `Camera.rotateTo` method.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#rotateToEffect
+             * @type {Phaser.Cameras.Scene2D.Effects.RotateTo}
+             * @since 3.23.0
+             */
+            this.rotateToEffect = new Effects.RotateTo(this);
 
-        /**
-         * The Camera Zoom effect handler.
-         * To zoom this camera see the `Camera.zoom` method.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#zoomEffect
-         * @type {Phaser.Cameras.Scene2D.Effects.Zoom}
-         * @since 3.11.0
-         */
-        this.zoomEffect = new Effects.Zoom(this);
+            /**
+             * The Camera Zoom effect handler.
+             * To zoom this camera see the `Camera.zoom` method.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#zoomEffect
+             * @type {Phaser.Cameras.Scene2D.Effects.Zoom}
+             * @since 3.11.0
+             */
+            this.zoomEffect = new Effects.Zoom(this);
 
-        /**
-         * The linear interpolation value to use when following a target.
-         *
-         * Can also be set via `setLerp` or as part of the `startFollow` call.
-         *
-         * The default values of 1 means the camera will instantly snap to the target coordinates.
-         * A lower value, such as 0.1 means the camera will more slowly track the target, giving
-         * a smooth transition. You can set the horizontal and vertical values independently, and also
-         * adjust this value in real-time during your game.
-         *
-         * Be sure to keep the value between 0 and 1. A value of zero will disable tracking on that axis.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#lerp
-         * @type {Phaser.Math.Vector2}
-         * @since 3.9.0
-         */
-        this.lerp = new Vector2(1, 1);
+            /**
+             * The linear interpolation value to use when following a target.
+             *
+             * Can also be set via `setLerp` or as part of the `startFollow` call.
+             *
+             * The default values of 1 means the camera will instantly snap to the target coordinates.
+             * A lower value, such as 0.1 means the camera will more slowly track the target, giving
+             * a smooth transition. You can set the horizontal and vertical values independently, and also
+             * adjust this value in real-time during your game.
+             *
+             * Be sure to keep the value between 0 and 1. A value of zero will disable tracking on that axis.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#lerp
+             * @type {Phaser.Math.Vector2}
+             * @since 3.9.0
+             */
+            this.lerp = new Vector2(1, 1);
 
-        /**
-         * The values stored in this property are subtracted from the Camera targets position, allowing you to
-         * offset the camera from the actual target x/y coordinates by this amount.
-         * Can also be set via `setFollowOffset` or as part of the `startFollow` call.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#followOffset
-         * @type {Phaser.Math.Vector2}
-         * @since 3.9.0
-         */
-        this.followOffset = new Vector2();
+            /**
+             * The values stored in this property are subtracted from the Camera targets position, allowing you to
+             * offset the camera from the actual target x/y coordinates by this amount.
+             * Can also be set via `setFollowOffset` or as part of the `startFollow` call.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#followOffset
+             * @type {Phaser.Math.Vector2}
+             * @since 3.9.0
+             */
+            this.followOffset = new Vector2();
 
-        /**
-         * The Camera dead zone.
-         *
-         * The deadzone is only used when the camera is following a target.
-         *
-         * It defines a rectangular region within which if the target is present, the camera will not scroll.
-         * If the target moves outside of this area, the camera will begin scrolling in order to follow it.
-         *
-         * The `lerp` values that you can set for a follower target also apply when using a deadzone.
-         *
-         * You can directly set this property to be an instance of a Rectangle. Or, you can use the
-         * `setDeadzone` method for a chainable approach.
-         *
-         * The rectangle you provide can have its dimensions adjusted dynamically, however, please
-         * note that its position is updated every frame, as it is constantly re-centered on the cameras mid point.
-         *
-         * Calling `setDeadzone` with no arguments will reset an active deadzone, as will setting this property
-         * to `null`.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#deadzone
-         * @type {?Phaser.Geom.Rectangle}
-         * @since 3.11.0
-         */
-        this.deadzone = null;
+            /**
+             * The Camera dead zone.
+             *
+             * The deadzone is only used when the camera is following a target.
+             *
+             * It defines a rectangular region within which if the target is present, the camera will not scroll.
+             * If the target moves outside of this area, the camera will begin scrolling in order to follow it.
+             *
+             * The `lerp` values that you can set for a follower target also apply when using a deadzone.
+             *
+             * You can directly set this property to be an instance of a Rectangle. Or, you can use the
+             * `setDeadzone` method for a chainable approach.
+             *
+             * The rectangle you provide can have its dimensions adjusted dynamically, however, please
+             * note that its position is updated every frame, as it is constantly re-centered on the cameras mid point.
+             *
+             * Calling `setDeadzone` with no arguments will reset an active deadzone, as will setting this property
+             * to `null`.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#deadzone
+             * @type {?Phaser.Geom.Rectangle}
+             * @since 3.11.0
+             */
+            this.deadzone = null;
 
-        /**
-         * Internal follow target reference.
-         *
-         * @name Phaser.Cameras.Scene2D.Camera#_follow
-         * @type {?any}
-         * @private
-         * @default null
-         * @since 3.0.0
-         */
-        this._follow = null;
-    },
+            /**
+             * Internal follow target reference.
+             *
+             * @name Phaser.Cameras.Scene2D.Camera#_follow
+             * @type {?any}
+             * @private
+             * @default null
+             * @since 3.0.0
+             */
+            this._follow = null;
+        },
 
     /**
      * Sets the Camera dead zone.
@@ -227,26 +226,18 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    setDeadzone: function (width, height)
-    {
-        if (width === undefined)
-        {
+    setDeadzone: function (width, height) {
+        if (width === undefined) {
             this.deadzone = null;
-        }
-        else
-        {
-            if (this.deadzone)
-            {
+        } else {
+            if (this.deadzone) {
                 this.deadzone.width = width;
                 this.deadzone.height = height;
-            }
-            else
-            {
+            } else {
                 this.deadzone = new Rectangle(0, 0, width, height);
             }
 
-            if (this._follow)
-            {
+            if (this._follow) {
                 var originX = this.width / 2;
                 var originY = this.height / 2;
 
@@ -283,8 +274,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    fadeIn: function (duration, red, green, blue, callback, context)
-    {
+    fadeIn: function (duration, red, green, blue, callback, context) {
         return this.fadeEffect.start(false, duration, red, green, blue, true, callback, context);
     },
 
@@ -307,8 +297,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    fadeOut: function (duration, red, green, blue, callback, context)
-    {
+    fadeOut: function (duration, red, green, blue, callback, context) {
         return this.fadeEffect.start(true, duration, red, green, blue, true, callback, context);
     },
 
@@ -331,8 +320,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    fadeFrom: function (duration, red, green, blue, force, callback, context)
-    {
+    fadeFrom: function (duration, red, green, blue, force, callback, context) {
         return this.fadeEffect.start(false, duration, red, green, blue, force, callback, context);
     },
 
@@ -355,8 +343,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    fade: function (duration, red, green, blue, force, callback, context)
-    {
+    fade: function (duration, red, green, blue, force, callback, context) {
         return this.fadeEffect.start(true, duration, red, green, blue, force, callback, context);
     },
 
@@ -379,8 +366,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    flash: function (duration, red, green, blue, force, callback, context)
-    {
+    flash: function (duration, red, green, blue, force, callback, context) {
         return this.flashEffect.start(duration, red, green, blue, force, callback, context);
     },
 
@@ -401,8 +387,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    shake: function (duration, intensity, force, callback, context)
-    {
+    shake: function (duration, intensity, force, callback, context) {
         return this.shakeEffect.start(duration, intensity, force, callback, context);
     },
 
@@ -427,8 +412,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    pan: function (x, y, duration, ease, force, callback, context)
-    {
+    pan: function (x, y, duration, ease, force, callback, context) {
         return this.panEffect.start(x, y, duration, ease, force, callback, context);
     },
 
@@ -451,8 +435,7 @@ var Camera = new Class({
      *
      * @return {Phaser.Cameras.Scene2D.Camera} This Camera instance.
      */
-    rotateTo: function (radians, shortestPath, duration, ease, force, callback, context)
-    {
+    rotateTo: function (radians, shortestPath, duration, ease, force, callback, context) {
         return this.rotateToEffect.start(radians, shortestPath, duration, ease, force, callback, context);
     },
 
@@ -475,8 +458,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    zoomTo: function (zoom, duration, ease, force, callback, context)
-    {
+    zoomTo: function (zoom, duration, ease, force, callback, context) {
         return this.zoomEffect.start(zoom, duration, ease, force, callback, context);
     },
 
@@ -486,8 +468,7 @@ var Camera = new Class({
      * @method Phaser.Cameras.Scene2D.Camera#preRender
      * @since 3.0.0
      */
-    preRender: function ()
-    {
+    preRender: function () {
         this.renderList.length = 0;
 
         var width = this.width;
@@ -511,42 +492,31 @@ var Camera = new Class({
         var sx = this.scrollX;
         var sy = this.scrollY;
 
-        if (deadzone)
-        {
+        if (deadzone) {
             CenterOn(deadzone, this.midPoint.x, this.midPoint.y);
         }
 
         var emitFollowEvent = false;
 
-        if (follow && !this.panEffect.isRunning)
-        {
+        if (follow && !this.panEffect.isRunning) {
             var lerp = this.lerp;
 
             var fx = follow.x - this.followOffset.x;
             var fy = follow.y - this.followOffset.y;
 
-            if (deadzone)
-            {
-                if (fx < deadzone.x)
-                {
+            if (deadzone) {
+                if (fx < deadzone.x) {
                     sx = Linear(sx, sx - (deadzone.x - fx), lerp.x);
-                }
-                else if (fx > deadzone.right)
-                {
+                } else if (fx > deadzone.right) {
                     sx = Linear(sx, sx + (fx - deadzone.right), lerp.x);
                 }
 
-                if (fy < deadzone.y)
-                {
+                if (fy < deadzone.y) {
                     sy = Linear(sy, sy - (deadzone.y - fy), lerp.y);
-                }
-                else if (fy > deadzone.bottom)
-                {
+                } else if (fy > deadzone.bottom) {
                     sy = Linear(sy, sy + (fy - deadzone.bottom), lerp.y);
                 }
-            }
-            else
-            {
+            } else {
                 sx = Linear(sx, fx - originX, lerp.x);
                 sy = Linear(sy, fy - originY, lerp.y);
             }
@@ -554,14 +524,12 @@ var Camera = new Class({
             emitFollowEvent = true;
         }
 
-        if (this.roundPixels)
-        {
+        if (this.roundPixels) {
             sx = Math.floor(sx);
             sy = Math.floor(sy);
         }
 
-        if (this.useBounds)
-        {
+        if (this.useBounds) {
             sx = this.clampX(sx);
             sy = this.clampY(sy);
         }
@@ -597,8 +565,7 @@ var Camera = new Class({
 
         this.shakeEffect.preRender();
 
-        if (emitFollowEvent)
-        {
+        if (emitFollowEvent) {
             this.emit(Events.FOLLOW_UPDATE, this, follow);
         }
     },
@@ -621,10 +588,13 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    setLerp: function (x, y)
-    {
-        if (x === undefined) { x = 1; }
-        if (y === undefined) { y = x; }
+    setLerp: function (x, y) {
+        if (x === undefined) {
+            x = 1;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this.lerp.set(x, y);
 
@@ -643,10 +613,13 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    setFollowOffset: function (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    setFollowOffset: function (x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
         this.followOffset.set(x, y);
 
@@ -679,13 +652,22 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    startFollow: function (target, roundPixels, lerpX, lerpY, offsetX, offsetY)
-    {
-        if (roundPixels === undefined) { roundPixels = false; }
-        if (lerpX === undefined) { lerpX = 1; }
-        if (lerpY === undefined) { lerpY = lerpX; }
-        if (offsetX === undefined) { offsetX = 0; }
-        if (offsetY === undefined) { offsetY = offsetX; }
+    startFollow: function (target, roundPixels, lerpX, lerpY, offsetX, offsetY) {
+        if (roundPixels === undefined) {
+            roundPixels = false;
+        }
+        if (lerpX === undefined) {
+            lerpX = 1;
+        }
+        if (lerpY === undefined) {
+            lerpY = lerpX;
+        }
+        if (offsetX === undefined) {
+            offsetX = 0;
+        }
+        if (offsetY === undefined) {
+            offsetY = offsetX;
+        }
 
         this._follow = target;
 
@@ -709,8 +691,7 @@ var Camera = new Class({
         this.scrollX = fx - originX;
         this.scrollY = fy - originY;
 
-        if (this.useBounds)
-        {
+        if (this.useBounds) {
             this.scrollX = this.clampX(this.scrollX);
             this.scrollY = this.clampY(this.scrollY);
         }
@@ -726,8 +707,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    stopFollow: function ()
-    {
+    stopFollow: function () {
         this._follow = null;
 
         return this;
@@ -742,8 +722,7 @@ var Camera = new Class({
      *
      * @return {this} This Camera instance.
      */
-    resetFX: function ()
-    {
+    resetFX: function () {
         this.rotateToEffect.reset();
         this.panEffect.reset();
         this.shakeEffect.reset();
@@ -763,10 +742,8 @@ var Camera = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (this.visible)
-        {
+    update: function (time, delta) {
+        if (this.visible) {
             this.rotateToEffect.update(time, delta);
             this.panEffect.update(time, delta);
             this.zoomEffect.update(time, delta);
@@ -786,8 +763,7 @@ var Camera = new Class({
      * @fires Phaser.Cameras.Scene2D.Events#DESTROY
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.resetFX();
 
         BaseCamera.prototype.destroy.call(this);

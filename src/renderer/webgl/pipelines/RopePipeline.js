@@ -49,14 +49,13 @@ var RopePipeline = new Class({
 
     initialize:
 
-    function RopePipeline (config)
-    {
-        //  GLenum 5 = TRIANGLE_STRIP
-        config.topology = 5;
-        config.batchSize = GetFastValue(config, 'batchSize', 256);
+        function RopePipeline(config) {
+            //  GLenum 5 = TRIANGLE_STRIP
+            config.topology = 5;
+            config.batchSize = GetFastValue(config, 'batchSize', 256);
 
-        MultiPipeline.call(this, config);
-    }
+            MultiPipeline.call(this, config);
+        }
 });
 
 module.exports = RopePipeline;

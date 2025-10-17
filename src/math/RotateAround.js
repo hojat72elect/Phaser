@@ -21,8 +21,7 @@
  *
  * @return {Phaser.Types.Math.Vector2Like} The given point.
  */
-var RotateAround = function (point, x, y, angle)
-{
+var RotateAround = function (point, x, y, angle) {
     var c = Math.cos(angle);
     var s = Math.sin(angle);
 

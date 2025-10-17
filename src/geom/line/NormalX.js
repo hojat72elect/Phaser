@@ -17,8 +17,7 @@ var Angle = require('./Angle');
  *
  * @return {number} The x component of the normal vector of the line.
  */
-var NormalX = function (line)
-{
+var NormalX = function (line) {
     return Math.cos(Angle(line) - MATH_CONST.TAU);
 };
 

@@ -24,22 +24,24 @@ var SafeRange = require('./SafeRange');
  *
  * @return {Array.<*>} An array of items that were removed.
  */
-var RemoveBetween = function (array, startIndex, endIndex, callback, context)
-{
-    if (startIndex === undefined) { startIndex = 0; }
-    if (endIndex === undefined) { endIndex = array.length; }
-    if (context === undefined) { context = array; }
+var RemoveBetween = function (array, startIndex, endIndex, callback, context) {
+    if (startIndex === undefined) {
+        startIndex = 0;
+    }
+    if (endIndex === undefined) {
+        endIndex = array.length;
+    }
+    if (context === undefined) {
+        context = array;
+    }
 
-    if (SafeRange(array, startIndex, endIndex))
-    {
+    if (SafeRange(array, startIndex, endIndex)) {
         var size = endIndex - startIndex;
 
         var removed = array.splice(startIndex, size);
 
-        if (callback)
-        {
-            for (var i = 0; i < removed.length; i++)
-            {
+        if (callback) {
+            for (var i = 0; i < removed.length; i++) {
                 var entry = removed[i];
 
                 callback.call(context, entry);
@@ -47,9 +49,7 @@ var RemoveBetween = function (array, startIndex, endIndex, callback, context)
         }
 
         return removed;
-    }
-    else
-    {
+    } else {
         return [];
     }
 };

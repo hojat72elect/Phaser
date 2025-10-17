@@ -40,7 +40,6 @@ var GameObjectFactory = require('../../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Star} The Game Object that was created.
  */
-GameObjectFactory.register('star', function (x, y, points, innerRadius, outerRadius, fillColor, fillAlpha)
-{
+GameObjectFactory.register('star', function (x, y, points, innerRadius, outerRadius, fillColor, fillAlpha) {
     return this.displayList.add(new Star(this.scene, x, y, points, innerRadius, outerRadius, fillColor, fillAlpha));
 });

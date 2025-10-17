@@ -20,9 +20,10 @@ var Rectangle = require('./Rectangle');
  *
  * @return {Phaser.Geom.Rectangle} The modified `out` Rectangle, or a new Rectangle if none was provided.
  */
-var Union = function (rectA, rectB, out)
-{
-    if (out === undefined) { out = new Rectangle(); }
+var Union = function (rectA, rectB, out) {
+    if (out === undefined) {
+        out = new Rectangle();
+    }
 
     //  Cache vars so we can use one of the input rects as the output rect
     var x = Math.min(rectA.x, rectB.x);

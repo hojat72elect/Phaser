@@ -1,8 +1,8 @@
 /**
-* @author       Richard Davey <rich@phaser.io>
-* @copyright    2013-2025 Phaser Studio Inc.
-* @license      {@link https://github.com/photonstorm/phaser3-plugin-template/blob/master/LICENSE|MIT License}
-*/
+ * @author       Richard Davey <rich@phaser.io>
+ * @copyright    2013-2025 Phaser Studio Inc.
+ * @license      {@link https://github.com/photonstorm/phaser3-plugin-template/blob/master/LICENSE|MIT License}
+ */
 
 var Class = require('../utils/Class');
 
@@ -22,29 +22,28 @@ var BasePlugin = new Class({
 
     initialize:
 
-    function BasePlugin (pluginManager)
-    {
-        /**
-         * A handy reference to the Plugin Manager that is responsible for this plugin.
-         * Can be used as a route to gain access to game systems and  events.
-         *
-         * @name Phaser.Plugins.BasePlugin#pluginManager
-         * @type {Phaser.Plugins.PluginManager}
-         * @protected
-         * @since 3.8.0
-         */
-        this.pluginManager = pluginManager;
+        function BasePlugin(pluginManager) {
+            /**
+             * A handy reference to the Plugin Manager that is responsible for this plugin.
+             * Can be used as a route to gain access to game systems and  events.
+             *
+             * @name Phaser.Plugins.BasePlugin#pluginManager
+             * @type {Phaser.Plugins.PluginManager}
+             * @protected
+             * @since 3.8.0
+             */
+            this.pluginManager = pluginManager;
 
-        /**
-         * A reference to the Game instance this plugin is running under.
-         *
-         * @name Phaser.Plugins.BasePlugin#game
-         * @type {Phaser.Game}
-         * @protected
-         * @since 3.8.0
-         */
-        this.game = pluginManager.game;
-    },
+            /**
+             * A reference to the Game instance this plugin is running under.
+             *
+             * @name Phaser.Plugins.BasePlugin#game
+             * @type {Phaser.Game}
+             * @protected
+             * @since 3.8.0
+             */
+            this.game = pluginManager.game;
+        },
 
     /**
      * The PluginManager calls this method on a Global Plugin when the plugin is first instantiated.
@@ -58,8 +57,7 @@ var BasePlugin = new Class({
      *
      * @param {?any} [data] - A value specified by the user, if any, from the `data` property of the plugin's configuration object (if started at game boot) or passed in the PluginManager's `install` method (if started manually).
      */
-    init: function ()
-    {
+    init: function () {
     },
 
     /**
@@ -71,8 +69,7 @@ var BasePlugin = new Class({
      * @method Phaser.Plugins.BasePlugin#start
      * @since 3.8.0
      */
-    start: function ()
-    {
+    start: function () {
         //  Here are the game-level events you can listen to.
         //  At the very least you should offer a destroy handler for when the game closes down.
 
@@ -100,8 +97,7 @@ var BasePlugin = new Class({
      * @method Phaser.Plugins.BasePlugin#stop
      * @since 3.8.0
      */
-    stop: function ()
-    {
+    stop: function () {
     },
 
     /**
@@ -111,8 +107,7 @@ var BasePlugin = new Class({
      * @method Phaser.Plugins.BasePlugin#destroy
      * @since 3.8.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.pluginManager = null;
         this.game = null;
         this.scene = null;

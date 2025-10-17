@@ -14,8 +14,7 @@
  *
  * @return {number} The top coordinate of the bounds of the Game Object.
  */
-var GetTop = function (gameObject)
-{
+var GetTop = function (gameObject) {
     return gameObject.y - (gameObject.height * gameObject.originY);
 };
 

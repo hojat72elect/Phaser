@@ -40,37 +40,32 @@ var MultiAtlasFile = new Class({
 
     initialize:
 
-    function MultiAtlasFile (loader, key, atlasURL, path, baseURL, atlasXhrSettings, textureXhrSettings)
-    {
-        if (IsPlainObject(key))
-        {
-            var config = key;
+        function MultiAtlasFile(loader, key, atlasURL, path, baseURL, atlasXhrSettings, textureXhrSettings) {
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
+                key = GetFastValue(config, 'key');
 
-            if (GetFastValue(config, 'url', false))
-            {
-                atlasURL = GetFastValue(config, 'url');
+                if (GetFastValue(config, 'url', false)) {
+                    atlasURL = GetFastValue(config, 'url');
+                } else {
+                    atlasURL = GetFastValue(config, 'atlasURL');
+                }
+
+                atlasXhrSettings = GetFastValue(config, 'xhrSettings');
+                path = GetFastValue(config, 'path');
+                baseURL = GetFastValue(config, 'baseURL');
+                textureXhrSettings = GetFastValue(config, 'textureXhrSettings');
             }
-            else
-            {
-                atlasURL = GetFastValue(config, 'atlasURL');
-            }
 
-            atlasXhrSettings = GetFastValue(config, 'xhrSettings');
-            path = GetFastValue(config, 'path');
-            baseURL = GetFastValue(config, 'baseURL');
-            textureXhrSettings = GetFastValue(config, 'textureXhrSettings');
-        }
+            var data = new JSONFile(loader, key, atlasURL, atlasXhrSettings);
 
-        var data = new JSONFile(loader, key, atlasURL, atlasXhrSettings);
+            MultiFile.call(this, loader, 'multiatlas', key, [data]);
 
-        MultiFile.call(this, loader, 'multiatlas', key, [ data ]);
-
-        this.config.path = path;
-        this.config.baseURL = baseURL;
-        this.config.textureXhrSettings = textureXhrSettings;
-    },
+            this.config.path = path;
+            this.config.baseURL = baseURL;
+            this.config.textureXhrSettings = textureXhrSettings;
+        },
 
     /**
      * Called by each File when it finishes loading.
@@ -80,16 +75,13 @@ var MultiAtlasFile = new Class({
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
-    onFileComplete: function (file)
-    {
+    onFileComplete: function (file) {
         var index = this.files.indexOf(file);
 
-        if (index !== -1)
-        {
+        if (index !== -1) {
             this.pending--;
 
-            if (file.type === 'json' && file.data.hasOwnProperty('textures'))
-            {
+            if (file.type === 'json' && file.data.hasOwnProperty('textures')) {
                 //  Inspect the data for the files to now load
                 var textures = file.data.textures;
 
@@ -109,8 +101,7 @@ var MultiAtlasFile = new Class({
                 loader.setPath(path);
                 loader.setPrefix(prefix);
 
-                for (var i = 0; i < textures.length; i++)
-                {
+                for (var i = 0; i < textures.length; i++) {
                     //  "image": "texture-packer-multi-atlas-0.png",
                     var textureURL = textures[i].image;
 
@@ -123,8 +114,7 @@ var MultiAtlasFile = new Class({
                     loader.addFile(image);
 
                     //  "normalMap": "texture-packer-multi-atlas-0_n.png",
-                    if (textures[i].normalMap)
-                    {
+                    if (textures[i].normalMap) {
                         var normalMap = new ImageFile(loader, key, textures[i].normalMap, textureXhrSettings);
 
                         normalMap.type = 'normalMap';
@@ -151,22 +141,18 @@ var MultiAtlasFile = new Class({
      * @method Phaser.Loader.FileTypes.MultiAtlasFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
             var fileJSON = this.files[0];
 
             var data = [];
             var images = [];
             var normalMaps = [];
 
-            for (var i = 1; i < this.files.length; i++)
-            {
+            for (var i = 1; i < this.files.length; i++) {
                 var file = this.files[i];
 
-                if (file.type === 'normalMap')
-                {
+                if (file.type === 'normalMap') {
                     continue;
                 }
 
@@ -176,18 +162,15 @@ var MultiAtlasFile = new Class({
                 var image = file.data;
 
                 //  Now we need to find out which json entry this mapped to
-                for (var t = 0; t < fileJSON.data.textures.length; t++)
-                {
+                for (var t = 0; t < fileJSON.data.textures.length; t++) {
                     var item = fileJSON.data.textures[t];
 
-                    if (item.image === key)
-                    {
+                    if (item.image === key) {
                         images.push(image);
 
                         data.push(item);
 
-                        if (file.linkFile)
-                        {
+                        if (file.linkFile) {
                             normalMaps.push(file.linkFile.data);
                         }
 
@@ -196,8 +179,7 @@ var MultiAtlasFile = new Class({
                 }
             }
 
-            if (normalMaps.length === 0)
-            {
+            if (normalMaps.length === 0) {
                 normalMaps = undefined;
             }
 
@@ -292,25 +274,20 @@ var MultiAtlasFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('multiatlas', function (key, atlasURL, path, baseURL, atlasXhrSettings)
-{
+FileTypesManager.register('multiatlas', function (key, atlasURL, path, baseURL, atlasXhrSettings) {
     var multifile;
 
     //  Supports an Object file definition in the key argument
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             multifile = new MultiAtlasFile(this, key[i]);
 
             this.addFile(multifile.files);
         }
-    }
-    else
-    {
+    } else {
         multifile = new MultiAtlasFile(this, key, atlasURL, path, baseURL, atlasXhrSettings);
 
         this.addFile(multifile.files);

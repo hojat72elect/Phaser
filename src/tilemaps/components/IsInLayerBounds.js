@@ -16,8 +16,7 @@
  *
  * @return {boolean} `true` if the tile coordinates are within the bounds of the layer, otherwise `false`.
  */
-var IsInLayerBounds = function (tileX, tileY, layer)
-{
+var IsInLayerBounds = function (tileX, tileY, layer) {
     return (tileX >= 0 && tileX < layer.width && tileY >= 0 && tileY < layer.height);
 };
 

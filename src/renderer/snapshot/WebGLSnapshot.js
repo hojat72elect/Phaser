@@ -20,8 +20,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * @param {WebGLRenderingContext} sourceContext - The WebGL context to take a snapshot of.
  * @param {Phaser.Types.Renderer.Snapshot.SnapshotState} config - The snapshot configuration object.
  */
-var WebGLSnapshot = function (sourceContext, config)
-{
+var WebGLSnapshot = function (sourceContext, config) {
     var gl = sourceContext;
 
     var callback = GetFastValue(config, 'callback');
@@ -37,8 +36,7 @@ var WebGLSnapshot = function (sourceContext, config)
     var bufferWidth = (isFramebuffer) ? GetFastValue(config, 'bufferWidth', 1) : gl.drawingBufferWidth;
     var bufferHeight = (isFramebuffer) ? GetFastValue(config, 'bufferHeight', 1) : gl.drawingBufferHeight;
 
-    if (getPixel)
-    {
+    if (getPixel) {
         var pixel = new Uint8Array(4);
 
         var destY = (isFramebuffer) ? y : bufferHeight - y;
@@ -46,9 +44,7 @@ var WebGLSnapshot = function (sourceContext, config)
         gl.readPixels(x, destY, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
 
         callback.call(null, new Color(pixel[0], pixel[1], pixel[2], pixel[3]));
-    }
-    else
-    {
+    } else {
         var width = Math.floor(GetFastValue(config, 'width', bufferWidth));
         var height = Math.floor(GetFastValue(config, 'height', bufferHeight));
 
@@ -59,16 +55,14 @@ var WebGLSnapshot = function (sourceContext, config)
         gl.readPixels(x, bufferHeight - y - height, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
 
         var canvas = CanvasPool.createWebGL(this, width, height);
-        var ctx = canvas.getContext('2d', { willReadFrequently: true });
+        var ctx = canvas.getContext('2d', {willReadFrequently: true});
 
         var imageData = ctx.getImageData(0, 0, width, height);
 
         var data = imageData.data;
 
-        for (var py = 0; py < height; py++)
-        {
-            for (var px = 0; px < width; px++)
-            {
+        for (var py = 0; py < height; py++) {
+            for (var px = 0; px < width; px++) {
                 var sourceIndex = ((height - py - 1) * width + px) * 4;
 
                 var destIndex = (isFramebuffer) ? total - ((py * width + (width - px)) * 4) : (py * width + px) * 4;
@@ -84,15 +78,13 @@ var WebGLSnapshot = function (sourceContext, config)
 
         var image = new Image();
 
-        image.onerror = function ()
-        {
+        image.onerror = function () {
             callback.call(null);
 
             CanvasPool.remove(canvas);
         };
 
-        image.onload = function ()
-        {
+        image.onload = function () {
             callback.call(null, image);
 
             CanvasPool.remove(canvas);

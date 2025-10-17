@@ -22,9 +22,10 @@ var Rectangle = require('./Rectangle');
  *
  * @return {Phaser.Geom.Rectangle} The adjusted `out` Rectangle, or a new Rectangle if none was provided.
  */
-var FromXY = function (x1, y1, x2, y2, out)
-{
-    if (out === undefined) { out = new Rectangle(); }
+var FromXY = function (x1, y1, x2, y2, out) {
+    if (out === undefined) {
+        out = new Rectangle();
+    }
 
     return out.setTo(
         Math.min(x1, x2),

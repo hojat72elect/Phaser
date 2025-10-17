@@ -43,8 +43,7 @@ var tempMatrix = new Matrix4();
  *
  * @return {Phaser.Types.Geom.Mesh.GenerateGridVertsResult} A Grid Result object, containing the generated vertices and indicies.
  */
-var GenerateGridVerts = function (config)
-{
+var GenerateGridVerts = function (config) {
     var mesh = GetFastValue(config, 'mesh');
     var texture = GetFastValue(config, 'texture', null);
     var frame = GetFastValue(config, 'frame');
@@ -60,8 +59,8 @@ var GenerateGridVerts = function (config)
     var rotateZ = GetFastValue(config, 'rotateZ', 0);
     var zIsUp = GetFastValue(config, 'zIsUp', true);
     var isOrtho = GetFastValue(config, 'isOrtho', (mesh) ? mesh.dirtyCache[11] : false);
-    var colors = GetFastValue(config, 'colors', [ 0xffffff ]);
-    var alphas = GetFastValue(config, 'alphas', [ 1 ]);
+    var colors = GetFastValue(config, 'colors', [0xffffff]);
+    var alphas = GetFastValue(config, 'alphas', [1]);
     var tile = GetFastValue(config, 'tile', false);
     var flipY = GetFastValue(config, 'flipY', false);
 
@@ -78,33 +77,25 @@ var GenerateGridVerts = function (config)
 
     var textureFrame;
 
-    if (!texture && mesh)
-    {
+    if (!texture && mesh) {
         texture = mesh.texture;
 
-        if (!frame)
-        {
+        if (!frame) {
             textureFrame = mesh.frame;
         }
-    }
-    else if (mesh && typeof(texture) === 'string')
-    {
+    } else if (mesh && typeof (texture) === 'string') {
         texture = mesh.scene.sys.textures.get(texture);
-    }
-    else if (!texture)
-    {
+    } else if (!texture) {
         //  There's nothing more we can do without a texture
         return result;
     }
 
-    if (!textureFrame)
-    {
+    if (!textureFrame) {
         textureFrame = texture.get(frame);
     }
 
     //  If the Mesh is ortho and no width / height is given, we'll default to texture sizes (if set!)
-    if (!widthSet && isOrtho && texture && mesh)
-    {
+    if (!widthSet && isOrtho && texture && mesh) {
         width = textureFrame.width / mesh.height;
         height = textureFrame.height / mesh.height;
     }
@@ -132,18 +123,14 @@ var GenerateGridVerts = function (config)
     var frameV0 = 0;
     var frameV1 = 1;
 
-    if (textureFrame)
-    {
+    if (textureFrame) {
         frameU0 = textureFrame.u0;
         frameU1 = textureFrame.u1;
 
-        if (!flipY)
-        {
+        if (!flipY) {
             frameV0 = textureFrame.v0;
             frameV1 = textureFrame.v1;
-        }
-        else
-        {
+        } else {
             frameV0 = textureFrame.v1;
             frameV1 = textureFrame.v0;
         }
@@ -152,12 +139,10 @@ var GenerateGridVerts = function (config)
     var frameU = frameU1 - frameU0;
     var frameV = frameV1 - frameV0;
 
-    for (iy = 0; iy < gridY1; iy++)
-    {
+    for (iy = 0; iy < gridY1; iy++) {
         var y = iy * segmentHeight - halfHeight;
 
-        for (ix = 0; ix < gridX1; ix++)
-        {
+        for (ix = 0; ix < gridX1; ix++) {
             var x = ix * segmentWidth - halfWidth;
 
             vertices.push(x, -y);
@@ -169,23 +154,19 @@ var GenerateGridVerts = function (config)
         }
     }
 
-    if (!Array.isArray(colors))
-    {
-        colors = [ colors ];
+    if (!Array.isArray(colors)) {
+        colors = [colors];
     }
 
-    if (!Array.isArray(alphas))
-    {
-        alphas = [ alphas ];
+    if (!Array.isArray(alphas)) {
+        alphas = [alphas];
     }
 
     var alphaIndex = 0;
     var colorIndex = 0;
 
-    for (iy = 0; iy < gridY; iy++)
-    {
-        for (ix = 0; ix < gridX; ix++)
-        {
+    for (iy = 0; iy < gridY; iy++) {
+        for (ix = 0; ix < gridX; ix++) {
             var a = (ix + gridX1 * iy) * 2;
             var b = (ix + gridX1 * (iy + 1)) * 2;
             var c = ((ix + 1) + gridX1 * (iy + 1)) * 2;
@@ -201,8 +182,7 @@ var GenerateGridVerts = function (config)
             var vert5 = new Vertex(vertices[c], vertices[c + 1], 0, uvs[c], uvs[c + 1], color, alpha).transformMat4(tempMatrix);
             var vert6 = new Vertex(vertices[d], vertices[d + 1], 0, uvs[d], uvs[d + 1], color, alpha).transformMat4(tempMatrix);
 
-            if (tile)
-            {
+            if (tile) {
                 vert1.setUVs(frameU0, frameV1);
                 vert2.setUVs(frameU0, frameV0);
                 vert3.setUVs(frameU1, frameV1);
@@ -213,15 +193,13 @@ var GenerateGridVerts = function (config)
 
             colorIndex++;
 
-            if (colorIndex === colors.length)
-            {
+            if (colorIndex === colors.length) {
                 colorIndex = 0;
             }
 
             alphaIndex++;
 
-            if (alphaIndex === alphas.length)
-            {
+            if (alphaIndex === alphas.length) {
                 alphaIndex = 0;
             }
 
@@ -234,8 +212,7 @@ var GenerateGridVerts = function (config)
         }
     }
 
-    if (mesh)
-    {
+    if (mesh) {
         mesh.faces = mesh.faces.concat(result.faces);
         mesh.vertices = mesh.vertices.concat(result.verts);
     }

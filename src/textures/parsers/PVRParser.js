@@ -7,9 +7,10 @@
 /**
  * @ignore
  */
-function GetSize (width, height, x, y, dx, dy, mult)
-{
-    if (mult === undefined) { mult = 16; }
+function GetSize(width, height, x, y, dx, dy, mult) {
+    if (mult === undefined) {
+        mult = 16;
+    }
 
     return Math.floor((width + x) / dx) * Math.floor((height + y) / dy) * mult;
 }
@@ -17,8 +18,7 @@ function GetSize (width, height, x, y, dx, dy, mult)
 /**
  * @ignore
  */
-function PVRTC2bppSize (width, height)
-{
+function PVRTC2bppSize(width, height) {
     width = Math.max(width, 16);
     height = Math.max(height, 8);
 
@@ -28,8 +28,7 @@ function PVRTC2bppSize (width, height)
 /**
  * @ignore
  */
-function PVRTC4bppSize (width, height)
-{
+function PVRTC4bppSize(width, height) {
     width = Math.max(width, 8);
     height = Math.max(height, 8);
 
@@ -39,128 +38,112 @@ function PVRTC4bppSize (width, height)
 /**
  * @ignore
  */
-function BPTCSize (width, height)
-{
+function BPTCSize(width, height) {
     return Math.ceil(width / 4) * Math.ceil(height / 4) * 16;
 }
 
 /**
  * @ignore
  */
-function DXTEtcSmallSize (width, height)
-{
+function DXTEtcSmallSize(width, height) {
     return GetSize(width, height, 3, 3, 4, 4, 8);
 }
 
 /**
  * @ignore
  */
-function DXTEtcAstcBigSize (width, height)
-{
+function DXTEtcAstcBigSize(width, height) {
     return GetSize(width, height, 3, 3, 4, 4);
 }
 
 /**
  * @ignore
  */
-function ATC5x4Size (width, height)
-{
+function ATC5x4Size(width, height) {
     return GetSize(width, height, 4, 3, 5, 4);
 }
 
 /**
  * @ignore
  */
-function ATC5x5Size (width, height)
-{
+function ATC5x5Size(width, height) {
     return GetSize(width, height, 4, 4, 5, 5);
 }
 
 /**
  * @ignore
  */
-function ATC6x5Size (width, height)
-{
+function ATC6x5Size(width, height) {
     return GetSize(width, height, 5, 4, 6, 5);
 }
 
 /**
  * @ignore
  */
-function ATC6x6Size (width, height)
-{
+function ATC6x6Size(width, height) {
     return GetSize(width, height, 5, 5, 6, 6);
 }
 
 /**
  * @ignore
  */
-function ATC8x5Size (width, height)
-{
+function ATC8x5Size(width, height) {
     return GetSize(width, height, 7, 4, 8, 5);
 }
 
 /**
  * @ignore
  */
-function ATC8x6Size (width, height)
-{
+function ATC8x6Size(width, height) {
     return GetSize(width, height, 7, 5, 8, 6);
 }
 
 /**
  * @ignore
  */
-function ATC8x8Size (width, height)
-{
+function ATC8x8Size(width, height) {
     return GetSize(width, height, 7, 7, 8, 8);
 }
 
 /**
  * @ignore
  */
-function ATC10x5Size (width, height)
-{
+function ATC10x5Size(width, height) {
     return GetSize(width, height, 9, 4, 10, 5);
 }
 
 /**
  * @ignore
  */
-function ATC10x6Size (width, height)
-{
+function ATC10x6Size(width, height) {
     return GetSize(width, height, 9, 5, 10, 6);
 }
 
 /**
  * @ignore
  */
-function ATC10x8Size (width, height)
-{
+function ATC10x8Size(width, height) {
     return GetSize(width, height, 9, 7, 10, 8);
 }
 
 /**
  * @ignore
  */
-function ATC10x10Size (width, height)
-{
+function ATC10x10Size(width, height) {
     return GetSize(width, height, 9, 9, 10, 10);
 }
 
 /**
  * @ignore
  */
-function ATC12x10Size (width, height)
-{
+function ATC12x10Size(width, height) {
     return GetSize(width, height, 11, 9, 12, 10);
 }
 
 /**
  * @ignore
  */
-function ATC12x12Size (width, height)
-{
+function ATC12x12Size(width, height) {
     return GetSize(width, height, 11, 11, 12, 12);
 }
 
@@ -201,36 +184,36 @@ function ATC12x12Size (width, height)
  * @ignore
  */
 var FORMATS = {
-    0: { sizeFunc: PVRTC2bppSize, glFormat: [ 0x8C01 ] },
-    1: { sizeFunc: PVRTC2bppSize, glFormat: [ 0x8C03 ] },
-    2: { sizeFunc: PVRTC4bppSize, glFormat: [ 0x8C00 ] },
-    3: { sizeFunc: PVRTC4bppSize, glFormat: [ 0x8C02 ] },
-    6: { sizeFunc: DXTEtcSmallSize , glFormat: [ 0x8D64 ] },
-    7: { sizeFunc: DXTEtcSmallSize, glFormat: [ 0x83F0, 0x8C4C ] },
-    8: { sizeFunc: DXTEtcAstcBigSize, glFormat: [ 0x83F1, 0x8C4D ] },
-    9: { sizeFunc: DXTEtcAstcBigSize, glFormat: [ 0x83F2, 0x8C4E ] },
-    11: { sizeFunc: DXTEtcAstcBigSize, glFormat: [ 0x83F3, 0x8C4F ] },
-    14: { sizeFunc: BPTCSize, glFormat: [ 0x8E8E, 0x8E8F ] },
-    15: { sizeFunc: BPTCSize, glFormat: [ 0x8E8C, 0x8E8D ] },
-    22: { sizeFunc: DXTEtcSmallSize , glFormat: [ 0x9274, 0x9275 ] },
-    23: { sizeFunc: DXTEtcAstcBigSize, glFormat: [ 0x9278, 0x9279 ] },
-    24: { sizeFunc: DXTEtcSmallSize, glFormat: [ 0x9276, 0x9277 ] },
-    25: { sizeFunc: DXTEtcSmallSize, glFormat: [ 0x9270 ] },
-    26: { sizeFunc: DXTEtcAstcBigSize, glFormat: [ 0x9272 ] },
-    27: { sizeFunc: DXTEtcAstcBigSize, glFormat: [ 0x93B0, 0x93D0 ] },
-    28: { sizeFunc: ATC5x4Size, glFormat: [ 0x93B1, 0x93D1 ] },
-    29: { sizeFunc: ATC5x5Size, glFormat: [ 0x93B2, 0x93D2 ] },
-    30: { sizeFunc: ATC6x5Size, glFormat: [ 0x93B3, 0x93D3 ] },
-    31: { sizeFunc: ATC6x6Size, glFormat: [ 0x93B4, 0x93D4 ] },
-    32: { sizeFunc: ATC8x5Size, glFormat: [ 0x93B5, 0x93D5 ] },
-    33: { sizeFunc: ATC8x6Size, glFormat: [ 0x93B6, 0x93D6 ] },
-    34: { sizeFunc: ATC8x8Size, glFormat: [ 0x93B7, 0x93D7 ] },
-    35: { sizeFunc: ATC10x5Size, glFormat: [ 0x93B8, 0x93D8 ] },
-    36: { sizeFunc: ATC10x6Size, glFormat: [ 0x93B9, 0x93D9 ] },
-    37: { sizeFunc: ATC10x8Size, glFormat: [ 0x93BA, 0x93DA ] },
-    38: { sizeFunc: ATC10x10Size, glFormat: [ 0x93BB, 0x93DB ] },
-    39: { sizeFunc: ATC12x10Size, glFormat: [ 0x93BC, 0x93DC ] },
-    40: { sizeFunc: ATC12x12Size, glFormat: [ 0x93BD, 0x93DD ] }
+    0: {sizeFunc: PVRTC2bppSize, glFormat: [0x8C01]},
+    1: {sizeFunc: PVRTC2bppSize, glFormat: [0x8C03]},
+    2: {sizeFunc: PVRTC4bppSize, glFormat: [0x8C00]},
+    3: {sizeFunc: PVRTC4bppSize, glFormat: [0x8C02]},
+    6: {sizeFunc: DXTEtcSmallSize, glFormat: [0x8D64]},
+    7: {sizeFunc: DXTEtcSmallSize, glFormat: [0x83F0, 0x8C4C]},
+    8: {sizeFunc: DXTEtcAstcBigSize, glFormat: [0x83F1, 0x8C4D]},
+    9: {sizeFunc: DXTEtcAstcBigSize, glFormat: [0x83F2, 0x8C4E]},
+    11: {sizeFunc: DXTEtcAstcBigSize, glFormat: [0x83F3, 0x8C4F]},
+    14: {sizeFunc: BPTCSize, glFormat: [0x8E8E, 0x8E8F]},
+    15: {sizeFunc: BPTCSize, glFormat: [0x8E8C, 0x8E8D]},
+    22: {sizeFunc: DXTEtcSmallSize, glFormat: [0x9274, 0x9275]},
+    23: {sizeFunc: DXTEtcAstcBigSize, glFormat: [0x9278, 0x9279]},
+    24: {sizeFunc: DXTEtcSmallSize, glFormat: [0x9276, 0x9277]},
+    25: {sizeFunc: DXTEtcSmallSize, glFormat: [0x9270]},
+    26: {sizeFunc: DXTEtcAstcBigSize, glFormat: [0x9272]},
+    27: {sizeFunc: DXTEtcAstcBigSize, glFormat: [0x93B0, 0x93D0]},
+    28: {sizeFunc: ATC5x4Size, glFormat: [0x93B1, 0x93D1]},
+    29: {sizeFunc: ATC5x5Size, glFormat: [0x93B2, 0x93D2]},
+    30: {sizeFunc: ATC6x5Size, glFormat: [0x93B3, 0x93D3]},
+    31: {sizeFunc: ATC6x6Size, glFormat: [0x93B4, 0x93D4]},
+    32: {sizeFunc: ATC8x5Size, glFormat: [0x93B5, 0x93D5]},
+    33: {sizeFunc: ATC8x6Size, glFormat: [0x93B6, 0x93D6]},
+    34: {sizeFunc: ATC8x8Size, glFormat: [0x93B7, 0x93D7]},
+    35: {sizeFunc: ATC10x5Size, glFormat: [0x93B8, 0x93D8]},
+    36: {sizeFunc: ATC10x6Size, glFormat: [0x93B9, 0x93D9]},
+    37: {sizeFunc: ATC10x8Size, glFormat: [0x93BA, 0x93DA]},
+    38: {sizeFunc: ATC10x10Size, glFormat: [0x93BB, 0x93DB]},
+    39: {sizeFunc: ATC12x10Size, glFormat: [0x93BC, 0x93DC]},
+    40: {sizeFunc: ATC12x12Size, glFormat: [0x93BD, 0x93DD]}
 };
 
 /**
@@ -244,8 +227,7 @@ var FORMATS = {
  *
  * @return {Phaser.Types.Textures.CompressedTextureData} The Compressed Texture data.
  */
-var PVRParser = function (data)
-{
+var PVRParser = function (data) {
     var header = new Uint32Array(data, 0, 13);
 
     // VERSION
@@ -281,8 +263,7 @@ var PVRParser = function (data)
     var levelWidth = width;
     var levelHeight = height;
 
-    for (var i = 0; i < mipmapLevels; i++)
-    {
+    for (var i = 0; i < mipmapLevels; i++) {
         var levelSize = sizeFunction(levelWidth, levelHeight);
 
         mipmaps[i] = {

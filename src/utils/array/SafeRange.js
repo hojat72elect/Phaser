@@ -17,24 +17,19 @@
  *
  * @return {boolean} True if the range is safe, otherwise false.
  */
-var SafeRange = function (array, startIndex, endIndex, throwError)
-{
+var SafeRange = function (array, startIndex, endIndex, throwError) {
     var len = array.length;
 
     if (startIndex < 0 ||
         startIndex >= len ||
         startIndex >= endIndex ||
-        endIndex > len)
-    {
-        if (throwError)
-        {
+        endIndex > len) {
+        if (throwError) {
             throw new Error('Range Error: Values outside acceptable range');
         }
 
         return false;
-    }
-    else
-    {
+    } else {
         return true;
     }
 };

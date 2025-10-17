@@ -18,8 +18,7 @@
  *
  * @return {boolean} `true` if the point is inside the Triangle, otherwise `false`.
  */
-var Contains = function (triangle, x, y)
-{
+var Contains = function (triangle, x, y) {
     var v0x = triangle.x3 - triangle.x1;
     var v0y = triangle.y3 - triangle.y1;
 

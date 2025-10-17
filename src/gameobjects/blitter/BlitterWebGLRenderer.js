@@ -23,13 +23,11 @@ var tempMatrix = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var BlitterWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var BlitterWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     var list = src.getRenderList();
     var alpha = camera.alpha * src.alpha;
 
-    if (list.length === 0 || alpha === 0)
-    {
+    if (list.length === 0 || alpha === 0) {
         //  Nothing to see, so abort early
         return;
     }
@@ -40,17 +38,16 @@ var BlitterWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var cameraScrollX = camera.scrollX * src.scrollFactorX;
     var cameraScrollY = camera.scrollY * src.scrollFactorY;
-    
+
     var calcMatrix = tempMatrix.copyFrom(camera.matrix);
-    
-    if (parentMatrix)
-    {
+
+    if (parentMatrix) {
         calcMatrix.multiplyWithOffset(parentMatrix, -cameraScrollX, -cameraScrollY);
-        
+
         cameraScrollX = 0;
         cameraScrollY = 0;
     }
-    
+
     var blitterX = src.x - cameraScrollX;
     var blitterY = src.y - cameraScrollY;
     var prevTextureSourceIndex = -1;
@@ -59,14 +56,12 @@ var BlitterWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     renderer.pipelines.preBatch(src);
 
-    for (var i = 0; i < list.length; i++)
-    {
+    for (var i = 0; i < list.length; i++) {
         var bob = list[i];
         var frame = bob.frame;
         var bobAlpha = bob.alpha * alpha;
 
-        if (bobAlpha === 0)
-        {
+        if (bobAlpha === 0) {
             continue;
         }
 
@@ -76,14 +71,12 @@ var BlitterWebGLRenderer = function (renderer, src, camera, parentMatrix)
         var x = blitterX + bob.x + frame.x;
         var y = blitterY + bob.y + frame.y;
 
-        if (bob.flipX)
-        {
+        if (bob.flipX) {
             width *= -1;
             x += frame.width;
         }
 
-        if (bob.flipY)
-        {
+        if (bob.flipY) {
             height *= -1;
             y += frame.height;
         }
@@ -93,15 +86,13 @@ var BlitterWebGLRenderer = function (renderer, src, camera, parentMatrix)
         var tint = Utils.getTintAppendFloatAlpha(bob.tint, bobAlpha);
 
         //  Bind texture only if the Texture Source is different from before
-        if (frame.sourceIndex !== prevTextureSourceIndex)
-        {
+        if (frame.sourceIndex !== prevTextureSourceIndex) {
             var textureUnit = pipeline.setGameObject(src, frame);
 
             prevTextureSourceIndex = frame.sourceIndex;
         }
 
-        if (pipeline.batchQuad(src, quad[0], quad[1], quad[2], quad[3], quad[4], quad[5], quad[6], quad[7], frame.u0, frame.v0, frame.u1, frame.v1, tint, tint, tint, tint, tintEffect, frame.glTexture, textureUnit))
-        {
+        if (pipeline.batchQuad(src, quad[0], quad[1], quad[2], quad[3], quad[4], quad[5], quad[6], quad[7], frame.u0, frame.v0, frame.u1, frame.v1, tint, tint, tint, tint, tintEffect, frame.glTexture, textureUnit)) {
             prevTextureSourceIndex = -1;
         }
     }

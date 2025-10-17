@@ -16,12 +16,10 @@
  *
  * @return {*} The element that was moved.
  */
-var BringToTop = function (array, item)
-{
+var BringToTop = function (array, item) {
     var currentIndex = array.indexOf(item);
 
-    if (currentIndex !== -1 && currentIndex < array.length)
-    {
+    if (currentIndex !== -1 && currentIndex < array.length) {
         array.splice(currentIndex, 1);
         array.push(item);
     }

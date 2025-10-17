@@ -20,8 +20,7 @@
  *
  * @return {Phaser.Geom.Line} The updated line.
  */
-var SetToAngle = function (line, x, y, angle, length)
-{
+var SetToAngle = function (line, x, y, angle, length) {
     line.x1 = x;
     line.y1 = y;
 

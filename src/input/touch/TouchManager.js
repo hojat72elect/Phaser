@@ -31,134 +31,133 @@ var TouchManager = new Class({
 
     initialize:
 
-    function TouchManager (inputManager)
-    {
-        /**
-         * A reference to the Input Manager.
-         *
-         * @name Phaser.Input.Touch.TouchManager#manager
-         * @type {Phaser.Input.InputManager}
-         * @since 3.0.0
-         */
-        this.manager = inputManager;
+        function TouchManager(inputManager) {
+            /**
+             * A reference to the Input Manager.
+             *
+             * @name Phaser.Input.Touch.TouchManager#manager
+             * @type {Phaser.Input.InputManager}
+             * @since 3.0.0
+             */
+            this.manager = inputManager;
 
-        /**
-         * If true the DOM events will have event.preventDefault applied to them, if false they will propagate fully.
-         *
-         * @name Phaser.Input.Touch.TouchManager#capture
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.capture = true;
+            /**
+             * If true the DOM events will have event.preventDefault applied to them, if false they will propagate fully.
+             *
+             * @name Phaser.Input.Touch.TouchManager#capture
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.capture = true;
 
-        /**
-         * A boolean that controls if the Touch Manager is enabled or not.
-         * Can be toggled on the fly.
-         *
-         * @name Phaser.Input.Touch.TouchManager#enabled
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.enabled = false;
+            /**
+             * A boolean that controls if the Touch Manager is enabled or not.
+             * Can be toggled on the fly.
+             *
+             * @name Phaser.Input.Touch.TouchManager#enabled
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.enabled = false;
 
-        /**
-         * The Touch Event target, as defined in the Game Config.
-         * Typically the canvas to which the game is rendering, but can be any interactive DOM element.
-         *
-         * @name Phaser.Input.Touch.TouchManager#target
-         * @type {any}
-         * @since 3.0.0
-         */
-        this.target;
+            /**
+             * The Touch Event target, as defined in the Game Config.
+             * Typically the canvas to which the game is rendering, but can be any interactive DOM element.
+             *
+             * @name Phaser.Input.Touch.TouchManager#target
+             * @type {any}
+             * @since 3.0.0
+             */
+            this.target;
 
-        /**
-         * The Touch Start event handler function.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchStart
-         * @type {function}
-         * @since 3.0.0
-         */
-        this.onTouchStart = NOOP;
+            /**
+             * The Touch Start event handler function.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchStart
+             * @type {function}
+             * @since 3.0.0
+             */
+            this.onTouchStart = NOOP;
 
-        /**
-         * The Touch Start event handler function specifically for events on the Window.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchStartWindow
-         * @type {function}
-         * @since 3.17.0
-         */
-        this.onTouchStartWindow = NOOP;
+            /**
+             * The Touch Start event handler function specifically for events on the Window.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchStartWindow
+             * @type {function}
+             * @since 3.17.0
+             */
+            this.onTouchStartWindow = NOOP;
 
-        /**
-         * The Touch Move event handler function.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchMove
-         * @type {function}
-         * @since 3.0.0
-         */
-        this.onTouchMove = NOOP;
+            /**
+             * The Touch Move event handler function.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchMove
+             * @type {function}
+             * @since 3.0.0
+             */
+            this.onTouchMove = NOOP;
 
-        /**
-         * The Touch End event handler function.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchEnd
-         * @type {function}
-         * @since 3.0.0
-         */
-        this.onTouchEnd = NOOP;
+            /**
+             * The Touch End event handler function.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchEnd
+             * @type {function}
+             * @since 3.0.0
+             */
+            this.onTouchEnd = NOOP;
 
-        /**
-         * The Touch End event handler function specifically for events on the Window.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchEndWindow
-         * @type {function}
-         * @since 3.17.0
-         */
-        this.onTouchEndWindow = NOOP;
+            /**
+             * The Touch End event handler function specifically for events on the Window.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchEndWindow
+             * @type {function}
+             * @since 3.17.0
+             */
+            this.onTouchEndWindow = NOOP;
 
-        /**
-         * The Touch Cancel event handler function.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchCancel
-         * @type {function}
-         * @since 3.15.0
-         */
-        this.onTouchCancel = NOOP;
+            /**
+             * The Touch Cancel event handler function.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchCancel
+             * @type {function}
+             * @since 3.15.0
+             */
+            this.onTouchCancel = NOOP;
 
-        /**
-         * The Touch Cancel event handler function specifically for events on the Window.
-         * Initially empty and bound in the `startListeners` method.
-         *
-         * @name Phaser.Input.Touch.TouchManager#onTouchCancelWindow
-         * @type {function}
-         * @since 3.18.0
-         */
-        this.onTouchCancelWindow = NOOP;
+            /**
+             * The Touch Cancel event handler function specifically for events on the Window.
+             * Initially empty and bound in the `startListeners` method.
+             *
+             * @name Phaser.Input.Touch.TouchManager#onTouchCancelWindow
+             * @type {function}
+             * @since 3.18.0
+             */
+            this.onTouchCancelWindow = NOOP;
 
-        /**
-         * Are the event listeners hooked into `window.top` or `window`?
-         *
-         * This is set during the `boot` sequence. If the browser does not have access to `window.top`,
-         * such as in cross-origin iframe environments, this property gets set to `false` and the events
-         * are hooked into `window` instead.
-         *
-         * @name Phaser.Input.Touch.TouchManager#isTop
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isTop = true;
+            /**
+             * Are the event listeners hooked into `window.top` or `window`?
+             *
+             * This is set during the `boot` sequence. If the browser does not have access to `window.top`,
+             * such as in cross-origin iframe environments, this property gets set to `false` and the events
+             * are hooked into `window` instead.
+             *
+             * @name Phaser.Input.Touch.TouchManager#isTop
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isTop = true;
 
-        inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
-    },
+            inputManager.events.once(InputEvents.MANAGER_BOOT, this.boot, this);
+        },
 
     /**
      * The Touch Manager boot process.
@@ -167,30 +166,24 @@ var TouchManager = new Class({
      * @private
      * @since 3.0.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var config = this.manager.config;
 
         this.enabled = config.inputTouch;
         this.target = config.inputTouchEventTarget;
         this.capture = config.inputTouchCapture;
 
-        if (!this.target)
-        {
+        if (!this.target) {
             this.target = this.manager.game.canvas;
-        }
-        else if (typeof this.target === 'string')
-        {
+        } else if (typeof this.target === 'string') {
             this.target = document.getElementById(this.target);
         }
 
-        if (config.disableContextMenu)
-        {
+        if (config.disableContextMenu) {
             this.disableContextMenu();
         }
 
-        if (this.enabled && this.target)
-        {
+        if (this.enabled && this.target) {
             this.startListeners();
         }
     },
@@ -207,10 +200,8 @@ var TouchManager = new Class({
      *
      * @return {this} This Touch Manager instance.
      */
-    disableContextMenu: function ()
-    {
-        this.target.addEventListener('contextmenu', function (event)
-        {
+    disableContextMenu: function () {
+        this.target.addEventListener('contextmenu', function (event) {
             event.preventDefault();
             return false;
         });
@@ -228,12 +219,10 @@ var TouchManager = new Class({
      * @method Phaser.Input.Touch.TouchManager#startListeners
      * @since 3.0.0
      */
-    startListeners: function ()
-    {
+    startListeners: function () {
         var target = this.target;
 
-        if (!target)
-        {
+        if (!target) {
             return;
         }
 
@@ -242,108 +231,85 @@ var TouchManager = new Class({
         var canvas = manager.canvas;
         var autoFocus = (window && window.focus && manager.game.config.autoFocus);
 
-        this.onTouchMove = function (event)
-        {
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled)
-            {
+        this.onTouchMove = function (event) {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled) {
                 manager.onTouchMove(event);
 
-                if (_this.capture && event.cancelable)
-                {
+                if (_this.capture && event.cancelable) {
                     event.preventDefault();
                 }
             }
         };
 
-        this.onTouchStart = function (event)
-        {
-            if (autoFocus)
-            {
+        this.onTouchStart = function (event) {
+            if (autoFocus) {
                 window.focus();
             }
 
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled)
-            {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled) {
                 manager.onTouchStart(event);
 
-                if (_this.capture && event.cancelable && event.target === canvas)
-                {
+                if (_this.capture && event.cancelable && event.target === canvas) {
                     event.preventDefault();
                 }
             }
         };
 
-        this.onTouchStartWindow = function (event)
-        {
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled && event.target !== canvas)
-            {
+        this.onTouchStartWindow = function (event) {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled && event.target !== canvas) {
                 //  Only process the event if the target isn't the canvas
                 manager.onTouchStart(event);
             }
         };
 
-        this.onTouchEnd = function (event)
-        {
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled)
-            {
+        this.onTouchEnd = function (event) {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled) {
                 manager.onTouchEnd(event);
 
-                if (_this.capture && event.cancelable && event.target === canvas)
-                {
+                if (_this.capture && event.cancelable && event.target === canvas) {
                     event.preventDefault();
                 }
             }
         };
 
-        this.onTouchEndWindow = function (event)
-        {
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled && event.target !== canvas)
-            {
+        this.onTouchEndWindow = function (event) {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled && event.target !== canvas) {
                 //  Only process the event if the target isn't the canvas
                 manager.onTouchEnd(event);
             }
         };
 
-        this.onTouchCancel = function (event)
-        {
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled)
-            {
+        this.onTouchCancel = function (event) {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled) {
                 manager.onTouchCancel(event);
 
-                if (_this.capture)
-                {
+                if (_this.capture) {
                     event.preventDefault();
                 }
             }
         };
 
-        this.onTouchCancelWindow = function (event)
-        {
-            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled)
-            {
+        this.onTouchCancelWindow = function (event) {
+            if (!event.defaultPrevented && _this.enabled && manager && manager.enabled) {
                 manager.onTouchCancel(event);
             }
         };
 
         var capture = this.capture;
-        var passive = { passive: true };
-        var nonPassive = { passive: false };
+        var passive = {passive: true};
+        var nonPassive = {passive: false};
 
         target.addEventListener('touchstart', this.onTouchStart, (capture) ? nonPassive : passive);
         target.addEventListener('touchmove', this.onTouchMove, (capture) ? nonPassive : passive);
         target.addEventListener('touchend', this.onTouchEnd, (capture) ? nonPassive : passive);
         target.addEventListener('touchcancel', this.onTouchCancel, (capture) ? nonPassive : passive);
 
-        if (window && manager.game.config.inputWindowEvents)
-        {
-            try
-            {
+        if (window && manager.game.config.inputWindowEvents) {
+            try {
                 window.top.addEventListener('touchstart', this.onTouchStartWindow, nonPassive);
                 window.top.addEventListener('touchend', this.onTouchEndWindow, nonPassive);
                 window.top.addEventListener('touchcancel', this.onTouchCancelWindow, nonPassive);
-            }
-            catch (exception)
-            {
+            } catch (exception) {
                 window.addEventListener('touchstart', this.onTouchStartWindow, nonPassive);
                 window.addEventListener('touchend', this.onTouchEndWindow, nonPassive);
                 window.addEventListener('touchcancel', this.onTouchCancelWindow, nonPassive);
@@ -362,8 +328,7 @@ var TouchManager = new Class({
      * @method Phaser.Input.Touch.TouchManager#stopListeners
      * @since 3.0.0
      */
-    stopListeners: function ()
-    {
+    stopListeners: function () {
         var target = this.target;
 
         target.removeEventListener('touchstart', this.onTouchStart);
@@ -371,8 +336,7 @@ var TouchManager = new Class({
         target.removeEventListener('touchend', this.onTouchEnd);
         target.removeEventListener('touchcancel', this.onTouchCancel);
 
-        if (window)
-        {
+        if (window) {
             target = (this.isTop) ? window.top : window;
 
             target.removeEventListener('touchstart', this.onTouchStartWindow);
@@ -387,8 +351,7 @@ var TouchManager = new Class({
      * @method Phaser.Input.Touch.TouchManager#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.stopListeners();
 
         this.target = null;

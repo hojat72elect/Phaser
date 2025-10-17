@@ -28,10 +28,8 @@ var ParticleEmitter = require('./ParticleEmitter');
  *
  * @return {Phaser.GameObjects.Particles.ParticleEmitter} The Game Object that was created.
  */
-GameObjectFactory.register('particles', function (x, y, texture, config)
-{
-    if (x !== undefined && typeof x === 'string')
-    {
+GameObjectFactory.register('particles', function (x, y, texture, config) {
+    if (x !== undefined && typeof x === 'string') {
         console.warn('ParticleEmitterManager was removed in Phaser 3.60. See documentation for details');
     }
 

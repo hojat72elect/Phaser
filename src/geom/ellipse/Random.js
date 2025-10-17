@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} A Point object with the random values set in the `x` and `y` properties.
  */
-var Random = function (ellipse, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Random = function (ellipse, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var p = Math.random() * Math.PI * 2;
     var s = Math.sqrt(Math.random());

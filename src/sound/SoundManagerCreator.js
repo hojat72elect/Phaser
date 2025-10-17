@@ -23,18 +23,15 @@ var WebAudioSoundManager = require('./webaudio/WebAudioSoundManager');
  */
 var SoundManagerCreator = {
 
-    create: function (game)
-    {
+    create: function (game) {
         var audioConfig = game.config.audio;
         var deviceAudio = game.device.audio;
 
-        if (audioConfig.noAudio || (!deviceAudio.webAudio && !deviceAudio.audioData))
-        {
+        if (audioConfig.noAudio || (!deviceAudio.webAudio && !deviceAudio.audioData)) {
             return new NoAudioSoundManager(game);
         }
 
-        if (deviceAudio.webAudio && !audioConfig.disableWebAudio)
-        {
+        if (deviceAudio.webAudio && !audioConfig.disableWebAudio) {
             return new WebAudioSoundManager(game);
         }
 

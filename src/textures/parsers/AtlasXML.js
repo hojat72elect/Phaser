@@ -18,11 +18,9 @@
  *
  * @return {Phaser.Textures.Texture} The Texture modified by this parser.
  */
-var AtlasXML = function (texture, sourceIndex, xml)
-{
+var AtlasXML = function (texture, sourceIndex, xml) {
     //  Malformed?
-    if (!xml.getElementsByTagName('TextureAtlas'))
-    {
+    if (!xml.getElementsByTagName('TextureAtlas')) {
         console.warn('Invalid Texture Atlas XML given');
         return;
     }
@@ -37,8 +35,7 @@ var AtlasXML = function (texture, sourceIndex, xml)
 
     var newFrame;
 
-    for (var i = 0; i < frames.length; i++)
-    {
+    for (var i = 0; i < frames.length; i++) {
         var frame = frames[i].attributes;
 
         var name = frame.name.value;
@@ -51,8 +48,7 @@ var AtlasXML = function (texture, sourceIndex, xml)
         newFrame = texture.add(name, sourceIndex, x, y, width, height);
 
         //  These are the original (non-trimmed) sprite values
-        if (frame.frameX)
-        {
+        if (frame.frameX) {
             var frameX = Math.abs(parseInt(frame.frameX.value, 10));
             var frameY = Math.abs(parseInt(frame.frameY.value, 10));
             var frameWidth = parseInt(frame.frameWidth.value, 10);

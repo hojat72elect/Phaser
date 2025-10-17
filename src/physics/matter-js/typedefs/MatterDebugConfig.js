@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterDebugConfig
  * @since 3.22.0
- *              
+ *
  * @property {boolean} [showAxes=false] - Render all of the body axes?
  * @property {boolean} [showAngleIndicator=false] - Render just a single body axis?
  * @property {number} [angleColor=0xe81153] - The color of the body angle / axes lines.

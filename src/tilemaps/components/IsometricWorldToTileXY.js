@@ -24,17 +24,19 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {Phaser.Math.Vector2} The XY location in tile units.
  */
-var IsometricWorldToTileXY = function (worldX, worldY, snapToFloor, point, camera, layer, originTop)
-{
-    if (!point) { point = new Vector2(); }
+var IsometricWorldToTileXY = function (worldX, worldY, snapToFloor, point, camera, layer, originTop) {
+    if (!point) {
+        point = new Vector2();
+    }
 
     var tileWidth = layer.baseTileWidth;
     var tileHeight = layer.baseTileHeight;
     var tilemapLayer = layer.tilemapLayer;
 
-    if (tilemapLayer)
-    {
-        if (!camera) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (!camera) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         // Find the world position relative to the static or dynamic layer's top left origin,
         // factoring in the camera's vertical scroll
@@ -56,16 +58,14 @@ var IsometricWorldToTileXY = function (worldX, worldY, snapToFloor, point, camer
 
     worldX = worldX - tileWidthHalf;
 
-    if (!originTop)
-    {
+    if (!originTop) {
         worldY = worldY - tileHeight;
     }
 
     var x = 0.5 * (worldX / tileWidthHalf + worldY / tileHeightHalf);
     var y = 0.5 * (-worldX / tileWidthHalf + worldY / tileHeightHalf);
 
-    if (snapToFloor)
-    {
+    if (snapToFloor) {
         x = Math.floor(x);
         y = Math.floor(y);
     }

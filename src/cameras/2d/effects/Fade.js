@@ -31,149 +31,148 @@ var Fade = new Class({
 
     initialize:
 
-    function Fade (camera)
-    {
-        /**
-         * The Camera this effect belongs to.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#camera
-         * @type {Phaser.Cameras.Scene2D.Camera}
-         * @readonly
-         * @since 3.5.0
-         */
-        this.camera = camera;
+        function Fade(camera) {
+            /**
+             * The Camera this effect belongs to.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#camera
+             * @type {Phaser.Cameras.Scene2D.Camera}
+             * @readonly
+             * @since 3.5.0
+             */
+            this.camera = camera;
 
-        /**
-         * Is this effect actively running?
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#isRunning
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.5.0
-         */
-        this.isRunning = false;
+            /**
+             * Is this effect actively running?
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#isRunning
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.5.0
+             */
+            this.isRunning = false;
 
-        /**
-         * Has this effect finished running?
-         *
-         * This is different from `isRunning` because it remains set to `true` when the effect is over,
-         * until the effect is either reset or started again.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#isComplete
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.5.0
-         */
-        this.isComplete = false;
+            /**
+             * Has this effect finished running?
+             *
+             * This is different from `isRunning` because it remains set to `true` when the effect is over,
+             * until the effect is either reset or started again.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#isComplete
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.5.0
+             */
+            this.isComplete = false;
 
-        /**
-         * The direction of the fade.
-         * `true` = fade out (transparent to color), `false` = fade in (color to transparent)
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#direction
-         * @type {boolean}
-         * @readonly
-         * @since 3.5.0
-         */
-        this.direction = true;
+            /**
+             * The direction of the fade.
+             * `true` = fade out (transparent to color), `false` = fade in (color to transparent)
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#direction
+             * @type {boolean}
+             * @readonly
+             * @since 3.5.0
+             */
+            this.direction = true;
 
-        /**
-         * The duration of the effect, in milliseconds.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#duration
-         * @type {number}
-         * @readonly
-         * @default 0
-         * @since 3.5.0
-         */
-        this.duration = 0;
+            /**
+             * The duration of the effect, in milliseconds.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#duration
+             * @type {number}
+             * @readonly
+             * @default 0
+             * @since 3.5.0
+             */
+            this.duration = 0;
 
-        /**
-         * The value of the red color channel the camera will use for the fade effect.
-         * A value between 0 and 255.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#red
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.red = 0;
+            /**
+             * The value of the red color channel the camera will use for the fade effect.
+             * A value between 0 and 255.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#red
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.red = 0;
 
-        /**
-         * The value of the green color channel the camera will use for the fade effect.
-         * A value between 0 and 255.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#green
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.green = 0;
+            /**
+             * The value of the green color channel the camera will use for the fade effect.
+             * A value between 0 and 255.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#green
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.green = 0;
 
-        /**
-         * The value of the blue color channel the camera will use for the fade effect.
-         * A value between 0 and 255.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#blue
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.blue = 0;
+            /**
+             * The value of the blue color channel the camera will use for the fade effect.
+             * A value between 0 and 255.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#blue
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.blue = 0;
 
-        /**
-         * The value of the alpha channel used during the fade effect.
-         * A value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#alpha
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.alpha = 0;
+            /**
+             * The value of the alpha channel used during the fade effect.
+             * A value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#alpha
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.alpha = 0;
 
-        /**
-         * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#progress
-         * @type {number}
-         * @since 3.5.0
-         */
-        this.progress = 0;
+            /**
+             * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#progress
+             * @type {number}
+             * @since 3.5.0
+             */
+            this.progress = 0;
 
-        /**
-         * Effect elapsed timer.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#_elapsed
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this._elapsed = 0;
+            /**
+             * Effect elapsed timer.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#_elapsed
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this._elapsed = 0;
 
-        /**
-         * This callback is invoked every frame for the duration of the effect.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#_onUpdate
-         * @type {?Phaser.Types.Cameras.Scene2D.CameraFadeCallback}
-         * @private
-         * @default null
-         * @since 3.5.0
-         */
-        this._onUpdate;
+            /**
+             * This callback is invoked every frame for the duration of the effect.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#_onUpdate
+             * @type {?Phaser.Types.Cameras.Scene2D.CameraFadeCallback}
+             * @private
+             * @default null
+             * @since 3.5.0
+             */
+            this._onUpdate;
 
-        /**
-         * On Complete callback scope.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Fade#_onUpdateScope
-         * @type {any}
-         * @private
-         * @since 3.5.0
-         */
-        this._onUpdateScope;
-    },
+            /**
+             * On Complete callback scope.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Fade#_onUpdateScope
+             * @type {any}
+             * @private
+             * @since 3.5.0
+             */
+            this._onUpdateScope;
+        },
 
     /**
      * Fades the Camera to or from the given color over the duration specified.
@@ -195,19 +194,33 @@ var Fade = new Class({
      *
      * @return {Phaser.Cameras.Scene2D.Camera} The Camera on which the effect was started.
      */
-    start: function (direction, duration, red, green, blue, force, callback, context)
-    {
-        if (direction === undefined) { direction = true; }
-        if (duration === undefined) { duration = 1000; }
-        if (red === undefined) { red = 0; }
-        if (green === undefined) { green = 0; }
-        if (blue === undefined) { blue = 0; }
-        if (force === undefined) { force = false; }
-        if (callback === undefined) { callback = null; }
-        if (context === undefined) { context = this.camera.scene; }
+    start: function (direction, duration, red, green, blue, force, callback, context) {
+        if (direction === undefined) {
+            direction = true;
+        }
+        if (duration === undefined) {
+            duration = 1000;
+        }
+        if (red === undefined) {
+            red = 0;
+        }
+        if (green === undefined) {
+            green = 0;
+        }
+        if (blue === undefined) {
+            blue = 0;
+        }
+        if (force === undefined) {
+            force = false;
+        }
+        if (callback === undefined) {
+            callback = null;
+        }
+        if (context === undefined) {
+            context = this.camera.scene;
+        }
 
-        if (!force && this.isRunning)
-        {
+        if (!force && this.isRunning) {
             return this.camera;
         }
 
@@ -243,10 +256,8 @@ var Fade = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (!this.isRunning)
-        {
+    update: function (time, delta) {
+        if (!this.isRunning) {
             return;
         }
 
@@ -254,17 +265,13 @@ var Fade = new Class({
 
         this.progress = Clamp(this._elapsed / this.duration, 0, 1);
 
-        if (this._onUpdate)
-        {
+        if (this._onUpdate) {
             this._onUpdate.call(this._onUpdateScope, this.camera, this.progress);
         }
 
-        if (this._elapsed < this.duration)
-        {
+        if (this._elapsed < this.duration) {
             this.alpha = (this.direction) ? this.progress : 1 - this.progress;
-        }
-        else
-        {
+        } else {
             this.alpha = (this.direction) ? 1 : 0;
             this.effectComplete();
         }
@@ -280,10 +287,8 @@ var Fade = new Class({
      *
      * @return {boolean} `true` if the effect drew to the renderer, otherwise `false`.
      */
-    postRenderCanvas: function (ctx)
-    {
-        if (!this.isRunning && !this.isComplete)
-        {
+    postRenderCanvas: function (ctx) {
+        if (!this.isRunning && !this.isComplete) {
             return false;
         }
 
@@ -306,10 +311,8 @@ var Fade = new Class({
      *
      * @return {boolean} `true` if the effect drew to the renderer, otherwise `false`.
      */
-    postRenderWebGL: function (pipeline, getTintFunction)
-    {
-        if (!this.isRunning && !this.isComplete)
-        {
+    postRenderWebGL: function (pipeline, getTintFunction) {
+        if (!this.isRunning && !this.isComplete) {
             return false;
         }
 
@@ -335,8 +338,7 @@ var Fade = new Class({
      * @fires Phaser.Cameras.Scene2D.Events#FADE_OUT_COMPLETE
      * @since 3.5.0
      */
-    effectComplete: function ()
-    {
+    effectComplete: function () {
         this._onUpdate = null;
         this._onUpdateScope = null;
 
@@ -355,8 +357,7 @@ var Fade = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Fade#reset
      * @since 3.5.0
      */
-    reset: function ()
-    {
+    reset: function () {
         this.isRunning = false;
         this.isComplete = false;
 
@@ -370,8 +371,7 @@ var Fade = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Fade#destroy
      * @since 3.5.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.reset();
 
         this.camera = null;

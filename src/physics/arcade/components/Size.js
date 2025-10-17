@@ -25,8 +25,7 @@ var Size = {
      *
      * @return {this} This Game Object.
      */
-    setOffset: function (x, y)
-    {
+    setOffset: function (x, y) {
         this.body.setOffset(x, y);
 
         return this;
@@ -47,8 +46,7 @@ var Size = {
      *
      * @return {this} This Game Object.
      */
-    setSize: function (width, height, center)
-    {
+    setSize: function (width, height, center) {
         this.body.setSize(width, height, center);
 
         return this;
@@ -66,8 +64,7 @@ var Size = {
      *
      * @return {this} This Game Object.
      */
-    setBodySize: function (width, height, center)
-    {
+    setBodySize: function (width, height, center) {
         this.body.setSize(width, height, center);
 
         return this;
@@ -85,8 +82,7 @@ var Size = {
      *
      * @return {this} This Game Object.
      */
-    setCircle: function (radius, offsetX, offsetY)
-    {
+    setCircle: function (radius, offsetX, offsetY) {
         this.body.setCircle(radius, offsetX, offsetY);
 
         return this;

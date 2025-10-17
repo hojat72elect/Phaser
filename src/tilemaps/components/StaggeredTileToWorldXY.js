@@ -22,9 +22,10 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {Phaser.Math.Vector2} The XY location in world coordinates.
  */
-var StaggeredTileToWorldXY = function (tileX, tileY, point, camera, layer)
-{
-    if (!point) { point = new Vector2(); }
+var StaggeredTileToWorldXY = function (tileX, tileY, point, camera, layer) {
+    if (!point) {
+        point = new Vector2();
+    }
 
     var tileWidth = layer.baseTileWidth;
     var tileHeight = layer.baseTileHeight;
@@ -33,9 +34,10 @@ var StaggeredTileToWorldXY = function (tileX, tileY, point, camera, layer)
     var layerWorldX = 0;
     var layerWorldY = 0;
 
-    if (tilemapLayer)
-    {
-        if (!camera) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (!camera) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         layerWorldX = tilemapLayer.x + camera.scrollX * (1 - tilemapLayer.scrollFactorX);
 

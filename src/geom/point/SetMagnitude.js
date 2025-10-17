@@ -19,10 +19,8 @@ var GetMagnitude = require('./GetMagnitude');
  *
  * @return {Phaser.Geom.Point} The modified Point.
  */
-var SetMagnitude = function (point, magnitude)
-{
-    if (point.x !== 0 || point.y !== 0)
-    {
+var SetMagnitude = function (point, magnitude) {
+    if (point.x !== 0 || point.y !== 0) {
         var m = GetMagnitude(point);
 
         point.x /= m;

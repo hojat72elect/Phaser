@@ -29,14 +29,12 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  *
  * @return {Phaser.Textures.Texture} The Texture modified by this parser.
  */
-var SpriteSheetFromAtlas = function (texture, frame, config)
-{
+var SpriteSheetFromAtlas = function (texture, frame, config) {
     var frameWidth = GetFastValue(config, 'frameWidth', null);
     var frameHeight = GetFastValue(config, 'frameHeight', frameWidth);
 
     //  If missing we can't proceed
-    if (!frameWidth)
-    {
+    if (!frameWidth) {
         throw new Error('TextureManager.SpriteSheetFromAtlas: Invalid frameWidth given.');
     }
 
@@ -73,19 +71,16 @@ var SpriteSheetFromAtlas = function (texture, frame, config)
 
     var bottomHeight = frameHeight - ((sheetHeight - cutHeight) - topPad);
 
-    if (startFrame > total || startFrame < -total)
-    {
+    if (startFrame > total || startFrame < -total) {
         startFrame = 0;
     }
 
-    if (startFrame < 0)
-    {
+    if (startFrame < 0) {
         //  Allow negative skipframes.
         startFrame = total + startFrame;
     }
 
-    if (endFrame !== -1)
-    {
+    if (endFrame !== -1) {
         total = startFrame + (endFrame + 1);
     }
 
@@ -95,43 +90,36 @@ var SpriteSheetFromAtlas = function (texture, frame, config)
     var frameIndex = 0;
     var sourceIndex = 0;
 
-    for (var sheetY = 0; sheetY < column; sheetY++)
-    {
+    for (var sheetY = 0; sheetY < column; sheetY++) {
         var topRow = (sheetY === 0);
         var bottomRow = (sheetY === column - 1);
 
-        for (var sheetX = 0; sheetX < row; sheetX++)
-        {
+        for (var sheetX = 0; sheetX < row; sheetX++) {
             var leftRow = (sheetX === 0);
             var rightRow = (sheetX === row - 1);
 
             sheetFrame = texture.add(frameIndex, sourceIndex, x + frameX, y + frameY, frameWidth, frameHeight);
 
-            if (leftRow || topRow || rightRow || bottomRow)
-            {
+            if (leftRow || topRow || rightRow || bottomRow) {
                 var destX = (leftRow) ? leftPad : 0;
                 var destY = (topRow) ? topPad : 0;
 
                 var trimWidth = 0;
                 var trimHeight = 0;
 
-                if (leftRow)
-                {
+                if (leftRow) {
                     trimWidth += (frameWidth - leftWidth);
                 }
 
-                if (rightRow)
-                {
+                if (rightRow) {
                     trimWidth += (frameWidth - rightWidth);
                 }
 
-                if (topRow)
-                {
+                if (topRow) {
                     trimHeight += (frameHeight - topHeight);
                 }
 
-                if (bottomRow)
-                {
+                if (bottomRow) {
                     trimHeight += (frameHeight - bottomHeight);
                 }
 
@@ -146,16 +134,11 @@ var SpriteSheetFromAtlas = function (texture, frame, config)
 
             frameX += spacing;
 
-            if (leftRow)
-            {
+            if (leftRow) {
                 frameX += leftWidth;
-            }
-            else if (rightRow)
-            {
+            } else if (rightRow) {
                 frameX += rightWidth;
-            }
-            else
-            {
+            } else {
                 frameX += frameWidth;
             }
 
@@ -165,16 +148,11 @@ var SpriteSheetFromAtlas = function (texture, frame, config)
         frameX = margin;
         frameY += spacing;
 
-        if (topRow)
-        {
+        if (topRow) {
             frameY += topHeight;
-        }
-        else if (bottomRow)
-        {
+        } else if (bottomRow) {
             frameY += bottomHeight;
-        }
-        else
-        {
+        } else {
             frameY += frameHeight;
         }
     }

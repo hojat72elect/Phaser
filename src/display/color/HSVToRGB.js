@@ -18,8 +18,7 @@ var GetColor = require('./GetColor');
  *
  * @return {number} The converted value.
  */
-function ConvertValue (n, h, s, v)
-{
+function ConvertValue(n, h, s, v) {
     var k = (n + h * 6) % 6;
 
     var min = Math.min(k, 4 - k, 1);
@@ -44,25 +43,23 @@ function ConvertValue (n, h, s, v)
  *
  * @return {(Phaser.Types.Display.ColorObject|Phaser.Display.Color)} An object with the red, green and blue values set in the r, g and b properties.
  */
-var HSVToRGB = function (h, s, v, out)
-{
-    if (s === undefined) { s = 1; }
-    if (v === undefined) { v = 1; }
+var HSVToRGB = function (h, s, v, out) {
+    if (s === undefined) {
+        s = 1;
+    }
+    if (v === undefined) {
+        v = 1;
+    }
 
     var r = ConvertValue(5, h, s, v);
     var g = ConvertValue(3, h, s, v);
     var b = ConvertValue(1, h, s, v);
 
-    if (!out)
-    {
-        return { r: r, g: g, b: b, color: GetColor(r, g, b) };
-    }
-    else if (out.setTo)
-    {
+    if (!out) {
+        return {r: r, g: g, b: b, color: GetColor(r, g, b)};
+    } else if (out.setTo) {
         return out.setTo(r, g, b, out.alpha, true);
-    }
-    else
-    {
+    } else {
         out.r = r;
         out.g = g;
         out.b = b;

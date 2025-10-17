@@ -36,185 +36,179 @@ var World = new Class({
 
     initialize:
 
-    function World (scene, config)
-    {
-        EventEmitter.call(this);
+        function World(scene, config) {
+            EventEmitter.call(this);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#bodies
-         * @type {Phaser.Structs.Set.<Phaser.Physics.Impact.Body>}
-         * @since 3.0.0
-         */
-        this.bodies = new Set();
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#bodies
+             * @type {Phaser.Structs.Set.<Phaser.Physics.Impact.Body>}
+             * @since 3.0.0
+             */
+            this.bodies = new Set();
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#gravity
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.gravity = GetFastValue(config, 'gravity', 0);
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#gravity
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.gravity = GetFastValue(config, 'gravity', 0);
 
-        /**
-         * Spatial hash cell dimensions
-         *
-         * @name Phaser.Physics.Impact.World#cellSize
-         * @type {integer}
-         * @default 64
-         * @since 3.0.0
-         */
-        this.cellSize = GetFastValue(config, 'cellSize', 64);
+            /**
+             * Spatial hash cell dimensions
+             *
+             * @name Phaser.Physics.Impact.World#cellSize
+             * @type {integer}
+             * @default 64
+             * @since 3.0.0
+             */
+            this.cellSize = GetFastValue(config, 'cellSize', 64);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#collisionMap
-         * @type {Phaser.Physics.Impact.CollisionMap}
-         * @since 3.0.0
-         */
-        this.collisionMap = new CollisionMap();
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#collisionMap
+             * @type {Phaser.Physics.Impact.CollisionMap}
+             * @since 3.0.0
+             */
+            this.collisionMap = new CollisionMap();
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#timeScale
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.timeScale = GetFastValue(config, 'timeScale', 1);
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#timeScale
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.timeScale = GetFastValue(config, 'timeScale', 1);
 
-        /**
-         * Impacts maximum time step is 20 fps.
-         *
-         * @name Phaser.Physics.Impact.World#maxStep
-         * @type {number}
-         * @default 0.05
-         * @since 3.0.0
-         */
-        this.maxStep = GetFastValue(config, 'maxStep', 0.05);
+            /**
+             * Impacts maximum time step is 20 fps.
+             *
+             * @name Phaser.Physics.Impact.World#maxStep
+             * @type {number}
+             * @default 0.05
+             * @since 3.0.0
+             */
+            this.maxStep = GetFastValue(config, 'maxStep', 0.05);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#enabled
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.enabled = true;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#enabled
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.enabled = true;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#drawDebug
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.drawDebug = GetFastValue(config, 'debug', false);
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#drawDebug
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.drawDebug = GetFastValue(config, 'debug', false);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#debugGraphic
-         * @type {Phaser.GameObjects.Graphics}
-         * @since 3.0.0
-         */
-        this.debugGraphic;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#debugGraphic
+             * @type {Phaser.GameObjects.Graphics}
+             * @since 3.0.0
+             */
+            this.debugGraphic;
 
-        var _maxVelocity = GetFastValue(config, 'maxVelocity', 100);
+            var _maxVelocity = GetFastValue(config, 'maxVelocity', 100);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#defaults
-         * @type {Phaser.Types.Physics.Impact.WorldDefaults}
-         * @since 3.0.0
-         */
-        this.defaults = {
-            debugShowBody: GetFastValue(config, 'debugShowBody', true),
-            debugShowVelocity: GetFastValue(config, 'debugShowVelocity', true),
-            bodyDebugColor: GetFastValue(config, 'debugBodyColor', 0xff00ff),
-            velocityDebugColor: GetFastValue(config, 'debugVelocityColor', 0x00ff00),
-            maxVelocityX: GetFastValue(config, 'maxVelocityX', _maxVelocity),
-            maxVelocityY: GetFastValue(config, 'maxVelocityY', _maxVelocity),
-            minBounceVelocity: GetFastValue(config, 'minBounceVelocity', 40),
-            gravityFactor: GetFastValue(config, 'gravityFactor', 1),
-            bounciness: GetFastValue(config, 'bounciness', 0)
-        };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#defaults
+             * @type {Phaser.Types.Physics.Impact.WorldDefaults}
+             * @since 3.0.0
+             */
+            this.defaults = {
+                debugShowBody: GetFastValue(config, 'debugShowBody', true),
+                debugShowVelocity: GetFastValue(config, 'debugShowVelocity', true),
+                bodyDebugColor: GetFastValue(config, 'debugBodyColor', 0xff00ff),
+                velocityDebugColor: GetFastValue(config, 'debugVelocityColor', 0x00ff00),
+                maxVelocityX: GetFastValue(config, 'maxVelocityX', _maxVelocity),
+                maxVelocityY: GetFastValue(config, 'maxVelocityY', _maxVelocity),
+                minBounceVelocity: GetFastValue(config, 'minBounceVelocity', 40),
+                gravityFactor: GetFastValue(config, 'gravityFactor', 1),
+                bounciness: GetFastValue(config, 'bounciness', 0)
+            };
 
-        /**
-         * An object containing the 4 wall bodies that bound the physics world.
-         *
-         * @name Phaser.Physics.Impact.World#walls
-         * @type {Phaser.Types.Physics.Impact.WorldWalls}
-         * @since 3.0.0
-         */
-        this.walls = { left: null, right: null, top: null, bottom: null };
+            /**
+             * An object containing the 4 wall bodies that bound the physics world.
+             *
+             * @name Phaser.Physics.Impact.World#walls
+             * @type {Phaser.Types.Physics.Impact.WorldWalls}
+             * @since 3.0.0
+             */
+            this.walls = {left: null, right: null, top: null, bottom: null};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#delta
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.delta = 0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#delta
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.delta = 0;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.World#_lastId
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._lastId = 0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.World#_lastId
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._lastId = 0;
 
-        if (GetFastValue(config, 'setBounds', false))
-        {
-            var boundsConfig = config['setBounds'];
+            if (GetFastValue(config, 'setBounds', false)) {
+                var boundsConfig = config['setBounds'];
 
-            if (typeof boundsConfig === 'boolean')
-            {
-                this.setBounds();
+                if (typeof boundsConfig === 'boolean') {
+                    this.setBounds();
+                } else {
+                    var x = GetFastValue(boundsConfig, 'x', 0);
+                    var y = GetFastValue(boundsConfig, 'y', 0);
+                    var width = GetFastValue(boundsConfig, 'width', scene.sys.scale.width);
+                    var height = GetFastValue(boundsConfig, 'height', scene.sys.scale.height);
+                    var thickness = GetFastValue(boundsConfig, 'thickness', 64);
+                    var left = GetFastValue(boundsConfig, 'left', true);
+                    var right = GetFastValue(boundsConfig, 'right', true);
+                    var top = GetFastValue(boundsConfig, 'top', true);
+                    var bottom = GetFastValue(boundsConfig, 'bottom', true);
+
+                    this.setBounds(x, y, width, height, thickness, left, right, top, bottom);
+                }
             }
-            else
-            {
-                var x = GetFastValue(boundsConfig, 'x', 0);
-                var y = GetFastValue(boundsConfig, 'y', 0);
-                var width = GetFastValue(boundsConfig, 'width', scene.sys.scale.width);
-                var height = GetFastValue(boundsConfig, 'height', scene.sys.scale.height);
-                var thickness = GetFastValue(boundsConfig, 'thickness', 64);
-                var left = GetFastValue(boundsConfig, 'left', true);
-                var right = GetFastValue(boundsConfig, 'right', true);
-                var top = GetFastValue(boundsConfig, 'top', true);
-                var bottom = GetFastValue(boundsConfig, 'bottom', true);
 
-                this.setBounds(x, y, width, height, thickness, left, right, top, bottom);
+            if (this.drawDebug) {
+                this.createDebugGraphic();
             }
-        }
-
-        if (this.drawDebug)
-        {
-            this.createDebugGraphic();
-        }
-    },
+        },
 
     /**
      * Sets the collision map for the world either from a Weltmeister JSON level in the cache or from
@@ -231,39 +225,32 @@ var World = new Class({
      * @return {?Phaser.Physics.Impact.CollisionMap} The newly created CollisionMap, or null if the method failed to
      * create the CollisionMap.
      */
-    setCollisionMap: function (key, tileSize)
-    {
-        if (typeof key === 'string')
-        {
+    setCollisionMap: function (key, tileSize) {
+        if (typeof key === 'string') {
             var tilemapData = this.scene.cache.tilemap.get(key);
 
-            if (!tilemapData || tilemapData.format !== TILEMAP_FORMATS.WELTMEISTER)
-            {
+            if (!tilemapData || tilemapData.format !== TILEMAP_FORMATS.WELTMEISTER) {
                 console.warn('The specified key does not correspond to a Weltmeister tilemap: ' + key);
                 return null;
             }
 
             var layers = tilemapData.data.layer;
             var collisionLayer;
-            for (var i = 0; i < layers.length; i++)
-            {
-                if (layers[i].name === 'collision')
-                {
+            for (var i = 0; i < layers.length; i++) {
+                if (layers[i].name === 'collision') {
                     collisionLayer = layers[i];
                     break;
                 }
             }
 
-            if (tileSize === undefined) { tileSize = collisionLayer.tilesize; }
+            if (tileSize === undefined) {
+                tileSize = collisionLayer.tilesize;
+            }
 
             this.collisionMap = new CollisionMap(tileSize, collisionLayer.data);
-        }
-        else if (Array.isArray(key))
-        {
+        } else if (Array.isArray(key)) {
             this.collisionMap = new CollisionMap(tileSize, key);
-        }
-        else
-        {
+        } else {
             console.warn('Invalid Weltmeister collision map data: ' + key);
         }
 
@@ -284,9 +271,10 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.CollisionMap} The newly created CollisionMap.
      */
-    setCollisionMapFromTilemapLayer: function (tilemapLayer, options)
-    {
-        if (options === undefined) { options = {}; }
+    setCollisionMapFromTilemapLayer: function (tilemapLayer, options) {
+        if (options === undefined) {
+            options = {};
+        }
         var slopeProperty = GetFastValue(options, 'slopeProperty', null);
         var slopeMap = GetFastValue(options, 'slopeMap', null);
         var collidingSlope = GetFastValue(options, 'defaultCollidingSlope', null);
@@ -296,35 +284,23 @@ var World = new Class({
         var tileSize = layerData.baseTileWidth;
         var collisionData = [];
 
-        for (var ty = 0; ty < layerData.height; ty++)
-        {
+        for (var ty = 0; ty < layerData.height; ty++) {
             collisionData[ty] = [];
 
-            for (var tx = 0; tx < layerData.width; tx++)
-            {
+            for (var tx = 0; tx < layerData.width; tx++) {
                 var tile = layerData.data[ty][tx];
 
-                if (tile && tile.collides)
-                {
-                    if (slopeProperty !== null && HasValue(tile.properties, slopeProperty))
-                    {
+                if (tile && tile.collides) {
+                    if (slopeProperty !== null && HasValue(tile.properties, slopeProperty)) {
                         collisionData[ty][tx] = parseInt(tile.properties[slopeProperty], 10);
-                    }
-                    else if (slopeMap !== null && HasValue(slopeMap, tile.index))
-                    {
+                    } else if (slopeMap !== null && HasValue(slopeMap, tile.index)) {
                         collisionData[ty][tx] = slopeMap[tile.index];
-                    }
-                    else if (collidingSlope !== null)
-                    {
+                    } else if (collidingSlope !== null) {
                         collisionData[ty][tx] = collidingSlope;
-                    }
-                    else
-                    {
+                    } else {
                         collisionData[ty][tx] = tile.index;
                     }
-                }
-                else
-                {
+                } else {
                     collisionData[ty][tx] = nonCollidingSlope;
                 }
             }
@@ -358,17 +334,34 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setBounds: function (x, y, width, height, thickness, left, right, top, bottom)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = this.scene.sys.scale.width; }
-        if (height === undefined) { height = this.scene.sys.scale.height; }
-        if (thickness === undefined) { thickness = 64; }
-        if (left === undefined) { left = true; }
-        if (right === undefined) { right = true; }
-        if (top === undefined) { top = true; }
-        if (bottom === undefined) { bottom = true; }
+    setBounds: function (x, y, width, height, thickness, left, right, top, bottom) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
+        if (width === undefined) {
+            width = this.scene.sys.scale.width;
+        }
+        if (height === undefined) {
+            height = this.scene.sys.scale.height;
+        }
+        if (thickness === undefined) {
+            thickness = 64;
+        }
+        if (left === undefined) {
+            left = true;
+        }
+        if (right === undefined) {
+            right = true;
+        }
+        if (top === undefined) {
+            top = true;
+        }
+        if (bottom === undefined) {
+            bottom = true;
+        }
 
         this.updateWall(left, 'left', x - thickness, y, thickness, height);
         this.updateWall(right, 'right', x + width, y, thickness, height);
@@ -391,28 +384,20 @@ var World = new Class({
      * @param {number} width - [description]
      * @param {number} height - [description]
      */
-    updateWall: function (add, position, x, y, width, height)
-    {
+    updateWall: function (add, position, x, y, width, height) {
         var wall = this.walls[position];
 
-        if (add)
-        {
-            if (wall)
-            {
+        if (add) {
+            if (wall) {
                 wall.resetSize(x, y, width, height);
-            }
-            else
-            {
+            } else {
                 this.walls[position] = this.create(x, y, width, height);
                 this.walls[position].name = position;
                 this.walls[position].gravityFactor = 0;
                 this.walls[position].collides = COLLIDES.FIXED;
             }
-        }
-        else
-        {
-            if (wall)
-            {
+        } else {
+            if (wall) {
                 this.bodies.remove(wall);
             }
 
@@ -428,9 +413,8 @@ var World = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object created that will have the debug visuals drawn to it.
      */
-    createDebugGraphic: function ()
-    {
-        var graphic = this.scene.sys.add.graphics({ x: 0, y: 0 });
+    createDebugGraphic: function () {
+        var graphic = this.scene.sys.add.graphics({x: 0, y: 0});
 
         graphic.setDepth(Number.MAX_VALUE);
 
@@ -449,8 +433,7 @@ var World = new Class({
      *
      * @return {integer} [description]
      */
-    getNextID: function ()
-    {
+    getNextID: function () {
         return this._lastId++;
     },
 
@@ -467,8 +450,7 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.Body} The Body that was added to this World.
      */
-    create: function (x, y, sizeX, sizeY)
-    {
+    create: function (x, y, sizeX, sizeY) {
         var body = new Body(this, x, y, sizeX, sizeY);
 
         this.bodies.set(body);
@@ -484,8 +466,7 @@ var World = new Class({
      *
      * @param {Phaser.Physics.Impact.Body} object - The Body to remove from this World.
      */
-    remove: function (object)
-    {
+    remove: function (object) {
         this.bodies.delete(object);
     },
 
@@ -498,8 +479,7 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    pause: function ()
-    {
+    pause: function () {
         this.enabled = false;
 
         this.emit(Events.PAUSE);
@@ -516,8 +496,7 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    resume: function ()
-    {
+    resume: function () {
         this.enabled = true;
 
         this.emit(Events.RESUME);
@@ -534,10 +513,8 @@ var World = new Class({
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    update: function (time, delta)
-    {
-        if (!this.enabled || this.bodies.size === 0)
-        {
+    update: function (time, delta) {
+        if (!this.enabled || this.bodies.size === 0) {
             return;
         }
 
@@ -556,40 +533,33 @@ var World = new Class({
         var hash = {};
         var size = this.cellSize;
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             body = bodies[i];
 
-            if (body.enabled)
-            {
+            if (body.enabled) {
                 body.update(clampedDelta);
             }
         }
 
         //  Run collision against them all now they're in the new positions from the update
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             body = bodies[i];
 
-            if (body && !body.skipHash())
-            {
+            if (body && !body.skipHash()) {
                 this.checkHash(body, hash, size);
             }
         }
 
-        if (this.drawDebug)
-        {
+        if (this.drawDebug) {
             var graphics = this.debugGraphic;
 
             graphics.clear();
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 body = bodies[i];
 
-                if (body && body.willDrawDebug())
-                {
+                if (body && body.willDrawDebug()) {
                     body.drawDebug(graphics);
                 }
             }
@@ -606,8 +576,7 @@ var World = new Class({
      * @param {object} hash - [description]
      * @param {number} size - [description]
      */
-    checkHash: function (body, hash, size)
-    {
+    checkHash: function (body, hash, size) {
         var checked = {};
 
         var xmin = Math.floor(body.pos.x / size);
@@ -615,27 +584,18 @@ var World = new Class({
         var xmax = Math.floor((body.pos.x + body.size.x) / size) + 1;
         var ymax = Math.floor((body.pos.y + body.size.y) / size) + 1;
 
-        for (var x = xmin; x < xmax; x++)
-        {
-            for (var y = ymin; y < ymax; y++)
-            {
-                if (!hash[x])
-                {
+        for (var x = xmin; x < xmax; x++) {
+            for (var y = ymin; y < ymax; y++) {
+                if (!hash[x]) {
                     hash[x] = {};
-                    hash[x][y] = [ body ];
-                }
-                else if (!hash[x][y])
-                {
-                    hash[x][y] = [ body ];
-                }
-                else
-                {
+                    hash[x][y] = [body];
+                } else if (!hash[x][y]) {
+                    hash[x][y] = [body];
+                } else {
                     var cell = hash[x][y];
 
-                    for (var c = 0; c < cell.length; c++)
-                    {
-                        if (body.touches(cell[c]) && !checked[cell[c].id])
-                        {
+                    for (var c = 0; c < cell.length; c++) {
+                        if (body.touches(cell[c]) && !checked[cell[c].id]) {
                             checked[cell[c].id] = true;
 
                             this.checkBodies(body, cell[c]);
@@ -657,27 +617,22 @@ var World = new Class({
      * @param {Phaser.Physics.Impact.Body} bodyA - [description]
      * @param {Phaser.Physics.Impact.Body} bodyB - [description]
      */
-    checkBodies: function (bodyA, bodyB)
-    {
+    checkBodies: function (bodyA, bodyB) {
         //  2 fixed bodies won't do anything
-        if (bodyA.collides === COLLIDES.FIXED && bodyB.collides === COLLIDES.FIXED)
-        {
+        if (bodyA.collides === COLLIDES.FIXED && bodyB.collides === COLLIDES.FIXED) {
             return;
         }
 
         //  bitwise checks
-        if (bodyA.checkAgainst & bodyB.type)
-        {
+        if (bodyA.checkAgainst & bodyB.type) {
             bodyA.check(bodyB);
         }
 
-        if (bodyB.checkAgainst & bodyA.type)
-        {
+        if (bodyB.checkAgainst & bodyA.type) {
             bodyB.check(bodyA);
         }
 
-        if (bodyA.collides && bodyB.collides && bodyA.collides + bodyB.collides > COLLIDES.ACTIVE)
-        {
+        if (bodyA.collides && bodyB.collides && bodyA.collides + bodyB.collides > COLLIDES.ACTIVE) {
             Solver(this, bodyA, bodyB);
         }
     },
@@ -692,10 +647,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setCollidesNever: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setCollidesNever: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].collides = COLLIDES.NEVER;
         }
 
@@ -712,10 +665,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setLite: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setLite: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].collides = COLLIDES.LITE;
         }
 
@@ -732,10 +683,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setPassive: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setPassive: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].collides = COLLIDES.PASSIVE;
         }
 
@@ -752,10 +701,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setActive: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setActive: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].collides = COLLIDES.ACTIVE;
         }
 
@@ -772,10 +719,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setFixed: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setFixed: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].collides = COLLIDES.FIXED;
         }
 
@@ -792,10 +737,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setTypeNone: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setTypeNone: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].type = TYPE.NONE;
         }
 
@@ -812,10 +755,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setTypeA: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setTypeA: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].type = TYPE.A;
         }
 
@@ -832,10 +773,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setTypeB: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setTypeB: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].type = TYPE.B;
         }
 
@@ -852,10 +791,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setAvsB: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setAvsB: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].type = TYPE.A;
             bodies[i].checkAgainst = TYPE.B;
         }
@@ -873,10 +810,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setBvsA: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setBvsA: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].type = TYPE.B;
             bodies[i].checkAgainst = TYPE.A;
         }
@@ -894,10 +829,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setCheckAgainstNone: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setCheckAgainstNone: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].checkAgainst = TYPE.NONE;
         }
 
@@ -914,10 +847,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setCheckAgainstA: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setCheckAgainstA: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].checkAgainst = TYPE.A;
         }
 
@@ -934,10 +865,8 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Impact.World} This World object.
      */
-    setCheckAgainstB: function (bodies)
-    {
-        for (var i = 0; i < bodies.length; i++)
-        {
+    setCheckAgainstB: function (bodies) {
+        for (var i = 0; i < bodies.length; i++) {
             bodies[i].checkAgainst = TYPE.B;
         }
 
@@ -950,8 +879,7 @@ var World = new Class({
      * @method Phaser.Physics.Impact.World#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.removeAllListeners();
     },
 
@@ -961,8 +889,7 @@ var World = new Class({
      * @method Phaser.Physics.Impact.World#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.removeAllListeners();
 
         this.scene = null;

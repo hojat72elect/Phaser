@@ -23,8 +23,7 @@ var tempVec = new Vector2();
  *
  * @return {number} The X location in tile units.
  */
-var WorldToTileX = function (worldX, snapToFloor, camera, layer)
-{
+var WorldToTileX = function (worldX, snapToFloor, camera, layer) {
     WorldToTileXY(worldX, 0, snapToFloor, tempVec, camera, layer);
 
     return tempVec.x;

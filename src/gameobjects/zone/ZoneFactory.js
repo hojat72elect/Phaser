@@ -22,8 +22,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Zone} The Game Object that was created.
  */
-GameObjectFactory.register('zone', function (x, y, width, height)
-{
+GameObjectFactory.register('zone', function (x, y, width, height) {
     return this.displayList.add(new Zone(this.scene, x, y, width, height));
 });
 

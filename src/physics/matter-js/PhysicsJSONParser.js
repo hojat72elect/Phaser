@@ -63,28 +63,25 @@ var PhysicsJSONParser = {
      *
      * @return {MatterJS.BodyType} A Matter JS Body.
      */
-    parseBody: function (x, y, config, options)
-    {
-        if (options === undefined) { options = {}; }
+    parseBody: function (x, y, config, options) {
+        if (options === undefined) {
+            options = {};
+        }
 
         var body;
         var vertexSets = config.vertices;
 
-        if (vertexSets.length === 1)
-        {
+        if (vertexSets.length === 1) {
             //  Just a single Body
             options.vertices = vertexSets[0];
 
             body = Body.create(options);
 
             Bodies.flagCoincidentParts(body.parts);
-        }
-        else
-        {
+        } else {
             var parts = [];
 
-            for (var i = 0; i < vertexSets.length; i++)
-            {
+            for (var i = 0; i < vertexSets.length; i++) {
                 var part = Body.create({
                     vertices: vertexSets[i]
                 });
@@ -101,7 +98,7 @@ var PhysicsJSONParser = {
 
         body.label = config.label;
 
-        Body.setPosition(body, { x: x, y: y });
+        Body.setPosition(body, {x: x, y: y});
 
         return body;
     }

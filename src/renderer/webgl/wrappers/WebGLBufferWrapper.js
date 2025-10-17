@@ -29,62 +29,61 @@ var WebGLBufferWrapper = new Class({
 
     initialize:
 
-    function WebGLBufferWrapper (gl, initialDataOrSize, bufferType, bufferUsage)
-    {
-        /**
-         * The WebGLBuffer being wrapped by this class.
-         *
-         * This property could change at any time.
-         * Therefore, you should never store a reference to this value.
-         * It should only be passed directly to the WebGL API for drawing.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#webGLBuffer
-         * @type {?WebGLBuffer}
-         * @default null
-         * @since 3.80.0
-         */
-        this.webGLBuffer = null;
+        function WebGLBufferWrapper(gl, initialDataOrSize, bufferType, bufferUsage) {
+            /**
+             * The WebGLBuffer being wrapped by this class.
+             *
+             * This property could change at any time.
+             * Therefore, you should never store a reference to this value.
+             * It should only be passed directly to the WebGL API for drawing.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#webGLBuffer
+             * @type {?WebGLBuffer}
+             * @default null
+             * @since 3.80.0
+             */
+            this.webGLBuffer = null;
 
-        /**
-         * The WebGLRenderingContext that owns this WebGLBuffer.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.80.0
-         */
-        this.gl = gl;
+            /**
+             * The WebGLRenderingContext that owns this WebGLBuffer.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.80.0
+             */
+            this.gl = gl;
 
-        /**
-         * The initial data or size of the buffer.
-         *
-         * Note that this will be used to recreate the buffer if the WebGL context is lost.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#initialDataOrSize
-         * @type {ArrayBuffer|number}
-         * @since 3.80.0
-         */
-        this.initialDataOrSize = initialDataOrSize;
+            /**
+             * The initial data or size of the buffer.
+             *
+             * Note that this will be used to recreate the buffer if the WebGL context is lost.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#initialDataOrSize
+             * @type {ArrayBuffer|number}
+             * @since 3.80.0
+             */
+            this.initialDataOrSize = initialDataOrSize;
 
-        /**
-         * The type of the buffer.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#bufferType
-         * @type {GLenum}
-         * @since 3.80.0
-         */
-        this.bufferType = bufferType;
+            /**
+             * The type of the buffer.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#bufferType
+             * @type {GLenum}
+             * @since 3.80.0
+             */
+            this.bufferType = bufferType;
 
-        /**
-         * The usage of the buffer. gl.DYNAMIC_DRAW, gl.STATIC_DRAW or gl.STREAM_DRAW.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#bufferUsage
-         * @type {GLenum}
-         * @since 3.80.0
-         */
-        this.bufferUsage = bufferUsage;
+            /**
+             * The usage of the buffer. gl.DYNAMIC_DRAW, gl.STATIC_DRAW or gl.STREAM_DRAW.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#bufferUsage
+             * @type {GLenum}
+             * @since 3.80.0
+             */
+            this.bufferUsage = bufferUsage;
 
-        this.createResource();
-    },
+            this.createResource();
+        },
 
     /**
      * Creates a WebGLBuffer for this WebGLBufferWrapper.
@@ -95,17 +94,14 @@ var WebGLBufferWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#createResource
      * @since 3.80.0
      */
-    createResource: function ()
-    {
-        if (this.initialDataOrSize === null)
-        {
+    createResource: function () {
+        if (this.initialDataOrSize === null) {
             return;
         }
 
         var gl = this.gl;
 
-        if (gl.isContextLost())
-        {
+        if (gl.isContextLost()) {
             // GL state can't be updated right now.
             // `createResource` will run when the context is restored.
             return;
@@ -127,11 +123,9 @@ var WebGLBufferWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#destroy
      * @since 3.80.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         var gl = this.gl;
-        if (!gl.isContextLost())
-        {
+        if (!gl.isContextLost()) {
             gl.deleteBuffer(this.webGLBuffer);
         }
         this.webGLBuffer = null;

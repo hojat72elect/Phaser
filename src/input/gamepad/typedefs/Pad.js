@@ -1,6 +1,6 @@
 /**
  * The Gamepad object, as extracted from GamepadEvent.
- * 
+ *
  * @typedef {object} Phaser.Types.Input.Gamepad.Pad
  * @since 3.10.0
  *

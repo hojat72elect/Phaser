@@ -29,107 +29,106 @@ var Zoom = new Class({
 
     initialize:
 
-    function Zoom (camera)
-    {
-        /**
-         * The Camera this effect belongs to.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#camera
-         * @type {Phaser.Cameras.Scene2D.Camera}
-         * @readonly
-         * @since 3.11.0
-         */
-        this.camera = camera;
+        function Zoom(camera) {
+            /**
+             * The Camera this effect belongs to.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#camera
+             * @type {Phaser.Cameras.Scene2D.Camera}
+             * @readonly
+             * @since 3.11.0
+             */
+            this.camera = camera;
 
-        /**
-         * Is this effect actively running?
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#isRunning
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.11.0
-         */
-        this.isRunning = false;
+            /**
+             * Is this effect actively running?
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#isRunning
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.11.0
+             */
+            this.isRunning = false;
 
-        /**
-         * The duration of the effect, in milliseconds.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#duration
-         * @type {number}
-         * @readonly
-         * @default 0
-         * @since 3.11.0
-         */
-        this.duration = 0;
+            /**
+             * The duration of the effect, in milliseconds.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#duration
+             * @type {number}
+             * @readonly
+             * @default 0
+             * @since 3.11.0
+             */
+            this.duration = 0;
 
-        /**
-         * The starting zoom value;
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#source
-         * @type {number}
-         * @since 3.11.0
-         */
-        this.source = 1;
+            /**
+             * The starting zoom value;
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#source
+             * @type {number}
+             * @since 3.11.0
+             */
+            this.source = 1;
 
-        /**
-         * The destination zoom value.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#destination
-         * @type {number}
-         * @since 3.11.0
-         */
-        this.destination = 1;
+            /**
+             * The destination zoom value.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#destination
+             * @type {number}
+             * @since 3.11.0
+             */
+            this.destination = 1;
 
-        /**
-         * The ease function to use during the zoom.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#ease
-         * @type {function}
-         * @since 3.11.0
-         */
-        this.ease;
+            /**
+             * The ease function to use during the zoom.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#ease
+             * @type {function}
+             * @since 3.11.0
+             */
+            this.ease;
 
-        /**
-         * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#progress
-         * @type {number}
-         * @since 3.11.0
-         */
-        this.progress = 0;
+            /**
+             * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#progress
+             * @type {number}
+             * @since 3.11.0
+             */
+            this.progress = 0;
 
-        /**
-         * Effect elapsed timer.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#_elapsed
-         * @type {number}
-         * @private
-         * @since 3.11.0
-         */
-        this._elapsed = 0;
+            /**
+             * Effect elapsed timer.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#_elapsed
+             * @type {number}
+             * @private
+             * @since 3.11.0
+             */
+            this._elapsed = 0;
 
-        /**
-         * This callback is invoked every frame for the duration of the effect.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#_onUpdate
-         * @type {?Phaser.Types.Cameras.Scene2D.CameraZoomCallback}
-         * @private
-         * @default null
-         * @since 3.11.0
-         */
-        this._onUpdate;
+            /**
+             * This callback is invoked every frame for the duration of the effect.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#_onUpdate
+             * @type {?Phaser.Types.Cameras.Scene2D.CameraZoomCallback}
+             * @private
+             * @default null
+             * @since 3.11.0
+             */
+            this._onUpdate;
 
-        /**
-         * On Complete callback scope.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Zoom#_onUpdateScope
-         * @type {any}
-         * @private
-         * @since 3.11.0
-         */
-        this._onUpdateScope;
-    },
+            /**
+             * On Complete callback scope.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Zoom#_onUpdateScope
+             * @type {any}
+             * @private
+             * @since 3.11.0
+             */
+            this._onUpdateScope;
+        },
 
     /**
      * This effect will zoom the Camera to the given scale, over the duration and with the ease specified.
@@ -150,18 +149,26 @@ var Zoom = new Class({
      *
      * @return {Phaser.Cameras.Scene2D.Camera} The Camera on which the effect was started.
      */
-    start: function (zoom, duration, ease, force, callback, context)
-    {
-        if (duration === undefined) { duration = 1000; }
-        if (ease === undefined) { ease = EaseMap.Linear; }
-        if (force === undefined) { force = false; }
-        if (callback === undefined) { callback = null; }
-        if (context === undefined) { context = this.camera.scene; }
+    start: function (zoom, duration, ease, force, callback, context) {
+        if (duration === undefined) {
+            duration = 1000;
+        }
+        if (ease === undefined) {
+            ease = EaseMap.Linear;
+        }
+        if (force === undefined) {
+            force = false;
+        }
+        if (callback === undefined) {
+            callback = null;
+        }
+        if (context === undefined) {
+            context = this.camera.scene;
+        }
 
         var cam = this.camera;
 
-        if (!force && this.isRunning)
-        {
+        if (!force && this.isRunning) {
             return cam;
         }
 
@@ -176,12 +183,9 @@ var Zoom = new Class({
         this.destination = zoom;
 
         //  Using this ease
-        if (typeof ease === 'string' && EaseMap.hasOwnProperty(ease))
-        {
+        if (typeof ease === 'string' && EaseMap.hasOwnProperty(ease)) {
             this.ease = EaseMap[ease];
-        }
-        else if (typeof ease === 'function')
-        {
+        } else if (typeof ease === 'function') {
             this.ease = ease;
         }
 
@@ -204,10 +208,8 @@ var Zoom = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (!this.isRunning)
-        {
+    update: function (time, delta) {
+        if (!this.isRunning) {
             return;
         }
 
@@ -215,21 +217,16 @@ var Zoom = new Class({
 
         this.progress = Clamp(this._elapsed / this.duration, 0, 1);
 
-        if (this._elapsed < this.duration)
-        {
+        if (this._elapsed < this.duration) {
             this.camera.zoom = this.source + ((this.destination - this.source) * this.ease(this.progress));
 
-            if (this._onUpdate)
-            {
+            if (this._onUpdate) {
                 this._onUpdate.call(this._onUpdateScope, this.camera, this.progress, this.camera.zoom);
             }
-        }
-        else
-        {
+        } else {
             this.camera.zoom = this.destination;
 
-            if (this._onUpdate)
-            {
+            if (this._onUpdate) {
                 this._onUpdate.call(this._onUpdateScope, this.camera, this.progress, this.destination);
             }
 
@@ -244,8 +241,7 @@ var Zoom = new Class({
      * @fires Phaser.Cameras.Scene2D.Events#ZOOM_COMPLETE
      * @since 3.11.0
      */
-    effectComplete: function ()
-    {
+    effectComplete: function () {
         this._onUpdate = null;
         this._onUpdateScope = null;
 
@@ -261,8 +257,7 @@ var Zoom = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Zoom#reset
      * @since 3.11.0
      */
-    reset: function ()
-    {
+    reset: function () {
         this.isRunning = false;
 
         this._onUpdate = null;
@@ -275,8 +270,7 @@ var Zoom = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Zoom#destroy
      * @since 3.11.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.reset();
 
         this.camera = null;

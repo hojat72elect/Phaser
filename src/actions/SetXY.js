@@ -29,9 +29,10 @@ var PropertyValueSet = require('./PropertyValueSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var SetXY = function (items, x, y, stepX, stepY, index, direction)
-{
-    if (y === undefined || y === null) { y = x; }
+var SetXY = function (items, x, y, stepX, stepY, index, direction) {
+    if (y === undefined || y === null) {
+        y = x;
+    }
 
     PropertyValueSet(items, 'x', x, stepX, index, direction);
 

@@ -16,34 +16,24 @@
  *
  * @return {?(DOMParser|ActiveXObject)} The parsed XML data, or `null` if the data could not be parsed.
  */
-var ParseXML = function (data)
-{
+var ParseXML = function (data) {
     var xml = '';
 
-    try
-    {
-        if (window['DOMParser'])
-        {
+    try {
+        if (window['DOMParser']) {
             var domparser = new DOMParser();
             xml = domparser.parseFromString(data, 'text/xml');
-        }
-        else
-        {
+        } else {
             xml = new ActiveXObject('Microsoft.XMLDOM');
             xml.loadXML(data);
         }
-    }
-    catch (e)
-    {
+    } catch (e) {
         xml = null;
     }
 
-    if (!xml || !xml.documentElement || xml.getElementsByTagName('parsererror').length)
-    {
+    if (!xml || !xml.documentElement || xml.getElementsByTagName('parsererror').length) {
         return null;
-    }
-    else
-    {
+    } else {
         return xml;
     }
 };

@@ -21,9 +21,10 @@ var DegToRad = require('../../math/DegToRad');
  *
  * @return {Phaser.Geom.Point} A Point object holding the coordinates of the Rectangle perimeter.
  */
-var PerimeterPoint = function (rectangle, angle, out)
-{
-    if (out === undefined) { out = new Point(); }
+var PerimeterPoint = function (rectangle, angle, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     angle = DegToRad(angle);
 
@@ -33,12 +34,9 @@ var PerimeterPoint = function (rectangle, angle, out)
     var dx = (c > 0) ? rectangle.width / 2 : rectangle.width / -2;
     var dy = (s > 0) ? rectangle.height / 2 : rectangle.height / -2;
 
-    if (Math.abs(dx * s) < Math.abs(dy * c))
-    {
+    if (Math.abs(dx * s) < Math.abs(dy * c)) {
         dy = (dx * s) / c;
-    }
-    else
-    {
+    } else {
         dx = (dy * c) / s;
     }
 

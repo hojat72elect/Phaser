@@ -15,19 +15,14 @@
  *
  * @return {string} The URL the File will use.
  */
-var GetURL = function (file, baseURL)
-{
-    if (!file.url)
-    {
+var GetURL = function (file, baseURL) {
+    if (!file.url) {
         return false;
     }
 
-    if (file.url.match(/^(?:blob:|data:|capacitor:\/\/|http:\/\/|https:\/\/|\/\/)/))
-    {
+    if (file.url.match(/^(?:blob:|data:|capacitor:\/\/|http:\/\/|https:\/\/|\/\/)/)) {
         return file.url;
-    }
-    else
-    {
+    } else {
         return baseURL + file.url;
     }
 };

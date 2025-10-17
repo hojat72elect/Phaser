@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} The modified `out` object, or a new Point if none was provided.
  */
-var GetCenter = function (rect, out)
-{
-    if (out === undefined) { out = new Point(); }
+var GetCenter = function (rect, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     out.x = rect.centerX;
     out.y = rect.centerY;

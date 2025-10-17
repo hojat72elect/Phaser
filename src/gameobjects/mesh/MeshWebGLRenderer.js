@@ -20,13 +20,11 @@ var GetCalcMatrix = require('../GetCalcMatrix');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var MeshWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var MeshWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     var faces = src.faces;
     var totalFaces = faces.length;
 
-    if (totalFaces === 0)
-    {
+    if (totalFaces === 0) {
         return;
     }
 
@@ -66,18 +64,15 @@ var MeshWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var totalFacesRendered = 0;
 
-    for (var i = 0; i < totalFaces; i++)
-    {
+    for (var i = 0; i < totalFaces; i++) {
         var face = faces[i];
 
         //  If face has alpha <= 0, or hideCCW + clockwise, or isn't in camera view, then don't draw it
-        if (!face.isInView(camera, hideCCW, z, alpha, a, b, c, d, e, f, roundPixels))
-        {
+        if (!face.isInView(camera, hideCCW, z, alpha, a, b, c, d, e, f, roundPixels)) {
             continue;
         }
 
-        if (pipeline.shouldFlush(3))
-        {
+        if (pipeline.shouldFlush(3)) {
             pipeline.flush();
 
             textureUnit = pipeline.setGameObject(src);
@@ -93,16 +88,14 @@ var MeshWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
         pipeline.currentBatch.count = (pipeline.vertexCount - pipeline.currentBatch.start);
 
-        if (debugCallback)
-        {
+        if (debugCallback) {
             debugFaces.push(face);
         }
     }
 
     src.totalFrame += totalFacesRendered;
 
-    if (debugCallback)
-    {
+    if (debugCallback) {
         debugCallback.call(src, src, debugFaces);
     }
 

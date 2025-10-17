@@ -18,14 +18,14 @@
  *
  * @return {number} The Y location in tile units.
  */
-var StaggeredWorldToTileY = function (worldY, snapToFloor, camera, layer)
-{
+var StaggeredWorldToTileY = function (worldY, snapToFloor, camera, layer) {
     var tileHeight = layer.baseTileHeight;
     var tilemapLayer = layer.tilemapLayer;
 
-    if (tilemapLayer)
-    {
-        if (!camera) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (!camera) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         //  Find the world position relative to the static or dynamic layer's top left origin,
         //  factoring in the camera's vertical scroll

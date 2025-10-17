@@ -45,8 +45,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Text} The Game Object that was created.
  */
-GameObjectFactory.register('text', function (x, y, text, style)
-{
+GameObjectFactory.register('text', function (x, y, text, style) {
     return this.displayList.add(new Text(this.scene, x, y, text, style));
 });
 

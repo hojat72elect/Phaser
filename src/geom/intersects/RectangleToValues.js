@@ -19,9 +19,10 @@
  *
  * @return {boolean} Returns true if there is an intersection.
  */
-var RectangleToValues = function (rect, left, right, top, bottom, tolerance)
-{
-    if (tolerance === undefined) { tolerance = 0; }
+var RectangleToValues = function (rect, left, right, top, bottom, tolerance) {
+    if (tolerance === undefined) {
+        tolerance = 0;
+    }
 
     return !(
         left > rect.right + tolerance ||

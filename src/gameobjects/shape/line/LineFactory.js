@@ -39,7 +39,6 @@ var Line = require('./Line');
  *
  * @return {Phaser.GameObjects.Line} The Game Object that was created.
  */
-GameObjectFactory.register('line', function (x, y, x1, y1, x2, y2, strokeColor, strokeAlpha)
-{
+GameObjectFactory.register('line', function (x, y, x1, y1, x2, y2, strokeColor, strokeAlpha) {
     return this.displayList.add(new Line(this.scene, x, y, x1, y1, x2, y2, strokeColor, strokeAlpha));
 });

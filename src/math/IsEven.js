@@ -14,8 +14,7 @@
  *
  * @return {boolean} Whether the number is even or not.
  */
-var IsEven = function (value)
-{
+var IsEven = function (value) {
     // Use abstract equality == for "is number" test
 
     // eslint-disable-next-line eqeqeq

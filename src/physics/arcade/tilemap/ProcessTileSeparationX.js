@@ -13,15 +13,11 @@
  * @param {Phaser.Physics.Arcade.Body} body - The Body object to separate.
  * @param {number} x - The x separation amount.
  */
-var ProcessTileSeparationX = function (body, x)
-{
-    if (x < 0)
-    {
+var ProcessTileSeparationX = function (body, x) {
+    if (x < 0) {
         body.blocked.none = false;
         body.blocked.left = true;
-    }
-    else if (x > 0)
-    {
+    } else if (x > 0) {
         body.blocked.none = false;
         body.blocked.right = true;
     }
@@ -29,12 +25,9 @@ var ProcessTileSeparationX = function (body, x)
     body.position.x -= x;
     body.updateCenter();
 
-    if (body.bounce.x === 0)
-    {
+    if (body.bounce.x === 0) {
         body.velocity.x = 0;
-    }
-    else
-    {
+    } else {
         body.velocity.x = -body.velocity.x * body.bounce.x;
     }
 };

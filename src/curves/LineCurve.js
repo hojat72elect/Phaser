@@ -32,46 +32,44 @@ var LineCurve = new Class({
     initialize:
 
     //  vec2s or array
-    function LineCurve (p0, p1)
-    {
-        Curve.call(this, 'LineCurve');
+        function LineCurve(p0, p1) {
+            Curve.call(this, 'LineCurve');
 
-        if (Array.isArray(p0))
-        {
-            p1 = new Vector2(p0[2], p0[3]);
-            p0 = new Vector2(p0[0], p0[1]);
-        }
+            if (Array.isArray(p0)) {
+                p1 = new Vector2(p0[2], p0[3]);
+                p0 = new Vector2(p0[0], p0[1]);
+            }
 
-        /**
-         * The first endpoint.
-         *
-         * @name Phaser.Curves.Line#p0
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p0 = p0;
+            /**
+             * The first endpoint.
+             *
+             * @name Phaser.Curves.Line#p0
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p0 = p0;
 
-        /**
-         * The second endpoint.
-         *
-         * @name Phaser.Curves.Line#p1
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p1 = p1;
+            /**
+             * The second endpoint.
+             *
+             * @name Phaser.Curves.Line#p1
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p1 = p1;
 
-        //  Override default Curve.arcLengthDivisions
+            //  Override default Curve.arcLengthDivisions
 
-        /**
-         * The quantity of arc length divisions within the curve.
-         *
-         * @name Phaser.Curves.Line#arcLengthDivisions
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.arcLengthDivisions = 1;
-    },
+            /**
+             * The quantity of arc length divisions within the curve.
+             *
+             * @name Phaser.Curves.Line#arcLengthDivisions
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.arcLengthDivisions = 1;
+        },
 
     /**
      * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
@@ -85,11 +83,12 @@ var LineCurve = new Class({
      *
      * @return {Phaser.Geom.Rectangle} A Rectangle object holding the bounds of this curve. If `out` was given it will be this object.
      */
-    getBounds: function (out)
-    {
-        if (out === undefined) { out = new Rectangle(); }
+    getBounds: function (out) {
+        if (out === undefined) {
+            out = new Rectangle();
+        }
 
-        return FromPoints([ this.p0, this.p1 ], out);
+        return FromPoints([this.p0, this.p1], out);
     },
 
     /**
@@ -104,9 +103,10 @@ var LineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getStartPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getStartPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return out.copy(this.p0);
     },
@@ -121,9 +121,10 @@ var LineCurve = new Class({
      *
      * @return {number} The resolution. Equal to the number of divisions.
      */
-    getResolution: function (divisions)
-    {
-        if (divisions === undefined) { divisions = 1; }
+    getResolution: function (divisions) {
+        if (divisions === undefined) {
+            divisions = 1;
+        }
 
         return divisions;
     },
@@ -141,12 +142,12 @@ var LineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getPoint: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getPoint: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
-        if (t === 1)
-        {
+        if (t === 1) {
             return out.copy(this.p1);
         }
 
@@ -170,8 +171,7 @@ var LineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getPointAt: function (u, out)
-    {
+    getPointAt: function (u, out) {
         return this.getPoint(u, out);
     },
 
@@ -188,9 +188,10 @@ var LineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The tangent vector.
      */
-    getTangent: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getTangent: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         out.copy(this.p1).subtract(this.p0).normalize();
 
@@ -209,12 +210,10 @@ var LineCurve = new Class({
      *
      * @return {number} The equidistant value.
      */
-    getUtoTmapping: function (u, distance, divisions)
-    {
+    getUtoTmapping: function (u, distance, divisions) {
         var t;
 
-        if (distance)
-        {
+        if (distance) {
             var arcLengths = this.getLengths(divisions);
             var lineLength = arcLengths[arcLengths.length - 1];
 
@@ -222,9 +221,7 @@ var LineCurve = new Class({
             var targetLineLength = Math.min(distance, lineLength);
 
             t = targetLineLength / lineLength;
-        }
-        else
-        {
+        } else {
             t = u;
         }
 
@@ -248,8 +245,7 @@ var LineCurve = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object to which the curve was drawn.
      */
-    draw: function (graphics)
-    {
+    draw: function (graphics) {
         graphics.lineBetween(this.p0.x, this.p0.y, this.p1.x, this.p1.y);
 
         //  So you can chain graphics calls
@@ -264,8 +260,7 @@ var LineCurve = new Class({
      *
      * @return {Phaser.Types.Curves.JSONCurve} The JSON object containing this curve data.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return {
             type: this.type,
             points: [
@@ -287,8 +282,7 @@ var LineCurve = new Class({
  *
  * @return {Phaser.Curves.Line} A new LineCurve object.
  */
-LineCurve.fromJSON = function (data)
-{
+LineCurve.fromJSON = function (data) {
     var points = data.points;
 
     var p0 = new Vector2(points[0], points[1]);

@@ -15,8 +15,7 @@
  * @function Phaser.Utils.NULL
  * @since 3.60.0
  */
-var NULL = function ()
-{
+var NULL = function () {
     return null;
 };
 

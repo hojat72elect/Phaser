@@ -1,6 +1,6 @@
 /**
  * A Audio Data object.
- * 
+ *
  * You can pass an array of these objects to the WebAudioSoundManager `decodeAudio` method to have it decode
  * them all at once.
  *

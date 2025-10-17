@@ -43,230 +43,218 @@ var Group = new Class({
 
     initialize:
 
-    function Group (scene, children, config)
-    {
-        EventEmitter.call(this);
+        function Group(scene, children, config) {
+            EventEmitter.call(this);
 
-        //  They can pass in any of the following as the first argument:
+            //  They can pass in any of the following as the first argument:
 
-        //  1) A single child
-        //  2) An array of children
-        //  3) A config object
-        //  4) An array of config objects
+            //  1) A single child
+            //  2) An array of children
+            //  3) A config object
+            //  4) An array of config objects
 
-        //  Or they can pass in a child, or array of children AND a config object
+            //  Or they can pass in a child, or array of children AND a config object
 
-        if (config)
-        {
-            //  config has been set, are the children an array?
+            if (config) {
+                //  config has been set, are the children an array?
 
-            if (children && !Array.isArray(children))
-            {
-                children = [ children ];
-            }
-        }
-        else if (Array.isArray(children))
-        {
-            //  No config, so let's check the children argument
+                if (children && !Array.isArray(children)) {
+                    children = [children];
+                }
+            } else if (Array.isArray(children)) {
+                //  No config, so let's check the children argument
 
-            if (IsPlainObject(children[0]))
-            {
-                //  It's an array of plain config objects
+                if (IsPlainObject(children[0])) {
+                    //  It's an array of plain config objects
+                    config = children;
+                    children = null;
+                }
+            } else if (IsPlainObject(children)) {
+                //  Children isn't an array. Is it a config object though?
                 config = children;
                 children = null;
             }
-        }
-        else if (IsPlainObject(children))
-        {
-            //  Children isn't an array. Is it a config object though?
-            config = children;
-            children = null;
-        }
 
-        /**
-         * This scene this group belongs to.
-         *
-         * @name Phaser.GameObjects.Group#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * This scene this group belongs to.
+             *
+             * @name Phaser.GameObjects.Group#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * Members of this group.
-         *
-         * @name Phaser.GameObjects.Group#children
-         * @type {Phaser.Structs.Set.<Phaser.GameObjects.GameObject>}
-         * @since 3.0.0
-         */
-        this.children = new Set();
+            /**
+             * Members of this group.
+             *
+             * @name Phaser.GameObjects.Group#children
+             * @type {Phaser.Structs.Set.<Phaser.GameObjects.GameObject>}
+             * @since 3.0.0
+             */
+            this.children = new Set();
 
-        /**
-         * A flag identifying this object as a group.
-         *
-         * @name Phaser.GameObjects.Group#isParent
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.isParent = true;
+            /**
+             * A flag identifying this object as a group.
+             *
+             * @name Phaser.GameObjects.Group#isParent
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.isParent = true;
 
-        /**
-         * A textual representation of this Game Object.
-         * Used internally by Phaser but is available for your own custom classes to populate.
-         *
-         * @name Phaser.GameObjects.Group#type
-         * @type {string}
-         * @default 'Group'
-         * @since 3.21.0
-         */
-        this.type = 'Group';
+            /**
+             * A textual representation of this Game Object.
+             * Used internally by Phaser but is available for your own custom classes to populate.
+             *
+             * @name Phaser.GameObjects.Group#type
+             * @type {string}
+             * @default 'Group'
+             * @since 3.21.0
+             */
+            this.type = 'Group';
 
-        /**
-         * The class to create new group members from.
-         *
-         * @name Phaser.GameObjects.Group#classType
-         * @type {function}
-         * @since 3.0.0
-         * @default Phaser.GameObjects.Sprite
-         * @see Phaser.Types.GameObjects.Group.GroupClassTypeConstructor
-         */
-        this.classType = GetFastValue(config, 'classType', Sprite);
+            /**
+             * The class to create new group members from.
+             *
+             * @name Phaser.GameObjects.Group#classType
+             * @type {function}
+             * @since 3.0.0
+             * @default Phaser.GameObjects.Sprite
+             * @see Phaser.Types.GameObjects.Group.GroupClassTypeConstructor
+             */
+            this.classType = GetFastValue(config, 'classType', Sprite);
 
-        /**
-         * The name of this group.
-         * Empty by default and never populated by Phaser, this is left for developers to use.
-         *
-         * @name Phaser.GameObjects.Group#name
-         * @type {string}
-         * @default ''
-         * @since 3.18.0
-         */
-        this.name = GetFastValue(config, 'name', '');
+            /**
+             * The name of this group.
+             * Empty by default and never populated by Phaser, this is left for developers to use.
+             *
+             * @name Phaser.GameObjects.Group#name
+             * @type {string}
+             * @default ''
+             * @since 3.18.0
+             */
+            this.name = GetFastValue(config, 'name', '');
 
-        /**
-         * Whether this group runs its {@link Phaser.GameObjects.Group#preUpdate} method (which may update any members).
-         *
-         * @name Phaser.GameObjects.Group#active
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.active = GetFastValue(config, 'active', true);
+            /**
+             * Whether this group runs its {@link Phaser.GameObjects.Group#preUpdate} method (which may update any members).
+             *
+             * @name Phaser.GameObjects.Group#active
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.active = GetFastValue(config, 'active', true);
 
-        /**
-         * The maximum size of this group, if used as a pool. -1 is no limit.
-         *
-         * @name Phaser.GameObjects.Group#maxSize
-         * @type {number}
-         * @since 3.0.0
-         * @default -1
-         */
-        this.maxSize = GetFastValue(config, 'maxSize', -1);
+            /**
+             * The maximum size of this group, if used as a pool. -1 is no limit.
+             *
+             * @name Phaser.GameObjects.Group#maxSize
+             * @type {number}
+             * @since 3.0.0
+             * @default -1
+             */
+            this.maxSize = GetFastValue(config, 'maxSize', -1);
 
-        /**
-         * A default texture key to use when creating new group members.
-         *
-         * This is used in {@link Phaser.GameObjects.Group#create}
-         * but not in {@link Phaser.GameObjects.Group#createMultiple}.
-         *
-         * @name Phaser.GameObjects.Group#defaultKey
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.defaultKey = GetFastValue(config, 'defaultKey', null);
+            /**
+             * A default texture key to use when creating new group members.
+             *
+             * This is used in {@link Phaser.GameObjects.Group#create}
+             * but not in {@link Phaser.GameObjects.Group#createMultiple}.
+             *
+             * @name Phaser.GameObjects.Group#defaultKey
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.defaultKey = GetFastValue(config, 'defaultKey', null);
 
-        /**
-         * A default texture frame to use when creating new group members.
-         *
-         * @name Phaser.GameObjects.Group#defaultFrame
-         * @type {(string|number)}
-         * @since 3.0.0
-         */
-        this.defaultFrame = GetFastValue(config, 'defaultFrame', null);
+            /**
+             * A default texture frame to use when creating new group members.
+             *
+             * @name Phaser.GameObjects.Group#defaultFrame
+             * @type {(string|number)}
+             * @since 3.0.0
+             */
+            this.defaultFrame = GetFastValue(config, 'defaultFrame', null);
 
-        /**
-         * Whether to call the update method of any members.
-         *
-         * @name Phaser.GameObjects.Group#runChildUpdate
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         * @see Phaser.GameObjects.Group#preUpdate
-         */
-        this.runChildUpdate = GetFastValue(config, 'runChildUpdate', false);
+            /**
+             * Whether to call the update method of any members.
+             *
+             * @name Phaser.GameObjects.Group#runChildUpdate
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             * @see Phaser.GameObjects.Group#preUpdate
+             */
+            this.runChildUpdate = GetFastValue(config, 'runChildUpdate', false);
 
-        /**
-         * A function to be called when adding or creating group members.
-         *
-         * @name Phaser.GameObjects.Group#createCallback
-         * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
-         * @since 3.0.0
-         */
-        this.createCallback = GetFastValue(config, 'createCallback', null);
+            /**
+             * A function to be called when adding or creating group members.
+             *
+             * @name Phaser.GameObjects.Group#createCallback
+             * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
+             * @since 3.0.0
+             */
+            this.createCallback = GetFastValue(config, 'createCallback', null);
 
-        /**
-         * A function to be called when removing group members.
-         *
-         * @name Phaser.GameObjects.Group#removeCallback
-         * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
-         * @since 3.0.0
-         */
-        this.removeCallback = GetFastValue(config, 'removeCallback', null);
+            /**
+             * A function to be called when removing group members.
+             *
+             * @name Phaser.GameObjects.Group#removeCallback
+             * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
+             * @since 3.0.0
+             */
+            this.removeCallback = GetFastValue(config, 'removeCallback', null);
 
-        /**
-         * A function to be called when creating several group members at once.
-         *
-         * @name Phaser.GameObjects.Group#createMultipleCallback
-         * @type {?Phaser.Types.GameObjects.Group.GroupMultipleCreateCallback}
-         * @since 3.0.0
-         */
-        this.createMultipleCallback = GetFastValue(config, 'createMultipleCallback', null);
+            /**
+             * A function to be called when creating several group members at once.
+             *
+             * @name Phaser.GameObjects.Group#createMultipleCallback
+             * @type {?Phaser.Types.GameObjects.Group.GroupMultipleCreateCallback}
+             * @since 3.0.0
+             */
+            this.createMultipleCallback = GetFastValue(config, 'createMultipleCallback', null);
 
-        /**
-         * A function to be called when adding or creating group members.
-         * For internal use only by a Group, or any class that extends it.
-         *
-         * @name Phaser.GameObjects.Group#internalCreateCallback
-         * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
-         * @private
-         * @since 3.22.0
-         */
-        this.internalCreateCallback = GetFastValue(config, 'internalCreateCallback', null);
+            /**
+             * A function to be called when adding or creating group members.
+             * For internal use only by a Group, or any class that extends it.
+             *
+             * @name Phaser.GameObjects.Group#internalCreateCallback
+             * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
+             * @private
+             * @since 3.22.0
+             */
+            this.internalCreateCallback = GetFastValue(config, 'internalCreateCallback', null);
 
-        /**
-         * A function to be called when removing group members.
-         * For internal use only by a Group, or any class that extends it.
-         *
-         * @name Phaser.GameObjects.Group#internalRemoveCallback
-         * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
-         * @private
-         * @since 3.22.0
-         */
-        this.internalRemoveCallback = GetFastValue(config, 'internalRemoveCallback', null);
+            /**
+             * A function to be called when removing group members.
+             * For internal use only by a Group, or any class that extends it.
+             *
+             * @name Phaser.GameObjects.Group#internalRemoveCallback
+             * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
+             * @private
+             * @since 3.22.0
+             */
+            this.internalRemoveCallback = GetFastValue(config, 'internalRemoveCallback', null);
 
-        if (children)
-        {
-            this.addMultiple(children);
-        }
+            if (children) {
+                this.addMultiple(children);
+            }
 
-        if (config)
-        {
-            this.createMultiple(config);
-        }
+            if (config) {
+                this.createMultiple(config);
+            }
 
-        this.on(Events.ADDED_TO_SCENE, this.addedToScene, this);
-        this.on(Events.REMOVED_FROM_SCENE, this.removedFromScene, this);
-    },
+            this.on(Events.ADDED_TO_SCENE, this.addedToScene, this);
+            this.on(Events.REMOVED_FROM_SCENE, this.removedFromScene, this);
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
@@ -287,18 +275,28 @@ var Group = new Class({
      *
      * @return {any} The new Game Object (usually a Sprite, etc.).
      */
-    create: function (x, y, key, frame, visible, active)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (key === undefined) { key = this.defaultKey; }
-        if (frame === undefined) { frame = this.defaultFrame; }
-        if (visible === undefined) { visible = true; }
-        if (active === undefined) { active = true; }
+    create: function (x, y, key, frame, visible, active) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
+        if (key === undefined) {
+            key = this.defaultKey;
+        }
+        if (frame === undefined) {
+            frame = this.defaultFrame;
+        }
+        if (visible === undefined) {
+            visible = true;
+        }
+        if (active === undefined) {
+            active = true;
+        }
 
         //  Pool?
-        if (this.isFull())
-        {
+        if (this.isFull()) {
             return null;
         }
 
@@ -329,24 +327,19 @@ var Group = new Class({
      *
      * @return {any[]} The newly created Game Objects.
      */
-    createMultiple: function (config)
-    {
-        if (this.isFull())
-        {
+    createMultiple: function (config) {
+        if (this.isFull()) {
             return [];
         }
 
-        if (!Array.isArray(config))
-        {
-            config = [ config ];
+        if (!Array.isArray(config)) {
+            config = [config];
         }
 
         var output = [];
 
-        if (config[0].key)
-        {
-            for (var i = 0; i < config.length; i++)
-            {
+        if (config[0].key) {
+            for (var i = 0; i < config.length; i++) {
                 var entries = this.createFromConfig(config[i]);
 
                 output = output.concat(entries);
@@ -366,10 +359,8 @@ var Group = new Class({
      *
      * @return {any[]} The newly created Game Objects.
      */
-    createFromConfig: function (options)
-    {
-        if (this.isFull())
-        {
+    createFromConfig: function (options) {
+        if (this.isFull()) {
             return [];
         }
 
@@ -383,20 +374,15 @@ var Group = new Class({
         var entries = [];
 
         //  Can't do anything without at least a key
-        if (key === undefined)
-        {
+        if (key === undefined) {
             return entries;
-        }
-        else
-        {
-            if (!Array.isArray(key))
-            {
-                key = [ key ];
+        } else {
+            if (!Array.isArray(key)) {
+                key = [key];
             }
 
-            if (!Array.isArray(frame))
-            {
-                frame = [ frame ];
+            if (!Array.isArray(frame)) {
+                frame = [frame];
             }
         }
 
@@ -421,32 +407,26 @@ var Group = new Class({
             yoyo: yoyo
         });
 
-        if (options.createCallback)
-        {
+        if (options.createCallback) {
             this.createCallback = options.createCallback;
         }
 
-        if (options.removeCallback)
-        {
+        if (options.removeCallback) {
             this.removeCallback = options.removeCallback;
         }
 
-        if (options.internalCreateCallback)
-        {
+        if (options.internalCreateCallback) {
             this.internalCreateCallback = options.internalCreateCallback;
         }
 
-        if (options.internalRemoveCallback)
-        {
+        if (options.internalRemoveCallback) {
             this.internalRemoveCallback = options.internalRemoveCallback;
         }
 
-        for (var c = 0; c < range.length; c++)
-        {
+        for (var c = 0; c < range.length; c++) {
             var created = this.create(0, 0, range[c].a, range[c].b, visible, active);
 
-            if (!created)
-            {
+            if (!created) {
                 break;
             }
 
@@ -455,8 +435,7 @@ var Group = new Class({
 
         //  Post-creation options (applied only to those items created in this call):
 
-        if (HasValue(options, 'setXY'))
-        {
+        if (HasValue(options, 'setXY')) {
             var x = GetValue(options, 'setXY.x', 0);
             var y = GetValue(options, 'setXY.y', 0);
             var stepX = GetValue(options, 'setXY.stepX', 0);
@@ -465,16 +444,14 @@ var Group = new Class({
             Actions.SetXY(entries, x, y, stepX, stepY);
         }
 
-        if (HasValue(options, 'setRotation'))
-        {
+        if (HasValue(options, 'setRotation')) {
             var rotation = GetValue(options, 'setRotation.value', 0);
             var stepRotation = GetValue(options, 'setRotation.step', 0);
 
             Actions.SetRotation(entries, rotation, stepRotation);
         }
 
-        if (HasValue(options, 'setScale'))
-        {
+        if (HasValue(options, 'setScale')) {
             var scaleX = GetValue(options, 'setScale.x', 1);
             var scaleY = GetValue(options, 'setScale.y', scaleX);
             var stepScaleX = GetValue(options, 'setScale.stepX', 0);
@@ -483,8 +460,7 @@ var Group = new Class({
             Actions.SetScale(entries, scaleX, scaleY, stepScaleX, stepScaleY);
         }
 
-        if (HasValue(options, 'setOrigin'))
-        {
+        if (HasValue(options, 'setOrigin')) {
             var originX = GetValue(options, 'setOrigin.x', 0.5);
             var originY = GetValue(options, 'setOrigin.y', originX);
             var stepOriginX = GetValue(options, 'setOrigin.stepX', 0);
@@ -493,24 +469,21 @@ var Group = new Class({
             Actions.SetOrigin(entries, originX, originY, stepOriginX, stepOriginY);
         }
 
-        if (HasValue(options, 'setAlpha'))
-        {
+        if (HasValue(options, 'setAlpha')) {
             var alpha = GetValue(options, 'setAlpha.value', 1);
             var stepAlpha = GetValue(options, 'setAlpha.step', 0);
 
             Actions.SetAlpha(entries, alpha, stepAlpha);
         }
 
-        if (HasValue(options, 'setDepth'))
-        {
+        if (HasValue(options, 'setDepth')) {
             var depth = GetValue(options, 'setDepth.value', 0);
             var stepDepth = GetValue(options, 'setDepth.step', 0);
 
             Actions.SetDepth(entries, depth, stepDepth);
         }
 
-        if (HasValue(options, 'setScrollFactor'))
-        {
+        if (HasValue(options, 'setScrollFactor')) {
             var scrollFactorX = GetValue(options, 'setScrollFactor.x', 1);
             var scrollFactorY = GetValue(options, 'setScrollFactor.y', scrollFactorX);
             var stepScrollFactorX = GetValue(options, 'setScrollFactor.stepX', 0);
@@ -522,20 +495,17 @@ var Group = new Class({
         var hitArea = GetFastValue(options, 'hitArea', null);
         var hitAreaCallback = GetFastValue(options, 'hitAreaCallback', null);
 
-        if (hitArea)
-        {
+        if (hitArea) {
             Actions.SetHitArea(entries, hitArea, hitAreaCallback);
         }
 
         var grid = GetFastValue(options, 'gridAlign', false);
 
-        if (grid)
-        {
+        if (grid) {
             Actions.GridAlign(entries, grid);
         }
 
-        if (this.createMultipleCallback)
-        {
+        if (this.createMultipleCallback) {
             this.createMultipleCallback.call(this, entries);
         }
 
@@ -551,22 +521,18 @@ var Group = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time elapsed since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
-        if (!this.runChildUpdate || this.children.size === 0)
-        {
+    preUpdate: function (time, delta) {
+        if (!this.runChildUpdate || this.children.size === 0) {
             return;
         }
 
         //  Because a Group child may mess with the length of the Group during its update
         var temp = this.children.entries.slice();
 
-        for (var i = 0; i < temp.length; i++)
-        {
+        for (var i = 0; i < temp.length; i++) {
             var item = temp[i];
 
-            if (item.active)
-            {
+            if (item.active) {
                 item.update(time, delta);
             }
         }
@@ -585,29 +551,26 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    add: function (child, addToScene)
-    {
-        if (addToScene === undefined) { addToScene = false; }
+    add: function (child, addToScene) {
+        if (addToScene === undefined) {
+            addToScene = false;
+        }
 
-        if (this.isFull())
-        {
+        if (this.isFull()) {
             return this;
         }
 
         this.children.set(child);
 
-        if (this.internalCreateCallback)
-        {
+        if (this.internalCreateCallback) {
             this.internalCreateCallback.call(this, child);
         }
 
-        if (this.createCallback)
-        {
+        if (this.createCallback) {
             this.createCallback.call(this, child);
         }
 
-        if (addToScene)
-        {
+        if (addToScene) {
             child.addToDisplayList(this.scene.sys.displayList);
             child.addToUpdateList();
         }
@@ -630,14 +593,13 @@ var Group = new Class({
      *
      * @return {this} This group.
      */
-    addMultiple: function (children, addToScene)
-    {
-        if (addToScene === undefined) { addToScene = false; }
+    addMultiple: function (children, addToScene) {
+        if (addToScene === undefined) {
+            addToScene = false;
+        }
 
-        if (Array.isArray(children))
-        {
-            for (var i = 0; i < children.length; i++)
-            {
+        if (Array.isArray(children)) {
+            for (var i = 0; i < children.length; i++) {
                 this.add(children[i], addToScene);
             }
         }
@@ -659,36 +621,33 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    remove: function (child, removeFromScene, destroyChild)
-    {
-        if (removeFromScene === undefined) { removeFromScene = false; }
-        if (destroyChild === undefined) { destroyChild = false; }
+    remove: function (child, removeFromScene, destroyChild) {
+        if (removeFromScene === undefined) {
+            removeFromScene = false;
+        }
+        if (destroyChild === undefined) {
+            destroyChild = false;
+        }
 
-        if (!this.children.contains(child))
-        {
+        if (!this.children.contains(child)) {
             return this;
         }
 
         this.children.delete(child);
 
-        if (this.internalRemoveCallback)
-        {
+        if (this.internalRemoveCallback) {
             this.internalRemoveCallback.call(this, child);
         }
 
-        if (this.removeCallback)
-        {
+        if (this.removeCallback) {
             this.removeCallback.call(this, child);
         }
 
         child.off(Events.DESTROY, this.remove, this);
 
-        if (destroyChild)
-        {
+        if (destroyChild) {
             child.destroy();
-        }
-        else if (removeFromScene)
-        {
+        } else if (removeFromScene) {
             child.removeFromDisplayList();
             child.removeFromUpdateList();
         }
@@ -709,25 +668,24 @@ var Group = new Class({
      *
      * @return {this} This group.
      */
-    clear: function (removeFromScene, destroyChild)
-    {
-        if (removeFromScene === undefined) { removeFromScene = false; }
-        if (destroyChild === undefined) { destroyChild = false; }
+    clear: function (removeFromScene, destroyChild) {
+        if (removeFromScene === undefined) {
+            removeFromScene = false;
+        }
+        if (destroyChild === undefined) {
+            destroyChild = false;
+        }
 
         var children = this.children;
 
-        for (var i = 0; i < children.size; i++)
-        {
+        for (var i = 0; i < children.size; i++) {
             var gameObject = children.entries[i];
 
             gameObject.off(Events.DESTROY, this.remove, this);
 
-            if (destroyChild)
-            {
+            if (destroyChild) {
                 gameObject.destroy();
-            }
-            else if (removeFromScene)
-            {
+            } else if (removeFromScene) {
                 gameObject.removeFromDisplayList();
                 gameObject.removeFromUpdateList();
             }
@@ -748,8 +706,7 @@ var Group = new Class({
      *
      * @return {boolean} True if the Game Object is a member of this group.
      */
-    contains: function (child)
-    {
+    contains: function (child) {
         return this.children.contains(child);
     },
 
@@ -761,8 +718,7 @@ var Group = new Class({
      *
      * @return {Phaser.GameObjects.GameObject[]} The group members.
      */
-    getChildren: function ()
-    {
+    getChildren: function () {
         return this.children.entries;
     },
 
@@ -774,8 +730,7 @@ var Group = new Class({
      *
      * @return {number}
      */
-    getLength: function ()
-    {
+    getLength: function () {
         return this.children.size;
     },
 
@@ -798,8 +753,7 @@ var Group = new Class({
      *
      * @return {any[]} An array of matching Group members. The array will be empty if nothing matched.
      */
-    getMatching: function (property, value, startIndex, endIndex)
-    {
+    getMatching: function (property, value, startIndex, endIndex) {
         return GetAll(this.children.entries, property, value, startIndex, endIndex);
     },
 
@@ -823,8 +777,7 @@ var Group = new Class({
      *
      * @return {?any} The first matching group member, or a newly created member, or null.
      */
-    getFirst: function (state, createIfNull, x, y, key, frame, visible)
-    {
+    getFirst: function (state, createIfNull, x, y, key, frame, visible) {
         return this.getHandler(true, 1, state, createIfNull, x, y, key, frame, visible);
     },
 
@@ -849,8 +802,7 @@ var Group = new Class({
      *
      * @return {?any} The first matching group member, or a newly created member, or null.
      */
-    getFirstNth: function (nth, state, createIfNull, x, y, key, frame, visible)
-    {
+    getFirstNth: function (nth, state, createIfNull, x, y, key, frame, visible) {
         return this.getHandler(true, nth, state, createIfNull, x, y, key, frame, visible);
     },
 
@@ -874,8 +826,7 @@ var Group = new Class({
      *
      * @return {?any} The first matching group member, or a newly created member, or null.
      */
-    getLast: function (state, createIfNull, x, y, key, frame, visible)
-    {
+    getLast: function (state, createIfNull, x, y, key, frame, visible) {
         return this.getHandler(false, 1, state, createIfNull, x, y, key, frame, visible);
     },
 
@@ -900,8 +851,7 @@ var Group = new Class({
      *
      * @return {?any} The first matching group member, or a newly created member, or null.
      */
-    getLastNth: function (nth, state, createIfNull, x, y, key, frame, visible)
-    {
+    getLastNth: function (nth, state, createIfNull, x, y, key, frame, visible) {
         return this.getHandler(false, nth, state, createIfNull, x, y, key, frame, visible);
     },
 
@@ -928,10 +878,13 @@ var Group = new Class({
      *
      * @return {?any} The first matching group member, or a newly created member, or null.
      */
-    getHandler: function (forwards, nth, state, createIfNull, x, y, key, frame, visible)
-    {
-        if (state === undefined) { state = false; }
-        if (createIfNull === undefined) { createIfNull = false; }
+    getHandler: function (forwards, nth, state, createIfNull, x, y, key, frame, visible) {
+        if (state === undefined) {
+            state = false;
+        }
+        if (createIfNull === undefined) {
+            createIfNull = false;
+        }
 
         var gameObject;
 
@@ -939,58 +892,42 @@ var Group = new Class({
         var total = 0;
         var children = this.children.entries;
 
-        if (forwards)
-        {
-            for (i = 0; i < children.length; i++)
-            {
+        if (forwards) {
+            for (i = 0; i < children.length; i++) {
                 gameObject = children[i];
 
-                if (gameObject.active === state)
-                {
+                if (gameObject.active === state) {
                     total++;
 
-                    if (total === nth)
-                    {
+                    if (total === nth) {
                         break;
                     }
-                }
-                else
-                {
+                } else {
                     gameObject = null;
                 }
             }
-        }
-        else
-        {
-            for (i = children.length - 1; i >= 0; i--)
-            {
+        } else {
+            for (i = children.length - 1; i >= 0; i--) {
                 gameObject = children[i];
 
-                if (gameObject.active === state)
-                {
+                if (gameObject.active === state) {
                     total++;
 
-                    if (total === nth)
-                    {
+                    if (total === nth) {
                         break;
                     }
-                }
-                else
-                {
+                } else {
                     gameObject = null;
                 }
             }
         }
 
-        if (gameObject)
-        {
-            if (typeof(x) === 'number')
-            {
+        if (gameObject) {
+            if (typeof (x) === 'number') {
                 gameObject.x = x;
             }
 
-            if (typeof(y) === 'number')
-            {
+            if (typeof (y) === 'number') {
                 gameObject.y = y;
             }
 
@@ -998,12 +935,9 @@ var Group = new Class({
         }
 
         //  Got this far? We need to create or bail
-        if (createIfNull)
-        {
+        if (createIfNull) {
             return this.create(x, y, key, frame, visible);
-        }
-        else
-        {
+        } else {
             return null;
         }
     },
@@ -1027,8 +961,7 @@ var Group = new Class({
      *
      * @return {?any} The first inactive group member, or a newly created member, or null.
      */
-    get: function (x, y, key, frame, visible)
-    {
+    get: function (x, y, key, frame, visible) {
         return this.getFirst(false, true, x, y, key, frame, visible);
     },
 
@@ -1051,8 +984,7 @@ var Group = new Class({
      *
      * @return {any} The first active group member, or a newly created member, or null.
      */
-    getFirstAlive: function (createIfNull, x, y, key, frame, visible)
-    {
+    getFirstAlive: function (createIfNull, x, y, key, frame, visible) {
         return this.getFirst(true, createIfNull, x, y, key, frame, visible);
     },
 
@@ -1076,8 +1008,7 @@ var Group = new Class({
      *
      * @return {any} The first inactive group member, or a newly created member, or null.
      */
-    getFirstDead: function (createIfNull, x, y, key, frame, visible)
-    {
+    getFirstDead: function (createIfNull, x, y, key, frame, visible) {
         return this.getFirst(false, createIfNull, x, y, key, frame, visible);
     },
 
@@ -1092,8 +1023,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    playAnimation: function (key, startFrame)
-    {
+    playAnimation: function (key, startFrame) {
         Actions.PlayAnimation(this.children.entries, key, startFrame);
 
         return this;
@@ -1107,14 +1037,10 @@ var Group = new Class({
      *
      * @return {boolean} True if the number of members equals {@link Phaser.GameObjects.Group#maxSize}.
      */
-    isFull: function ()
-    {
-        if (this.maxSize === -1)
-        {
+    isFull: function () {
+        if (this.maxSize === -1) {
             return false;
-        }
-        else
-        {
+        } else {
             return (this.children.size >= this.maxSize);
         }
     },
@@ -1129,16 +1055,15 @@ var Group = new Class({
      *
      * @return {number} The number of group members with an active state matching the `active` argument.
      */
-    countActive: function (value)
-    {
-        if (value === undefined) { value = true; }
+    countActive: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         var total = 0;
 
-        for (var i = 0; i < this.children.size; i++)
-        {
-            if (this.children.entries[i].active === value)
-            {
+        for (var i = 0; i < this.children.size; i++) {
+            if (this.children.entries[i].active === value) {
                 total++;
             }
         }
@@ -1154,8 +1079,7 @@ var Group = new Class({
      *
      * @return {number} The number of group members with an active state of true.
      */
-    getTotalUsed: function ()
-    {
+    getTotalUsed: function () {
         return this.countActive();
     },
 
@@ -1169,8 +1093,7 @@ var Group = new Class({
      *
      * @return {number} maxSize minus the number of active group numbers; or a large number (if maxSize is -1).
      */
-    getTotalFree: function ()
-    {
+    getTotalFree: function () {
         var used = this.getTotalUsed();
         var capacity = (this.maxSize === -1) ? 999999999999 : this.maxSize;
 
@@ -1188,8 +1111,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setActive: function (value)
-    {
+    setActive: function (value) {
         this.active = value;
 
         return this;
@@ -1206,8 +1128,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setName: function (value)
-    {
+    setName: function (value) {
         this.name = value;
 
         return this;
@@ -1227,8 +1148,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    propertyValueSet: function (key, value, step, index, direction)
-    {
+    propertyValueSet: function (key, value, step, index, direction) {
         Actions.PropertyValueSet(this.children.entries, key, value, step, index, direction);
 
         return this;
@@ -1248,8 +1168,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    propertyValueInc: function (key, value, step, index, direction)
-    {
+    propertyValueInc: function (key, value, step, index, direction) {
         Actions.PropertyValueInc(this.children.entries, key, value, step, index, direction);
 
         return this;
@@ -1266,8 +1185,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setX: function (value, step)
-    {
+    setX: function (value, step) {
         Actions.SetX(this.children.entries, value, step);
 
         return this;
@@ -1284,8 +1202,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setY: function (value, step)
-    {
+    setY: function (value, step) {
         Actions.SetY(this.children.entries, value, step);
 
         return this;
@@ -1304,8 +1221,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setXY: function (x, y, stepX, stepY)
-    {
+    setXY: function (x, y, stepX, stepY) {
         Actions.SetXY(this.children.entries, x, y, stepX, stepY);
 
         return this;
@@ -1322,8 +1238,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    incX: function (value, step)
-    {
+    incX: function (value, step) {
         Actions.IncX(this.children.entries, value, step);
 
         return this;
@@ -1340,8 +1255,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    incY: function (value, step)
-    {
+    incY: function (value, step) {
         Actions.IncY(this.children.entries, value, step);
 
         return this;
@@ -1360,8 +1274,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    incXY: function (x, y, stepX, stepY)
-    {
+    incXY: function (x, y, stepX, stepY) {
         Actions.IncXY(this.children.entries, x, y, stepX, stepY);
 
         return this;
@@ -1382,8 +1295,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    shiftPosition: function (x, y, direction)
-    {
+    shiftPosition: function (x, y, direction) {
         Actions.ShiftPosition(this.children.entries, x, y, direction);
 
         return this;
@@ -1400,8 +1312,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    angle: function (value, step)
-    {
+    angle: function (value, step) {
         Actions.Angle(this.children.entries, value, step);
 
         return this;
@@ -1418,8 +1329,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    rotate: function (value, step)
-    {
+    rotate: function (value, step) {
         Actions.Rotate(this.children.entries, value, step);
 
         return this;
@@ -1436,8 +1346,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    rotateAround: function (point, angle)
-    {
+    rotateAround: function (point, angle) {
         Actions.RotateAround(this.children.entries, point, angle);
 
         return this;
@@ -1455,8 +1364,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    rotateAroundDistance: function (point, angle, distance)
-    {
+    rotateAroundDistance: function (point, angle, distance) {
         Actions.RotateAroundDistance(this.children.entries, point, angle, distance);
 
         return this;
@@ -1473,8 +1381,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setAlpha: function (value, step)
-    {
+    setAlpha: function (value, step) {
         Actions.SetAlpha(this.children.entries, value, step);
 
         return this;
@@ -1493,8 +1400,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setTint: function (topLeft, topRight, bottomLeft, bottomRight)
-    {
+    setTint: function (topLeft, topRight, bottomLeft, bottomRight) {
         Actions.SetTint(this.children.entries, topLeft, topRight, bottomLeft, bottomRight);
 
         return this;
@@ -1513,8 +1419,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setOrigin: function (originX, originY, stepX, stepY)
-    {
+    setOrigin: function (originX, originY, stepX, stepY) {
         Actions.SetOrigin(this.children.entries, originX, originY, stepX, stepY);
 
         return this;
@@ -1531,8 +1436,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    scaleX: function (value, step)
-    {
+    scaleX: function (value, step) {
         Actions.ScaleX(this.children.entries, value, step);
 
         return this;
@@ -1549,8 +1453,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    scaleY: function (value, step)
-    {
+    scaleY: function (value, step) {
         Actions.ScaleY(this.children.entries, value, step);
 
         return this;
@@ -1569,8 +1472,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    scaleXY: function (scaleX, scaleY, stepX, stepY)
-    {
+    scaleXY: function (scaleX, scaleY, stepX, stepY) {
         Actions.ScaleXY(this.children.entries, scaleX, scaleY, stepX, stepY);
 
         return this;
@@ -1587,8 +1489,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setDepth: function (value, step)
-    {
+    setDepth: function (value, step) {
         Actions.SetDepth(this.children.entries, value, step);
 
         return this;
@@ -1604,8 +1505,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setBlendMode: function (value)
-    {
+    setBlendMode: function (value) {
         Actions.SetBlendMode(this.children.entries, value);
 
         return this;
@@ -1622,8 +1522,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setHitArea: function (hitArea, hitAreaCallback)
-    {
+    setHitArea: function (hitArea, hitAreaCallback) {
         Actions.SetHitArea(this.children.entries, hitArea, hitAreaCallback);
 
         return this;
@@ -1637,8 +1536,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    shuffle: function ()
-    {
+    shuffle: function () {
         Actions.Shuffle(this.children.entries);
 
         return this;
@@ -1652,10 +1550,8 @@ var Group = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - A member of this group.
      */
-    kill: function (gameObject)
-    {
-        if (this.children.contains(gameObject))
-        {
+    kill: function (gameObject) {
+        if (this.children.contains(gameObject)) {
             gameObject.setActive(false);
         }
     },
@@ -1668,10 +1564,8 @@ var Group = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - A member of this group.
      */
-    killAndHide: function (gameObject)
-    {
-        if (this.children.contains(gameObject))
-        {
+    killAndHide: function (gameObject) {
+        if (this.children.contains(gameObject)) {
             gameObject.setActive(false);
             gameObject.setVisible(false);
         }
@@ -1689,8 +1583,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    setVisible: function (value, index, direction)
-    {
+    setVisible: function (value, index, direction) {
         Actions.SetVisible(this.children.entries, value, index, direction);
 
         return this;
@@ -1704,8 +1597,7 @@ var Group = new Class({
      *
      * @return {this} This Group object.
      */
-    toggleVisible: function ()
-    {
+    toggleVisible: function () {
         Actions.ToggleVisible(this.children.entries);
 
         return this;
@@ -1728,14 +1620,16 @@ var Group = new Class({
      * @param {boolean} [destroyChildren=false] - Also {@link Phaser.GameObjects.GameObject#destroy} each Group member.
      * @param {boolean} [removeFromScene=false] - Optionally remove each Group member from the Scene.
      */
-    destroy: function (destroyChildren, removeFromScene)
-    {
-        if (destroyChildren === undefined) { destroyChildren = false; }
-        if (removeFromScene === undefined) { removeFromScene = false; }
+    destroy: function (destroyChildren, removeFromScene) {
+        if (destroyChildren === undefined) {
+            destroyChildren = false;
+        }
+        if (removeFromScene === undefined) {
+            removeFromScene = false;
+        }
 
         //  This Game Object had already been destroyed
-        if (!this.scene || this.ignoreDestroy)
-        {
+        if (!this.scene || this.ignoreDestroy) {
             return;
         }
 

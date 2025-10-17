@@ -6,60 +6,48 @@
 
 //  Taken from klasse by mattdesl https://github.com/mattdesl/klasse
 
-function hasGetterOrSetter (def)
-{
+function hasGetterOrSetter(def) {
     return (!!def.get && typeof def.get === 'function') || (!!def.set && typeof def.set === 'function');
 }
 
-function getProperty (definition, k, isClassDescriptor)
-{
+function getProperty(definition, k, isClassDescriptor) {
     //  This may be a lightweight object, OR it might be a property that was defined previously.
 
     //  For simple class descriptors we can just assume its NOT previously defined.
     var def = (isClassDescriptor) ? definition[k] : Object.getOwnPropertyDescriptor(definition, k);
 
-    if (!isClassDescriptor && def.value && typeof def.value === 'object')
-    {
+    if (!isClassDescriptor && def.value && typeof def.value === 'object') {
         def = def.value;
     }
 
     //  This might be a regular property, or it may be a getter/setter the user defined in a class.
-    if (def && hasGetterOrSetter(def))
-    {
-        if (typeof def.enumerable === 'undefined')
-        {
+    if (def && hasGetterOrSetter(def)) {
+        if (typeof def.enumerable === 'undefined') {
             def.enumerable = true;
         }
 
-        if (typeof def.configurable === 'undefined')
-        {
+        if (typeof def.configurable === 'undefined') {
             def.configurable = true;
         }
 
         return def;
-    }
-    else
-    {
+    } else {
         return false;
     }
 }
 
-function hasNonConfigurable (obj, k)
-{
+function hasNonConfigurable(obj, k) {
     var prop = Object.getOwnPropertyDescriptor(obj, k);
 
-    if (!prop)
-    {
+    if (!prop) {
         return false;
     }
 
-    if (prop.value && typeof prop.value === 'object')
-    {
+    if (prop.value && typeof prop.value === 'object') {
         prop = prop.value;
     }
 
-    if (prop.configurable === false)
-    {
+    if (prop.configurable === false) {
         return true;
     }
 
@@ -76,28 +64,22 @@ function hasNonConfigurable (obj, k)
  * @param {boolean} isClassDescriptor Is the definition a class descriptor?
  * @param {Object} [extend] The parent constructor object.
  */
-function extend (ctor, definition, isClassDescriptor, extend)
-{
-    for (var k in definition)
-    {
-        if (!definition.hasOwnProperty(k))
-        {
+function extend(ctor, definition, isClassDescriptor, extend) {
+    for (var k in definition) {
+        if (!definition.hasOwnProperty(k)) {
             continue;
         }
 
         var def = getProperty(definition, k, isClassDescriptor);
 
-        if (def !== false)
-        {
+        if (def !== false) {
             //  If Extends is used, we will check its prototype to see if the final variable exists.
 
             var parent = extend || ctor;
 
-            if (hasNonConfigurable(parent.prototype, k))
-            {
+            if (hasNonConfigurable(parent.prototype, k)) {
                 //  Just skip the final property
-                if (Class.ignoreFinals)
-                {
+                if (Class.ignoreFinals) {
                     continue;
                 }
 
@@ -110,9 +92,7 @@ function extend (ctor, definition, isClassDescriptor, extend)
             }
 
             Object.defineProperty(ctor.prototype, k, def);
-        }
-        else
-        {
+        } else {
             ctor.prototype[k] = definition[k];
         }
     }
@@ -126,20 +106,16 @@ function extend (ctor, definition, isClassDescriptor, extend)
  * @param {Object} myClass The constructor object to mix into.
  * @param {Object|Array<Object>} mixins The mixins to apply to the constructor.
  */
-function mixin (myClass, mixins)
-{
-    if (!mixins)
-    {
+function mixin(myClass, mixins) {
+    if (!mixins) {
         return;
     }
 
-    if (!Array.isArray(mixins))
-    {
-        mixins = [ mixins ];
+    if (!Array.isArray(mixins)) {
+        mixins = [mixins];
     }
 
-    for (var i = 0; i < mixins.length; i++)
-    {
+    for (var i = 0; i < mixins.length; i++) {
         extend(myClass, mixins[i].prototype || mixins[i]);
     }
 }
@@ -170,10 +146,8 @@ function mixin (myClass, mixins)
  *          }
  *      });
  */
-function Class (definition)
-{
-    if (!definition)
-    {
+function Class(definition) {
+    if (!definition) {
         definition = {};
     }
 
@@ -181,10 +155,8 @@ function Class (definition)
     var initialize;
     var Extends;
 
-    if (definition.initialize)
-    {
-        if (typeof definition.initialize !== 'function')
-        {
+    if (definition.initialize) {
+        if (typeof definition.initialize !== 'function') {
             throw new Error('initialize must be a function');
         }
 
@@ -194,23 +166,18 @@ function Class (definition)
         //  However, its unlikely to make any performance difference
         //  here since we only call this on class creation (i.e. not object creation).
         delete definition.initialize;
-    }
-    else if (definition.Extends)
-    {
+    } else if (definition.Extends) {
         var base = definition.Extends;
 
-        initialize = function ()
-        {
+        initialize = function () {
             base.apply(this, arguments);
         };
-    }
-    else
-    {
-        initialize = function () {};
+    } else {
+        initialize = function () {
+        };
     }
 
-    if (definition.Extends)
-    {
+    if (definition.Extends) {
         initialize.prototype = Object.create(definition.Extends.prototype);
         initialize.prototype.constructor = initialize;
 
@@ -219,17 +186,14 @@ function Class (definition)
         Extends = definition.Extends;
 
         delete definition.Extends;
-    }
-    else
-    {
+    } else {
         initialize.prototype.constructor = initialize;
     }
 
     //  Grab the mixins, if they are specified...
     var mixins = null;
 
-    if (definition.Mixins)
-    {
+    if (definition.Mixins) {
         mixins = definition.Mixins;
         delete definition.Mixins;
     }

@@ -24,7 +24,7 @@ module.exports = {
         umdNamedDefine: true
     },
 
-    performance: { hints: false },
+    performance: {hints: false},
 
     module: {
         rules: [
@@ -63,7 +63,7 @@ module.exports = {
             before: {
                 before: {
                     root: './plugins/spine4.1/dist/',
-                    include: [ 'SpineWebGLPluginDebug.js', 'SpineWebGLPluginDebug.js.map' ]
+                    include: ['SpineWebGLPluginDebug.js', 'SpineWebGLPluginDebug.js.map']
                 }
             }
         }),

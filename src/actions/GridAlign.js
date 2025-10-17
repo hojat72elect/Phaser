@@ -10,7 +10,7 @@ var GetFastValue = require('../utils/object/GetFastValue');
 var NOOP = require('../utils/NOOP');
 var Zone = require('../gameobjects/zone/Zone');
 
-var tempZone = new Zone({ sys: { queueDepthSort: NOOP, events: { once: NOOP } } }, 0, 0, 1, 1).setOrigin(0, 0);
+var tempZone = new Zone({sys: {queueDepthSort: NOOP, events: {once: NOOP}}}, 0, 0, 1, 1).setOrigin(0, 0);
 
 /**
  * Takes an array of Game Objects, or any objects that have public `x` and `y` properties,
@@ -26,9 +26,10 @@ var tempZone = new Zone({ sys: { queueDepthSort: NOOP, events: { once: NOOP } } 
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var GridAlign = function (items, options)
-{
-    if (options === undefined) { options = {}; }
+var GridAlign = function (items, options) {
+    if (options === undefined) {
+        options = {};
+    }
 
     var widthSet = options.hasOwnProperty('width');
     var heightSet = options.hasOwnProperty('height');
@@ -51,55 +52,43 @@ var GridAlign = function (items, options)
     tempZone.setPosition(x, y);
     tempZone.setSize(cellWidth, cellHeight);
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         AlignIn(items[i], tempZone, position);
 
-        if (widthSet && width === -1)
-        {
+        if (widthSet && width === -1) {
             //  We keep laying them out horizontally until we've done them all
             tempZone.x += cellWidth;
-        }
-        else if (heightSet && height === -1)
-        {
+        } else if (heightSet && height === -1) {
             //  We keep laying them out vertically until we've done them all
             tempZone.y += cellHeight;
-        }
-        else if (heightSet && !widthSet)
-        {
+        } else if (heightSet && !widthSet) {
             //  We keep laying them out until we hit the column limit
             cy += cellHeight;
             tempZone.y += cellHeight;
 
-            if (cy === h)
-            {
+            if (cy === h) {
                 cy = 0;
                 cx += cellWidth;
                 tempZone.y = y;
                 tempZone.x += cellWidth;
 
-                if (cx === w)
-                {
+                if (cx === w) {
                     //  We've hit the column limit, so return, even if there are items left
                     break;
                 }
             }
-        }
-        else
-        {
+        } else {
             //  We keep laying them out until we hit the column limit
             cx += cellWidth;
             tempZone.x += cellWidth;
 
-            if (cx === w)
-            {
+            if (cx === w) {
                 cx = 0;
                 cy += cellHeight;
                 tempZone.x = x;
                 tempZone.y += cellHeight;
 
-                if (cy === h)
-                {
+                if (cy === h) {
                     //  We've hit the column limit, so return, even if there are items left
                     break;
                 }

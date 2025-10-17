@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterConstraintConfig
  * @since 3.22.0
- * 
+ *
  * @property {string} [label='Constraint'] - An arbitrary string-based name to help identify this constraint.
  * @property {MatterJS.BodyType} [bodyA] - The first possible `Body` that this constraint is attached to.
  * @property {MatterJS.BodyType} [bodyB] - The second possible `Body` that this constraint is attached to.

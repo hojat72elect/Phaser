@@ -16,8 +16,7 @@
  *
  * @return {number} The vertical offset of the Game Object.
  */
-var GetOffsetY = function (gameObject)
-{
+var GetOffsetY = function (gameObject) {
     return gameObject.height * gameObject.originY;
 };
 

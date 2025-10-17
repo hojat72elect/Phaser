@@ -21,23 +21,23 @@ var SafeRange = require('./SafeRange');
  *
  * @return {array} The input array.
  */
-var EachInRange = function (array, callback, context, startIndex, endIndex)
-{
-    if (startIndex === undefined) { startIndex = 0; }
-    if (endIndex === undefined) { endIndex = array.length; }
+var EachInRange = function (array, callback, context, startIndex, endIndex) {
+    if (startIndex === undefined) {
+        startIndex = 0;
+    }
+    if (endIndex === undefined) {
+        endIndex = array.length;
+    }
 
-    if (SafeRange(array, startIndex, endIndex))
-    {
+    if (SafeRange(array, startIndex, endIndex)) {
         var i;
-        var args = [ null ];
+        var args = [null];
 
-        for (i = 5; i < arguments.length; i++)
-        {
+        for (i = 5; i < arguments.length; i++) {
             args.push(arguments[i]);
         }
 
-        for (i = startIndex; i < endIndex; i++)
-        {
+        for (i = startIndex; i < endIndex; i++) {
             args[0] = array[i];
 
             callback.apply(context, args);

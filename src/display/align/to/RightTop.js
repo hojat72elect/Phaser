@@ -24,10 +24,13 @@ var SetTop = require('../../bounds/SetTop');
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was aligned.
  */
-var RightTop = function (gameObject, alignTo, offsetX, offsetY)
-{
-    if (offsetX === undefined) { offsetX = 0; }
-    if (offsetY === undefined) { offsetY = 0; }
+var RightTop = function (gameObject, alignTo, offsetX, offsetY) {
+    if (offsetX === undefined) {
+        offsetX = 0;
+    }
+    if (offsetY === undefined) {
+        offsetY = 0;
+    }
 
     SetLeft(gameObject, GetRight(alignTo) + offsetX);
     SetTop(gameObject, GetTop(alignTo) - offsetY);

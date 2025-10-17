@@ -22,8 +22,7 @@ var Mass = {
      *
      * @return {this} This Game Object.
      */
-    setMass: function (value)
-    {
+    setMass: function (value) {
         this.body.mass = value;
 
         return this;

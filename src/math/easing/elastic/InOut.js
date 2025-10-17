@@ -16,38 +16,30 @@
  *
  * @return {number} The tweened value.
  */
-var InOut = function (v, amplitude, period)
-{
-    if (amplitude === undefined) { amplitude = 0.1; }
-    if (period === undefined) { period = 0.1; }
+var InOut = function (v, amplitude, period) {
+    if (amplitude === undefined) {
+        amplitude = 0.1;
+    }
+    if (period === undefined) {
+        period = 0.1;
+    }
 
-    if (v === 0)
-    {
+    if (v === 0) {
         return 0;
-    }
-    else if (v === 1)
-    {
+    } else if (v === 1) {
         return 1;
-    }
-    else
-    {
+    } else {
         var s = period / 4;
 
-        if (amplitude < 1)
-        {
+        if (amplitude < 1) {
             amplitude = 1;
-        }
-        else
-        {
+        } else {
             s = period * Math.asin(1 / amplitude) / (2 * Math.PI);
         }
 
-        if ((v *= 2) < 1)
-        {
+        if ((v *= 2) < 1) {
             return -0.5 * (amplitude * Math.pow(2, 10 * (v -= 1)) * Math.sin((v - s) * (2 * Math.PI) / period));
-        }
-        else
-        {
+        } else {
             return amplitude * Math.pow(2, -10 * (v -= 1)) * Math.sin((v - s) * (2 * Math.PI) / period) * 0.5 + 1;
         }
     }

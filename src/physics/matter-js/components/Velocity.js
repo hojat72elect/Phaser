@@ -24,8 +24,7 @@ var Velocity = {
      *
      * @return {this} This Game Object instance.
      */
-    setVelocityX: function (x)
-    {
+    setVelocityX: function (x) {
         this._tempVec2.set(x, this.body.velocity.y);
 
         Body.setVelocity(this.body, this._tempVec2);
@@ -43,8 +42,7 @@ var Velocity = {
      *
      * @return {this} This Game Object instance.
      */
-    setVelocityY: function (y)
-    {
+    setVelocityY: function (y) {
         this._tempVec2.set(this.body.velocity.x, y);
 
         Body.setVelocity(this.body, this._tempVec2);
@@ -63,8 +61,7 @@ var Velocity = {
      *
      * @return {this} This Game Object instance.
      */
-    setVelocity: function (x, y)
-    {
+    setVelocity: function (x, y) {
         this._tempVec2.set(x, y);
 
         Body.setVelocity(this.body, this._tempVec2);
@@ -80,8 +77,7 @@ var Velocity = {
      *
      * @return {Phaser.Types.Math.Vector2Like} The current linear velocity of the body.
      */
-    getVelocity: function ()
-    {
+    getVelocity: function () {
         return Body.getVelocity(this.body);
     },
 
@@ -96,8 +92,7 @@ var Velocity = {
      *
      * @return {this} This Game Object instance.
      */
-    setAngularVelocity: function (velocity)
-    {
+    setAngularVelocity: function (velocity) {
         Body.setAngularVelocity(this.body, velocity);
 
         return this;
@@ -111,8 +106,7 @@ var Velocity = {
      *
      * @return {number} The current angular velocity of the body.
      */
-    getAngularVelocity: function ()
-    {
+    getAngularVelocity: function () {
         return Body.getAngularVelocity(this.body);
     },
 
@@ -127,8 +121,7 @@ var Velocity = {
      *
      * @return {this} This Game Object instance.
      */
-    setAngularSpeed: function (speed)
-    {
+    setAngularSpeed: function (speed) {
         Body.setAngularSpeed(this.body, speed);
 
         return this;
@@ -143,8 +136,7 @@ var Velocity = {
      *
      * @return {number} The current angular velocity of the body.
      */
-    getAngularSpeed: function ()
-    {
+    getAngularSpeed: function () {
         return Body.getAngularSpeed(this.body);
     }
 

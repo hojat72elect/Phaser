@@ -37,27 +37,25 @@ var BarrelFXPipeline = new Class({
 
     initialize:
 
-    function BarrelFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: BarrelFrag
-        });
+        function BarrelFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: BarrelFrag
+            });
 
-        /**
-         * The amount of distortion applied to the barrel effect.
-         *
-         * Typically keep this within the range 1 (no distortion) to +- 1.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BarrelFXPipeline#amount
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.amount = 1;
-    },
+            /**
+             * The amount of distortion applied to the barrel effect.
+             *
+             * Typically keep this within the range 1 (no distortion) to +- 1.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BarrelFXPipeline#amount
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.amount = 1;
+        },
 
-    onPreRender: function (controller, shader)
-    {
+    onPreRender: function (controller, shader) {
         controller = this.getController(controller);
 
         this.set1f('amount', controller.amount, shader);

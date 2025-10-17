@@ -26,9 +26,10 @@ var Tile = require('../Tile');
  * @param {boolean} recalculateFaces - `true` if the faces data should be recalculated.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var Copy = function (srcTileX, srcTileY, width, height, destTileX, destTileY, recalculateFaces, layer)
-{
-    if (recalculateFaces === undefined) { recalculateFaces = true; }
+var Copy = function (srcTileX, srcTileY, width, height, destTileX, destTileY, recalculateFaces, layer) {
+    if (recalculateFaces === undefined) {
+        recalculateFaces = true;
+    }
 
     //  Returns an array of Tile references
     var srcTiles = GetTilesWithin(srcTileX, srcTileY, width, height, null, layer);
@@ -36,8 +37,7 @@ var Copy = function (srcTileX, srcTileY, width, height, destTileX, destTileY, re
     //  Create a new array of fresh Tile objects
     var copyTiles = [];
 
-    srcTiles.forEach(function (tile)
-    {
+    srcTiles.forEach(function (tile) {
         var newTile = new Tile(
             tile.layer,
             tile.index,
@@ -57,16 +57,13 @@ var Copy = function (srcTileX, srcTileY, width, height, destTileX, destTileY, re
     var offsetX = destTileX - srcTileX;
     var offsetY = destTileY - srcTileY;
 
-    for (var i = 0; i < copyTiles.length; i++)
-    {
+    for (var i = 0; i < copyTiles.length; i++) {
         var copy = copyTiles[i];
         var tileX = copy.x + offsetX;
         var tileY = copy.y + offsetY;
 
-        if (IsInLayerBounds(tileX, tileY, layer))
-        {
-            if (layer.data[tileY][tileX])
-            {
+        if (IsInLayerBounds(tileX, tileY, layer)) {
+            if (layer.data[tileY][tileX]) {
                 copy.x = tileX;
                 copy.y = tileY;
                 copy.updatePixelXY();
@@ -76,8 +73,7 @@ var Copy = function (srcTileX, srcTileY, width, height, destTileX, destTileY, re
         }
     }
 
-    if (recalculateFaces)
-    {
+    if (recalculateFaces) {
         // Recalculate the faces within the destination area and neighboring tiles
         CalculateFacesWithin(destTileX - 1, destTileY - 1, width + 2, height + 2, layer);
     }

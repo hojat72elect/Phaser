@@ -46,8 +46,7 @@ var GetValue = require('../utils/object/GetValue');
  *
  * @return {HTMLCanvasElement} An HTMLCanvasElement which contains the generated texture drawn to it.
  */
-var GenerateTexture = function (config)
-{
+var GenerateTexture = function (config) {
     var data = GetValue(config, 'data', []);
     var canvas = GetValue(config, 'canvas', null);
     var palette = GetValue(config, 'palette', Arne16);
@@ -61,43 +60,36 @@ var GenerateTexture = function (config)
     var width = Math.floor(Math.abs(data[0].length * pixelWidth));
     var height = Math.floor(Math.abs(data.length * pixelHeight));
 
-    if (!canvas)
-    {
+    if (!canvas) {
         canvas = CanvasPool.create2D(this, width, height);
         resizeCanvas = false;
         clearCanvas = false;
     }
 
-    if (resizeCanvas)
-    {
+    if (resizeCanvas) {
         canvas.width = width;
         canvas.height = height;
     }
 
-    var ctx = canvas.getContext('2d', { willReadFrequently: true });
+    var ctx = canvas.getContext('2d', {willReadFrequently: true});
 
-    if (clearCanvas)
-    {
+    if (clearCanvas) {
         ctx.clearRect(0, 0, width, height);
     }
 
     //  preRender Callback?
-    if (preRender)
-    {
+    if (preRender) {
         preRender(canvas, ctx);
     }
 
     //  Draw it
-    for (var y = 0; y < data.length; y++)
-    {
+    for (var y = 0; y < data.length; y++) {
         var row = data[y];
 
-        for (var x = 0; x < row.length; x++)
-        {
+        for (var x = 0; x < row.length; x++) {
             var d = row[x];
 
-            if (d !== '.' && d !== ' ')
-            {
+            if (d !== '.' && d !== ' ') {
                 ctx.fillStyle = palette[d];
                 ctx.fillRect(x * pixelWidth, y * pixelHeight, pixelWidth, pixelHeight);
             }
@@ -105,8 +97,7 @@ var GenerateTexture = function (config)
     }
 
     //  postRender Callback?
-    if (postRender)
-    {
+    if (postRender) {
         postRender(canvas, ctx);
     }
 

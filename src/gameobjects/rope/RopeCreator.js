@@ -23,9 +23,10 @@ var Rope = require('./Rope');
  *
  * @return {Phaser.GameObjects.Rope} The Game Object that was created.
  */
-GameObjectCreator.register('rope', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('rope', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
@@ -36,8 +37,7 @@ GameObjectCreator.register('rope', function (config, addToScene)
 
     var rope = new Rope(this.scene, 0, 0, key, frame, points, horizontal, colors, alphas);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

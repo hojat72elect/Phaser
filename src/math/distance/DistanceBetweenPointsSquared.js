@@ -15,8 +15,7 @@
  *
  * @return {number} The squared distance between the points.
  */
-var DistanceBetweenPointsSquared = function (a, b)
-{
+var DistanceBetweenPointsSquared = function (a, b) {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
 

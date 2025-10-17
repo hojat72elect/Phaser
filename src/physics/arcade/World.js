@@ -59,361 +59,359 @@ var World = new Class({
 
     initialize:
 
-    function World (scene, config)
-    {
-        EventEmitter.call(this);
+        function World(scene, config) {
+            EventEmitter.call(this);
 
-        /**
-         * The Scene this simulation belongs to.
-         *
-         * @name Phaser.Physics.Arcade.World#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * The Scene this simulation belongs to.
+             *
+             * @name Phaser.Physics.Arcade.World#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * Dynamic Bodies in this simulation.
-         *
-         * @name Phaser.Physics.Arcade.World#bodies
-         * @type {Phaser.Structs.Set.<Phaser.Physics.Arcade.Body>}
-         * @since 3.0.0
-         */
-        this.bodies = new Set();
+            /**
+             * Dynamic Bodies in this simulation.
+             *
+             * @name Phaser.Physics.Arcade.World#bodies
+             * @type {Phaser.Structs.Set.<Phaser.Physics.Arcade.Body>}
+             * @since 3.0.0
+             */
+            this.bodies = new Set();
 
-        /**
-         * Static Bodies in this simulation.
-         *
-         * @name Phaser.Physics.Arcade.World#staticBodies
-         * @type {Phaser.Structs.Set.<Phaser.Physics.Arcade.StaticBody>}
-         * @since 3.0.0
-         */
-        this.staticBodies = new Set();
+            /**
+             * Static Bodies in this simulation.
+             *
+             * @name Phaser.Physics.Arcade.World#staticBodies
+             * @type {Phaser.Structs.Set.<Phaser.Physics.Arcade.StaticBody>}
+             * @since 3.0.0
+             */
+            this.staticBodies = new Set();
 
-        /**
-         * Static Bodies marked for deletion.
-         *
-         * @name Phaser.Physics.Arcade.World#pendingDestroy
-         * @type {Phaser.Structs.Set.<(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)>}
-         * @since 3.1.0
-         */
-        this.pendingDestroy = new Set();
+            /**
+             * Static Bodies marked for deletion.
+             *
+             * @name Phaser.Physics.Arcade.World#pendingDestroy
+             * @type {Phaser.Structs.Set.<(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)>}
+             * @since 3.1.0
+             */
+            this.pendingDestroy = new Set();
 
-        /**
-         * This simulation's collision processors.
-         *
-         * @name Phaser.Physics.Arcade.World#colliders
-         * @type {Phaser.Structs.ProcessQueue.<Phaser.Physics.Arcade.Collider>}
-         * @since 3.0.0
-         */
-        this.colliders = new ProcessQueue();
+            /**
+             * This simulation's collision processors.
+             *
+             * @name Phaser.Physics.Arcade.World#colliders
+             * @type {Phaser.Structs.ProcessQueue.<Phaser.Physics.Arcade.Collider>}
+             * @since 3.0.0
+             */
+            this.colliders = new ProcessQueue();
 
-        /**
-         * Acceleration of Bodies due to gravity, in pixels per second.
-         *
-         * @name Phaser.Physics.Arcade.World#gravity
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.gravity = new Vector2(GetValue(config, 'gravity.x', 0), GetValue(config, 'gravity.y', 0));
+            /**
+             * Acceleration of Bodies due to gravity, in pixels per second.
+             *
+             * @name Phaser.Physics.Arcade.World#gravity
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.gravity = new Vector2(GetValue(config, 'gravity.x', 0), GetValue(config, 'gravity.y', 0));
 
-        /**
-         * A boundary constraining Bodies.
-         *
-         * @name Phaser.Physics.Arcade.World#bounds
-         * @type {Phaser.Geom.Rectangle}
-         * @since 3.0.0
-         */
-        this.bounds = new Rectangle(
-            GetValue(config, 'x', 0),
-            GetValue(config, 'y', 0),
-            GetValue(config, 'width', scene.sys.scale.width),
-            GetValue(config, 'height', scene.sys.scale.height)
-        );
+            /**
+             * A boundary constraining Bodies.
+             *
+             * @name Phaser.Physics.Arcade.World#bounds
+             * @type {Phaser.Geom.Rectangle}
+             * @since 3.0.0
+             */
+            this.bounds = new Rectangle(
+                GetValue(config, 'x', 0),
+                GetValue(config, 'y', 0),
+                GetValue(config, 'width', scene.sys.scale.width),
+                GetValue(config, 'height', scene.sys.scale.height)
+            );
 
-        /**
-         * The boundary edges that Bodies can collide with.
-         *
-         * @name Phaser.Physics.Arcade.World#checkCollision
-         * @type {Phaser.Types.Physics.Arcade.CheckCollisionObject}
-         * @since 3.0.0
-         */
-        this.checkCollision = {
-            up: GetValue(config, 'checkCollision.up', true),
-            down: GetValue(config, 'checkCollision.down', true),
-            left: GetValue(config, 'checkCollision.left', true),
-            right: GetValue(config, 'checkCollision.right', true)
-        };
+            /**
+             * The boundary edges that Bodies can collide with.
+             *
+             * @name Phaser.Physics.Arcade.World#checkCollision
+             * @type {Phaser.Types.Physics.Arcade.CheckCollisionObject}
+             * @since 3.0.0
+             */
+            this.checkCollision = {
+                up: GetValue(config, 'checkCollision.up', true),
+                down: GetValue(config, 'checkCollision.down', true),
+                left: GetValue(config, 'checkCollision.left', true),
+                right: GetValue(config, 'checkCollision.right', true)
+            };
 
-        /**
-         * The number of physics steps to be taken per second.
-         *
-         * This property is read-only. Use the `setFPS` method to modify it at run-time.
-         *
-         * @name Phaser.Physics.Arcade.World#fps
-         * @readonly
-         * @type {number}
-         * @default 60
-         * @since 3.10.0
-         */
-        this.fps = GetValue(config, 'fps', 60);
+            /**
+             * The number of physics steps to be taken per second.
+             *
+             * This property is read-only. Use the `setFPS` method to modify it at run-time.
+             *
+             * @name Phaser.Physics.Arcade.World#fps
+             * @readonly
+             * @type {number}
+             * @default 60
+             * @since 3.10.0
+             */
+            this.fps = GetValue(config, 'fps', 60);
 
-        /**
-         * Should Physics use a fixed update time-step (true) or sync to the render fps (false)?.
-         * False value of this property disables fps and timeScale properties.
-         *
-         * @name Phaser.Physics.Arcade.World#fixedStep
-         * @type {boolean}
-         * @default true
-         * @since 3.23.0
-         */
-        this.fixedStep = GetValue(config, 'fixedStep', true);
+            /**
+             * Should Physics use a fixed update time-step (true) or sync to the render fps (false)?.
+             * False value of this property disables fps and timeScale properties.
+             *
+             * @name Phaser.Physics.Arcade.World#fixedStep
+             * @type {boolean}
+             * @default true
+             * @since 3.23.0
+             */
+            this.fixedStep = GetValue(config, 'fixedStep', true);
 
-        /**
-         * The amount of elapsed ms since the last frame.
-         *
-         * @name Phaser.Physics.Arcade.World#_elapsed
-         * @private
-         * @type {number}
-         * @since 3.10.0
-         */
-        this._elapsed = 0;
+            /**
+             * The amount of elapsed ms since the last frame.
+             *
+             * @name Phaser.Physics.Arcade.World#_elapsed
+             * @private
+             * @type {number}
+             * @since 3.10.0
+             */
+            this._elapsed = 0;
 
-        /**
-         * Internal frame time value.
-         *
-         * @name Phaser.Physics.Arcade.World#_frameTime
-         * @private
-         * @type {number}
-         * @since 3.10.0
-         */
-        this._frameTime = 1 / this.fps;
+            /**
+             * Internal frame time value.
+             *
+             * @name Phaser.Physics.Arcade.World#_frameTime
+             * @private
+             * @type {number}
+             * @since 3.10.0
+             */
+            this._frameTime = 1 / this.fps;
 
-        /**
-         * Internal frame time ms value.
-         *
-         * @name Phaser.Physics.Arcade.World#_frameTimeMS
-         * @private
-         * @type {number}
-         * @since 3.10.0
-         */
-        this._frameTimeMS = 1000 * this._frameTime;
+            /**
+             * Internal frame time ms value.
+             *
+             * @name Phaser.Physics.Arcade.World#_frameTimeMS
+             * @private
+             * @type {number}
+             * @since 3.10.0
+             */
+            this._frameTimeMS = 1000 * this._frameTime;
 
-        /**
-         * The number of steps that took place in the last frame.
-         *
-         * @name Phaser.Physics.Arcade.World#stepsLastFrame
-         * @readonly
-         * @type {number}
-         * @since 3.10.0
-         */
-        this.stepsLastFrame = 0;
+            /**
+             * The number of steps that took place in the last frame.
+             *
+             * @name Phaser.Physics.Arcade.World#stepsLastFrame
+             * @readonly
+             * @type {number}
+             * @since 3.10.0
+             */
+            this.stepsLastFrame = 0;
 
-        /**
-         * Scaling factor applied to the frame rate.
-         *
-         * - 1.0 = normal speed
-         * - 2.0 = half speed
-         * - 0.5 = double speed
-         *
-         * @name Phaser.Physics.Arcade.World#timeScale
-         * @type {number}
-         * @default 1
-         * @since 3.10.0
-         */
-        this.timeScale = GetValue(config, 'timeScale', 1);
+            /**
+             * Scaling factor applied to the frame rate.
+             *
+             * - 1.0 = normal speed
+             * - 2.0 = half speed
+             * - 0.5 = double speed
+             *
+             * @name Phaser.Physics.Arcade.World#timeScale
+             * @type {number}
+             * @default 1
+             * @since 3.10.0
+             */
+            this.timeScale = GetValue(config, 'timeScale', 1);
 
-        /**
-         * The maximum absolute difference of a Body's per-step velocity and its overlap with another Body that will result in separation on *each axis*.
-         * Larger values favor separation.
-         * Smaller values favor no separation.
-         *
-         * @name Phaser.Physics.Arcade.World#OVERLAP_BIAS
-         * @type {number}
-         * @default 4
-         * @since 3.0.0
-         */
-        this.OVERLAP_BIAS = GetValue(config, 'overlapBias', 4);
+            /**
+             * The maximum absolute difference of a Body's per-step velocity and its overlap with another Body that will result in separation on *each axis*.
+             * Larger values favor separation.
+             * Smaller values favor no separation.
+             *
+             * @name Phaser.Physics.Arcade.World#OVERLAP_BIAS
+             * @type {number}
+             * @default 4
+             * @since 3.0.0
+             */
+            this.OVERLAP_BIAS = GetValue(config, 'overlapBias', 4);
 
-        /**
-         * The maximum absolute value of a Body's overlap with a tile that will result in separation on *each axis*.
-         * Larger values favor separation.
-         * Smaller values favor no separation.
-         * The optimum value may be similar to the tile size.
-         *
-         * @name Phaser.Physics.Arcade.World#TILE_BIAS
-         * @type {number}
-         * @default 16
-         * @since 3.0.0
-         */
-        this.TILE_BIAS = GetValue(config, 'tileBias', 16);
+            /**
+             * The maximum absolute value of a Body's overlap with a tile that will result in separation on *each axis*.
+             * Larger values favor separation.
+             * Smaller values favor no separation.
+             * The optimum value may be similar to the tile size.
+             *
+             * @name Phaser.Physics.Arcade.World#TILE_BIAS
+             * @type {number}
+             * @default 16
+             * @since 3.0.0
+             */
+            this.TILE_BIAS = GetValue(config, 'tileBias', 16);
 
-        /**
-         * Always separate overlapping Bodies horizontally before vertically.
-         * False (the default) means Bodies are first separated on the axis of greater gravity, or the vertical axis if neither is greater.
-         *
-         * @name Phaser.Physics.Arcade.World#forceX
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.forceX = GetValue(config, 'forceX', false);
+            /**
+             * Always separate overlapping Bodies horizontally before vertically.
+             * False (the default) means Bodies are first separated on the axis of greater gravity, or the vertical axis if neither is greater.
+             *
+             * @name Phaser.Physics.Arcade.World#forceX
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.forceX = GetValue(config, 'forceX', false);
 
-        /**
-         * Whether the simulation advances with the game loop.
-         *
-         * @name Phaser.Physics.Arcade.World#isPaused
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.isPaused = GetValue(config, 'isPaused', false);
+            /**
+             * Whether the simulation advances with the game loop.
+             *
+             * @name Phaser.Physics.Arcade.World#isPaused
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.isPaused = GetValue(config, 'isPaused', false);
 
-        /**
-         * Temporary total of colliding Bodies.
-         *
-         * @name Phaser.Physics.Arcade.World#_total
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._total = 0;
+            /**
+             * Temporary total of colliding Bodies.
+             *
+             * @name Phaser.Physics.Arcade.World#_total
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._total = 0;
 
-        /**
-         * Enables the debug display.
-         *
-         * @name Phaser.Physics.Arcade.World#drawDebug
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.drawDebug = GetValue(config, 'debug', false);
+            /**
+             * Enables the debug display.
+             *
+             * @name Phaser.Physics.Arcade.World#drawDebug
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.drawDebug = GetValue(config, 'debug', false);
 
-        /**
-         * The graphics object drawing the debug display.
-         *
-         * @name Phaser.Physics.Arcade.World#debugGraphic
-         * @type {Phaser.GameObjects.Graphics}
-         * @since 3.0.0
-         */
-        this.debugGraphic;
+            /**
+             * The graphics object drawing the debug display.
+             *
+             * @name Phaser.Physics.Arcade.World#debugGraphic
+             * @type {Phaser.GameObjects.Graphics}
+             * @since 3.0.0
+             */
+            this.debugGraphic;
 
-        /**
-         * Default debug display settings for new Bodies.
-         *
-         * @name Phaser.Physics.Arcade.World#defaults
-         * @type {Phaser.Types.Physics.Arcade.ArcadeWorldDefaults}
-         * @since 3.0.0
-         */
-        this.defaults = {
-            debugShowBody: GetValue(config, 'debugShowBody', true),
-            debugShowStaticBody: GetValue(config, 'debugShowStaticBody', true),
-            debugShowVelocity: GetValue(config, 'debugShowVelocity', true),
-            bodyDebugColor: GetValue(config, 'debugBodyColor', 0xff00ff),
-            staticBodyDebugColor: GetValue(config, 'debugStaticBodyColor', 0x0000ff),
-            velocityDebugColor: GetValue(config, 'debugVelocityColor', 0x00ff00)
-        };
+            /**
+             * Default debug display settings for new Bodies.
+             *
+             * @name Phaser.Physics.Arcade.World#defaults
+             * @type {Phaser.Types.Physics.Arcade.ArcadeWorldDefaults}
+             * @since 3.0.0
+             */
+            this.defaults = {
+                debugShowBody: GetValue(config, 'debugShowBody', true),
+                debugShowStaticBody: GetValue(config, 'debugShowStaticBody', true),
+                debugShowVelocity: GetValue(config, 'debugShowVelocity', true),
+                bodyDebugColor: GetValue(config, 'debugBodyColor', 0xff00ff),
+                staticBodyDebugColor: GetValue(config, 'debugStaticBodyColor', 0x0000ff),
+                velocityDebugColor: GetValue(config, 'debugVelocityColor', 0x00ff00)
+            };
 
-        /**
-         * The maximum number of items per node on the RTree.
-         *
-         * This is ignored if `useTree` is `false`. If you have a large number of bodies in
-         * your world then you may find search performance improves by increasing this value,
-         * to allow more items per node and less node division.
-         *
-         * @name Phaser.Physics.Arcade.World#maxEntries
-         * @type {number}
-         * @default 16
-         * @since 3.0.0
-         */
-        this.maxEntries = GetValue(config, 'maxEntries', 16);
+            /**
+             * The maximum number of items per node on the RTree.
+             *
+             * This is ignored if `useTree` is `false`. If you have a large number of bodies in
+             * your world then you may find search performance improves by increasing this value,
+             * to allow more items per node and less node division.
+             *
+             * @name Phaser.Physics.Arcade.World#maxEntries
+             * @type {number}
+             * @default 16
+             * @since 3.0.0
+             */
+            this.maxEntries = GetValue(config, 'maxEntries', 16);
 
-        /**
-         * Should this Arcade Physics World use an RTree for Dynamic bodies?
-         *
-         * An RTree is a fast way of spatially sorting of all the bodies in the world.
-         * However, at certain limits, the cost of clearing and inserting the bodies into the
-         * tree every frame becomes more expensive than the search speed gains it provides.
-         *
-         * If you have a large number of dynamic bodies in your world then it may be best to
-         * disable the use of the RTree by setting this property to `false` in the physics config.
-         *
-         * The number it can cope with depends on browser and device, but a conservative estimate
-         * of around 5,000 bodies should be considered the max before disabling it.
-         *
-         * This only applies to dynamic bodies. Static bodies are always kept in an RTree,
-         * because they don't have to be cleared every frame, so you benefit from the
-         * massive search speeds all the time.
-         *
-         * @name Phaser.Physics.Arcade.World#useTree
-         * @type {boolean}
-         * @default true
-         * @since 3.10.0
-         */
-        this.useTree = GetValue(config, 'useTree', true);
+            /**
+             * Should this Arcade Physics World use an RTree for Dynamic bodies?
+             *
+             * An RTree is a fast way of spatially sorting of all the bodies in the world.
+             * However, at certain limits, the cost of clearing and inserting the bodies into the
+             * tree every frame becomes more expensive than the search speed gains it provides.
+             *
+             * If you have a large number of dynamic bodies in your world then it may be best to
+             * disable the use of the RTree by setting this property to `false` in the physics config.
+             *
+             * The number it can cope with depends on browser and device, but a conservative estimate
+             * of around 5,000 bodies should be considered the max before disabling it.
+             *
+             * This only applies to dynamic bodies. Static bodies are always kept in an RTree,
+             * because they don't have to be cleared every frame, so you benefit from the
+             * massive search speeds all the time.
+             *
+             * @name Phaser.Physics.Arcade.World#useTree
+             * @type {boolean}
+             * @default true
+             * @since 3.10.0
+             */
+            this.useTree = GetValue(config, 'useTree', true);
 
-        /**
-         * The spatial index of Dynamic Bodies.
-         *
-         * @name Phaser.Physics.Arcade.World#tree
-         * @type {Phaser.Structs.RTree}
-         * @since 3.0.0
-         */
-        this.tree = new RTree(this.maxEntries);
+            /**
+             * The spatial index of Dynamic Bodies.
+             *
+             * @name Phaser.Physics.Arcade.World#tree
+             * @type {Phaser.Structs.RTree}
+             * @since 3.0.0
+             */
+            this.tree = new RTree(this.maxEntries);
 
-        /**
-         * The spatial index of Static Bodies.
-         *
-         * @name Phaser.Physics.Arcade.World#staticTree
-         * @type {Phaser.Structs.RTree}
-         * @since 3.0.0
-         */
-        this.staticTree = new RTree(this.maxEntries);
+            /**
+             * The spatial index of Static Bodies.
+             *
+             * @name Phaser.Physics.Arcade.World#staticTree
+             * @type {Phaser.Structs.RTree}
+             * @since 3.0.0
+             */
+            this.staticTree = new RTree(this.maxEntries);
 
-        /**
-         * Recycled input for tree searches.
-         *
-         * @name Phaser.Physics.Arcade.World#treeMinMax
-         * @type {Phaser.Types.Physics.Arcade.ArcadeWorldTreeMinMax}
-         * @since 3.0.0
-         */
-        this.treeMinMax = { minX: 0, minY: 0, maxX: 0, maxY: 0 };
+            /**
+             * Recycled input for tree searches.
+             *
+             * @name Phaser.Physics.Arcade.World#treeMinMax
+             * @type {Phaser.Types.Physics.Arcade.ArcadeWorldTreeMinMax}
+             * @since 3.0.0
+             */
+            this.treeMinMax = {minX: 0, minY: 0, maxX: 0, maxY: 0};
 
-        /**
-         * A temporary Transform Matrix used by bodies for calculations without them needing their own local copy.
-         *
-         * @name Phaser.Physics.Arcade.World#_tempMatrix
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @private
-         * @since 3.12.0
-         */
-        this._tempMatrix = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix used by bodies for calculations without them needing their own local copy.
+             *
+             * @name Phaser.Physics.Arcade.World#_tempMatrix
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @private
+             * @since 3.12.0
+             */
+            this._tempMatrix = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix used by bodies for calculations without them needing their own local copy.
-         *
-         * @name Phaser.Physics.Arcade.World#_tempMatrix2
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @private
-         * @since 3.12.0
-         */
-        this._tempMatrix2 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix used by bodies for calculations without them needing their own local copy.
+             *
+             * @name Phaser.Physics.Arcade.World#_tempMatrix2
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @private
+             * @since 3.12.0
+             */
+            this._tempMatrix2 = new TransformMatrix();
 
-        /**
-         * The Filtering Options passed to `GetTilesWithinWorldXY` as part of the `collideSpriteVsTilemapLayer` check.
-         *
-         * @name Phaser.Physics.Arcade.World#tileFilterOptions
-         * @type {Phaser.Types.Tilemaps.FilteringOptions}
-         * @since 3.60.0
-         */
-        this.tileFilterOptions = { isColliding: true, isNotEmpty: true, hasInterestingFace: true };
+            /**
+             * The Filtering Options passed to `GetTilesWithinWorldXY` as part of the `collideSpriteVsTilemapLayer` check.
+             *
+             * @name Phaser.Physics.Arcade.World#tileFilterOptions
+             * @type {Phaser.Types.Tilemaps.FilteringOptions}
+             * @since 3.60.0
+             */
+            this.tileFilterOptions = {isColliding: true, isNotEmpty: true, hasInterestingFace: true};
 
-        if (this.drawDebug)
-        {
-            this.createDebugGraphic();
-        }
-    },
+            if (this.drawDebug) {
+                this.createDebugGraphic();
+            }
+        },
 
     /**
      * Adds an Arcade Physics Body to a Game Object, an array of Game Objects, or the children of a Group.
@@ -444,40 +442,32 @@ var World = new Class({
      * @param {(Phaser.GameObjects.GameObject|Phaser.GameObjects.GameObject[]|Phaser.GameObjects.Group|Phaser.GameObjects.Group[])} object - The object, or objects, on which to create the bodies.
      * @param {number} [bodyType] - The type of Body to create. Either `DYNAMIC_BODY` or `STATIC_BODY`.
      */
-    enable: function (object, bodyType)
-    {
-        if (bodyType === undefined) { bodyType = CONST.DYNAMIC_BODY; }
-
-        if (!Array.isArray(object))
-        {
-            object = [ object ];
+    enable: function (object, bodyType) {
+        if (bodyType === undefined) {
+            bodyType = CONST.DYNAMIC_BODY;
         }
 
-        for (var i = 0; i < object.length; i++)
-        {
+        if (!Array.isArray(object)) {
+            object = [object];
+        }
+
+        for (var i = 0; i < object.length; i++) {
             var entry = object[i];
 
-            if (entry.isParent)
-            {
+            if (entry.isParent) {
                 var children = entry.getChildren();
 
-                for (var c = 0; c < children.length; c++)
-                {
+                for (var c = 0; c < children.length; c++) {
                     var child = children[c];
 
-                    if (child.isParent)
-                    {
+                    if (child.isParent) {
                         //  Handle Groups nested inside of Groups
                         this.enable(child, bodyType);
-                    }
-                    else
-                    {
+                    } else {
                         this.enableBody(child, bodyType);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 this.enableBody(entry, bodyType);
             }
         }
@@ -513,20 +503,16 @@ var World = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object on which the body was created.
      */
-    enableBody: function (object, bodyType)
-    {
-        if (bodyType === undefined) { bodyType = CONST.DYNAMIC_BODY; }
+    enableBody: function (object, bodyType) {
+        if (bodyType === undefined) {
+            bodyType = CONST.DYNAMIC_BODY;
+        }
 
-        if (object.hasTransformComponent)
-        {
-            if (!object.body)
-            {
-                if (bodyType === CONST.DYNAMIC_BODY)
-                {
+        if (object.hasTransformComponent) {
+            if (!object.body) {
+                if (bodyType === CONST.DYNAMIC_BODY) {
                     object.body = new Body(this, object);
-                }
-                else if (bodyType === CONST.STATIC_BODY)
-                {
+                } else if (bodyType === CONST.STATIC_BODY) {
                     object.body = new StaticBody(this, object);
                 }
             }
@@ -549,14 +535,10 @@ var World = new Class({
      *
      * @return {(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)} The Body that was added to the simulation.
      */
-    add: function (body)
-    {
-        if (body.physicsType === CONST.DYNAMIC_BODY)
-        {
+    add: function (body) {
+        if (body.physicsType === CONST.DYNAMIC_BODY) {
             this.bodies.set(body);
-        }
-        else if (body.physicsType === CONST.STATIC_BODY)
-        {
+        } else if (body.physicsType === CONST.STATIC_BODY) {
             this.staticBodies.set(body);
 
             this.staticTree.insert(body);
@@ -581,38 +563,28 @@ var World = new Class({
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.GameObjects.GameObject[]|Phaser.GameObjects.Group|Phaser.GameObjects.Group[])} object - The object, or objects, on which to disable the bodies.
      */
-    disable: function (object)
-    {
-        if (!Array.isArray(object))
-        {
-            object = [ object ];
+    disable: function (object) {
+        if (!Array.isArray(object)) {
+            object = [object];
         }
 
-        for (var i = 0; i < object.length; i++)
-        {
+        for (var i = 0; i < object.length; i++) {
             var entry = object[i];
 
-            if (entry.isParent)
-            {
+            if (entry.isParent) {
                 var children = entry.getChildren();
 
-                for (var c = 0; c < children.length; c++)
-                {
+                for (var c = 0; c < children.length; c++) {
                     var child = children[c];
 
-                    if (child.isParent)
-                    {
+                    if (child.isParent) {
                         //  Handle Groups nested inside of Groups
                         this.disable(child);
-                    }
-                    else
-                    {
+                    } else {
                         this.disableBody(child.body);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 this.disableBody(entry.body);
             }
         }
@@ -631,8 +603,7 @@ var World = new Class({
      *
      * @param {(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)} body - The Body to be disabled.
      */
-    disableBody: function (body)
-    {
+    disableBody: function (body) {
         this.remove(body);
 
         body.enable = false;
@@ -651,15 +622,11 @@ var World = new Class({
      *
      * @param {(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)} body - The body to be removed from the simulation.
      */
-    remove: function (body)
-    {
-        if (body.physicsType === CONST.DYNAMIC_BODY)
-        {
+    remove: function (body) {
+        if (body.physicsType === CONST.DYNAMIC_BODY) {
             this.tree.remove(body);
             this.bodies.delete(body);
-        }
-        else if (body.physicsType === CONST.STATIC_BODY)
-        {
+        } else if (body.physicsType === CONST.STATIC_BODY) {
             this.staticBodies.delete(body);
             this.staticTree.remove(body);
         }
@@ -682,9 +649,8 @@ var World = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object that was created for use by the World.
      */
-    createDebugGraphic: function ()
-    {
-        var graphic = this.scene.sys.add.graphics({ x: 0, y: 0 });
+    createDebugGraphic: function () {
+        var graphic = this.scene.sys.add.graphics({x: 0, y: 0});
 
         graphic.setDepth(Number.MAX_VALUE);
 
@@ -717,12 +683,10 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
-    setBounds: function (x, y, width, height, checkLeft, checkRight, checkUp, checkDown)
-    {
+    setBounds: function (x, y, width, height, checkLeft, checkRight, checkUp, checkDown) {
         this.bounds.setTo(x, y, width, height);
 
-        if (checkLeft !== undefined)
-        {
+        if (checkLeft !== undefined) {
             this.setBoundsCollision(checkLeft, checkRight, checkUp, checkDown);
         }
 
@@ -742,12 +706,19 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
-    setBoundsCollision: function (left, right, up, down)
-    {
-        if (left === undefined) { left = true; }
-        if (right === undefined) { right = true; }
-        if (up === undefined) { up = true; }
-        if (down === undefined) { down = true; }
+    setBoundsCollision: function (left, right, up, down) {
+        if (left === undefined) {
+            left = true;
+        }
+        if (right === undefined) {
+            right = true;
+        }
+        if (up === undefined) {
+            up = true;
+        }
+        if (down === undefined) {
+            down = true;
+        }
 
         this.checkCollision.left = left;
         this.checkCollision.right = right;
@@ -771,8 +742,7 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
-    pause: function ()
-    {
+    pause: function () {
         this.isPaused = true;
 
         this.emit(Events.PAUSE);
@@ -789,8 +759,7 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
-    resume: function ()
-    {
+    resume: function () {
         this.isPaused = false;
 
         this.emit(Events.RESUME);
@@ -821,11 +790,16 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.Collider} The Collider that was created.
      */
-    addCollider: function (object1, object2, collideCallback, processCallback, callbackContext)
-    {
-        if (collideCallback === undefined) { collideCallback = null; }
-        if (processCallback === undefined) { processCallback = null; }
-        if (callbackContext === undefined) { callbackContext = collideCallback; }
+    addCollider: function (object1, object2, collideCallback, processCallback, callbackContext) {
+        if (collideCallback === undefined) {
+            collideCallback = null;
+        }
+        if (processCallback === undefined) {
+            processCallback = null;
+        }
+        if (callbackContext === undefined) {
+            callbackContext = collideCallback;
+        }
 
         var collider = new Collider(this, false, object1, object2, collideCallback, processCallback, callbackContext);
 
@@ -856,11 +830,16 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.Collider} The Collider that was created.
      */
-    addOverlap: function (object1, object2, collideCallback, processCallback, callbackContext)
-    {
-        if (collideCallback === undefined) { collideCallback = null; }
-        if (processCallback === undefined) { processCallback = null; }
-        if (callbackContext === undefined) { callbackContext = collideCallback; }
+    addOverlap: function (object1, object2, collideCallback, processCallback, callbackContext) {
+        if (collideCallback === undefined) {
+            collideCallback = null;
+        }
+        if (processCallback === undefined) {
+            processCallback = null;
+        }
+        if (callbackContext === undefined) {
+            callbackContext = collideCallback;
+        }
 
         var collider = new Collider(this, true, object1, object2, collideCallback, processCallback, callbackContext);
 
@@ -886,8 +865,7 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} This World object.
      */
-    removeCollider: function (collider)
-    {
+    removeCollider: function (collider) {
         this.colliders.remove(collider);
 
         return this;
@@ -912,8 +890,7 @@ var World = new Class({
      *
      * @return {this} This World object.
      */
-    setFPS: function (framerate)
-    {
+    setFPS: function (framerate) {
         this.fps = framerate;
         this._frameTime = 1 / this.fps;
         this._frameTimeMS = 1000 * this._frameTime;
@@ -933,10 +910,8 @@ var World = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (this.isPaused || this.bodies.size === 0)
-        {
+    update: function (time, delta) {
+        if (this.isPaused || this.bodies.size === 0) {
             return;
         }
 
@@ -953,32 +928,27 @@ var World = new Class({
         //  Will a step happen this frame?
         var willStep = (this._elapsed >= msPerFrame);
 
-        if (!this.fixedStep)
-        {
+        if (!this.fixedStep) {
             fixedDelta = delta * 0.001;
             willStep = true;
             this._elapsed = 0;
         }
 
-        for (i = 0; i < bodies.length; i++)
-        {
+        for (i = 0; i < bodies.length; i++) {
             body = bodies[i];
 
-            if (body.enable)
-            {
+            if (body.enable) {
                 body.preUpdate(willStep, fixedDelta);
             }
         }
 
         //  We know that a step will happen this frame, so let's bundle it all together to save branching and iteration costs
-        if (willStep)
-        {
+        if (willStep) {
             this._elapsed -= msPerFrame;
             this.stepsLastFrame = 1;
 
             //  Optionally populate our dynamic collision tree
-            if (this.useTree)
-            {
+            if (this.useTree) {
                 this.tree.clear();
                 this.tree.load(bodies);
             }
@@ -986,12 +956,10 @@ var World = new Class({
             //  Process any colliders
             var colliders = this.colliders.update();
 
-            for (i = 0; i < colliders.length; i++)
-            {
+            for (i = 0; i < colliders.length; i++) {
                 var collider = colliders[i];
 
-                if (collider.active)
-                {
+                if (collider.active) {
                     collider.update();
                 }
             }
@@ -1000,8 +968,7 @@ var World = new Class({
         }
 
         //  Process any additional steps this frame
-        while (this._elapsed >= msPerFrame)
-        {
+        while (this._elapsed >= msPerFrame) {
             this._elapsed -= msPerFrame;
 
             this.step(fixedDelta);
@@ -1017,27 +984,23 @@ var World = new Class({
      *
      * @param {number} delta - The delta time amount, in seconds, by which to advance the simulation.
      */
-    step: function (delta)
-    {
+    step: function (delta) {
         //  Update all active bodies
         var i;
         var body;
         var bodies = this.bodies.entries;
         var len = bodies.length;
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             body = bodies[i];
 
-            if (body.enable)
-            {
+            if (body.enable) {
                 body.update(delta);
             }
         }
 
         //  Optionally populate our dynamic collision tree
-        if (this.useTree)
-        {
+        if (this.useTree) {
             this.tree.clear();
             this.tree.load(bodies);
         }
@@ -1045,12 +1008,10 @@ var World = new Class({
         //  Process any colliders
         var colliders = this.colliders.update();
 
-        for (i = 0; i < colliders.length; i++)
-        {
+        for (i = 0; i < colliders.length; i++) {
             var collider = colliders[i];
 
-            if (collider.active)
-            {
+            if (collider.active) {
                 collider.update();
             }
         }
@@ -1067,8 +1028,7 @@ var World = new Class({
      * @fires Phaser.Physics.Arcade.Events#WORLD_STEP
      * @since 3.70.0
      */
-    singleStep: function ()
-    {
+    singleStep: function () {
         this.update(0, this._frameTimeMS);
 
         this.postUpdate();
@@ -1080,8 +1040,7 @@ var World = new Class({
      * @method Phaser.Physics.Arcade.World#postUpdate
      * @since 3.0.0
      */
-    postUpdate: function ()
-    {
+    postUpdate: function () {
         var i;
         var body;
         var bodies = this.bodies.entries;
@@ -1091,33 +1050,27 @@ var World = new Class({
         var staticBodies = this.staticBodies;
 
         //  We don't need to postUpdate if there wasn't a step this frame
-        if (this.stepsLastFrame)
-        {
+        if (this.stepsLastFrame) {
             this.stepsLastFrame = 0;
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 body = bodies[i];
 
-                if (body.enable)
-                {
+                if (body.enable) {
                     body.postUpdate();
                 }
             }
         }
 
-        if (this.drawDebug)
-        {
+        if (this.drawDebug) {
             var graphics = this.debugGraphic;
 
             graphics.clear();
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 body = bodies[i];
 
-                if (body.willDrawDebug())
-                {
+                if (body.willDrawDebug()) {
                     body.drawDebug(graphics);
                 }
             }
@@ -1125,12 +1078,10 @@ var World = new Class({
             bodies = staticBodies.entries;
             len = bodies.length;
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 body = bodies[i];
 
-                if (body.willDrawDebug())
-                {
+                if (body.willDrawDebug()) {
                     body.drawDebug(graphics);
                 }
             }
@@ -1138,25 +1089,20 @@ var World = new Class({
 
         var pending = this.pendingDestroy;
 
-        if (pending.size > 0)
-        {
+        if (pending.size > 0) {
             var dynamicTree = this.tree;
             var staticTree = this.staticTree;
 
             bodies = pending.entries;
             len = bodies.length;
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 body = bodies[i];
 
-                if (body.physicsType === CONST.DYNAMIC_BODY)
-                {
+                if (body.physicsType === CONST.DYNAMIC_BODY) {
                     dynamicTree.remove(body);
                     dynamic.delete(body);
-                }
-                else if (body.physicsType === CONST.STATIC_BODY)
-                {
+                } else if (body.physicsType === CONST.STATIC_BODY) {
                     staticTree.remove(body);
                     staticBodies.delete(body);
                 }
@@ -1178,10 +1124,8 @@ var World = new Class({
      * @param {Phaser.Physics.Arcade.Body} body - The Body to be updated.
      * @param {number} delta - The delta value to be used in the motion calculations, in seconds.
      */
-    updateMotion: function (body, delta)
-    {
-        if (body.allowRotation)
-        {
+    updateMotion: function (body, delta) {
+        if (body.allowRotation) {
             this.computeAngularVelocity(body, delta);
         }
 
@@ -1197,31 +1141,22 @@ var World = new Class({
      * @param {Phaser.Physics.Arcade.Body} body - The Body to compute the velocity for.
      * @param {number} delta - The delta value to be used in the calculation, in seconds.
      */
-    computeAngularVelocity: function (body, delta)
-    {
+    computeAngularVelocity: function (body, delta) {
         var velocity = body.angularVelocity;
         var acceleration = body.angularAcceleration;
         var drag = body.angularDrag;
         var max = body.maxAngular;
 
-        if (acceleration)
-        {
+        if (acceleration) {
             velocity += acceleration * delta;
-        }
-        else if (body.allowDrag && drag)
-        {
+        } else if (body.allowDrag && drag) {
             drag *= delta;
 
-            if (FuzzyGreaterThan(velocity - drag, 0, 0.1))
-            {
+            if (FuzzyGreaterThan(velocity - drag, 0, 0.1)) {
                 velocity -= drag;
-            }
-            else if (FuzzyLessThan(velocity + drag, 0, 0.1))
-            {
+            } else if (FuzzyLessThan(velocity + drag, 0, 0.1)) {
                 velocity += drag;
-            }
-            else
-            {
+            } else {
                 velocity = 0;
             }
         }
@@ -1243,8 +1178,7 @@ var World = new Class({
      * @param {Phaser.Physics.Arcade.Body} body - The Body to compute the velocity for.
      * @param {number} delta - The delta value to be used in the calculation, in seconds.
      */
-    computeVelocity: function (body, delta)
-    {
+    computeVelocity: function (body, delta) {
         var velocityX = body.velocity.x;
         var accelerationX = body.acceleration.x;
         var dragX = body.drag.x;
@@ -1260,20 +1194,15 @@ var World = new Class({
         var allowDrag = body.allowDrag;
         var useDamping = body.useDamping;
 
-        if (body.allowGravity)
-        {
+        if (body.allowGravity) {
             velocityX += (this.gravity.x + body.gravity.x) * delta;
             velocityY += (this.gravity.y + body.gravity.y) * delta;
         }
 
-        if (accelerationX)
-        {
+        if (accelerationX) {
             velocityX += accelerationX * delta;
-        }
-        else if (allowDrag && dragX)
-        {
-            if (useDamping)
-            {
+        } else if (allowDrag && dragX) {
+            if (useDamping) {
                 //  Damping based deceleration
                 dragX = Math.pow(dragX, delta);
 
@@ -1281,39 +1210,27 @@ var World = new Class({
 
                 speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
 
-                if (FuzzyEqual(speed, 0, 0.001))
-                {
+                if (FuzzyEqual(speed, 0, 0.001)) {
                     velocityX = 0;
                 }
-            }
-            else
-            {
+            } else {
                 //  Linear deceleration
                 dragX *= delta;
 
-                if (FuzzyGreaterThan(velocityX - dragX, 0, 0.01))
-                {
+                if (FuzzyGreaterThan(velocityX - dragX, 0, 0.01)) {
                     velocityX -= dragX;
-                }
-                else if (FuzzyLessThan(velocityX + dragX, 0, 0.01))
-                {
+                } else if (FuzzyLessThan(velocityX + dragX, 0, 0.01)) {
                     velocityX += dragX;
-                }
-                else
-                {
+                } else {
                     velocityX = 0;
                 }
             }
         }
 
-        if (accelerationY)
-        {
+        if (accelerationY) {
             velocityY += accelerationY * delta;
-        }
-        else if (allowDrag && dragY)
-        {
-            if (useDamping)
-            {
+        } else if (allowDrag && dragY) {
+            if (useDamping) {
                 //  Damping based deceleration
                 dragY = Math.pow(dragY, delta);
 
@@ -1321,26 +1238,18 @@ var World = new Class({
 
                 speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
 
-                if (FuzzyEqual(speed, 0, 0.001))
-                {
+                if (FuzzyEqual(speed, 0, 0.001)) {
                     velocityY = 0;
                 }
-            }
-            else
-            {
+            } else {
                 //  Linear deceleration
                 dragY *= delta;
 
-                if (FuzzyGreaterThan(velocityY - dragY, 0, 0.01))
-                {
+                if (FuzzyGreaterThan(velocityY - dragY, 0, 0.01)) {
                     velocityY -= dragY;
-                }
-                else if (FuzzyLessThan(velocityY + dragY, 0, 0.01))
-                {
+                } else if (FuzzyLessThan(velocityY + dragY, 0, 0.01)) {
                     velocityY += dragY;
-                }
-                else
-                {
+                } else {
                     velocityY = 0;
                 }
             }
@@ -1351,8 +1260,7 @@ var World = new Class({
 
         body.velocity.set(velocityX, velocityY);
 
-        if (maxSpeed > -1 && body.velocity.length() > maxSpeed)
-        {
+        if (maxSpeed > -1 && body.velocity.length() > maxSpeed) {
             body.velocity.normalize().scale(maxSpeed);
             speed = maxSpeed;
         }
@@ -1376,8 +1284,7 @@ var World = new Class({
      *
      * @return {boolean} True if separation occurred, otherwise false.
      */
-    separate: function (body1, body2, processCallback, callbackContext, overlapOnly)
-    {
+    separate: function (body1, body2, processCallback, callbackContext, overlapOnly) {
         var overlapX;
         var overlapY;
 
@@ -1391,30 +1298,24 @@ var World = new Class({
             body2.checkCollision.none ||
             !this.intersects(body1, body2) ||
             (body1.collisionMask & body2.collisionCategory) === 0 ||
-            (body2.collisionMask & body1.collisionCategory) === 0)
-        {
+            (body2.collisionMask & body1.collisionCategory) === 0) {
             return result;
         }
 
         //  They overlap. Is there a custom process callback? If it returns true then we can carry on, otherwise we should abort.
-        if (processCallback && processCallback.call(callbackContext, (body1.gameObject || body1), (body2.gameObject || body2)) === false)
-        {
+        if (processCallback && processCallback.call(callbackContext, (body1.gameObject || body1), (body2.gameObject || body2)) === false) {
             return result;
         }
 
         //  Circle vs. Circle, or Circle vs. Rect
-        if (body1.isCircle || body2.isCircle)
-        {
+        if (body1.isCircle || body2.isCircle) {
             var circleResults = this.separateCircle(body1, body2, overlapOnly);
 
-            if (circleResults.result)
-            {
+            if (circleResults.result) {
                 //  We got a satisfactory result from the separateCircle method
                 result = true;
                 runSeparation = false;
-            }
-            else
-            {
+            } else {
                 //  Further processing required
                 overlapX = circleResults.x;
                 overlapY = circleResults.y;
@@ -1422,36 +1323,28 @@ var World = new Class({
             }
         }
 
-        if (runSeparation)
-        {
+        if (runSeparation) {
             var resultX = false;
             var resultY = false;
             var bias = this.OVERLAP_BIAS;
 
             //  Do we separate on x first or y first or both?
-            if (overlapOnly)
-            {
+            if (overlapOnly) {
                 //  No separation but we need to calculate overlapX, overlapY, etc.
                 resultX = SeparateX(body1, body2, overlapOnly, bias, overlapX);
                 resultY = SeparateY(body1, body2, overlapOnly, bias, overlapY);
-            }
-            else if (this.forceX || Math.abs(this.gravity.y + body1.gravity.y) < Math.abs(this.gravity.x + body1.gravity.x))
-            {
+            } else if (this.forceX || Math.abs(this.gravity.y + body1.gravity.y) < Math.abs(this.gravity.x + body1.gravity.x)) {
                 resultX = SeparateX(body1, body2, overlapOnly, bias, overlapX);
 
                 //  Are they still intersecting? Let's do the other axis then
-                if (this.intersects(body1, body2))
-                {
+                if (this.intersects(body1, body2)) {
                     resultY = SeparateY(body1, body2, overlapOnly, bias, overlapY);
                 }
-            }
-            else
-            {
+            } else {
                 resultY = SeparateY(body1, body2, overlapOnly, bias, overlapY);
 
                 //  Are they still intersecting? Let's do the other axis then
-                if (this.intersects(body1, body2))
-                {
+                if (this.intersects(body1, body2)) {
                     resultX = SeparateX(body1, body2, overlapOnly, bias, overlapX);
                 }
             }
@@ -1459,17 +1352,12 @@ var World = new Class({
             result = (resultX || resultY);
         }
 
-        if (result)
-        {
-            if (overlapOnly)
-            {
-                if (body1.onOverlap || body2.onOverlap)
-                {
+        if (result) {
+            if (overlapOnly) {
+                if (body1.onOverlap || body2.onOverlap) {
                     this.emit(Events.OVERLAP, body1.gameObject, body2.gameObject, body1, body2);
                 }
-            }
-            else if (body1.onCollide || body2.onCollide)
-            {
+            } else if (body1.onCollide || body2.onCollide) {
                 this.emit(Events.COLLIDE, body1.gameObject, body2.gameObject, body1, body2);
             }
         }
@@ -1491,8 +1379,7 @@ var World = new Class({
      *
      * @return {boolean} True if separation occurred, otherwise false.
      */
-    separateCircle: function (body1, body2, overlapOnly)
-    {
+    separateCircle: function (body1, body2, overlapOnly) {
         //  Set the AABB overlap, blocked and touching values into the bodies (we don't use the return values here)
         GetOverlapX(body1, body2, false, 0);
         GetOverlapY(body1, body2, false, 0);
@@ -1509,8 +1396,7 @@ var World = new Class({
         var overlap = 0;
         var twoCircles = true;
 
-        if (body1IsCircle !== body2IsCircle)
-        {
+        if (body1IsCircle !== body2IsCircle) {
             twoCircles = false;
 
             var circleX = body1Center.x;
@@ -1522,8 +1408,7 @@ var World = new Class({
             var rectRight = body2.right;
             var rectBottom = body2.bottom;
 
-            if (body2IsCircle)
-            {
+            if (body2IsCircle) {
                 circleX = body2Center.x;
                 circleY = body2Center.y;
                 circleRadius = body2.halfWidth;
@@ -1534,25 +1419,16 @@ var World = new Class({
                 rectBottom = body1.bottom;
             }
 
-            if (circleY < rectY)
-            {
-                if (circleX < rectX)
-                {
+            if (circleY < rectY) {
+                if (circleX < rectX) {
                     overlap = DistanceBetween(circleX, circleY, rectX, rectY) - circleRadius;
-                }
-                else if (circleX > rectRight)
-                {
+                } else if (circleX > rectRight) {
                     overlap = DistanceBetween(circleX, circleY, rectRight, rectY) - circleRadius;
                 }
-            }
-            else if (circleY > rectBottom)
-            {
-                if (circleX < rectX)
-                {
+            } else if (circleY > rectBottom) {
+                if (circleX < rectX) {
                     overlap = DistanceBetween(circleX, circleY, rectX, rectBottom) - circleRadius;
-                }
-                else if (circleX > rectRight)
-                {
+                } else if (circleX > rectRight) {
                     overlap = DistanceBetween(circleX, circleY, rectRight, rectBottom) - circleRadius;
                 }
             }
@@ -1560,9 +1436,7 @@ var World = new Class({
             //  If a collision occurs in the corner points of the rectangle
             //  then the bodies behave like circles
             overlap *= -1;
-        }
-        else
-        {
+        } else {
             overlap = (body1.halfWidth + body2.halfWidth) - DistanceBetweenPoints(body1Center, body2Center);
         }
 
@@ -1573,11 +1447,10 @@ var World = new Class({
         var overlapX = (overlap + MATH_CONST.EPSILON) * Math.cos(angle);
         var overlapY = (overlap + MATH_CONST.EPSILON) * Math.sin(angle);
 
-        var results = { overlap: overlap, result: false, x: overlapX, y: overlapY };
+        var results = {overlap: overlap, result: false, x: overlapX, y: overlapY};
 
         //  We know the AABBs already intersect before we enter this method
-        if (overlapOnly && (!twoCircles || (twoCircles && overlap !== 0)))
-        {
+        if (overlapOnly && (!twoCircles || (twoCircles && overlap !== 0))) {
             //  Now we know the rect vs circle overlaps, or two circles do
             results.result = true;
 
@@ -1588,8 +1461,7 @@ var World = new Class({
         //  Two immovable bodies
         //  A body with its own custom separation logic
         //  A circle vs. a rect with a face-on collision
-        if ((!twoCircles && overlap === 0) || (body1Immovable && body2Immovable) || body1.customSeparateX || body2.customSeparateX)
-        {
+        if ((!twoCircles && overlap === 0) || (body1Immovable && body2Immovable) || body1.customSeparateX || body2.customSeparateX) {
             //  Let SeparateX / SeparateY handle this
             results.x = undefined;
             results.y = undefined;
@@ -1602,8 +1474,7 @@ var World = new Class({
 
         var deadlock = (!body1.pushable && !body2.pushable);
 
-        if (twoCircles)
-        {
+        if (twoCircles) {
             var dx = body1Center.x - body2Center.x;
             var dy = body1Center.y - body2Center.y;
             var d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
@@ -1611,41 +1482,35 @@ var World = new Class({
             var ny = ((body2Center.y - body1Center.y) / d) || 0;
             var p = 2 * (body1Velocity.x * nx + body1Velocity.y * ny - body2Velocity.x * nx - body2Velocity.y * ny) / (body1.mass + body2.mass);
 
-            if (body1Immovable || body2Immovable || !body1.pushable || !body2.pushable)
-            {
+            if (body1Immovable || body2Immovable || !body1.pushable || !body2.pushable) {
                 p *= 2;
             }
 
-            if (!body1Immovable && body1.pushable)
-            {
+            if (!body1Immovable && body1.pushable) {
                 body1Velocity.x = (body1Velocity.x - p / body1.mass * nx);
                 body1Velocity.y = (body1Velocity.y - p / body1.mass * ny);
                 body1Velocity.multiply(body1.bounce);
             }
 
-            if (!body2Immovable && body2.pushable)
-            {
+            if (!body2Immovable && body2.pushable) {
                 body2Velocity.x = (body2Velocity.x + p / body2.mass * nx);
                 body2Velocity.y = (body2Velocity.y + p / body2.mass * ny);
                 body2Velocity.multiply(body2.bounce);
             }
 
-            if (!body1Immovable && !body2Immovable)
-            {
+            if (!body1Immovable && !body2Immovable) {
                 overlapX *= 0.5;
                 overlapY *= 0.5;
             }
 
-            if (!body1Immovable || body1.pushable || deadlock)
-            {
+            if (!body1Immovable || body1.pushable || deadlock) {
                 body1.x -= overlapX;
                 body1.y -= overlapY;
 
                 body1.updateCenter();
             }
-            
-            if (!body2Immovable || body2.pushable || deadlock)
-            {
+
+            if (!body2Immovable || body2.pushable || deadlock) {
                 body2.x += overlapX;
                 body2.y += overlapY;
 
@@ -1653,23 +1518,19 @@ var World = new Class({
             }
 
             results.result = true;
-        }
-        else
-        {
+        } else {
             //  Circle vs. Rect
             //  We'll only move the circle (if we can) and let
             //  the runSeparation handle the rectangle
 
-            if (!body1Immovable && (body1.pushable || deadlock))
-            {
+            if (!body1Immovable && (body1.pushable || deadlock)) {
                 body1.x -= overlapX;
                 body1.y -= overlapY;
 
                 body1.updateCenter();
             }
 
-            if (!body2Immovable && (body2.pushable || deadlock))
-            {
+            if (!body2Immovable && (body2.pushable || deadlock)) {
                 body2.x += overlapX;
                 body2.y += overlapY;
 
@@ -1695,15 +1556,12 @@ var World = new Class({
      *
      * @return {boolean} True if the two bodies intersect, otherwise false.
      */
-    intersects: function (body1, body2)
-    {
-        if (body1 === body2)
-        {
+    intersects: function (body1, body2) {
+        if (body1 === body2) {
             return false;
         }
 
-        if (!body1.isCircle && !body2.isCircle)
-        {
+        if (!body1.isCircle && !body2.isCircle) {
             //  Rect vs. Rect
             return !(
                 body1.right <= body2.left ||
@@ -1711,22 +1569,15 @@ var World = new Class({
                 body1.left >= body2.right ||
                 body1.top >= body2.bottom
             );
-        }
-        else if (body1.isCircle)
-        {
-            if (body2.isCircle)
-            {
+        } else if (body1.isCircle) {
+            if (body2.isCircle) {
                 //  Circle vs. Circle
                 return DistanceBetweenPoints(body1.center, body2.center) <= (body1.halfWidth + body2.halfWidth);
-            }
-            else
-            {
+            } else {
                 //  Circle vs. Rect
                 return this.circleBodyIntersects(body1, body2);
             }
-        }
-        else
-        {
+        } else {
             //  Rect vs. Circle
             return this.circleBodyIntersects(body2, body1);
         }
@@ -1743,8 +1594,7 @@ var World = new Class({
      *
      * @return {boolean} True if the two bodies intersect, otherwise false.
      */
-    circleBodyIntersects: function (circle, body)
-    {
+    circleBodyIntersects: function (circle, body) {
         var x = Clamp(circle.center.x, body.left, body.right);
         var y = Clamp(circle.center.y, body.top, body.bottom);
 
@@ -1772,11 +1622,16 @@ var World = new Class({
      *
      * @see Phaser.Physics.Arcade.World#collide
      */
-    overlap: function (object1, object2, overlapCallback, processCallback, callbackContext)
-    {
-        if (overlapCallback === undefined) { overlapCallback = null; }
-        if (processCallback === undefined) { processCallback = null; }
-        if (callbackContext === undefined) { callbackContext = overlapCallback; }
+    overlap: function (object1, object2, overlapCallback, processCallback, callbackContext) {
+        if (overlapCallback === undefined) {
+            overlapCallback = null;
+        }
+        if (processCallback === undefined) {
+            processCallback = null;
+        }
+        if (callbackContext === undefined) {
+            callbackContext = overlapCallback;
+        }
 
         return this.collideObjects(object1, object2, overlapCallback, processCallback, callbackContext, true);
     },
@@ -1813,11 +1668,16 @@ var World = new Class({
      *
      * @return {boolean} `true` if any overlapping Game Objects were separated, otherwise `false`.
      */
-    collide: function (object1, object2, collideCallback, processCallback, callbackContext)
-    {
-        if (collideCallback === undefined) { collideCallback = null; }
-        if (processCallback === undefined) { processCallback = null; }
-        if (callbackContext === undefined) { callbackContext = collideCallback; }
+    collide: function (object1, object2, collideCallback, processCallback, callbackContext) {
+        if (collideCallback === undefined) {
+            collideCallback = null;
+        }
+        if (processCallback === undefined) {
+            processCallback = null;
+        }
+        if (callbackContext === undefined) {
+            callbackContext = collideCallback;
+        }
 
         return this.collideObjects(object1, object2, collideCallback, processCallback, callbackContext, false);
     },
@@ -1838,18 +1698,15 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideObjects: function (object1, object2, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
+    collideObjects: function (object1, object2, collideCallback, processCallback, callbackContext, overlapOnly) {
         var i;
         var j;
 
-        if (object1.isParent && (object1.physicsType === undefined || object2 === undefined || object1 === object2))
-        {
+        if (object1.isParent && (object1.physicsType === undefined || object2 === undefined || object1 === object2)) {
             object1 = object1.children.entries;
         }
 
-        if (object2 && object2.isParent && object2.physicsType === undefined)
-        {
+        if (object2 && object2.isParent && object2.physicsType === undefined) {
             object2 = object2.children.entries;
         }
 
@@ -1858,55 +1715,38 @@ var World = new Class({
 
         this._total = 0;
 
-        if (!object1isArray && !object2isArray)
-        {
+        if (!object1isArray && !object2isArray) {
             //  Neither of them are arrays - do this first as it's the most common use-case
             this.collideHandler(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
-        }
-        else if (!object1isArray && object2isArray)
-        {
+        } else if (!object1isArray && object2isArray) {
             //  Object 2 is an Array
-            for (i = 0; i < object2.length; i++)
-            {
+            for (i = 0; i < object2.length; i++) {
                 this.collideHandler(object1, object2[i], collideCallback, processCallback, callbackContext, overlapOnly);
             }
-        }
-        else if (object1isArray && !object2isArray)
-        {
+        } else if (object1isArray && !object2isArray) {
             //  Object 1 is an Array
-            if (!object2)
-            {
+            if (!object2) {
                 //  Special case for array vs. self
-                for (i = 0; i < object1.length; i++)
-                {
+                for (i = 0; i < object1.length; i++) {
                     var child = object1[i];
 
-                    for (j = i + 1; j < object1.length; j++)
-                    {
-                        if (i === j)
-                        {
+                    for (j = i + 1; j < object1.length; j++) {
+                        if (i === j) {
                             continue;
                         }
 
                         this.collideHandler(child, object1[j], collideCallback, processCallback, callbackContext, overlapOnly);
                     }
                 }
-            }
-            else
-            {
-                for (i = 0; i < object1.length; i++)
-                {
+            } else {
+                for (i = 0; i < object1.length; i++) {
                     this.collideHandler(object1[i], object2, collideCallback, processCallback, callbackContext, overlapOnly);
                 }
             }
-        }
-        else
-        {
+        } else {
             //  They're both arrays
-            for (i = 0; i < object1.length; i++)
-            {
-                for (j = 0; j < object2.length; j++)
-                {
+            for (i = 0; i < object1.length; i++) {
+                for (j = 0; j < object2.length; j++) {
                     this.collideHandler(object1[i], object2[j], collideCallback, processCallback, callbackContext, overlapOnly);
                 }
             }
@@ -1931,64 +1771,45 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideHandler: function (object1, object2, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
+    collideHandler: function (object1, object2, collideCallback, processCallback, callbackContext, overlapOnly) {
         //  Collide Group with Self
         //  Only collide valid objects
-        if (object2 === undefined && object1.isParent)
-        {
+        if (object2 === undefined && object1.isParent) {
             return this.collideGroupVsGroup(object1, object1, collideCallback, processCallback, callbackContext, overlapOnly);
         }
 
         //  If neither of the objects are set then bail out
-        if (!object1 || !object2)
-        {
+        if (!object1 || !object2) {
             return false;
         }
 
         //  SPRITE
-        if (object1.body || object1.isBody)
-        {
-            if (object2.body || object2.isBody)
-            {
+        if (object1.body || object1.isBody) {
+            if (object2.body || object2.isBody) {
                 return this.collideSpriteVsSprite(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
-            }
-            else if (object2.isParent)
-            {
+            } else if (object2.isParent) {
                 return this.collideSpriteVsGroup(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
-            }
-            else if (object2.isTilemap)
-            {
+            } else if (object2.isTilemap) {
                 return this.collideSpriteVsTilemapLayer(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
             }
         }
 
         //  GROUPS
-        else if (object1.isParent)
-        {
-            if (object2.body || object2.isBody)
-            {
+        else if (object1.isParent) {
+            if (object2.body || object2.isBody) {
                 return this.collideSpriteVsGroup(object2, object1, collideCallback, processCallback, callbackContext, overlapOnly);
-            }
-            else if (object2.isParent)
-            {
+            } else if (object2.isParent) {
                 return this.collideGroupVsGroup(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
-            }
-            else if (object2.isTilemap)
-            {
+            } else if (object2.isTilemap) {
                 return this.collideGroupVsTilemapLayer(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
             }
         }
 
         //  TILEMAP LAYERS
-        else if (object1.isTilemap)
-        {
-            if (object2.body || object2.isBody)
-            {
+        else if (object1.isTilemap) {
+            if (object2.body || object2.isBody) {
                 return this.collideSpriteVsTilemapLayer(object2, object1, collideCallback, processCallback, callbackContext, overlapOnly);
-            }
-            else if (object2.isParent)
-            {
+            } else if (object2.isParent) {
                 return this.collideGroupVsTilemapLayer(object2, object1, collideCallback, processCallback, callbackContext, overlapOnly);
             }
         }
@@ -2006,8 +1827,7 @@ var World = new Class({
      *
      * @return {boolean} True if the two bodies will collide, otherwise false.
      */
-    canCollide: function (body1, body2)
-    {
+    canCollide: function (body1, body2) {
         return (
             (body1 && body2) &&
             (body1.collisionMask & body2.collisionCategory) !== 0 &&
@@ -2032,20 +1852,16 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideSpriteVsSprite: function (sprite1, sprite2, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
+    collideSpriteVsSprite: function (sprite1, sprite2, collideCallback, processCallback, callbackContext, overlapOnly) {
         var body1 = (sprite1.isBody) ? sprite1 : sprite1.body;
         var body2 = (sprite2.isBody) ? sprite2 : sprite2.body;
 
-        if (!this.canCollide(body1, body2))
-        {
+        if (!this.canCollide(body1, body2)) {
             return false;
         }
 
-        if (this.separate(body1, body2, processCallback, callbackContext, overlapOnly))
-        {
-            if (collideCallback)
-            {
+        if (this.separate(body1, body2, processCallback, callbackContext, overlapOnly)) {
+            if (collideCallback) {
                 collideCallback.call(callbackContext, sprite1, sprite2);
             }
 
@@ -2070,12 +1886,10 @@ var World = new Class({
      * @param {any} callbackContext - The scope in which to call the callbacks.
      * @param {boolean} overlapOnly - Whether this is a collision or overlap check.
      */
-    collideSpriteVsGroup: function (sprite, group, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
+    collideSpriteVsGroup: function (sprite, group, collideCallback, processCallback, callbackContext, overlapOnly) {
         var bodyA = (sprite.isBody) ? sprite : sprite.body;
 
-        if (group.getLength() === 0 || !bodyA || !bodyA.enable || bodyA.checkCollision.none || !this.canCollide(bodyA, group))
-        {
+        if (group.getLength() === 0 || !bodyA || !bodyA.enable || bodyA.checkCollision.none || !this.canCollide(bodyA, group)) {
             return;
         }
 
@@ -2085,8 +1899,7 @@ var World = new Class({
         var len;
         var bodyB;
 
-        if (this.useTree || group.physicsType === CONST.STATIC_BODY)
-        {
+        if (this.useTree || group.physicsType === CONST.STATIC_BODY) {
             var minMax = this.treeMinMax;
 
             minMax.minX = bodyA.left;
@@ -2098,47 +1911,37 @@ var World = new Class({
 
             len = results.length;
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 bodyB = results[i];
 
-                if (bodyA === bodyB || !bodyB.enable || bodyB.checkCollision.none || !group.contains(bodyB.gameObject))
-                {
+                if (bodyA === bodyB || !bodyB.enable || bodyB.checkCollision.none || !group.contains(bodyB.gameObject)) {
                     //  Skip if comparing against itself, or if bodyB isn't collidable, or if bodyB isn't actually part of the Group
                     continue;
                 }
 
-                if (this.separate(bodyA, bodyB, processCallback, callbackContext, overlapOnly))
-                {
-                    if (collideCallback)
-                    {
+                if (this.separate(bodyA, bodyB, processCallback, callbackContext, overlapOnly)) {
+                    if (collideCallback) {
                         collideCallback.call(callbackContext, bodyA.gameObject, bodyB.gameObject);
                     }
 
                     this._total++;
                 }
             }
-        }
-        else
-        {
+        } else {
             var children = group.getChildren();
             var skipIndex = group.children.entries.indexOf(sprite);
 
             len = children.length;
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 bodyB = children[i].body;
 
-                if (!bodyB || i === skipIndex || !bodyB.enable)
-                {
+                if (!bodyB || i === skipIndex || !bodyB.enable) {
                     continue;
                 }
 
-                if (this.separate(bodyA, bodyB, processCallback, callbackContext, overlapOnly))
-                {
-                    if (collideCallback)
-                    {
+                if (this.separate(bodyA, bodyB, processCallback, callbackContext, overlapOnly)) {
+                    if (collideCallback) {
                         collideCallback.call(callbackContext, bodyA.gameObject, bodyB.gameObject);
                     }
 
@@ -2165,28 +1968,22 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideGroupVsTilemapLayer: function (group, tilemapLayer, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
-        if (!this.canCollide(group, tilemapLayer))
-        {
+    collideGroupVsTilemapLayer: function (group, tilemapLayer, collideCallback, processCallback, callbackContext, overlapOnly) {
+        if (!this.canCollide(group, tilemapLayer)) {
             return false;
         }
 
         var children = group.getChildren();
 
-        if (children.length === 0)
-        {
+        if (children.length === 0) {
             return false;
         }
 
         var didCollide = false;
 
-        for (var i = 0; i < children.length; i++)
-        {
-            if (children[i].body || children[i].isBody)
-            {
-                if (this.collideSpriteVsTilemapLayer(children[i], tilemapLayer, collideCallback, processCallback, callbackContext, overlapOnly))
-                {
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].body || children[i].isBody) {
+                if (this.collideSpriteVsTilemapLayer(children[i], tilemapLayer, collideCallback, processCallback, callbackContext, overlapOnly)) {
                     didCollide = true;
                 }
             }
@@ -2225,14 +2022,10 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideTiles: function (sprite, tiles, collideCallback, processCallback, callbackContext)
-    {
-        if (tiles.length === 0 || (sprite.body && !sprite.body.enable) || (sprite.isBody && !sprite.enable))
-        {
+    collideTiles: function (sprite, tiles, collideCallback, processCallback, callbackContext) {
+        if (tiles.length === 0 || (sprite.body && !sprite.body.enable) || (sprite.isBody && !sprite.enable)) {
             return false;
-        }
-        else
-        {
+        } else {
             return this.collideSpriteVsTilesHandler(sprite, tiles, collideCallback, processCallback, callbackContext, false, false);
         }
     },
@@ -2262,14 +2055,10 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    overlapTiles: function (sprite, tiles, overlapCallback, processCallback, callbackContext)
-    {
-        if (tiles.length === 0 || (sprite.body && !sprite.body.enable) || (sprite.isBody && !sprite.enable))
-        {
+    overlapTiles: function (sprite, tiles, overlapCallback, processCallback, callbackContext) {
+        if (tiles.length === 0 || (sprite.body && !sprite.body.enable) || (sprite.isBody && !sprite.enable)) {
             return false;
-        }
-        else
-        {
+        } else {
             return this.collideSpriteVsTilesHandler(sprite, tiles, overlapCallback, processCallback, callbackContext, true, false);
         }
     },
@@ -2292,12 +2081,10 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideSpriteVsTilemapLayer: function (sprite, tilemapLayer, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
+    collideSpriteVsTilemapLayer: function (sprite, tilemapLayer, collideCallback, processCallback, callbackContext, overlapOnly) {
         var body = (sprite.isBody) ? sprite : sprite.body;
 
-        if (!body.enable || body.checkCollision.none || !this.canCollide(body, tilemapLayer))
-        {
+        if (!body.enable || body.checkCollision.none || !this.canCollide(body, tilemapLayer)) {
             return false;
         }
 
@@ -2315,12 +2102,9 @@ var World = new Class({
 
         var mapData = GetTilesWithinWorldXY(x, y, w, h, options, tilemapLayer.scene.cameras.main, tilemapLayer.layer);
 
-        if (mapData.length === 0)
-        {
+        if (mapData.length === 0) {
             return false;
-        }
-        else
-        {
+        } else {
             return this.collideSpriteVsTilesHandler(sprite, mapData, collideCallback, processCallback, callbackContext, overlapOnly, true);
         }
     },
@@ -2345,17 +2129,15 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideSpriteVsTilesHandler: function (sprite, tiles, collideCallback, processCallback, callbackContext, overlapOnly, isLayer)
-    {
+    collideSpriteVsTilesHandler: function (sprite, tiles, collideCallback, processCallback, callbackContext, overlapOnly, isLayer) {
         var body = (sprite.isBody) ? sprite : sprite.body;
 
         var tile;
-        var tileWorldRect = { left: 0, right: 0, top: 0, bottom: 0 };
+        var tileWorldRect = {left: 0, right: 0, top: 0, bottom: 0};
         var tilemapLayer;
         var collision = false;
 
-        for (var i = 0; i < tiles.length; i++)
-        {
+        for (var i = 0; i < tiles.length; i++) {
             tile = tiles[i];
 
             tilemapLayer = tile.tilemapLayer;
@@ -2372,23 +2154,18 @@ var World = new Class({
                 TileIntersectsBody(tileWorldRect, body) &&
                 (!processCallback || processCallback.call(callbackContext, sprite, tile)) &&
                 ProcessTileCallbacks(tile, sprite) &&
-                (overlapOnly || SeparateTile(i, body, tile, tileWorldRect, tilemapLayer, this.TILE_BIAS, isLayer)))
-            {
+                (overlapOnly || SeparateTile(i, body, tile, tileWorldRect, tilemapLayer, this.TILE_BIAS, isLayer))) {
                 this._total++;
 
                 collision = true;
 
-                if (collideCallback)
-                {
+                if (collideCallback) {
                     collideCallback.call(callbackContext, sprite, tile);
                 }
 
-                if (overlapOnly && body.onOverlap)
-                {
+                if (overlapOnly && body.onOverlap) {
                     this.emit(Events.TILE_OVERLAP, sprite, tile, body);
-                }
-                else if (body.onCollide)
-                {
+                } else if (body.onCollide) {
                     this.emit(Events.TILE_COLLIDE, sprite, tile, body);
                 }
             }
@@ -2414,17 +2191,14 @@ var World = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideGroupVsGroup: function (group1, group2, collideCallback, processCallback, callbackContext, overlapOnly)
-    {
-        if (group1.getLength() === 0 || group2.getLength() === 0 || !this.canCollide(group1, group2))
-        {
+    collideGroupVsGroup: function (group1, group2, collideCallback, processCallback, callbackContext, overlapOnly) {
+        if (group1.getLength() === 0 || group2.getLength() === 0 || !this.canCollide(group1, group2)) {
             return;
         }
 
         var children = group1.getChildren();
-        
-        for (var i = 0; i < children.length; i++)
-        {
+
+        for (var i = 0; i < children.length; i++) {
             this.collideSpriteVsGroup(children[i], group2, collideCallback, processCallback, callbackContext, overlapOnly);
         }
     },
@@ -2440,22 +2214,14 @@ var World = new Class({
      * @param {any} object - A Game Object, a Group, an object with `x` and `y` coordinates, or an array of such objects.
      * @param {number} [padding=0] - An amount added to each boundary edge during the operation.
      */
-    wrap: function (object, padding)
-    {
-        if (object.body)
-        {
+    wrap: function (object, padding) {
+        if (object.body) {
             this.wrapObject(object, padding);
-        }
-        else if (object.getChildren)
-        {
+        } else if (object.getChildren) {
             this.wrapArray(object.getChildren(), padding);
-        }
-        else if (Array.isArray(object))
-        {
+        } else if (Array.isArray(object)) {
             this.wrapArray(object, padding);
-        }
-        else
-        {
+        } else {
             this.wrapObject(object, padding);
         }
     },
@@ -2469,10 +2235,8 @@ var World = new Class({
      * @param {Array.<*>} objects - An array of objects to be wrapped.
      * @param {number} [padding=0] - An amount added to the boundary.
      */
-    wrapArray: function (objects, padding)
-    {
-        for (var i = 0; i < objects.length; i++)
-        {
+    wrapArray: function (objects, padding) {
+        for (var i = 0; i < objects.length; i++) {
             this.wrapObject(objects[i], padding);
         }
     },
@@ -2486,9 +2250,10 @@ var World = new Class({
      * @param {*} object - A Game Object, a Physics Body, or any object with `x` and `y` coordinates
      * @param {number} [padding=0] - An amount added to the boundary.
      */
-    wrapObject: function (object, padding)
-    {
-        if (padding === undefined) { padding = 0; }
+    wrapObject: function (object, padding) {
+        if (padding === undefined) {
+            padding = 0;
+        }
 
         object.x = Wrap(object.x, this.bounds.left - padding, this.bounds.right + padding);
         object.y = Wrap(object.y, this.bounds.top - padding, this.bounds.bottom + padding);
@@ -2500,8 +2265,7 @@ var World = new Class({
      * @method Phaser.Physics.Arcade.World#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.tree.clear();
         this.staticTree.clear();
         this.bodies.clear();
@@ -2517,14 +2281,12 @@ var World = new Class({
      * @method Phaser.Physics.Arcade.World#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.scene = null;
 
-        if (this.debugGraphic)
-        {
+        if (this.debugGraphic) {
             this.debugGraphic.destroy();
             this.debugGraphic = null;
         }

@@ -23,8 +23,7 @@ var GameObjectFactory = require('../../../../src/gameobjects/GameObjectFactory')
  *
  * @return {Phaser.GameObjects.Sprite3D} The Game Object that was created.
  */
-GameObjectFactory.register('sprite3D', function (x, y, z, key, frame)
-{
+GameObjectFactory.register('sprite3D', function (x, y, z, key, frame) {
     var sprite = new Sprite3D(this.scene, x, y, z, key, frame);
 
     this.displayList.add(sprite.gameObject);

@@ -10,7 +10,7 @@ var RotateRight = require('../utils/array/RotateRight');
 
 /**
  * Takes an array of Game Objects and positions them on evenly spaced points around the perimeter of a Rectangle.
- * 
+ *
  * Placement starts from the top-left of the rectangle, and proceeds in a clockwise direction.
  * If the `shift` parameter is given you can offset where placement begins.
  *
@@ -25,23 +25,20 @@ var RotateRight = require('../utils/array/RotateRight');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var PlaceOnRectangle = function (items, rect, shift)
-{
-    if (shift === undefined) { shift = 0; }
+var PlaceOnRectangle = function (items, rect, shift) {
+    if (shift === undefined) {
+        shift = 0;
+    }
 
     var points = MarchingAnts(rect, false, items.length);
 
-    if (shift > 0)
-    {
+    if (shift > 0) {
         RotateLeft(points, shift);
-    }
-    else if (shift < 0)
-    {
+    } else if (shift < 0) {
         RotateRight(points, Math.abs(shift));
     }
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         items[i].x = points[i].x;
         items[i].y = points[i].y;
     }

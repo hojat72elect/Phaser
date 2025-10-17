@@ -22,9 +22,10 @@ var Point = require('../point/Point');
  *
  * @return {(array|Phaser.Geom.Point[])} The modified `out` array, or a new array if none was provided.
  */
-var GetPoints = function (triangle, quantity, stepRate, out)
-{
-    if (out === undefined) { out = []; }
+var GetPoints = function (triangle, quantity, stepRate, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
     var line1 = triangle.getLineA();
     var line2 = triangle.getLineB();
@@ -37,13 +38,11 @@ var GetPoints = function (triangle, quantity, stepRate, out)
     var perimeter = length1 + length2 + length3;
 
     //  If quantity is a falsey value (false, null, 0, undefined, etc) then we calculate it based on the stepRate instead.
-    if (!quantity && stepRate > 0)
-    {
+    if (!quantity && stepRate > 0) {
         quantity = perimeter / stepRate;
     }
 
-    for (var i = 0; i < quantity; i++)
-    {
+    for (var i = 0; i < quantity; i++) {
         var p = perimeter * (i / quantity);
         var localPosition = 0;
 
@@ -51,25 +50,20 @@ var GetPoints = function (triangle, quantity, stepRate, out)
 
         //  Which line is it on?
 
-        if (p < length1)
-        {
+        if (p < length1) {
             //  Line 1
             localPosition = p / length1;
 
             point.x = line1.x1 + (line1.x2 - line1.x1) * localPosition;
             point.y = line1.y1 + (line1.y2 - line1.y1) * localPosition;
-        }
-        else if (p > length1 + length2)
-        {
+        } else if (p > length1 + length2) {
             //  Line 3
             p -= length1 + length2;
             localPosition = p / length3;
 
             point.x = line3.x1 + (line3.x2 - line3.x1) * localPosition;
             point.y = line3.y1 + (line3.y2 - line3.y1) * localPosition;
-        }
-        else
-        {
+        } else {
             //  Line 2
             p -= length1;
             localPosition = p / length2;

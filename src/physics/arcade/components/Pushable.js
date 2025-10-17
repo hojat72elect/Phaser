@@ -28,9 +28,10 @@ var Pushable = {
      *
      * @return {this} This Game Object.
      */
-    setPushable: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setPushable: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.body.pushable = value;
 

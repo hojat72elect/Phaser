@@ -18,9 +18,10 @@
  *
  * @return {boolean} `true` if the values are fuzzily equal, otherwise `false`.
  */
-var Equal = function (a, b, epsilon)
-{
-    if (epsilon === undefined) { epsilon = 0.0001; }
+var Equal = function (a, b, epsilon) {
+    if (epsilon === undefined) {
+        epsilon = 0.0001;
+    }
 
     return Math.abs(a - b) < epsilon;
 };

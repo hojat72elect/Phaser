@@ -14,8 +14,7 @@
  *
  * @return {number} The left coordinate of the bounds of the Game Object.
  */
-var GetLeft = function (gameObject)
-{
+var GetLeft = function (gameObject) {
     return gameObject.x - (gameObject.width * gameObject.originX);
 };
 

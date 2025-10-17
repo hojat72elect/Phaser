@@ -38,211 +38,212 @@ var EmitterOp = new Class({
 
     initialize:
 
-    function EmitterOp (key, defaultValue, emitOnly)
-    {
-        if (emitOnly === undefined) { emitOnly = false; }
+        function EmitterOp(key, defaultValue, emitOnly) {
+            if (emitOnly === undefined) {
+                emitOnly = false;
+            }
 
-        /**
-         * The name of this property.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#propertyKey
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.propertyKey = key;
+            /**
+             * The name of this property.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#propertyKey
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.propertyKey = key;
 
-        /**
-         * The current value of this property.
-         *
-         * This can be a simple value, an array, a function or an onEmit
-         * configuration object.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#propertyValue
-         * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitType|Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateType}
-         * @since 3.0.0
-         */
-        this.propertyValue = defaultValue;
+            /**
+             * The current value of this property.
+             *
+             * This can be a simple value, an array, a function or an onEmit
+             * configuration object.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#propertyValue
+             * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitType|Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateType}
+             * @since 3.0.0
+             */
+            this.propertyValue = defaultValue;
 
-        /**
-         * The default value of this property.
-         *
-         * This can be a simple value, an array, a function or an onEmit
-         * configuration object.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#defaultValue
-         * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitType|Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateType}
-         * @since 3.0.0
-         */
-        this.defaultValue = defaultValue;
+            /**
+             * The default value of this property.
+             *
+             * This can be a simple value, an array, a function or an onEmit
+             * configuration object.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#defaultValue
+             * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitType|Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateType}
+             * @since 3.0.0
+             */
+            this.defaultValue = defaultValue;
 
-        /**
-         * The number of steps for stepped easing between {@link Phaser.GameObjects.Particles.EmitterOp#start} and
-         * {@link Phaser.GameObjects.Particles.EmitterOp#end} values, per emit.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#steps
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.steps = 0;
+            /**
+             * The number of steps for stepped easing between {@link Phaser.GameObjects.Particles.EmitterOp#start} and
+             * {@link Phaser.GameObjects.Particles.EmitterOp#end} values, per emit.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#steps
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.steps = 0;
 
-        /**
-         * The step counter for stepped easing, per emit.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#counter
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.counter = 0;
+            /**
+             * The step counter for stepped easing, per emit.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#counter
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.counter = 0;
 
-        /**
-         * When the step counter reaches it's maximum, should it then
-         * yoyo back to the start again, or flip over to it?
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#yoyo
-         * @type {boolean}
-         * @default false
-         * @since 3.60.0
-         */
-        this.yoyo = false;
+            /**
+             * When the step counter reaches it's maximum, should it then
+             * yoyo back to the start again, or flip over to it?
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#yoyo
+             * @type {boolean}
+             * @default false
+             * @since 3.60.0
+             */
+            this.yoyo = false;
 
-        /**
-         * The counter direction. 0 for up and 1 for down.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#direction
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.direction = 0;
+            /**
+             * The counter direction. 0 for up and 1 for down.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#direction
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.direction = 0;
 
-        /**
-         * The start value for this property to ease between.
-         *
-         * If an interpolation this holds a reference to the number data array.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#start
-         * @type {number|number[]}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.start = 0;
+            /**
+             * The start value for this property to ease between.
+             *
+             * If an interpolation this holds a reference to the number data array.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#start
+             * @type {number|number[]}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.start = 0;
 
-        /**
-         * The most recently calculated value. Updated every time an
-         * emission or update method is called. Treat as read-only.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#current
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.current = 0;
+            /**
+             * The most recently calculated value. Updated every time an
+             * emission or update method is called. Treat as read-only.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#current
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.current = 0;
 
-        /**
-         * The end value for this property to ease between.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#end
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.end = 0;
+            /**
+             * The end value for this property to ease between.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#end
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.end = 0;
 
-        /**
-         * The easing function to use for updating this property, if any.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#ease
-         * @type {?function}
-         * @since 3.0.0
-         */
-        this.ease = null;
+            /**
+             * The easing function to use for updating this property, if any.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#ease
+             * @type {?function}
+             * @since 3.0.0
+             */
+            this.ease = null;
 
-        /**
-         * The interpolation function to use for updating this property, if any.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#interpolation
-         * @type {?function}
-         * @since 3.60.0
-         */
-        this.interpolation = null;
+            /**
+             * The interpolation function to use for updating this property, if any.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#interpolation
+             * @type {?function}
+             * @since 3.60.0
+             */
+            this.interpolation = null;
 
-        /**
-         * Whether this property can only be modified when a Particle is emitted.
-         *
-         * Set to `true` to allow only {@link Phaser.GameObjects.Particles.EmitterOp#onEmit} callbacks to be set and
-         * affect this property.
-         *
-         * Set to `false` to allow both {@link Phaser.GameObjects.Particles.EmitterOp#onEmit} and
-         * {@link Phaser.GameObjects.Particles.EmitterOp#onUpdate} callbacks to be set and affect this property.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#emitOnly
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.emitOnly = emitOnly;
+            /**
+             * Whether this property can only be modified when a Particle is emitted.
+             *
+             * Set to `true` to allow only {@link Phaser.GameObjects.Particles.EmitterOp#onEmit} callbacks to be set and
+             * affect this property.
+             *
+             * Set to `false` to allow both {@link Phaser.GameObjects.Particles.EmitterOp#onEmit} and
+             * {@link Phaser.GameObjects.Particles.EmitterOp#onUpdate} callbacks to be set and affect this property.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#emitOnly
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.emitOnly = emitOnly;
 
-        /**
-         * The callback to run for Particles when they are emitted from the Particle Emitter.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#onEmit
-         * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitCallback}
-         * @since 3.0.0
-         */
-        this.onEmit = this.defaultEmit;
+            /**
+             * The callback to run for Particles when they are emitted from the Particle Emitter.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#onEmit
+             * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitCallback}
+             * @since 3.0.0
+             */
+            this.onEmit = this.defaultEmit;
 
-        /**
-         * The callback to run for Particles when they are updated.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#onUpdate
-         * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback}
-         * @since 3.0.0
-         */
-        this.onUpdate = this.defaultUpdate;
+            /**
+             * The callback to run for Particles when they are updated.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#onUpdate
+             * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback}
+             * @since 3.0.0
+             */
+            this.onUpdate = this.defaultUpdate;
 
-        /**
-         * Set to `false` to disable this EmitterOp.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#active
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.active = true;
+            /**
+             * Set to `false` to disable this EmitterOp.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#active
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.active = true;
 
-        /**
-         * The onEmit method type of this EmitterOp.
-         *
-         * Set as part of `setMethod` and cached here to avoid
-         * re-setting when only the value changes.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#method
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.method = 0;
+            /**
+             * The onEmit method type of this EmitterOp.
+             *
+             * Set as part of `setMethod` and cached here to avoid
+             * re-setting when only the value changes.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#method
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.method = 0;
 
-        /**
-         * The callback to run for Particles when they are emitted from the Particle Emitter.
-         * This is set during `setMethods` and used by `proxyEmit`.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#_onEmit
-         * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitCallback}
-         * @private
-         * @since 3.60.0
-         */
-        this._onEmit;
+            /**
+             * The callback to run for Particles when they are emitted from the Particle Emitter.
+             * This is set during `setMethods` and used by `proxyEmit`.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#_onEmit
+             * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitCallback}
+             * @private
+             * @since 3.60.0
+             */
+            this._onEmit;
 
-        /**
-         * The callback to run for Particles when they are updated.
-         * This is set during `setMethods` and used by `proxyUpdate`.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterOp#_onUpdate
-         * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback}
-         * @private
-         * @since 3.60.0
-         */
-        this._onUpdate;
-    },
+            /**
+             * The callback to run for Particles when they are updated.
+             * This is set during `setMethods` and used by `proxyUpdate`.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterOp#_onUpdate
+             * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback}
+             * @private
+             * @since 3.60.0
+             */
+            this._onUpdate;
+        },
 
     /**
      * Load the property from a Particle Emitter configuration object.
@@ -255,15 +256,12 @@ var EmitterOp = new Class({
      * @param {Phaser.Types.GameObjects.Particles.ParticleEmitterConfig} [config] - Settings for the Particle Emitter that owns this property.
      * @param {string} [newKey] - The new key to use for this property, if any.
      */
-    loadConfig: function (config, newKey)
-    {
-        if (config === undefined)
-        {
+    loadConfig: function (config, newKey) {
+        if (config === undefined) {
             config = {};
         }
 
-        if (newKey)
-        {
+        if (newKey) {
             this.propertyKey = newKey;
         }
 
@@ -277,8 +275,7 @@ var EmitterOp = new Class({
 
         this.setMethods();
 
-        if (this.emitOnly)
-        {
+        if (this.emitOnly) {
             //  Reset it back again
             this.onUpdate = this.defaultUpdate;
         }
@@ -292,8 +289,7 @@ var EmitterOp = new Class({
      *
      * @return {object} A JSON representation of this Particle Emitter property.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return JSON.stringify(this.propertyValue);
     },
 
@@ -307,12 +303,10 @@ var EmitterOp = new Class({
      *
      * @return {this} This Emitter Op object.
      */
-    onChange: function (value)
-    {
+    onChange: function (value) {
         var current;
 
-        switch (this.method)
-        {
+        switch (this.method) {
             //  Number
             //  Custom Callback (onEmit only)
             //  Custom onEmit and/or onUpdate callbacks
@@ -324,8 +318,7 @@ var EmitterOp = new Class({
 
             //  Random Array
             case 2:
-                if (this.propertyValue.indexOf(value) >= 0)
-                {
+                if (this.propertyValue.indexOf(value) >= 0) {
                     current = value;
                 }
                 break;
@@ -366,65 +359,44 @@ var EmitterOp = new Class({
      *
      * @return {number} A number between 0 and 9 which should be passed to `setMethods`.
      */
-    getMethod: function ()
-    {
+    getMethod: function () {
         var value = this.propertyValue;
 
         //  `moveToX` and `moveToY` are null by default
-        if (value === null)
-        {
+        if (value === null) {
             return 0;
         }
 
         var t = typeof value;
 
-        if (t === 'number')
-        {
+        if (t === 'number') {
             //  Number
             return 1;
-        }
-        else if (Array.isArray(value))
-        {
+        } else if (Array.isArray(value)) {
             //  Random Array
             return 2;
-        }
-        else if (t === 'function')
-        {
+        } else if (t === 'function') {
             //  Custom Callback
             return 3;
-        }
-        else if (t === 'object')
-        {
-            if (this.hasBoth(value, 'start', 'end'))
-            {
-                if (this.has(value, 'steps'))
-                {
+        } else if (t === 'object') {
+            if (this.hasBoth(value, 'start', 'end')) {
+                if (this.has(value, 'steps')) {
                     //  Stepped start/end
                     return 4;
-                }
-                else
-                {
+                } else {
                     //  Eased start/end
                     return 5;
                 }
-            }
-            else if (this.hasBoth(value, 'min', 'max'))
-            {
+            } else if (this.hasBoth(value, 'min', 'max')) {
                 //  min/max
                 return 6;
-            }
-            else if (this.has(value, 'random'))
-            {
+            } else if (this.has(value, 'random')) {
                 //  Random object
                 return 7;
-            }
-            else if (this.hasEither(value, 'onEmit', 'onUpdate'))
-            {
+            } else if (this.hasEither(value, 'onEmit', 'onUpdate')) {
                 //  Custom onEmit onUpdate
                 return 8;
-            }
-            else if (this.hasEither(value, 'values', 'interpolation'))
-            {
+            } else if (this.hasEither(value, 'values', 'interpolation')) {
                 //  Interpolation
                 return 9;
             }
@@ -444,16 +416,14 @@ var EmitterOp = new Class({
      *
      * @return {this} This Emitter Op object.
      */
-    setMethods: function ()
-    {
+    setMethods: function () {
         var value = this.propertyValue;
         var current = value;
 
         var onEmit = this.defaultEmit;
         var onUpdate = this.defaultUpdate;
 
-        switch (this.method)
-        {
+        switch (this.method) {
             //  Number
             case 1:
                 onEmit = this.staticValueEmit;
@@ -507,8 +477,7 @@ var EmitterOp = new Class({
             case 7:
                 var rnd = value.random;
 
-                if (Array.isArray(rnd))
-                {
+                if (Array.isArray(rnd)) {
                     this.start = rnd[0];
                     this.end = rnd[1];
                 }
@@ -556,8 +525,7 @@ var EmitterOp = new Class({
      *
      * @return {boolean} `true` if the property exists in the object, `false` otherwise.
      */
-    has: function (object, key)
-    {
+    has: function (object, key) {
         return object.hasOwnProperty(key);
     },
 
@@ -573,8 +541,7 @@ var EmitterOp = new Class({
      *
      * @return {boolean} `true` if both properties exist in the object, `false` otherwise.
      */
-    hasBoth: function (object, key1, key2)
-    {
+    hasBoth: function (object, key1, key2) {
         return object.hasOwnProperty(key1) && object.hasOwnProperty(key2);
     },
 
@@ -590,8 +557,7 @@ var EmitterOp = new Class({
      *
      * @return {boolean} `true` if at least one of the properties exists in the object, `false` if neither exist.
      */
-    hasEither: function (object, key1, key2)
-    {
+    hasEither: function (object, key1, key2) {
         return object.hasOwnProperty(key1) || object.hasOwnProperty(key2);
     },
 
@@ -603,8 +569,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    defaultEmit: function ()
-    {
+    defaultEmit: function () {
         return this.defaultValue;
     },
 
@@ -621,8 +586,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    defaultUpdate: function (particle, key, t, value)
-    {
+    defaultUpdate: function (particle, key, t, value) {
         return value;
     },
 
@@ -640,8 +604,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    proxyEmit: function (particle, key, value)
-    {
+    proxyEmit: function (particle, key, value) {
         var result = this._onEmit(particle, key, value);
 
         this.current = result;
@@ -664,8 +627,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    proxyUpdate: function (particle, key, t, value)
-    {
+    proxyUpdate: function (particle, key, t, value) {
         var result = this._onUpdate(particle, key, t, value);
 
         this.current = result;
@@ -681,8 +643,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The current value of the property.
      */
-    staticValueEmit: function ()
-    {
+    staticValueEmit: function () {
         return this.current;
     },
 
@@ -694,8 +655,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The current value of the property.
      */
-    staticValueUpdate: function ()
-    {
+    staticValueUpdate: function () {
         return this.current;
     },
 
@@ -707,8 +667,7 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    randomStaticValueEmit: function ()
-    {
+    randomStaticValueEmit: function () {
         var randomIndex = Math.floor(Math.random() * this.propertyValue.length);
 
         this.current = this.propertyValue[randomIndex];
@@ -728,12 +687,10 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    randomRangedValueEmit: function (particle, key)
-    {
+    randomRangedValueEmit: function (particle, key) {
         var value = FloatBetween(this.start, this.end);
 
-        if (particle && particle.data[key])
-        {
+        if (particle && particle.data[key]) {
             particle.data[key].min = value;
             particle.data[key].max = this.end;
         }
@@ -755,12 +712,10 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    randomRangedIntEmit: function (particle, key)
-    {
+    randomRangedIntEmit: function (particle, key) {
         var value = Between(this.start, this.end);
 
-        if (particle && particle.data[key])
-        {
+        if (particle && particle.data[key]) {
             particle.data[key].min = value;
             particle.data[key].max = this.end;
         }
@@ -780,39 +735,32 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    steppedEmit: function ()
-    {
+    steppedEmit: function () {
         var current = this.counter;
 
         var next = current;
 
         var step = (this.end - this.start) / this.steps;
 
-        if (this.yoyo)
-        {
+        if (this.yoyo) {
             var over;
 
-            if (this.direction === 0)
-            {
+            if (this.direction === 0) {
                 //  Add step to the current value
                 next += step;
 
-                if (next >= this.end)
-                {
+                if (next >= this.end) {
                     over = next - this.end;
 
                     next = this.end - over;
 
                     this.direction = 1;
                 }
-            }
-            else
-            {
+            } else {
                 //  Down
                 next -= step;
 
-                if (next <= this.start)
-                {
+                if (next <= this.start) {
                     over = this.start - next;
 
                     next = this.start + over;
@@ -822,9 +770,7 @@ var EmitterOp = new Class({
             }
 
             this.counter = next;
-        }
-        else
-        {
+        } else {
             this.counter = Wrap(next + step, this.start, this.end);
         }
 
@@ -846,10 +792,8 @@ var EmitterOp = new Class({
      *
      * @return {number} {@link Phaser.GameObjects.Particles.EmitterOp#start}, as the new value of the property.
      */
-    easedValueEmit: function (particle, key)
-    {
-        if (particle && particle.data[key])
-        {
+    easedValueEmit: function (particle, key) {
+        if (particle && particle.data[key]) {
             var data = particle.data[key];
 
             data.min = this.start;
@@ -875,19 +819,15 @@ var EmitterOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    easeValueUpdate: function (particle, key, t)
-    {
+    easeValueUpdate: function (particle, key, t) {
         var data = particle.data[key];
 
         var current;
         var v = this.ease(t);
 
-        if (this.interpolation)
-        {
+        if (this.interpolation) {
             current = this.interpolation(this.start, v);
-        }
-        else
-        {
+        } else {
             current = (data.max - data.min) * v + data.min;
         }
 
@@ -905,8 +845,7 @@ var EmitterOp = new Class({
      * @method Phaser.GameObjects.Particles.EmitterOp#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.propertyValue = null;
         this.defaultValue = null;
         this.ease = null;

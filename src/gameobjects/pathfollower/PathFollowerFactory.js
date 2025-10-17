@@ -23,8 +23,7 @@ var PathFollower = require('./PathFollower');
  *
  * @return {Phaser.GameObjects.PathFollower} The Game Object that was created.
  */
-GameObjectFactory.register('follower', function (path, x, y, key, frame)
-{
+GameObjectFactory.register('follower', function (path, x, y, key, frame) {
     var sprite = new PathFollower(this.scene, path, x, y, key, frame);
 
     this.displayList.add(sprite);

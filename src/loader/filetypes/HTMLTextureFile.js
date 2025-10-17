@@ -38,41 +38,43 @@ var HTMLTextureFile = new Class({
 
     initialize:
 
-    function HTMLTextureFile (loader, key, url, width, height, xhrSettings)
-    {
-        if (width === undefined) { width = 512; }
-        if (height === undefined) { height = 512; }
-
-        var extension = 'html';
-
-        if (IsPlainObject(key))
-        {
-            var config = key;
-
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            width = GetFastValue(config, 'width', width);
-            height = GetFastValue(config, 'height', height);
-        }
-
-        var fileConfig = {
-            type: 'html',
-            cache: loader.textureManager,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: {
-                width: width,
-                height: height
+        function HTMLTextureFile(loader, key, url, width, height, xhrSettings) {
+            if (width === undefined) {
+                width = 512;
             }
-        };
+            if (height === undefined) {
+                height = 512;
+            }
 
-        File.call(this, loader, fileConfig);
-    },
+            var extension = 'html';
+
+            if (IsPlainObject(key)) {
+                var config = key;
+
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                width = GetFastValue(config, 'width', width);
+                height = GetFastValue(config, 'height', height);
+            }
+
+            var fileConfig = {
+                type: 'html',
+                cache: loader.textureManager,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: {
+                    width: width,
+                    height: height
+                }
+            };
+
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -81,8 +83,7 @@ var HTMLTextureFile = new Class({
      * @method Phaser.Loader.FileTypes.HTMLTextureFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         var w = this.config.width;
@@ -98,15 +99,12 @@ var HTMLTextureFile = new Class({
         data.push('</foreignObject>');
         data.push('</svg>');
 
-        var svg = [ data.join('\n') ];
+        var svg = [data.join('\n')];
         var _this = this;
 
-        try
-        {
-            var blob = new window.Blob(svg, { type: 'image/svg+xml;charset=utf-8' });
-        }
-        catch (e)
-        {
+        try {
+            var blob = new window.Blob(svg, {type: 'image/svg+xml;charset=utf-8'});
+        } catch (e) {
             _this.state = CONST.FILE_ERRORED;
 
             _this.onProcessComplete();
@@ -118,15 +116,13 @@ var HTMLTextureFile = new Class({
 
         this.data.crossOrigin = this.crossOrigin;
 
-        this.data.onload = function ()
-        {
+        this.data.onload = function () {
             File.revokeObjectURL(_this.data);
 
             _this.onProcessComplete();
         };
 
-        this.data.onerror = function ()
-        {
+        this.data.onerror = function () {
             File.revokeObjectURL(_this.data);
 
             _this.onProcessError();
@@ -141,8 +137,7 @@ var HTMLTextureFile = new Class({
      * @method Phaser.Loader.FileTypes.HTMLTextureFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
+    addToCache: function () {
         this.cache.addImage(this.key, this.data);
     }
 
@@ -229,18 +224,13 @@ var HTMLTextureFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('htmlTexture', function (key, url, width, height, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('htmlTexture', function (key, url, width, height, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new HTMLTextureFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new HTMLTextureFile(this, key, url, width, height, xhrSettings));
     }
 

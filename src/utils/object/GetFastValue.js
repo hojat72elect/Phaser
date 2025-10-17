@@ -16,20 +16,14 @@
  *
  * @return {*} The value if found; otherwise, defaultValue (null if none provided)
  */
-var GetFastValue = function (source, key, defaultValue)
-{
-    var t = typeof(source);
+var GetFastValue = function (source, key, defaultValue) {
+    var t = typeof (source);
 
-    if (!source || t === 'number' || t === 'string')
-    {
+    if (!source || t === 'number' || t === 'string') {
         return defaultValue;
-    }
-    else if (source.hasOwnProperty(key) && source[key] !== undefined)
-    {
+    } else if (source.hasOwnProperty(key) && source[key] !== undefined) {
         return source[key];
-    }
-    else
-    {
+    } else {
         return defaultValue;
     }
 };

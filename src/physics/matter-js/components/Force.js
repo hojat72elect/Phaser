@@ -26,8 +26,7 @@ var Force = {
      *
      * @return {this} This Game Object instance.
      */
-    applyForce: function (force)
-    {
+    applyForce: function (force) {
         this._tempVec2.set(this.body.position.x, this.body.position.y);
 
         Body.applyForce(this.body, this._tempVec2, force);
@@ -46,8 +45,7 @@ var Force = {
      *
      * @return {this} This Game Object instance.
      */
-    applyForceFrom: function (position, force)
-    {
+    applyForceFrom: function (position, force) {
         Body.applyForce(this.body, position, force);
 
         return this;
@@ -65,13 +63,12 @@ var Force = {
      *
      * @return {this} This Game Object instance.
      */
-    thrust: function (speed)
-    {
+    thrust: function (speed) {
         var angle = this.body.angle;
 
         this._tempVec2.set(speed * Math.cos(angle), speed * Math.sin(angle));
 
-        Body.applyForce(this.body, { x: this.body.position.x, y: this.body.position.y }, this._tempVec2);
+        Body.applyForce(this.body, {x: this.body.position.x, y: this.body.position.y}, this._tempVec2);
 
         return this;
     },
@@ -88,13 +85,12 @@ var Force = {
      *
      * @return {this} This Game Object instance.
      */
-    thrustLeft: function (speed)
-    {
+    thrustLeft: function (speed) {
         var angle = this.body.angle - Math.PI / 2;
 
         this._tempVec2.set(speed * Math.cos(angle), speed * Math.sin(angle));
 
-        Body.applyForce(this.body, { x: this.body.position.x, y: this.body.position.y }, this._tempVec2);
+        Body.applyForce(this.body, {x: this.body.position.x, y: this.body.position.y}, this._tempVec2);
 
         return this;
     },
@@ -111,13 +107,12 @@ var Force = {
      *
      * @return {this} This Game Object instance.
      */
-    thrustRight: function (speed)
-    {
+    thrustRight: function (speed) {
         var angle = this.body.angle + Math.PI / 2;
 
         this._tempVec2.set(speed * Math.cos(angle), speed * Math.sin(angle));
 
-        Body.applyForce(this.body, { x: this.body.position.x, y: this.body.position.y }, this._tempVec2);
+        Body.applyForce(this.body, {x: this.body.position.x, y: this.body.position.y}, this._tempVec2);
 
         return this;
     },
@@ -134,13 +129,12 @@ var Force = {
      *
      * @return {this} This Game Object instance.
      */
-    thrustBack: function (speed)
-    {
+    thrustBack: function (speed) {
         var angle = this.body.angle - Math.PI;
 
         this._tempVec2.set(speed * Math.cos(angle), speed * Math.sin(angle));
 
-        Body.applyForce(this.body, { x: this.body.position.x, y: this.body.position.y }, this._tempVec2);
+        Body.applyForce(this.body, {x: this.body.position.x, y: this.body.position.y}, this._tempVec2);
 
         return this;
     }

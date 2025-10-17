@@ -38,62 +38,57 @@ var ImageFile = new Class({
 
     initialize:
 
-    function ImageFile (loader, key, url, xhrSettings, frameConfig)
-    {
-        var extension = 'png';
-        var normalMapURL;
+        function ImageFile(loader, key, url, xhrSettings, frameConfig) {
+            var extension = 'png';
+            var normalMapURL;
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            normalMapURL = GetFastValue(config, 'normalMap');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            frameConfig = GetFastValue(config, 'frameConfig');
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                normalMapURL = GetFastValue(config, 'normalMap');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                frameConfig = GetFastValue(config, 'frameConfig');
+            }
 
-        if (Array.isArray(url))
-        {
-            normalMapURL = url[1];
-            url = url[0];
-        }
+            if (Array.isArray(url)) {
+                normalMapURL = url[1];
+                url = url[0];
+            }
 
-        var fileConfig = {
-            type: 'image',
-            cache: loader.textureManager,
-            extension: extension,
-            responseType: 'blob',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: frameConfig
-        };
+            var fileConfig = {
+                type: 'image',
+                cache: loader.textureManager,
+                extension: extension,
+                responseType: 'blob',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: frameConfig
+            };
 
-        File.call(this, loader, fileConfig);
+            File.call(this, loader, fileConfig);
 
-        //  Do we have a normal map to load as well?
-        if (normalMapURL)
-        {
-            var normalMap = new ImageFile(loader, this.key, normalMapURL, xhrSettings, frameConfig);
+            //  Do we have a normal map to load as well?
+            if (normalMapURL) {
+                var normalMap = new ImageFile(loader, this.key, normalMapURL, xhrSettings, frameConfig);
 
-            normalMap.type = 'normalMap';
+                normalMap.type = 'normalMap';
 
-            this.setLink(normalMap);
+                this.setLink(normalMap);
 
-            loader.addFile(normalMap);
-        }
+                loader.addFile(normalMap);
+            }
 
-        this.useImageElementLoad = (loader.imageLoadType === 'HTMLImageElement') || this.base64;
+            this.useImageElementLoad = (loader.imageLoadType === 'HTMLImageElement') || this.base64;
 
-        if (this.useImageElementLoad)
-        {
-            this.load = this.loadImage;
-            this.onProcess = this.onProcessImage;
-        }
-    },
+            if (this.useImageElementLoad) {
+                this.load = this.loadImage;
+                this.onProcess = this.onProcessImage;
+            }
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -102,8 +97,7 @@ var ImageFile = new Class({
      * @method Phaser.Loader.FileTypes.ImageFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = new Image();
@@ -112,15 +106,13 @@ var ImageFile = new Class({
 
         var _this = this;
 
-        this.data.onload = function ()
-        {
+        this.data.onload = function () {
             File.revokeObjectURL(_this.data);
 
             _this.onProcessComplete();
         };
 
-        this.data.onerror = function ()
-        {
+        this.data.onerror = function () {
             File.revokeObjectURL(_this.data);
 
             _this.onProcessError();
@@ -136,18 +128,14 @@ var ImageFile = new Class({
      * @private
      * @since 3.60.0
      */
-    onProcessImage: function ()
-    {
+    onProcessImage: function () {
         var result = this.state;
 
         this.state = CONST.FILE_PROCESSING;
 
-        if (result === CONST.FILE_LOADED)
-        {
+        if (result === CONST.FILE_LOADED) {
             this.onProcessComplete();
-        }
-        else
-        {
+        } else {
             this.onProcessError();
         }
     },
@@ -159,8 +147,7 @@ var ImageFile = new Class({
      * @private
      * @since 3.60.0
      */
-    loadImage: function ()
-    {
+    loadImage: function () {
         this.state = CONST.FILE_LOADING;
 
         this.src = GetURL(this, this.loader.baseURL);
@@ -171,15 +158,13 @@ var ImageFile = new Class({
 
         var _this = this;
 
-        this.data.onload = function ()
-        {
+        this.data.onload = function () {
             _this.state = CONST.FILE_LOADED;
 
             _this.loader.nextFile(_this, true);
         };
 
-        this.data.onerror = function ()
-        {
+        this.data.onerror = function () {
             _this.loader.nextFile(_this, false);
         };
 
@@ -192,28 +177,20 @@ var ImageFile = new Class({
      * @method Phaser.Loader.FileTypes.ImageFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
+    addToCache: function () {
         //  Check if we have a linked normal map
         var linkFile = this.linkFile;
 
-        if (linkFile)
-        {
+        if (linkFile) {
             //  We do, but has it loaded?
-            if (linkFile.state >= CONST.FILE_COMPLETE)
-            {
-                if (linkFile.type === 'spritesheet')
-                {
+            if (linkFile.state >= CONST.FILE_COMPLETE) {
+                if (linkFile.type === 'spritesheet') {
                     linkFile.addToCache();
-                }
-                else if (this.type === 'normalMap')
-                {
+                } else if (this.type === 'normalMap') {
                     //  linkFile.data = Image
                     //  this.data = Normal Map
                     this.cache.addImage(this.key, linkFile.data, this.data);
-                }
-                else
-                {
+                } else {
                     //  linkFile.data = Normal Map
                     //  this.data = Image
                     this.cache.addImage(this.key, this.data, linkFile.data);
@@ -222,9 +199,7 @@ var ImageFile = new Class({
 
             //  Nothing to do here, we'll use the linkFile `addToCache` call
             //  to process this pair
-        }
-        else
-        {
+        } else {
             this.cache.addImage(this.key, this.data);
         }
     }
@@ -326,18 +301,13 @@ var ImageFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('image', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('image', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new ImageFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new ImageFile(this, key, url, xhrSettings));
     }
 

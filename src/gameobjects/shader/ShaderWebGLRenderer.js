@@ -20,10 +20,8 @@ var GetCalcMatrix = require('../GetCalcMatrix');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var ShaderWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
-    if (!src.shader)
-    {
+var ShaderWebGLRenderer = function (renderer, src, camera, parentMatrix) {
+    if (!src.shader) {
         return;
     }
 
@@ -31,18 +29,14 @@ var ShaderWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     renderer.pipelines.clear();
 
-    if (src.renderToTexture)
-    {
+    if (src.renderToTexture) {
         src.load();
         src.flush();
-    }
-    else
-    {
+    } else {
         var calcMatrix = GetCalcMatrix(src, camera, parentMatrix).calc;
 
         //  Renderer size changed?
-        if (renderer.width !== src._rendererWidth || renderer.height !== src._rendererHeight)
-        {
+        if (renderer.width !== src._rendererWidth || renderer.height !== src._rendererHeight) {
             src.projOrtho(0, renderer.width, renderer.height, 0);
         }
 

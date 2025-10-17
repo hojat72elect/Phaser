@@ -15,17 +15,14 @@
  *
  * @return {Phaser.Types.Textures.CompressedTextureData} The Compressed Texture data.
  */
-var KTXParser = function (data)
-{
-    var idCheck = [ 0xab, 0x4b, 0x54, 0x58, 0x20, 0x31, 0x31, 0xbb, 0x0d, 0x0a, 0x1a, 0x0a ];
+var KTXParser = function (data) {
+    var idCheck = [0xab, 0x4b, 0x54, 0x58, 0x20, 0x31, 0x31, 0xbb, 0x0d, 0x0a, 0x1a, 0x0a];
 
     var i;
     var id = new Uint8Array(data, 0, 12);
 
-    for (i = 0; i < id.length; i++)
-    {
-        if (id[i] !== idCheck[i])
-        {
+    for (i = 0; i < id.length; i++) {
+        if (id[i] !== idCheck[i]) {
             console.warn('KTXParser - Invalid file format');
 
             return;
@@ -40,8 +37,7 @@ var KTXParser = function (data)
 
     var glType = head.getUint32(1 * size, littleEndian);
 
-    if (glType !== 0)
-    {
+    if (glType !== 0) {
         console.warn('KTXParser - Only compressed formats supported');
 
         return;
@@ -61,8 +57,7 @@ var KTXParser = function (data)
     var levelWidth = width;
     var levelHeight = height;
 
-    for (i = 0; i < mipmapLevels; i++)
-    {
+    for (i = 0; i < mipmapLevels; i++) {
         var levelSize = new Int32Array(data, offset, 1)[0];
 
         // levelSize field

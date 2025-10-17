@@ -137,293 +137,280 @@ var SpinePlugin = new Class({
 
     initialize:
 
-    function SpinePlugin (scene, pluginManager, pluginKey)
-    {
-        ScenePlugin.call(this, scene, pluginManager, pluginKey);
+        function SpinePlugin(scene, pluginManager, pluginKey) {
+            ScenePlugin.call(this, scene, pluginManager, pluginKey);
 
-        var game = pluginManager.game;
+            var game = pluginManager.game;
 
-        /**
-         * A read-only flag that indicates if the game is running under WebGL or Canvas.
-         *
-         * @name SpinePlugin#isWebGL
-         * @type {boolean}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.isWebGL = (game.config.renderType === 2);
+            /**
+             * A read-only flag that indicates if the game is running under WebGL or Canvas.
+             *
+             * @name SpinePlugin#isWebGL
+             * @type {boolean}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.isWebGL = (game.config.renderType === 2);
 
-        /**
-         * A custom cache that stores the Spine atlas data.
-         *
-         * This cache is global across your game, allowing you to access Spine data loaded from other Scenes,
-         * no matter which Scene you are in.
-         *
-         * @name SpinePlugin#cache
-         * @type {Phaser.Cache.BaseCache}
-         * @since 3.19.0
-         */
-        this.cache = game.cache.addCustom('spine');
+            /**
+             * A custom cache that stores the Spine atlas data.
+             *
+             * This cache is global across your game, allowing you to access Spine data loaded from other Scenes,
+             * no matter which Scene you are in.
+             *
+             * @name SpinePlugin#cache
+             * @type {Phaser.Cache.BaseCache}
+             * @since 3.19.0
+             */
+            this.cache = game.cache.addCustom('spine');
 
-        /**
-         * A custom cache that stores the Spine Textures.
-         *
-         * This cache is global across your game, allowing you to access Spine data loaded from other Scenes,
-         * no matter which Scene you are in.
-         *
-         * @name SpinePlugin#spineTextures
-         * @type {Phaser.Cache.BaseCache}
-         * @since 3.19.0
-         */
-        this.spineTextures = game.cache.addCustom('spineTextures');
+            /**
+             * A custom cache that stores the Spine Textures.
+             *
+             * This cache is global across your game, allowing you to access Spine data loaded from other Scenes,
+             * no matter which Scene you are in.
+             *
+             * @name SpinePlugin#spineTextures
+             * @type {Phaser.Cache.BaseCache}
+             * @since 3.19.0
+             */
+            this.spineTextures = game.cache.addCustom('spineTextures');
 
-        /**
-         * A reference to the global JSON Cache.
-         *
-         * @name SpinePlugin#json
-         * @type {Phaser.Cache.BaseCache}
-         * @since 3.19.0
-         */
-        this.json = game.cache.json;
+            /**
+             * A reference to the global JSON Cache.
+             *
+             * @name SpinePlugin#json
+             * @type {Phaser.Cache.BaseCache}
+             * @since 3.19.0
+             */
+            this.json = game.cache.json;
 
-        /**
-         * A reference to the global Texture Manager.
-         *
-         * @name SpinePlugin#textures
-         * @type {Phaser.Textures.TextureManager}
-         * @since 3.19.0
-         */
-        this.textures = game.textures;
+            /**
+             * A reference to the global Texture Manager.
+             *
+             * @name SpinePlugin#textures
+             * @type {Phaser.Textures.TextureManager}
+             * @since 3.19.0
+             */
+            this.textures = game.textures;
 
-        /**
-         * A flag that sets if the Skeleton Renderers will render debug information over the top
-         * of the skeleton or not.
-         *
-         * @name SpinePlugin#drawDebug
-         * @type {boolean}
-         * @since 3.19.0
-         */
-        this.drawDebug = false;
+            /**
+             * A flag that sets if the Skeleton Renderers will render debug information over the top
+             * of the skeleton or not.
+             *
+             * @name SpinePlugin#drawDebug
+             * @type {boolean}
+             * @since 3.19.0
+             */
+            this.drawDebug = false;
 
-        /**
-         * The underlying WebGL context of the Phaser renderer.
-         *
-         * Only set if running in WebGL mode.
-         *
-         * @name SpinePlugin#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.19.0
-         */
-        this.gl;
+            /**
+             * The underlying WebGL context of the Phaser renderer.
+             *
+             * Only set if running in WebGL mode.
+             *
+             * @name SpinePlugin#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.19.0
+             */
+            this.gl;
 
-        /**
-         * A reference to either the Canvas or WebGL Renderer that this Game is using.
-         *
-         * @name SpinePlugin#renderer
-         * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-         * @since 3.19.0
-         */
-        this.renderer;
+            /**
+             * A reference to either the Canvas or WebGL Renderer that this Game is using.
+             *
+             * @name SpinePlugin#renderer
+             * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
+             * @since 3.19.0
+             */
+            this.renderer;
 
-        /**
-         * An instance of the Spine WebGL Scene Renderer.
-         *
-         * There is only one instance of the Scene Renderer shared across the whole plugin.
-         *
-         * Only set if running in WebGL mode.
-         *
-         * @name SpinePlugin#sceneRenderer
-         * @type {spine.webgl.SceneRenderer}
-         * @since 3.19.0
-         */
-        this.sceneRenderer;
+            /**
+             * An instance of the Spine WebGL Scene Renderer.
+             *
+             * There is only one instance of the Scene Renderer shared across the whole plugin.
+             *
+             * Only set if running in WebGL mode.
+             *
+             * @name SpinePlugin#sceneRenderer
+             * @type {spine.webgl.SceneRenderer}
+             * @since 3.19.0
+             */
+            this.sceneRenderer;
 
-        /**
-         * An instance of the Spine Skeleton Renderer.
-         *
-         * @name SpinePlugin#skeletonRenderer
-         * @type {(spine.canvas.SkeletonRenderer|spine.webgl.SkeletonRenderer)}
-         * @since 3.19.0
-         */
-        this.skeletonRenderer;
+            /**
+             * An instance of the Spine Skeleton Renderer.
+             *
+             * @name SpinePlugin#skeletonRenderer
+             * @type {(spine.canvas.SkeletonRenderer|spine.webgl.SkeletonRenderer)}
+             * @since 3.19.0
+             */
+            this.skeletonRenderer;
 
-        /**
-         * An instance of the Spine Skeleton Debug Renderer.
-         *
-         * Only set if running in WebGL mode.
-         *
-         * @name SpinePlugin#skeletonDebugRenderer
-         * @type {spine.webgl.skeletonDebugRenderer}
-         * @since 3.19.0
-         */
-        this.skeletonDebugRenderer;
+            /**
+             * An instance of the Spine Skeleton Debug Renderer.
+             *
+             * Only set if running in WebGL mode.
+             *
+             * @name SpinePlugin#skeletonDebugRenderer
+             * @type {spine.webgl.skeletonDebugRenderer}
+             * @since 3.19.0
+             */
+            this.skeletonDebugRenderer;
 
-        /**
-         * A reference to the Spine runtime.
-         * This is the runtime created by Esoteric Software.
-         *
-         * @name SpinePlugin#plugin
-         * @type {spine}
-         * @since 3.19.0
-         */
-        this.plugin = Spine;
+            /**
+             * A reference to the Spine runtime.
+             * This is the runtime created by Esoteric Software.
+             *
+             * @name SpinePlugin#plugin
+             * @type {spine}
+             * @since 3.19.0
+             */
+            this.plugin = Spine;
 
-        /**
-         * An internal vector3 used by the screen to world method.
-         *
-         * @name SpinePlugin#temp1
-         * @private
-         * @type {spine.webgl.Vector3}
-         * @since 3.19.0
-         */
-        this.temp1;
+            /**
+             * An internal vector3 used by the screen to world method.
+             *
+             * @name SpinePlugin#temp1
+             * @private
+             * @type {spine.webgl.Vector3}
+             * @since 3.19.0
+             */
+            this.temp1;
 
-        /**
-         * An internal vector3 used by the screen to world method.
-         *
-         * @name SpinePlugin#temp2
-         * @private
-         * @type {spine.webgl.Vector3}
-         * @since 3.19.0
-         */
-        this.temp2;
+            /**
+             * An internal vector3 used by the screen to world method.
+             *
+             * @name SpinePlugin#temp2
+             * @private
+             * @type {spine.webgl.Vector3}
+             * @since 3.19.0
+             */
+            this.temp2;
 
-        if (this.isWebGL)
-        {
-            this.runtime = Spine.webgl;
+            if (this.isWebGL) {
+                this.runtime = Spine.webgl;
 
-            this.renderer = game.renderer;
-            this.gl = game.renderer.gl;
+                this.renderer = game.renderer;
+                this.gl = game.renderer.gl;
 
-            this.getAtlas = this.getAtlasWebGL;
-        }
-        else
-        {
-            this.runtime = Spine.canvas;
+                this.getAtlas = this.getAtlasWebGL;
+            } else {
+                this.runtime = Spine.canvas;
 
-            this.renderer = game.renderer;
+                this.renderer = game.renderer;
 
-            this.getAtlas = this.getAtlasCanvas;
-        }
+                this.getAtlas = this.getAtlasCanvas;
+            }
 
-        //  Headless mode?
-        if (!this.renderer)
-        {
-            this.renderer = {
-                width: game.scale.width,
-                height: game.scale.height,
-                preRender: NOOP,
-                postRender: NOOP,
-                render: NOOP,
-                destroy: NOOP
+            //  Headless mode?
+            if (!this.renderer) {
+                this.renderer = {
+                    width: game.scale.width,
+                    height: game.scale.height,
+                    preRender: NOOP,
+                    postRender: NOOP,
+                    render: NOOP,
+                    destroy: NOOP
+                };
+            }
+
+            var isWebGL = this.isWebGL;
+
+            var add = function (x, y, key, animationName, loop) {
+                if (isWebGL) {
+                    this.scene.sys.renderer.pipelines.clear();
+                }
+
+                var spinePlugin = this.scene.sys[pluginKey];
+                var spineGO = new SpineGameObject(this.scene, spinePlugin, x, y, key, animationName, loop);
+
+                this.displayList.add(spineGO);
+                this.updateList.add(spineGO);
+
+                if (isWebGL) {
+                    this.scene.sys.renderer.pipelines.rebind();
+                }
+
+                return spineGO;
             };
-        }
 
-        var isWebGL = this.isWebGL;
+            var make = function (config, addToScene) {
+                if (config === undefined) {
+                    config = {};
+                }
 
-        var add = function (x, y, key, animationName, loop)
-        {
-            if (isWebGL)
-            {
-                this.scene.sys.renderer.pipelines.clear();
-            }
+                if (isWebGL) {
+                    this.scene.sys.renderer.pipelines.clear();
+                }
 
-            var spinePlugin = this.scene.sys[pluginKey];
-            var spineGO = new SpineGameObject(this.scene, spinePlugin, x, y, key, animationName, loop);
+                var key = GetValue(config, 'key', null);
+                var animationName = GetValue(config, 'animationName', null);
+                var loop = GetValue(config, 'loop', false);
 
-            this.displayList.add(spineGO);
-            this.updateList.add(spineGO);
+                var spinePlugin = this.scene.sys[pluginKey];
+                var spineGO = new SpineGameObject(this.scene, spinePlugin, 0, 0, key, animationName, loop);
 
-            if (isWebGL)
-            {
-                this.scene.sys.renderer.pipelines.rebind();
-            }
+                if (addToScene !== undefined) {
+                    config.add = addToScene;
+                }
 
-            return spineGO;
-        };
+                BuildGameObject(this.scene, spineGO, config);
 
-        var make = function (config, addToScene)
-        {
-            if (config === undefined) { config = {}; }
+                //  Spine specific
+                var skinName = GetValue(config, 'skinName', false);
 
-            if (isWebGL)
-            {
-                this.scene.sys.renderer.pipelines.clear();
-            }
+                if (skinName) {
+                    spineGO.setSkinByName(skinName);
+                }
 
-            var key = GetValue(config, 'key', null);
-            var animationName = GetValue(config, 'animationName', null);
-            var loop = GetValue(config, 'loop', false);
+                var slotName = GetValue(config, 'slotName', false);
+                var attachmentName = GetValue(config, 'attachmentName', null);
 
-            var spinePlugin = this.scene.sys[pluginKey];
-            var spineGO = new SpineGameObject(this.scene, spinePlugin, 0, 0, key, animationName, loop);
+                if (slotName) {
+                    spineGO.setAttachment(slotName, attachmentName);
+                }
 
-            if (addToScene !== undefined)
-            {
-                config.add = addToScene;
-            }
+                if (isWebGL) {
+                    this.scene.sys.renderer.pipelines.rebind();
+                }
 
-            BuildGameObject(this.scene, spineGO, config);
+                return spineGO.refresh();
+            };
 
-            //  Spine specific
-            var skinName = GetValue(config, 'skinName', false);
+            var addContainer = function (x, y, children) {
+                var spinePlugin = this.scene.sys[pluginKey];
+                var spineGO = new SpineContainer(this.scene, spinePlugin, x, y, children);
 
-            if (skinName)
-            {
-                spineGO.setSkinByName(skinName);
-            }
+                this.displayList.add(spineGO);
 
-            var slotName = GetValue(config, 'slotName', false);
-            var attachmentName = GetValue(config, 'attachmentName', null);
+                return spineGO;
+            };
 
-            if (slotName)
-            {
-                spineGO.setAttachment(slotName, attachmentName);
-            }
+            var makeContainer = function (config, addToScene) {
+                if (config === undefined) {
+                    config = {};
+                }
 
-            if (isWebGL)
-            {
-                this.scene.sys.renderer.pipelines.rebind();
-            }
+                var x = GetValue(config, 'x', 0);
+                var y = GetValue(config, 'y', 0);
+                var children = GetValue(config, 'children', null);
 
-            return spineGO.refresh();
-        };
+                var spinePlugin = this.scene.sys[pluginKey];
+                var container = new SpineContainer(this.scene, spinePlugin, x, y, children);
 
-        var addContainer = function (x, y, children)
-        {
-            var spinePlugin = this.scene.sys[pluginKey];
-            var spineGO = new SpineContainer(this.scene, spinePlugin, x, y, children);
+                if (addToScene !== undefined) {
+                    config.add = addToScene;
+                }
 
-            this.displayList.add(spineGO);
+                BuildGameObject(this.scene, container, config);
 
-            return spineGO;
-        };
+                return container;
+            };
 
-        var makeContainer = function (config, addToScene)
-        {
-            if (config === undefined) { config = {}; }
-
-            var x = GetValue(config, 'x', 0);
-            var y = GetValue(config, 'y', 0);
-            var children = GetValue(config, 'children', null);
-
-            var spinePlugin = this.scene.sys[pluginKey];
-            var container = new SpineContainer(this.scene, spinePlugin, x, y, children);
-
-            if (addToScene !== undefined)
-            {
-                config.add = addToScene;
-            }
-
-            BuildGameObject(this.scene, container, config);
-
-            return container;
-        };
-
-        pluginManager.registerFileType('spine', this.spineFileCallback, scene);
-        pluginManager.registerGameObject('spine', add, make);
-        pluginManager.registerGameObject('spineContainer', addContainer, makeContainer);
-    },
+            pluginManager.registerFileType('spine', this.spineFileCallback, scene);
+            pluginManager.registerGameObject('spine', add, make);
+            pluginManager.registerGameObject('spineContainer', addContainer, makeContainer);
+        },
 
     /**
      * Internal boot handler.
@@ -432,16 +419,12 @@ var SpinePlugin = new Class({
      * @private
      * @since 3.19.0
      */
-    boot: function ()
-    {
-        if (this.isWebGL)
-        {
+    boot: function () {
+        if (this.isWebGL) {
             this.bootWebGL();
             this.onResize();
             this.game.scale.on(ResizeEvent, this.onResize, this);
-        }
-        else
-        {
+        } else {
             this.bootCanvas();
         }
 
@@ -460,8 +443,7 @@ var SpinePlugin = new Class({
      * @private
      * @since 3.19.0
      */
-    bootCanvas: function ()
-    {
+    bootCanvas: function () {
         this.skeletonRenderer = new Spine.canvas.SkeletonRenderer(this.scene.sys.context);
     },
 
@@ -472,21 +454,17 @@ var SpinePlugin = new Class({
      * @private
      * @since 3.19.0
      */
-    bootWebGL: function ()
-    {
+    bootWebGL: function () {
         //  Monkeypatch the Spine setBlendMode functions, or batching is destroyed!
 
-        var setBlendMode = function (srcBlend, dstBlend)
-        {
-            if (srcBlend !== this.srcBlend || dstBlend !== this.dstBlend)
-            {
+        var setBlendMode = function (srcBlend, dstBlend) {
+            if (srcBlend !== this.srcBlend || dstBlend !== this.dstBlend) {
                 var gl = this.context.gl;
 
                 this.srcBlend = srcBlend;
                 this.dstBlend = dstBlend;
 
-                if (this.isDrawing)
-                {
+                if (this.isDrawing) {
                     this.flush();
                     gl.blendFunc(this.srcBlend, this.dstBlend);
                 }
@@ -495,8 +473,7 @@ var SpinePlugin = new Class({
 
         var sceneRenderer = this.renderer.spineSceneRenderer;
 
-        if (!sceneRenderer)
-        {
+        if (!sceneRenderer) {
             sceneRenderer = new Spine.webgl.SceneRenderer(this.renderer.canvas, this.gl, true);
             sceneRenderer.batcher.setBlendMode = setBlendMode;
             sceneRenderer.shapes.setBlendMode = setBlendMode;
@@ -524,12 +501,10 @@ var SpinePlugin = new Class({
      *
      * @return {spine.TextureAtlas} The Spine Texture Atlas, or undefined if the given key wasn't found.
      */
-    getAtlasCanvas: function (key)
-    {
+    getAtlasCanvas: function (key) {
         var atlasEntry = this.cache.get(key);
 
-        if (!atlasEntry)
-        {
+        if (!atlasEntry) {
             console.warn('No atlas data for: ' + key);
             return;
         }
@@ -537,16 +512,12 @@ var SpinePlugin = new Class({
         var atlas;
         var spineTextures = this.spineTextures;
 
-        if (spineTextures.has(key))
-        {
+        if (spineTextures.has(key)) {
             atlas = spineTextures.get(key);
-        }
-        else
-        {
+        } else {
             var textures = this.textures;
 
-            atlas = new Spine.TextureAtlas(atlasEntry.data, function (path)
-            {
+            atlas = new Spine.TextureAtlas(atlasEntry.data, function (path) {
                 return new Spine.canvas.CanvasTexture(textures.get(atlasEntry.prefix + key + ':' + path).getSourceImage());
             });
         }
@@ -565,12 +536,10 @@ var SpinePlugin = new Class({
      *
      * @return {spine.TextureAtlas} The Spine Texture Atlas, or undefined if the given key wasn't found.
      */
-    getAtlasWebGL: function (key)
-    {
+    getAtlasWebGL: function (key) {
         var atlasEntry = this.cache.get(key);
 
-        if (!atlasEntry)
-        {
+        if (!atlasEntry) {
             console.warn('No atlas data for: ' + key);
             return;
         }
@@ -578,20 +547,16 @@ var SpinePlugin = new Class({
         var atlas;
         var spineTextures = this.spineTextures;
 
-        if (spineTextures.has(key))
-        {
+        if (spineTextures.has(key)) {
             atlas = spineTextures.get(key);
-        }
-        else
-        {
+        } else {
             var textures = this.textures;
 
             var gl = this.sceneRenderer.context.gl;
 
             gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
 
-            atlas = new Spine.TextureAtlas(atlasEntry.data, function (path)
-            {
+            atlas = new Spine.TextureAtlas(atlasEntry.data, function (path) {
                 return new Spine.webgl.GLTexture(gl, textures.get(atlasEntry.prefix + key + ':' + path).getSourceImage(), false);
             });
         }
@@ -679,15 +644,12 @@ var SpinePlugin = new Class({
      *
      * @return {Phaser.Loader.LoaderPlugin} The Loader instance.
      */
-    spineFileCallback: function (key, jsonURL, atlasURL, preMultipliedAlpha, jsonXhrSettings, atlasXhrSettings, settings)
-    {
+    spineFileCallback: function (key, jsonURL, atlasURL, preMultipliedAlpha, jsonXhrSettings, atlasXhrSettings, settings) {
         var multifile;
         settings = settings || {};
 
-        if (Array.isArray(key))
-        {
-            for (var i = 0; i < key.length; i++)
-            {
+        if (Array.isArray(key)) {
+            for (var i = 0; i < key.length; i++) {
                 multifile = new SpineFile(this, key[i]);
 
                 // Support prefix key
@@ -695,9 +657,7 @@ var SpinePlugin = new Class({
 
                 this.addFile(multifile.files);
             }
-        }
-        else
-        {
+        } else {
             multifile = new SpineFile(this, key, jsonURL, atlasURL, preMultipliedAlpha, jsonXhrSettings, atlasXhrSettings);
 
             // Support prefix key
@@ -724,8 +684,7 @@ var SpinePlugin = new Class({
      *
      * @return {spine.Vector2} A Vector2 containing the translated point.
      */
-    worldToLocal: function (x, y, skeleton, bone)
-    {
+    worldToLocal: function (x, y, skeleton, bone) {
         var temp1 = this.temp1;
         var temp2 = this.temp2;
         var camera = this.sceneRenderer.camera;
@@ -737,18 +696,13 @@ var SpinePlugin = new Class({
 
         camera.screenToWorld(temp1, width, height);
 
-        if (bone && bone.parent !== null)
-        {
+        if (bone && bone.parent !== null) {
             bone.parent.worldToLocal(temp2.set(temp1.x - skeleton.x, temp1.y - skeleton.y, 0));
 
             return new Spine.Vector2(temp2.x, temp2.y);
-        }
-        else if (bone)
-        {
+        } else if (bone) {
             return new Spine.Vector2(temp1.x - skeleton.x, temp1.y - skeleton.y);
-        }
-        else
-        {
+        } else {
             return new Spine.Vector2(temp1.x, temp1.y);
         }
     },
@@ -764,8 +718,7 @@ var SpinePlugin = new Class({
      *
      * @return {spine.Vector2} A Spine Vector2 based on the given values.
      */
-    getVector2: function (x, y)
-    {
+    getVector2: function (x, y) {
         return new Spine.Vector2(x, y);
     },
 
@@ -783,8 +736,7 @@ var SpinePlugin = new Class({
      *
      * @return {spine.Vector2} A Spine Vector2 based on the given values.
      */
-    getVector3: function (x, y, z)
-    {
+    getVector3: function (x, y, z) {
         return new Spine.webgl.Vector3(x, y, z);
     },
 
@@ -800,9 +752,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugBones: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugBones: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawBones = value;
 
@@ -821,9 +774,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugRegionAttachments: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugRegionAttachments: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawRegionAttachments = value;
 
@@ -842,9 +796,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugBoundingBoxes: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugBoundingBoxes: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawBoundingBoxes = value;
 
@@ -863,9 +818,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugMeshHull: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugMeshHull: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawMeshHull = value;
 
@@ -884,9 +840,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugMeshTriangles: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugMeshTriangles: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawMeshTriangles = value;
 
@@ -905,9 +862,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugPaths: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugPaths: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawPaths = value;
 
@@ -926,9 +884,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugSkeletonXY: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugSkeletonXY: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawSkeletonXY = value;
 
@@ -947,9 +906,10 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setDebugClipping: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setDebugClipping: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skeletonDebugRenderer.drawClipping = value;
 
@@ -968,8 +928,7 @@ var SpinePlugin = new Class({
      *
      * @return {this} This Spine Plugin.
      */
-    setEffect: function (effect)
-    {
+    setEffect: function (effect) {
         this.sceneRenderer.skeletonRenderer.vertexEffect = effect;
 
         return this;
@@ -988,14 +947,12 @@ var SpinePlugin = new Class({
      *
      * @return {(any|null)} This Spine Skeleton data object, or `null` if the key was invalid.
      */
-    createSkeleton: function (key, skeletonJSON)
-    {
+    createSkeleton: function (key, skeletonJSON) {
         var atlasKey = key;
         var jsonKey = key;
         var split = (key.indexOf('.') !== -1);
 
-        if (split)
-        {
+        if (split) {
             var parts = key.split('.');
 
             atlasKey = parts.shift();
@@ -1005,13 +962,11 @@ var SpinePlugin = new Class({
         var atlasData = this.cache.get(atlasKey);
         var atlas = this.getAtlas(atlasKey);
 
-        if (!atlas)
-        {
+        if (!atlas) {
             return null;
         }
 
-        if (!this.spineTextures.has(atlasKey))
-        {
+        if (!this.spineTextures.has(atlasKey)) {
             this.spineTextures.add(atlasKey, atlas);
         }
 
@@ -1023,27 +978,21 @@ var SpinePlugin = new Class({
 
         var data;
 
-        if (skeletonJSON)
-        {
+        if (skeletonJSON) {
             data = skeletonJSON;
-        }
-        else
-        {
+        } else {
             var json = this.json.get(atlasKey);
 
             data = (split) ? GetValue(json, jsonKey) : json;
         }
 
-        if (data)
-        {
+        if (data) {
             var skeletonData = skeletonJson.readSkeletonData(data);
 
             var skeleton = new Spine.Skeleton(skeletonData);
 
-            return { skeletonData: skeletonData, skeleton: skeleton, preMultipliedAlpha: preMultipliedAlpha };
-        }
-        else
-        {
+            return {skeletonData: skeletonData, skeleton: skeleton, preMultipliedAlpha: preMultipliedAlpha};
+        } else {
             return null;
         }
     },
@@ -1060,13 +1009,12 @@ var SpinePlugin = new Class({
      *
      * @return {any} An object containing the Animation State and Animation State Data instances.
      */
-    createAnimationState: function (skeleton)
-    {
+    createAnimationState: function (skeleton) {
         var stateData = new Spine.AnimationStateData(skeleton.data);
 
         var state = new Spine.AnimationState(stateData);
 
-        return { stateData: stateData, state: state };
+        return {stateData: stateData, state: state};
     },
 
     /**
@@ -1084,14 +1032,13 @@ var SpinePlugin = new Class({
      *
      * @return {any} The bounds object.
      */
-    getBounds: function (skeleton)
-    {
+    getBounds: function (skeleton) {
         var offset = new Spine.Vector2();
         var size = new Spine.Vector2();
 
         skeleton.getBounds(offset, size, []);
 
-        return { offset: offset, size: size };
+        return {offset: offset, size: size};
     },
 
     /**
@@ -1102,8 +1049,7 @@ var SpinePlugin = new Class({
      * @method SpinePlugin#onResize
      * @since 3.19.0
      */
-    onResize: function ()
-    {
+    onResize: function () {
         var renderer = this.renderer;
         var sceneRenderer = this.sceneRenderer;
 
@@ -1125,14 +1071,12 @@ var SpinePlugin = new Class({
      * @private
      * @since 3.19.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.off('shutdown', this.shutdown, this);
 
-        if (this.isWebGL)
-        {
+        if (this.isWebGL) {
             this.game.scale.off(ResizeEvent, this.onResize, this);
         }
     },
@@ -1146,8 +1090,7 @@ var SpinePlugin = new Class({
      * @private
      * @since 3.19.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.game = null;
@@ -1171,8 +1114,7 @@ var SpinePlugin = new Class({
      * @private
      * @since 3.50.0
      */
-    gameDestroy: function ()
-    {
+    gameDestroy: function () {
         this.pluginManager.removeGameObject('spine', true, true);
         this.pluginManager.removeGameObject('spineContainer', true, true);
 
@@ -1180,8 +1122,7 @@ var SpinePlugin = new Class({
 
         var sceneRenderer = this.renderer.spineSceneRenderer;
 
-        if (sceneRenderer)
-        {
+        if (sceneRenderer) {
             sceneRenderer.dispose();
         }
 

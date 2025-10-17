@@ -17,22 +17,17 @@ var GetAdvancedValue = require('../utils/object/GetAdvancedValue');
  *
  * @return {Phaser.GameObjects.Sprite} The updated Sprite.
  */
-var BuildGameObjectAnimation = function (sprite, config)
-{
+var BuildGameObjectAnimation = function (sprite, config) {
     var animConfig = GetAdvancedValue(config, 'anims', null);
 
-    if (animConfig === null)
-    {
+    if (animConfig === null) {
         return sprite;
     }
 
-    if (typeof animConfig === 'string')
-    {
+    if (typeof animConfig === 'string') {
         //  { anims: 'key' }
         sprite.anims.play(animConfig);
-    }
-    else if (typeof animConfig === 'object')
-    {
+    } else if (typeof animConfig === 'object') {
         //  { anims: {
         //              key: string
         //              startFrame: [string|number]
@@ -49,8 +44,7 @@ var BuildGameObjectAnimation = function (sprite, config)
 
         var key = GetAdvancedValue(animConfig, 'key', undefined);
 
-        if (key)
-        {
+        if (key) {
             var startFrame = GetAdvancedValue(animConfig, 'startFrame', undefined);
 
             var delay = GetAdvancedValue(animConfig, 'delay', 0);
@@ -70,16 +64,11 @@ var BuildGameObjectAnimation = function (sprite, config)
                 startFrame: startFrame
             };
 
-            if (play)
-            {
+            if (play) {
                 anims.play(playConfig);
-            }
-            else if (delayedPlay > 0)
-            {
+            } else if (delayedPlay > 0) {
                 anims.playAfterDelay(playConfig, delayedPlay);
-            }
-            else
-            {
+            } else {
                 anims.load(playConfig);
             }
         }

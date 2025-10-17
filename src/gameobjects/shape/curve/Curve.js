@@ -50,46 +50,48 @@ var Curve = new Class({
 
     initialize:
 
-    function Curve (scene, x, y, curve, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+        function Curve(scene, x, y, curve, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
 
-        Shape.call(this, scene, 'Curve', curve);
+            Shape.call(this, scene, 'Curve', curve);
 
-        /**
-         * Private internal value.
-         * The number of points used to draw the curve. Higher values create smoother renders at the cost of more triangles being drawn.
-         *
-         * @name Phaser.GameObjects.Curve#_smoothness
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._smoothness = 32;
+            /**
+             * Private internal value.
+             * The number of points used to draw the curve. Higher values create smoother renders at the cost of more triangles being drawn.
+             *
+             * @name Phaser.GameObjects.Curve#_smoothness
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._smoothness = 32;
 
-        /**
-         * Private internal value.
-         * The Curve bounds rectangle.
-         *
-         * @name Phaser.GameObjects.Curve#_curveBounds
-         * @type {Phaser.Geom.Rectangle}
-         * @private
-         * @since 3.13.0
-         */
-        this._curveBounds = new Rectangle();
+            /**
+             * Private internal value.
+             * The Curve bounds rectangle.
+             *
+             * @name Phaser.GameObjects.Curve#_curveBounds
+             * @type {Phaser.Geom.Rectangle}
+             * @private
+             * @since 3.13.0
+             */
+            this._curveBounds = new Rectangle();
 
-        this.closePath = false;
+            this.closePath = false;
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateData();
-    },
+            this.updateData();
+        },
 
     /**
      * The smoothness of the curve. The number of points used when rendering it.
@@ -102,13 +104,11 @@ var Curve = new Class({
      */
     smoothness: {
 
-        get: function ()
-        {
+        get: function () {
             return this._smoothness;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._smoothness = value;
 
             this.updateData();
@@ -128,8 +128,7 @@ var Curve = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSmoothness: function (value)
-    {
+    setSmoothness: function (value) {
         this._smoothness = value;
 
         return this.updateData();
@@ -144,8 +143,7 @@ var Curve = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
+    updateData: function () {
         var bounds = this._curveBounds;
         var smoothness = this._smoothness;
 
@@ -158,8 +156,7 @@ var Curve = new Class({
         var path = [];
         var points = this.geom.getPoints(smoothness);
 
-        for (var i = 0; i < points.length; i++)
-        {
+        for (var i = 0; i < points.length; i++) {
             path.push(points[i].x, points[i].y);
         }
 

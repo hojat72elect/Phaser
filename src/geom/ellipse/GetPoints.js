@@ -25,18 +25,17 @@ var MATH_CONST = require('../../math/const');
  *
  * @return {(array|Phaser.Geom.Point[])} An array of Point objects pertaining to the points around the circumference of the ellipse.
  */
-var GetPoints = function (ellipse, quantity, stepRate, out)
-{
-    if (out === undefined) { out = []; }
+var GetPoints = function (ellipse, quantity, stepRate, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
     //  If quantity is a falsey value (false, null, 0, undefined, etc) then we calculate it based on the stepRate instead.
-    if (!quantity && stepRate > 0)
-    {
+    if (!quantity && stepRate > 0) {
         quantity = Circumference(ellipse) / stepRate;
     }
 
-    for (var i = 0; i < quantity; i++)
-    {
+    for (var i = 0; i < quantity; i++) {
         var angle = FromPercent(i / quantity, 0, MATH_CONST.PI2);
 
         out.push(CircumferencePoint(ellipse, angle));

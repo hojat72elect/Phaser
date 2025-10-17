@@ -21,8 +21,7 @@ var Utils = require('../../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var GridWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline);
@@ -65,27 +64,23 @@ var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
     var cw = 0;
     var ch = 0;
 
-    if (showOutline)
-    {
+    if (showOutline) {
         //  To make room for the grid lines (in case alpha < 1)
         cellWidthA--;
         cellHeightA--;
 
-        if (cellWidthB === cellWidth)
-        {
+        if (cellWidthB === cellWidth) {
             cellWidthB--;
         }
 
-        if (cellHeightB === cellHeight)
-        {
+        if (cellHeightB === cellHeight) {
             cellHeightB--;
         }
     }
 
     renderer.pipelines.preBatch(src);
 
-    if (showCells && src.fillAlpha > 0)
-    {
+    if (showCells && src.fillAlpha > 0) {
         fillTint = pipeline.fillTint;
         fillTintColor = Utils.getTintAppendFloatAlpha(src.fillColor, src.fillAlpha * alpha);
 
@@ -94,17 +89,13 @@ var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
         fillTint.BL = fillTintColor;
         fillTint.BR = fillTintColor;
 
-        for (y = 0; y < gridHeight; y++)
-        {
-            if (showAltCells)
-            {
+        for (y = 0; y < gridHeight; y++) {
+            if (showAltCells) {
                 r = y % 2;
             }
 
-            for (x = 0; x < gridWidth; x++)
-            {
-                if (showAltCells && r)
-                {
+            for (x = 0; x < gridWidth; x++) {
+                if (showAltCells && r) {
                     r = 0;
                     continue;
                 }
@@ -124,8 +115,7 @@ var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
         }
     }
 
-    if (showAltCells && src.altFillAlpha > 0)
-    {
+    if (showAltCells && src.altFillAlpha > 0) {
         fillTint = pipeline.fillTint;
         fillTintColor = Utils.getTintAppendFloatAlpha(src.altFillColor, src.altFillAlpha * alpha);
 
@@ -134,17 +124,13 @@ var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
         fillTint.BL = fillTintColor;
         fillTint.BR = fillTintColor;
 
-        for (y = 0; y < gridHeight; y++)
-        {
-            if (showAltCells)
-            {
+        for (y = 0; y < gridHeight; y++) {
+            if (showAltCells) {
                 r = y % 2;
             }
 
-            for (x = 0; x < gridWidth; x++)
-            {
-                if (showAltCells && !r)
-                {
+            for (x = 0; x < gridWidth; x++) {
+                if (showAltCells && !r) {
                     r = 1;
                     continue;
                 }
@@ -164,8 +150,7 @@ var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
         }
     }
 
-    if (showOutline && src.outlineFillAlpha > 0)
-    {
+    if (showOutline && src.outlineFillAlpha > 0) {
         var strokeTint = pipeline.strokeTint;
         var color = Utils.getTintAppendFloatAlpha(src.outlineFillColor, src.outlineFillAlpha * alpha);
 
@@ -174,15 +159,13 @@ var GridWebGLRenderer = function (renderer, src, camera, parentMatrix)
         strokeTint.BL = color;
         strokeTint.BR = color;
 
-        for (x = 1; x < gridWidth; x++)
-        {
+        for (x = 1; x < gridWidth; x++) {
             var x1 = x * cellWidth;
 
             pipeline.batchLine(x1, 0, x1, height, src.lineWidth, src.lineWidth, 1, 0, false);
         }
 
-        for (y = 1; y < gridHeight; y++)
-        {
+        for (y = 1; y < gridHeight; y++) {
             var y1 = y * cellHeight;
 
             pipeline.batchLine(0, y1, width, y1, src.lineWidth, src.lineWidth, 1, 0, false);

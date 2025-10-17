@@ -26,28 +26,27 @@ var BaseCache = new Class({
 
     initialize:
 
-    function BaseCache ()
-    {
-        /**
-         * The Map in which the cache objects are stored.
-         *
-         * You can query the Map directly or use the BaseCache methods.
-         *
-         * @name Phaser.Cache.BaseCache#entries
-         * @type {Phaser.Structs.Map.<String, *>}
-         * @since 3.0.0
-         */
-        this.entries = new CustomMap();
+        function BaseCache() {
+            /**
+             * The Map in which the cache objects are stored.
+             *
+             * You can query the Map directly or use the BaseCache methods.
+             *
+             * @name Phaser.Cache.BaseCache#entries
+             * @type {Phaser.Structs.Map.<String, *>}
+             * @since 3.0.0
+             */
+            this.entries = new CustomMap();
 
-        /**
-         * An instance of EventEmitter used by the cache to emit related events.
-         *
-         * @name Phaser.Cache.BaseCache#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.0.0
-         */
-        this.events = new EventEmitter();
-    },
+            /**
+             * An instance of EventEmitter used by the cache to emit related events.
+             *
+             * @name Phaser.Cache.BaseCache#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.0.0
+             */
+            this.events = new EventEmitter();
+        },
 
     /**
      * Adds an item to this cache. The item is referenced by a unique string, which you are responsible
@@ -62,8 +61,7 @@ var BaseCache = new Class({
      *
      * @return {this} This BaseCache object.
      */
-    add: function (key, data)
-    {
+    add: function (key, data) {
         this.entries.set(key, data);
 
         this.events.emit(Events.ADD, this, key, data);
@@ -82,8 +80,7 @@ var BaseCache = new Class({
      *
      * @return {boolean} Returns `true` if the cache contains an item matching the given key, otherwise `false`.
      */
-    has: function (key)
-    {
+    has: function (key) {
         return this.entries.has(key);
     },
 
@@ -98,8 +95,7 @@ var BaseCache = new Class({
      *
      * @return {boolean} Returns `true` if the cache contains an item matching the given key, otherwise `false`.
      */
-    exists: function (key)
-    {
+    exists: function (key) {
         return this.entries.has(key);
     },
 
@@ -113,8 +109,7 @@ var BaseCache = new Class({
      *
      * @return {*} The item in the cache, or `null` if no item matching the given key was found.
      */
-    get: function (key)
-    {
+    get: function (key) {
         return this.entries.get(key);
     },
 
@@ -133,12 +128,10 @@ var BaseCache = new Class({
      *
      * @return {this} This BaseCache object.
      */
-    remove: function (key)
-    {
+    remove: function (key) {
         var entry = this.get(key);
 
-        if (entry)
-        {
+        if (entry) {
             this.entries.delete(key);
 
             this.events.emit(Events.REMOVE, this, key, entry.data);
@@ -155,8 +148,7 @@ var BaseCache = new Class({
      *
      * @return {string[]} Array containing all the keys.
      */
-    getKeys: function ()
-    {
+    getKeys: function () {
         return this.entries.keys();
     },
 
@@ -166,8 +158,7 @@ var BaseCache = new Class({
      * @method Phaser.Cache.BaseCache#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.entries.clear();
         this.events.removeAllListeners();
 

@@ -16,8 +16,7 @@
  *
  * @return {boolean} `true` if the two Ellipse equal each other, otherwise `false`.
  */
-var Equals = function (ellipse, toCompare)
-{
+var Equals = function (ellipse, toCompare) {
     return (
         ellipse.x === toCompare.x &&
         ellipse.y === toCompare.y &&

@@ -17,8 +17,7 @@ var Contains = require('./Contains');
  *
  * @return {boolean} True if all of the Rectangle coordinates are within the circle, otherwise false.
  */
-var ContainsRect = function (circle, rect)
-{
+var ContainsRect = function (circle, rect) {
     return (
         Contains(circle, rect.x, rect.y) &&
         Contains(circle, rect.right, rect.y) &&

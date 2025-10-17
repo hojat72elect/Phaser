@@ -19,27 +19,18 @@ var IsInLayerBounds = require('./IsInLayerBounds');
  *
  * @return {Phaser.Tilemaps.Tile} The tile at the given coordinates or null if no tile was found or the coordinates were invalid.
  */
-var GetTileAt = function (tileX, tileY, nonNull, layer)
-{
-    if (IsInLayerBounds(tileX, tileY, layer))
-    {
+var GetTileAt = function (tileX, tileY, nonNull, layer) {
+    if (IsInLayerBounds(tileX, tileY, layer)) {
         var tile = layer.data[tileY][tileX] || null;
 
-        if (!tile)
-        {
+        if (!tile) {
             return null;
-        }
-        else if (tile.index === -1)
-        {
+        } else if (tile.index === -1) {
             return nonNull ? tile : null;
-        }
-        else
-        {
+        } else {
             return tile;
         }
-    }
-    else
-    {
+    } else {
         return null;
     }
 };

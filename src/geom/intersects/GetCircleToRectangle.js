@@ -21,12 +21,12 @@ var CircleToRectangle = require('./CircleToRectangle');
  *
  * @return {array} An array with the points of intersection if objects intersect, otherwise an empty array.
  */
-var GetCircleToRectangle = function (circle, rect, out)
-{
-    if (out === undefined) { out = []; }
+var GetCircleToRectangle = function (circle, rect, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    if (CircleToRectangle(circle, rect))
-    {
+    if (CircleToRectangle(circle, rect)) {
         var lineA = rect.getLineA();
         var lineB = rect.getLineB();
         var lineC = rect.getLineC();

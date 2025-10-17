@@ -27,10 +27,8 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Rope} The Game Object that was created.
  */
-if (typeof WEBGL_RENDERER)
-{
-    GameObjectFactory.register('rope', function (x, y, texture, frame, points, horizontal, colors, alphas)
-    {
+if (typeof WEBGL_RENDERER) {
+    GameObjectFactory.register('rope', function (x, y, texture, frame, points, horizontal, colors, alphas) {
         return this.displayList.add(new Rope(this.scene, x, y, texture, frame, points, horizontal, colors, alphas));
     });
 }

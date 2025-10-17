@@ -15,8 +15,7 @@
  * @param {Phaser.GameObjects.Shader} src - The Game Object being rendered in this call.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  */
-var ShaderCanvasRenderer = function ()
-{
+var ShaderCanvasRenderer = function () {
 };
 
 module.exports = ShaderCanvasRenderer;

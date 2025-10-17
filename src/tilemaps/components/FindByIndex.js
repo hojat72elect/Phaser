@@ -21,52 +21,40 @@
  *
  * @return {?Phaser.Tilemaps.Tile} The first (or n skipped) tile with the matching index.
  */
-var FindByIndex = function (findIndex, skip, reverse, layer)
-{
-    if (skip === undefined) { skip = 0; }
-    if (reverse === undefined) { reverse = false; }
+var FindByIndex = function (findIndex, skip, reverse, layer) {
+    if (skip === undefined) {
+        skip = 0;
+    }
+    if (reverse === undefined) {
+        reverse = false;
+    }
 
     var count = 0;
     var tx;
     var ty;
     var tile;
 
-    if (reverse)
-    {
-        for (ty = layer.height - 1; ty >= 0; ty--)
-        {
-            for (tx = layer.width - 1; tx >= 0; tx--)
-            {
+    if (reverse) {
+        for (ty = layer.height - 1; ty >= 0; ty--) {
+            for (tx = layer.width - 1; tx >= 0; tx--) {
                 tile = layer.data[ty][tx];
-                if (tile && tile.index === findIndex)
-                {
-                    if (count === skip)
-                    {
+                if (tile && tile.index === findIndex) {
+                    if (count === skip) {
                         return tile;
-                    }
-                    else
-                    {
+                    } else {
                         count += 1;
                     }
                 }
             }
         }
-    }
-    else
-    {
-        for (ty = 0; ty < layer.height; ty++)
-        {
-            for (tx = 0; tx < layer.width; tx++)
-            {
+    } else {
+        for (ty = 0; ty < layer.height; ty++) {
+            for (tx = 0; tx < layer.width; tx++) {
                 tile = layer.data[ty][tx];
-                if (tile && tile.index === findIndex)
-                {
-                    if (count === skip)
-                    {
+                if (tile && tile.index === findIndex) {
+                    if (count === skip) {
                         return tile;
-                    }
-                    else
-                    {
+                    } else {
                         count += 1;
                     }
                 }

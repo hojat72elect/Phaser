@@ -22,7 +22,7 @@ module.exports = {
         libraryTarget: 'window'
     },
 
-    performance: { hints: false },
+    performance: {hints: false},
 
     module: {
         rules: [
@@ -78,7 +78,7 @@ module.exports = {
         new RemovePlugin({
             before: {
                 root: './plugins/spine/dist/',
-                include: [ 'SpinePlugin.js', 'SpinePlugin.min.js' ]
+                include: ['SpinePlugin.js', 'SpinePlugin.min.js']
             }
         }),
         {

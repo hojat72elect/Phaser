@@ -117,155 +117,154 @@ var MultiPipeline = new Class({
 
     initialize:
 
-    function MultiPipeline (config)
-    {
-        var renderer = config.game.renderer;
+        function MultiPipeline(config) {
+            var renderer = config.game.renderer;
 
-        var fragmentShaderSource = GetFastValue(config, 'fragShader', ShaderSourceFS);
+            var fragmentShaderSource = GetFastValue(config, 'fragShader', ShaderSourceFS);
 
-        config.fragShader = Utils.parseFragmentShaderMaxTextures(fragmentShaderSource, renderer.maxTextures);
-        config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS);
-        config.attributes = GetFastValue(config, 'attributes', [
-            {
-                name: 'inPosition',
-                size: 2
-            },
-            {
-                name: 'inTexCoord',
-                size: 2
-            },
-            {
-                name: 'inTexId'
-            },
-            {
-                name: 'inTintEffect'
-            },
-            {
-                name: 'inTint',
-                size: 4,
-                type: WEBGL_CONST.UNSIGNED_BYTE,
-                normalized: true
-            }
-        ]);
-        config.resizeUniform = 'uResolution';
+            config.fragShader = Utils.parseFragmentShaderMaxTextures(fragmentShaderSource, renderer.maxTextures);
+            config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS);
+            config.attributes = GetFastValue(config, 'attributes', [
+                {
+                    name: 'inPosition',
+                    size: 2
+                },
+                {
+                    name: 'inTexCoord',
+                    size: 2
+                },
+                {
+                    name: 'inTexId'
+                },
+                {
+                    name: 'inTintEffect'
+                },
+                {
+                    name: 'inTint',
+                    size: 4,
+                    type: WEBGL_CONST.UNSIGNED_BYTE,
+                    normalized: true
+                }
+            ]);
+            config.resizeUniform = 'uResolution';
 
-        WebGLPipeline.call(this, config);
+            WebGLPipeline.call(this, config);
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix1
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.11.0
-         */
-        this._tempMatrix1 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix1
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.11.0
+             */
+            this._tempMatrix1 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix2
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.11.0
-         */
-        this._tempMatrix2 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix2
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.11.0
+             */
+            this._tempMatrix2 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix3
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.11.0
-         */
-        this._tempMatrix3 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix3
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.11.0
+             */
+            this._tempMatrix3 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching by the
-         * Shape Game Objects.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#calcMatrix
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.55.0
-         */
-        this.calcMatrix = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching by the
+             * Shape Game Objects.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#calcMatrix
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.55.0
+             */
+            this.calcMatrix = new TransformMatrix();
 
-        /**
-         * Used internally to draw stroked triangles.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#tempTriangle
-         * @type {array}
-         * @private
-         * @since 3.55.0
-         */
-        this.tempTriangle = [
-            { x: 0, y: 0, width: 0 },
-            { x: 0, y: 0, width: 0 },
-            { x: 0, y: 0, width: 0 },
-            { x: 0, y: 0, width: 0 }
-        ];
+            /**
+             * Used internally to draw stroked triangles.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#tempTriangle
+             * @type {array}
+             * @private
+             * @since 3.55.0
+             */
+            this.tempTriangle = [
+                {x: 0, y: 0, width: 0},
+                {x: 0, y: 0, width: 0},
+                {x: 0, y: 0, width: 0},
+                {x: 0, y: 0, width: 0}
+            ];
 
-        /**
-         * Cached stroke tint.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#strokeTint
-         * @type {object}
-         * @private
-         * @since 3.55.0
-         */
-        this.strokeTint = { TL: 0, TR: 0, BL: 0, BR: 0 };
+            /**
+             * Cached stroke tint.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#strokeTint
+             * @type {object}
+             * @private
+             * @since 3.55.0
+             */
+            this.strokeTint = {TL: 0, TR: 0, BL: 0, BR: 0};
 
-        /**
-         * Cached fill tint.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#fillTint
-         * @type {object}
-         * @private
-         * @since 3.55.0
-         */
-        this.fillTint = { TL: 0, TR: 0, BL: 0, BR: 0 };
+            /**
+             * Cached fill tint.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#fillTint
+             * @type {object}
+             * @private
+             * @since 3.55.0
+             */
+            this.fillTint = {TL: 0, TR: 0, BL: 0, BR: 0};
 
-        /**
-         * Internal texture frame reference.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#currentFrame
-         * @type {Phaser.Textures.Frame}
-         * @private
-         * @since 3.55.0
-         */
-        this.currentFrame = { u0: 0, v0: 0, u1: 1, v1: 1 };
+            /**
+             * Internal texture frame reference.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#currentFrame
+             * @type {Phaser.Textures.Frame}
+             * @private
+             * @since 3.55.0
+             */
+            this.currentFrame = {u0: 0, v0: 0, u1: 1, v1: 1};
 
-        /**
-         * Internal path quad cache.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#firstQuad
-         * @type {number[]}
-         * @private
-         * @since 3.55.0
-         */
-        this.firstQuad = [ 0, 0, 0, 0, 0 ];
+            /**
+             * Internal path quad cache.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#firstQuad
+             * @type {number[]}
+             * @private
+             * @since 3.55.0
+             */
+            this.firstQuad = [0, 0, 0, 0, 0];
 
-        /**
-         * Internal path quad cache.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#prevQuad
-         * @type {number[]}
-         * @private
-         * @since 3.55.0
-         */
-        this.prevQuad = [ 0, 0, 0, 0, 0 ];
+            /**
+             * Internal path quad cache.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#prevQuad
+             * @type {number[]}
+             * @private
+             * @since 3.55.0
+             */
+            this.prevQuad = [0, 0, 0, 0, 0];
 
-        /**
-         * Used internally for triangulating a polygon.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#polygonCache
-         * @type {array}
-         * @private
-         * @since 3.55.0
-         */
-        this.polygonCache = [];
-    },
+            /**
+             * Used internally for triangulating a polygon.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#polygonCache
+             * @type {array}
+             * @private
+             * @since 3.55.0
+             */
+            this.polygonCache = [];
+        },
 
     /**
      * Called every time the pipeline is bound by the renderer.
@@ -275,8 +274,7 @@ var MultiPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#boot
      * @since 3.50.0
      */
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         var renderer = this.renderer;
@@ -295,8 +293,7 @@ var MultiPipeline = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use for the rendering transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} [parentTransformMatrix] - The transform matrix of the parent container, if set.
      */
-    batchSprite: function (gameObject, camera, parentTransformMatrix)
-    {
+    batchSprite: function (gameObject, camera, parentTransformMatrix) {
         this.manager.set(this, gameObject);
 
         var camMatrix = this._tempMatrix1;
@@ -322,12 +319,10 @@ var MultiPipeline = new Class({
         var x = -displayOriginX + frameX;
         var y = -displayOriginY + frameY;
 
-        if (gameObject.isCropped)
-        {
+        if (gameObject.isCropped) {
             var crop = gameObject._crop;
 
-            if (crop.flipX !== gameObject.flipX || crop.flipY !== gameObject.flipY)
-            {
+            if (crop.flipX !== gameObject.flipX || crop.flipY !== gameObject.flipY) {
                 frame.updateCropUVs(crop, gameObject.flipX, gameObject.flipY);
             }
 
@@ -349,20 +344,16 @@ var MultiPipeline = new Class({
         var flipX = 1;
         var flipY = 1;
 
-        if (gameObject.flipX)
-        {
-            if (!customPivot)
-            {
+        if (gameObject.flipX) {
+            if (!customPivot) {
                 x += (-frame.realWidth + (displayOriginX * 2));
             }
 
             flipX = -1;
         }
 
-        if (gameObject.flipY)
-        {
-            if (!customPivot)
-            {
+        if (gameObject.flipY) {
+            if (!customPivot) {
                 y += (-frame.realHeight + (displayOriginY * 2));
             }
 
@@ -372,8 +363,7 @@ var MultiPipeline = new Class({
         var gx = gameObject.x;
         var gy = gameObject.y;
 
-        if (camera.roundPixels)
-        {
+        if (camera.roundPixels) {
             gx = Math.floor(gx);
             gy = Math.floor(gy);
         }
@@ -382,17 +372,14 @@ var MultiPipeline = new Class({
 
         camMatrix.copyFrom(camera.matrix);
 
-        if (parentTransformMatrix)
-        {
+        if (parentTransformMatrix) {
             //  Multiply the camera by the parent matrix
             camMatrix.multiplyWithOffset(parentTransformMatrix, -camera.scrollX * gameObject.scrollFactorX, -camera.scrollY * gameObject.scrollFactorY);
 
             //  Undo the camera scroll
             spriteMatrix.e = gx;
             spriteMatrix.f = gy;
-        }
-        else
-        {
+        } else {
             spriteMatrix.e -= camera.scrollX * gameObject.scrollFactorX;
             spriteMatrix.f -= camera.scrollY * gameObject.scrollFactorY;
         }
@@ -410,8 +397,7 @@ var MultiPipeline = new Class({
         var tintBL = getTint(gameObject.tintBottomLeft, cameraAlpha * gameObject._alphaBL);
         var tintBR = getTint(gameObject.tintBottomRight, cameraAlpha * gameObject._alphaBR);
 
-        if (this.shouldFlush(6))
-        {
+        if (this.shouldFlush(6)) {
             this.flush();
         }
 
@@ -482,9 +468,10 @@ var MultiPipeline = new Class({
         parentTransformMatrix,
         skipFlip,
         textureUnit,
-        skipPrePost)
-    {
-        if (skipPrePost === undefined) { skipPrePost = false; }
+        skipPrePost) {
+        if (skipPrePost === undefined) {
+            skipPrePost = false;
+        }
 
         this.manager.set(this, gameObject);
 
@@ -503,8 +490,7 @@ var MultiPipeline = new Class({
         var x = -displayOriginX;
         var y = -displayOriginY;
 
-        if (gameObject.isCropped)
-        {
+        if (gameObject.isCropped) {
             var crop = gameObject._crop;
 
             var cropWidth = crop.width;
@@ -522,13 +508,11 @@ var MultiPipeline = new Class({
             var ox = frameX;
             var oy = frameY;
 
-            if (flipX)
-            {
+            if (flipX) {
                 ox = (frameWidth - crop.x - cropWidth);
             }
 
-            if (flipY)
-            {
+            if (flipY) {
                 oy = (frameHeight - crop.y - cropHeight);
             }
 
@@ -544,39 +528,33 @@ var MultiPipeline = new Class({
         //  Invert the flipY if this is a RenderTexture
         flipY = flipY ^ (!skipFlip && texture.isRenderTexture ? 1 : 0);
 
-        if (flipX)
-        {
+        if (flipX) {
             width *= -1;
             x += srcWidth;
         }
 
-        if (flipY)
-        {
+        if (flipY) {
             height *= -1;
             y += srcHeight;
         }
 
-        if (camera.roundPixels)
-        {
+        if (camera.roundPixels) {
             srcX = Math.floor(srcX);
             srcY = Math.floor(srcY);
         }
-        
+
         spriteMatrix.applyITRS(srcX, srcY, rotation, scaleX, scaleY);
 
         camMatrix.copyFrom(camera.matrix);
 
-        if (parentTransformMatrix)
-        {
+        if (parentTransformMatrix) {
             //  Multiply the camera by the parent matrix
             camMatrix.multiplyWithOffset(parentTransformMatrix, -camera.scrollX * scrollFactorX, -camera.scrollY * scrollFactorY);
 
             //  Undo the camera scroll
             spriteMatrix.e = srcX;
             spriteMatrix.f = srcY;
-        }
-        else
-        {
+        } else {
             spriteMatrix.e -= camera.scrollX * scrollFactorX;
             spriteMatrix.f -= camera.scrollY * scrollFactorY;
         }
@@ -586,20 +564,17 @@ var MultiPipeline = new Class({
 
         var quad = calcMatrix.setQuad(x, y, x + width, y + height, camera.renderRoundPixels);
 
-        if (textureUnit === undefined || textureUnit === null)
-        {
+        if (textureUnit === undefined || textureUnit === null) {
             textureUnit = this.setTexture2D(texture);
         }
 
-        if (gameObject && !skipPrePost)
-        {
+        if (gameObject && !skipPrePost) {
             this.manager.preBatch(gameObject);
         }
 
         this.batchQuad(gameObject, quad[0], quad[1], quad[2], quad[3], quad[4], quad[5], quad[6], quad[7], u0, v0, u1, v1, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, textureUnit);
 
-        if (gameObject && !skipPrePost)
-        {
+        if (gameObject && !skipPrePost) {
             this.manager.postBatch(gameObject);
         }
     },
@@ -624,19 +599,15 @@ var MultiPipeline = new Class({
         tint, alpha,
         transformMatrix,
         parentTransformMatrix
-    )
-    {
+    ) {
         this.manager.set(this);
 
         var spriteMatrix = this._tempMatrix1.copyFrom(transformMatrix);
         var calcMatrix = this._tempMatrix2;
 
-        if (parentTransformMatrix)
-        {
+        if (parentTransformMatrix) {
             spriteMatrix.multiply(parentTransformMatrix, calcMatrix);
-        }
-        else
-        {
+        } else {
             calcMatrix = spriteMatrix;
         }
 
@@ -664,15 +635,13 @@ var MultiPipeline = new Class({
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform.
      */
-    batchFillRect: function (x, y, width, height, currentMatrix, parentMatrix)
-    {
+    batchFillRect: function (x, y, width, height, currentMatrix, parentMatrix) {
         this.renderer.pipelines.set(this);
 
         var calcMatrix = this.calcMatrix;
 
         //  Multiply and store result in calcMatrix, only if the parentMatrix is set, otherwise we'll use whatever values are already in the calcMatrix
-        if (parentMatrix)
-        {
+        if (parentMatrix) {
             parentMatrix.multiply(currentMatrix, calcMatrix);
         }
 
@@ -700,15 +669,13 @@ var MultiPipeline = new Class({
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform.
      */
-    batchFillTriangle: function (x0, y0, x1, y1, x2, y2, currentMatrix, parentMatrix)
-    {
+    batchFillTriangle: function (x0, y0, x1, y1, x2, y2, currentMatrix, parentMatrix) {
         this.renderer.pipelines.set(this);
 
         var calcMatrix = this.calcMatrix;
 
         //  Multiply and store result in calcMatrix, only if the parentMatrix is set, otherwise we'll use whatever values are already in the calcMatrix
-        if (parentMatrix)
-        {
+        if (parentMatrix) {
             parentMatrix.multiply(currentMatrix, calcMatrix);
         }
 
@@ -746,8 +713,7 @@ var MultiPipeline = new Class({
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform.
      */
-    batchStrokeTriangle: function (x0, y0, x1, y1, x2, y2, lineWidth, currentMatrix, parentMatrix)
-    {
+    batchStrokeTriangle: function (x0, y0, x1, y1, x2, y2, lineWidth, currentMatrix, parentMatrix) {
         var tempTriangle = this.tempTriangle;
 
         tempTriangle[0].x = x0;
@@ -784,15 +750,13 @@ var MultiPipeline = new Class({
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform.
      */
-    batchFillPath: function (path, currentMatrix, parentMatrix)
-    {
+    batchFillPath: function (path, currentMatrix, parentMatrix) {
         this.renderer.pipelines.set(this);
 
         var calcMatrix = this.calcMatrix;
 
         //  Multiply and store result in calcMatrix, only if the parentMatrix is set, otherwise we'll use whatever values are already in the calcMatrix
-        if (parentMatrix)
-        {
+        if (parentMatrix) {
             parentMatrix.multiply(currentMatrix, calcMatrix);
         }
 
@@ -805,8 +769,7 @@ var MultiPipeline = new Class({
         var tintTR = this.fillTint.TR;
         var tintBL = this.fillTint.BL;
 
-        for (var pathIndex = 0; pathIndex < length; ++pathIndex)
-        {
+        for (var pathIndex = 0; pathIndex < length; ++pathIndex) {
             point = path[pathIndex];
             polygonCache.push(point.x, point.y);
         }
@@ -814,8 +777,7 @@ var MultiPipeline = new Class({
         polygonIndexArray = Earcut(polygonCache);
         length = polygonIndexArray.length;
 
-        for (var index = 0; index < length; index += 3)
-        {
+        for (var index = 0; index < length; index += 3) {
             var p0 = polygonIndexArray[index + 0] * 2;
             var p1 = polygonIndexArray[index + 1] * 2;
             var p2 = polygonIndexArray[index + 2] * 2;
@@ -859,8 +821,7 @@ var MultiPipeline = new Class({
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform.
      */
-    batchStrokePath: function (path, lineWidth, pathOpen, currentMatrix, parentMatrix)
-    {
+    batchStrokePath: function (path, lineWidth, pathOpen, currentMatrix, parentMatrix) {
         this.renderer.pipelines.set(this);
 
         //  Reset the closePath booleans
@@ -869,8 +830,7 @@ var MultiPipeline = new Class({
 
         var pathLength = path.length - 1;
 
-        for (var pathIndex = 0; pathIndex < pathLength; pathIndex++)
-        {
+        for (var pathIndex = 0; pathIndex < pathLength; pathIndex++) {
             var point0 = path[pathIndex];
             var point1 = path[pathIndex + 1];
 
@@ -907,15 +867,13 @@ var MultiPipeline = new Class({
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform.
      */
-    batchLine: function (ax, ay, bx, by, aLineWidth, bLineWidth, lineWidth, index, closePath, currentMatrix, parentMatrix)
-    {
+    batchLine: function (ax, ay, bx, by, aLineWidth, bLineWidth, lineWidth, index, closePath, currentMatrix, parentMatrix) {
         this.renderer.pipelines.set(this);
 
         var calcMatrix = this.calcMatrix;
 
         //  Multiply and store result in calcMatrix, only if the parentMatrix is set, otherwise we'll use whatever values are already in the calcMatrix
-        if (parentMatrix)
-        {
+        if (parentMatrix) {
             parentMatrix.multiply(currentMatrix, calcMatrix);
         }
 
@@ -924,8 +882,7 @@ var MultiPipeline = new Class({
 
         var len = Math.sqrt(dx * dx + dy * dy);
 
-        if (len === 0)
-        {
+        if (len === 0) {
             //  Because we cannot (and should not) divide by zero!
             return;
         }
@@ -970,8 +927,7 @@ var MultiPipeline = new Class({
         //  TL, BL, BR, TR
         this.batchQuad(null, tlX, tlY, blX, blY, brX, brY, trX, trY, 0, 0, 1, 1, tintTL, tintTR, tintBL, tintBR, 2);
 
-        if (lineWidth <= 2)
-        {
+        if (lineWidth <= 2) {
             //  No point doing a linejoin if the line isn't thick enough
             return;
         }
@@ -979,12 +935,9 @@ var MultiPipeline = new Class({
         var prev = this.prevQuad;
         var first = this.firstQuad;
 
-        if (index > 0 && prev[4])
-        {
+        if (index > 0 && prev[4]) {
             this.batchQuad(null, tlX, tlY, blX, blY, prev[0], prev[1], prev[2], prev[3], 0, 0, 1, 1, tintTL, tintTR, tintBL, tintBR, 2);
-        }
-        else
-        {
+        } else {
             first[0] = tlX;
             first[1] = tlY;
             first[2] = blX;
@@ -992,13 +945,10 @@ var MultiPipeline = new Class({
             first[4] = 1;
         }
 
-        if (closePath && first[4])
-        {
+        if (closePath && first[4]) {
             //  Add a join for the final path segment
             this.batchQuad(null, brX, brY, trX, trY, first[0], first[1], first[2], first[3], 0, 0, 1, 1, tintTL, tintTR, tintBL, tintBR, 2);
-        }
-        else
-        {
+        } else {
             //  Store it
 
             prev[0] = brX;
@@ -1018,8 +968,7 @@ var MultiPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this._tempMatrix1.destroy();
         this._tempMatrix2.destroy();
         this._tempMatrix3.destroy();

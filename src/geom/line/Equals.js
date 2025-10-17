@@ -15,8 +15,7 @@
  *
  * @return {boolean} Whether the two lines are equal.
  */
-var Equals = function (line, toCompare)
-{
+var Equals = function (line, toCompare) {
     return (
         line.x1 === toCompare.x1 &&
         line.y1 === toCompare.y1 &&

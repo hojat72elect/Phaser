@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Geom.Line} The centered line.
  */
-var CenterOn = function (line, x, y)
-{
+var CenterOn = function (line, x, y) {
     var tx = x - ((line.x1 + line.x2) / 2);
     var ty = y - ((line.y1 + line.y2) / 2);
 

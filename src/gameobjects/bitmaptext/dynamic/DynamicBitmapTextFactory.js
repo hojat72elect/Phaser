@@ -9,12 +9,12 @@ var GameObjectFactory = require('../../GameObjectFactory');
 
 /**
  * Creates a new Dynamic Bitmap Text Game Object and adds it to the Scene.
- * 
+ *
  * BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
- * 
+ *
  * During rendering for each letter of the text is rendered to the display, proportionally spaced out and aligned to
  * match the font structure.
- * 
+ *
  * Dynamic Bitmap Text objects are different from Static Bitmap Text in that they invoke a callback for each
  * letter being rendered during the render pass. This callback allows you to manipulate the properties of
  * each letter being rendered, such as its position, scale or tint, allowing you to create interesting effects
@@ -49,8 +49,7 @@ var GameObjectFactory = require('../../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.DynamicBitmapText} The Game Object that was created.
  */
-GameObjectFactory.register('dynamicBitmapText', function (x, y, font, text, size)
-{
+GameObjectFactory.register('dynamicBitmapText', function (x, y, font, text, size) {
     return this.displayList.add(new DynamicBitmapText(this.scene, x, y, font, text, size));
 });
 

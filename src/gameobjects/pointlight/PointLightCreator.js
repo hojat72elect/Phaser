@@ -22,9 +22,10 @@ var PointLight = require('./PointLight');
  *
  * @return {Phaser.GameObjects.PointLight} The Game Object that was created.
  */
-GameObjectCreator.register('pointlight', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('pointlight', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var color = GetAdvancedValue(config, 'color', 0xffffff);
     var radius = GetAdvancedValue(config, 'radius', 128);
@@ -33,8 +34,7 @@ GameObjectCreator.register('pointlight', function (config, addToScene)
 
     var layer = new PointLight(this.scene, 0, 0, color, radius, intensity, attenuation);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

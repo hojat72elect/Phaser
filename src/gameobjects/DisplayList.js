@@ -33,54 +33,53 @@ var DisplayList = new Class({
 
     initialize:
 
-    function DisplayList (scene)
-    {
-        List.call(this, scene);
+        function DisplayList(scene) {
+            List.call(this, scene);
 
-        /**
-         * The flag the determines whether Game Objects should be sorted when `depthSort()` is called.
-         *
-         * @name Phaser.GameObjects.DisplayList#sortChildrenFlag
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.sortChildrenFlag = false;
+            /**
+             * The flag the determines whether Game Objects should be sorted when `depthSort()` is called.
+             *
+             * @name Phaser.GameObjects.DisplayList#sortChildrenFlag
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.sortChildrenFlag = false;
 
-        /**
-         * The Scene that this Display List belongs to.
-         *
-         * @name Phaser.GameObjects.DisplayList#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * The Scene that this Display List belongs to.
+             *
+             * @name Phaser.GameObjects.DisplayList#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * The Scene's Systems.
-         *
-         * @name Phaser.GameObjects.DisplayList#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * The Scene's Systems.
+             *
+             * @name Phaser.GameObjects.DisplayList#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * The Scene's Event Emitter.
-         *
-         * @name Phaser.GameObjects.DisplayList#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.50.0
-         */
-        this.events = scene.sys.events;
+            /**
+             * The Scene's Event Emitter.
+             *
+             * @name Phaser.GameObjects.DisplayList#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.50.0
+             */
+            this.events = scene.sys.events;
 
-        //  Set the List callbacks
-        this.addCallback = this.addChildCallback;
-        this.removeCallback = this.removeChildCallback;
+            //  Set the List callbacks
+            this.addCallback = this.addChildCallback;
+            this.removeCallback = this.removeChildCallback;
 
-        this.events.once(SceneEvents.BOOT, this.boot, this);
-        this.events.on(SceneEvents.START, this.start, this);
-    },
+            this.events.once(SceneEvents.BOOT, this.boot, this);
+            this.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -90,8 +89,7 @@ var DisplayList = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.events.once(SceneEvents.DESTROY, this.destroy, this);
     },
 
@@ -106,20 +104,16 @@ var DisplayList = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was added to the list.
      */
-    addChildCallback: function (gameObject)
-    {
-        if (gameObject.displayList && gameObject.displayList !== this)
-        {
+    addChildCallback: function (gameObject) {
+        if (gameObject.displayList && gameObject.displayList !== this) {
             gameObject.removeFromDisplayList();
         }
 
-        if (gameObject.parentContainer)
-        {
+        if (gameObject.parentContainer) {
             gameObject.parentContainer.remove(gameObject);
         }
 
-        if (!gameObject.displayList)
-        {
+        if (!gameObject.displayList) {
             this.queueDepthSort();
 
             gameObject.displayList = this;
@@ -141,8 +135,7 @@ var DisplayList = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was removed from the list.
      */
-    removeChildCallback: function (gameObject)
-    {
+    removeChildCallback: function (gameObject) {
         this.queueDepthSort();
 
         gameObject.displayList = null;
@@ -161,8 +154,7 @@ var DisplayList = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         this.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);
     },
 
@@ -172,8 +164,7 @@ var DisplayList = new Class({
      * @method Phaser.GameObjects.DisplayList#queueDepthSort
      * @since 3.0.0
      */
-    queueDepthSort: function ()
-    {
+    queueDepthSort: function () {
         this.sortChildrenFlag = true;
     },
 
@@ -183,10 +174,8 @@ var DisplayList = new Class({
      * @method Phaser.GameObjects.DisplayList#depthSort
      * @since 3.0.0
      */
-    depthSort: function ()
-    {
-        if (this.sortChildrenFlag)
-        {
+    depthSort: function () {
+        if (this.sortChildrenFlag) {
             StableSort(this.list, this.sortByDepth);
 
             this.sortChildrenFlag = false;
@@ -204,8 +193,7 @@ var DisplayList = new Class({
      *
      * @return {number} The difference between the depths of each Game Object.
      */
-    sortByDepth: function (childA, childB)
-    {
+    sortByDepth: function (childA, childB) {
         return childA._depth - childB._depth;
     },
 
@@ -218,8 +206,7 @@ var DisplayList = new Class({
      *
      * @return {Phaser.GameObjects.GameObject[]} The group members.
      */
-    getChildren: function ()
-    {
+    getChildren: function () {
         return this.list;
     },
 
@@ -232,15 +219,12 @@ var DisplayList = new Class({
      * @private
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var list = this.list;
         var i = list.length;
 
-        while (i--)
-        {
-            if (list[i])
-            {
+        while (i--) {
+            if (list[i]) {
                 list[i].destroy(true);
             }
         }
@@ -258,8 +242,7 @@ var DisplayList = new Class({
      * @private
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.events.off(SceneEvents.START, this.start, this);

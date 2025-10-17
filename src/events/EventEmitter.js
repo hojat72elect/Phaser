@@ -23,10 +23,9 @@ var EventEmitter = new Class({
 
     initialize:
 
-    function EventEmitter ()
-    {
-        EE.call(this);
-    },
+        function EventEmitter() {
+            EE.call(this);
+        },
 
     /**
      * Removes all listeners.
@@ -34,8 +33,7 @@ var EventEmitter = new Class({
      * @method Phaser.Events.EventEmitter#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.removeAllListeners();
     },
 
@@ -45,8 +43,7 @@ var EventEmitter = new Class({
      * @method Phaser.Events.EventEmitter#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.removeAllListeners();
     }
 

@@ -15,8 +15,7 @@
  *
  * @return {string} The reversed string.
  */
-var Reverse = function (string)
-{
+var Reverse = function (string) {
     return string.split('').reverse().join('');
 };
 

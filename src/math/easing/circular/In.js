@@ -14,8 +14,7 @@
  *
  * @return {number} The tweened value.
  */
-var In = function (v)
-{
+var In = function (v) {
     return 1 - Math.sqrt(1 - v * v);
 };
 

@@ -17,9 +17,10 @@
  *
  * @return {Phaser.Types.Physics.Arcade.ArcadeBodyCollision} The collision data.
  */
-var SetCollisionObject = function (noneFlip, data)
-{
-    if (data === undefined) { data = {}; }
+var SetCollisionObject = function (noneFlip, data) {
+    if (data === undefined) {
+        data = {};
+    }
 
     data.none = noneFlip;
     data.up = false;
@@ -27,8 +28,7 @@ var SetCollisionObject = function (noneFlip, data)
     data.left = false;
     data.right = false;
 
-    if (!noneFlip)
-    {
+    if (!noneFlip) {
         data.up = true;
         data.down = true;
         data.left = true;

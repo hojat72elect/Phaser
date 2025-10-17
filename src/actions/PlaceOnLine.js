@@ -21,21 +21,16 @@ var GetEasedPoints = require('../geom/line/GetEasedPoints');
  * @param {(string|function)} [ease] - An optional ease to use. This can be either a string from the EaseMap, or a custom function.
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var PlaceOnLine = function (items, line, ease)
-{
+var PlaceOnLine = function (items, line, ease) {
     var points;
 
-    if (ease)
-    {
+    if (ease) {
         points = GetEasedPoints(line, ease, items.length);
-    }
-    else
-    {
+    } else {
         points = GetPoints(line, items.length);
     }
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         var item = items[i];
         var point = points[i];
 

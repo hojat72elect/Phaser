@@ -25,9 +25,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} A Point, or point-like object, containing the coordinates of the point around the circle.
  */
-var GetPoint = function (circle, position, out)
-{
-    if (out === undefined) { out = new Point(); }
+var GetPoint = function (circle, position, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var angle = FromPercent(position, 0, MATH_CONST.PI2);
 

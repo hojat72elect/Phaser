@@ -20,8 +20,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * @param {HTMLCanvasElement} sourceCanvas - The canvas to take a snapshot of.
  * @param {Phaser.Types.Renderer.Snapshot.SnapshotState} config - The snapshot configuration object.
  */
-var CanvasSnapshot = function (canvas, config)
-{
+var CanvasSnapshot = function (canvas, config) {
     var callback = GetFastValue(config, 'callback');
     var type = GetFastValue(config, 'type', 'image/png');
     var encoderOptions = GetFastValue(config, 'encoder', 0.92);
@@ -31,55 +30,45 @@ var CanvasSnapshot = function (canvas, config)
     var height = Math.floor(GetFastValue(config, 'height', canvas.height));
     var getPixel = GetFastValue(config, 'getPixel', false);
 
-    if (getPixel)
-    {
-        var context = canvas.getContext('2d', { willReadFrequently: false });
+    if (getPixel) {
+        var context = canvas.getContext('2d', {willReadFrequently: false});
         var imageData = context.getImageData(x, y, 1, 1);
         var data = imageData.data;
 
         callback.call(null, new Color(data[0], data[1], data[2], data[3]));
-    }
-    else if (x !== 0 || y !== 0 || width !== canvas.width || height !== canvas.height)
-    {
+    } else if (x !== 0 || y !== 0 || width !== canvas.width || height !== canvas.height) {
         //  Area Grab
         var copyCanvas = CanvasPool.createWebGL(this, width, height);
-        var ctx = copyCanvas.getContext('2d', { willReadFrequently: true });
+        var ctx = copyCanvas.getContext('2d', {willReadFrequently: true});
 
-        if (width > 0 && height > 0)
-        {
+        if (width > 0 && height > 0) {
             ctx.drawImage(canvas, x, y, width, height, 0, 0, width, height);
         }
 
         var image1 = new Image();
 
-        image1.onerror = function ()
-        {
+        image1.onerror = function () {
             callback.call(null);
 
             CanvasPool.remove(copyCanvas);
         };
 
-        image1.onload = function ()
-        {
+        image1.onload = function () {
             callback.call(null, image1);
 
             CanvasPool.remove(copyCanvas);
         };
 
         image1.src = copyCanvas.toDataURL(type, encoderOptions);
-    }
-    else
-    {
+    } else {
         //  Full Grab
         var image2 = new Image();
 
-        image2.onerror = function ()
-        {
+        image2.onerror = function () {
             callback.call(null);
         };
 
-        image2.onload = function ()
-        {
+        image2.onload = function () {
             callback.call(null, image2);
         };
 

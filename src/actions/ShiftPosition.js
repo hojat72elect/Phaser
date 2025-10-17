@@ -40,30 +40,29 @@ var Vector2 = require('../math/Vector2');
  *
  * @return {Phaser.Types.Math.Vector2Like} The output vector.
  */
-var ShiftPosition = function (items, x, y, direction, output)
-{
-    if (direction === undefined) { direction = 0; }
-    if (output === undefined) { output = new Vector2(); }
+var ShiftPosition = function (items, x, y, direction, output) {
+    if (direction === undefined) {
+        direction = 0;
+    }
+    if (output === undefined) {
+        output = new Vector2();
+    }
 
     var px;
     var py;
     var len = items.length;
 
-    if (len === 1)
-    {
+    if (len === 1) {
         px = items[0].x;
         py = items[0].y;
 
         items[0].x = x;
         items[0].y = y;
-    }
-    else
-    {
+    } else {
         var i = 1;
         var pos = 0;
 
-        if (direction === 0)
-        {
+        if (direction === 0) {
             pos = len - 1;
             i = len - 2;
         }
@@ -75,10 +74,8 @@ var ShiftPosition = function (items, x, y, direction, output)
         items[pos].x = x;
         items[pos].y = y;
 
-        for (var c = 0; c < len; c++)
-        {
-            if (i >= len || i === -1)
-            {
+        for (var c = 0; c < len; c++) {
+            if (i >= len || i === -1) {
                 continue;
             }
 
@@ -97,12 +94,9 @@ var ShiftPosition = function (items, x, y, direction, output)
             px = cx;
             py = cy;
 
-            if (direction === 0)
-            {
+            if (direction === 0) {
                 i--;
-            }
-            else
-            {
+            } else {
                 i++;
             }
         }

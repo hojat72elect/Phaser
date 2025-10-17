@@ -1,6 +1,6 @@
 /**
  * The returned value updates the property for the duration of the particle's life.
- * 
+ *
  * @callback Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback
  * @since 3.0.0
  *

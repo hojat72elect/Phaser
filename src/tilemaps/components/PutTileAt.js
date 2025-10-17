@@ -26,12 +26,12 @@ var SetTileCollision = require('./SetTileCollision');
  *
  * @return {Phaser.Tilemaps.Tile} The Tile object that was created or added to this map.
  */
-var PutTileAt = function (tile, tileX, tileY, recalculateFaces, layer)
-{
-    if (recalculateFaces === undefined) { recalculateFaces = true; }
+var PutTileAt = function (tile, tileX, tileY, recalculateFaces, layer) {
+    if (recalculateFaces === undefined) {
+        recalculateFaces = true;
+    }
 
-    if (!IsInLayerBounds(tileX, tileY, layer))
-    {
+    if (!IsInLayerBounds(tileX, tileY, layer)) {
         return null;
     }
 
@@ -39,25 +39,18 @@ var PutTileAt = function (tile, tileX, tileY, recalculateFaces, layer)
     var oldTile = layer.data[tileY][tileX];
     var oldTileCollides = oldTile && oldTile.collides;
 
-    if (tile instanceof Tile)
-    {
-        if (layer.data[tileY][tileX] === null)
-        {
+    if (tile instanceof Tile) {
+        if (layer.data[tileY][tileX] === null) {
             layer.data[tileY][tileX] = new Tile(layer, tile.index, tileX, tileY, layer.tileWidth, layer.tileHeight);
         }
 
         layer.data[tileY][tileX].copy(tile);
-    }
-    else
-    {
+    } else {
         index = tile;
 
-        if (layer.data[tileY][tileX] === null)
-        {
+        if (layer.data[tileY][tileX] === null) {
             layer.data[tileY][tileX] = new Tile(layer, index, tileX, tileY, layer.tileWidth, layer.tileHeight);
-        }
-        else
-        {
+        } else {
             layer.data[tileY][tileX].index = index;
         }
     }
@@ -68,13 +61,10 @@ var PutTileAt = function (tile, tileX, tileY, recalculateFaces, layer)
 
     index = tile instanceof Tile ? tile.index : tile;
 
-    if (index === -1)
-    {
+    if (index === -1) {
         newTile.width = layer.tileWidth;
         newTile.height = layer.tileHeight;
-    }
-    else
-    {
+    } else {
         var tilemap = layer.tilemapLayer.tilemap;
         var tiles = tilemap.tiles;
         var sid = tiles[index][2];
@@ -87,8 +77,7 @@ var PutTileAt = function (tile, tileX, tileY, recalculateFaces, layer)
     SetTileCollision(newTile, collides);
 
     // Recalculate faces only if the colliding flag at (tileX, tileY) has changed
-    if (recalculateFaces && (oldTileCollides !== newTile.collides))
-    {
+    if (recalculateFaces && (oldTileCollides !== newTile.collides)) {
         CalculateFacesAt(tileX, tileY, layer);
     }
 

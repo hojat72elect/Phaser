@@ -22,8 +22,7 @@ var StrokePathWebGL = require('../StrokePathWebGL');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var ArcWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var ArcWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline);
@@ -39,13 +38,11 @@ var ArcWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     renderer.pipelines.preBatch(src);
 
-    if (src.isFilled)
-    {
+    if (src.isFilled) {
         FillPathWebGL(pipeline, calcMatrix, src, alpha, dx, dy);
     }
 
-    if (src.isStroked)
-    {
+    if (src.isStroked) {
         StrokePathWebGL(pipeline, src, alpha, dx, dy);
     }
 

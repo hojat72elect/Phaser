@@ -38,8 +38,7 @@ AlignToMap[ALIGN_CONST.TOP_RIGHT] = require('./TopRight');
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was aligned.
  */
-var QuickSet = function (child, alignTo, position, offsetX, offsetY)
-{
+var QuickSet = function (child, alignTo, position, offsetX, offsetY) {
     return AlignToMap[position](child, alignTo, offsetX, offsetY);
 };
 

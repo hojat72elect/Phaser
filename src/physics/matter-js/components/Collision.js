@@ -24,8 +24,7 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setCollisionCategory: function (value)
-    {
+    setCollisionCategory: function (value) {
         this.body.collisionFilter.category = value;
 
         return this;
@@ -44,8 +43,7 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setCollisionGroup: function (value)
-    {
+    setCollisionGroup: function (value) {
         this.body.collisionFilter.group = value;
 
         return this;
@@ -63,18 +61,13 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setCollidesWith: function (categories)
-    {
+    setCollidesWith: function (categories) {
         var flags = 0;
 
-        if (!Array.isArray(categories))
-        {
+        if (!Array.isArray(categories)) {
             flags = categories;
-        }
-        else
-        {
-            for (var i = 0; i < categories.length; i++)
-            {
+        } else {
+            for (var i = 0; i < categories.length; i++) {
                 flags |= categories[i];
             }
         }
@@ -97,8 +90,7 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setOnCollide: function (callback)
-    {
+    setOnCollide: function (callback) {
         this.body.onCollideCallback = callback;
 
         return this;
@@ -117,8 +109,7 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setOnCollideEnd: function (callback)
-    {
+    setOnCollideEnd: function (callback) {
         this.body.onCollideEndCallback = callback;
 
         return this;
@@ -137,8 +128,7 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setOnCollideActive: function (callback)
-    {
+    setOnCollideActive: function (callback) {
         this.body.onCollideActiveCallback = callback;
 
         return this;
@@ -158,15 +148,12 @@ var Collision = {
      *
      * @return {this} This Game Object instance.
      */
-    setOnCollideWith: function (body, callback)
-    {
-        if (!Array.isArray(body))
-        {
-            body = [ body ];
+    setOnCollideWith: function (body, callback) {
+        if (!Array.isArray(body)) {
+            body = [body];
         }
 
-        for (var i = 0; i < body.length; i++)
-        {
+        for (var i = 0; i < body.length; i++) {
             var src = (body[i].hasOwnProperty('body')) ? body[i].body : body[i];
 
             this.body.setOnCollideWith(src, callback);

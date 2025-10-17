@@ -8,7 +8,7 @@ var Random = require('../geom/ellipse/Random');
 
 /**
  * Takes an array of Game Objects and positions them at random locations within the Ellipse.
- * 
+ *
  * If you wish to pass a `Phaser.GameObjects.Ellipse` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomEllipse
@@ -21,10 +21,8 @@ var Random = require('../geom/ellipse/Random');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RandomEllipse = function (items, ellipse)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var RandomEllipse = function (items, ellipse) {
+    for (var i = 0; i < items.length; i++) {
         Random(ellipse, items[i]);
     }
 

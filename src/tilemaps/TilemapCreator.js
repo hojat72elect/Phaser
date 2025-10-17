@@ -20,8 +20,7 @@ var ParseToTilemap = require('./ParseToTilemap');
  *
  * @return {Phaser.Tilemaps.Tilemap}
  */
-GameObjectCreator.register('tilemap', function (config)
-{
+GameObjectCreator.register('tilemap', function (config) {
     // Defaults are applied in ParseToTilemap
     var c = (config !== undefined) ? config : {};
 

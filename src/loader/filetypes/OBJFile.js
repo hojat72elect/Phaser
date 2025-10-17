@@ -40,74 +40,68 @@ var OBJFile = new Class({
 
     initialize:
 
-    function OBJFile (loader, key, objURL, matURL, flipUV, xhrSettings)
-    {
-        var obj;
-        var mat;
+        function OBJFile(loader, key, objURL, matURL, flipUV, xhrSettings) {
+            var obj;
+            var mat;
 
-        var cache = loader.cacheManager.obj;
+            var cache = loader.cacheManager.obj;
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
+                key = GetFastValue(config, 'key');
 
-            obj = new TextFile(loader, {
-                key: key,
-                type: 'obj',
-                cache: cache,
-                url: GetFastValue(config, 'url'),
-                extension: GetFastValue(config, 'extension', 'obj'),
-                xhrSettings: GetFastValue(config, 'xhrSettings'),
-                config: {
-                    flipUV: GetFastValue(config, 'flipUV', flipUV)
-                }
-            });
-
-            matURL = GetFastValue(config, 'matURL');
-
-            if (matURL)
-            {
-                mat = new TextFile(loader, {
+                obj = new TextFile(loader, {
                     key: key,
-                    type: 'mat',
+                    type: 'obj',
                     cache: cache,
-                    url: matURL,
-                    extension: GetFastValue(config, 'matExtension', 'mat'),
-                    xhrSettings: GetFastValue(config, 'xhrSettings')
+                    url: GetFastValue(config, 'url'),
+                    extension: GetFastValue(config, 'extension', 'obj'),
+                    xhrSettings: GetFastValue(config, 'xhrSettings'),
+                    config: {
+                        flipUV: GetFastValue(config, 'flipUV', flipUV)
+                    }
                 });
-            }
-        }
-        else
-        {
-            obj = new TextFile(loader, {
-                key: key,
-                url: objURL,
-                type: 'obj',
-                cache: cache,
-                extension: 'obj',
-                xhrSettings: xhrSettings,
-                config: {
-                    flipUV: flipUV
+
+                matURL = GetFastValue(config, 'matURL');
+
+                if (matURL) {
+                    mat = new TextFile(loader, {
+                        key: key,
+                        type: 'mat',
+                        cache: cache,
+                        url: matURL,
+                        extension: GetFastValue(config, 'matExtension', 'mat'),
+                        xhrSettings: GetFastValue(config, 'xhrSettings')
+                    });
                 }
-            });
-
-            if (matURL)
-            {
-                mat = new TextFile(loader, {
+            } else {
+                obj = new TextFile(loader, {
                     key: key,
-                    url: matURL,
-                    type: 'mat',
+                    url: objURL,
+                    type: 'obj',
                     cache: cache,
-                    extension: 'mat',
-                    xhrSettings: xhrSettings
+                    extension: 'obj',
+                    xhrSettings: xhrSettings,
+                    config: {
+                        flipUV: flipUV
+                    }
                 });
-            }
-        }
 
-        MultiFile.call(this, loader, 'obj', key, [ obj, mat ]);
-    },
+                if (matURL) {
+                    mat = new TextFile(loader, {
+                        key: key,
+                        url: matURL,
+                        type: 'mat',
+                        cache: cache,
+                        extension: 'mat',
+                        xhrSettings: xhrSettings
+                    });
+                }
+            }
+
+            MultiFile.call(this, loader, 'obj', key, [obj, mat]);
+        },
 
     /**
      * Adds this file to its target cache upon successful loading and processing.
@@ -115,17 +109,14 @@ var OBJFile = new Class({
      * @method Phaser.Loader.FileTypes.OBJFile#addToCache
      * @since 3.50.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
             var obj = this.files[0];
             var mat = this.files[1];
 
             var objData = ParseObj(obj.data, obj.config.flipUV);
 
-            if (mat)
-            {
+            if (mat) {
                 objData.materials = ParseObjMaterial(mat.data);
             }
 
@@ -221,22 +212,17 @@ var OBJFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('obj', function (key, objURL, matURL, flipUVs, xhrSettings)
-{
+FileTypesManager.register('obj', function (key, objURL, matURL, flipUVs, xhrSettings) {
     var multifile;
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             multifile = new OBJFile(this, key[i]);
 
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(multifile.files);
         }
-    }
-    else
-    {
+    } else {
         multifile = new OBJFile(this, key, objURL, matURL, flipUVs, xhrSettings);
 
         this.addFile(multifile.files);

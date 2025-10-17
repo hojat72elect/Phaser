@@ -15,17 +15,15 @@
  *
  * @return {number} The inner height value.
  */
-var GetInnerHeight = function (iOS)
-{
+var GetInnerHeight = function (iOS) {
 
-    if (!iOS)
-    {
+    if (!iOS) {
         return window.innerHeight;
     }
 
     var axis = Math.abs(window.orientation);
 
-    var size = { w: 0, h: 0 };
+    var size = {w: 0, h: 0};
 
     var ruler = document.createElement('div');
 
@@ -40,12 +38,9 @@ var GetInnerHeight = function (iOS)
 
     ruler = null;
 
-    if (Math.abs(window.orientation) !== 90)
-    {
+    if (Math.abs(window.orientation) !== 90) {
         return size.h;
-    }
-    else
-    {
+    } else {
         return size.w;
     }
 };

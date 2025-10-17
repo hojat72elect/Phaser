@@ -23,8 +23,7 @@ var point = new Vector2();
  *
  * @return {Phaser.Tilemaps.Tile} The tile at the given coordinates or null if no tile was found or the coordinates were invalid.
  */
-var GetTileAtWorldXY = function (worldX, worldY, nonNull, camera, layer)
-{
+var GetTileAtWorldXY = function (worldX, worldY, nonNull, camera, layer) {
     layer.tilemapLayer.worldToTileXY(worldX, worldY, true, point, camera);
 
     return GetTileAt(point.x, point.y, nonNull, layer);

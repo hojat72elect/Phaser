@@ -16,8 +16,7 @@
  * @param {number} [altColor] - An alternative color to render with.
  * @param {number} [altAlpha] - An alternative alpha to render with.
  */
-var FillStyleCanvas = function (ctx, src, altColor, altAlpha)
-{
+var FillStyleCanvas = function (ctx, src, altColor, altAlpha) {
     var fillColor = (altColor) ? altColor : src.fillColor;
     var fillAlpha = (altAlpha) ? altAlpha : src.fillAlpha;
 

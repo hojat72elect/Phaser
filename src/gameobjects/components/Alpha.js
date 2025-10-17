@@ -84,8 +84,7 @@ var Alpha = {
      *
      * @return {this} This Game Object instance.
      */
-    clearAlpha: function ()
-    {
+    clearAlpha: function () {
         return this.setAlpha(1);
     },
 
@@ -106,17 +105,15 @@ var Alpha = {
      *
      * @return {this} This Game Object instance.
      */
-    setAlpha: function (topLeft, topRight, bottomLeft, bottomRight)
-    {
-        if (topLeft === undefined) { topLeft = 1; }
+    setAlpha: function (topLeft, topRight, bottomLeft, bottomRight) {
+        if (topLeft === undefined) {
+            topLeft = 1;
+        }
 
         //  Treat as if there is only one alpha value for the whole Game Object
-        if (topRight === undefined)
-        {
+        if (topRight === undefined) {
             this.alpha = topLeft;
-        }
-        else
-        {
+        } else {
             this._alphaTL = Clamp(topLeft, 0, 1);
             this._alphaTR = Clamp(topRight, 0, 1);
             this._alphaBL = Clamp(bottomLeft, 0, 1);
@@ -137,13 +134,11 @@ var Alpha = {
      */
     alpha: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alpha;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
             this._alpha = v;
@@ -152,12 +147,9 @@ var Alpha = {
             this._alphaBL = v;
             this._alphaBR = v;
 
-            if (v === 0)
-            {
+            if (v === 0) {
                 this.renderFlags &= ~_FLAG;
-            }
-            else
-            {
+            } else {
                 this.renderFlags |= _FLAG;
             }
         }
@@ -175,19 +167,16 @@ var Alpha = {
      */
     alphaTopLeft: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alphaTL;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
             this._alphaTL = v;
 
-            if (v !== 0)
-            {
+            if (v !== 0) {
                 this.renderFlags |= _FLAG;
             }
         }
@@ -205,19 +194,16 @@ var Alpha = {
      */
     alphaTopRight: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alphaTR;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
             this._alphaTR = v;
 
-            if (v !== 0)
-            {
+            if (v !== 0) {
                 this.renderFlags |= _FLAG;
             }
         }
@@ -235,19 +221,16 @@ var Alpha = {
      */
     alphaBottomLeft: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alphaBL;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
             this._alphaBL = v;
 
-            if (v !== 0)
-            {
+            if (v !== 0) {
                 this.renderFlags |= _FLAG;
             }
         }
@@ -265,19 +248,16 @@ var Alpha = {
      */
     alphaBottomRight: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alphaBR;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
             this._alphaBR = v;
 
-            if (v !== 0)
-            {
+            if (v !== 0) {
                 this.renderFlags |= _FLAG;
             }
         }

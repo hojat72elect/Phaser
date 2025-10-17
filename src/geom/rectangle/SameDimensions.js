@@ -15,8 +15,7 @@
  *
  * @return {boolean} `true` if the objects have equivalent values for the `width` and `height` properties, otherwise `false`.
  */
-var SameDimensions = function (rect, toCompare)
-{
+var SameDimensions = function (rect, toCompare) {
     return (rect.width === toCompare.width && rect.height === toCompare.height);
 };
 

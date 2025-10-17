@@ -14,8 +14,7 @@
  *
  * @return {number} The right coordinate of the bounds of the Game Object.
  */
-var GetRight = function (gameObject)
-{
+var GetRight = function (gameObject) {
     return (gameObject.x + gameObject.width) - (gameObject.width * gameObject.originX);
 };
 

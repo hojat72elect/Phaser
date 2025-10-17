@@ -19,15 +19,13 @@ var HueToComponent = require('./HueToComponent');
  *
  * @return {Phaser.Display.Color} A Color object created from the results of the h, s and l values.
  */
-var HSLToColor = function (h, s, l)
-{
+var HSLToColor = function (h, s, l) {
     // achromatic by default
     var r = l;
     var g = l;
     var b = l;
 
-    if (s !== 0)
-    {
+    if (s !== 0) {
         var q = (l < 0.5) ? l * (1 + s) : l + s - l * s;
         var p = 2 * l - q;
 

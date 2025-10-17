@@ -15,13 +15,14 @@
  *
  * @return {array} The provided `out` array, or a new array if none was provided, with three objects with `x` and `y` properties representing each point of the Triangle appended to it.
  */
-var Decompose = function (triangle, out)
-{
-    if (out === undefined) { out = []; }
+var Decompose = function (triangle, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    out.push({ x: triangle.x1, y: triangle.y1 });
-    out.push({ x: triangle.x2, y: triangle.y2 });
-    out.push({ x: triangle.x3, y: triangle.y3 });
+    out.push({x: triangle.x1, y: triangle.y1});
+    out.push({x: triangle.x2, y: triangle.y2});
+    out.push({x: triangle.x3, y: triangle.y3});
 
     return out;
 };

@@ -20,8 +20,7 @@ var InCenter = require('./InCenter');
  *
  * @return {Phaser.Geom.Triangle} The rotated Triangle.
  */
-var Rotate = function (triangle, angle)
-{
+var Rotate = function (triangle, angle) {
     var point = InCenter(triangle);
 
     return RotateAroundXY(triangle, point.x, point.y, angle);

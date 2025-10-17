@@ -46,33 +46,30 @@ var BitmapMaskPipeline = new Class({
 
     initialize:
 
-    function BitmapMaskPipeline (config)
-    {
-        config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS),
-        config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS),
-        config.batchSize = GetFastValue(config, 'batchSize', 1),
-        config.vertices = GetFastValue(config, 'vertices', [ -1, 1, -1, -7, 7, 1 ]),
-        config.attributes = GetFastValue(config, 'attributes', [
-            {
-                name: 'inPosition',
-                size: 2,
-                type: WEBGL_CONST.FLOAT
-            }
-        ]);
+        function BitmapMaskPipeline(config) {
+            config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS),
+                config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS),
+                config.batchSize = GetFastValue(config, 'batchSize', 1),
+                config.vertices = GetFastValue(config, 'vertices', [-1, 1, -1, -7, 7, 1]),
+                config.attributes = GetFastValue(config, 'attributes', [
+                    {
+                        name: 'inPosition',
+                        size: 2,
+                        type: WEBGL_CONST.FLOAT
+                    }
+                ]);
 
-        WebGLPipeline.call(this, config);
-    },
+            WebGLPipeline.call(this, config);
+        },
 
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         this.set1i('uMainSampler', 0);
         this.set1i('uMaskSampler', 1);
     },
 
-    resize: function (width, height)
-    {
+    resize: function (width, height) {
         WebGLPipeline.prototype.resize.call(this, width, height);
 
         this.set2f('uResolution', width, height);
@@ -89,8 +86,7 @@ var BitmapMaskPipeline = new Class({
      * @param {Phaser.GameObjects.GameObject} maskedObject - GameObject masked by the mask GameObject.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera rendering the current mask.
      */
-    beginMask: function (mask, maskedObject, camera)
-    {
+    beginMask: function (mask, maskedObject, camera) {
         this.renderer.beginBitmapMask(mask, camera);
     },
 
@@ -107,20 +103,17 @@ var BitmapMaskPipeline = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [renderTarget] - Optional WebGL RenderTarget.
      */
-    endMask: function (mask, camera, renderTarget)
-    {
+    endMask: function (mask, camera, renderTarget) {
         var gl = this.gl;
         var renderer = this.renderer;
 
         //  The renderable Game Object that is being used for the bitmap mask
         var bitmapMask = mask.bitmapMask;
 
-        if (bitmapMask && gl)
-        {
+        if (bitmapMask && gl) {
             renderer.drawBitmapMask(bitmapMask, camera, this);
 
-            if (renderTarget)
-            {
+            if (renderTarget) {
                 this.set2f('uResolution', renderTarget.width, renderTarget.height);
             }
 
@@ -129,8 +122,7 @@ var BitmapMaskPipeline = new Class({
             //  Finally, draw a triangle filling the whole screen
             gl.drawArrays(this.topology, 0, 3);
 
-            if (renderTarget)
-            {
+            if (renderTarget) {
                 this.set2f('uResolution', this.width, this.height);
             }
 

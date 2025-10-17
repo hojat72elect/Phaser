@@ -23,15 +23,13 @@ var SetTransform = require('../../renderer/canvas/utils/SetTransform');
  * @param {CanvasRenderingContext2D} [renderTargetCtx] - The target rendering context.
  * @param {boolean} allowClip - If `true` then path operations will be used instead of fill operations.
  */
-var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, renderTargetCtx, allowClip)
-{
+var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, renderTargetCtx, allowClip) {
     var commandBuffer = src.commandBuffer;
     var commandBufferLength = commandBuffer.length;
 
     var ctx = renderTargetCtx || renderer.currentContext;
 
-    if (commandBufferLength === 0 || !SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (commandBufferLength === 0 || !SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         return;
     }
 
@@ -49,12 +47,10 @@ var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, rend
     //  Reset any currently active paths
     ctx.beginPath();
 
-    for (var index = 0; index < commandBufferLength; ++index)
-    {
+    for (var index = 0; index < commandBufferLength; ++index) {
         var commandID = commandBuffer[index];
 
-        switch (commandID)
-        {
+        switch (commandID) {
             case Commands.ARC:
                 ctx.arc(
                     commandBuffer[index + 1],
@@ -100,31 +96,26 @@ var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, rend
                 break;
 
             case Commands.FILL_PATH:
-                if (!allowClip)
-                {
+                if (!allowClip) {
                     ctx.fill();
                 }
                 break;
 
             case Commands.STROKE_PATH:
-                if (!allowClip)
-                {
+                if (!allowClip) {
                     ctx.stroke();
                 }
                 break;
 
             case Commands.FILL_RECT:
-                if (!allowClip)
-                {
+                if (!allowClip) {
                     ctx.fillRect(
                         commandBuffer[index + 1],
                         commandBuffer[index + 2],
                         commandBuffer[index + 3],
                         commandBuffer[index + 4]
                     );
-                }
-                else
-                {
+                } else {
                     ctx.rect(
                         commandBuffer[index + 1],
                         commandBuffer[index + 2],
@@ -141,8 +132,7 @@ var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, rend
                 ctx.lineTo(commandBuffer[index + 3], commandBuffer[index + 4]);
                 ctx.lineTo(commandBuffer[index + 5], commandBuffer[index + 6]);
                 ctx.closePath();
-                if (!allowClip)
-                {
+                if (!allowClip) {
                     ctx.fill();
                 }
                 index += 6;
@@ -154,8 +144,7 @@ var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, rend
                 ctx.lineTo(commandBuffer[index + 3], commandBuffer[index + 4]);
                 ctx.lineTo(commandBuffer[index + 5], commandBuffer[index + 6]);
                 ctx.closePath();
-                if (!allowClip)
-                {
+                if (!allowClip) {
                     ctx.stroke();
                 }
                 index += 6;

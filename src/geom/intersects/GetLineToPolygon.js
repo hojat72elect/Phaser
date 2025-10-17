@@ -32,13 +32,13 @@ var tempIntersect = new Vector3();
  *
  * @return {Phaser.Math.Vector4} A Vector4 containing the intersection results, or `null`.
  */
-var GetLineToPolygon = function (line, polygons, isRay, out)
-{
-    if (out === undefined) { out = new Vector4(); }
+var GetLineToPolygon = function (line, polygons, isRay, out) {
+    if (out === undefined) {
+        out = new Vector4();
+    }
 
-    if (!Array.isArray(polygons))
-    {
-        polygons = [ polygons ];
+    if (!Array.isArray(polygons)) {
+        polygons = [polygons];
     }
 
     var closestIntersect = false;
@@ -47,12 +47,9 @@ var GetLineToPolygon = function (line, polygons, isRay, out)
     out.set();
     tempIntersect.set();
 
-    for (var i = 0; i < polygons.length; i++)
-    {
-        if (GetLineToPoints(line, polygons[i].points, isRay, tempIntersect))
-        {
-            if (!closestIntersect || tempIntersect.z < out.z)
-            {
+    for (var i = 0; i < polygons.length; i++) {
+        if (GetLineToPoints(line, polygons[i].points, isRay, tempIntersect)) {
+            if (!closestIntersect || tempIntersect.z < out.z) {
                 out.set(tempIntersect.x, tempIntersect.y, tempIntersect.z, i);
 
                 closestIntersect = true;

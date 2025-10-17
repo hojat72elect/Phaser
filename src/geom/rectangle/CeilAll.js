@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Geom.Rectangle} The modified Rectangle.
  */
-var CeilAll = function (rect)
-{
+var CeilAll = function (rect) {
     rect.x = Math.ceil(rect.x);
     rect.y = Math.ceil(rect.y);
     rect.width = Math.ceil(rect.width);

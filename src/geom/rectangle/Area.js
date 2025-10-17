@@ -14,8 +14,7 @@
  *
  * @return {number} The area of the Rectangle object.
  */
-var Area = function (rect)
-{
+var Area = function (rect) {
     return rect.width * rect.height;
 };
 

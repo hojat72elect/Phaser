@@ -31,299 +31,296 @@ var Gamepad = new Class({
 
     initialize:
 
-    function Gamepad (manager, pad)
-    {
-        EventEmitter.call(this);
+        function Gamepad(manager, pad) {
+            EventEmitter.call(this);
 
-        /**
-         * A reference to the Gamepad Plugin.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#manager
-         * @type {Phaser.Input.Gamepad.GamepadPlugin}
-         * @since 3.0.0
-         */
-        this.manager = manager;
+            /**
+             * A reference to the Gamepad Plugin.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#manager
+             * @type {Phaser.Input.Gamepad.GamepadPlugin}
+             * @since 3.0.0
+             */
+            this.manager = manager;
 
-        /**
-         * A reference to the native Gamepad object that is connected to the browser.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#pad
-         * @type {any}
-         * @since 3.10.0
-         */
-        this.pad = pad;
+            /**
+             * A reference to the native Gamepad object that is connected to the browser.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#pad
+             * @type {any}
+             * @since 3.10.0
+             */
+            this.pad = pad;
 
-        /**
-         * A string containing some information about the controller.
-         *
-         * This is not strictly specified, but in Firefox it will contain three pieces of information
-         * separated by dashes (-): two 4-digit hexadecimal strings containing the USB vendor and
-         * product id of the controller, and the name of the controller as provided by the driver.
-         * In Chrome it will contain the name of the controller as provided by the driver,
-         * followed by vendor and product 4-digit hexadecimal strings.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#id
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.id = pad.id;
+            /**
+             * A string containing some information about the controller.
+             *
+             * This is not strictly specified, but in Firefox it will contain three pieces of information
+             * separated by dashes (-): two 4-digit hexadecimal strings containing the USB vendor and
+             * product id of the controller, and the name of the controller as provided by the driver.
+             * In Chrome it will contain the name of the controller as provided by the driver,
+             * followed by vendor and product 4-digit hexadecimal strings.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#id
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.id = pad.id;
 
-        /**
-         * An integer that is unique for each Gamepad currently connected to the system.
-         * This can be used to distinguish multiple controllers.
-         * Note that disconnecting a device and then connecting a new device may reuse the previous index.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#index
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.index = pad.index;
+            /**
+             * An integer that is unique for each Gamepad currently connected to the system.
+             * This can be used to distinguish multiple controllers.
+             * Note that disconnecting a device and then connecting a new device may reuse the previous index.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#index
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.index = pad.index;
 
-        var buttons = [];
+            var buttons = [];
 
-        for (var i = 0; i < pad.buttons.length; i++)
-        {
-            buttons.push(new Button(this, i));
-        }
+            for (var i = 0; i < pad.buttons.length; i++) {
+                buttons.push(new Button(this, i));
+            }
 
-        /**
-         * An array of Gamepad Button objects, corresponding to the different buttons available on the Gamepad.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#buttons
-         * @type {Phaser.Input.Gamepad.Button[]}
-         * @since 3.0.0
-         */
-        this.buttons = buttons;
+            /**
+             * An array of Gamepad Button objects, corresponding to the different buttons available on the Gamepad.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#buttons
+             * @type {Phaser.Input.Gamepad.Button[]}
+             * @since 3.0.0
+             */
+            this.buttons = buttons;
 
-        var axes = [];
+            var axes = [];
 
-        for (i = 0; i < pad.axes.length; i++)
-        {
-            axes.push(new Axis(this, i));
-        }
+            for (i = 0; i < pad.axes.length; i++) {
+                axes.push(new Axis(this, i));
+            }
 
-        /**
-         * An array of Gamepad Axis objects, corresponding to the different axes available on the Gamepad, if any.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#axes
-         * @type {Phaser.Input.Gamepad.Axis[]}
-         * @since 3.0.0
-         */
-        this.axes = axes;
+            /**
+             * An array of Gamepad Axis objects, corresponding to the different axes available on the Gamepad, if any.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#axes
+             * @type {Phaser.Input.Gamepad.Axis[]}
+             * @since 3.0.0
+             */
+            this.axes = axes;
 
-        /**
-         * The Gamepad's Haptic Actuator (Vibration / Rumble support).
-         * This is highly experimental and only set if both present on the device,
-         * and exposed by both the hardware and browser.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#vibration
-         * @type {GamepadHapticActuator}
-         * @since 3.10.0
-         */
-        this.vibration = pad.vibrationActuator;
+            /**
+             * The Gamepad's Haptic Actuator (Vibration / Rumble support).
+             * This is highly experimental and only set if both present on the device,
+             * and exposed by both the hardware and browser.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#vibration
+             * @type {GamepadHapticActuator}
+             * @since 3.10.0
+             */
+            this.vibration = pad.vibrationActuator;
 
-        // https://w3c.github.io/gamepad/#remapping
+            // https://w3c.github.io/gamepad/#remapping
 
-        var _noButton = { value: 0, pressed: false };
+            var _noButton = {value: 0, pressed: false};
 
-        /**
-         * A reference to the Left Button in the Left Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_LCLeft
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._LCLeft = (buttons[14]) ? buttons[14] : _noButton;
+            /**
+             * A reference to the Left Button in the Left Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_LCLeft
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._LCLeft = (buttons[14]) ? buttons[14] : _noButton;
 
-        /**
-         * A reference to the Right Button in the Left Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_LCRight
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._LCRight = (buttons[15]) ? buttons[15] : _noButton;
+            /**
+             * A reference to the Right Button in the Left Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_LCRight
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._LCRight = (buttons[15]) ? buttons[15] : _noButton;
 
-        /**
-         * A reference to the Top Button in the Left Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_LCTop
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._LCTop = (buttons[12]) ? buttons[12] : _noButton;
+            /**
+             * A reference to the Top Button in the Left Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_LCTop
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._LCTop = (buttons[12]) ? buttons[12] : _noButton;
 
-        /**
-         * A reference to the Bottom Button in the Left Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_LCBottom
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._LCBottom = (buttons[13]) ? buttons[13] : _noButton;
+            /**
+             * A reference to the Bottom Button in the Left Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_LCBottom
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._LCBottom = (buttons[13]) ? buttons[13] : _noButton;
 
-        /**
-         * A reference to the Left Button in the Right Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_RCLeft
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._RCLeft = (buttons[2]) ? buttons[2] : _noButton;
+            /**
+             * A reference to the Left Button in the Right Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_RCLeft
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._RCLeft = (buttons[2]) ? buttons[2] : _noButton;
 
-        /**
-         * A reference to the Right Button in the Right Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_RCRight
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._RCRight = (buttons[1]) ? buttons[1] : _noButton;
+            /**
+             * A reference to the Right Button in the Right Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_RCRight
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._RCRight = (buttons[1]) ? buttons[1] : _noButton;
 
-        /**
-         * A reference to the Top Button in the Right Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_RCTop
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._RCTop = (buttons[3]) ? buttons[3] : _noButton;
+            /**
+             * A reference to the Top Button in the Right Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_RCTop
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._RCTop = (buttons[3]) ? buttons[3] : _noButton;
 
-        /**
-         * A reference to the Bottom Button in the Right Cluster.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_RCBottom
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._RCBottom = (buttons[0]) ? buttons[0] : _noButton;
+            /**
+             * A reference to the Bottom Button in the Right Cluster.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_RCBottom
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._RCBottom = (buttons[0]) ? buttons[0] : _noButton;
 
-        /**
-         * A reference to the Top Left Front Button (L1 Shoulder Button)
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_FBLeftTop
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._FBLeftTop = (buttons[4]) ? buttons[4] : _noButton;
+            /**
+             * A reference to the Top Left Front Button (L1 Shoulder Button)
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_FBLeftTop
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._FBLeftTop = (buttons[4]) ? buttons[4] : _noButton;
 
-        /**
-         * A reference to the Bottom Left Front Button (L2 Shoulder Button)
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_FBLeftBottom
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._FBLeftBottom = (buttons[6]) ? buttons[6] : _noButton;
+            /**
+             * A reference to the Bottom Left Front Button (L2 Shoulder Button)
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_FBLeftBottom
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._FBLeftBottom = (buttons[6]) ? buttons[6] : _noButton;
 
-        /**
-         * A reference to the Top Right Front Button (R1 Shoulder Button)
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_FBRightTop
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._FBRightTop = (buttons[5]) ? buttons[5] : _noButton;
+            /**
+             * A reference to the Top Right Front Button (R1 Shoulder Button)
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_FBRightTop
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._FBRightTop = (buttons[5]) ? buttons[5] : _noButton;
 
-        /**
-         * A reference to the Bottom Right Front Button (R2 Shoulder Button)
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_FBRightBottom
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._FBRightBottom = (buttons[7]) ? buttons[7] : _noButton;
+            /**
+             * A reference to the Bottom Right Front Button (R2 Shoulder Button)
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_FBRightBottom
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._FBRightBottom = (buttons[7]) ? buttons[7] : _noButton;
 
-        var _noAxis = { value: 0 };
+            var _noAxis = {value: 0};
 
-        /**
-         * A reference to the Horizontal Axis for the Left Stick.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_HAxisLeft
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._HAxisLeft = (axes[0]) ? axes[0] : _noAxis;
+            /**
+             * A reference to the Horizontal Axis for the Left Stick.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_HAxisLeft
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._HAxisLeft = (axes[0]) ? axes[0] : _noAxis;
 
-        /**
-         * A reference to the Vertical Axis for the Left Stick.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_VAxisLeft
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._VAxisLeft = (axes[1]) ? axes[1] : _noAxis;
+            /**
+             * A reference to the Vertical Axis for the Left Stick.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_VAxisLeft
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._VAxisLeft = (axes[1]) ? axes[1] : _noAxis;
 
-        /**
-         * A reference to the Horizontal Axis for the Right Stick.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_HAxisRight
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._HAxisRight = (axes[2]) ? axes[2] : _noAxis;
+            /**
+             * A reference to the Horizontal Axis for the Right Stick.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_HAxisRight
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._HAxisRight = (axes[2]) ? axes[2] : _noAxis;
 
-        /**
-         * A reference to the Vertical Axis for the Right Stick.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_VAxisRight
-         * @type {Phaser.Input.Gamepad.Button}
-         * @private
-         * @since 3.10.0
-         */
-        this._VAxisRight = (axes[3]) ? axes[3] : _noAxis;
+            /**
+             * A reference to the Vertical Axis for the Right Stick.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_VAxisRight
+             * @type {Phaser.Input.Gamepad.Button}
+             * @private
+             * @since 3.10.0
+             */
+            this._VAxisRight = (axes[3]) ? axes[3] : _noAxis;
 
-        /**
-         * A Vector2 containing the most recent values from the Gamepad's left axis stick.
-         * This is updated automatically as part of the Gamepad.update cycle.
-         * The H Axis is mapped to the `Vector2.x` property, and the V Axis to the `Vector2.y` property.
-         * The values are based on the Axis thresholds.
-         * If the Gamepad does not have a left axis stick, the values will always be zero.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#leftStick
-         * @type {Phaser.Math.Vector2}
-         * @since 3.10.0
-         */
-        this.leftStick = new Vector2();
+            /**
+             * A Vector2 containing the most recent values from the Gamepad's left axis stick.
+             * This is updated automatically as part of the Gamepad.update cycle.
+             * The H Axis is mapped to the `Vector2.x` property, and the V Axis to the `Vector2.y` property.
+             * The values are based on the Axis thresholds.
+             * If the Gamepad does not have a left axis stick, the values will always be zero.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#leftStick
+             * @type {Phaser.Math.Vector2}
+             * @since 3.10.0
+             */
+            this.leftStick = new Vector2();
 
-        /**
-         * A Vector2 containing the most recent values from the Gamepad's right axis stick.
-         * This is updated automatically as part of the Gamepad.update cycle.
-         * The H Axis is mapped to the `Vector2.x` property, and the V Axis to the `Vector2.y` property.
-         * The values are based on the Axis thresholds.
-         * If the Gamepad does not have a right axis stick, the values will always be zero.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#rightStick
-         * @type {Phaser.Math.Vector2}
-         * @since 3.10.0
-         */
-        this.rightStick = new Vector2();
+            /**
+             * A Vector2 containing the most recent values from the Gamepad's right axis stick.
+             * This is updated automatically as part of the Gamepad.update cycle.
+             * The H Axis is mapped to the `Vector2.x` property, and the V Axis to the `Vector2.y` property.
+             * The values are based on the Axis thresholds.
+             * If the Gamepad does not have a right axis stick, the values will always be zero.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#rightStick
+             * @type {Phaser.Math.Vector2}
+             * @since 3.10.0
+             */
+            this.rightStick = new Vector2();
 
-        /**
-         * When was this Gamepad created? Used to avoid duplicate event spamming in the update loop.
-         *
-         * @name Phaser.Input.Gamepad.Gamepad#_created
-         * @type {number}
-         * @private
-         * @since 3.50.0
-         */
-        this._created = performance.now();
-    },
+            /**
+             * When was this Gamepad created? Used to avoid duplicate event spamming in the update loop.
+             *
+             * @name Phaser.Input.Gamepad.Gamepad#_created
+             * @type {number}
+             * @private
+             * @since 3.50.0
+             */
+            this._created = performance.now();
+        },
 
     /**
      * Gets the total number of axis this Gamepad claims to support.
@@ -333,8 +330,7 @@ var Gamepad = new Class({
      *
      * @return {number} The total number of axes this Gamepad claims to support.
      */
-    getAxisTotal: function ()
-    {
+    getAxisTotal: function () {
         return this.axes.length;
     },
 
@@ -350,8 +346,7 @@ var Gamepad = new Class({
      *
      * @return {number} The value of the axis, between 0 and 1.
      */
-    getAxisValue: function (index)
-    {
+    getAxisValue: function (index) {
         return this.axes[index].getValue();
     },
 
@@ -364,10 +359,8 @@ var Gamepad = new Class({
      *
      * @param {number} value - A value between 0 and 1.
      */
-    setAxisThreshold: function (value)
-    {
-        for (var i = 0; i < this.axes.length; i++)
-        {
+    setAxisThreshold: function (value) {
+        for (var i = 0; i < this.axes.length; i++) {
             this.axes[i].threshold = value;
         }
     },
@@ -380,8 +373,7 @@ var Gamepad = new Class({
      *
      * @return {number} The total number of buttons this Gamepad claims to have.
      */
-    getButtonTotal: function ()
-    {
+    getButtonTotal: function () {
         return this.buttons.length;
     },
 
@@ -399,8 +391,7 @@ var Gamepad = new Class({
      *
      * @return {number} The value of the button, between 0 and 1.
      */
-    getButtonValue: function (index)
-    {
+    getButtonValue: function (index) {
         return this.buttons[index].value;
     },
 
@@ -415,8 +406,7 @@ var Gamepad = new Class({
      *
      * @return {boolean} `true` if the button is considered as being pressed down, otherwise `false`.
      */
-    isButtonDown: function (index)
-    {
+    isButtonDown: function (index) {
         return this.buttons[index].pressed;
     },
 
@@ -428,10 +418,8 @@ var Gamepad = new Class({
      * @private
      * @since 3.0.0
      */
-    update: function (pad)
-    {
-        if (pad.timestamp < this._created)
-        {
+    update: function (pad) {
+        if (pad.timestamp < this._created) {
             return;
         }
 
@@ -444,8 +432,7 @@ var Gamepad = new Class({
 
         var len = localButtons.length;
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             localButtons[i].update(gamepadButtons[i].value);
         }
 
@@ -456,17 +443,14 @@ var Gamepad = new Class({
 
         len = localAxes.length;
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             localAxes[i].update(gamepadAxes[i]);
         }
 
-        if (len >= 2)
-        {
+        if (len >= 2) {
             this.leftStick.set(localAxes[0].getValue(), localAxes[1].getValue());
 
-            if (len >= 4)
-            {
+            if (len >= 4) {
                 this.rightStick.set(localAxes[2].getValue(), localAxes[3].getValue());
             }
         }
@@ -478,8 +462,7 @@ var Gamepad = new Class({
      * @method Phaser.Input.Gamepad.Gamepad#destroy
      * @since 3.10.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.removeAllListeners();
 
         this.manager = null;
@@ -487,13 +470,11 @@ var Gamepad = new Class({
 
         var i;
 
-        for (i = 0; i < this.buttons.length; i++)
-        {
+        for (i = 0; i < this.buttons.length; i++) {
             this.buttons[i].destroy();
         }
 
-        for (i = 0; i < this.axes.length; i++)
-        {
+        for (i = 0; i < this.axes.length; i++) {
             this.axes[i].destroy();
         }
 
@@ -511,8 +492,7 @@ var Gamepad = new Class({
      */
     connected: {
 
-        get: function ()
-        {
+        get: function () {
             return this.pad.connected;
         }
 
@@ -527,8 +507,7 @@ var Gamepad = new Class({
      */
     timestamp: {
 
-        get: function ()
-        {
+        get: function () {
             return this.pad.timestamp;
         }
 
@@ -545,8 +524,7 @@ var Gamepad = new Class({
      */
     left: {
 
-        get: function ()
-        {
+        get: function () {
             return this._LCLeft.pressed;
         }
 
@@ -563,8 +541,7 @@ var Gamepad = new Class({
      */
     right: {
 
-        get: function ()
-        {
+        get: function () {
             return this._LCRight.pressed;
         }
 
@@ -581,8 +558,7 @@ var Gamepad = new Class({
      */
     up: {
 
-        get: function ()
-        {
+        get: function () {
             return this._LCTop.pressed;
         }
 
@@ -599,8 +575,7 @@ var Gamepad = new Class({
      */
     down: {
 
-        get: function ()
-        {
+        get: function () {
             return this._LCBottom.pressed;
         }
 
@@ -618,8 +593,7 @@ var Gamepad = new Class({
      */
     A: {
 
-        get: function ()
-        {
+        get: function () {
             return this._RCBottom.pressed;
         }
 
@@ -637,8 +611,7 @@ var Gamepad = new Class({
      */
     Y: {
 
-        get: function ()
-        {
+        get: function () {
             return this._RCTop.pressed;
         }
 
@@ -656,8 +629,7 @@ var Gamepad = new Class({
      */
     X: {
 
-        get: function ()
-        {
+        get: function () {
             return this._RCLeft.pressed;
         }
 
@@ -675,8 +647,7 @@ var Gamepad = new Class({
      */
     B: {
 
-        get: function ()
-        {
+        get: function () {
             return this._RCRight.pressed;
         }
 
@@ -695,8 +666,7 @@ var Gamepad = new Class({
      */
     L1: {
 
-        get: function ()
-        {
+        get: function () {
             return this._FBLeftTop.value;
         }
 
@@ -715,8 +685,7 @@ var Gamepad = new Class({
      */
     L2: {
 
-        get: function ()
-        {
+        get: function () {
             return this._FBLeftBottom.value;
         }
 
@@ -735,8 +704,7 @@ var Gamepad = new Class({
      */
     R1: {
 
-        get: function ()
-        {
+        get: function () {
             return this._FBRightTop.value;
         }
 
@@ -755,8 +723,7 @@ var Gamepad = new Class({
      */
     R2: {
 
-        get: function ()
-        {
+        get: function () {
             return this._FBRightBottom.value;
         }
 

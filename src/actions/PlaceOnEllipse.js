@@ -6,7 +6,7 @@
 
 /**
  * Takes an array of Game Objects and positions them on evenly spaced points around the perimeter of an Ellipse.
- * 
+ *
  * If you wish to pass a `Phaser.GameObjects.Ellipse` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.PlaceOnEllipse
@@ -21,10 +21,13 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var PlaceOnEllipse = function (items, ellipse, startAngle, endAngle)
-{
-    if (startAngle === undefined) { startAngle = 0; }
-    if (endAngle === undefined) { endAngle = 6.28; }
+var PlaceOnEllipse = function (items, ellipse, startAngle, endAngle) {
+    if (startAngle === undefined) {
+        startAngle = 0;
+    }
+    if (endAngle === undefined) {
+        endAngle = 6.28;
+    }
 
     var angle = startAngle;
     var angleStep = (endAngle - startAngle) / items.length;
@@ -32,8 +35,7 @@ var PlaceOnEllipse = function (items, ellipse, startAngle, endAngle)
     var a = ellipse.width / 2;
     var b = ellipse.height / 2;
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         items[i].x = ellipse.x + a * Math.cos(angle);
         items[i].y = ellipse.y + b * Math.sin(angle);
 

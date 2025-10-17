@@ -23,9 +23,10 @@ var Vector3 = require('../../math/Vector3');
  *
  * @return {Phaser.Math.Vector3} A Vector3 containing the intersection results, or `null`.
  */
-var GetLineToLine = function (line1, line2, isRay, out)
-{
-    if (isRay === undefined) { isRay = false; }
+var GetLineToLine = function (line1, line2, isRay, out) {
+    if (isRay === undefined) {
+        isRay = false;
+    }
 
     var x1 = line1.x1;
     var y1 = line1.y1;
@@ -51,8 +52,7 @@ var GetLineToLine = function (line1, line2, isRay, out)
     //  If numA and numB were both equal to zero the lines would be on top of each other (coincidental).
     //  This check is not done because it is not necessary for this implementation (the parallel check accounts for this).
 
-    if (denom === 0)
-    {
+    if (denom === 0) {
         return null;
     }
 
@@ -60,47 +60,36 @@ var GetLineToLine = function (line1, line2, isRay, out)
     var u;
     var s;
 
-    if (isRay)
-    {
+    if (isRay) {
         t = (dx1 * (y3 - y1) + dy1 * (x1 - x3)) / (dx2 * dy1 - dy2 * dx1);
-        
-        if (dx1 !== 0)
-        {
+
+        if (dx1 !== 0) {
             u = (x3 + dx2 * t - x1) / dx1;
-        }
-        else if (dy1 !== 0)
-        {
+        } else if (dy1 !== 0) {
             u = (y3 + dy2 * t - y1) / dy1;
-        }
-        else
-        {
+        } else {
             return null; // degenerate line segment
         }
 
         //  Intersects?
-        if (u < 0 || t < 0 || t > 1)
-        {
+        if (u < 0 || t < 0 || t > 1) {
             return null;
         }
 
         s = u;
-    }
-    else
-    {
+    } else {
         t = ((x3 - x1) * dy2 - (y3 - y1) * dx2) / denom;
         u = ((y1 - y3) * dx1 - (x1 - x3) * dy1) / denom;
 
         //  Intersects?
-        if (t < 0 || t > 1 || u < 0 || u > 1)
-        {
+        if (t < 0 || t > 1 || u < 0 || u > 1) {
             return null;
         }
 
         s = t;
     }
 
-    if (out === undefined)
-    {
+    if (out === undefined) {
         out = new Vector3();
     }
 

@@ -63,114 +63,111 @@ var Layer3D = new Class({
 
     initialize:
 
-    function Layer3D (scene, x, y)
-    {
-        GameObject.call(this, scene, 'Layer3D');
+        function Layer3D(scene, x, y) {
+            GameObject.call(this, scene, 'Layer3D');
 
-        /**
-         * A Camera which can be used to control the view of the models being managed
-         * by this Layer3D. It will default to have an fov of 45 and be positioned at 0, 0, -10,
-         * with a near of 0.01 and far of 1000. You can change all of these by using the
-         * methods and properties available on the `Layer3DCamera` class.
-         *
-         * @name Phaser.GameObjects.Layer3D#camera
-         * @type {Phaser.GameObjects.Layer3DCamera}
-         * @since 3.50.0
-         */
-        this.camera = new Layer3DCamera(this, 45, 0, 0, -10, 0.01, 1000);
+            /**
+             * A Camera which can be used to control the view of the models being managed
+             * by this Layer3D. It will default to have an fov of 45 and be positioned at 0, 0, -10,
+             * with a near of 0.01 and far of 1000. You can change all of these by using the
+             * methods and properties available on the `Layer3DCamera` class.
+             *
+             * @name Phaser.GameObjects.Layer3D#camera
+             * @type {Phaser.GameObjects.Layer3DCamera}
+             * @since 3.50.0
+             */
+            this.camera = new Layer3DCamera(this, 45, 0, 0, -10, 0.01, 1000);
 
-        /**
-         * An ambient light source for the entire Layer3D scene and all models it is rendering.
-         *
-         * It is created at a position of 0, -100, 0 with full ambient, diffuse and specular
-         * values. You can change all of these by using the methods and properties
-         * available on the `Layer3DLight` class.
-         *
-         * @name Phaser.GameObjects.Layer3D#light
-         * @type {Phaser.GameObjects.Layer3DLight}
-         * @since 3.50.0
-         */
-        this.light = new Layer3DLight(this, 0, 100, 0);
+            /**
+             * An ambient light source for the entire Layer3D scene and all models it is rendering.
+             *
+             * It is created at a position of 0, -100, 0 with full ambient, diffuse and specular
+             * values. You can change all of these by using the methods and properties
+             * available on the `Layer3DLight` class.
+             *
+             * @name Phaser.GameObjects.Layer3D#light
+             * @type {Phaser.GameObjects.Layer3DLight}
+             * @since 3.50.0
+             */
+            this.light = new Layer3DLight(this, 0, 100, 0);
 
-        /**
-         * The color of the fog.
-         *
-         * By default it is 0,0,0, which is black.
-         *
-         * @name Phaser.GameObjects.Layer3D#fogColor
-         * @type {Phaser.Display.RGB}
-         * @since 3.50.0
-         */
-        this.fogColor = new RGB();
+            /**
+             * The color of the fog.
+             *
+             * By default it is 0,0,0, which is black.
+             *
+             * @name Phaser.GameObjects.Layer3D#fogColor
+             * @type {Phaser.Display.RGB}
+             * @since 3.50.0
+             */
+            this.fogColor = new RGB();
 
-        /**
-         * The minimum distance from which fog starts to affect objects closer than it.
-         *
-         * @name Phaser.GameObjects.Layer3D#fogNear
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.fogNear = 0;
+            /**
+             * The minimum distance from which fog starts to affect objects closer than it.
+             *
+             * @name Phaser.GameObjects.Layer3D#fogNear
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.fogNear = 0;
 
-        /**
-         * The maximum distance from which fog starts to affect objects further than it.
-         *
-         * @name Phaser.GameObjects.Layer3D#fogFar
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.fogFar = Infinity;
+            /**
+             * The maximum distance from which fog starts to affect objects further than it.
+             *
+             * @name Phaser.GameObjects.Layer3D#fogFar
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.fogFar = Infinity;
 
-        /**
-         * An array of model instances that have been created in this Layer3D.
-         *
-         * This array can be sorted, by your own functions, to control model rendering order.
-         *
-         * @name Phaser.GameObjects.Layer3D#models
-         * @type {Phaser.Geom.Mesh.Model[]}
-         * @since 3.50.0
-         */
-        this.models = [];
+            /**
+             * An array of model instances that have been created in this Layer3D.
+             *
+             * This array can be sorted, by your own functions, to control model rendering order.
+             *
+             * @name Phaser.GameObjects.Layer3D#models
+             * @type {Phaser.Geom.Mesh.Model[]}
+             * @since 3.50.0
+             */
+            this.models = [];
 
-        /**
-         * Internal cached value.
-         *
-         * @name Phaser.GameObjects.Layer3D#_prevWidth
-         * @type {number}
-         * @private
-         * @since 3.50.0
-         */
-        this._prevWidth = 0;
+            /**
+             * Internal cached value.
+             *
+             * @name Phaser.GameObjects.Layer3D#_prevWidth
+             * @type {number}
+             * @private
+             * @since 3.50.0
+             */
+            this._prevWidth = 0;
 
-        /**
-         * Internal cached value.
-         *
-         * @name Phaser.GameObjects.Layer3D#_prevHeight
-         * @type {number}
-         * @private
-         * @since 3.50.0
-         */
-        this._prevHeight = 0;
+            /**
+             * Internal cached value.
+             *
+             * @name Phaser.GameObjects.Layer3D#_prevHeight
+             * @type {number}
+             * @private
+             * @since 3.50.0
+             */
+            this._prevHeight = 0;
 
-        var renderer = scene.sys.renderer;
+            var renderer = scene.sys.renderer;
 
-        this.setPosition(x, y);
-        this.setSize(renderer.width, renderer.height);
-        this.initPipeline(CONST.MESH_PIPELINE);
+            this.setPosition(x, y);
+            this.setSize(renderer.width, renderer.height);
+            this.initPipeline(CONST.MESH_PIPELINE);
 
-        this.on(GameObjectEvents.ADDED_TO_SCENE, this.addedToScene, this);
-        this.on(GameObjectEvents.REMOVED_FROM_SCENE, this.removedFromScene, this);
-    },
+            this.on(GameObjectEvents.ADDED_TO_SCENE, this.addedToScene, this);
+            this.on(GameObjectEvents.REMOVED_FROM_SCENE, this.removedFromScene, this);
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
@@ -180,12 +177,10 @@ var Layer3D = new Class({
      * @method Phaser.GameObjects.Layer3D#clearModels
      * @since 3.50.0
      */
-    clearModels: function ()
-    {
+    clearModels: function () {
         var models = this.models;
 
-        for (var i = 0; i < models.length; i++)
-        {
+        for (var i = 0; i < models.length; i++) {
             models[i].destroy();
         }
 
@@ -211,8 +206,7 @@ var Layer3D = new Class({
      *
      * @return {Phaser.Geom.Mesh.Model} The model instance that was created.
      */
-    addModel: function (verticesCount, texture, frame, x, y, z)
-    {
+    addModel: function (verticesCount, texture, frame, x, y, z) {
         var model = new Model(this, verticesCount, texture, frame, x, y, z);
 
         this.models.push(model);
@@ -259,13 +253,11 @@ var Layer3D = new Class({
      *
      * @return {Phaser.Geom.Mesh.Model|Phaser.Geom.Mesh.Model[]} The Model instance that was created. If the OBJ contained multiple models then an array of Model instances is returned.
      */
-    addModelFromOBJ: function (key, texture, frame, scale, originX, originY, originZ)
-    {
+    addModelFromOBJ: function (key, texture, frame, scale, originX, originY, originZ) {
         var model = [];
         var data = this.scene.sys.cache.obj.get(key);
 
-        if (data)
-        {
+        if (data) {
             model = this.addModelFromData(data, texture, frame, scale, originX, originY, originZ);
         }
 
@@ -311,12 +303,19 @@ var Layer3D = new Class({
      *
      * @return {Phaser.Geom.Mesh.Model|Phaser.Geom.Mesh.Model[]} The Model instance that was created. If the data contained multiple models then an array of Model instances is returned.
      */
-    addModelFromData: function (data, texture, frame, scale, originX, originY, originZ)
-    {
-        if (scale === undefined) { scale = 1; }
-        if (originX === undefined) { originX = 0; }
-        if (originY === undefined) { originY = 0; }
-        if (originZ === undefined) { originZ = 0; }
+    addModelFromData: function (data, texture, frame, scale, originX, originY, originZ) {
+        if (scale === undefined) {
+            scale = 1;
+        }
+        if (originX === undefined) {
+            originX = 0;
+        }
+        if (originY === undefined) {
+            originY = 0;
+        }
+        if (originZ === undefined) {
+            originZ = 0;
+        }
 
         var results = [];
 
@@ -325,8 +324,7 @@ var Layer3D = new Class({
         //     material = this.parseOBJMaterial(material);
         // }
 
-        for (var m = 0; m < data.models.length; m++)
-        {
+        for (var m = 0; m < data.models.length; m++) {
             var modelData = data.models[m];
 
             var vertices = modelData.vertices;
@@ -336,12 +334,11 @@ var Layer3D = new Class({
 
             var model = this.addModel(faces.length * 3, texture, frame);
 
-            var defaultUV1 = { u: 0, v: 1 };
-            var defaultUV2 = { u: 0, v: 0 };
-            var defaultUV3 = { u: 1, v: 1 };
+            var defaultUV1 = {u: 0, v: 1};
+            var defaultUV2 = {u: 0, v: 0};
+            var defaultUV3 = {u: 1, v: 1};
 
-            for (var i = 0; i < faces.length; i++)
-            {
+            for (var i = 0; i < faces.length; i++) {
                 var face = faces[i];
 
                 //  {textureCoordsIndex: 0, vertexIndex: 16, vertexNormalIndex: 16}
@@ -437,14 +434,12 @@ var Layer3D = new Class({
      *
      * @return {Phaser.Geom.Mesh.Model} The Model instance that was created.
      */
-    addModelFromVertices: function (vertices, uvs, normals, indicies, containsZ, texture, frame)
-    {
+    addModelFromVertices: function (vertices, uvs, normals, indicies, containsZ, texture, frame) {
         var isIndexed = (Array.isArray(indicies) && indicies.length > 0);
 
         var verticesCount = (isIndexed) ? indicies.length : vertices.length;
 
-        if (!isIndexed)
-        {
+        if (!isIndexed) {
             verticesCount /= 2;
         }
 
@@ -474,10 +469,13 @@ var Layer3D = new Class({
      *
      * @return {this} This Layer3D Game Object.
      */
-    setFog: function (red, green, blue, near, far)
-    {
-        if (near === undefined) { near = this.fogNear; }
-        if (far === undefined) { far = this.fogFar; }
+    setFog: function (red, green, blue, near, far) {
+        if (near === undefined) {
+            near = this.fogNear;
+        }
+        if (far === undefined) {
+            far = this.fogFar;
+        }
 
         this.fogColor.set(red, green, blue);
 
@@ -497,8 +495,7 @@ var Layer3D = new Class({
      *
      * @return {this} This Layer3D Game Object.
      */
-    disableFog: function ()
-    {
+    disableFog: function () {
         this.fogFar = Infinity;
 
         return this;
@@ -514,15 +511,13 @@ var Layer3D = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
+    preUpdate: function (time, delta) {
         var width = this.width;
         var height = this.height;
 
         var camera = this.camera;
 
-        if (camera.dirtyProjection || width !== this._prevWidth || height !== this._prevHeight)
-        {
+        if (camera.dirtyProjection || width !== this._prevWidth || height !== this._prevHeight) {
             camera.updateProjectionMatrix(width, height);
 
             this._prevWidth = width;
@@ -531,12 +526,10 @@ var Layer3D = new Class({
 
         var models = this.models;
 
-        for (var i = 0; i < models.length; i++)
-        {
+        for (var i = 0; i < models.length; i++) {
             var model = models[i];
 
-            if (model.visible)
-            {
+            if (model.visible) {
                 model.preUpdate(time, delta);
             }
         }
@@ -551,8 +544,7 @@ var Layer3D = new Class({
      * @protected
      * @since 3.50.0
      */
-    resetDirtyFlags: function ()
-    {
+    resetDirtyFlags: function () {
         this.camera.dirtyView = false;
         this.camera.dirtyProjection = false;
 
@@ -571,8 +563,7 @@ var Layer3D = new Class({
      * @private
      * @since 3.50.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.clearModels();
 
         this.camera.destroy();

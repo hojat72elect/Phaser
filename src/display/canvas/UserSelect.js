@@ -15,9 +15,10 @@
  *
  * @return {HTMLCanvasElement} The canvas element.
  */
-var UserSelect = function (canvas, value)
-{
-    if (value === undefined) { value = 'none'; }
+var UserSelect = function (canvas, value) {
+    if (value === undefined) {
+        value = 'none';
+    }
 
     var vendors = [
         '-webkit-',
@@ -27,8 +28,7 @@ var UserSelect = function (canvas, value)
         ''
     ];
 
-    vendors.forEach(function (vendor)
-    {
+    vendors.forEach(function (vendor) {
         canvas.style[vendor + 'user-select'] = value;
     });
 

@@ -15,9 +15,10 @@
  *
  * @return {Phaser.Math.Vector3} The given Vector.
  */
-var RandomXYZ = function (vec3, radius)
-{
-    if (radius === undefined) { radius = 1; }
+var RandomXYZ = function (vec3, radius) {
+    if (radius === undefined) {
+        radius = 1;
+    }
 
     var r = Math.random() * 2 * Math.PI;
     var z = (Math.random() * 2) - 1;

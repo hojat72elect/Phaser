@@ -22,26 +22,23 @@
  *
  * @return {?(object|Phaser.GameObjects.GameObject)} The first object in the array that matches the comparison object, or `null` if no match was found.
  */
-var GetFirst = function (items, compare, index)
-{
-    if (index === undefined) { index = 0; }
+var GetFirst = function (items, compare, index) {
+    if (index === undefined) {
+        index = 0;
+    }
 
-    for (var i = index; i < items.length; i++)
-    {
+    for (var i = index; i < items.length; i++) {
         var item = items[i];
 
         var match = true;
 
-        for (var property in compare)
-        {
-            if (item[property] !== compare[property])
-            {
+        for (var property in compare) {
+            if (item[property] !== compare[property]) {
                 match = false;
             }
         }
 
-        if (match)
-        {
+        if (match) {
             return item;
         }
     }

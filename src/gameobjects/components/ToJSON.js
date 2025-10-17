@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Game Object.
  */
-var ToJSON = function (gameObject)
-{
+var ToJSON = function (gameObject) {
     var out = {
         name: gameObject.name,
         type: gameObject.type,
@@ -43,8 +42,7 @@ var ToJSON = function (gameObject)
         data: {}
     };
 
-    if (gameObject.texture)
-    {
+    if (gameObject.texture) {
         out.textureKey = gameObject.texture.key;
         out.frameKey = gameObject.frame.name;
     }

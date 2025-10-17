@@ -16,8 +16,7 @@
  *
  * @return {(boolean|number)} The shortest distance from the line to the point, or `false`.
  */
-var GetShortestDistance = function (line, point)
-{
+var GetShortestDistance = function (line, point) {
     var x1 = line.x1;
     var y1 = line.y1;
 
@@ -26,8 +25,7 @@ var GetShortestDistance = function (line, point)
 
     var L2 = (((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)));
 
-    if (L2 === 0)
-    {
+    if (L2 === 0) {
         return false;
     }
 

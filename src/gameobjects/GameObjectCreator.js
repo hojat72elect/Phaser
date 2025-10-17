@@ -28,61 +28,60 @@ var GameObjectCreator = new Class({
 
     initialize:
 
-    function GameObjectCreator (scene)
-    {
-        /**
-         * The Scene to which this Game Object Creator belongs.
-         *
-         * @name Phaser.GameObjects.GameObjectCreator#scene
-         * @type {Phaser.Scene}
-         * @protected
-         * @since 3.0.0
-         */
-        this.scene = scene;
+        function GameObjectCreator(scene) {
+            /**
+             * The Scene to which this Game Object Creator belongs.
+             *
+             * @name Phaser.GameObjects.GameObjectCreator#scene
+             * @type {Phaser.Scene}
+             * @protected
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * A reference to the Scene.Systems.
-         *
-         * @name Phaser.GameObjects.GameObjectCreator#systems
-         * @type {Phaser.Scenes.Systems}
-         * @protected
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * A reference to the Scene.Systems.
+             *
+             * @name Phaser.GameObjects.GameObjectCreator#systems
+             * @type {Phaser.Scenes.Systems}
+             * @protected
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * A reference to the Scene Event Emitter.
-         *
-         * @name Phaser.GameObjects.GameObjectCreator#events
-         * @type {Phaser.Events.EventEmitter}
-         * @protected
-         * @since 3.50.0
-         */
-        this.events = scene.sys.events;
+            /**
+             * A reference to the Scene Event Emitter.
+             *
+             * @name Phaser.GameObjects.GameObjectCreator#events
+             * @type {Phaser.Events.EventEmitter}
+             * @protected
+             * @since 3.50.0
+             */
+            this.events = scene.sys.events;
 
-        /**
-         * A reference to the Scene Display List.
-         *
-         * @name Phaser.GameObjects.GameObjectCreator#displayList
-         * @type {Phaser.GameObjects.DisplayList}
-         * @protected
-         * @since 3.0.0
-         */
-        this.displayList;
+            /**
+             * A reference to the Scene Display List.
+             *
+             * @name Phaser.GameObjects.GameObjectCreator#displayList
+             * @type {Phaser.GameObjects.DisplayList}
+             * @protected
+             * @since 3.0.0
+             */
+            this.displayList;
 
-        /**
-         * A reference to the Scene Update List.
-         *
-         * @name Phaser.GameObjects.GameObjectCreator#updateList
-         * @type {Phaser.GameObjects.UpdateList}
-         * @protected
-         * @since 3.0.0
-         */
-        this.updateList;
+            /**
+             * A reference to the Scene Update List.
+             *
+             * @name Phaser.GameObjects.GameObjectCreator#updateList
+             * @type {Phaser.GameObjects.UpdateList}
+             * @protected
+             * @since 3.0.0
+             */
+            this.updateList;
 
-        this.events.once(SceneEvents.BOOT, this.boot, this);
-        this.events.on(SceneEvents.START, this.start, this);
-    },
+            this.events.once(SceneEvents.BOOT, this.boot, this);
+            this.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -92,8 +91,7 @@ var GameObjectCreator = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.displayList = this.systems.displayList;
         this.updateList = this.systems.updateList;
 
@@ -109,8 +107,7 @@ var GameObjectCreator = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         this.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);
     },
 
@@ -122,8 +119,7 @@ var GameObjectCreator = new Class({
      * @private
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.events.off(SceneEvents.SHUTDOWN, this.shutdown, this);
     },
 
@@ -135,8 +131,7 @@ var GameObjectCreator = new Class({
      * @private
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.events.off(SceneEvents.START, this.start, this);
@@ -164,10 +159,8 @@ var GameObjectCreator = new Class({
  * @param {string} factoryType - The key of the factory that you will use to call to Phaser.Scene.make[ factoryType ] method.
  * @param {function} factoryFunction - The constructor function to be called when you invoke to the Phaser.Scene.make method.
  */
-GameObjectCreator.register = function (factoryType, factoryFunction)
-{
-    if (!GameObjectCreator.prototype.hasOwnProperty(factoryType))
-    {
+GameObjectCreator.register = function (factoryType, factoryFunction) {
+    if (!GameObjectCreator.prototype.hasOwnProperty(factoryType)) {
         GameObjectCreator.prototype[factoryType] = factoryFunction;
     }
 };
@@ -184,10 +177,8 @@ GameObjectCreator.register = function (factoryType, factoryFunction)
  *
  * @param {string} factoryType - The key of the factory that you want to remove from the GameObjectCreator.
  */
-GameObjectCreator.remove = function (factoryType)
-{
-    if (GameObjectCreator.prototype.hasOwnProperty(factoryType))
-    {
+GameObjectCreator.remove = function (factoryType) {
+    if (GameObjectCreator.prototype.hasOwnProperty(factoryType)) {
         delete GameObjectCreator.prototype[factoryType];
     }
 };

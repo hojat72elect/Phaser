@@ -24,8 +24,7 @@ var Static = {
      *
      * @return {this} This Game Object instance.
      */
-    setStatic: function (value)
-    {
+    setStatic: function (value) {
         Body.setStatic(this.body, value);
 
         return this;
@@ -39,8 +38,7 @@ var Static = {
      *
      * @return {boolean} `true` if the body is static, otherwise `false`.
      */
-    isStatic: function ()
-    {
+    isStatic: function () {
         return this.body.isStatic;
     }
 

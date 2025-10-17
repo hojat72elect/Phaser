@@ -10,13 +10,13 @@ var CONST = require('../const');
  * Takes an angle in Phasers default clockwise format and converts it so that
  * 0 is North, 90 is West, 180 is South and 270 is East,
  * therefore running counter-clockwise instead of clockwise.
- * 
+ *
  * You can pass in the angle from a Game Object using:
- * 
+ *
  * ```javascript
  * var converted = CounterClockwise(gameobject.rotation);
  * ```
- * 
+ *
  * All values for this function are in radians.
  *
  * @function Phaser.Math.Angle.CounterClockwise
@@ -26,10 +26,8 @@ var CONST = require('../const');
  *
  * @return {number} The converted angle, in radians.
  */
-var CounterClockwise = function (angle)
-{
-    if (angle > Math.PI)
-    {
+var CounterClockwise = function (angle) {
+    if (angle > Math.PI) {
         angle -= CONST.PI2;
     }
 

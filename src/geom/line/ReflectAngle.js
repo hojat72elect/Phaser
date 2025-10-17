@@ -20,8 +20,7 @@ var NormalAngle = require('./NormalAngle');
  *
  * @return {number} The reflected angle between each line.
  */
-var ReflectAngle = function (lineA, lineB)
-{
+var ReflectAngle = function (lineA, lineB) {
     return (2 * NormalAngle(lineB) - Math.PI - Angle(lineA));
 };
 

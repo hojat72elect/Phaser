@@ -48,282 +48,281 @@ var Tile = new Class({
 
     initialize:
 
-    function Tile (layer, index, x, y, width, height, baseWidth, baseHeight)
-    {
-        /**
-         * The LayerData in the Tilemap data that this tile belongs to.
-         *
-         * @name Phaser.Tilemaps.Tile#layer
-         * @type {Phaser.Tilemaps.LayerData}
-         * @since 3.0.0
-         */
-        this.layer = layer;
+        function Tile(layer, index, x, y, width, height, baseWidth, baseHeight) {
+            /**
+             * The LayerData in the Tilemap data that this tile belongs to.
+             *
+             * @name Phaser.Tilemaps.Tile#layer
+             * @type {Phaser.Tilemaps.LayerData}
+             * @since 3.0.0
+             */
+            this.layer = layer;
 
-        /**
-         * The index of this tile within the map data corresponding to the tileset, or -1 if this
-         * represents a blank tile.
-         *
-         * @name Phaser.Tilemaps.Tile#index
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.index = index;
+            /**
+             * The index of this tile within the map data corresponding to the tileset, or -1 if this
+             * represents a blank tile.
+             *
+             * @name Phaser.Tilemaps.Tile#index
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.index = index;
 
-        /**
-         * The x map coordinate of this tile in tile units.
-         *
-         * @name Phaser.Tilemaps.Tile#x
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.x = x;
+            /**
+             * The x map coordinate of this tile in tile units.
+             *
+             * @name Phaser.Tilemaps.Tile#x
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.x = x;
 
-        /**
-         * The y map coordinate of this tile in tile units.
-         *
-         * @name Phaser.Tilemaps.Tile#y
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.y = y;
+            /**
+             * The y map coordinate of this tile in tile units.
+             *
+             * @name Phaser.Tilemaps.Tile#y
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.y = y;
 
-        /**
-         * The width of the tile in pixels.
-         *
-         * @name Phaser.Tilemaps.Tile#width
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.width = width;
+            /**
+             * The width of the tile in pixels.
+             *
+             * @name Phaser.Tilemaps.Tile#width
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.width = width;
 
-        /**
-         * The height of the tile in pixels.
-         *
-         * @name Phaser.Tilemaps.Tile#height
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.height = height;
+            /**
+             * The height of the tile in pixels.
+             *
+             * @name Phaser.Tilemaps.Tile#height
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.height = height;
 
-        /**
-         * The right of the tile in pixels.
-         *
-         * Set in the `updatePixelXY` method.
-         *
-         * @name Phaser.Tilemaps.Tile#right
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.right;
+            /**
+             * The right of the tile in pixels.
+             *
+             * Set in the `updatePixelXY` method.
+             *
+             * @name Phaser.Tilemaps.Tile#right
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.right;
 
-        /**
-         * The bottom of the tile in pixels.
-         *
-         * Set in the `updatePixelXY` method.
-         *
-         * @name Phaser.Tilemaps.Tile#bottom
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.bottom;
+            /**
+             * The bottom of the tile in pixels.
+             *
+             * Set in the `updatePixelXY` method.
+             *
+             * @name Phaser.Tilemaps.Tile#bottom
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.bottom;
 
-        /**
-         * The maps base width of a tile in pixels. Tiled maps support multiple tileset sizes
-         * within one map, but they are still placed at intervals of the base tile size.
-         *
-         * @name Phaser.Tilemaps.Tile#baseWidth
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.baseWidth = (baseWidth !== undefined) ? baseWidth : width;
+            /**
+             * The maps base width of a tile in pixels. Tiled maps support multiple tileset sizes
+             * within one map, but they are still placed at intervals of the base tile size.
+             *
+             * @name Phaser.Tilemaps.Tile#baseWidth
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.baseWidth = (baseWidth !== undefined) ? baseWidth : width;
 
-        /**
-         * The maps base height of a tile in pixels. Tiled maps support multiple tileset sizes
-         * within one map, but they are still placed at intervals of the base tile size.
-         *
-         * @name Phaser.Tilemaps.Tile#baseHeight
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.baseHeight = (baseHeight !== undefined) ? baseHeight : height;
+            /**
+             * The maps base height of a tile in pixels. Tiled maps support multiple tileset sizes
+             * within one map, but they are still placed at intervals of the base tile size.
+             *
+             * @name Phaser.Tilemaps.Tile#baseHeight
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.baseHeight = (baseHeight !== undefined) ? baseHeight : height;
 
-        /**
-         * The x coordinate of the top left of this tile in pixels. This is relative to the top left
-         * of the layer this tile is being rendered within. This property does NOT factor in camera
-         * scroll, layer scale or layer position.
-         *
-         * @name Phaser.Tilemaps.Tile#pixelX
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.pixelX = 0;
+            /**
+             * The x coordinate of the top left of this tile in pixels. This is relative to the top left
+             * of the layer this tile is being rendered within. This property does NOT factor in camera
+             * scroll, layer scale or layer position.
+             *
+             * @name Phaser.Tilemaps.Tile#pixelX
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.pixelX = 0;
 
-        /**
-         * The y coordinate of the top left of this tile in pixels. This is relative to the top left
-         * of the layer this tile is being rendered within. This property does NOT factor in camera
-         * scroll, layer scale or layer position.
-         *
-         * @name Phaser.Tilemaps.Tile#pixelY
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.pixelY = 0;
+            /**
+             * The y coordinate of the top left of this tile in pixels. This is relative to the top left
+             * of the layer this tile is being rendered within. This property does NOT factor in camera
+             * scroll, layer scale or layer position.
+             *
+             * @name Phaser.Tilemaps.Tile#pixelY
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.pixelY = 0;
 
-        this.updatePixelXY();
+            this.updatePixelXY();
 
-        /**
-         * Tile specific properties. These usually come from Tiled.
-         *
-         * @name Phaser.Tilemaps.Tile#properties
-         * @type {any}
-         * @since 3.0.0
-         */
-        this.properties = {};
+            /**
+             * Tile specific properties. These usually come from Tiled.
+             *
+             * @name Phaser.Tilemaps.Tile#properties
+             * @type {any}
+             * @since 3.0.0
+             */
+            this.properties = {};
 
-        /**
-         * The rotation angle of this tile.
-         *
-         * @name Phaser.Tilemaps.Tile#rotation
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.rotation = 0;
+            /**
+             * The rotation angle of this tile.
+             *
+             * @name Phaser.Tilemaps.Tile#rotation
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.rotation = 0;
 
-        /**
-         * Whether the tile should collide with any object on the left side.
-         *
-         * This property is used by Arcade Physics only, however, you can also use it
-         * in your own checks.
-         *
-         * @name Phaser.Tilemaps.Tile#collideLeft
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.collideLeft = false;
+            /**
+             * Whether the tile should collide with any object on the left side.
+             *
+             * This property is used by Arcade Physics only, however, you can also use it
+             * in your own checks.
+             *
+             * @name Phaser.Tilemaps.Tile#collideLeft
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.collideLeft = false;
 
-        /**
-         * Whether the tile should collide with any object on the right side.
-         *
-         * This property is used by Arcade Physics only, however, you can also use it
-         * in your own checks.
-         *
-         * @name Phaser.Tilemaps.Tile#collideRight
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.collideRight = false;
+            /**
+             * Whether the tile should collide with any object on the right side.
+             *
+             * This property is used by Arcade Physics only, however, you can also use it
+             * in your own checks.
+             *
+             * @name Phaser.Tilemaps.Tile#collideRight
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.collideRight = false;
 
-        /**
-         * Whether the tile should collide with any object on the top side.
-         *
-         * This property is used by Arcade Physics only, however, you can also use it
-         * in your own checks.
-         *
-         * @name Phaser.Tilemaps.Tile#collideUp
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.collideUp = false;
+            /**
+             * Whether the tile should collide with any object on the top side.
+             *
+             * This property is used by Arcade Physics only, however, you can also use it
+             * in your own checks.
+             *
+             * @name Phaser.Tilemaps.Tile#collideUp
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.collideUp = false;
 
-        /**
-         * Whether the tile should collide with any object on the bottom side.
-         *
-         * This property is used by Arcade Physics only, however, you can also use it
-         * in your own checks.
-         *
-         * @name Phaser.Tilemaps.Tile#collideDown
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.collideDown = false;
+            /**
+             * Whether the tile should collide with any object on the bottom side.
+             *
+             * This property is used by Arcade Physics only, however, you can also use it
+             * in your own checks.
+             *
+             * @name Phaser.Tilemaps.Tile#collideDown
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.collideDown = false;
 
-        /**
-         * Whether the tiles left edge is interesting for collisions.
-         *
-         * @name Phaser.Tilemaps.Tile#faceLeft
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.faceLeft = false;
+            /**
+             * Whether the tiles left edge is interesting for collisions.
+             *
+             * @name Phaser.Tilemaps.Tile#faceLeft
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.faceLeft = false;
 
-        /**
-         * Whether the tiles right edge is interesting for collisions.
-         *
-         * @name Phaser.Tilemaps.Tile#faceRight
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.faceRight = false;
+            /**
+             * Whether the tiles right edge is interesting for collisions.
+             *
+             * @name Phaser.Tilemaps.Tile#faceRight
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.faceRight = false;
 
-        /**
-         * Whether the tiles top edge is interesting for collisions.
-         *
-         * @name Phaser.Tilemaps.Tile#faceTop
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.faceTop = false;
+            /**
+             * Whether the tiles top edge is interesting for collisions.
+             *
+             * @name Phaser.Tilemaps.Tile#faceTop
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.faceTop = false;
 
-        /**
-         * Whether the tiles bottom edge is interesting for collisions.
-         *
-         * @name Phaser.Tilemaps.Tile#faceBottom
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.faceBottom = false;
+            /**
+             * Whether the tiles bottom edge is interesting for collisions.
+             *
+             * @name Phaser.Tilemaps.Tile#faceBottom
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.faceBottom = false;
 
-        /**
-         * Tile collision callback.
-         *
-         * @name Phaser.Tilemaps.Tile#collisionCallback
-         * @type {function}
-         * @since 3.0.0
-         */
-        this.collisionCallback = undefined;
+            /**
+             * Tile collision callback.
+             *
+             * @name Phaser.Tilemaps.Tile#collisionCallback
+             * @type {function}
+             * @since 3.0.0
+             */
+            this.collisionCallback = undefined;
 
-        /**
-         * The context in which the collision callback will be called.
-         *
-         * @name Phaser.Tilemaps.Tile#collisionCallbackContext
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.collisionCallbackContext = this;
+            /**
+             * The context in which the collision callback will be called.
+             *
+             * @name Phaser.Tilemaps.Tile#collisionCallbackContext
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.collisionCallbackContext = this;
 
-        /**
-         * The tint to apply to this tile. Note: tint is currently a single color value instead of
-         * the 4 corner tint component on other GameObjects.
-         *
-         * @name Phaser.Tilemaps.Tile#tint
-         * @type {number}
-         * @default
-         * @since 3.0.0
-         */
-        this.tint = 0xffffff;
+            /**
+             * The tint to apply to this tile. Note: tint is currently a single color value instead of
+             * the 4 corner tint component on other GameObjects.
+             *
+             * @name Phaser.Tilemaps.Tile#tint
+             * @type {number}
+             * @default
+             * @since 3.0.0
+             */
+            this.tint = 0xffffff;
 
-        /**
-         * The tint fill mode.
-         *
-         * `false` = An additive tint (the default), where vertices colors are blended with the texture.
-         * `true` = A fill tint, where the vertices colors replace the texture, but respects texture alpha.
-         *
-         * @name Phaser.Tilemaps.Tile#tintFill
-         * @type {boolean}
-         * @default
-         * @since 3.70.0
-         */
-        this.tintFill = false;
+            /**
+             * The tint fill mode.
+             *
+             * `false` = An additive tint (the default), where vertices colors are blended with the texture.
+             * `true` = A fill tint, where the vertices colors replace the texture, but respects texture alpha.
+             *
+             * @name Phaser.Tilemaps.Tile#tintFill
+             * @type {boolean}
+             * @default
+             * @since 3.70.0
+             */
+            this.tintFill = false;
 
-        /**
-         * An empty object where physics-engine specific information (e.g. bodies) may be stored.
-         *
-         * @name Phaser.Tilemaps.Tile#physics
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.physics = {};
-    },
+            /**
+             * An empty object where physics-engine specific information (e.g. bodies) may be stored.
+             *
+             * @name Phaser.Tilemaps.Tile#physics
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.physics = {};
+        },
 
     /**
      * Check if the given x and y world coordinates are within this Tile. This does not factor in
@@ -337,8 +336,7 @@ var Tile = new Class({
      *
      * @return {boolean} True if the coordinates are within this Tile, otherwise false.
      */
-    containsPoint: function (x, y)
-    {
+    containsPoint: function (x, y) {
         return !(x < this.pixelX || y < this.pixelY || x > this.right || y > this.bottom);
     },
 
@@ -353,8 +351,7 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    copy: function (tile)
-    {
+    copy: function (tile) {
         this.index = tile.index;
         this.alpha = tile.alpha;
         this.properties = DeepCopy(tile.properties);
@@ -382,8 +379,7 @@ var Tile = new Class({
      *
      * @return {?object} The collision group for this Tile, as defined in the Tileset, or `null` if no group was defined.
      */
-    getCollisionGroup: function ()
-    {
+    getCollisionGroup: function () {
         return this.tileset ? this.tileset.getTileCollisionGroup(this.index) : null;
     },
 
@@ -398,8 +394,7 @@ var Tile = new Class({
      *
      * @return {?object} The tile data for this Tile, as defined in the Tileset, or `null` if no data was defined.
      */
-    getTileData: function ()
-    {
+    getTileData: function () {
         return this.tileset ? this.tileset.getTileData(this.index) : null;
     },
 
@@ -414,12 +409,10 @@ var Tile = new Class({
      *
      * @return {number} The left (x) value of this tile.
      */
-    getLeft: function (camera)
-    {
+    getLeft: function (camera) {
         var tilemapLayer = this.tilemapLayer;
 
-        if (tilemapLayer)
-        {
+        if (tilemapLayer) {
             var point = tilemapLayer.tileToWorldXY(this.x, this.y, undefined, camera);
 
             return point.x;
@@ -439,8 +432,7 @@ var Tile = new Class({
      *
      * @return {number} The right (x) value of this tile.
      */
-    getRight: function (camera)
-    {
+    getRight: function (camera) {
         var tilemapLayer = this.tilemapLayer;
 
         return (tilemapLayer) ? this.getLeft(camera) + this.width * tilemapLayer.scaleX : this.getLeft(camera) + this.width;
@@ -457,15 +449,13 @@ var Tile = new Class({
      *
      * @return {number} The top (y) value of this tile.
      */
-    getTop: function (camera)
-    {
+    getTop: function (camera) {
         var tilemapLayer = this.tilemapLayer;
 
         // Tiled places tiles on a grid of baseWidth x baseHeight. The origin for a tile in grid
         // units is the bottom left, so the y coordinate needs to be adjusted by the difference
         // between the base size and this tile's size.
-        if (tilemapLayer)
-        {
+        if (tilemapLayer) {
             var point = tilemapLayer.tileToWorldXY(this.x, this.y, undefined, camera);
 
             return point.y;
@@ -485,8 +475,7 @@ var Tile = new Class({
      *
      * @return {number} The bottom (y) value of this tile.
      */
-    getBottom: function (camera)
-    {
+    getBottom: function (camera) {
         var tilemapLayer = this.tilemapLayer;
 
         return tilemapLayer
@@ -506,9 +495,10 @@ var Tile = new Class({
      *
      * @return {(Phaser.Geom.Rectangle|object)} The bounds of this Tile.
      */
-    getBounds: function (camera, output)
-    {
-        if (output === undefined) { output = new Rectangle(); }
+    getBounds: function (camera, output) {
+        if (output === undefined) {
+            output = new Rectangle();
+        }
 
         output.x = this.getLeft(camera);
         output.y = this.getTop(camera);
@@ -529,8 +519,7 @@ var Tile = new Class({
      *
      * @return {number} The center x position of this Tile.
      */
-    getCenterX: function (camera)
-    {
+    getCenterX: function (camera) {
         return (this.getLeft(camera) + this.getRight(camera)) / 2;
     },
 
@@ -545,8 +534,7 @@ var Tile = new Class({
      *
      * @return {number} The center y position of this Tile.
      */
-    getCenterY: function (camera)
-    {
+    getCenterY: function (camera) {
         return (this.getTop(camera) + this.getBottom(camera)) / 2;
     },
 
@@ -564,8 +552,7 @@ var Tile = new Class({
      *
      * @return {boolean} `true` if the Tile intersects with the given dimensions, otherwise `false`.
      */
-    intersects: function (x, y, right, bottom)
-    {
+    intersects: function (x, y, right, bottom) {
         return !(
             right <= this.pixelX || bottom <= this.pixelY ||
             x >= this.right || y >= this.bottom
@@ -583,18 +570,12 @@ var Tile = new Class({
      *
      * @return {boolean} True if the Tile is interesting, otherwise false.
      */
-    isInteresting: function (collides, faces)
-    {
-        if (collides && faces)
-        {
+    isInteresting: function (collides, faces) {
+        if (collides && faces) {
             return (this.canCollide || this.hasInterestingFace);
-        }
-        else if (collides)
-        {
+        } else if (collides) {
             return this.collides;
-        }
-        else if (faces)
-        {
+        } else if (faces) {
             return this.hasInterestingFace;
         }
 
@@ -611,9 +592,10 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    resetCollision: function (recalculateFaces)
-    {
-        if (recalculateFaces === undefined) { recalculateFaces = true; }
+    resetCollision: function (recalculateFaces) {
+        if (recalculateFaces === undefined) {
+            recalculateFaces = true;
+        }
 
         this.collideLeft = false;
         this.collideRight = false;
@@ -625,12 +607,10 @@ var Tile = new Class({
         this.faceLeft = false;
         this.faceRight = false;
 
-        if (recalculateFaces)
-        {
+        if (recalculateFaces) {
             var tilemapLayer = this.tilemapLayer;
 
-            if (tilemapLayer)
-            {
+            if (tilemapLayer) {
                 this.tilemapLayer.calculateFacesAt(this.x, this.y);
             }
         }
@@ -646,8 +626,7 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    resetFaces: function ()
-    {
+    resetFaces: function () {
         this.faceTop = false;
         this.faceBottom = false;
         this.faceLeft = false;
@@ -670,12 +649,19 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    setCollision: function (left, right, up, down, recalculateFaces)
-    {
-        if (right === undefined) { right = left; }
-        if (up === undefined) { up = left; }
-        if (down === undefined) { down = left; }
-        if (recalculateFaces === undefined) { recalculateFaces = true; }
+    setCollision: function (left, right, up, down, recalculateFaces) {
+        if (right === undefined) {
+            right = left;
+        }
+        if (up === undefined) {
+            up = left;
+        }
+        if (down === undefined) {
+            down = left;
+        }
+        if (recalculateFaces === undefined) {
+            recalculateFaces = true;
+        }
 
         this.collideLeft = left;
         this.collideRight = right;
@@ -687,12 +673,10 @@ var Tile = new Class({
         this.faceTop = up;
         this.faceBottom = down;
 
-        if (recalculateFaces)
-        {
+        if (recalculateFaces) {
             var tilemapLayer = this.tilemapLayer;
 
-            if (tilemapLayer)
-            {
+            if (tilemapLayer) {
                 this.tilemapLayer.calculateFacesAt(this.x, this.y);
             }
         }
@@ -712,15 +696,11 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    setCollisionCallback: function (callback, context)
-    {
-        if (callback === null)
-        {
+    setCollisionCallback: function (callback, context) {
+        if (callback === null) {
             this.collisionCallback = undefined;
             this.collisionCallbackContext = undefined;
-        }
-        else
-        {
+        } else {
             this.collisionCallback = callback;
             this.collisionCallbackContext = context;
         }
@@ -741,12 +721,19 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    setSize: function (tileWidth, tileHeight, baseWidth, baseHeight)
-    {
-        if (tileWidth !== undefined) { this.width = tileWidth; }
-        if (tileHeight !== undefined) { this.height = tileHeight; }
-        if (baseWidth !== undefined) { this.baseWidth = baseWidth; }
-        if (baseHeight !== undefined) { this.baseHeight = baseHeight; }
+    setSize: function (tileWidth, tileHeight, baseWidth, baseHeight) {
+        if (tileWidth !== undefined) {
+            this.width = tileWidth;
+        }
+        if (tileHeight !== undefined) {
+            this.height = tileHeight;
+        }
+        if (baseWidth !== undefined) {
+            this.baseWidth = baseWidth;
+        }
+        if (baseHeight !== undefined) {
+            this.baseHeight = baseHeight;
+        }
 
         this.updatePixelXY();
 
@@ -761,67 +748,50 @@ var Tile = new Class({
      *
      * @return {this} This Tile object instance.
      */
-    updatePixelXY: function ()
-    {
+    updatePixelXY: function () {
         var orientation = this.layer.orientation;
 
-        if (orientation === CONST.ORTHOGONAL)
-        {
+        if (orientation === CONST.ORTHOGONAL) {
             //  In orthogonal mode, Tiled places tiles on a grid of baseWidth x baseHeight. The origin for a tile is the
             //  bottom left, while the Phaser renderer assumes the origin is the top left. The y
             //  coordinate needs to be adjusted by the difference.
 
             this.pixelX = this.x * this.baseWidth;
             this.pixelY = this.y * this.baseHeight;
-        }
-        else if (orientation === CONST.ISOMETRIC)
-        {
+        } else if (orientation === CONST.ISOMETRIC) {
             //  Reminder: For the tilemap to be centered we have to move the image to the right with the camera!
             //  This is crucial for wordtotile, tiletoworld to work.
 
             this.pixelX = (this.x - this.y) * this.baseWidth * 0.5;
             this.pixelY = (this.x + this.y) * this.baseHeight * 0.5;
-        }
-        else if (orientation === CONST.STAGGERED)
-        {
+        } else if (orientation === CONST.STAGGERED) {
             this.pixelX = this.x * this.baseWidth + this.y % 2 * (this.baseWidth / 2);
             this.pixelY = this.y * (this.baseHeight / 2);
-        }
-        else if (orientation === CONST.HEXAGONAL)
-        {
+        } else if (orientation === CONST.HEXAGONAL) {
             var staggerAxis = this.layer.staggerAxis;
             var staggerIndex = this.layer.staggerIndex;
             var len = this.layer.hexSideLength;
             var rowWidth;
             var rowHeight;
 
-            if (staggerAxis === 'y')
-            {
+            if (staggerAxis === 'y') {
                 rowHeight = ((this.baseHeight - len) / 2 + len);
 
-                if (staggerIndex === 'odd')
-                {
+                if (staggerIndex === 'odd') {
                     this.pixelX = this.x * this.baseWidth + this.y % 2 * (this.baseWidth / 2);
-                }
-                else
-                {
+                } else {
                     this.pixelX = this.x * this.baseWidth - this.y % 2 * (this.baseWidth / 2);
                 }
 
                 this.pixelY = this.y * rowHeight;
-            }
-            else if (staggerAxis === 'x')
-            {
+            } else if (staggerAxis === 'x') {
                 rowWidth = ((this.baseWidth - len) / 2 + len);
 
                 this.pixelX = this.x * rowWidth;
 
-                if (staggerIndex === 'odd')
-                {
+                if (staggerIndex === 'odd') {
                     this.pixelY = this.y * this.baseHeight + this.x % 2 * (this.baseHeight / 2);
-                }
-                else
-                {
+                } else {
                     this.pixelY = this.y * this.baseHeight - this.x % 2 * (this.baseHeight / 2);
                 }
             }
@@ -839,8 +809,7 @@ var Tile = new Class({
      * @method Phaser.Tilemaps.Tile#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.collisionCallback = undefined;
         this.collisionCallbackContext = undefined;
         this.properties = undefined;
@@ -856,8 +825,7 @@ var Tile = new Class({
      */
     canCollide: {
 
-        get: function ()
-        {
+        get: function () {
             return (this.collideLeft || this.collideRight || this.collideUp || this.collideDown || (this.collisionCallback !== undefined));
         }
 
@@ -873,8 +841,7 @@ var Tile = new Class({
      */
     collides: {
 
-        get: function ()
-        {
+        get: function () {
             return (this.collideLeft || this.collideRight || this.collideUp || this.collideDown);
         }
 
@@ -890,8 +857,7 @@ var Tile = new Class({
      */
     hasInterestingFace: {
 
-        get: function ()
-        {
+        get: function () {
             return (this.faceTop || this.faceBottom || this.faceLeft || this.faceRight);
         }
 
@@ -909,16 +875,13 @@ var Tile = new Class({
      */
     tileset: {
 
-        get: function ()
-        {
+        get: function () {
             var tilemapLayer = this.layer.tilemapLayer;
 
-            if (tilemapLayer)
-            {
+            if (tilemapLayer) {
                 var tileset = tilemapLayer.gidMap[this.index];
 
-                if (tileset)
-                {
+                if (tileset) {
                     return tileset;
                 }
             }
@@ -939,8 +902,7 @@ var Tile = new Class({
      */
     tilemapLayer: {
 
-        get: function ()
-        {
+        get: function () {
             return this.layer.tilemapLayer;
         }
 
@@ -957,8 +919,7 @@ var Tile = new Class({
      */
     tilemap: {
 
-        get: function ()
-        {
+        get: function () {
             var tilemapLayer = this.tilemapLayer;
 
             return tilemapLayer ? tilemapLayer.tilemap : null;

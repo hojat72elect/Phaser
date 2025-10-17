@@ -25,108 +25,107 @@ var Clock = new Class({
 
     initialize:
 
-    function Clock (scene)
-    {
-        /**
-         * The Scene which owns this Clock.
-         *
-         * @name Phaser.Time.Clock#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+        function Clock(scene) {
+            /**
+             * The Scene which owns this Clock.
+             *
+             * @name Phaser.Time.Clock#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * The Scene Systems object of the Scene which owns this Clock.
-         *
-         * @name Phaser.Time.Clock#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * The Scene Systems object of the Scene which owns this Clock.
+             *
+             * @name Phaser.Time.Clock#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * The current time of the Clock, in milliseconds.
-         *
-         * If accessed externally, this is equivalent to the `time` parameter normally passed to a Scene's `update` method.
-         *
-         * @name Phaser.Time.Clock#now
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.now = 0;
+            /**
+             * The current time of the Clock, in milliseconds.
+             *
+             * If accessed externally, this is equivalent to the `time` parameter normally passed to a Scene's `update` method.
+             *
+             * @name Phaser.Time.Clock#now
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.now = 0;
 
-        /**
-         * The time the Clock (and Scene) started, in milliseconds.
-         *
-         * This can be compared to the `time` parameter passed to a Scene's `update` method.
-         *
-         * @name Phaser.Time.Clock#startTime
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.startTime = 0;
+            /**
+             * The time the Clock (and Scene) started, in milliseconds.
+             *
+             * This can be compared to the `time` parameter passed to a Scene's `update` method.
+             *
+             * @name Phaser.Time.Clock#startTime
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.startTime = 0;
 
-        /**
-         * The scale of the Clock's time delta.
-         *
-         * The time delta is the time elapsed between two consecutive frames and influences the speed of time for this Clock and anything which uses it, such as its Timer Events. Values higher than 1 increase the speed of time, while values smaller than 1 decrease it. A value of 0 freezes time and is effectively equivalent to pausing the Clock.
-         *
-         * @name Phaser.Time.Clock#timeScale
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.timeScale = 1;
+            /**
+             * The scale of the Clock's time delta.
+             *
+             * The time delta is the time elapsed between two consecutive frames and influences the speed of time for this Clock and anything which uses it, such as its Timer Events. Values higher than 1 increase the speed of time, while values smaller than 1 decrease it. A value of 0 freezes time and is effectively equivalent to pausing the Clock.
+             *
+             * @name Phaser.Time.Clock#timeScale
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.timeScale = 1;
 
-        /**
-         * Whether the Clock is paused (`true`) or active (`false`).
-         *
-         * When paused, the Clock will not update any of its Timer Events, thus freezing time.
-         *
-         * @name Phaser.Time.Clock#paused
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.paused = false;
+            /**
+             * Whether the Clock is paused (`true`) or active (`false`).
+             *
+             * When paused, the Clock will not update any of its Timer Events, thus freezing time.
+             *
+             * @name Phaser.Time.Clock#paused
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.paused = false;
 
-        /**
-         * An array of all Timer Events whose delays haven't expired - these are actively updating Timer Events.
-         *
-         * @name Phaser.Time.Clock#_active
-         * @type {Phaser.Time.TimerEvent[]}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._active = [];
+            /**
+             * An array of all Timer Events whose delays haven't expired - these are actively updating Timer Events.
+             *
+             * @name Phaser.Time.Clock#_active
+             * @type {Phaser.Time.TimerEvent[]}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._active = [];
 
-        /**
-         * An array of all Timer Events which will be added to the Clock at the start of the next frame.
-         *
-         * @name Phaser.Time.Clock#_pendingInsertion
-         * @type {Phaser.Time.TimerEvent[]}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._pendingInsertion = [];
+            /**
+             * An array of all Timer Events which will be added to the Clock at the start of the next frame.
+             *
+             * @name Phaser.Time.Clock#_pendingInsertion
+             * @type {Phaser.Time.TimerEvent[]}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._pendingInsertion = [];
 
-        /**
-         * An array of all Timer Events which will be removed from the Clock at the start of the next frame.
-         *
-         * @name Phaser.Time.Clock#_pendingRemoval
-         * @type {Phaser.Time.TimerEvent[]}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._pendingRemoval = [];
+            /**
+             * An array of all Timer Events which will be removed from the Clock at the start of the next frame.
+             *
+             * @name Phaser.Time.Clock#_pendingRemoval
+             * @type {Phaser.Time.TimerEvent[]}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._pendingRemoval = [];
 
-        scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-        scene.sys.events.on(SceneEvents.START, this.start, this);
-    },
+            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+            scene.sys.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -136,8 +135,7 @@ var Clock = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         //  Sync with the TimeStep
         this.now = this.systems.game.loop.time;
 
@@ -153,8 +151,7 @@ var Clock = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         this.startTime = this.systems.game.loop.time;
 
         var eventEmitter = this.systems.events;
@@ -184,12 +181,10 @@ var Clock = new Class({
      *
      * @return {Phaser.Time.TimerEvent} The Timer Event which was created, or passed in.
      */
-    addEvent: function (config)
-    {
+    addEvent: function (config) {
         var event;
 
-        if (config instanceof TimerEvent)
-        {
+        if (config instanceof TimerEvent) {
             event = config;
 
             this.removeEvent(event);
@@ -198,13 +193,10 @@ var Clock = new Class({
             event.hasDispatched = false;
             event.repeatCount = (event.repeat === -1 || event.loop) ? 999999999999 : event.repeat;
 
-            if (event.delay <= 0 && event.repeatCount > 0)
-            {
+            if (event.delay <= 0 && event.repeatCount > 0) {
                 throw new Error('TimerEvent infinite loop created via zero delay');
             }
-        }
-        else
-        {
+        } else {
             event = new TimerEvent(config);
         }
 
@@ -228,9 +220,8 @@ var Clock = new Class({
      *
      * @return {Phaser.Time.TimerEvent} The Timer Event which was created.
      */
-    delayedCall: function (delay, callback, args, callbackScope)
-    {
-        return this.addEvent({ delay: delay, callback: callback, args: args, callbackScope: callbackScope });
+    delayedCall: function (delay, callback, args, callbackScope) {
+        return this.addEvent({delay: delay, callback: callback, args: args, callbackScope: callbackScope});
     },
 
     /**
@@ -241,8 +232,7 @@ var Clock = new Class({
      *
      * @return {this} - This Clock instance.
      */
-    clearPendingEvents: function ()
-    {
+    clearPendingEvents: function () {
         this._pendingInsertion = [];
 
         return this;
@@ -261,15 +251,12 @@ var Clock = new Class({
      *
      * @return {this} - This Clock instance.
      */
-    removeEvent: function (events)
-    {
-        if (!Array.isArray(events))
-        {
-            events = [ events ];
+    removeEvent: function (events) {
+        if (!Array.isArray(events)) {
+            events = [events];
         }
 
-        for (var i = 0; i < events.length; i++)
-        {
+        for (var i = 0; i < events.length; i++) {
             var event = events[i];
 
             Remove(this._pendingRemoval, event);
@@ -288,8 +275,7 @@ var Clock = new Class({
      *
      * @return {this} - This Clock instance.
      */
-    removeAllEvents: function ()
-    {
+    removeAllEvents: function () {
         this._pendingRemoval = this._pendingRemoval.concat(this._active);
 
         return this;
@@ -304,13 +290,11 @@ var Clock = new Class({
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    preUpdate: function ()
-    {
+    preUpdate: function () {
         var toRemove = this._pendingRemoval.length;
         var toInsert = this._pendingInsertion.length;
 
-        if (toRemove === 0 && toInsert === 0)
-        {
+        if (toRemove === 0 && toInsert === 0) {
             //  Quick bail
             return;
         }
@@ -319,14 +303,12 @@ var Clock = new Class({
         var event;
 
         //  Delete old events
-        for (i = 0; i < toRemove; i++)
-        {
+        for (i = 0; i < toRemove; i++) {
             event = this._pendingRemoval[i];
 
             var index = this._active.indexOf(event);
 
-            if (index > -1)
-            {
+            if (index > -1) {
                 this._active.splice(index, 1);
             }
 
@@ -334,8 +316,7 @@ var Clock = new Class({
             event.destroy();
         }
 
-        for (i = 0; i < toInsert; i++)
-        {
+        for (i = 0; i < toInsert; i++) {
             event = this._pendingInsertion[i];
 
             this._active.push(event);
@@ -355,23 +336,19 @@ var Clock = new Class({
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    update: function (time, delta)
-    {
+    update: function (time, delta) {
         this.now = time;
 
-        if (this.paused)
-        {
+        if (this.paused) {
             return;
         }
 
         delta *= this.timeScale;
 
-        for (var i = 0; i < this._active.length; i++)
-        {
+        for (var i = 0; i < this._active.length; i++) {
             var event = this._active[i];
 
-            if (event.paused)
-            {
+            if (event.paused) {
                 continue;
             }
 
@@ -381,31 +358,25 @@ var Clock = new Class({
             //  In testing accurate to +- 1ms!
             event.elapsed += delta * event.timeScale;
 
-            if (event.elapsed >= event.delay)
-            {
+            if (event.elapsed >= event.delay) {
                 var remainder = event.elapsed - event.delay;
 
                 //  Limit it, in case it's checked in the callback
                 event.elapsed = event.delay;
 
                 //  Process the event
-                if (!event.hasDispatched && event.callback)
-                {
+                if (!event.hasDispatched && event.callback) {
                     event.hasDispatched = true;
                     event.callback.apply(event.callbackScope, event.args);
                 }
 
-                if (event.repeatCount > 0)
-                {
+                if (event.repeatCount > 0) {
                     event.repeatCount--;
 
                     // Very short delay
-                    if (remainder >= event.delay)
-                    {
-                        while ((remainder >= event.delay) && (event.repeatCount > 0))
-                        {
-                            if (event.callback)
-                            {
+                    if (remainder >= event.delay) {
+                        while ((remainder >= event.delay) && (event.repeatCount > 0)) {
+                            if (event.callback) {
                                 event.callback.apply(event.callbackScope, event.args);
                             }
 
@@ -416,9 +387,7 @@ var Clock = new Class({
 
                     event.elapsed = remainder;
                     event.hasDispatched = false;
-                }
-                else if (event.hasDispatched)
-                {
+                } else if (event.hasDispatched) {
                     this._pendingRemoval.push(event);
                 }
             }
@@ -433,22 +402,18 @@ var Clock = new Class({
      * @private
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var i;
 
-        for (i = 0; i < this._pendingInsertion.length; i++)
-        {
+        for (i = 0; i < this._pendingInsertion.length; i++) {
             this._pendingInsertion[i].destroy();
         }
 
-        for (i = 0; i < this._active.length; i++)
-        {
+        for (i = 0; i < this._active.length; i++) {
             this._active[i].destroy();
         }
 
-        for (i = 0; i < this._pendingRemoval.length; i++)
-        {
+        for (i = 0; i < this._pendingRemoval.length; i++) {
             this._pendingRemoval[i].destroy();
         }
 
@@ -471,8 +436,7 @@ var Clock = new Class({
      * @private
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.scene.sys.events.off(SceneEvents.START, this.start, this);

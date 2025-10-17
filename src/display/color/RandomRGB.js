@@ -19,10 +19,13 @@ var Color = require('./Color');
  *
  * @return {Phaser.Display.Color} A Color object.
  */
-var RandomRGB = function (min, max)
-{
-    if (min === undefined) { min = 0; }
-    if (max === undefined) { max = 255; }
+var RandomRGB = function (min, max) {
+    if (min === undefined) {
+        min = 0;
+    }
+    if (max === undefined) {
+        max = 255;
+    }
 
     return new Color(Between(min, max), Between(min, max), Between(min, max));
 };

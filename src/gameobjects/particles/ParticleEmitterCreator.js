@@ -27,24 +27,23 @@ var ParticleEmitter = require('./ParticleEmitter');
  *
  * @return {Phaser.GameObjects.Particles.ParticleEmitter} The Game Object that was created.
  */
-GameObjectCreator.register('particles', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('particles', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var emitterConfig = GetFastValue(config, 'config', null);
 
     var emitter = new ParticleEmitter(this.scene, 0, 0, key);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 
     BuildGameObject(this.scene, emitter, config);
 
-    if (emitterConfig)
-    {
+    if (emitterConfig) {
         emitter.setConfig(emitterConfig);
     }
 

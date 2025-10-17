@@ -40,48 +40,41 @@ var BitmapFontFile = new Class({
 
     initialize:
 
-    function BitmapFontFile (loader, key, textureURL, fontDataURL, textureXhrSettings, fontDataXhrSettings)
-    {
-        var image;
-        var data;
+        function BitmapFontFile(loader, key, textureURL, fontDataURL, textureXhrSettings, fontDataXhrSettings) {
+            var image;
+            var data;
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
+                key = GetFastValue(config, 'key');
 
-            image = new ImageFile(loader, {
-                key: key,
-                url: GetFastValue(config, 'textureURL'),
-                extension: GetFastValue(config, 'textureExtension', 'png'),
-                normalMap: GetFastValue(config, 'normalMap'),
-                xhrSettings: GetFastValue(config, 'textureXhrSettings')
-            });
+                image = new ImageFile(loader, {
+                    key: key,
+                    url: GetFastValue(config, 'textureURL'),
+                    extension: GetFastValue(config, 'textureExtension', 'png'),
+                    normalMap: GetFastValue(config, 'normalMap'),
+                    xhrSettings: GetFastValue(config, 'textureXhrSettings')
+                });
 
-            data = new XMLFile(loader, {
-                key: key,
-                url: GetFastValue(config, 'fontDataURL'),
-                extension: GetFastValue(config, 'fontDataExtension', 'xml'),
-                xhrSettings: GetFastValue(config, 'fontDataXhrSettings')
-            });
-        }
-        else
-        {
-            image = new ImageFile(loader, key, textureURL, textureXhrSettings);
-            data = new XMLFile(loader, key, fontDataURL, fontDataXhrSettings);
-        }
+                data = new XMLFile(loader, {
+                    key: key,
+                    url: GetFastValue(config, 'fontDataURL'),
+                    extension: GetFastValue(config, 'fontDataExtension', 'xml'),
+                    xhrSettings: GetFastValue(config, 'fontDataXhrSettings')
+                });
+            } else {
+                image = new ImageFile(loader, key, textureURL, textureXhrSettings);
+                data = new XMLFile(loader, key, fontDataURL, fontDataXhrSettings);
+            }
 
-        if (image.linkFile)
-        {
-            //  Image has a normal map
-            MultiFile.call(this, loader, 'bitmapfont', key, [ image, data, image.linkFile ]);
-        }
-        else
-        {
-            MultiFile.call(this, loader, 'bitmapfont', key, [ image, data ]);
-        }
-    },
+            if (image.linkFile) {
+                //  Image has a normal map
+                MultiFile.call(this, loader, 'bitmapfont', key, [image, data, image.linkFile]);
+            } else {
+                MultiFile.call(this, loader, 'bitmapfont', key, [image, data]);
+            }
+        },
 
     /**
      * Adds this file to its target cache upon successful loading and processing.
@@ -89,10 +82,8 @@ var BitmapFontFile = new Class({
      * @method Phaser.Loader.FileTypes.BitmapFontFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
             var image = this.files[0];
             var xml = this.files[1];
 
@@ -102,7 +93,7 @@ var BitmapFontFile = new Class({
 
             var data = ParseXMLBitmapFont(xml.data, image.cache.getFrame(image.key), 0, 0, texture);
 
-            this.loader.cacheManager.bitmapFont.add(image.key, { data: data, texture: image.key, frame: null });
+            this.loader.cacheManager.bitmapFont.add(image.key, {data: data, texture: image.key, frame: null});
 
             this.complete = true;
         }
@@ -210,25 +201,20 @@ var BitmapFontFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('bitmapFont', function (key, textureURL, fontDataURL, textureXhrSettings, fontDataXhrSettings)
-{
+FileTypesManager.register('bitmapFont', function (key, textureURL, fontDataURL, textureXhrSettings, fontDataXhrSettings) {
     var multifile;
 
     //  Supports an Object file definition in the key argument
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             multifile = new BitmapFontFile(this, key[i]);
 
             this.addFile(multifile.files);
         }
-    }
-    else
-    {
+    } else {
         multifile = new BitmapFontFile(this, key, textureURL, fontDataURL, textureXhrSettings, fontDataXhrSettings);
 
         this.addFile(multifile.files);

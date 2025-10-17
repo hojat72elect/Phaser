@@ -19,12 +19,10 @@ module.exports = {
 
 };
 
-if (typeof CANVAS_RENDERER)
-{
+if (typeof CANVAS_RENDERER) {
     module.exports.Canvas = require('./canvas');
 }
 
-if (typeof WEBGL_RENDERER)
-{
+if (typeof WEBGL_RENDERER) {
     module.exports.WebGL = require('./webgl');
 }

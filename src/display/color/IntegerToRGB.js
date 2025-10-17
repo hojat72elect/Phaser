@@ -16,10 +16,8 @@
  *
  * @return {Phaser.Types.Display.ColorObject} An object with the red, green and blue values set in the r, g and b properties.
  */
-var IntegerToRGB = function (color)
-{
-    if (color > 16777215)
-    {
+var IntegerToRGB = function (color) {
+    if (color > 16777215) {
         //  The color value has an alpha component
         return {
             a: color >>> 24,
@@ -27,9 +25,7 @@ var IntegerToRGB = function (color)
             g: color >> 8 & 0xFF,
             b: color & 0xFF
         };
-    }
-    else
-    {
+    } else {
         return {
             a: 255,
             r: color >> 16 & 0xFF,

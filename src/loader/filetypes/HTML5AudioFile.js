@@ -36,33 +36,31 @@ var HTML5AudioFile = new Class({
 
     initialize:
 
-    function HTML5AudioFile (loader, key, urlConfig, audioConfig)
-    {
-        if (IsPlainObject(key))
-        {
-            var config = key;
+        function HTML5AudioFile(loader, key, urlConfig, audioConfig) {
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            audioConfig = GetFastValue(config, 'config', audioConfig);
-        }
+                key = GetFastValue(config, 'key');
+                audioConfig = GetFastValue(config, 'config', audioConfig);
+            }
 
-        var fileConfig = {
-            type: 'audio',
-            cache: loader.cacheManager.audio,
-            extension: urlConfig.type,
-            key: key,
-            url: urlConfig.url,
-            config: audioConfig
-        };
+            var fileConfig = {
+                type: 'audio',
+                cache: loader.cacheManager.audio,
+                extension: urlConfig.type,
+                key: key,
+                url: urlConfig.url,
+                config: audioConfig
+            };
 
-        File.call(this, loader, fileConfig);
+            File.call(this, loader, fileConfig);
 
-        //  New properties specific to this class
-        this.locked = 'ontouchstart' in window;
-        this.loaded = false;
-        this.filesLoaded = 0;
-        this.filesTotal = 0;
-    },
+            //  New properties specific to this class
+            this.locked = 'ontouchstart' in window;
+            this.loaded = false;
+            this.filesLoaded = 0;
+            this.filesTotal = 0;
+        },
 
     /**
      * Called when the file finishes loading.
@@ -70,10 +68,8 @@ var HTML5AudioFile = new Class({
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#onLoad
      * @since 3.0.0
      */
-    onLoad: function ()
-    {
-        if (this.loaded)
-        {
+    onLoad: function () {
+        if (this.loaded) {
             return;
         }
 
@@ -88,10 +84,8 @@ var HTML5AudioFile = new Class({
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#onError
      * @since 3.0.0
      */
-    onError: function ()
-    {
-        for (var i = 0; i < this.data.length; i++)
-        {
+    onError: function () {
+        for (var i = 0; i < this.data.length; i++) {
             var audio = this.data[i];
 
             audio.oncanplaythrough = null;
@@ -108,8 +102,7 @@ var HTML5AudioFile = new Class({
      * @fires Phaser.Loader.Events#FILE_PROGRESS
      * @since 3.0.0
      */
-    onProgress: function (event)
-    {
+    onProgress: function (event) {
         var audio = event.target;
 
         audio.oncanplaythrough = null;
@@ -121,8 +114,7 @@ var HTML5AudioFile = new Class({
 
         this.loader.emit(Events.FILE_PROGRESS, this, this.percentComplete);
 
-        if (this.filesLoaded === this.filesTotal)
-        {
+        if (this.filesLoaded === this.filesTotal) {
             this.onLoad();
         }
     },
@@ -135,8 +127,7 @@ var HTML5AudioFile = new Class({
      * @method Phaser.Loader.FileTypes.HTML5AudioFile#load
      * @since 3.0.0
      */
-    load: function ()
-    {
+    load: function () {
         this.data = [];
 
         var instances = (this.config && this.config.instances) || 1;
@@ -145,24 +136,19 @@ var HTML5AudioFile = new Class({
         this.filesLoaded = 0;
         this.percentComplete = 0;
 
-        for (var i = 0; i < instances; i++)
-        {
+        for (var i = 0; i < instances; i++) {
             var audio = new Audio();
 
-            if (!audio.dataset)
-            {
+            if (!audio.dataset) {
                 audio.dataset = {};
             }
 
             audio.dataset.name = this.key + ('0' + i).slice(-2);
             audio.dataset.used = 'false';
 
-            if (this.locked)
-            {
+            if (this.locked) {
                 audio.dataset.locked = 'true';
-            }
-            else
-            {
+            } else {
                 audio.dataset.locked = 'false';
 
                 audio.preload = 'auto';
@@ -173,19 +159,16 @@ var HTML5AudioFile = new Class({
             this.data.push(audio);
         }
 
-        for (i = 0; i < this.data.length; i++)
-        {
+        for (i = 0; i < this.data.length; i++) {
             audio = this.data[i];
             audio.src = GetURL(this, this.loader.baseURL);
 
-            if (!this.locked)
-            {
+            if (!this.locked) {
                 audio.load();
             }
         }
 
-        if (this.locked)
-        {
+        if (this.locked) {
             //  This is super-dangerous but works. Race condition potential high.
             //  Is there another way?
             setTimeout(this.onLoad.bind(this));

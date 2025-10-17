@@ -52,59 +52,58 @@ var Light = new Class({
 
     initialize:
 
-    function Light (x, y, radius, r, g, b, intensity)
-    {
-        Circle.call(this, x, y, radius);
+        function Light(x, y, radius, r, g, b, intensity) {
+            Circle.call(this, x, y, radius);
 
-        /**
-         * The color of the light.
-         *
-         * @name Phaser.GameObjects.Light#color
-         * @type {Phaser.Display.RGB}
-         * @since 3.50.0
-         */
-        this.color = new RGB(r, g, b);
+            /**
+             * The color of the light.
+             *
+             * @name Phaser.GameObjects.Light#color
+             * @type {Phaser.Display.RGB}
+             * @since 3.50.0
+             */
+            this.color = new RGB(r, g, b);
 
-        /**
-         * The intensity of the light.
-         *
-         * @name Phaser.GameObjects.Light#intensity
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.intensity = intensity;
+            /**
+             * The intensity of the light.
+             *
+             * @name Phaser.GameObjects.Light#intensity
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.intensity = intensity;
 
-        /**
-         * The flags that are compared against `RENDER_MASK` to determine if this Game Object will render or not.
-         * The bits are 0001 | 0010 | 0100 | 1000 set by the components Visible, Alpha, Transform and Texture respectively.
-         * If those components are not used by your custom class then you can use this bitmask as you wish.
-         *
-         * @name Phaser.GameObjects.Light#renderFlags
-         * @type {number}
-         * @default 15
-         * @since 3.0.0
-         */
-        this.renderFlags = 15;
+            /**
+             * The flags that are compared against `RENDER_MASK` to determine if this Game Object will render or not.
+             * The bits are 0001 | 0010 | 0100 | 1000 set by the components Visible, Alpha, Transform and Texture respectively.
+             * If those components are not used by your custom class then you can use this bitmask as you wish.
+             *
+             * @name Phaser.GameObjects.Light#renderFlags
+             * @type {number}
+             * @default 15
+             * @since 3.0.0
+             */
+            this.renderFlags = 15;
 
-        /**
-         * A bitmask that controls if this Game Object is drawn by a Camera or not.
-         * Not usually set directly, instead call `Camera.ignore`, however you can
-         * set this property directly using the Camera.id property:
-         *
-         * @example
-         * this.cameraFilter |= camera.id
-         *
-         * @name Phaser.GameObjects.Light#cameraFilter
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.cameraFilter = 0;
+            /**
+             * A bitmask that controls if this Game Object is drawn by a Camera or not.
+             * Not usually set directly, instead call `Camera.ignore`, however you can
+             * set this property directly using the Camera.id property:
+             *
+             * @example
+             * this.cameraFilter |= camera.id
+             *
+             * @name Phaser.GameObjects.Light#cameraFilter
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.cameraFilter = 0;
 
-        this.setScrollFactor(1, 1);
-        this.setOrigin();
-        this.setDisplayOrigin(radius);
-    },
+            this.setScrollFactor(1, 1);
+            this.setOrigin();
+            this.setDisplayOrigin(radius);
+        },
 
     /**
      * The width of this Light Game Object. This is the same as `Light.diameter`.
@@ -115,13 +114,11 @@ var Light = new Class({
      */
     displayWidth: {
 
-        get: function ()
-        {
+        get: function () {
             return this.diameter;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.diameter = value;
         }
 
@@ -136,13 +133,11 @@ var Light = new Class({
      */
     displayHeight: {
 
-        get: function ()
-        {
+        get: function () {
             return this.diameter;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.diameter = value;
         }
 
@@ -157,13 +152,11 @@ var Light = new Class({
      */
     width: {
 
-        get: function ()
-        {
+        get: function () {
             return this.diameter;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.diameter = value;
         }
 
@@ -178,13 +171,11 @@ var Light = new Class({
      */
     height: {
 
-        get: function ()
-        {
+        get: function () {
             return this.diameter;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.diameter = value;
         }
 
@@ -201,8 +192,7 @@ var Light = new Class({
      *
      * @return {boolean} True if the Game Object should be rendered, otherwise false.
      */
-    willRender: function (camera)
-    {
+    willRender: function (camera) {
         return !(Light.RENDER_MASK !== this.renderFlags || (this.cameraFilter !== 0 && (this.cameraFilter & camera.id)));
     },
 
@@ -216,8 +206,7 @@ var Light = new Class({
      *
      * @return {this} This Light object.
      */
-    setColor: function (rgb)
-    {
+    setColor: function (rgb) {
         var color = Utils.getFloatsFromUintRGB(rgb);
 
         this.color.set(color[0], color[1], color[2]);
@@ -235,8 +224,7 @@ var Light = new Class({
      *
      * @return {this} This Light object.
      */
-    setIntensity: function (intensity)
-    {
+    setIntensity: function (intensity) {
         this.intensity = intensity;
 
         return this;
@@ -252,8 +240,7 @@ var Light = new Class({
      *
      * @return {this} This Light object.
      */
-    setRadius: function (radius)
-    {
+    setRadius: function (radius) {
         this.radius = radius;
 
         return this;

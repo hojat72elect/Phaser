@@ -22,8 +22,7 @@ var Wrap = require('../../../../src/math/Wrap');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var SpineGameObjectCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var SpineGameObjectCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     var context = renderer.currentContext;
 
     var plugin = src.plugin;
@@ -40,8 +39,7 @@ var SpineGameObjectCanvasRenderer = function (renderer, src, camera, parentMatri
 
     camMatrix.copyFrom(camera.matrix);
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         //  Multiply the camera by the parent matrix
         camMatrix.multiplyWithOffset(parentMatrix, -camera.scrollX * src.scrollFactorX, -camera.scrollY * src.scrollFactorY);
 
@@ -51,9 +49,7 @@ var SpineGameObjectCanvasRenderer = function (renderer, src, camera, parentMatri
 
         //  Multiply by the Sprite matrix, store result in calcMatrix
         camMatrix.multiply(spriteMatrix, calcMatrix);
-    }
-    else
-    {
+    } else {
         spriteMatrix.e -= camera.scrollX * src.scrollFactorX;
         spriteMatrix.f -= camera.scrollY * src.scrollFactorY;
 
@@ -69,34 +65,26 @@ var SpineGameObjectCanvasRenderer = function (renderer, src, camera, parentMatri
     //  Inverse or we get upside-down skeletons
     skeleton.scaleY = calcMatrix.scaleY * -1;
 
-    if (src.scaleX < 0)
-    {
+    if (src.scaleX < 0) {
         skeleton.scaleX *= -1;
 
         src.root.rotation = RadToDeg(calcMatrix.rotationNormalized);
-    }
-    else
-    {
+    } else {
         //  +90 degrees to account for the difference in Spine vs. Phaser rotation
         src.root.rotation = Wrap(RadToDeg(CounterClockwise(calcMatrix.rotationNormalized)) + 90, 0, 360);
     }
 
-    if (src.scaleY < 0)
-    {
+    if (src.scaleY < 0) {
         skeleton.scaleY *= -1;
 
-        if (src.scaleX < 0)
-        {
+        if (src.scaleX < 0) {
             src.root.rotation -= (RadToDeg(calcMatrix.rotationNormalized) * 2);
-        }
-        else
-        {
+        } else {
             src.root.rotation += (RadToDeg(calcMatrix.rotationNormalized) * 2);
         }
     }
 
-    if (camera.renderToTexture)
-    {
+    if (camera.renderToTexture) {
         skeleton.y = calcMatrix.ty;
         skeleton.scaleY *= -1;
     }

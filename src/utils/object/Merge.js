@@ -21,14 +21,11 @@ var Clone = require('./Clone');
  *
  * @return {object} A new object containing the union of obj1's and obj2's properties.
  */
-var Merge = function (obj1, obj2)
-{
+var Merge = function (obj1, obj2) {
     var clone = Clone(obj1);
 
-    for (var key in obj2)
-    {
-        if (!clone.hasOwnProperty(key))
-        {
+    for (var key in obj2) {
+        if (!clone.hasOwnProperty(key)) {
             clone[key] = obj2[key];
         }
     }

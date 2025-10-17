@@ -15,9 +15,10 @@
  *
  * @return {HTMLCanvasElement} The canvas element.
  */
-var TouchAction = function (canvas, value)
-{
-    if (value === undefined) { value = 'none'; }
+var TouchAction = function (canvas, value) {
+    if (value === undefined) {
+        value = 'none';
+    }
 
     canvas.style['msTouchAction'] = value;
     canvas.style['ms-touch-action'] = value;

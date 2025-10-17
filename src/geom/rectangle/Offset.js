@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Rectangle} The adjusted Rectangle.
  */
-var Offset = function (rect, x, y)
-{
+var Offset = function (rect, x, y) {
     rect.x += x;
     rect.y += y;
 

@@ -19,9 +19,10 @@
  *
  * @return {Phaser.Math.Vector2} The given Vector.
  */
-var RandomXY = function (vector, scale)
-{
-    if (scale === undefined) { scale = 1; }
+var RandomXY = function (vector, scale) {
+    if (scale === undefined) {
+        scale = 1;
+    }
 
     var r = Math.random() * 2 * Math.PI;
 

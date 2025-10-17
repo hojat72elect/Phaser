@@ -25,8 +25,7 @@ module.exports = {
      *
      * @return {number} The packed RGBA values as a Uint32.
      */
-    getTintFromFloats: function (r, g, b, a)
-    {
+    getTintFromFloats: function (r, g, b, a) {
         var ur = ((r * 255) | 0) & 0xff;
         var ug = ((g * 255) | 0) & 0xff;
         var ub = ((b * 255) | 0) & 0xff;
@@ -47,8 +46,7 @@ module.exports = {
      *
      * @return {number} Packed RGBA as Uint32
      */
-    getTintAppendFloatAlpha: function (rgb, a)
-    {
+    getTintAppendFloatAlpha: function (rgb, a) {
         var ua = ((a * 255) | 0) & 0xff;
 
         return ((ua << 24) | rgb) >>> 0;
@@ -67,8 +65,7 @@ module.exports = {
      *
      * @return {number} Packed RGBA as Uint32
      */
-    getTintAppendFloatAlphaAndSwap: function (rgb, a)
-    {
+    getTintAppendFloatAlphaAndSwap: function (rgb, a) {
         var ur = ((rgb >> 16) | 0) & 0xff;
         var ug = ((rgb >> 8) | 0) & 0xff;
         var ub = (rgb | 0) & 0xff;
@@ -87,13 +84,12 @@ module.exports = {
      *
      * @return {array} Array of floats representing each component as a float
      */
-    getFloatsFromUintRGB: function (rgb)
-    {
+    getFloatsFromUintRGB: function (rgb) {
         var ur = ((rgb >> 16) | 0) & 0xff;
         var ug = ((rgb >> 8) | 0) & 0xff;
         var ub = (rgb | 0) & 0xff;
 
-        return [ ur / 255, ug / 255, ub / 255 ];
+        return [ur / 255, ug / 255, ub / 255];
     },
 
     /**
@@ -110,20 +106,16 @@ module.exports = {
      *
      * @return {number} The number of texture units that is supported by this browser and GPU.
      */
-    checkShaderMax: function (gl, maxTextures)
-    {
+    checkShaderMax: function (gl, maxTextures) {
         //  Note: This is the maximum number of TIUs that a _fragment_ shader supports
         //  https://www.khronos.org/opengl/wiki/Common_Mistakes#Texture_Unit
 
         //  Hard-clamp this to 16 to avoid run-away texture counts such as on Android
         var gpuMax = Math.min(16, gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS));
 
-        if (!maxTextures || maxTextures === -1)
-        {
+        if (!maxTextures || maxTextures === -1) {
             return gpuMax;
-        }
-        else
-        {
+        } else {
             return Math.min(gpuMax, maxTextures);
         }
     },
@@ -140,24 +132,19 @@ module.exports = {
      *
      * @return {string} The modified Fragment Shader source.
      */
-    parseFragmentShaderMaxTextures: function (fragmentShaderSource, maxTextures)
-    {
-        if (!fragmentShaderSource)
-        {
+    parseFragmentShaderMaxTextures: function (fragmentShaderSource, maxTextures) {
+        if (!fragmentShaderSource) {
             return '';
         }
 
         var src = '';
 
-        for (var i = 0; i < maxTextures; i++)
-        {
-            if (i > 0)
-            {
+        for (var i = 0; i < maxTextures; i++) {
+            if (i > 0) {
                 src += '\n\telse ';
             }
 
-            if (i < maxTextures - 1)
-            {
+            if (i < maxTextures - 1) {
                 src += 'if (outTexId < ' + i + '.5)';
             }
 
@@ -185,15 +172,12 @@ module.exports = {
      *
      * @return {string} The modified Fragment Shader source.
      */
-    setGlowQuality: function (shader, game, quality, distance)
-    {
-        if (quality === undefined)
-        {
+    setGlowQuality: function (shader, game, quality, distance) {
+        if (quality === undefined) {
             quality = game.config.glowFXQuality;
         }
 
-        if (distance === undefined)
-        {
+        if (distance === undefined) {
             distance = game.config.glowFXDistance;
         }
 

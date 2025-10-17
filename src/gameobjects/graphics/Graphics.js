@@ -94,122 +94,121 @@ var Graphics = new Class({
 
     initialize:
 
-    function Graphics (scene, options)
-    {
-        var x = GetValue(options, 'x', 0);
-        var y = GetValue(options, 'y', 0);
+        function Graphics(scene, options) {
+            var x = GetValue(options, 'x', 0);
+            var y = GetValue(options, 'y', 0);
 
-        GameObject.call(this, scene, 'Graphics');
+            GameObject.call(this, scene, 'Graphics');
 
-        this.setPosition(x, y);
-        this.initPipeline();
-        this.initPostPipeline();
+            this.setPosition(x, y);
+            this.initPipeline();
+            this.initPostPipeline();
 
-        /**
-         * The horizontal display origin of the Graphics.
-         *
-         * @name Phaser.GameObjects.Graphics#displayOriginX
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.displayOriginX = 0;
+            /**
+             * The horizontal display origin of the Graphics.
+             *
+             * @name Phaser.GameObjects.Graphics#displayOriginX
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.displayOriginX = 0;
 
-        /**
-         * The vertical display origin of the Graphics.
-         *
-         * @name Phaser.GameObjects.Graphics#displayOriginY
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.displayOriginY = 0;
+            /**
+             * The vertical display origin of the Graphics.
+             *
+             * @name Phaser.GameObjects.Graphics#displayOriginY
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.displayOriginY = 0;
 
-        /**
-         * The array of commands used to render the Graphics.
-         *
-         * @name Phaser.GameObjects.Graphics#commandBuffer
-         * @type {array}
-         * @default []
-         * @since 3.0.0
-         */
-        this.commandBuffer = [];
+            /**
+             * The array of commands used to render the Graphics.
+             *
+             * @name Phaser.GameObjects.Graphics#commandBuffer
+             * @type {array}
+             * @default []
+             * @since 3.0.0
+             */
+            this.commandBuffer = [];
 
-        /**
-         * The default fill color for shapes rendered by this Graphics object.
-         * Set this value with `setDefaultStyles()`.
-         *
-         * @name Phaser.GameObjects.Graphics#defaultFillColor
-         * @type {number}
-         * @readonly
-         * @default -1
-         * @since 3.0.0
-         */
-        this.defaultFillColor = -1;
+            /**
+             * The default fill color for shapes rendered by this Graphics object.
+             * Set this value with `setDefaultStyles()`.
+             *
+             * @name Phaser.GameObjects.Graphics#defaultFillColor
+             * @type {number}
+             * @readonly
+             * @default -1
+             * @since 3.0.0
+             */
+            this.defaultFillColor = -1;
 
-        /**
-         * The default fill alpha for shapes rendered by this Graphics object.
-         * Set this value with `setDefaultStyles()`.
-         *
-         * @name Phaser.GameObjects.Graphics#defaultFillAlpha
-         * @type {number}
-         * @readonly
-         * @default 1
-         * @since 3.0.0
-         */
-        this.defaultFillAlpha = 1;
+            /**
+             * The default fill alpha for shapes rendered by this Graphics object.
+             * Set this value with `setDefaultStyles()`.
+             *
+             * @name Phaser.GameObjects.Graphics#defaultFillAlpha
+             * @type {number}
+             * @readonly
+             * @default 1
+             * @since 3.0.0
+             */
+            this.defaultFillAlpha = 1;
 
-        /**
-         * The default stroke width for shapes rendered by this Graphics object.
-         * Set this value with `setDefaultStyles()`.
-         *
-         * @name Phaser.GameObjects.Graphics#defaultStrokeWidth
-         * @type {number}
-         * @readonly
-         * @default 1
-         * @since 3.0.0
-         */
-        this.defaultStrokeWidth = 1;
+            /**
+             * The default stroke width for shapes rendered by this Graphics object.
+             * Set this value with `setDefaultStyles()`.
+             *
+             * @name Phaser.GameObjects.Graphics#defaultStrokeWidth
+             * @type {number}
+             * @readonly
+             * @default 1
+             * @since 3.0.0
+             */
+            this.defaultStrokeWidth = 1;
 
-        /**
-         * The default stroke color for shapes rendered by this Graphics object.
-         * Set this value with `setDefaultStyles()`.
-         *
-         * @name Phaser.GameObjects.Graphics#defaultStrokeColor
-         * @type {number}
-         * @readonly
-         * @default -1
-         * @since 3.0.0
-         */
-        this.defaultStrokeColor = -1;
+            /**
+             * The default stroke color for shapes rendered by this Graphics object.
+             * Set this value with `setDefaultStyles()`.
+             *
+             * @name Phaser.GameObjects.Graphics#defaultStrokeColor
+             * @type {number}
+             * @readonly
+             * @default -1
+             * @since 3.0.0
+             */
+            this.defaultStrokeColor = -1;
 
-        /**
-         * The default stroke alpha for shapes rendered by this Graphics object.
-         * Set this value with `setDefaultStyles()`.
-         *
-         * @name Phaser.GameObjects.Graphics#defaultStrokeAlpha
-         * @type {number}
-         * @readonly
-         * @default 1
-         * @since 3.0.0
-         */
-        this.defaultStrokeAlpha = 1;
+            /**
+             * The default stroke alpha for shapes rendered by this Graphics object.
+             * Set this value with `setDefaultStyles()`.
+             *
+             * @name Phaser.GameObjects.Graphics#defaultStrokeAlpha
+             * @type {number}
+             * @readonly
+             * @default 1
+             * @since 3.0.0
+             */
+            this.defaultStrokeAlpha = 1;
 
-        /**
-         * Internal property that keeps track of the line width style setting.
-         *
-         * @name Phaser.GameObjects.Graphics#_lineWidth
-         * @type {number}
-         * @private
-         * @since 3.0.0
-         */
-        this._lineWidth = 1;
+            /**
+             * Internal property that keeps track of the line width style setting.
+             *
+             * @name Phaser.GameObjects.Graphics#_lineWidth
+             * @type {number}
+             * @private
+             * @since 3.0.0
+             */
+            this._lineWidth = 1;
 
-        this.lineStyle(1, 0, 0);
-        this.fillStyle(0, 0);
+            this.lineStyle(1, 0, 0);
+            this.fillStyle(0, 0);
 
-        this.setDefaultStyles(options);
-    },
+            this.setDefaultStyles(options);
+        },
 
     /**
      * Set the default style settings for this Graphics object.
@@ -221,10 +220,8 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    setDefaultStyles: function (options)
-    {
-        if (GetValue(options, 'lineStyle', null))
-        {
+    setDefaultStyles: function (options) {
+        if (GetValue(options, 'lineStyle', null)) {
             this.defaultStrokeWidth = GetValue(options, 'lineStyle.width', 1);
             this.defaultStrokeColor = GetValue(options, 'lineStyle.color', 0xffffff);
             this.defaultStrokeAlpha = GetValue(options, 'lineStyle.alpha', 1);
@@ -232,8 +229,7 @@ var Graphics = new Class({
             this.lineStyle(this.defaultStrokeWidth, this.defaultStrokeColor, this.defaultStrokeAlpha);
         }
 
-        if (GetValue(options, 'fillStyle', null))
-        {
+        if (GetValue(options, 'fillStyle', null)) {
             this.defaultFillColor = GetValue(options, 'fillStyle.color', 0xffffff);
             this.defaultFillAlpha = GetValue(options, 'fillStyle.alpha', 1);
 
@@ -255,9 +251,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    lineStyle: function (lineWidth, color, alpha)
-    {
-        if (alpha === undefined) { alpha = 1; }
+    lineStyle: function (lineWidth, color, alpha) {
+        if (alpha === undefined) {
+            alpha = 1;
+        }
 
         this.commandBuffer.push(
             Commands.LINE_STYLE,
@@ -280,9 +277,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillStyle: function (color, alpha)
-    {
-        if (alpha === undefined) { alpha = 1; }
+    fillStyle: function (color, alpha) {
+        if (alpha === undefined) {
+            alpha = 1;
+        }
 
         this.commandBuffer.push(
             Commands.FILL_STYLE,
@@ -322,12 +320,19 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillGradientStyle: function (topLeft, topRight, bottomLeft, bottomRight, alphaTopLeft, alphaTopRight, alphaBottomLeft, alphaBottomRight)
-    {
-        if (alphaTopLeft === undefined) { alphaTopLeft = 1; }
-        if (alphaTopRight === undefined) { alphaTopRight = alphaTopLeft; }
-        if (alphaBottomLeft === undefined) { alphaBottomLeft = alphaTopLeft; }
-        if (alphaBottomRight === undefined) { alphaBottomRight = alphaTopLeft; }
+    fillGradientStyle: function (topLeft, topRight, bottomLeft, bottomRight, alphaTopLeft, alphaTopRight, alphaBottomLeft, alphaBottomRight) {
+        if (alphaTopLeft === undefined) {
+            alphaTopLeft = 1;
+        }
+        if (alphaTopRight === undefined) {
+            alphaTopRight = alphaTopLeft;
+        }
+        if (alphaBottomLeft === undefined) {
+            alphaBottomLeft = alphaTopLeft;
+        }
+        if (alphaBottomRight === undefined) {
+            alphaBottomRight = alphaTopLeft;
+        }
 
         this.commandBuffer.push(
             Commands.GRADIENT_FILL_STYLE,
@@ -364,9 +369,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    lineGradientStyle: function (lineWidth, topLeft, topRight, bottomLeft, bottomRight, alpha)
-    {
-        if (alpha === undefined) { alpha = 1; }
+    lineGradientStyle: function (lineWidth, topLeft, topRight, bottomLeft, bottomRight, alpha) {
+        if (alpha === undefined) {
+            alpha = 1;
+        }
 
         this.commandBuffer.push(
             Commands.GRADIENT_LINE_STYLE,
@@ -384,8 +390,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    beginPath: function ()
-    {
+    beginPath: function () {
         this.commandBuffer.push(
             Commands.BEGIN_PATH
         );
@@ -401,8 +406,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    closePath: function ()
-    {
+    closePath: function () {
         this.commandBuffer.push(
             Commands.CLOSE_PATH
         );
@@ -418,8 +422,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillPath: function ()
-    {
+    fillPath: function () {
         this.commandBuffer.push(
             Commands.FILL_PATH
         );
@@ -438,8 +441,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fill: function ()
-    {
+    fill: function () {
         this.commandBuffer.push(
             Commands.FILL_PATH
         );
@@ -455,8 +457,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokePath: function ()
-    {
+    strokePath: function () {
         this.commandBuffer.push(
             Commands.STROKE_PATH
         );
@@ -475,8 +476,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    stroke: function ()
-    {
+    stroke: function () {
         this.commandBuffer.push(
             Commands.STROKE_PATH
         );
@@ -494,8 +494,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillCircleShape: function (circle)
-    {
+    fillCircleShape: function (circle) {
         return this.fillCircle(circle.x, circle.y, circle.radius);
     },
 
@@ -509,8 +508,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeCircleShape: function (circle)
-    {
+    strokeCircleShape: function (circle) {
         return this.strokeCircle(circle.x, circle.y, circle.radius);
     },
 
@@ -526,8 +524,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillCircle: function (x, y, radius)
-    {
+    fillCircle: function (x, y, radius) {
         this.beginPath();
         this.arc(x, y, radius, 0, MATH_CONST.PI2);
         this.fillPath();
@@ -547,8 +544,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeCircle: function (x, y, radius)
-    {
+    strokeCircle: function (x, y, radius) {
         this.beginPath();
         this.arc(x, y, radius, 0, MATH_CONST.PI2);
         this.strokePath();
@@ -566,8 +562,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillRectShape: function (rect)
-    {
+    fillRectShape: function (rect) {
         return this.fillRect(rect.x, rect.y, rect.width, rect.height);
     },
 
@@ -581,8 +576,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeRectShape: function (rect)
-    {
+    strokeRectShape: function (rect) {
         return this.strokeRect(rect.x, rect.y, rect.width, rect.height);
     },
 
@@ -599,8 +593,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillRect: function (x, y, width, height)
-    {
+    fillRect: function (x, y, width, height) {
         this.commandBuffer.push(
             Commands.FILL_RECT,
             x, y, width, height
@@ -622,8 +615,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeRect: function (x, y, width, height)
-    {
+    strokeRect: function (x, y, width, height) {
         var lineWidthHalf = this._lineWidth / 2;
         var minx = x - lineWidthHalf;
         var maxx = x + lineWidthHalf;
@@ -665,17 +657,17 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillRoundedRect: function (x, y, width, height, radius)
-    {
-        if (radius === undefined) { radius = 20; }
+    fillRoundedRect: function (x, y, width, height, radius) {
+        if (radius === undefined) {
+            radius = 20;
+        }
 
         var tl = radius;
         var tr = radius;
         var bl = radius;
         var br = radius;
 
-        if (typeof radius !== 'number')
-        {
+        if (typeof radius !== 'number') {
             tl = GetFastValue(radius, 'tl', 20);
             tr = GetFastValue(radius, 'tr', 20);
             bl = GetFastValue(radius, 'bl', 20);
@@ -696,45 +688,33 @@ var Graphics = new Class({
         this.moveTo(x + tl, y);
         this.lineTo(x + width - tr, y);
 
-        if (convexTR)
-        {
+        if (convexTR) {
             this.arc(x + width - tr, y + tr, tr, -MATH_CONST.TAU, 0);
-        }
-        else
-        {
+        } else {
             this.arc(x + width, y, tr, Math.PI, MATH_CONST.TAU, true);
         }
 
         this.lineTo(x + width, y + height - br);
 
-        if (convexBR)
-        {
+        if (convexBR) {
             this.arc(x + width - br, y + height - br, br, 0, MATH_CONST.TAU);
-        }
-        else
-        {
+        } else {
             this.arc(x + width, y + height, br, -MATH_CONST.TAU, Math.PI, true);
         }
 
         this.lineTo(x + bl, y + height);
 
-        if (convexBL)
-        {
+        if (convexBL) {
             this.arc(x + bl, y + height - bl, bl, MATH_CONST.TAU, Math.PI);
-        }
-        else
-        {
+        } else {
             this.arc(x, y + height, bl, 0, -MATH_CONST.TAU, true);
         }
 
         this.lineTo(x, y + tl);
 
-        if (convexTL)
-        {
+        if (convexTL) {
             this.arc(x + tl, y + tl, tl, -Math.PI, -MATH_CONST.TAU);
-        }
-        else
-        {
+        } else {
             this.arc(x, y, tl, MATH_CONST.TAU, 0, true);
         }
 
@@ -757,9 +737,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeRoundedRect: function (x, y, width, height, radius)
-    {
-        if (radius === undefined) { radius = 20; }
+    strokeRoundedRect: function (x, y, width, height, radius) {
+        if (radius === undefined) {
+            radius = 20;
+        }
 
         var tl = radius;
         var tr = radius;
@@ -768,8 +749,7 @@ var Graphics = new Class({
 
         var maxRadius = Math.min(width, height) / 2;
 
-        if (typeof radius !== 'number')
-        {
+        if (typeof radius !== 'number') {
             tl = GetFastValue(radius, 'tl', 20);
             tr = GetFastValue(radius, 'tr', 20);
             bl = GetFastValue(radius, 'bl', 20);
@@ -791,48 +771,36 @@ var Graphics = new Class({
         this.lineTo(x + width - tr, y);
         this.moveTo(x + width - tr, y);
 
-        if (convexTR)
-        {
+        if (convexTR) {
             this.arc(x + width - tr, y + tr, tr, -MATH_CONST.TAU, 0);
-        }
-        else
-        {
+        } else {
             this.arc(x + width, y, tr, Math.PI, MATH_CONST.TAU, true);
         }
 
         this.lineTo(x + width, y + height - br);
         this.moveTo(x + width, y + height - br);
 
-        if (convexBR)
-        {
+        if (convexBR) {
             this.arc(x + width - br, y + height - br, br, 0, MATH_CONST.TAU);
-        }
-        else
-        {
+        } else {
             this.arc(x + width, y + height, br, -MATH_CONST.TAU, Math.PI, true);
         }
 
         this.lineTo(x + bl, y + height);
         this.moveTo(x + bl, y + height);
 
-        if (convexBL)
-        {
+        if (convexBL) {
             this.arc(x + bl, y + height - bl, bl, MATH_CONST.TAU, Math.PI);
-        }
-        else
-        {
+        } else {
             this.arc(x, y + height, bl, 0, -MATH_CONST.TAU, true);
         }
 
         this.lineTo(x, y + tl);
         this.moveTo(x, y + tl);
 
-        if (convexTL)
-        {
+        if (convexTL) {
             this.arc(x + tl, y + tl, tl, -Math.PI, -MATH_CONST.TAU);
-        }
-        else
-        {
+        } else {
             this.arc(x, y, tl, MATH_CONST.TAU, 0, true);
         }
 
@@ -854,8 +822,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillPointShape: function (point, size)
-    {
+    fillPointShape: function (point, size) {
         return this.fillPoint(point.x, point.y, size);
     },
 
@@ -873,14 +840,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillPoint: function (x, y, size)
-    {
-        if (!size || size < 1)
-        {
+    fillPoint: function (x, y, size) {
+        if (!size || size < 1) {
             size = 1;
-        }
-        else
-        {
+        } else {
             x -= (size / 2);
             y -= (size / 2);
         }
@@ -903,8 +866,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillTriangleShape: function (triangle)
-    {
+    fillTriangleShape: function (triangle) {
         return this.fillTriangle(triangle.x1, triangle.y1, triangle.x2, triangle.y2, triangle.x3, triangle.y3);
     },
 
@@ -918,8 +880,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeTriangleShape: function (triangle)
-    {
+    strokeTriangleShape: function (triangle) {
         return this.strokeTriangle(triangle.x1, triangle.y1, triangle.x2, triangle.y2, triangle.x3, triangle.y3);
     },
 
@@ -938,8 +899,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillTriangle: function (x0, y0, x1, y1, x2, y2)
-    {
+    fillTriangle: function (x0, y0, x1, y1, x2, y2) {
         this.commandBuffer.push(
             Commands.FILL_TRIANGLE,
             x0, y0, x1, y1, x2, y2
@@ -963,8 +923,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeTriangle: function (x0, y0, x1, y1, x2, y2)
-    {
+    strokeTriangle: function (x0, y0, x1, y1, x2, y2) {
         this.commandBuffer.push(
             Commands.STROKE_TRIANGLE,
             x0, y0, x1, y1, x2, y2
@@ -983,8 +942,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeLineShape: function (line)
-    {
+    strokeLineShape: function (line) {
         return this.lineBetween(line.x1, line.y1, line.x2, line.y2);
     },
 
@@ -1001,8 +959,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    lineBetween: function (x1, y1, x2, y2)
-    {
+    lineBetween: function (x1, y1, x2, y2) {
         this.beginPath();
         this.moveTo(x1, y1);
         this.lineTo(x2, y2);
@@ -1024,8 +981,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    lineTo: function (x, y)
-    {
+    lineTo: function (x, y) {
         this.commandBuffer.push(
             Commands.LINE_TO,
             x, y
@@ -1045,8 +1001,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    moveTo: function (x, y)
-    {
+    moveTo: function (x, y) {
         this.commandBuffer.push(
             Commands.MOVE_TO,
             x, y
@@ -1072,28 +1027,30 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokePoints: function (points, closeShape, closePath, endIndex)
-    {
-        if (closeShape === undefined) { closeShape = false; }
-        if (closePath === undefined) { closePath = false; }
-        if (endIndex === undefined) { endIndex = points.length; }
+    strokePoints: function (points, closeShape, closePath, endIndex) {
+        if (closeShape === undefined) {
+            closeShape = false;
+        }
+        if (closePath === undefined) {
+            closePath = false;
+        }
+        if (endIndex === undefined) {
+            endIndex = points.length;
+        }
 
         this.beginPath();
 
         this.moveTo(points[0].x, points[0].y);
 
-        for (var i = 1; i < endIndex; i++)
-        {
+        for (var i = 1; i < endIndex; i++) {
             this.lineTo(points[i].x, points[i].y);
         }
 
-        if (closeShape)
-        {
+        if (closeShape) {
             this.lineTo(points[0].x, points[0].y);
         }
 
-        if (closePath)
-        {
+        if (closePath) {
             this.closePath();
         }
 
@@ -1119,28 +1076,30 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillPoints: function (points, closeShape, closePath, endIndex)
-    {
-        if (closeShape === undefined) { closeShape = false; }
-        if (closePath === undefined) { closePath = false; }
-        if (endIndex === undefined) { endIndex = points.length; }
+    fillPoints: function (points, closeShape, closePath, endIndex) {
+        if (closeShape === undefined) {
+            closeShape = false;
+        }
+        if (closePath === undefined) {
+            closePath = false;
+        }
+        if (endIndex === undefined) {
+            endIndex = points.length;
+        }
 
         this.beginPath();
 
         this.moveTo(points[0].x, points[0].y);
 
-        for (var i = 1; i < endIndex; i++)
-        {
+        for (var i = 1; i < endIndex; i++) {
             this.lineTo(points[i].x, points[i].y);
         }
 
-        if (closeShape)
-        {
+        if (closeShape) {
             this.lineTo(points[0].x, points[0].y);
         }
 
-        if (closePath)
-        {
+        if (closePath) {
             this.closePath();
         }
 
@@ -1160,9 +1119,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeEllipseShape: function (ellipse, smoothness)
-    {
-        if (smoothness === undefined) { smoothness = 32; }
+    strokeEllipseShape: function (ellipse, smoothness) {
+        if (smoothness === undefined) {
+            smoothness = 32;
+        }
 
         var points = ellipse.getPoints(smoothness);
 
@@ -1183,9 +1143,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    strokeEllipse: function (x, y, width, height, smoothness)
-    {
-        if (smoothness === undefined) { smoothness = 32; }
+    strokeEllipse: function (x, y, width, height, smoothness) {
+        if (smoothness === undefined) {
+            smoothness = 32;
+        }
 
         var ellipse = new Ellipse(x, y, width, height);
 
@@ -1205,9 +1166,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillEllipseShape: function (ellipse, smoothness)
-    {
-        if (smoothness === undefined) { smoothness = 32; }
+    fillEllipseShape: function (ellipse, smoothness) {
+        if (smoothness === undefined) {
+            smoothness = 32;
+        }
 
         var points = ellipse.getPoints(smoothness);
 
@@ -1228,9 +1190,10 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    fillEllipse: function (x, y, width, height, smoothness)
-    {
-        if (smoothness === undefined) { smoothness = 32; }
+    fillEllipse: function (x, y, width, height, smoothness) {
+        if (smoothness === undefined) {
+            smoothness = 32;
+        }
 
         var ellipse = new Ellipse(x, y, width, height);
 
@@ -1267,10 +1230,13 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    arc: function (x, y, radius, startAngle, endAngle, anticlockwise, overshoot)
-    {
-        if (anticlockwise === undefined) { anticlockwise = false; }
-        if (overshoot === undefined) { overshoot = 0; }
+    arc: function (x, y, radius, startAngle, endAngle, anticlockwise, overshoot) {
+        if (anticlockwise === undefined) {
+            anticlockwise = false;
+        }
+        if (overshoot === undefined) {
+            overshoot = 0;
+        }
 
         this.commandBuffer.push(
             Commands.ARC,
@@ -1303,10 +1269,13 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    slice: function (x, y, radius, startAngle, endAngle, anticlockwise, overshoot)
-    {
-        if (anticlockwise === undefined) { anticlockwise = false; }
-        if (overshoot === undefined) { overshoot = 0; }
+    slice: function (x, y, radius, startAngle, endAngle, anticlockwise, overshoot) {
+        if (anticlockwise === undefined) {
+            anticlockwise = false;
+        }
+        if (overshoot === undefined) {
+            overshoot = 0;
+        }
 
         this.commandBuffer.push(Commands.BEGIN_PATH);
 
@@ -1329,8 +1298,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    save: function ()
-    {
+    save: function () {
         this.commandBuffer.push(
             Commands.SAVE
         );
@@ -1350,8 +1318,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    restore: function ()
-    {
+    restore: function () {
         this.commandBuffer.push(
             Commands.RESTORE
         );
@@ -1376,8 +1343,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    translateCanvas: function (x, y)
-    {
+    translateCanvas: function (x, y) {
         this.commandBuffer.push(
             Commands.TRANSLATE,
             x, y
@@ -1403,8 +1369,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    scaleCanvas: function (x, y)
-    {
+    scaleCanvas: function (x, y) {
         this.commandBuffer.push(
             Commands.SCALE,
             x, y
@@ -1429,8 +1394,7 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    rotateCanvas: function (radians)
-    {
+    rotateCanvas: function (radians) {
         this.commandBuffer.push(
             Commands.ROTATE,
             radians
@@ -1447,17 +1411,14 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    clear: function ()
-    {
+    clear: function () {
         this.commandBuffer.length = 0;
 
-        if (this.defaultFillColor > -1)
-        {
+        if (this.defaultFillColor > -1) {
             this.fillStyle(this.defaultFillColor, this.defaultFillAlpha);
         }
 
-        if (this.defaultStrokeColor > -1)
-        {
+        if (this.defaultStrokeColor > -1) {
             this.lineStyle(this.defaultStrokeWidth, this.defaultStrokeColor, this.defaultStrokeAlpha);
         }
 
@@ -1486,13 +1447,16 @@ var Graphics = new Class({
      *
      * @return {this} This Game Object.
      */
-    generateTexture: function (key, width, height)
-    {
+    generateTexture: function (key, width, height) {
         var sys = this.scene.sys;
         var renderer = sys.game.renderer;
 
-        if (width === undefined) { width = sys.scale.width; }
-        if (height === undefined) { height = sys.scale.height; }
+        if (width === undefined) {
+            width = sys.scale.width;
+        }
+        if (height === undefined) {
+            height = sys.scale.height;
+        }
 
         Graphics.TargetCamera.setScene(this.scene);
         Graphics.TargetCamera.setViewport(0, 0, width, height);
@@ -1501,46 +1465,37 @@ var Graphics = new Class({
 
         var texture;
         var ctx;
-        var willRead = { willReadFrequently: true };
+        var willRead = {willReadFrequently: true};
 
-        if (typeof key === 'string')
-        {
-            if (sys.textures.exists(key))
-            {
+        if (typeof key === 'string') {
+            if (sys.textures.exists(key)) {
                 //  Key is a string, it DOES exist in the Texture Manager AND is a canvas, so draw to it
 
                 texture = sys.textures.get(key);
 
                 var src = texture.getSourceImage();
 
-                if (src instanceof HTMLCanvasElement)
-                {
+                if (src instanceof HTMLCanvasElement) {
                     ctx = src.getContext('2d', willRead);
                 }
-            }
-            else
-            {
+            } else {
                 //  Key is a string and doesn't exist in the Texture Manager, so generate and save it
 
                 texture = sys.textures.createCanvas(key, width, height);
 
                 ctx = texture.getSourceImage().getContext('2d', willRead);
             }
-        }
-        else if (key instanceof HTMLCanvasElement)
-        {
+        } else if (key instanceof HTMLCanvasElement) {
             //  Key is a Canvas, so draw to it
 
             ctx = key.getContext('2d', willRead);
         }
 
-        if (ctx)
-        {
+        if (ctx) {
             // var GraphicsCanvasRenderer = function (renderer, src, camera, parentMatrix, renderTargetCtx, allowClip)
             this.renderCanvas(renderer, this, Graphics.TargetCamera, null, ctx, false);
 
-            if (texture)
-            {
+            if (texture) {
                 texture.refresh();
             }
         }
@@ -1555,8 +1510,7 @@ var Graphics = new Class({
      * @protected
      * @since 3.9.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.commandBuffer = [];
     }
 

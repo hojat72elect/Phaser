@@ -28,53 +28,58 @@ var ParticleProcessor = new Class({
 
     initialize:
 
-    function ParticleProcessor (x, y, active)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (active === undefined) { active = true; }
+        function ParticleProcessor(x, y, active) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (active === undefined) {
+                active = true;
+            }
 
-        /**
-         * A reference to the Particle Emitter that owns this Processor.
-         * This is set automatically when the Processor is added to an Emitter
-         * and nulled when removed or destroyed.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleProcessor#manager
-         * @type {Phaser.GameObjects.Particles.ParticleEmitter}
-         * @since 3.60.0
-         */
-        this.emitter;
+            /**
+             * A reference to the Particle Emitter that owns this Processor.
+             * This is set automatically when the Processor is added to an Emitter
+             * and nulled when removed or destroyed.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleProcessor#manager
+             * @type {Phaser.GameObjects.Particles.ParticleEmitter}
+             * @since 3.60.0
+             */
+            this.emitter;
 
-        /**
-         * The x coordinate of the Particle Processor, in world space.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleProcessor#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = x;
+            /**
+             * The x coordinate of the Particle Processor, in world space.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleProcessor#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = x;
 
-        /**
-         * The y coordinate of the Particle Processor, in world space.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleProcessor#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = y;
+            /**
+             * The y coordinate of the Particle Processor, in world space.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleProcessor#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = y;
 
-        /**
-         * The active state of the Particle Processor.
-         *
-         * An inactive Particle Processor will be skipped for processing by
-         * its parent Emitter.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleProcessor#active
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.active = active;
-    },
+            /**
+             * The active state of the Particle Processor.
+             *
+             * An inactive Particle Processor will be skipped for processing by
+             * its parent Emitter.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleProcessor#active
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.active = active;
+        },
 
     /**
      * The Particle Processor update method should be overriden by your own
@@ -89,8 +94,7 @@ var ParticleProcessor = new Class({
      * @param {number} step - The delta value divided by 1000.
      * @param {number} t - The current normalized lifetime of the particle, between 0 (birth) and 1 (death).
      */
-    update: function ()
-    {
+    update: function () {
     },
 
     /**
@@ -101,8 +105,7 @@ var ParticleProcessor = new Class({
      * @method Phaser.GameObjects.Particles.ParticleProcessor#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.emitter = null;
     }
 

@@ -33,46 +33,51 @@ var PerspectiveCamera = new Class({
     //  FOV is converted to radians automatically
     initialize:
 
-    function PerspectiveCamera (scene, fieldOfView, viewportWidth, viewportHeight)
-    {
-        if (fieldOfView === undefined) { fieldOfView = 80; }
-        if (viewportWidth === undefined) { viewportWidth = 0; }
-        if (viewportHeight === undefined) { viewportHeight = 0; }
+        function PerspectiveCamera(scene, fieldOfView, viewportWidth, viewportHeight) {
+            if (fieldOfView === undefined) {
+                fieldOfView = 80;
+            }
+            if (viewportWidth === undefined) {
+                viewportWidth = 0;
+            }
+            if (viewportHeight === undefined) {
+                viewportHeight = 0;
+            }
 
-        Camera.call(this, scene);
+            Camera.call(this, scene);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#viewportWidth
-         * @type {integer}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.viewportWidth = viewportWidth;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#viewportWidth
+             * @type {integer}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.viewportWidth = viewportWidth;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#viewportHeight
-         * @type {integer}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.viewportHeight = viewportHeight;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#viewportHeight
+             * @type {integer}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.viewportHeight = viewportHeight;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#fieldOfView
-         * @type {integer}
-         * @default 80
-         * @since 3.0.0
-         */
-        this.fieldOfView = fieldOfView * Math.PI / 180;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.PerspectiveCamera#fieldOfView
+             * @type {integer}
+             * @default 80
+             * @since 3.0.0
+             */
+            this.fieldOfView = fieldOfView * Math.PI / 180;
 
-        this.update();
-    },
+            this.update();
+        },
 
     /**
      * [description]
@@ -84,8 +89,7 @@ var PerspectiveCamera = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */
-    setFOV: function (value)
-    {
+    setFOV: function (value) {
         this.fieldOfView = value * Math.PI / 180;
 
         return this;
@@ -99,8 +103,7 @@ var PerspectiveCamera = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */
-    update: function ()
-    {
+    update: function () {
         var aspect = this.viewportWidth / this.viewportHeight;
 
         //  Create a perspective matrix for our camera

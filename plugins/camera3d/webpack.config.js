@@ -22,7 +22,7 @@ module.exports = {
         libraryTarget: 'var'
     },
 
-    performance: { hints: false },
+    performance: {hints: false},
 
     optimization: {
         minimizer: [
@@ -46,7 +46,7 @@ module.exports = {
         new RemovePlugin({
             before: {
                 root: './plugins/camera3d/dist/',
-                include: [ 'camera3d.js', 'camera3d.min.js' ]
+                include: ['camera3d.js', 'camera3d.min.js']
             }
         }),
         {

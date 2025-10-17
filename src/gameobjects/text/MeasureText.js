@@ -16,17 +16,15 @@ var CanvasPool = require('../../display/canvas/CanvasPool');
  *
  * @return {Phaser.Types.GameObjects.Text.TextMetrics} An object containing the ascent, descent and fontSize of the TextStyle.
  */
-var MeasureText = function (textStyle)
-{
+var MeasureText = function (textStyle) {
     var canvas = CanvasPool.create(this);
-    var context = canvas.getContext('2d', { willReadFrequently: true });
+    var context = canvas.getContext('2d', {willReadFrequently: true});
 
     textStyle.syncFont(canvas, context);
 
     var metrics = context.measureText(textStyle.testString);
 
-    if ('actualBoundingBoxAscent' in metrics)
-    {
+    if ('actualBoundingBoxAscent' in metrics) {
         var ascent = metrics.actualBoundingBoxAscent;
         var descent = metrics.actualBoundingBoxDescent;
 
@@ -65,8 +63,7 @@ var MeasureText = function (textStyle)
 
     var imagedata = context.getImageData(0, 0, width, height);
 
-    if (!imagedata)
-    {
+    if (!imagedata) {
         output.ascent = baseline;
         output.descent = baseline + 6;
         output.fontSize = output.ascent + output.descent;
@@ -85,23 +82,17 @@ var MeasureText = function (textStyle)
     var stop = false;
 
     // ascent. scan from top to bottom until we find a non red pixel
-    for (i = 0; i < baseline; i++)
-    {
-        for (j = 0; j < line; j += 4)
-        {
-            if (pixels[idx + j] !== 255)
-            {
+    for (i = 0; i < baseline; i++) {
+        for (j = 0; j < line; j += 4) {
+            if (pixels[idx + j] !== 255) {
                 stop = true;
                 break;
             }
         }
 
-        if (!stop)
-        {
+        if (!stop) {
             idx += line;
-        }
-        else
-        {
+        } else {
             break;
         }
     }
@@ -112,23 +103,17 @@ var MeasureText = function (textStyle)
     stop = false;
 
     // descent. scan from bottom to top until we find a non red pixel
-    for (i = height; i > baseline; i--)
-    {
-        for (j = 0; j < line; j += 4)
-        {
-            if (pixels[idx + j] !== 255)
-            {
+    for (i = height; i > baseline; i--) {
+        for (j = 0; j < line; j += 4) {
+            if (pixels[idx + j] !== 255) {
                 stop = true;
                 break;
             }
         }
 
-        if (!stop)
-        {
+        if (!stop) {
             idx -= line;
-        }
-        else
-        {
+        } else {
             break;
         }
     }

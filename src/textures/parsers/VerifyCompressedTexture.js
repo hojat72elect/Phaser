@@ -19,17 +19,14 @@ var IsSizePowerOfTwo = require('../../math/pow2/IsSizePowerOfTwo');
  * @since 3.80.0
  * @returns {boolean} Whether the compressed texture data is valid.
  */
-var verifyCompressedTexture = function (data)
-{
+var verifyCompressedTexture = function (data) {
     // Check that mipmaps are power-of-two sized.
     // WebGL does not allow non-power-of-two textures for mip levels above 0.
     var mipmaps = data.mipmaps;
-    for (var level = 1; level < mipmaps.length; level++)
-    {
+    for (var level = 1; level < mipmaps.length; level++) {
         var width = mipmaps[level].width;
         var height = mipmaps[level].height;
-        if (!IsSizePowerOfTwo(width, height))
-        {
+        if (!IsSizePowerOfTwo(width, height)) {
             console.warn('Mip level ' + level + ' is not a power-of-two size: ' + width + 'x' + height);
             return false;
         }
@@ -37,8 +34,7 @@ var verifyCompressedTexture = function (data)
 
     // Check specific format requirements.
     var checker = formatCheckers[data.internalFormat];
-    if (!checker)
-    {
+    if (!checker) {
         console.warn('No format checker found for internal format ' + data.internalFormat + '. Assuming valid.');
         return true;
     }
@@ -48,15 +44,12 @@ var verifyCompressedTexture = function (data)
 /**
  * @ignore
  */
-function check4x4 (data)
-{
+function check4x4(data) {
     var mipmaps = data.mipmaps;
-    for (var level = 0; level < mipmaps.length; level++)
-    {
+    for (var level = 0; level < mipmaps.length; level++) {
         var width = mipmaps[level].width;
         var height = mipmaps[level].height;
-        if ((width << level) % 4 !== 0 || (height << level) % 4 !== 0)
-        {
+        if ((width << level) % 4 !== 0 || (height << level) % 4 !== 0) {
             console.warn('BPTC, RGTC, and S3TC dimensions must be a multiple of 4 pixels, and each successive mip level must be half the size of the previous level, rounded down. Mip level ' + level + ' is ' + width + 'x' + height);
             return false;
         }
@@ -67,8 +60,7 @@ function check4x4 (data)
 /**
  * @ignore
  */
-function checkAlways ()
-{
+function checkAlways() {
     // WEBGL_compressed_texture_astc
     // WEBGL_compressed_texture_etc
     // WEBGL_compressed_texture_etc1
@@ -79,14 +71,12 @@ function checkAlways ()
     return true;
 }
 
-function checkPVRTC (data)
-{
+function checkPVRTC(data) {
     // WEBGL_compressed_texture_pvrtc
 
     var mipmaps = data.mipmaps;
     var baseLevel = mipmaps[0];
-    if (!IsSizePowerOfTwo(baseLevel.width, baseLevel.height))
-    {
+    if (!IsSizePowerOfTwo(baseLevel.width, baseLevel.height)) {
         console.warn('PVRTC base dimensions must be power of two. Base level is ' + baseLevel.width + 'x' + baseLevel.height);
         return false;
     }
@@ -98,14 +88,12 @@ function checkPVRTC (data)
 /**
  * @ignore
  */
-function checkS3TCSRGB (data)
-{
+function checkS3TCSRGB(data) {
     // WEBGL_compressed_texture_s3tc_srgb
 
     var mipmaps = data.mipmaps;
     var baseLevel = mipmaps[0];
-    if (baseLevel.width % 4 !== 0 || baseLevel.height % 4 !== 0)
-    {
+    if (baseLevel.width % 4 !== 0 || baseLevel.height % 4 !== 0) {
         console.warn('S3TC SRGB base dimensions must be a multiple of 4 pixels. Base level is ' + baseLevel.width + 'x' + baseLevel.height + ' pixels');
         return false;
     }

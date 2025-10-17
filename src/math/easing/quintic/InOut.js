@@ -14,14 +14,10 @@
  *
  * @return {number} The tweened value.
  */
-var InOut = function (v)
-{
-    if ((v *= 2) < 1)
-    {
+var InOut = function (v) {
+    if ((v *= 2) < 1) {
         return 0.5 * v * v * v * v * v;
-    }
-    else
-    {
+    } else {
         return 0.5 * ((v -= 2) * v * v * v * v + 2);
     }
 };

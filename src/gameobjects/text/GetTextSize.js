@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Types.GameObjects.Text.GetTextSizeObject} An object containing dimensions of the Text object.
  */
-var GetTextSize = function (text, size, lines)
-{
+var GetTextSize = function (text, size, lines) {
     var canvas = text.canvas;
     var context = text.context;
     var style = text.style;
@@ -26,8 +25,7 @@ var GetTextSize = function (text, size, lines)
     var maxLineWidth = 0;
     var drawnLines = lines.length;
 
-    if (style.maxLines > 0 && style.maxLines < lines.length)
-    {
+    if (style.maxLines > 0 && style.maxLines < lines.length) {
         drawnLines = style.maxLines;
     }
 
@@ -36,32 +34,25 @@ var GetTextSize = function (text, size, lines)
     //  Text Width
     var letterSpacing = text.letterSpacing;
 
-    for (var i = 0; i < drawnLines; i++)
-    {
+    for (var i = 0; i < drawnLines; i++) {
         var lineWidth = style.strokeThickness;
 
-        if (letterSpacing === 0)
-        {
+        if (letterSpacing === 0) {
             lineWidth += context.measureText(lines[i]).width;
-        }
-        else
-        {
+        } else {
             var line = lines[i];
-            
-            for (var j = 0; j < line.length; j++)
-            {
+
+            for (var j = 0; j < line.length; j++) {
                 lineWidth += context.measureText(line[j]).width;
             }
 
-            if (line.length > 1)
-            {
+            if (line.length > 1) {
                 lineWidth += letterSpacing * (line.length - 1);
             }
         }
 
         // Adjust for wrapped text
-        if (style.wordWrap)
-        {
+        if (style.wordWrap) {
             lineWidth -= context.measureText(' ').width;
         }
 
@@ -76,8 +67,7 @@ var GetTextSize = function (text, size, lines)
     var lineSpacing = text.lineSpacing;
 
     //  Adjust for line spacing
-    if (drawnLines > 1)
-    {
+    if (drawnLines > 1) {
         height += lineSpacing * (drawnLines - 1);
     }
 

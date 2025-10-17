@@ -18,20 +18,15 @@
  * @param {object} callbackContext - The context under which the callback is called.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var SetTileIndexCallback = function (indexes, callback, callbackContext, layer)
-{
-    if (typeof indexes === 'number')
-    {
+var SetTileIndexCallback = function (indexes, callback, callbackContext, layer) {
+    if (typeof indexes === 'number') {
         layer.callbacks[indexes] = (callback !== null)
-            ? { callback: callback, callbackContext: callbackContext }
+            ? {callback: callback, callbackContext: callbackContext}
             : undefined;
-    }
-    else
-    {
-        for (var i = 0, len = indexes.length; i < len; i++)
-        {
+    } else {
+        for (var i = 0, len = indexes.length; i < len; i++) {
             layer.callbacks[indexes[i]] = (callback !== null)
-                ? { callback: callback, callbackContext: callbackContext }
+                ? {callback: callback, callbackContext: callbackContext}
                 : undefined;
         }
     }

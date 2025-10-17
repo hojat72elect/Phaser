@@ -37,22 +37,21 @@ var RotateRight = require('../RotateRight');
  *
  * @return {T[][]} The translated matrix.
  */
-var TranslateMatrix = function (matrix, x, y)
-{
-    if (x === undefined) { x = 0; }
-    if (y === undefined) { y = 0; }
+var TranslateMatrix = function (matrix, x, y) {
+    if (x === undefined) {
+        x = 0;
+    }
+    if (y === undefined) {
+        y = 0;
+    }
 
     //  Vertical translation
 
-    if (y !== 0)
-    {
-        if (y < 0)
-        {
+    if (y !== 0) {
+        if (y < 0) {
             //  Shift Up
             RotateLeft(matrix, Math.abs(y));
-        }
-        else
-        {
+        } else {
             //  Shift Down
             RotateRight(matrix, y);
         }
@@ -60,18 +59,13 @@ var TranslateMatrix = function (matrix, x, y)
 
     //  Horizontal translation
 
-    if (x !== 0)
-    {
-        for (var i = 0; i < matrix.length; i++)
-        {
+    if (x !== 0) {
+        for (var i = 0; i < matrix.length; i++) {
             var row = matrix[i];
 
-            if (x < 0)
-            {
+            if (x < 0) {
                 RotateLeft(row, Math.abs(x));
-            }
-            else
-            {
+            } else {
                 RotateRight(row, x);
             }
         }

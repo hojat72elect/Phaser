@@ -55,194 +55,192 @@ var UtilityPipeline = new Class({
 
     initialize:
 
-    function UtilityPipeline (config)
-    {
-        config.renderTarget = GetFastValue(config, 'renderTarget', [
-            {
-                scale: 1,
-                autoResize: true
-            },
-            {
-                scale: 1,
-                autoResize: true
-            },
-            {
-                scale: 0.5,
-                autoResize: true
-            },
-            {
-                scale: 0.5,
-                autoResize: true
-            }
-        ]);
+        function UtilityPipeline(config) {
+            config.renderTarget = GetFastValue(config, 'renderTarget', [
+                {
+                    scale: 1,
+                    autoResize: true
+                },
+                {
+                    scale: 1,
+                    autoResize: true
+                },
+                {
+                    scale: 0.5,
+                    autoResize: true
+                },
+                {
+                    scale: 0.5,
+                    autoResize: true
+                }
+            ]);
 
-        config.vertShader = GetFastValue(config, 'vertShader', QuadVS);
+            config.vertShader = GetFastValue(config, 'vertShader', QuadVS);
 
-        config.shaders = GetFastValue(config, 'shaders', [
-            {
-                name: 'Copy',
-                fragShader: CopyFS
-            },
-            {
-                name: 'AddBlend',
-                fragShader: AddBlendFS
-            },
-            {
-                name: 'LinearBlend',
-                fragShader: LinearBlendFS
-            },
-            {
-                name: 'ColorMatrix',
-                fragShader: ColorMatrixFS
-            }
-        ]);
+            config.shaders = GetFastValue(config, 'shaders', [
+                {
+                    name: 'Copy',
+                    fragShader: CopyFS
+                },
+                {
+                    name: 'AddBlend',
+                    fragShader: AddBlendFS
+                },
+                {
+                    name: 'LinearBlend',
+                    fragShader: LinearBlendFS
+                },
+                {
+                    name: 'ColorMatrix',
+                    fragShader: ColorMatrixFS
+                }
+            ]);
 
-        config.attributes = GetFastValue(config, 'attributes', [
-            {
-                name: 'inPosition',
-                size: 2
-            },
-            {
-                name: 'inTexCoord',
-                size: 2
-            }
-        ]);
+            config.attributes = GetFastValue(config, 'attributes', [
+                {
+                    name: 'inPosition',
+                    size: 2
+                },
+                {
+                    name: 'inTexCoord',
+                    size: 2
+                }
+            ]);
 
-        config.vertices = [
-            -1, -1, 0, 0,
-            -1, 1, 0, 1,
-            1, 1, 1, 1,
-            -1, -1, 0, 0,
-            1, 1, 1, 1,
-            1, -1, 1, 0
-        ];
+            config.vertices = [
+                -1, -1, 0, 0,
+                -1, 1, 0, 1,
+                1, 1, 1, 1,
+                -1, -1, 0, 0,
+                1, 1, 1, 1,
+                1, -1, 1, 0
+            ];
 
-        config.batchSize = 1;
+            config.batchSize = 1;
 
-        WebGLPipeline.call(this, config);
+            WebGLPipeline.call(this, config);
 
-        /**
-         * A default Color Matrix, used by the Color Matrix Shader when one
-         * isn't provided.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#colorMatrix
-         * @type {Phaser.Display.ColorMatrix}
-         * @since 3.50.0
-         */
-        this.colorMatrix = new ColorMatrix();
+            /**
+             * A default Color Matrix, used by the Color Matrix Shader when one
+             * isn't provided.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#colorMatrix
+             * @type {Phaser.Display.ColorMatrix}
+             * @since 3.50.0
+             */
+            this.colorMatrix = new ColorMatrix();
 
-        /**
-         * A reference to the Copy Shader belonging to this Utility Pipeline.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#copyShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @default null
-         * @since 3.50.0
-         */
-        this.copyShader;
+            /**
+             * A reference to the Copy Shader belonging to this Utility Pipeline.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#copyShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @default null
+             * @since 3.50.0
+             */
+            this.copyShader;
 
-        /**
-         * A reference to the Additive Blend Shader belonging to this Utility Pipeline.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#addShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @since 3.50.0
-         */
-        this.addShader;
+            /**
+             * A reference to the Additive Blend Shader belonging to this Utility Pipeline.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#addShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @since 3.50.0
+             */
+            this.addShader;
 
-        /**
-         * A reference to the Linear Blend Shader belonging to this Utility Pipeline.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#linearShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @since 3.50.0
-         */
-        this.linearShader;
+            /**
+             * A reference to the Linear Blend Shader belonging to this Utility Pipeline.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#linearShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @since 3.50.0
+             */
+            this.linearShader;
 
-        /**
-         * A reference to the Color Matrix Shader belonging to this Utility Pipeline.
-         *
-         * This property is set during the `boot` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#colorMatrixShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @since 3.50.0
-         */
-        this.colorMatrixShader;
+            /**
+             * A reference to the Color Matrix Shader belonging to this Utility Pipeline.
+             *
+             * This property is set during the `boot` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#colorMatrixShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @since 3.50.0
+             */
+            this.colorMatrixShader;
 
-        /**
-         * A reference to the Full Frame 1 Render Target.
-         *
-         * This property is set during the `boot` method.
-         *
-         * This Render Target is the full size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#fullFrame1
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.50.0
-         */
-        this.fullFrame1;
+            /**
+             * A reference to the Full Frame 1 Render Target.
+             *
+             * This property is set during the `boot` method.
+             *
+             * This Render Target is the full size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#fullFrame1
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.50.0
+             */
+            this.fullFrame1;
 
-        /**
-         * A reference to the Full Frame 2 Render Target.
-         *
-         * This property is set during the `boot` method.
-         *
-         * This Render Target is the full size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#fullFrame2
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.50.0
-         */
-        this.fullFrame2;
+            /**
+             * A reference to the Full Frame 2 Render Target.
+             *
+             * This property is set during the `boot` method.
+             *
+             * This Render Target is the full size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#fullFrame2
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.50.0
+             */
+            this.fullFrame2;
 
-        /**
-         * A reference to the Half Frame 1 Render Target.
-         *
-         * This property is set during the `boot` method.
-         *
-         * This Render Target is half the size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#halfFrame1
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.50.0
-         */
-        this.halfFrame1;
+            /**
+             * A reference to the Half Frame 1 Render Target.
+             *
+             * This property is set during the `boot` method.
+             *
+             * This Render Target is half the size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#halfFrame1
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.50.0
+             */
+            this.halfFrame1;
 
-        /**
-         * A reference to the Half Frame 2 Render Target.
-         *
-         * This property is set during the `boot` method.
-         *
-         * This Render Target is half the size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#halfFrame2
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.50.0
-         */
-        this.halfFrame2;
-    },
+            /**
+             * A reference to the Half Frame 2 Render Target.
+             *
+             * This property is set during the `boot` method.
+             *
+             * This Render Target is half the size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#halfFrame2
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.50.0
+             */
+            this.halfFrame2;
+        },
 
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         var shaders = this.shaders;
@@ -277,11 +275,16 @@ var UtilityPipeline = new Class({
      * @param {boolean} [clear=true] - Clear the target before copying?
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    copyFrame: function (source, target, brightness, clear, clearAlpha)
-    {
-        if (brightness === undefined) { brightness = 1; }
-        if (clear === undefined) { clear = true; }
-        if (clearAlpha === undefined) { clearAlpha = true; }
+    copyFrame: function (source, target, brightness, clear, clearAlpha) {
+        if (brightness === undefined) {
+            brightness = 1;
+        }
+        if (clear === undefined) {
+            clear = true;
+        }
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
 
         var gl = this.gl;
 
@@ -293,25 +296,18 @@ var UtilityPipeline = new Class({
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, source.texture.webGLTexture);
 
-        if (target)
-        {
+        if (target) {
             gl.viewport(0, 0, target.width, target.height);
             gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
             gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target.texture.webGLTexture, 0);
-        }
-        else
-        {
+        } else {
             gl.viewport(0, 0, source.width, source.height);
         }
 
-        if (clear)
-        {
-            if (clearAlpha)
-            {
+        if (clear) {
+            if (clearAlpha) {
                 gl.clearColor(0, 0, 0, 0);
-            }
-            else
-            {
+            } else {
                 gl.clearColor(0, 0, 0, 1);
             }
 
@@ -345,13 +341,22 @@ var UtilityPipeline = new Class({
      * @param {boolean} [eraseMode=false] - Erase source from target using ERASE Blend Mode?
      * @param {boolean} [flipY=false] - Flip the UV on the Y axis before drawing?
      */
-    blitFrame: function (source, target, brightness, clear, clearAlpha, eraseMode, flipY)
-    {
-        if (brightness === undefined) { brightness = 1; }
-        if (clear === undefined) { clear = true; }
-        if (clearAlpha === undefined) { clearAlpha = true; }
-        if (eraseMode === undefined) { eraseMode = false; }
-        if (flipY === undefined) { flipY = false; }
+    blitFrame: function (source, target, brightness, clear, clearAlpha, eraseMode, flipY) {
+        if (brightness === undefined) {
+            brightness = 1;
+        }
+        if (clear === undefined) {
+            clear = true;
+        }
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
+        if (eraseMode === undefined) {
+            eraseMode = false;
+        }
+        if (flipY === undefined) {
+            flipY = false;
+        }
 
         var gl = this.gl;
 
@@ -363,14 +368,11 @@ var UtilityPipeline = new Class({
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, source.texture.webGLTexture);
 
-        if (source.height > target.height)
-        {
+        if (source.height > target.height) {
             gl.viewport(0, 0, source.width, source.height);
 
             this.setTargetUVs(source, target);
-        }
-        else
-        {
+        } else {
             var diff = target.height - source.height;
 
             gl.viewport(0, diff, source.width, source.height);
@@ -379,37 +381,30 @@ var UtilityPipeline = new Class({
         gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target.texture.webGLTexture, 0);
 
-        if (clear)
-        {
-            if (clearAlpha)
-            {
+        if (clear) {
+            if (clearAlpha) {
                 gl.clearColor(0, 0, 0, 0);
-            }
-            else
-            {
+            } else {
                 gl.clearColor(0, 0, 0, 1);
             }
 
             gl.clear(gl.COLOR_BUFFER_BIT);
         }
 
-        if (eraseMode)
-        {
+        if (eraseMode) {
             var blendMode = this.renderer.currentBlendMode;
 
             this.renderer.setBlendMode(BlendModes.ERASE);
         }
 
-        if (flipY)
-        {
+        if (flipY) {
             this.flipY();
         }
 
         gl.bufferData(gl.ARRAY_BUFFER, this.vertexData, gl.STATIC_DRAW);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-        if (eraseMode)
-        {
+        if (eraseMode) {
             this.renderer.setBlendMode(blendMode);
         }
 
@@ -440,24 +435,23 @@ var UtilityPipeline = new Class({
      * @param {boolean} [clear=true] - Clear the target before copying?
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    copyFrameRect: function (source, target, x, y, width, height, clear, clearAlpha)
-    {
-        if (clear === undefined) { clear = true; }
-        if (clearAlpha === undefined) { clearAlpha = true; }
+    copyFrameRect: function (source, target, x, y, width, height, clear, clearAlpha) {
+        if (clear === undefined) {
+            clear = true;
+        }
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
 
         var gl = this.gl;
 
         gl.bindFramebuffer(gl.FRAMEBUFFER, source.framebuffer.webGLFramebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, source.texture.webGLTexture, 0);
 
-        if (clear)
-        {
-            if (clearAlpha)
-            {
+        if (clear) {
+            if (clearAlpha) {
                 gl.clearColor(0, 0, 0, 0);
-            }
-            else
-            {
+            } else {
                 gl.clearColor(0, 0, 0, 1);
             }
 
@@ -488,8 +482,7 @@ var UtilityPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw from.
      */
-    copyToGame: function (source)
-    {
+    copyToGame: function (source) {
         var gl = this.gl;
 
         this.setShader(this.copyShader);
@@ -523,10 +516,13 @@ var UtilityPipeline = new Class({
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      * @param {Phaser.Display.ColorMatrix} [colorMatrix] - The Color Matrix to use when performing the draw.
      */
-    drawFrame: function (source, target, clearAlpha, colorMatrix)
-    {
-        if (clearAlpha === undefined) { clearAlpha = true; }
-        if (colorMatrix === undefined) { colorMatrix = this.colorMatrix; }
+    drawFrame: function (source, target, clearAlpha, colorMatrix) {
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
+        if (colorMatrix === undefined) {
+            colorMatrix = this.colorMatrix;
+        }
 
         var gl = this.gl;
 
@@ -539,23 +535,17 @@ var UtilityPipeline = new Class({
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, source.texture.webGLTexture);
 
-        if (target)
-        {
+        if (target) {
             gl.viewport(0, 0, target.width, target.height);
             gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
             gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target.texture.webGLTexture, 0);
-        }
-        else
-        {
+        } else {
             gl.viewport(0, 0, source.width, source.height);
         }
 
-        if (clearAlpha)
-        {
+        if (clearAlpha) {
             gl.clearColor(0, 0, 0, 0);
-        }
-        else
-        {
+        } else {
             gl.clearColor(0, 0, 0, 1);
         }
 
@@ -582,11 +572,16 @@ var UtilityPipeline = new Class({
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      * @param {Phaser.Renderer.WebGL.WebGLShader} [blendShader] - The shader to use during the blend copy.
      */
-    blendFrames: function (source1, source2, target, strength, clearAlpha, blendShader)
-    {
-        if (strength === undefined) { strength = 1; }
-        if (clearAlpha === undefined) { clearAlpha = true; }
-        if (blendShader === undefined) { blendShader = this.linearShader; }
+    blendFrames: function (source1, source2, target, strength, clearAlpha, blendShader) {
+        if (strength === undefined) {
+            strength = 1;
+        }
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
+        if (blendShader === undefined) {
+            blendShader = this.linearShader;
+        }
 
         var gl = this.gl;
 
@@ -602,23 +597,17 @@ var UtilityPipeline = new Class({
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, source2.texture.webGLTexture);
 
-        if (target)
-        {
+        if (target) {
             gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
             gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target.texture.webGLTexture, 0);
             gl.viewport(0, 0, target.width, target.height);
-        }
-        else
-        {
+        } else {
             gl.viewport(0, 0, source1.width, source1.height);
         }
 
-        if (clearAlpha)
-        {
+        if (clearAlpha) {
             gl.clearColor(0, 0, 0, 0);
-        }
-        else
-        {
+        } else {
             gl.clearColor(0, 0, 0, 1);
         }
 
@@ -644,8 +633,7 @@ var UtilityPipeline = new Class({
      * @param {number} [strength=1] - The strength of the blend.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    blendFramesAdditive: function (source1, source2, target, strength, clearAlpha)
-    {
+    blendFramesAdditive: function (source1, source2, target, strength, clearAlpha) {
         this.blendFrames(source1, source2, target, strength, clearAlpha, this.addShader);
     },
 
@@ -658,9 +646,10 @@ var UtilityPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The Render Target to clear.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    clearFrame: function (target, clearAlpha)
-    {
-        if (clearAlpha === undefined) { clearAlpha = true; }
+    clearFrame: function (target, clearAlpha) {
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
 
         var gl = this.gl;
 
@@ -668,12 +657,9 @@ var UtilityPipeline = new Class({
 
         gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
 
-        if (clearAlpha)
-        {
+        if (clearAlpha) {
             gl.clearColor(0, 0, 0, 0);
-        }
-        else
-        {
+        } else {
             gl.clearColor(0, 0, 0, 1);
         }
 
@@ -702,8 +688,7 @@ var UtilityPipeline = new Class({
      * @param {number} uD - The u value of vertex D.
      * @param {number} vD - The v value of vertex D.
      */
-    setUVs: function (uA, vA, uB, vB, uC, vC, uD, vD)
-    {
+    setUVs: function (uA, vA, uB, vB, uC, vC, uD, vD) {
         var vertexViewF32 = this.vertexViewF32;
 
         vertexViewF32[2] = uA;
@@ -732,16 +717,12 @@ var UtilityPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
      */
-    setTargetUVs: function (source, target)
-    {
+    setTargetUVs: function (source, target) {
         var diff = (target.height / source.height);
 
-        if (diff > 0.5)
-        {
+        if (diff > 0.5) {
             diff = 0.5 - (diff - 0.5);
-        }
-        else
-        {
+        } else {
             diff = 0.5 + (0.5 - diff);
         }
 
@@ -757,8 +738,7 @@ var UtilityPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#flipX
      * @since 3.50.0
      */
-    flipX: function ()
-    {
+    flipX: function () {
         this.setUVs(1, 0, 1, 1, 0, 1, 0, 0);
     },
 
@@ -771,8 +751,7 @@ var UtilityPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#flipY
      * @since 3.50.0
      */
-    flipY: function ()
-    {
+    flipY: function () {
         this.setUVs(0, 1, 0, 0, 1, 0, 1, 1);
     },
 
@@ -784,8 +763,7 @@ var UtilityPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#resetUVs
      * @since 3.50.0
      */
-    resetUVs: function ()
-    {
+    resetUVs: function () {
         this.setUVs(0, 0, 0, 1, 1, 1, 1, 0);
     }
 

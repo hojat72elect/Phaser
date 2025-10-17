@@ -16,10 +16,8 @@
  *
  * @return {*} The item which was spliced (removed).
  */
-var SpliceOne = function (array, index)
-{
-    if (index >= array.length)
-    {
+var SpliceOne = function (array, index) {
+    if (index >= array.length) {
         return;
     }
 
@@ -27,8 +25,7 @@ var SpliceOne = function (array, index)
 
     var item = array[index];
 
-    for (var i = index; i < len; i++)
-    {
+    for (var i = index; i < len; i++) {
         array[i] = array[i + 1];
     }
 

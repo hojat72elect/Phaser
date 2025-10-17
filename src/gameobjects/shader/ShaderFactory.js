@@ -26,10 +26,8 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Shader} The Game Object that was created.
  */
-if (typeof WEBGL_RENDERER)
-{
-    GameObjectFactory.register('shader', function (key, x, y, width, height, textures, textureData)
-    {
+if (typeof WEBGL_RENDERER) {
+    GameObjectFactory.register('shader', function (key, x, y, width, height, textures, textureData) {
         return this.displayList.add(new Shader(this.scene, key, x, y, width, height, textures, textureData));
     });
 }

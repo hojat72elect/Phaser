@@ -39,7 +39,6 @@ var Triangle = require('./Triangle');
  *
  * @return {Phaser.GameObjects.Triangle} The Game Object that was created.
  */
-GameObjectFactory.register('triangle', function (x, y, x1, y1, x2, y2, x3, y3, fillColor, fillAlpha)
-{
+GameObjectFactory.register('triangle', function (x, y, x1, y1, x2, y2, x3, y3, fillColor, fillAlpha) {
     return this.displayList.add(new Triangle(this.scene, x, y, x1, y1, x2, y2, x3, y3, fillColor, fillAlpha));
 });

@@ -16,9 +16,10 @@
  *
  * @return {boolean} `true` if the Key was released within `duration` ms ago, otherwise `false`.
  */
-var UpDuration = function (key, duration)
-{
-    if (duration === undefined) { duration = 50; }
+var UpDuration = function (key, duration) {
+    if (duration === undefined) {
+        duration = 50;
+    }
 
     var current = key.plugin.game.loop.time - key.timeUp;
 

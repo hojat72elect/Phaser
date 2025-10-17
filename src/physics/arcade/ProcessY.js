@@ -40,8 +40,7 @@ var overlap;
  *
  * @return {number} The BlockCheck result. 0 = not blocked. 1 = Body 1 blocked. 2 = Body 2 blocked.
  */
-var Set = function (b1, b2, ov)
-{
+var Set = function (b1, b2, ov) {
     body1 = b1;
     body2 = b2;
 
@@ -78,35 +77,30 @@ var Set = function (b1, b2, ov)
  *
  * @return {number} The BlockCheck result. 0 = not blocked. 1 = Body 1 blocked. 2 = Body 2 blocked.
  */
-var BlockCheck = function ()
-{
+var BlockCheck = function () {
     //  Body1 is moving down and Body2 is blocked from going down any further
-    if (body1MovingDown && body1OnTop && body2.blocked.down)
-    {
+    if (body1MovingDown && body1OnTop && body2.blocked.down) {
         body1.processY(-overlap, body1FullImpact, false, true);
 
         return 1;
     }
 
     //  Body1 is moving up and Body2 is blocked from going up any further
-    if (body1MovingUp && body2OnTop && body2.blocked.up)
-    {
+    if (body1MovingUp && body2OnTop && body2.blocked.up) {
         body1.processY(overlap, body1FullImpact, true);
 
         return 1;
     }
 
     //  Body2 is moving down and Body1 is blocked from going down any further
-    if (body2MovingDown && body2OnTop && body1.blocked.down)
-    {
+    if (body2MovingDown && body2OnTop && body1.blocked.down) {
         body2.processY(-overlap, body2FullImpact, false, true);
 
         return 2;
     }
 
     //  Body2 is moving up and Body1 is blocked from going up any further
-    if (body2MovingUp && body1OnTop && body1.blocked.up)
-    {
+    if (body2MovingUp && body1OnTop && body1.blocked.up) {
         body2.processY(overlap, body2FullImpact, true);
 
         return 2;
@@ -124,8 +118,7 @@ var BlockCheck = function ()
  *
  * @return {boolean} `true` if a check passed, otherwise `false`.
  */
-var Check = function ()
-{
+var Check = function () {
     var v1 = body1.velocity.y;
     var v2 = body2.velocity.y;
 
@@ -140,26 +133,22 @@ var Check = function ()
     body2MassImpact = avg + nv2 * body2.bounce.y;
 
     //  Body1 hits Body2 on the bottom side
-    if (body1MovingUp && body2OnTop)
-    {
+    if (body1MovingUp && body2OnTop) {
         return Run(0);
     }
 
     //  Body2 hits Body1 on the bottom side
-    if (body2MovingUp && body1OnTop)
-    {
+    if (body2MovingUp && body1OnTop) {
         return Run(1);
     }
 
     //  Body1 hits Body2 on the top side
-    if (body1MovingDown && body1OnTop)
-    {
+    if (body1MovingDown && body1OnTop) {
         return Run(2);
     }
 
     //  Body2 hits Body1 on the top side
-    if (body2MovingDown && body2OnTop)
-    {
+    if (body2MovingDown && body2OnTop) {
         return Run(3);
     }
 
@@ -177,147 +166,103 @@ var Check = function ()
  *
  * @return {boolean} Always returns `true`.
  */
-var Run = function (side)
-{
-    if (body1Pushable && body2Pushable)
-    {
+var Run = function (side) {
+    if (body1Pushable && body2Pushable) {
         //  Both pushable, or both moving at the same time, so equal rebound
         overlap *= 0.5;
 
-        if (side === 0 || side === 3)
-        {
+        if (side === 0 || side === 3) {
             //  body1MovingUp && body2OnTop
             //  body2MovingDown && body2OnTop
             body1.processY(overlap, body1MassImpact);
             body2.processY(-overlap, body2MassImpact);
-        }
-        else
-        {
+        } else {
             //  body2MovingUp && body1OnTop
             //  body1MovingDown && body1OnTop
             body1.processY(-overlap, body1MassImpact);
             body2.processY(overlap, body2MassImpact);
         }
-    }
-    else if (body1Pushable && !body2Pushable)
-    {
+    } else if (body1Pushable && !body2Pushable) {
         //  Body1 pushable, Body2 not
 
-        if (side === 0 || side === 3)
-        {
+        if (side === 0 || side === 3) {
             //  body1MovingUp && body2OnTop
             //  body2MovingDown && body2OnTop
             body1.processY(overlap, body1FullImpact, true);
-        }
-        else
-        {
+        } else {
             //  body2MovingUp && body1OnTop
             //  body1MovingDown && body1OnTop
             body1.processY(-overlap, body1FullImpact, false, true);
         }
-    }
-    else if (!body1Pushable && body2Pushable)
-    {
+    } else if (!body1Pushable && body2Pushable) {
         //  Body2 pushable, Body1 not
 
-        if (side === 0 || side === 3)
-        {
+        if (side === 0 || side === 3) {
             //  body1MovingUp && body2OnTop
             //  body2MovingDown && body2OnTop
             body2.processY(-overlap, body2FullImpact, false, true);
-        }
-        else
-        {
+        } else {
             //  body2MovingUp && body1OnTop
             //  body1MovingDown && body1OnTop
             body2.processY(overlap, body2FullImpact, true);
         }
-    }
-    else
-    {
+    } else {
         //  Neither body is pushable, so base it on movement
 
         var halfOverlap = overlap * 0.5;
 
-        if (side === 0)
-        {
+        if (side === 0) {
             //  body1MovingUp && body2OnTop
 
-            if (body2Stationary)
-            {
+            if (body2Stationary) {
                 body1.processY(overlap, 0, true);
                 body2.processY(0, null, false, true);
-            }
-            else if (body2MovingDown)
-            {
+            } else if (body2MovingDown) {
                 body1.processY(halfOverlap, 0, true);
                 body2.processY(-halfOverlap, 0, false, true);
-            }
-            else
-            {
+            } else {
                 //  Body2 moving same direction as Body1
                 body1.processY(halfOverlap, body2.velocity.y, true);
                 body2.processY(-halfOverlap, null, false, true);
             }
-        }
-        else if (side === 1)
-        {
+        } else if (side === 1) {
             //  body2MovingUp && body1OnTop
 
-            if (body1Stationary)
-            {
+            if (body1Stationary) {
                 body1.processY(0, null, false, true);
                 body2.processY(overlap, 0, true);
-            }
-            else if (body1MovingDown)
-            {
+            } else if (body1MovingDown) {
                 body1.processY(-halfOverlap, 0, false, true);
                 body2.processY(halfOverlap, 0, true);
-            }
-            else
-            {
+            } else {
                 //  Body1 moving same direction as Body2
                 body1.processY(-halfOverlap, null, false, true);
                 body2.processY(halfOverlap, body1.velocity.y, true);
             }
-        }
-        else if (side === 2)
-        {
+        } else if (side === 2) {
             //  body1MovingDown && body1OnTop
 
-            if (body2Stationary)
-            {
+            if (body2Stationary) {
                 body1.processY(-overlap, 0, false, true);
                 body2.processY(0, null, true);
-            }
-            else if (body2MovingUp)
-            {
+            } else if (body2MovingUp) {
                 body1.processY(-halfOverlap, 0, false, true);
                 body2.processY(halfOverlap, 0, true);
-            }
-            else
-            {
+            } else {
                 //  Body2 moving same direction as Body1
                 body1.processY(-halfOverlap, body2.velocity.y, false, true);
                 body2.processY(halfOverlap, null, true);
             }
-        }
-        else if (side === 3)
-        {
+        } else if (side === 3) {
             //  body2MovingDown && body2OnTop
 
-            if (body1Stationary)
-            {
+            if (body1Stationary) {
                 body1.processY(0, null, true);
                 body2.processY(-overlap, 0, false, true);
-            }
-            else if (body1MovingUp)
-            {
+            } else if (body1MovingUp) {
                 body1.processY(halfOverlap, 0, true);
                 body2.processY(-halfOverlap, 0, false, true);
-            }
-            else
-            {
+            } else {
                 //  Body1 moving same direction as Body2
                 body1.processY(halfOverlap, body2.velocity.y, true);
                 body2.processY(-halfOverlap, null, false, true);
@@ -337,26 +282,19 @@ var Run = function (side)
  *
  * @param {number} blockedState - The block state value.
  */
-var RunImmovableBody1 = function (blockedState)
-{
-    if (blockedState === 1)
-    {
+var RunImmovableBody1 = function (blockedState) {
+    if (blockedState === 1) {
         //  But Body2 cannot go anywhere either, so we cancel out velocity
         //  Separation happened in the block check
         body2.velocity.y = 0;
-    }
-    else if (body1OnTop)
-    {
+    } else if (body1OnTop) {
         body2.processY(overlap, body2FullImpact, true);
-    }
-    else
-    {
+    } else {
         body2.processY(-overlap, body2FullImpact, false, true);
     }
 
     //  This is special case code that handles things like horizontally moving platforms you can ride
-    if (body1.moves)
-    {
+    if (body1.moves) {
         var body1Distance = body1.directControl ? (body1.x - body1.autoFrame.x) : (body1.x - body1.prev.x);
 
         body2.x += body1Distance * body1.friction.x;
@@ -373,26 +311,19 @@ var RunImmovableBody1 = function (blockedState)
  *
  * @param {number} blockedState - The block state value.
  */
-var RunImmovableBody2 = function (blockedState)
-{
-    if (blockedState === 2)
-    {
+var RunImmovableBody2 = function (blockedState) {
+    if (blockedState === 2) {
         //  But Body1 cannot go anywhere either, so we cancel out velocity
         //  Separation happened in the block check
         body1.velocity.y = 0;
-    }
-    else if (body2OnTop)
-    {
+    } else if (body2OnTop) {
         body1.processY(overlap, body1FullImpact, true);
-    }
-    else
-    {
+    } else {
         body1.processY(-overlap, body1FullImpact, false, true);
     }
 
     //  This is special case code that handles things like horizontally moving platforms you can ride
-    if (body2.moves)
-    {
+    if (body2.moves) {
         var body2Distance = body2.directControl ? (body2.x - body2.autoFrame.x) : (body2.x - body2.prev.x);
 
         body1.x += body2Distance * body2.friction.x;

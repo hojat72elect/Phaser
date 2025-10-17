@@ -20,10 +20,8 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var SetHitArea = function (items, hitArea, hitAreaCallback)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var SetHitArea = function (items, hitArea, hitAreaCallback) {
+    for (var i = 0; i < items.length; i++) {
         items[i].setInteractive(hitArea, hitAreaCallback);
     }
 

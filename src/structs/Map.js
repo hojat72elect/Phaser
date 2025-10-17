@@ -42,32 +42,31 @@ var Map = new Class({
 
     initialize:
 
-    function Map (elements)
-    {
-        /**
-         * The entries in this Map.
-         *
-         * @genericUse {Object.<string, V>} - [$type]
-         *
-         * @name Phaser.Structs.Map#entries
-         * @type {Object.<string, *>}
-         * @default {}
-         * @since 3.0.0
-         */
-        this.entries = {};
+        function Map(elements) {
+            /**
+             * The entries in this Map.
+             *
+             * @genericUse {Object.<string, V>} - [$type]
+             *
+             * @name Phaser.Structs.Map#entries
+             * @type {Object.<string, *>}
+             * @default {}
+             * @since 3.0.0
+             */
+            this.entries = {};
 
-        /**
-         * The number of key / value pairs in this Map.
-         *
-         * @name Phaser.Structs.Map#size
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.size = 0;
+            /**
+             * The number of key / value pairs in this Map.
+             *
+             * @name Phaser.Structs.Map#size
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.size = 0;
 
-        this.setAll(elements);
-    },
+            this.setAll(elements);
+        },
 
     /**
      * Adds all the elements in the given array to this Map.
@@ -85,12 +84,9 @@ var Map = new Class({
      *
      * @return {this} This Map object.
      */
-    setAll: function (elements)
-    {
-        if (Array.isArray(elements))
-        {
-            for (var i = 0; i < elements.length; i++)
-            {
+    setAll: function (elements) {
+        if (Array.isArray(elements)) {
+            for (var i = 0; i < elements.length; i++) {
                 this.set(elements[i][0], elements[i][1]);
             }
         }
@@ -117,10 +113,8 @@ var Map = new Class({
      *
      * @return {this} This Map object.
      */
-    set: function (key, value)
-    {
-        if (!this.has(key))
-        {
+    set: function (key, value) {
+        if (!this.has(key)) {
             this.size++;
         }
 
@@ -142,10 +136,8 @@ var Map = new Class({
      *
      * @return {*} The element associated with the specified key or `undefined` if the key can't be found in this Map object.
      */
-    get: function (key)
-    {
-        if (this.has(key))
-        {
+    get: function (key) {
+        if (this.has(key)) {
             return this.entries[key];
         }
     },
@@ -160,13 +152,11 @@ var Map = new Class({
      *
      * @return {Array.<*>} An array of the values stored in this Map.
      */
-    getArray: function ()
-    {
+    getArray: function () {
         var output = [];
         var entries = this.entries;
 
-        for (var key in entries)
-        {
+        for (var key in entries) {
             output.push(entries[key]);
         }
 
@@ -185,8 +175,7 @@ var Map = new Class({
      *
      * @return {boolean} Returns `true` if an element with the specified key exists in this Map, otherwise `false`.
      */
-    has: function (key)
-    {
+    has: function (key) {
         return (this.entries.hasOwnProperty(key));
     },
 
@@ -203,10 +192,8 @@ var Map = new Class({
      *
      * @return {this} This Map object.
      */
-    delete: function (key)
-    {
-        if (this.has(key))
-        {
+    delete: function (key) {
+        if (this.has(key)) {
             delete this.entries[key];
             this.size--;
         }
@@ -224,10 +211,8 @@ var Map = new Class({
      *
      * @return {this} This Map object.
      */
-    clear: function ()
-    {
-        Object.keys(this.entries).forEach(function (prop)
-        {
+    clear: function () {
+        Object.keys(this.entries).forEach(function (prop) {
             delete this.entries[prop];
 
         }, this);
@@ -247,8 +232,7 @@ var Map = new Class({
      *
      * @return {string[]} Array containing entries' keys.
      */
-    keys: function ()
-    {
+    keys: function () {
         return Object.keys(this.entries);
     },
 
@@ -262,13 +246,11 @@ var Map = new Class({
      *
      * @return {Array.<*>} An `Array` of entries.
      */
-    values: function ()
-    {
+    values: function () {
         var output = [];
         var entries = this.entries;
 
-        for (var key in entries)
-        {
+        for (var key in entries) {
             output.push(entries[key]);
         }
 
@@ -281,15 +263,13 @@ var Map = new Class({
      * @method Phaser.Structs.Map#dump
      * @since 3.0.0
      */
-    dump: function ()
-    {
+    dump: function () {
         var entries = this.entries;
 
         // eslint-disable-next-line no-console
         console.group('Map');
 
-        for (var key in entries)
-        {
+        for (var key in entries) {
             console.log(key, entries[key]);
         }
 
@@ -312,14 +292,11 @@ var Map = new Class({
      *
      * @return {this} This Map object.
      */
-    each: function (callback)
-    {
+    each: function (callback) {
         var entries = this.entries;
 
-        for (var key in entries)
-        {
-            if (callback(key, entries[key]) === false)
-            {
+        for (var key in entries) {
+            if (callback(key, entries[key]) === false) {
                 break;
             }
         }
@@ -339,14 +316,11 @@ var Map = new Class({
      *
      * @return {boolean} `true` if the value is found, otherwise `false`.
      */
-    contains: function (value)
-    {
+    contains: function (value) {
         var entries = this.entries;
 
-        for (var key in entries)
-        {
-            if (entries[key] === value)
-            {
+        for (var key in entries) {
+            if (entries[key] === value) {
                 return true;
             }
         }
@@ -368,21 +342,18 @@ var Map = new Class({
      *
      * @return {this} This Map object.
      */
-    merge: function (map, override)
-    {
-        if (override === undefined) { override = false; }
+    merge: function (map, override) {
+        if (override === undefined) {
+            override = false;
+        }
 
         var local = this.entries;
         var source = map.entries;
 
-        for (var key in source)
-        {
-            if (local.hasOwnProperty(key) && override)
-            {
+        for (var key in source) {
+            if (local.hasOwnProperty(key) && override) {
                 local[key] = source[key];
-            }
-            else
-            {
+            } else {
                 this.set(key, source[key]);
             }
         }

@@ -23,17 +23,19 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {Phaser.Math.Vector2} The XY location in tile units.
  */
-var HexagonalWorldToTileXY = function (worldX, worldY, snapToFloor, point, camera, layer)
-{
-    if (!point) { point = new Vector2(); }
+var HexagonalWorldToTileXY = function (worldX, worldY, snapToFloor, point, camera, layer) {
+    if (!point) {
+        point = new Vector2();
+    }
 
     var tileWidth = layer.baseTileWidth;
     var tileHeight = layer.baseTileHeight;
     var tilemapLayer = layer.tilemapLayer;
 
-    if (tilemapLayer)
-    {
-        if (!camera) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (!camera) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         // Find the world position relative to the static or dynamic layer's top left origin,
         // factoring in the camera's vertical scroll
@@ -62,8 +64,7 @@ var HexagonalWorldToTileXY = function (worldX, worldY, snapToFloor, point, camer
     var s;
 
     //  size
-    if (layer.staggerAxis === 'y')
-    {
+    if (layer.staggerAxis === 'y') {
         //  x = b0 * tileWidth
         //  y = tileHeightHalf
         px = (worldX - tileWidthHalf) / (b0 * tileWidth);
@@ -71,9 +72,7 @@ var HexagonalWorldToTileXY = function (worldX, worldY, snapToFloor, point, camer
 
         q = b0 * px + b1 * py;
         r = b2 * px + b3 * py;
-    }
-    else
-    {
+    } else {
         //  x = tileWidthHalf
         //  y = b0 * tileHeight
         px = (worldX - tileWidthHalf) / tileWidthHalf;
@@ -93,24 +92,18 @@ var HexagonalWorldToTileXY = function (worldX, worldY, snapToFloor, point, camer
     var rDiff = Math.abs(ri - r);
     var sDiff = Math.abs(si - s);
 
-    if (qDiff > rDiff && qDiff > sDiff)
-    {
+    if (qDiff > rDiff && qDiff > sDiff) {
         qi = -ri - si;
-    }
-    else if (rDiff > sDiff)
-    {
+    } else if (rDiff > sDiff) {
         ri = -qi - si;
     }
 
     var x;
     var y = ri;
 
-    if (layer.staggerIndex === 'odd')
-    {
+    if (layer.staggerIndex === 'odd') {
         x = (y % 2 === 0) ? (ri / 2) + qi : (ri / 2) + qi - 0.5;
-    }
-    else
-    {
+    } else {
         x = (y % 2 === 0) ? (ri / 2) + qi : (ri / 2) + qi + 0.5;
     }
 

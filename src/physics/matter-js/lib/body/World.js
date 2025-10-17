@@ -1,17 +1,17 @@
 /**
-* This module has now been replaced by `Matter.Composite`.
-*
-* All usage should be migrated to the equivalent functions found on `Matter.Composite`.
-* For example `World.add(world, body)` now becomes `Composite.add(world, body)`.
-*
-* The property `world.gravity` has been moved to `engine.gravity`.
-*
-* For back-compatibility purposes this module will remain as a direct alias to `Matter.Composite` in the short term during migration.
-* Eventually this alias module will be marked as deprecated and then later removed in a future release.
-*
-* @class World
-* @extends Composite
-*/
+ * This module has now been replaced by `Matter.Composite`.
+ *
+ * All usage should be migrated to the equivalent functions found on `Matter.Composite`.
+ * For example `World.add(world, body)` now becomes `Composite.add(world, body)`.
+ *
+ * The property `world.gravity` has been moved to `engine.gravity`.
+ *
+ * For back-compatibility purposes this module will remain as a direct alias to `Matter.Composite` in the short term during migration.
+ * Eventually this alias module will be marked as deprecated and then later removed in a future release.
+ *
+ * @class World
+ * @extends Composite
+ */
 
 var World = {};
 
@@ -19,7 +19,7 @@ module.exports = World;
 
 var Composite = require('./Composite');
 
-(function() {
+(function () {
 
     /**
      * See above, aliases for back compatibility only
@@ -112,20 +112,20 @@ var Composite = require('./Composite');
      * @return {world} The original world with the objects from composite added
      */
 
-     /**
-      * An alias for Composite.addBody
-      * @method addBody
-      * @param {world} world
-      * @param {body} body
-      * @return {world} The original world with the body added
-      */
+    /**
+     * An alias for Composite.addBody
+     * @method addBody
+     * @param {world} world
+     * @param {body} body
+     * @return {world} The original world with the body added
+     */
 
-     /**
-      * An alias for Composite.addConstraint
-      * @method addConstraint
-      * @param {world} world
-      * @param {constraint} constraint
-      * @return {world} The original world with the constraint added
-      */
+    /**
+     * An alias for Composite.addConstraint
+     * @method addConstraint
+     * @param {world} world
+     * @param {constraint} constraint
+     * @return {world} The original world with the constraint added
+     */
 
 })();

@@ -22,18 +22,17 @@ var Perimeter = require('./Perimeter');
  *
  * @return {(array|Phaser.Geom.Point[])} An array of Points from the perimeter of the rectangle.
  */
-var GetPoints = function (rectangle, quantity, stepRate, out)
-{
-    if (out === undefined) { out = []; }
+var GetPoints = function (rectangle, quantity, stepRate, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
     //  If quantity is a falsey value (false, null, 0, undefined, etc) then we calculate it based on the stepRate instead.
-    if (!quantity && stepRate > 0)
-    {
+    if (!quantity && stepRate > 0) {
         quantity = Perimeter(rectangle) / stepRate;
     }
 
-    for (var i = 0; i < quantity; i++)
-    {
+    for (var i = 0; i < quantity; i++) {
         var position = i / quantity;
 
         out.push(GetPoint(rectangle, position));

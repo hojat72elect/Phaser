@@ -30,9 +30,10 @@ var Offset = require('./Offset');
  *
  * @return {Phaser.Geom.Triangle} The Triangle that was centered.
  */
-var CenterOn = function (triangle, x, y, centerFunc)
-{
-    if (centerFunc === undefined) { centerFunc = Centroid; }
+var CenterOn = function (triangle, x, y, centerFunc) {
+    if (centerFunc === undefined) {
+        centerFunc = Centroid;
+    }
 
     //  Get the center of the triangle
     var center = centerFunc(triangle);

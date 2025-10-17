@@ -54,73 +54,72 @@ var ImpactBody = new Class({
 
     initialize:
 
-    function ImpactBody (world, x, y, width, height)
-    {
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#body
-         * @type {Phaser.Physics.Impact.Body}
-         * @since 3.0.0
-         */
-        this.body = world.create(x, y, width, height);
+        function ImpactBody(world, x, y, width, height) {
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#body
+             * @type {Phaser.Physics.Impact.Body}
+             * @since 3.0.0
+             */
+            this.body = world.create(x, y, width, height);
 
-        this.body.parent = this;
+            this.body.parent = this;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#size
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.size = this.body.size;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#size
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.size = this.body.size;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#offset
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.offset = this.body.offset;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#offset
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.offset = this.body.offset;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#vel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.vel = this.body.vel;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#vel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.vel = this.body.vel;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#accel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.accel = this.body.accel;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#accel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.accel = this.body.accel;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#friction
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.friction = this.body.friction;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#friction
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.friction = this.body.friction;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactBody#maxVel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.maxVel = this.body.maxVel;
-    }
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactBody#maxVel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.maxVel = this.body.maxVel;
+        }
 
 });
 

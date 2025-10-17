@@ -1,7 +1,9 @@
 Phaser 3 Camera 3D Plugin
 =========================
 
-Note: As of 26th August 2020 this plugin is now considered deprecated and will not be supported any further. It has been fixed to work with the Phaser 3.50 release, but will not be updated beyond this. You're free to use it as you see fit, but please do not open issues about it on GitHub, thank you.
+Note: As of 26th August 2020 this plugin is now considered deprecated and will not be supported any further. It has been
+fixed to work with the Phaser 3.50 release, but will not be updated beyond this. You're free to use it as you see fit,
+but please do not open issues about it on GitHub, thank you.
 
 In Phaser 3.12 Camera 3D support was moved to its own external plugin.
 
@@ -40,7 +42,9 @@ Then rebuild Phaser via webpack. The plugin will now be included by default and 
 
 ## Using the Plugin
 
-Here is a basic example of using the plugin. You can find many more in the Phaser 3 Examples repo in the [cameras/3D Camera](https://github.com/photonstorm/phaser3-examples/tree/master/public/src/camera/3D%20camera) folder.
+Here is a basic example of using the plugin. You can find many more in the Phaser 3 Examples repo in
+the [cameras/3D Camera](https://github.com/photonstorm/phaser3-examples/tree/master/public/src/camera/3D%20camera)
+folder.
 
 ```
 var config = {
@@ -86,8 +90,12 @@ function update ()
 
 If you wish to edit the plugin use the following files:
 
-`src/Camera3DPlugin.js` is the entry point for the external plugin. Edit this file if you're loading the plugin at run-time. Once you have finished making your changes, run the command `npm run plugin.cam3d` from the command-line to build a new version of the external plugin with Webpack.
+`src/Camera3DPlugin.js` is the entry point for the external plugin. Edit this file if you're loading the plugin at
+run-time. Once you have finished making your changes, run the command `npm run plugin.cam3d` from the command-line to
+build a new version of the external plugin with Webpack.
 
 ## Changing the Bundled Plugin
 
-`src/index.js` is the entry point for the bundled plugin. In here you'll find the module exports that Phaser uses when including the plugin internally. The file `CameraManager.js` is the Scene System. All other files are shared between both the external and bundled versions of the plugin.
+`src/index.js` is the entry point for the bundled plugin. In here you'll find the module exports that Phaser uses when
+including the plugin internally. The file `CameraManager.js` is the Scene System. All other files are shared between
+both the external and bundled versions of the plugin.

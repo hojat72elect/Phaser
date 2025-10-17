@@ -18,8 +18,7 @@
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var ImageWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var ImageWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     this.pipeline.batchSprite(src, camera, parentMatrix);

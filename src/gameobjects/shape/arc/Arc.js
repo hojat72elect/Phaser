@@ -56,71 +56,81 @@ var Arc = new Class({
 
     initialize:
 
-    function Arc (scene, x, y, radius, startAngle, endAngle, anticlockwise, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (radius === undefined) { radius = 128; }
-        if (startAngle === undefined) { startAngle = 0; }
-        if (endAngle === undefined) { endAngle = 360; }
-        if (anticlockwise === undefined) { anticlockwise = false; }
+        function Arc(scene, x, y, radius, startAngle, endAngle, anticlockwise, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (radius === undefined) {
+                radius = 128;
+            }
+            if (startAngle === undefined) {
+                startAngle = 0;
+            }
+            if (endAngle === undefined) {
+                endAngle = 360;
+            }
+            if (anticlockwise === undefined) {
+                anticlockwise = false;
+            }
 
-        Shape.call(this, scene, 'Arc', new GeomCircle(0, 0, radius));
+            Shape.call(this, scene, 'Arc', new GeomCircle(0, 0, radius));
 
-        /**
-         * Private internal value. Holds the start angle in degrees.
-         *
-         * @name Phaser.GameObjects.Arc#_startAngle
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._startAngle = startAngle;
+            /**
+             * Private internal value. Holds the start angle in degrees.
+             *
+             * @name Phaser.GameObjects.Arc#_startAngle
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._startAngle = startAngle;
 
-        /**
-         * Private internal value. Holds the end angle in degrees.
-         *
-         * @name Phaser.GameObjects.Arc#_endAngle
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._endAngle = endAngle;
+            /**
+             * Private internal value. Holds the end angle in degrees.
+             *
+             * @name Phaser.GameObjects.Arc#_endAngle
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._endAngle = endAngle;
 
-        /**
-         * Private internal value. Holds the winding order of the start and end angles.
-         *
-         * @name Phaser.GameObjects.Arc#_anticlockwise
-         * @type {boolean}
-         * @private
-         * @since 3.13.0
-         */
-        this._anticlockwise = anticlockwise;
+            /**
+             * Private internal value. Holds the winding order of the start and end angles.
+             *
+             * @name Phaser.GameObjects.Arc#_anticlockwise
+             * @type {boolean}
+             * @private
+             * @since 3.13.0
+             */
+            this._anticlockwise = anticlockwise;
 
-        /**
-         * Private internal value. Holds the number of iterations used when drawing the arc.
-         *
-         * @name Phaser.GameObjects.Arc#_iterations
-         * @type {number}
-         * @default 0.01
-         * @private
-         * @since 3.13.0
-         */
-        this._iterations = 0.01;
+            /**
+             * Private internal value. Holds the number of iterations used when drawing the arc.
+             *
+             * @name Phaser.GameObjects.Arc#_iterations
+             * @type {number}
+             * @default 0.01
+             * @private
+             * @since 3.13.0
+             */
+            this._iterations = 0.01;
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        var diameter = this.geom.radius * 2;
-        this.setSize(diameter, diameter);
+            var diameter = this.geom.radius * 2;
+            this.setSize(diameter, diameter);
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-        this.updateData();
-    },
+            this.updateDisplayOrigin();
+            this.updateData();
+        },
 
     /**
      * The number of iterations used when drawing the arc.
@@ -134,13 +144,11 @@ var Arc = new Class({
      */
     iterations: {
 
-        get: function ()
-        {
+        get: function () {
             return this._iterations;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._iterations = value;
 
             this.updateData();
@@ -157,13 +165,11 @@ var Arc = new Class({
      */
     radius: {
 
-        get: function ()
-        {
+        get: function () {
             return this.geom.radius;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.geom.radius = value;
 
             var diameter = value * 2;
@@ -183,13 +189,11 @@ var Arc = new Class({
      */
     startAngle: {
 
-        get: function ()
-        {
+        get: function () {
             return this._startAngle;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._startAngle = value;
 
             this.updateData();
@@ -206,13 +210,11 @@ var Arc = new Class({
      */
     endAngle: {
 
-        get: function ()
-        {
+        get: function () {
             return this._endAngle;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._endAngle = value;
 
             this.updateData();
@@ -229,13 +231,11 @@ var Arc = new Class({
      */
     anticlockwise: {
 
-        get: function ()
-        {
+        get: function () {
             return this._anticlockwise;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._anticlockwise = value;
 
             this.updateData();
@@ -254,8 +254,7 @@ var Arc = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setRadius: function (value)
-    {
+    setRadius: function (value) {
         this.radius = value;
 
         return this;
@@ -274,9 +273,10 @@ var Arc = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setIterations: function (value)
-    {
-        if (value === undefined) { value = 0.01; }
+    setIterations: function (value) {
+        if (value === undefined) {
+            value = 0.01;
+        }
 
         this.iterations = value;
 
@@ -294,12 +294,10 @@ var Arc = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setStartAngle: function (angle, anticlockwise)
-    {
+    setStartAngle: function (angle, anticlockwise) {
         this._startAngle = angle;
 
-        if (anticlockwise !== undefined)
-        {
+        if (anticlockwise !== undefined) {
             this._anticlockwise = anticlockwise;
         }
 
@@ -317,12 +315,10 @@ var Arc = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setEndAngle: function (angle, anticlockwise)
-    {
+    setEndAngle: function (angle, anticlockwise) {
         this._endAngle = angle;
 
-        if (anticlockwise !== undefined)
-        {
+        if (anticlockwise !== undefined) {
             this._anticlockwise = anticlockwise;
         }
 
@@ -338,8 +334,7 @@ var Arc = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
+    updateData: function () {
         var step = this._iterations;
         var iteration = step;
 
@@ -353,32 +348,23 @@ var Arc = new Class({
 
         endAngle -= startAngle;
 
-        if (anticlockwise)
-        {
-            if (endAngle < -MATH_CONST.PI2)
-            {
+        if (anticlockwise) {
+            if (endAngle < -MATH_CONST.PI2) {
                 endAngle = -MATH_CONST.PI2;
-            }
-            else if (endAngle > 0)
-            {
+            } else if (endAngle > 0) {
                 endAngle = -MATH_CONST.PI2 + endAngle % MATH_CONST.PI2;
             }
-        }
-        else if (endAngle > MATH_CONST.PI2)
-        {
+        } else if (endAngle > MATH_CONST.PI2) {
             endAngle = MATH_CONST.PI2;
-        }
-        else if (endAngle < 0)
-        {
+        } else if (endAngle < 0) {
             endAngle = MATH_CONST.PI2 + endAngle % MATH_CONST.PI2;
         }
 
-        var path = [ x + Math.cos(startAngle) * radius, y + Math.sin(startAngle) * radius ];
+        var path = [x + Math.cos(startAngle) * radius, y + Math.sin(startAngle) * radius];
 
         var ta;
 
-        while (iteration < 1)
-        {
+        while (iteration < 1) {
             ta = endAngle * iteration + startAngle;
 
             path.push(x + Math.cos(ta) * radius, y + Math.sin(ta) * radius);

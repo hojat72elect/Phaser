@@ -16,23 +16,17 @@ var GetFastValue = require('../utils/object/GetFastValue');
  *
  * @return {array} An array of all plugins which should be activated, either the default ones or the ones configured in the Scene Systems object.
  */
-var GetScenePlugins = function (sys)
-{
+var GetScenePlugins = function (sys) {
     var defaultPlugins = sys.plugins.getDefaultScenePlugins();
 
     var scenePlugins = GetFastValue(sys.settings, 'plugins', false);
 
     //  Scene Plugins always override Default Plugins
-    if (Array.isArray(scenePlugins))
-    {
+    if (Array.isArray(scenePlugins)) {
         return scenePlugins;
-    }
-    else if (defaultPlugins)
-    {
+    } else if (defaultPlugins) {
         return defaultPlugins;
-    }
-    else
-    {
+    } else {
         //  No default plugins or plugins in this scene
         return [];
     }

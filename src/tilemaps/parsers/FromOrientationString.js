@@ -16,24 +16,16 @@ var CONST = require('../const/ORIENTATION_CONST');
  *
  * @return {Phaser.Tilemaps.OrientationType} The Tilemap Orientation type.
  */
-var FromOrientationString = function (orientation)
-{
+var FromOrientationString = function (orientation) {
     orientation = orientation.toLowerCase();
 
-    if (orientation === 'isometric')
-    {
+    if (orientation === 'isometric') {
         return CONST.ISOMETRIC;
-    }
-    else if (orientation === 'staggered')
-    {
+    } else if (orientation === 'staggered') {
         return CONST.STAGGERED;
-    }
-    else if (orientation === 'hexagonal')
-    {
+    } else if (orientation === 'hexagonal') {
         return CONST.HEXAGONAL;
-    }
-    else
-    {
+    } else {
         return CONST.ORTHOGONAL;
     }
 };

@@ -22,13 +22,11 @@ var DistanceBetween = require('../math/distance/DistanceBetween');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RotateAround = function (items, point, angle)
-{
+var RotateAround = function (items, point, angle) {
     var x = point.x;
     var y = point.y;
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         var item = items[i];
 
         RotateAroundDistance(item, x, y, angle, Math.max(1, DistanceBetween(item.x, item.y, x, y)));

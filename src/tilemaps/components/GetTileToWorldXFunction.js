@@ -18,14 +18,10 @@ var TileToWorldX = require('./TileToWorldX');
  *
  * @return {function} The function to use to translate tiles for the given map type.
  */
-var GetTileToWorldXFunction = function (orientation)
-{
-    if (orientation === CONST.ORTHOGONAL)
-    {
+var GetTileToWorldXFunction = function (orientation) {
+    if (orientation === CONST.ORTHOGONAL) {
         return TileToWorldX;
-    }
-    else
-    {
+    } else {
         return NOOP;
     }
 };

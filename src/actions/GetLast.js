@@ -22,26 +22,23 @@
  *
  * @return {?(object|Phaser.GameObjects.GameObject)} The last object in the array that matches the comparison object, or `null` if no match was found.
  */
-var GetLast = function (items, compare, index)
-{
-    if (index === undefined) { index = 0; }
+var GetLast = function (items, compare, index) {
+    if (index === undefined) {
+        index = 0;
+    }
 
-    for (var i = items.length - 1; i >= index; i--)
-    {
+    for (var i = items.length - 1; i >= index; i--) {
         var item = items[i];
 
         var match = true;
 
-        for (var property in compare)
-        {
-            if (item[property] !== compare[property])
-            {
+        for (var property in compare) {
+            if (item[property] !== compare[property]) {
                 match = false;
             }
         }
 
-        if (match)
-        {
+        if (match) {
             return item;
         }
     }

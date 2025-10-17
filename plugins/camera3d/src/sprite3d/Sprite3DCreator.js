@@ -23,17 +23,17 @@ var Sprite3D = require('./Sprite3D');
  *
  * @return {Phaser.GameObjects.Sprite3D} The Game Object that was created.
  */
-GameObjectCreator.register('sprite3D', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('sprite3D', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
 
     var sprite = new Sprite3D(this.scene, 0, 0, key, frame);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

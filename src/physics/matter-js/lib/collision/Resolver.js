@@ -1,8 +1,8 @@
 /**
-* The `Matter.Resolver` module contains methods for resolving collision pairs.
-*
-* @class Resolver
-*/
+ * The `Matter.Resolver` module contains methods for resolving collision pairs.
+ *
+ * @class Resolver
+ */
 
 var Resolver = {};
 
@@ -12,7 +12,7 @@ var Vertices = require('../geometry/Vertices');
 var Common = require('../core/Common');
 var Bounds = require('../geometry/Bounds');
 
-(function() {
+(function () {
 
     Resolver._restingThresh = 2;
     Resolver._restingThreshTangent = Math.sqrt(6);
@@ -26,7 +26,7 @@ var Bounds = require('../geometry/Bounds');
      * @method preSolvePosition
      * @param {pair[]} pairs
      */
-    Resolver.preSolvePosition = function(pairs) {
+    Resolver.preSolvePosition = function (pairs) {
         var i,
             pair,
             contactCount,
@@ -52,7 +52,7 @@ var Bounds = require('../geometry/Bounds');
      * @param {number} delta
      * @param {number} [damping=1]
      */
-    Resolver.solvePosition = function(pairs, delta, damping) {
+    Resolver.solvePosition = function (pairs, delta, damping) {
         var i,
             pair,
             collision,
@@ -117,7 +117,7 @@ var Bounds = require('../geometry/Bounds');
      * @method postSolvePosition
      * @param {body[]} bodies
      */
-    Resolver.postSolvePosition = function(bodies) {
+    Resolver.postSolvePosition = function (bodies) {
         var positionWarming = Resolver._positionWarming,
             bodiesLength = bodies.length,
             verticesTranslate = Vertices.translate,
@@ -165,7 +165,7 @@ var Bounds = require('../geometry/Bounds');
      * @method preSolveVelocity
      * @param {pair[]} pairs
      */
-    Resolver.preSolveVelocity = function(pairs) {
+    Resolver.preSolveVelocity = function (pairs) {
         var pairsLength = pairs.length,
             i,
             j;
@@ -225,7 +225,7 @@ var Bounds = require('../geometry/Bounds');
      * @param {pair[]} pairs
      * @param {number} delta
      */
-    Resolver.solveVelocity = function(pairs, delta) {
+    Resolver.solveVelocity = function (pairs, delta) {
         var timeScale = delta / Common._baseDelta,
             timeScaleSquared = timeScale * timeScale,
             timeScaleCubed = timeScaleSquared * timeScale,

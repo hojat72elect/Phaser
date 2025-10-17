@@ -21,8 +21,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  * @param {number} height - How many tiles tall from the `tileY` index the area will be.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var CalculateFacesWithin = function (tileX, tileY, width, height, layer)
-{
+var CalculateFacesWithin = function (tileX, tileY, width, height, layer) {
     var above = null;
     var below = null;
     var left = null;
@@ -30,14 +29,11 @@ var CalculateFacesWithin = function (tileX, tileY, width, height, layer)
 
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
+    for (var i = 0; i < tiles.length; i++) {
         var tile = tiles[i];
 
-        if (tile)
-        {
-            if (tile.collides)
-            {
+        if (tile) {
+            if (tile.collides) {
                 above = GetTileAt(tile.x, tile.y - 1, true, layer);
                 below = GetTileAt(tile.x, tile.y + 1, true, layer);
                 left = GetTileAt(tile.x - 1, tile.y, true, layer);
@@ -47,9 +43,7 @@ var CalculateFacesWithin = function (tileX, tileY, width, height, layer)
                 tile.faceBottom = (below && below.collides) ? false : true;
                 tile.faceLeft = (left && left.collides) ? false : true;
                 tile.faceRight = (right && right.collides) ? false : true;
-            }
-            else
-            {
+            } else {
                 tile.resetFaces();
             }
         }

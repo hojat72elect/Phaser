@@ -20,12 +20,10 @@ var Tile = require('../../Tile');
  * @return {Phaser.Tilemaps.LayerData[]} - An array of LayerData objects, one for each entry in
  * json.layers with the type 'tilelayer'.
  */
-var ParseTileLayers = function (json, insertNull)
-{
+var ParseTileLayers = function (json, insertNull) {
     var tileLayers = [];
 
-    for (var i = 0; i < json.layer.length; i++)
-    {
+    for (var i = 0; i < json.layer.length; i++) {
         var layer = json.layer[i];
 
         var layerData = new LayerData({
@@ -42,21 +40,16 @@ var ParseTileLayers = function (json, insertNull)
 
         //  Loop through the data field in the JSON. This is a 2D array containing the tile indexes,
         //  one after the other. The indexes are relative to the tileset that contains the tile.
-        for (var y = 0; y < layer.data.length; y++)
-        {
-            for (var x = 0; x < layer.data[y].length; x++)
-            {
+        for (var y = 0; y < layer.data.length; y++) {
+            for (var x = 0; x < layer.data[y].length; x++) {
                 // In Weltmeister, 0 = no tile, but the Tilemap API expects -1 = no tile.
                 var index = layer.data[y][x] - 1;
 
                 var tile;
 
-                if (index > -1)
-                {
+                if (index > -1) {
                     tile = new Tile(layerData, index, x, y, layer.tilesize, layer.tilesize);
-                }
-                else
-                {
+                } else {
                     tile = insertNull
                         ? null
                         : new Tile(layerData, -1, x, y, layer.tilesize, layer.tilesize);

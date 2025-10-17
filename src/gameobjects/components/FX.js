@@ -75,71 +75,70 @@ var FX = new Class({
 
     initialize:
 
-    function FX (gameObject, isPost)
-    {
-        /**
-         * A reference to the Game Object that owns this FX Component.
-         *
-         * @name Phaser.GameObjects.Components.FX#gameObject
-         * @type {Phaser.GameObjects.GameObject}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.gameObject = gameObject;
+        function FX(gameObject, isPost) {
+            /**
+             * A reference to the Game Object that owns this FX Component.
+             *
+             * @name Phaser.GameObjects.Components.FX#gameObject
+             * @type {Phaser.GameObjects.GameObject}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.gameObject = gameObject;
 
-        /**
-         * Is this a Post FX Controller? or a Pre FX Controller?
-         *
-         * @name Phaser.GameObjects.Components.FX#isPost
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isPost = isPost;
+            /**
+             * Is this a Post FX Controller? or a Pre FX Controller?
+             *
+             * @name Phaser.GameObjects.Components.FX#isPost
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isPost = isPost;
 
-        /**
-         * Has this FX Component been enabled?
-         *
-         * You should treat this property as read-only, although it is toggled
-         * automaticaly during internal use.
-         *
-         * @name Phaser.GameObjects.Components.FX#enabled
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.enabled = false;
+            /**
+             * Has this FX Component been enabled?
+             *
+             * You should treat this property as read-only, although it is toggled
+             * automaticaly during internal use.
+             *
+             * @name Phaser.GameObjects.Components.FX#enabled
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.enabled = false;
 
-        /**
-         * An array containing all of the Pre FX Controllers that
-         * have been added to this FX Component. They are processed in
-         * the order they are added.
-         *
-         * This array is empty if this is a Post FX Component.
-         *
-         * @name Phaser.GameObjects.Components.FX#list
-         * @type {Phaser.FX.Controller[]}
-         * @since 3.60.0
-         */
-        this.list = [];
+            /**
+             * An array containing all of the Pre FX Controllers that
+             * have been added to this FX Component. They are processed in
+             * the order they are added.
+             *
+             * This array is empty if this is a Post FX Component.
+             *
+             * @name Phaser.GameObjects.Components.FX#list
+             * @type {Phaser.FX.Controller[]}
+             * @since 3.60.0
+             */
+            this.list = [];
 
-        /**
-         * The amount of extra padding to be applied to this Game Object
-         * when it is being rendered by a PreFX Pipeline.
-         *
-         * Lots of FX require additional spacing added to the texture the
-         * Game Object uses, for example a glow or shadow effect, and this
-         * method allows you to control how much extra padding is included
-         * in addition to the texture size.
-         *
-         * You do not need to set this if you're only using Post FX.
-         *
-         * @name Phaser.GameObjects.Components.FX#padding
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.padding = 0;
-    },
+            /**
+             * The amount of extra padding to be applied to this Game Object
+             * when it is being rendered by a PreFX Pipeline.
+             *
+             * Lots of FX require additional spacing added to the texture the
+             * Game Object uses, for example a glow or shadow effect, and this
+             * method allows you to control how much extra padding is included
+             * in addition to the texture size.
+             *
+             * You do not need to set this if you're only using Post FX.
+             *
+             * @name Phaser.GameObjects.Components.FX#padding
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.padding = 0;
+        },
 
     /**
      * Sets the amount of extra padding to be applied to this Game Object
@@ -160,9 +159,10 @@ var FX = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setPadding: function (padding)
-    {
-        if (padding === undefined) { padding = 0; }
+    setPadding: function (padding) {
+        if (padding === undefined) {
+            padding = 0;
+        }
 
         this.padding = padding;
 
@@ -181,8 +181,7 @@ var FX = new Class({
      *
      * @param {Phaser.Renderer.WebGL.Pipelines.PreFXPipeline} pipeline - The PreFX Pipeline that invoked this callback.
      */
-    onFXCopy: function ()
-    {
+    onFXCopy: function () {
     },
 
     /**
@@ -197,8 +196,7 @@ var FX = new Class({
      *
      * @param {Phaser.Renderer.WebGL.Pipelines.PreFXPipeline} pipeline - The PreFX Pipeline that invoked this callback.
      */
-    onFX: function ()
-    {
+    onFX: function () {
     },
 
     /**
@@ -215,28 +213,22 @@ var FX = new Class({
      *
      * @param {number} [padding=0] - The amount of padding to add to this Game Object.
      */
-    enable: function (padding)
-    {
-        if (this.isPost)
-        {
+    enable: function (padding) {
+        if (this.isPost) {
             return;
         }
 
         var renderer = this.gameObject.scene.sys.renderer;
 
-        if (renderer && renderer.pipelines)
-        {
+        if (renderer && renderer.pipelines) {
             this.gameObject.pipeline = renderer.pipelines.FX_PIPELINE;
 
-            if (padding !== undefined)
-            {
+            if (padding !== undefined) {
                 this.padding = padding;
             }
 
             this.enabled = true;
-        }
-        else
-        {
+        } else {
             this.enabled = false;
         }
     },
@@ -255,18 +247,13 @@ var FX = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    clear: function ()
-    {
-        if (this.isPost)
-        {
+    clear: function () {
+        if (this.isPost) {
             this.gameObject.resetPostPipeline(true);
-        }
-        else
-        {
+        } else {
             var list = this.list;
 
-            for (var i = 0; i < list.length; i++)
-            {
+            for (var i = 0; i < list.length; i++) {
                 list[i].destroy();
             }
 
@@ -293,25 +280,20 @@ var FX = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    remove: function (fx)
-    {
+    remove: function (fx) {
         var i;
 
-        if (this.isPost)
-        {
+        if (this.isPost) {
             var pipelines = this.gameObject.getPostPipeline(String(fx.type));
 
-            if (!Array.isArray(pipelines))
-            {
-                pipelines = [ pipelines ];
+            if (!Array.isArray(pipelines)) {
+                pipelines = [pipelines];
             }
 
-            for (i = 0; i < pipelines.length; i++)
-            {
+            for (i = 0; i < pipelines.length; i++) {
                 var pipeline = pipelines[i];
 
-                if (pipeline.controller === fx)
-                {
+                if (pipeline.controller === fx) {
                     this.gameObject.removePostPipeline(pipeline);
 
                     fx.destroy();
@@ -319,15 +301,11 @@ var FX = new Class({
                     break;
                 }
             }
-        }
-        else
-        {
+        } else {
             var list = this.list;
 
-            for (i = 0; i < list.length; i++)
-            {
-                if (list[i] === fx)
-                {
+            for (i = 0; i < list.length; i++) {
+                if (list[i] === fx) {
                     SpliceOne(list, i);
 
                     fx.destroy();
@@ -355,19 +333,18 @@ var FX = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    disable: function (clear)
-    {
-        if (clear === undefined) { clear = false; }
+    disable: function (clear) {
+        if (clear === undefined) {
+            clear = false;
+        }
 
-        if (!this.isPost)
-        {
+        if (!this.isPost) {
             this.gameObject.resetPipeline();
         }
 
         this.enabled = false;
 
-        if (clear)
-        {
+        if (clear) {
             this.clear();
         }
 
@@ -392,35 +369,27 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Controller} The FX Controller.
      */
-    add: function (fx, config)
-    {
-        if (this.isPost)
-        {
+    add: function (fx, config) {
+        if (this.isPost) {
             var type = String(fx.type);
 
             this.gameObject.setPostPipeline(type, config);
 
             var pipeline = this.gameObject.getPostPipeline(type);
 
-            if (pipeline)
-            {
-                if (Array.isArray(pipeline))
-                {
+            if (pipeline) {
+                if (Array.isArray(pipeline)) {
                     pipeline = pipeline.pop();
                 }
 
-                if (pipeline)
-                {
+                if (pipeline) {
                     pipeline.controller = fx;
                 }
 
                 return fx;
             }
-        }
-        else
-        {
-            if (!this.enabled)
-            {
+        } else {
+            if (!this.enabled) {
                 this.enable();
             }
 
@@ -450,9 +419,8 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Glow} The Glow FX Controller.
      */
-    addGlow: function (color, outerStrength, innerStrength, knockout, quality, distance)
-    {
-        return this.add(new Effects.Glow(this.gameObject, color, outerStrength, innerStrength, knockout), { quality: quality, distance: distance });
+    addGlow: function (color, outerStrength, innerStrength, knockout, quality, distance) {
+        return this.add(new Effects.Glow(this.gameObject, color, outerStrength, innerStrength, knockout), {quality: quality, distance: distance});
     },
 
     /**
@@ -475,8 +443,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Shadow} The Shadow FX Controller.
      */
-    addShadow: function (x, y, decay, power, color, samples, intensity)
-    {
+    addShadow: function (x, y, decay, power, color, samples, intensity) {
         return this.add(new Effects.Shadow(this.gameObject, x, y, decay, power, color, samples, intensity));
     },
 
@@ -495,8 +462,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Pixelate} The Pixelate FX Controller.
      */
-    addPixelate: function (amount)
-    {
+    addPixelate: function (amount) {
         return this.add(new Effects.Pixelate(this.gameObject, amount));
     },
 
@@ -517,8 +483,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Vignette} The Vignette FX Controller.
      */
-    addVignette: function (x, y, radius, strength)
-    {
+    addVignette: function (x, y, radius, strength) {
         return this.add(new Effects.Vignette(this.gameObject, x, y, radius, strength));
     },
 
@@ -540,8 +505,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Shine} The Shine FX Controller.
      */
-    addShine: function (speed, lineWidth, gradient, reveal)
-    {
+    addShine: function (speed, lineWidth, gradient, reveal) {
         return this.add(new Effects.Shine(this.gameObject, speed, lineWidth, gradient, reveal));
     },
 
@@ -565,8 +529,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Blur} The Blur FX Controller.
      */
-    addBlur: function (quality, x, y, strength, color, steps)
-    {
+    addBlur: function (quality, x, y, strength, color, steps) {
         return this.add(new Effects.Blur(this.gameObject, quality, x, y, strength, color, steps));
     },
 
@@ -592,8 +555,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Gradient} The Gradient FX Controller.
      */
-    addGradient: function (color1, color2, alpha, fromX, fromY, toX, toY, size)
-    {
+    addGradient: function (color1, color2, alpha, fromX, fromY, toX, toY, size) {
         return this.add(new Effects.Gradient(this.gameObject, color1, color2, alpha, fromX, fromY, toX, toY, size));
     },
 
@@ -617,8 +579,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Bloom} The Bloom FX Controller.
      */
-    addBloom: function (color, offsetX, offsetY, blurStrength, strength, steps)
-    {
+    addBloom: function (color, offsetX, offsetY, blurStrength, strength, steps) {
         return this.add(new Effects.Bloom(this.gameObject, color, offsetX, offsetY, blurStrength, strength, steps));
     },
 
@@ -636,8 +597,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.ColorMatrix} The ColorMatrix FX Controller.
      */
-    addColorMatrix: function ()
-    {
+    addColorMatrix: function () {
         return this.add(new Effects.ColorMatrix(this.gameObject));
     },
 
@@ -663,8 +623,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Circle} The Circle FX Controller.
      */
-    addCircle: function (thickness, color, backgroundColor, scale, feather)
-    {
+    addCircle: function (thickness, color, backgroundColor, scale, feather) {
         return this.add(new Effects.Circle(this.gameObject, thickness, color, backgroundColor, scale, feather));
     },
 
@@ -681,8 +640,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Barrel} The Barrel FX Controller.
      */
-    addBarrel: function (amount)
-    {
+    addBarrel: function (amount) {
         return this.add(new Effects.Barrel(this.gameObject, amount));
     },
 
@@ -704,8 +662,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Displacement} The Displacement FX Controller.
      */
-    addDisplacement: function (texture, x, y)
-    {
+    addDisplacement: function (texture, x, y) {
         return this.add(new Effects.Displacement(this.gameObject, texture, x, y));
     },
 
@@ -735,8 +692,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Wipe} The Wipe FX Controller.
      */
-    addWipe: function (wipeWidth, direction, axis)
-    {
+    addWipe: function (wipeWidth, direction, axis) {
         return this.add(new Effects.Wipe(this.gameObject, wipeWidth, direction, axis));
     },
 
@@ -766,8 +722,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Wipe} The Wipe FX Controller.
      */
-    addReveal: function (wipeWidth, direction, axis)
-    {
+    addReveal: function (wipeWidth, direction, axis) {
         return this.add(new Effects.Wipe(this.gameObject, wipeWidth, direction, axis, true));
     },
 
@@ -790,8 +745,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Bokeh} The Bokeh FX Controller.
      */
-    addBokeh: function (radius, amount, contrast)
-    {
+    addBokeh: function (radius, amount, contrast) {
         return this.add(new Effects.Bokeh(this.gameObject, radius, amount, contrast));
     },
 
@@ -816,8 +770,7 @@ var FX = new Class({
      *
      * @return {Phaser.FX.Bokeh} The Bokeh TiltShift FX Controller.
      */
-    addTiltShift: function (radius, amount, contrast, blurX, blurY, strength)
-    {
+    addTiltShift: function (radius, amount, contrast, blurX, blurY, strength) {
         return this.add(new Effects.Bokeh(this.gameObject, radius, amount, contrast, true, blurX, blurY, strength));
     },
 
@@ -829,8 +782,7 @@ var FX = new Class({
      * @method Phaser.GameObjects.Components.FX#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.clear();
 
         this.gameObject = null;

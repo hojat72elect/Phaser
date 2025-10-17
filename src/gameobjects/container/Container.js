@@ -99,154 +99,152 @@ var Container = new Class({
 
     initialize:
 
-    function Container (scene, x, y, children)
-    {
-        GameObject.call(this, scene, 'Container');
+        function Container(scene, x, y, children) {
+            GameObject.call(this, scene, 'Container');
 
-        /**
-         * An array holding the children of this Container.
-         *
-         * @name Phaser.GameObjects.Container#list
-         * @type {Phaser.GameObjects.GameObject[]}
-         * @since 3.4.0
-         */
-        this.list = [];
+            /**
+             * An array holding the children of this Container.
+             *
+             * @name Phaser.GameObjects.Container#list
+             * @type {Phaser.GameObjects.GameObject[]}
+             * @since 3.4.0
+             */
+            this.list = [];
 
-        /**
-         * Does this Container exclusively manage its children?
-         *
-         * The default is `true` which means a child added to this Container cannot
-         * belong in another Container, which includes the Scene display list.
-         *
-         * If you disable this then this Container will no longer exclusively manage its children.
-         * This allows you to create all kinds of interesting graphical effects, such as replicating
-         * Game Objects without reparenting them all over the Scene.
-         * However, doing so will prevent children from receiving any kind of input event or have
-         * their physics bodies work by default, as they're no longer a single entity on the
-         * display list, but are being replicated where-ever this Container is.
-         *
-         * @name Phaser.GameObjects.Container#exclusive
-         * @type {boolean}
-         * @default true
-         * @since 3.4.0
-         */
-        this.exclusive = true;
+            /**
+             * Does this Container exclusively manage its children?
+             *
+             * The default is `true` which means a child added to this Container cannot
+             * belong in another Container, which includes the Scene display list.
+             *
+             * If you disable this then this Container will no longer exclusively manage its children.
+             * This allows you to create all kinds of interesting graphical effects, such as replicating
+             * Game Objects without reparenting them all over the Scene.
+             * However, doing so will prevent children from receiving any kind of input event or have
+             * their physics bodies work by default, as they're no longer a single entity on the
+             * display list, but are being replicated where-ever this Container is.
+             *
+             * @name Phaser.GameObjects.Container#exclusive
+             * @type {boolean}
+             * @default true
+             * @since 3.4.0
+             */
+            this.exclusive = true;
 
-        /**
-         * Containers can have an optional maximum size. If set to anything above 0 it
-         * will constrict the addition of new Game Objects into the Container, capping off
-         * the maximum limit the Container can grow in size to.
-         *
-         * @name Phaser.GameObjects.Container#maxSize
-         * @type {number}
-         * @default -1
-         * @since 3.4.0
-         */
-        this.maxSize = -1;
+            /**
+             * Containers can have an optional maximum size. If set to anything above 0 it
+             * will constrict the addition of new Game Objects into the Container, capping off
+             * the maximum limit the Container can grow in size to.
+             *
+             * @name Phaser.GameObjects.Container#maxSize
+             * @type {number}
+             * @default -1
+             * @since 3.4.0
+             */
+            this.maxSize = -1;
 
-        /**
-         * The cursor position.
-         *
-         * @name Phaser.GameObjects.Container#position
-         * @type {number}
-         * @since 3.4.0
-         */
-        this.position = 0;
+            /**
+             * The cursor position.
+             *
+             * @name Phaser.GameObjects.Container#position
+             * @type {number}
+             * @since 3.4.0
+             */
+            this.position = 0;
 
-        /**
-         * Internal Transform Matrix used for local space conversion.
-         *
-         * @name Phaser.GameObjects.Container#localTransform
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.4.0
-         */
-        this.localTransform = new Components.TransformMatrix();
+            /**
+             * Internal Transform Matrix used for local space conversion.
+             *
+             * @name Phaser.GameObjects.Container#localTransform
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.4.0
+             */
+            this.localTransform = new Components.TransformMatrix();
 
-        /**
-         * The property key to sort by.
-         *
-         * @name Phaser.GameObjects.Container#_sortKey
-         * @type {string}
-         * @private
-         * @since 3.4.0
-         */
-        this._sortKey = '';
+            /**
+             * The property key to sort by.
+             *
+             * @name Phaser.GameObjects.Container#_sortKey
+             * @type {string}
+             * @private
+             * @since 3.4.0
+             */
+            this._sortKey = '';
 
-        /**
-         * A reference to the Scene Systems Event Emitter.
-         *
-         * @name Phaser.GameObjects.Container#_sysEvents
-         * @type {Phaser.Events.EventEmitter}
-         * @private
-         * @since 3.9.0
-         */
-        this._sysEvents = scene.sys.events;
+            /**
+             * A reference to the Scene Systems Event Emitter.
+             *
+             * @name Phaser.GameObjects.Container#_sysEvents
+             * @type {Phaser.Events.EventEmitter}
+             * @private
+             * @since 3.9.0
+             */
+            this._sysEvents = scene.sys.events;
 
-        /**
-         * The horizontal scroll factor of this Container.
-         *
-         * The scroll factor controls the influence of the movement of a Camera upon this Container.
-         *
-         * When a camera scrolls it will change the location at which this Container is rendered on-screen.
-         * It does not change the Containers actual position values.
-         *
-         * For a Container, setting this value will only update the Container itself, not its children.
-         * If you wish to change the scrollFactor of the children as well, use the `setScrollFactor` method.
-         *
-         * A value of 1 means it will move exactly in sync with a camera.
-         * A value of 0 means it will not move at all, even if the camera moves.
-         * Other values control the degree to which the camera movement is mapped to this Container.
-         *
-         * Please be aware that scroll factor values other than 1 are not taken in to consideration when
-         * calculating physics collisions. Bodies always collide based on their world position, but changing
-         * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
-         * them from physics bodies if not accounted for in your code.
-         *
-         * @name Phaser.GameObjects.Container#scrollFactorX
-         * @type {number}
-         * @default 1
-         * @since 3.4.0
-         */
-        this.scrollFactorX = 1;
+            /**
+             * The horizontal scroll factor of this Container.
+             *
+             * The scroll factor controls the influence of the movement of a Camera upon this Container.
+             *
+             * When a camera scrolls it will change the location at which this Container is rendered on-screen.
+             * It does not change the Containers actual position values.
+             *
+             * For a Container, setting this value will only update the Container itself, not its children.
+             * If you wish to change the scrollFactor of the children as well, use the `setScrollFactor` method.
+             *
+             * A value of 1 means it will move exactly in sync with a camera.
+             * A value of 0 means it will not move at all, even if the camera moves.
+             * Other values control the degree to which the camera movement is mapped to this Container.
+             *
+             * Please be aware that scroll factor values other than 1 are not taken in to consideration when
+             * calculating physics collisions. Bodies always collide based on their world position, but changing
+             * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
+             * them from physics bodies if not accounted for in your code.
+             *
+             * @name Phaser.GameObjects.Container#scrollFactorX
+             * @type {number}
+             * @default 1
+             * @since 3.4.0
+             */
+            this.scrollFactorX = 1;
 
-        /**
-         * The vertical scroll factor of this Container.
-         *
-         * The scroll factor controls the influence of the movement of a Camera upon this Container.
-         *
-         * When a camera scrolls it will change the location at which this Container is rendered on-screen.
-         * It does not change the Containers actual position values.
-         *
-         * For a Container, setting this value will only update the Container itself, not its children.
-         * If you wish to change the scrollFactor of the children as well, use the `setScrollFactor` method.
-         *
-         * A value of 1 means it will move exactly in sync with a camera.
-         * A value of 0 means it will not move at all, even if the camera moves.
-         * Other values control the degree to which the camera movement is mapped to this Container.
-         *
-         * Please be aware that scroll factor values other than 1 are not taken in to consideration when
-         * calculating physics collisions. Bodies always collide based on their world position, but changing
-         * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
-         * them from physics bodies if not accounted for in your code.
-         *
-         * @name Phaser.GameObjects.Container#scrollFactorY
-         * @type {number}
-         * @default 1
-         * @since 3.4.0
-         */
-        this.scrollFactorY = 1;
+            /**
+             * The vertical scroll factor of this Container.
+             *
+             * The scroll factor controls the influence of the movement of a Camera upon this Container.
+             *
+             * When a camera scrolls it will change the location at which this Container is rendered on-screen.
+             * It does not change the Containers actual position values.
+             *
+             * For a Container, setting this value will only update the Container itself, not its children.
+             * If you wish to change the scrollFactor of the children as well, use the `setScrollFactor` method.
+             *
+             * A value of 1 means it will move exactly in sync with a camera.
+             * A value of 0 means it will not move at all, even if the camera moves.
+             * Other values control the degree to which the camera movement is mapped to this Container.
+             *
+             * Please be aware that scroll factor values other than 1 are not taken in to consideration when
+             * calculating physics collisions. Bodies always collide based on their world position, but changing
+             * the scroll factor is a visual adjustment to where the textures are rendered, which can offset
+             * them from physics bodies if not accounted for in your code.
+             *
+             * @name Phaser.GameObjects.Container#scrollFactorY
+             * @type {number}
+             * @default 1
+             * @since 3.4.0
+             */
+            this.scrollFactorY = 1;
 
-        this.initPostPipeline();
+            this.initPostPipeline();
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        this.setBlendMode(BlendModes.SKIP_CHECK);
+            this.setBlendMode(BlendModes.SKIP_CHECK);
 
-        if (children)
-        {
-            this.add(children);
-        }
-    },
+            if (children) {
+                this.add(children);
+            }
+        },
 
     /**
      * Internal value to allow Containers to be used for input and physics.
@@ -260,8 +258,7 @@ var Container = new Class({
      */
     originX: {
 
-        get: function ()
-        {
+        get: function () {
             return 0.5;
         }
 
@@ -279,8 +276,7 @@ var Container = new Class({
      */
     originY: {
 
-        get: function ()
-        {
+        get: function () {
             return 0.5;
         }
 
@@ -298,8 +294,7 @@ var Container = new Class({
      */
     displayOriginX: {
 
-        get: function ()
-        {
+        get: function () {
             return this.width * 0.5;
         }
 
@@ -317,8 +312,7 @@ var Container = new Class({
      */
     displayOriginY: {
 
-        get: function ()
-        {
+        get: function () {
             return this.height * 0.5;
         }
 
@@ -344,9 +338,10 @@ var Container = new Class({
      *
      * @return {this} This Container.
      */
-    setExclusive: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setExclusive: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.exclusive = value;
 
@@ -373,43 +368,37 @@ var Container = new Class({
      *
      * @return {Phaser.Geom.Rectangle} The values stored in the output object.
      */
-    getBounds: function (output)
-    {
-        if (output === undefined) { output = new Rectangle(); }
+    getBounds: function (output) {
+        if (output === undefined) {
+            output = new Rectangle();
+        }
 
         output.setTo(this.x, this.y, 0, 0);
 
-        if (this.parentContainer)
-        {
+        if (this.parentContainer) {
             var parentMatrix = this.parentContainer.getBoundsTransformMatrix();
             var transformedPosition = parentMatrix.transformPoint(this.x, this.y);
 
             output.setTo(transformedPosition.x, transformedPosition.y, 0, 0);
         }
 
-        if (this.list.length > 0)
-        {
+        if (this.list.length > 0) {
             var children = this.list;
             var tempRect = new Rectangle();
             var hasSetFirst = false;
 
             output.setEmpty();
 
-            for (var i = 0; i < children.length; i++)
-            {
+            for (var i = 0; i < children.length; i++) {
                 var entry = children[i];
 
-                if (entry.getBounds)
-                {
+                if (entry.getBounds) {
                     entry.getBounds(tempRect);
 
-                    if (!hasSetFirst)
-                    {
+                    if (!hasSetFirst) {
                         output.setTo(tempRect.x, tempRect.y, tempRect.width, tempRect.height);
                         hasSetFirst = true;
-                    }
-                    else
-                    {
+                    } else {
                         Union(tempRect, output, output);
                     }
                 }
@@ -428,14 +417,11 @@ var Container = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was just added to this Container.
      */
-    addHandler: function (gameObject)
-    {
+    addHandler: function (gameObject) {
         gameObject.once(Events.DESTROY, this.onChildDestroyed, this);
 
-        if (this.exclusive)
-        {
-            if (gameObject.parentContainer)
-            {
+        if (this.exclusive) {
+            if (gameObject.parentContainer) {
                 gameObject.parentContainer.remove(gameObject);
             }
 
@@ -456,12 +442,10 @@ var Container = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was just removed from this Container.
      */
-    removeHandler: function (gameObject)
-    {
+    removeHandler: function (gameObject) {
         gameObject.off(Events.DESTROY, this.remove, this);
 
-        if (this.exclusive)
-        {
+        if (this.exclusive) {
             gameObject.parentContainer = null;
 
             gameObject.removedFromScene();
@@ -482,16 +466,14 @@ var Container = new Class({
      *
      * @return {Phaser.Types.Math.Vector2Like} The transformed point.
      */
-    pointToContainer: function (source, output)
-    {
-        if (output === undefined) { output = new Vector2(); }
-
-        if (this.parentContainer)
-        {
-            this.parentContainer.pointToContainer(source, output);
+    pointToContainer: function (source, output) {
+        if (output === undefined) {
+            output = new Vector2();
         }
-        else
-        {
+
+        if (this.parentContainer) {
+            this.parentContainer.pointToContainer(source, output);
+        } else {
             output.x = source.x;
             output.y = source.y;
         }
@@ -518,8 +500,7 @@ var Container = new Class({
      *
      * @return {Phaser.GameObjects.Components.TransformMatrix} The world transform matrix.
      */
-    getBoundsTransformMatrix: function ()
-    {
+    getBoundsTransformMatrix: function () {
         return this.getWorldTransformMatrix(tempTransformMatrix, this.localTransform);
     },
 
@@ -538,8 +519,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    add: function (child)
-    {
+    add: function (child) {
         ArrayUtils.Add(this.list, child, this.maxSize, this.addHandler, this);
 
         return this;
@@ -563,8 +543,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    addAt: function (child, index)
-    {
+    addAt: function (child, index) {
         ArrayUtils.AddAt(this.list, child, index, this.maxSize, this.addHandler, this);
 
         return this;
@@ -583,8 +562,7 @@ var Container = new Class({
      *
      * @return {?Phaser.GameObjects.GameObject} The Game Object at the specified index, or `null` if none found.
      */
-    getAt: function (index)
-    {
+    getAt: function (index) {
         return this.list[index];
     },
 
@@ -601,8 +579,7 @@ var Container = new Class({
      *
      * @return {number} The index of the Game Object in this Container, or -1 if not found.
      */
-    getIndex: function (child)
-    {
+    getIndex: function (child) {
         return this.list.indexOf(child);
     },
 
@@ -618,17 +595,13 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    sort: function (property, handler)
-    {
-        if (!property)
-        {
+    sort: function (property, handler) {
+        if (!property) {
             return this;
         }
 
-        if (handler === undefined)
-        {
-            handler = function (childA, childB)
-            {
+        if (handler === undefined) {
+            handler = function (childA, childB) {
                 return childA[property] - childB[property];
             };
         }
@@ -652,8 +625,7 @@ var Container = new Class({
      *
      * @return {?Phaser.GameObjects.GameObject} The first child with a matching name, or `null` if none were found.
      */
-    getByName: function (name)
-    {
+    getByName: function (name) {
         return ArrayUtils.GetFirst(this.list, 'name', name);
     },
 
@@ -671,8 +643,7 @@ var Container = new Class({
      *
      * @return {?Phaser.GameObjects.GameObject} A random child from the Container, or `null` if the Container is empty.
      */
-    getRandom: function (startIndex, length)
-    {
+    getRandom: function (startIndex, length) {
         return ArrayUtils.GetRandom(this.list, startIndex, length);
     },
 
@@ -699,8 +670,7 @@ var Container = new Class({
      *
      * @return {?Phaser.GameObjects.GameObject} The first matching Game Object, or `null` if none was found.
      */
-    getFirst: function (property, value, startIndex, endIndex)
-    {
+    getFirst: function (property, value, startIndex, endIndex) {
         return ArrayUtils.GetFirst(this.list, property, value, startIndex, endIndex);
     },
 
@@ -732,8 +702,7 @@ var Container = new Class({
      *
      * @return {Phaser.GameObjects.GameObject[]} An array of matching Game Objects from this Container.
      */
-    getAll: function (property, value, startIndex, endIndex)
-    {
+    getAll: function (property, value, startIndex, endIndex) {
         return ArrayUtils.GetAll(this.list, property, value, startIndex, endIndex);
     },
 
@@ -755,8 +724,7 @@ var Container = new Class({
      *
      * @return {number} The total number of Game Objects in this Container with a property matching the given value.
      */
-    count: function (property, value, startIndex, endIndex)
-    {
+    count: function (property, value, startIndex, endIndex) {
         return ArrayUtils.CountAllMatching(this.list, property, value, startIndex, endIndex);
     },
 
@@ -775,8 +743,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    swap: function (child1, child2)
-    {
+    swap: function (child1, child2) {
         ArrayUtils.Swap(this.list, child1, child2);
 
         return this;
@@ -801,8 +768,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    moveTo: function (child, index)
-    {
+    moveTo: function (child, index) {
         ArrayUtils.MoveTo(this.list, child, index);
 
         return this;
@@ -825,8 +791,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    moveAbove: function (child1, child2)
-    {
+    moveAbove: function (child1, child2) {
         ArrayUtils.MoveAbove(this.list, child1, child2);
 
         return this;
@@ -849,8 +814,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    moveBelow: function (child1, child2)
-    {
+    moveBelow: function (child1, child2) {
         ArrayUtils.MoveBelow(this.list, child1, child2);
 
         return this;
@@ -874,19 +838,15 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    remove: function (child, destroyChild)
-    {
+    remove: function (child, destroyChild) {
         var removed = ArrayUtils.Remove(this.list, child, this.removeHandler, this);
 
-        if (destroyChild && removed)
-        {
-            if (!Array.isArray(removed))
-            {
-                removed = [ removed ];
+        if (destroyChild && removed) {
+            if (!Array.isArray(removed)) {
+                removed = [removed];
             }
 
-            for (var i = 0; i < removed.length; i++)
-            {
+            for (var i = 0; i < removed.length; i++) {
                 removed[i].destroy();
             }
         }
@@ -907,12 +867,10 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    removeAt: function (index, destroyChild)
-    {
+    removeAt: function (index, destroyChild) {
         var removed = ArrayUtils.RemoveAt(this.list, index, this.removeHandler, this);
 
-        if (destroyChild && removed)
-        {
+        if (destroyChild && removed) {
             removed.destroy();
         }
 
@@ -933,14 +891,11 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    removeBetween: function (startIndex, endIndex, destroyChild)
-    {
+    removeBetween: function (startIndex, endIndex, destroyChild) {
         var removed = ArrayUtils.RemoveBetween(this.list, startIndex, endIndex, this.removeHandler, this);
 
-        if (destroyChild)
-        {
-            for (var i = 0; i < removed.length; i++)
-            {
+        if (destroyChild) {
+            for (var i = 0; i < removed.length; i++) {
                 removed[i].destroy();
             }
         }
@@ -960,16 +915,12 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    removeAll: function (destroyChild)
-    {
+    removeAll: function (destroyChild) {
         var list = this.list;
 
-        if (destroyChild)
-        {
-            for (var i = 0; i < list.length; i++)
-            {
-                if (list[i] && list[i].scene)
-                {
+        if (destroyChild) {
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] && list[i].scene) {
                     list[i].off(Events.DESTROY, this.onChildDestroyed, this);
 
                     list[i].destroy();
@@ -977,9 +928,7 @@ var Container = new Class({
             }
 
             this.list = [];
-        }
-        else
-        {
+        } else {
             ArrayUtils.RemoveBetween(list, 0, list.length, this.removeHandler, this);
         }
 
@@ -1000,8 +949,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    bringToTop: function (child)
-    {
+    bringToTop: function (child) {
         ArrayUtils.BringToTop(this.list, child);
 
         return this;
@@ -1021,8 +969,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    sendToBack: function (child)
-    {
+    sendToBack: function (child) {
         ArrayUtils.SendToBack(this.list, child);
 
         return this;
@@ -1041,8 +988,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    moveUp: function (child)
-    {
+    moveUp: function (child) {
         ArrayUtils.MoveUp(this.list, child);
 
         return this;
@@ -1061,8 +1007,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    moveDown: function (child)
-    {
+    moveDown: function (child) {
         ArrayUtils.MoveDown(this.list, child);
 
         return this;
@@ -1076,8 +1021,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    reverse: function ()
-    {
+    reverse: function () {
         this.list.reverse();
 
         return this;
@@ -1091,8 +1035,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    shuffle: function ()
-    {
+    shuffle: function () {
         ArrayUtils.Shuffle(this.list);
 
         return this;
@@ -1114,17 +1057,14 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    replace: function (oldChild, newChild, destroyChild)
-    {
+    replace: function (oldChild, newChild, destroyChild) {
         var moved = ArrayUtils.Replace(this.list, oldChild, newChild);
 
-        if (moved)
-        {
+        if (moved) {
             this.addHandler(newChild);
             this.removeHandler(oldChild);
 
-            if (destroyChild)
-            {
+            if (destroyChild) {
                 oldChild.destroy();
             }
         }
@@ -1147,8 +1087,7 @@ var Container = new Class({
      *
      * @return {boolean} True if the Game Object is an immediate child of this Container, otherwise false.
      */
-    exists: function (child)
-    {
+    exists: function (child) {
         return (this.list.indexOf(child) > -1);
     },
 
@@ -1169,8 +1108,7 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    setAll: function (property, value, startIndex, endIndex)
-    {
+    setAll: function (property, value, startIndex, endIndex) {
         ArrayUtils.SetAll(this.list, property, value, startIndex, endIndex);
 
         return this;
@@ -1202,20 +1140,17 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    each: function (callback, context)
-    {
-        var args = [ null ];
+    each: function (callback, context) {
+        var args = [null];
         var i;
         var temp = this.list.slice();
         var len = temp.length;
 
-        for (i = 2; i < arguments.length; i++)
-        {
+        for (i = 2; i < arguments.length; i++) {
             args.push(arguments[i]);
         }
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             args[0] = temp[i];
 
             callback.apply(context, args);
@@ -1239,18 +1174,15 @@ var Container = new Class({
      *
      * @return {this} This Container instance.
      */
-    iterate: function (callback, context)
-    {
-        var args = [ null ];
+    iterate: function (callback, context) {
+        var args = [null];
         var i;
 
-        for (i = 2; i < arguments.length; i++)
-        {
+        for (i = 2; i < arguments.length; i++) {
             args.push(arguments[i]);
         }
 
-        for (i = 0; i < this.list.length; i++)
-        {
+        for (i = 0; i < this.list.length; i++) {
             args[0] = this.list[i];
 
             callback.apply(context, args);
@@ -1285,16 +1217,18 @@ var Container = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setScrollFactor: function (x, y, updateChildren)
-    {
-        if (y === undefined) { y = x; }
-        if (updateChildren === undefined) { updateChildren = false; }
+    setScrollFactor: function (x, y, updateChildren) {
+        if (y === undefined) {
+            y = x;
+        }
+        if (updateChildren === undefined) {
+            updateChildren = false;
+        }
 
         this.scrollFactorX = x;
         this.scrollFactorY = y;
 
-        if (updateChildren)
-        {
+        if (updateChildren) {
             ArrayUtils.SetAll(this.list, 'scrollFactorX', x);
             ArrayUtils.SetAll(this.list, 'scrollFactorY', y);
         }
@@ -1312,8 +1246,7 @@ var Container = new Class({
      */
     length: {
 
-        get: function ()
-        {
+        get: function () {
             return this.list.length;
         }
 
@@ -1331,16 +1264,12 @@ var Container = new Class({
      */
     first: {
 
-        get: function ()
-        {
+        get: function () {
             this.position = 0;
 
-            if (this.list.length > 0)
-            {
+            if (this.list.length > 0) {
                 return this.list[0];
-            }
-            else
-            {
+            } else {
                 return null;
             }
         }
@@ -1359,16 +1288,12 @@ var Container = new Class({
      */
     last: {
 
-        get: function ()
-        {
-            if (this.list.length > 0)
-            {
+        get: function () {
+            if (this.list.length > 0) {
                 this.position = this.list.length - 1;
 
                 return this.list[this.position];
-            }
-            else
-            {
+            } else {
                 return null;
             }
         }
@@ -1387,16 +1312,12 @@ var Container = new Class({
      */
     next: {
 
-        get: function ()
-        {
-            if (this.position < this.list.length)
-            {
+        get: function () {
+            if (this.position < this.list.length) {
                 this.position++;
 
                 return this.list[this.position];
-            }
-            else
-            {
+            } else {
                 return null;
             }
         }
@@ -1415,16 +1336,12 @@ var Container = new Class({
      */
     previous: {
 
-        get: function ()
-        {
-            if (this.position > 0)
-            {
+        get: function () {
+            if (this.position > 0) {
                 this.position--;
 
                 return this.list[this.position];
-            }
-            else
-            {
+            } else {
                 return null;
             }
         }
@@ -1438,8 +1355,7 @@ var Container = new Class({
      * @protected
      * @since 3.9.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.removeAll(!!this.exclusive);
 
         this.localTransform.destroy();
@@ -1454,12 +1370,10 @@ var Container = new Class({
      * @protected
      * @since 3.80.0
      */
-    onChildDestroyed: function (gameObject)
-    {
+    onChildDestroyed: function (gameObject) {
         ArrayUtils.Remove(this.list, gameObject);
 
-        if (this.exclusive)
-        {
+        if (this.exclusive) {
             gameObject.parentContainer = null;
 
             gameObject.removedFromScene();

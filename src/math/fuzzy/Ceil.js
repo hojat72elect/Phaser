@@ -15,9 +15,10 @@
  *
  * @return {number} The fuzzy ceiling of the value.
  */
-var Ceil = function (value, epsilon)
-{
-    if (epsilon === undefined) { epsilon = 0.0001; }
+var Ceil = function (value, epsilon) {
+    if (epsilon === undefined) {
+        epsilon = 0.0001;
+    }
 
     return Math.ceil(value - epsilon);
 };

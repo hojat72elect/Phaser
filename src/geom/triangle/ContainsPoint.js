@@ -17,8 +17,7 @@ var Contains = require('./Contains');
  *
  * @return {boolean} `true` if the point is within the triangle, otherwise `false`.
  */
-var ContainsPoint = function (triangle, point)
-{
+var ContainsPoint = function (triangle, point) {
     return Contains(triangle, point.x, point.y);
 };
 

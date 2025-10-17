@@ -34,84 +34,81 @@ var DataManager = new Class({
 
     initialize:
 
-    function DataManager (parent, eventEmitter)
-    {
-        /**
-         * The object that this DataManager belongs to.
-         *
-         * @name Phaser.Data.DataManager#parent
-         * @type {*}
-         * @since 3.0.0
-         */
-        this.parent = parent;
+        function DataManager(parent, eventEmitter) {
+            /**
+             * The object that this DataManager belongs to.
+             *
+             * @name Phaser.Data.DataManager#parent
+             * @type {*}
+             * @since 3.0.0
+             */
+            this.parent = parent;
 
-        /**
-         * The DataManager's event emitter.
-         *
-         * @name Phaser.Data.DataManager#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.0.0
-         */
-        this.events = eventEmitter;
+            /**
+             * The DataManager's event emitter.
+             *
+             * @name Phaser.Data.DataManager#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.0.0
+             */
+            this.events = eventEmitter;
 
-        if (!eventEmitter)
-        {
-            this.events = (parent.events) ? parent.events : parent;
-        }
+            if (!eventEmitter) {
+                this.events = (parent.events) ? parent.events : parent;
+            }
 
-        /**
-         * The data list.
-         *
-         * @name Phaser.Data.DataManager#list
-         * @type {Object.<string, *>}
-         * @default {}
-         * @since 3.0.0
-         */
-        this.list = {};
+            /**
+             * The data list.
+             *
+             * @name Phaser.Data.DataManager#list
+             * @type {Object.<string, *>}
+             * @default {}
+             * @since 3.0.0
+             */
+            this.list = {};
 
-        /**
-         * The public values list. You can use this to access anything you have stored
-         * in this Data Manager. For example, if you set a value called `gold` you can
-         * access it via:
-         *
-         * ```javascript
-         * this.data.values.gold;
-         * ```
-         *
-         * You can also modify it directly:
-         *
-         * ```javascript
-         * this.data.values.gold += 1000;
-         * ```
-         *
-         * Doing so will emit a `setdata` event from the parent of this Data Manager.
-         *
-         * Do not modify this object directly. Adding properties directly to this object will not
-         * emit any events. Always use `DataManager.set` to create new items the first time around.
-         *
-         * @name Phaser.Data.DataManager#values
-         * @type {Object.<string, *>}
-         * @default {}
-         * @since 3.10.0
-         */
-        this.values = {};
+            /**
+             * The public values list. You can use this to access anything you have stored
+             * in this Data Manager. For example, if you set a value called `gold` you can
+             * access it via:
+             *
+             * ```javascript
+             * this.data.values.gold;
+             * ```
+             *
+             * You can also modify it directly:
+             *
+             * ```javascript
+             * this.data.values.gold += 1000;
+             * ```
+             *
+             * Doing so will emit a `setdata` event from the parent of this Data Manager.
+             *
+             * Do not modify this object directly. Adding properties directly to this object will not
+             * emit any events. Always use `DataManager.set` to create new items the first time around.
+             *
+             * @name Phaser.Data.DataManager#values
+             * @type {Object.<string, *>}
+             * @default {}
+             * @since 3.10.0
+             */
+            this.values = {};
 
-        /**
-         * Whether setting data is frozen for this DataManager.
-         *
-         * @name Phaser.Data.DataManager#_frozen
-         * @type {boolean}
-         * @private
-         * @default false
-         * @since 3.0.0
-         */
-        this._frozen = false;
+            /**
+             * Whether setting data is frozen for this DataManager.
+             *
+             * @name Phaser.Data.DataManager#_frozen
+             * @type {boolean}
+             * @private
+             * @default false
+             * @since 3.0.0
+             */
+            this._frozen = false;
 
-        if (!parent.hasOwnProperty('sys') && this.events)
-        {
-            this.events.once(Events.DESTROY, this.destroy, this);
-        }
-    },
+            if (!parent.hasOwnProperty('sys') && this.events) {
+                this.events.once(Events.DESTROY, this.destroy, this);
+            }
+        },
 
     /**
      * Retrieves the value for the given key, or undefined if it doesn't exist.
@@ -143,23 +140,18 @@ var DataManager = new Class({
      *
      * @return {*} The value belonging to the given key, or an array of values, the order of which will match the input array.
      */
-    get: function (key)
-    {
+    get: function (key) {
         var list = this.list;
 
-        if (Array.isArray(key))
-        {
+        if (Array.isArray(key)) {
             var output = [];
 
-            for (var i = 0; i < key.length; i++)
-            {
+            for (var i = 0; i < key.length; i++) {
                 output.push(list[key[i]]);
             }
 
             return output;
-        }
-        else
-        {
+        } else {
             return list[key];
         }
     },
@@ -172,14 +164,11 @@ var DataManager = new Class({
      *
      * @return {Object.<string, *>} All data values.
      */
-    getAll: function ()
-    {
+    getAll: function () {
         var results = {};
 
-        for (var key in this.list)
-        {
-            if (this.list.hasOwnProperty(key))
-            {
+        for (var key in this.list) {
+            if (this.list.hasOwnProperty(key)) {
                 results[key] = this.list[key];
             }
         }
@@ -197,14 +186,11 @@ var DataManager = new Class({
      *
      * @return {Object.<string, *>} The values of the keys matching the search string.
      */
-    query: function (search)
-    {
+    query: function (search) {
         var results = {};
 
-        for (var key in this.list)
-        {
-            if (this.list.hasOwnProperty(key) && key.match(search))
-            {
+        for (var key in this.list) {
+            if (this.list.hasOwnProperty(key) && key.match(search)) {
                 results[key] = this.list[key];
             }
         }
@@ -260,21 +246,15 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    set: function (key, data)
-    {
-        if (this._frozen)
-        {
+    set: function (key, data) {
+        if (this._frozen) {
             return this;
         }
 
-        if (typeof key === 'string')
-        {
+        if (typeof key === 'string') {
             return this.setValue(key, data);
-        }
-        else
-        {
-            for (var entry in key)
-            {
+        } else {
+            for (var entry in key) {
                 this.setValue(entry, key[entry]);
             }
         }
@@ -298,22 +278,18 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    inc: function (key, amount)
-    {
-        if (this._frozen)
-        {
+    inc: function (key, amount) {
+        if (this._frozen) {
             return this;
         }
 
-        if (amount === undefined)
-        {
+        if (amount === undefined) {
             amount = 1;
         }
 
         var value = this.get(key);
 
-        if (value === undefined)
-        {
+        if (value === undefined) {
             value = 0;
         }
 
@@ -337,10 +313,8 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    toggle: function (key)
-    {
-        if (this._frozen)
-        {
+    toggle: function (key) {
+        if (this._frozen) {
             return this;
         }
 
@@ -364,20 +338,15 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    setValue: function (key, data)
-    {
-        if (this._frozen)
-        {
+    setValue: function (key, data) {
+        if (this._frozen) {
             return this;
         }
 
-        if (this.has(key))
-        {
+        if (this.has(key)) {
             //  Hit the key getter, which will in turn emit the events.
             this.values[key] = data;
-        }
-        else
-        {
+        } else {
             var _this = this;
             var list = this.list;
             var events = this.events;
@@ -389,15 +358,12 @@ var DataManager = new Class({
 
                 configurable: true,
 
-                get: function ()
-                {
+                get: function () {
                     return list[key];
                 },
 
-                set: function (value)
-                {
-                    if (!_this._frozen)
-                    {
+                set: function (value) {
+                    if (!_this._frozen) {
                         var previousValue = list[key];
                         list[key] = value;
 
@@ -428,17 +394,14 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    each: function (callback, context)
-    {
-        var args = [ this.parent, null, undefined ];
+    each: function (callback, context) {
+        var args = [this.parent, null, undefined];
 
-        for (var i = 1; i < arguments.length; i++)
-        {
+        for (var i = 1; i < arguments.length; i++) {
             args.push(arguments[i]);
         }
 
-        for (var key in this.list)
-        {
+        for (var key in this.list) {
             args[1] = key;
             args[2] = this.list[key];
 
@@ -465,15 +428,14 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    merge: function (data, overwrite)
-    {
-        if (overwrite === undefined) { overwrite = true; }
+    merge: function (data, overwrite) {
+        if (overwrite === undefined) {
+            overwrite = true;
+        }
 
         //  Merge data from another component into this one
-        for (var key in data)
-        {
-            if (data.hasOwnProperty(key) && (overwrite || (!overwrite && !this.has(key))))
-            {
+        for (var key in data) {
+            if (data.hasOwnProperty(key) && (overwrite || (!overwrite && !this.has(key)))) {
                 this.setValue(key, data[key]);
             }
         }
@@ -501,22 +463,16 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    remove: function (key)
-    {
-        if (this._frozen)
-        {
+    remove: function (key) {
+        if (this._frozen) {
             return this;
         }
 
-        if (Array.isArray(key))
-        {
-            for (var i = 0; i < key.length; i++)
-            {
+        if (Array.isArray(key)) {
+            for (var i = 0; i < key.length; i++) {
                 this.removeValue(key[i]);
             }
-        }
-        else
-        {
+        } else {
             return this.removeValue(key);
         }
 
@@ -535,10 +491,8 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    removeValue: function (key)
-    {
-        if (this.has(key))
-        {
+    removeValue: function (key) {
+        if (this.has(key)) {
             var data = this.list[key];
 
             delete this.list[key];
@@ -561,12 +515,10 @@ var DataManager = new Class({
      *
      * @return {*} The value of the given key.
      */
-    pop: function (key)
-    {
+    pop: function (key) {
         var data = undefined;
 
-        if (!this._frozen && this.has(key))
-        {
+        if (!this._frozen && this.has(key)) {
             data = this.list[key];
 
             delete this.list[key];
@@ -591,8 +543,7 @@ var DataManager = new Class({
      *
      * @return {boolean} Returns `true` if the key exists, otherwise `false`.
      */
-    has: function (key)
-    {
+    has: function (key) {
         return this.list.hasOwnProperty(key);
     },
 
@@ -607,8 +558,7 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    setFreeze: function (value)
-    {
+    setFreeze: function (value) {
         this._frozen = value;
 
         return this;
@@ -622,10 +572,8 @@ var DataManager = new Class({
      *
      * @return {this} This Data Manager instance.
      */
-    reset: function ()
-    {
-        for (var key in this.list)
-        {
+    reset: function () {
+        for (var key in this.list) {
             delete this.list[key];
             delete this.values[key];
         }
@@ -641,8 +589,7 @@ var DataManager = new Class({
      * @method Phaser.Data.DataManager#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.reset();
 
         this.events.off(Events.CHANGE_DATA);
@@ -662,13 +609,11 @@ var DataManager = new Class({
      */
     freeze: {
 
-        get: function ()
-        {
+        get: function () {
             return this._frozen;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._frozen = (value) ? true : false;
         }
 
@@ -683,14 +628,11 @@ var DataManager = new Class({
      */
     count: {
 
-        get: function ()
-        {
+        get: function () {
             var i = 0;
 
-            for (var key in this.list)
-            {
-                if (this.list[key] !== undefined)
-                {
+            for (var key in this.list) {
+                if (this.list[key] !== undefined) {
                     i++;
                 }
             }

@@ -20,15 +20,13 @@ var Utils = require('../../renderer/webgl/Utils');
  * @param {number} dx - The source displayOriginX.
  * @param {number} dy - The source displayOriginY.
  */
-var FillPathWebGL = function (pipeline, calcMatrix, src, alpha, dx, dy)
-{
+var FillPathWebGL = function (pipeline, calcMatrix, src, alpha, dx, dy) {
     var fillTintColor = Utils.getTintAppendFloatAlpha(src.fillColor, src.fillAlpha * alpha);
 
     var path = src.pathData;
     var pathIndexes = src.pathIndexes;
 
-    for (var i = 0; i < pathIndexes.length; i += 3)
-    {
+    for (var i = 0; i < pathIndexes.length; i += 3) {
         var p0 = pathIndexes[i] * 2;
         var p1 = pathIndexes[i + 1] * 2;
         var p2 = pathIndexes[i + 2] * 2;

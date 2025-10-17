@@ -42,444 +42,443 @@ var AnimationState = new Class({
 
     initialize:
 
-    function AnimationState (parent)
-    {
-        /**
-         * The Game Object to which this animation component belongs.
-         *
-         * You can typically access this component from the Game Object
-         * via the `this.anims` property.
-         *
-         * @name Phaser.Animations.AnimationState#parent
-         * @type {Phaser.GameObjects.GameObject}
-         * @since 3.0.0
-         */
-        this.parent = parent;
+        function AnimationState(parent) {
+            /**
+             * The Game Object to which this animation component belongs.
+             *
+             * You can typically access this component from the Game Object
+             * via the `this.anims` property.
+             *
+             * @name Phaser.Animations.AnimationState#parent
+             * @type {Phaser.GameObjects.GameObject}
+             * @since 3.0.0
+             */
+            this.parent = parent;
 
-        /**
-         * A reference to the global Animation Manager.
-         *
-         * @name Phaser.Animations.AnimationState#animationManager
-         * @type {Phaser.Animations.AnimationManager}
-         * @since 3.0.0
-         */
-        this.animationManager = parent.scene.sys.anims;
+            /**
+             * A reference to the global Animation Manager.
+             *
+             * @name Phaser.Animations.AnimationState#animationManager
+             * @type {Phaser.Animations.AnimationManager}
+             * @since 3.0.0
+             */
+            this.animationManager = parent.scene.sys.anims;
 
-        this.animationManager.on(Events.REMOVE_ANIMATION, this.globalRemove, this);
+            this.animationManager.on(Events.REMOVE_ANIMATION, this.globalRemove, this);
 
-        /**
-         * A reference to the Texture Manager.
-         *
-         * @name Phaser.Animations.AnimationState#textureManager
-         * @type {Phaser.Textures.TextureManager}
-         * @protected
-         * @since 3.50.0
-         */
-        this.textureManager = this.animationManager.textureManager;
+            /**
+             * A reference to the Texture Manager.
+             *
+             * @name Phaser.Animations.AnimationState#textureManager
+             * @type {Phaser.Textures.TextureManager}
+             * @protected
+             * @since 3.50.0
+             */
+            this.textureManager = this.animationManager.textureManager;
 
-        /**
-         * The Animations stored locally in this Animation component.
-         *
-         * Do not modify the contents of this Map directly, instead use the
-         * `add`, `create` and `remove` methods of this class instead.
-         *
-         * @name Phaser.Animations.AnimationState#anims
-         * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
-         * @protected
-         * @since 3.50.0
-         */
-        this.anims = null;
+            /**
+             * The Animations stored locally in this Animation component.
+             *
+             * Do not modify the contents of this Map directly, instead use the
+             * `add`, `create` and `remove` methods of this class instead.
+             *
+             * @name Phaser.Animations.AnimationState#anims
+             * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
+             * @protected
+             * @since 3.50.0
+             */
+            this.anims = null;
 
-        /**
-         * Is an animation currently playing or not?
-         *
-         * @name Phaser.Animations.AnimationState#isPlaying
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.isPlaying = false;
+            /**
+             * Is an animation currently playing or not?
+             *
+             * @name Phaser.Animations.AnimationState#isPlaying
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.isPlaying = false;
 
-        /**
-         * Has the current animation started playing, or is it waiting for a delay to expire?
-         *
-         * @name Phaser.Animations.AnimationState#hasStarted
-         * @type {boolean}
-         * @default false
-         * @since 3.50.0
-         */
-        this.hasStarted = false;
+            /**
+             * Has the current animation started playing, or is it waiting for a delay to expire?
+             *
+             * @name Phaser.Animations.AnimationState#hasStarted
+             * @type {boolean}
+             * @default false
+             * @since 3.50.0
+             */
+            this.hasStarted = false;
 
-        /**
-         * The current Animation loaded into this Animation component.
-         *
-         * Will be `null` if no animation is yet loaded.
-         *
-         * @name Phaser.Animations.AnimationState#currentAnim
-         * @type {?Phaser.Animations.Animation}
-         * @default null
-         * @since 3.0.0
-         */
-        this.currentAnim = null;
+            /**
+             * The current Animation loaded into this Animation component.
+             *
+             * Will be `null` if no animation is yet loaded.
+             *
+             * @name Phaser.Animations.AnimationState#currentAnim
+             * @type {?Phaser.Animations.Animation}
+             * @default null
+             * @since 3.0.0
+             */
+            this.currentAnim = null;
 
-        /**
-         * The current AnimationFrame being displayed by this Animation component.
-         *
-         * Will be `null` if no animation is yet loaded.
-         *
-         * @name Phaser.Animations.AnimationState#currentFrame
-         * @type {?Phaser.Animations.AnimationFrame}
-         * @default null
-         * @since 3.0.0
-         */
-        this.currentFrame = null;
+            /**
+             * The current AnimationFrame being displayed by this Animation component.
+             *
+             * Will be `null` if no animation is yet loaded.
+             *
+             * @name Phaser.Animations.AnimationState#currentFrame
+             * @type {?Phaser.Animations.AnimationFrame}
+             * @default null
+             * @since 3.0.0
+             */
+            this.currentFrame = null;
 
-        /**
-         * The key, instance, or config of the next Animation to be loaded into this Animation component
-         * when the current animation completes.
-         *
-         * Will be `null` if no animation has been queued.
-         *
-         * @name Phaser.Animations.AnimationState#nextAnim
-         * @type {?(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)}
-         * @default null
-         * @since 3.16.0
-         */
-        this.nextAnim = null;
+            /**
+             * The key, instance, or config of the next Animation to be loaded into this Animation component
+             * when the current animation completes.
+             *
+             * Will be `null` if no animation has been queued.
+             *
+             * @name Phaser.Animations.AnimationState#nextAnim
+             * @type {?(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)}
+             * @default null
+             * @since 3.16.0
+             */
+            this.nextAnim = null;
 
-        /**
-         * A queue of Animations to be loaded into this Animation component when the current animation completes.
-         *
-         * Populate this queue via the `chain` method.
-         *
-         * @name Phaser.Animations.AnimationState#nextAnimsQueue
-         * @type {array}
-         * @since 3.24.0
-         */
-        this.nextAnimsQueue = [];
+            /**
+             * A queue of Animations to be loaded into this Animation component when the current animation completes.
+             *
+             * Populate this queue via the `chain` method.
+             *
+             * @name Phaser.Animations.AnimationState#nextAnimsQueue
+             * @type {array}
+             * @since 3.24.0
+             */
+            this.nextAnimsQueue = [];
 
-        /**
-         * The Time Scale factor.
-         *
-         * You can adjust this value to modify the passage of time for the animation that is currently
-         * playing. For example, setting it to 2 will make the animation play twice as fast. Or setting
-         * it to 0.5 will slow the animation down.
-         *
-         * You can change this value at run-time, or set it via the `PlayAnimationConfig`.
-         *
-         * Prior to Phaser 3.50 this property was private and called `_timeScale`.
-         *
-         * @name Phaser.Animations.AnimationState#timeScale
-         * @type {number}
-         * @default 1
-         * @since 3.50.0
-         */
-        this.timeScale = 1;
+            /**
+             * The Time Scale factor.
+             *
+             * You can adjust this value to modify the passage of time for the animation that is currently
+             * playing. For example, setting it to 2 will make the animation play twice as fast. Or setting
+             * it to 0.5 will slow the animation down.
+             *
+             * You can change this value at run-time, or set it via the `PlayAnimationConfig`.
+             *
+             * Prior to Phaser 3.50 this property was private and called `_timeScale`.
+             *
+             * @name Phaser.Animations.AnimationState#timeScale
+             * @type {number}
+             * @default 1
+             * @since 3.50.0
+             */
+            this.timeScale = 1;
 
-        /**
-         * The frame rate of playback, of the current animation, in frames per second.
-         *
-         * This value is set when a new animation is loaded into this component and should
-         * be treated as read-only, as changing it once playback has started will not alter
-         * the animation. To change the frame rate, provide a new value in the `PlayAnimationConfig` object.
-         *
-         * @name Phaser.Animations.AnimationState#frameRate
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.frameRate = 0;
+            /**
+             * The frame rate of playback, of the current animation, in frames per second.
+             *
+             * This value is set when a new animation is loaded into this component and should
+             * be treated as read-only, as changing it once playback has started will not alter
+             * the animation. To change the frame rate, provide a new value in the `PlayAnimationConfig` object.
+             *
+             * @name Phaser.Animations.AnimationState#frameRate
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.frameRate = 0;
 
-        /**
-         * The duration of the current animation, in milliseconds.
-         *
-         * This value is set when a new animation is loaded into this component and should
-         * be treated as read-only, as changing it once playback has started will not alter
-         * the animation. To change the duration, provide a new value in the `PlayAnimationConfig` object.
-         *
-         * @name Phaser.Animations.AnimationState#duration
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.duration = 0;
+            /**
+             * The duration of the current animation, in milliseconds.
+             *
+             * This value is set when a new animation is loaded into this component and should
+             * be treated as read-only, as changing it once playback has started will not alter
+             * the animation. To change the duration, provide a new value in the `PlayAnimationConfig` object.
+             *
+             * @name Phaser.Animations.AnimationState#duration
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.duration = 0;
 
-        /**
-         * The number of milliseconds per frame, not including frame specific modifiers that may be present in the
-         * Animation data.
-         *
-         * This value is calculated when a new animation is loaded into this component and should
-         * be treated as read-only. Changing it will not alter playback speed.
-         *
-         * @name Phaser.Animations.AnimationState#msPerFrame
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.msPerFrame = 0;
+            /**
+             * The number of milliseconds per frame, not including frame specific modifiers that may be present in the
+             * Animation data.
+             *
+             * This value is calculated when a new animation is loaded into this component and should
+             * be treated as read-only. Changing it will not alter playback speed.
+             *
+             * @name Phaser.Animations.AnimationState#msPerFrame
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.msPerFrame = 0;
 
-        /**
-         * Skip frames if the time lags, or always advanced anyway?
-         *
-         * @name Phaser.Animations.AnimationState#skipMissedFrames
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.skipMissedFrames = true;
+            /**
+             * Skip frames if the time lags, or always advanced anyway?
+             *
+             * @name Phaser.Animations.AnimationState#skipMissedFrames
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.skipMissedFrames = true;
 
-        /**
-         * Start playback of this animation from a random frame?
-         *
-         * @name Phaser.Animations.AnimationState#randomFrame
-         * @type {boolean}
-         * @default false
-         * @since 3.60.0
-         */
-        this.randomFrame = false;
+            /**
+             * Start playback of this animation from a random frame?
+             *
+             * @name Phaser.Animations.AnimationState#randomFrame
+             * @type {boolean}
+             * @default false
+             * @since 3.60.0
+             */
+            this.randomFrame = false;
 
-        /**
-         * The delay before starting playback of the current animation, in milliseconds.
-         *
-         * This value is set when a new animation is loaded into this component and should
-         * be treated as read-only, as changing it once playback has started will not alter
-         * the animation. To change the delay, provide a new value in the `PlayAnimationConfig` object.
-         *
-         * Prior to Phaser 3.50 this property was private and called `_delay`.
-         *
-         * @name Phaser.Animations.AnimationState#delay
-         * @type {number}
-         * @default 0
-         * @since 3.50.0
-         */
-        this.delay = 0;
+            /**
+             * The delay before starting playback of the current animation, in milliseconds.
+             *
+             * This value is set when a new animation is loaded into this component and should
+             * be treated as read-only, as changing it once playback has started will not alter
+             * the animation. To change the delay, provide a new value in the `PlayAnimationConfig` object.
+             *
+             * Prior to Phaser 3.50 this property was private and called `_delay`.
+             *
+             * @name Phaser.Animations.AnimationState#delay
+             * @type {number}
+             * @default 0
+             * @since 3.50.0
+             */
+            this.delay = 0;
 
-        /**
-         * The number of times to repeat playback of the current animation.
-         *
-         * If -1, it means the animation will repeat forever.
-         *
-         * This value is set when a new animation is loaded into this component and should
-         * be treated as read-only, as changing it once playback has started will not alter
-         * the animation. To change the number of repeats, provide a new value in the `PlayAnimationConfig` object.
-         *
-         * Prior to Phaser 3.50 this property was private and called `_repeat`.
-         *
-         * @name Phaser.Animations.AnimationState#repeat
-         * @type {number}
-         * @default 0
-         * @since 3.50.0
-         */
-        this.repeat = 0;
+            /**
+             * The number of times to repeat playback of the current animation.
+             *
+             * If -1, it means the animation will repeat forever.
+             *
+             * This value is set when a new animation is loaded into this component and should
+             * be treated as read-only, as changing it once playback has started will not alter
+             * the animation. To change the number of repeats, provide a new value in the `PlayAnimationConfig` object.
+             *
+             * Prior to Phaser 3.50 this property was private and called `_repeat`.
+             *
+             * @name Phaser.Animations.AnimationState#repeat
+             * @type {number}
+             * @default 0
+             * @since 3.50.0
+             */
+            this.repeat = 0;
 
-        /**
-         * The number of milliseconds to wait before starting the repeat playback of the current animation.
-         *
-         * This value is set when a new animation is loaded into this component, but can also be modified
-         * at run-time.
-         *
-         * You can change the repeat delay by providing a new value in the `PlayAnimationConfig` object.
-         *
-         * Prior to Phaser 3.50 this property was private and called `_repeatDelay`.
-         *
-         * @name Phaser.Animations.AnimationState#repeatDelay
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.repeatDelay = 0;
+            /**
+             * The number of milliseconds to wait before starting the repeat playback of the current animation.
+             *
+             * This value is set when a new animation is loaded into this component, but can also be modified
+             * at run-time.
+             *
+             * You can change the repeat delay by providing a new value in the `PlayAnimationConfig` object.
+             *
+             * Prior to Phaser 3.50 this property was private and called `_repeatDelay`.
+             *
+             * @name Phaser.Animations.AnimationState#repeatDelay
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.repeatDelay = 0;
 
-        /**
-         * Should the current animation yoyo? An animation that yoyos will play in reverse, from the end
-         * to the start, before then repeating or completing. An animation that does not yoyo will just
-         * play from the start to the end.
-         *
-         * This value is set when a new animation is loaded into this component, but can also be modified
-         * at run-time.
-         *
-         * You can change the yoyo by providing a new value in the `PlayAnimationConfig` object.
-         *
-         * Prior to Phaser 3.50 this property was private and called `_yoyo`.
-         *
-         * @name Phaser.Animations.AnimationState#yoyo
-         * @type {boolean}
-         * @default false
-         * @since 3.50.0
-         */
-        this.yoyo = false;
+            /**
+             * Should the current animation yoyo? An animation that yoyos will play in reverse, from the end
+             * to the start, before then repeating or completing. An animation that does not yoyo will just
+             * play from the start to the end.
+             *
+             * This value is set when a new animation is loaded into this component, but can also be modified
+             * at run-time.
+             *
+             * You can change the yoyo by providing a new value in the `PlayAnimationConfig` object.
+             *
+             * Prior to Phaser 3.50 this property was private and called `_yoyo`.
+             *
+             * @name Phaser.Animations.AnimationState#yoyo
+             * @type {boolean}
+             * @default false
+             * @since 3.50.0
+             */
+            this.yoyo = false;
 
-        /**
-         * If the animation has a delay set, before playback will begin, this
-         * controls when the first frame is set on the Sprite. If this property
-         * is 'false' then the frame is set only after the delay has expired.
-         * This is the default behavior.
-         *
-         * If this property is 'true' then the first frame of this animation
-         * is set immediately, and then when the delay expires, playback starts.
-         *
-         * @name Phaser.Animations.AnimationState#showBeforeDelay
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.showBeforeDelay = false;
+            /**
+             * If the animation has a delay set, before playback will begin, this
+             * controls when the first frame is set on the Sprite. If this property
+             * is 'false' then the frame is set only after the delay has expired.
+             * This is the default behavior.
+             *
+             * If this property is 'true' then the first frame of this animation
+             * is set immediately, and then when the delay expires, playback starts.
+             *
+             * @name Phaser.Animations.AnimationState#showBeforeDelay
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.showBeforeDelay = false;
 
-        /**
-         * Should the GameObject's `visible` property be set to `true` when the animation starts to play?
-         *
-         * This will happen _after_ any delay that may have been set.
-         *
-         * This value is set when a new animation is loaded into this component, but can also be modified
-         * at run-time, assuming the animation is currently delayed.
-         *
-         * @name Phaser.Animations.AnimationState#showOnStart
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.showOnStart = false;
+            /**
+             * Should the GameObject's `visible` property be set to `true` when the animation starts to play?
+             *
+             * This will happen _after_ any delay that may have been set.
+             *
+             * This value is set when a new animation is loaded into this component, but can also be modified
+             * at run-time, assuming the animation is currently delayed.
+             *
+             * @name Phaser.Animations.AnimationState#showOnStart
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.showOnStart = false;
 
-        /**
-         * Should the GameObject's `visible` property be set to `false` when the animation completes?
-         *
-         * This value is set when a new animation is loaded into this component, but can also be modified
-         * at run-time, assuming the animation is still actively playing.
-         *
-         * @name Phaser.Animations.AnimationState#hideOnComplete
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.hideOnComplete = false;
+            /**
+             * Should the GameObject's `visible` property be set to `false` when the animation completes?
+             *
+             * This value is set when a new animation is loaded into this component, but can also be modified
+             * at run-time, assuming the animation is still actively playing.
+             *
+             * @name Phaser.Animations.AnimationState#hideOnComplete
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.hideOnComplete = false;
 
-        /**
-         * Is the playhead moving forwards (`true`) or in reverse (`false`) ?
-         *
-         * @name Phaser.Animations.AnimationState#forward
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.forward = true;
+            /**
+             * Is the playhead moving forwards (`true`) or in reverse (`false`) ?
+             *
+             * @name Phaser.Animations.AnimationState#forward
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.forward = true;
 
-        /**
-         * An internal trigger that tells the component if it should plays the animation
-         * in reverse mode ('true') or not ('false'). This is used because `forward` can
-         * be changed by the `yoyo` feature.
-         *
-         * Prior to Phaser 3.50 this property was private and called `_reverse`.
-         *
-         * @name Phaser.Animations.AnimationState#inReverse
-         * @type {boolean}
-         * @default false
-         * @since 3.50.0
-         */
-        this.inReverse = false;
+            /**
+             * An internal trigger that tells the component if it should plays the animation
+             * in reverse mode ('true') or not ('false'). This is used because `forward` can
+             * be changed by the `yoyo` feature.
+             *
+             * Prior to Phaser 3.50 this property was private and called `_reverse`.
+             *
+             * @name Phaser.Animations.AnimationState#inReverse
+             * @type {boolean}
+             * @default false
+             * @since 3.50.0
+             */
+            this.inReverse = false;
 
-        /**
-         * Internal time overflow accumulator.
-         *
-         * This has the `delta` time added to it as part of the `update` step.
-         *
-         * @name Phaser.Animations.AnimationState#accumulator
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.accumulator = 0;
+            /**
+             * Internal time overflow accumulator.
+             *
+             * This has the `delta` time added to it as part of the `update` step.
+             *
+             * @name Phaser.Animations.AnimationState#accumulator
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.accumulator = 0;
 
-        /**
-         * The time point at which the next animation frame will change.
-         *
-         * This value is compared against the `accumulator` as part of the `update` step.
-         *
-         * @name Phaser.Animations.AnimationState#nextTick
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.nextTick = 0;
+            /**
+             * The time point at which the next animation frame will change.
+             *
+             * This value is compared against the `accumulator` as part of the `update` step.
+             *
+             * @name Phaser.Animations.AnimationState#nextTick
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.nextTick = 0;
 
-        /**
-         * A counter keeping track of how much delay time, in milliseconds, is left before playback begins.
-         *
-         * This is set via the `playAfterDelay` method, although it can be modified at run-time
-         * if required, as long as the animation has not already started playing.
-         *
-         * @name Phaser.Animations.AnimationState#delayCounter
-         * @type {number}
-         * @default 0
-         * @since 3.50.0
-         */
-        this.delayCounter = 0;
+            /**
+             * A counter keeping track of how much delay time, in milliseconds, is left before playback begins.
+             *
+             * This is set via the `playAfterDelay` method, although it can be modified at run-time
+             * if required, as long as the animation has not already started playing.
+             *
+             * @name Phaser.Animations.AnimationState#delayCounter
+             * @type {number}
+             * @default 0
+             * @since 3.50.0
+             */
+            this.delayCounter = 0;
 
-        /**
-         * A counter that keeps track of how many repeats are left to run.
-         *
-         * This value is set when a new animation is loaded into this component, but can also be modified
-         * at run-time.
-         *
-         * @name Phaser.Animations.AnimationState#repeatCounter
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.repeatCounter = 0;
+            /**
+             * A counter that keeps track of how many repeats are left to run.
+             *
+             * This value is set when a new animation is loaded into this component, but can also be modified
+             * at run-time.
+             *
+             * @name Phaser.Animations.AnimationState#repeatCounter
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.repeatCounter = 0;
 
-        /**
-         * An internal flag keeping track of pending repeats.
-         *
-         * @name Phaser.Animations.AnimationState#pendingRepeat
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.pendingRepeat = false;
+            /**
+             * An internal flag keeping track of pending repeats.
+             *
+             * @name Phaser.Animations.AnimationState#pendingRepeat
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.pendingRepeat = false;
 
-        /**
-         * Is the Animation paused?
-         *
-         * @name Phaser.Animations.AnimationState#_paused
-         * @type {boolean}
-         * @private
-         * @default false
-         * @since 3.0.0
-         */
-        this._paused = false;
+            /**
+             * Is the Animation paused?
+             *
+             * @name Phaser.Animations.AnimationState#_paused
+             * @type {boolean}
+             * @private
+             * @default false
+             * @since 3.0.0
+             */
+            this._paused = false;
 
-        /**
-         * Was the animation previously playing before being paused?
-         *
-         * @name Phaser.Animations.AnimationState#_wasPlaying
-         * @type {boolean}
-         * @private
-         * @default false
-         * @since 3.0.0
-         */
-        this._wasPlaying = false;
+            /**
+             * Was the animation previously playing before being paused?
+             *
+             * @name Phaser.Animations.AnimationState#_wasPlaying
+             * @type {boolean}
+             * @private
+             * @default false
+             * @since 3.0.0
+             */
+            this._wasPlaying = false;
 
-        /**
-         * Internal property tracking if this Animation is waiting to stop.
-         *
-         * 0 = No
-         * 1 = Waiting for ms to pass
-         * 2 = Waiting for repeat
-         * 3 = Waiting for specific frame
-         *
-         * @name Phaser.Animations.AnimationState#_pendingStop
-         * @type {number}
-         * @private
-         * @since 3.4.0
-         */
-        this._pendingStop = 0;
+            /**
+             * Internal property tracking if this Animation is waiting to stop.
+             *
+             * 0 = No
+             * 1 = Waiting for ms to pass
+             * 2 = Waiting for repeat
+             * 3 = Waiting for specific frame
+             *
+             * @name Phaser.Animations.AnimationState#_pendingStop
+             * @type {number}
+             * @private
+             * @since 3.4.0
+             */
+            this._pendingStop = 0;
 
-        /**
-         * Internal property used by _pendingStop.
-         *
-         * @name Phaser.Animations.AnimationState#_pendingStopValue
-         * @type {any}
-         * @private
-         * @since 3.4.0
-         */
-        this._pendingStopValue;
-    },
+            /**
+             * Internal property used by _pendingStop.
+             *
+             * @name Phaser.Animations.AnimationState#_pendingStopValue
+             * @type {any}
+             * @private
+             * @since 3.4.0
+             */
+            this._pendingStopValue;
+        },
 
     /**
      * Sets an animation, or an array of animations, to be played in the future, after the current one completes or stops.
@@ -502,33 +501,26 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    chain: function (key)
-    {
+    chain: function (key) {
         var parent = this.parent;
 
-        if (key === undefined)
-        {
+        if (key === undefined) {
             this.nextAnimsQueue.length = 0;
             this.nextAnim = null;
 
             return parent;
         }
 
-        if (!Array.isArray(key))
-        {
-            key = [ key ];
+        if (!Array.isArray(key)) {
+            key = [key];
         }
 
-        for (var i = 0; i < key.length; i++)
-        {
+        for (var i = 0; i < key.length; i++) {
             var anim = key[i];
 
-            if (!this.nextAnim)
-            {
+            if (!this.nextAnim) {
                 this.nextAnim = anim;
-            }
-            else
-            {
+            } else {
                 this.nextAnimsQueue.push(anim);
             }
         }
@@ -546,8 +538,7 @@ var AnimationState = new Class({
      *
      * @return {string} The key of the Animation currently loaded into this component, or an empty string if none loaded.
      */
-    getName: function ()
-    {
+    getName: function () {
         return (this.currentAnim) ? this.currentAnim.key : '';
     },
 
@@ -559,8 +550,7 @@ var AnimationState = new Class({
      *
      * @return {string} The key of the Animation Frame currently displayed by this component, or an empty string if no animation has been loaded.
      */
-    getFrameName: function ()
-    {
+    getFrameName: function () {
         return (this.currentFrame) ? this.currentFrame.textureFrame : '';
     },
 
@@ -575,10 +565,8 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    load: function (key)
-    {
-        if (this.isPlaying)
-        {
+    load: function (key) {
+        if (this.isPlaying) {
             this.stop();
         }
 
@@ -588,12 +576,9 @@ var AnimationState = new Class({
         //  Get the animation, first from the local map and, if not found, from the Animation Manager
         var anim = (this.exists(animKey)) ? this.get(animKey) : manager.get(animKey);
 
-        if (!anim)
-        {
+        if (!anim) {
             console.warn('Missing animation: ' + animKey);
-        }
-        else
-        {
+        } else {
             this.currentAnim = anim;
 
             //  And now override the animation values, if set in the config.
@@ -618,20 +603,17 @@ var AnimationState = new Class({
 
             var startFrame = GetFastValue(key, 'startFrame', 0);
 
-            if (startFrame > totalFrames)
-            {
+            if (startFrame > totalFrames) {
                 startFrame = 0;
             }
 
-            if (this.randomFrame)
-            {
+            if (this.randomFrame) {
                 startFrame = Between(0, totalFrames - 1);
             }
 
             var frame = anim.frames[startFrame];
 
-            if (startFrame === 0 && !this.forward)
-            {
+            if (startFrame === 0 && !this.forward) {
                 frame = anim.getLastFrame();
             }
 
@@ -652,17 +634,14 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    pause: function (atFrame)
-    {
-        if (!this._paused)
-        {
+    pause: function (atFrame) {
+        if (!this._paused) {
             this._paused = true;
             this._wasPlaying = this.isPlaying;
             this.isPlaying = false;
         }
 
-        if (atFrame !== undefined)
-        {
+        if (atFrame !== undefined) {
             this.setCurrentFrame(atFrame);
         }
 
@@ -680,16 +659,13 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    resume: function (fromFrame)
-    {
-        if (this._paused)
-        {
+    resume: function (fromFrame) {
+        if (this._paused) {
             this._paused = false;
             this.isPlaying = this._wasPlaying;
         }
 
-        if (fromFrame !== undefined)
-        {
+        if (fromFrame !== undefined) {
             this.setCurrentFrame(fromFrame);
         }
 
@@ -717,22 +693,17 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    playAfterDelay: function (key, delay)
-    {
-        if (!this.isPlaying)
-        {
+    playAfterDelay: function (key, delay) {
+        if (!this.isPlaying) {
             this.delayCounter = delay;
 
             this.play(key, true);
-        }
-        else
-        {
+        } else {
             //  If we've got a nextAnim, move it to the queue
             var nextAnim = this.nextAnim;
             var queue = this.nextAnimsQueue;
 
-            if (nextAnim)
-            {
+            if (nextAnim) {
                 queue.unshift(nextAnim);
             }
 
@@ -763,27 +734,23 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    playAfterRepeat: function (key, repeatCount)
-    {
-        if (repeatCount === undefined) { repeatCount = 1; }
-
-        if (!this.isPlaying)
-        {
-            this.play(key);
+    playAfterRepeat: function (key, repeatCount) {
+        if (repeatCount === undefined) {
+            repeatCount = 1;
         }
-        else
-        {
+
+        if (!this.isPlaying) {
+            this.play(key);
+        } else {
             //  If we've got a nextAnim, move it to the queue
             var nextAnim = this.nextAnim;
             var queue = this.nextAnimsQueue;
 
-            if (nextAnim)
-            {
+            if (nextAnim) {
                 queue.unshift(nextAnim);
             }
 
-            if (this.repeatCounter !== -1 && repeatCount > this.repeatCounter)
-            {
+            if (this.repeatCounter !== -1 && repeatCount > this.repeatCounter) {
                 repeatCount = this.repeatCounter;
             }
 
@@ -856,9 +823,10 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    play: function (key, ignoreIfPlaying)
-    {
-        if (ignoreIfPlaying === undefined) { ignoreIfPlaying = false; }
+    play: function (key, ignoreIfPlaying) {
+        if (ignoreIfPlaying === undefined) {
+            ignoreIfPlaying = false;
+        }
 
         var currentAnim = this.currentAnim;
         var parent = this.parent;
@@ -866,18 +834,15 @@ var AnimationState = new Class({
         //  Must be either an Animation instance, or a PlayAnimationConfig object
         var animKey = (typeof key === 'string') ? key : key.key;
 
-        if (ignoreIfPlaying && this.isPlaying && currentAnim.key === animKey)
-        {
+        if (ignoreIfPlaying && this.isPlaying && currentAnim.key === animKey) {
             return parent;
         }
 
         //  Are we mixing?
-        if (currentAnim && this.isPlaying)
-        {
+        if (currentAnim && this.isPlaying) {
             var mix = this.animationManager.getMix(currentAnim.key, key);
 
-            if (mix > 0)
-            {
+            if (mix > 0) {
                 return this.playAfterDelay(key, mix);
             }
         }
@@ -951,15 +916,15 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    playReverse: function (key, ignoreIfPlaying)
-    {
-        if (ignoreIfPlaying === undefined) { ignoreIfPlaying = false; }
+    playReverse: function (key, ignoreIfPlaying) {
+        if (ignoreIfPlaying === undefined) {
+            ignoreIfPlaying = false;
+        }
 
         //  Must be either an Animation instance, or a PlayAnimationConfig object
         var animKey = (typeof key === 'string') ? key : key.key;
 
-        if (ignoreIfPlaying && this.isPlaying && this.currentAnim.key === animKey)
-        {
+        if (ignoreIfPlaying && this.isPlaying && this.currentAnim.key === animKey) {
             return this.parent;
         }
 
@@ -984,15 +949,13 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    startAnimation: function (key)
-    {
+    startAnimation: function (key) {
         this.load(key);
 
         var anim = this.currentAnim;
         var gameObject = this.parent;
 
-        if (!anim)
-        {
+        if (!anim) {
             return gameObject;
         }
 
@@ -1012,12 +975,9 @@ var AnimationState = new Class({
         //  Add any delay the animation itself may have had as well
         this.delayCounter += this.delay;
 
-        if (this.delayCounter === 0)
-        {
+        if (this.delayCounter === 0) {
             this.handleStart();
-        }
-        else if (this.showBeforeDelay)
-        {
+        } else if (this.showBeforeDelay) {
             //  We have a delay, but still need to set the frame
             this.setCurrentFrame(this.currentFrame);
         }
@@ -1032,10 +992,8 @@ var AnimationState = new Class({
      * @private
      * @since 3.50.0
      */
-    handleStart: function ()
-    {
-        if (this.showOnStart)
-        {
+    handleStart: function () {
+        if (this.showOnStart) {
             this.parent.setVisible(true);
         }
 
@@ -1053,8 +1011,7 @@ var AnimationState = new Class({
      * @private
      * @since 3.50.0
      */
-    handleRepeat: function ()
-    {
+    handleRepeat: function () {
         this.pendingRepeat = false;
 
         this.emitEvents(Events.ANIMATION_REPEAT);
@@ -1067,8 +1024,7 @@ var AnimationState = new Class({
      * @private
      * @since 3.50.0
      */
-    handleStop: function ()
-    {
+    handleStop: function () {
         this._pendingStop = 0;
 
         this.isPlaying = false;
@@ -1083,14 +1039,12 @@ var AnimationState = new Class({
      * @private
      * @since 3.50.0
      */
-    handleComplete: function ()
-    {
+    handleComplete: function () {
         this._pendingStop = 0;
 
         this.isPlaying = false;
 
-        if (this.hideOnComplete)
-        {
+        if (this.hideOnComplete) {
             this.parent.setVisible(false);
         }
 
@@ -1106,12 +1060,10 @@ var AnimationState = new Class({
      *
      * @param {string} event - The Animation Event to dispatch.
      */
-    emitEvents: function (event, keyEvent)
-    {
+    emitEvents: function (event, keyEvent) {
         var anim = this.currentAnim;
 
-        if (anim)
-        {
+        if (anim) {
             var frame = this.currentFrame;
 
             var gameObject = this.parent;
@@ -1120,8 +1072,7 @@ var AnimationState = new Class({
 
             gameObject.emit(event, anim, frame, gameObject, frameKey);
 
-            if (keyEvent)
-            {
+            if (keyEvent) {
                 gameObject.emit(keyEvent + anim.key, anim, frame, gameObject, frameKey);
             }
         }
@@ -1135,10 +1086,8 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    reverse: function ()
-    {
-        if (this.isPlaying)
-        {
+    reverse: function () {
+        if (this.isPlaying) {
             this.inReverse = !this.inReverse;
 
             this.forward = !this.forward;
@@ -1158,19 +1107,16 @@ var AnimationState = new Class({
      *
      * @return {number} The progress of the current animation in frames, between 0 and 1.
      */
-    getProgress: function ()
-    {
+    getProgress: function () {
         var frame = this.currentFrame;
 
-        if (!frame)
-        {
+        if (!frame) {
             return 0;
         }
 
         var p = frame.progress;
 
-        if (this.inReverse)
-        {
+        if (this.inReverse) {
             p *= -1;
         }
 
@@ -1192,10 +1138,8 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    setProgress: function (value)
-    {
-        if (!this.forward)
-        {
+    setProgress: function (value) {
+        if (!this.forward) {
             value = 1 - value;
         }
 
@@ -1222,8 +1166,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    setRepeat: function (value)
-    {
+    setRepeat: function (value) {
         this.repeatCounter = (value === -1) ? Number.MAX_VALUE : value;
 
         return this.parent;
@@ -1238,12 +1181,12 @@ var AnimationState = new Class({
      * @param {string} [key] - The key of the removed Animation.
      * @param {Phaser.Animations.Animation} [animation] - The removed Animation.
      */
-    globalRemove: function (key, animation)
-    {
-        if (animation === undefined) { animation = this.currentAnim; }
+    globalRemove: function (key, animation) {
+        if (animation === undefined) {
+            animation = this.currentAnim;
+        }
 
-        if (this.isPlaying && animation.key === this.currentAnim.key)
-        {
+        if (this.isPlaying && animation.key === this.currentAnim.key) {
             this.stop();
 
             this.setCurrentFrame(this.currentAnim.frames[0]);
@@ -1269,21 +1212,22 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    restart: function (includeDelay, resetRepeats)
-    {
-        if (includeDelay === undefined) { includeDelay = false; }
-        if (resetRepeats === undefined) { resetRepeats = false; }
+    restart: function (includeDelay, resetRepeats) {
+        if (includeDelay === undefined) {
+            includeDelay = false;
+        }
+        if (resetRepeats === undefined) {
+            resetRepeats = false;
+        }
 
         var anim = this.currentAnim;
         var gameObject = this.parent;
 
-        if (!anim)
-        {
+        if (!anim) {
             return gameObject;
         }
 
-        if (resetRepeats)
-        {
+        if (resetRepeats) {
             this.repeatCounter = (this.repeat === -1) ? Number.MAX_VALUE : this.repeat;
         }
 
@@ -1321,19 +1265,16 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    complete: function ()
-    {
+    complete: function () {
         this._pendingStop = 0;
 
         this.isPlaying = false;
 
-        if (this.currentAnim)
-        {
+        if (this.currentAnim) {
             this.handleComplete();
         }
 
-        if (this.nextAnim)
-        {
+        if (this.nextAnim) {
             var key = this.nextAnim;
 
             this.nextAnim = (this.nextAnimsQueue.length > 0) ? this.nextAnimsQueue.shift() : null;
@@ -1357,21 +1298,18 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    stop: function ()
-    {
+    stop: function () {
         this._pendingStop = 0;
 
         this.isPlaying = false;
 
         this.delayCounter = 0;
 
-        if (this.currentAnim)
-        {
+        if (this.currentAnim) {
             this.handleStop();
         }
 
-        if (this.nextAnim)
-        {
+        if (this.nextAnim) {
             var key = this.nextAnim;
 
             this.nextAnim = this.nextAnimsQueue.shift();
@@ -1400,8 +1338,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    stopAfterDelay: function (delay)
-    {
+    stopAfterDelay: function (delay) {
         this._pendingStop = 1;
         this._pendingStopValue = delay;
 
@@ -1428,12 +1365,12 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    stopAfterRepeat: function (repeatCount)
-    {
-        if (repeatCount === undefined) { repeatCount = 1; }
+    stopAfterRepeat: function (repeatCount) {
+        if (repeatCount === undefined) {
+            repeatCount = 1;
+        }
 
-        if (this.repeatCounter !== -1 && repeatCount > this.repeatCounter)
-        {
+        if (this.repeatCounter !== -1 && repeatCount > this.repeatCounter) {
             repeatCount = this.repeatCounter;
         }
 
@@ -1462,8 +1399,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
-    stopOnFrame: function (frame)
-    {
+    stopOnFrame: function (frame) {
         this._pendingStop = 3;
         this._pendingStopValue = frame;
 
@@ -1479,8 +1415,7 @@ var AnimationState = new Class({
      *
      * @return {number} The total number of frames in the current animation, or zero if no animation has been loaded.
      */
-    getTotalFrames: function ()
-    {
+    getTotalFrames: function () {
         return (this.currentAnim) ? this.currentAnim.getTotalFrames() : 0;
     },
 
@@ -1495,62 +1430,46 @@ var AnimationState = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
+    update: function (time, delta) {
         var anim = this.currentAnim;
 
-        if (!this.isPlaying || !anim || anim.paused)
-        {
+        if (!this.isPlaying || !anim || anim.paused) {
             return;
         }
 
         this.accumulator += delta * this.timeScale * this.animationManager.globalTimeScale;
 
-        if (this._pendingStop === 1)
-        {
+        if (this._pendingStop === 1) {
             this._pendingStopValue -= delta;
 
-            if (this._pendingStopValue <= 0)
-            {
+            if (this._pendingStopValue <= 0) {
                 return this.stop();
             }
         }
 
-        if (!this.hasStarted)
-        {
-            if (this.accumulator >= this.delayCounter)
-            {
+        if (!this.hasStarted) {
+            if (this.accumulator >= this.delayCounter) {
                 this.accumulator -= this.delayCounter;
 
                 this.handleStart();
             }
-        }
-        else if (this.accumulator >= this.nextTick)
-        {
+        } else if (this.accumulator >= this.nextTick) {
             //  Process one frame advance as standard
 
-            if (this.forward)
-            {
+            if (this.forward) {
                 anim.nextFrame(this);
-            }
-            else
-            {
+            } else {
                 anim.previousFrame(this);
             }
 
             //  And only do more if we're skipping frames and have time left
-            if (this.isPlaying && this._pendingStop === 0 && this.skipMissedFrames && this.accumulator > this.nextTick)
-            {
+            if (this.isPlaying && this._pendingStop === 0 && this.skipMissedFrames && this.accumulator > this.nextTick) {
                 var safetyNet = 0;
 
-                do
-                {
-                    if (this.forward)
-                    {
+                do {
+                    if (this.forward) {
                         anim.nextFrame(this);
-                    }
-                    else
-                    {
+                    } else {
                         anim.previousFrame(this);
                     }
 
@@ -1574,8 +1493,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
      */
-    setCurrentFrame: function (animationFrame)
-    {
+    setCurrentFrame: function (animationFrame) {
         var gameObject = this.parent;
 
         this.currentFrame = animationFrame;
@@ -1583,36 +1501,28 @@ var AnimationState = new Class({
         gameObject.texture = animationFrame.frame.texture;
         gameObject.frame = animationFrame.frame;
 
-        if (gameObject.isCropped)
-        {
+        if (gameObject.isCropped) {
             gameObject.frame.updateCropUVs(gameObject._crop, gameObject.flipX, gameObject.flipY);
         }
 
-        if (animationFrame.setAlpha)
-        {
+        if (animationFrame.setAlpha) {
             gameObject.alpha = animationFrame.alpha;
         }
 
         gameObject.setSizeToFrame();
 
-        if (gameObject._originComponent)
-        {
-            if (animationFrame.frame.customPivot)
-            {
+        if (gameObject._originComponent) {
+            if (animationFrame.frame.customPivot) {
                 gameObject.setOrigin(animationFrame.frame.pivotX, animationFrame.frame.pivotY);
-            }
-            else
-            {
+            } else {
                 gameObject.updateDisplayOrigin();
             }
         }
 
-        if (this.isPlaying && this.hasStarted)
-        {
+        if (this.isPlaying && this.hasStarted) {
             this.emitEvents(Events.ANIMATION_UPDATE);
 
-            if (this._pendingStop === 3 && this._pendingStopValue === animationFrame)
-            {
+            if (this._pendingStop === 3 && this._pendingStopValue === animationFrame) {
                 this.stop();
             }
         }
@@ -1632,10 +1542,8 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
      */
-    nextFrame: function ()
-    {
-        if (this.currentAnim)
-        {
+    nextFrame: function () {
+        if (this.currentAnim) {
             this.currentAnim.nextFrame(this);
         }
 
@@ -1654,10 +1562,8 @@ var AnimationState = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
      */
-    previousFrame: function ()
-    {
-        if (this.currentAnim)
-        {
+    previousFrame: function () {
+        if (this.currentAnim) {
             this.currentAnim.previousFrame(this);
         }
 
@@ -1676,8 +1582,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.Animations.Animation} The Animation, or `null` if the key is invalid.
      */
-    get: function (key)
-    {
+    get: function (key) {
         return (this.anims) ? this.anims.get(key) : null;
     },
 
@@ -1691,8 +1596,7 @@ var AnimationState = new Class({
      *
      * @return {boolean} `true` if the Animation exists locally, or `false` if the key is available, or there are no local animations.
      */
-    exists: function (key)
-    {
+    exists: function (key) {
         return (this.anims) ? this.anims.has(key) : false;
     },
 
@@ -1720,29 +1624,23 @@ var AnimationState = new Class({
      *
      * @return {(Phaser.Animations.Animation|false)} The Animation that was created, or `false` if the key is already in use.
      */
-    create: function (config)
-    {
+    create: function (config) {
         var key = config.key;
 
         var anim = false;
 
-        if (key)
-        {
+        if (key) {
             anim = this.get(key);
 
-            if (!anim)
-            {
+            if (!anim) {
                 anim = new Animation(this, key, config);
 
-                if (!this.anims)
-                {
+                if (!this.anims) {
                     this.anims = new CustomMap();
                 }
 
                 this.anims.set(key, anim);
-            }
-            else
-            {
+            } else {
                 console.warn('Animation key already exists: ' + key);
             }
         }
@@ -1832,8 +1730,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.Animations.Animation[]} An array of Animation instances that were successfully created.
      */
-    createFromAseprite: function (key, tags)
-    {
+    createFromAseprite: function (key, tags) {
         return this.animationManager.createFromAseprite(key, tags, this.parent);
     },
 
@@ -1875,8 +1772,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.Types.Animations.AnimationFrame[]} The array of {@link Phaser.Types.Animations.AnimationFrame} objects.
      */
-    generateFrameNames: function (key, config)
-    {
+    generateFrameNames: function (key, config) {
         return this.animationManager.generateFrameNames(key, config);
     },
 
@@ -1925,8 +1821,7 @@ var AnimationState = new Class({
      *
      * @return {Phaser.Types.Animations.AnimationFrame[]} The array of {@link Phaser.Types.Animations.AnimationFrame} objects.
      */
-    generateFrameNumbers: function (key, config)
-    {
+    generateFrameNumbers: function (key, config) {
         return this.animationManager.generateFrameNumbers(key, config);
     },
 
@@ -1942,14 +1837,11 @@ var AnimationState = new Class({
      *
      * @return {Phaser.Animations.Animation} The Animation instance that was removed from this Sprite, if the key was valid.
      */
-    remove: function (key)
-    {
+    remove: function (key) {
         var anim = this.get(key);
 
-        if (anim)
-        {
-            if (this.currentAnim === anim)
-            {
+        if (anim) {
+            if (this.currentAnim === anim) {
                 this.stop();
             }
 
@@ -1967,12 +1859,10 @@ var AnimationState = new Class({
      * @method Phaser.Animations.AnimationState#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.animationManager.off(Events.REMOVE_ANIMATION, this.globalRemove, this);
 
-        if (this.anims)
-        {
+        if (this.anims) {
             this.anims.clear();
         }
 
@@ -1995,8 +1885,7 @@ var AnimationState = new Class({
      */
     isPaused: {
 
-        get: function ()
-        {
+        get: function () {
             return this._paused;
         }
 

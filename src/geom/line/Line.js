@@ -29,60 +29,67 @@ var Line = new Class({
 
     initialize:
 
-    function Line (x1, y1, x2, y2)
-    {
-        if (x1 === undefined) { x1 = 0; }
-        if (y1 === undefined) { y1 = 0; }
-        if (x2 === undefined) { x2 = 0; }
-        if (y2 === undefined) { y2 = 0; }
+        function Line(x1, y1, x2, y2) {
+            if (x1 === undefined) {
+                x1 = 0;
+            }
+            if (y1 === undefined) {
+                y1 = 0;
+            }
+            if (x2 === undefined) {
+                x2 = 0;
+            }
+            if (y2 === undefined) {
+                y2 = 0;
+            }
 
-        /**
-         * The geometry constant type of this object: `GEOM_CONST.LINE`.
-         * Used for fast type comparisons.
-         *
-         * @name Phaser.Geom.Line#type
-         * @type {number}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.type = GEOM_CONST.LINE;
+            /**
+             * The geometry constant type of this object: `GEOM_CONST.LINE`.
+             * Used for fast type comparisons.
+             *
+             * @name Phaser.Geom.Line#type
+             * @type {number}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.type = GEOM_CONST.LINE;
 
-        /**
-         * The x coordinate of the lines starting point.
-         *
-         * @name Phaser.Geom.Line#x1
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.x1 = x1;
+            /**
+             * The x coordinate of the lines starting point.
+             *
+             * @name Phaser.Geom.Line#x1
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.x1 = x1;
 
-        /**
-         * The y coordinate of the lines starting point.
-         *
-         * @name Phaser.Geom.Line#y1
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.y1 = y1;
+            /**
+             * The y coordinate of the lines starting point.
+             *
+             * @name Phaser.Geom.Line#y1
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.y1 = y1;
 
-        /**
-         * The x coordinate of the lines ending point.
-         *
-         * @name Phaser.Geom.Line#x2
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.x2 = x2;
+            /**
+             * The x coordinate of the lines ending point.
+             *
+             * @name Phaser.Geom.Line#x2
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.x2 = x2;
 
-        /**
-         * The y coordinate of the lines ending point.
-         *
-         * @name Phaser.Geom.Line#y2
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.y2 = y2;
-    },
+            /**
+             * The y coordinate of the lines ending point.
+             *
+             * @name Phaser.Geom.Line#y2
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.y2 = y2;
+        },
 
     /**
      * Get a point on a line that's a given percentage along its length.
@@ -97,8 +104,7 @@ var Line = new Class({
      *
      * @return {(Phaser.Geom.Point|object)} A Point, or point-like object, containing the coordinates of the point on the line.
      */
-    getPoint: function (position, output)
-    {
+    getPoint: function (position, output) {
         return GetPoint(this, position, output);
     },
 
@@ -121,8 +127,7 @@ var Line = new Class({
      *
      * @return {(array|Phaser.Geom.Point[])} An array of Points, or point-like objects, containing the coordinates of the points on the line.
      */
-    getPoints: function (quantity, stepRate, output)
-    {
+    getPoints: function (quantity, stepRate, output) {
         return GetPoints(this, quantity, stepRate, output);
     },
 
@@ -138,8 +143,7 @@ var Line = new Class({
      *
      * @return {Phaser.Geom.Point} A random Point on the Line.
      */
-    getRandomPoint: function (point)
-    {
+    getRandomPoint: function (point) {
         return Random(this, point);
     },
 
@@ -156,12 +160,19 @@ var Line = new Class({
      *
      * @return {this} This Line object.
      */
-    setTo: function (x1, y1, x2, y2)
-    {
-        if (x1 === undefined) { x1 = 0; }
-        if (y1 === undefined) { y1 = 0; }
-        if (x2 === undefined) { x2 = 0; }
-        if (y2 === undefined) { y2 = 0; }
+    setTo: function (x1, y1, x2, y2) {
+        if (x1 === undefined) {
+            x1 = 0;
+        }
+        if (y1 === undefined) {
+            y1 = 0;
+        }
+        if (x2 === undefined) {
+            x2 = 0;
+        }
+        if (y2 === undefined) {
+            y2 = 0;
+        }
 
         this.x1 = x1;
         this.y1 = y1;
@@ -183,8 +194,7 @@ var Line = new Class({
      *
      * @return {this} This Line object.
      */
-    setFromObjects: function (start, end)
-    {
+    setFromObjects: function (start, end) {
         this.x1 = start.x;
         this.y1 = start.y;
 
@@ -206,9 +216,10 @@ var Line = new Class({
      *
      * @return {Phaser.Math.Vector2} A Vector2 object that corresponds to the start of this Line.
      */
-    getPointA: function (vec2)
-    {
-        if (vec2 === undefined) { vec2 = new Vector2(); }
+    getPointA: function (vec2) {
+        if (vec2 === undefined) {
+            vec2 = new Vector2();
+        }
 
         vec2.set(this.x1, this.y1);
 
@@ -227,9 +238,10 @@ var Line = new Class({
      *
      * @return {Phaser.Math.Vector2} A Vector2 object that corresponds to the end of this Line.
      */
-    getPointB: function (vec2)
-    {
-        if (vec2 === undefined) { vec2 = new Vector2(); }
+    getPointB: function (vec2) {
+        if (vec2 === undefined) {
+            vec2 = new Vector2();
+        }
 
         vec2.set(this.x2, this.y2);
 
@@ -245,19 +257,14 @@ var Line = new Class({
      */
     left: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.min(this.x1, this.x2);
         },
 
-        set: function (value)
-        {
-            if (this.x1 <= this.x2)
-            {
+        set: function (value) {
+            if (this.x1 <= this.x2) {
                 this.x1 = value;
-            }
-            else
-            {
+            } else {
                 this.x2 = value;
             }
         }
@@ -273,19 +280,14 @@ var Line = new Class({
      */
     right: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.max(this.x1, this.x2);
         },
 
-        set: function (value)
-        {
-            if (this.x1 > this.x2)
-            {
+        set: function (value) {
+            if (this.x1 > this.x2) {
                 this.x1 = value;
-            }
-            else
-            {
+            } else {
                 this.x2 = value;
             }
         }
@@ -301,19 +303,14 @@ var Line = new Class({
      */
     top: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.min(this.y1, this.y2);
         },
 
-        set: function (value)
-        {
-            if (this.y1 <= this.y2)
-            {
+        set: function (value) {
+            if (this.y1 <= this.y2) {
                 this.y1 = value;
-            }
-            else
-            {
+            } else {
                 this.y2 = value;
             }
         }
@@ -329,19 +326,14 @@ var Line = new Class({
      */
     bottom: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.max(this.y1, this.y2);
         },
 
-        set: function (value)
-        {
-            if (this.y1 > this.y2)
-            {
+        set: function (value) {
+            if (this.y1 > this.y2) {
                 this.y1 = value;
-            }
-            else
-            {
+            } else {
                 this.y2 = value;
             }
         }

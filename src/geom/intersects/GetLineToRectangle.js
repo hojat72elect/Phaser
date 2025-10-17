@@ -22,18 +22,18 @@ var LineToRectangle = require('./LineToRectangle');
  *
  * @return {array} An array with the points of intersection if objects intersect, otherwise an empty array.
  */
-var GetLineToRectangle = function (line, rect, out)
-{
-    if (out === undefined) { out = []; }
+var GetLineToRectangle = function (line, rect, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    if (LineToRectangle(line, rect))
-    {
+    if (LineToRectangle(line, rect)) {
         var lineA = rect.getLineA();
         var lineB = rect.getLineB();
         var lineC = rect.getLineC();
         var lineD = rect.getLineD();
 
-        var output = [ new Point(), new Point(), new Point(), new Point() ];
+        var output = [new Point(), new Point(), new Point(), new Point()];
 
         var result = [
             LineToLine(lineA, line, output[0]),
@@ -42,9 +42,10 @@ var GetLineToRectangle = function (line, rect, out)
             LineToLine(lineD, line, output[3])
         ];
 
-        for (var i = 0; i < 4; i++)
-        {
-            if (result[i]) { out.push(output[i]); }
+        for (var i = 0; i < 4; i++) {
+            if (result[i]) {
+                out.push(output[i]);
+            }
         }
     }
 

@@ -28,23 +28,23 @@ var SafeRange = require('./SafeRange');
  *
  * @return {array} All matching elements from the array.
  */
-var GetAll = function (array, property, value, startIndex, endIndex)
-{
-    if (startIndex === undefined) { startIndex = 0; }
-    if (endIndex === undefined) { endIndex = array.length; }
+var GetAll = function (array, property, value, startIndex, endIndex) {
+    if (startIndex === undefined) {
+        startIndex = 0;
+    }
+    if (endIndex === undefined) {
+        endIndex = array.length;
+    }
 
     var output = [];
 
-    if (SafeRange(array, startIndex, endIndex))
-    {
-        for (var i = startIndex; i < endIndex; i++)
-        {
+    if (SafeRange(array, startIndex, endIndex)) {
+        for (var i = startIndex; i < endIndex; i++) {
             var child = array[i];
 
             if (!property ||
                 (property && value === undefined && child.hasOwnProperty(property)) ||
-                (property && value !== undefined && child[property] === value))
-            {
+                (property && value !== undefined && child[property] === value)) {
                 output.push(child);
             }
         }

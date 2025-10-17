@@ -106,293 +106,295 @@ var Mesh = new Class({
 
     initialize:
 
-    function Mesh (scene, x, y, texture, frame, vertices, uvs, indicies, containsZ, normals, colors, alphas)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (texture === undefined) { texture = '__WHITE'; }
+        function Mesh(scene, x, y, texture, frame, vertices, uvs, indicies, containsZ, normals, colors, alphas) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (texture === undefined) {
+                texture = '__WHITE';
+            }
 
-        GameObject.call(this, scene, 'Mesh');
+            GameObject.call(this, scene, 'Mesh');
 
-        /**
-         * An array containing the Face instances belonging to this Mesh.
-         *
-         * A Face consists of 3 Vertex objects.
-         *
-         * This array is populated during calls such as `addVertices` or `addOBJ`.
-         *
-         * @name Phaser.GameObjects.Mesh#faces
-         * @type {Phaser.Geom.Mesh.Face[]}
-         * @since 3.50.0
-         */
-        this.faces = [];
+            /**
+             * An array containing the Face instances belonging to this Mesh.
+             *
+             * A Face consists of 3 Vertex objects.
+             *
+             * This array is populated during calls such as `addVertices` or `addOBJ`.
+             *
+             * @name Phaser.GameObjects.Mesh#faces
+             * @type {Phaser.Geom.Mesh.Face[]}
+             * @since 3.50.0
+             */
+            this.faces = [];
 
-        /**
-         * An array containing Vertex instances. One instance per vertex in this Mesh.
-         *
-         * This array is populated during calls such as `addVertex` or `addOBJ`.
-         *
-         * @name Phaser.GameObjects.Mesh#vertices
-         * @type {Phaser.Geom.Mesh.Vertex[]}
-         * @since 3.50.0
-         */
-        this.vertices = [];
+            /**
+             * An array containing Vertex instances. One instance per vertex in this Mesh.
+             *
+             * This array is populated during calls such as `addVertex` or `addOBJ`.
+             *
+             * @name Phaser.GameObjects.Mesh#vertices
+             * @type {Phaser.Geom.Mesh.Vertex[]}
+             * @since 3.50.0
+             */
+            this.vertices = [];
 
-        /**
-         * The tint fill mode.
-         *
-         * `false` = An additive tint (the default), where vertices colors are blended with the texture.
-         * `true` = A fill tint, where the vertex colors replace the texture, but respects texture alpha.
-         *
-         * @name Phaser.GameObjects.Mesh#tintFill
-         * @type {boolean}
-         * @default false
-         * @since 3.50.0
-         */
-        this.tintFill = false;
+            /**
+             * The tint fill mode.
+             *
+             * `false` = An additive tint (the default), where vertices colors are blended with the texture.
+             * `true` = A fill tint, where the vertex colors replace the texture, but respects texture alpha.
+             *
+             * @name Phaser.GameObjects.Mesh#tintFill
+             * @type {boolean}
+             * @default false
+             * @since 3.50.0
+             */
+            this.tintFill = false;
 
-        /**
-         * You can optionally choose to render the vertices of this Mesh to a Graphics instance.
-         *
-         * Achieve this by setting the `debugCallback` and the `debugGraphic` properties.
-         *
-         * You can do this in a single call via the `Mesh.setDebug` method, which will use the
-         * built-in debug function. You can also set it to your own callback. The callback
-         * will be invoked _once per render_ and sent the following parameters:
-         *
-         * `debugCallback(src, meshLength, verts)`
-         *
-         * `src` is the Mesh instance being debugged.
-         * `meshLength` is the number of mesh vertices in total.
-         * `verts` is an array of the translated vertex coordinates.
-         *
-         * To disable rendering, set this property back to `null`.
-         *
-         * Please note that high vertex count Meshes will struggle to debug properly.
-         *
-         * @name Phaser.GameObjects.Mesh#debugCallback
-         * @type {function}
-         * @since 3.50.0
-         */
-        this.debugCallback = null;
+            /**
+             * You can optionally choose to render the vertices of this Mesh to a Graphics instance.
+             *
+             * Achieve this by setting the `debugCallback` and the `debugGraphic` properties.
+             *
+             * You can do this in a single call via the `Mesh.setDebug` method, which will use the
+             * built-in debug function. You can also set it to your own callback. The callback
+             * will be invoked _once per render_ and sent the following parameters:
+             *
+             * `debugCallback(src, meshLength, verts)`
+             *
+             * `src` is the Mesh instance being debugged.
+             * `meshLength` is the number of mesh vertices in total.
+             * `verts` is an array of the translated vertex coordinates.
+             *
+             * To disable rendering, set this property back to `null`.
+             *
+             * Please note that high vertex count Meshes will struggle to debug properly.
+             *
+             * @name Phaser.GameObjects.Mesh#debugCallback
+             * @type {function}
+             * @since 3.50.0
+             */
+            this.debugCallback = null;
 
-        /**
-         * The Graphics instance that the debug vertices will be drawn to, if `setDebug` has
-         * been called.
-         *
-         * @name Phaser.GameObjects.Mesh#debugGraphic
-         * @type {Phaser.GameObjects.Graphics}
-         * @since 3.50.0
-         */
-        this.debugGraphic = null;
+            /**
+             * The Graphics instance that the debug vertices will be drawn to, if `setDebug` has
+             * been called.
+             *
+             * @name Phaser.GameObjects.Mesh#debugGraphic
+             * @type {Phaser.GameObjects.Graphics}
+             * @since 3.50.0
+             */
+            this.debugGraphic = null;
 
-        /**
-         * When rendering, skip any Face that isn't counter clockwise?
-         *
-         * Enable this to hide backward-facing Faces during rendering.
-         *
-         * Disable it to render all Faces.
-         *
-         * @name Phaser.GameObjects.Mesh#hideCCW
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.hideCCW = true;
+            /**
+             * When rendering, skip any Face that isn't counter clockwise?
+             *
+             * Enable this to hide backward-facing Faces during rendering.
+             *
+             * Disable it to render all Faces.
+             *
+             * @name Phaser.GameObjects.Mesh#hideCCW
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.hideCCW = true;
 
-        /**
-         * A Vector3 containing the 3D position of the vertices in this Mesh.
-         *
-         * Modifying the components of this property will allow you to reposition where
-         * the vertices are rendered within the Mesh. This happens in the `preUpdate` phase,
-         * where each vertex is transformed using the view and projection matrices.
-         *
-         * Changing this property will impact all vertices being rendered by this Mesh.
-         *
-         * You can also adjust the 'view' by using the `pan` methods.
-         *
-         * @name Phaser.GameObjects.Mesh#modelPosition
-         * @type {Phaser.Math.Vector3}
-         * @since 3.50.0
-         */
-        this.modelPosition = new Vector3();
+            /**
+             * A Vector3 containing the 3D position of the vertices in this Mesh.
+             *
+             * Modifying the components of this property will allow you to reposition where
+             * the vertices are rendered within the Mesh. This happens in the `preUpdate` phase,
+             * where each vertex is transformed using the view and projection matrices.
+             *
+             * Changing this property will impact all vertices being rendered by this Mesh.
+             *
+             * You can also adjust the 'view' by using the `pan` methods.
+             *
+             * @name Phaser.GameObjects.Mesh#modelPosition
+             * @type {Phaser.Math.Vector3}
+             * @since 3.50.0
+             */
+            this.modelPosition = new Vector3();
 
-        /**
-         * A Vector3 containing the 3D scale of the vertices in this Mesh.
-         *
-         * Modifying the components of this property will allow you to scale
-         * the vertices within the Mesh. This happens in the `preUpdate` phase,
-         * where each vertex is transformed using the view and projection matrices.
-         *
-         * Changing this property will impact all vertices being rendered by this Mesh.
-         *
-         * @name Phaser.GameObjects.Mesh#modelScale
-         * @type {Phaser.Math.Vector3}
-         * @since 3.50.0
-         */
-        this.modelScale = new Vector3(1, 1, 1);
+            /**
+             * A Vector3 containing the 3D scale of the vertices in this Mesh.
+             *
+             * Modifying the components of this property will allow you to scale
+             * the vertices within the Mesh. This happens in the `preUpdate` phase,
+             * where each vertex is transformed using the view and projection matrices.
+             *
+             * Changing this property will impact all vertices being rendered by this Mesh.
+             *
+             * @name Phaser.GameObjects.Mesh#modelScale
+             * @type {Phaser.Math.Vector3}
+             * @since 3.50.0
+             */
+            this.modelScale = new Vector3(1, 1, 1);
 
-        /**
-         * A Vector3 containing the 3D rotation of the vertices in this Mesh.
-         *
-         * The values should be given in radians, i.e. to rotate the vertices by 90
-         * degrees you can use `modelRotation.x = Phaser.Math.DegToRad(90)`.
-         *
-         * Modifying the components of this property will allow you to rotate
-         * the vertices within the Mesh. This happens in the `preUpdate` phase,
-         * where each vertex is transformed using the view and projection matrices.
-         *
-         * Changing this property will impact all vertices being rendered by this Mesh.
-         *
-         * @name Phaser.GameObjects.Mesh#modelRotation
-         * @type {Phaser.Math.Vector3}
-         * @since 3.50.0
-         */
-        this.modelRotation = new Vector3();
+            /**
+             * A Vector3 containing the 3D rotation of the vertices in this Mesh.
+             *
+             * The values should be given in radians, i.e. to rotate the vertices by 90
+             * degrees you can use `modelRotation.x = Phaser.Math.DegToRad(90)`.
+             *
+             * Modifying the components of this property will allow you to rotate
+             * the vertices within the Mesh. This happens in the `preUpdate` phase,
+             * where each vertex is transformed using the view and projection matrices.
+             *
+             * Changing this property will impact all vertices being rendered by this Mesh.
+             *
+             * @name Phaser.GameObjects.Mesh#modelRotation
+             * @type {Phaser.Math.Vector3}
+             * @since 3.50.0
+             */
+            this.modelRotation = new Vector3();
 
-        /**
-         * An internal cache, used to compare position, rotation, scale and face data
-         * each frame, to avoid math calculations in `preUpdate`.
-         *
-         * Cache structure = position xyz | rotation xyz | scale xyz | face count | view | ortho
-         *
-         * @name Phaser.GameObjects.Mesh#dirtyCache
-         * @type {number[]}
-         * @private
-         * @since 3.50.0
-         */
-        this.dirtyCache = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+            /**
+             * An internal cache, used to compare position, rotation, scale and face data
+             * each frame, to avoid math calculations in `preUpdate`.
+             *
+             * Cache structure = position xyz | rotation xyz | scale xyz | face count | view | ortho
+             *
+             * @name Phaser.GameObjects.Mesh#dirtyCache
+             * @type {number[]}
+             * @private
+             * @since 3.50.0
+             */
+            this.dirtyCache = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        /**
-         * The transformation matrix for this Mesh.
-         *
-         * @name Phaser.GameObjects.Mesh#transformMatrix
-         * @type {Phaser.Math.Matrix4}
-         * @since 3.50.0
-         */
-        this.transformMatrix = new Matrix4();
+            /**
+             * The transformation matrix for this Mesh.
+             *
+             * @name Phaser.GameObjects.Mesh#transformMatrix
+             * @type {Phaser.Math.Matrix4}
+             * @since 3.50.0
+             */
+            this.transformMatrix = new Matrix4();
 
-        /**
-         * The view position for this Mesh.
-         *
-         * Use the methods`panX`, `panY` and `panZ` to adjust the view.
-         *
-         * @name Phaser.GameObjects.Mesh#viewPosition
-         * @type {Phaser.Math.Vector3}
-         * @since 3.50.0
-         */
-        this.viewPosition = new Vector3();
+            /**
+             * The view position for this Mesh.
+             *
+             * Use the methods`panX`, `panY` and `panZ` to adjust the view.
+             *
+             * @name Phaser.GameObjects.Mesh#viewPosition
+             * @type {Phaser.Math.Vector3}
+             * @since 3.50.0
+             */
+            this.viewPosition = new Vector3();
 
-        /**
-         * The view matrix for this Mesh.
-         *
-         * @name Phaser.GameObjects.Mesh#viewMatrix
-         * @type {Phaser.Math.Matrix4}
-         * @since 3.50.0
-         */
-        this.viewMatrix = new Matrix4();
+            /**
+             * The view matrix for this Mesh.
+             *
+             * @name Phaser.GameObjects.Mesh#viewMatrix
+             * @type {Phaser.Math.Matrix4}
+             * @since 3.50.0
+             */
+            this.viewMatrix = new Matrix4();
 
-        /**
-         * The projection matrix for this Mesh.
-         *
-         * Update it with the `setPerspective` or `setOrtho` methods.
-         *
-         * @name Phaser.GameObjects.Mesh#projectionMatrix
-         * @type {Phaser.Math.Matrix4}
-         * @since 3.50.0
-         */
-        this.projectionMatrix = new Matrix4();
+            /**
+             * The projection matrix for this Mesh.
+             *
+             * Update it with the `setPerspective` or `setOrtho` methods.
+             *
+             * @name Phaser.GameObjects.Mesh#projectionMatrix
+             * @type {Phaser.Math.Matrix4}
+             * @since 3.50.0
+             */
+            this.projectionMatrix = new Matrix4();
 
-        /**
-         * How many faces were rendered by this Mesh Game Object in the last
-         * draw? This is reset in the `preUpdate` method and then incremented
-         * each time a face is drawn. Note that in multi-camera Scenes this
-         * value may exceed that found in `Mesh.getFaceCount` due to
-         * cameras drawing the same faces more than once.
-         *
-         * @name Phaser.GameObjects.Mesh#totalRendered
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.totalRendered = 0;
+            /**
+             * How many faces were rendered by this Mesh Game Object in the last
+             * draw? This is reset in the `preUpdate` method and then incremented
+             * each time a face is drawn. Note that in multi-camera Scenes this
+             * value may exceed that found in `Mesh.getFaceCount` due to
+             * cameras drawing the same faces more than once.
+             *
+             * @name Phaser.GameObjects.Mesh#totalRendered
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.totalRendered = 0;
 
-        /**
-         * Internal cache var for the total number of faces rendered this frame.
-         *
-         * See `totalRendered` instead for the actual value.
-         *
-         * @name Phaser.GameObjects.Mesh#totalFrame
-         * @type {number}
-         * @private
-         * @since 3.50.0
-         */
-        this.totalFrame = 0;
+            /**
+             * Internal cache var for the total number of faces rendered this frame.
+             *
+             * See `totalRendered` instead for the actual value.
+             *
+             * @name Phaser.GameObjects.Mesh#totalFrame
+             * @type {number}
+             * @private
+             * @since 3.50.0
+             */
+            this.totalFrame = 0;
 
-        /**
-         * By default, the Mesh will check to see if its model or view transform has
-         * changed each frame and only recalculate the vertex positions if they have.
-         *
-         * This avoids lots of additional math in the `preUpdate` step when not required.
-         *
-         * However, if you are performing per-Face or per-Vertex manipulation on this Mesh,
-         * such as tweening a Face, or moving it without moving the rest of the Mesh,
-         * then you may need to disable the dirty cache in order for the Mesh to re-render
-         * correctly. You can toggle this property to do that. Please note that leaving
-         * this set to `true` will cause the Mesh to recalculate the position of every single
-         * vertex in it, every single frame. So only really do this if you know you
-         * need it.
-         *
-         * @name Phaser.GameObjects.Mesh#ignoreDirtyCache
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.ignoreDirtyCache = false;
+            /**
+             * By default, the Mesh will check to see if its model or view transform has
+             * changed each frame and only recalculate the vertex positions if they have.
+             *
+             * This avoids lots of additional math in the `preUpdate` step when not required.
+             *
+             * However, if you are performing per-Face or per-Vertex manipulation on this Mesh,
+             * such as tweening a Face, or moving it without moving the rest of the Mesh,
+             * then you may need to disable the dirty cache in order for the Mesh to re-render
+             * correctly. You can toggle this property to do that. Please note that leaving
+             * this set to `true` will cause the Mesh to recalculate the position of every single
+             * vertex in it, every single frame. So only really do this if you know you
+             * need it.
+             *
+             * @name Phaser.GameObjects.Mesh#ignoreDirtyCache
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.ignoreDirtyCache = false;
 
-        /**
-         * The Camera fov (field of view) in degrees.
-         *
-         * This is set automatically as part of the `Mesh.setPerspective` call, but exposed
-         * here for additional math.
-         *
-         * Do not modify this property directly, doing so will not change the fov. For that,
-         * call the respective Mesh methods.
-         *
-         * @name Phaser.GameObjects.Mesh#fov
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.fov;
+            /**
+             * The Camera fov (field of view) in degrees.
+             *
+             * This is set automatically as part of the `Mesh.setPerspective` call, but exposed
+             * here for additional math.
+             *
+             * Do not modify this property directly, doing so will not change the fov. For that,
+             * call the respective Mesh methods.
+             *
+             * @name Phaser.GameObjects.Mesh#fov
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.fov;
 
-        //  Set these to allow setInteractive to work
-        this.displayOriginX = 0;
-        this.displayOriginY = 0;
+            //  Set these to allow setInteractive to work
+            this.displayOriginX = 0;
+            this.displayOriginY = 0;
 
-        var renderer = scene.sys.renderer;
+            var renderer = scene.sys.renderer;
 
-        this.setPosition(x, y);
-        this.setTexture(texture, frame);
-        this.setSize(renderer.width, renderer.height);
-        this.initPipeline();
-        this.initPostPipeline();
+            this.setPosition(x, y);
+            this.setTexture(texture, frame);
+            this.setSize(renderer.width, renderer.height);
+            this.initPipeline();
+            this.initPostPipeline();
 
-        this.setPerspective(renderer.width, renderer.height);
+            this.setPerspective(renderer.width, renderer.height);
 
-        if (vertices)
-        {
-            this.addVertices(vertices, uvs, indicies, containsZ, normals, colors, alphas);
-        }
-    },
+            if (vertices) {
+                this.addVertices(vertices, uvs, indicies, containsZ, normals, colors, alphas);
+            }
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
@@ -404,8 +406,7 @@ var Mesh = new Class({
      *
      * @param {number} v - The amount to pan by.
      */
-    panX: function (v)
-    {
+    panX: function (v) {
         this.viewPosition.addScale(Vector3.LEFT, v);
 
         this.dirtyCache[10] = 1;
@@ -421,8 +422,7 @@ var Mesh = new Class({
      *
      * @param {number} v - The amount to pan by.
      */
-    panY: function (v)
-    {
+    panY: function (v) {
         this.viewPosition.y += Vector3.DOWN.y * v;
 
         this.dirtyCache[10] = 1;
@@ -444,8 +444,7 @@ var Mesh = new Class({
      *
      * @param {number} v - The amount to pan by.
      */
-    panZ: function (amount)
-    {
+    panZ: function (amount) {
         this.viewPosition.z += amount;
 
         this.dirtyCache[10] = 1;
@@ -469,11 +468,16 @@ var Mesh = new Class({
      * @param {number} [near=0.01] - The near value of the view.
      * @param {number} [far=1000] - The far value of the view.
      */
-    setPerspective: function (width, height, fov, near, far)
-    {
-        if (fov === undefined) { fov = 45; }
-        if (near === undefined) { near = 0.01; }
-        if (far === undefined) { far = 1000; }
+    setPerspective: function (width, height, fov, near, far) {
+        if (fov === undefined) {
+            fov = 45;
+        }
+        if (near === undefined) {
+            near = 0.01;
+        }
+        if (far === undefined) {
+            far = 1000;
+        }
 
         this.fov = fov;
 
@@ -504,12 +508,19 @@ var Mesh = new Class({
      * @param {number} [near=-1000] - The near value of the view.
      * @param {number} [far=1000] - The far value of the view.
      */
-    setOrtho: function (scaleX, scaleY, near, far)
-    {
-        if (scaleX === undefined) { scaleX = this.scene.sys.renderer.getAspectRatio(); }
-        if (scaleY === undefined) { scaleY = 1; }
-        if (near === undefined) { near = -1000; }
-        if (far === undefined) { far = 1000; }
+    setOrtho: function (scaleX, scaleY, near, far) {
+        if (scaleX === undefined) {
+            scaleX = this.scene.sys.renderer.getAspectRatio();
+        }
+        if (scaleY === undefined) {
+            scaleY = 1;
+        }
+        if (near === undefined) {
+            near = -1000;
+        }
+        if (far === undefined) {
+            far = 1000;
+        }
 
         this.fov = 0;
 
@@ -530,10 +541,8 @@ var Mesh = new Class({
      *
      * @return {this} This Mesh Game Object.
      */
-    clear: function ()
-    {
-        this.faces.forEach(function (face)
-        {
+    clear: function () {
+        this.faces.forEach(function (face) {
             face.destroy();
         });
 
@@ -577,18 +586,15 @@ var Mesh = new Class({
      *
      * @return {this} This Mesh Game Object.
      */
-    addVerticesFromObj: function (key, scale, x, y, z, rotateX, rotateY, rotateZ, zIsUp)
-    {
+    addVerticesFromObj: function (key, scale, x, y, z, rotateX, rotateY, rotateZ, zIsUp) {
         var data = this.scene.sys.cache.obj.get(key);
         var parsedData;
 
-        if (data)
-        {
+        if (data) {
             parsedData = GenerateObjVerts(data, this, scale, x, y, z, rotateX, rotateY, rotateZ, zIsUp);
         }
 
-        if (!parsedData || parsedData.verts.length === 0)
-        {
+        if (!parsedData || parsedData.verts.length === 0) {
             console.warn('Mesh.addVerticesFromObj data empty:', key);
         }
 
@@ -606,8 +612,7 @@ var Mesh = new Class({
      *
      * @return {number} The difference between the depths of each Face.
      */
-    sortByDepth: function (faceA, faceB)
-    {
+    sortByDepth: function (faceA, faceB) {
         return faceA.depth - faceB.depth;
     },
 
@@ -622,8 +627,7 @@ var Mesh = new Class({
      *
      * @return {this} This Mesh Game Object.
      */
-    depthSort: function ()
-    {
+    depthSort: function () {
         StableSort(this.faces, this.sortByDepth);
 
         return this;
@@ -648,8 +652,7 @@ var Mesh = new Class({
      *
      * @return {this} This Mesh Game Object.
      */
-    addVertex: function (x, y, z, u, v, color, alpha)
-    {
+    addVertex: function (x, y, z, u, v, color, alpha) {
         var vert = new Vertex(x, y, z, u, v, color, alpha);
 
         this.vertices.push(vert);
@@ -671,8 +674,7 @@ var Mesh = new Class({
      *
      * @return {this} This Mesh Game Object.
      */
-    addFace: function (vertex1, vertex2, vertex3)
-    {
+    addFace: function (vertex1, vertex2, vertex3) {
         var face = new Face(vertex1, vertex2, vertex3);
 
         this.faces.push(face);
@@ -744,17 +746,13 @@ var Mesh = new Class({
      *
      * @return {this} This Mesh Game Object.
      */
-    addVertices: function (vertices, uvs, indicies, containsZ, normals, colors, alphas)
-    {
+    addVertices: function (vertices, uvs, indicies, containsZ, normals, colors, alphas) {
         var result = GenerateVerts(vertices, uvs, indicies, containsZ, normals, colors, alphas);
 
-        if (result)
-        {
+        if (result) {
             this.faces = this.faces.concat(result.faces);
             this.vertices = this.vertices.concat(result.vertices);
-        }
-        else
-        {
+        } else {
             console.warn('Mesh.addVertices data empty or invalid');
         }
 
@@ -771,8 +769,7 @@ var Mesh = new Class({
      *
      * @return {number} The number of Faces in this Mesh Game Object.
      */
-    getFaceCount: function ()
-    {
+    getFaceCount: function () {
         return this.faces.length;
     },
 
@@ -784,8 +781,7 @@ var Mesh = new Class({
      *
      * @return {number} The number of Vertices in this Mesh Game Object.
      */
-    getVertexCount: function ()
-    {
+    getVertexCount: function () {
         return this.vertices.length;
     },
 
@@ -799,8 +795,7 @@ var Mesh = new Class({
      *
      * @return {Phaser.Geom.Mesh.Face} The Face at the given index, or `undefined` if index out of range.
      */
-    getFace: function (index)
-    {
+    getFace: function (index) {
         return this.faces[index];
     },
 
@@ -819,20 +814,19 @@ var Mesh = new Class({
      *
      * @return {boolean} Returns `true` if _any_ face of this Mesh intersects with the given coordinate, otherwise `false`.
      */
-    hasFaceAt: function (x, y, camera)
-    {
-        if (camera === undefined) { camera = this.scene.sys.cameras.main; }
+    hasFaceAt: function (x, y, camera) {
+        if (camera === undefined) {
+            camera = this.scene.sys.cameras.main;
+        }
 
         var calcMatrix = GetCalcMatrix(this, camera).calc;
 
         var faces = this.faces;
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             var face = faces[i];
 
-            if (face.contains(x, y, calcMatrix))
-            {
+            if (face.contains(x, y, calcMatrix)) {
                 return true;
             }
         }
@@ -858,21 +852,20 @@ var Mesh = new Class({
      *
      * @return {Phaser.Geom.Mesh.Face[]} An array of Face objects that intersect with the given point, ordered by depth.
      */
-    getFaceAt: function (x, y, camera)
-    {
-        if (camera === undefined) { camera = this.scene.sys.cameras.main; }
+    getFaceAt: function (x, y, camera) {
+        if (camera === undefined) {
+            camera = this.scene.sys.cameras.main;
+        }
 
         var calcMatrix = GetCalcMatrix(this, camera).calc;
 
         var faces = this.faces;
         var results = [];
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             var face = faces[i];
 
-            if (face.contains(x, y, calcMatrix))
-            {
+            if (face.contains(x, y, calcMatrix)) {
                 results.push(face);
             }
         }
@@ -926,20 +919,14 @@ var Mesh = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setDebug: function (graphic, callback)
-    {
+    setDebug: function (graphic, callback) {
         this.debugGraphic = graphic;
 
-        if (!graphic && !callback)
-        {
+        if (!graphic && !callback) {
             this.debugCallback = null;
-        }
-        else if (!callback)
-        {
+        } else if (!callback) {
             this.debugCallback = this.renderDebug;
-        }
-        else
-        {
+        } else {
             this.debugCallback = callback;
         }
 
@@ -957,8 +944,7 @@ var Mesh = new Class({
      *
      * @return {boolean} Returns `true` if the data of this mesh is dirty, otherwise `false`.
      */
-    isDirty: function ()
-    {
+    isDirty: function () {
         var position = this.modelPosition;
         var rotation = this.modelRotation;
         var scale = this.modelScale;
@@ -1038,15 +1024,13 @@ var Mesh = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    preUpdate: function ()
-    {
+    preUpdate: function () {
         this.totalRendered = this.totalFrame;
         this.totalFrame = 0;
 
         var dirty = this.dirtyCache;
 
-        if (!this.ignoreDirtyCache && !dirty[10] && !this.isDirty())
-        {
+        if (!this.ignoreDirtyCache && !dirty[10] && !this.isDirty()) {
             //  If neither the view or the mesh is dirty we can bail out and save lots of math
             return;
         }
@@ -1057,8 +1041,7 @@ var Mesh = new Class({
         var viewMatrix = this.viewMatrix;
         var viewPosition = this.viewPosition;
 
-        if (dirty[10])
-        {
+        if (dirty[10]) {
             viewMatrix.identity();
             viewMatrix.translate(viewPosition);
             viewMatrix.invert();
@@ -1080,8 +1063,7 @@ var Mesh = new Class({
 
         var faces = this.faces;
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             faces[i].transformCoordinatesLocal(transformMatrix, width, height, z);
         }
 
@@ -1099,12 +1081,10 @@ var Mesh = new Class({
      * @param {Phaser.GameObjects.Mesh} src - The Mesh object being rendered.
      * @param {Phaser.Geom.Mesh.Face[]} faces - An array of Faces.
      */
-    renderDebug: function (src, faces)
-    {
+    renderDebug: function (src, faces) {
         var graphic = src.debugGraphic;
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             var face = faces[i];
 
             var x0 = face.vertex1.tx;
@@ -1125,8 +1105,7 @@ var Mesh = new Class({
      * @private
      * @since 3.50.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.clear();
 
         this.debugCallback = null;
@@ -1145,8 +1124,7 @@ var Mesh = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    clearTint: function ()
-    {
+    clearTint: function () {
         return this.setTint();
     },
 
@@ -1157,32 +1135,30 @@ var Mesh = new Class({
      *
      * @example
      * mesh.setInteractive();
-     * 
+     *
      * @example
      * mesh.setInteractive({ useHandCursor: true });
      *
      * @method Phaser.GameObjects.Mesh#setInteractive
      * @since 3.60.0
-     * 
+     *
      * @param {(Phaser.Types.Input.InputConfiguration)} [config] - An input configuration object but it will ignore hitArea, hitAreaCallback and pixelPerfect with associated alphaTolerance properties.
      *
      * @return {this} This GameObject.
      */
-    setInteractive: function (config)
-    {
-        if (config === undefined) { config = {}; }
+    setInteractive: function (config) {
+        if (config === undefined) {
+            config = {};
+        }
 
-        var hitAreaCallback = function (area, x, y)
-        {
+        var hitAreaCallback = function (area, x, y) {
             var faces = this.faces;
 
-            for (var i = 0; i < faces.length; i++)
-            {
+            for (var i = 0; i < faces.length; i++) {
                 var face = faces[i];
 
                 //  Don't pass a calcMatrix, as the x/y are already transformed
-                if (face.contains(x, y))
-                {
+                if (face.contains(x, y)) {
                     return true;
                 }
             }
@@ -1214,14 +1190,14 @@ var Mesh = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setTint: function (tint)
-    {
-        if (tint === undefined) { tint = 0xffffff; }
+    setTint: function (tint) {
+        if (tint === undefined) {
+            tint = 0xffffff;
+        }
 
         var vertices = this.vertices;
 
-        for (var i = 0; i < vertices.length; i++)
-        {
+        for (var i = 0; i < vertices.length; i++) {
             vertices[i].color = tint;
         }
 
@@ -1255,12 +1231,10 @@ var Mesh = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    uvScroll: function (x, y)
-    {
+    uvScroll: function (x, y) {
         var faces = this.faces;
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             faces[i].scrollUV(x, y);
         }
 
@@ -1292,12 +1266,10 @@ var Mesh = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    uvScale: function (x, y)
-    {
+    uvScale: function (x, y) {
         var faces = this.faces;
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             faces[i].scaleUV(x, y);
         }
 
@@ -1315,8 +1287,7 @@ var Mesh = new Class({
      */
     tint: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this.setTint(value);
         }
     },
@@ -1332,13 +1303,11 @@ var Mesh = new Class({
      */
     rotateX: {
 
-        get: function ()
-        {
+        get: function () {
             return RadToDeg(this.modelRotation.x);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.modelRotation.x = DegToRad(value);
         }
 
@@ -1355,13 +1324,11 @@ var Mesh = new Class({
      */
     rotateY: {
 
-        get: function ()
-        {
+        get: function () {
             return RadToDeg(this.modelRotation.y);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.modelRotation.y = DegToRad(value);
         }
 
@@ -1378,13 +1345,11 @@ var Mesh = new Class({
      */
     rotateZ: {
 
-        get: function ()
-        {
+        get: function () {
             return RadToDeg(this.modelRotation.z);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.modelRotation.z = DegToRad(value);
         }
 

@@ -18,12 +18,10 @@
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var BlitterCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var BlitterCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     var list = src.getRenderList();
 
-    if (list.length === 0)
-    {
+    if (list.length === 0) {
         return;
     }
 
@@ -31,8 +29,7 @@ var BlitterCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
     var alpha = camera.alpha * src.alpha;
 
-    if (alpha === 0)
-    {
+    if (alpha === 0) {
         //  Nothing to see, so abort early
         return;
     }
@@ -49,16 +46,14 @@ var BlitterCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
     ctx.save();
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         parentMatrix.copyToContext(ctx);
     }
 
     var roundPixels = camera.roundPixels;
 
     //  Render bobs
-    for (var i = 0; i < list.length; i++)
-    {
+    for (var i = 0; i < list.length; i++) {
         var bob = list[i];
         var flip = (bob.flipX || bob.flipY);
         var frame = bob.frame;
@@ -70,23 +65,19 @@ var BlitterCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         var bobAlpha = bob.alpha * alpha;
 
-        if (bobAlpha === 0)
-        {
+        if (bobAlpha === 0) {
             continue;
         }
 
         ctx.globalAlpha = bobAlpha;
 
-        if (!flip)
-        {
-            if (roundPixels)
-            {
+        if (!flip) {
+            if (roundPixels) {
                 dx = Math.round(dx);
                 dy = Math.round(dy);
             }
 
-            if (cd.width > 0 && cd.height > 0)
-            {
+            if (cd.width > 0 && cd.height > 0) {
                 ctx.drawImage(
                     frame.source.image,
                     cd.x,
@@ -99,23 +90,18 @@ var BlitterCanvasRenderer = function (renderer, src, camera, parentMatrix)
                     cd.height
                 );
             }
-        }
-        else
-        {
-            if (bob.flipX)
-            {
+        } else {
+            if (bob.flipX) {
                 fx = -1;
                 dx -= cd.width;
             }
 
-            if (bob.flipY)
-            {
+            if (bob.flipY) {
                 fy = -1;
                 dy -= cd.height;
             }
 
-            if (cd.width > 0 && cd.height > 0)
-            {
+            if (cd.width > 0 && cd.height > 0) {
                 ctx.save();
                 ctx.translate(bob.x + cameraScrollX, bob.y + cameraScrollY);
                 ctx.scale(fx, fy);

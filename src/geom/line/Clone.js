@@ -16,8 +16,7 @@ var Line = require('./Line');
  *
  * @return {Phaser.Geom.Line} The cloned line.
  */
-var Clone = function (source)
-{
+var Clone = function (source) {
     return new Line(source.x1, source.y1, source.x2, source.y2);
 };
 

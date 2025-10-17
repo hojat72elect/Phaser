@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Triangle} The modified Triangle.
  */
-var Offset = function (triangle, x, y)
-{
+var Offset = function (triangle, x, y) {
     triangle.x1 += x;
     triangle.y1 += y;
 

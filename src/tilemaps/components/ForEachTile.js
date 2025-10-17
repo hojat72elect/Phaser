@@ -30,8 +30,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  * @param {Phaser.Types.Tilemaps.FilteringOptions} filteringOptions - Optional filters to apply when getting the tiles.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var ForEachTile = function (callback, context, tileX, tileY, width, height, filteringOptions, layer)
-{
+var ForEachTile = function (callback, context, tileX, tileY, width, height, filteringOptions, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, filteringOptions, layer);
 
     tiles.forEach(callback, context);

@@ -41,48 +41,41 @@ var AsepriteFile = new Class({
 
     initialize:
 
-    function AsepriteFile (loader, key, textureURL, atlasURL, textureXhrSettings, atlasXhrSettings)
-    {
-        var image;
-        var data;
+        function AsepriteFile(loader, key, textureURL, atlasURL, textureXhrSettings, atlasXhrSettings) {
+            var image;
+            var data;
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
+                key = GetFastValue(config, 'key');
 
-            image = new ImageFile(loader, {
-                key: key,
-                url: GetFastValue(config, 'textureURL'),
-                extension: GetFastValue(config, 'textureExtension', 'png'),
-                normalMap: GetFastValue(config, 'normalMap'),
-                xhrSettings: GetFastValue(config, 'textureXhrSettings')
-            });
+                image = new ImageFile(loader, {
+                    key: key,
+                    url: GetFastValue(config, 'textureURL'),
+                    extension: GetFastValue(config, 'textureExtension', 'png'),
+                    normalMap: GetFastValue(config, 'normalMap'),
+                    xhrSettings: GetFastValue(config, 'textureXhrSettings')
+                });
 
-            data = new JSONFile(loader, {
-                key: key,
-                url: GetFastValue(config, 'atlasURL'),
-                extension: GetFastValue(config, 'atlasExtension', 'json'),
-                xhrSettings: GetFastValue(config, 'atlasXhrSettings')
-            });
-        }
-        else
-        {
-            image = new ImageFile(loader, key, textureURL, textureXhrSettings);
-            data = new JSONFile(loader, key, atlasURL, atlasXhrSettings);
-        }
+                data = new JSONFile(loader, {
+                    key: key,
+                    url: GetFastValue(config, 'atlasURL'),
+                    extension: GetFastValue(config, 'atlasExtension', 'json'),
+                    xhrSettings: GetFastValue(config, 'atlasXhrSettings')
+                });
+            } else {
+                image = new ImageFile(loader, key, textureURL, textureXhrSettings);
+                data = new JSONFile(loader, key, atlasURL, atlasXhrSettings);
+            }
 
-        if (image.linkFile)
-        {
-            //  Image has a normal map
-            MultiFile.call(this, loader, 'atlasjson', key, [ image, data, image.linkFile ]);
-        }
-        else
-        {
-            MultiFile.call(this, loader, 'atlasjson', key, [ image, data ]);
-        }
-    },
+            if (image.linkFile) {
+                //  Image has a normal map
+                MultiFile.call(this, loader, 'atlasjson', key, [image, data, image.linkFile]);
+            } else {
+                MultiFile.call(this, loader, 'atlasjson', key, [image, data]);
+            }
+        },
 
     /**
      * Adds this file to its target cache upon successful loading and processing.
@@ -90,10 +83,8 @@ var AsepriteFile = new Class({
      * @method Phaser.Loader.FileTypes.AsepriteFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
             var image = this.files[0];
             var json = this.files[1];
             var normalMap = (this.files[2]) ? this.files[2].data : null;
@@ -234,25 +225,20 @@ var AsepriteFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('aseprite', function (key, textureURL, atlasURL, textureXhrSettings, atlasXhrSettings)
-{
+FileTypesManager.register('aseprite', function (key, textureURL, atlasURL, textureXhrSettings, atlasXhrSettings) {
     var multifile;
 
     //  Supports an Object file definition in the key argument
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             multifile = new AsepriteFile(this, key[i]);
 
             this.addFile(multifile.files);
         }
-    }
-    else
-    {
+    } else {
         multifile = new AsepriteFile(this, key, textureURL, atlasURL, textureXhrSettings, atlasXhrSettings);
 
         this.addFile(multifile.files);

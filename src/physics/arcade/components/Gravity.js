@@ -26,8 +26,7 @@ var Gravity = {
      *
      * @return {this} This Game Object.
      */
-    setGravity: function (x, y)
-    {
+    setGravity: function (x, y) {
         this.body.gravity.set(x, y);
 
         return this;
@@ -43,8 +42,7 @@ var Gravity = {
      *
      * @return {this} This Game Object.
      */
-    setGravityX: function (x)
-    {
+    setGravityX: function (x) {
         this.body.gravity.x = x;
 
         return this;
@@ -60,8 +58,7 @@ var Gravity = {
      *
      * @return {this} This Game Object.
      */
-    setGravityY: function (y)
-    {
+    setGravityY: function (y) {
         this.body.gravity.y = y;
 
         return this;

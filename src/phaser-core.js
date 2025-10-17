@@ -18,11 +18,11 @@ var Phaser = {
     Animations: require('./animations'),
     BlendModes: require('./renderer/BlendModes'),
     Cache: require('./cache'),
-    Cameras: { Scene2D: require('./cameras/2d') },
+    Cameras: {Scene2D: require('./cameras/2d')},
     Core: require('./core'),
     Class: require('./utils/Class'),
     Data: require('./data'),
-    Display: { Masks: require('./display/mask') },
+    Display: {Masks: require('./display/mask')},
     DOM: require('./dom'),
     Events: require('./events'),
     FX: require('./fx'),
@@ -103,8 +103,7 @@ var Phaser = {
 
 //  Merge in the optional plugins and WebGL only features
 
-if (typeof FEATURE_SOUND)
-{
+if (typeof FEATURE_SOUND) {
     Phaser.Sound = require('./sound');
 }
 

@@ -16,8 +16,7 @@
  *
  * @return {number} The horizontal offset of the Game Object.
  */
-var GetOffsetX = function (gameObject)
-{
+var GetOffsetX = function (gameObject) {
     return gameObject.width * gameObject.originX;
 };
 

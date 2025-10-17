@@ -140,202 +140,199 @@ var NineSlice = new Class({
 
     initialize:
 
-    function NineSlice (scene, x, y, texture, frame, width, height, leftWidth, rightWidth, topHeight, bottomHeight)
-    {
-        // if (width === undefined) { width = 256; }
-        // if (height === undefined) { height = 256; }
+        function NineSlice(scene, x, y, texture, frame, width, height, leftWidth, rightWidth, topHeight, bottomHeight) {
+            // if (width === undefined) { width = 256; }
+            // if (height === undefined) { height = 256; }
 
-        // if (leftWidth === undefined) { leftWidth = 10; }
-        // if (rightWidth === undefined) { rightWidth = 10; }
-        // if (topHeight === undefined) { topHeight = 0; }
-        // if (bottomHeight === undefined) { bottomHeight = 0; }
+            // if (leftWidth === undefined) { leftWidth = 10; }
+            // if (rightWidth === undefined) { rightWidth = 10; }
+            // if (topHeight === undefined) { topHeight = 0; }
+            // if (bottomHeight === undefined) { bottomHeight = 0; }
 
-        GameObject.call(this, scene, 'NineSlice');
+            GameObject.call(this, scene, 'NineSlice');
 
-        /**
-         * Internal width value. Do not modify this property directly.
-         *
-         * @name Phaser.GameObjects.NineSlice#_width
-         * @private
-         * @type {number}
-         * @since 3.60.0
-         */
-        this._width;
+            /**
+             * Internal width value. Do not modify this property directly.
+             *
+             * @name Phaser.GameObjects.NineSlice#_width
+             * @private
+             * @type {number}
+             * @since 3.60.0
+             */
+            this._width;
 
-        /**
-         * Internal height value. Do not modify this property directly.
-         *
-         * @name Phaser.GameObjects.NineSlice#_height
-         * @private
-         * @type {number}
-         * @since 3.60.0
-         */
-        this._height;
+            /**
+             * Internal height value. Do not modify this property directly.
+             *
+             * @name Phaser.GameObjects.NineSlice#_height
+             * @private
+             * @type {number}
+             * @since 3.60.0
+             */
+            this._height;
 
-        /**
-         * Internal originX value. Do not modify this property directly.
-         *
-         * @name Phaser.GameObjects.NineSlice#_originX
-         * @private
-         * @type {number}
-         * @since 3.60.0
-         */
-        this._originX = 0.5;
+            /**
+             * Internal originX value. Do not modify this property directly.
+             *
+             * @name Phaser.GameObjects.NineSlice#_originX
+             * @private
+             * @type {number}
+             * @since 3.60.0
+             */
+            this._originX = 0.5;
 
-        /**
-         * Internal originY value. Do not modify this property directly.
-         *
-         * @name Phaser.GameObjects.NineSlice#_originY
-         * @private
-         * @type {number}
-         * @since 3.60.0
-         */
-        this._originY = 0.5;
+            /**
+             * Internal originY value. Do not modify this property directly.
+             *
+             * @name Phaser.GameObjects.NineSlice#_originY
+             * @private
+             * @type {number}
+             * @since 3.60.0
+             */
+            this._originY = 0.5;
 
-        /**
-         * Internal component value. Do not modify this property directly.
-         *
-         * @name Phaser.GameObjects.NineSlice#_sizeComponent
-         * @private
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this._sizeComponent = true;
+            /**
+             * Internal component value. Do not modify this property directly.
+             *
+             * @name Phaser.GameObjects.NineSlice#_sizeComponent
+             * @private
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this._sizeComponent = true;
 
-        /**
-         * An array of Vertex objects that correspond to the quads that make-up
-         * this Nine Slice Game Object. They are stored in the following order:
-         *
-         * Top Left - Indexes 0 - 5
-         * Top Center - Indexes 6 - 11
-         * Top Right - Indexes 12 - 17
-         * Center Left - Indexes 18 - 23
-         * Center - Indexes 24 - 29
-         * Center Right - Indexes 30 - 35
-         * Bottom Left - Indexes 36 - 41
-         * Bottom Center - Indexes 42 - 47
-         * Bottom Right - Indexes 48 - 53
-         *
-         * Each quad is represented by 6 Vertex instances.
-         *
-         * This array will contain 18 elements for a 3 slice object
-         * and 54 for a nine slice object.
-         *
-         * You should never modify this array once it has been populated.
-         *
-         * @name Phaser.GameObjects.NineSlice#vertices
-         * @type {Phaser.Geom.Mesh.Vertex[]}
-         * @since 3.60.0
-         */
-        this.vertices = [];
+            /**
+             * An array of Vertex objects that correspond to the quads that make-up
+             * this Nine Slice Game Object. They are stored in the following order:
+             *
+             * Top Left - Indexes 0 - 5
+             * Top Center - Indexes 6 - 11
+             * Top Right - Indexes 12 - 17
+             * Center Left - Indexes 18 - 23
+             * Center - Indexes 24 - 29
+             * Center Right - Indexes 30 - 35
+             * Bottom Left - Indexes 36 - 41
+             * Bottom Center - Indexes 42 - 47
+             * Bottom Right - Indexes 48 - 53
+             *
+             * Each quad is represented by 6 Vertex instances.
+             *
+             * This array will contain 18 elements for a 3 slice object
+             * and 54 for a nine slice object.
+             *
+             * You should never modify this array once it has been populated.
+             *
+             * @name Phaser.GameObjects.NineSlice#vertices
+             * @type {Phaser.Geom.Mesh.Vertex[]}
+             * @since 3.60.0
+             */
+            this.vertices = [];
 
-        /**
-         * The size of the left vertical bar (A).
-         *
-         * @name Phaser.GameObjects.NineSlice#leftWidth
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.leftWidth;
+            /**
+             * The size of the left vertical bar (A).
+             *
+             * @name Phaser.GameObjects.NineSlice#leftWidth
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.leftWidth;
 
-        /**
-         * The size of the right vertical bar (B).
-         *
-         * @name Phaser.GameObjects.NineSlice#rightWidth
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.rightWidth;
+            /**
+             * The size of the right vertical bar (B).
+             *
+             * @name Phaser.GameObjects.NineSlice#rightWidth
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.rightWidth;
 
-        /**
-         * The size of the top horizontal bar (C).
-         *
-         * If this is a 3 slice object this property will be set to the
-         * height of the texture being used.
-         *
-         * @name Phaser.GameObjects.NineSlice#topHeight
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.topHeight;
+            /**
+             * The size of the top horizontal bar (C).
+             *
+             * If this is a 3 slice object this property will be set to the
+             * height of the texture being used.
+             *
+             * @name Phaser.GameObjects.NineSlice#topHeight
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.topHeight;
 
-        /**
-         * The size of the bottom horizontal bar (D).
-         *
-         * If this is a 3 slice object this property will be set to zero.
-         *
-         * @name Phaser.GameObjects.NineSlice#bottomHeight
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.bottomHeight;
+            /**
+             * The size of the bottom horizontal bar (D).
+             *
+             * If this is a 3 slice object this property will be set to zero.
+             *
+             * @name Phaser.GameObjects.NineSlice#bottomHeight
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.bottomHeight;
 
-        /**
-         * The tint value being applied to the top-left vertice of the Game Object.
-         * This value is interpolated from the corner to the center of the Game Object.
-         * The value should be set as a hex number, i.e. 0xff0000 for red, or 0xff00ff for purple.
-         *
-         * @name Phaser.GameObjects.NineSlice#tint
-         * @type {number}
-         * @default 0xffffff
-         * @since 3.60.0
-         */
-        this.tint = 0xffffff;
+            /**
+             * The tint value being applied to the top-left vertice of the Game Object.
+             * This value is interpolated from the corner to the center of the Game Object.
+             * The value should be set as a hex number, i.e. 0xff0000 for red, or 0xff00ff for purple.
+             *
+             * @name Phaser.GameObjects.NineSlice#tint
+             * @type {number}
+             * @default 0xffffff
+             * @since 3.60.0
+             */
+            this.tint = 0xffffff;
 
-        /**
-         * The tint fill mode.
-         *
-         * `false` = An additive tint (the default), where vertices colors are blended with the texture.
-         * `true` = A fill tint, where the vertices colors replace the texture, but respects texture alpha.
-         *
-         * @name Phaser.GameObjects.NineSlice#tintFill
-         * @type {boolean}
-         * @default false
-         * @since 3.60.0
-         */
-        this.tintFill = false;
+            /**
+             * The tint fill mode.
+             *
+             * `false` = An additive tint (the default), where vertices colors are blended with the texture.
+             * `true` = A fill tint, where the vertices colors replace the texture, but respects texture alpha.
+             *
+             * @name Phaser.GameObjects.NineSlice#tintFill
+             * @type {boolean}
+             * @default false
+             * @since 3.60.0
+             */
+            this.tintFill = false;
 
-        var textureFrame = scene.textures.getFrame(texture, frame);
+            var textureFrame = scene.textures.getFrame(texture, frame);
 
-        /**
-         * This property is `true` if this Nine Slice Game Object was configured
-         * with just `leftWidth` and `rightWidth` values, making it a 3-slice
-         * instead of a 9-slice object.
-         *
-         * @name Phaser.GameObjects.NineSlice#is3Slice
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.is3Slice = (!topHeight && !bottomHeight);
+            /**
+             * This property is `true` if this Nine Slice Game Object was configured
+             * with just `leftWidth` and `rightWidth` values, making it a 3-slice
+             * instead of a 9-slice object.
+             *
+             * @name Phaser.GameObjects.NineSlice#is3Slice
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.is3Slice = (!topHeight && !bottomHeight);
 
-        if (textureFrame && textureFrame.scale9)
-        {
-            //  If we're using the scale9 data from the frame, override the values from above
-            this.is3Slice = textureFrame.is3Slice;
-        }
+            if (textureFrame && textureFrame.scale9) {
+                //  If we're using the scale9 data from the frame, override the values from above
+                this.is3Slice = textureFrame.is3Slice;
+            }
 
-        var size = this.is3Slice ? 18 : 54;
+            var size = this.is3Slice ? 18 : 54;
 
-        for (var i = 0; i < size; i++)
-        {
-            this.vertices.push(new Vertex());
-        }
+            for (var i = 0; i < size; i++) {
+                this.vertices.push(new Vertex());
+            }
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        this.setTexture(texture, frame);
+            this.setTexture(texture, frame);
 
-        this.setSlices(width, height, leftWidth, rightWidth, topHeight, bottomHeight, false);
+            this.setSlices(width, height, leftWidth, rightWidth, topHeight, bottomHeight, false);
 
-        this.updateDisplayOrigin();
+            this.updateDisplayOrigin();
 
-        this.initPipeline();
-        this.initPostPipeline();
-    },
+            this.initPipeline();
+            this.initPostPipeline();
+        },
 
     /**
      * Resets the width, height and slices for this NineSlice Game Object.
@@ -358,32 +355,36 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSlices: function (width, height, leftWidth, rightWidth, topHeight, bottomHeight, skipScale9)
-    {
-        if (leftWidth === undefined) { leftWidth = 10; }
-        if (rightWidth === undefined) { rightWidth = 10; }
-        if (topHeight === undefined) { topHeight = 0; }
-        if (bottomHeight === undefined) { bottomHeight = 0; }
+    setSlices: function (width, height, leftWidth, rightWidth, topHeight, bottomHeight, skipScale9) {
+        if (leftWidth === undefined) {
+            leftWidth = 10;
+        }
+        if (rightWidth === undefined) {
+            rightWidth = 10;
+        }
+        if (topHeight === undefined) {
+            topHeight = 0;
+        }
+        if (bottomHeight === undefined) {
+            bottomHeight = 0;
+        }
 
-        if (skipScale9 === undefined) { skipScale9 = false; }
+        if (skipScale9 === undefined) {
+            skipScale9 = false;
+        }
 
         var frame = this.frame;
 
         var sliceChange = false;
 
-        if (this.is3Slice && skipScale9 && topHeight !== 0 && bottomHeight !== 0)
-        {
+        if (this.is3Slice && skipScale9 && topHeight !== 0 && bottomHeight !== 0) {
             sliceChange = true;
         }
 
-        if (sliceChange)
-        {
+        if (sliceChange) {
             console.warn('Cannot change 9 slice to 3 slice');
-        }
-        else
-        {
-            if (frame && frame.scale9 && !skipScale9)
-            {
+        } else {
+            if (frame && frame.scale9 && !skipScale9) {
                 var data = frame.data.scale9Borders;
 
                 var x = data.x;
@@ -394,20 +395,20 @@ var NineSlice = new Class({
                 topHeight = y;
                 bottomHeight = frame.height - data.h - y;
 
-                if (width === undefined)
-                {
+                if (width === undefined) {
                     width = frame.width;
                 }
 
-                if (height === undefined)
-                {
+                if (height === undefined) {
                     height = frame.height;
                 }
-            }
-            else
-            {
-                if (width === undefined) { width = 256; }
-                if (height === undefined) { height = 256; }
+            } else {
+                if (width === undefined) {
+                    width = 256;
+                }
+                if (height === undefined) {
+                    height = 256;
+                }
             }
 
             this._width = width;
@@ -418,8 +419,7 @@ var NineSlice = new Class({
             this.topHeight = topHeight;
             this.bottomHeight = bottomHeight;
 
-            if (this.is3Slice)
-            {
+            if (this.is3Slice) {
                 height = frame.height;
 
                 this._height = height;
@@ -444,8 +444,7 @@ var NineSlice = new Class({
      * @method Phaser.GameObjects.NineSlice#updateUVs
      * @since 3.60.0
      */
-    updateUVs: function ()
-    {
+    updateUVs: function () {
         var left = this.leftWidth;
         var right = this.rightWidth;
         var top = this.topHeight;
@@ -458,8 +457,7 @@ var NineSlice = new Class({
         this.updateQuadUVs(6, left / width, 0, 1 - (right / width), top / height);
         this.updateQuadUVs(12, 1 - (right / width), 0, 1, top / height);
 
-        if (!this.is3Slice)
-        {
+        if (!this.is3Slice) {
             this.updateQuadUVs(18, 0, top / height, left / width, 1 - (bot / height));
             this.updateQuadUVs(24, left / width, top / height, 1 - right / width, 1 - (bot / height));
             this.updateQuadUVs(30, 1 - right / width, top / height, 1, 1 - (bot / height));
@@ -484,8 +482,7 @@ var NineSlice = new Class({
      * @method Phaser.GameObjects.NineSlice#updateVertices
      * @since 3.60.0
      */
-    updateVertices: function ()
-    {
+    updateVertices: function () {
         var left = this.leftWidth;
         var right = this.rightWidth;
         var top = this.topHeight;
@@ -498,8 +495,7 @@ var NineSlice = new Class({
         this.updateQuad(6, -0.5 + (left / width), 0.5, 0.5 - (right / width), 0.5 - (top / height));
         this.updateQuad(12, 0.5 - (right / width), 0.5, 0.5, 0.5 - (top / height));
 
-        if (!this.is3Slice)
-        {
+        if (!this.is3Slice) {
             this.updateQuad(18, -0.5, 0.5 - (top / height), -0.5 + (left / width), -0.5 + (bot / height));
             this.updateQuad(24, -0.5 + (left / width), 0.5 - (top / height), 0.5 - (right / width), -0.5 + (bot / height));
             this.updateQuad(30, 0.5 - (right / width), 0.5 - (top / height), 0.5, -0.5 + (bot / height));
@@ -525,8 +521,7 @@ var NineSlice = new Class({
      * @param {number} x2 - The bottom-right quad coordinate.
      * @param {number} y2 - The bottom-right quad coordinate.
      */
-    updateQuad: function (offset, x1, y1, x2, y2)
-    {
+    updateQuad: function (offset, x1, y1, x2, y2) {
         var width = this.width;
         var height = this.height;
         var originX = this.originX;
@@ -558,8 +553,7 @@ var NineSlice = new Class({
      * @param {number} u2 - The bottom-right UV coordinate.
      * @param {number} v2 - The bottom-right UV coordinate.
      */
-    updateQuadUVs: function (offset, u1, v1, u2, v2)
-    {
+    updateQuadUVs: function (offset, u1, v1, u2, v2) {
         var verts = this.vertices;
 
         //  Adjust for frame offset
@@ -571,16 +565,14 @@ var NineSlice = new Class({
         var fu2 = frame.u1;
         var fv2 = frame.v1;
 
-        if (fu1 !== 0 || fu2 !== 1)
-        {
+        if (fu1 !== 0 || fu2 !== 1) {
             //  adjust horizontal
             var udiff = fu2 - fu1;
             u1 = fu1 + u1 * udiff;
             u2 = fu1 + u2 * udiff;
         }
 
-        if (fv1 !== 0 || fv2 !== 1)
-        {
+        if (fv1 !== 0 || fv2 !== 1) {
             //  adjust vertical
             var vdiff = fv2 - fv1;
             v1 = fv1 + v1 * vdiff;
@@ -607,8 +599,7 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    clearTint: function ()
-    {
+    clearTint: function () {
         this.setTint(0xffffff);
 
         return this;
@@ -635,9 +626,10 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setTint: function (color)
-    {
-        if (color === undefined) { color = 0xffffff; }
+    setTint: function (color) {
+        if (color === undefined) {
+            color = 0xffffff;
+        }
 
         this.tint = color;
 
@@ -668,8 +660,7 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setTintFill: function (color)
-    {
+    setTintFill: function (color) {
         this.setTint(color);
 
         this.tintFill = true;
@@ -691,8 +682,7 @@ var NineSlice = new Class({
      */
     isTinted: {
 
-        get: function ()
-        {
+        get: function () {
             return (this.tint !== 0xffffff);
         }
 
@@ -714,13 +704,11 @@ var NineSlice = new Class({
      */
     width: {
 
-        get: function ()
-        {
+        get: function () {
             return this._width;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._width = Math.max(value, this.leftWidth + this.rightWidth);
 
             this.updateVertices();
@@ -747,15 +735,12 @@ var NineSlice = new Class({
      */
     height: {
 
-        get: function ()
-        {
+        get: function () {
             return this._height;
         },
 
-        set: function (value)
-        {
-            if (!this.is3Slice)
-            {
+        set: function (value) {
+            if (!this.is3Slice) {
                 this._height = Math.max(value, this.topHeight + this.bottomHeight);
 
                 this.updateVertices();
@@ -777,13 +762,11 @@ var NineSlice = new Class({
      */
     displayWidth: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleX * this.width;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleX = value / this.width;
         }
 
@@ -802,13 +785,11 @@ var NineSlice = new Class({
      */
     displayHeight: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleY * this.height;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleY = value / this.height;
         }
 
@@ -835,8 +816,7 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -844,8 +824,7 @@ var NineSlice = new Class({
 
         var input = this.input;
 
-        if (input && !input.customHitArea)
-        {
+        if (input && !input.customHitArea) {
             input.hitArea.width = this.width;
             input.hitArea.height = this.height;
         }
@@ -866,8 +845,7 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setDisplaySize: function (width, height)
-    {
+    setDisplaySize: function (width, height) {
         this.displayWidth = width;
         this.displayHeight = height;
 
@@ -886,13 +864,11 @@ var NineSlice = new Class({
      */
     originX: {
 
-        get: function ()
-        {
+        get: function () {
             return this._originX;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._originX = value;
             this.updateVertices();
         }
@@ -911,13 +887,11 @@ var NineSlice = new Class({
      */
     originY: {
 
-        get: function ()
-        {
+        get: function () {
             return this._originY;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._originY = value;
             this.updateVertices();
         }
@@ -937,10 +911,13 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setOrigin: function (x, y)
-    {
-        if (x === undefined) { x = 0.5; }
-        if (y === undefined) { y = x; }
+    setOrigin: function (x, y) {
+        if (x === undefined) {
+            x = 0.5;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this._originX = x;
         this._originY = y;
@@ -961,10 +938,8 @@ var NineSlice = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSizeToFrame: function ()
-    {
-        if (this.is3Slice)
-        {
+    setSizeToFrame: function () {
+        if (this.is3Slice) {
             var height = this.frame.height;
 
             this._height = height;
@@ -984,8 +959,7 @@ var NineSlice = new Class({
      * @private
      * @since 3.60.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.vertices = [];
     }
 

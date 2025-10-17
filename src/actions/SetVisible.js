@@ -24,8 +24,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var SetVisible = function (items, value, index, direction)
-{
+var SetVisible = function (items, value, index, direction) {
     return PropertyValueSet(items, 'visible', value, 0, index, direction);
 };
 

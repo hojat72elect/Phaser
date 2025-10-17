@@ -22,20 +22,14 @@ var GetTilesWithin = require('./GetTilesWithin');
  * @param {number} height - How many tiles tall from the `tileY` index the area will be.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var SwapByIndex = function (indexA, indexB, tileX, tileY, width, height, layer)
-{
+var SwapByIndex = function (indexA, indexB, tileX, tileY, width, height, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
-        if (tiles[i])
-        {
-            if (tiles[i].index === indexA)
-            {
+    for (var i = 0; i < tiles.length; i++) {
+        if (tiles[i]) {
+            if (tiles[i].index === indexA) {
                 tiles[i].index = indexB;
-            }
-            else if (tiles[i].index === indexB)
-            {
+            } else if (tiles[i].index === indexB) {
                 tiles[i].index = indexA;
             }
         }

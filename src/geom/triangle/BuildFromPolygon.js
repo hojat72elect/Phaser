@@ -24,12 +24,19 @@ var Triangle = require('./Triangle');
  *
  * @return {(array|Phaser.Geom.Triangle[])} An array of Triangle instances, where each triangle is based on the decomposed vertices data.
  */
-var BuildFromPolygon = function (data, holes, scaleX, scaleY, out)
-{
-    if (holes === undefined) { holes = null; }
-    if (scaleX === undefined) { scaleX = 1; }
-    if (scaleY === undefined) { scaleY = 1; }
-    if (out === undefined) { out = []; }
+var BuildFromPolygon = function (data, holes, scaleX, scaleY, out) {
+    if (holes === undefined) {
+        holes = null;
+    }
+    if (scaleX === undefined) {
+        scaleX = 1;
+    }
+    if (scaleY === undefined) {
+        scaleY = 1;
+    }
+    if (out === undefined) {
+        out = [];
+    }
 
     var tris = EarCut(data, holes);
 
@@ -46,8 +53,7 @@ var BuildFromPolygon = function (data, holes, scaleX, scaleY, out)
     var x3;
     var y3;
 
-    for (var i = 0; i < tris.length; i += 3)
-    {
+    for (var i = 0; i < tris.length; i += 3) {
         a = tris[i];
         b = tris[i + 1];
         c = tris[i + 2];

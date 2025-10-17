@@ -38,81 +38,79 @@ var ShadowFXPipeline = new Class({
 
     initialize:
 
-    function ShadowFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: ShadowFrag
-        });
+        function ShadowFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: ShadowFrag
+            });
 
-        /**
-         * The horizontal offset of the shadow effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = 0;
+            /**
+             * The horizontal offset of the shadow effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = 0;
 
-        /**
-         * The vertical offset of the shadow effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = 0;
+            /**
+             * The vertical offset of the shadow effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = 0;
 
-        /**
-         * The amount of decay for the shadow effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#decay
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.decay = 0.1;
+            /**
+             * The amount of decay for the shadow effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#decay
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.decay = 0.1;
 
-        /**
-         * The power of the shadow effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#power
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.power = 1;
+            /**
+             * The power of the shadow effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#power
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.power = 1;
 
-        /**
-         * The internal gl color array.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 0, 0, 0, 1 ];
+            /**
+             * The internal gl color array.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [0, 0, 0, 1];
 
-        /**
-         * The number of samples that the shadow effect will run for.
-         *
-         * This should be an integer with a minimum value of 1 and a maximum of 12.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#samples
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.samples = 6;
+            /**
+             * The number of samples that the shadow effect will run for.
+             *
+             * This should be an integer with a minimum value of 1 and a maximum of 12.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#samples
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.samples = 6;
 
-        /**
-         * The intensity of the shadow effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#intensity
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.intensity = 1;
-    },
+            /**
+             * The intensity of the shadow effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#intensity
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.intensity = 1;
+        },
 
-    onPreRender: function (controller, shader)
-    {
+    onPreRender: function (controller, shader) {
         controller = this.getController(controller);
 
         var samples = controller.samples;

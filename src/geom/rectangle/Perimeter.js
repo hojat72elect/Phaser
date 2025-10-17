@@ -14,8 +14,7 @@
  *
  * @return {number} The perimeter of the Rectangle, equal to `(width * 2) + (height * 2)`.
  */
-var Perimeter = function (rect)
-{
+var Perimeter = function (rect) {
     return 2 * (rect.width + rect.height);
 };
 

@@ -16,10 +16,8 @@
  *
  * @return {boolean} `true` if the point is within the Rectangle's bounds, otherwise `false`.
  */
-var Contains = function (rect, x, y)
-{
-    if (rect.width <= 0 || rect.height <= 0)
-    {
+var Contains = function (rect, x, y) {
+    if (rect.width <= 0 || rect.height <= 0) {
         return false;
     }
 

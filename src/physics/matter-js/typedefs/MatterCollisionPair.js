@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterCollisionPair
  * @since 3.22.0
- * 
+ *
  * @property {string} id - The unique auto-generated collision pair id. A combination of the body A and B IDs.
  * @property {MatterJS.BodyType} bodyA - A reference to the first body involved in the collision.
  * @property {MatterJS.BodyType} bodyB - A reference to the second body involved in the collision.

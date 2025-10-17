@@ -1,6 +1,6 @@
 /**
  * Defines an operation yielding a value incremented by steps across a range.
- * 
+ *
  * @typedef {object} Phaser.Types.GameObjects.Particles.EmitterOpSteppedConfig
  * @since 3.0.0
  *

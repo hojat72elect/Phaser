@@ -46,55 +46,59 @@ var Glow = new Class({
 
     initialize:
 
-    function Glow (gameObject, color, outerStrength, innerStrength, knockout)
-    {
-        if (outerStrength === undefined) { outerStrength = 4; }
-        if (innerStrength === undefined) { innerStrength = 0; }
-        if (knockout === undefined) { knockout = false; }
+        function Glow(gameObject, color, outerStrength, innerStrength, knockout) {
+            if (outerStrength === undefined) {
+                outerStrength = 4;
+            }
+            if (innerStrength === undefined) {
+                innerStrength = 0;
+            }
+            if (knockout === undefined) {
+                knockout = false;
+            }
 
-        Controller.call(this, FX_CONST.GLOW, gameObject);
+            Controller.call(this, FX_CONST.GLOW, gameObject);
 
-        /**
-         * The strength of the glow outward from the edge of the Sprite.
-         *
-         * @name Phaser.FX.Glow#outerStrength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.outerStrength = outerStrength;
+            /**
+             * The strength of the glow outward from the edge of the Sprite.
+             *
+             * @name Phaser.FX.Glow#outerStrength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.outerStrength = outerStrength;
 
-        /**
-         * The strength of the glow inward from the edge of the Sprite.
-         *
-         * @name Phaser.FX.Glow#innerStrength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.innerStrength = innerStrength;
+            /**
+             * The strength of the glow inward from the edge of the Sprite.
+             *
+             * @name Phaser.FX.Glow#innerStrength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.innerStrength = innerStrength;
 
-        /**
-         * If `true` only the glow is drawn, not the texture itself.
-         *
-         * @name Phaser.FX.Glow#knockout
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.knockout = knockout;
+            /**
+             * If `true` only the glow is drawn, not the texture itself.
+             *
+             * @name Phaser.FX.Glow#knockout
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.knockout = knockout;
 
-        /**
-         * A 4 element array of gl color values.
-         *
-         * @name Phaser.FX.Glow#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 1, 1, 1, 1 ];
+            /**
+             * A 4 element array of gl color values.
+             *
+             * @name Phaser.FX.Glow#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [1, 1, 1, 1];
 
-        if (color !== undefined)
-        {
-            this.color = color;
-        }
-    },
+            if (color !== undefined) {
+                this.color = color;
+            }
+        },
 
     /**
      * The color of the glow as a number value.
@@ -105,15 +109,13 @@ var Glow = new Class({
      */
     color: {
 
-        get: function ()
-        {
+        get: function () {
             var color = this.glcolor;
 
             return (((color[0] * 255) << 16) + ((color[1] * 255) << 8) + (color[2] * 255 | 0));
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var color = this.glcolor;
 
             color[0] = ((value >> 16) & 0xFF) / 255;

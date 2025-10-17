@@ -62,80 +62,81 @@ var Plane = new Class({
 
     initialize:
 
-    function Plane (scene, x, y, texture, frame, width, height, tile)
-    {
-        if (!texture) { texture = '__DEFAULT'; }
+        function Plane(scene, x, y, texture, frame, width, height, tile) {
+            if (!texture) {
+                texture = '__DEFAULT';
+            }
 
-        Mesh.call(this, scene, x, y, texture, frame);
+            Mesh.call(this, scene, x, y, texture, frame);
 
-        this.type = 'Plane';
+            this.type = 'Plane';
 
-        /**
-         * The Animation State component of this Sprite.
-         *
-         * This component provides features to apply animations to this Sprite.
-         * It is responsible for playing, loading, queuing animations for later playback,
-         * mixing between animations and setting the current animation frame to this Sprite.
-         *
-         * @name Phaser.GameObjects.Plane#anims
-         * @type {Phaser.Animations.AnimationState}
-         * @since 3.60.0
-         */
-        this.anims = new AnimationState(this);
+            /**
+             * The Animation State component of this Sprite.
+             *
+             * This component provides features to apply animations to this Sprite.
+             * It is responsible for playing, loading, queuing animations for later playback,
+             * mixing between animations and setting the current animation frame to this Sprite.
+             *
+             * @name Phaser.GameObjects.Plane#anims
+             * @type {Phaser.Animations.AnimationState}
+             * @since 3.60.0
+             */
+            this.anims = new AnimationState(this);
 
-        /**
-         * The width of this Plane in cells, not pixels.
-         *
-         * This value is read-only. To adjust it, see the `setGridSize` method.
-         *
-         * @name Phaser.GameObjects.Plane#gridWidth
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.gridWidth;
+            /**
+             * The width of this Plane in cells, not pixels.
+             *
+             * This value is read-only. To adjust it, see the `setGridSize` method.
+             *
+             * @name Phaser.GameObjects.Plane#gridWidth
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.gridWidth;
 
-        /**
-         * The height of this Plane in cells, not pixels.
-         *
-         * This value is read-only. To adjust it, see the `setGridSize` method.
-         *
-         * @name Phaser.GameObjects.Plane#gridHeight
-         * @type {number}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.gridHeight;
+            /**
+             * The height of this Plane in cells, not pixels.
+             *
+             * This value is read-only. To adjust it, see the `setGridSize` method.
+             *
+             * @name Phaser.GameObjects.Plane#gridHeight
+             * @type {number}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.gridHeight;
 
-        /**
-         * Is the texture of this Plane tiled across all cells, or not?
-         *
-         * This value is read-only. To adjust it, see the `setGridSize` method.
-         *
-         * @name Phaser.GameObjects.Plane#isTiled
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isTiled;
+            /**
+             * Is the texture of this Plane tiled across all cells, or not?
+             *
+             * This value is read-only. To adjust it, see the `setGridSize` method.
+             *
+             * @name Phaser.GameObjects.Plane#isTiled
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isTiled;
 
-        /**
-         * If this Plane has a checkboard texture, this is a reference to
-         * the WebGLTexture being used. Otherwise, it's null.
-         *
-         * @name Phaser.GameObjects.Plane#_checkerboard
-         * @type {?WebGLTexture}
-         * @private
-         * @since 3.60.0
-         */
-        this._checkerboard = null;
+            /**
+             * If this Plane has a checkboard texture, this is a reference to
+             * the WebGLTexture being used. Otherwise, it's null.
+             *
+             * @name Phaser.GameObjects.Plane#_checkerboard
+             * @type {?WebGLTexture}
+             * @private
+             * @since 3.60.0
+             */
+            this._checkerboard = null;
 
-        this.hideCCW = false;
+            this.hideCCW = false;
 
-        this.setGridSize(width, height, tile);
-        this.setSizeToFrame(false);
-        this.setViewHeight();
-    },
+            this.setGridSize(width, height, tile);
+            this.setSizeToFrame(false);
+            this.setViewHeight();
+        },
 
     /**
      * Do not change this value. It has no effect other than to break things.
@@ -148,8 +149,7 @@ var Plane = new Class({
      */
     originX: {
 
-        get: function ()
-        {
+        get: function () {
             return 0.5;
         }
 
@@ -166,8 +166,7 @@ var Plane = new Class({
      */
     originY: {
 
-        get: function ()
-        {
+        get: function () {
             return 0.5;
         }
 
@@ -193,16 +192,20 @@ var Plane = new Class({
      * @param {number} [height=8] - The height of this Plane, in cells, not pixels.
      * @param {boolean} [tile=false] - Is the texture tiled? I.e. repeated across each cell.
      */
-    setGridSize: function (width, height, tile)
-    {
-        if (width === undefined) { width = 8; }
-        if (height === undefined) { height = 8; }
-        if (tile === undefined) { tile = false; }
+    setGridSize: function (width, height, tile) {
+        if (width === undefined) {
+            width = 8;
+        }
+        if (height === undefined) {
+            height = 8;
+        }
+        if (tile === undefined) {
+            tile = false;
+        }
 
         var flipY = false;
 
-        if (tile)
-        {
+        if (tile) {
             flipY = true;
         }
 
@@ -237,21 +240,20 @@ var Plane = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSizeToFrame: function (resetUV)
-    {
-        if (resetUV === undefined) { resetUV = true; }
+    setSizeToFrame: function (resetUV) {
+        if (resetUV === undefined) {
+            resetUV = true;
+        }
 
         var frame = this.frame;
 
         this.setPerspective(this.width / frame.width, this.height / frame.height);
 
-        if (this._checkerboard && this._checkerboard !== this.texture)
-        {
+        if (this._checkerboard && this._checkerboard !== this.texture) {
             this.removeCheckerboard();
         }
 
-        if (!resetUV)
-        {
+        if (!resetUV) {
             return this;
         }
 
@@ -271,16 +273,13 @@ var Plane = new Class({
         var y;
         var i = 0;
 
-        if (this.isTiled)
-        {
+        if (this.isTiled) {
             //  flipY
             frameV0 = frame.v1;
             frameV1 = frame.v0;
 
-            for (y = 0; y < gridY; y++)
-            {
-                for (x = 0; x < gridX; x++)
-                {
+            for (y = 0; y < gridY; y++) {
+                for (x = 0; x < gridX; x++) {
                     verts[i++].setUVs(frameU0, frameV1);
                     verts[i++].setUVs(frameU0, frameV0);
                     verts[i++].setUVs(frameU1, frameV1);
@@ -289,9 +288,7 @@ var Plane = new Class({
                     verts[i++].setUVs(frameU1, frameV1);
                 }
             }
-        }
-        else
-        {
+        } else {
             var gridX1 = gridX + 1;
             var gridY1 = gridY + 1;
 
@@ -300,10 +297,8 @@ var Plane = new Class({
 
             var uvs = [];
 
-            for (y = 0; y < gridY1; y++)
-            {
-                for (x = 0; x < gridX1; x++)
-                {
+            for (y = 0; y < gridY1; y++) {
+                for (x = 0; x < gridX1; x++) {
                     var tu = frameU0 + frameU * (x / gridX);
                     var tv = frameV0 + frameV * (y / gridY);
 
@@ -311,10 +306,8 @@ var Plane = new Class({
                 }
             }
 
-            for (y = 0; y < gridY; y++)
-            {
-                for (x = 0; x < gridX; x++)
-                {
+            for (y = 0; y < gridY; y++) {
+                for (x = 0; x < gridX; x++) {
                     var a = (x + gridX1 * y) * 2;
                     var b = (x + gridX1 * (y + 1)) * 2;
                     var c = ((x + 1) + gridX1 * (y + 1)) * 2;
@@ -346,9 +339,10 @@ var Plane = new Class({
      *
      * @param {number} [value] - The height, in pixels, to set this Plane view height to.
      */
-    setViewHeight: function (value)
-    {
-        if (value === undefined) { value = this.frame.height; }
+    setViewHeight: function (value) {
+        if (value === undefined) {
+            value = this.frame.height;
+        }
 
         var vFOV = this.fov * (Math.PI / 180);
 
@@ -378,13 +372,22 @@ var Plane = new Class({
      * @param {number} [alpha2=255] - The even cell alpha value, specified as a number between 0 and 255.
      * @param {number} [height=128] - The view height of the Plane after creation, in pixels.
      */
-    createCheckerboard: function (color1, color2, alpha1, alpha2, height)
-    {
-        if (color1 === undefined) { color1 = 0xffffff; }
-        if (color2 === undefined) { color2 = 0x0000ff; }
-        if (alpha1 === undefined) { alpha1 = 255; }
-        if (alpha2 === undefined) { alpha2 = 255; }
-        if (height === undefined) { height = 128; }
+    createCheckerboard: function (color1, color2, alpha1, alpha2, height) {
+        if (color1 === undefined) {
+            color1 = 0xffffff;
+        }
+        if (color2 === undefined) {
+            color2 = 0x0000ff;
+        }
+        if (alpha1 === undefined) {
+            alpha1 = 255;
+        }
+        if (alpha2 === undefined) {
+            alpha2 = 255;
+        }
+        if (height === undefined) {
+            height = 128;
+        }
 
         //  Let's assume 16x16 for our texture size and 8x8 cell size
 
@@ -393,16 +396,11 @@ var Plane = new Class({
 
         var colors = [];
 
-        for (var h = 0; h < 16; h++)
-        {
-            for (var w = 0; w < 16; w++)
-            {
-                if ((h < 8 && w < 8) || (h > 7 && w > 7))
-                {
+        for (var h = 0; h < 16; h++) {
+            for (var w = 0; w < 16; w++) {
+                if ((h < 8 && w < 8) || (h > 7 && w > 7)) {
                     colors.push(c1.r, c1.g, c1.b, alpha1);
-                }
-                else
-                {
+                } else {
                     colors.push(c2.r, c2.g, c2.b, alpha2);
                 }
             }
@@ -428,10 +426,8 @@ var Plane = new Class({
      * @method Phaser.GameObjects.Plane#removeCheckerboard
      * @since 3.60.0
      */
-    removeCheckerboard: function ()
-    {
-        if (this._checkerboard)
-        {
+    removeCheckerboard: function () {
+        if (this._checkerboard) {
             this._checkerboard.destroy();
 
             this._checkerboard = null;
@@ -500,8 +496,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    play: function (key, ignoreIfPlaying)
-    {
+    play: function (key, ignoreIfPlaying) {
         return this.anims.play(key, ignoreIfPlaying);
     },
 
@@ -567,8 +562,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    playReverse: function (key, ignoreIfPlaying)
-    {
+    playReverse: function (key, ignoreIfPlaying) {
         return this.anims.playReverse(key, ignoreIfPlaying);
     },
 
@@ -595,8 +589,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    playAfterDelay: function (key, delay)
-    {
+    playAfterDelay: function (key, delay) {
         return this.anims.playAfterDelay(key, delay);
     },
 
@@ -622,8 +615,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    playAfterRepeat: function (key, repeatCount)
-    {
+    playAfterRepeat: function (key, repeatCount) {
         return this.anims.playAfterRepeat(key, repeatCount);
     },
 
@@ -640,8 +632,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    stop: function ()
-    {
+    stop: function () {
         return this.anims.stop();
     },
 
@@ -663,8 +654,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    stopAfterDelay: function (delay)
-    {
+    stopAfterDelay: function (delay) {
         return this.anims.stopAfterDelay(delay);
     },
 
@@ -686,8 +676,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    stopAfterRepeat: function (repeatCount)
-    {
+    stopAfterRepeat: function (repeatCount) {
         return this.anims.stopAfterRepeat(repeatCount);
     },
 
@@ -710,8 +699,7 @@ var Plane = new Class({
      *
      * @return {this} This Game Object.
      */
-    stopOnFrame: function (frame)
-    {
+    stopOnFrame: function (frame) {
         return this.anims.stopOnFrame(frame);
     },
 
@@ -726,8 +714,7 @@ var Plane = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
+    preUpdate: function (time, delta) {
         Mesh.prototype.preUpdate.call(this, time, delta);
 
         this.anims.update(time, delta);
@@ -740,8 +727,7 @@ var Plane = new Class({
      * @private
      * @since 3.60.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.clear();
         this.removeCheckerboard();
 

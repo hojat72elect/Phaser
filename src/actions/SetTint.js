@@ -20,10 +20,8 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var SetTint = function (items, topLeft, topRight, bottomLeft, bottomRight)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var SetTint = function (items, topLeft, topRight, bottomLeft, bottomRight) {
+    for (var i = 0; i < items.length; i++) {
         items[i].setTint(topLeft, topRight, bottomLeft, bottomRight);
     }
 

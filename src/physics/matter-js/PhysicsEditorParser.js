@@ -34,19 +34,18 @@ var PhysicsEditorParser = {
      *
      * @return {MatterJS.BodyType} A compound Matter JS Body.
      */
-    parseBody: function (x, y, config, options)
-    {
-        if (options === undefined) { options = {}; }
+    parseBody: function (x, y, config, options) {
+        if (options === undefined) {
+            options = {};
+        }
 
         var fixtureConfigs = GetFastValue(config, 'fixtures', []);
         var fixtures = [];
 
-        for (var fc = 0; fc < fixtureConfigs.length; fc++)
-        {
+        for (var fc = 0; fc < fixtureConfigs.length; fc++) {
             var fixtureParts = this.parseFixture(fixtureConfigs[fc]);
 
-            for (var i = 0; i < fixtureParts.length; i++)
-            {
+            for (var i = 0; i < fixtureParts.length; i++) {
                 fixtures.push(fixtureParts[i]);
             }
         }
@@ -62,7 +61,7 @@ var PhysicsEditorParser = {
 
         Body.setParts(body, fixtures);
 
-        Body.setPosition(body, { x: x, y: y });
+        Body.setPosition(body, {x: x, y: y});
 
         return body;
     },
@@ -77,8 +76,7 @@ var PhysicsEditorParser = {
      *
      * @return {MatterJS.BodyType[]} - An array of Matter JS Bodies.
      */
-    parseFixture: function (fixtureConfig)
-    {
+    parseFixture: function (fixtureConfig) {
         var matterConfig = Common.extend({}, false, fixtureConfig);
 
         delete matterConfig.circle;
@@ -86,15 +84,12 @@ var PhysicsEditorParser = {
 
         var fixtures;
 
-        if (fixtureConfig.circle)
-        {
+        if (fixtureConfig.circle) {
             var x = GetFastValue(fixtureConfig.circle, 'x');
             var y = GetFastValue(fixtureConfig.circle, 'y');
             var r = GetFastValue(fixtureConfig.circle, 'radius');
-            fixtures = [ Bodies.circle(x, y, r, matterConfig) ];
-        }
-        else if (fixtureConfig.vertices)
-        {
+            fixtures = [Bodies.circle(x, y, r, matterConfig)];
+        } else if (fixtureConfig.vertices) {
             fixtures = this.parseVertices(fixtureConfig.vertices, matterConfig);
         }
 
@@ -112,14 +107,14 @@ var PhysicsEditorParser = {
      *
      * @return {MatterJS.BodyType[]} - An array of Matter JS Bodies.
      */
-    parseVertices: function (vertexSets, options)
-    {
-        if (options === undefined) { options = {}; }
+    parseVertices: function (vertexSets, options) {
+        if (options === undefined) {
+            options = {};
+        }
 
         var parts = [];
 
-        for (var v = 0; v < vertexSets.length; v++)
-        {
+        for (var v = 0; v < vertexSets.length; v++) {
             Vertices.clockwiseSort(vertexSets[v]);
 
             parts.push(Body.create(Common.extend({

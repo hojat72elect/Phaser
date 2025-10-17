@@ -20,8 +20,7 @@
  *
  * @return {number} The distance between each point.
  */
-var ChebyshevDistance = function (x1, y1, x2, y2)
-{
+var ChebyshevDistance = function (x1, y1, x2, y2) {
     return Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2));
 };
 

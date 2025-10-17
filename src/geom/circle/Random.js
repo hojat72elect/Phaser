@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} A Point object with the random values set in the `x` and `y` properties.
  */
-var Random = function (circle, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Random = function (circle, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var t = 2 * Math.PI * Math.random();
     var u = Math.random() + Math.random();

@@ -23,8 +23,7 @@ var Gravity = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setGravity: function (value)
-    {
+    setGravity: function (value) {
         this.body.gravityFactor = value;
 
         return this;
@@ -39,13 +38,11 @@ var Gravity = {
      */
     gravity: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.gravityFactor;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.gravityFactor = value;
         }
 

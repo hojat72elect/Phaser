@@ -22,8 +22,7 @@ var CenterOn = require('./CenterOn');
  *
  * @return {Phaser.Geom.Rectangle} The inflated Rectangle.
  */
-var Inflate = function (rect, x, y)
-{
+var Inflate = function (rect, x, y) {
     var cx = rect.centerX;
     var cy = rect.centerY;
 

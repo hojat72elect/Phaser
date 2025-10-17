@@ -14,8 +14,7 @@
  *
  * @return {number} The center x coordinate of the bounds of the Game Object.
  */
-var GetCenterX = function (gameObject)
-{
+var GetCenterX = function (gameObject) {
     return gameObject.x - (gameObject.width * gameObject.originX) + (gameObject.width * 0.5);
 };
 

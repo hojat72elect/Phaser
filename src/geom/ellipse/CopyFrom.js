@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Ellipse} The destination Ellipse.
  */
-var CopyFrom = function (source, dest)
-{
+var CopyFrom = function (source, dest) {
     return dest.setTo(source.x, source.y, source.width, source.height);
 };
 

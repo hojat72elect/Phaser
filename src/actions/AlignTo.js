@@ -28,12 +28,10 @@ var QuickSet = require('../display/align/to/QuickSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var AlignTo = function (items, position, offsetX, offsetY)
-{
+var AlignTo = function (items, position, offsetX, offsetY) {
     var target = items[0];
 
-    for (var i = 1; i < items.length; i++)
-    {
+    for (var i = 1; i < items.length; i++) {
         var item = items[i];
 
         QuickSet(item, target, position, offsetX, offsetY);

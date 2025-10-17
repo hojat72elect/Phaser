@@ -32,113 +32,112 @@ var Shake = new Class({
 
     initialize:
 
-    function Shake (camera)
-    {
-        /**
-         * The Camera this effect belongs to.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#camera
-         * @type {Phaser.Cameras.Scene2D.Camera}
-         * @readonly
-         * @since 3.5.0
-         */
-        this.camera = camera;
+        function Shake(camera) {
+            /**
+             * The Camera this effect belongs to.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#camera
+             * @type {Phaser.Cameras.Scene2D.Camera}
+             * @readonly
+             * @since 3.5.0
+             */
+            this.camera = camera;
 
-        /**
-         * Is this effect actively running?
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#isRunning
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.5.0
-         */
-        this.isRunning = false;
+            /**
+             * Is this effect actively running?
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#isRunning
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.5.0
+             */
+            this.isRunning = false;
 
-        /**
-         * The duration of the effect, in milliseconds.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#duration
-         * @type {number}
-         * @readonly
-         * @default 0
-         * @since 3.5.0
-         */
-        this.duration = 0;
+            /**
+             * The duration of the effect, in milliseconds.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#duration
+             * @type {number}
+             * @readonly
+             * @default 0
+             * @since 3.5.0
+             */
+            this.duration = 0;
 
-        /**
-         * The intensity of the effect. Use small float values. The default when the effect starts is 0.05.
-         * This is a Vector2 object, allowing you to control the shake intensity independently across x and y.
-         * You can modify this value while the effect is active to create more varied shake effects.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#intensity
-         * @type {Phaser.Math.Vector2}
-         * @since 3.5.0
-         */
-        this.intensity = new Vector2();
+            /**
+             * The intensity of the effect. Use small float values. The default when the effect starts is 0.05.
+             * This is a Vector2 object, allowing you to control the shake intensity independently across x and y.
+             * You can modify this value while the effect is active to create more varied shake effects.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#intensity
+             * @type {Phaser.Math.Vector2}
+             * @since 3.5.0
+             */
+            this.intensity = new Vector2();
 
-        /**
-         * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#progress
-         * @type {number}
-         * @since 3.5.0
-         */
-        this.progress = 0;
+            /**
+             * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#progress
+             * @type {number}
+             * @since 3.5.0
+             */
+            this.progress = 0;
 
-        /**
-         * Effect elapsed timer.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#_elapsed
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this._elapsed = 0;
+            /**
+             * Effect elapsed timer.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#_elapsed
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this._elapsed = 0;
 
-        /**
-         * How much to offset the camera by horizontally.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#_offsetX
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._offsetX = 0;
+            /**
+             * How much to offset the camera by horizontally.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#_offsetX
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._offsetX = 0;
 
-        /**
-         * How much to offset the camera by vertically.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#_offsetY
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._offsetY = 0;
+            /**
+             * How much to offset the camera by vertically.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#_offsetY
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._offsetY = 0;
 
-        /**
-         * This callback is invoked every frame for the duration of the effect.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#_onUpdate
-         * @type {?Phaser.Types.Cameras.Scene2D.CameraShakeCallback}
-         * @private
-         * @default null
-         * @since 3.5.0
-         */
-        this._onUpdate;
+            /**
+             * This callback is invoked every frame for the duration of the effect.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#_onUpdate
+             * @type {?Phaser.Types.Cameras.Scene2D.CameraShakeCallback}
+             * @private
+             * @default null
+             * @since 3.5.0
+             */
+            this._onUpdate;
 
-        /**
-         * On Complete callback scope.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Shake#_onUpdateScope
-         * @type {any}
-         * @private
-         * @since 3.5.0
-         */
-        this._onUpdateScope;
-    },
+            /**
+             * On Complete callback scope.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Shake#_onUpdateScope
+             * @type {any}
+             * @private
+             * @since 3.5.0
+             */
+            this._onUpdateScope;
+        },
 
     /**
      * Shakes the Camera by the given intensity over the duration specified.
@@ -157,16 +156,24 @@ var Shake = new Class({
      *
      * @return {Phaser.Cameras.Scene2D.Camera} The Camera on which the effect was started.
      */
-    start: function (duration, intensity, force, callback, context)
-    {
-        if (duration === undefined) { duration = 100; }
-        if (intensity === undefined) { intensity = 0.05; }
-        if (force === undefined) { force = false; }
-        if (callback === undefined) { callback = null; }
-        if (context === undefined) { context = this.camera.scene; }
+    start: function (duration, intensity, force, callback, context) {
+        if (duration === undefined) {
+            duration = 100;
+        }
+        if (intensity === undefined) {
+            intensity = 0.05;
+        }
+        if (force === undefined) {
+            force = false;
+        }
+        if (callback === undefined) {
+            callback = null;
+        }
+        if (context === undefined) {
+            context = this.camera.scene;
+        }
 
-        if (!force && this.isRunning)
-        {
+        if (!force && this.isRunning) {
             return this.camera;
         }
 
@@ -174,12 +181,9 @@ var Shake = new Class({
         this.duration = duration;
         this.progress = 0;
 
-        if (typeof intensity === 'number')
-        {
+        if (typeof intensity === 'number') {
             this.intensity.set(intensity);
-        }
-        else
-        {
+        } else {
             this.intensity.set(intensity.x, intensity.y);
         }
 
@@ -201,10 +205,8 @@ var Shake = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Shake#preRender
      * @since 3.5.0
      */
-    preRender: function ()
-    {
-        if (this.isRunning)
-        {
+    preRender: function () {
+        if (this.isRunning) {
             this.camera.matrix.translate(this._offsetX, this._offsetY);
         }
     },
@@ -218,10 +220,8 @@ var Shake = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (!this.isRunning)
-        {
+    update: function (time, delta) {
+        if (!this.isRunning) {
             return;
         }
 
@@ -229,13 +229,11 @@ var Shake = new Class({
 
         this.progress = Clamp(this._elapsed / this.duration, 0, 1);
 
-        if (this._onUpdate)
-        {
+        if (this._onUpdate) {
             this._onUpdate.call(this._onUpdateScope, this.camera, this.progress);
         }
 
-        if (this._elapsed < this.duration)
-        {
+        if (this._elapsed < this.duration) {
             var intensity = this.intensity;
             var width = this.camera.width;
             var height = this.camera.height;
@@ -244,14 +242,11 @@ var Shake = new Class({
             this._offsetX = (Math.random() * intensity.x * width * 2 - intensity.x * width) * zoom;
             this._offsetY = (Math.random() * intensity.y * height * 2 - intensity.y * height) * zoom;
 
-            if (this.camera.roundPixels)
-            {
+            if (this.camera.roundPixels) {
                 this._offsetX = Math.round(this._offsetX);
                 this._offsetY = Math.round(this._offsetY);
             }
-        }
-        else
-        {
+        } else {
             this.effectComplete();
         }
     },
@@ -263,8 +258,7 @@ var Shake = new Class({
      * @fires Phaser.Cameras.Scene2D.Events#SHAKE_COMPLETE
      * @since 3.5.0
      */
-    effectComplete: function ()
-    {
+    effectComplete: function () {
         this._offsetX = 0;
         this._offsetY = 0;
 
@@ -283,8 +277,7 @@ var Shake = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Shake#reset
      * @since 3.5.0
      */
-    reset: function ()
-    {
+    reset: function () {
         this.isRunning = false;
 
         this._offsetX = 0;
@@ -300,8 +293,7 @@ var Shake = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Shake#destroy
      * @since 3.5.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.reset();
 
         this.camera = null;

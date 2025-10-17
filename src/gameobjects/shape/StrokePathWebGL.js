@@ -19,8 +19,7 @@ var Utils = require('../../renderer/webgl/Utils');
  * @param {number} dx - The source displayOriginX.
  * @param {number} dy - The source displayOriginY.
  */
-var StrokePathWebGL = function (pipeline, src, alpha, dx, dy)
-{
+var StrokePathWebGL = function (pipeline, src, alpha, dx, dy) {
     var strokeTint = pipeline.strokeTint;
     var strokeTintColor = Utils.getTintAppendFloatAlpha(src.strokeColor, src.strokeAlpha * alpha);
 
@@ -37,13 +36,11 @@ var StrokePathWebGL = function (pipeline, src, alpha, dx, dy)
     var px1 = path[0] - dx;
     var py1 = path[1] - dy;
 
-    if (!src.closePath)
-    {
+    if (!src.closePath) {
         pathLength -= 2;
     }
 
-    for (var i = 2; i < pathLength; i += 2)
-    {
+    for (var i = 2; i < pathLength; i += 2) {
         var px2 = path[i] - dx;
         var py2 = path[i + 1] - dy;
 

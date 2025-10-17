@@ -10,32 +10,28 @@ var FloatBetween = require('../../math/FloatBetween');
 /**
  * @ignore
  */
-function hasGetActive (def)
-{
+function hasGetActive(def) {
     return (!!def.getActive && typeof def.getActive === 'function');
 }
 
 /**
  * @ignore
  */
-function hasGetStart (def)
-{
+function hasGetStart(def) {
     return (!!def.getStart && typeof def.getStart === 'function');
 }
 
 /**
  * @ignore
  */
-function hasGetEnd (def)
-{
+function hasGetEnd(def) {
     return (!!def.getEnd && typeof def.getEnd === 'function');
 }
 
 /**
  * @ignore
  */
-function hasGetters (def)
-{
+function hasGetters(def) {
     return hasGetStart(def) || hasGetEnd(def) || hasGetActive(def);
 }
 
@@ -67,52 +63,47 @@ function hasGetters (def)
  *
  * @return {function} An array of functions, `getActive`, `getStart` and `getEnd`, which return the starting and the ending value of the property based on the provided value.
  */
-var GetValueOp = function (key, propertyValue)
-{
+var GetValueOp = function (key, propertyValue) {
     var callbacks;
 
     //  The returned value sets what the property will be at the END of the Tween (usually called at the start of the Tween)
-    var getEnd = function (target, key, value) { return value; };
+    var getEnd = function (target, key, value) {
+        return value;
+    };
 
     //  The returned value sets what the property will be at the START of the Tween (usually called at the end of the Tween)
-    var getStart = function (target, key, value) { return value; };
+    var getStart = function (target, key, value) {
+        return value;
+    };
 
     //  What to set the property to the moment the TweenData is invoked
     var getActive = null;
 
-    var t = typeof(propertyValue);
+    var t = typeof (propertyValue);
 
-    if (t === 'number')
-    {
+    if (t === 'number') {
         // props: {
         //     x: 400,
         //     y: 300
         // }
 
-        getEnd = function ()
-        {
+        getEnd = function () {
             return propertyValue;
         };
-    }
-    else if (Array.isArray(propertyValue))
-    {
+    } else if (Array.isArray(propertyValue)) {
         // props: {
         //     x: [ 400, 300, 200 ],
         //     y: [ 10, 500, 10 ]
         // }
 
-        getStart = function ()
-        {
+        getStart = function () {
             return propertyValue[0];
         };
 
-        getEnd = function ()
-        {
+        getEnd = function () {
             return propertyValue[propertyValue.length - 1];
         };
-    }
-    else if (t === 'string')
-    {
+    } else if (t === 'string') {
         // props: {
         //     x: '+=400',
         //     y: '-=300',
@@ -126,84 +117,65 @@ var GetValueOp = function (key, propertyValue)
         var isRandom = (op.substring(0, 6) === 'random');
         var isInt = (op.substring(0, 3) === 'int');
 
-        if (isRandom || isInt)
-        {
+        if (isRandom || isInt) {
             //  random(0.5, 3.45)
             //  int(10, 100)
             var brace1 = op.indexOf('(');
             var brace2 = op.indexOf(')');
             var comma = op.indexOf(',');
 
-            if (brace1 && brace2 && comma)
-            {
+            if (brace1 && brace2 && comma) {
                 var value1 = parseFloat(op.substring(brace1 + 1, comma));
                 var value2 = parseFloat(op.substring(comma + 1, brace2));
 
-                if (isRandom)
-                {
-                    getEnd = function ()
-                    {
+                if (isRandom) {
+                    getEnd = function () {
                         return FloatBetween(value1, value2);
                     };
-                }
-                else
-                {
-                    getEnd = function ()
-                    {
+                } else {
+                    getEnd = function () {
                         return Between(value1, value2);
                     };
                 }
-            }
-            else
-            {
+            } else {
                 throw new Error('invalid random() format');
             }
-        }
-        else
-        {
+        } else {
             op = op[0];
             var num = parseFloat(propertyValue.substr(2));
 
-            switch (op)
-            {
+            switch (op) {
                 case '+':
-                    getEnd = function (target, key, value)
-                    {
+                    getEnd = function (target, key, value) {
                         return value + num;
                     };
                     break;
 
                 case '-':
-                    getEnd = function (target, key, value)
-                    {
+                    getEnd = function (target, key, value) {
                         return value - num;
                     };
                     break;
 
                 case '*':
-                    getEnd = function (target, key, value)
-                    {
+                    getEnd = function (target, key, value) {
                         return value * num;
                     };
                     break;
 
                 case '/':
-                    getEnd = function (target, key, value)
-                    {
+                    getEnd = function (target, key, value) {
                         return value / num;
                     };
                     break;
 
                 default:
-                    getEnd = function ()
-                    {
+                    getEnd = function () {
                         return parseFloat(propertyValue);
                     };
             }
         }
-    }
-    else if (t === 'function')
-    {
+    } else if (t === 'function') {
         //  The same as setting just the getEnd function and no getStart
 
         // props: {
@@ -211,11 +183,8 @@ var GetValueOp = function (key, propertyValue)
         // }
 
         getEnd = propertyValue;
-    }
-    else if (t === 'object')
-    {
-        if (hasGetters(propertyValue))
-        {
+    } else if (t === 'object') {
+        if (hasGetters(propertyValue)) {
             /*
             x: {
                 //  Called the moment Tween is active. The returned value sets the property on the target immediately.
@@ -238,23 +207,18 @@ var GetValueOp = function (key, propertyValue)
             }
             */
 
-            if (hasGetActive(propertyValue))
-            {
+            if (hasGetActive(propertyValue)) {
                 getActive = propertyValue.getActive;
             }
 
-            if (hasGetEnd(propertyValue))
-            {
+            if (hasGetEnd(propertyValue)) {
                 getEnd = propertyValue.getEnd;
             }
 
-            if (hasGetStart(propertyValue))
-            {
+            if (hasGetStart(propertyValue)) {
                 getStart = propertyValue.getStart;
             }
-        }
-        else if (propertyValue.hasOwnProperty('value'))
-        {
+        } else if (propertyValue.hasOwnProperty('value')) {
             //  'value' may still be a string, function or a number
             // props: {
             //     x: { value: 400, ... },
@@ -262,9 +226,7 @@ var GetValueOp = function (key, propertyValue)
             // }
 
             callbacks = GetValueOp(key, propertyValue.value);
-        }
-        else
-        {
+        } else {
             //  'from' and 'to' may still be a string, function or a number
             // props: {
             //     x: { from: 400, to: 600 },
@@ -287,19 +249,16 @@ var GetValueOp = function (key, propertyValue)
             var hasFrom = propertyValue.hasOwnProperty('from');
             var hasStart = propertyValue.hasOwnProperty('start');
 
-            if (hasTo && (hasFrom || hasStart))
-            {
+            if (hasTo && (hasFrom || hasStart)) {
                 callbacks = GetValueOp(key, propertyValue.to);
 
-                if (hasStart)
-                {
+                if (hasStart) {
                     var startCallbacks = GetValueOp(key, propertyValue.start);
 
                     callbacks.getActive = startCallbacks.getEnd;
                 }
 
-                if (hasFrom)
-                {
+                if (hasFrom) {
                     var fromCallbacks = GetValueOp(key, propertyValue.from);
 
                     callbacks.getStart = fromCallbacks.getEnd;
@@ -309,8 +268,7 @@ var GetValueOp = function (key, propertyValue)
     }
 
     //  If callback not set by the else if block above then set it here and return it
-    if (!callbacks)
-    {
+    if (!callbacks) {
         callbacks = {
             getActive: getActive,
             getEnd: getEnd,

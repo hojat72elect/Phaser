@@ -28,205 +28,204 @@ var Key = new Class({
 
     initialize:
 
-    function Key (plugin, keyCode)
-    {
-        EventEmitter.call(this);
+        function Key(plugin, keyCode) {
+            EventEmitter.call(this);
 
-        /**
-         * The Keyboard Plugin instance that owns this Key object.
-         *
-         * @name Phaser.Input.Keyboard.Key#plugin
-         * @type {Phaser.Input.Keyboard.KeyboardPlugin}
-         * @since 3.17.0
-         */
-        this.plugin = plugin;
+            /**
+             * The Keyboard Plugin instance that owns this Key object.
+             *
+             * @name Phaser.Input.Keyboard.Key#plugin
+             * @type {Phaser.Input.Keyboard.KeyboardPlugin}
+             * @since 3.17.0
+             */
+            this.plugin = plugin;
 
-        /**
-         * The keycode of this key.
-         *
-         * @name Phaser.Input.Keyboard.Key#keyCode
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.keyCode = keyCode;
+            /**
+             * The keycode of this key.
+             *
+             * @name Phaser.Input.Keyboard.Key#keyCode
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.keyCode = keyCode;
 
-        /**
-         * The original DOM event.
-         *
-         * @name Phaser.Input.Keyboard.Key#originalEvent
-         * @type {KeyboardEvent}
-         * @since 3.0.0
-         */
-        this.originalEvent = undefined;
+            /**
+             * The original DOM event.
+             *
+             * @name Phaser.Input.Keyboard.Key#originalEvent
+             * @type {KeyboardEvent}
+             * @since 3.0.0
+             */
+            this.originalEvent = undefined;
 
-        /**
-         * Can this Key be processed?
-         *
-         * @name Phaser.Input.Keyboard.Key#enabled
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.enabled = true;
+            /**
+             * Can this Key be processed?
+             *
+             * @name Phaser.Input.Keyboard.Key#enabled
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.enabled = true;
 
-        /**
-         * The "down" state of the key. This will remain `true` for as long as the keyboard thinks this key is held down.
-         *
-         * @name Phaser.Input.Keyboard.Key#isDown
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.isDown = false;
+            /**
+             * The "down" state of the key. This will remain `true` for as long as the keyboard thinks this key is held down.
+             *
+             * @name Phaser.Input.Keyboard.Key#isDown
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.isDown = false;
 
-        /**
-         * The "up" state of the key. This will remain `true` for as long as the keyboard thinks this key is up.
-         *
-         * @name Phaser.Input.Keyboard.Key#isUp
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.isUp = true;
+            /**
+             * The "up" state of the key. This will remain `true` for as long as the keyboard thinks this key is up.
+             *
+             * @name Phaser.Input.Keyboard.Key#isUp
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.isUp = true;
 
-        /**
-         * The down state of the ALT key, if pressed at the same time as this key.
-         *
-         * @name Phaser.Input.Keyboard.Key#altKey
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.altKey = false;
+            /**
+             * The down state of the ALT key, if pressed at the same time as this key.
+             *
+             * @name Phaser.Input.Keyboard.Key#altKey
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.altKey = false;
 
-        /**
-         * The down state of the CTRL key, if pressed at the same time as this key.
-         *
-         * @name Phaser.Input.Keyboard.Key#ctrlKey
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.ctrlKey = false;
+            /**
+             * The down state of the CTRL key, if pressed at the same time as this key.
+             *
+             * @name Phaser.Input.Keyboard.Key#ctrlKey
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.ctrlKey = false;
 
-        /**
-         * The down state of the SHIFT key, if pressed at the same time as this key.
-         *
-         * @name Phaser.Input.Keyboard.Key#shiftKey
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.shiftKey = false;
+            /**
+             * The down state of the SHIFT key, if pressed at the same time as this key.
+             *
+             * @name Phaser.Input.Keyboard.Key#shiftKey
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.shiftKey = false;
 
-        /**
-         * The down state of the Meta key, if pressed at the same time as this key.
-         * On a Mac the Meta Key is the Command key. On Windows keyboards, it's the Windows key.
-         *
-         * @name Phaser.Input.Keyboard.Key#metaKey
-         * @type {boolean}
-         * @default false
-         * @since 3.16.0
-         */
-        this.metaKey = false;
+            /**
+             * The down state of the Meta key, if pressed at the same time as this key.
+             * On a Mac the Meta Key is the Command key. On Windows keyboards, it's the Windows key.
+             *
+             * @name Phaser.Input.Keyboard.Key#metaKey
+             * @type {boolean}
+             * @default false
+             * @since 3.16.0
+             */
+            this.metaKey = false;
 
-        /**
-         * The location of the modifier key. 0 for standard (or unknown), 1 for left, 2 for right, 3 for numpad.
-         *
-         * @name Phaser.Input.Keyboard.Key#location
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.location = 0;
+            /**
+             * The location of the modifier key. 0 for standard (or unknown), 1 for left, 2 for right, 3 for numpad.
+             *
+             * @name Phaser.Input.Keyboard.Key#location
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.location = 0;
 
-        /**
-         * The timestamp when the key was last pressed down.
-         *
-         * @name Phaser.Input.Keyboard.Key#timeDown
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.timeDown = 0;
+            /**
+             * The timestamp when the key was last pressed down.
+             *
+             * @name Phaser.Input.Keyboard.Key#timeDown
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.timeDown = 0;
 
-        /**
-         * The number of milliseconds this key was held down for in the previous down - up sequence.
-         * This value isn't updated every game step, only when the Key changes state.
-         * To get the current duration use the `getDuration` method.
-         *
-         * @name Phaser.Input.Keyboard.Key#duration
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.duration = 0;
+            /**
+             * The number of milliseconds this key was held down for in the previous down - up sequence.
+             * This value isn't updated every game step, only when the Key changes state.
+             * To get the current duration use the `getDuration` method.
+             *
+             * @name Phaser.Input.Keyboard.Key#duration
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.duration = 0;
 
-        /**
-         * The timestamp when the key was last released.
-         *
-         * @name Phaser.Input.Keyboard.Key#timeUp
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.timeUp = 0;
+            /**
+             * The timestamp when the key was last released.
+             *
+             * @name Phaser.Input.Keyboard.Key#timeUp
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.timeUp = 0;
 
-        /**
-         * When a key is held down should it continuously fire the `down` event each time it repeats?
-         *
-         * By default it will emit the `down` event just once, but if you wish to receive the event
-         * for each repeat as well, enable this property.
-         *
-         * @name Phaser.Input.Keyboard.Key#emitOnRepeat
-         * @type {boolean}
-         * @default false
-         * @since 3.16.0
-         */
-        this.emitOnRepeat = false;
+            /**
+             * When a key is held down should it continuously fire the `down` event each time it repeats?
+             *
+             * By default it will emit the `down` event just once, but if you wish to receive the event
+             * for each repeat as well, enable this property.
+             *
+             * @name Phaser.Input.Keyboard.Key#emitOnRepeat
+             * @type {boolean}
+             * @default false
+             * @since 3.16.0
+             */
+            this.emitOnRepeat = false;
 
-        /**
-         * If a key is held down this holds down the number of times the key has 'repeated'.
-         *
-         * @name Phaser.Input.Keyboard.Key#repeats
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.repeats = 0;
+            /**
+             * If a key is held down this holds down the number of times the key has 'repeated'.
+             *
+             * @name Phaser.Input.Keyboard.Key#repeats
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.repeats = 0;
 
-        /**
-         * True if the key has just been pressed (NOTE: requires to be reset, see justDown getter)
-         *
-         * @name Phaser.Input.Keyboard.Key#_justDown
-         * @type {boolean}
-         * @private
-         * @default false
-         * @since 3.0.0
-         */
-        this._justDown = false;
+            /**
+             * True if the key has just been pressed (NOTE: requires to be reset, see justDown getter)
+             *
+             * @name Phaser.Input.Keyboard.Key#_justDown
+             * @type {boolean}
+             * @private
+             * @default false
+             * @since 3.0.0
+             */
+            this._justDown = false;
 
-        /**
-         * True if the key has just been pressed (NOTE: requires to be reset, see justDown getter)
-         *
-         * @name Phaser.Input.Keyboard.Key#_justUp
-         * @type {boolean}
-         * @private
-         * @default false
-         * @since 3.0.0
-         */
-        this._justUp = false;
+            /**
+             * True if the key has just been pressed (NOTE: requires to be reset, see justDown getter)
+             *
+             * @name Phaser.Input.Keyboard.Key#_justUp
+             * @type {boolean}
+             * @private
+             * @default false
+             * @since 3.0.0
+             */
+            this._justUp = false;
 
-        /**
-         * Internal tick counter.
-         *
-         * @name Phaser.Input.Keyboard.Key#_tick
-         * @type {number}
-         * @private
-         * @since 3.11.0
-         */
-        this._tick = -1;
-    },
+            /**
+             * Internal tick counter.
+             *
+             * @name Phaser.Input.Keyboard.Key#_tick
+             * @type {number}
+             * @private
+             * @since 3.11.0
+             */
+            this._tick = -1;
+        },
 
     /**
      * Controls if this Key will continuously emit a `down` event while being held down (true),
@@ -239,8 +238,7 @@ var Key = new Class({
      *
      * @return {this} This Key instance.
      */
-    setEmitOnRepeat: function (value)
-    {
+    setEmitOnRepeat: function (value) {
         this.emitOnRepeat = value;
 
         return this;
@@ -256,12 +254,10 @@ var Key = new Class({
      *
      * @param {KeyboardEvent} event - The native DOM Keyboard event.
      */
-    onDown: function (event)
-    {
+    onDown: function (event) {
         this.originalEvent = event;
 
-        if (!this.enabled)
-        {
+        if (!this.enabled) {
             return;
         }
 
@@ -273,8 +269,7 @@ var Key = new Class({
 
         this.repeats++;
 
-        if (!this.isDown)
-        {
+        if (!this.isDown) {
             this.isDown = true;
             this.isUp = false;
             this.timeDown = event.timeStamp;
@@ -283,9 +278,7 @@ var Key = new Class({
             this._justUp = false;
 
             this.emit(Events.DOWN, this, event);
-        }
-        else if (this.emitOnRepeat)
-        {
+        } else if (this.emitOnRepeat) {
             this.emit(Events.DOWN, this, event);
         }
     },
@@ -300,12 +293,10 @@ var Key = new Class({
      *
      * @param {KeyboardEvent} event - The native DOM Keyboard event.
      */
-    onUp: function (event)
-    {
+    onUp: function (event) {
         this.originalEvent = event;
 
-        if (!this.enabled)
-        {
+        if (!this.enabled) {
             return;
         }
 
@@ -332,8 +323,7 @@ var Key = new Class({
      *
      * @return {this} This Key instance.
      */
-    reset: function ()
-    {
+    reset: function () {
         this.isDown = false;
         this.isUp = true;
         this.altKey = false;
@@ -364,14 +354,10 @@ var Key = new Class({
      *
      * @return {number} The duration, in ms, that the Key has been held down for if currently down.
      */
-    getDuration: function ()
-    {
-        if (this.isDown)
-        {
+    getDuration: function () {
+        if (this.isDown) {
             return (this.plugin.game.loop.time - this.timeDown);
-        }
-        else
-        {
+        } else {
             return 0;
         }
     },
@@ -382,8 +368,7 @@ var Key = new Class({
      * @method Phaser.Input.Keyboard.Key#destroy
      * @since 3.16.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.removeAllListeners();
 
         this.originalEvent = null;

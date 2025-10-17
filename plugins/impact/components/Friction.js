@@ -23,8 +23,7 @@ var Friction = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setFrictionX: function (x)
-    {
+    setFrictionX: function (x) {
         this.friction.x = x;
 
         return this;
@@ -40,8 +39,7 @@ var Friction = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setFrictionY: function (y)
-    {
+    setFrictionY: function (y) {
         this.friction.y = y;
 
         return this;
@@ -58,8 +56,7 @@ var Friction = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setFriction: function (x, y)
-    {
+    setFriction: function (x, y) {
         this.friction.x = x;
         this.friction.y = y;
 

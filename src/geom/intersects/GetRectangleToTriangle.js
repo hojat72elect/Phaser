@@ -21,12 +21,12 @@ var GetLineToRectangle = require('./GetLineToRectangle');
  *
  * @return {array} An array with the points of intersection if objects intersect, otherwise an empty array.
  */
-var GetRectangleToTriangle = function (rect, triangle, out)
-{
-    if (out === undefined) { out = []; }
+var GetRectangleToTriangle = function (rect, triangle, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    if (RectangleToTriangle(rect, triangle))
-    {
+    if (RectangleToTriangle(rect, triangle)) {
         var lineA = triangle.getLineA();
         var lineB = triangle.getLineB();
         var lineC = triangle.getLineC();

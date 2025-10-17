@@ -24,9 +24,10 @@ var Plane = require('./Plane');
  *
  * @return {Phaser.GameObjects.Plane} The Game Object that was created.
  */
-GameObjectCreator.register('plane', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('plane', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
@@ -36,15 +37,13 @@ GameObjectCreator.register('plane', function (config, addToScene)
 
     var plane = new Plane(this.scene, 0, 0, key, frame, width, height, tile);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 
     var checkerboard = GetValue(config, 'checkerboard', null);
 
-    if (checkerboard)
-    {
+    if (checkerboard) {
         var color1 = GetValue(checkerboard, 'color1', 0xffffff);
         var color2 = GetValue(checkerboard, 'color2', 0x0000ff);
         var alpha1 = GetValue(checkerboard, 'alpha1', 255);

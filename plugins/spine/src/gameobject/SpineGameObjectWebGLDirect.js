@@ -25,8 +25,7 @@ var Wrap = require('../../../../src/math/Wrap');
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  * @param {SpineContainer} [container] - If this Spine object is in a Spine Container, this is a reference to it.
  */
-var SpineGameObjectWebGLDirect = function (renderer, src, camera, parentMatrix, container)
-{
+var SpineGameObjectWebGLDirect = function (renderer, src, camera, parentMatrix, container) {
     var plugin = src.plugin;
     var skeleton = src.skeleton;
     var sceneRenderer = plugin.sceneRenderer;
@@ -40,8 +39,7 @@ var SpineGameObjectWebGLDirect = function (renderer, src, camera, parentMatrix, 
     var scrollFactorY = src.scrollFactorY;
     var alpha = skeleton.color.a;
 
-    if (container)
-    {
+    if (container) {
         src.scrollFactorX = container.scrollFactorX;
         src.scrollFactorY = container.scrollFactorY;
 
@@ -60,29 +58,22 @@ var SpineGameObjectWebGLDirect = function (renderer, src, camera, parentMatrix, 
     skeleton.scaleX = calcMatrix.scaleX;
     skeleton.scaleY = calcMatrix.scaleY;
 
-    if (src.scaleX < 0)
-    {
+    if (src.scaleX < 0) {
         skeleton.scaleX *= -1;
 
         //  -180 degrees to account for the difference in Spine vs. Phaser rotation when inversely scaled
         src.root.rotation = Wrap(RadToDeg(calcMatrix.rotationNormalized) - 180, 0, 360);
-    }
-    else
-    {
+    } else {
         //  +90 degrees to account for the difference in Spine vs. Phaser rotation
         src.root.rotation = Wrap(RadToDeg(CounterClockwise(calcMatrix.rotationNormalized)) + 90, 0, 360);
     }
 
-    if (src.scaleY < 0)
-    {
+    if (src.scaleY < 0) {
         skeleton.scaleY *= -1;
 
-        if (src.scaleX < 0)
-        {
+        if (src.scaleX < 0) {
             src.root.rotation -= (RadToDeg(calcMatrix.rotationNormalized) * 2);
-        }
-        else
-        {
+        } else {
             src.root.rotation += (RadToDeg(calcMatrix.rotationNormalized) * 2);
         }
     }
@@ -101,15 +92,13 @@ var SpineGameObjectWebGLDirect = function (renderer, src, camera, parentMatrix, 
 
     sceneRenderer.drawSkeleton(skeleton, src.preMultipliedAlpha);
 
-    if (container)
-    {
+    if (container) {
         src.scrollFactorX = scrollFactorX;
         src.scrollFactorY = scrollFactorY;
         skeleton.color.a = alpha;
     }
 
-    if (plugin.drawDebug || src.drawDebug)
-    {
+    if (plugin.drawDebug || src.drawDebug) {
         //  Because if we don't, the bones render positions are completely wrong (*sigh*)
         var oldX = skeleton.x;
         var oldY = skeleton.y;

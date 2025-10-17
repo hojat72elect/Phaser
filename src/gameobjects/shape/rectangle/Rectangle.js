@@ -45,52 +45,58 @@ var Rectangle = new Class({
 
     initialize:
 
-    function Rectangle (scene, x, y, width, height, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = 128; }
-        if (height === undefined) { height = 128; }
+        function Rectangle(scene, x, y, width, height, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (width === undefined) {
+                width = 128;
+            }
+            if (height === undefined) {
+                height = 128;
+            }
 
-        Shape.call(this, scene, 'Rectangle', new GeomRectangle(0, 0, width, height));
+            Shape.call(this, scene, 'Rectangle', new GeomRectangle(0, 0, width, height));
 
-        /**
-         * The radius of the rectangle if this is set to use rounded corners.
-         *
-         * Do not modify this property. Instead, call the method `setRounded` to set the
-         * radius of the rounded corners.
-         *
-         * @name Phaser.GameObjects.Shape#radius
-         * @type {number}
-         * @readonly
-         * @since 3.90.0
-         */
-        this.radius = 20;
+            /**
+             * The radius of the rectangle if this is set to use rounded corners.
+             *
+             * Do not modify this property. Instead, call the method `setRounded` to set the
+             * radius of the rounded corners.
+             *
+             * @name Phaser.GameObjects.Shape#radius
+             * @type {number}
+             * @readonly
+             * @since 3.90.0
+             */
+            this.radius = 20;
 
-        /**
-         * Does this Rectangle have rounded corners?
-         *
-         * Do not modify this property. Instead, call the method `setRounded` to set the
-         * radius state of this rectangle.
-         *
-         * @name Phaser.GameObjects.Shape#isRounded
-         * @type {boolean}
-         * @readonly
-         * @since 3.90.0
-         */
-        this.isRounded = false;
+            /**
+             * Does this Rectangle have rounded corners?
+             *
+             * Do not modify this property. Instead, call the method `setRounded` to set the
+             * radius state of this rectangle.
+             *
+             * @name Phaser.GameObjects.Shape#isRounded
+             * @type {boolean}
+             * @readonly
+             * @since 3.90.0
+             */
+            this.isRounded = false;
 
-        this.setPosition(x, y);
-        this.setSize(width, height);
+            this.setPosition(x, y);
+            this.setSize(width, height);
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-        this.updateData();
-    },
+            this.updateDisplayOrigin();
+            this.updateData();
+        },
 
     /**
      * Sets this rectangle to have rounded corners by specifying the radius of the corner.
@@ -106,9 +112,10 @@ var Rectangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setRounded: function (radius)
-    {
-        if (radius === undefined) { radius = 16; }
+    setRounded: function (radius) {
+        if (radius === undefined) {
+            radius = 16;
+        }
 
         this.radius = radius;
         this.isRounded = radius > 0;
@@ -130,8 +137,7 @@ var Rectangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -143,8 +149,7 @@ var Rectangle = new Class({
 
         var input = this.input;
 
-        if (input && !input.customHitArea)
-        {
+        if (input && !input.customHitArea) {
             input.hitArea.width = width;
             input.hitArea.height = height;
         }
@@ -161,10 +166,8 @@ var Rectangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
-        if (this.isRounded)
-        {
+    updateData: function () {
+        if (this.isRounded) {
             return this.updateRoundedData();
         }
 
@@ -202,8 +205,7 @@ var Rectangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateRoundedData: function ()
-    {
+    updateRoundedData: function () {
         var path = [];
         var halfWidth = this.width / 2;
         var halfHeight = this.height / 2;
@@ -264,12 +266,10 @@ var Rectangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    arcTo: function (path, centerX, centerY, radius, startAngle, endAngle, segments)
-    {
+    arcTo: function (path, centerX, centerY, radius, startAngle, endAngle, segments) {
         var angleInc = (endAngle - startAngle) / segments;
 
-        for (var i = 0; i <= segments; i++)
-        {
+        for (var i = 0; i <= segments; i++) {
             var angle = startAngle + (angleInc * i);
 
             path.push(

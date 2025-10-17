@@ -17,13 +17,11 @@ var UppercaseFirst = require('../utils/string/UppercaseFirst');
  *
  * @return {array} An array of Physics systems to start for this Scene.
  */
-var GetPhysicsPlugins = function (sys)
-{
+var GetPhysicsPlugins = function (sys) {
     var defaultSystem = sys.game.config.defaultPhysicsSystem;
     var sceneSystems = GetFastValue(sys.settings, 'physics', false);
 
-    if (!defaultSystem && !sceneSystems)
-    {
+    if (!defaultSystem && !sceneSystems) {
         //  No default physics system or systems in this scene
         return;
     }
@@ -31,19 +29,15 @@ var GetPhysicsPlugins = function (sys)
     //  Let's build the systems array
     var output = [];
 
-    if (defaultSystem)
-    {
+    if (defaultSystem) {
         output.push(UppercaseFirst(defaultSystem + 'Physics'));
     }
 
-    if (sceneSystems)
-    {
-        for (var key in sceneSystems)
-        {
+    if (sceneSystems) {
+        for (var key in sceneSystems) {
             key = UppercaseFirst(key.concat('Physics'));
 
-            if (output.indexOf(key) === -1)
-            {
+            if (output.indexOf(key) === -1) {
                 output.push(key);
             }
         }

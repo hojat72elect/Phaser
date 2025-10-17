@@ -14,8 +14,7 @@
  *
  * @return {number} The tweened value.
  */
-var Linear = function (v)
-{
+var Linear = function (v) {
     return v;
 };
 

@@ -26,18 +26,15 @@ var tempMatrix3 = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var DOMElementCSSRenderer = function (renderer, src, camera, parentMatrix)
-{
-    if (!src.node)
-    {
+var DOMElementCSSRenderer = function (renderer, src, camera, parentMatrix) {
+    if (!src.node) {
         return;
     }
 
     var style = src.node.style;
     var settings = src.scene.sys.settings;
 
-    if (!style || !settings.visible || GameObject.RENDER_MASK !== src.renderFlags || (src.cameraFilter !== 0 && (src.cameraFilter & camera.id)) || (src.parentContainer && !src.parentContainer.willRender()))
-    {
+    if (!style || !settings.visible || GameObject.RENDER_MASK !== src.renderFlags || (src.cameraFilter !== 0 && (src.cameraFilter & camera.id)) || (src.parentContainer && !src.parentContainer.willRender())) {
         style.display = 'none';
 
         return;
@@ -46,8 +43,7 @@ var DOMElementCSSRenderer = function (renderer, src, camera, parentMatrix)
     var parent = src.parentContainer;
     var alpha = camera.alpha * src.alpha;
 
-    if (parent)
-    {
+    if (parent) {
         alpha *= parent.alpha;
     }
 
@@ -61,8 +57,7 @@ var DOMElementCSSRenderer = function (renderer, src, camera, parentMatrix)
     var tx = '0%';
     var ty = '0%';
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         dx = (src.width * src.scaleX) * src.originX;
         dy = (src.height * src.scaleY) * src.originY;
 
@@ -79,9 +74,7 @@ var DOMElementCSSRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Multiply by the src matrix, store result in calcMatrix
         camMatrix.multiply(srcMatrix, calcMatrix);
-    }
-    else
-    {
+    } else {
         dx = (src.width) * src.originX;
         dy = (src.height) * src.originY;
 
@@ -102,8 +95,7 @@ var DOMElementCSSRenderer = function (renderer, src, camera, parentMatrix)
         calcMatrix.f -= dy;
     }
 
-    if (!src.transformOnly)
-    {
+    if (!src.transformOnly) {
         style.display = 'block';
         style.opacity = alpha;
         style.zIndex = src._depth;

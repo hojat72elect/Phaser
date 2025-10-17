@@ -21,11 +21,9 @@ var Clone = require('../../utils/object/Clone');
  *
  * @return {Phaser.Textures.Texture} The Texture modified by this parser.
  */
-var JSONArray = function (texture, sourceIndex, json)
-{
+var JSONArray = function (texture, sourceIndex, json) {
     //  Malformed?
-    if (!json['frames'] && !json['textures'])
-    {
+    if (!json['frames'] && !json['textures']) {
         console.warn('Invalid Texture Atlas JSON Array');
         return;
     }
@@ -40,23 +38,20 @@ var JSONArray = function (texture, sourceIndex, json)
 
     var newFrame;
 
-    for (var i = 0; i < frames.length; i++)
-    {
+    for (var i = 0; i < frames.length; i++) {
         var src = frames[i];
 
         //  The frame values are the exact coordinates to cut the frame out of the atlas from
         newFrame = texture.add(src.filename, sourceIndex, src.frame.x, src.frame.y, src.frame.w, src.frame.h);
 
-        if (!newFrame)
-        {
+        if (!newFrame) {
             console.warn('Invalid atlas json, frame already exists: ' + src.filename);
 
             continue;
         }
 
         //  These are the original (non-trimmed) sprite values
-        if (src.trimmed)
-        {
+        if (src.trimmed) {
             newFrame.setTrim(
                 src.sourceSize.w,
                 src.sourceSize.h,
@@ -67,23 +62,20 @@ var JSONArray = function (texture, sourceIndex, json)
             );
         }
 
-        if (src.rotated)
-        {
+        if (src.rotated) {
             newFrame.rotated = true;
             newFrame.updateUVsInverted();
         }
 
         var pivot = src.anchor || src.pivot;
 
-        if (pivot)
-        {
+        if (pivot) {
             newFrame.customPivot = true;
             newFrame.pivotX = pivot.x;
             newFrame.pivotY = pivot.y;
         }
 
-        if (src.scale9Borders)
-        {
+        if (src.scale9Borders) {
             newFrame.setScale9(
                 src.scale9Borders.x,
                 src.scale9Borders.y,
@@ -97,19 +89,14 @@ var JSONArray = function (texture, sourceIndex, json)
     }
 
     //  Copy over any additional data that was in the JSON to Texture.customData
-    for (var dataKey in json)
-    {
-        if (dataKey === 'frames')
-        {
+    for (var dataKey in json) {
+        if (dataKey === 'frames') {
             continue;
         }
 
-        if (Array.isArray(json[dataKey]))
-        {
+        if (Array.isArray(json[dataKey])) {
             texture.customData[dataKey] = json[dataKey].slice(0);
-        }
-        else
-        {
+        } else {
             texture.customData[dataKey] = json[dataKey];
         }
     }

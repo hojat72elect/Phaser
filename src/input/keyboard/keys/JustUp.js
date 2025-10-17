@@ -19,16 +19,12 @@
  *
  * @return {boolean} `true` if the Key was just released, otherwise `false`.
  */
-var JustUp = function (key)
-{
-    if (key._justUp)
-    {
+var JustUp = function (key) {
+    if (key._justUp) {
         key._justUp = false;
 
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 };

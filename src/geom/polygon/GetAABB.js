@@ -19,9 +19,10 @@ var Rectangle = require('../rectangle/Rectangle');
  *
  * @return {(Phaser.Geom.Rectangle|object)} The resulting rectangle or object that is passed in with position and dimensions of the polygon's AABB.
  */
-var GetAABB = function (polygon, out)
-{
-    if (out === undefined) { out = new Rectangle(); }
+var GetAABB = function (polygon, out) {
+    if (out === undefined) {
+        out = new Rectangle();
+    }
 
     var minX = Infinity;
     var minY = Infinity;
@@ -29,8 +30,7 @@ var GetAABB = function (polygon, out)
     var maxY = -minY;
     var p;
 
-    for (var i = 0; i < polygon.points.length; i++)
-    {
+    for (var i = 0; i < polygon.points.length; i++) {
         p = polygon.points[i];
 
         minX = Math.min(minX, p.x);

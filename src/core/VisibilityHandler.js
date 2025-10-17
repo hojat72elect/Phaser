@@ -20,25 +20,18 @@ var Events = require('./events');
  *
  * @param {Phaser.Game} game - The Game instance this Visibility Handler is working on.
  */
-var VisibilityHandler = function (game)
-{
+var VisibilityHandler = function (game) {
     var hiddenVar;
     var eventEmitter = game.events;
 
-    if (document.hidden !== undefined)
-    {
+    if (document.hidden !== undefined) {
         hiddenVar = 'visibilitychange';
-    }
-    else
-    {
-        var vendors = [ 'webkit', 'moz', 'ms' ];
+    } else {
+        var vendors = ['webkit', 'moz', 'ms'];
 
-        vendors.forEach(function (prefix)
-        {
-            if (document[prefix + 'Hidden'] !== undefined)
-            {
-                document.hidden = function ()
-                {
+        vendors.forEach(function (prefix) {
+            if (document[prefix + 'Hidden'] !== undefined) {
+                document.hidden = function () {
                     return document[prefix + 'Hidden'];
                 };
 
@@ -48,36 +41,28 @@ var VisibilityHandler = function (game)
         });
     }
 
-    var onChange = function (event)
-    {
-        if (document.hidden || event.type === 'pause')
-        {
+    var onChange = function (event) {
+        if (document.hidden || event.type === 'pause') {
             eventEmitter.emit(Events.HIDDEN);
-        }
-        else
-        {
+        } else {
             eventEmitter.emit(Events.VISIBLE);
         }
     };
 
-    if (hiddenVar)
-    {
+    if (hiddenVar) {
         document.addEventListener(hiddenVar, onChange, false);
     }
 
-    window.onblur = function ()
-    {
+    window.onblur = function () {
         eventEmitter.emit(Events.BLUR);
     };
 
-    window.onfocus = function ()
-    {
+    window.onfocus = function () {
         eventEmitter.emit(Events.FOCUS);
     };
 
     //  Automatically give the window focus unless config says otherwise
-    if (window.focus && game.config.autoFocus)
-    {
+    if (window.focus && game.config.autoFocus) {
         window.focus();
     }
 };

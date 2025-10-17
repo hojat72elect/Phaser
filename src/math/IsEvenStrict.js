@@ -14,8 +14,7 @@
  *
  * @return {boolean} Whether the number is even or not.
  */
-var IsEvenStrict = function (value)
-{
+var IsEvenStrict = function (value) {
     // Use strict equality === for "is number" test
     return (value === parseFloat(value)) ? !(value % 2) : void 0;
 };

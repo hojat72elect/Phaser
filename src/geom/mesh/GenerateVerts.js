@@ -66,15 +66,21 @@ var Vertex = require('./Vertex');
  *
  * @return {Phaser.Types.Geom.Mesh.GenerateVertsResult} The parsed Face and Vertex objects.
  */
-var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, colors, alphas, flipUV)
-{
-    if (containsZ === undefined) { containsZ = false; }
-    if (colors === undefined) { colors = 0xffffff; }
-    if (alphas === undefined) { alphas = 1; }
-    if (flipUV === undefined) { flipUV = false; }
+var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, colors, alphas, flipUV) {
+    if (containsZ === undefined) {
+        containsZ = false;
+    }
+    if (colors === undefined) {
+        colors = 0xffffff;
+    }
+    if (alphas === undefined) {
+        alphas = 1;
+    }
+    if (flipUV === undefined) {
+        flipUV = false;
+    }
 
-    if (vertices.length !== uvs.length && !containsZ)
-    {
+    if (vertices.length !== uvs.length && !containsZ) {
         console.warn('GenerateVerts: vertices and uvs count not equal');
         return;
     }
@@ -105,10 +111,8 @@ var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, color
     var isColorArray = Array.isArray(colors);
     var isAlphaArray = Array.isArray(alphas);
 
-    if (Array.isArray(indicies) && indicies.length > 0)
-    {
-        for (i = 0; i < indicies.length; i++)
-        {
+    if (Array.isArray(indicies) && indicies.length > 0) {
+        for (i = 0; i < indicies.length; i++) {
             var index1 = indicies[i];
             var index2 = indicies[i] * 2;
             var index3 = indicies[i] * iInc;
@@ -120,8 +124,7 @@ var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, color
             u = uvs[index2];
             v = uvs[index2 + 1];
 
-            if (flipUV)
-            {
+            if (flipUV) {
                 v = 1 - v;
             }
 
@@ -132,8 +135,7 @@ var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, color
             normalY = 0;
             normalZ = 0;
 
-            if (normals)
-            {
+            if (normals) {
                 normalX = normals[index3];
                 normalY = normals[index3 + 1];
                 normalZ = (containsZ) ? normals[index3 + 2] : 0;
@@ -141,14 +143,11 @@ var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, color
 
             result.vertices.push(new Vertex(x, y, z, u, v, color, alpha, normalX, normalY, normalZ));
         }
-    }
-    else
-    {
+    } else {
         var uvIndex = 0;
         var colorIndex = 0;
 
-        for (i = 0; i < vertices.length; i += iInc)
-        {
+        for (i = 0; i < vertices.length; i += iInc) {
             x = vertices[i];
             y = vertices[i + 1];
             z = (containsZ) ? vertices[i + 2] : 0;
@@ -163,8 +162,7 @@ var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, color
             normalY = 0;
             normalZ = 0;
 
-            if (normals)
-            {
+            if (normals) {
                 normalX = normals[i];
                 normalY = normals[i + 1];
                 normalZ = (containsZ) ? normals[i + 2] : 0;
@@ -177,8 +175,7 @@ var GenerateVerts = function (vertices, uvs, indicies, containsZ, normals, color
         }
     }
 
-    for (i = 0; i < result.vertices.length; i += 3)
-    {
+    for (i = 0; i < result.vertices.length; i += 3) {
         var vert1 = result.vertices[i];
         var vert2 = result.vertices[i + 1];
         var vert3 = result.vertices[i + 2];

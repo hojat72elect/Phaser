@@ -26,9 +26,10 @@ var Immovable = {
      *
      * @return {this} This Game Object.
      */
-    setImmovable: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setImmovable: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.body.immovable = value;
 

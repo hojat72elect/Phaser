@@ -19,8 +19,7 @@ var SmootherStep = require('../SmootherStep');
  *
  * @return {number} The interpolated value.
  */
-var SmootherStepInterpolation = function (t, min, max)
-{
+var SmootherStepInterpolation = function (t, min, max) {
     return min + (max - min) * SmootherStep(t, 0, 1);
 };
 

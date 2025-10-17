@@ -117,205 +117,197 @@ var DOMElement = new Class({
 
     initialize:
 
-    function DOMElement (scene, x, y, element, style, innerText)
-    {
-        GameObject.call(this, scene, 'DOMElement');
+        function DOMElement(scene, x, y, element, style, innerText) {
+            GameObject.call(this, scene, 'DOMElement');
 
-        /**
-         * A reference to the parent DOM Container that the Game instance created when it started.
-         *
-         * @name Phaser.GameObjects.DOMElement#parent
-         * @type {Element}
-         * @since 3.17.0
-         */
-        this.parent = scene.sys.game.domContainer;
+            /**
+             * A reference to the parent DOM Container that the Game instance created when it started.
+             *
+             * @name Phaser.GameObjects.DOMElement#parent
+             * @type {Element}
+             * @since 3.17.0
+             */
+            this.parent = scene.sys.game.domContainer;
 
-        if (!this.parent)
-        {
-            throw new Error('No DOM Container set in game config');
-        }
-
-        /**
-         * A reference to the HTML Cache.
-         *
-         * @name Phaser.GameObjects.DOMElement#cache
-         * @type {Phaser.Cache.BaseCache}
-         * @since 3.17.0
-         */
-        this.cache = scene.sys.cache.html;
-
-        /**
-         * The actual DOM Element that this Game Object is bound to. For example, if you've created a `<div>`
-         * then this property is a direct reference to that element within the dom.
-         *
-         * @name Phaser.GameObjects.DOMElement#node
-         * @type {Element}
-         * @since 3.17.0
-         */
-        this.node;
-
-        /**
-         * By default a DOM Element will have its transform, display, opacity, zIndex and blend mode properties
-         * updated when its rendered. If, for some reason, you don't want any of these changed other than the
-         * CSS transform, then set this flag to `true`. When `true` only the CSS Transform is applied and it's
-         * up to you to keep track of and set the other properties as required.
-         *
-         * This can be handy if, for example, you've a nested DOM Element and you don't want the opacity to be
-         * picked-up by any of its children.
-         *
-         * @name Phaser.GameObjects.DOMElement#transformOnly
-         * @type {boolean}
-         * @since 3.17.0
-         */
-        this.transformOnly = false;
-
-        /**
-         * The angle, in radians, by which to skew the DOM Element on the horizontal axis.
-         *
-         * https://developer.mozilla.org/en-US/docs/Web/CSS/transform
-         *
-         * @name Phaser.GameObjects.DOMElement#skewX
-         * @type {number}
-         * @since 3.17.0
-         */
-        this.skewX = 0;
-
-        /**
-         * The angle, in radians, by which to skew the DOM Element on the vertical axis.
-         *
-         * https://developer.mozilla.org/en-US/docs/Web/CSS/transform
-         *
-         * @name Phaser.GameObjects.DOMElement#skewY
-         * @type {number}
-         * @since 3.17.0
-         */
-        this.skewY = 0;
-
-        /**
-         * A Vector4 that contains the 3D rotation of this DOM Element around a fixed axis in 3D space.
-         *
-         * All values in the Vector4 are treated as degrees, unless the `rotate3dAngle` property is changed.
-         *
-         * For more details see the following MDN page:
-         *
-         * https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d
-         *
-         * @name Phaser.GameObjects.DOMElement#rotate3d
-         * @type {Phaser.Math.Vector4}
-         * @since 3.17.0
-         */
-        this.rotate3d = new Vector4();
-
-        /**
-         * The unit that represents the 3D rotation values. By default this is `deg` for degrees, but can
-         * be changed to any supported unit. See this page for further details:
-         *
-         * https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d
-         *
-         * @name Phaser.GameObjects.DOMElement#rotate3dAngle
-         * @type {string}
-         * @since 3.17.0
-         */
-        this.rotate3dAngle = 'deg';
-
-        /**
-         * Sets the CSS `pointerEvents` attribute on the DOM Element during rendering.
-         *
-         * This is 'auto' by default. Changing it may have unintended side-effects with
-         * internal Phaser input handling, such as dragging, so only change this if you
-         * understand the implications.
-         *
-         * @name Phaser.GameObjects.DOMElement#pointerEvents
-         * @type {string}
-         * @since 3.55.0
-         */
-        this.pointerEvents = 'auto';
-
-        /**
-         * The native (un-scaled) width of this Game Object.
-         *
-         * For a DOM Element this property is read-only.
-         *
-         * The property `displayWidth` holds the computed bounds of this DOM Element, factoring in scaling.
-         *
-         * @name Phaser.GameObjects.DOMElement#width
-         * @type {number}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.width = 0;
-
-        /**
-         * The native (un-scaled) height of this Game Object.
-         *
-         * For a DOM Element this property is read-only.
-         *
-         * The property `displayHeight` holds the computed bounds of this DOM Element, factoring in scaling.
-         *
-         * @name Phaser.GameObjects.DOMElement#height
-         * @type {number}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.height = 0;
-
-        /**
-         * The computed display width of this Game Object, based on the `getBoundingClientRect` DOM call.
-         *
-         * The property `width` holds the un-scaled width of this DOM Element.
-         *
-         * @name Phaser.GameObjects.DOMElement#displayWidth
-         * @type {number}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.displayWidth = 0;
-
-        /**
-         * The computed display height of this Game Object, based on the `getBoundingClientRect` DOM call.
-         *
-         * The property `height` holds the un-scaled height of this DOM Element.
-         *
-         * @name Phaser.GameObjects.DOMElement#displayHeight
-         * @type {number}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.displayHeight = 0;
-
-        /**
-         * Internal native event handler.
-         *
-         * @name Phaser.GameObjects.DOMElement#handler
-         * @type {number}
-         * @private
-         * @since 3.17.0
-         */
-        this.handler = this.dispatchNativeEvent.bind(this);
-
-        this.setPosition(x, y);
-
-        if (typeof element === 'string')
-        {
-            //  hash?
-            if (element[0] === '#')
-            {
-                this.setElement(element.substr(1), style, innerText);
+            if (!this.parent) {
+                throw new Error('No DOM Container set in game config');
             }
-            else
-            {
-                this.createElement(element, style, innerText);
-            }
-        }
-        else if (element)
-        {
-            this.setElement(element, style, innerText);
-        }
 
-        scene.sys.events.on(SCENE_EVENTS.SLEEP, this.handleSceneEvent, this);
-        scene.sys.events.on(SCENE_EVENTS.WAKE, this.handleSceneEvent, this);
-        scene.sys.events.on(SCENE_EVENTS.PRE_RENDER, this.preRender, this);
-    },
+            /**
+             * A reference to the HTML Cache.
+             *
+             * @name Phaser.GameObjects.DOMElement#cache
+             * @type {Phaser.Cache.BaseCache}
+             * @since 3.17.0
+             */
+            this.cache = scene.sys.cache.html;
+
+            /**
+             * The actual DOM Element that this Game Object is bound to. For example, if you've created a `<div>`
+             * then this property is a direct reference to that element within the dom.
+             *
+             * @name Phaser.GameObjects.DOMElement#node
+             * @type {Element}
+             * @since 3.17.0
+             */
+            this.node;
+
+            /**
+             * By default a DOM Element will have its transform, display, opacity, zIndex and blend mode properties
+             * updated when its rendered. If, for some reason, you don't want any of these changed other than the
+             * CSS transform, then set this flag to `true`. When `true` only the CSS Transform is applied and it's
+             * up to you to keep track of and set the other properties as required.
+             *
+             * This can be handy if, for example, you've a nested DOM Element and you don't want the opacity to be
+             * picked-up by any of its children.
+             *
+             * @name Phaser.GameObjects.DOMElement#transformOnly
+             * @type {boolean}
+             * @since 3.17.0
+             */
+            this.transformOnly = false;
+
+            /**
+             * The angle, in radians, by which to skew the DOM Element on the horizontal axis.
+             *
+             * https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+             *
+             * @name Phaser.GameObjects.DOMElement#skewX
+             * @type {number}
+             * @since 3.17.0
+             */
+            this.skewX = 0;
+
+            /**
+             * The angle, in radians, by which to skew the DOM Element on the vertical axis.
+             *
+             * https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+             *
+             * @name Phaser.GameObjects.DOMElement#skewY
+             * @type {number}
+             * @since 3.17.0
+             */
+            this.skewY = 0;
+
+            /**
+             * A Vector4 that contains the 3D rotation of this DOM Element around a fixed axis in 3D space.
+             *
+             * All values in the Vector4 are treated as degrees, unless the `rotate3dAngle` property is changed.
+             *
+             * For more details see the following MDN page:
+             *
+             * https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d
+             *
+             * @name Phaser.GameObjects.DOMElement#rotate3d
+             * @type {Phaser.Math.Vector4}
+             * @since 3.17.0
+             */
+            this.rotate3d = new Vector4();
+
+            /**
+             * The unit that represents the 3D rotation values. By default this is `deg` for degrees, but can
+             * be changed to any supported unit. See this page for further details:
+             *
+             * https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d
+             *
+             * @name Phaser.GameObjects.DOMElement#rotate3dAngle
+             * @type {string}
+             * @since 3.17.0
+             */
+            this.rotate3dAngle = 'deg';
+
+            /**
+             * Sets the CSS `pointerEvents` attribute on the DOM Element during rendering.
+             *
+             * This is 'auto' by default. Changing it may have unintended side-effects with
+             * internal Phaser input handling, such as dragging, so only change this if you
+             * understand the implications.
+             *
+             * @name Phaser.GameObjects.DOMElement#pointerEvents
+             * @type {string}
+             * @since 3.55.0
+             */
+            this.pointerEvents = 'auto';
+
+            /**
+             * The native (un-scaled) width of this Game Object.
+             *
+             * For a DOM Element this property is read-only.
+             *
+             * The property `displayWidth` holds the computed bounds of this DOM Element, factoring in scaling.
+             *
+             * @name Phaser.GameObjects.DOMElement#width
+             * @type {number}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.width = 0;
+
+            /**
+             * The native (un-scaled) height of this Game Object.
+             *
+             * For a DOM Element this property is read-only.
+             *
+             * The property `displayHeight` holds the computed bounds of this DOM Element, factoring in scaling.
+             *
+             * @name Phaser.GameObjects.DOMElement#height
+             * @type {number}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.height = 0;
+
+            /**
+             * The computed display width of this Game Object, based on the `getBoundingClientRect` DOM call.
+             *
+             * The property `width` holds the un-scaled width of this DOM Element.
+             *
+             * @name Phaser.GameObjects.DOMElement#displayWidth
+             * @type {number}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.displayWidth = 0;
+
+            /**
+             * The computed display height of this Game Object, based on the `getBoundingClientRect` DOM call.
+             *
+             * The property `height` holds the un-scaled height of this DOM Element.
+             *
+             * @name Phaser.GameObjects.DOMElement#displayHeight
+             * @type {number}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.displayHeight = 0;
+
+            /**
+             * Internal native event handler.
+             *
+             * @name Phaser.GameObjects.DOMElement#handler
+             * @type {number}
+             * @private
+             * @since 3.17.0
+             */
+            this.handler = this.dispatchNativeEvent.bind(this);
+
+            this.setPosition(x, y);
+
+            if (typeof element === 'string') {
+                //  hash?
+                if (element[0] === '#') {
+                    this.setElement(element.substr(1), style, innerText);
+                } else {
+                    this.createElement(element, style, innerText);
+                }
+            } else if (element) {
+                this.setElement(element, style, innerText);
+            }
+
+            scene.sys.events.on(SCENE_EVENTS.SLEEP, this.handleSceneEvent, this);
+            scene.sys.events.on(SCENE_EVENTS.WAKE, this.handleSceneEvent, this);
+            scene.sys.events.on(SCENE_EVENTS.PRE_RENDER, this.preRender, this);
+        },
 
     /**
      * Handles a Scene Sleep and Wake event.
@@ -326,13 +318,11 @@ var DOMElement = new Class({
      *
      * @param {Phaser.Scenes.Systems} sys - The Scene Systems.
      */
-    handleSceneEvent: function (sys)
-    {
+    handleSceneEvent: function (sys) {
         var node = this.node;
         var style = node.style;
 
-        if (node)
-        {
+        if (node) {
             style.display = (sys.settings.visible) ? 'block' : 'none';
         }
     },
@@ -350,10 +340,13 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    setSkew: function (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = x; }
+    setSkew: function (x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this.skewX = x;
         this.skewY = y;
@@ -378,8 +371,7 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    setPerspective: function (value)
-    {
+    setPerspective: function (value) {
         this.parent.style.perspective = value + 'px';
 
         return this;
@@ -401,13 +393,11 @@ var DOMElement = new Class({
      */
     perspective: {
 
-        get: function ()
-        {
+        get: function () {
             return parseFloat(this.parent.style.perspective);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.parent.style.perspective = value + 'px';
         }
 
@@ -434,14 +424,11 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    addListener: function (events)
-    {
-        if (this.node)
-        {
+    addListener: function (events) {
+        if (this.node) {
             events = events.split(' ');
 
-            for (var i = 0; i < events.length; i++)
-            {
+            for (var i = 0; i < events.length; i++) {
                 this.node.addEventListener(events[i], this.handler, false);
             }
         }
@@ -459,14 +446,11 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    removeListener: function (events)
-    {
-        if (this.node)
-        {
+    removeListener: function (events) {
+        if (this.node) {
             events = events.split(' ');
 
-            for (var i = 0; i < events.length; i++)
-            {
+            for (var i = 0; i < events.length; i++) {
                 this.node.removeEventListener(events[i], this.handler);
             }
         }
@@ -483,8 +467,7 @@ var DOMElement = new Class({
      *
      * @param {any} event - The native DOM event.
      */
-    dispatchNativeEvent: function (event)
-    {
+    dispatchNativeEvent: function (event) {
         this.emit(event.type, event);
     },
 
@@ -530,8 +513,7 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    createElement: function (tagName, style, innerText)
-    {
+    createElement: function (tagName, style, innerText) {
         return this.setElement(document.createElement(tagName), style, innerText);
     },
 
@@ -586,45 +568,35 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    setElement: function (element, style, innerText)
-    {
+    setElement: function (element, style, innerText) {
         //  Already got an element? Remove it first
         this.removeElement();
 
         var target;
 
-        if (typeof element === 'string')
-        {
+        if (typeof element === 'string') {
             //  hash?
-            if (element[0] === '#')
-            {
+            if (element[0] === '#') {
                 element = element.substr(1);
             }
 
             target = document.getElementById(element);
-        }
-        else if (typeof element === 'object' && element.nodeType === 1)
-        {
+        } else if (typeof element === 'object' && element.nodeType === 1) {
             target = element;
         }
 
-        if (!target)
-        {
+        if (!target) {
             return this;
         }
 
         this.node = target;
 
         //  style can be empty, a string or a plain object
-        if (style && IsPlainObject(style))
-        {
-            for (var key in style)
-            {
+        if (style && IsPlainObject(style)) {
+            for (var key in style) {
                 target.style[key] = style[key];
             }
-        }
-        else if (typeof style === 'string')
-        {
+        } else if (typeof style === 'string') {
             target.style = style;
         }
 
@@ -642,8 +614,7 @@ var DOMElement = new Class({
 
         //  InnerText
 
-        if (innerText)
-        {
+        if (innerText) {
             target.innerText = innerText;
         }
 
@@ -688,12 +659,10 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    createFromCache: function (key, tagName)
-    {
+    createFromCache: function (key, tagName) {
         var html = this.cache.get(key);
 
-        if (html)
-        {
+        if (html) {
             this.createFromHTML(html, tagName);
         }
 
@@ -731,9 +700,10 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    createFromHTML: function (html, tagName)
-    {
-        if (tagName === undefined) { tagName = 'div'; }
+    createFromHTML: function (html, tagName) {
+        if (tagName === undefined) {
+            tagName = 'div';
+        }
 
         //  Already got an element? Remove it first
         this.removeElement();
@@ -766,10 +736,8 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    removeElement: function ()
-    {
-        if (this.node)
-        {
+    removeElement: function () {
+        if (this.node) {
             RemoveFromDOM(this.node);
 
             this.node = null;
@@ -779,7 +747,7 @@ var DOMElement = new Class({
     },
 
     /**
-     * Internal method that sets the `displayWidth` and `displayHeight` properties, and the `clientWidth` 
+     * Internal method that sets the `displayWidth` and `displayHeight` properties, and the `clientWidth`
      * and `clientHeight` values into the `width` and `height` properties respectively.
      *
      * This is called automatically whenever a new element is created or set.
@@ -789,8 +757,7 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    updateSize: function ()
-    {
+    updateSize: function () {
         var node = this.node;
 
         this.width = node.clientWidth;
@@ -815,16 +782,12 @@ var DOMElement = new Class({
      *
      * @return {?Element} The first matching child DOM Element, or `null` if not found.
      */
-    getChildByProperty: function (property, value)
-    {
-        if (this.node)
-        {
+    getChildByProperty: function (property, value) {
+        if (this.node) {
             var children = this.node.querySelectorAll('*');
 
-            for (var i = 0; i < children.length; i++)
-            {
-                if (children[i][property] === value)
-                {
+            for (var i = 0; i < children.length; i++) {
+                if (children[i][property] === value) {
                     return children[i];
                 }
             }
@@ -846,8 +809,7 @@ var DOMElement = new Class({
      *
      * @return {?Element} The first matching child DOM Element, or `null` if not found.
      */
-    getChildByID: function (id)
-    {
+    getChildByID: function (id) {
         return this.getChildByProperty('id', id);
     },
 
@@ -864,8 +826,7 @@ var DOMElement = new Class({
      *
      * @return {?Element} The first matching child DOM Element, or `null` if not found.
      */
-    getChildByName: function (name)
-    {
+    getChildByName: function (name) {
         return this.getChildByProperty('name', name);
     },
 
@@ -879,10 +840,8 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    setClassName: function (className)
-    {
-        if (this.node)
-        {
+    setClassName: function (className) {
+        if (this.node) {
             this.node.className = className;
 
             this.updateSize();
@@ -903,10 +862,8 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    setText: function (text)
-    {
-        if (this.node)
-        {
+    setText: function (text) {
+        if (this.node) {
             this.node.innerText = text;
 
             this.updateSize();
@@ -925,10 +882,8 @@ var DOMElement = new Class({
      *
      * @return {this} This DOM Element instance.
      */
-    setHTML: function (html)
-    {
-        if (this.node)
-        {
+    setHTML: function (html) {
+        if (this.node) {
             this.node.innerHTML = html;
 
             this.updateSize();
@@ -944,13 +899,11 @@ var DOMElement = new Class({
      * @private
      * @since 3.60.0
      */
-    preRender: function ()
-    {
+    preRender: function () {
         var parent = this.parentContainer;
         var node = this.node;
 
-        if (node && parent && !parent.willRender())
-        {
+        if (node && parent && !parent.willRender()) {
             node.style.display = 'none';
         }
     },
@@ -965,8 +918,7 @@ var DOMElement = new Class({
      *
      * @return {boolean} `true` if the Game Object should be rendered, otherwise `false`.
      */
-    willRender: function ()
-    {
+    willRender: function () {
         return true;
     },
 
@@ -977,8 +929,7 @@ var DOMElement = new Class({
      * @private
      * @since 3.17.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.removeElement();
 
         this.scene.sys.events.off(SCENE_EVENTS.SLEEP, this.handleSceneEvent, this);

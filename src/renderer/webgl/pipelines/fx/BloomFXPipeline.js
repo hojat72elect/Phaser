@@ -39,86 +39,83 @@ var BloomFXPipeline = new Class({
 
     initialize:
 
-    function BloomFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: BloomFrag
-        });
+        function BloomFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: BloomFrag
+            });
 
-        /**
-         * The number of steps to run the Bloom effect for.
-         *
-         * This value should always be an integer.
-         *
-         * It defaults to 4. The higher the value, the smoother the Bloom,
-         * but at the cost of exponentially more gl operations.
-         *
-         * Keep this to the lowest possible number you can have it, while
-         * still looking correct for your game.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#steps
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.steps = 4;
+            /**
+             * The number of steps to run the Bloom effect for.
+             *
+             * This value should always be an integer.
+             *
+             * It defaults to 4. The higher the value, the smoother the Bloom,
+             * but at the cost of exponentially more gl operations.
+             *
+             * Keep this to the lowest possible number you can have it, while
+             * still looking correct for your game.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#steps
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.steps = 4;
 
-        /**
-         * The horizontal offset of the bloom effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#offsetX
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.offsetX = 1;
+            /**
+             * The horizontal offset of the bloom effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#offsetX
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.offsetX = 1;
 
-        /**
-         * The vertical offset of the bloom effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#offsetY
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.offsetY = 1;
+            /**
+             * The vertical offset of the bloom effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#offsetY
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.offsetY = 1;
 
-        /**
-         * The strength of the blur process of the bloom effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#blurStrength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.blurStrength = 1;
+            /**
+             * The strength of the blur process of the bloom effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#blurStrength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.blurStrength = 1;
 
-        /**
-         * The strength of the blend process of the bloom effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#strength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.strength = 1;
+            /**
+             * The strength of the blend process of the bloom effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#strength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.strength = 1;
 
-        /**
-         * The internal gl color array.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 1, 1, 1 ];
-    },
+            /**
+             * The internal gl color array.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [1, 1, 1];
+        },
 
-    onPreRender: function (controller)
-    {
+    onPreRender: function (controller) {
         controller = this.getController(controller);
 
         this.set1f('strength', controller.blurStrength);
         this.set3fv('color', controller.glcolor);
     },
 
-    onDraw: function (target1)
-    {
+    onDraw: function (target1) {
         var controller = this.getController();
 
         var target2 = this.fullFrame1;
@@ -129,8 +126,7 @@ var BloomFXPipeline = new Class({
         var x = (2 / target1.width) * controller.offsetX;
         var y = (2 / target1.height) * controller.offsetY;
 
-        for (var i = 0; i < controller.steps; i++)
-        {
+        for (var i = 0; i < controller.steps; i++) {
             this.set2f('offset', x, 0);
             this.copySprite(target1, target2);
 

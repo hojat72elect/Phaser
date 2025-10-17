@@ -24,27 +24,22 @@ var GetRandom = require('../../utils/array/GetRandom');
  * @param {number[]} indexes - An array of indexes to randomly draw from during randomization.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var Randomize = function (tileX, tileY, width, height, indexes, layer)
-{
+var Randomize = function (tileX, tileY, width, height, indexes, layer) {
     var i;
     var tiles = GetTilesWithin(tileX, tileY, width, height, {}, layer);
 
     // If no indices are given, then find all the unique indexes within the specified region
-    if (!indexes)
-    {
+    if (!indexes) {
         indexes = [];
 
-        for (i = 0; i < tiles.length; i++)
-        {
-            if (indexes.indexOf(tiles[i].index) === -1)
-            {
+        for (i = 0; i < tiles.length; i++) {
+            if (indexes.indexOf(tiles[i].index) === -1) {
                 indexes.push(tiles[i].index);
             }
         }
     }
 
-    for (i = 0; i < tiles.length; i++)
-    {
+    for (i = 0; i < tiles.length; i++) {
         tiles[i].index = GetRandom(indexes);
     }
 };

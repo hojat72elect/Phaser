@@ -33,145 +33,153 @@ var RenderTarget = new Class({
 
     initialize:
 
-    function RenderTarget (renderer, width, height, scale, minFilter, autoClear, autoResize, addDepthBuffer, forceClamp)
-    {
-        if (scale === undefined) { scale = 1; }
-        if (minFilter === undefined) { minFilter = 0; }
-        if (autoClear === undefined) { autoClear = true; }
-        if (autoResize === undefined) { autoResize = false; }
-        if (addDepthBuffer === undefined) { addDepthBuffer = true; }
-        if (forceClamp === undefined) { forceClamp = true; }
+        function RenderTarget(renderer, width, height, scale, minFilter, autoClear, autoResize, addDepthBuffer, forceClamp) {
+            if (scale === undefined) {
+                scale = 1;
+            }
+            if (minFilter === undefined) {
+                minFilter = 0;
+            }
+            if (autoClear === undefined) {
+                autoClear = true;
+            }
+            if (autoResize === undefined) {
+                autoResize = false;
+            }
+            if (addDepthBuffer === undefined) {
+                addDepthBuffer = true;
+            }
+            if (forceClamp === undefined) {
+                forceClamp = true;
+            }
 
-        /**
-         * A reference to the WebGLRenderer instance.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#renderer
-         * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-         * @since 3.50.0
-         */
-        this.renderer = renderer;
+            /**
+             * A reference to the WebGLRenderer instance.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#renderer
+             * @type {Phaser.Renderer.WebGL.WebGLRenderer}
+             * @since 3.50.0
+             */
+            this.renderer = renderer;
 
-        /**
-         * The Framebuffer of this Render Target.
-         *
-         * This is created in the `RenderTarget.resize` method.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#framebuffer
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
-         * @since 3.50.0
-         */
-        this.framebuffer = null;
+            /**
+             * The Framebuffer of this Render Target.
+             *
+             * This is created in the `RenderTarget.resize` method.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#framebuffer
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
+             * @since 3.50.0
+             */
+            this.framebuffer = null;
 
-        /**
-         * The WebGLTextureWrapper of this Render Target.
-         *
-         * This is created in the `RenderTarget.resize` method.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#texture
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.50.0
-         */
-        this.texture = null;
+            /**
+             * The WebGLTextureWrapper of this Render Target.
+             *
+             * This is created in the `RenderTarget.resize` method.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#texture
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.50.0
+             */
+            this.texture = null;
 
-        /**
-         * The width of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#width
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.width = 0;
+            /**
+             * The width of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#width
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.width = 0;
 
-        /**
-         * The height of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#height
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.height = 0;
+            /**
+             * The height of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#height
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.height = 0;
 
-        /**
-         * A value between 0 and 1. Controls the size of this Render Target in relation to the Renderer.
-         *
-         * A value of 1 matches it. 0.5 makes the Render Target half the size of the renderer, etc.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#scale
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.scale = scale;
+            /**
+             * A value between 0 and 1. Controls the size of this Render Target in relation to the Renderer.
+             *
+             * A value of 1 matches it. 0.5 makes the Render Target half the size of the renderer, etc.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#scale
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.scale = scale;
 
-        /**
-         * The minFilter mode of the texture. 0 is `LINEAR`, 1 is `NEAREST`.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#minFilter
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.minFilter = minFilter;
+            /**
+             * The minFilter mode of the texture. 0 is `LINEAR`, 1 is `NEAREST`.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#minFilter
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.minFilter = minFilter;
 
-        /**
-         * Controls if this Render Target is automatically cleared (via `gl.COLOR_BUFFER_BIT`)
-         * during the `RenderTarget.bind` method.
-         *
-         * If you need more control over how, or if, the target is cleared, you can disable
-         * this via the config on creation, or even toggle it directly at runtime.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#autoClear
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.autoClear = autoClear;
+            /**
+             * Controls if this Render Target is automatically cleared (via `gl.COLOR_BUFFER_BIT`)
+             * during the `RenderTarget.bind` method.
+             *
+             * If you need more control over how, or if, the target is cleared, you can disable
+             * this via the config on creation, or even toggle it directly at runtime.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#autoClear
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.autoClear = autoClear;
 
-        /**
-         * Does this Render Target automatically resize when the WebGL Renderer does?
-         *
-         * Modify this property via the `setAutoResize` method.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#autoResize
-         * @type {boolean}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.autoResize = true;
+            /**
+             * Does this Render Target automatically resize when the WebGL Renderer does?
+             *
+             * Modify this property via the `setAutoResize` method.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#autoResize
+             * @type {boolean}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.autoResize = true;
 
-        /**
-         * Does this Render Target have a Depth Buffer?
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#hasDepthBuffer
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.hasDepthBuffer = addDepthBuffer;
+            /**
+             * Does this Render Target have a Depth Buffer?
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#hasDepthBuffer
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.hasDepthBuffer = addDepthBuffer;
 
-        /**
-         * Force the WebGL Texture to use the CLAMP_TO_EDGE wrap mode, even if a power of two?
-         *
-         * If `false` it will use `gl.REPEAT` instead, which may be required for some effects, such
-         * as using this Render Target as a texture for a Shader.
-         *
-         * @name Phaser.Renderer.WebGL.RenderTarget#forceClamp
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.forceClamp = forceClamp;
+            /**
+             * Force the WebGL Texture to use the CLAMP_TO_EDGE wrap mode, even if a power of two?
+             *
+             * If `false` it will use `gl.REPEAT` instead, which may be required for some effects, such
+             * as using this Render Target as a texture for a Shader.
+             *
+             * @name Phaser.Renderer.WebGL.RenderTarget#forceClamp
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.forceClamp = forceClamp;
 
-        this.init(width, height);
+            this.init(width, height);
 
-        if (autoResize)
-        {
-            this.renderer.on(Events.RESIZE, this.resize, this);
-        }
-        else
-        {
-            //  Block resizing unless this RT allows it
-            this.autoResize = false;
-        }
-    },
+            if (autoResize) {
+                this.renderer.on(Events.RESIZE, this.resize, this);
+            } else {
+                //  Block resizing unless this RT allows it
+                this.autoResize = false;
+            }
+        },
 
     /**
      * Sets up this Render Target to the given width and height, creating a new
@@ -184,8 +192,7 @@ var RenderTarget = new Class({
      * @param {number} width - The new width of this Render Target.
      * @param {number} height - The new height of this Render Target.
      */
-    init: function (width, height)
-    {
+    init: function (width, height) {
         var renderer = this.renderer;
 
         this.texture = renderer.createTextureFromSource(null, width, height, this.minFilter, this.forceClamp);
@@ -206,16 +213,12 @@ var RenderTarget = new Class({
      *
      * @return {this} This RenderTarget instance.
      */
-    setAutoResize: function (autoResize)
-    {
-        if (autoResize && !this.autoResize)
-        {
+    setAutoResize: function (autoResize) {
+        if (autoResize && !this.autoResize) {
             this.renderer.on(Events.RESIZE, this.resize, this);
 
             this.autoResize = true;
-        }
-        else if (!autoResize && this.autoResize)
-        {
+        } else if (!autoResize && this.autoResize) {
             this.renderer.off(Events.RESIZE, this.resize, this);
 
             this.autoResize = false;
@@ -241,10 +244,8 @@ var RenderTarget = new Class({
      *
      * @return {this} This RenderTarget instance.
      */
-    resize: function (width, height)
-    {
-        if (this.autoResize && this.willResize(width, height))
-        {
+    resize: function (width, height) {
+        if (this.autoResize && this.willResize(width, height)) {
             var renderer = this.renderer;
 
             renderer.deleteFramebuffer(this.framebuffer);
@@ -273,10 +274,8 @@ var RenderTarget = new Class({
      *
      * @return {boolean} `true` if the Render Target will resize, otherwise `false`.
      */
-    willResize: function (width, height)
-    {
-        if (typeof width !== 'number' || typeof height !== 'number')
-        {
+    willResize: function (width, height) {
+        if (typeof width !== 'number' || typeof height !== 'number') {
             return false;
         }
 
@@ -285,7 +284,7 @@ var RenderTarget = new Class({
 
         width = Math.max(width, 1);
         height = Math.max(height, 1);
-        
+
         return (width !== this.width || height !== this.height);
     },
 
@@ -303,31 +302,28 @@ var RenderTarget = new Class({
      * @param {number} [width] - Optional new width of this Render Target.
      * @param {number} [height] - Optional new height of this Render Target.
      */
-    bind: function (adjustViewport, width, height)
-    {
-        if (adjustViewport === undefined) { adjustViewport = false; }
+    bind: function (adjustViewport, width, height) {
+        if (adjustViewport === undefined) {
+            adjustViewport = false;
+        }
 
         var renderer = this.renderer;
 
-        if (adjustViewport)
-        {
+        if (adjustViewport) {
             renderer.flush();
         }
 
-        if (width && height)
-        {
+        if (width && height) {
             this.resize(width, height);
         }
 
         renderer.pushFramebuffer(this.framebuffer, false, false);
 
-        if (adjustViewport)
-        {
+        if (adjustViewport) {
             this.adjustViewport();
         }
 
-        if (this.autoClear)
-        {
+        if (this.autoClear) {
             var gl = this.renderer.gl;
 
             gl.clearColor(0, 0, 0, 0);
@@ -346,8 +342,7 @@ var RenderTarget = new Class({
      * @method Phaser.Renderer.WebGL.RenderTarget#adjustViewport
      * @since 3.50.0
      */
-    adjustViewport: function ()
-    {
+    adjustViewport: function () {
         var gl = this.renderer.gl;
 
         gl.viewport(0, 0, this.width, this.height);
@@ -358,7 +353,7 @@ var RenderTarget = new Class({
     /**
      * Clears a portion or everything from this Render Target. To clear an area,
      * specify the `x`, `y`, `width` and `height`.
-     * 
+     *
      * @param {number} [x=0] - The left coordinate of the fill rectangle.
      * @param {number} [y=0] - The top coordinate of the fill rectangle.
      * @param {number} [width=this.width] - The width of the fill rectangle.
@@ -367,20 +362,16 @@ var RenderTarget = new Class({
      * @method Phaser.Renderer.WebGL.RenderTarget#clear
      * @since 3.50.0
      */
-    clear: function (x, y, width, height)
-    {
+    clear: function (x, y, width, height) {
         var renderer = this.renderer;
         var gl = renderer.gl;
 
         renderer.pushFramebuffer(this.framebuffer);
 
-        if (x !== undefined && y !== undefined && width !== undefined && height !== undefined)
-        {
+        if (x !== undefined && y !== undefined && width !== undefined && height !== undefined) {
             gl.enable(gl.SCISSOR_TEST);
             gl.scissor(x, y, width, height);
-        }
-        else
-        {
+        } else {
             gl.disable(gl.SCISSOR_TEST);
         }
 
@@ -403,14 +394,14 @@ var RenderTarget = new Class({
      *
      * @return {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper} The Framebuffer that was set, or `null` if there aren't any more in the stack.
      */
-    unbind: function (flush)
-    {
-        if (flush === undefined) { flush = false; }
+    unbind: function (flush) {
+        if (flush === undefined) {
+            flush = false;
+        }
 
         var renderer = this.renderer;
 
-        if (flush)
-        {
+        if (flush) {
             renderer.flush();
         }
 
@@ -426,8 +417,7 @@ var RenderTarget = new Class({
      * @name Phaser.Renderer.WebGL.RenderTarget#destroy
      * @since 3.50.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         var renderer = this.renderer;
 
         renderer.off(Events.RESIZE, this.resize, this);

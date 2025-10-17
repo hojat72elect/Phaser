@@ -141,420 +141,415 @@ var Video = new Class({
 
     initialize:
 
-    function Video (scene, x, y, key)
-    {
-        GameObject.call(this, scene, 'Video');
+        function Video(scene, x, y, key) {
+            GameObject.call(this, scene, 'Video');
 
-        /**
-         * A reference to the HTML Video Element this Video Game Object is playing.
-         *
-         * Will be `undefined` until a video is loaded for playback.
-         *
-         * @name Phaser.GameObjects.Video#video
-         * @type {?HTMLVideoElement}
-         * @since 3.20.0
-         */
-        this.video;
+            /**
+             * A reference to the HTML Video Element this Video Game Object is playing.
+             *
+             * Will be `undefined` until a video is loaded for playback.
+             *
+             * @name Phaser.GameObjects.Video#video
+             * @type {?HTMLVideoElement}
+             * @since 3.20.0
+             */
+            this.video;
 
-        /**
-         * The Phaser Texture this Game Object is using to render the video to.
-         *
-         * Will be `undefined` until a video is loaded for playback.
-         *
-         * @name Phaser.GameObjects.Video#videoTexture
-         * @type {?Phaser.Textures.Texture}
-         * @since 3.20.0
-         */
-        this.videoTexture;
+            /**
+             * The Phaser Texture this Game Object is using to render the video to.
+             *
+             * Will be `undefined` until a video is loaded for playback.
+             *
+             * @name Phaser.GameObjects.Video#videoTexture
+             * @type {?Phaser.Textures.Texture}
+             * @since 3.20.0
+             */
+            this.videoTexture;
 
-        /**
-         * A reference to the TextureSource backing the `videoTexture` Texture object.
-         *
-         * Will be `undefined` until a video is loaded for playback.
-         *
-         * @name Phaser.GameObjects.Video#videoTextureSource
-         * @type {?Phaser.Textures.TextureSource}
-         * @since 3.20.0
-         */
-        this.videoTextureSource;
+            /**
+             * A reference to the TextureSource backing the `videoTexture` Texture object.
+             *
+             * Will be `undefined` until a video is loaded for playback.
+             *
+             * @name Phaser.GameObjects.Video#videoTextureSource
+             * @type {?Phaser.Textures.TextureSource}
+             * @since 3.20.0
+             */
+            this.videoTextureSource;
 
-        /**
-         * A Phaser `CanvasTexture` instance that holds the most recent snapshot taken from the video.
-         *
-         * This will only be set if the `snapshot` or `snapshotArea` methods have been called.
-         *
-         * Until those methods are called, this property will be `undefined`.
-         *
-         * @name Phaser.GameObjects.Video#snapshotTexture
-         * @type {?Phaser.Textures.CanvasTexture}
-         * @since 3.20.0
-         */
-        this.snapshotTexture;
+            /**
+             * A Phaser `CanvasTexture` instance that holds the most recent snapshot taken from the video.
+             *
+             * This will only be set if the `snapshot` or `snapshotArea` methods have been called.
+             *
+             * Until those methods are called, this property will be `undefined`.
+             *
+             * @name Phaser.GameObjects.Video#snapshotTexture
+             * @type {?Phaser.Textures.CanvasTexture}
+             * @since 3.20.0
+             */
+            this.snapshotTexture;
 
-        /**
-         * If you have saved this video to a texture via the `saveTexture` method, this controls if the video
-         * is rendered with `flipY` in WebGL or not. You often need to set this if you wish to use the video texture
-         * as the input source for a shader. If you find your video is appearing upside down within a shader or
-         * custom pipeline, flip this property.
-         *
-         * @name Phaser.GameObjects.Video#flipY
-         * @type {boolean}
-         * @since 3.20.0
-         */
-        this.flipY = false;
+            /**
+             * If you have saved this video to a texture via the `saveTexture` method, this controls if the video
+             * is rendered with `flipY` in WebGL or not. You often need to set this if you wish to use the video texture
+             * as the input source for a shader. If you find your video is appearing upside down within a shader or
+             * custom pipeline, flip this property.
+             *
+             * @name Phaser.GameObjects.Video#flipY
+             * @type {boolean}
+             * @since 3.20.0
+             */
+            this.flipY = false;
 
-        /**
-         * The key used by the texture as stored in the Texture Manager.
-         *
-         * @name Phaser.GameObjects.Video#_key
-         * @type {string}
-         * @private
-         * @since 3.20.0
-         */
-        this._key = UUID();
+            /**
+             * The key used by the texture as stored in the Texture Manager.
+             *
+             * @name Phaser.GameObjects.Video#_key
+             * @type {string}
+             * @private
+             * @since 3.20.0
+             */
+            this._key = UUID();
 
-        /**
-         * An internal flag holding the current state of the video lock, should document interaction be required
-         * before playback can begin.
-         *
-         * @name Phaser.GameObjects.Video#touchLocked
-         * @type {boolean}
-         * @readonly
-         * @since 3.20.0
-         */
-        this.touchLocked = false;
+            /**
+             * An internal flag holding the current state of the video lock, should document interaction be required
+             * before playback can begin.
+             *
+             * @name Phaser.GameObjects.Video#touchLocked
+             * @type {boolean}
+             * @readonly
+             * @since 3.20.0
+             */
+            this.touchLocked = false;
 
-        /**
-         * Should the video auto play when document interaction is required and happens?
-         *
-         * @name Phaser.GameObjects.Video#playWhenUnlocked
-         * @type {boolean}
-         * @since 3.20.0
-         */
-        this.playWhenUnlocked = false;
+            /**
+             * Should the video auto play when document interaction is required and happens?
+             *
+             * @name Phaser.GameObjects.Video#playWhenUnlocked
+             * @type {boolean}
+             * @since 3.20.0
+             */
+            this.playWhenUnlocked = false;
 
-        /**
-         * Has the video created its texture and populated it with the first frame of video?
-         *
-         * @name Phaser.GameObjects.Video#frameReady
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.frameReady = false;
+            /**
+             * Has the video created its texture and populated it with the first frame of video?
+             *
+             * @name Phaser.GameObjects.Video#frameReady
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.frameReady = false;
 
-        /**
-         * This read-only property returns `true` if the video is currently stalled, i.e. it has stopped
-         * playing due to a lack of data, or too much data, but hasn't yet reached the end of the video.
-         *
-         * This is set if the Video DOM element emits any of the following events:
-         *
-         * `stalled`
-         * `suspend`
-         * `waiting`
-         *
-         * And is cleared if the Video DOM element emits the `playing` event, or handles
-         * a requestVideoFrame call.
-         *
-         * Listen for the Phaser Event `VIDEO_STALLED` to be notified and inspect the event
-         * to see which DOM event caused it.
-         *
-         * Note that being stalled isn't always a negative thing. A video can be stalled if it
-         * has downloaded enough data in to its buffer to not need to download any more until
-         * the current batch of frames have rendered.
-         *
-         * @name Phaser.GameObjects.Video#isStalled
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isStalled = false;
+            /**
+             * This read-only property returns `true` if the video is currently stalled, i.e. it has stopped
+             * playing due to a lack of data, or too much data, but hasn't yet reached the end of the video.
+             *
+             * This is set if the Video DOM element emits any of the following events:
+             *
+             * `stalled`
+             * `suspend`
+             * `waiting`
+             *
+             * And is cleared if the Video DOM element emits the `playing` event, or handles
+             * a requestVideoFrame call.
+             *
+             * Listen for the Phaser Event `VIDEO_STALLED` to be notified and inspect the event
+             * to see which DOM event caused it.
+             *
+             * Note that being stalled isn't always a negative thing. A video can be stalled if it
+             * has downloaded enough data in to its buffer to not need to download any more until
+             * the current batch of frames have rendered.
+             *
+             * @name Phaser.GameObjects.Video#isStalled
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isStalled = false;
 
-        /**
-         * Records the number of times the video has failed to play,
-         * typically because the user hasn't interacted with the page yet.
-         *
-         * @name Phaser.GameObjects.Video#failedPlayAttempts
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.failedPlayAttempts = 0;
+            /**
+             * Records the number of times the video has failed to play,
+             * typically because the user hasn't interacted with the page yet.
+             *
+             * @name Phaser.GameObjects.Video#failedPlayAttempts
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.failedPlayAttempts = 0;
 
-        /**
-         * If the browser supports the Request Video Frame API then this
-         * property will hold the metadata that is returned from
-         * the callback each time it is invoked.
-         *
-         * See https://wicg.github.io/video-rvfc/#video-frame-metadata-callback
-         * for a complete list of all properties that will be in this object.
-         * Likely of most interest is the `mediaTime` property:
-         *
-         * The media presentation timestamp (PTS) in seconds of the frame presented
-         * (e.g. its timestamp on the video.currentTime timeline). MAY have a zero
-         * value for live-streams or WebRTC applications.
-         *
-         * If the browser doesn't support the API then this property will be undefined.
-         *
-         * @name Phaser.GameObjects.Video#metadata
-         * @type {VideoFrameCallbackMetadata}
-         * @since 3.60.0
-         */
-        this.metadata;
+            /**
+             * If the browser supports the Request Video Frame API then this
+             * property will hold the metadata that is returned from
+             * the callback each time it is invoked.
+             *
+             * See https://wicg.github.io/video-rvfc/#video-frame-metadata-callback
+             * for a complete list of all properties that will be in this object.
+             * Likely of most interest is the `mediaTime` property:
+             *
+             * The media presentation timestamp (PTS) in seconds of the frame presented
+             * (e.g. its timestamp on the video.currentTime timeline). MAY have a zero
+             * value for live-streams or WebRTC applications.
+             *
+             * If the browser doesn't support the API then this property will be undefined.
+             *
+             * @name Phaser.GameObjects.Video#metadata
+             * @type {VideoFrameCallbackMetadata}
+             * @since 3.60.0
+             */
+            this.metadata;
 
-        /**
-         * The current retry elapsed time.
-         *
-         * @name Phaser.GameObjects.Video#retry
-         * @type {number}
-         * @since 3.20.0
-         */
-        this.retry = 0;
+            /**
+             * The current retry elapsed time.
+             *
+             * @name Phaser.GameObjects.Video#retry
+             * @type {number}
+             * @since 3.20.0
+             */
+            this.retry = 0;
 
-        /**
-         * If a video fails to play due to a lack of user interaction, this is the
-         * amount of time, in ms, that the video will wait before trying again to
-         * play. The default is 500ms.
-         *
-         * @name Phaser.GameObjects.Video#retryInterval
-         * @type {number}
-         * @since 3.20.0
-         */
-        this.retryInterval = 500;
+            /**
+             * If a video fails to play due to a lack of user interaction, this is the
+             * amount of time, in ms, that the video will wait before trying again to
+             * play. The default is 500ms.
+             *
+             * @name Phaser.GameObjects.Video#retryInterval
+             * @type {number}
+             * @since 3.20.0
+             */
+            this.retryInterval = 500;
 
-        /**
-         * The video was muted due to a system event, such as the game losing focus.
-         *
-         * @name Phaser.GameObjects.Video#_systemMuted
-         * @type {boolean}
-         * @private
-         * @since 3.20.0
-         */
-        this._systemMuted = false;
+            /**
+             * The video was muted due to a system event, such as the game losing focus.
+             *
+             * @name Phaser.GameObjects.Video#_systemMuted
+             * @type {boolean}
+             * @private
+             * @since 3.20.0
+             */
+            this._systemMuted = false;
 
-        /**
-         * The video was muted due to game code, not a system event.
-         *
-         * @name Phaser.GameObjects.Video#_codeMuted
-         * @type {boolean}
-         * @private
-         * @since 3.20.0
-         */
-        this._codeMuted = false;
+            /**
+             * The video was muted due to game code, not a system event.
+             *
+             * @name Phaser.GameObjects.Video#_codeMuted
+             * @type {boolean}
+             * @private
+             * @since 3.20.0
+             */
+            this._codeMuted = false;
 
-        /**
-         * The video was paused due to a system event, such as the game losing focus.
-         *
-         * @name Phaser.GameObjects.Video#_systemPaused
-         * @type {boolean}
-         * @private
-         * @since 3.20.0
-         */
-        this._systemPaused = false;
+            /**
+             * The video was paused due to a system event, such as the game losing focus.
+             *
+             * @name Phaser.GameObjects.Video#_systemPaused
+             * @type {boolean}
+             * @private
+             * @since 3.20.0
+             */
+            this._systemPaused = false;
 
-        /**
-         * The video was paused due to game code, not a system event.
-         *
-         * @name Phaser.GameObjects.Video#_codePaused
-         * @type {boolean}
-         * @private
-         * @since 3.20.0
-         */
-        this._codePaused = false;
+            /**
+             * The video was paused due to game code, not a system event.
+             *
+             * @name Phaser.GameObjects.Video#_codePaused
+             * @type {boolean}
+             * @private
+             * @since 3.20.0
+             */
+            this._codePaused = false;
 
-        /**
-         * The locally bound event callback handlers.
-         *
-         * @name Phaser.GameObjects.Video#_callbacks
-         * @type {any}
-         * @private
-         * @since 3.20.0
-         */
-        this._callbacks = {
-            ended: this.completeHandler.bind(this),
-            legacy: this.legacyPlayHandler.bind(this),
-            playing: this.playingHandler.bind(this),
-            seeked: this.seekedHandler.bind(this),
-            seeking: this.seekingHandler.bind(this),
-            stalled: this.stalledHandler.bind(this),
-            suspend: this.stalledHandler.bind(this),
-            waiting: this.stalledHandler.bind(this)
-        };
+            /**
+             * The locally bound event callback handlers.
+             *
+             * @name Phaser.GameObjects.Video#_callbacks
+             * @type {any}
+             * @private
+             * @since 3.20.0
+             */
+            this._callbacks = {
+                ended: this.completeHandler.bind(this),
+                legacy: this.legacyPlayHandler.bind(this),
+                playing: this.playingHandler.bind(this),
+                seeked: this.seekedHandler.bind(this),
+                seeking: this.seekingHandler.bind(this),
+                stalled: this.stalledHandler.bind(this),
+                suspend: this.stalledHandler.bind(this),
+                waiting: this.stalledHandler.bind(this)
+            };
 
-        /**
-         * The locally bound callback handler specifically for load and load error events.
-         *
-         * @name Phaser.GameObjects.Video#_loadCallbackHandler
-         * @type {function}
-         * @private
-         * @since 3.60.0
-         */
-        this._loadCallbackHandler = this.loadErrorHandler.bind(this);
+            /**
+             * The locally bound callback handler specifically for load and load error events.
+             *
+             * @name Phaser.GameObjects.Video#_loadCallbackHandler
+             * @type {function}
+             * @private
+             * @since 3.60.0
+             */
+            this._loadCallbackHandler = this.loadErrorHandler.bind(this);
 
-        /**
-         * The locally bound callback handler specifically for the loadedmetadata event.
-         *
-         * @name Phaser.GameObjects.Video#_metadataCallbackHandler
-         * @type {function}
-         * @private
-         * @since 3.80.0
-         */
-        this._metadataCallbackHandler = this.metadataHandler.bind(this);
+            /**
+             * The locally bound callback handler specifically for the loadedmetadata event.
+             *
+             * @name Phaser.GameObjects.Video#_metadataCallbackHandler
+             * @type {function}
+             * @private
+             * @since 3.80.0
+             */
+            this._metadataCallbackHandler = this.metadataHandler.bind(this);
 
-        /**
-         * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
-         *
-         * @name Phaser.GameObjects.Video#_crop
-         * @type {object}
-         * @private
-         * @since 3.20.0
-         */
-        this._crop = this.resetCropObject();
+            /**
+             * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
+             *
+             * @name Phaser.GameObjects.Video#_crop
+             * @type {object}
+             * @private
+             * @since 3.20.0
+             */
+            this._crop = this.resetCropObject();
 
-        /**
-         * An object containing in and out markers for sequence playback.
-         *
-         * @name Phaser.GameObjects.Video#markers
-         * @type {any}
-         * @since 3.20.0
-         */
-        this.markers = {};
+            /**
+             * An object containing in and out markers for sequence playback.
+             *
+             * @name Phaser.GameObjects.Video#markers
+             * @type {any}
+             * @since 3.20.0
+             */
+            this.markers = {};
 
-        /**
-         * The in marker.
-         *
-         * @name Phaser.GameObjects.Video#_markerIn
-         * @type {number}
-         * @private
-         * @since 3.20.0
-         */
-        this._markerIn = 0;
+            /**
+             * The in marker.
+             *
+             * @name Phaser.GameObjects.Video#_markerIn
+             * @type {number}
+             * @private
+             * @since 3.20.0
+             */
+            this._markerIn = 0;
 
-        /**
-         * The out marker.
-         *
-         * @name Phaser.GameObjects.Video#_markerOut
-         * @type {number}
-         * @private
-         * @since 3.20.0
-         */
-        this._markerOut = 0;
+            /**
+             * The out marker.
+             *
+             * @name Phaser.GameObjects.Video#_markerOut
+             * @type {number}
+             * @private
+             * @since 3.20.0
+             */
+            this._markerOut = 0;
 
-        /**
-         * Are we playing a marked segment of the video?
-         *
-         * @name Phaser.GameObjects.Video#_playingMarker
-         * @type {boolean}
-         * @private
-         * @since 3.60.0
-         */
-        this._playingMarker = false;
+            /**
+             * Are we playing a marked segment of the video?
+             *
+             * @name Phaser.GameObjects.Video#_playingMarker
+             * @type {boolean}
+             * @private
+             * @since 3.60.0
+             */
+            this._playingMarker = false;
 
-        /**
-         * The previous frames mediaTime.
-         *
-         * @name Phaser.GameObjects.Video#_lastUpdate
-         * @type {number}
-         * @private
-         * @since 3.60.0
-        */
-        this._lastUpdate = 0;
+            /**
+             * The previous frames mediaTime.
+             *
+             * @name Phaser.GameObjects.Video#_lastUpdate
+             * @type {number}
+             * @private
+             * @since 3.60.0
+             */
+            this._lastUpdate = 0;
 
-        /**
-         * The key of the current video as stored in the Video cache.
-         *
-         * If the video did not come from the cache this will be an empty string.
-         *
-         * @name Phaser.GameObjects.Video#cacheKey
-         * @type {string}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.cacheKey = '';
+            /**
+             * The key of the current video as stored in the Video cache.
+             *
+             * If the video did not come from the cache this will be an empty string.
+             *
+             * @name Phaser.GameObjects.Video#cacheKey
+             * @type {string}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.cacheKey = '';
 
-        /**
-         * Is the video currently seeking?
-         *
-         * This is set to `true` when the `seeking` event is fired,
-         * and set to `false` when the `seeked` event is fired.
-         *
-         * @name Phaser.GameObjects.Video#isSeeking
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isSeeking = false;
+            /**
+             * Is the video currently seeking?
+             *
+             * This is set to `true` when the `seeking` event is fired,
+             * and set to `false` when the `seeked` event is fired.
+             *
+             * @name Phaser.GameObjects.Video#isSeeking
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isSeeking = false;
 
-        /**
-         * Has Video.play been called? This is reset if a new Video is loaded.
-         *
-         * @name Phaser.GameObjects.Video#_playCalled
-         * @type {boolean}
-         * @private
-         * @since 3.60.0
-         */
-        this._playCalled = false;
+            /**
+             * Has Video.play been called? This is reset if a new Video is loaded.
+             *
+             * @name Phaser.GameObjects.Video#_playCalled
+             * @type {boolean}
+             * @private
+             * @since 3.60.0
+             */
+            this._playCalled = false;
 
-        /**
-         * Has Video.getFirstFrame been called? This is reset if a new Video is loaded or played.
-         *
-         * @name Phaser.GameObjects.Video#_getFrame
-         * @type {boolean}
-         * @private
-         * @since 3.85.0
-         */
-        this._getFrame = false;
+            /**
+             * Has Video.getFirstFrame been called? This is reset if a new Video is loaded or played.
+             *
+             * @name Phaser.GameObjects.Video#_getFrame
+             * @type {boolean}
+             * @private
+             * @since 3.85.0
+             */
+            this._getFrame = false;
 
-        /**
-         * The Callback ID returned by Request Video Frame.
-         *
-         * @name Phaser.GameObjects.Video#_rfvCallbackId
-         * @type {number}
-         * @private
-         * @since 3.60.0
-         */
-        this._rfvCallbackId = 0;
+            /**
+             * The Callback ID returned by Request Video Frame.
+             *
+             * @name Phaser.GameObjects.Video#_rfvCallbackId
+             * @type {number}
+             * @private
+             * @since 3.60.0
+             */
+            this._rfvCallbackId = 0;
 
-        var game = scene.sys.game;
+            var game = scene.sys.game;
 
-        /**
-         * A reference to Device.Video.
-         *
-         * @name Phaser.GameObjects.Video#_device
-         * @type {string[]}
-         * @private
-         * @since 3.60.0
-         */
-        this._device = game.device.video;
+            /**
+             * A reference to Device.Video.
+             *
+             * @name Phaser.GameObjects.Video#_device
+             * @type {string[]}
+             * @private
+             * @since 3.60.0
+             */
+            this._device = game.device.video;
 
-        this.setPosition(x, y);
-        this.setSize(256, 256);
-        this.initPipeline();
-        this.initPostPipeline(true);
+            this.setPosition(x, y);
+            this.setSize(256, 256);
+            this.initPipeline();
+            this.initPostPipeline(true);
 
-        game.events.on(GameEvents.PAUSE, this.globalPause, this);
-        game.events.on(GameEvents.RESUME, this.globalResume, this);
+            game.events.on(GameEvents.PAUSE, this.globalPause, this);
+            game.events.on(GameEvents.RESUME, this.globalResume, this);
 
-        var sound = scene.sys.sound;
+            var sound = scene.sys.sound;
 
-        if (sound)
-        {
-            sound.on(SoundEvents.GLOBAL_MUTE, this.globalMute, this);
-        }
+            if (sound) {
+                sound.on(SoundEvents.GLOBAL_MUTE, this.globalMute, this);
+            }
 
-        if (key)
-        {
-            this.load(key);
-        }
-    },
+            if (key) {
+                this.load(key);
+            }
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
@@ -575,18 +570,14 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    load: function (key)
-    {
+    load: function (key) {
         var video = this.scene.sys.cache.video.get(key);
 
-        if (video)
-        {
+        if (video) {
             this.cacheKey = key;
 
             this.loadHandler(video.url, video.noAudio, video.crossOrigin);
-        }
-        else
-        {
+        } else {
             console.warn('No video in cache for key: ' + key);
         }
 
@@ -613,17 +604,18 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    changeSource: function (key, autoplay, loop, markerIn, markerOut)
-    {
-        if (autoplay === undefined) { autoplay = true; }
-        if (loop === undefined) { loop = false; }
+    changeSource: function (key, autoplay, loop, markerIn, markerOut) {
+        if (autoplay === undefined) {
+            autoplay = true;
+        }
+        if (loop === undefined) {
+            loop = false;
+        }
 
-        if (this.cacheKey !== key)
-        {
+        if (this.cacheKey !== key) {
             this.load(key);
 
-            if (autoplay)
-            {
+            if (autoplay) {
                 this.play(loop, markerIn, markerOut);
             }
         }
@@ -639,8 +631,7 @@ var Video = new Class({
      *
      * @return {string} The key of the video being played from the Video Cache, if any.
      */
-    getVideoKey: function ()
-    {
+    getVideoKey: function () {
         return this.cacheKey;
     },
 
@@ -663,18 +654,16 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    loadURL: function (urls, noAudio, crossOrigin)
-    {
-        if (noAudio === undefined) { noAudio = false; }
+    loadURL: function (urls, noAudio, crossOrigin) {
+        if (noAudio === undefined) {
+            noAudio = false;
+        }
 
         var urlConfig = this._device.getVideoURL(urls);
 
-        if (!urlConfig)
-        {
+        if (!urlConfig) {
             console.warn('No supported video format found for ' + urls);
-        }
-        else
-        {
+        } else {
             this.cacheKey = '';
 
             this.loadHandler(urlConfig.url, noAudio, crossOrigin);
@@ -695,8 +684,7 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    loadMediaStream: function (stream, noAudio, crossOrigin)
-    {
+    loadMediaStream: function (stream, noAudio, crossOrigin) {
         return this.loadHandler(null, noAudio, crossOrigin, stream);
     },
 
@@ -720,22 +708,20 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    loadHandler: function (url, noAudio, crossOrigin, stream)
-    {
-        if (!noAudio) { noAudio = false; }
+    loadHandler: function (url, noAudio, crossOrigin, stream) {
+        if (!noAudio) {
+            noAudio = false;
+        }
 
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             //  Re-use the existing video element
 
             this.removeLoadEventHandlers();
 
             this.stop();
-        }
-        else
-        {
+        } else {
             video = document.createElement('video');
 
             video.controls = false;
@@ -745,55 +731,39 @@ var Video = new Class({
             video.setAttribute('disablePictureInPicture', 'true');
         }
 
-        if (noAudio)
-        {
+        if (noAudio) {
             video.muted = true;
             video.defaultMuted = true;
 
             video.setAttribute('autoplay', 'autoplay');
-        }
-        else
-        {
+        } else {
             video.muted = false;
             video.defaultMuted = false;
 
             video.removeAttribute('autoplay');
         }
 
-        if (!crossOrigin)
-        {
+        if (!crossOrigin) {
             video.removeAttribute('crossorigin');
-        }
-        else
-        {
+        } else {
             video.setAttribute('crossorigin', crossOrigin);
         }
 
-        if (stream)
-        {
-            if ('srcObject' in video)
-            {
-                try
-                {
+        if (stream) {
+            if ('srcObject' in video) {
+                try {
                     video.srcObject = stream;
-                }
-                catch (err)
-                {
-                    if (err.name !== 'TypeError')
-                    {
+                } catch (err) {
+                    if (err.name !== 'TypeError') {
                         throw err;
                     }
 
                     video.src = URL.createObjectURL(stream);
                 }
-            }
-            else
-            {
+            } else {
                 video.src = URL.createObjectURL(stream);
             }
-        }
-        else
-        {
+        } else {
             video.src = url;
         }
 
@@ -835,12 +805,10 @@ var Video = new Class({
      * @param {DOMHighResTimeStamp} now - The current time in milliseconds.
      * @param {VideoFrameCallbackMetadata} metadata - Useful metadata about the video frame that was most recently presented for composition. See https://wicg.github.io/video-rvfc/#video-frame-metadata-callback
      */
-    requestVideoFrame: function (now, metadata)
-    {
+    requestVideoFrame: function (now, metadata) {
         var video = this.video;
 
-        if (!video)
-        {
+        if (!video) {
             return;
         }
 
@@ -851,14 +819,12 @@ var Video = new Class({
         var textureSource = this.videoTextureSource;
         var newVideo = (!texture || textureSource.source !== video);
 
-        if (newVideo)
-        {
+        if (newVideo) {
             //  First frame of a new video
             this._codePaused = video.paused;
             this._codeMuted = video.muted;
 
-            if (!texture)
-            {
+            if (!texture) {
                 texture = this.scene.sys.textures.create(this._key, video, width, height);
 
                 texture.add('__BASE', 0, 0, 0, width, height);
@@ -871,9 +837,7 @@ var Video = new Class({
                 this.videoTextureSource.setFlipY(this.flipY);
 
                 this.emit(Events.VIDEO_TEXTURE, this, texture);
-            }
-            else
-            {
+            } else {
                 //  Re-use the existing texture
                 textureSource.source = video;
                 textureSource.width = width;
@@ -885,9 +849,7 @@ var Video = new Class({
 
             this.setSizeToFrame();
             this.updateDisplayOrigin();
-        }
-        else
-        {
+        } else {
             textureSource.update();
         }
 
@@ -897,55 +859,43 @@ var Video = new Class({
 
         var currentTime = metadata.mediaTime;
 
-        if (newVideo)
-        {
+        if (newVideo) {
             this._lastUpdate = currentTime;
 
             this.emit(Events.VIDEO_CREATED, this, width, height);
 
-            if (!this.frameReady)
-            {
+            if (!this.frameReady) {
                 this.frameReady = true;
 
                 this.emit(Events.VIDEO_PLAY, this);
             }
         }
 
-        if (this._playingMarker)
-        {
-            if (currentTime >= this._markerOut)
-            {
-                if (video.loop)
-                {
+        if (this._playingMarker) {
+            if (currentTime >= this._markerOut) {
+                if (video.loop) {
                     video.currentTime = this._markerIn;
 
                     this.emit(Events.VIDEO_LOOP, this);
-                }
-                else
-                {
+                } else {
                     this.stop(false);
 
                     this.emit(Events.VIDEO_COMPLETE, this);
                 }
             }
-        }
-        else if (currentTime < this._lastUpdate)
-        {
+        } else if (currentTime < this._lastUpdate) {
             this.emit(Events.VIDEO_LOOP, this);
         }
 
         this._lastUpdate = currentTime;
 
-        if (this._getFrame)
-        {
+        if (this._getFrame) {
             this.removeEventHandlers();
 
             video.pause();
 
             this._getFrame = false;
-        }
-        else
-        {
+        } else {
             this._rfvCallbackId = this.video.requestVideoFrameCallback(this.requestVideoFrame.bind(this));
         }
     },
@@ -984,17 +934,18 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    play: function (loop, markerIn, markerOut)
-    {
-        if (markerIn === undefined) { markerIn = -1; }
-        if (markerOut === undefined) { markerOut = MATH_CONST.MAX_SAFE_INTEGER; }
+    play: function (loop, markerIn, markerOut) {
+        if (markerIn === undefined) {
+            markerIn = -1;
+        }
+        if (markerOut === undefined) {
+            markerOut = MATH_CONST.MAX_SAFE_INTEGER;
+        }
 
         var video = this.video;
 
-        if (!video || this.isPlaying())
-        {
-            if (!video)
-            {
+        if (!video || this.isPlaying()) {
+            if (!video) {
                 console.warn('Video not loaded');
             }
 
@@ -1003,7 +954,9 @@ var Video = new Class({
 
         //  We can reset these each time play is called, even if the video hasn't started yet
 
-        if (loop === undefined) { loop = video.loop; }
+        if (loop === undefined) {
+            loop = video.loop;
+        }
 
         video.loop = loop;
 
@@ -1013,8 +966,7 @@ var Video = new Class({
 
         //  But we go no further if play has already been called
 
-        if (!this._playCalled)
-        {
+        if (!this._playCalled) {
             this._getFrame = false;
 
             this._rfvCallbackId = video.requestVideoFrameCallback(this.requestVideoFrame.bind(this));
@@ -1039,22 +991,18 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    getFirstFrame: function ()
-    {
+    getFirstFrame: function () {
         var video = this.video;
 
-        if (!video || this.isPlaying())
-        {
-            if (!video)
-            {
+        if (!video || this.isPlaying()) {
+            if (!video) {
                 console.warn('Video not loaded');
             }
 
             return this;
         }
 
-        if (!this._playCalled)
-        {
+        if (!this._playCalled) {
             this._getFrame = true;
 
             this._rfvCallbackId = video.requestVideoFrameCallback(this.requestVideoFrame.bind(this));
@@ -1071,12 +1019,10 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#addLoadEventHandlers
      * @since 3.60.0
      */
-    addLoadEventHandlers: function ()
-    {
+    addLoadEventHandlers: function () {
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             video.addEventListener('error', this._loadCallbackHandler);
             video.addEventListener('abort', this._loadCallbackHandler);
             video.addEventListener('loadedmetadata', this._metadataCallbackHandler);
@@ -1089,12 +1035,10 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#removeLoadEventHandlers
      * @since 3.60.0
      */
-    removeLoadEventHandlers: function ()
-    {
+    removeLoadEventHandlers: function () {
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             video.removeEventListener('error', this._loadCallbackHandler);
             video.removeEventListener('abort', this._loadCallbackHandler);
         }
@@ -1106,19 +1050,16 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#addEventHandlers
      * @since 3.60.0
      */
-    addEventHandlers: function ()
-    {
+    addEventHandlers: function () {
         var video = this.video;
 
         //  Set these _after_ calling `video.play` or they don't fire
         //  (really useful, thanks browsers!)
 
-        if (video)
-        {
+        if (video) {
             var callbacks = this._callbacks;
 
-            for (var callback in callbacks)
-            {
+            for (var callback in callbacks) {
                 video.addEventListener(callback, callbacks[callback]);
             }
         }
@@ -1130,16 +1071,13 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#removeEventHandlers
      * @since 3.60.0
      */
-    removeEventHandlers: function ()
-    {
+    removeEventHandlers: function () {
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             var callbacks = this._callbacks;
 
-            for (var callback in callbacks)
-            {
+            for (var callback in callbacks) {
                 video.removeEventListener(callback, callbacks[callback]);
             }
         }
@@ -1158,38 +1096,33 @@ var Video = new Class({
      *
      * @param {boolean} [catchError=true] - Should the error be caught and the video marked as failed to play?
      */
-    createPlayPromise: function (catchError)
-    {
-        if (catchError === undefined) { catchError = true; }
+    createPlayPromise: function (catchError) {
+        if (catchError === undefined) {
+            catchError = true;
+        }
 
         var video = this.video;
 
         var playPromise = video.play();
 
-        if (playPromise !== undefined)
-        {
+        if (playPromise !== undefined) {
             var success = this.playSuccess.bind(this);
             var error = this.playError.bind(this);
 
-            if (!catchError)
-            {
+            if (!catchError) {
                 var _this = this;
 
-                error = function ()
-                {
+                error = function () {
                     _this.failedPlayAttempts++;
                 };
             }
 
             playPromise.then(success).catch(error);
-        }
-        else
-        {
+        } else {
             //  Old-school fallback here for pre-2019 browsers
             video.addEventListener('playing', this._callbacks.legacy);
 
-            if (!catchError)
-            {
+            if (!catchError) {
                 this.failedPlayAttempts++;
             }
         }
@@ -1216,11 +1149,9 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    addMarker: function (key, markerIn, markerOut)
-    {
-        if (!isNaN(markerIn) && markerIn >= 0 && !isNaN(markerOut) && markerOut > markerIn)
-        {
-            this.markers[key] = [ markerIn, markerOut ];
+    addMarker: function (key, markerIn, markerOut) {
+        if (!isNaN(markerIn) && markerIn >= 0 && !isNaN(markerOut) && markerOut > markerIn) {
+            this.markers[key] = [markerIn, markerOut];
         }
 
         return this;
@@ -1245,12 +1176,10 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    playMarker: function (key, loop)
-    {
+    playMarker: function (key, loop) {
         var marker = this.markers[key];
 
-        if (marker)
-        {
+        if (marker) {
             this.play(loop, marker[0], marker[1]);
         }
 
@@ -1269,8 +1198,7 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    removeMarker: function (key)
-    {
+    removeMarker: function (key) {
         delete this.markers[key];
 
         return this;
@@ -1291,10 +1219,13 @@ var Video = new Class({
      *
      * @return {Phaser.Textures.CanvasTexture}
      */
-    snapshot: function (width, height)
-    {
-        if (width === undefined) { width = this.width; }
-        if (height === undefined) { height = this.height; }
+    snapshot: function (width, height) {
+        if (width === undefined) {
+            width = this.width;
+        }
+        if (height === undefined) {
+            height = this.height;
+        }
 
         return this.snapshotArea(0, 0, this.width, this.height, width, height);
     },
@@ -1318,35 +1249,41 @@ var Video = new Class({
      *
      * @return {Phaser.Textures.CanvasTexture}
      */
-    snapshotArea: function (x, y, srcWidth, srcHeight, destWidth, destHeight)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (srcWidth === undefined) { srcWidth = this.width; }
-        if (srcHeight === undefined) { srcHeight = this.height; }
-        if (destWidth === undefined) { destWidth = srcWidth; }
-        if (destHeight === undefined) { destHeight = srcHeight; }
+    snapshotArea: function (x, y, srcWidth, srcHeight, destWidth, destHeight) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
+        if (srcWidth === undefined) {
+            srcWidth = this.width;
+        }
+        if (srcHeight === undefined) {
+            srcHeight = this.height;
+        }
+        if (destWidth === undefined) {
+            destWidth = srcWidth;
+        }
+        if (destHeight === undefined) {
+            destHeight = srcHeight;
+        }
 
         var video = this.video;
         var snap = this.snapshotTexture;
 
-        if (!snap)
-        {
+        if (!snap) {
             snap = this.scene.sys.textures.createCanvas(UUID(), destWidth, destHeight);
 
             this.snapshotTexture = snap;
 
-            if (video)
-            {
+            if (video) {
                 snap.context.drawImage(video, x, y, srcWidth, srcHeight, 0, 0, destWidth, destHeight);
             }
-        }
-        else
-        {
+        } else {
             snap.setSize(destWidth, destHeight);
 
-            if (video)
-            {
+            if (video) {
                 snap.context.drawImage(video, x, y, srcWidth, srcHeight, 0, 0, destWidth, destHeight);
             }
         }
@@ -1388,14 +1325,10 @@ var Video = new Class({
      *
      * @return {Phaser.Textures.CanvasTexture} The Texture that was saved.
      */
-    saveSnapshotTexture: function (key)
-    {
-        if (this.snapshotTexture)
-        {
+    saveSnapshotTexture: function (key) {
+        if (this.snapshotTexture) {
             this.scene.sys.textures.renameTexture(this.snapshotTexture.key, key);
-        }
-        else
-        {
+        } else {
             this.snapshotTexture = this.scene.sys.textures.createCanvas(key, this.width, this.height);
         }
 
@@ -1409,10 +1342,8 @@ var Video = new Class({
      * @fires Phaser.GameObjects.Events#VIDEO_UNLOCKED
      * @since 3.60.0
      */
-    playSuccess: function ()
-    {
-        if (!this._playCalled)
-        {
+    playSuccess: function () {
+        if (!this._playCalled) {
             //  The stop method has been called but the Promise has resolved
             //  after this, so we need to just abort.
             return;
@@ -1422,8 +1353,7 @@ var Video = new Class({
 
         this._codePaused = false;
 
-        if (this.touchLocked)
-        {
+        if (this.touchLocked) {
             this.touchLocked = false;
 
             this.emit(Events.VIDEO_UNLOCKED, this);
@@ -1431,14 +1361,12 @@ var Video = new Class({
 
         var sound = this.scene.sys.sound;
 
-        if (sound && sound.mute)
-        {
+        if (sound && sound.mute) {
             //  Mute will be set based on the global mute state of the Sound Manager (if there is one)
             this.setMute(true);
         }
 
-        if (this._markerIn > -1)
-        {
+        if (this._markerIn > -1) {
             this.video.currentTime = this._markerIn;
         }
     },
@@ -1454,26 +1382,20 @@ var Video = new Class({
      *
      * @param {DOMException} error - The Promise DOM Exception error.
      */
-    playError: function (error)
-    {
+    playError: function (error) {
         var name = error.name;
 
-        if (name === 'NotAllowedError')
-        {
+        if (name === 'NotAllowedError') {
             this.touchLocked = true;
             this.playWhenUnlocked = true;
             this.failedPlayAttempts = 1;
 
             this.emit(Events.VIDEO_LOCKED, this);
-        }
-        else if (name === 'NotSupportedError')
-        {
+        } else if (name === 'NotSupportedError') {
             this.stop(false);
 
             this.emit(Events.VIDEO_UNSUPPORTED, this, error);
-        }
-        else
-        {
+        } else {
             this.stop(false);
 
             this.emit(Events.VIDEO_ERROR, this, error);
@@ -1488,12 +1410,10 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#legacyPlayHandler
      * @since 3.60.0
      */
-    legacyPlayHandler: function ()
-    {
+    legacyPlayHandler: function () {
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             this.playSuccess();
 
             video.removeEventListener('playing', this._callbacks.legacy);
@@ -1507,8 +1427,7 @@ var Video = new Class({
      * @fires Phaser.GameObjects.Events#VIDEO_PLAYING
      * @since 3.60.0
      */
-    playingHandler: function ()
-    {
+    playingHandler: function () {
         this.isStalled = false;
 
         this.emit(Events.VIDEO_PLAYING, this);
@@ -1523,8 +1442,7 @@ var Video = new Class({
      *
      * @param {Event} event - The error Event.
      */
-    loadErrorHandler: function (event)
-    {
+    loadErrorHandler: function (event) {
         this.stop(false);
 
         this.emit(Events.VIDEO_ERROR, this, event);
@@ -1539,8 +1457,7 @@ var Video = new Class({
      *
      * @param {Event} event - The loadedmetadata Event.
      */
-    metadataHandler: function (event)
-    {
+    metadataHandler: function (event) {
         this.emit(Events.VIDEO_METADATA, this, event);
     },
 
@@ -1562,27 +1479,25 @@ var Video = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSizeToFrame: function (frame)
-    {
-        if (!frame) { frame = this.frame; }
+    setSizeToFrame: function (frame) {
+        if (!frame) {
+            frame = this.frame;
+        }
 
         this.width = frame.realWidth;
         this.height = frame.realHeight;
 
-        if (this.scaleX !== 1)
-        {
+        if (this.scaleX !== 1) {
             this.scaleX = this.displayWidth / this.width;
         }
 
-        if (this.scaleY !== 1)
-        {
+        if (this.scaleY !== 1) {
             this.scaleY = this.displayHeight / this.height;
         }
 
         var input = this.input;
 
-        if (input && !input.customHitArea)
-        {
+        if (input && !input.customHitArea) {
             input.hitArea.width = this.width;
             input.hitArea.height = this.height;
         }
@@ -1599,8 +1514,7 @@ var Video = new Class({
      *
      * @param {Event} event - The error Event.
      */
-    stalledHandler: function (event)
-    {
+    stalledHandler: function (event) {
         this.isStalled = true;
 
         this.emit(Events.VIDEO_STALLED, this, event);
@@ -1615,8 +1529,7 @@ var Video = new Class({
      * @fires Phaser.GameObjects.Events#VIDEO_COMPLETE
      * @since 3.20.0
      */
-    completeHandler: function ()
-    {
+    completeHandler: function () {
         this._playCalled = false;
 
         this.emit(Events.VIDEO_COMPLETE, this);
@@ -1632,21 +1545,17 @@ var Video = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time in ms since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
+    preUpdate: function (time, delta) {
         var video = this.video;
 
-        if (!video || !this._playCalled)
-        {
+        if (!video || !this._playCalled) {
             return;
         }
 
-        if (this.touchLocked && this.playWhenUnlocked)
-        {
+        if (this.touchLocked && this.playWhenUnlocked) {
             this.retry += delta;
 
-            if (this.retry >= this.retryInterval)
-            {
+            if (this.retry >= this.retryInterval) {
                 this.createPlayPromise(false);
 
                 this.retry = 0;
@@ -1675,16 +1584,13 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    seekTo: function (value)
-    {
+    seekTo: function (value) {
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             var duration = video.duration;
 
-            if (duration !== Infinity && !isNaN(duration))
-            {
+            if (duration !== Infinity && !isNaN(duration)) {
                 var seekTime = duration * value;
 
                 this.setCurrentTime(seekTime);
@@ -1706,8 +1612,7 @@ var Video = new Class({
      *
      * @return {number} A double-precision floating-point value indicating the current playback time in seconds.
      */
-    getCurrentTime: function ()
-    {
+    getCurrentTime: function () {
         return (this.video) ? this.video.currentTime : 0;
     },
 
@@ -1731,23 +1636,17 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    setCurrentTime: function (value)
-    {
+    setCurrentTime: function (value) {
         var video = this.video;
 
-        if (video)
-        {
-            if (typeof value === 'string')
-            {
+        if (video) {
+            if (typeof value === 'string') {
                 var op = value[0];
                 var num = parseFloat(value.substr(1));
 
-                if (op === '+')
-                {
+                if (op === '+') {
                     value = video.currentTime + num;
-                }
-                else if (op === '-')
-                {
+                } else if (op === '-') {
                     value = video.currentTime - num;
                 }
             }
@@ -1766,8 +1665,7 @@ var Video = new Class({
      * @private
      * @since 3.20.0
      */
-    seekingHandler: function ()
-    {
+    seekingHandler: function () {
         this.isSeeking = true;
 
         this.emit(Events.VIDEO_SEEKING, this);
@@ -1781,8 +1679,7 @@ var Video = new Class({
      * @private
      * @since 3.20.0
      */
-    seekedHandler: function ()
-    {
+    seekedHandler: function () {
         this.isSeeking = false;
 
         this.emit(Events.VIDEO_SEEKED, this);
@@ -1802,16 +1699,13 @@ var Video = new Class({
      *
      * @return {number} The current progress of playback. If the video has no duration, will always return -1.
      */
-    getProgress: function ()
-    {
+    getProgress: function () {
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             var duration = video.duration;
 
-            if (duration !== Infinity && !isNaN(duration))
-            {
+            if (duration !== Infinity && !isNaN(duration)) {
                 return video.currentTime / duration;
             }
         }
@@ -1833,8 +1727,7 @@ var Video = new Class({
      *
      * @return {number} A double-precision floating-point value indicating the duration of the media in seconds.
      */
-    getDuration: function ()
-    {
+    getDuration: function () {
         return (this.video) ? this.video.duration : 0;
     },
 
@@ -1848,16 +1741,16 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    setMute: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setMute: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this._codeMuted = value;
 
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             video.muted = (this._systemMuted) ? true : value;
         }
 
@@ -1872,8 +1765,7 @@ var Video = new Class({
      *
      * @return {boolean} A boolean indicating if this Video is currently muted, or not.
      */
-    isMuted: function ()
-    {
+    isMuted: function () {
         return this._codeMuted;
     },
 
@@ -1887,14 +1779,12 @@ var Video = new Class({
      * @param {(Phaser.Sound.WebAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager)} soundManager - A reference to the Sound Manager that emitted the event.
      * @param {boolean} mute - The mute value. `true` if the Sound Manager is now muted, otherwise `false`.
      */
-    globalMute: function (soundManager, value)
-    {
+    globalMute: function (soundManager, value) {
         this._systemMuted = value;
 
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             video.muted = (this._codeMuted) ? true : value;
         }
     },
@@ -1906,12 +1796,10 @@ var Video = new Class({
      * @private
      * @since 3.20.0
      */
-    globalPause: function ()
-    {
+    globalPause: function () {
         this._systemPaused = true;
 
-        if (this.video && !this.video.ended)
-        {
+        if (this.video && !this.video.ended) {
             this.removeEventHandlers();
 
             this.video.pause();
@@ -1925,12 +1813,10 @@ var Video = new Class({
      * @private
      * @since 3.20.0
      */
-    globalResume: function ()
-    {
+    globalResume: function () {
         this._systemPaused = false;
 
-        if (this.video && !this._codePaused && !this.video.ended)
-        {
+        if (this.video && !this._codePaused && !this.video.ended) {
             this.createPlayPromise();
         }
     },
@@ -1954,33 +1840,26 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    setPaused: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setPaused: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         var video = this.video;
 
         this._codePaused = value;
 
-        if (video && !video.ended)
-        {
-            if (value)
-            {
-                if (!video.paused)
-                {
+        if (video && !video.ended) {
+            if (value) {
+                if (!video.paused) {
                     this.removeEventHandlers();
 
                     video.pause();
                 }
-            }
-            else if (!value)
-            {
-                if (!this._playCalled)
-                {
+            } else if (!value) {
+                if (!this._playCalled) {
                     this.play();
-                }
-                else if (video.paused && !this._systemPaused)
-                {
+                } else if (video.paused && !this._systemPaused) {
                     this.createPlayPromise();
                 }
             }
@@ -2001,8 +1880,7 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    pause: function ()
-    {
+    pause: function () {
         return this.setPaused(true);
     },
 
@@ -2018,8 +1896,7 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    resume: function ()
-    {
+    resume: function () {
         return this.setPaused(false);
     },
 
@@ -2031,8 +1908,7 @@ var Video = new Class({
      *
      * @return {number} A double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest).
      */
-    getVolume: function ()
-    {
+    getVolume: function () {
         return (this.video) ? this.video.volume : 1;
     },
 
@@ -2048,12 +1924,12 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    setVolume: function (value)
-    {
-        if (value === undefined) { value = 1; }
+    setVolume: function (value) {
+        if (value === undefined) {
+            value = 1;
+        }
 
-        if (this.video)
-        {
+        if (this.video) {
             this.video.volume = Clamp(value, 0, 1);
         }
 
@@ -2068,8 +1944,7 @@ var Video = new Class({
      *
      * @return {number} A double that indicates the rate at which the media is being played back.
      */
-    getPlaybackRate: function ()
-    {
+    getPlaybackRate: function () {
         return (this.video) ? this.video.playbackRate : 1;
     },
 
@@ -2085,10 +1960,8 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    setPlaybackRate: function (rate)
-    {
-        if (this.video)
-        {
+    setPlaybackRate: function (rate) {
+        if (this.video) {
             this.video.playbackRate = rate;
         }
 
@@ -2103,8 +1976,7 @@ var Video = new Class({
      *
      * @return {boolean} A boolean which indicates whether the media element will start over when it reaches the end.
      */
-    getLoop: function ()
-    {
+    getLoop: function () {
         return (this.video) ? this.video.loop : false;
     },
 
@@ -2124,12 +1996,12 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    setLoop: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setLoop: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
-        if (this.video)
-        {
+        if (this.video) {
             this.video.loop = value;
         }
 
@@ -2144,8 +2016,7 @@ var Video = new Class({
      *
      * @return {boolean} A boolean which indicates whether the video is playing, or not.
      */
-    isPlaying: function ()
-    {
+    isPlaying: function () {
         return (this.video) ? !(this.video.paused || this.video.ended) : false;
     },
 
@@ -2157,8 +2028,7 @@ var Video = new Class({
      *
      * @return {boolean} A boolean which indicates whether the video is paused, or not.
      */
-    isPaused: function ()
-    {
+    isPaused: function () {
         return ((this.video && this._playCalled && this.video.paused) || this._codePaused || this._systemPaused);
     },
 
@@ -2213,12 +2083,12 @@ var Video = new Class({
      *
      * @return {boolean} Returns `true` if the texture is available immediately, otherwise returns `false` and you should listen for the `TEXTURE_READY` event.
      */
-    saveTexture: function (key, flipY)
-    {
-        if (flipY === undefined) { flipY = false; }
+    saveTexture: function (key, flipY) {
+        if (flipY === undefined) {
+            flipY = false;
+        }
 
-        if (this.videoTexture)
-        {
+        if (this.videoTexture) {
             this.scene.sys.textures.renameTexture(this._key, key);
             this.videoTextureSource.setFlipY(flipY);
         }
@@ -2245,14 +2115,14 @@ var Video = new Class({
      *
      * @return {this} This Video Game Object for method chaining.
      */
-    stop: function (emitStopEvent)
-    {
-        if (emitStopEvent === undefined) { emitStopEvent = true; }
+    stop: function (emitStopEvent) {
+        if (emitStopEvent === undefined) {
+            emitStopEvent = true;
+        }
 
         var video = this.video;
 
-        if (video)
-        {
+        if (video) {
             this.removeEventHandlers();
 
             video.cancelVideoFrameCallback(this._rfvCallbackId);
@@ -2263,8 +2133,7 @@ var Video = new Class({
         this.retry = 0;
         this._playCalled = false;
 
-        if (emitStopEvent)
-        {
+        if (emitStopEvent) {
             this.emit(Events.VIDEO_STOP, this);
         }
 
@@ -2285,22 +2154,18 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#removeVideoElement
      * @since 3.20.0
      */
-    removeVideoElement: function ()
-    {
+    removeVideoElement: function () {
         var video = this.video;
 
-        if (!video)
-        {
+        if (!video) {
             return;
         }
 
-        if (video.parentNode)
-        {
+        if (video.parentNode) {
             video.parentNode.removeChild(video);
         }
 
-        while (video.hasChildNodes())
-        {
+        while (video.hasChildNodes()) {
             video.removeChild(video.firstChild);
         }
 
@@ -2321,8 +2186,7 @@ var Video = new Class({
      * @private
      * @since 3.21.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.stop(false);
 
         this.removeLoadEventHandlers();
@@ -2336,8 +2200,7 @@ var Video = new Class({
 
         var sound = this.scene.sys.sound;
 
-        if (sound)
-        {
+        if (sound) {
             sound.off(SoundEvents.GLOBAL_MUTE, this.globalMute, this);
         }
     }

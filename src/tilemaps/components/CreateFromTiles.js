@@ -26,19 +26,23 @@ var ReplaceByIndex = require('./ReplaceByIndex');
  *
  * @return {Phaser.GameObjects.Sprite[]} An array of the Sprites that were created.
  */
-var CreateFromTiles = function (indexes, replacements, spriteConfig, scene, camera, layer)
-{
-    if (!spriteConfig) { spriteConfig = {}; }
+var CreateFromTiles = function (indexes, replacements, spriteConfig, scene, camera, layer) {
+    if (!spriteConfig) {
+        spriteConfig = {};
+    }
 
-    if (!Array.isArray(indexes))
-    {
-        indexes = [ indexes ];
+    if (!Array.isArray(indexes)) {
+        indexes = [indexes];
     }
 
     var tilemapLayer = layer.tilemapLayer;
 
-    if (!scene) { scene = tilemapLayer.scene; }
-    if (!camera) { camera = scene.cameras.main; }
+    if (!scene) {
+        scene = tilemapLayer.scene;
+    }
+    if (!camera) {
+        camera = scene.cameras.main;
+    }
 
     var layerWidth = layer.width;
     var layerHeight = layer.height;
@@ -47,41 +51,34 @@ var CreateFromTiles = function (indexes, replacements, spriteConfig, scene, came
     var sprites = [];
     var i;
 
-    var mergeExtras = function (config, tile, properties)
-    {
-        for (var i = 0; i < properties.length; i++)
-        {
+    var mergeExtras = function (config, tile, properties) {
+        for (var i = 0; i < properties.length; i++) {
             var property = properties[i];
 
-            if (!config.hasOwnProperty(property))
-            {
+            if (!config.hasOwnProperty(property)) {
                 config[property] = tile[property];
             }
         }
     };
 
-    for (i = 0; i < tiles.length; i++)
-    {
+    for (i = 0; i < tiles.length; i++) {
         var tile = tiles[i];
         var config = DeepCopy(spriteConfig);
 
-        if (indexes.indexOf(tile.index) !== -1)
-        {
-            var point = tilemapLayer.tileToWorldXY(tile.x, tile.y, undefined, camera,layer);
+        if (indexes.indexOf(tile.index) !== -1) {
+            var point = tilemapLayer.tileToWorldXY(tile.x, tile.y, undefined, camera, layer);
 
             config.x = point.x;
             config.y = point.y;
 
-            mergeExtras(config, tile, [ 'rotation', 'flipX', 'flipY', 'alpha', 'visible', 'tint' ]);
+            mergeExtras(config, tile, ['rotation', 'flipX', 'flipY', 'alpha', 'visible', 'tint']);
 
-            if (!config.hasOwnProperty('origin'))
-            {
+            if (!config.hasOwnProperty('origin')) {
                 config.x += tile.width * 0.5;
                 config.y += tile.height * 0.5;
             }
 
-            if (config.hasOwnProperty('useSpriteSheet'))
-            {
+            if (config.hasOwnProperty('useSpriteSheet')) {
                 config.key = tile.tileset.image;
                 config.frame = tile.index - tile.tileset.firstgid;
             }
@@ -90,19 +87,14 @@ var CreateFromTiles = function (indexes, replacements, spriteConfig, scene, came
         }
     }
 
-    if (Array.isArray(replacements))
-    {
+    if (Array.isArray(replacements)) {
         //  Assume 1 to 1 mapping with indexes array
-        for (i = 0; i < indexes.length; i++)
-        {
+        for (i = 0; i < indexes.length; i++) {
             ReplaceByIndex(indexes[i], replacements[i], 0, 0, layerWidth, layerHeight, layer);
         }
-    }
-    else if (replacements !== null)
-    {
+    } else if (replacements !== null) {
         //  Assume 1 replacement for all types of tile given
-        for (i = 0; i < indexes.length; i++)
-        {
+        for (i = 0; i < indexes.length; i++) {
             ReplaceByIndex(indexes[i], replacements, 0, 0, layerWidth, layerHeight, layer);
         }
     }

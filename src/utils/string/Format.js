@@ -18,10 +18,8 @@
  *
  * @return {string} The string containing replaced values.
  */
-var Format = function (string, values)
-{
-    return string.replace(/%([0-9]+)/g, function (s, n)
-    {
+var Format = function (string, values) {
+    return string.replace(/%([0-9]+)/g, function (s, n) {
         return values[Number(n) - 1];
     });
 };

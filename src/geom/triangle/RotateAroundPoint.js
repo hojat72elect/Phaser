@@ -20,8 +20,7 @@ var RotateAroundXY = require('./RotateAroundXY');
  *
  * @return {Phaser.Geom.Triangle} The rotated Triangle.
  */
-var RotateAroundPoint = function (triangle, point, angle)
-{
+var RotateAroundPoint = function (triangle, point, angle) {
     return RotateAroundXY(triangle, point.x, point.y, angle);
 };
 

@@ -17,8 +17,7 @@ var CanvasFeatures = require('../../../device/CanvasFeatures');
  *
  * @return {array} Which Canvas blend mode corresponds to which default Phaser blend mode.
  */
-var GetBlendModes = function ()
-{
+var GetBlendModes = function () {
     var output = [];
     var useNew = CanvasFeatures.supportNewBlendModes;
     var so = 'source-over';

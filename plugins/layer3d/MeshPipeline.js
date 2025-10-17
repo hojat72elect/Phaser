@@ -28,86 +28,85 @@ var MeshPipeline = new Class({
 
     initialize:
 
-    function MeshPipeline (config)
-    {
-        var gl = config.game.renderer.gl;
+        function MeshPipeline(config) {
+            var gl = config.game.renderer.gl;
 
-        config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS),
-        config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS),
-        config.vertexCapacity = GetFastValue(config, 'vertexCapacity', 8),
-        config.vertexSize = GetFastValue(config, 'vertexSize', 32),
-        config.attributes = GetFastValue(config, 'attributes', [
-            {
-                name: 'aVertexPosition',
-                size: 3,
-                type: gl.FLOAT,
-                normalized: false,
-                offset: 0,
-                enabled: false,
-                location: -1
-            },
-            {
-                name: 'aVertexNormal',
-                size: 3,
-                type: gl.FLOAT,
-                normalized: false,
-                offset: 12,
-                enabled: false,
-                location: -1
-            },
-            {
-                name: 'aTextureCoord',
-                size: 2,
-                type: gl.FLOAT,
-                normalized: false,
-                offset: 24,
-                enabled: false,
-                location: -1
-            }
-        ]);
-        config.uniforms = GetFastValue(config, 'uniforms', [
-            'uViewProjectionMatrix',
-            'uLightPosition',
-            'uLightAmbient',
-            'uLightDiffuse',
-            'uLightSpecular',
-            'uCameraPosition',
-            'uFogColor',
-            'uFogNear',
-            'uFogFar',
-            'uModelMatrix',
-            'uNormalMatrix',
-            'uMaterialAmbient',
-            'uMaterialDiffuse',
-            'uMaterialSpecular',
-            'uMaterialShine',
-            'uTexture'
-        ]);
+            config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS),
+                config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS),
+                config.vertexCapacity = GetFastValue(config, 'vertexCapacity', 8),
+                config.vertexSize = GetFastValue(config, 'vertexSize', 32),
+                config.attributes = GetFastValue(config, 'attributes', [
+                    {
+                        name: 'aVertexPosition',
+                        size: 3,
+                        type: gl.FLOAT,
+                        normalized: false,
+                        offset: 0,
+                        enabled: false,
+                        location: -1
+                    },
+                    {
+                        name: 'aVertexNormal',
+                        size: 3,
+                        type: gl.FLOAT,
+                        normalized: false,
+                        offset: 12,
+                        enabled: false,
+                        location: -1
+                    },
+                    {
+                        name: 'aTextureCoord',
+                        size: 2,
+                        type: gl.FLOAT,
+                        normalized: false,
+                        offset: 24,
+                        enabled: false,
+                        location: -1
+                    }
+                ]);
+            config.uniforms = GetFastValue(config, 'uniforms', [
+                'uViewProjectionMatrix',
+                'uLightPosition',
+                'uLightAmbient',
+                'uLightDiffuse',
+                'uLightSpecular',
+                'uCameraPosition',
+                'uFogColor',
+                'uFogNear',
+                'uFogFar',
+                'uModelMatrix',
+                'uNormalMatrix',
+                'uMaterialAmbient',
+                'uMaterialDiffuse',
+                'uMaterialSpecular',
+                'uMaterialShine',
+                'uTexture'
+            ]);
 
-        WebGLPipeline.call(this, config);
+            WebGLPipeline.call(this, config);
 
-        this.forceZero = true;
+            this.forceZero = true;
 
-        //  Cache structure:
+            //  Cache structure:
 
-        //  0 fog near
-        //  1 fog far
-        //  2, 3, 4 model material ambient
-        //  5, 6, 7 model material diffuse
-        //  8, 9, 10 model material specular
-        //  11 model material shine
+            //  0 fog near
+            //  1 fog far
+            //  2, 3, 4 model material ambient
+            //  5, 6, 7 model material diffuse
+            //  8, 9, 10 model material specular
+            //  11 model material shine
 
-        this.dirtyCache = [
-            -1,
-            -1,
-            -1, -1, -1,
-            -1, -1, -1,
-            -1, -1, -1,
-            -1
-        ];
+            this.dirtyCache = [
+                -1,
+                -1,
+                -1, -1, -1,
+                -1, -1, -1,
+                -1, -1, -1,
+                -1
+            ];
 
-        this.cullMode = 1029;
-    },
+            this.cullMode = 1029;
+        },
 
     /**
      * Called every time the pipeline is bound by the renderer.
@@ -121,9 +120,10 @@ var MeshPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    bind: function (reset)
-    {
-        if (reset === undefined) { reset = false; }
+    bind: function (reset) {
+        if (reset === undefined) {
+            reset = false;
+        }
 
         WebGLPipeline.prototype.bind.call(this, reset);
 
@@ -149,12 +149,10 @@ var MeshPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    onBind: function (mesh)
-    {
+    onBind: function (mesh) {
         var camera = mesh.camera;
 
-        if (camera.dirtyView || camera.dirtyProjection)
-        {
+        if (camera.dirtyView || camera.dirtyProjection) {
             this.setMatrix4fv('uViewProjectionMatrix', false, camera.viewProjectionMatrix.val);
 
             this.set3f('uCameraPosition', camera.x, camera.y, camera.z);
@@ -162,8 +160,7 @@ var MeshPipeline = new Class({
 
         var light = mesh.light;
 
-        if (light.isDirty())
-        {
+        if (light.isDirty()) {
             this.set3f('uLightPosition', light.x, light.y, light.z);
         }
 
@@ -171,25 +168,21 @@ var MeshPipeline = new Class({
         var diffuse = light.diffuse;
         var specular = light.specular;
 
-        if (ambient.dirty)
-        {
+        if (ambient.dirty) {
             this.set3f('uLightAmbient', ambient.r, ambient.g, ambient.b);
         }
 
-        if (diffuse.dirty)
-        {
+        if (diffuse.dirty) {
             this.set3f('uLightDiffuse', diffuse.r, diffuse.g, diffuse.b);
         }
 
-        if (specular.dirty)
-        {
+        if (specular.dirty) {
             this.set3f('uLightSpecular', specular.r, specular.g, specular.b);
         }
 
         var fogColor = mesh.fogColor;
 
-        if (fogColor.dirty)
-        {
+        if (fogColor.dirty) {
             this.set3f('uFogColor', fogColor.r, fogColor.g, fogColor.b);
         }
 
@@ -197,15 +190,13 @@ var MeshPipeline = new Class({
         var fogNear = mesh.fogNear;
         var fogFar = mesh.fogFar;
 
-        if (cache[0] !== fogNear)
-        {
+        if (cache[0] !== fogNear) {
             this.set1f('uFogNear', fogNear);
 
             cache[0] = fogNear;
         }
 
-        if (cache[1] !== fogFar)
-        {
+        if (cache[1] !== fogFar) {
             this.set1f('uFogFar', fogFar);
 
             cache[1] = fogFar;
@@ -214,8 +205,7 @@ var MeshPipeline = new Class({
         this.set1i('uTexture', 0);
     },
 
-    drawModel: function (mesh, model)
-    {
+    drawModel: function (mesh, model) {
         var cache = this.dirtyCache;
 
         this.setMatrix4fv('uModelMatrix', false, model.transformMatrix.val);
@@ -223,8 +213,7 @@ var MeshPipeline = new Class({
 
         var ambient = model.ambient;
 
-        if (!ambient.equals(cache[2], cache[3], cache[4]))
-        {
+        if (!ambient.equals(cache[2], cache[3], cache[4])) {
             this.set3f('uMaterialAmbient', ambient.r, ambient.g, ambient.b);
 
             cache[2] = ambient.r;
@@ -234,8 +223,7 @@ var MeshPipeline = new Class({
 
         var diffuse = model.diffuse;
 
-        if (!diffuse.equals(cache[5], cache[6], cache[7]))
-        {
+        if (!diffuse.equals(cache[5], cache[6], cache[7])) {
             this.set3f('uMaterialDiffuse', diffuse.r, diffuse.g, diffuse.b);
 
             cache[5] = diffuse.r;
@@ -245,8 +233,7 @@ var MeshPipeline = new Class({
 
         var specular = model.specular;
 
-        if (!specular.equals(cache[8], cache[9], cache[10]))
-        {
+        if (!specular.equals(cache[8], cache[9], cache[10])) {
             this.set3f('uMaterialSpecular', specular.r, specular.g, specular.b);
 
             cache[8] = specular.r;
@@ -256,8 +243,7 @@ var MeshPipeline = new Class({
 
         var shine = model.shine;
 
-        if (!shine !== cache[11])
-        {
+        if (!shine !== cache[11]) {
             this.set1f('uMaterialShine', shine);
 
             cache[11] = specular.b;
@@ -270,8 +256,7 @@ var MeshPipeline = new Class({
 
         var cullMode = model.cullMode;
 
-        if (cullMode !== this.cullMode)
-        {
+        if (cullMode !== this.cullMode) {
             this.cullMode = cullMode;
 
             gl.cullFace(cullMode);

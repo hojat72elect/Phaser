@@ -72,31 +72,26 @@ var Extern = new Class({
 
     initialize:
 
-    function Extern (scene)
-    {
-        GameObject.call(this, scene, 'Extern');
-    },
+        function Extern(scene) {
+            GameObject.call(this, scene, 'Extern');
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
-    preUpdate: function ()
-    {
+    preUpdate: function () {
         //  override this!
         //  Arguments: time, delta
     },
 
-    render: function ()
-    {
+    render: function () {
         //  override this!
         //  Arguments: renderer, camera, calcMatrix
     }

@@ -16,8 +16,7 @@ var Color = require('./Color');
  *
  * @return {Phaser.Display.Color} A Color object.
  */
-var ObjectToColor = function (input)
-{
+var ObjectToColor = function (input) {
     return new Color(input.r, input.g, input.b, input.a);
 };
 

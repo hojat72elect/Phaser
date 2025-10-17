@@ -39,151 +39,160 @@ var Vertex = new Class({
 
     initialize:
 
-    function Vertex (x, y, z, u, v, color, alpha, nx, ny, nz)
-    {
-        if (color === undefined) { color = 0xffffff; }
-        if (alpha === undefined) { alpha = 1; }
-        if (nx === undefined) { nx = 0; }
-        if (ny === undefined) { ny = 0; }
-        if (nz === undefined) { nz = 0; }
+        function Vertex(x, y, z, u, v, color, alpha, nx, ny, nz) {
+            if (color === undefined) {
+                color = 0xffffff;
+            }
+            if (alpha === undefined) {
+                alpha = 1;
+            }
+            if (nx === undefined) {
+                nx = 0;
+            }
+            if (ny === undefined) {
+                ny = 0;
+            }
+            if (nz === undefined) {
+                nz = 0;
+            }
 
-        Vector3.call(this, x, y, z);
+            Vector3.call(this, x, y, z);
 
-        /**
-         * The projected x coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#vx
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.vx = 0;
+            /**
+             * The projected x coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#vx
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.vx = 0;
 
-        /**
-         * The projected y coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#vy
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.vy = 0;
+            /**
+             * The projected y coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#vy
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.vy = 0;
 
-        /**
-         * The projected z coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#vz
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.vz = 0;
+            /**
+             * The projected z coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#vz
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.vz = 0;
 
-        /**
-         * The normalized projected x coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#nx
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.nx = nx;
+            /**
+             * The normalized projected x coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#nx
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.nx = nx;
 
-        /**
-         * The normalized projected y coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#ny
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.ny = ny;
+            /**
+             * The normalized projected y coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#ny
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.ny = ny;
 
-        /**
-         * The normalized projected z coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#nz
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.nz = nz;
+            /**
+             * The normalized projected z coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#nz
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.nz = nz;
 
-        /**
-         * UV u coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#u
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.u = u;
+            /**
+             * UV u coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#u
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.u = u;
 
-        /**
-         * UV v coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#v
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.v = v;
+            /**
+             * UV v coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#v
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.v = v;
 
-        /**
-         * The color value of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#color
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.color = color;
+            /**
+             * The color value of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#color
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.color = color;
 
-        /**
-         * The alpha value of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#alpha
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.alpha = alpha;
+            /**
+             * The alpha value of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#alpha
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.alpha = alpha;
 
-        /**
-         * The translated x coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#tx
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.tx = 0;
+            /**
+             * The translated x coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#tx
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.tx = 0;
 
-        /**
-         * The translated y coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#ty
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.ty = 0;
+            /**
+             * The translated y coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#ty
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.ty = 0;
 
-        /**
-         * The translated alpha value of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#ta
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.ta = 0;
+            /**
+             * The translated alpha value of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#ta
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.ta = 0;
 
-        /**
-         * The translated uv u coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#tu
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.tu = u;
+            /**
+             * The translated uv u coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#tu
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.tu = u;
 
-        /**
-         * The translated uv v coordinate of this vertex.
-         *
-         * @name Phaser.Geom.Mesh.Vertex#tv
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.tv = v;
-    },
+            /**
+             * The translated uv v coordinate of this vertex.
+             *
+             * @name Phaser.Geom.Mesh.Vertex#tv
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.tv = v;
+        },
 
     /**
      * Sets the U and V properties.
@@ -199,8 +208,7 @@ var Vertex = new Class({
      *
      * @return {this} This Vertex.
      */
-    setUVs: function (u, v)
-    {
+    setUVs: function (u, v) {
         this.u = u;
         this.v = v;
 
@@ -226,8 +234,7 @@ var Vertex = new Class({
      *
      * @return {this} This Vertex.
      */
-    scrollUV: function (x, y)
-    {
+    scrollUV: function (x, y) {
         this.tu += x;
         this.tv += y;
 
@@ -250,8 +257,7 @@ var Vertex = new Class({
      *
      * @return {this} This Vertex.
      */
-    scaleUV: function (x, y)
-    {
+    scaleUV: function (x, y) {
         this.tu = this.u * x;
         this.tv = this.v * y;
 
@@ -269,8 +275,7 @@ var Vertex = new Class({
      * @param {number} height - The height of the parent Mesh.
      * @param {number} cameraZ - The z position of the MeshCamera.
      */
-    transformCoordinatesLocal: function (transformMatrix, width, height, cameraZ)
-    {
+    transformCoordinatesLocal: function (transformMatrix, width, height, cameraZ) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -285,12 +290,9 @@ var Vertex = new Class({
         this.vx = (tx / tw) * width;
         this.vy = -(ty / tw) * height;
 
-        if (cameraZ <= 0)
-        {
+        if (cameraZ <= 0) {
             this.vz = (tz / tw);
-        }
-        else
-        {
+        } else {
             this.vz = -(tz / tw);
         }
     },
@@ -311,8 +313,7 @@ var Vertex = new Class({
      *
      * @return {this} This Vertex.
      */
-    resize: function (x, y, width, height, originX, originY)
-    {
+    resize: function (x, y, width, height, originX, originY) {
         this.x = x;
         this.y = y;
 
@@ -320,21 +321,15 @@ var Vertex = new Class({
         this.vy = -this.y * height;
         this.vz = 0;
 
-        if (originX < 0.5)
-        {
+        if (originX < 0.5) {
             this.vx += width * (0.5 - originX);
-        }
-        else if (originX > 0.5)
-        {
+        } else if (originX > 0.5) {
             this.vx -= width * (originX - 0.5);
         }
 
-        if (originY < 0.5)
-        {
+        if (originY < 0.5) {
             this.vy += height * (0.5 - originY);
-        }
-        else if (originY > 0.5)
-        {
+        } else if (originY > 0.5) {
             this.vy -= height * (originY - 0.5);
         }
 
@@ -358,13 +353,11 @@ var Vertex = new Class({
      *
      * @return {this} This Vertex.
      */
-    update: function (a, b, c, d, e, f, roundPixels, alpha)
-    {
+    update: function (a, b, c, d, e, f, roundPixels, alpha) {
         var tx = this.vx * a + this.vy * c + e;
         var ty = this.vx * b + this.vy * d + f;
 
-        if (roundPixels)
-        {
+        if (roundPixels) {
             tx = Math.round(tx);
             ty = Math.round(ty);
         }
@@ -390,8 +383,7 @@ var Vertex = new Class({
      *
      * @return {number} The new array offset.
      */
-    load: function (F32, U32, offset, textureUnit, tintEffect)
-    {
+    load: function (F32, U32, offset, textureUnit, tintEffect) {
         F32[++offset] = this.tx;
         F32[++offset] = this.ty;
         F32[++offset] = this.tu;

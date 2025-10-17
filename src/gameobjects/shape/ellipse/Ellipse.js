@@ -52,39 +52,45 @@ var Ellipse = new Class({
 
     initialize:
 
-    function Ellipse (scene, x, y, width, height, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = 128; }
-        if (height === undefined) { height = 128; }
+        function Ellipse(scene, x, y, width, height, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (width === undefined) {
+                width = 128;
+            }
+            if (height === undefined) {
+                height = 128;
+            }
 
-        Shape.call(this, scene, 'Ellipse', new GeomEllipse(width / 2, height / 2, width, height));
+            Shape.call(this, scene, 'Ellipse', new GeomEllipse(width / 2, height / 2, width, height));
 
-        /**
-         * Private internal value.
-         * The number of points used to draw the curve. Higher values create smoother renders at the cost of more triangles being drawn.
-         *
-         * @name Phaser.GameObjects.Ellipse#_smoothness
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._smoothness = 64;
+            /**
+             * Private internal value.
+             * The number of points used to draw the curve. Higher values create smoother renders at the cost of more triangles being drawn.
+             *
+             * @name Phaser.GameObjects.Ellipse#_smoothness
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._smoothness = 64;
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        this.width = width;
-        this.height = height;
+            this.width = width;
+            this.height = height;
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-        this.updateData();
-    },
+            this.updateDisplayOrigin();
+            this.updateData();
+        },
 
     /**
      * The smoothness of the ellipse. The number of points used when rendering it.
@@ -97,13 +103,11 @@ var Ellipse = new Class({
      */
     smoothness: {
 
-        get: function ()
-        {
+        get: function () {
             return this._smoothness;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._smoothness = value;
 
             this.updateData();
@@ -123,8 +127,7 @@ var Ellipse = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
         this.geom.setPosition(width / 2, height / 2);
@@ -147,8 +150,7 @@ var Ellipse = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSmoothness: function (value)
-    {
+    setSmoothness: function (value) {
         this._smoothness = value;
 
         return this.updateData();
@@ -163,13 +165,11 @@ var Ellipse = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
+    updateData: function () {
         var path = [];
         var points = this.geom.getPoints(this._smoothness);
 
-        for (var i = 0; i < points.length; i++)
-        {
+        for (var i = 0; i < points.length; i++) {
             path.push(points[i].x, points[i].y);
         }
 

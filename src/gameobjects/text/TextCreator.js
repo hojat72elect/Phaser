@@ -22,9 +22,10 @@ var Text = require('./Text');
  *
  * @return {Phaser.GameObjects.Text} The Game Object that was created.
  */
-GameObjectCreator.register('text', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('text', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     // style Object = {
     //     font: [ 'font', '16px Courier' ],
@@ -56,15 +57,13 @@ GameObjectCreator.register('text', function (config, addToScene)
 
     var padding = GetAdvancedValue(config, 'padding', null);
 
-    if (padding !== null)
-    {
+    if (padding !== null) {
         style.padding = padding;
     }
 
     var text = new Text(this.scene, 0, 0, content, style);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

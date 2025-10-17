@@ -22,100 +22,95 @@ var RequestAnimationFrame = new Class({
 
     initialize:
 
-    function RequestAnimationFrame ()
-    {
-        /**
-         * True if RequestAnimationFrame is running, otherwise false.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#isRunning
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.isRunning = false;
+        function RequestAnimationFrame() {
+            /**
+             * True if RequestAnimationFrame is running, otherwise false.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#isRunning
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.isRunning = false;
 
-        /**
-         * The callback to be invoked each step.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#callback
-         * @type {FrameRequestCallback}
-         * @since 3.0.0
-         */
-        this.callback = NOOP;
+            /**
+             * The callback to be invoked each step.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#callback
+             * @type {FrameRequestCallback}
+             * @since 3.0.0
+             */
+            this.callback = NOOP;
 
-        /**
-         * True if the step is using setTimeout instead of RAF.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#isSetTimeOut
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.isSetTimeOut = false;
+            /**
+             * True if the step is using setTimeout instead of RAF.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#isSetTimeOut
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.isSetTimeOut = false;
 
-        /**
-         * The setTimeout or RAF callback ID used when canceling them.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#timeOutID
-         * @type {?number}
-         * @default null
-         * @since 3.0.0
-         */
-        this.timeOutID = null;
+            /**
+             * The setTimeout or RAF callback ID used when canceling them.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#timeOutID
+             * @type {?number}
+             * @default null
+             * @since 3.0.0
+             */
+            this.timeOutID = null;
 
-        /**
-         * The delay rate in ms for setTimeOut.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#delay
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.delay = 0;
+            /**
+             * The delay rate in ms for setTimeOut.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#delay
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.delay = 0;
 
-        var _this = this;
+            var _this = this;
 
-        /**
-         * The RAF step function.
-         *
-         * Invokes the callback and schedules another call to requestAnimationFrame.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#step
-         * @type {FrameRequestCallback}
-         * @since 3.0.0
-         *
-         * @param {number} time - The timestamp passed in from RequestAnimationFrame.
-         */
-        this.step = function step (time)
-        {
-            _this.callback(time);
+            /**
+             * The RAF step function.
+             *
+             * Invokes the callback and schedules another call to requestAnimationFrame.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#step
+             * @type {FrameRequestCallback}
+             * @since 3.0.0
+             *
+             * @param {number} time - The timestamp passed in from RequestAnimationFrame.
+             */
+            this.step = function step(time) {
+                _this.callback(time);
 
-            if (_this.isRunning)
-            {
-                _this.timeOutID = window.requestAnimationFrame(step);
-            }
-        };
+                if (_this.isRunning) {
+                    _this.timeOutID = window.requestAnimationFrame(step);
+                }
+            };
 
-        /**
-         * The SetTimeout step function.
-         *
-         * Invokes the callback and schedules another call to setTimeout.
-         *
-         * @name Phaser.DOM.RequestAnimationFrame#stepTimeout
-         * @type {function}
-         * @since 3.0.0
-         */
-        this.stepTimeout = function stepTimeout ()
-        {
-            if (_this.isRunning)
-            {
-                //  Make the next request before the callback, so that timing is maintained
-                _this.timeOutID = window.setTimeout(stepTimeout, _this.delay);
-            }
+            /**
+             * The SetTimeout step function.
+             *
+             * Invokes the callback and schedules another call to setTimeout.
+             *
+             * @name Phaser.DOM.RequestAnimationFrame#stepTimeout
+             * @type {function}
+             * @since 3.0.0
+             */
+            this.stepTimeout = function stepTimeout() {
+                if (_this.isRunning) {
+                    //  Make the next request before the callback, so that timing is maintained
+                    _this.timeOutID = window.setTimeout(stepTimeout, _this.delay);
+                }
 
-            _this.callback(window.performance.now());
-        };
-    },
+                _this.callback(window.performance.now());
+            };
+        },
 
     /**
      * Starts the requestAnimationFrame or setTimeout process running.
@@ -127,10 +122,8 @@ var RequestAnimationFrame = new Class({
      * @param {boolean} forceSetTimeOut - Should it use SetTimeout, even if RAF is available?
      * @param {number} delay - The setTimeout delay rate in ms.
      */
-    start: function (callback, forceSetTimeOut, delay)
-    {
-        if (this.isRunning)
-        {
+    start: function (callback, forceSetTimeOut, delay) {
+        if (this.isRunning) {
             return;
         }
 
@@ -151,16 +144,12 @@ var RequestAnimationFrame = new Class({
      * @method Phaser.DOM.RequestAnimationFrame#stop
      * @since 3.0.0
      */
-    stop: function ()
-    {
+    stop: function () {
         this.isRunning = false;
 
-        if (this.isSetTimeOut)
-        {
+        if (this.isSetTimeOut) {
             clearTimeout(this.timeOutID);
-        }
-        else
-        {
+        } else {
             window.cancelAnimationFrame(this.timeOutID);
         }
     },
@@ -171,8 +160,7 @@ var RequestAnimationFrame = new Class({
      * @method Phaser.DOM.RequestAnimationFrame#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.stop();
 
         this.callback = NOOP;

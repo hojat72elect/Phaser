@@ -25,14 +25,10 @@ var Settings = {
      *
      * @return {Phaser.Types.Scenes.SettingsObject} The Scene Settings object created as a result of the config and default settings.
      */
-    create: function (config)
-    {
-        if (typeof config === 'string')
-        {
-            config = { key: config };
-        }
-        else if (config === undefined)
-        {
+    create: function (config) {
+        if (typeof config === 'string') {
+            config = {key: config};
+        } else if (config === undefined) {
             //  Pass the 'hasOwnProperty' checks
             config = {};
         }

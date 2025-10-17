@@ -19,14 +19,10 @@
  *
  * @return {(number|any)} The nearest value found in the array, or if a `key` was given, the nearest object with the matching property value.
  */
-var FindClosestInSorted = function (value, array, key)
-{
-    if (!array.length)
-    {
+var FindClosestInSorted = function (value, array, key) {
+    if (!array.length) {
         return NaN;
-    }
-    else if (array.length === 1)
-    {
+    } else if (array.length === 1) {
         return array[0];
     }
 
@@ -34,40 +30,30 @@ var FindClosestInSorted = function (value, array, key)
     var low;
     var high;
 
-    if (key)
-    {
-        if (value < array[0][key])
-        {
+    if (key) {
+        if (value < array[0][key]) {
             return array[0];
         }
 
-        while (array[i][key] < value)
-        {
+        while (array[i][key] < value) {
             i++;
         }
-    }
-    else
-    {
-        while (array[i] < value)
-        {
+    } else {
+        while (array[i] < value) {
             i++;
         }
     }
 
-    if (i > array.length)
-    {
+    if (i > array.length) {
         i = array.length;
     }
 
-    if (key)
-    {
+    if (key) {
         low = array[i - 1][key];
         high = array[i][key];
 
         return ((high - value) <= (value - low)) ? array[i] : array[i - 1];
-    }
-    else
-    {
+    } else {
         low = array[i - 1];
         high = array[i];
 

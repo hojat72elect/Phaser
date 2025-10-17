@@ -18,10 +18,8 @@ var GetFastValue = require('../../../utils/object/GetFastValue');
  *
  * @return {object} A group state object with proper values for updating children layers.
  */
-var CreateGroupLayer = function (json, group, parentState)
-{
-    if (!group)
-    {
+var CreateGroupLayer = function (json, group, parentState) {
+    if (!group) {
         // Return a default group state object
         return {
             i: 0, // Current layer array iterator

@@ -28,8 +28,7 @@ var Tile = require('../Tile');
  *
  * @return {Phaser.Tilemaps.MapData} The MapData object.
  */
-var Parse2DArray = function (name, data, tileWidth, tileHeight, insertNull)
-{
+var Parse2DArray = function (name, data, tileWidth, tileHeight, insertNull) {
     var layerData = new LayerData({
         tileWidth: tileWidth,
         tileHeight: tileHeight
@@ -40,36 +39,30 @@ var Parse2DArray = function (name, data, tileWidth, tileHeight, insertNull)
         tileWidth: tileWidth,
         tileHeight: tileHeight,
         format: Formats.ARRAY_2D,
-        layers: [ layerData ]
+        layers: [layerData]
     });
 
     var tiles = [];
     var height = data.length;
     var width = 0;
 
-    for (var y = 0; y < data.length; y++)
-    {
+    for (var y = 0; y < data.length; y++) {
         tiles[y] = [];
         var row = data[y];
 
-        for (var x = 0; x < row.length; x++)
-        {
+        for (var x = 0; x < row.length; x++) {
             var tileIndex = parseInt(row[x], 10);
 
-            if (isNaN(tileIndex) || tileIndex === -1)
-            {
+            if (isNaN(tileIndex) || tileIndex === -1) {
                 tiles[y][x] = insertNull
                     ? null
                     : new Tile(layerData, -1, x, y, tileWidth, tileHeight);
-            }
-            else
-            {
+            } else {
                 tiles[y][x] = new Tile(layerData, tileIndex, x, y, tileWidth, tileHeight);
             }
         }
 
-        if (width === 0)
-        {
+        if (width === 0) {
             width = row.length;
         }
     }

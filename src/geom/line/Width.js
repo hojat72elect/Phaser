@@ -14,8 +14,7 @@
  *
  * @return {number} The width of the line.
  */
-var Width = function (line)
-{
+var Width = function (line) {
     return Math.abs(line.x1 - line.x2);
 };
 

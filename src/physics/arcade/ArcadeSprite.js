@@ -81,20 +81,19 @@ var ArcadeSprite = new Class({
 
     initialize:
 
-    function ArcadeSprite (scene, x, y, texture, frame)
-    {
-        Sprite.call(this, scene, x, y, texture, frame);
+        function ArcadeSprite(scene, x, y, texture, frame) {
+            Sprite.call(this, scene, x, y, texture, frame);
 
-        /**
-         * This Game Object's Physics Body.
-         *
-         * @name Phaser.Physics.Arcade.Sprite#body
-         * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)}
-         * @default null
-         * @since 3.0.0
-         */
-        this.body = null;
-    }
+            /**
+             * This Game Object's Physics Body.
+             *
+             * @name Phaser.Physics.Arcade.Sprite#body
+             * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)}
+             * @default null
+             * @since 3.0.0
+             */
+            this.body = null;
+        }
 
 });
 

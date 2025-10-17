@@ -88,61 +88,57 @@ var MatterSprite = new Class({
 
     initialize:
 
-    function MatterSprite (world, x, y, texture, frame, options)
-    {
-        GameObject.call(this, world.scene, 'Sprite');
+        function MatterSprite(world, x, y, texture, frame, options) {
+            GameObject.call(this, world.scene, 'Sprite');
 
-        /**
-         * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
-         *
-         * @name Phaser.Physics.Matter.Sprite#_crop
-         * @type {object}
-         * @private
-         * @since 3.24.0
-         */
-        this._crop = this.resetCropObject();
+            /**
+             * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
+             *
+             * @name Phaser.Physics.Matter.Sprite#_crop
+             * @type {object}
+             * @private
+             * @since 3.24.0
+             */
+            this._crop = this.resetCropObject();
 
-        this.anims = new AnimationState(this);
+            this.anims = new AnimationState(this);
 
-        this.setTexture(texture, frame);
-        this.setSizeToFrame();
-        this.setOrigin();
+            this.setTexture(texture, frame);
+            this.setSizeToFrame();
+            this.setOrigin();
 
-        /**
-         * A reference to the Matter.World instance that this body belongs to.
-         *
-         * @name Phaser.Physics.Matter.Sprite#world
-         * @type {Phaser.Physics.Matter.World}
-         * @since 3.0.0
-         */
-        this.world = world;
+            /**
+             * A reference to the Matter.World instance that this body belongs to.
+             *
+             * @name Phaser.Physics.Matter.Sprite#world
+             * @type {Phaser.Physics.Matter.World}
+             * @since 3.0.0
+             */
+            this.world = world;
 
-        /**
-         * An internal temp vector used for velocity and force calculations.
-         *
-         * @name Phaser.Physics.Matter.Sprite#_tempVec2
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.0.0
-         */
-        this._tempVec2 = new Vector2(x, y);
+            /**
+             * An internal temp vector used for velocity and force calculations.
+             *
+             * @name Phaser.Physics.Matter.Sprite#_tempVec2
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.0.0
+             */
+            this._tempVec2 = new Vector2(x, y);
 
-        var shape = GetFastValue(options, 'shape', null);
+            var shape = GetFastValue(options, 'shape', null);
 
-        if (shape)
-        {
-            this.setBody(shape, options);
+            if (shape) {
+                this.setBody(shape, options);
+            } else {
+                this.setRectangle(this.width, this.height, options);
+            }
+
+            this.setPosition(x, y);
+
+            this.initPipeline();
+            this.initPostPipeline(true);
         }
-        else
-        {
-            this.setRectangle(this.width, this.height, options);
-        }
-
-        this.setPosition(x, y);
-
-        this.initPipeline();
-        this.initPostPipeline(true);
-    }
 
 });
 

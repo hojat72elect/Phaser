@@ -37,12 +37,10 @@ var Collides = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setCollideCallback: function (callback, scope)
-    {
+    setCollideCallback: function (callback, scope) {
         this._collideCallback = callback;
 
-        if (scope)
-        {
+        if (scope) {
             this._callbackScope = scope;
         }
 
@@ -57,8 +55,7 @@ var Collides = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setCollidesNever: function ()
-    {
+    setCollidesNever: function () {
         this.body.collides = COLLIDES.NEVER;
 
         return this;
@@ -72,8 +69,7 @@ var Collides = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setLiteCollision: function ()
-    {
+    setLiteCollision: function () {
         this.body.collides = COLLIDES.LITE;
 
         return this;
@@ -87,8 +83,7 @@ var Collides = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setPassiveCollision: function ()
-    {
+    setPassiveCollision: function () {
         this.body.collides = COLLIDES.PASSIVE;
 
         return this;
@@ -102,8 +97,7 @@ var Collides = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setActiveCollision: function ()
-    {
+    setActiveCollision: function () {
         this.body.collides = COLLIDES.ACTIVE;
 
         return this;
@@ -117,8 +111,7 @@ var Collides = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setFixedCollision: function ()
-    {
+    setFixedCollision: function () {
         this.body.collides = COLLIDES.FIXED;
 
         return this;
@@ -133,13 +126,11 @@ var Collides = {
      */
     collides: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.collides;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.collides = value;
         }
 

@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.BitmapText.RetroFontConfig
  * @since 3.6.0
- * 
+ *
  * @property {string} image - The key of the image containing the font.
  * @property {number} offset.x - If the font set doesn't start at the top left of the given image, specify the X coordinate offset here.
  * @property {number} offset.y - If the font set doesn't start at the top left of the given image, specify the Y coordinate offset here.
@@ -12,4 +12,4 @@
  * @property {number} spacing.x - If the characters in the font set have horizontal spacing between them set the required amount here.
  * @property {number} spacing.y - If the characters in the font set have vertical spacing between them set the required amount here.
  * @property {number} lineSpacing - The amount of vertical space to add to the line height of the font.
-*/
+ */

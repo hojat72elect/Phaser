@@ -16,8 +16,7 @@ var Point = require('./Point');
  *
  * @return {Phaser.Geom.Point} The cloned Point.
  */
-var Clone = function (source)
-{
+var Clone = function (source) {
     return new Point(source.x, source.y);
 };
 

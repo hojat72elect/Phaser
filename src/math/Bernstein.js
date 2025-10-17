@@ -17,8 +17,7 @@ var Factorial = require('./Factorial');
  *
  * @return {number} The Bernstein basis of Factorial(n) / Factorial(i) / Factorial(n - i)
  */
-var Bernstein = function (n, i)
-{
+var Bernstein = function (n, i) {
     return Factorial(n) / Factorial(i) / Factorial(n - i);
 };
 

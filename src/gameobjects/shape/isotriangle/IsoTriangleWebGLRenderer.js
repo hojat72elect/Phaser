@@ -21,8 +21,7 @@ var Utils = require('../../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline);
@@ -41,8 +40,7 @@ var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var alpha = camera.alpha * src.alpha;
 
-    if (!src.isFilled)
-    {
+    if (!src.isFilled) {
         return;
     }
 
@@ -61,8 +59,7 @@ var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     //  Top Face
 
-    if (src.showTop && reversed)
-    {
+    if (src.showTop && reversed) {
         tint = Utils.getTintAppendFloatAlpha(src.fillTop, alpha);
 
         x0 = calcMatrix.getX(-sizeA, -height);
@@ -82,12 +79,10 @@ var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     //  Left Face
 
-    if (src.showLeft)
-    {
+    if (src.showLeft) {
         tint = Utils.getTintAppendFloatAlpha(src.fillLeft, alpha);
 
-        if (reversed)
-        {
+        if (reversed) {
             x0 = calcMatrix.getX(-sizeA, -height);
             y0 = calcMatrix.getY(-sizeA, -height);
 
@@ -96,9 +91,7 @@ var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
             x2 = calcMatrix.getX(0, sizeB - height);
             y2 = calcMatrix.getY(0, sizeB - height);
-        }
-        else
-        {
+        } else {
             x0 = calcMatrix.getX(-sizeA, 0);
             y0 = calcMatrix.getY(-sizeA, 0);
 
@@ -114,12 +107,10 @@ var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     //  Right Face
 
-    if (src.showRight)
-    {
+    if (src.showRight) {
         tint = Utils.getTintAppendFloatAlpha(src.fillRight, alpha);
 
-        if (reversed)
-        {
+        if (reversed) {
             x0 = calcMatrix.getX(sizeA, -height);
             y0 = calcMatrix.getY(sizeA, -height);
 
@@ -128,9 +119,7 @@ var IsoTriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
             x2 = calcMatrix.getX(0, sizeB - height);
             y2 = calcMatrix.getY(0, sizeB - height);
-        }
-        else
-        {
+        } else {
             x0 = calcMatrix.getX(sizeA, 0);
             y0 = calcMatrix.getY(sizeA, 0);
 

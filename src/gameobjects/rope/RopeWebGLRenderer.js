@@ -21,8 +21,7 @@ var Utils = require('../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var RopeWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var RopeWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline, src);
@@ -56,24 +55,21 @@ var RopeWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var tintEffect = src.tintFill;
 
-    if (src.dirty)
-    {
+    if (src.dirty) {
         src.updateVertices();
     }
 
     var debugCallback = src.debugCallback;
     var debugVerts = [];
 
-    for (var i = 0; i < meshVerticesLength; i += 2)
-    {
+    for (var i = 0; i < meshVerticesLength; i += 2) {
         var x = vertices[i + 0];
         var y = vertices[i + 1];
 
         var tx = x * calcMatrix.a + y * calcMatrix.c + calcMatrix.e;
         var ty = x * calcMatrix.b + y * calcMatrix.d + calcMatrix.f;
 
-        if (roundPixels)
-        {
+        if (roundPixels) {
             tx = Math.round(tx);
             ty = Math.round(ty);
         }
@@ -88,15 +84,13 @@ var RopeWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
         colorIndex++;
 
-        if (debugCallback)
-        {
+        if (debugCallback) {
             debugVerts[i + 0] = tx;
             debugVerts[i + 1] = ty;
         }
     }
 
-    if (debugCallback)
-    {
+    if (debugCallback) {
         debugCallback.call(src, src, meshVerticesLength, debugVerts);
     }
 

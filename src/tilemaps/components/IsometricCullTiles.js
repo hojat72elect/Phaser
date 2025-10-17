@@ -19,10 +19,13 @@ var CheckIsoBounds = require('./CheckIsoBounds');
  *
  * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects.
  */
-var IsometricCullTiles = function (layer, camera, outputArray, renderOrder)
-{
-    if (outputArray === undefined) { outputArray = []; }
-    if (renderOrder === undefined) { renderOrder = 0; }
+var IsometricCullTiles = function (layer, camera, outputArray, renderOrder) {
+    if (outputArray === undefined) {
+        outputArray = [];
+    }
+    if (renderOrder === undefined) {
+        renderOrder = 0;
+    }
 
     outputArray.length = 0;
 
@@ -42,95 +45,72 @@ var IsometricCullTiles = function (layer, camera, outputArray, renderOrder)
     var y;
     var tile;
 
-    if (renderOrder === 0)
-    {
+    if (renderOrder === 0) {
         //  right-down
 
-        for (y = drawTop; y < drawBottom; y++)
-        {
-            for (x = drawLeft; x < drawRight; x++)
-            {
+        for (y = drawTop; y < drawBottom; y++) {
+            for (x = drawLeft; x < drawRight; x++) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
-                if (!skipCull && !CheckIsoBounds(x, y, layer, camera))
-                {
+                if (!skipCull && !CheckIsoBounds(x, y, layer, camera)) {
                     continue;
                 }
 
                 outputArray.push(tile);
             }
         }
-    }
-    else if (renderOrder === 1)
-    {
+    } else if (renderOrder === 1) {
         //  left-down
 
-        for (y = drawTop; y < drawBottom; y++)
-        {
-            for (x = drawRight; x >= drawLeft; x--)
-            {
+        for (y = drawTop; y < drawBottom; y++) {
+            for (x = drawRight; x >= drawLeft; x--) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
-                if (!skipCull && !CheckIsoBounds(x, y, layer, camera))
-                {
+                if (!skipCull && !CheckIsoBounds(x, y, layer, camera)) {
                     continue;
                 }
 
                 outputArray.push(tile);
             }
         }
-    }
-    else if (renderOrder === 2)
-    {
+    } else if (renderOrder === 2) {
         //  right-up
 
-        for (y = drawBottom; y >= drawTop; y--)
-        {
-            for (x = drawLeft; x < drawRight; x++)
-            {
+        for (y = drawBottom; y >= drawTop; y--) {
+            for (x = drawLeft; x < drawRight; x++) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
-                if (!skipCull && !CheckIsoBounds(x, y, layer, camera))
-                {
+                if (!skipCull && !CheckIsoBounds(x, y, layer, camera)) {
                     continue;
                 }
 
                 outputArray.push(tile);
             }
         }
-    }
-    else if (renderOrder === 3)
-    {
+    } else if (renderOrder === 3) {
         //  left-up
 
-        for (y = drawBottom; y >= drawTop; y--)
-        {
-            for (x = drawRight; x >= drawLeft; x--)
-            {
+        for (y = drawBottom; y >= drawTop; y--) {
+            for (x = drawRight; x >= drawLeft; x--) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
-                if (!skipCull && !CheckIsoBounds(x, y, layer, camera))
-                {
+                if (!skipCull && !CheckIsoBounds(x, y, layer, camera)) {
                     continue;
                 }
 

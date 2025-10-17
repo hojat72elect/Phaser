@@ -1,8 +1,8 @@
 /**
-* The `Matter` module is the top level namespace. It also includes a function for installing plugins on top of the library.
-*
-* @class Matter
-*/
+ * The `Matter` module is the top level namespace. It also includes a function for installing plugins on top of the library.
+ *
+ * @class Matter
+ */
 
 var Matter = {};
 
@@ -11,7 +11,7 @@ module.exports = Matter;
 var Plugin = require('./Plugin');
 var Common = require('./Common');
 
-(function() {
+(function () {
 
     /**
      * The library name.
@@ -53,7 +53,7 @@ var Common = require('./Common');
      * @method use
      * @param ...plugin {Function} The plugin(s) to install on `base` (multi-argument).
      */
-    Matter.use = function() {
+    Matter.use = function () {
         Plugin.use(Matter, Array.prototype.slice.call(arguments));
     };
 
@@ -65,7 +65,7 @@ var Common = require('./Common');
      * @param {function} func The function to chain before the original
      * @return {function} The chained function that replaced the original
      */
-    Matter.before = function(path, func) {
+    Matter.before = function (path, func) {
         path = path.replace(/^Matter./, '');
         return Common.chainPathBefore(Matter, path, func);
     };
@@ -78,7 +78,7 @@ var Common = require('./Common');
      * @param {function} func The function to chain after the original
      * @return {function} The chained function that replaced the original
      */
-    Matter.after = function(path, func) {
+    Matter.after = function (path, func) {
         path = path.replace(/^Matter./, '');
         return Common.chainPathAfter(Matter, path, func);
     };

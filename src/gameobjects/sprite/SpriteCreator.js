@@ -23,17 +23,17 @@ var Sprite = require('./Sprite');
  *
  * @return {Phaser.GameObjects.Sprite} The Game Object that was created.
  */
-GameObjectCreator.register('sprite', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('sprite', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
 
     var sprite = new Sprite(this.scene, 0, 0, key, frame);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

@@ -16,8 +16,7 @@ var Normalize = require('./Normalize');
  *
  * @return {number} The reversed angle, in radians.
  */
-var Reverse = function (angle)
-{
+var Reverse = function (angle) {
     return Normalize(angle + Math.PI);
 };
 

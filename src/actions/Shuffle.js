@@ -19,8 +19,7 @@ var ArrayShuffle = require('../utils/array/Shuffle');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var Shuffle = function (items)
-{
+var Shuffle = function (items) {
     return ArrayShuffle(items);
 };
 

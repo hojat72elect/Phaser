@@ -25,52 +25,51 @@ var ColorMatrix = new Class({
 
     initialize:
 
-    function ColorMatrix ()
-    {
-        /**
-         * Internal ColorMatrix array.
-         *
-         * @name Phaser.Display.ColorMatrix#_matrix
-         * @type {Float32Array}
-         * @private
-         * @since 3.50.0
-         */
-        this._matrix = new Float32Array(20);
+        function ColorMatrix() {
+            /**
+             * Internal ColorMatrix array.
+             *
+             * @name Phaser.Display.ColorMatrix#_matrix
+             * @type {Float32Array}
+             * @private
+             * @since 3.50.0
+             */
+            this._matrix = new Float32Array(20);
 
-        /**
-         * The value that determines how much of the original color is used
-         * when mixing the colors. A value between 0 (all original) and 1 (all final)
-         *
-         * @name Phaser.Display.ColorMatrix#alpha
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.alpha = 1;
+            /**
+             * The value that determines how much of the original color is used
+             * when mixing the colors. A value between 0 (all original) and 1 (all final)
+             *
+             * @name Phaser.Display.ColorMatrix#alpha
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.alpha = 1;
 
-        /**
-         * Is the ColorMatrix array dirty?
-         *
-         * @name Phaser.Display.ColorMatrix#_dirty
-         * @type {boolean}
-         * @private
-         * @since 3.50.0
-         */
-        this._dirty = true;
+            /**
+             * Is the ColorMatrix array dirty?
+             *
+             * @name Phaser.Display.ColorMatrix#_dirty
+             * @type {boolean}
+             * @private
+             * @since 3.50.0
+             */
+            this._dirty = true;
 
-        /**
-         * The matrix data as a Float32Array.
-         *
-         * Returned by the `getData` method.
-         *
-         * @name Phaser.Display.ColorMatrix#data
-         * @type {Float32Array}
-         * @private
-         * @since 3.50.0
-         */
-        this._data = new Float32Array(20);
+            /**
+             * The matrix data as a Float32Array.
+             *
+             * Returned by the `getData` method.
+             *
+             * @name Phaser.Display.ColorMatrix#data
+             * @type {Float32Array}
+             * @private
+             * @since 3.50.0
+             */
+            this._data = new Float32Array(20);
 
-        this.reset();
-    },
+            this.reset();
+        },
 
     /**
      * Sets this ColorMatrix from the given array of color values.
@@ -82,8 +81,7 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    set: function (value)
-    {
+    set: function (value) {
         this._matrix.set(value);
 
         this._dirty = true;
@@ -100,8 +98,7 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    reset: function ()
-    {
+    reset: function () {
         var m = this._matrix;
 
         m.fill(0);
@@ -128,12 +125,10 @@ var ColorMatrix = new Class({
      *
      * @return {Float32Array} The ColorMatrix as a Float32Array.
      */
-    getData: function ()
-    {
+    getData: function () {
         var data = this._data;
 
-        if (this._dirty)
-        {
+        if (this._dirty) {
             data.set(this._matrix);
 
             data[4] /= 255;
@@ -158,10 +153,13 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    brightness: function (value, multiply)
-    {
-        if (value === undefined) { value = 0; }
-        if (multiply === undefined) { multiply = false; }
+    brightness: function (value, multiply) {
+        if (value === undefined) {
+            value = 0;
+        }
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         var b = value;
 
@@ -184,10 +182,13 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    saturate: function (value, multiply)
-    {
-        if (value === undefined) { value = 0; }
-        if (multiply === undefined) { multiply = false; }
+    saturate: function (value, multiply) {
+        if (value === undefined) {
+            value = 0;
+        }
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         var x = (value * 2 / 3) + 1;
         var y = ((x - 1) * -0.5);
@@ -210,9 +211,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    desaturate: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    desaturate: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.saturate(-1, multiply);
     },
@@ -228,10 +230,13 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    hue: function (rotation, multiply)
-    {
-        if (rotation === undefined) { rotation = 0; }
-        if (multiply === undefined) { multiply = false; }
+    hue: function (rotation, multiply) {
+        if (rotation === undefined) {
+            rotation = 0;
+        }
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         rotation = rotation / 180 * Math.PI;
 
@@ -242,9 +247,9 @@ var ColorMatrix = new Class({
         var lumB = 0.072;
 
         return this.multiply([
-            lumR + cos * (1 - lumR) + sin * (-lumR),lumG + cos * (-lumG) + sin * (-lumG),lumB + cos * (-lumB) + sin * (1 - lumB), 0, 0,
-            lumR + cos * (-lumR) + sin * (0.143),lumG + cos * (1 - lumG) + sin * (0.140),lumB + cos * (-lumB) + sin * (-0.283), 0, 0,
-            lumR + cos * (-lumR) + sin * (-(1 - lumR)),lumG + cos * (-lumG) + sin * (lumG),lumB + cos * (1 - lumB) + sin * (lumB), 0, 0,
+            lumR + cos * (1 - lumR) + sin * (-lumR), lumG + cos * (-lumG) + sin * (-lumG), lumB + cos * (-lumB) + sin * (1 - lumB), 0, 0,
+            lumR + cos * (-lumR) + sin * (0.143), lumG + cos * (1 - lumG) + sin * (0.140), lumB + cos * (-lumB) + sin * (-0.283), 0, 0,
+            lumR + cos * (-lumR) + sin * (-(1 - lumR)), lumG + cos * (-lumG) + sin * (lumG), lumB + cos * (1 - lumB) + sin * (lumB), 0, 0,
             0, 0, 0, 1, 0
         ], multiply);
     },
@@ -260,10 +265,13 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    grayscale: function (value, multiply)
-    {
-        if (value === undefined) { value = 1; }
-        if (multiply === undefined) { multiply = false; }
+    grayscale: function (value, multiply) {
+        if (value === undefined) {
+            value = 1;
+        }
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.saturate(-value, multiply);
     },
@@ -278,9 +286,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    blackWhite: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    blackWhite: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.BLACK_WHITE, multiply);
     },
@@ -296,10 +305,13 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    contrast: function (value, multiply)
-    {
-        if (value === undefined) { value = 0; }
-        if (multiply === undefined) { multiply = false; }
+    contrast: function (value, multiply) {
+        if (value === undefined) {
+            value = 0;
+        }
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         var v = value + 1;
         var o = -0.5 * (v - 1);
@@ -322,9 +334,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    negative: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    negative: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.NEGATIVE, multiply);
     },
@@ -339,9 +352,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    desaturateLuminance: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    desaturateLuminance: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.DESATURATE_LUMINANCE, multiply);
     },
@@ -356,9 +370,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    sepia: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    sepia: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.SEPIA, multiply);
     },
@@ -374,10 +389,13 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    night: function (intensity, multiply)
-    {
-        if (intensity === undefined) { intensity = 0.1; }
-        if (multiply === undefined) { multiply = false; }
+    night: function (intensity, multiply) {
+        if (intensity === undefined) {
+            intensity = 0.1;
+        }
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply([
             intensity * (-2.0), -intensity, 0, 0, 0,
@@ -397,9 +415,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    lsd: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    lsd: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.LSD, multiply);
     },
@@ -414,9 +433,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    brown: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    brown: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.BROWN, multiply);
     },
@@ -431,9 +451,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    vintagePinhole: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    vintagePinhole: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.VINTAGE, multiply);
     },
@@ -448,9 +469,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    kodachrome: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    kodachrome: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.KODACHROME, multiply);
     },
@@ -465,9 +487,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    technicolor: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    technicolor: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.TECHNICOLOR, multiply);
     },
@@ -482,9 +505,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    polaroid: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    polaroid: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.POLAROID, multiply);
     },
@@ -499,9 +523,10 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    shiftToBGR: function (multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    shiftToBGR: function (multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         return this.multiply(ColorMatrix.SHIFT_BGR, multiply);
     },
@@ -517,14 +542,14 @@ var ColorMatrix = new Class({
      *
      * @return {this} This ColorMatrix instance.
      */
-    multiply: function (a, multiply)
-    {
-        if (multiply === undefined) { multiply = false; }
+    multiply: function (a, multiply) {
+        if (multiply === undefined) {
+            multiply = false;
+        }
 
         //  Duplicate _matrix into c
 
-        if (!multiply)
-        {
+        if (!multiply) {
             this.reset();
         }
 
@@ -580,7 +605,7 @@ var ColorMatrix = new Class({
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.BLACK_WHITE = [ 0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0, 0, 0, 1, 0 ];
+ColorMatrix.BLACK_WHITE = [0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for negative operations.
@@ -590,7 +615,7 @@ ColorMatrix.BLACK_WHITE = [ 0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 0.1, 0, 0, 0.3, 0.6, 
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.NEGATIVE = [ -1, 0, 0, 1, 0, 0, -1, 0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 0, 1, 0 ];
+ColorMatrix.NEGATIVE = [-1, 0, 0, 1, 0, 0, -1, 0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for desatured luminance operations.
@@ -600,7 +625,7 @@ ColorMatrix.NEGATIVE = [ -1, 0, 0, 1, 0, 0, -1, 0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 0
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.DESATURATE_LUMINANCE = [ 0.2764723, 0.9297080, 0.0938197, 0, -37.1, 0.2764723, 0.9297080, 0.0938197, 0, -37.1, 0.2764723, 0.9297080, 0.0938197, 0, -37.1, 0, 0, 0, 1, 0 ];
+ColorMatrix.DESATURATE_LUMINANCE = [0.2764723, 0.9297080, 0.0938197, 0, -37.1, 0.2764723, 0.9297080, 0.0938197, 0, -37.1, 0.2764723, 0.9297080, 0.0938197, 0, -37.1, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for sepia operations.
@@ -610,7 +635,7 @@ ColorMatrix.DESATURATE_LUMINANCE = [ 0.2764723, 0.9297080, 0.0938197, 0, -37.1, 
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.SEPIA = [ 0.393, 0.7689999, 0.18899999, 0, 0, 0.349, 0.6859999, 0.16799999, 0, 0, 0.272, 0.5339999, 0.13099999, 0, 0, 0, 0, 0, 1, 0 ];
+ColorMatrix.SEPIA = [0.393, 0.7689999, 0.18899999, 0, 0, 0.349, 0.6859999, 0.16799999, 0, 0, 0.272, 0.5339999, 0.13099999, 0, 0, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for lsd operations.
@@ -620,7 +645,7 @@ ColorMatrix.SEPIA = [ 0.393, 0.7689999, 0.18899999, 0, 0, 0.349, 0.6859999, 0.16
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.LSD = [ 2, -0.4, 0.5, 0, 0, -0.5, 2, -0.4, 0, 0, -0.4, -0.5, 3, 0, 0, 0, 0, 0, 1, 0 ];
+ColorMatrix.LSD = [2, -0.4, 0.5, 0, 0, -0.5, 2, -0.4, 0, 0, -0.4, -0.5, 3, 0, 0, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for brown operations.
@@ -630,7 +655,7 @@ ColorMatrix.LSD = [ 2, -0.4, 0.5, 0, 0, -0.5, 2, -0.4, 0, 0, -0.4, -0.5, 3, 0, 0
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.BROWN = [ 0.5997023498159715, 0.34553243048391263, -0.2708298674538042, 0, 47.43192855600873, -0.037703249837783157, 0.8609577587992641, 0.15059552388459913, 0, -36.96841498319127, 0.24113635128153335, -0.07441037908422492, 0.44972182064877153, 0, -7.562075277591283, 0, 0, 0, 1, 0 ];
+ColorMatrix.BROWN = [0.5997023498159715, 0.34553243048391263, -0.2708298674538042, 0, 47.43192855600873, -0.037703249837783157, 0.8609577587992641, 0.15059552388459913, 0, -36.96841498319127, 0.24113635128153335, -0.07441037908422492, 0.44972182064877153, 0, -7.562075277591283, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for vintage pinhole operations.
@@ -640,7 +665,7 @@ ColorMatrix.BROWN = [ 0.5997023498159715, 0.34553243048391263, -0.27082986745380
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.VINTAGE = [ 0.6279345635605994, 0.3202183420819367, -0.03965408211312453, 0, 9.651285835294123, 0.02578397704808868, 0.6441188644374771, 0.03259127616149294, 0, 7.462829176470591, 0.0466055556782719, -0.0851232987247891, 0.5241648018700465, 0, 5.159190588235296, 0, 0, 0, 1, 0 ];
+ColorMatrix.VINTAGE = [0.6279345635605994, 0.3202183420819367, -0.03965408211312453, 0, 9.651285835294123, 0.02578397704808868, 0.6441188644374771, 0.03259127616149294, 0, 7.462829176470591, 0.0466055556782719, -0.0851232987247891, 0.5241648018700465, 0, 5.159190588235296, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for kodachrome operations.
@@ -650,7 +675,7 @@ ColorMatrix.VINTAGE = [ 0.6279345635605994, 0.3202183420819367, -0.0396540821131
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.KODACHROME = [ 1.1285582396593525, -0.3967382283601348, -0.03992559172921793, 0, 63.72958762196502, -0.16404339962244616, 1.0835251566291304, -0.05498805115633132, 0, 24.732407896706203, -0.16786010706155763, -0.5603416277695248, 1.6014850761964943, 0, 35.62982807460946, 0, 0, 0, 1, 0 ];
+ColorMatrix.KODACHROME = [1.1285582396593525, -0.3967382283601348, -0.03992559172921793, 0, 63.72958762196502, -0.16404339962244616, 1.0835251566291304, -0.05498805115633132, 0, 24.732407896706203, -0.16786010706155763, -0.5603416277695248, 1.6014850761964943, 0, 35.62982807460946, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for technicolor operations.
@@ -660,7 +685,7 @@ ColorMatrix.KODACHROME = [ 1.1285582396593525, -0.3967382283601348, -0.039925591
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.TECHNICOLOR = [ 1.9125277891456083, -0.8545344976951645, -0.09155508482755585, 0, 11.793603434377337, -0.3087833385928097, 1.7658908555458428, -0.10601743074722245, 0, -70.35205161461398, -0.231103377548616, -0.7501899197440212, 1.847597816108189, 0, 30.950940869491138, 0, 0, 0, 1, 0 ];
+ColorMatrix.TECHNICOLOR = [1.9125277891456083, -0.8545344976951645, -0.09155508482755585, 0, 11.793603434377337, -0.3087833385928097, 1.7658908555458428, -0.10601743074722245, 0, -70.35205161461398, -0.231103377548616, -0.7501899197440212, 1.847597816108189, 0, 30.950940869491138, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for polaroid shift operations.
@@ -670,7 +695,7 @@ ColorMatrix.TECHNICOLOR = [ 1.9125277891456083, -0.8545344976951645, -0.09155508
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.POLAROID = [ 1.438, -0.062, -0.062, 0, 0, -0.122, 1.378, -0.122, 0, 0, -0.016, -0.016, 1.483, 0, 0, 0, 0, 0, 1, 0 ];
+ColorMatrix.POLAROID = [1.438, -0.062, -0.062, 0, 0, -0.122, 1.378, -0.122, 0, 0, -0.016, -0.016, 1.483, 0, 0, 0, 0, 0, 1, 0];
 
 /**
  * A constant array used by the ColorMatrix class for shift BGR operations.
@@ -680,6 +705,6 @@ ColorMatrix.POLAROID = [ 1.438, -0.062, -0.062, 0, 0, -0.122, 1.378, -0.122, 0, 
  * @type {number[]}
  * @since 3.60.0
  */
-ColorMatrix.SHIFT_BGR = [ 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0 ];
+ColorMatrix.SHIFT_BGR = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0];
 
 module.exports = ColorMatrix;

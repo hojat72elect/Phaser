@@ -21,8 +21,7 @@ var Utils = require('../../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var IsoBoxWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var IsoBoxWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline);
@@ -39,8 +38,7 @@ var IsoBoxWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var alpha = camera.alpha * src.alpha;
 
-    if (!src.isFilled)
-    {
+    if (!src.isFilled) {
         return;
     }
 
@@ -63,8 +61,7 @@ var IsoBoxWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     //  Top Face
 
-    if (src.showTop)
-    {
+    if (src.showTop) {
         tint = Utils.getTintAppendFloatAlpha(src.fillTop, alpha);
 
         x0 = calcMatrix.getX(-sizeA, -height);
@@ -84,8 +81,7 @@ var IsoBoxWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     //  Left Face
 
-    if (src.showLeft)
-    {
+    if (src.showLeft) {
         tint = Utils.getTintAppendFloatAlpha(src.fillLeft, alpha);
 
         x0 = calcMatrix.getX(-sizeA, 0);
@@ -105,8 +101,7 @@ var IsoBoxWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     //  Right Face
 
-    if (src.showRight)
-    {
+    if (src.showRight) {
         tint = Utils.getTintAppendFloatAlpha(src.fillRight, alpha);
 
         x0 = calcMatrix.getX(sizeA, 0);

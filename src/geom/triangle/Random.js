@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {Phaser.Geom.Point} A Point object holding the coordinates of a random position within the Triangle.
  */
-var Random = function (triangle, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Random = function (triangle, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     //  Basis vectors
     var ux = triangle.x2 - triangle.x1;
@@ -35,8 +36,7 @@ var Random = function (triangle, out)
     var s = Math.random();
 
     //  Point outside the triangle? Remap it.
-    if (r + s >= 1)
-    {
+    if (r + s >= 1) {
         r = 1 - r;
         s = 1 - s;
     }

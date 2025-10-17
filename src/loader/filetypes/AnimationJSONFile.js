@@ -38,12 +38,11 @@ var AnimationJSONFile = new Class({
     //  url can either be a string, in which case it is treated like a proper url, or an object, in which case it is treated as a ready-made JS Object
     //  dataKey allows you to pluck a specific object out of the JSON and put just that into the cache, rather than the whole thing
 
-    function AnimationJSONFile (loader, key, url, xhrSettings, dataKey)
-    {
-        JSONFile.call(this, loader, key, url, xhrSettings, dataKey);
+        function AnimationJSONFile(loader, key, url, xhrSettings, dataKey) {
+            JSONFile.call(this, loader, key, url, xhrSettings, dataKey);
 
-        this.type = 'animationJSON';
-    },
+            this.type = 'animationJSON';
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -52,8 +51,7 @@ var AnimationJSONFile = new Class({
      * @method Phaser.Loader.FileTypes.AnimationJSONFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         //  We need to hook into this event:
         this.loader.once(LoaderEvents.POST_PROCESS, this.onLoadComplete, this);
 
@@ -67,8 +65,7 @@ var AnimationJSONFile = new Class({
      * @method Phaser.Loader.FileTypes.AnimationJSONFile#onLoadComplete
      * @since 3.7.0
      */
-    onLoadComplete: function ()
-    {
+    onLoadComplete: function () {
         this.loader.systems.anims.fromJSON(this.data);
     }
 
@@ -171,21 +168,16 @@ var AnimationJSONFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('animation', function (key, url, dataKey, xhrSettings)
-{
+FileTypesManager.register('animation', function (key, url, dataKey, xhrSettings) {
     //  Supports an Object file definition in the key argument
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             this.addFile(new AnimationJSONFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new AnimationJSONFile(this, key, url, xhrSettings, dataKey));
     }
 

@@ -32,12 +32,10 @@ var GetCalcMatrix = require('../../../gameobjects/GetCalcMatrix');
  *
  * @return {boolean} `true` if the Game Object context was set, otherwise `false`.
  */
-var SetTransform = function (renderer, ctx, src, camera, parentMatrix)
-{
+var SetTransform = function (renderer, ctx, src, camera, parentMatrix) {
     var alpha = camera.alpha * src.alpha;
 
-    if (alpha <= 0)
-    {
+    if (alpha <= 0) {
         //  Nothing to see, so don't waste time calculating stuff
         return false;
     }

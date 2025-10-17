@@ -18,13 +18,11 @@
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var Layer3DWebGLRenderer = function (renderer, src)
-{
+var Layer3DWebGLRenderer = function (renderer, src) {
     var models = src.models;
     var totalModels = models.length;
 
-    if (totalModels === 0)
-    {
+    if (totalModels === 0) {
         return;
     }
 
@@ -34,12 +32,10 @@ var Layer3DWebGLRenderer = function (renderer, src)
 
     var pipeline = renderer.pipelines.set(src.pipeline, src);
 
-    for (var m = 0; m < totalModels; m++)
-    {
+    for (var m = 0; m < totalModels; m++) {
         var model = models[m];
 
-        if (model.visible && model.vertexCount > 0)
-        {
+        if (model.visible && model.vertexCount > 0) {
             pipeline.drawModel(src, model);
         }
     }

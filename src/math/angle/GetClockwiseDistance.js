@@ -17,8 +17,7 @@ var NormalizeAngle = require('./Normalize');
  *
  * @return {number} The distance in radians, in the range [0, 2pi).
  */
-var GetClockwiseDistance = function (angle1, angle2)
-{
+var GetClockwiseDistance = function (angle1, angle2) {
     return NormalizeAngle(angle2 - angle1);
 };
 

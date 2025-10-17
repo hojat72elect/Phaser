@@ -30,237 +30,229 @@ var File = new Class({
 
     initialize:
 
-    function File (loader, fileConfig)
-    {
-        /**
-         * A reference to the Loader that is going to load this file.
-         *
-         * @name Phaser.Loader.File#loader
-         * @type {Phaser.Loader.LoaderPlugin}
-         * @since 3.0.0
-         */
-        this.loader = loader;
+        function File(loader, fileConfig) {
+            /**
+             * A reference to the Loader that is going to load this file.
+             *
+             * @name Phaser.Loader.File#loader
+             * @type {Phaser.Loader.LoaderPlugin}
+             * @since 3.0.0
+             */
+            this.loader = loader;
 
-        /**
-         * A reference to the Cache, or Texture Manager, that is going to store this file if it loads.
-         *
-         * @name Phaser.Loader.File#cache
-         * @type {(Phaser.Cache.BaseCache|Phaser.Textures.TextureManager)}
-         * @since 3.7.0
-         */
-        this.cache = GetFastValue(fileConfig, 'cache', false);
+            /**
+             * A reference to the Cache, or Texture Manager, that is going to store this file if it loads.
+             *
+             * @name Phaser.Loader.File#cache
+             * @type {(Phaser.Cache.BaseCache|Phaser.Textures.TextureManager)}
+             * @since 3.7.0
+             */
+            this.cache = GetFastValue(fileConfig, 'cache', false);
 
-        /**
-         * The file type string (image, json, etc) for sorting within the Loader.
-         *
-         * @name Phaser.Loader.File#type
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.type = GetFastValue(fileConfig, 'type', false);
+            /**
+             * The file type string (image, json, etc) for sorting within the Loader.
+             *
+             * @name Phaser.Loader.File#type
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.type = GetFastValue(fileConfig, 'type', false);
 
-        if (!this.type)
-        {
-            throw new Error('Invalid File type: ' + this.type);
-        }
+            if (!this.type) {
+                throw new Error('Invalid File type: ' + this.type);
+            }
 
-        /**
-         * Unique cache key (unique within its file type)
-         *
-         * @name Phaser.Loader.File#key
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.key = GetFastValue(fileConfig, 'key', false);
+            /**
+             * Unique cache key (unique within its file type)
+             *
+             * @name Phaser.Loader.File#key
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.key = GetFastValue(fileConfig, 'key', false);
 
-        var loadKey = this.key;
+            var loadKey = this.key;
 
-        if (loader.prefix && loader.prefix !== '')
-        {
-            this.key = loader.prefix + loadKey;
-        }
+            if (loader.prefix && loader.prefix !== '') {
+                this.key = loader.prefix + loadKey;
+            }
 
-        if (!this.key)
-        {
-            throw new Error('Invalid File key: ' + this.key);
-        }
+            if (!this.key) {
+                throw new Error('Invalid File key: ' + this.key);
+            }
 
-        var url = GetFastValue(fileConfig, 'url');
+            var url = GetFastValue(fileConfig, 'url');
 
-        if (url === undefined)
-        {
-            url = loader.path + loadKey + '.' + GetFastValue(fileConfig, 'extension', '');
-        }
-        else if (typeof url === 'string' && !url.match(/^(?:blob:|data:|capacitor:\/\/|http:\/\/|https:\/\/|\/\/)/))
-        {
-            url = loader.path + url;
-        }
+            if (url === undefined) {
+                url = loader.path + loadKey + '.' + GetFastValue(fileConfig, 'extension', '');
+            } else if (typeof url === 'string' && !url.match(/^(?:blob:|data:|capacitor:\/\/|http:\/\/|https:\/\/|\/\/)/)) {
+                url = loader.path + url;
+            }
 
-        /**
-         * The URL of the file, not including baseURL.
-         *
-         * Automatically has Loader.path prepended to it if a string.
-         *
-         * Can also be a JavaScript Object, such as the results of parsing JSON data.
-         *
-         * @name Phaser.Loader.File#url
-         * @type {object|string}
-         * @since 3.0.0
-         */
-        this.url = url;
+            /**
+             * The URL of the file, not including baseURL.
+             *
+             * Automatically has Loader.path prepended to it if a string.
+             *
+             * Can also be a JavaScript Object, such as the results of parsing JSON data.
+             *
+             * @name Phaser.Loader.File#url
+             * @type {object|string}
+             * @since 3.0.0
+             */
+            this.url = url;
 
-        /**
-         * The final URL this file will load from, including baseURL and path.
-         * Set automatically when the Loader calls 'load' on this file.
-         *
-         * @name Phaser.Loader.File#src
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.src = '';
+            /**
+             * The final URL this file will load from, including baseURL and path.
+             * Set automatically when the Loader calls 'load' on this file.
+             *
+             * @name Phaser.Loader.File#src
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.src = '';
 
-        /**
-         * The merged XHRSettings for this file.
-         *
-         * @name Phaser.Loader.File#xhrSettings
-         * @type {Phaser.Types.Loader.XHRSettingsObject}
-         * @since 3.0.0
-         */
-        this.xhrSettings = XHRSettings(GetFastValue(fileConfig, 'responseType', undefined));
+            /**
+             * The merged XHRSettings for this file.
+             *
+             * @name Phaser.Loader.File#xhrSettings
+             * @type {Phaser.Types.Loader.XHRSettingsObject}
+             * @since 3.0.0
+             */
+            this.xhrSettings = XHRSettings(GetFastValue(fileConfig, 'responseType', undefined));
 
-        if (GetFastValue(fileConfig, 'xhrSettings', false))
-        {
-            this.xhrSettings = MergeXHRSettings(this.xhrSettings, GetFastValue(fileConfig, 'xhrSettings', {}));
-        }
+            if (GetFastValue(fileConfig, 'xhrSettings', false)) {
+                this.xhrSettings = MergeXHRSettings(this.xhrSettings, GetFastValue(fileConfig, 'xhrSettings', {}));
+            }
 
-        /**
-         * The XMLHttpRequest instance (as created by XHR Loader) that is loading this File.
-         *
-         * @name Phaser.Loader.File#xhrLoader
-         * @type {?XMLHttpRequest}
-         * @since 3.0.0
-         */
-        this.xhrLoader = null;
+            /**
+             * The XMLHttpRequest instance (as created by XHR Loader) that is loading this File.
+             *
+             * @name Phaser.Loader.File#xhrLoader
+             * @type {?XMLHttpRequest}
+             * @since 3.0.0
+             */
+            this.xhrLoader = null;
 
-        /**
-         * The current state of the file. One of the FILE_CONST values.
-         *
-         * @name Phaser.Loader.File#state
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.state = (typeof(this.url) === 'function') ? CONST.FILE_POPULATED : CONST.FILE_PENDING;
+            /**
+             * The current state of the file. One of the FILE_CONST values.
+             *
+             * @name Phaser.Loader.File#state
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.state = (typeof (this.url) === 'function') ? CONST.FILE_POPULATED : CONST.FILE_PENDING;
 
-        /**
-         * The total size of this file.
-         * Set by onProgress and only if loading via XHR.
-         *
-         * @name Phaser.Loader.File#bytesTotal
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.bytesTotal = 0;
+            /**
+             * The total size of this file.
+             * Set by onProgress and only if loading via XHR.
+             *
+             * @name Phaser.Loader.File#bytesTotal
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.bytesTotal = 0;
 
-        /**
-         * Updated as the file loads.
-         * Only set if loading via XHR.
-         *
-         * @name Phaser.Loader.File#bytesLoaded
-         * @type {number}
-         * @default -1
-         * @since 3.0.0
-         */
-        this.bytesLoaded = -1;
+            /**
+             * Updated as the file loads.
+             * Only set if loading via XHR.
+             *
+             * @name Phaser.Loader.File#bytesLoaded
+             * @type {number}
+             * @default -1
+             * @since 3.0.0
+             */
+            this.bytesLoaded = -1;
 
-        /**
-         * A percentage value between 0 and 1 indicating how much of this file has loaded.
-         * Only set if loading via XHR.
-         *
-         * @name Phaser.Loader.File#percentComplete
-         * @type {number}
-         * @default -1
-         * @since 3.0.0
-         */
-        this.percentComplete = -1;
+            /**
+             * A percentage value between 0 and 1 indicating how much of this file has loaded.
+             * Only set if loading via XHR.
+             *
+             * @name Phaser.Loader.File#percentComplete
+             * @type {number}
+             * @default -1
+             * @since 3.0.0
+             */
+            this.percentComplete = -1;
 
-        /**
-         * For CORs based loading.
-         * If this is undefined then the File will check BaseLoader.crossOrigin and use that (if set)
-         *
-         * @name Phaser.Loader.File#crossOrigin
-         * @type {(string|undefined)}
-         * @since 3.0.0
-         */
-        this.crossOrigin = undefined;
+            /**
+             * For CORs based loading.
+             * If this is undefined then the File will check BaseLoader.crossOrigin and use that (if set)
+             *
+             * @name Phaser.Loader.File#crossOrigin
+             * @type {(string|undefined)}
+             * @since 3.0.0
+             */
+            this.crossOrigin = undefined;
 
-        /**
-         * The processed file data, stored here after the file has loaded.
-         *
-         * @name Phaser.Loader.File#data
-         * @type {*}
-         * @since 3.0.0
-         */
-        this.data = undefined;
+            /**
+             * The processed file data, stored here after the file has loaded.
+             *
+             * @name Phaser.Loader.File#data
+             * @type {*}
+             * @since 3.0.0
+             */
+            this.data = undefined;
 
-        /**
-         * A config object that can be used by file types to store transitional data.
-         *
-         * @name Phaser.Loader.File#config
-         * @type {*}
-         * @since 3.0.0
-         */
-        this.config = GetFastValue(fileConfig, 'config', {});
+            /**
+             * A config object that can be used by file types to store transitional data.
+             *
+             * @name Phaser.Loader.File#config
+             * @type {*}
+             * @since 3.0.0
+             */
+            this.config = GetFastValue(fileConfig, 'config', {});
 
-        /**
-         * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
-         * to the parent MultiFile. Set and used internally by the Loader or specific file types.
-         *
-         * @name Phaser.Loader.File#multiFile
-         * @type {?Phaser.Loader.MultiFile}
-         * @since 3.7.0
-         */
-        this.multiFile;
+            /**
+             * If this is a multipart file, i.e. an atlas and its json together, then this is a reference
+             * to the parent MultiFile. Set and used internally by the Loader or specific file types.
+             *
+             * @name Phaser.Loader.File#multiFile
+             * @type {?Phaser.Loader.MultiFile}
+             * @since 3.7.0
+             */
+            this.multiFile;
 
-        /**
-         * Does this file have an associated linked file? Such as an image and a normal map.
-         * Atlases and Bitmap Fonts use the multiFile, because those files need loading together but aren't
-         * actually bound by data, where-as a linkFile is.
-         *
-         * @name Phaser.Loader.File#linkFile
-         * @type {?Phaser.Loader.File}
-         * @since 3.7.0
-         */
-        this.linkFile;
+            /**
+             * Does this file have an associated linked file? Such as an image and a normal map.
+             * Atlases and Bitmap Fonts use the multiFile, because those files need loading together but aren't
+             * actually bound by data, where-as a linkFile is.
+             *
+             * @name Phaser.Loader.File#linkFile
+             * @type {?Phaser.Loader.File}
+             * @since 3.7.0
+             */
+            this.linkFile;
 
-        /**
-         * Does this File contain a data URI?
-         *
-         * @name Phaser.Loader.File#base64
-         * @type {boolean}
-         * @since 3.80.0
-         */
-        this.base64 = (typeof url === 'string') && (url.indexOf('data:') === 0);
+            /**
+             * Does this File contain a data URI?
+             *
+             * @name Phaser.Loader.File#base64
+             * @type {boolean}
+             * @since 3.80.0
+             */
+            this.base64 = (typeof url === 'string') && (url.indexOf('data:') === 0);
 
-        /**
-         * The counter for the number of times to retry loading this file before it fails.
-         * 
-         * You can set this property value in the FileConfig object. If not present,
-         * this property is read from the `LoaderPlugin.maxRetries` property when
-         * this File instance is created.
-         * 
-         * You can set this value via the Game Config, or you can adjust the `LoaderPlugin` property
-         * at any point after the Loader has started. However, it will not apply to files
-         * that have already been added to the Loader, only those added after this value
-         * is changed.
-         *
-         * @name Phaser.Loader.File#retryAttempts
-         * @type {number}
-         * @default 2
-         * @since 3.85.0
-         */
-        this.retryAttempts = GetFastValue(fileConfig, 'maxRetries', loader.maxRetries);
-    },
+            /**
+             * The counter for the number of times to retry loading this file before it fails.
+             *
+             * You can set this property value in the FileConfig object. If not present,
+             * this property is read from the `LoaderPlugin.maxRetries` property when
+             * this File instance is created.
+             *
+             * You can set this value via the Game Config, or you can adjust the `LoaderPlugin` property
+             * at any point after the Loader has started. However, it will not apply to files
+             * that have already been added to the Loader, only those added after this value
+             * is changed.
+             *
+             * @name Phaser.Loader.File#retryAttempts
+             * @type {number}
+             * @default 2
+             * @since 3.85.0
+             */
+            this.retryAttempts = GetFastValue(fileConfig, 'maxRetries', loader.maxRetries);
+        },
 
     /**
      * Links this File with another, so they depend upon each other for loading and processing.
@@ -270,8 +262,7 @@ var File = new Class({
      *
      * @param {Phaser.Loader.File} fileB - The file to link to this one.
      */
-    setLink: function (fileB)
-    {
+    setLink: function (fileB) {
         this.linkFile = fileB;
 
         fileB.linkFile = this;
@@ -283,10 +274,8 @@ var File = new Class({
      * @method Phaser.Loader.File#resetXHR
      * @since 3.0.0
      */
-    resetXHR: function ()
-    {
-        if (this.xhrLoader)
-        {
+    resetXHR: function () {
+        if (this.xhrLoader) {
             this.xhrLoader.onload = undefined;
             this.xhrLoader.onerror = undefined;
             this.xhrLoader.onprogress = undefined;
@@ -301,26 +290,20 @@ var File = new Class({
      * @method Phaser.Loader.File#load
      * @since 3.0.0
      */
-    load: function ()
-    {
-        if (this.state === CONST.FILE_POPULATED)
-        {
+    load: function () {
+        if (this.state === CONST.FILE_POPULATED) {
             //  Can happen for example in a JSONFile if they've provided a JSON object instead of a URL
             this.loader.nextFile(this, true);
-        }
-        else
-        {
+        } else {
             this.state = CONST.FILE_LOADING;
 
             this.src = GetURL(this, this.loader.baseURL);
 
-            if (!this.src)
-            {
+            if (!this.src) {
                 throw new Error('URL Error in File: ' + this.key + ' from: ' + this.url);
             }
 
-            if (this.src.indexOf('data:') === 0)
-            {
+            if (this.src.indexOf('data:') === 0) {
                 this.base64 = true;
             }
 
@@ -337,10 +320,8 @@ var File = new Class({
      * @param {XMLHttpRequest} xhr - The XMLHttpRequest that caused this onload event.
      * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this load.
      */
-    onLoad: function (xhr, event)
-    {
-        var isLocalFile = xhr.responseURL && this.loader.localSchemes.some(function (scheme)
-        {
+    onLoad: function (xhr, event) {
+        var isLocalFile = xhr.responseURL && this.loader.localSchemes.some(function (scheme) {
             return xhr.responseURL.indexOf(scheme) === 0;
         });
 
@@ -349,8 +330,7 @@ var File = new Class({
         var success = !(event.target && event.target.status !== 200) || localFileOk;
 
         //  Handle HTTP status codes of 4xx and 5xx as errors, even if xhr.onerror was not called.
-        if (xhr.readyState === 4 && xhr.status >= 400 && xhr.status <= 599)
-        {
+        if (xhr.readyState === 4 && xhr.status >= 400 && xhr.status <= 599) {
             success = false;
         }
 
@@ -369,8 +349,7 @@ var File = new Class({
      *
      * @param {XMLHttpRequest} xhr - The FakeXHR object containing the decoded base64 data.
      */
-    onBase64Load: function (xhr)
-    {
+    onBase64Load: function (xhr) {
         this.xhrLoader = xhr;
 
         this.state = CONST.FILE_LOADED;
@@ -391,18 +370,14 @@ var File = new Class({
      * @param {XMLHttpRequest} xhr - The XMLHttpRequest that caused this onload event.
      * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this error.
      */
-    onError: function ()
-    {
+    onError: function () {
         this.resetXHR();
 
-        if (this.retryAttempts > 0)
-        {
+        if (this.retryAttempts > 0) {
             this.retryAttempts--;
 
             this.load();
-        }
-        else
-        {
+        } else {
             this.loader.nextFile(this, false);
         }
     },
@@ -416,10 +391,8 @@ var File = new Class({
      *
      * @param {ProgressEvent} event - The DOM ProgressEvent.
      */
-    onProgress: function (event)
-    {
-        if (event.lengthComputable)
-        {
+    onProgress: function (event) {
+        if (event.lengthComputable) {
             this.bytesLoaded = event.loaded;
             this.bytesTotal = event.total;
 
@@ -436,8 +409,7 @@ var File = new Class({
      * @method Phaser.Loader.File#onProcess
      * @since 3.0.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.onProcessComplete();
@@ -450,12 +422,10 @@ var File = new Class({
      * @method Phaser.Loader.File#onProcessComplete
      * @since 3.7.0
      */
-    onProcessComplete: function ()
-    {
+    onProcessComplete: function () {
         this.state = CONST.FILE_COMPLETE;
 
-        if (this.multiFile)
-        {
+        if (this.multiFile) {
             this.multiFile.onFileComplete(this);
         }
 
@@ -469,15 +439,13 @@ var File = new Class({
      * @method Phaser.Loader.File#onProcessError
      * @since 3.7.0
      */
-    onProcessError: function ()
-    {
+    onProcessError: function () {
         // eslint-disable-next-line no-console
         console.error('Failed to process file: %s "%s"', this.type, this.key);
 
         this.state = CONST.FILE_ERRORED;
 
-        if (this.multiFile)
-        {
+        if (this.multiFile) {
             this.multiFile.onFileFailed(this);
         }
 
@@ -494,8 +462,7 @@ var File = new Class({
      *
      * @return {boolean} `true` if adding this file will cause a conflict, otherwise `false`.
      */
-    hasCacheConflict: function ()
-    {
+    hasCacheConflict: function () {
         return (this.cache && this.cache.exists(this.key));
     },
 
@@ -506,10 +473,8 @@ var File = new Class({
      * @method Phaser.Loader.File#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        if (this.cache && this.data)
-        {
+    addToCache: function () {
+        if (this.cache && this.data) {
             this.cache.add(this.key, this.data);
         }
     },
@@ -523,14 +488,14 @@ var File = new Class({
      * @fires Phaser.Loader.Events#FILE_KEY_COMPLETE
      * @since 3.7.0
      */
-    pendingDestroy: function (data)
-    {
-        if (this.state === CONST.FILE_PENDING_DESTROY)
-        {
+    pendingDestroy: function (data) {
+        if (this.state === CONST.FILE_PENDING_DESTROY) {
             return;
         }
 
-        if (data === undefined) { data = this.data; }
+        if (data === undefined) {
+            data = this.data;
+        }
 
         var key = this.key;
         var type = this.type;
@@ -549,8 +514,7 @@ var File = new Class({
      * @method Phaser.Loader.File#destroy
      * @since 3.7.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.loader = null;
         this.cache = null;
         this.xhrSettings = null;
@@ -573,18 +537,13 @@ var File = new Class({
  * @param {Blob} blob - A Blob object to create an object URL for.
  * @param {string} defaultType - Default mime type used if blob type is not available.
  */
-File.createObjectURL = function (image, blob, defaultType)
-{
-    if (typeof URL === 'function')
-    {
+File.createObjectURL = function (image, blob, defaultType) {
+    if (typeof URL === 'function') {
         image.src = URL.createObjectURL(blob);
-    }
-    else
-    {
+    } else {
         var reader = new FileReader();
 
-        reader.onload = function ()
-        {
+        reader.onload = function () {
             image.removeAttribute('crossOrigin');
             image.src = 'data:' + (blob.type || defaultType) + ';base64,' + reader.result.split(',')[1];
         };
@@ -605,10 +564,8 @@ File.createObjectURL = function (image, blob, defaultType)
  *
  * @param {HTMLImageElement} image - Image object which 'src' attribute should be revoked.
  */
-File.revokeObjectURL = function (image)
-{
-    if (typeof URL === 'function')
-    {
+File.revokeObjectURL = function (image) {
+    if (typeof URL === 'function') {
         URL.revokeObjectURL(image.src);
     }
 };

@@ -26,13 +26,11 @@ var Offset = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setOffset: function (x, y, width, height)
-    {
+    setOffset: function (x, y, width, height) {
         this.body.offset.x = x;
         this.body.offset.y = y;
 
-        if (width)
-        {
+        if (width) {
             this.setBodySize(width, height);
         }
 

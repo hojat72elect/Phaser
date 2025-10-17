@@ -27,29 +27,34 @@ var Euler = new Class({
 
     initialize:
 
-    function Euler (x, y, z, order)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (z === undefined) { z = 0; }
-        if (order === undefined) { order = Euler.DefaultOrder; }
+        function Euler(x, y, z, order) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (z === undefined) {
+                z = 0;
+            }
+            if (order === undefined) {
+                order = Euler.DefaultOrder;
+            }
 
-        this._x = x;
-        this._y = y;
-        this._z = z;
-        this._order = order;
+            this._x = x;
+            this._y = y;
+            this._z = z;
+            this._order = order;
 
-        this.onChangeCallback = NOOP;
-    },
+            this.onChangeCallback = NOOP;
+        },
 
     x: {
-        get: function ()
-        {
+        get: function () {
             return this._x;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._x = value;
 
             this.onChangeCallback(this);
@@ -57,13 +62,11 @@ var Euler = new Class({
     },
 
     y: {
-        get: function ()
-        {
+        get: function () {
             return this._y;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._y = value;
 
             this.onChangeCallback(this);
@@ -71,13 +74,11 @@ var Euler = new Class({
     },
 
     z: {
-        get: function ()
-        {
+        get: function () {
             return this._z;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._z = value;
 
             this.onChangeCallback(this);
@@ -85,22 +86,21 @@ var Euler = new Class({
     },
 
     order: {
-        get: function ()
-        {
+        get: function () {
             return this._order;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._order = value;
 
             this.onChangeCallback(this);
         }
     },
 
-    set: function (x, y, z, order)
-    {
-        if (order === undefined) { order = this._order; }
+    set: function (x, y, z, order) {
+        if (order === undefined) {
+            order = this._order;
+        }
 
         this._x = x;
         this._y = y;
@@ -112,25 +112,30 @@ var Euler = new Class({
         return this;
     },
 
-    copy: function (euler)
-    {
+    copy: function (euler) {
         return this.set(euler.x, euler.y, euler.z, euler.order);
     },
 
-    setFromQuaternion: function (quaternion, order, update)
-    {
-        if (order === undefined) { order = this._order; }
-        if (update === undefined) { update = false; }
+    setFromQuaternion: function (quaternion, order, update) {
+        if (order === undefined) {
+            order = this._order;
+        }
+        if (update === undefined) {
+            update = false;
+        }
 
         tempMatrix.fromQuat(quaternion);
 
         return this.setFromRotationMatrix(tempMatrix, order, update);
     },
 
-    setFromRotationMatrix: function (matrix, order, update)
-    {
-        if (order === undefined) { order = this._order; }
-        if (update === undefined) { update = false; }
+    setFromRotationMatrix: function (matrix, order, update) {
+        if (order === undefined) {
+            order = this._order;
+        }
+        if (update === undefined) {
+            update = false;
+        }
 
         var elements = matrix.val;
 
@@ -150,104 +155,79 @@ var Euler = new Class({
         var z = 0;
         var epsilon = 0.99999;
 
-        switch (order)
-        {
-            case 'XYZ':
-            {
+        switch (order) {
+            case 'XYZ': {
                 y = Math.asin(Clamp(m13, -1, 1));
 
-                if (Math.abs(m13) < epsilon)
-                {
+                if (Math.abs(m13) < epsilon) {
                     x = Math.atan2(-m23, m33);
                     z = Math.atan2(-m12, m11);
-                }
-                else
-                {
+                } else {
                     x = Math.atan2(m32, m22);
                 }
 
                 break;
             }
 
-            case 'YXZ':
-            {
+            case 'YXZ': {
                 x = Math.asin(-Clamp(m23, -1, 1));
 
-                if (Math.abs(m23) < epsilon)
-                {
+                if (Math.abs(m23) < epsilon) {
                     y = Math.atan2(m13, m33);
                     z = Math.atan2(m21, m22);
-                }
-                else
-                {
+                } else {
                     y = Math.atan2(-m31, m11);
                 }
 
                 break;
             }
 
-            case 'ZXY':
-            {
+            case 'ZXY': {
                 x = Math.asin(Clamp(m32, -1, 1));
 
-                if (Math.abs(m32) < epsilon)
-                {
+                if (Math.abs(m32) < epsilon) {
                     y = Math.atan2(-m31, m33);
                     z = Math.atan2(-m12, m22);
-                }
-                else
-                {
+                } else {
                     z = Math.atan2(m21, m11);
                 }
 
                 break;
             }
 
-            case 'ZYX':
-            {
+            case 'ZYX': {
                 y = Math.asin(-Clamp(m31, -1, 1));
 
-                if (Math.abs(m31) < epsilon)
-                {
+                if (Math.abs(m31) < epsilon) {
                     x = Math.atan2(m32, m33);
                     z = Math.atan2(m21, m11);
-                }
-                else
-                {
+                } else {
                     z = Math.atan2(-m12, m22);
                 }
 
                 break;
             }
 
-            case 'YZX':
-            {
+            case 'YZX': {
                 z = Math.asin(Clamp(m21, -1, 1));
 
-                if (Math.abs(m21) < epsilon)
-                {
+                if (Math.abs(m21) < epsilon) {
                     x = Math.atan2(-m23, m22);
                     y = Math.atan2(-m31, m11);
-                }
-                else
-                {
+                } else {
                     y = Math.atan2(m13, m33);
                 }
 
                 break;
             }
 
-            case 'XZY':
-            {
+            case 'XZY': {
                 z = Math.asin(-Clamp(m12, -1, 1));
 
-                if (Math.abs(m12) < epsilon)
-                {
+                if (Math.abs(m12) < epsilon) {
                     x = Math.atan2(m32, m22);
                     y = Math.atan2(m13, m11);
-                }
-                else
-                {
+                } else {
                     x = Math.atan2(-m23, m33);
                 }
 
@@ -260,8 +240,7 @@ var Euler = new Class({
         this._z = z;
         this._order = order;
 
-        if (update)
-        {
+        if (update) {
             this.onChangeCallback(this);
         }
 
@@ -270,7 +249,7 @@ var Euler = new Class({
 
 });
 
-Euler.RotationOrders = [ 'XYZ', 'YXZ', 'ZXY', 'ZYX', 'YZX', 'XZY' ];
+Euler.RotationOrders = ['XYZ', 'YXZ', 'ZXY', 'ZYX', 'YZX', 'XZY'];
 
 Euler.DefaultOrder = 'XYZ';
 

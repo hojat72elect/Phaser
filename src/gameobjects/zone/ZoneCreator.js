@@ -20,8 +20,7 @@ var Zone = require('./Zone');
  *
  * @return {Phaser.GameObjects.Zone} The Game Object that was created.
  */
-GameObjectCreator.register('zone', function (config)
-{
+GameObjectCreator.register('zone', function (config) {
     var x = GetAdvancedValue(config, 'x', 0);
     var y = GetAdvancedValue(config, 'y', 0);
     var width = GetAdvancedValue(config, 'width', 1);

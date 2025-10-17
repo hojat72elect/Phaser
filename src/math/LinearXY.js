@@ -18,9 +18,10 @@
  *
  * @return {Phaser.Math.Vector2} The step t% of the way between vector1 and vector2.
  */
-var LinearXY = function (vector1, vector2, t)
-{
-    if (t === undefined) { t = 0; }
+var LinearXY = function (vector1, vector2, t) {
+    if (t === undefined) {
+        t = 0;
+    }
 
     return vector1.clone().lerp(vector2, t);
 };

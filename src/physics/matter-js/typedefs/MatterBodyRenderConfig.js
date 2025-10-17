@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterBodyRenderConfig
  * @since 3.22.0
- *              
+ *
  * @property {boolean} [visible=true] - Should this body be rendered by the Debug Renderer?
  * @property {number} [opacity=1] - The opacity of the body and all parts within it.
  * @property {number} [fillColor] - The color value of the fill when rendering this body.

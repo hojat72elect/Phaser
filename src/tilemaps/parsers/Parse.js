@@ -35,12 +35,10 @@ var ParseWeltmeister = require('./impact/ParseWeltmeister');
  *
  * @return {Phaser.Tilemaps.MapData} The created `MapData` object.
  */
-var Parse = function (name, mapFormat, data, tileWidth, tileHeight, insertNull)
-{
+var Parse = function (name, mapFormat, data, tileWidth, tileHeight, insertNull) {
     var newMap;
 
-    switch (mapFormat)
-    {
+    switch (mapFormat) {
         case (Formats.ARRAY_2D):
             newMap = Parse2DArray(name, data, tileWidth, tileHeight, insertNull);
             break;

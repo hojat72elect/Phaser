@@ -22,9 +22,10 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {Phaser.Math.Vector2} The XY location in world coordinates.
  */
-var HexagonalTileToWorldXY = function (tileX, tileY, point, camera, layer)
-{
-    if (!point) { point = new Vector2(); }
+var HexagonalTileToWorldXY = function (tileX, tileY, point, camera, layer) {
+    if (!point) {
+        point = new Vector2();
+    }
 
     var tileWidth = layer.baseTileWidth;
     var tileHeight = layer.baseTileHeight;
@@ -33,9 +34,10 @@ var HexagonalTileToWorldXY = function (tileX, tileY, point, camera, layer)
     var worldX = 0;
     var worldY = 0;
 
-    if (tilemapLayer)
-    {
-        if (!camera) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (!camera) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         worldX = tilemapLayer.x + camera.scrollX * (1 - tilemapLayer.scrollFactorX);
         worldY = tilemapLayer.y + camera.scrollY * (1 - tilemapLayer.scrollFactorY);
@@ -55,36 +57,25 @@ var HexagonalTileToWorldXY = function (tileX, tileY, point, camera, layer)
     var staggerAxis = layer.staggerAxis;
     var staggerIndex = layer.staggerIndex;
 
-    if (staggerAxis === 'y')
-    {
+    if (staggerAxis === 'y') {
         x = worldX + (tileWidth * tileX) + tileWidth;
         y = worldY + ((1.5 * tileY) * tileHeightHalf) + tileHeightHalf;
 
-        if (tileY % 2 === 0)
-        {
-            if (staggerIndex === 'odd')
-            {
+        if (tileY % 2 === 0) {
+            if (staggerIndex === 'odd') {
                 x -= tileWidthHalf;
-            }
-            else
-            {
+            } else {
                 x += tileWidthHalf;
             }
         }
-    }
-    else if ((staggerAxis === 'x') && (staggerIndex === 'odd'))
-    {
+    } else if ((staggerAxis === 'x') && (staggerIndex === 'odd')) {
         x = worldX + ((1.5 * tileX) * tileWidthHalf) + tileWidthHalf;
         y = worldY + (tileHeight * tileX) + tileHeight;
 
-        if (tileX % 2 === 0)
-        {
-            if (staggerIndex === 'odd')
-            {
+        if (tileX % 2 === 0) {
+            if (staggerIndex === 'odd') {
                 y -= tileHeightHalf;
-            }
-            else
-            {
+            } else {
                 y += tileHeightHalf;
             }
         }

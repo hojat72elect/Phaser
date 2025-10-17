@@ -27,56 +27,55 @@ var ImpactPhysics = new Class({
 
     initialize:
 
-    function ImpactPhysics (scene)
-    {
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactPhysics#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+        function ImpactPhysics(scene) {
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactPhysics#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactPhysics#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactPhysics#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactPhysics#config
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.config = this.getConfig();
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactPhysics#config
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.config = this.getConfig();
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactPhysics#world
-         * @type {Phaser.Physics.Impact.World}
-         * @since 3.0.0
-         */
-        this.world;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactPhysics#world
+             * @type {Phaser.Physics.Impact.World}
+             * @since 3.0.0
+             */
+            this.world;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactPhysics#add
-         * @type {Phaser.Physics.Impact.Factory}
-         * @since 3.0.0
-         */
-        this.add;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactPhysics#add
+             * @type {Phaser.Physics.Impact.Factory}
+             * @since 3.0.0
+             */
+            this.add;
 
-        scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-        scene.sys.events.on(SceneEvents.START, this.start, this);
-    },
+            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+            scene.sys.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -86,8 +85,7 @@ var ImpactPhysics = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.world = new World(this.scene, this.config);
         this.add = new Factory(this.world);
 
@@ -103,10 +101,8 @@ var ImpactPhysics = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
-        if (!this.world)
-        {
+    start: function () {
+        if (!this.world) {
             this.world = new World(this.scene, this.config);
             this.add = new Factory(this.world);
         }
@@ -125,8 +121,7 @@ var ImpactPhysics = new Class({
      *
      * @return {object} [description]
      */
-    getConfig: function ()
-    {
+    getConfig: function () {
         var gameConfig = this.systems.game.config.physics;
         var sceneConfig = this.systems.settings.physics;
 
@@ -146,8 +141,7 @@ var ImpactPhysics = new Class({
      *
      * @return {Phaser.Physics.Impact.World} The Impact World object.
      */
-    pause: function ()
-    {
+    pause: function () {
         return this.world.pause();
     },
 
@@ -159,8 +153,7 @@ var ImpactPhysics = new Class({
      *
      * @return {Phaser.Physics.Impact.World} The Impact World object.
      */
-    resume: function ()
-    {
+    resume: function () {
         return this.world.resume();
     },
 
@@ -172,8 +165,7 @@ var ImpactPhysics = new Class({
      * @private
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.off(SceneEvents.UPDATE, this.world.update, this.world);
@@ -194,8 +186,7 @@ var ImpactPhysics = new Class({
      * @private
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.scene.sys.events.off(SceneEvents.START, this.start, this);

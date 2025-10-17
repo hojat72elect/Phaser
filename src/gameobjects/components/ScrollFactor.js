@@ -86,9 +86,10 @@ var ScrollFactor = {
      *
      * @return {this} This Game Object instance.
      */
-    setScrollFactor: function (x, y)
-    {
-        if (y === undefined) { y = x; }
+    setScrollFactor: function (x, y) {
+        if (y === undefined) {
+            y = x;
+        }
 
         this.scrollFactorX = x;
         this.scrollFactorY = y;

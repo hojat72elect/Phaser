@@ -21,14 +21,12 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var IsoBoxCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var IsoBoxCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var ctx = renderer.currentContext;
 
-    if (SetTransform(renderer, ctx, src, camera, parentMatrix) && src.isFilled)
-    {
+    if (SetTransform(renderer, ctx, src, camera, parentMatrix) && src.isFilled) {
         var size = src.width;
         var height = src.height;
 
@@ -37,8 +35,7 @@ var IsoBoxCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Top Face
 
-        if (src.showTop)
-        {
+        if (src.showTop) {
             FillStyleCanvas(ctx, src, src.fillTop);
 
             ctx.beginPath();
@@ -56,8 +53,7 @@ var IsoBoxCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Left Face
 
-        if (src.showLeft)
-        {
+        if (src.showLeft) {
             FillStyleCanvas(ctx, src, src.fillLeft);
 
             ctx.beginPath();
@@ -73,8 +69,7 @@ var IsoBoxCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         //  Right Face
 
-        if (src.showRight)
-        {
+        if (src.showRight) {
             FillStyleCanvas(ctx, src, src.fillRight);
 
             ctx.beginPath();

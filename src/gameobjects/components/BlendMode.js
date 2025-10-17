@@ -55,22 +55,18 @@ var BlendMode = {
      */
     blendMode: {
 
-        get: function ()
-        {
+        get: function () {
             return this._blendMode;
         },
 
-        set: function (value)
-        {
-            if (typeof value === 'string')
-            {
+        set: function (value) {
+            if (typeof value === 'string') {
                 value = BlendModes[value];
             }
 
             value |= 0;
 
-            if (value >= -1)
-            {
+            if (value >= -1) {
                 this._blendMode = value;
             }
         }
@@ -106,8 +102,7 @@ var BlendMode = {
      *
      * @return {this} This Game Object instance.
      */
-    setBlendMode: function (value)
-    {
+    setBlendMode: function (value) {
         this.blendMode = value;
 
         return this;

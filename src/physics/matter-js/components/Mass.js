@@ -25,8 +25,7 @@ var Mass = {
      *
      * @return {this} This Game Object instance.
      */
-    setMass: function (value)
-    {
+    setMass: function (value) {
         Body.setMass(this.body, value);
 
         return this;
@@ -42,8 +41,7 @@ var Mass = {
      *
      * @return {this} This Game Object instance.
      */
-    setDensity: function (value)
-    {
+    setDensity: function (value) {
         Body.setDensity(this.body, value);
 
         return this;
@@ -65,8 +63,7 @@ var Mass = {
      */
     centerOfMass: {
 
-        get: function ()
-        {
+        get: function () {
             return new Vector2(this.body.centerOfMass.x, this.body.centerOfMass.y);
         }
     }

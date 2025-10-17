@@ -22,9 +22,10 @@ var TileSprite = require('./TileSprite');
  *
  * @return {Phaser.GameObjects.TileSprite} The Game Object that was created.
  */
-GameObjectCreator.register('tileSprite', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('tileSprite', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var x = GetAdvancedValue(config, 'x', 0);
     var y = GetAdvancedValue(config, 'y', 0);
@@ -35,8 +36,7 @@ GameObjectCreator.register('tileSprite', function (config, addToScene)
 
     var tile = new TileSprite(this.scene, x, y, width, height, key, frame);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

@@ -21,33 +21,31 @@ var SetLayerCollisionIndex = require('./SetLayerCollisionIndex');
  * @param {boolean} recalculateFaces - Whether or not to recalculate the tile faces after the update.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var SetCollisionByExclusion = function (indexes, collides, recalculateFaces, layer)
-{
-    if (collides === undefined) { collides = true; }
-    if (recalculateFaces === undefined) { recalculateFaces = true; }
+var SetCollisionByExclusion = function (indexes, collides, recalculateFaces, layer) {
+    if (collides === undefined) {
+        collides = true;
+    }
+    if (recalculateFaces === undefined) {
+        recalculateFaces = true;
+    }
 
-    if (!Array.isArray(indexes))
-    {
-        indexes = [ indexes ];
+    if (!Array.isArray(indexes)) {
+        indexes = [indexes];
     }
 
     // Note: this only updates layer.collideIndexes for tile indexes found currently in the layer
-    for (var ty = 0; ty < layer.height; ty++)
-    {
-        for (var tx = 0; tx < layer.width; tx++)
-        {
+    for (var ty = 0; ty < layer.height; ty++) {
+        for (var tx = 0; tx < layer.width; tx++) {
             var tile = layer.data[ty][tx];
 
-            if (tile && indexes.indexOf(tile.index) === -1)
-            {
+            if (tile && indexes.indexOf(tile.index) === -1) {
                 SetTileCollision(tile, collides);
                 SetLayerCollisionIndex(tile.index, collides, layer);
             }
         }
     }
 
-    if (recalculateFaces)
-    {
+    if (recalculateFaces) {
         CalculateFacesWithin(0, 0, layer.width, layer.height, layer);
     }
 };

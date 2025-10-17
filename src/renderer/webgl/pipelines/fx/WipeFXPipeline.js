@@ -49,63 +49,61 @@ var WipeFXPipeline = new Class({
 
     initialize:
 
-    function WipeFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: WipeFrag
-        });
+        function WipeFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: WipeFrag
+            });
 
-        /**
-         * The progress of the Wipe effect. This value is normalized to the range 0 to 1.
-         *
-         * Adjust this value to make the wipe transition (i.e. via a Tween)
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#progress
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.progress = 0;
+            /**
+             * The progress of the Wipe effect. This value is normalized to the range 0 to 1.
+             *
+             * Adjust this value to make the wipe transition (i.e. via a Tween)
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#progress
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.progress = 0;
 
-        /**
-         * The width of the wipe effect. This value is normalized in the range 0 to 1.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#wipeWidth
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.wipeWidth = 0.1;
+            /**
+             * The width of the wipe effect. This value is normalized in the range 0 to 1.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#wipeWidth
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.wipeWidth = 0.1;
 
-        /**
-         * The direction of the wipe effect. Either 0 or 1. Set in conjunction with the axis property.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#direction
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.direction = 0;
+            /**
+             * The direction of the wipe effect. Either 0 or 1. Set in conjunction with the axis property.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#direction
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.direction = 0;
 
-        /**
-         * The axis of the wipe effect. Either 0 or 1. Set in conjunction with the direction property.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#axis
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.axis = 0;
+            /**
+             * The axis of the wipe effect. Either 0 or 1. Set in conjunction with the direction property.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#axis
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.axis = 0;
 
-        /**
-         * Is this a reveal (true) or a fade (false) effect?
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#reveal
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.reveal = false;
-    },
+            /**
+             * Is this a reveal (true) or a fade (false) effect?
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#reveal
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.reveal = false;
+        },
 
-    onPreRender: function (controller, shader)
-    {
+    onPreRender: function (controller, shader) {
         controller = this.getController(controller);
 
         var progress = controller.progress;

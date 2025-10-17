@@ -25,12 +25,12 @@ var RectangleToRectangle = require('./RectangleToRectangle');
  *
  * @return {Phaser.Geom.Rectangle} A rectangle object with intersection data.
  */
-var GetRectangleIntersection = function (rectA, rectB, output)
-{
-    if (output === undefined) { output = new Rectangle(); }
+var GetRectangleIntersection = function (rectA, rectB, output) {
+    if (output === undefined) {
+        output = new Rectangle();
+    }
 
-    if (RectangleToRectangle(rectA, rectB))
-    {
+    if (RectangleToRectangle(rectA, rectB)) {
         output.x = Math.max(rectA.x, rectB.x);
         output.y = Math.max(rectA.y, rectB.y);
         output.width = Math.min(rectA.right, rectB.right) - output.x;

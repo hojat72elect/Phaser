@@ -41,66 +41,65 @@ var ArcadePhysics = new Class({
 
     initialize:
 
-    function ArcadePhysics (scene)
-    {
-        /**
-         * The Scene that this Plugin belongs to.
-         *
-         * @name Phaser.Physics.Arcade.ArcadePhysics#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+        function ArcadePhysics(scene) {
+            /**
+             * The Scene that this Plugin belongs to.
+             *
+             * @name Phaser.Physics.Arcade.ArcadePhysics#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * The Scene's Systems.
-         *
-         * @name Phaser.Physics.Arcade.ArcadePhysics#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * The Scene's Systems.
+             *
+             * @name Phaser.Physics.Arcade.ArcadePhysics#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * A configuration object. Union of the `physics.arcade.*` properties of the GameConfig and SceneConfig objects.
-         *
-         * @name Phaser.Physics.Arcade.ArcadePhysics#config
-         * @type {Phaser.Types.Physics.Arcade.ArcadeWorldConfig}
-         * @since 3.0.0
-         */
-        this.config = this.getConfig();
+            /**
+             * A configuration object. Union of the `physics.arcade.*` properties of the GameConfig and SceneConfig objects.
+             *
+             * @name Phaser.Physics.Arcade.ArcadePhysics#config
+             * @type {Phaser.Types.Physics.Arcade.ArcadeWorldConfig}
+             * @since 3.0.0
+             */
+            this.config = this.getConfig();
 
-        /**
-         * The physics simulation.
-         *
-         * @name Phaser.Physics.Arcade.ArcadePhysics#world
-         * @type {Phaser.Physics.Arcade.World}
-         * @since 3.0.0
-         */
-        this.world;
+            /**
+             * The physics simulation.
+             *
+             * @name Phaser.Physics.Arcade.ArcadePhysics#world
+             * @type {Phaser.Physics.Arcade.World}
+             * @since 3.0.0
+             */
+            this.world;
 
-        /**
-         * An object holding the Arcade Physics factory methods.
-         *
-         * @name Phaser.Physics.Arcade.ArcadePhysics#add
-         * @type {Phaser.Physics.Arcade.Factory}
-         * @since 3.0.0
-         */
-        this.add;
+            /**
+             * An object holding the Arcade Physics factory methods.
+             *
+             * @name Phaser.Physics.Arcade.ArcadePhysics#add
+             * @type {Phaser.Physics.Arcade.Factory}
+             * @since 3.0.0
+             */
+            this.add;
 
-        /**
-         * Holds the internal collision filter category.
-         *
-         * @name Phaser.Physics.Arcade.World#_category
-         * @private
-         * @type {number}
-         * @since 3.70.0
-         */
-        this._category = 0x0001;
+            /**
+             * Holds the internal collision filter category.
+             *
+             * @name Phaser.Physics.Arcade.World#_category
+             * @private
+             * @type {number}
+             * @since 3.70.0
+             */
+            this._category = 0x0001;
 
-        scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-        scene.sys.events.on(SceneEvents.START, this.start, this);
-    },
+            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+            scene.sys.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -110,8 +109,7 @@ var ArcadePhysics = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.world = new World(this.scene, this.config);
         this.add = new Factory(this.world);
 
@@ -127,18 +125,15 @@ var ArcadePhysics = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
-        if (!this.world)
-        {
+    start: function () {
+        if (!this.world) {
             this.world = new World(this.scene, this.config);
             this.add = new Factory(this.world);
         }
 
         var eventEmitter = this.systems.events;
 
-        if (!GetFastValue(this.config, 'customUpdate', false))
-        {
+        if (!GetFastValue(this.config, 'customUpdate', false)) {
             eventEmitter.on(SceneEvents.UPDATE, this.world.update, this.world);
         }
 
@@ -154,8 +149,7 @@ var ArcadePhysics = new Class({
      * @method Phaser.Physics.Arcade.ArcadePhysics#enableUpdate
      * @since 3.50.0
      */
-    enableUpdate: function ()
-    {
+    enableUpdate: function () {
         this.systems.events.on(SceneEvents.UPDATE, this.world.update, this.world);
     },
 
@@ -173,8 +167,7 @@ var ArcadePhysics = new Class({
      * @method Phaser.Physics.Arcade.ArcadePhysics#disableUpdate
      * @since 3.50.0
      */
-    disableUpdate: function ()
-    {
+    disableUpdate: function () {
         this.systems.events.off(SceneEvents.UPDATE, this.world.update, this.world);
     },
 
@@ -186,8 +179,7 @@ var ArcadePhysics = new Class({
      *
      * @return {Phaser.Types.Physics.Arcade.ArcadeWorldConfig} The physics configuration.
      */
-    getConfig: function ()
-    {
+    getConfig: function () {
         var gameConfig = this.systems.game.config.physics;
         var sceneConfig = this.systems.settings.physics;
 
@@ -214,8 +206,7 @@ var ArcadePhysics = new Class({
      *
      * @return {number} The next collision category.
      */
-    nextCategory: function ()
-    {
+    nextCategory: function () {
         this._category = this._category << 1;
 
         return this._category;
@@ -237,11 +228,16 @@ var ArcadePhysics = new Class({
      *
      * @see Phaser.Physics.Arcade.World#overlap
      */
-    overlap: function (object1, object2, overlapCallback, processCallback, callbackContext)
-    {
-        if (overlapCallback === undefined) { overlapCallback = null; }
-        if (processCallback === undefined) { processCallback = null; }
-        if (callbackContext === undefined) { callbackContext = overlapCallback; }
+    overlap: function (object1, object2, overlapCallback, processCallback, callbackContext) {
+        if (overlapCallback === undefined) {
+            overlapCallback = null;
+        }
+        if (processCallback === undefined) {
+            processCallback = null;
+        }
+        if (callbackContext === undefined) {
+            callbackContext = overlapCallback;
+        }
 
         return this.world.collideObjects(object1, object2, overlapCallback, processCallback, callbackContext, true);
     },
@@ -279,11 +275,16 @@ var ArcadePhysics = new Class({
      *
      * @see Phaser.Physics.Arcade.World#collide
      */
-    collide: function (object1, object2, collideCallback, processCallback, callbackContext)
-    {
-        if (collideCallback === undefined) { collideCallback = null; }
-        if (processCallback === undefined) { processCallback = null; }
-        if (callbackContext === undefined) { callbackContext = collideCallback; }
+    collide: function (object1, object2, collideCallback, processCallback, callbackContext) {
+        if (collideCallback === undefined) {
+            collideCallback = null;
+        }
+        if (processCallback === undefined) {
+            processCallback = null;
+        }
+        if (callbackContext === undefined) {
+            callbackContext = collideCallback;
+        }
 
         return this.world.collideObjects(object1, object2, collideCallback, processCallback, callbackContext, false);
     },
@@ -316,8 +317,7 @@ var ArcadePhysics = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    collideTiles: function (sprite, tiles, collideCallback, processCallback, callbackContext)
-    {
+    collideTiles: function (sprite, tiles, collideCallback, processCallback, callbackContext) {
         return this.world.collideTiles(sprite, tiles, collideCallback, processCallback, callbackContext);
     },
 
@@ -344,8 +344,7 @@ var ArcadePhysics = new Class({
      *
      * @return {boolean} True if any objects overlap (with `overlapOnly`); or true if any overlapping objects were separated.
      */
-    overlapTiles: function (sprite, tiles, overlapCallback, processCallback, callbackContext)
-    {
+    overlapTiles: function (sprite, tiles, overlapCallback, processCallback, callbackContext) {
         return this.world.overlapTiles(sprite, tiles, overlapCallback, processCallback, callbackContext);
     },
 
@@ -357,8 +356,7 @@ var ArcadePhysics = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} The simulation.
      */
-    pause: function ()
-    {
+    pause: function () {
         return this.world.pause();
     },
 
@@ -370,8 +368,7 @@ var ArcadePhysics = new Class({
      *
      * @return {Phaser.Physics.Arcade.World} The simulation.
      */
-    resume: function ()
-    {
+    resume: function () {
         return this.world.resume();
     },
 
@@ -395,16 +392,16 @@ var ArcadePhysics = new Class({
      *
      * @return {number} The angle (in radians) that the object should be visually set to in order to match its new velocity.
      */
-    accelerateTo: function (gameObject, x, y, speed, xSpeedMax, ySpeedMax)
-    {
-        if (speed === undefined) { speed = 60; }
+    accelerateTo: function (gameObject, x, y, speed, xSpeedMax, ySpeedMax) {
+        if (speed === undefined) {
+            speed = 60;
+        }
 
         var angle = Math.atan2(y - gameObject.y, x - gameObject.x);
 
         gameObject.body.acceleration.setToPolar(angle, speed);
 
-        if (xSpeedMax !== undefined && ySpeedMax !== undefined)
-        {
+        if (xSpeedMax !== undefined && ySpeedMax !== undefined) {
             gameObject.body.maxVelocity.set(xSpeedMax, ySpeedMax);
         }
 
@@ -430,8 +427,7 @@ var ArcadePhysics = new Class({
      *
      * @return {number} The angle (in radians) that the object should be visually set to in order to match its new velocity.
      */
-    accelerateToObject: function (gameObject, destination, speed, xSpeedMax, ySpeedMax)
-    {
+    accelerateToObject: function (gameObject, destination, speed, xSpeedMax, ySpeedMax) {
         return this.accelerateTo(gameObject, destination.x, destination.y, speed, xSpeedMax, ySpeedMax);
     },
 
@@ -455,10 +451,8 @@ var ArcadePhysics = new Class({
      *
      * @return {Target|null} The target closest to the given source point.
      */
-    closest: function (source, targets)
-    {
-        if (!targets)
-        {
+    closest: function (source, targets) {
+        if (!targets) {
             targets = this.world.bodies.entries;
         }
 
@@ -468,20 +462,17 @@ var ArcadePhysics = new Class({
         var y = source.y;
         var len = targets.length;
 
-        for (var i = 0; i < len; i++)
-        {
+        for (var i = 0; i < len; i++) {
             var target = targets[i];
             var body = target.body || target;
 
-            if (source === target || source === body || source === body.gameObject || source === body.center)
-            {
+            if (source === target || source === body || source === body.gameObject || source === body.center) {
                 continue;
             }
 
             var distance = DistanceSquared(x, y, body.center.x, body.center.y);
 
-            if (distance < min)
-            {
+            if (distance < min) {
                 closest = target;
                 min = distance;
             }
@@ -509,10 +500,8 @@ var ArcadePhysics = new Class({
      *
      * @return {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody|Phaser.GameObjects.GameObject)} The target farthest from the given source point.
      */
-    furthest: function (source, targets)
-    {
-        if (!targets)
-        {
+    furthest: function (source, targets) {
+        if (!targets) {
             targets = this.world.bodies.entries;
         }
 
@@ -522,20 +511,17 @@ var ArcadePhysics = new Class({
         var y = source.y;
         var len = targets.length;
 
-        for (var i = 0; i < len; i++)
-        {
+        for (var i = 0; i < len; i++) {
             var target = targets[i];
             var body = target.body || target;
 
-            if (source === target || source === body || source === body.gameObject || source === body.center)
-            {
+            if (source === target || source === body || source === body.gameObject || source === body.center) {
                 continue;
             }
 
             var distance = DistanceSquared(x, y, body.center.x, body.center.y);
 
-            if (distance > max)
-            {
+            if (distance > max) {
                 farthest = target;
                 max = distance;
             }
@@ -564,15 +550,17 @@ var ArcadePhysics = new Class({
      *
      * @return {number} The angle (in radians) that the object should be visually set to in order to match its new velocity.
      */
-    moveTo: function (gameObject, x, y, speed, maxTime)
-    {
-        if (speed === undefined) { speed = 60; }
-        if (maxTime === undefined) { maxTime = 0; }
+    moveTo: function (gameObject, x, y, speed, maxTime) {
+        if (speed === undefined) {
+            speed = 60;
+        }
+        if (maxTime === undefined) {
+            maxTime = 0;
+        }
 
         var angle = Math.atan2(y - gameObject.y, x - gameObject.x);
 
-        if (maxTime > 0)
-        {
+        if (maxTime > 0) {
             //  We know how many pixels we need to move, but how fast?
             speed = DistanceBetween(gameObject.x, gameObject.y, x, y) / (maxTime / 1000);
         }
@@ -600,8 +588,7 @@ var ArcadePhysics = new Class({
      *
      * @return {number} The angle (in radians) that the object should be visually set to in order to match its new velocity.
      */
-    moveToObject: function (gameObject, destination, speed, maxTime)
-    {
+    moveToObject: function (gameObject, destination, speed, maxTime) {
         return this.moveTo(gameObject, destination.x, destination.y, speed, maxTime);
     },
 
@@ -618,10 +605,13 @@ var ArcadePhysics = new Class({
      *
      * @return {Phaser.Math.Vector2} The Vector2 that stores the velocity.
      */
-    velocityFromAngle: function (angle, speed, vec2)
-    {
-        if (speed === undefined) { speed = 60; }
-        if (vec2 === undefined) { vec2 = new Vector2(); }
+    velocityFromAngle: function (angle, speed, vec2) {
+        if (speed === undefined) {
+            speed = 60;
+        }
+        if (vec2 === undefined) {
+            vec2 = new Vector2();
+        }
 
         return vec2.setToPolar(DegToRad(angle), speed);
     },
@@ -639,10 +629,13 @@ var ArcadePhysics = new Class({
      *
      * @return {Phaser.Math.Vector2} The Vector2 that stores the velocity.
      */
-    velocityFromRotation: function (rotation, speed, vec2)
-    {
-        if (speed === undefined) { speed = 60; }
-        if (vec2 === undefined) { vec2 = new Vector2(); }
+    velocityFromRotation: function (rotation, speed, vec2) {
+        if (speed === undefined) {
+            speed = 60;
+        }
+        if (vec2 === undefined) {
+            vec2 = new Vector2();
+        }
 
         return vec2.setToPolar(rotation, speed);
     },
@@ -669,8 +662,7 @@ var ArcadePhysics = new Class({
      *
      * @return {(Phaser.Physics.Arcade.Body[]|Phaser.Physics.Arcade.StaticBody[])} An array of bodies that overlap with the given area.
      */
-    overlapRect: function (x, y, width, height, includeDynamic, includeStatic)
-    {
+    overlapRect: function (x, y, width, height, includeDynamic, includeStatic) {
         return OverlapRect(this.world, x, y, width, height, includeDynamic, includeStatic);
     },
 
@@ -695,8 +687,7 @@ var ArcadePhysics = new Class({
      *
      * @return {(Phaser.Physics.Arcade.Body[]|Phaser.Physics.Arcade.StaticBody[])} An array of bodies that overlap with the given area.
      */
-    overlapCirc: function (x, y, radius, includeDynamic, includeStatic)
-    {
+    overlapCirc: function (x, y, radius, includeDynamic, includeStatic) {
         return OverlapCirc(this.world, x, y, radius, includeDynamic, includeStatic);
     },
 
@@ -707,10 +698,8 @@ var ArcadePhysics = new Class({
      * @method Phaser.Physics.Arcade.ArcadePhysics#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
-        if (!this.world)
-        {
+    shutdown: function () {
+        if (!this.world) {
             //  Already destroyed
             return;
         }
@@ -736,8 +725,7 @@ var ArcadePhysics = new Class({
      * @method Phaser.Physics.Arcade.ArcadePhysics#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.scene.sys.events.off(SceneEvents.START, this.start, this);

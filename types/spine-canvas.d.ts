@@ -4,26 +4,36 @@ declare module spine {
         timelines: Array<Timeline>;
         timelineIds: Array<boolean>;
         duration: number;
+
         constructor(name: string, timelines: Array<Timeline>, duration: number);
-        hasTimeline(id: number): boolean;
-        apply(skeleton: Skeleton, lastTime: number, time: number, loop: boolean, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
+
         static binarySearch(values: ArrayLike<number>, target: number, step?: number): number;
+
         static linearSearch(values: ArrayLike<number>, target: number, step: number): number;
+
+        hasTimeline(id: number): boolean;
+
+        apply(skeleton: Skeleton, lastTime: number, time: number, loop: boolean, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     interface Timeline {
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
+
         getPropertyId(): number;
     }
+
     enum MixBlend {
         setup = 0,
         first = 1,
         replace = 2,
         add = 3
     }
+
     enum MixDirection {
         mixIn = 0,
         mixOut = 1
     }
+
     enum TimelineType {
         rotate = 0,
         translate = 1,
@@ -41,22 +51,33 @@ declare module spine {
         pathConstraintMix = 13,
         twoColor = 14
     }
+
     abstract class CurveTimeline implements Timeline {
         static LINEAR: number;
         static STEPPED: number;
         static BEZIER: number;
         static BEZIER_SIZE: number;
         private curves;
-        abstract getPropertyId(): number;
+
         constructor(frameCount: number);
+
+        abstract getPropertyId(): number;
+
         getFrameCount(): number;
+
         setLinear(frameIndex: number): void;
+
         setStepped(frameIndex: number): void;
+
         getCurveType(frameIndex: number): number;
+
         setCurve(frameIndex: number, cx1: number, cy1: number, cx2: number, cy2: number): void;
+
         getCurvePercent(frameIndex: number, percent: number): number;
+
         abstract apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class RotateTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -64,11 +85,16 @@ declare module spine {
         static ROTATION: number;
         boneIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, degrees: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class TranslateTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -78,21 +104,32 @@ declare module spine {
         static Y: number;
         boneIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, x: number, y: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class ScaleTimeline extends TranslateTimeline {
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class ShearTimeline extends TranslateTimeline {
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class ColorTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -106,11 +143,16 @@ declare module spine {
         static A: number;
         slotIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, r: number, g: number, b: number, a: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class TwoColorTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -130,49 +172,77 @@ declare module spine {
         static B2: number;
         slotIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, r: number, g: number, b: number, a: number, r2: number, g2: number, b2: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class AttachmentTimeline implements Timeline {
         slotIndex: number;
         frames: ArrayLike<number>;
         attachmentNames: Array<string>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         getFrameCount(): number;
+
         setFrame(frameIndex: number, time: number, attachmentName: string): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, events: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class DeformTimeline extends CurveTimeline {
         slotIndex: number;
         attachment: VertexAttachment;
         frames: ArrayLike<number>;
         frameVertices: Array<ArrayLike<number>>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, vertices: ArrayLike<number>): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class EventTimeline implements Timeline {
         frames: ArrayLike<number>;
         events: Array<Event>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         getFrameCount(): number;
+
         setFrame(frameIndex: number, event: Event): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class DrawOrderTimeline implements Timeline {
         frames: ArrayLike<number>;
         drawOrders: Array<Array<number>>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         getFrameCount(): number;
+
         setFrame(frameIndex: number, time: number, drawOrder: Array<number>): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class IkConstraintTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -188,11 +258,16 @@ declare module spine {
         static STRETCH: number;
         ikConstraintIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, mix: number, softness: number, bendDirection: number, compress: boolean, stretch: boolean): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class TransformConstraintTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -206,11 +281,16 @@ declare module spine {
         static SHEAR: number;
         transformConstraintIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, rotateMix: number, translateMix: number, scaleMix: number, shearMix: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class PathConstraintPositionTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -218,16 +298,24 @@ declare module spine {
         static VALUE: number;
         pathConstraintIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, value: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class PathConstraintSpacingTimeline extends PathConstraintPositionTimeline {
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
+
     class PathConstraintMixTimeline extends CurveTimeline {
         static ENTRIES: number;
         static PREV_TIME: number;
@@ -237,9 +325,13 @@ declare module spine {
         static TRANSLATE: number;
         pathConstraintIndex: number;
         frames: ArrayLike<number>;
+
         constructor(frameCount: number);
+
         getPropertyId(): number;
+
         setFrame(frameIndex: number, time: number, rotateMix: number, translateMix: number): void;
+
         apply(skeleton: Skeleton, lastTime: number, time: number, firedEvents: Array<Event>, alpha: number, blend: MixBlend, direction: MixDirection): void;
     }
 }
@@ -260,35 +352,64 @@ declare module spine {
         animationsChanged: boolean;
         timeScale: number;
         trackEntryPool: Pool<TrackEntry>;
+
         constructor(data: AnimationStateData);
+
         update(delta: number): void;
+
         updateMixingFrom(to: TrackEntry, delta: number): boolean;
+
         apply(skeleton: Skeleton): boolean;
+
         applyMixingFrom(to: TrackEntry, skeleton: Skeleton, blend: MixBlend): number;
+
         applyRotateTimeline(timeline: Timeline, skeleton: Skeleton, time: number, alpha: number, blend: MixBlend, timelinesRotation: Array<number>, i: number, firstFrame: boolean): void;
+
         queueEvents(entry: TrackEntry, animationTime: number): void;
+
         clearTracks(): void;
+
         clearTrack(trackIndex: number): void;
+
         setCurrent(index: number, current: TrackEntry, interrupt: boolean): void;
+
         setAnimation(trackIndex: number, animationName: string, loop: boolean): TrackEntry;
+
         setAnimationWith(trackIndex: number, animation: Animation, loop: boolean): TrackEntry;
+
         addAnimation(trackIndex: number, animationName: string, loop: boolean, delay: number): TrackEntry;
+
         addAnimationWith(trackIndex: number, animation: Animation, loop: boolean, delay: number): TrackEntry;
+
         setEmptyAnimation(trackIndex: number, mixDuration: number): TrackEntry;
+
         addEmptyAnimation(trackIndex: number, mixDuration: number, delay: number): TrackEntry;
+
         setEmptyAnimations(mixDuration: number): void;
+
         expandToIndex(index: number): TrackEntry;
+
         trackEntry(trackIndex: number, animation: Animation, loop: boolean, last: TrackEntry): TrackEntry;
+
         disposeNext(entry: TrackEntry): void;
+
         _animationsChanged(): void;
+
         computeHold(entry: TrackEntry): void;
+
         computeNotLast(entry: TrackEntry): void;
+
         getCurrent(trackIndex: number): TrackEntry;
+
         addListener(listener: AnimationStateListener2): void;
+
         removeListener(listener: AnimationStateListener2): void;
+
         clearListeners(): void;
+
         clearListenerNotifications(): void;
     }
+
     class TrackEntry {
         animation: Animation;
         next: TrackEntry;
@@ -320,26 +441,42 @@ declare module spine {
         timelineMode: number[];
         timelineHoldMix: TrackEntry[];
         timelinesRotation: number[];
+
         reset(): void;
+
         getAnimationTime(): number;
+
         setAnimationLast(animationLast: number): void;
+
         isComplete(): boolean;
+
         resetRotationDirections(): void;
     }
+
     class EventQueue {
         objects: Array<any>;
         drainDisabled: boolean;
         animState: AnimationState;
+
         constructor(animState: AnimationState);
+
         start(entry: TrackEntry): void;
+
         interrupt(entry: TrackEntry): void;
+
         end(entry: TrackEntry): void;
+
         dispose(entry: TrackEntry): void;
+
         complete(entry: TrackEntry): void;
+
         event(entry: TrackEntry, event: Event): void;
+
         drain(): void;
+
         clear(): void;
     }
+
     enum EventType {
         start = 0,
         interrupt = 1,
@@ -348,20 +485,32 @@ declare module spine {
         complete = 4,
         event = 5
     }
+
     interface AnimationStateListener2 {
         start(entry: TrackEntry): void;
+
         interrupt(entry: TrackEntry): void;
+
         end(entry: TrackEntry): void;
+
         dispose(entry: TrackEntry): void;
+
         complete(entry: TrackEntry): void;
+
         event(entry: TrackEntry, event: Event): void;
     }
+
     abstract class AnimationStateAdapter2 implements AnimationStateListener2 {
         start(entry: TrackEntry): void;
+
         interrupt(entry: TrackEntry): void;
+
         end(entry: TrackEntry): void;
+
         dispose(entry: TrackEntry): void;
+
         complete(entry: TrackEntry): void;
+
         event(entry: TrackEntry, event: Event): void;
     }
 }
@@ -370,48 +519,74 @@ declare module spine {
         skeletonData: SkeletonData;
         animationToMixTime: Map<number>;
         defaultMix: number;
+
         constructor(skeletonData: SkeletonData);
+
         setMix(fromName: string, toName: string, duration: number): void;
+
         setMixWith(from: Animation, to: Animation, duration: number): void;
+
         getMix(from: Animation, to: Animation): number;
     }
 }
 declare module spine {
     class AssetManager implements Disposable {
+        private static downloadText;
+        private static downloadBinary;
         private pathPrefix;
         private textureLoader;
         private assets;
         private errors;
         private toLoad;
         private loaded;
+
         constructor(textureLoader: (image: HTMLImageElement) => any, pathPrefix?: string);
-        private static downloadText;
-        private static downloadBinary;
+
         loadBinary(path: string, success?: (path: string, binary: Uint8Array) => void, error?: (path: string, error: string) => void): void;
+
         loadText(path: string, success?: (path: string, text: string) => void, error?: (path: string, error: string) => void): void;
+
         loadTexture(path: string, success?: (path: string, image: HTMLImageElement) => void, error?: (path: string, error: string) => void): void;
+
         loadTextureData(path: string, data: string, success?: (path: string, image: HTMLImageElement) => void, error?: (path: string, error: string) => void): void;
+
         loadTextureAtlas(path: string, success?: (path: string, atlas: TextureAtlas) => void, error?: (path: string, error: string) => void): void;
+
         get(path: string): any;
+
         remove(path: string): void;
+
         removeAll(): void;
+
         isLoadingComplete(): boolean;
+
         getToLoad(): number;
+
         getLoaded(): number;
+
         dispose(): void;
+
         hasErrors(): boolean;
+
         getErrors(): Map<string>;
     }
 }
 declare module spine {
     class AtlasAttachmentLoader implements AttachmentLoader {
         atlas: TextureAtlas;
+
         constructor(atlas: TextureAtlas);
+
         newRegionAttachment(skin: Skin, name: string, path: string): RegionAttachment;
+
         newMeshAttachment(skin: Skin, name: string, path: string): MeshAttachment;
+
         newBoundingBoxAttachment(skin: Skin, name: string): BoundingBoxAttachment;
+
         newPathAttachment(skin: Skin, name: string): PathAttachment;
+
         newPointAttachment(skin: Skin, name: string): PointAttachment;
+
         newClippingAttachment(skin: Skin, name: string): ClippingAttachment;
     }
 }
@@ -452,21 +627,37 @@ declare module spine {
         worldY: number;
         sorted: boolean;
         active: boolean;
+
         constructor(data: BoneData, skeleton: Skeleton, parent: Bone);
+
         isActive(): boolean;
+
         update(): void;
+
         updateWorldTransform(): void;
+
         updateWorldTransformWith(x: number, y: number, rotation: number, scaleX: number, scaleY: number, shearX: number, shearY: number): void;
+
         setToSetupPose(): void;
+
         getWorldRotationX(): number;
+
         getWorldRotationY(): number;
+
         getWorldScaleX(): number;
+
         getWorldScaleY(): number;
+
         updateAppliedTransform(): void;
+
         worldToLocal(world: Vector2): Vector2;
+
         localToWorld(local: Vector2): Vector2;
+
         worldToLocalRotation(worldRotation: number): number;
+
         localToWorldRotation(localRotation: number): number;
+
         rotateWorld(degrees: number): void;
     }
 }
@@ -486,8 +677,10 @@ declare module spine {
         transformMode: TransformMode;
         skinRequired: boolean;
         color: Color;
+
         constructor(index: number, name: string, parent: BoneData);
     }
+
     enum TransformMode {
         Normal = 0,
         OnlyTranslation = 1,
@@ -501,6 +694,7 @@ declare module spine {
         name: string;
         order: number;
         skinRequired: boolean;
+
         constructor(name: string, order: number, skinRequired: boolean);
     }
 }
@@ -513,6 +707,7 @@ declare module spine {
         time: number;
         volume: number;
         balance: number;
+
         constructor(time: number, data: EventData);
     }
 }
@@ -525,6 +720,7 @@ declare module spine {
         audioPath: string;
         volume: number;
         balance: number;
+
         constructor(name: string);
     }
 }
@@ -539,11 +735,17 @@ declare module spine {
         mix: number;
         softness: number;
         active: boolean;
+
         constructor(data: IkConstraintData, skeleton: Skeleton);
+
         isActive(): boolean;
+
         apply(): void;
+
         update(): void;
+
         apply1(bone: Bone, targetX: number, targetY: number, compress: boolean, stretch: boolean, uniform: boolean, alpha: number): void;
+
         apply2(parent: Bone, child: Bone, targetX: number, targetY: number, bendDir: number, stretch: boolean, softness: number, alpha: number): void;
     }
 }
@@ -557,6 +759,7 @@ declare module spine {
         uniform: boolean;
         mix: number;
         softness: number;
+
         constructor(name: string);
     }
 }
@@ -580,13 +783,21 @@ declare module spine {
         lengths: number[];
         segments: number[];
         active: boolean;
+
         constructor(data: PathConstraintData, skeleton: Skeleton);
+
         isActive(): boolean;
+
         apply(): void;
+
         update(): void;
+
         computeWorldPositions(path: PathAttachment, spacesCount: number, tangents: boolean, percentPosition: boolean, percentSpacing: boolean): number[];
+
         addBeforePosition(p: number, temp: Array<number>, i: number, out: Array<number>, o: number): void;
+
         addAfterPosition(p: number, temp: Array<number>, i: number, out: Array<number>, o: number): void;
+
         addCurvePosition(p: number, x1: number, y1: number, cx1: number, cy1: number, cx2: number, cy2: number, x2: number, y2: number, out: Array<number>, o: number, tangents: boolean): void;
     }
 }
@@ -602,17 +813,21 @@ declare module spine {
         spacing: number;
         rotateMix: number;
         translateMix: number;
+
         constructor(name: string);
     }
+
     enum PositionMode {
         Fixed = 0,
         Percent = 1
     }
+
     enum SpacingMode {
         Length = 0,
         Fixed = 1,
         Percent = 2
     }
+
     enum RotateMode {
         Tangent = 0,
         Chain = 1,
@@ -626,16 +841,25 @@ declare module spine {
         private queuedAssets;
         private rawAssets;
         private errors;
-        constructor(pathPrefix?: string);
         private queueAsset;
-        loadText(clientId: string, path: string): void;
-        loadJson(clientId: string, path: string): void;
-        loadTexture(clientId: string, textureLoader: (image: HTMLImageElement) => any, path: string): void;
-        get(clientId: string, path: string): any;
         private updateClientAssets;
+
+        constructor(pathPrefix?: string);
+
+        loadText(clientId: string, path: string): void;
+
+        loadJson(clientId: string, path: string): void;
+
+        loadTexture(clientId: string, textureLoader: (image: HTMLImageElement) => any, path: string): void;
+
+        get(clientId: string, path: string): any;
+
         isLoadingComplete(clientId: string): boolean;
+
         dispose(): void;
+
         hasErrors(): boolean;
+
         getErrors(): Map<string>;
     }
 }
@@ -657,33 +881,61 @@ declare module spine {
         scaleY: number;
         x: number;
         y: number;
+
         constructor(data: SkeletonData);
+
         updateCache(): void;
+
         sortIkConstraint(constraint: IkConstraint): void;
+
         sortPathConstraint(constraint: PathConstraint): void;
+
         sortTransformConstraint(constraint: TransformConstraint): void;
+
         sortPathConstraintAttachment(skin: Skin, slotIndex: number, slotBone: Bone): void;
+
         sortPathConstraintAttachmentWith(attachment: Attachment, slotBone: Bone): void;
+
         sortBone(bone: Bone): void;
+
         sortReset(bones: Array<Bone>): void;
+
         updateWorldTransform(): void;
+
         setToSetupPose(): void;
+
         setBonesToSetupPose(): void;
+
         setSlotsToSetupPose(): void;
+
         getRootBone(): Bone;
+
         findBone(boneName: string): Bone;
+
         findBoneIndex(boneName: string): number;
+
         findSlot(slotName: string): Slot;
+
         findSlotIndex(slotName: string): number;
+
         setSkinByName(skinName: string): void;
+
         setSkin(newSkin: Skin): void;
+
         getAttachmentByName(slotName: string, attachmentName: string): Attachment;
+
         getAttachment(slotIndex: number, attachmentName: string): Attachment;
+
         setAttachment(slotName: string, attachmentName: string): void;
+
         findIkConstraint(constraintName: string): IkConstraint;
+
         findTransformConstraint(constraintName: string): TransformConstraint;
+
         findPathConstraint(constraintName: string): PathConstraint;
+
         getBounds(offset: Vector2, size: Vector2, temp?: Array<number>): void;
+
         update(delta: number): void;
     }
 }
@@ -711,8 +963,6 @@ declare module spine {
         attachmentLoader: AttachmentLoader;
         scale: number;
         private linkedMeshes;
-        constructor(attachmentLoader: AttachmentLoader);
-        readSkeletonData(binary: Uint8Array): SkeletonData;
         private readSkin;
         private readAttachment;
         private readVertices;
@@ -720,6 +970,11 @@ declare module spine {
         private readShortArray;
         private readAnimation;
         private readCurve;
+
+        constructor(attachmentLoader: AttachmentLoader);
+
+        readSkeletonData(binary: Uint8Array): SkeletonData;
+
         setCurve(timeline: CurveTimeline, frameIndex: number, cx1: number, cy1: number, cx2: number, cy2: number): void;
     }
 }
@@ -732,37 +987,56 @@ declare module spine {
         boundingBoxes: BoundingBoxAttachment[];
         polygons: ArrayLike<number>[];
         private polygonPool;
+
         update(skeleton: Skeleton, updateAabb: boolean): void;
+
         aabbCompute(): void;
+
         aabbContainsPoint(x: number, y: number): boolean;
+
         aabbIntersectsSegment(x1: number, y1: number, x2: number, y2: number): boolean;
+
         aabbIntersectsSkeleton(bounds: SkeletonBounds): boolean;
+
         containsPoint(x: number, y: number): BoundingBoxAttachment;
+
         containsPointPolygon(polygon: ArrayLike<number>, x: number, y: number): boolean;
+
         intersectsSegment(x1: number, y1: number, x2: number, y2: number): BoundingBoxAttachment;
+
         intersectsSegmentPolygon(polygon: ArrayLike<number>, x1: number, y1: number, x2: number, y2: number): boolean;
+
         getPolygon(boundingBox: BoundingBoxAttachment): ArrayLike<number>;
+
         getWidth(): number;
+
         getHeight(): number;
     }
 }
 declare module spine {
     class SkeletonClipping {
+        clippedVertices: number[];
+        clippedTriangles: number[];
         private triangulator;
         private clippingPolygon;
         private clipOutput;
-        clippedVertices: number[];
-        clippedTriangles: number[];
         private scratch;
         private clipAttachment;
         private clippingPolygons;
-        clipStart(slot: Slot, clip: ClippingAttachment): number;
-        clipEndWithSlot(slot: Slot): void;
-        clipEnd(): void;
-        isClipping(): boolean;
-        clipTriangles(vertices: ArrayLike<number>, verticesLength: number, triangles: ArrayLike<number>, trianglesLength: number, uvs: ArrayLike<number>, light: Color, dark: Color, twoColor: boolean): void;
-        clip(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, clippingArea: Array<number>, output: Array<number>): boolean;
+
         static makeClockwise(polygon: ArrayLike<number>): void;
+
+        clipStart(slot: Slot, clip: ClippingAttachment): number;
+
+        clipEndWithSlot(slot: Slot): void;
+
+        clipEnd(): void;
+
+        isClipping(): boolean;
+
+        clipTriangles(vertices: ArrayLike<number>, verticesLength: number, triangles: ArrayLike<number>, trianglesLength: number, uvs: ArrayLike<number>, light: Color, dark: Color, twoColor: boolean): void;
+
+        clip(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, clippingArea: Array<number>, output: Array<number>): boolean;
     }
 }
 declare module spine {
@@ -786,16 +1060,27 @@ declare module spine {
         fps: number;
         imagesPath: string;
         audioPath: string;
+
         findBone(boneName: string): BoneData;
+
         findBoneIndex(boneName: string): number;
+
         findSlot(slotName: string): SlotData;
+
         findSlotIndex(slotName: string): number;
+
         findSkin(skinName: string): Skin;
+
         findEvent(eventDataName: string): EventData;
+
         findAnimation(animationName: string): Animation;
+
         findIkConstraint(constraintName: string): IkConstraintData;
+
         findTransformConstraint(constraintName: string): TransformConstraintData;
+
         findPathConstraint(constraintName: string): PathConstraintData;
+
         findPathConstraintIndex(pathConstraintName: string): number;
     }
 }
@@ -804,18 +1089,30 @@ declare module spine {
         attachmentLoader: AttachmentLoader;
         scale: number;
         private linkedMeshes;
+
         constructor(attachmentLoader: AttachmentLoader);
-        readSkeletonData(json: string | any): SkeletonData;
-        readAttachment(map: any, skin: Skin, slotIndex: number, name: string, skeletonData: SkeletonData): Attachment;
-        readVertices(map: any, attachment: VertexAttachment, verticesLength: number): void;
-        readAnimation(map: any, name: string, skeletonData: SkeletonData): void;
-        readCurve(map: any, timeline: CurveTimeline, frameIndex: number): void;
-        getValue(map: any, prop: string, defaultValue: any): any;
+
         static blendModeFromString(str: string): BlendMode;
+
         static positionModeFromString(str: string): PositionMode;
+
         static spacingModeFromString(str: string): SpacingMode;
+
         static rotateModeFromString(str: string): RotateMode;
+
         static transformModeFromString(str: string): TransformMode;
+
+        readSkeletonData(json: string | any): SkeletonData;
+
+        readAttachment(map: any, skin: Skin, slotIndex: number, name: string, skeletonData: SkeletonData): Attachment;
+
+        readVertices(map: any, attachment: VertexAttachment, verticesLength: number): void;
+
+        readAnimation(map: any, name: string, skeletonData: SkeletonData): void;
+
+        readCurve(map: any, timeline: CurveTimeline, frameIndex: number): void;
+
+        getValue(map: any, prop: string, defaultValue: any): any;
     }
 }
 declare module spine {
@@ -823,22 +1120,34 @@ declare module spine {
         slotIndex: number;
         name: string;
         attachment: Attachment;
+
         constructor(slotIndex: number, name: string, attachment: Attachment);
     }
+
     class Skin {
         name: string;
         attachments: Map<Attachment>[];
         bones: BoneData[];
         constraints: ConstraintData[];
+
         constructor(name: string);
+
         setAttachment(slotIndex: number, name: string, attachment: Attachment): void;
+
         addSkin(skin: Skin): void;
+
         copySkin(skin: Skin): void;
+
         getAttachment(slotIndex: number, name: string): Attachment;
+
         removeAttachment(slotIndex: number, name: string): void;
+
         getAttachments(): Array<SkinEntry>;
+
         getAttachmentsForSlot(slotIndex: number, attachments: Array<SkinEntry>): void;
+
         clear(): void;
+
         attachAll(skeleton: Skeleton, oldSkin: Skin): void;
     }
 }
@@ -848,14 +1157,20 @@ declare module spine {
         bone: Bone;
         color: Color;
         darkColor: Color;
+        deform: number[];
         private attachment;
         private attachmentTime;
-        deform: number[];
+
         constructor(data: SlotData, bone: Bone);
+
         getAttachment(): Attachment;
+
         setAttachment(attachment: Attachment): void;
+
         setAttachmentTime(time: number): void;
+
         getAttachmentTime(): number;
+
         setToSetupPose(): void;
     }
 }
@@ -868,20 +1183,29 @@ declare module spine {
         darkColor: Color;
         attachmentName: string;
         blendMode: BlendMode;
+
         constructor(index: number, name: string, boneData: BoneData);
     }
 }
 declare module spine {
     abstract class Texture {
         protected _image: HTMLImageElement;
+
         constructor(image: HTMLImageElement);
-        getImage(): HTMLImageElement;
-        abstract setFilters(minFilter: TextureFilter, magFilter: TextureFilter): void;
-        abstract setWraps(uWrap: TextureWrap, vWrap: TextureWrap): void;
-        abstract dispose(): void;
+
         static filterFromString(text: string): TextureFilter;
+
         static wrapFromString(text: string): TextureWrap;
+
+        getImage(): HTMLImageElement;
+
+        abstract setFilters(minFilter: TextureFilter, magFilter: TextureFilter): void;
+
+        abstract setWraps(uWrap: TextureWrap, vWrap: TextureWrap): void;
+
+        abstract dispose(): void;
     }
+
     enum TextureFilter {
         Nearest = 9728,
         Linear = 9729,
@@ -891,11 +1215,13 @@ declare module spine {
         MipMapNearestLinear = 9986,
         MipMapLinearLinear = 9987
     }
+
     enum TextureWrap {
         MirroredRepeat = 33648,
         ClampToEdge = 33071,
         Repeat = 10497
     }
+
     class TextureRegion {
         renderObject: any;
         u: number;
@@ -910,9 +1236,12 @@ declare module spine {
         originalWidth: number;
         originalHeight: number;
     }
+
     class FakeTexture extends Texture {
         setFilters(minFilter: TextureFilter, magFilter: TextureFilter): void;
+
         setWraps(uWrap: TextureWrap, vWrap: TextureWrap): void;
+
         dispose(): void;
     }
 }
@@ -920,11 +1249,15 @@ declare module spine {
     class TextureAtlas implements Disposable {
         pages: TextureAtlasPage[];
         regions: TextureAtlasRegion[];
-        constructor(atlasText: string, textureLoader: (path: string) => any);
         private load;
+
+        constructor(atlasText: string, textureLoader: (path: string) => any);
+
         findRegion(name: string): TextureAtlasRegion;
+
         dispose(): void;
     }
+
     class TextureAtlasPage {
         name: string;
         minFilter: TextureFilter;
@@ -935,6 +1268,7 @@ declare module spine {
         width: number;
         height: number;
     }
+
     class TextureAtlasRegion extends TextureRegion {
         page: TextureAtlasPage;
         name: string;
@@ -957,13 +1291,21 @@ declare module spine {
         shearMix: number;
         temp: Vector2;
         active: boolean;
+
         constructor(data: TransformConstraintData, skeleton: Skeleton);
+
         isActive(): boolean;
+
         apply(): void;
+
         update(): void;
+
         applyAbsoluteWorld(): void;
+
         applyRelativeWorld(): void;
+
         applyAbsoluteLocal(): void;
+
         applyRelativeLocal(): void;
     }
 }
@@ -983,11 +1325,15 @@ declare module spine {
         offsetShearY: number;
         relative: boolean;
         local: boolean;
+
         constructor(name: string);
     }
 }
 declare module spine {
     class Triangulator {
+        private static isConcave;
+        private static positiveArea;
+        private static winding;
         private convexPolygons;
         private convexPolygonsIndices;
         private indicesArray;
@@ -995,16 +1341,16 @@ declare module spine {
         private triangles;
         private polygonPool;
         private polygonIndicesPool;
+
         triangulate(verticesArray: ArrayLike<number>): Array<number>;
+
         decompose(verticesArray: Array<number>, triangles: Array<number>): Array<Array<number>>;
-        private static isConcave;
-        private static positiveArea;
-        private static winding;
     }
 }
 declare module spine {
     interface Updatable {
         update(): void;
+
         isActive(): boolean;
     }
 }
@@ -1012,38 +1358,55 @@ declare module spine {
     interface Map<T> {
         [key: string]: T;
     }
+
     class IntSet {
         array: number[];
+
         add(value: number): boolean;
+
         contains(value: number): boolean;
+
         remove(value: number): void;
+
         clear(): void;
     }
+
     interface Disposable {
         dispose(): void;
     }
+
     interface Restorable {
         restore(): void;
     }
+
     class Color {
-        r: number;
-        g: number;
-        b: number;
-        a: number;
         static WHITE: Color;
         static RED: Color;
         static GREEN: Color;
         static BLUE: Color;
         static MAGENTA: Color;
+        r: number;
+        g: number;
+        b: number;
+        a: number;
+
         constructor(r?: number, g?: number, b?: number, a?: number);
-        set(r: number, g: number, b: number, a: number): this;
-        setFromColor(c: Color): this;
-        setFromString(hex: string): this;
-        add(r: number, g: number, b: number, a: number): this;
-        clamp(): this;
+
         static rgba8888ToColor(color: Color, value: number): void;
+
         static rgb888ToColor(color: Color, value: number): void;
+
+        set(r: number, g: number, b: number, a: number): this;
+
+        setFromColor(c: Color): this;
+
+        setFromString(hex: string): this;
+
+        add(r: number, g: number, b: number, a: number): this;
+
+        clamp(): this;
     }
+
     class MathUtils {
         static PI: number;
         static PI2: number;
@@ -1051,61 +1414,100 @@ declare module spine {
         static radDeg: number;
         static degreesToRadians: number;
         static degRad: number;
+
         static clamp(value: number, min: number, max: number): number;
+
         static cosDeg(degrees: number): number;
+
         static sinDeg(degrees: number): number;
+
         static signum(value: number): number;
+
         static toInt(x: number): number;
+
         static cbrt(x: number): number;
+
         static randomTriangular(min: number, max: number): number;
+
         static randomTriangularWith(min: number, max: number, mode: number): number;
     }
+
     abstract class Interpolation {
-        protected abstract applyInternal(a: number): number;
         apply(start: number, end: number, a: number): number;
+
+        protected abstract applyInternal(a: number): number;
     }
+
     class Pow extends Interpolation {
         protected power: number;
+
         constructor(power: number);
+
         applyInternal(a: number): number;
     }
+
     class PowOut extends Pow {
         constructor(power: number);
+
         applyInternal(a: number): number;
     }
+
     class Utils {
         static SUPPORTS_TYPED_ARRAYS: boolean;
+
         static arrayCopy<T>(source: ArrayLike<T>, sourceStart: number, dest: ArrayLike<T>, destStart: number, numElements: number): void;
+
         static setArraySize<T>(array: Array<T>, size: number, value?: any): Array<T>;
+
         static ensureArrayCapacity<T>(array: Array<T>, size: number, value?: any): Array<T>;
+
         static newArray<T>(size: number, defaultValue: T): Array<T>;
+
         static newFloatArray(size: number): ArrayLike<number>;
+
         static newShortArray(size: number): ArrayLike<number>;
+
         static toFloatArray(array: Array<number>): number[] | Float32Array;
+
         static toSinglePrecision(value: number): number;
+
         static webkit602BugfixHelper(alpha: number, blend: MixBlend): void;
+
         static contains<T>(array: Array<T>, element: T, identity?: boolean): boolean;
     }
+
     class DebugUtils {
         static logBones(skeleton: Skeleton): void;
     }
+
     class Pool<T> {
         private items;
         private instantiator;
+
         constructor(instantiator: () => T);
+
         obtain(): T;
+
         free(item: T): void;
+
         freeAll(items: ArrayLike<T>): void;
+
         clear(): void;
     }
+
     class Vector2 {
         x: number;
         y: number;
+
         constructor(x?: number, y?: number);
+
         set(x: number, y: number): Vector2;
+
         length(): number;
+
         normalize(): this;
     }
+
     class TimeKeeper {
         maxDelta: number;
         framesPerSecond: number;
@@ -1114,40 +1516,55 @@ declare module spine {
         private lastTime;
         private frameCount;
         private frameTime;
+
         update(): void;
     }
+
     interface ArrayLike<T> {
         length: number;
+
         [n: number]: T;
     }
+
     class WindowedMean {
         values: Array<number>;
         addedValues: number;
         lastValue: number;
         mean: number;
         dirty: boolean;
+
         constructor(windowSize?: number);
+
         hasEnoughData(): boolean;
+
         addValue(value: number): void;
+
         getMean(): number;
     }
 }
 declare module spine {
     interface VertexEffect {
         begin(skeleton: Skeleton): void;
+
         transform(position: Vector2, uv: Vector2, light: Color, dark: Color): void;
+
         end(): void;
     }
 }
+
 interface Math {
     fround(n: number): number;
 }
+
 declare module spine {
     abstract class Attachment {
         name: string;
+
         constructor(name: string);
+
         abstract copy(): Attachment;
     }
+
     abstract class VertexAttachment extends Attachment {
         private static nextID;
         id: number;
@@ -1155,18 +1572,26 @@ declare module spine {
         vertices: ArrayLike<number>;
         worldVerticesLength: number;
         deformAttachment: VertexAttachment;
+
         constructor(name: string);
+
         computeWorldVertices(slot: Slot, start: number, count: number, worldVertices: ArrayLike<number>, offset: number, stride: number): void;
+
         copyTo(attachment: VertexAttachment): void;
     }
 }
 declare module spine {
     interface AttachmentLoader {
         newRegionAttachment(skin: Skin, name: string, path: string): RegionAttachment;
+
         newMeshAttachment(skin: Skin, name: string, path: string): MeshAttachment;
+
         newBoundingBoxAttachment(skin: Skin, name: string): BoundingBoxAttachment;
+
         newPathAttachment(skin: Skin, name: string): PathAttachment;
+
         newPointAttachment(skin: Skin, name: string): PointAttachment;
+
         newClippingAttachment(skin: Skin, name: string): ClippingAttachment;
     }
 }
@@ -1184,7 +1609,9 @@ declare module spine {
 declare module spine {
     class BoundingBoxAttachment extends VertexAttachment {
         color: Color;
+
         constructor(name: string);
+
         copy(): Attachment;
     }
 }
@@ -1192,7 +1619,9 @@ declare module spine {
     class ClippingAttachment extends VertexAttachment {
         endSlot: SlotData;
         color: Color;
+
         constructor(name: string);
+
         copy(): Attachment;
     }
 }
@@ -1208,13 +1637,19 @@ declare module spine {
         height: number;
         hullLength: number;
         edges: Array<number>;
-        private parentMesh;
         tempColor: Color;
+        private parentMesh;
+
         constructor(name: string);
+
         updateUVs(): void;
+
         getParentMesh(): MeshAttachment;
+
         setParentMesh(parentMesh: MeshAttachment): void;
+
         copy(): Attachment;
+
         newLinkedMesh(): MeshAttachment;
     }
 }
@@ -1224,7 +1659,9 @@ declare module spine {
         closed: boolean;
         constantSpeed: boolean;
         color: Color;
+
         constructor(name: string);
+
         copy(): Attachment;
     }
 }
@@ -1234,9 +1671,13 @@ declare module spine {
         y: number;
         rotation: number;
         color: Color;
+
         constructor(name: string);
+
         computeWorldPosition(bone: Bone, point: Vector2): Vector2;
+
         computeWorldRotation(bone: Bone): number;
+
         copy(): Attachment;
     }
 }
@@ -1296,10 +1737,15 @@ declare module spine {
         offset: ArrayLike<number>;
         uvs: ArrayLike<number>;
         tempColor: Color;
+
         constructor(name: string);
+
         updateOffset(): void;
+
         setRegion(region: TextureRegion): void;
+
         computeWorldVertices(bone: Bone, worldVertices: ArrayLike<number>, offset: number, stride: number): void;
+
         copy(): Attachment;
     }
 }
@@ -1307,9 +1753,13 @@ declare module spine {
     class JitterEffect implements VertexEffect {
         jitterX: number;
         jitterY: number;
+
         constructor(jitterX: number, jitterY: number);
+
         begin(skeleton: Skeleton): void;
+
         transform(position: Vector2, uv: Vector2, light: Color, dark: Color): void;
+
         end(): void;
     }
 }
@@ -1322,9 +1772,13 @@ declare module spine {
         angle: number;
         private worldX;
         private worldY;
+
         constructor(radius: number);
+
         begin(skeleton: Skeleton): void;
+
         transform(position: Vector2, uv: Vector2, light: Color, dark: Color): void;
+
         end(): void;
     }
 }
@@ -1336,8 +1790,11 @@ declare module spine.canvas {
 declare module spine.canvas {
     class CanvasTexture extends Texture {
         constructor(image: HTMLImageElement);
+
         setFilters(minFilter: TextureFilter, magFilter: TextureFilter): void;
+
         setWraps(uWrap: TextureWrap, vWrap: TextureWrap): void;
+
         dispose(): void;
     }
 }
@@ -1345,17 +1802,19 @@ declare module spine.canvas {
     class SkeletonRenderer {
         static QUAD_TRIANGLES: number[];
         static VERTEX_SIZE: number;
-        private ctx;
         triangleRendering: boolean;
         debugRendering: boolean;
+        private ctx;
         private vertices;
         private tempColor;
-        constructor(context: CanvasRenderingContext2D);
-        draw(skeleton: Skeleton): void;
         private drawImages;
         private drawTriangles;
         private drawTriangle;
         private computeRegionVertices;
         private computeMeshVertices;
+
+        constructor(context: CanvasRenderingContext2D);
+
+        draw(skeleton: Skeleton): void;
     }
 }

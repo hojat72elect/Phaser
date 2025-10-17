@@ -15,8 +15,7 @@ var FloatBetween = require('../FloatBetween');
  *
  * @return {number} The angle, in degrees.
  */
-var RandomDegrees = function ()
-{
+var RandomDegrees = function () {
     return FloatBetween(-180, 180);
 };
 

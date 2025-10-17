@@ -19,8 +19,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Graphics} The Game Object that was created.
  */
-GameObjectFactory.register('graphics', function (config)
-{
+GameObjectFactory.register('graphics', function (config) {
     return this.displayList.add(new Graphics(this.scene, config));
 });
 

@@ -10,7 +10,7 @@ var tempMatrix1 = new TransformMatrix();
 var tempMatrix2 = new TransformMatrix();
 var tempMatrix3 = new TransformMatrix();
 
-var result = { camera: tempMatrix1, sprite: tempMatrix2, calc: tempMatrix3 };
+var result = {camera: tempMatrix1, sprite: tempMatrix2, calc: tempMatrix3};
 
 /**
  * Calculates the Transform Matrix of the given Game Object and Camera, factoring in
@@ -31,8 +31,7 @@ var result = { camera: tempMatrix1, sprite: tempMatrix2, calc: tempMatrix3 };
  *
  * @return {Phaser.Types.GameObjects.GetCalcMatrixResults} The results object containing the updated transform matrices.
  */
-var GetCalcMatrix = function (src, camera, parentMatrix)
-{
+var GetCalcMatrix = function (src, camera, parentMatrix) {
     var camMatrix = tempMatrix1;
     var spriteMatrix = tempMatrix2;
     var calcMatrix = tempMatrix3;
@@ -41,17 +40,14 @@ var GetCalcMatrix = function (src, camera, parentMatrix)
 
     camMatrix.copyFrom(camera.matrix);
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         //  Multiply the camera by the parent matrix
         camMatrix.multiplyWithOffset(parentMatrix, -camera.scrollX * src.scrollFactorX, -camera.scrollY * src.scrollFactorY);
 
         //  Undo the camera scroll
         spriteMatrix.e = src.x;
         spriteMatrix.f = src.y;
-    }
-    else
-    {
+    } else {
         spriteMatrix.e -= camera.scrollX * src.scrollFactorX;
         spriteMatrix.f -= camera.scrollY * src.scrollFactorY;
     }

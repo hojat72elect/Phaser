@@ -20,9 +20,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} A Point object where `x` holds the width and `y` holds the height of the Rectangle.
  */
-var GetSize = function (rect, out)
-{
-    if (out === undefined) { out = new Point(); }
+var GetSize = function (rect, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     out.x = rect.width;
     out.y = rect.height;

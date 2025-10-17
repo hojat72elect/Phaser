@@ -78,227 +78,229 @@ var Rope = new Class({
 
     initialize:
 
-    function Rope (scene, x, y, texture, frame, points, horizontal, colors, alphas)
-    {
-        if (texture === undefined) { texture = '__DEFAULT'; }
-        if (points === undefined) { points = 2; }
-        if (horizontal === undefined) { horizontal = true; }
+        function Rope(scene, x, y, texture, frame, points, horizontal, colors, alphas) {
+            if (texture === undefined) {
+                texture = '__DEFAULT';
+            }
+            if (points === undefined) {
+                points = 2;
+            }
+            if (horizontal === undefined) {
+                horizontal = true;
+            }
 
-        GameObject.call(this, scene, 'Rope');
+            GameObject.call(this, scene, 'Rope');
 
-        /**
-         * The Animation State of this Rope.
-         *
-         * @name Phaser.GameObjects.Rope#anims
-         * @type {Phaser.Animations.AnimationState}
-         * @since 3.23.0
-         */
-        this.anims = new AnimationState(this);
+            /**
+             * The Animation State of this Rope.
+             *
+             * @name Phaser.GameObjects.Rope#anims
+             * @type {Phaser.Animations.AnimationState}
+             * @since 3.23.0
+             */
+            this.anims = new AnimationState(this);
 
-        /**
-         * An array containing the points data for this Rope.
-         *
-         * Each point should be given as a Vector2Like object (i.e. a Vector2, Geom.Point or object with public x/y properties).
-         *
-         * The point coordinates are given in local space, where 0 x 0 is the start of the Rope strip.
-         *
-         * You can modify the contents of this array directly in real-time to create interesting effects.
-         * If you do so, be sure to call `setDirty` _after_ modifying this array, so that the vertices data is
-         * updated before the next render. Alternatively, you can use the `setPoints` method instead.
-         *
-         * Should you need to change the _size_ of this array, then you should always use the `setPoints` method.
-         *
-         * @name Phaser.GameObjects.Rope#points
-         * @type {Phaser.Types.Math.Vector2Like[]}
-         * @since 3.23.0
-         */
-        this.points = points;
+            /**
+             * An array containing the points data for this Rope.
+             *
+             * Each point should be given as a Vector2Like object (i.e. a Vector2, Geom.Point or object with public x/y properties).
+             *
+             * The point coordinates are given in local space, where 0 x 0 is the start of the Rope strip.
+             *
+             * You can modify the contents of this array directly in real-time to create interesting effects.
+             * If you do so, be sure to call `setDirty` _after_ modifying this array, so that the vertices data is
+             * updated before the next render. Alternatively, you can use the `setPoints` method instead.
+             *
+             * Should you need to change the _size_ of this array, then you should always use the `setPoints` method.
+             *
+             * @name Phaser.GameObjects.Rope#points
+             * @type {Phaser.Types.Math.Vector2Like[]}
+             * @since 3.23.0
+             */
+            this.points = points;
 
-        /**
-         * An array containing the vertices data for this Rope.
-         *
-         * This data is calculated automatically in the `updateVertices` method, based on the points provided.
-         *
-         * @name Phaser.GameObjects.Rope#vertices
-         * @type {Float32Array}
-         * @since 3.23.0
-         */
-        this.vertices;
+            /**
+             * An array containing the vertices data for this Rope.
+             *
+             * This data is calculated automatically in the `updateVertices` method, based on the points provided.
+             *
+             * @name Phaser.GameObjects.Rope#vertices
+             * @type {Float32Array}
+             * @since 3.23.0
+             */
+            this.vertices;
 
-        /**
-         * An array containing the uv data for this Rope.
-         *
-         * This data is calculated automatically in the `setPoints` method, based on the points provided.
-         *
-         * @name Phaser.GameObjects.Rope#uv
-         * @type {Float32Array}
-         * @since 3.23.0
-         */
-        this.uv;
+            /**
+             * An array containing the uv data for this Rope.
+             *
+             * This data is calculated automatically in the `setPoints` method, based on the points provided.
+             *
+             * @name Phaser.GameObjects.Rope#uv
+             * @type {Float32Array}
+             * @since 3.23.0
+             */
+            this.uv;
 
-        /**
-         * An array containing the color data for this Rope.
-         *
-         * Colors should be given as numeric RGB values, such as 0xff0000.
-         * You should provide _two_ color values for every point in the Rope, one for the top and one for the bottom of each quad.
-         *
-         * You can modify the contents of this array directly in real-time, however, should you need to change the _size_
-         * of the array, then you should use the `setColors` method instead.
-         *
-         * @name Phaser.GameObjects.Rope#colors
-         * @type {Uint32Array}
-         * @since 3.23.0
-         */
-        this.colors;
+            /**
+             * An array containing the color data for this Rope.
+             *
+             * Colors should be given as numeric RGB values, such as 0xff0000.
+             * You should provide _two_ color values for every point in the Rope, one for the top and one for the bottom of each quad.
+             *
+             * You can modify the contents of this array directly in real-time, however, should you need to change the _size_
+             * of the array, then you should use the `setColors` method instead.
+             *
+             * @name Phaser.GameObjects.Rope#colors
+             * @type {Uint32Array}
+             * @since 3.23.0
+             */
+            this.colors;
 
-        /**
-         * An array containing the alpha data for this Rope.
-         *
-         * Alphas should be given as float values, such as 0.5.
-         * You should provide _two_ alpha values for every point in the Rope, one for the top and one for the bottom of each quad.
-         *
-         * You can modify the contents of this array directly in real-time, however, should you need to change the _size_
-         * of the array, then you should use the `setAlphas` method instead.
-         *
-         * @name Phaser.GameObjects.Rope#alphas
-         * @type {Float32Array}
-         * @since 3.23.0
-         */
-        this.alphas;
+            /**
+             * An array containing the alpha data for this Rope.
+             *
+             * Alphas should be given as float values, such as 0.5.
+             * You should provide _two_ alpha values for every point in the Rope, one for the top and one for the bottom of each quad.
+             *
+             * You can modify the contents of this array directly in real-time, however, should you need to change the _size_
+             * of the array, then you should use the `setAlphas` method instead.
+             *
+             * @name Phaser.GameObjects.Rope#alphas
+             * @type {Float32Array}
+             * @since 3.23.0
+             */
+            this.alphas;
 
-        /**
-         * The tint fill mode.
-         *
-        * `false` = An additive tint (the default), where vertices colors are blended with the texture.
-        * `true` = A fill tint, where the vertices colors replace the texture, but respects texture alpha.
-         *
-         * @name Phaser.GameObjects.Rope#tintFill
-         * @type {boolean}
-         * @since 3.23.0
-         */
-        this.tintFill = (texture === '__DEFAULT') ? true : false;
+            /**
+             * The tint fill mode.
+             *
+             * `false` = An additive tint (the default), where vertices colors are blended with the texture.
+             * `true` = A fill tint, where the vertices colors replace the texture, but respects texture alpha.
+             *
+             * @name Phaser.GameObjects.Rope#tintFill
+             * @type {boolean}
+             * @since 3.23.0
+             */
+            this.tintFill = (texture === '__DEFAULT') ? true : false;
 
-        /**
-         * If the Rope is marked as `dirty` it will automatically recalculate its vertices
-         * the next time it renders. You can also force this by calling `updateVertices`.
-         *
-         * @name Phaser.GameObjects.Rope#dirty
-         * @type {boolean}
-         * @since 3.23.0
-         */
-        this.dirty = false;
+            /**
+             * If the Rope is marked as `dirty` it will automatically recalculate its vertices
+             * the next time it renders. You can also force this by calling `updateVertices`.
+             *
+             * @name Phaser.GameObjects.Rope#dirty
+             * @type {boolean}
+             * @since 3.23.0
+             */
+            this.dirty = false;
 
-        /**
-         * Are the Rope vertices aligned horizontally, in a strip, or vertically, in a column?
-         *
-         * This property is set during instantiation and cannot be changed directly.
-         * See the `setVertical` and `setHorizontal` methods.
-         *
-         * @name Phaser.GameObjects.Rope#horizontal
-         * @type {boolean}
-         * @readonly
-         * @since 3.23.0
-         */
-        this.horizontal = horizontal;
+            /**
+             * Are the Rope vertices aligned horizontally, in a strip, or vertically, in a column?
+             *
+             * This property is set during instantiation and cannot be changed directly.
+             * See the `setVertical` and `setHorizontal` methods.
+             *
+             * @name Phaser.GameObjects.Rope#horizontal
+             * @type {boolean}
+             * @readonly
+             * @since 3.23.0
+             */
+            this.horizontal = horizontal;
 
-        /**
-         * The horizontally flipped state of the Game Object.
-         *
-         * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
-         * Flipping always takes place from the middle of the texture and does not impact the scale value.
-         * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-         *
-         * @name Phaser.GameObjects.Rope#_flipX
-         * @type {boolean}
-         * @default false
-         * @private
-         * @since 3.23.0
-         */
-        this._flipX = false;
+            /**
+             * The horizontally flipped state of the Game Object.
+             *
+             * A Game Object that is flipped horizontally will render inversed on the horizontal axis.
+             * Flipping always takes place from the middle of the texture and does not impact the scale value.
+             * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
+             *
+             * @name Phaser.GameObjects.Rope#_flipX
+             * @type {boolean}
+             * @default false
+             * @private
+             * @since 3.23.0
+             */
+            this._flipX = false;
 
-        /**
-         * The vertically flipped state of the Game Object.
-         *
-         * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-         * Flipping always takes place from the middle of the texture and does not impact the scale value.
-         * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
-         *
-         * @name Phaser.GameObjects.Rope#_flipY
-         * @type {boolean}
-         * @default false
-         * @private
-         * @since 3.23.0
-         */
-        this._flipY = false;
+            /**
+             * The vertically flipped state of the Game Object.
+             *
+             * A Game Object that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
+             * Flipping always takes place from the middle of the texture and does not impact the scale value.
+             * If this Game Object has a physics body, it will not change the body. This is a rendering toggle only.
+             *
+             * @name Phaser.GameObjects.Rope#_flipY
+             * @type {boolean}
+             * @default false
+             * @private
+             * @since 3.23.0
+             */
+            this._flipY = false;
 
-        /**
-         * Internal Vector2 used for vertices updates.
-         *
-         * @name Phaser.GameObjects.Rope#_perp
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.23.0
-         */
-        this._perp = new Vector2();
+            /**
+             * Internal Vector2 used for vertices updates.
+             *
+             * @name Phaser.GameObjects.Rope#_perp
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.23.0
+             */
+            this._perp = new Vector2();
 
-        /**
-         * You can optionally choose to render the vertices of this Rope to a Graphics instance.
-         *
-         * Achieve this by setting the `debugCallback` and the `debugGraphic` properties.
-         *
-         * You can do this in a single call via the `Rope.setDebug` method, which will use the
-         * built-in debug function. You can also set it to your own callback. The callback
-         * will be invoked _once per render_ and sent the following parameters:
-         *
-         * `debugCallback(src, meshLength, verts)`
-         *
-         * `src` is the Rope instance being debugged.
-         * `meshLength` is the number of mesh vertices in total.
-         * `verts` is an array of the translated vertex coordinates.
-         *
-         * To disable rendering, set this property back to `null`.
-         *
-         * @name Phaser.GameObjects.Rope#debugCallback
-         * @type {function}
-         * @since 3.23.0
-         */
-        this.debugCallback = null;
+            /**
+             * You can optionally choose to render the vertices of this Rope to a Graphics instance.
+             *
+             * Achieve this by setting the `debugCallback` and the `debugGraphic` properties.
+             *
+             * You can do this in a single call via the `Rope.setDebug` method, which will use the
+             * built-in debug function. You can also set it to your own callback. The callback
+             * will be invoked _once per render_ and sent the following parameters:
+             *
+             * `debugCallback(src, meshLength, verts)`
+             *
+             * `src` is the Rope instance being debugged.
+             * `meshLength` is the number of mesh vertices in total.
+             * `verts` is an array of the translated vertex coordinates.
+             *
+             * To disable rendering, set this property back to `null`.
+             *
+             * @name Phaser.GameObjects.Rope#debugCallback
+             * @type {function}
+             * @since 3.23.0
+             */
+            this.debugCallback = null;
 
-        /**
-         * The Graphics instance that the debug vertices will be drawn to, if `setDebug` has
-         * been called.
-         *
-         * @name Phaser.GameObjects.Rope#debugGraphic
-         * @type {Phaser.GameObjects.Graphics}
-         * @since 3.23.0
-         */
-        this.debugGraphic = null;
+            /**
+             * The Graphics instance that the debug vertices will be drawn to, if `setDebug` has
+             * been called.
+             *
+             * @name Phaser.GameObjects.Rope#debugGraphic
+             * @type {Phaser.GameObjects.Graphics}
+             * @since 3.23.0
+             */
+            this.debugGraphic = null;
 
-        this.setTexture(texture, frame);
-        this.setPosition(x, y);
-        this.setSizeToFrame();
-        this.initPipeline(PIPELINE_CONST.ROPE_PIPELINE);
-        this.initPostPipeline();
+            this.setTexture(texture, frame);
+            this.setPosition(x, y);
+            this.setSizeToFrame();
+            this.initPipeline(PIPELINE_CONST.ROPE_PIPELINE);
+            this.initPostPipeline();
 
-        if (Array.isArray(points))
-        {
-            this.resizeArrays(points.length);
-        }
+            if (Array.isArray(points)) {
+                this.resizeArrays(points.length);
+            }
 
-        this.setPoints(points, colors, alphas);
+            this.setPoints(points, colors, alphas);
 
-        this.updateVertices();
-    },
+            this.updateVertices();
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
@@ -312,14 +314,12 @@ var Rope = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
+    preUpdate: function (time, delta) {
         var prevFrame = this.anims.currentFrame;
 
         this.anims.update(time, delta);
 
-        if (this.anims.currentFrame !== prevFrame)
-        {
+        if (this.anims.currentFrame !== prevFrame) {
             this.updateUVs();
             this.updateVertices();
         }
@@ -337,8 +337,7 @@ var Rope = new Class({
      *
      * @return {this} This Game Object.
      */
-    play: function (key, ignoreIfPlaying, startFrame)
-    {
+    play: function (key, ignoreIfPlaying, startFrame) {
         this.anims.play(key, ignoreIfPlaying, startFrame);
 
         return this;
@@ -354,8 +353,7 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setDirty: function ()
-    {
+    setDirty: function () {
         this.dirty = true;
 
         return this;
@@ -376,12 +374,12 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setHorizontal: function (points, colors, alphas)
-    {
-        if (points === undefined) { points = this.points.length; }
+    setHorizontal: function (points, colors, alphas) {
+        if (points === undefined) {
+            points = this.points.length;
+        }
 
-        if (this.horizontal)
-        {
+        if (this.horizontal) {
             return this;
         }
 
@@ -405,12 +403,12 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setVertical: function (points, colors, alphas)
-    {
-        if (points === undefined) { points = this.points.length; }
+    setVertical: function (points, colors, alphas) {
+        if (points === undefined) {
+            points = this.points.length;
+        }
 
-        if (!this.horizontal)
-        {
+        if (!this.horizontal) {
             return this;
         }
 
@@ -439,9 +437,10 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setTintFill: function (value)
-    {
-        if (value === undefined) { value = false; }
+    setTintFill: function (value) {
+        if (value === undefined) {
+            value = false;
+        }
 
         this.tintFill = value;
 
@@ -474,68 +473,53 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setAlphas: function (alphas, bottomAlpha)
-    {
+    setAlphas: function (alphas, bottomAlpha) {
         var total = this.points.length;
 
-        if (total < 1)
-        {
+        if (total < 1) {
             return this;
         }
 
         var currentAlphas = this.alphas;
 
-        if (alphas === undefined)
-        {
-            alphas = [ 1 ];
-        }
-        else if (!Array.isArray(alphas) && bottomAlpha === undefined)
-        {
-            alphas = [ alphas ];
+        if (alphas === undefined) {
+            alphas = [1];
+        } else if (!Array.isArray(alphas) && bottomAlpha === undefined) {
+            alphas = [alphas];
         }
 
         var i;
         var index = 0;
 
-        if (bottomAlpha !== undefined)
-        {
+        if (bottomAlpha !== undefined) {
             //  Top / Bottom alpha pair
-            for (i = 0; i < total; i++)
-            {
+            for (i = 0; i < total; i++) {
                 index = i * 2;
 
                 currentAlphas[index] = alphas;
                 currentAlphas[index + 1] = bottomAlpha;
             }
-        }
-        else if (alphas.length === total)
-        {
+        } else if (alphas.length === total) {
             //  If there are exactly the same number of alphas as points, we'll combine the alphas
-            for (i = 0; i < total; i++)
-            {
+            for (i = 0; i < total; i++) {
                 index = i * 2;
 
                 currentAlphas[index] = alphas[i];
                 currentAlphas[index + 1] = alphas[i];
             }
-        }
-        else
-        {
+        } else {
             var prevAlpha = alphas[0];
 
-            for (i = 0; i < total; i++)
-            {
+            for (i = 0; i < total; i++) {
                 index = i * 2;
 
-                if (alphas.length > index)
-                {
+                if (alphas.length > index) {
                     prevAlpha = alphas[index];
                 }
 
                 currentAlphas[index] = prevAlpha;
 
-                if (alphas.length > index + 1)
-                {
+                if (alphas.length > index + 1) {
                     prevAlpha = alphas[index + 1];
                 }
 
@@ -571,57 +555,45 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setColors: function (colors)
-    {
+    setColors: function (colors) {
         var total = this.points.length;
 
-        if (total < 1)
-        {
+        if (total < 1) {
             return this;
         }
 
         var currentColors = this.colors;
 
-        if (colors === undefined)
-        {
-            colors = [ 0xffffff ];
-        }
-        else if (!Array.isArray(colors))
-        {
-            colors = [ colors ];
+        if (colors === undefined) {
+            colors = [0xffffff];
+        } else if (!Array.isArray(colors)) {
+            colors = [colors];
         }
 
         var i;
         var index = 0;
 
-        if (colors.length === total)
-        {
+        if (colors.length === total) {
             //  If there are exactly the same number of colors as points, we'll combine the colors
-            for (i = 0; i < total; i++)
-            {
+            for (i = 0; i < total; i++) {
                 index = i * 2;
 
                 currentColors[index] = colors[i];
                 currentColors[index + 1] = colors[i];
             }
-        }
-        else
-        {
+        } else {
             var prevColor = colors[0];
 
-            for (i = 0; i < total; i++)
-            {
+            for (i = 0; i < total; i++) {
                 index = i * 2;
 
-                if (colors.length > index)
-                {
+                if (colors.length > index) {
                     prevColor = colors[index];
                 }
 
                 currentColors[index] = prevColor;
 
-                if (colors.length > index + 1)
-                {
+                if (colors.length > index + 1) {
                     prevColor = colors[index + 1];
                 }
 
@@ -673,17 +645,16 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setPoints: function (points, colors, alphas)
-    {
-        if (points === undefined) { points = 2; }
+    setPoints: function (points, colors, alphas) {
+        if (points === undefined) {
+            points = 2;
+        }
 
-        if (typeof points === 'number')
-        {
+        if (typeof points === 'number') {
             //  Generate an array based on the points
             var segments = points;
 
-            if (segments < 2)
-            {
+            if (segments < 2) {
                 segments = 2;
             }
 
@@ -693,24 +664,19 @@ var Rope = new Class({
             var frameSegment;
             var offset;
 
-            if (this.horizontal)
-            {
+            if (this.horizontal) {
                 offset = -(this.frame.halfWidth);
                 frameSegment = this.frame.width / (segments - 1);
 
-                for (s = 0; s < segments; s++)
-                {
-                    points.push({ x: offset + s * frameSegment, y: 0 });
+                for (s = 0; s < segments; s++) {
+                    points.push({x: offset + s * frameSegment, y: 0});
                 }
-            }
-            else
-            {
+            } else {
                 offset = -(this.frame.halfHeight);
                 frameSegment = this.frame.height / (segments - 1);
 
-                for (s = 0; s < segments; s++)
-                {
-                    points.push({ x: 0, y: offset + s * frameSegment });
+                for (s = 0; s < segments; s++) {
+                    points.push({x: 0, y: offset + s * frameSegment});
                 }
             }
         }
@@ -718,20 +684,16 @@ var Rope = new Class({
         var total = points.length;
         var currentTotal = this.points.length;
 
-        if (total < 1)
-        {
+        if (total < 1) {
             console.warn('Rope: Not enough points given');
 
             return this;
-        }
-        else if (total === 1)
-        {
-            points.unshift({ x: 0, y: 0 });
+        } else if (total === 1) {
+            points.unshift({x: 0, y: 0});
             total++;
         }
 
-        if (currentTotal !== total)
-        {
+        if (currentTotal !== total) {
             this.resizeArrays(total);
         }
 
@@ -741,13 +703,11 @@ var Rope = new Class({
 
         this.updateUVs();
 
-        if (colors !== undefined && colors !== null)
-        {
+        if (colors !== undefined && colors !== null) {
             this.setColors(colors);
         }
 
-        if (alphas !== undefined && alphas !== null)
-        {
+        if (alphas !== undefined && alphas !== null) {
             this.setAlphas(alphas);
         }
 
@@ -762,8 +722,7 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateUVs: function ()
-    {
+    updateUVs: function () {
         var currentUVs = this.uv;
         var total = this.points.length;
 
@@ -775,8 +734,7 @@ var Rope = new Class({
         var partH = (u1 - u0) / (total - 1);
         var partV = (v1 - v0) / (total - 1);
 
-        for (var i = 0; i < total; i++)
-        {
+        for (var i = 0; i < total; i++) {
             var index = i * 4;
 
             var uv0;
@@ -784,50 +742,35 @@ var Rope = new Class({
             var uv2;
             var uv3;
 
-            if (this.horizontal)
-            {
-                if (this._flipX)
-                {
+            if (this.horizontal) {
+                if (this._flipX) {
                     uv0 = u1 - (i * partH);
                     uv2 = u1 - (i * partH);
-                }
-                else
-                {
+                } else {
                     uv0 = u0 + (i * partH);
                     uv2 = u0 + (i * partH);
                 }
 
-                if (this._flipY)
-                {
+                if (this._flipY) {
                     uv1 = v1;
                     uv3 = v0;
-                }
-                else
-                {
+                } else {
                     uv1 = v0;
                     uv3 = v1;
                 }
-            }
-            else
-            {
-                if (this._flipX)
-                {
+            } else {
+                if (this._flipX) {
                     uv0 = u0;
                     uv2 = u1;
-                }
-                else
-                {
+                } else {
                     uv0 = u1;
                     uv2 = u0;
                 }
 
-                if (this._flipY)
-                {
+                if (this._flipY) {
                     uv1 = v1 - (i * partV);
                     uv3 = v1 - (i * partV);
-                }
-                else
-                {
+                } else {
                     uv1 = v0 + (i * partV);
                     uv3 = v0 + (i * partV);
                 }
@@ -853,8 +796,7 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    resizeArrays: function (newSize)
-    {
+    resizeArrays: function (newSize) {
         var colors = this.colors;
         var alphas = this.alphas;
 
@@ -864,8 +806,7 @@ var Rope = new Class({
         colors = new Uint32Array(newSize * 2);
         alphas = new Float32Array(newSize * 2);
 
-        for (var i = 0; i < newSize * 2; i++)
-        {
+        for (var i = 0; i < newSize * 2; i++) {
             colors[i] = 0xffffff;
             alphas[i] = 1;
         }
@@ -891,8 +832,7 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateVertices: function ()
-    {
+    updateVertices: function () {
         var perp = this._perp;
         var points = this.points;
         var vertices = this.vertices;
@@ -901,8 +841,7 @@ var Rope = new Class({
 
         this.dirty = false;
 
-        if (total < 1)
-        {
+        if (total < 1) {
             return;
         }
 
@@ -911,17 +850,13 @@ var Rope = new Class({
 
         var frameSize = (this.horizontal) ? this.frame.halfHeight : this.frame.halfWidth;
 
-        for (var i = 0; i < total; i++)
-        {
+        for (var i = 0; i < total; i++) {
             var point = points[i];
             var index = i * 4;
 
-            if (i < total - 1)
-            {
+            if (i < total - 1) {
                 nextPoint = points[i + 1];
-            }
-            else
-            {
+            } else {
                 nextPoint = point;
             }
 
@@ -979,20 +914,14 @@ var Rope = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setDebug: function (graphic, callback)
-    {
+    setDebug: function (graphic, callback) {
         this.debugGraphic = graphic;
 
-        if (!graphic && !callback)
-        {
+        if (!graphic && !callback) {
             this.debugCallback = null;
-        }
-        else if (!callback)
-        {
+        } else if (!callback) {
             this.debugCallback = this.renderDebugVerts;
-        }
-        else
-        {
+        } else {
             this.debugCallback = callback;
         }
 
@@ -1011,8 +940,7 @@ var Rope = new Class({
      * @param {number} meshLength - The number of vertices in the mesh.
      * @param {number[]} verts - An array of translated vertex coordinates.
      */
-    renderDebugVerts: function (src, meshLength, verts)
-    {
+    renderDebugVerts: function (src, meshLength, verts) {
         var graphic = src.debugGraphic;
 
         var px0 = verts[0];
@@ -1022,8 +950,7 @@ var Rope = new Class({
 
         graphic.lineBetween(px0, py0, px1, py1);
 
-        for (var i = 4; i < meshLength; i += 4)
-        {
+        for (var i = 4; i < meshLength; i += 4) {
             var x0 = verts[i + 0];
             var y0 = verts[i + 1];
             var x1 = verts[i + 2];
@@ -1048,8 +975,7 @@ var Rope = new Class({
      * @private
      * @since 3.23.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.anims.destroy();
 
         this.anims = undefined;
@@ -1078,13 +1004,11 @@ var Rope = new Class({
      */
     flipX: {
 
-        get: function ()
-        {
+        get: function () {
             return this._flipX;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._flipX = value;
 
             return this.updateUVs();
@@ -1106,13 +1030,11 @@ var Rope = new Class({
      */
     flipY: {
 
-        get: function ()
-        {
+        get: function () {
             return this._flipY;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._flipY = value;
 
             return this.updateUVs();

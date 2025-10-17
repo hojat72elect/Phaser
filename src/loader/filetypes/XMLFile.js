@@ -37,32 +37,30 @@ var XMLFile = new Class({
 
     initialize:
 
-    function XMLFile (loader, key, url, xhrSettings)
-    {
-        var extension = 'xml';
+        function XMLFile(loader, key, url, xhrSettings) {
+            var extension = 'xml';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            }
 
-        var fileConfig = {
-            type: 'xml',
-            cache: loader.cacheManager.xml,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: 'xml',
+                cache: loader.cacheManager.xml,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
-    },
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -71,18 +69,14 @@ var XMLFile = new Class({
      * @method Phaser.Loader.FileTypes.XMLFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = ParseXML(this.xhrLoader.responseText);
 
-        if (this.data)
-        {
+        if (this.data) {
             this.onProcessComplete();
-        }
-        else
-        {
+        } else {
             this.onProcessError();
         }
     }
@@ -156,18 +150,13 @@ var XMLFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('xml', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('xml', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new XMLFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new XMLFile(this, key, url, xhrSettings));
     }
 

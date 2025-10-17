@@ -21,8 +21,7 @@ var Utils = require('../../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var LineWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var LineWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline);
@@ -37,8 +36,7 @@ var LineWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     renderer.pipelines.preBatch(src);
 
-    if (src.isStroked)
-    {
+    if (src.isStroked) {
         var strokeTint = pipeline.strokeTint;
         var color = Utils.getTintAppendFloatAlpha(src.strokeColor, src.strokeAlpha * alpha);
 

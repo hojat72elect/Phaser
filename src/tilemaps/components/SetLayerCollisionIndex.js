@@ -15,16 +15,12 @@
  * @param {boolean} collides - Should the tile index collide or not?
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var SetLayerCollisionIndex = function (tileIndex, collides, layer)
-{
+var SetLayerCollisionIndex = function (tileIndex, collides, layer) {
     var loc = layer.collideIndexes.indexOf(tileIndex);
 
-    if (collides && loc === -1)
-    {
+    if (collides && loc === -1) {
         layer.collideIndexes.push(tileIndex);
-    }
-    else if (!collides && loc !== -1)
-    {
+    } else if (!collides && loc !== -1) {
         layer.collideIndexes.splice(loc, 1);
     }
 };

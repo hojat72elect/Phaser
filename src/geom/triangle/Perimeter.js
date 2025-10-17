@@ -17,8 +17,7 @@ var Length = require('../line/Length');
  *
  * @return {number} The length of the Triangle.
  */
-var Perimeter = function (triangle)
-{
+var Perimeter = function (triangle) {
     var line1 = triangle.getLineA();
     var line2 = triangle.getLineB();
     var line3 = triangle.getLineC();

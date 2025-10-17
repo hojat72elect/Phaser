@@ -14,18 +14,12 @@
  *
  * @return {number} The tweened value.
  */
-var InOut = function (v)
-{
-    if (v === 0)
-    {
+var InOut = function (v) {
+    if (v === 0) {
         return 0;
-    }
-    else if (v === 1)
-    {
+    } else if (v === 1) {
         return 1;
-    }
-    else
-    {
+    } else {
         return 0.5 * (1 - Math.cos(Math.PI * v));
     }
 };

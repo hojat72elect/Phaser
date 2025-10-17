@@ -18,8 +18,7 @@ var Clamp = require('./Clamp');
  *
  * @return {number} The value that is `percent` percent between `min` and `max`.
  */
-var FromPercent = function (percent, min, max)
-{
+var FromPercent = function (percent, min, max) {
     percent = Clamp(percent, 0, 1);
 
     return (max - min) * percent + min;

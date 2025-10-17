@@ -16,8 +16,7 @@
  *
  * @return {number} The area of the Triangle, always non-negative.
  */
-var Area = function (triangle)
-{
+var Area = function (triangle) {
     var x1 = triangle.x1;
     var y1 = triangle.y1;
 

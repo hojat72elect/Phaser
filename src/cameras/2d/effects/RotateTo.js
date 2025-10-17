@@ -15,7 +15,7 @@ var EaseMap = require('../../../math/easing/EaseMap');
  *
  * This effect will rotate the Camera so that the its viewport finishes at the given angle in radians,
  * over the duration and with the ease specified.
- * 
+ *
  * Camera rotation always takes place based on the Camera viewport. By default, rotation happens
  * in the center of the viewport. You can adjust this with the `originX` and `originY` properties.
  *
@@ -39,142 +39,141 @@ var RotateTo = new Class({
 
     initialize:
 
-    function RotateTo (camera)
-    {
-        /**
-         * The Camera this effect belongs to.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#camera
-         * @type {Phaser.Cameras.Scene2D.Camera}
-         * @readonly
-         * @since 3.23.0
-         */
-        this.camera = camera;
+        function RotateTo(camera) {
+            /**
+             * The Camera this effect belongs to.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#camera
+             * @type {Phaser.Cameras.Scene2D.Camera}
+             * @readonly
+             * @since 3.23.0
+             */
+            this.camera = camera;
 
-        /**
-         * Is this effect actively running?
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#isRunning
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.23.0
-         */
-        this.isRunning = false;
+            /**
+             * Is this effect actively running?
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#isRunning
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.23.0
+             */
+            this.isRunning = false;
 
-        /**
-         * The duration of the effect, in milliseconds.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#duration
-         * @type {number}
-         * @readonly
-         * @default 0
-         * @since 3.23.0
-         */
-        this.duration = 0;
+            /**
+             * The duration of the effect, in milliseconds.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#duration
+             * @type {number}
+             * @readonly
+             * @default 0
+             * @since 3.23.0
+             */
+            this.duration = 0;
 
-        /**
-         * The starting angle to rotate the camera from.
-         * 
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#source
-         * @type {number}
-         * @since 3.23.0
-         */
-        this.source = 0;
+            /**
+             * The starting angle to rotate the camera from.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#source
+             * @type {number}
+             * @since 3.23.0
+             */
+            this.source = 0;
 
-        /**
-         * The constantly updated value based on the force.
-         * 
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#current
-         * @type {number}
-         * @since 3.23.0
-         */
-        this.current = 0;
+            /**
+             * The constantly updated value based on the force.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#current
+             * @type {number}
+             * @since 3.23.0
+             */
+            this.current = 0;
 
-        /**
-         * The destination angle in radians to rotate the camera to.
-         * 
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#destination
-         * @type {number}
-         * @since 3.23.0
-         */
-        this.destination = 0;
+            /**
+             * The destination angle in radians to rotate the camera to.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#destination
+             * @type {number}
+             * @since 3.23.0
+             */
+            this.destination = 0;
 
-        /**
-         * The ease function to use during the Rotate.
-         * 
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#ease
-         * @type {function}
-         * @since 3.23.0
-         */
-        this.ease;
+            /**
+             * The ease function to use during the Rotate.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#ease
+             * @type {function}
+             * @since 3.23.0
+             */
+            this.ease;
 
-        /**
-         * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#progress
-         * @type {number}
-         * @since 3.23.0
-         */
-        this.progress = 0;
+            /**
+             * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#progress
+             * @type {number}
+             * @since 3.23.0
+             */
+            this.progress = 0;
 
-        /**
-         * Effect elapsed timer.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#_elapsed
-         * @type {number}
-         * @private
-         * @since 3.23.0
-         */
-        this._elapsed = 0;
+            /**
+             * Effect elapsed timer.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#_elapsed
+             * @type {number}
+             * @private
+             * @since 3.23.0
+             */
+            this._elapsed = 0;
 
-        /**
-         * @callback CameraRotateCallback
-         *
-         * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera on which the effect is running.
-         * @param {number} progress - The progress of the effect. A value between 0 and 1.
-         * @param {number} angle - The Camera's new angle in radians.
-         */
+            /**
+             * @callback CameraRotateCallback
+             *
+             * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera on which the effect is running.
+             * @param {number} progress - The progress of the effect. A value between 0 and 1.
+             * @param {number} angle - The Camera's new angle in radians.
+             */
 
-        /**
-         * This callback is invoked every frame for the duration of the effect.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#_onUpdate
-         * @type {?CameraRotateCallback}
-         * @private
-         * @default null
-         * @since 3.23.0
-         */
-        this._onUpdate;
+            /**
+             * This callback is invoked every frame for the duration of the effect.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#_onUpdate
+             * @type {?CameraRotateCallback}
+             * @private
+             * @default null
+             * @since 3.23.0
+             */
+            this._onUpdate;
 
-        /**
-         * On Complete callback scope.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#_onUpdateScope
-         * @type {any}
-         * @private
-         * @since 3.23.0
-         */
-        this._onUpdateScope;
+            /**
+             * On Complete callback scope.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#_onUpdateScope
+             * @type {any}
+             * @private
+             * @since 3.23.0
+             */
+            this._onUpdateScope;
 
-        /**
-         * The direction of the rotation.
-         * 
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#clockwise
-         * @type {boolean}
-         * @since 3.23.0
-         */
-        this.clockwise = true;
+            /**
+             * The direction of the rotation.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#clockwise
+             * @type {boolean}
+             * @since 3.23.0
+             */
+            this.clockwise = true;
 
-        /**
-         * The shortest direction to the target rotation.
-         * 
-         * @name Phaser.Cameras.Scene2D.Effects.RotateTo#shortestPath
-         * @type {boolean}
-         * @since 3.23.0
-         */
-        this.shortestPath = false;
-    },
+            /**
+             * The shortest direction to the target rotation.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.RotateTo#shortestPath
+             * @type {boolean}
+             * @since 3.23.0
+             */
+            this.shortestPath = false;
+        },
 
     /**
      * This effect will scroll the Camera so that the center of its viewport finishes at the given angle,
@@ -197,26 +196,34 @@ var RotateTo = new Class({
      *
      * @return {Phaser.Cameras.Scene2D.Camera} The Camera on which the effect was started.
      */
-    start: function (radians, shortestPath, duration, ease, force, callback, context)
-    {
-        if (duration === undefined) { duration = 1000; }
-        if (ease === undefined) { ease = EaseMap.Linear; }
-        if (force === undefined) { force = false; }
-        if (callback === undefined) { callback = null; }
-        if (context === undefined) { context = this.camera.scene; }
-        if (shortestPath === undefined) { shortestPath = false; }
+    start: function (radians, shortestPath, duration, ease, force, callback, context) {
+        if (duration === undefined) {
+            duration = 1000;
+        }
+        if (ease === undefined) {
+            ease = EaseMap.Linear;
+        }
+        if (force === undefined) {
+            force = false;
+        }
+        if (callback === undefined) {
+            callback = null;
+        }
+        if (context === undefined) {
+            context = this.camera.scene;
+        }
+        if (shortestPath === undefined) {
+            shortestPath = false;
+        }
 
         this.shortestPath = shortestPath;
 
         var tmpDestination = radians;
 
-        if (radians < 0)
-        {
+        if (radians < 0) {
             tmpDestination = -1 * radians;
             this.clockwise = false;
-        }
-        else
-        {
+        } else {
             this.clockwise = true;
         }
 
@@ -226,8 +233,7 @@ var RotateTo = new Class({
 
         var cam = this.camera;
 
-        if (!force && this.isRunning)
-        {
+        if (!force && this.isRunning) {
             return cam;
         }
 
@@ -242,12 +248,9 @@ var RotateTo = new Class({
         this.destination = tmpDestination;
 
         //  Using this ease
-        if (typeof ease === 'string' && EaseMap.hasOwnProperty(ease))
-        {
+        if (typeof ease === 'string' && EaseMap.hasOwnProperty(ease)) {
             this.ease = EaseMap[ease];
-        }
-        else if (typeof ease === 'function')
-        {
+        } else if (typeof ease === 'function') {
             this.ease = ease;
         }
 
@@ -257,36 +260,26 @@ var RotateTo = new Class({
         this._onUpdateScope = context;
 
 
-        if (this.shortestPath)
-        {
+        if (this.shortestPath) {
             // The shortest path is true so calculate the quickest direction
             var cwDist = 0;
             var acwDist = 0;
 
-            if (this.destination > this.source)
-            {
+            if (this.destination > this.source) {
                 cwDist = Math.abs(this.destination - this.source);
-            }
-            else
-            {
+            } else {
                 cwDist = (Math.abs(this.destination + maxRad) - this.source);
             }
 
-            if (this.source > this.destination)
-            {
+            if (this.source > this.destination) {
                 acwDist = Math.abs(this.source - this.destination);
-            }
-            else
-            {
+            } else {
                 acwDist = (Math.abs(this.source + maxRad) - this.destination);
             }
 
-            if (cwDist < acwDist)
-            {
+            if (cwDist < acwDist) {
                 this.clockwise = true;
-            }
-            else if (cwDist > acwDist)
-            {
+            } else if (cwDist > acwDist) {
                 this.clockwise = false;
             }
         }
@@ -305,10 +298,8 @@ var RotateTo = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (!this.isRunning)
-        {
+    update: function (time, delta) {
+        if (!this.isRunning) {
             return;
         }
 
@@ -320,8 +311,7 @@ var RotateTo = new Class({
 
         var cam = this.camera;
 
-        if (this._elapsed < this.duration)
-        {
+        if (this._elapsed < this.duration) {
             var v = this.ease(progress);
 
             this.current = cam.rotation;
@@ -330,48 +320,37 @@ var RotateTo = new Class({
             var target = this.destination;
             var current = this.current;
 
-            if (this.clockwise === false)
-            {
+            if (this.clockwise === false) {
                 target = this.current;
                 current = this.destination;
             }
 
-            if (target >= current)
-            {
+            if (target >= current) {
                 distance = Math.abs(target - current);
-            }
-            else
-            {
+            } else {
                 distance = (Math.abs(target + maxRad) - current);
             }
 
             var r = 0;
 
-            if (this.clockwise)
-            {
+            if (this.clockwise) {
                 r = (cam.rotation + (distance * v));
-            }
-            else
-            {
+            } else {
                 r = (cam.rotation - (distance * v));
             }
 
             cam.rotation = r;
 
-            if (this._onUpdate)
-            {
+            if (this._onUpdate) {
                 this._onUpdate.call(this._onUpdateScope, cam, progress, r);
             }
-        }
-        else
-        {
+        } else {
             cam.rotation = this.destination;
 
-            if (this._onUpdate)
-            {
+            if (this._onUpdate) {
                 this._onUpdate.call(this._onUpdateScope, cam, progress, this.destination);
             }
-    
+
             this.effectComplete();
         }
     },
@@ -382,8 +361,7 @@ var RotateTo = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.RotateTo#effectComplete
      * @since 3.23.0
      */
-    effectComplete: function ()
-    {
+    effectComplete: function () {
         this._onUpdate = null;
         this._onUpdateScope = null;
 
@@ -399,8 +377,7 @@ var RotateTo = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.RotateTo#reset
      * @since 3.23.0
      */
-    reset: function ()
-    {
+    reset: function () {
         this.isRunning = false;
 
         this._onUpdate = null;
@@ -413,8 +390,7 @@ var RotateTo = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.RotateTo#destroy
      * @since 3.23.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.reset();
 
         this.camera = null;

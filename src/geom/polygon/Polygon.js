@@ -35,43 +35,41 @@ var Polygon = new Class({
 
     initialize:
 
-    function Polygon (points)
-    {
-        /**
-         * The geometry constant type of this object: `GEOM_CONST.POLYGON`.
-         * Used for fast type comparisons.
-         *
-         * @name Phaser.Geom.Polygon#type
-         * @type {number}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.type = GEOM_CONST.POLYGON;
+        function Polygon(points) {
+            /**
+             * The geometry constant type of this object: `GEOM_CONST.POLYGON`.
+             * Used for fast type comparisons.
+             *
+             * @name Phaser.Geom.Polygon#type
+             * @type {number}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.type = GEOM_CONST.POLYGON;
 
-        /**
-         * The area of this Polygon.
-         *
-         * @name Phaser.Geom.Polygon#area
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.area = 0;
+            /**
+             * The area of this Polygon.
+             *
+             * @name Phaser.Geom.Polygon#area
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.area = 0;
 
-        /**
-         * An array of number pair objects that make up this polygon. I.e. [ {x,y}, {x,y}, {x,y} ]
-         *
-         * @name Phaser.Geom.Polygon#points
-         * @type {Phaser.Geom.Point[]}
-         * @since 3.0.0
-         */
-        this.points = [];
+            /**
+             * An array of number pair objects that make up this polygon. I.e. [ {x,y}, {x,y}, {x,y} ]
+             *
+             * @name Phaser.Geom.Polygon#points
+             * @type {Phaser.Geom.Point[]}
+             * @since 3.0.0
+             */
+            this.points = [];
 
-        if (points)
-        {
-            this.setTo(points);
-        }
-    },
+            if (points) {
+                this.setTo(points);
+            }
+        },
 
     /**
      * Check to see if the Polygon contains the given x / y coordinates.
@@ -84,8 +82,7 @@ var Polygon = new Class({
      *
      * @return {boolean} `true` if the coordinates are within the polygon, otherwise `false`.
      */
-    contains: function (x, y)
-    {
+    contains: function (x, y) {
         return Contains(this, x, y);
     },
 
@@ -109,42 +106,33 @@ var Polygon = new Class({
      *
      * @return {this} This Polygon object.
      */
-    setTo: function (points)
-    {
+    setTo: function (points) {
         this.area = 0;
         this.points = [];
 
-        if (typeof points === 'string')
-        {
+        if (typeof points === 'string') {
             points = points.split(' ');
         }
 
-        if (!Array.isArray(points))
-        {
+        if (!Array.isArray(points)) {
             return this;
         }
 
         var p;
 
         //  The points argument is an array, so iterate through it
-        for (var i = 0; i < points.length; i++)
-        {
-            p = { x: 0, y: 0 };
+        for (var i = 0; i < points.length; i++) {
+            p = {x: 0, y: 0};
 
-            if (typeof points[i] === 'number' || typeof points[i] === 'string')
-            {
+            if (typeof points[i] === 'number' || typeof points[i] === 'string') {
                 p.x = parseFloat(points[i]);
                 p.y = parseFloat(points[i + 1]);
                 i++;
-            }
-            else if (Array.isArray(points[i]))
-            {
+            } else if (Array.isArray(points[i])) {
                 //  An array of arrays?
                 p.x = points[i][0];
                 p.y = points[i][1];
-            }
-            else
-            {
+            } else {
                 p.x = points[i].x;
                 p.y = points[i].y;
             }
@@ -165,10 +153,8 @@ var Polygon = new Class({
      *
      * @return {number} The area of the polygon.
      */
-    calculateArea: function ()
-    {
-        if (this.points.length < 3)
-        {
+    calculateArea: function () {
+        if (this.points.length < 3) {
             this.area = 0;
 
             return this.area;
@@ -178,8 +164,7 @@ var Polygon = new Class({
         var p1;
         var p2;
 
-        for (var i = 0; i < this.points.length - 1; i++)
-        {
+        for (var i = 0; i < this.points.length - 1; i++) {
             p1 = this.points[i];
             p2 = this.points[i + 1];
 
@@ -211,8 +196,7 @@ var Polygon = new Class({
      *
      * @return {(array|Phaser.Geom.Point[])} An array of Point objects pertaining to the points around the perimeter of the Polygon.
      */
-    getPoints: function (quantity, step, output)
-    {
+    getPoints: function (quantity, step, output) {
         return GetPoints(this, quantity, step, output);
     }
 

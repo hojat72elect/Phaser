@@ -15,8 +15,7 @@
  *
  * @return {boolean} `true` if the two Rectangles overlap, `false` otherwise.
  */
-var Overlaps = function (rectA, rectB)
-{
+var Overlaps = function (rectA, rectB) {
     return (
         rectA.x < rectB.right &&
         rectA.right > rectB.x &&

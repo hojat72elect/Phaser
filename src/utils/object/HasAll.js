@@ -15,12 +15,9 @@
  *
  * @return {boolean} true if the source object contains all keys, false otherwise.
  */
-var HasAll = function (source, keys)
-{
-    for (var i = 0; i < keys.length; i++)
-    {
-        if (!source.hasOwnProperty(keys[i]))
-        {
+var HasAll = function (source, keys) {
+    for (var i = 0; i < keys.length; i++) {
+        if (!source.hasOwnProperty(keys[i])) {
             return false;
         }
     }

@@ -29,35 +29,34 @@ var Factory = new Class({
 
     initialize:
 
-    function Factory (world)
-    {
-        /**
-         * A reference to the Arcade Physics World.
-         *
-         * @name Phaser.Physics.Arcade.Factory#world
-         * @type {Phaser.Physics.Arcade.World}
-         * @since 3.0.0
-         */
-        this.world = world;
+        function Factory(world) {
+            /**
+             * A reference to the Arcade Physics World.
+             *
+             * @name Phaser.Physics.Arcade.Factory#world
+             * @type {Phaser.Physics.Arcade.World}
+             * @since 3.0.0
+             */
+            this.world = world;
 
-        /**
-         * A reference to the Scene this Arcade Physics instance belongs to.
-         *
-         * @name Phaser.Physics.Arcade.Factory#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = world.scene;
+            /**
+             * A reference to the Scene this Arcade Physics instance belongs to.
+             *
+             * @name Phaser.Physics.Arcade.Factory#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = world.scene;
 
-        /**
-         * A reference to the Scene.Systems this Arcade Physics instance belongs to.
-         *
-         * @name Phaser.Physics.Arcade.Factory#sys
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.sys = world.scene.sys;
-    },
+            /**
+             * A reference to the Scene.Systems this Arcade Physics instance belongs to.
+             *
+             * @name Phaser.Physics.Arcade.Factory#sys
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.sys = world.scene.sys;
+        },
 
     /**
      * Creates a new Arcade Physics Collider object.
@@ -73,8 +72,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Arcade.Collider} The Collider that was created.
      */
-    collider: function (object1, object2, collideCallback, processCallback, callbackContext)
-    {
+    collider: function (object1, object2, collideCallback, processCallback, callbackContext) {
         return this.world.addCollider(object1, object2, collideCallback, processCallback, callbackContext);
     },
 
@@ -92,8 +90,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Arcade.Collider} The Collider that was created.
      */
-    overlap: function (object1, object2, collideCallback, processCallback, callbackContext)
-    {
+    overlap: function (object1, object2, collideCallback, processCallback, callbackContext) {
         return this.world.addOverlap(object1, object2, collideCallback, processCallback, callbackContext);
     },
 
@@ -110,8 +107,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Types.Physics.Arcade.GameObjectWithBody} The Game Object.
      */
-    existing: function (gameObject, isStatic)
-    {
+    existing: function (gameObject, isStatic) {
         var type = (isStatic) ? CONST.STATIC_BODY : CONST.DYNAMIC_BODY;
 
         this.world.enableBody(gameObject, type);
@@ -132,8 +128,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Types.Physics.Arcade.ImageWithStaticBody} The Image object that was created.
      */
-    staticImage: function (x, y, key, frame)
-    {
+    staticImage: function (x, y, key, frame) {
         var image = new ArcadeImage(this.scene, x, y, key, frame);
 
         this.sys.displayList.add(image);
@@ -156,8 +151,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Types.Physics.Arcade.ImageWithDynamicBody} The Image object that was created.
      */
-    image: function (x, y, key, frame)
-    {
+    image: function (x, y, key, frame) {
         var image = new ArcadeImage(this.scene, x, y, key, frame);
 
         this.sys.displayList.add(image);
@@ -180,8 +174,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Types.Physics.Arcade.SpriteWithStaticBody} The Sprite object that was created.
      */
-    staticSprite: function (x, y, key, frame)
-    {
+    staticSprite: function (x, y, key, frame) {
         var sprite = new ArcadeSprite(this.scene, x, y, key, frame);
 
         this.sys.displayList.add(sprite);
@@ -205,8 +198,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Types.Physics.Arcade.SpriteWithDynamicBody} The Sprite object that was created.
      */
-    sprite: function (x, y, key, frame)
-    {
+    sprite: function (x, y, key, frame) {
         var sprite = new ArcadeSprite(this.scene, x, y, key, frame);
 
         this.sys.displayList.add(sprite);
@@ -229,8 +221,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Arcade.StaticGroup} The Static Group object that was created.
      */
-    staticGroup: function (children, config)
-    {
+    staticGroup: function (children, config) {
         return this.sys.updateList.add(new StaticPhysicsGroup(this.world, this.world.scene, children, config));
     },
 
@@ -246,8 +237,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Arcade.Group} The Group object that was created.
      */
-    group: function (children, config)
-    {
+    group: function (children, config) {
         return this.sys.updateList.add(new PhysicsGroup(this.world, this.world.scene, children, config));
     },
 
@@ -267,14 +257,12 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Arcade.Body} The Body that was created.
      */
-    body: function (x, y, width, height)
-    {
+    body: function (x, y, width, height) {
         var body = new Body(this.world);
 
         body.position.set(x, y);
 
-        if (width && height)
-        {
+        if (width && height) {
             body.setSize(width, height);
         }
 
@@ -299,14 +287,12 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Arcade.StaticBody} The Static Body that was created.
      */
-    staticBody: function (x, y, width, height)
-    {
+    staticBody: function (x, y, width, height) {
         var body = new StaticBody(this.world);
 
         body.position.set(x, y);
 
-        if (width && height)
-        {
+        if (width && height) {
             body.setSize(width, height);
         }
 
@@ -321,8 +307,7 @@ var Factory = new Class({
      * @method Phaser.Physics.Arcade.Factory#destroy
      * @since 3.5.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.world = null;
         this.scene = null;
         this.sys = null;

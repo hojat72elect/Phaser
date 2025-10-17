@@ -15,14 +15,12 @@
  *
  * @return {boolean} `true` if the object is plain, otherwise `false`.
  */
-var IsPlainObject = function (obj)
-{
+var IsPlainObject = function (obj) {
     // Not plain objects:
     // - Any object or value whose internal [[Class]] property is not "[object Object]"
     // - DOM nodes
     // - window
-    if (!obj || typeof(obj) !== 'object' || obj.nodeType || obj === obj.window)
-    {
+    if (!obj || typeof (obj) !== 'object' || obj.nodeType || obj === obj.window) {
         return false;
     }
 
@@ -30,15 +28,11 @@ var IsPlainObject = function (obj)
     // The try/catch suppresses exceptions thrown when attempting to access
     // the "constructor" property of certain host objects, ie. |window.location|
     // https://bugzilla.mozilla.org/show_bug.cgi?id=814622
-    try
-    {
-        if (obj.constructor && !({}).hasOwnProperty.call(obj.constructor.prototype, 'isPrototypeOf'))
-        {
+    try {
+        if (obj.constructor && !({}).hasOwnProperty.call(obj.constructor.prototype, 'isPrototypeOf')) {
             return false;
         }
-    }
-    catch (e)
-    {
+    } catch (e) {
         return false;
     }
 

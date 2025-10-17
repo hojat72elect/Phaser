@@ -17,17 +17,13 @@
  *
  * @return {boolean} `true` if it reached the end of the combo, `false` if not.
  */
-var AdvanceKeyCombo = function (event, combo)
-{
+var AdvanceKeyCombo = function (event, combo) {
     combo.timeLastMatched = event.timeStamp;
     combo.index++;
 
-    if (combo.index === combo.size)
-    {
+    if (combo.index === combo.size) {
         return true;
-    }
-    else
-    {
+    } else {
         combo.current = combo.keyCodes[combo.index];
         return false;
     }

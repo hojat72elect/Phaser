@@ -72,13 +72,11 @@ var Origin = {
      */
     displayOriginX: {
 
-        get: function ()
-        {
+        get: function () {
             return this._displayOriginX;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._displayOriginX = value;
             this.originX = value / this.width;
         }
@@ -96,13 +94,11 @@ var Origin = {
      */
     displayOriginY: {
 
-        get: function ()
-        {
+        get: function () {
             return this._displayOriginY;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._displayOriginY = value;
             this.originY = value / this.height;
         }
@@ -122,10 +118,13 @@ var Origin = {
      *
      * @return {this} This Game Object instance.
      */
-    setOrigin: function (x, y)
-    {
-        if (x === undefined) { x = 0.5; }
-        if (y === undefined) { y = x; }
+    setOrigin: function (x, y) {
+        if (x === undefined) {
+            x = 0.5;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this.originX = x;
         this.originY = y;
@@ -141,14 +140,10 @@ var Origin = {
      *
      * @return {this} This Game Object instance.
      */
-    setOriginFromFrame: function ()
-    {
-        if (!this.frame || !this.frame.customPivot)
-        {
+    setOriginFromFrame: function () {
+        if (!this.frame || !this.frame.customPivot) {
             return this.setOrigin();
-        }
-        else
-        {
+        } else {
             this.originX = this.frame.pivotX;
             this.originY = this.frame.pivotY;
         }
@@ -168,10 +163,13 @@ var Origin = {
      *
      * @return {this} This Game Object instance.
      */
-    setDisplayOrigin: function (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = x; }
+    setDisplayOrigin: function (x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this.displayOriginX = x;
         this.displayOriginY = y;
@@ -188,8 +186,7 @@ var Origin = {
      *
      * @return {this} This Game Object instance.
      */
-    updateDisplayOrigin: function ()
-    {
+    updateDisplayOrigin: function () {
         this._displayOriginX = this.originX * this.width;
         this._displayOriginY = this.originY * this.height;
 

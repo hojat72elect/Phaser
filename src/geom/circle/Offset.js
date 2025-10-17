@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Circle} The Circle that was offset.
  */
-var Offset = function (circle, x, y)
-{
+var Offset = function (circle, x, y) {
     circle.x += x;
     circle.y += y;
 

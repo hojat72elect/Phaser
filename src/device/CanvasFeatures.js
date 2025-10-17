@@ -25,29 +25,25 @@ var CanvasFeatures = {
 
 };
 
-function checkBlendMode ()
-{
+function checkBlendMode() {
     var pngHead = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABAQMAAADD8p2OAAAAA1BMVEX/';
     var pngEnd = 'AAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==';
 
     var magenta = new Image();
 
-    magenta.onload = function ()
-    {
+    magenta.onload = function () {
         var yellow = new Image();
 
-        yellow.onload = function ()
-        {
+        yellow.onload = function () {
             var canvas = CanvasPool.create2D(yellow, 6);
-            var context = canvas.getContext('2d', { willReadFrequently: true });
+            var context = canvas.getContext('2d', {willReadFrequently: true});
 
             context.globalCompositeOperation = 'multiply';
 
             context.drawImage(magenta, 0, 0);
             context.drawImage(yellow, 2, 0);
 
-            if (!context.getImageData(2, 0, 1, 1))
-            {
+            if (!context.getImageData(2, 0, 1, 1)) {
                 return false;
             }
 
@@ -66,10 +62,9 @@ function checkBlendMode ()
     return false;
 }
 
-function checkInverseAlpha ()
-{
+function checkInverseAlpha() {
     var canvas = CanvasPool.create2D(this, 2);
-    var context = canvas.getContext('2d', { willReadFrequently: true });
+    var context = canvas.getContext('2d', {willReadFrequently: true});
 
     context.fillStyle = 'rgba(10, 20, 30, 0.5)';
 
@@ -79,8 +74,7 @@ function checkInverseAlpha ()
     //  Get the color values
     var s1 = context.getImageData(0, 0, 1, 1);
 
-    if (s1 === null)
-    {
+    if (s1 === null) {
         return false;
     }
 
@@ -98,10 +92,8 @@ function checkInverseAlpha ()
     return result;
 }
 
-function init ()
-{
-    if (typeof importScripts !== 'function' && document !== undefined)
-    {
+function init() {
+    if (typeof importScripts !== 'function' && document !== undefined) {
         CanvasFeatures.supportNewBlendModes = checkBlendMode();
         CanvasFeatures.supportInverseAlpha = checkInverseAlpha();
     }

@@ -24,17 +24,14 @@ var Friction = {
      *
      * @return {this} This Game Object instance.
      */
-    setFriction: function (value, air, fstatic)
-    {
+    setFriction: function (value, air, fstatic) {
         this.body.friction = value;
 
-        if (air !== undefined)
-        {
+        if (air !== undefined) {
             this.body.frictionAir = air;
         }
 
-        if (fstatic !== undefined)
-        {
+        if (fstatic !== undefined) {
             this.body.frictionStatic = fstatic;
         }
 
@@ -53,8 +50,7 @@ var Friction = {
      *
      * @return {this} This Game Object instance.
      */
-    setFrictionAir: function (value)
-    {
+    setFrictionAir: function (value) {
         this.body.frictionAir = value;
 
         return this;
@@ -72,8 +68,7 @@ var Friction = {
      *
      * @return {this} This Game Object instance.
      */
-    setFrictionStatic: function (value)
-    {
+    setFrictionStatic: function (value) {
         this.body.frictionStatic = value;
 
         return this;

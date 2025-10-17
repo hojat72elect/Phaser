@@ -22,40 +22,36 @@ var ObjectHelper = new Class({
 
     initialize:
 
-    function ObjectHelper (tilesets)
-    {
-        /**
-         * The Tile GIDs array.
-         *
-         * @name Phaser.Tilemaps.ObjectHelper#gids
-         * @type {array}
-         * @since 3.60.0
-         */
-        this.gids = [];
+        function ObjectHelper(tilesets) {
+            /**
+             * The Tile GIDs array.
+             *
+             * @name Phaser.Tilemaps.ObjectHelper#gids
+             * @type {array}
+             * @since 3.60.0
+             */
+            this.gids = [];
 
-        if (tilesets !== undefined)
-        {
-            for (var t = 0; t < tilesets.length; ++t)
-            {
-                var tileset = tilesets[t];
+            if (tilesets !== undefined) {
+                for (var t = 0; t < tilesets.length; ++t) {
+                    var tileset = tilesets[t];
 
-                for (var i = 0; i < tileset.total; ++i)
-                {
-                    this.gids[tileset.firstgid + i] = tileset;
+                    for (var i = 0; i < tileset.total; ++i) {
+                        this.gids[tileset.firstgid + i] = tileset;
+                    }
                 }
             }
-        }
 
-        /**
-         * The Tile GIDs array.
-         *
-         * @name Phaser.Tilemaps.ObjectHelper#_gids
-         * @type {array}
-         * @private
-         * @since 3.60.0
-         */
-        this._gids = this.gids;
-    },
+            /**
+             * The Tile GIDs array.
+             *
+             * @name Phaser.Tilemaps.ObjectHelper#_gids
+             * @type {array}
+             * @private
+             * @since 3.60.0
+             */
+            this._gids = this.gids;
+        },
 
     /**
      * Enabled if the object helper reaches in to tilesets for data.
@@ -67,13 +63,11 @@ var ObjectHelper = new Class({
      */
     enabled: {
 
-        get: function ()
-        {
+        get: function () {
             return !!this.gids;
         },
 
-        set: function (v)
-        {
+        set: function (v) {
             this.gids = v ? this._gids : undefined;
         }
 
@@ -89,29 +83,24 @@ var ObjectHelper = new Class({
      *
      * @return {?string} The `type` of the object, the tile behind the `gid` of the object, or `undefined`.
      */
-    getTypeIncludingTile: function (obj)
-    {
-        if (obj.type !== undefined && obj.type !== '')
-        {
+    getTypeIncludingTile: function (obj) {
+        if (obj.type !== undefined && obj.type !== '') {
             return obj.type;
         }
 
-        if (!this.gids || obj.gid === undefined)
-        {
+        if (!this.gids || obj.gid === undefined) {
             return undefined;
         }
 
         var tileset = this.gids[obj.gid];
 
-        if (!tileset)
-        {
+        if (!tileset) {
             return undefined;
         }
 
         var tileData = tileset.getTileData(obj.gid);
 
-        if (!tileData)
-        {
+        if (!tileData) {
             return undefined;
         }
 
@@ -134,28 +123,22 @@ var ObjectHelper = new Class({
      * @param {string|number|Phaser.Textures.Frame} [frame] - The frames key to set (or else the `obj.gid`'s tile is used if available).
      * @param {Phaser.Types.Tilemaps.TiledObject} [obj] - The Tiled object for fallback.
      */
-    setTextureAndFrame: function (sprite, key, frame, obj)
-    {
-        if ((key === null) && this.gids && obj.gid !== undefined)
-        {
+    setTextureAndFrame: function (sprite, key, frame, obj) {
+        if ((key === null) && this.gids && obj.gid !== undefined) {
             var tileset = this.gids[obj.gid];
 
-            if (tileset)
-            {
-                if (key === null && tileset.image !== undefined)
-                {
+            if (tileset) {
+                if (key === null && tileset.image !== undefined) {
                     key = tileset.image.key;
                 }
 
-                if (frame === null)
-                {
+                if (frame === null) {
                     // This relies on the tileset texture *also* having been loaded as a spritesheet. This isn't guaranteed!
                     frame = obj.gid - tileset.firstgid;
                 }
 
                 // If we can't satisfy the request, probably best to null it out rather than set a whole spritesheet or something.
-                if (!sprite.scene.textures.getFrame(key, frame))
-                {
+                if (!sprite.scene.textures.getFrame(key, frame)) {
                     key = null;
                     frame = null;
                 }
@@ -174,14 +157,11 @@ var ObjectHelper = new Class({
      * @param {Phaser.GameObjects.GameObject} sprite
      * @param {Phaser.Types.Tilemaps.TiledObject} obj
      */
-    setPropertiesFromTiledObject: function (sprite, obj)
-    {
-        if (this.gids !== undefined && obj.gid !== undefined)
-        {
+    setPropertiesFromTiledObject: function (sprite, obj) {
+        if (this.gids !== undefined && obj.gid !== undefined) {
             var tileset = this.gids[obj.gid];
 
-            if (tileset !== undefined)
-            {
+            if (tileset !== undefined) {
                 this.setFromJSON(sprite, tileset.getTileProperties(obj.gid));
             }
         }
@@ -199,25 +179,18 @@ var ObjectHelper = new Class({
      * @param {Phaser.GameObjects.GameObject} sprite - The object for which to populate `data`.
      * @param {(Object.<string, *>|Object[])} properties - The properties to set in either JSON object format or else a list of objects with `name` and `value` fields.
      */
-    setFromJSON: function (sprite, properties)
-    {
-        if (!properties)
-        {
+    setFromJSON: function (sprite, properties) {
+        if (!properties) {
             return;
         }
 
-        if (Array.isArray(properties))
-        {
-            for (var i = 0; i < properties.length; i++)
-            {
+        if (Array.isArray(properties)) {
+            for (var i = 0; i < properties.length; i++) {
                 var prop = properties[i];
 
-                if (sprite[prop.name] !== undefined)
-                {
+                if (sprite[prop.name] !== undefined) {
                     sprite[prop.name] = prop.value;
-                }
-                else
-                {
+                } else {
                     sprite.setData(prop.name, prop.value);
                 }
             }
@@ -225,14 +198,10 @@ var ObjectHelper = new Class({
             return;
         }
 
-        for (var key in properties)
-        {
-            if (sprite[key] !== undefined)
-            {
+        for (var key in properties) {
+            if (sprite[key] !== undefined) {
                 sprite[key] = properties[key];
-            }
-            else
-            {
+            } else {
                 sprite.setData(key, properties[key]);
             }
         }

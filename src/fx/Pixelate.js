@@ -43,21 +43,22 @@ var Pixelate = new Class({
 
     initialize:
 
-    function Pixelate (gameObject, amount)
-    {
-        if (amount === undefined) { amount = 1; }
+        function Pixelate(gameObject, amount) {
+            if (amount === undefined) {
+                amount = 1;
+            }
 
-        Controller.call(this, FX_CONST.PIXELATE, gameObject);
+            Controller.call(this, FX_CONST.PIXELATE, gameObject);
 
-        /**
-         * The amount of pixelation to apply.
-         *
-         * @name Phaser.FX.Pixelate#amount
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.amount = amount;
-    }
+            /**
+             * The amount of pixelation to apply.
+             *
+             * @name Phaser.FX.Pixelate#amount
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.amount = amount;
+        }
 
 });
 

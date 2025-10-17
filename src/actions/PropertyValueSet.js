@@ -26,30 +26,30 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var PropertyValueSet = function (items, key, value, step, index, direction)
-{
-    if (step === undefined) { step = 0; }
-    if (index === undefined) { index = 0; }
-    if (direction === undefined) { direction = 1; }
+var PropertyValueSet = function (items, key, value, step, index, direction) {
+    if (step === undefined) {
+        step = 0;
+    }
+    if (index === undefined) {
+        index = 0;
+    }
+    if (direction === undefined) {
+        direction = 1;
+    }
 
     var i;
     var t = 0;
     var end = items.length;
 
-    if (direction === 1)
-    {
+    if (direction === 1) {
         //  Start to End
-        for (i = index; i < end; i++)
-        {
+        for (i = index; i < end; i++) {
             items[i][key] = value + (t * step);
             t++;
         }
-    }
-    else
-    {
+    } else {
         //  End to Start
-        for (i = index; i >= 0; i--)
-        {
+        for (i = index; i >= 0; i--) {
             items[i][key] = value + (t * step);
             t++;
         }

@@ -18,12 +18,10 @@
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var SpineContainerCanvasRenderer = function (renderer, container, camera, parentMatrix)
-{
+var SpineContainerCanvasRenderer = function (renderer, container, camera, parentMatrix) {
     var children = container.list;
 
-    if (children.length === 0)
-    {
+    if (children.length === 0) {
         return;
     }
 
@@ -31,23 +29,19 @@ var SpineContainerCanvasRenderer = function (renderer, container, camera, parent
 
     var transformMatrix = container.localTransform;
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         transformMatrix.loadIdentity();
         transformMatrix.multiply(parentMatrix);
         transformMatrix.translate(container.x, container.y);
         transformMatrix.rotate(container.rotation);
         transformMatrix.scale(container.scaleX, container.scaleY);
-    }
-    else
-    {
+    } else {
         transformMatrix.applyITRS(container.x, container.y, container.rotation, container.scaleX, container.scaleY);
     }
 
     var containerHasBlendMode = (container.blendMode !== -1);
 
-    if (!containerHasBlendMode)
-    {
+    if (!containerHasBlendMode) {
         //  If Container is SKIP_TEST then set blend mode to be Normal
         renderer.setBlendMode(0);
     }
@@ -56,17 +50,14 @@ var SpineContainerCanvasRenderer = function (renderer, container, camera, parent
     var scrollFactorX = container.scrollFactorX;
     var scrollFactorY = container.scrollFactorY;
 
-    if (container.mask)
-    {
+    if (container.mask) {
         container.mask.preRenderCanvas(renderer, null, camera);
     }
 
-    for (var i = 0; i < children.length; i++)
-    {
+    for (var i = 0; i < children.length; i++) {
         var child = children[i];
 
-        if (!child.willRender(camera))
-        {
+        if (!child.willRender(camera)) {
             continue;
         }
 
@@ -74,8 +65,7 @@ var SpineContainerCanvasRenderer = function (renderer, container, camera, parent
         var childScrollFactorX = child.scrollFactorX;
         var childScrollFactorY = child.scrollFactorY;
 
-        if (!containerHasBlendMode && child.blendMode !== renderer.currentBlendMode)
-        {
+        if (!containerHasBlendMode && child.blendMode !== renderer.currentBlendMode) {
             //  If Container doesn't have its own blend mode, then a child can have one
             renderer.setBlendMode(child.blendMode);
         }
@@ -92,8 +82,7 @@ var SpineContainerCanvasRenderer = function (renderer, container, camera, parent
         child.setScrollFactor(childScrollFactorX, childScrollFactorY);
     }
 
-    if (container.mask)
-    {
+    if (container.mask) {
         container.mask.postRenderCanvas(renderer);
     }
 };

@@ -19,8 +19,7 @@
  *
  * @return {Phaser.Geom.Line} The rotated line.
  */
-var RotateAroundXY = function (line, x, y, angle)
-{
+var RotateAroundXY = function (line, x, y, angle) {
     var c = Math.cos(angle);
     var s = Math.sin(angle);
 

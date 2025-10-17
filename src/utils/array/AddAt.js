@@ -30,38 +30,34 @@
  *
  * @return {array} The input array.
  */
-var AddAt = function (array, item, index, limit, callback, context)
-{
-    if (index === undefined) { index = 0; }
-    if (context === undefined) { context = array; }
+var AddAt = function (array, item, index, limit, callback, context) {
+    if (index === undefined) {
+        index = 0;
+    }
+    if (context === undefined) {
+        context = array;
+    }
 
-    if (limit > 0)
-    {
+    if (limit > 0) {
         var remaining = limit - array.length;
 
         //  There's nothing more we can do here, the array is full
-        if (remaining <= 0)
-        {
+        if (remaining <= 0) {
             return null;
         }
     }
 
     //  Fast path to avoid array mutation and iteration
-    if (!Array.isArray(item))
-    {
-        if (array.indexOf(item) === -1)
-        {
+    if (!Array.isArray(item)) {
+        if (array.indexOf(item) === -1) {
             array.splice(index, 0, item);
 
-            if (callback)
-            {
+            if (callback) {
                 callback.call(context, item);
             }
 
             return item;
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
@@ -71,10 +67,8 @@ var AddAt = function (array, item, index, limit, callback, context)
     //  Ensure all the items are unique
     var itemLength = item.length - 1;
 
-    while (itemLength >= 0)
-    {
-        if (array.indexOf(item[itemLength]) !== -1)
-        {
+    while (itemLength >= 0) {
+        if (array.indexOf(item[itemLength]) !== -1) {
             //  Already exists in array, so remove it
             item.pop();
         }
@@ -85,27 +79,23 @@ var AddAt = function (array, item, index, limit, callback, context)
     //  Anything left?
     itemLength = item.length;
 
-    if (itemLength === 0)
-    {
+    if (itemLength === 0) {
         return null;
     }
 
     //  Truncate to the limit
-    if (limit > 0 && itemLength > remaining)
-    {
+    if (limit > 0 && itemLength > remaining) {
         item.splice(remaining);
 
         itemLength = remaining;
     }
 
-    for (var i = itemLength - 1; i >= 0; i--)
-    {
+    for (var i = itemLength - 1; i >= 0; i--) {
         var entry = item[i];
 
         array.splice(index, 0, entry);
 
-        if (callback)
-        {
+        if (callback) {
             callback.call(context, entry);
         }
     }

@@ -30,210 +30,201 @@ var WebAudioSound = new Class({
 
     initialize:
 
-    function WebAudioSound (manager, key, config)
-    {
-        if (config === undefined) { config = {}; }
-
-        /**
-         * Audio buffer containing decoded data of the audio asset to be played.
-         *
-         * @name Phaser.Sound.WebAudioSound#audioBuffer
-         * @type {AudioBuffer}
-         * @since 3.0.0
-         */
-        this.audioBuffer = manager.game.cache.audio.get(key);
-
-        if (!this.audioBuffer)
-        {
-            throw new Error('Audio key "' + key + '" not found in cache');
-        }
-
-        /**
-         * A reference to an audio source node used for playing back audio from
-         * audio data stored in Phaser.Sound.WebAudioSound#audioBuffer.
-         *
-         * @name Phaser.Sound.WebAudioSound#source
-         * @type {AudioBufferSourceNode}
-         * @default null
-         * @since 3.0.0
-         */
-        this.source = null;
-
-        /**
-         * A reference to a second audio source used for gapless looped playback.
-         *
-         * @name Phaser.Sound.WebAudioSound#loopSource
-         * @type {AudioBufferSourceNode}
-         * @default null
-         * @since 3.0.0
-         */
-        this.loopSource = null;
-
-        /**
-         * Gain node responsible for controlling this sound's muting.
-         *
-         * @name Phaser.Sound.WebAudioSound#muteNode
-         * @type {GainNode}
-         * @since 3.0.0
-         */
-        this.muteNode = manager.context.createGain();
-
-        /**
-         * Gain node responsible for controlling this sound's volume.
-         *
-         * @name Phaser.Sound.WebAudioSound#volumeNode
-         * @type {GainNode}
-         * @since 3.0.0
-         */
-        this.volumeNode = manager.context.createGain();
-
-        /**
-         * Panner node responsible for controlling this sound's pan.
-         *
-         * Doesn't work on iOS / Safari.
-         *
-         * @name Phaser.Sound.WebAudioSound#pannerNode
-         * @type {StereoPannerNode}
-         * @since 3.50.0
-         */
-        this.pannerNode = null;
-
-        /**
-         * The Stereo Spatial Panner node.
-         *
-         * @name Phaser.Sound.WebAudioSound#spatialNode
-         * @type {PannerNode}
-         * @since 3.60.0
-         */
-        this.spatialNode = null;
-
-        /**
-         * If the Spatial Panner node has been set to track a vector or
-         * Game Object, this retains a reference to it.
-         *
-         * @name Phaser.Sound.WebAudioSound#spatialSource
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.60.0
-         */
-        this.spatialSource = null;
-
-        /**
-         * The time at which the sound should have started playback from the beginning.
-         *
-         * Treat this property as read-only.
-         *
-         * Based on `BaseAudioContext.currentTime` value.
-         *
-         * @name Phaser.Sound.WebAudioSound#playTime
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.playTime = 0;
-
-        /**
-         * The time at which the sound source should have actually started playback.
-         *
-         * Treat this property as read-only.
-         *
-         * Based on `BaseAudioContext.currentTime` value.
-         *
-         * @name Phaser.Sound.WebAudioSound#startTime
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.startTime = 0;
-
-        /**
-         * The time at which the sound loop source should actually start playback.
-         *
-         * Based on `BaseAudioContext.currentTime` value.
-         *
-         * @name Phaser.Sound.WebAudioSound#loopTime
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.loopTime = 0;
-
-        /**
-         * An array where we keep track of all rate updates during playback.
-         *
-         * Treat this property as read-only.
-         *
-         * Array of object types: `{ time: number, rate: number }`
-         *
-         * @name Phaser.Sound.WebAudioSound#rateUpdates
-         * @type {array}
-         * @default []
-         * @since 3.0.0
-         */
-        this.rateUpdates = [];
-
-        /**
-         * Used for keeping track when sound source playback has ended
-         * so its state can be updated accordingly.
-         *
-         * @name Phaser.Sound.WebAudioSound#hasEnded
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.0.0
-         */
-        this.hasEnded = false;
-
-        /**
-         * Used for keeping track when sound source has looped
-         * so its state can be updated accordingly.
-         *
-         * @name Phaser.Sound.WebAudioSound#hasLooped
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.0.0
-         */
-        this.hasLooped = false;
-
-        this.muteNode.connect(this.volumeNode);
-
-        if (manager.context.createPanner)
-        {
-            this.spatialNode = manager.context.createPanner();
-
-            this.volumeNode.connect(this.spatialNode);
-        }
-
-        if (manager.context.createStereoPanner)
-        {
-            this.pannerNode = manager.context.createStereoPanner();
-
-            if (manager.context.createPanner)
-            {
-                this.spatialNode.connect(this.pannerNode);
-            }
-            else
-            {
-                this.volumeNode.connect(this.pannerNode);
+        function WebAudioSound(manager, key, config) {
+            if (config === undefined) {
+                config = {};
             }
 
-            this.pannerNode.connect(manager.destination);
-        }
-        else if (manager.context.createPanner)
-        {
-            this.spatialNode.connect(manager.destination);
-        }
-        else
-        {
-            this.volumeNode.connect(manager.destination);
-        }
+            /**
+             * Audio buffer containing decoded data of the audio asset to be played.
+             *
+             * @name Phaser.Sound.WebAudioSound#audioBuffer
+             * @type {AudioBuffer}
+             * @since 3.0.0
+             */
+            this.audioBuffer = manager.game.cache.audio.get(key);
 
-        this.duration = this.audioBuffer.duration;
+            if (!this.audioBuffer) {
+                throw new Error('Audio key "' + key + '" not found in cache');
+            }
 
-        this.totalDuration = this.audioBuffer.duration;
+            /**
+             * A reference to an audio source node used for playing back audio from
+             * audio data stored in Phaser.Sound.WebAudioSound#audioBuffer.
+             *
+             * @name Phaser.Sound.WebAudioSound#source
+             * @type {AudioBufferSourceNode}
+             * @default null
+             * @since 3.0.0
+             */
+            this.source = null;
 
-        BaseSound.call(this, manager, key, config);
-    },
+            /**
+             * A reference to a second audio source used for gapless looped playback.
+             *
+             * @name Phaser.Sound.WebAudioSound#loopSource
+             * @type {AudioBufferSourceNode}
+             * @default null
+             * @since 3.0.0
+             */
+            this.loopSource = null;
+
+            /**
+             * Gain node responsible for controlling this sound's muting.
+             *
+             * @name Phaser.Sound.WebAudioSound#muteNode
+             * @type {GainNode}
+             * @since 3.0.0
+             */
+            this.muteNode = manager.context.createGain();
+
+            /**
+             * Gain node responsible for controlling this sound's volume.
+             *
+             * @name Phaser.Sound.WebAudioSound#volumeNode
+             * @type {GainNode}
+             * @since 3.0.0
+             */
+            this.volumeNode = manager.context.createGain();
+
+            /**
+             * Panner node responsible for controlling this sound's pan.
+             *
+             * Doesn't work on iOS / Safari.
+             *
+             * @name Phaser.Sound.WebAudioSound#pannerNode
+             * @type {StereoPannerNode}
+             * @since 3.50.0
+             */
+            this.pannerNode = null;
+
+            /**
+             * The Stereo Spatial Panner node.
+             *
+             * @name Phaser.Sound.WebAudioSound#spatialNode
+             * @type {PannerNode}
+             * @since 3.60.0
+             */
+            this.spatialNode = null;
+
+            /**
+             * If the Spatial Panner node has been set to track a vector or
+             * Game Object, this retains a reference to it.
+             *
+             * @name Phaser.Sound.WebAudioSound#spatialSource
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.60.0
+             */
+            this.spatialSource = null;
+
+            /**
+             * The time at which the sound should have started playback from the beginning.
+             *
+             * Treat this property as read-only.
+             *
+             * Based on `BaseAudioContext.currentTime` value.
+             *
+             * @name Phaser.Sound.WebAudioSound#playTime
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.playTime = 0;
+
+            /**
+             * The time at which the sound source should have actually started playback.
+             *
+             * Treat this property as read-only.
+             *
+             * Based on `BaseAudioContext.currentTime` value.
+             *
+             * @name Phaser.Sound.WebAudioSound#startTime
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.startTime = 0;
+
+            /**
+             * The time at which the sound loop source should actually start playback.
+             *
+             * Based on `BaseAudioContext.currentTime` value.
+             *
+             * @name Phaser.Sound.WebAudioSound#loopTime
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.loopTime = 0;
+
+            /**
+             * An array where we keep track of all rate updates during playback.
+             *
+             * Treat this property as read-only.
+             *
+             * Array of object types: `{ time: number, rate: number }`
+             *
+             * @name Phaser.Sound.WebAudioSound#rateUpdates
+             * @type {array}
+             * @default []
+             * @since 3.0.0
+             */
+            this.rateUpdates = [];
+
+            /**
+             * Used for keeping track when sound source playback has ended
+             * so its state can be updated accordingly.
+             *
+             * @name Phaser.Sound.WebAudioSound#hasEnded
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.0.0
+             */
+            this.hasEnded = false;
+
+            /**
+             * Used for keeping track when sound source has looped
+             * so its state can be updated accordingly.
+             *
+             * @name Phaser.Sound.WebAudioSound#hasLooped
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.0.0
+             */
+            this.hasLooped = false;
+
+            this.muteNode.connect(this.volumeNode);
+
+            if (manager.context.createPanner) {
+                this.spatialNode = manager.context.createPanner();
+
+                this.volumeNode.connect(this.spatialNode);
+            }
+
+            if (manager.context.createStereoPanner) {
+                this.pannerNode = manager.context.createStereoPanner();
+
+                if (manager.context.createPanner) {
+                    this.spatialNode.connect(this.pannerNode);
+                } else {
+                    this.volumeNode.connect(this.pannerNode);
+                }
+
+                this.pannerNode.connect(manager.destination);
+            } else if (manager.context.createPanner) {
+                this.spatialNode.connect(manager.destination);
+            } else {
+                this.volumeNode.connect(manager.destination);
+            }
+
+            this.duration = this.audioBuffer.duration;
+
+            this.totalDuration = this.audioBuffer.duration;
+
+            BaseSound.call(this, manager, key, config);
+        },
 
     /**
      * Play this sound, or a marked section of it.
@@ -253,10 +244,8 @@ var WebAudioSound = new Class({
      *
      * @return {boolean} Whether the sound started playing successfully.
      */
-    play: function (markerName, config)
-    {
-        if (!BaseSound.prototype.play.call(this, markerName, config))
-        {
+    play: function (markerName, config) {
+        if (!BaseSound.prototype.play.call(this, markerName, config)) {
             return false;
         }
 
@@ -278,15 +267,12 @@ var WebAudioSound = new Class({
      *
      * @return {boolean} Whether the sound was paused successfully.
      */
-    pause: function ()
-    {
-        if (this.manager.context.currentTime < this.startTime)
-        {
+    pause: function () {
+        if (this.manager.context.currentTime < this.startTime) {
             return false;
         }
 
-        if (!BaseSound.prototype.pause.call(this))
-        {
+        if (!BaseSound.prototype.pause.call(this)) {
             return false;
         }
 
@@ -308,15 +294,12 @@ var WebAudioSound = new Class({
      *
      * @return {boolean} Whether the sound was resumed successfully.
      */
-    resume: function ()
-    {
-        if (this.manager.context.currentTime < this.startTime)
-        {
+    resume: function () {
+        if (this.manager.context.currentTime < this.startTime) {
             return false;
         }
 
-        if (!BaseSound.prototype.resume.call(this))
-        {
+        if (!BaseSound.prototype.resume.call(this)) {
             return false;
         }
 
@@ -337,10 +320,8 @@ var WebAudioSound = new Class({
      *
      * @return {boolean} Whether the sound was stopped successfully.
      */
-    stop: function ()
-    {
-        if (!BaseSound.prototype.stop.call(this))
-        {
+    stop: function () {
+        if (!BaseSound.prototype.stop.call(this)) {
             return false;
         }
 
@@ -359,8 +340,7 @@ var WebAudioSound = new Class({
      * @private
      * @since 3.0.0
      */
-    createAndStartBufferSource: function ()
-    {
+    createAndStartBufferSource: function () {
         var seek = this.currentConfig.seek;
         var delay = this.currentConfig.delay;
         var when = this.manager.context.currentTime + delay;
@@ -384,8 +364,7 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#createAndStartLoopBufferSource
      * @since 3.0.0
      */
-    createAndStartLoopBufferSource: function ()
-    {
+    createAndStartLoopBufferSource: function () {
         var when = this.getLoopTime();
         var offset = this.currentMarker ? this.currentMarker.start : 0;
         var duration = this.duration;
@@ -404,8 +383,7 @@ var WebAudioSound = new Class({
      *
      * @return {AudioBufferSourceNode}
      */
-    createBufferSource: function ()
-    {
+    createBufferSource: function () {
         var _this = this;
         var source = this.manager.context.createBufferSource();
 
@@ -413,19 +391,14 @@ var WebAudioSound = new Class({
 
         source.connect(this.muteNode);
 
-        source.onended = function (ev)
-        {
+        source.onended = function (ev) {
             var target = ev.target;
 
-            if (target === _this.source || target === _this.loopSource)
-            {
+            if (target === _this.source || target === _this.loopSource) {
                 // sound ended
-                if (_this.currentConfig.loop)
-                {
+                if (_this.currentConfig.loop) {
                     _this.hasLooped = true;
-                }
-                else
-                {
+                } else {
                     _this.hasEnded = true;
                 }
             }
@@ -442,10 +415,8 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#stopAndRemoveBufferSource
      * @since 3.0.0
      */
-    stopAndRemoveBufferSource: function ()
-    {
-        if (this.source)
-        {
+    stopAndRemoveBufferSource: function () {
+        if (this.source) {
             var tempSource = this.source;
 
             this.source = null;
@@ -467,10 +438,8 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#stopAndRemoveLoopBufferSource
      * @since 3.0.0
      */
-    stopAndRemoveLoopBufferSource: function ()
-    {
-        if (this.loopSource)
-        {
+    stopAndRemoveLoopBufferSource: function () {
+        if (this.loopSource) {
             this.loopSource.stop();
             this.loopSource.disconnect();
             this.loopSource = null;
@@ -485,8 +454,7 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#applyConfig
      * @since 3.0.0
      */
-    applyConfig: function ()
-    {
+    applyConfig: function () {
         this.rateUpdates.length = 0;
 
         this.rateUpdates.push({
@@ -496,8 +464,7 @@ var WebAudioSound = new Class({
 
         var source = this.currentConfig.source;
 
-        if (source && this.manager.context.createPanner)
-        {
+        if (source && this.manager.context.createPanner) {
             var node = this.spatialNode;
 
             node.panningModel = GetFastValue(source, 'panningModel', 'equalpower');
@@ -514,8 +481,7 @@ var WebAudioSound = new Class({
 
             this.spatialSource = GetFastValue(source, 'follow', null);
 
-            if (!this.spatialSource)
-            {
+            if (!this.spatialSource) {
                 node.positionX.value = GetFastValue(source, 'x', 0);
                 node.positionY.value = GetFastValue(source, 'y', 0);
                 node.positionZ.value = GetFastValue(source, 'z', 0);
@@ -542,22 +508,16 @@ var WebAudioSound = new Class({
      */
     x: {
 
-        get: function ()
-        {
-            if (this.spatialNode)
-            {
+        get: function () {
+            if (this.spatialNode) {
                 return this.spatialNode.positionX;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         },
 
-        set: function (value)
-        {
-            if (this.spatialNode)
-            {
+        set: function (value) {
+            if (this.spatialNode) {
                 this.spatialNode.positionX.value = value;
             }
         }
@@ -580,22 +540,16 @@ var WebAudioSound = new Class({
      */
     y: {
 
-        get: function ()
-        {
-            if (this.spatialNode)
-            {
+        get: function () {
+            if (this.spatialNode) {
                 return this.spatialNode.positionY;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         },
 
-        set: function (value)
-        {
-            if (this.spatialNode)
-            {
+        set: function (value) {
+            if (this.spatialNode) {
                 this.spatialNode.positionY.value = value;
             }
         }
@@ -609,33 +563,26 @@ var WebAudioSound = new Class({
      * @fires Phaser.Sound.Events#LOOPED
      * @since 3.0.0
      */
-    update: function ()
-    {
-        if (this.isPlaying && this.spatialSource)
-        {
+    update: function () {
+        if (this.isPlaying && this.spatialSource) {
             var x = GetFastValue(this.spatialSource, 'x', null);
             var y = GetFastValue(this.spatialSource, 'y', null);
 
-            if (x && x !== this._spatialx)
-            {
+            if (x && x !== this._spatialx) {
                 this._spatialx = this.spatialNode.positionX.value = x;
             }
-            if (y && y !== this._spatialy)
-            {
+            if (y && y !== this._spatialy) {
                 this._spatialy = this.spatialNode.positionY.value = y;
             }
         }
 
-        if (this.hasEnded)
-        {
+        if (this.hasEnded) {
             BaseSound.prototype.stop.call(this);
 
             this.stopAndRemoveBufferSource();
 
             this.emit(Events.COMPLETE, this);
-        }
-        else if (this.hasLooped)
-        {
+        } else if (this.hasLooped) {
             this.hasLooped = false;
             this.source = this.loopSource;
             this.loopSource = null;
@@ -660,10 +607,8 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
-        if (this.pendingRemove)
-        {
+    destroy: function () {
+        if (this.pendingRemove) {
             return;
         }
 
@@ -676,14 +621,12 @@ var WebAudioSound = new Class({
         this.volumeNode.disconnect();
         this.volumeNode = null;
 
-        if (this.pannerNode)
-        {
+        if (this.pannerNode) {
             this.pannerNode.disconnect();
             this.pannerNode = null;
         }
 
-        if (this.spatialNode)
-        {
+        if (this.spatialNode) {
             this.spatialNode.disconnect();
             this.spatialNode = null;
             this.spatialSource = null;
@@ -699,26 +642,22 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#calculateRate
      * @since 3.0.0
      */
-    calculateRate: function ()
-    {
+    calculateRate: function () {
         BaseSound.prototype.calculateRate.call(this);
 
         var now = this.manager.context.currentTime;
 
-        if (this.source && typeof this.totalRate === 'number')
-        {
+        if (this.source && typeof this.totalRate === 'number') {
             this.source.playbackRate.setValueAtTime(this.totalRate, now);
         }
 
-        if (this.isPlaying)
-        {
+        if (this.isPlaying) {
             this.rateUpdates.push({
                 time: Math.max(this.startTime, now) - this.playTime,
                 rate: this.totalRate
             });
 
-            if (this.loopSource)
-            {
+            if (this.loopSource) {
                 this.stopAndRemoveLoopBufferSource();
                 this.createAndStartLoopBufferSource();
             }
@@ -731,20 +670,15 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#getCurrentTime
      * @since 3.0.0
      */
-    getCurrentTime: function ()
-    {
+    getCurrentTime: function () {
         var currentTime = 0;
 
-        for (var i = 0; i < this.rateUpdates.length; i++)
-        {
+        for (var i = 0; i < this.rateUpdates.length; i++) {
             var nextTime = 0;
 
-            if (i < this.rateUpdates.length - 1)
-            {
+            if (i < this.rateUpdates.length - 1) {
                 nextTime = this.rateUpdates[i + 1].time;
-            }
-            else
-            {
+            } else {
                 nextTime = this.manager.context.currentTime - this.playTime;
             }
 
@@ -761,12 +695,10 @@ var WebAudioSound = new Class({
      * @method Phaser.Sound.WebAudioSound#getLoopTime
      * @since 3.0.0
      */
-    getLoopTime: function ()
-    {
+    getLoopTime: function () {
         var lastRateUpdateCurrentTime = 0;
 
-        for (var i = 0; i < this.rateUpdates.length - 1; i++)
-        {
+        for (var i = 0; i < this.rateUpdates.length - 1; i++) {
             lastRateUpdateCurrentTime += (this.rateUpdates[i + 1].time - this.rateUpdates[i].time) * this.rateUpdates[i].rate;
         }
 
@@ -788,13 +720,11 @@ var WebAudioSound = new Class({
      */
     rate: {
 
-        get: function ()
-        {
+        get: function () {
             return this.currentConfig.rate;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.currentConfig.rate = value;
 
             this.calculateRate();
@@ -818,8 +748,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setRate: function (value)
-    {
+    setRate: function (value) {
         this.rate = value;
 
         return this;
@@ -837,13 +766,11 @@ var WebAudioSound = new Class({
      */
     detune: {
 
-        get: function ()
-        {
+        get: function () {
             return this.currentConfig.detune;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.currentConfig.detune = value;
 
             this.calculateRate();
@@ -865,8 +792,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setDetune: function (value)
-    {
+    setDetune: function (value) {
         this.detune = value;
 
         return this;
@@ -884,13 +810,11 @@ var WebAudioSound = new Class({
      */
     mute: {
 
-        get: function ()
-        {
+        get: function () {
             return (this.muteNode.gain.value === 0);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.currentConfig.mute = value;
             this.muteNode.gain.setValueAtTime(value ? 0 : 1, 0);
 
@@ -910,8 +834,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setMute: function (value)
-    {
+    setMute: function (value) {
         this.mute = value;
 
         return this;
@@ -928,13 +851,11 @@ var WebAudioSound = new Class({
      */
     volume: {
 
-        get: function ()
-        {
+        get: function () {
             return this.volumeNode.gain.value;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.currentConfig.volume = value;
             this.volumeNode.gain.setValueAtTime(value, 0);
 
@@ -953,8 +874,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setVolume: function (value)
-    {
+    setVolume: function (value) {
         this.volume = value;
 
         return this;
@@ -973,42 +893,31 @@ var WebAudioSound = new Class({
      */
     seek: {
 
-        get: function ()
-        {
-            if (this.isPlaying)
-            {
-                if (this.manager.context.currentTime < this.startTime)
-                {
+        get: function () {
+            if (this.isPlaying) {
+                if (this.manager.context.currentTime < this.startTime) {
                     return this.startTime - this.playTime;
                 }
 
                 return this.getCurrentTime();
-            }
-            else if (this.isPaused)
-            {
+            } else if (this.isPaused) {
                 return this.currentConfig.seek;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         },
 
-        set: function (value)
-        {
-            if (this.manager.context.currentTime < this.startTime)
-            {
+        set: function (value) {
+            if (this.manager.context.currentTime < this.startTime) {
                 return;
             }
 
-            if (this.isPlaying || this.isPaused)
-            {
+            if (this.isPlaying || this.isPaused) {
                 value = Math.min(Math.max(0, value), this.duration);
 
                 this.currentConfig.seek = value;
 
-                if (this.isPlaying)
-                {
+                if (this.isPlaying) {
                     this.stopAndRemoveBufferSource();
                     this.createAndStartBufferSource();
                 }
@@ -1029,8 +938,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setSeek: function (value)
-    {
+    setSeek: function (value) {
         this.seek = value;
 
         return this;
@@ -1047,21 +955,17 @@ var WebAudioSound = new Class({
      */
     loop: {
 
-        get: function ()
-        {
+        get: function () {
             return this.currentConfig.loop;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.currentConfig.loop = value;
 
-            if (this.isPlaying)
-            {
+            if (this.isPlaying) {
                 this.stopAndRemoveLoopBufferSource();
 
-                if (value)
-                {
+                if (value) {
                     this.createAndStartLoopBufferSource();
                 }
             }
@@ -1081,8 +985,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setLoop: function (value)
-    {
+    setLoop: function (value) {
         this.loop = value;
 
         return this;
@@ -1101,24 +1004,18 @@ var WebAudioSound = new Class({
      */
     pan: {
 
-        get: function ()
-        {
-            if (this.pannerNode)
-            {
+        get: function () {
+            if (this.pannerNode) {
                 return this.pannerNode.pan.value;
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.currentConfig.pan = value;
 
-            if (this.pannerNode)
-            {
+            if (this.pannerNode) {
                 this.pannerNode.pan.setValueAtTime(value, this.manager.context.currentTime);
             }
 
@@ -1139,8 +1036,7 @@ var WebAudioSound = new Class({
      *
      * @return {this} This Sound instance.
      */
-    setPan: function (value)
-    {
+    setPan: function (value) {
         this.pan = value;
 
         return this;

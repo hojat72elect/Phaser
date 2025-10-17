@@ -36,31 +36,29 @@ var SceneFile = new Class({
 
     initialize:
 
-    function SceneFile (loader, key, url, xhrSettings)
-    {
-        var extension = 'js';
+        function SceneFile(loader, key, url, xhrSettings) {
+            var extension = 'js';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            }
 
-        var fileConfig = {
-            type: 'text',
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: 'text',
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
-    },
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -69,8 +67,7 @@ var SceneFile = new Class({
      * @method Phaser.Loader.FileTypes.SceneFile#onProcess
      * @since 3.16.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = this.xhrLoader.responseText;
@@ -84,8 +81,7 @@ var SceneFile = new Class({
      * @method Phaser.Loader.FileTypes.SceneFile#addToCache
      * @since 3.16.0
      */
-    addToCache: function ()
-    {
+    addToCache: function () {
         var code = this.data.concat('(function(){\n' + 'return new ' + this.key + '();\n' + '}).call(this);');
 
         //  Stops rollup from freaking out during build
@@ -193,18 +189,13 @@ var SceneFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('sceneFile', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('sceneFile', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new SceneFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new SceneFile(this, key, url, xhrSettings));
     }
 

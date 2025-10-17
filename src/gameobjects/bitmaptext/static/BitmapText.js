@@ -88,217 +88,219 @@ var BitmapText = new Class({
 
     initialize:
 
-    function BitmapText (scene, x, y, font, text, size, align)
-    {
-        if (text === undefined) { text = ''; }
-        if (align === undefined) { align = 0; }
+        function BitmapText(scene, x, y, font, text, size, align) {
+            if (text === undefined) {
+                text = '';
+            }
+            if (align === undefined) {
+                align = 0;
+            }
 
-        GameObject.call(this, scene, 'BitmapText');
+            GameObject.call(this, scene, 'BitmapText');
 
-        /**
-         * The key of the Bitmap Font used by this Bitmap Text.
-         * To change the font after creation please use `setFont`.
-         *
-         * @name Phaser.GameObjects.BitmapText#font
-         * @type {string}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.font = font;
+            /**
+             * The key of the Bitmap Font used by this Bitmap Text.
+             * To change the font after creation please use `setFont`.
+             *
+             * @name Phaser.GameObjects.BitmapText#font
+             * @type {string}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.font = font;
 
-        var entry = this.scene.sys.cache.bitmapFont.get(font);
+            var entry = this.scene.sys.cache.bitmapFont.get(font);
 
-        if (!entry)
-        {
-            throw new Error('Invalid BitmapText key: ' + font);
-        }
+            if (!entry) {
+                throw new Error('Invalid BitmapText key: ' + font);
+            }
 
-        /**
-         * The data of the Bitmap Font used by this Bitmap Text.
-         *
-         * @name Phaser.GameObjects.BitmapText#fontData
-         * @type {Phaser.Types.GameObjects.BitmapText.BitmapFontData}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.fontData = entry.data;
+            /**
+             * The data of the Bitmap Font used by this Bitmap Text.
+             *
+             * @name Phaser.GameObjects.BitmapText#fontData
+             * @type {Phaser.Types.GameObjects.BitmapText.BitmapFontData}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.fontData = entry.data;
 
-        /**
-         * The text that this Bitmap Text object displays.
-         *
-         * @name Phaser.GameObjects.BitmapText#_text
-         * @type {string}
-         * @private
-         * @since 3.0.0
-         */
-        this._text = '';
+            /**
+             * The text that this Bitmap Text object displays.
+             *
+             * @name Phaser.GameObjects.BitmapText#_text
+             * @type {string}
+             * @private
+             * @since 3.0.0
+             */
+            this._text = '';
 
-        /**
-         * The font size of this Bitmap Text.
-         *
-         * @name Phaser.GameObjects.BitmapText#_fontSize
-         * @type {number}
-         * @private
-         * @since 3.0.0
-         */
-        this._fontSize = size || this.fontData.size;
+            /**
+             * The font size of this Bitmap Text.
+             *
+             * @name Phaser.GameObjects.BitmapText#_fontSize
+             * @type {number}
+             * @private
+             * @since 3.0.0
+             */
+            this._fontSize = size || this.fontData.size;
 
-        /**
-         * Adds / Removes spacing between characters.
-         *
-         * Can be a negative or positive number.
-         *
-         * @name Phaser.GameObjects.BitmapText#_letterSpacing
-         * @type {number}
-         * @private
-         * @since 3.4.0
-         */
-        this._letterSpacing = 0;
+            /**
+             * Adds / Removes spacing between characters.
+             *
+             * Can be a negative or positive number.
+             *
+             * @name Phaser.GameObjects.BitmapText#_letterSpacing
+             * @type {number}
+             * @private
+             * @since 3.4.0
+             */
+            this._letterSpacing = 0;
 
-        /**
-         * Adds / Removes line spacing in a multiline BitmapText object.
-         *
-         * Can be a negative or positive number.
-         *
-         * @name Phaser.GameObjects.BitmapText#_lineSpacing
-         * @type {number}
-         * @private
-         * @since 3.60.0
-         */
-        this._lineSpacing = 0;
+            /**
+             * Adds / Removes line spacing in a multiline BitmapText object.
+             *
+             * Can be a negative or positive number.
+             *
+             * @name Phaser.GameObjects.BitmapText#_lineSpacing
+             * @type {number}
+             * @private
+             * @since 3.60.0
+             */
+            this._lineSpacing = 0;
 
-        /**
-         * Controls the alignment of each line of text in this BitmapText object.
-         * Only has any effect when this BitmapText contains multiple lines of text, split with carriage-returns.
-         * Has no effect with single-lines of text.
-         *
-         * See the methods `setLeftAlign`, `setCenterAlign` and `setRightAlign`.
-         *
-         * 0 = Left aligned (default)
-         * 1 = Middle aligned
-         * 2 = Right aligned
-         *
-         * The alignment position is based on the longest line of text.
-         *
-         * @name Phaser.GameObjects.BitmapText#_align
-         * @type {number}
-         * @private
-         * @since 3.11.0
-         */
-        this._align = align;
+            /**
+             * Controls the alignment of each line of text in this BitmapText object.
+             * Only has any effect when this BitmapText contains multiple lines of text, split with carriage-returns.
+             * Has no effect with single-lines of text.
+             *
+             * See the methods `setLeftAlign`, `setCenterAlign` and `setRightAlign`.
+             *
+             * 0 = Left aligned (default)
+             * 1 = Middle aligned
+             * 2 = Right aligned
+             *
+             * The alignment position is based on the longest line of text.
+             *
+             * @name Phaser.GameObjects.BitmapText#_align
+             * @type {number}
+             * @private
+             * @since 3.11.0
+             */
+            this._align = align;
 
-        /**
-         * An object that describes the size of this Bitmap Text.
-         *
-         * @name Phaser.GameObjects.BitmapText#_bounds
-         * @type {Phaser.Types.GameObjects.BitmapText.BitmapTextSize}
-         * @private
-         * @since 3.0.0
-         */
-        this._bounds = GetBitmapTextSize();
+            /**
+             * An object that describes the size of this Bitmap Text.
+             *
+             * @name Phaser.GameObjects.BitmapText#_bounds
+             * @type {Phaser.Types.GameObjects.BitmapText.BitmapTextSize}
+             * @private
+             * @since 3.0.0
+             */
+            this._bounds = GetBitmapTextSize();
 
-        /**
-         * An internal dirty flag for bounds calculation.
-         *
-         * @name Phaser.GameObjects.BitmapText#_dirty
-         * @type {boolean}
-         * @private
-         * @since 3.11.0
-         */
-        this._dirty = true;
+            /**
+             * An internal dirty flag for bounds calculation.
+             *
+             * @name Phaser.GameObjects.BitmapText#_dirty
+             * @type {boolean}
+             * @private
+             * @since 3.11.0
+             */
+            this._dirty = true;
 
-        /**
-         * Internal cache var holding the maxWidth.
-         *
-         * @name Phaser.GameObjects.BitmapText#_maxWidth
-         * @type {number}
-         * @private
-         * @since 3.21.0
-         */
-        this._maxWidth = 0;
+            /**
+             * Internal cache var holding the maxWidth.
+             *
+             * @name Phaser.GameObjects.BitmapText#_maxWidth
+             * @type {number}
+             * @private
+             * @since 3.21.0
+             */
+            this._maxWidth = 0;
 
-        /**
-         * The character code used to detect for word wrapping.
-         * Defaults to 32 (a space character).
-         *
-         * @name Phaser.GameObjects.BitmapText#wordWrapCharCode
-         * @type {number}
-         * @since 3.21.0
-         */
-        this.wordWrapCharCode = 32;
+            /**
+             * The character code used to detect for word wrapping.
+             * Defaults to 32 (a space character).
+             *
+             * @name Phaser.GameObjects.BitmapText#wordWrapCharCode
+             * @type {number}
+             * @since 3.21.0
+             */
+            this.wordWrapCharCode = 32;
 
-        /**
-         * Internal array holding the character tint color data.
-         *
-         * @name Phaser.GameObjects.BitmapText#charColors
-         * @type {array}
-         * @private
-         * @since 3.50.0
-         */
-        this.charColors = [];
+            /**
+             * Internal array holding the character tint color data.
+             *
+             * @name Phaser.GameObjects.BitmapText#charColors
+             * @type {array}
+             * @private
+             * @since 3.50.0
+             */
+            this.charColors = [];
 
-        /**
-         * The horizontal offset of the drop shadow.
-         *
-         * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
-         *
-         * @name Phaser.GameObjects.BitmapText#dropShadowX
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.dropShadowX = 0;
+            /**
+             * The horizontal offset of the drop shadow.
+             *
+             * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
+             *
+             * @name Phaser.GameObjects.BitmapText#dropShadowX
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.dropShadowX = 0;
 
-        /**
-         * The vertical offset of the drop shadow.
-         *
-         * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
-         *
-         * @name Phaser.GameObjects.BitmapText#dropShadowY
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.dropShadowY = 0;
+            /**
+             * The vertical offset of the drop shadow.
+             *
+             * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
+             *
+             * @name Phaser.GameObjects.BitmapText#dropShadowY
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.dropShadowY = 0;
 
-        /**
-         * The color of the drop shadow.
-         *
-         * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
-         *
-         * @name Phaser.GameObjects.BitmapText#dropShadowColor
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.dropShadowColor = 0x000000;
+            /**
+             * The color of the drop shadow.
+             *
+             * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
+             *
+             * @name Phaser.GameObjects.BitmapText#dropShadowColor
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.dropShadowColor = 0x000000;
 
-        /**
-         * The alpha value of the drop shadow.
-         *
-         * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
-         *
-         * @name Phaser.GameObjects.BitmapText#dropShadowAlpha
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.dropShadowAlpha = 0.5;
+            /**
+             * The alpha value of the drop shadow.
+             *
+             * You can set this directly, or use `Phaser.GameObjects.BitmapText#setDropShadow`.
+             *
+             * @name Phaser.GameObjects.BitmapText#dropShadowAlpha
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.dropShadowAlpha = 0.5;
 
-        /**
-         * Indicates whether the font texture is from an atlas or not.
-         *
-         * @name Phaser.GameObjects.BitmapText#fromAtlas
-         * @type {boolean}
-         * @since 3.54.0
-         * @readonly
-         */
-        this.fromAtlas = entry.fromAtlas;
+            /**
+             * Indicates whether the font texture is from an atlas or not.
+             *
+             * @name Phaser.GameObjects.BitmapText#fromAtlas
+             * @type {boolean}
+             * @since 3.54.0
+             * @readonly
+             */
+            this.fromAtlas = entry.fromAtlas;
 
-        this.setTexture(entry.texture, entry.frame);
-        this.setPosition(x, y);
-        this.setOrigin(0, 0);
-        this.initPipeline();
-        this.initPostPipeline();
+            this.setTexture(entry.texture, entry.frame);
+            this.setPosition(x, y);
+            this.setOrigin(0, 0);
+            this.initPipeline();
+            this.initPostPipeline();
 
-        this.setText(text);
-    },
+            this.setText(text);
+        },
 
     /**
      * Set the lines of text in this BitmapText to be left-aligned.
@@ -309,8 +311,7 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setLeftAlign: function ()
-    {
+    setLeftAlign: function () {
         this._align = BitmapText.ALIGN_LEFT;
 
         this._dirty = true;
@@ -327,8 +328,7 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setCenterAlign: function ()
-    {
+    setCenterAlign: function () {
         this._align = BitmapText.ALIGN_CENTER;
 
         this._dirty = true;
@@ -345,8 +345,7 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setRightAlign: function ()
-    {
+    setRightAlign: function () {
         this._align = BitmapText.ALIGN_RIGHT;
 
         this._dirty = true;
@@ -364,8 +363,7 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setFontSize: function (size)
-    {
+    setFontSize: function (size) {
         this._fontSize = size;
 
         this._dirty = true;
@@ -385,9 +383,10 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setLetterSpacing: function (spacing)
-    {
-        if (spacing === undefined) { spacing = 0; }
+    setLetterSpacing: function (spacing) {
+        if (spacing === undefined) {
+            spacing = 0;
+        }
 
         this._letterSpacing = spacing;
 
@@ -411,9 +410,10 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setLineSpacing: function (spacing)
-    {
-        if (spacing === undefined) { spacing = 0; }
+    setLineSpacing: function (spacing) {
+        if (spacing === undefined) {
+            spacing = 0;
+        }
 
         this.lineSpacing = spacing;
 
@@ -432,20 +432,16 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setText: function (value)
-    {
-        if (!value && value !== 0)
-        {
+    setText: function (value) {
+        if (!value && value !== 0) {
             value = '';
         }
 
-        if (Array.isArray(value))
-        {
+        if (Array.isArray(value)) {
             value = value.join('\n');
         }
 
-        if (value !== this.text)
-        {
+        if (value !== this.text) {
             this._text = value.toString();
 
             this._dirty = true;
@@ -479,12 +475,19 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setDropShadow: function (x, y, color, alpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (color === undefined) { color = 0x000000; }
-        if (alpha === undefined) { alpha = 0.5; }
+    setDropShadow: function (x, y, color, alpha) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
+        if (color === undefined) {
+            color = 0x000000;
+        }
+        if (alpha === undefined) {
+            alpha = 0.5;
+        }
 
         this.dropShadowX = x;
         this.dropShadowY = y;
@@ -535,15 +538,21 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setCharacterTint: function (start, length, tintFill, topLeft, topRight, bottomLeft, bottomRight)
-    {
-        if (start === undefined) { start = 0; }
-        if (length === undefined) { length = 1; }
-        if (tintFill === undefined) { tintFill = false; }
-        if (topLeft === undefined) { topLeft = -1; }
+    setCharacterTint: function (start, length, tintFill, topLeft, topRight, bottomLeft, bottomRight) {
+        if (start === undefined) {
+            start = 0;
+        }
+        if (length === undefined) {
+            length = 1;
+        }
+        if (tintFill === undefined) {
+            tintFill = false;
+        }
+        if (topLeft === undefined) {
+            topLeft = -1;
+        }
 
-        if (topRight === undefined)
-        {
+        if (topRight === undefined) {
             topRight = topLeft;
             bottomLeft = topLeft;
             bottomRight = topLeft;
@@ -551,13 +560,11 @@ var BitmapText = new Class({
 
         var len = this.text.length;
 
-        if (length === -1)
-        {
+        if (length === -1) {
             length = len;
         }
 
-        if (start < 0)
-        {
+        if (start < 0) {
             start = len + start;
         }
 
@@ -567,28 +574,21 @@ var BitmapText = new Class({
 
         var charColors = this.charColors;
 
-        for (var i = start; i < end; i++)
-        {
+        for (var i = start; i < end; i++) {
             var color = charColors[i];
 
-            if (topLeft === -1)
-            {
+            if (topLeft === -1) {
                 charColors[i] = null;
-            }
-            else
-            {
+            } else {
                 var tintEffect = (tintFill) ? 1 : 0;
 
-                if (color)
-                {
+                if (color) {
                     color.tintEffect = tintEffect;
                     color.tintTL = topLeft;
                     color.tintTR = topRight;
                     color.tintBL = bottomLeft;
                     color.tintBR = bottomRight;
-                }
-                else
-                {
+                } else {
                     charColors[i] = {
                         tintEffect: tintEffect,
                         tintTL: topLeft,
@@ -644,30 +644,28 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setWordTint: function (word, count, tintFill, topLeft, topRight, bottomLeft, bottomRight)
-    {
-        if (count === undefined) { count = 1; }
+    setWordTint: function (word, count, tintFill, topLeft, topRight, bottomLeft, bottomRight) {
+        if (count === undefined) {
+            count = 1;
+        }
 
         var bounds = this.getTextBounds();
 
         var words = bounds.words;
 
-        var wordIsNumber = (typeof(word) === 'number');
+        var wordIsNumber = (typeof (word) === 'number');
 
         var total = 0;
 
-        for (var i = 0; i < words.length; i++)
-        {
+        for (var i = 0; i < words.length; i++) {
             var lineword = words[i];
 
-            if ((wordIsNumber && i === word) || (!wordIsNumber && lineword.word === word))
-            {
+            if ((wordIsNumber && i === word) || (!wordIsNumber && lineword.word === word)) {
                 this.setCharacterTint(lineword.i, lineword.word.length, tintFill, topLeft, topRight, bottomLeft, bottomRight);
 
                 total++;
 
-                if (total === count)
-                {
+                if (total === count) {
                     return this;
                 }
             }
@@ -695,16 +693,14 @@ var BitmapText = new Class({
      *
      * @return {Phaser.Types.GameObjects.BitmapText.BitmapTextSize} An object that describes the size of this Bitmap Text.
      */
-    getTextBounds: function (round)
-    {
+    getTextBounds: function (round) {
         //  local = The BitmapText based on fontSize and 0x0 coords
         //  global = The BitmapText, taking into account scale and world position
         //  lines = The BitmapText line data
 
         var bounds = this._bounds;
 
-        if (this._dirty || round || this.scaleX !== bounds.scaleX || this.scaleY !== bounds.scaleY)
-        {
+        if (this._dirty || round || this.scaleX !== bounds.scaleX || this.scaleY !== bounds.scaleY) {
             GetBitmapTextSize(this, round, true, bounds);
 
             this._dirty = false;
@@ -737,8 +733,7 @@ var BitmapText = new Class({
      *
      * @return {Phaser.Types.GameObjects.BitmapText.BitmapTextCharacter} The character object at the given position, or `null`.
      */
-    getCharacterAt: function (x, y, camera)
-    {
+    getCharacterAt: function (x, y, camera) {
         var point = this.getLocalPoint(x, y, null, camera);
 
         var bounds = this.getTextBounds();
@@ -747,14 +742,12 @@ var BitmapText = new Class({
 
         var tempRect = new Rectangle();
 
-        for (var i = 0; i < chars.length; i++)
-        {
+        for (var i = 0; i < chars.length; i++) {
             var char = chars[i];
 
             tempRect.setTo(char.x, char.t, char.r - char.x, char.b);
 
-            if (tempRect.contains(point.x, point.y))
-            {
+            if (tempRect.contains(point.x, point.y)) {
                 return char;
             }
         }
@@ -771,8 +764,7 @@ var BitmapText = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateDisplayOrigin: function ()
-    {
+    updateDisplayOrigin: function () {
         this._dirty = true;
 
         this.getTextBounds(false);
@@ -795,15 +787,17 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setFont: function (key, size, align)
-    {
-        if (size === undefined) { size = this._fontSize; }
-        if (align === undefined) { align = this._align; }
+    setFont: function (key, size, align) {
+        if (size === undefined) {
+            size = this._fontSize;
+        }
+        if (align === undefined) {
+            align = this._align;
+        }
 
         var entry = this.scene.sys.cache.bitmapFont.get(key);
 
-        if (entry)
-        {
+        if (entry) {
             this.font = key;
             this.fontData = entry.data;
             this._fontSize = size;
@@ -838,14 +832,12 @@ var BitmapText = new Class({
      *
      * @return {this} This BitmapText Object.
      */
-    setMaxWidth: function (value, wordWrapCharCode)
-    {
+    setMaxWidth: function (value, wordWrapCharCode) {
         this._maxWidth = value;
 
         this._dirty = true;
 
-        if (wordWrapCharCode !== undefined)
-        {
+        if (wordWrapCharCode !== undefined) {
             this.wordWrapCharCode = wordWrapCharCode;
         }
 
@@ -865,8 +857,7 @@ var BitmapText = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setDisplaySize: function (displayWidth, displayHeight)
-    {
+    setDisplaySize: function (displayWidth, displayHeight) {
         this.setScale(1, 1);
 
         this.getTextBounds(false);
@@ -900,14 +891,12 @@ var BitmapText = new Class({
      */
     align: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this._align = value;
             this._dirty = true;
         },
 
-        get: function ()
-        {
+        get: function () {
             return this._align;
         }
 
@@ -924,13 +913,11 @@ var BitmapText = new Class({
      */
     text: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this.setText(value);
         },
 
-        get: function ()
-        {
+        get: function () {
             return this._text;
         }
 
@@ -947,14 +934,12 @@ var BitmapText = new Class({
      */
     fontSize: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this._fontSize = value;
             this._dirty = true;
         },
 
-        get: function ()
-        {
+        get: function () {
             return this._fontSize;
         }
 
@@ -973,14 +958,12 @@ var BitmapText = new Class({
      */
     letterSpacing: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this._letterSpacing = value;
             this._dirty = true;
         },
 
-        get: function ()
-        {
+        get: function () {
             return this._letterSpacing;
         }
 
@@ -999,14 +982,12 @@ var BitmapText = new Class({
      */
     lineSpacing: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this._lineSpacing = value;
             this._dirty = true;
         },
 
-        get: function ()
-        {
+        get: function () {
             return this._lineSpacing;
         }
 
@@ -1028,14 +1009,12 @@ var BitmapText = new Class({
      */
     maxWidth: {
 
-        set: function (value)
-        {
+        set: function (value) {
             this._maxWidth = value;
             this._dirty = true;
         },
 
-        get: function ()
-        {
+        get: function () {
             return this._maxWidth;
         }
 
@@ -1053,8 +1032,7 @@ var BitmapText = new Class({
      */
     width: {
 
-        get: function ()
-        {
+        get: function () {
             this.getTextBounds(false);
 
             return this._bounds.global.width;
@@ -1074,8 +1052,7 @@ var BitmapText = new Class({
      */
     height: {
 
-        get: function ()
-        {
+        get: function () {
             this.getTextBounds(false);
 
             return this._bounds.global.height;
@@ -1097,8 +1074,7 @@ var BitmapText = new Class({
      */
     displayWidth: {
 
-        set: function(value)
-        {
+        set: function (value) {
             this.setScaleX(1);
 
             this.getTextBounds(false);
@@ -1108,8 +1084,7 @@ var BitmapText = new Class({
             this.setScaleX(scale);
         },
 
-        get: function ()
-        {
+        get: function () {
             return this.width;
         }
 
@@ -1129,8 +1104,7 @@ var BitmapText = new Class({
      */
     displayHeight: {
 
-        set: function(value)
-        {
+        set: function (value) {
             this.setScaleY(1);
 
             this.getTextBounds(false);
@@ -1140,8 +1114,7 @@ var BitmapText = new Class({
             this.setScaleY(scale);
         },
 
-        get: function ()
-        {
+        get: function () {
             return this.height;
         }
 
@@ -1155,8 +1128,7 @@ var BitmapText = new Class({
      *
      * @return {Phaser.Types.GameObjects.BitmapText.JSONBitmapText} A JSON representation of this Bitmap Text.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         var out = Components.ToJSON(this);
 
         //  Extra data is added here
@@ -1182,8 +1154,7 @@ var BitmapText = new Class({
      * @protected
      * @since 3.50.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.charColors.length = 0;
         this._bounds = null;
         this.fontData = null;

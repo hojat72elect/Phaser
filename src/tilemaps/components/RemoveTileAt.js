@@ -23,30 +23,28 @@ var CalculateFacesAt = require('./CalculateFacesAt');
  *
  * @return {Phaser.Tilemaps.Tile} The Tile object that was removed.
  */
-var RemoveTileAt = function (tileX, tileY, replaceWithNull, recalculateFaces, layer)
-{
-    if (replaceWithNull === undefined) { replaceWithNull = true; }
-    if (recalculateFaces === undefined) { recalculateFaces = true; }
+var RemoveTileAt = function (tileX, tileY, replaceWithNull, recalculateFaces, layer) {
+    if (replaceWithNull === undefined) {
+        replaceWithNull = true;
+    }
+    if (recalculateFaces === undefined) {
+        recalculateFaces = true;
+    }
 
-    if (!IsInLayerBounds(tileX, tileY, layer))
-    {
+    if (!IsInLayerBounds(tileX, tileY, layer)) {
         return null;
     }
 
     var tile = layer.data[tileY][tileX];
 
-    if (!tile)
-    {
+    if (!tile) {
         return null;
-    }
-    else
-    {
+    } else {
         layer.data[tileY][tileX] = (replaceWithNull) ? null : new Tile(layer, -1, tileX, tileY, layer.tileWidth, layer.tileHeight);
     }
 
     //  Recalculate faces only if the removed tile was a colliding tile
-    if (recalculateFaces && tile && tile.collides)
-    {
+    if (recalculateFaces && tile && tile.collides) {
         CalculateFacesAt(tileX, tileY, layer);
     }
 

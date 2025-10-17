@@ -17,13 +17,11 @@ var Line = require('../line/Line');
  *
  * @return {number} The perimeter of the Polygon.
  */
-var Perimeter = function (polygon)
-{
+var Perimeter = function (polygon) {
     var points = polygon.points;
     var perimeter = 0;
 
-    for (var i = 0; i < points.length; i++)
-    {
+    for (var i = 0; i < points.length; i++) {
         var pointA = points[i];
         var pointB = points[(i + 1) % points.length];
         var line = new Line(

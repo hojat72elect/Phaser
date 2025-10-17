@@ -20,15 +20,13 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     var text = src._text;
     var textLength = text.length;
 
     var ctx = renderer.currentContext;
 
-    if (textLength === 0 || !SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (textLength === 0 || !SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         return;
     }
 
@@ -80,12 +78,9 @@ var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMat
 
     var lineData = src._bounds.lines;
 
-    if (align === 1)
-    {
+    if (align === 1) {
         lineOffsetX = (lineData.longest - lineData.lengths[0]) / 2;
-    }
-    else if (align === 2)
-    {
+    } else if (align === 2) {
         lineOffsetX = (lineData.longest - lineData.lengths[0]);
     }
 
@@ -93,31 +88,25 @@ var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMat
 
     var roundPixels = camera.roundPixels;
 
-    if (src.cropWidth > 0 && src.cropHeight > 0)
-    {
+    if (src.cropWidth > 0 && src.cropHeight > 0) {
         ctx.beginPath();
         ctx.rect(0, 0, src.cropWidth, src.cropHeight);
         ctx.clip();
     }
 
-    for (var i = 0; i < textLength; i++)
-    {
+    for (var i = 0; i < textLength; i++) {
         //  Reset the scale (in case the callback changed it)
         scale = baseScale;
         rotation = 0;
 
         charCode = text.charCodeAt(i);
 
-        if (charCode === 10)
-        {
+        if (charCode === 10) {
             currentLine++;
 
-            if (align === 1)
-            {
+            if (align === 1) {
                 lineOffsetX = (lineData.longest - lineData.lengths[currentLine]) / 2;
-            }
-            else if (align === 2)
-            {
+            } else if (align === 2) {
                 lineOffsetX = (lineData.longest - lineData.lengths[currentLine]);
             }
 
@@ -130,8 +119,7 @@ var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMat
 
         glyph = chars[charCode];
 
-        if (!glyph)
-        {
+        if (!glyph) {
             continue;
         }
 
@@ -144,14 +132,12 @@ var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMat
         x = (glyph.xOffset + xAdvance) - src.scrollX;
         y = (glyph.yOffset + yAdvance) - src.scrollY;
 
-        if (lastGlyph !== null)
-        {
+        if (lastGlyph !== null) {
             var kerningOffset = glyph.kerning[lastCharCode];
             x += (kerningOffset !== undefined) ? kerningOffset : 0;
         }
 
-        if (displayCallback)
-        {
+        if (displayCallback) {
             callbackData.index = i;
             callbackData.charCode = charCode;
             callbackData.x = x;
@@ -178,13 +164,11 @@ var DynamicBitmapTextCanvasRenderer = function (renderer, src, camera, parentMat
         lastCharCode = charCode;
 
         //  Nothing to render or a space? Then skip to the next glyph
-        if (glyphW === 0 || glyphH === 0 || charCode === 32)
-        {
+        if (glyphW === 0 || glyphH === 0 || charCode === 32) {
             continue;
         }
 
-        if (roundPixels)
-        {
+        if (roundPixels) {
             x = Math.round(x);
             y = Math.round(y);
         }

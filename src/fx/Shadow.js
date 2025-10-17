@@ -48,87 +48,97 @@ var Shadow = new Class({
 
     initialize:
 
-    function Shadow (gameObject, x, y, decay, power, color, samples, intensity)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (decay === undefined) { decay = 0.1; }
-        if (power === undefined) { power = 1; }
-        if (samples === undefined) { samples = 6; }
-        if (intensity === undefined) { intensity = 1; }
+        function Shadow(gameObject, x, y, decay, power, color, samples, intensity) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (decay === undefined) {
+                decay = 0.1;
+            }
+            if (power === undefined) {
+                power = 1;
+            }
+            if (samples === undefined) {
+                samples = 6;
+            }
+            if (intensity === undefined) {
+                intensity = 1;
+            }
 
-        Controller.call(this, FX_CONST.SHADOW, gameObject);
+            Controller.call(this, FX_CONST.SHADOW, gameObject);
 
-        /**
-         * The horizontal offset of the shadow effect.
-         *
-         * @name Phaser.FX.Shadow#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = x;
+            /**
+             * The horizontal offset of the shadow effect.
+             *
+             * @name Phaser.FX.Shadow#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = x;
 
-        /**
-         * The vertical offset of the shadow effect.
-         *
-         * @name Phaser.FX.Shadow#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = y;
+            /**
+             * The vertical offset of the shadow effect.
+             *
+             * @name Phaser.FX.Shadow#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = y;
 
-        /**
-         * The amount of decay for the shadow effect.
-         *
-         * @name Phaser.FX.Shadow#decay
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.decay = decay;
+            /**
+             * The amount of decay for the shadow effect.
+             *
+             * @name Phaser.FX.Shadow#decay
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.decay = decay;
 
-        /**
-         * The power of the shadow effect.
-         *
-         * @name Phaser.FX.Shadow#power
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.power = power;
+            /**
+             * The power of the shadow effect.
+             *
+             * @name Phaser.FX.Shadow#power
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.power = power;
 
-        /**
-         * The internal gl color array.
-         *
-         * @name Phaser.FX.Shadow#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 0, 0, 0, 1 ];
+            /**
+             * The internal gl color array.
+             *
+             * @name Phaser.FX.Shadow#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [0, 0, 0, 1];
 
-        /**
-         * The number of samples that the shadow effect will run for.
-         *
-         * This should be an integer with a minimum value of 1 and a maximum of 12.
-         *
-         * @name Phaser.FX.Shadow#samples
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.samples = samples;
+            /**
+             * The number of samples that the shadow effect will run for.
+             *
+             * This should be an integer with a minimum value of 1 and a maximum of 12.
+             *
+             * @name Phaser.FX.Shadow#samples
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.samples = samples;
 
-        /**
-         * The intensity of the shadow effect.
-         *
-         * @name Phaser.FX.Shadow#intensity
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.intensity = intensity;
+            /**
+             * The intensity of the shadow effect.
+             *
+             * @name Phaser.FX.Shadow#intensity
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.intensity = intensity;
 
-        if (color !== undefined)
-        {
-            this.color = color;
-        }
-    },
+            if (color !== undefined) {
+                this.color = color;
+            }
+        },
 
     /**
      * The color of the shadow.
@@ -139,15 +149,13 @@ var Shadow = new Class({
      */
     color: {
 
-        get: function ()
-        {
+        get: function () {
             var color = this.glcolor;
 
             return (((color[0] * 255) << 16) + ((color[1] * 255) << 8) + (color[2] * 255 | 0));
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var color = this.glcolor;
 
             color[0] = ((value >> 16) & 0xFF) / 255;

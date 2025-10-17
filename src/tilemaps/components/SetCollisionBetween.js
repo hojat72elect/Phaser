@@ -24,36 +24,34 @@ var SetLayerCollisionIndex = require('./SetLayerCollisionIndex');
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  * @param {boolean} [updateLayer=true] - If true, updates the current tiles on the layer. Set to false if no tiles have been placed for significant performance boost.
  */
-var SetCollisionBetween = function (start, stop, collides, recalculateFaces, layer, updateLayer)
-{
-    if (collides === undefined) { collides = true; }
-    if (recalculateFaces === undefined) { recalculateFaces = true; }
-    if (updateLayer === undefined) { updateLayer = true; }
+var SetCollisionBetween = function (start, stop, collides, recalculateFaces, layer, updateLayer) {
+    if (collides === undefined) {
+        collides = true;
+    }
+    if (recalculateFaces === undefined) {
+        recalculateFaces = true;
+    }
+    if (updateLayer === undefined) {
+        updateLayer = true;
+    }
 
-    if (start > stop)
-    {
+    if (start > stop) {
         return;
     }
 
     //  Update the array of colliding indexes
-    for (var index = start; index <= stop; index++)
-    {
+    for (var index = start; index <= stop; index++) {
         SetLayerCollisionIndex(index, collides, layer);
     }
 
     //  Update the tiles
-    if (updateLayer)
-    {
-        for (var ty = 0; ty < layer.height; ty++)
-        {
-            for (var tx = 0; tx < layer.width; tx++)
-            {
+    if (updateLayer) {
+        for (var ty = 0; ty < layer.height; ty++) {
+            for (var tx = 0; tx < layer.width; tx++) {
                 var tile = layer.data[ty][tx];
 
-                if (tile)
-                {
-                    if (tile.index >= start && tile.index <= stop)
-                    {
+                if (tile) {
+                    if (tile.index >= start && tile.index <= stop) {
                         SetTileCollision(tile, collides);
                     }
                 }
@@ -61,8 +59,7 @@ var SetCollisionBetween = function (start, stop, collides, recalculateFaces, lay
         }
     }
 
-    if (recalculateFaces)
-    {
+    if (recalculateFaces) {
         CalculateFacesWithin(0, 0, layer.width, layer.height, layer);
     }
 };

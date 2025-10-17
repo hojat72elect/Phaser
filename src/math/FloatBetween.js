@@ -15,8 +15,7 @@
  *
  * @return {number} A random float within the given range.
  */
-var FloatBetween = function (min, max)
-{
+var FloatBetween = function (min, max) {
     return Math.random() * (max - min) + min;
 };
 

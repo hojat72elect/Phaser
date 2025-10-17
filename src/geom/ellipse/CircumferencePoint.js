@@ -20,9 +20,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} A Point object where the `x` and `y` properties are the point on the circumference.
  */
-var CircumferencePoint = function (ellipse, angle, out)
-{
-    if (out === undefined) { out = new Point(); }
+var CircumferencePoint = function (ellipse, angle, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var halfWidth = ellipse.width / 2;
     var halfHeight = ellipse.height / 2;

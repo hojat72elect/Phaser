@@ -20,15 +20,13 @@ var Utils = require('../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var TileSpriteWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var TileSpriteWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     src.updateCanvas();
 
     var width = src.width;
     var height = src.height;
 
-    if (width === 0 || height === 0)
-    {
+    if (width === 0 || height === 0) {
         return;
     }
 

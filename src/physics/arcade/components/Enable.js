@@ -27,8 +27,7 @@ var Enable = {
      *
      * @return {this} This Game Object.
      */
-    setDirectControl: function (value)
-    {
+    setDirectControl: function (value) {
         this.body.setDirectControl(value);
 
         return this;
@@ -56,20 +55,16 @@ var Enable = {
      * @see Phaser.GameObjects.GameObject#active
      * @see Phaser.GameObjects.GameObject#visible
      */
-    enableBody: function (reset, x, y, enableGameObject, showGameObject)
-    {
-        if (reset)
-        {
+    enableBody: function (reset, x, y, enableGameObject, showGameObject) {
+        if (reset) {
             this.body.reset(x, y);
         }
 
-        if (enableGameObject)
-        {
+        if (enableGameObject) {
             this.body.gameObject.active = true;
         }
 
-        if (showGameObject)
-        {
+        if (showGameObject) {
             this.body.gameObject.visible = true;
         }
 
@@ -94,22 +89,23 @@ var Enable = {
      * @see Phaser.GameObjects.GameObject#active
      * @see Phaser.GameObjects.GameObject#visible
      */
-    disableBody: function (disableGameObject, hideGameObject)
-    {
-        if (disableGameObject === undefined) { disableGameObject = false; }
-        if (hideGameObject === undefined) { hideGameObject = false; }
+    disableBody: function (disableGameObject, hideGameObject) {
+        if (disableGameObject === undefined) {
+            disableGameObject = false;
+        }
+        if (hideGameObject === undefined) {
+            hideGameObject = false;
+        }
 
         this.body.stop();
 
         this.body.enable = false;
 
-        if (disableGameObject)
-        {
+        if (disableGameObject) {
             this.body.gameObject.active = false;
         }
 
-        if (hideGameObject)
-        {
+        if (hideGameObject) {
             this.body.gameObject.visible = false;
         }
 
@@ -129,8 +125,7 @@ var Enable = {
      *
      * @see Phaser.Physics.Arcade.StaticBody#updateFromGameObject
      */
-    refreshBody: function ()
-    {
+    refreshBody: function () {
         this.body.updateFromGameObject();
 
         return this;

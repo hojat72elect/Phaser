@@ -18,8 +18,7 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {boolean} True if it has a getter or setter, otherwise false.
  */
-function hasGetterOrSetter (def)
-{
+function hasGetterOrSetter(def) {
     return (!!def.get && typeof def.get === 'function') || (!!def.set && typeof def.set === 'function');
 }
 
@@ -40,10 +39,13 @@ function hasGetterOrSetter (def)
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was created with the Matter body.
  */
-var MatterGameObject = function (world, gameObject, options, addToWorld)
-{
-    if (options === undefined) { options = {}; }
-    if (addToWorld === undefined) { addToWorld = true; }
+var MatterGameObject = function (world, gameObject, options, addToWorld) {
+    if (options === undefined) {
+        options = {};
+    }
+    if (addToWorld === undefined) {
+        addToWorld = true;
+    }
 
     var x = gameObject.x;
     var y = gameObject.y;
@@ -73,19 +75,14 @@ var MatterGameObject = function (world, gameObject, options, addToWorld)
     ];
 
     //  First let's inject all of the components into the Game Object
-    mixins.forEach(function (mixin)
-    {
-        for (var key in mixin)
-        {
-            if (hasGetterOrSetter(mixin[key]))
-            {
+    mixins.forEach(function (mixin) {
+        for (var key in mixin) {
+            if (hasGetterOrSetter(mixin[key])) {
                 Object.defineProperty(gameObject, key, {
                     get: mixin[key].get,
                     set: mixin[key].set
                 });
-            }
-            else
-            {
+            } else {
                 Object.defineProperty(gameObject, key, {value: mixin[key]});
             }
         }
@@ -96,16 +93,12 @@ var MatterGameObject = function (world, gameObject, options, addToWorld)
 
     gameObject._tempVec2 = new Vector2(x, y);
 
-    if (options.hasOwnProperty('type') && options.type === 'body')
-    {
+    if (options.hasOwnProperty('type') && options.type === 'body') {
         gameObject.setExistingBody(options, addToWorld);
-    }
-    else
-    {
+    } else {
         var shape = GetFastValue(options, 'shape', null);
 
-        if (!shape)
-        {
+        if (!shape) {
             shape = 'rectangle';
         }
 

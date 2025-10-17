@@ -19,16 +19,12 @@
  *
  * @return {boolean} `true` if the Key was just pressed, otherwise `false`.
  */
-var JustDown = function (key)
-{
-    if (key._justDown)
-    {
+var JustDown = function (key) {
+    if (key._justDown) {
         key._justDown = false;
 
         return true;
-    }
-    else
-    {
+    } else {
         return false;
     }
 };

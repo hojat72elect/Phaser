@@ -30,52 +30,37 @@
  *
  * @return {(number[]|string[])} The array of number values, or strings if a prefix or suffix was provided.
  */
-var NumberArray = function (start, end, prefix, suffix)
-{
+var NumberArray = function (start, end, prefix, suffix) {
     var result = [];
 
     var i;
     var asString = false;
 
-    if (prefix || suffix)
-    {
+    if (prefix || suffix) {
         asString = true;
 
-        if (!prefix)
-        {
+        if (!prefix) {
             prefix = '';
         }
 
-        if (!suffix)
-        {
+        if (!suffix) {
             suffix = '';
         }
     }
 
-    if (end < start)
-    {
-        for (i = start; i >= end; i--)
-        {
-            if (asString)
-            {
+    if (end < start) {
+        for (i = start; i >= end; i--) {
+            if (asString) {
                 result.push(prefix + i.toString() + suffix);
-            }
-            else
-            {
+            } else {
                 result.push(i);
             }
         }
-    }
-    else
-    {
-        for (i = start; i <= end; i++)
-        {
-            if (asString)
-            {
+    } else {
+        for (i = start; i <= end; i++) {
+            if (asString) {
                 result.push(prefix + i.toString() + suffix);
-            }
-            else
-            {
+            } else {
                 result.push(i);
             }
         }

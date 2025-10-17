@@ -23,9 +23,10 @@ var Triangle = require('./Triangle');
  *
  * @return {Phaser.Geom.Triangle} The constructed right Triangle.
  */
-var BuildRight = function (x, y, width, height)
-{
-    if (height === undefined) { height = width; }
+var BuildRight = function (x, y, width, height) {
+    if (height === undefined) {
+        height = width;
+    }
 
     //  90 degree angle
     var x1 = x;

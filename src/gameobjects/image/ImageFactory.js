@@ -22,8 +22,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Image} The Game Object that was created.
  */
-GameObjectFactory.register('image', function (x, y, texture, frame)
-{
+GameObjectFactory.register('image', function (x, y, texture, frame) {
     return this.displayList.add(new Image(this.scene, x, y, texture, frame));
 });
 

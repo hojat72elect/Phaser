@@ -15,8 +15,7 @@
  * @param {Phaser.GameObjects.Layer3D} src - The Game Object being rendered in this call.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  */
-var Layer3DCanvasRenderer = function ()
-{
+var Layer3DCanvasRenderer = function () {
 };
 
 module.exports = Layer3DCanvasRenderer;

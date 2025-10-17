@@ -21,10 +21,8 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Layer3D} The Game Object that was created.
  */
-if (typeof WEBGL_RENDERER)
-{
-    GameObjectFactory.register('layer3d', function (x, y)
-    {
+if (typeof WEBGL_RENDERER) {
+    GameObjectFactory.register('layer3d', function (x, y) {
         return this.displayList.add(new Layer3D(this.scene, x, y));
     });
 }

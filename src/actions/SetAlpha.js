@@ -27,8 +27,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var SetAlpha = function (items, value, step, index, direction)
-{
+var SetAlpha = function (items, value, step, index, direction) {
     return PropertyValueSet(items, 'alpha', value, step, index, direction);
 };
 

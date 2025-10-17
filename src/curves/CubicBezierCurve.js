@@ -32,54 +32,52 @@ var CubicBezierCurve = new Class({
 
     initialize:
 
-    function CubicBezierCurve (p0, p1, p2, p3)
-    {
-        Curve.call(this, 'CubicBezierCurve');
+        function CubicBezierCurve(p0, p1, p2, p3) {
+            Curve.call(this, 'CubicBezierCurve');
 
-        if (Array.isArray(p0))
-        {
-            p3 = new Vector2(p0[6], p0[7]);
-            p2 = new Vector2(p0[4], p0[5]);
-            p1 = new Vector2(p0[2], p0[3]);
-            p0 = new Vector2(p0[0], p0[1]);
-        }
+            if (Array.isArray(p0)) {
+                p3 = new Vector2(p0[6], p0[7]);
+                p2 = new Vector2(p0[4], p0[5]);
+                p1 = new Vector2(p0[2], p0[3]);
+                p0 = new Vector2(p0[0], p0[1]);
+            }
 
-        /**
-         * The start point of this curve.
-         *
-         * @name Phaser.Curves.CubicBezier#p0
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p0 = p0;
+            /**
+             * The start point of this curve.
+             *
+             * @name Phaser.Curves.CubicBezier#p0
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p0 = p0;
 
-        /**
-         * The first control point of this curve.
-         *
-         * @name Phaser.Curves.CubicBezier#p1
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p1 = p1;
+            /**
+             * The first control point of this curve.
+             *
+             * @name Phaser.Curves.CubicBezier#p1
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p1 = p1;
 
-        /**
-         * The second control point of this curve.
-         *
-         * @name Phaser.Curves.CubicBezier#p2
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p2 = p2;
+            /**
+             * The second control point of this curve.
+             *
+             * @name Phaser.Curves.CubicBezier#p2
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p2 = p2;
 
-        /**
-         * The end point of this curve.
-         *
-         * @name Phaser.Curves.CubicBezier#p3
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.p3 = p3;
-    },
+            /**
+             * The end point of this curve.
+             *
+             * @name Phaser.Curves.CubicBezier#p3
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.p3 = p3;
+        },
 
     /**
      * Gets the starting point on the curve.
@@ -93,9 +91,10 @@ var CubicBezierCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getStartPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getStartPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return out.copy(this.p0);
     },
@@ -110,8 +109,7 @@ var CubicBezierCurve = new Class({
      *
      * @return {number} The resolution of the curve.
      */
-    getResolution: function (divisions)
-    {
+    getResolution: function (divisions) {
         return divisions;
     },
 
@@ -128,9 +126,10 @@ var CubicBezierCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getPoint: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getPoint: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         var p0 = this.p0;
         var p1 = this.p1;
@@ -153,17 +152,17 @@ var CubicBezierCurve = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The graphics object this curve was drawn to. Useful for method chaining.
      */
-    draw: function (graphics, pointsTotal)
-    {
-        if (pointsTotal === undefined) { pointsTotal = 32; }
+    draw: function (graphics, pointsTotal) {
+        if (pointsTotal === undefined) {
+            pointsTotal = 32;
+        }
 
         var points = this.getPoints(pointsTotal);
 
         graphics.beginPath();
         graphics.moveTo(this.p0.x, this.p0.y);
 
-        for (var i = 1; i < points.length; i++)
-        {
+        for (var i = 1; i < points.length; i++) {
             graphics.lineTo(points[i].x, points[i].y);
         }
 
@@ -181,8 +180,7 @@ var CubicBezierCurve = new Class({
      *
      * @return {Phaser.Types.Curves.JSONCurve} The JSON object containing this curve data.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return {
             type: this.type,
             points: [
@@ -206,8 +204,7 @@ var CubicBezierCurve = new Class({
  *
  * @return {Phaser.Curves.CubicBezier} The curve generated from the JSON object.
  */
-CubicBezierCurve.fromJSON = function (data)
-{
+CubicBezierCurve.fromJSON = function (data) {
     var points = data.points;
 
     var p0 = new Vector2(points[0], points[1]);

@@ -14,14 +14,12 @@
  *
  * @return {object} A deep copy of the original object.
  */
-var DeepCopy = function (inObject)
-{
+var DeepCopy = function (inObject) {
     var outObject;
     var value;
     var key;
 
-    if (typeof inObject !== 'object' || inObject === null)
-    {
+    if (typeof inObject !== 'object' || inObject === null) {
         //  inObject is not an object
         return inObject;
     }
@@ -29,8 +27,7 @@ var DeepCopy = function (inObject)
     //  Create an array or object to hold the values
     outObject = Array.isArray(inObject) ? [] : {};
 
-    for (key in inObject)
-    {
+    for (key in inObject) {
         value = inObject[key];
 
         //  Recursively (deep) copy for nested objects, including arrays

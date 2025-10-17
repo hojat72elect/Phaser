@@ -7,13 +7,13 @@
 var WEBGL_CONST = {
 
     /**
-     * 	8-bit twos complement signed integer.
+     *    8-bit twos complement signed integer.
      *
      * @name Phaser.Renderer.WebGL.BYTE
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    BYTE: { enum: 0x1400, size: 1 },
+    BYTE: {enum: 0x1400, size: 1},
 
     /**
      * 8-bit twos complement unsigned integer.
@@ -22,7 +22,7 @@ var WEBGL_CONST = {
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    UNSIGNED_BYTE: { enum: 0x1401, size: 1 },
+    UNSIGNED_BYTE: {enum: 0x1401, size: 1},
 
     /**
      * 16-bit twos complement signed integer.
@@ -31,7 +31,7 @@ var WEBGL_CONST = {
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    SHORT: { enum: 0x1402, size: 2 },
+    SHORT: {enum: 0x1402, size: 2},
 
     /**
      * 16-bit twos complement unsigned integer.
@@ -40,7 +40,7 @@ var WEBGL_CONST = {
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    UNSIGNED_SHORT: { enum: 0x1403, size: 2 },
+    UNSIGNED_SHORT: {enum: 0x1403, size: 2},
 
     /**
      * 32-bit twos complement signed integer.
@@ -49,7 +49,7 @@ var WEBGL_CONST = {
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    INT: { enum: 0x1404, size: 4 },
+    INT: {enum: 0x1404, size: 4},
 
     /**
      * 32-bit twos complement unsigned integer.
@@ -58,7 +58,7 @@ var WEBGL_CONST = {
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    UNSIGNED_INT: { enum: 0x1405, size: 4 },
+    UNSIGNED_INT: {enum: 0x1405, size: 4},
 
     /**
      * 32-bit IEEE floating point number.
@@ -67,7 +67,7 @@ var WEBGL_CONST = {
      * @type {Phaser.Types.Renderer.WebGL.WebGLConst}
      * @since 3.50.0
      */
-    FLOAT: { enum: 0x1406, size: 4 }
+    FLOAT: {enum: 0x1406, size: 4}
 
 };
 

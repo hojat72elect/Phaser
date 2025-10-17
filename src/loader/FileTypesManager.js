@@ -23,10 +23,8 @@ var FileTypesManager = {
      *
      * @param {Phaser.Loader.LoaderPlugin} loader - The LoaderPlugin to install the types into.
      */
-    install: function (loader)
-    {
-        for (var key in types)
-        {
+    install: function (loader) {
+        for (var key in types) {
             loader[key] = types[key];
         }
     },
@@ -42,8 +40,7 @@ var FileTypesManager = {
      * @param {string} key - The key that will be used as the method name in the LoaderPlugin.
      * @param {function} factoryFunction - The function that will be called when LoaderPlugin.key is invoked.
      */
-    register: function (key, factoryFunction)
-    {
+    register: function (key, factoryFunction) {
         types[key] = factoryFunction;
     },
 
@@ -53,8 +50,7 @@ var FileTypesManager = {
      * @method Phaser.Loader.FileTypesManager.destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         types = {};
     }
 

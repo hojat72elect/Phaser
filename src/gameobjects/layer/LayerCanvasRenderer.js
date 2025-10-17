@@ -17,12 +17,10 @@
  * @param {Phaser.GameObjects.Layer} layer - The Game Object being rendered in this call.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  */
-var LayerCanvasRenderer = function (renderer, layer, camera)
-{
+var LayerCanvasRenderer = function (renderer, layer, camera) {
     var children = layer.list;
 
-    if (children.length === 0)
-    {
+    if (children.length === 0) {
         return;
     }
 
@@ -30,32 +28,27 @@ var LayerCanvasRenderer = function (renderer, layer, camera)
 
     var layerHasBlendMode = (layer.blendMode !== -1);
 
-    if (!layerHasBlendMode)
-    {
+    if (!layerHasBlendMode) {
         //  If Layer is SKIP_TEST then set blend mode to be Normal
         renderer.setBlendMode(0);
     }
 
     var alpha = layer._alpha;
 
-    if (layer.mask)
-    {
+    if (layer.mask) {
         layer.mask.preRenderCanvas(renderer, null, camera);
     }
 
-    for (var i = 0; i < children.length; i++)
-    {
+    for (var i = 0; i < children.length; i++) {
         var child = children[i];
 
-        if (!child.willRender(camera))
-        {
+        if (!child.willRender(camera)) {
             continue;
         }
 
         var childAlpha = child.alpha;
 
-        if (!layerHasBlendMode && child.blendMode !== renderer.currentBlendMode)
-        {
+        if (!layerHasBlendMode && child.blendMode !== renderer.currentBlendMode) {
             //  If Layer doesn't have its own blend mode, then a child can have one
             renderer.setBlendMode(child.blendMode);
         }
@@ -70,8 +63,7 @@ var LayerCanvasRenderer = function (renderer, layer, camera)
         child.setAlpha(childAlpha);
     }
 
-    if (layer.mask)
-    {
+    if (layer.mask) {
         layer.mask.postRenderCanvas(renderer);
     }
 };

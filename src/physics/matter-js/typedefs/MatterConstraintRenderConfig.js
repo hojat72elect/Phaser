@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterConstraintRenderConfig
  * @since 3.22.0
- *              
+ *
  * @property {boolean} [visible=true] - Should this constraint be rendered by the Debug Renderer?
  * @property {boolean} [anchors=true] - If this constraint has anchors, should they be rendered? Pin constraints never have anchors.
  * @property {number} [lineColor] - The color value of the line stroke when rendering this constraint.

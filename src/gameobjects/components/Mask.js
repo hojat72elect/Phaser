@@ -46,8 +46,7 @@ var Mask = {
      *
      * @return {this} This Game Object instance.
      */
-    setMask: function (mask)
-    {
+    setMask: function (mask) {
         this.mask = mask;
 
         return this;
@@ -63,12 +62,12 @@ var Mask = {
      *
      * @return {this} This Game Object instance.
      */
-    clearMask: function (destroyMask)
-    {
-        if (destroyMask === undefined) { destroyMask = false; }
+    clearMask: function (destroyMask) {
+        if (destroyMask === undefined) {
+            destroyMask = false;
+        }
 
-        if (destroyMask && this.mask)
-        {
+        if (destroyMask && this.mask) {
             this.mask.destroy();
         }
 
@@ -106,10 +105,8 @@ var Mask = {
      *
      * @return {Phaser.Display.Masks.BitmapMask} This Bitmap Mask that was created.
      */
-    createBitmapMask: function (maskObject, x, y, texture, frame)
-    {
-        if (maskObject === undefined && (this.texture || this.shader || this.geom))
-        {
+    createBitmapMask: function (maskObject, x, y, texture, frame) {
+        if (maskObject === undefined && (this.texture || this.shader || this.geom)) {
             // eslint-disable-next-line consistent-this
             maskObject = this;
         }
@@ -139,10 +136,8 @@ var Mask = {
      *
      * @return {Phaser.Display.Masks.GeometryMask} This Geometry Mask that was created.
      */
-    createGeometryMask: function (graphics)
-    {
-        if (graphics === undefined && (this.type === 'Graphics' || this.geom))
-        {
+    createGeometryMask: function (graphics) {
+        if (graphics === undefined && (this.type === 'Graphics' || this.geom)) {
             // eslint-disable-next-line consistent-this
             graphics = this;
         }

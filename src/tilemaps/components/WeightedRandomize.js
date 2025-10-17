@@ -34,34 +34,33 @@ var MATH = require('../../math');
  * { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var WeightedRandomize = function (tileX, tileY, width, height, weightedIndexes, layer)
-{
-    if (!weightedIndexes) { return; }
+var WeightedRandomize = function (tileX, tileY, width, height, weightedIndexes, layer) {
+    if (!weightedIndexes) {
+        return;
+    }
 
     var i;
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
     var weightTotal = 0;
 
-    for (i = 0; i < weightedIndexes.length; i++)
-    {
+    for (i = 0; i < weightedIndexes.length; i++) {
         weightTotal += weightedIndexes[i].weight;
     }
 
-    if (weightTotal <= 0) { return; }
+    if (weightTotal <= 0) {
+        return;
+    }
 
-    for (i = 0; i < tiles.length; i++)
-    {
+    for (i = 0; i < tiles.length; i++) {
         var rand = MATH.RND.frac() * weightTotal;
         var sum = 0;
         var randomIndex = -1;
 
-        for (var j = 0; j < weightedIndexes.length; j++)
-        {
+        for (var j = 0; j < weightedIndexes.length; j++) {
             sum += weightedIndexes[j].weight;
 
-            if (rand <= sum)
-            {
+            if (rand <= sum) {
                 var chosen = weightedIndexes[j].index;
 
                 randomIndex = Array.isArray(chosen)

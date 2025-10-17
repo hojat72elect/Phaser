@@ -8,7 +8,7 @@ var Random = require('../geom/line/Random');
 
 /**
  * Takes an array of Game Objects and positions them at random locations on the Line.
- * 
+ *
  * If you wish to pass a `Phaser.GameObjects.Line` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomLine
@@ -21,10 +21,8 @@ var Random = require('../geom/line/Random');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RandomLine = function (items, line)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var RandomLine = function (items, line) {
+    for (var i = 0; i < items.length; i++) {
         Random(line, items[i]);
     }
 

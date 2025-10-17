@@ -22,16 +22,16 @@ var ShuffleArray = require('../../utils/array/Shuffle');
  * @param {number} height - How many tiles tall from the `tileY` index the area will be.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var Shuffle = function (tileX, tileY, width, height, layer)
-{
+var Shuffle = function (tileX, tileY, width, height, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
-    var indexes = tiles.map(function (tile) { return tile.index; });
+    var indexes = tiles.map(function (tile) {
+        return tile.index;
+    });
 
     ShuffleArray(indexes);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
+    for (var i = 0; i < tiles.length; i++) {
         tiles[i].index = indexes[i];
     }
 };

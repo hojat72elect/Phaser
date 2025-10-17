@@ -27,10 +27,8 @@ var FuncMap = {
  *
  * @return {?function} The interpolation function to use, or `null`.
  */
-var GetInterpolationFunction = function (interpolation)
-{
-    if (interpolation === null)
-    {
+var GetInterpolationFunction = function (interpolation) {
+    if (interpolation === null) {
         return null;
     }
 
@@ -38,18 +36,14 @@ var GetInterpolationFunction = function (interpolation)
     var interpolationFunction = FuncMap.linear;
 
     //  Prepare interpolation function
-    if (typeof interpolation === 'string')
-    {
+    if (typeof interpolation === 'string') {
         //  String based look-up
 
         //  1) They specified it correctly
-        if (FuncMap.hasOwnProperty(interpolation))
-        {
+        if (FuncMap.hasOwnProperty(interpolation)) {
             interpolationFunction = FuncMap[interpolation];
         }
-    }
-    else if (typeof interpolation === 'function')
-    {
+    } else if (typeof interpolation === 'function') {
         //  Custom function
         interpolationFunction = interpolation;
     }

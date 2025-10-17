@@ -35,69 +35,68 @@ var ProcessQueue = new Class({
 
     initialize:
 
-    function ProcessQueue ()
-    {
-        EventEmitter.call(this);
+        function ProcessQueue() {
+            EventEmitter.call(this);
 
-        /**
-         * The `pending` list is a selection of items which are due to be made 'active' in the next update.
-         *
-         * @genericUse {T[]} - [$type]
-         *
-         * @name Phaser.Structs.ProcessQueue#_pending
-         * @type {Array.<*>}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._pending = [];
+            /**
+             * The `pending` list is a selection of items which are due to be made 'active' in the next update.
+             *
+             * @genericUse {T[]} - [$type]
+             *
+             * @name Phaser.Structs.ProcessQueue#_pending
+             * @type {Array.<*>}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._pending = [];
 
-        /**
-         * The `active` list is a selection of items which are considered active and should be updated.
-         *
-         * @genericUse {T[]} - [$type]
-         *
-         * @name Phaser.Structs.ProcessQueue#_active
-         * @type {Array.<*>}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._active = [];
+            /**
+             * The `active` list is a selection of items which are considered active and should be updated.
+             *
+             * @genericUse {T[]} - [$type]
+             *
+             * @name Phaser.Structs.ProcessQueue#_active
+             * @type {Array.<*>}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._active = [];
 
-        /**
-         * The `destroy` list is a selection of items that were active and are awaiting being destroyed in the next update.
-         *
-         * @genericUse {T[]} - [$type]
-         *
-         * @name Phaser.Structs.ProcessQueue#_destroy
-         * @type {Array.<*>}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this._destroy = [];
+            /**
+             * The `destroy` list is a selection of items that were active and are awaiting being destroyed in the next update.
+             *
+             * @genericUse {T[]} - [$type]
+             *
+             * @name Phaser.Structs.ProcessQueue#_destroy
+             * @type {Array.<*>}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this._destroy = [];
 
-        /**
-         * The total number of items awaiting processing.
-         *
-         * @name Phaser.Structs.ProcessQueue#_toProcess
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._toProcess = 0;
+            /**
+             * The total number of items awaiting processing.
+             *
+             * @name Phaser.Structs.ProcessQueue#_toProcess
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._toProcess = 0;
 
-        /**
-         * If `true` only unique objects will be allowed in the queue.
-         *
-         * @name Phaser.Structs.ProcessQueue#checkQueue
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.checkQueue = false;
-    },
+            /**
+             * If `true` only unique objects will be allowed in the queue.
+             *
+             * @name Phaser.Structs.ProcessQueue#checkQueue
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.checkQueue = false;
+        },
 
     /**
      * Checks the given item to see if it is already active within this Process Queue.
@@ -112,8 +111,7 @@ var ProcessQueue = new Class({
      *
      * @return {boolean} `true` if the item is active, otherwise `false`.
      */
-    isActive: function (item)
-    {
+    isActive: function (item) {
         return (this._active.indexOf(item) > -1);
     },
 
@@ -130,8 +128,7 @@ var ProcessQueue = new Class({
      *
      * @return {boolean} `true` if the item is pending insertion, otherwise `false`.
      */
-    isPending: function (item)
-    {
+    isPending: function (item) {
         return (this._toProcess > 0 && this._pending.indexOf(item) > -1);
     },
 
@@ -148,8 +145,7 @@ var ProcessQueue = new Class({
      *
      * @return {boolean} `true` if the item is pending destruction, otherwise `false`.
      */
-    isDestroying: function (item)
-    {
+    isDestroying: function (item) {
         return (this._destroy.indexOf(item) > -1);
     },
 
@@ -168,11 +164,9 @@ var ProcessQueue = new Class({
      *
      * @return {*} The item that was added.
      */
-    add: function (item)
-    {
+    add: function (item) {
         //  Don't add if already active or pending, but DO add if active AND in the destroy list
-        if (this.checkQueue && (this.isActive(item) && !this.isDestroying(item)) || this.isPending(item))
-        {
+        if (this.checkQueue && (this.isActive(item) && !this.isDestroying(item)) || this.isPending(item)) {
             return item;
         }
 
@@ -198,23 +192,18 @@ var ProcessQueue = new Class({
      *
      * @return {*} The item that was removed.
      */
-    remove: function (item)
-    {
+    remove: function (item) {
         //  Check if it's in the _pending list
-        if (this.isPending(item))
-        {
+        if (this.isPending(item)) {
             var pending = this._pending;
 
             var idx = pending.indexOf(item);
 
-            if (idx !== -1)
-            {
+            if (idx !== -1) {
                 //  Remove directly, no need to wait for an update loop
                 pending.splice(idx, 1);
             }
-        }
-        else if (this.isActive(item))
-        {
+        } else if (this.isActive(item)) {
             //  Item is actively running? Queue it for deletion
             this._destroy.push(item);
 
@@ -237,14 +226,12 @@ var ProcessQueue = new Class({
      *
      * @return {this} This Process Queue object.
      */
-    removeAll: function ()
-    {
+    removeAll: function () {
         var list = this._active;
         var destroy = this._destroy;
         var i = list.length;
 
-        while (i--)
-        {
+        while (i--) {
             destroy.push(list[i]);
 
             this._toProcess++;
@@ -266,10 +253,8 @@ var ProcessQueue = new Class({
      *
      * @return {Array.<*>} A list of active items.
      */
-    update: function ()
-    {
-        if (this._toProcess === 0)
-        {
+    update: function () {
+        if (this._toProcess === 0) {
             //  Quick bail
             return this._active;
         }
@@ -280,15 +265,13 @@ var ProcessQueue = new Class({
         var item;
 
         //  Clear the 'destroy' list
-        for (i = 0; i < list.length; i++)
-        {
+        for (i = 0; i < list.length; i++) {
             item = list[i];
 
             //  Remove from the 'active' array
             var idx = active.indexOf(item);
 
-            if (idx !== -1)
-            {
+            if (idx !== -1) {
                 active.splice(idx, 1);
 
                 this.emit(Events.PROCESS_QUEUE_REMOVE, item);
@@ -302,12 +285,10 @@ var ProcessQueue = new Class({
 
         list = this._pending;
 
-        for (i = 0; i < list.length; i++)
-        {
+        for (i = 0; i < list.length; i++) {
             item = list[i];
 
-            if (!this.checkQueue || (this.checkQueue && active.indexOf(item) === -1))
-            {
+            if (!this.checkQueue || (this.checkQueue && active.indexOf(item) === -1)) {
                 active.push(item);
 
                 this.emit(Events.PROCESS_QUEUE_ADD, item);
@@ -335,8 +316,7 @@ var ProcessQueue = new Class({
      *
      * @return {Array.<*>} A list of active items.
      */
-    getActive: function ()
-    {
+    getActive: function () {
         return this._active;
     },
 
@@ -350,8 +330,7 @@ var ProcessQueue = new Class({
      */
     length: {
 
-        get: function ()
-        {
+        get: function () {
             return this._active.length;
         }
 
@@ -363,8 +342,7 @@ var ProcessQueue = new Class({
      * @method Phaser.Structs.ProcessQueue#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this._toProcess = 0;
 
         this._pending = [];

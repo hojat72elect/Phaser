@@ -124,15 +124,13 @@ var PostPipeline = {
      *
      * @param {boolean} [preFX=false] - Does this Game Object support Pre FX?
      */
-    initPostPipeline: function (preFX)
-    {
+    initPostPipeline: function (preFX) {
         this.postPipelines = [];
         this.postPipelineData = {};
 
         this.postFX = new FX(this, true);
 
-        if (preFX)
-        {
+        if (preFX) {
             this.preFX = new FX(this, false);
         }
     },
@@ -163,36 +161,29 @@ var PostPipeline = {
      *
      * @return {this} This Game Object instance.
      */
-    setPostPipeline: function (pipelines, pipelineData, copyData)
-    {
+    setPostPipeline: function (pipelines, pipelineData, copyData) {
         var renderer = this.scene.sys.renderer;
 
-        if (!renderer)
-        {
+        if (!renderer) {
             return this;
         }
 
         var pipelineManager = renderer.pipelines;
 
-        if (pipelineManager)
-        {
-            if (!Array.isArray(pipelines))
-            {
-                pipelines = [ pipelines ];
+        if (pipelineManager) {
+            if (!Array.isArray(pipelines)) {
+                pipelines = [pipelines];
             }
 
-            for (var i = 0; i < pipelines.length; i++)
-            {
+            for (var i = 0; i < pipelines.length; i++) {
                 var instance = pipelineManager.getPostPipeline(pipelines[i], this, pipelineData);
 
-                if (instance)
-                {
+                if (instance) {
                     this.postPipelines.push(instance);
                 }
             }
 
-            if (pipelineData)
-            {
+            if (pipelineData) {
                 this.postPipelineData = (copyData) ? DeepCopy(pipelineData) : pipelineData;
             }
         }
@@ -218,16 +209,12 @@ var PostPipeline = {
      *
      * @return {this} This Game Object instance.
      */
-    setPostPipelineData: function (key, value)
-    {
+    setPostPipelineData: function (key, value) {
         var data = this.postPipelineData;
 
-        if (value === undefined)
-        {
+        if (value === undefined) {
             delete data[key];
-        }
-        else
-        {
+        } else {
             data[key] = value;
         }
 
@@ -245,20 +232,17 @@ var PostPipeline = {
      *
      * @return {(Phaser.Renderer.WebGL.Pipelines.PostFXPipeline|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline[])} An array of all the Post Pipelines matching the name. This array will be empty if there was no match. If there was only one single match, that pipeline is returned directly, not in an array.
      */
-    getPostPipeline: function (pipeline)
-    {
+    getPostPipeline: function (pipeline) {
         var isString = (typeof pipeline === 'string');
 
         var pipelines = this.postPipelines;
 
         var results = [];
 
-        for (var i = 0; i < pipelines.length; i++)
-        {
+        for (var i = 0; i < pipelines.length; i++) {
             var instance = pipelines[i];
 
-            if ((isString && instance.name === pipeline) || (!isString && instance instanceof pipeline))
-            {
+            if ((isString && instance.name === pipeline) || (!isString && instance instanceof pipeline)) {
                 results.push(instance);
             }
         }
@@ -276,22 +260,21 @@ var PostPipeline = {
      *
      * @param {boolean} [resetData=false] - Reset the `postPipelineData` object to being an empty object?
      */
-    resetPostPipeline: function (resetData)
-    {
-        if (resetData === undefined) { resetData = false; }
+    resetPostPipeline: function (resetData) {
+        if (resetData === undefined) {
+            resetData = false;
+        }
 
         var pipelines = this.postPipelines;
 
-        for (var i = 0; i < pipelines.length; i++)
-        {
+        for (var i = 0; i < pipelines.length; i++) {
             pipelines[i].destroy();
         }
 
         this.postPipelines = [];
         this.hasPostPipeline = false;
 
-        if (resetData)
-        {
+        if (resetData) {
             this.postPipelineData = {};
         }
     },
@@ -309,20 +292,17 @@ var PostPipeline = {
      *
      * @return {this} This Game Object.
      */
-    removePostPipeline: function (pipeline)
-    {
+    removePostPipeline: function (pipeline) {
         var isString = (typeof pipeline === 'string');
 
         var pipelines = this.postPipelines;
 
-        for (var i = pipelines.length - 1; i >= 0; i--)
-        {
+        for (var i = pipelines.length - 1; i >= 0; i--) {
             var instance = pipelines[i];
 
             if (
                 (isString && instance.name === pipeline) ||
-                (!isString && instance === pipeline))
-            {
+                (!isString && instance === pipeline)) {
                 instance.destroy();
 
                 SpliceOne(pipelines, i);
@@ -347,15 +327,12 @@ var PostPipeline = {
      *
      * @return {this} This Game Object.
      */
-    clearFX: function ()
-    {
-        if (this.preFX)
-        {
+    clearFX: function () {
+        if (this.preFX) {
             this.preFX.clear();
         }
 
-        if (this.postFX)
-        {
+        if (this.postFX) {
             this.postFX.clear();
         }
 

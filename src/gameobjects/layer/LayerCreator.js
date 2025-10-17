@@ -22,16 +22,16 @@ var GetAdvancedValue = require('../../utils/object/GetAdvancedValue');
  *
  * @return {Phaser.GameObjects.Layer} The Game Object that was created.
  */
-GameObjectCreator.register('layer', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('layer', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var children = GetAdvancedValue(config, 'children', null);
 
     var layer = new Layer(this.scene, children);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

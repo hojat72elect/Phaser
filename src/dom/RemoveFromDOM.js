@@ -12,10 +12,8 @@
  *
  * @param {HTMLElement} element - The DOM element to remove from its parent node.
  */
-var RemoveFromDOM = function (element)
-{
-    if (element.parentNode)
-    {
+var RemoveFromDOM = function (element) {
+    if (element.parentNode) {
         element.parentNode.removeChild(element);
     }
 };

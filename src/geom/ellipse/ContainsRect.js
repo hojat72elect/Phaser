@@ -17,8 +17,7 @@ var Contains = require('./Contains');
  *
  * @return {boolean} True if all of the Rectangle coordinates are within the ellipse, otherwise false.
  */
-var ContainsRect = function (ellipse, rect)
-{
+var ContainsRect = function (ellipse, rect) {
     return (
         Contains(ellipse, rect.x, rect.y) &&
         Contains(ellipse, rect.right, rect.y) &&

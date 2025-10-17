@@ -1,10 +1,10 @@
 /**
-* The `Matter.Render` module is a simple HTML5 canvas based renderer for visualising instances of `Matter.Engine`.
-* It is intended for development and debugging purposes, but may also be suitable for simple games.
-* It includes a number of drawing options including wireframe, vector with support for sprites and viewports.
-*
-* @class Render
-*/
+ * The `Matter.Render` module is a simple HTML5 canvas based renderer for visualising instances of `Matter.Engine`.
+ * It is intended for development and debugging purposes, but may also be suitable for simple games.
+ * It includes a number of drawing options including wireframe, vector with support for sprites and viewports.
+ *
+ * @class Render
+ */
 
 var Render = {};
 
@@ -18,18 +18,22 @@ var Events = require('../core/Events');
 var Vector = require('../geometry/Vector');
 // var Mouse = require('../core/Mouse');
 
-(function() {
+(function () {
 
     var _requestAnimationFrame,
         _cancelAnimationFrame;
 
     if (typeof window !== 'undefined') {
         _requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame
-                                      || window.mozRequestAnimationFrame || window.msRequestAnimationFrame
-                                      || function(callback){ window.setTimeout(function() { callback(Common.now()); }, 1000 / 60); };
+            || window.mozRequestAnimationFrame || window.msRequestAnimationFrame
+            || function (callback) {
+                window.setTimeout(function () {
+                    callback(Common.now());
+                }, 1000 / 60);
+            };
 
         _cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame
-                                      || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame;
+            || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame;
     }
 
     Render._goodFps = 30;
@@ -43,7 +47,7 @@ var Vector = require('../geometry/Vector');
      * @param {object} [options]
      * @return {render} A new renderer
      */
-    Render.create = function(options) {
+    Render.create = function (options) {
         var defaults = {
             engine: null,
             element: null,
@@ -136,10 +140,10 @@ var Vector = require('../geometry/Vector');
      * @method run
      * @param {render} render
      */
-    Render.run = function(render) {
-        (function loop(time){
+    Render.run = function (render) {
+        (function loop(time) {
             render.frameRequestId = _requestAnimationFrame(loop);
-            
+
             _updateTiming(render, time);
 
             Render.world(render, time);
@@ -159,7 +163,7 @@ var Vector = require('../geometry/Vector');
      * @method stop
      * @param {render} render
      */
-    Render.stop = function(render) {
+    Render.stop = function (render) {
         _cancelAnimationFrame(render.frameRequestId);
     };
 
@@ -170,7 +174,7 @@ var Vector = require('../geometry/Vector');
      * @param {render} render
      * @param {number} pixelRatio
      */
-    Render.setPixelRatio = function(render, pixelRatio) {
+    Render.setPixelRatio = function (render, pixelRatio) {
         var options = render.options,
             canvas = render.canvas;
 
@@ -188,21 +192,21 @@ var Vector = require('../geometry/Vector');
 
     /**
      * Sets the render `width` and `height`.
-     * 
-     * Updates the canvas accounting for `render.options.pixelRatio`.  
-     * 
+     *
+     * Updates the canvas accounting for `render.options.pixelRatio`.
+     *
      * Updates the bottom right render bound `render.bounds.max` relative to the provided `width` and `height`.
      * The top left render bound `render.bounds.min` isn't changed.
-     * 
+     *
      * Follow this call with `Render.lookAt` if you need to change the render bounds.
-     * 
+     *
      * See also `Render.setPixelRatio`.
      * @method setSize
      * @param {render} render
      * @param {number} width The width (in CSS pixels)
      * @param {number} height The height (in CSS pixels)
      */
-    Render.setSize = function(render, width, height) {
+    Render.setSize = function (render, width, height) {
         render.options.width = width;
         render.options.height = height;
         render.bounds.max.x = render.bounds.min.x + width;
@@ -229,7 +233,7 @@ var Vector = require('../geometry/Vector');
      * @param {vector} [padding]
      * @param {bool} [center=true]
      */
-    Render.lookAt = function(render, objects, padding, center) {
+    Render.lookAt = function (render, objects, padding, center) {
         center = typeof center !== 'undefined' ? center : true;
         objects = Common.isArray(objects) ? objects : [objects];
         padding = padding || {
@@ -239,8 +243,8 @@ var Vector = require('../geometry/Vector');
 
         // find bounds of all objects
         var bounds = {
-            min: { x: Infinity, y: Infinity },
-            max: { x: -Infinity, y: -Infinity }
+            min: {x: Infinity, y: Infinity},
+            max: {x: -Infinity, y: -Infinity}
         };
 
         for (var i = 0; i < objects.length; i += 1) {
@@ -319,17 +323,17 @@ var Vector = require('../geometry/Vector');
      * @method startViewTransform
      * @param {render} render
      */
-    Render.startViewTransform = function(render) {
+    Render.startViewTransform = function (render) {
         var boundsWidth = render.bounds.max.x - render.bounds.min.x,
             boundsHeight = render.bounds.max.y - render.bounds.min.y,
             boundsScaleX = boundsWidth / render.options.width,
             boundsScaleY = boundsHeight / render.options.height;
 
         render.context.setTransform(
-            render.options.pixelRatio / boundsScaleX, 0, 0, 
+            render.options.pixelRatio / boundsScaleX, 0, 0,
             render.options.pixelRatio / boundsScaleY, 0, 0
         );
-        
+
         render.context.translate(-render.bounds.min.x, -render.bounds.min.y);
     };
 
@@ -338,7 +342,7 @@ var Vector = require('../geometry/Vector');
      * @method endViewTransform
      * @param {render} render
      */
-    Render.endViewTransform = function(render) {
+    Render.endViewTransform = function (render) {
         render.context.setTransform(render.options.pixelRatio, 0, 0, render.options.pixelRatio, 0, 0);
     };
 
@@ -348,7 +352,7 @@ var Vector = require('../geometry/Vector');
      * @method world
      * @param {render} render
      */
-    Render.world = function(render, time) {
+    Render.world = function (render, time) {
         var startTime = Common.now(),
             engine = render.engine,
             world = engine.world,
@@ -487,7 +491,7 @@ var Vector = require('../geometry/Vector');
      * @param {RenderingContext} context
      * @param {Number} time
      */
-    Render.stats = function(render, context, time) {
+    Render.stats = function (render, context, time) {
         var engine = render.engine,
             world = engine.world,
             bodies = Composite.allBodies(world),
@@ -496,7 +500,7 @@ var Vector = require('../geometry/Vector');
             height = 44,
             x = 0,
             y = 0;
-        
+
         // count parts
         for (var i = 0; i < bodies.length; i += 1) {
             parts += bodies[i].parts.length;
@@ -541,7 +545,7 @@ var Vector = require('../geometry/Vector');
      * @param {render} render
      * @param {RenderingContext} context
      */
-    Render.performance = function(render, context) {
+    Render.performance = function (render, context) {
         var engine = render.engine,
             timing = render.timing,
             deltaHistory = timing.deltaHistory,
@@ -552,7 +556,7 @@ var Vector = require('../geometry/Vector');
             engineElapsedHistory = timing.engineElapsedHistory,
             lastEngineUpdatesPerFrame = engine.timing.lastUpdatesPerFrame,
             lastEngineDelta = engine.timing.lastDelta;
-        
+
         var deltaMean = _mean(deltaHistory),
             elapsedMean = _mean(elapsedHistory),
             engineDeltaMean = _mean(engineDeltaHistory),
@@ -576,48 +580,60 @@ var Vector = require('../geometry/Vector');
 
         // show FPS
         Render.status(
-            context, x, y, width, graphHeight, deltaHistory.length, 
-            Math.round(fps) + ' fps', 
+            context, x, y, width, graphHeight, deltaHistory.length,
+            Math.round(fps) + ' fps',
             fps / Render._goodFps,
-            function(i) { return (deltaHistory[i] / deltaMean) - 1; }
+            function (i) {
+                return (deltaHistory[i] / deltaMean) - 1;
+            }
         );
 
         // show engine delta
         Render.status(
             context, x + gap + width, y, width, graphHeight, engineDeltaHistory.length,
-            lastEngineDelta.toFixed(2) + ' dt', 
+            lastEngineDelta.toFixed(2) + ' dt',
             Render._goodDelta / lastEngineDelta,
-            function(i) { return (engineDeltaHistory[i] / engineDeltaMean) - 1; }
+            function (i) {
+                return (engineDeltaHistory[i] / engineDeltaMean) - 1;
+            }
         );
 
         Render.status(
             context, x + (gap + width) * 2, y, width, graphHeight, engineUpdatesHistory.length,
-            lastEngineUpdatesPerFrame + ' upf', 
+            lastEngineUpdatesPerFrame + ' upf',
             Math.pow(Common.clamp((engineUpdatesMean / neededUpdatesPerFrame) || 1, 0, 1), 4),
-            function(i) { return (engineUpdatesHistory[i] / engineUpdatesMean) - 1; }
+            function (i) {
+                return (engineUpdatesHistory[i] / engineUpdatesMean) - 1;
+            }
         );
         // show engine update time
         Render.status(
             context, x + (gap + width) * 3, y, width, graphHeight, engineElapsedHistory.length,
-            engineElapsedMean.toFixed(2) + ' ut', 
+            engineElapsedMean.toFixed(2) + ' ut',
             1 - (lastEngineUpdatesPerFrame * engineElapsedMean / Render._goodFps),
-            function(i) { return (engineElapsedHistory[i] / engineElapsedMean) - 1; }
+            function (i) {
+                return (engineElapsedHistory[i] / engineElapsedMean) - 1;
+            }
         );
 
         // show render time
         Render.status(
             context, x + (gap + width) * 4, y, width, graphHeight, elapsedHistory.length,
-            elapsedMean.toFixed(2) + ' rt', 
+            elapsedMean.toFixed(2) + ' rt',
             1 - (elapsedMean / Render._goodFps),
-            function(i) { return (elapsedHistory[i] / elapsedMean) - 1; }
+            function (i) {
+                return (elapsedHistory[i] / elapsedMean) - 1;
+            }
         );
 
         // show effective speed
         Render.status(
-            context, x + (gap + width) * 5, y, width, graphHeight, timestampElapsedHistory.length, 
-            rateMean.toFixed(2) + ' x', 
+            context, x + (gap + width) * 5, y, width, graphHeight, timestampElapsedHistory.length,
+            rateMean.toFixed(2) + ' x',
             rateMean * rateMean * rateMean,
-            function(i) { return (((timestampElapsedHistory[i] / deltaHistory[i]) / rateMean) || 0) - 1; }
+            function (i) {
+                return (((timestampElapsedHistory[i] / deltaHistory[i]) / rateMean) || 0) - 1;
+            }
         );
     };
 
@@ -635,7 +651,7 @@ var Vector = require('../geometry/Vector');
      * @param {string} indicator
      * @param {function} plotY
      */
-    Render.status = function(context, x, y, width, height, count, label, indicator, plotY) {
+    Render.status = function (context, x, y, width, height, count, label, indicator, plotY) {
         // background
         context.strokeStyle = '#888';
         context.fillStyle = '#444';
@@ -669,7 +685,7 @@ var Vector = require('../geometry/Vector');
      * @param {constraint[]} constraints
      * @param {RenderingContext} context
      */
-    Render.constraints = function(constraints, context) {
+    Render.constraints = function (constraints, context) {
         var c = context;
 
         for (var i = 0; i < constraints.length; i++) {
@@ -747,7 +763,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodies = function(render, bodies, context) {
+    Render.bodies = function (render, bodies, context) {
         var c = context,
             engine = render.engine,
             options = render.options,
@@ -850,7 +866,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyWireframes = function(render, bodies, context) {
+    Render.bodyWireframes = function (render, bodies, context) {
         var c = context,
             showInternalEdges = render.options.showInternalEdges,
             body,
@@ -903,7 +919,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyConvexHulls = function(render, bodies, context) {
+    Render.bodyConvexHulls = function (render, bodies, context) {
         var c = context,
             body,
             part,
@@ -942,7 +958,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.vertexNumbers = function(render, bodies, context) {
+    Render.vertexNumbers = function (render, bodies, context) {
         var c = context,
             i,
             j,
@@ -968,7 +984,7 @@ var Vector = require('../geometry/Vector');
      * @param {mouse} mouse
      * @param {RenderingContext} context
      */
-    Render.mousePosition = function(render, mouse, context) {
+    Render.mousePosition = function (render, mouse, context) {
         var c = context;
         c.fillStyle = 'rgba(255,255,255,0.8)';
         c.fillText(mouse.position.x + '  ' + mouse.position.y, mouse.position.x + 5, mouse.position.y - 5);
@@ -982,7 +998,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyBounds = function(render, bodies, context) {
+    Render.bodyBounds = function (render, bodies, context) {
         var c = context,
             engine = render.engine,
             options = render.options;
@@ -1019,7 +1035,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyAxes = function(render, bodies, context) {
+    Render.bodyAxes = function (render, bodies, context) {
         var c = context,
             engine = render.engine,
             options = render.options,
@@ -1053,8 +1069,8 @@ var Vector = require('../geometry/Vector');
                     for (k = 0; k < part.axes.length; k++) {
                         // render a single axis indicator
                         c.moveTo(part.position.x, part.position.y);
-                        c.lineTo((part.vertices[0].x + part.vertices[part.vertices.length-1].x) / 2,
-                            (part.vertices[0].y + part.vertices[part.vertices.length-1].y) / 2);
+                        c.lineTo((part.vertices[0].x + part.vertices[part.vertices.length - 1].x) / 2,
+                            (part.vertices[0].y + part.vertices[part.vertices.length - 1].y) / 2);
                     }
                 }
             }
@@ -1081,7 +1097,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyPositions = function(render, bodies, context) {
+    Render.bodyPositions = function (render, bodies, context) {
         var c = context,
             engine = render.engine,
             options = render.options,
@@ -1137,7 +1153,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyVelocity = function(render, bodies, context) {
+    Render.bodyVelocity = function (render, bodies, context) {
         var c = context;
 
         c.beginPath();
@@ -1167,7 +1183,7 @@ var Vector = require('../geometry/Vector');
      * @param {body[]} bodies
      * @param {RenderingContext} context
      */
-    Render.bodyIds = function(render, bodies, context) {
+    Render.bodyIds = function (render, bodies, context) {
         var c = context,
             i,
             j;
@@ -1194,7 +1210,7 @@ var Vector = require('../geometry/Vector');
      * @param {pair[]} pairs
      * @param {RenderingContext} context
      */
-    Render.collisions = function(render, pairs, context) {
+    Render.collisions = function (render, pairs, context) {
         var c = context,
             options = render.options,
             pair,
@@ -1277,7 +1293,7 @@ var Vector = require('../geometry/Vector');
      * @param {pair[]} pairs
      * @param {RenderingContext} context
      */
-    Render.separations = function(render, pairs, context) {
+    Render.separations = function (render, pairs, context) {
         var c = context,
             options = render.options,
             pair,
@@ -1333,7 +1349,7 @@ var Vector = require('../geometry/Vector');
      * @param {inspector} inspector
      * @param {RenderingContext} context
      */
-    Render.inspector = function(inspector, context) {
+    Render.inspector = function (inspector, context) {
         var engine = inspector.engine,
             selected = inspector.selected,
             render = inspector.render,
@@ -1356,34 +1372,34 @@ var Vector = require('../geometry/Vector');
             context.translate(0.5, 0.5);
             context.lineWidth = 1;
             context.strokeStyle = 'rgba(255,165,0,0.9)';
-            context.setLineDash([1,2]);
+            context.setLineDash([1, 2]);
 
             switch (item.type) {
 
-            case 'body':
+                case 'body':
 
-                // render body selections
-                bounds = item.bounds;
-                context.beginPath();
-                context.rect(Math.floor(bounds.min.x - 3), Math.floor(bounds.min.y - 3),
-                    Math.floor(bounds.max.x - bounds.min.x + 6), Math.floor(bounds.max.y - bounds.min.y + 6));
-                context.closePath();
-                context.stroke();
+                    // render body selections
+                    bounds = item.bounds;
+                    context.beginPath();
+                    context.rect(Math.floor(bounds.min.x - 3), Math.floor(bounds.min.y - 3),
+                        Math.floor(bounds.max.x - bounds.min.x + 6), Math.floor(bounds.max.y - bounds.min.y + 6));
+                    context.closePath();
+                    context.stroke();
 
-                break;
+                    break;
 
-            case 'constraint':
+                case 'constraint':
 
-                // render constraint selections
-                var point = item.pointA;
-                if (item.bodyA)
-                    point = item.pointB;
-                context.beginPath();
-                context.arc(point.x, point.y, 10, 0, 2 * Math.PI);
-                context.closePath();
-                context.stroke();
+                    // render constraint selections
+                    var point = item.pointA;
+                    if (item.bodyA)
+                        point = item.pointB;
+                    context.beginPath();
+                    context.arc(point.x, point.y, 10, 0, 2 * Math.PI);
+                    context.closePath();
+                    context.stroke();
 
-                break;
+                    break;
 
             }
 
@@ -1418,7 +1434,7 @@ var Vector = require('../geometry/Vector');
      * @param {render} render
      * @param {number} time
      */
-    var _updateTiming = function(render, time) {
+    var _updateTiming = function (render, time) {
         var engine = render.engine,
             timing = render.timing,
             historySize = timing.historySize,
@@ -1455,7 +1471,7 @@ var Vector = require('../geometry/Vector');
      * @param {Number[]} values
      * @return {Number} the mean of given values
      */
-    var _mean = function(values) {
+    var _mean = function (values) {
         var result = 0;
         for (var i = 0; i < values.length; i += 1) {
             result += values[i];
@@ -1470,12 +1486,16 @@ var Vector = require('../geometry/Vector');
      * @param {} height
      * @return canvas
      */
-    var _createCanvas = function(width, height) {
+    var _createCanvas = function (width, height) {
         var canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
-        canvas.oncontextmenu = function() { return false; };
-        canvas.onselectstart = function() { return false; };
+        canvas.oncontextmenu = function () {
+            return false;
+        };
+        canvas.onselectstart = function () {
+            return false;
+        };
         return canvas;
     };
 
@@ -1486,12 +1506,12 @@ var Vector = require('../geometry/Vector');
      * @param {HTMLElement} canvas
      * @return {Number} pixel ratio
      */
-    var _getPixelRatio = function(canvas) {
+    var _getPixelRatio = function (canvas) {
         var context = canvas.getContext('2d'),
             devicePixelRatio = window.devicePixelRatio || 1,
             backingStorePixelRatio = context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio
-                                      || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio
-                                      || context.backingStorePixelRatio || 1;
+                || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio
+                || context.backingStorePixelRatio || 1;
 
         return devicePixelRatio / backingStorePixelRatio;
     };
@@ -1504,7 +1524,7 @@ var Vector = require('../geometry/Vector');
      * @param {string} imagePath
      * @return {Image} texture
      */
-    var _getTexture = function(render, imagePath) {
+    var _getTexture = function (render, imagePath) {
         var image = render.textures[imagePath];
 
         if (image)
@@ -1523,7 +1543,7 @@ var Vector = require('../geometry/Vector');
      * @param {render} render
      * @param {string} background
      */
-    var _applyBackground = function(render, background) {
+    var _applyBackground = function (render, background) {
         var cssBackground = background;
 
         if (/(jpg|gif|png)$/.test(background))
@@ -1541,24 +1561,24 @@ var Vector = require('../geometry/Vector');
     */
 
     /**
-    * Fired before rendering
-    *
-    * @event beforeRender
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired before rendering
+     *
+     * @event beforeRender
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /**
-    * Fired after rendering
-    *
-    * @event afterRender
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired after rendering
+     *
+     * @event afterRender
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /*
     *
@@ -1698,7 +1718,7 @@ var Vector = require('../geometry/Vector');
      */
 
     /**
-     * A flag to enable or disable all debug information overlays together.  
+     * A flag to enable or disable all debug information overlays together.
      * This includes and has priority over the values of:
      *
      * - `render.options.showStats`
@@ -1710,7 +1730,7 @@ var Vector = require('../geometry/Vector');
      */
 
     /**
-     * A flag to enable or disable the engine stats info overlay.  
+     * A flag to enable or disable the engine stats info overlay.
      * From left to right, the values shown are:
      *
      * - body parts total
@@ -1725,7 +1745,7 @@ var Vector = require('../geometry/Vector');
      */
 
     /**
-     * A flag to enable or disable performance charts.  
+     * A flag to enable or disable performance charts.
      * From left to right, the values shown are:
      *
      * - average render frequency (e.g. 60 fps)
@@ -1743,7 +1763,7 @@ var Vector = require('../geometry/Vector');
      * @type boolean
      * @default false
      */
-    
+
     /**
      * A flag to enable or disable rendering entirely.
      *

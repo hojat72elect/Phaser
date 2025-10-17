@@ -15,8 +15,7 @@ var FloatBetween = require('../FloatBetween');
  *
  * @return {number} The angle, in radians.
  */
-var Random = function ()
-{
+var Random = function () {
     return FloatBetween(-Math.PI, Math.PI);
 };
 

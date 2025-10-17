@@ -22,9 +22,10 @@ var GetAdvancedValue = require('../../../utils/object/GetAdvancedValue');
  *
  * @return {Phaser.GameObjects.DynamicBitmapText} The Game Object that was created.
  */
-GameObjectCreator.register('dynamicBitmapText', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('dynamicBitmapText', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var font = GetAdvancedValue(config, 'font', '');
     var text = GetAdvancedValue(config, 'text', '');
@@ -32,8 +33,7 @@ GameObjectCreator.register('dynamicBitmapText', function (config, addToScene)
 
     var bitmapText = new BitmapText(this.scene, 0, 0, font, text, size);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

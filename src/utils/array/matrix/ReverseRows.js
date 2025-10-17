@@ -31,10 +31,8 @@
  *
  * @return {T[][]} The column reversed matrix.
  */
-var ReverseRows = function (matrix)
-{
-    for (var i = 0; i < matrix.length; i++)
-    {
+var ReverseRows = function (matrix) {
+    for (var i = 0; i < matrix.length; i++) {
         matrix[i].reverse();
     }
 

@@ -21,16 +21,12 @@ var XHRSettings = require('./XHRSettings');
  *
  * @return {Phaser.Types.Loader.XHRSettingsObject} A newly formed XHRSettings object.
  */
-var MergeXHRSettings = function (global, local)
-{
+var MergeXHRSettings = function (global, local) {
     var output = (global === undefined) ? XHRSettings() : Extend({}, global);
 
-    if (local)
-    {
-        for (var setting in local)
-        {
-            if (local[setting] !== undefined)
-            {
+    if (local) {
+        for (var setting in local) {
+            if (local[setting] !== undefined) {
                 output[setting] = local[setting];
             }
         }

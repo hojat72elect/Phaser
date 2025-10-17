@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Rectangle} Modified target rectangle that contains source rectangle.
  */
-var MergeRect = function (target, source)
-{
+var MergeRect = function (target, source) {
     var minX = Math.min(target.x, source.x);
     var maxX = Math.max(target.right, source.right);
 

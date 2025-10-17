@@ -51,60 +51,68 @@ var Star = new Class({
 
     initialize:
 
-    function Star (scene, x, y, points, innerRadius, outerRadius, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (points === undefined) { points = 5; }
-        if (innerRadius === undefined) { innerRadius = 32; }
-        if (outerRadius === undefined) { outerRadius = 64; }
+        function Star(scene, x, y, points, innerRadius, outerRadius, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (points === undefined) {
+                points = 5;
+            }
+            if (innerRadius === undefined) {
+                innerRadius = 32;
+            }
+            if (outerRadius === undefined) {
+                outerRadius = 64;
+            }
 
-        Shape.call(this, scene, 'Star', null);
+            Shape.call(this, scene, 'Star', null);
 
-        /**
-         * Private internal value.
-         * The number of points in the star.
-         *
-         * @name Phaser.GameObjects.Star#_points
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._points = points;
+            /**
+             * Private internal value.
+             * The number of points in the star.
+             *
+             * @name Phaser.GameObjects.Star#_points
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._points = points;
 
-        /**
-         * Private internal value.
-         * The inner radius of the star.
-         *
-         * @name Phaser.GameObjects.Star#_innerRadius
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._innerRadius = innerRadius;
+            /**
+             * Private internal value.
+             * The inner radius of the star.
+             *
+             * @name Phaser.GameObjects.Star#_innerRadius
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._innerRadius = innerRadius;
 
-        /**
-         * Private internal value.
-         * The outer radius of the star.
-         *
-         * @name Phaser.GameObjects.Star#_outerRadius
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._outerRadius = outerRadius;
+            /**
+             * Private internal value.
+             * The outer radius of the star.
+             *
+             * @name Phaser.GameObjects.Star#_outerRadius
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._outerRadius = outerRadius;
 
-        this.setPosition(x, y);
-        this.setSize(outerRadius * 2, outerRadius * 2);
+            this.setPosition(x, y);
+            this.setSize(outerRadius * 2, outerRadius * 2);
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-        this.updateData();
-    },
+            this.updateDisplayOrigin();
+            this.updateData();
+        },
 
     /**
      * Sets the number of points that make up the Star shape.
@@ -117,8 +125,7 @@ var Star = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setPoints: function (value)
-    {
+    setPoints: function (value) {
         this._points = value;
 
         return this.updateData();
@@ -135,8 +142,7 @@ var Star = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setInnerRadius: function (value)
-    {
+    setInnerRadius: function (value) {
         this._innerRadius = value;
 
         return this.updateData();
@@ -153,8 +159,7 @@ var Star = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setOuterRadius: function (value)
-    {
+    setOuterRadius: function (value) {
         this._outerRadius = value;
 
         return this.updateData();
@@ -170,13 +175,11 @@ var Star = new Class({
      */
     points: {
 
-        get: function ()
-        {
+        get: function () {
             return this._points;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._points = value;
 
             this.updateData();
@@ -194,13 +197,11 @@ var Star = new Class({
      */
     innerRadius: {
 
-        get: function ()
-        {
+        get: function () {
             return this._innerRadius;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._innerRadius = value;
 
             this.updateData();
@@ -218,13 +219,11 @@ var Star = new Class({
      */
     outerRadius: {
 
-        get: function ()
-        {
+        get: function () {
             return this._outerRadius;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._outerRadius = value;
 
             this.updateData();
@@ -241,8 +240,7 @@ var Star = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
+    updateData: function () {
         var path = [];
 
         var points = this._points;
@@ -258,8 +256,7 @@ var Star = new Class({
 
         path.push(x, y + -outerRadius);
 
-        for (var i = 0; i < points; i++)
-        {
+        for (var i = 0; i < points; i++) {
             path.push(x + Math.cos(rot) * outerRadius, y + Math.sin(rot) * outerRadius);
 
             rot += step;

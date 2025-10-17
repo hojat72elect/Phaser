@@ -28,14 +28,12 @@ var Fullscreen = {
 };
 
 /**
-* Checks for support of the Full Screen API.
-*
-* @ignore
-*/
-function init ()
-{
-    if (typeof importScripts === 'function')
-    {
+ * Checks for support of the Full Screen API.
+ *
+ * @ignore
+ */
+function init() {
+    if (typeof importScripts === 'function') {
         return Fullscreen;
     }
 
@@ -55,10 +53,8 @@ function init ()
         'mozRequest' + suffix1
     ];
 
-    for (i = 0; i < fs.length; i++)
-    {
-        if (document.documentElement[fs[i]])
-        {
+    for (i = 0; i < fs.length; i++) {
+        if (document.documentElement[fs[i]]) {
             Fullscreen.available = true;
             Fullscreen.request = fs[i];
             break;
@@ -76,12 +72,9 @@ function init ()
         'mozExit' + suffix1
     ];
 
-    if (Fullscreen.available)
-    {
-        for (i = 0; i < cfs.length; i++)
-        {
-            if (document[cfs[i]])
-            {
+    if (Fullscreen.available) {
+        for (i = 0; i < cfs.length; i++) {
+            if (document[cfs[i]]) {
                 Fullscreen.cancel = cfs[i];
                 break;
             }
@@ -90,12 +83,15 @@ function init ()
 
     //  Keyboard Input?
     //  Safari 5.1 says it supports fullscreen keyboard, but is lying.
-    if (window['Element'] && Element['ALLOW_KEYBOARD_INPUT'] && !(/ Version\/5\.1(?:\.\d+)? Safari\//).test(navigator.userAgent))
-    {
+    if (window['Element'] && Element['ALLOW_KEYBOARD_INPUT'] && !(/ Version\/5\.1(?:\.\d+)? Safari\//).test(navigator.userAgent)) {
         Fullscreen.keyboard = true;
     }
 
-    Object.defineProperty(Fullscreen, 'active', { get: function () { return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement); } });
+    Object.defineProperty(Fullscreen, 'active', {
+        get: function () {
+            return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+        }
+    });
 
     return Fullscreen;
 }

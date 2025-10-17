@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Rectangle} The modified `target` Rectangle.
  */
-var MergeXY = function (target, x, y)
-{
+var MergeXY = function (target, x, y) {
     var minX = Math.min(target.x, x);
     var maxX = Math.max(target.right, x);
 

@@ -24,20 +24,16 @@
  *
  * @return {object} An object containing the tileset and image collection data.
  */
-var ParseWangsets = function (wangsets, datas)
-{
-    for (var w = 0; w < wangsets.length; w++)
-    {
+var ParseWangsets = function (wangsets, datas) {
+    for (var w = 0; w < wangsets.length; w++) {
         var wangset = wangsets[w];
         var identifier = w;
 
-        if (wangset.name && wangset.name !== '')
-        {
+        if (wangset.name && wangset.name !== '') {
             identifier = wangset.name;
         }
 
-        if (Array.isArray(wangset.wangtiles) && wangset.wangtiles.length > 0)
-        {
+        if (Array.isArray(wangset.wangtiles) && wangset.wangtiles.length > 0) {
             var edgeColors = {};
             var cornerColors = {};
 
@@ -46,44 +42,35 @@ var ParseWangsets = function (wangsets, datas)
             var colorIndex;
 
             // Tiled before v2020.09.09
-            if (Array.isArray(wangset.edgecolors))
-            {
-                for (c = 0; c < wangset.edgecolors.length; c++)
-                {
+            if (Array.isArray(wangset.edgecolors)) {
+                for (c = 0; c < wangset.edgecolors.length; c++) {
                     colorIndex = 1 + c;
                     color = wangset.edgecolors[c];
 
-                    if (color.name !== '')
-                    {
+                    if (color.name !== '') {
                         edgeColors[colorIndex] = color.name;
                     }
                 }
             }
 
-            if (Array.isArray(wangset.cornercolors))
-            {
-                for (c = 0; c < wangset.cornercolors.length; c++)
-                {
+            if (Array.isArray(wangset.cornercolors)) {
+                for (c = 0; c < wangset.cornercolors.length; c++) {
                     colorIndex = 1 + c;
                     color = wangset.cornercolors[c];
 
-                    if (color.name !== '')
-                    {
+                    if (color.name !== '') {
                         cornerColors[colorIndex] = color.name;
                     }
                 }
             }
 
             // Tiled after v2020.09.09
-            if (Array.isArray(wangset.colors))
-            {
-                for (c = 0; c < wangset.colors.length; c++)
-                {
+            if (Array.isArray(wangset.colors)) {
+                for (c = 0; c < wangset.colors.length; c++) {
                     color = wangset.colors[c];
                     colorIndex = 1 + c;
 
-                    if (color.name !== '')
-                    {
+                    if (color.name !== '') {
                         edgeColors[colorIndex] = cornerColors[colorIndex] = color.name;
                     }
                 }
@@ -95,8 +82,7 @@ var ParseWangsets = function (wangsets, datas)
                 edgeColors, cornerColors, edgeColors, cornerColors
             ];
 
-            for (var t = 0; t < wangset.wangtiles.length; t++)
-            {
+            for (var t = 0; t < wangset.wangtiles.length; t++) {
                 var wangtile = wangset.wangtiles[t];
 
                 var obj = (datas[wangtile.tileid] || (datas[wangtile.tileid] = {}));
@@ -105,20 +91,17 @@ var ParseWangsets = function (wangsets, datas)
 
                 var wangid = [];
 
-                for (var i = 0; i < Math.min(idLayout.length, wangtile.wangid.length); i++)
-                {
+                for (var i = 0; i < Math.min(idLayout.length, wangtile.wangid.length); i++) {
                     color = wangtile.wangid[i];
 
-                    if (color === 0)
-                    {
+                    if (color === 0) {
                         wangid.push(undefined);
                         continue;
                     }
 
                     var renamed = idLayout[i][color];
 
-                    if (renamed !== undefined)
-                    {
+                    if (renamed !== undefined) {
                         wangid.push(renamed);
                         continue;
                     }

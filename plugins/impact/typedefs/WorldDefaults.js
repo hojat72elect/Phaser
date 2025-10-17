@@ -1,6 +1,6 @@
 /**
  * An object containing the 4 wall bodies that bound the physics world.
- * 
+ *
  * @typedef {object} Phaser.Types.Physics.Impact.WorldDefaults
  * @since 3.0.0
  *

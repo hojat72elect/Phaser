@@ -40,7 +40,6 @@ var GameObjectFactory = require('../../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Ellipse} The Game Object that was created.
  */
-GameObjectFactory.register('ellipse', function (x, y, width, height, fillColor, fillAlpha)
-{
+GameObjectFactory.register('ellipse', function (x, y, width, height, fillColor, fillAlpha) {
     return this.displayList.add(new Ellipse(this.scene, x, y, width, height, fillColor, fillAlpha));
 });

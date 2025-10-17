@@ -11,8 +11,7 @@ var prefix = '';
  * @namespace Phaser.Display.Canvas.Smoothing
  * @since 3.0.0
  */
-var Smoothing = function ()
-{
+var Smoothing = function () {
     /**
      * Gets the Smoothing Enabled vendor prefix being used on the given context, or null if not set.
      *
@@ -23,16 +22,13 @@ var Smoothing = function ()
      *
      * @return {string} The name of the property on the context which controls image smoothing (either `imageSmoothingEnabled` or a vendor-prefixed version thereof), or `null` if not supported.
      */
-    var getPrefix = function (context)
-    {
-        var vendors = [ 'i', 'webkitI', 'msI', 'mozI', 'oI' ];
+    var getPrefix = function (context) {
+        var vendors = ['i', 'webkitI', 'msI', 'mozI', 'oI'];
 
-        for (var i = 0; i < vendors.length; i++)
-        {
+        for (var i = 0; i < vendors.length; i++) {
             var s = vendors[i] + 'mageSmoothingEnabled';
 
-            if (s in context)
-            {
+            if (s in context) {
                 return s;
             }
         }
@@ -54,15 +50,12 @@ var Smoothing = function ()
      *
      * @return {(CanvasRenderingContext2D|WebGLRenderingContext)} The provided context.
      */
-    var enable = function (context)
-    {
-        if (prefix === '')
-        {
+    var enable = function (context) {
+        if (prefix === '') {
             prefix = getPrefix(context);
         }
 
-        if (prefix)
-        {
+        if (prefix) {
             context[prefix] = true;
         }
 
@@ -83,15 +76,12 @@ var Smoothing = function ()
      *
      * @return {(CanvasRenderingContext2D|WebGLRenderingContext)} The provided context.
      */
-    var disable = function (context)
-    {
-        if (prefix === '')
-        {
+    var disable = function (context) {
+        if (prefix === '') {
             prefix = getPrefix(context);
         }
 
-        if (prefix)
-        {
+        if (prefix) {
             context[prefix] = false;
         }
 
@@ -109,8 +99,7 @@ var Smoothing = function ()
      *
      * @return {?boolean} `true` if smoothing is enabled on the context, otherwise `false`. `null` if not supported.
      */
-    var isEnabled = function (context)
-    {
+    var isEnabled = function (context) {
         return (prefix !== null) ? context[prefix] : null;
     };
 

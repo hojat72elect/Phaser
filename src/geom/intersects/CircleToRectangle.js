@@ -15,8 +15,7 @@
  *
  * @return {boolean} `true` if the two objects intersect, otherwise `false`.
  */
-var CircleToRectangle = function (circle, rect)
-{
+var CircleToRectangle = function (circle, rect) {
     var halfWidth = rect.width / 2;
     var halfHeight = rect.height / 2;
 
@@ -25,16 +24,11 @@ var CircleToRectangle = function (circle, rect)
     var xDist = halfWidth + circle.radius;
     var yDist = halfHeight + circle.radius;
 
-    if (cx > xDist || cy > yDist)
-    {
+    if (cx > xDist || cy > yDist) {
         return false;
-    }
-    else if (cx <= halfWidth || cy <= halfHeight)
-    {
+    } else if (cx <= halfWidth || cy <= halfHeight) {
         return true;
-    }
-    else
-    {
+    } else {
         var xCornerDist = cx - halfWidth;
         var yCornerDist = cy - halfHeight;
         var xCornerDistSq = xCornerDist * xCornerDist;

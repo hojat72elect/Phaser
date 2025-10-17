@@ -17,8 +17,7 @@ var Device = require('../../device');
  *
  * @return {boolean} True if they localCompare, otherwise false.
  */
-function Compare (a, b)
-{
+function Compare(a, b) {
     return String(a).localeCompare(b);
 }
 
@@ -32,13 +31,11 @@ function Compare (a, b)
  *
  * @return {array} - The processed array.
  */
-function Process (array, compare)
-{
+function Process(array, compare) {
     // Short-circuit when there's nothing to sort.
     var len = array.length;
 
-    if (len <= 1)
-    {
+    if (len <= 1) {
         return array;
     }
 
@@ -47,8 +44,7 @@ function Process (array, compare)
     // Stop when the left-hand covers all of the array.
     var buffer = new Array(len);
 
-    for (var chk = 1; chk < len; chk *= 2)
-    {
+    for (var chk = 1; chk < len; chk *= 2) {
         RunPass(array, compare, chk, buffer);
 
         var tmp = array;
@@ -71,8 +67,7 @@ function Process (array, compare)
  * @param {number} chk - The number of iterations.
  * @param {array} result - The array to store the result in.
  */
-function RunPass (arr, comp, chk, result)
-{
+function RunPass(arr, comp, chk, result) {
     var len = arr.length;
     var i = 0;
 
@@ -86,18 +81,15 @@ function RunPass (arr, comp, chk, result)
     var li, ri;
 
     // Iterate over pairs of chunks.
-    for (l = 0; l < len; l += dbl)
-    {
+    for (l = 0; l < len; l += dbl) {
         r = l + chk;
         e = r + chk;
 
-        if (r > len)
-        {
+        if (r > len) {
             r = len;
         }
 
-        if (e > len)
-        {
+        if (e > len) {
             e = len;
         }
 
@@ -105,33 +97,22 @@ function RunPass (arr, comp, chk, result)
         li = l;
         ri = r;
 
-        while (true)
-        {
+        while (true) {
             // Compare the chunks.
-            if (li < r && ri < e)
-            {
+            if (li < r && ri < e) {
                 // This works for a regular `sort()` compatible comparator,
                 // but also for a simple comparator like: `a > b`
-                if (comp(arr[li], arr[ri]) <= 0)
-                {
+                if (comp(arr[li], arr[ri]) <= 0) {
                     result[i++] = arr[li++];
-                }
-                else
-                {
+                } else {
                     result[i++] = arr[ri++];
                 }
-            }
-            else if (li < r)
-            {
+            } else if (li < r) {
                 // Nothing to compare, just flush what's left.
                 result[i++] = arr[li++];
-            }
-            else if (ri < e)
-            {
+            } else if (ri < e) {
                 result[i++] = arr[ri++];
-            }
-            else
-            {
+            } else {
                 // Both iterators are at the chunk ends.
                 break;
             }
@@ -154,26 +135,24 @@ function RunPass (arr, comp, chk, result)
  *
  * @return {array} The sorted result.
  */
-var StableSort = function (array, compare)
-{
-    if (compare === undefined) { compare = Compare; }
+var StableSort = function (array, compare) {
+    if (compare === undefined) {
+        compare = Compare;
+    }
 
     // Short-circuit when there's nothing to sort.
-    if (!array || array.length < 2)
-    {
+    if (!array || array.length < 2) {
         return array;
     }
 
-    if (Device.features.stableSort)
-    {
+    if (Device.features.stableSort) {
         return array.sort(compare);
     }
 
     var result = Process(array, compare);
 
     // This simply copies back if the result isn't in the original array, which happens on an odd number of passes.
-    if (result !== array)
-    {
+    if (result !== array) {
         RunPass(result, null, array.length, array);
     }
 

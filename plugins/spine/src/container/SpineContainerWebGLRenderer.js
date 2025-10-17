@@ -18,16 +18,13 @@
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var SpineContainerWebGLRenderer = function (renderer, container, camera, parentMatrix)
-{
+var SpineContainerWebGLRenderer = function (renderer, container, camera, parentMatrix) {
     var plugin = container.plugin;
     var sceneRenderer = plugin.sceneRenderer;
     var children = container.list;
 
-    if (children.length === 0)
-    {
-        if (sceneRenderer.batcher.isDrawing && renderer.finalType)
-        {
+    if (children.length === 0) {
+        if (sceneRenderer.batcher.isDrawing && renderer.finalType) {
             sceneRenderer.end();
 
             renderer.pipelines.rebind();
@@ -40,21 +37,17 @@ var SpineContainerWebGLRenderer = function (renderer, container, camera, parentM
 
     var transformMatrix = container.localTransform;
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         transformMatrix.loadIdentity();
         transformMatrix.multiply(parentMatrix);
         transformMatrix.translate(container.x, container.y);
         transformMatrix.rotate(container.rotation);
         transformMatrix.scale(container.scaleX, container.scaleY);
-    }
-    else
-    {
+    } else {
         transformMatrix.applyITRS(container.x, container.y, container.rotation, container.scaleX, container.scaleY);
     }
 
-    if (renderer.newType)
-    {
+    if (renderer.newType) {
         //  flush + clear if this is a new type
         renderer.pipelines.clear();
 
@@ -67,16 +60,13 @@ var SpineContainerWebGLRenderer = function (renderer, container, camera, parentM
     renderer.nextTypeMatch = true;
     renderer.newType = false;
 
-    for (var i = 0; i < children.length; i++)
-    {
+    for (var i = 0; i < children.length; i++) {
         var child = children[i];
 
-        if (child.willRender(camera, container))
-        {
+        if (child.willRender(camera, container)) {
             var mask = child.mask;
 
-            if (mask)
-            {
+            if (mask) {
                 sceneRenderer.end();
 
                 renderer.pipelines.rebind();
@@ -90,8 +80,7 @@ var SpineContainerWebGLRenderer = function (renderer, container, camera, parentM
 
             child.renderWebGL(renderer, child, camera, transformMatrix, container);
 
-            if (mask)
-            {
+            if (mask) {
                 sceneRenderer.end();
 
                 renderer.pipelines.rebind();
@@ -107,8 +96,7 @@ var SpineContainerWebGLRenderer = function (renderer, container, camera, parentM
 
     renderer.nextTypeMatch = rendererNextType;
 
-    if (!rendererNextType || container.mask)
-    {
+    if (!rendererNextType || container.mask) {
         //  The next object in the display list is not a Spine Game Object or Spine Container, so we end the batch
         sceneRenderer.end();
 

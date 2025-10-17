@@ -15,18 +15,13 @@
  *
  * @return {number} The collision mask.
  */
-var GetCollidesWith = function (categories)
-{
+var GetCollidesWith = function (categories) {
     var flags = 0;
 
-    if (!Array.isArray(categories))
-    {
+    if (!Array.isArray(categories)) {
         flags = categories;
-    }
-    else
-    {
-        for (var i = 0; i < categories.length; i++)
-        {
+    } else {
+        for (var i = 0; i < categories.length; i++) {
             flags |= categories[i];
         }
     }

@@ -32,169 +32,179 @@ var Tileset = new Class({
 
     initialize:
 
-    function Tileset (name, firstgid, tileWidth, tileHeight, tileMargin, tileSpacing, tileProperties, tileData, tileOffset)
-    {
-        if (tileWidth === undefined || tileWidth <= 0) { tileWidth = 32; }
-        if (tileHeight === undefined || tileHeight <= 0) { tileHeight = 32; }
-        if (tileMargin === undefined) { tileMargin = 0; }
-        if (tileSpacing === undefined) { tileSpacing = 0; }
-        if (tileProperties === undefined) { tileProperties = {}; }
-        if (tileData === undefined) { tileData = {}; }
+        function Tileset(name, firstgid, tileWidth, tileHeight, tileMargin, tileSpacing, tileProperties, tileData, tileOffset) {
+            if (tileWidth === undefined || tileWidth <= 0) {
+                tileWidth = 32;
+            }
+            if (tileHeight === undefined || tileHeight <= 0) {
+                tileHeight = 32;
+            }
+            if (tileMargin === undefined) {
+                tileMargin = 0;
+            }
+            if (tileSpacing === undefined) {
+                tileSpacing = 0;
+            }
+            if (tileProperties === undefined) {
+                tileProperties = {};
+            }
+            if (tileData === undefined) {
+                tileData = {};
+            }
 
-        /**
-         * The name of the Tileset.
-         *
-         * @name Phaser.Tilemaps.Tileset#name
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.name = name;
+            /**
+             * The name of the Tileset.
+             *
+             * @name Phaser.Tilemaps.Tileset#name
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.name = name;
 
-        /**
-         * The starting index of the first tile index this Tileset contains.
-         *
-         * @name Phaser.Tilemaps.Tileset#firstgid
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.firstgid = firstgid;
+            /**
+             * The starting index of the first tile index this Tileset contains.
+             *
+             * @name Phaser.Tilemaps.Tileset#firstgid
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.firstgid = firstgid;
 
-        /**
-         * The width of each tile (in pixels). Use setTileSize to change.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileWidth
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.tileWidth = tileWidth;
+            /**
+             * The width of each tile (in pixels). Use setTileSize to change.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileWidth
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.tileWidth = tileWidth;
 
-        /**
-         * The height of each tile (in pixels). Use setTileSize to change.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileHeight
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.tileHeight = tileHeight;
+            /**
+             * The height of each tile (in pixels). Use setTileSize to change.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileHeight
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.tileHeight = tileHeight;
 
-        /**
-         * The margin around the tiles in the sheet (in pixels). Use `setSpacing` to change.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileMargin
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.tileMargin = tileMargin;
+            /**
+             * The margin around the tiles in the sheet (in pixels). Use `setSpacing` to change.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileMargin
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.tileMargin = tileMargin;
 
-        /**
-         * The spacing between each the tile in the sheet (in pixels). Use `setSpacing` to change.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileSpacing
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.tileSpacing = tileSpacing;
+            /**
+             * The spacing between each the tile in the sheet (in pixels). Use `setSpacing` to change.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileSpacing
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.tileSpacing = tileSpacing;
 
-        /**
-         * Tileset-specific properties per tile that are typically defined in the Tiled editor in the
-         * Tileset editor.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileProperties
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.tileProperties = tileProperties;
+            /**
+             * Tileset-specific properties per tile that are typically defined in the Tiled editor in the
+             * Tileset editor.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileProperties
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.tileProperties = tileProperties;
 
-        /**
-         * Tileset-specific data per tile that are typically defined in the Tiled editor, e.g. within
-         * the Tileset collision editor. This is where collision objects and terrain are stored.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileData
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.tileData = tileData;
+            /**
+             * Tileset-specific data per tile that are typically defined in the Tiled editor, e.g. within
+             * the Tileset collision editor. This is where collision objects and terrain are stored.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileData
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.tileData = tileData;
 
-        /**
-         * Controls the drawing offset from the tile origin.
-         * Defaults to 0x0, no offset.
-         *
-         * @name Phaser.Tilemaps.Tileset#tileOffset
-         * @type {Phaser.Math.Vector2}
-         * @since 3.60.0
-         */
-        this.tileOffset = new Vector2();
+            /**
+             * Controls the drawing offset from the tile origin.
+             * Defaults to 0x0, no offset.
+             *
+             * @name Phaser.Tilemaps.Tileset#tileOffset
+             * @type {Phaser.Math.Vector2}
+             * @since 3.60.0
+             */
+            this.tileOffset = new Vector2();
 
-        if (tileOffset !== undefined)
-        {
-            this.tileOffset.set(tileOffset.x, tileOffset.y);
-        }
+            if (tileOffset !== undefined) {
+                this.tileOffset.set(tileOffset.x, tileOffset.y);
+            }
 
-        /**
-         * The cached image that contains the individual tiles. Use setImage to set.
-         *
-         * @name Phaser.Tilemaps.Tileset#image
-         * @type {?Phaser.Textures.Texture}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.image = null;
+            /**
+             * The cached image that contains the individual tiles. Use setImage to set.
+             *
+             * @name Phaser.Tilemaps.Tileset#image
+             * @type {?Phaser.Textures.Texture}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.image = null;
 
-        /**
-         * The gl texture used by the WebGL renderer.
-         *
-         * @name Phaser.Tilemaps.Tileset#glTexture
-         * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @readonly
-         * @since 3.11.0
-         */
-        this.glTexture = null;
+            /**
+             * The gl texture used by the WebGL renderer.
+             *
+             * @name Phaser.Tilemaps.Tileset#glTexture
+             * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @readonly
+             * @since 3.11.0
+             */
+            this.glTexture = null;
 
-        /**
-         * The number of tile rows in the the tileset.
-         *
-         * @name Phaser.Tilemaps.Tileset#rows
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.rows = 0;
+            /**
+             * The number of tile rows in the the tileset.
+             *
+             * @name Phaser.Tilemaps.Tileset#rows
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.rows = 0;
 
-        /**
-         * The number of tile columns in the tileset.
-         *
-         * @name Phaser.Tilemaps.Tileset#columns
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.columns = 0;
+            /**
+             * The number of tile columns in the tileset.
+             *
+             * @name Phaser.Tilemaps.Tileset#columns
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.columns = 0;
 
-        /**
-         * The total number of tiles in the tileset.
-         *
-         * @name Phaser.Tilemaps.Tileset#total
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.total = 0;
+            /**
+             * The total number of tiles in the tileset.
+             *
+             * @name Phaser.Tilemaps.Tileset#total
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.total = 0;
 
-        /**
-         * The look-up table to specific tile image texture coordinates (UV in pixels). Each element
-         * contains the coordinates for a tile in an object of the form {x, y}.
-         *
-         * @name Phaser.Tilemaps.Tileset#texCoordinates
-         * @type {object[]}
-         * @readonly
-         * @since 3.0.0
-        */
-        this.texCoordinates = [];
-    },
+            /**
+             * The look-up table to specific tile image texture coordinates (UV in pixels). Each element
+             * contains the coordinates for a tile in an object of the form {x, y}.
+             *
+             * @name Phaser.Tilemaps.Tileset#texCoordinates
+             * @type {object[]}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.texCoordinates = [];
+        },
 
     /**
      * Get a tiles properties that are stored in the Tileset. Returns null if tile index is not
@@ -207,9 +217,10 @@ var Tileset = new Class({
      *
      * @return {?(object|undefined)}
      */
-    getTileProperties: function (tileIndex)
-    {
-        if (!this.containsTileIndex(tileIndex)) { return null; }
+    getTileProperties: function (tileIndex) {
+        if (!this.containsTileIndex(tileIndex)) {
+            return null;
+        }
 
         return this.tileProperties[tileIndex - this.firstgid];
     },
@@ -226,9 +237,10 @@ var Tileset = new Class({
      *
      * @return {?object|undefined}
      */
-    getTileData: function (tileIndex)
-    {
-        if (!this.containsTileIndex(tileIndex)) { return null; }
+    getTileData: function (tileIndex) {
+        if (!this.containsTileIndex(tileIndex)) {
+            return null;
+        }
 
         return this.tileData[tileIndex - this.firstgid];
     },
@@ -244,8 +256,7 @@ var Tileset = new Class({
      *
      * @return {?object}
      */
-    getTileCollisionGroup: function (tileIndex)
-    {
+    getTileCollisionGroup: function (tileIndex) {
         var data = this.getTileData(tileIndex);
 
         return (data && data.objectgroup) ? data.objectgroup : null;
@@ -261,8 +272,7 @@ var Tileset = new Class({
      *
      * @return {boolean}
      */
-    containsTileIndex: function (tileIndex)
-    {
+    containsTileIndex: function (tileIndex) {
         return (
             tileIndex >= this.firstgid &&
             tileIndex < (this.firstgid + this.total)
@@ -281,9 +291,10 @@ var Tileset = new Class({
      * @return {?object} Object in the form { x, y } representing the top-left UV coordinate
      * within the Tileset image.
      */
-    getTileTextureCoordinates: function (tileIndex)
-    {
-        if (!this.containsTileIndex(tileIndex)) { return null; }
+    getTileTextureCoordinates: function (tileIndex) {
+        if (!this.containsTileIndex(tileIndex)) {
+            return null;
+        }
 
         return this.texCoordinates[tileIndex - this.firstgid];
     },
@@ -298,8 +309,7 @@ var Tileset = new Class({
      *
      * @return {Phaser.Tilemaps.Tileset} This Tileset object.
      */
-    setImage: function (texture)
-    {
+    setImage: function (texture) {
         this.image = texture;
 
         var frame = texture.get();
@@ -308,12 +318,9 @@ var Tileset = new Class({
 
         this.glTexture = frame.source.glTexture;
 
-        if (frame.width > bounds.width || frame.height > bounds.height)
-        {
+        if (frame.width > bounds.width || frame.height > bounds.height) {
             this.updateTileData(frame.width, frame.height);
-        }
-        else
-        {
+        } else {
             this.updateTileData(bounds.width, bounds.height, bounds.x, bounds.y);
         }
 
@@ -331,13 +338,15 @@ var Tileset = new Class({
      *
      * @return {Phaser.Tilemaps.Tileset} This Tileset object.
      */
-    setTileSize: function (tileWidth, tileHeight)
-    {
-        if (tileWidth !== undefined) { this.tileWidth = tileWidth; }
-        if (tileHeight !== undefined) { this.tileHeight = tileHeight; }
+    setTileSize: function (tileWidth, tileHeight) {
+        if (tileWidth !== undefined) {
+            this.tileWidth = tileWidth;
+        }
+        if (tileHeight !== undefined) {
+            this.tileHeight = tileHeight;
+        }
 
-        if (this.image)
-        {
+        if (this.image) {
             this.updateTileData(this.image.source[0].width, this.image.source[0].height);
         }
 
@@ -355,13 +364,15 @@ var Tileset = new Class({
      *
      * @return {Phaser.Tilemaps.Tileset} This Tileset object.
      */
-    setSpacing: function (margin, spacing)
-    {
-        if (margin !== undefined) { this.tileMargin = margin; }
-        if (spacing !== undefined) { this.tileSpacing = spacing; }
+    setSpacing: function (margin, spacing) {
+        if (margin !== undefined) {
+            this.tileMargin = margin;
+        }
+        if (spacing !== undefined) {
+            this.tileSpacing = spacing;
+        }
 
-        if (this.image)
-        {
+        if (this.image) {
             this.updateTileData(this.image.source[0].width, this.image.source[0].height);
         }
 
@@ -381,16 +392,18 @@ var Tileset = new Class({
      *
      * @return {Phaser.Tilemaps.Tileset} This Tileset object.
      */
-    updateTileData: function (imageWidth, imageHeight, offsetX, offsetY)
-    {
-        if (offsetX === undefined) { offsetX = 0; }
-        if (offsetY === undefined) { offsetY = 0; }
+    updateTileData: function (imageWidth, imageHeight, offsetX, offsetY) {
+        if (offsetX === undefined) {
+            offsetX = 0;
+        }
+        if (offsetY === undefined) {
+            offsetY = 0;
+        }
 
         var rowCount = (imageHeight - this.tileMargin * 2 + this.tileSpacing) / (this.tileHeight + this.tileSpacing);
         var colCount = (imageWidth - this.tileMargin * 2 + this.tileSpacing) / (this.tileWidth + this.tileSpacing);
 
-        if (rowCount % 1 !== 0 || colCount % 1 !== 0)
-        {
+        if (rowCount % 1 !== 0 || colCount % 1 !== 0) {
             console.warn('Image tile area not tile size multiple in: ' + this.name);
         }
 
@@ -410,11 +423,9 @@ var Tileset = new Class({
         var tx = this.tileMargin + offsetX;
         var ty = this.tileMargin + offsetY;
 
-        for (var y = 0; y < this.rows; y++)
-        {
-            for (var x = 0; x < this.columns; x++)
-            {
-                this.texCoordinates.push({ x: tx, y: ty });
+        for (var y = 0; y < this.rows; y++) {
+            for (var x = 0; x < this.columns; x++) {
+                this.texCoordinates.push({x: tx, y: ty});
                 tx += this.tileWidth + this.tileSpacing;
             }
 

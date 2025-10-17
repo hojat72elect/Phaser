@@ -11,7 +11,7 @@ var Image = require('../../gameobjects/image/Image');
 /**
  * @classdesc
  * An Impact Physics Image Game Object.
- * 
+ *
  * An Image is a light-weight Game Object useful for the display of static images in your game,
  * such as logos, backgrounds, scenery or other non-animated elements. Images can have input
  * events and physics bodies, or be tweened, tinted or scrolled. The main difference between an
@@ -76,76 +76,75 @@ var ImpactImage = new Class({
 
     initialize:
 
-    function ImpactImage (world, x, y, texture, frame)
-    {
-        Image.call(this, world.scene, x, y, texture, frame);
+        function ImpactImage(world, x, y, texture, frame) {
+            Image.call(this, world.scene, x, y, texture, frame);
 
-        /**
-         * The Physics Body linked to an ImpactImage.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#body
-         * @type {Phaser.Physics.Impact.Body}
-         * @since 3.0.0
-         */
-        this.body = world.create(x - this.frame.centerX, y - this.frame.centerY, this.width, this.height);
+            /**
+             * The Physics Body linked to an ImpactImage.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#body
+             * @type {Phaser.Physics.Impact.Body}
+             * @since 3.0.0
+             */
+            this.body = world.create(x - this.frame.centerX, y - this.frame.centerY, this.width, this.height);
 
-        this.body.parent = this;
-        this.body.gameObject = this;
+            this.body.parent = this;
+            this.body.gameObject = this;
 
-        /**
-         * The size of the physics Body.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#size
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.size = this.body.size;
+            /**
+             * The size of the physics Body.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#size
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.size = this.body.size;
 
-        /**
-         * The X and Y offset of the Body from the left and top of the Image.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#offset
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.offset = this.body.offset;
+            /**
+             * The X and Y offset of the Body from the left and top of the Image.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#offset
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.offset = this.body.offset;
 
-        /**
-         * The velocity, or rate of change the Body's position. Measured in pixels per second.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#vel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.vel = this.body.vel;
+            /**
+             * The velocity, or rate of change the Body's position. Measured in pixels per second.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#vel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.vel = this.body.vel;
 
-        /**
-         * The acceleration is the rate of change of the velocity. Measured in pixels per second squared.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#accel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.accel = this.body.accel;
+            /**
+             * The acceleration is the rate of change of the velocity. Measured in pixels per second squared.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#accel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.accel = this.body.accel;
 
-        /**
-         * Friction between colliding bodies.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#friction
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.friction = this.body.friction;
+            /**
+             * Friction between colliding bodies.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#friction
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.friction = this.body.friction;
 
-        /**
-         * The maximum velocity of the body.
-         *
-         * @name Phaser.Physics.Impact.ImpactImage#maxVel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.maxVel = this.body.maxVel;
-    }
+            /**
+             * The maximum velocity of the body.
+             *
+             * @name Phaser.Physics.Impact.ImpactImage#maxVel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.maxVel = this.body.maxVel;
+        }
 
 });
 

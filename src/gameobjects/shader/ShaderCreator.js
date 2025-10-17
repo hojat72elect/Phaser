@@ -22,9 +22,10 @@ var Shader = require('./Shader');
  *
  * @return {Phaser.GameObjects.Shader} The Game Object that was created.
  */
-GameObjectCreator.register('shader', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('shader', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var x = GetAdvancedValue(config, 'x', 0);
@@ -34,8 +35,7 @@ GameObjectCreator.register('shader', function (config, addToScene)
 
     var shader = new Shader(this.scene, key, x, y, width, height);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

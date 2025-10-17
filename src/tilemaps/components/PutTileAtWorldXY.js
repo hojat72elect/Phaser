@@ -27,8 +27,7 @@ var point = new Vector2();
  *
  * @return {Phaser.Tilemaps.Tile} The Tile object that was created or added to this map.
  */
-var PutTileAtWorldXY = function (tile, worldX, worldY, recalculateFaces, camera, layer)
-{
+var PutTileAtWorldXY = function (tile, worldX, worldY, recalculateFaces, camera, layer) {
     layer.tilemapLayer.worldToTileXY(worldX, worldY, true, point, camera, layer);
 
     return PutTileAt(tile, point.x, point.y, recalculateFaces, layer);

@@ -30,8 +30,7 @@ var Friction = {
      *
      * @see Phaser.Physics.Arcade.Body#friction
      */
-    setFriction: function (x, y)
-    {
+    setFriction: function (x, y) {
         this.body.friction.set(x, y);
 
         return this;
@@ -50,8 +49,7 @@ var Friction = {
      *
      * @see Phaser.Physics.Arcade.Body#friction
      */
-    setFrictionX: function (x)
-    {
+    setFrictionX: function (x) {
         this.body.friction.x = x;
 
         return this;
@@ -70,8 +68,7 @@ var Friction = {
      *
      * @see Phaser.Physics.Arcade.Body#friction
      */
-    setFrictionY: function (y)
-    {
+    setFrictionY: function (y) {
         this.body.friction.y = y;
 
         return this;

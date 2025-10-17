@@ -53,60 +53,70 @@ var Line = new Class({
 
     initialize:
 
-    function Line (scene, x, y, x1, y1, x2, y2, strokeColor, strokeAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (x1 === undefined) { x1 = 0; }
-        if (y1 === undefined) { y1 = 0; }
-        if (x2 === undefined) { x2 = 128; }
-        if (y2 === undefined) { y2 = 0; }
+        function Line(scene, x, y, x1, y1, x2, y2, strokeColor, strokeAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (x1 === undefined) {
+                x1 = 0;
+            }
+            if (y1 === undefined) {
+                y1 = 0;
+            }
+            if (x2 === undefined) {
+                x2 = 128;
+            }
+            if (y2 === undefined) {
+                y2 = 0;
+            }
 
-        Shape.call(this, scene, 'Line', new GeomLine(x1, y1, x2, y2));
+            Shape.call(this, scene, 'Line', new GeomLine(x1, y1, x2, y2));
 
-        var width = Math.max(1, this.geom.right - this.geom.left);
-        var height = Math.max(1, this.geom.bottom - this.geom.top);
+            var width = Math.max(1, this.geom.right - this.geom.left);
+            var height = Math.max(1, this.geom.bottom - this.geom.top);
 
-        /**
-         * The width (or thickness) of the line.
-         * See the setLineWidth method for extra details on changing this on WebGL.
-         *
-         * @name Phaser.GameObjects.Line#lineWidth
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.lineWidth = 1;
+            /**
+             * The width (or thickness) of the line.
+             * See the setLineWidth method for extra details on changing this on WebGL.
+             *
+             * @name Phaser.GameObjects.Line#lineWidth
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.lineWidth = 1;
 
-        /**
-         * Private internal value. Holds the start width of the line.
-         *
-         * @name Phaser.GameObjects.Line#_startWidth
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._startWidth = 1;
+            /**
+             * Private internal value. Holds the start width of the line.
+             *
+             * @name Phaser.GameObjects.Line#_startWidth
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._startWidth = 1;
 
-        /**
-         * Private internal value. Holds the end width of the line.
-         *
-         * @name Phaser.GameObjects.Line#_endWidth
-         * @type {number}
-         * @private
-         * @since 3.13.0
-         */
-        this._endWidth = 1;
+            /**
+             * Private internal value. Holds the end width of the line.
+             *
+             * @name Phaser.GameObjects.Line#_endWidth
+             * @type {number}
+             * @private
+             * @since 3.13.0
+             */
+            this._endWidth = 1;
 
-        this.setPosition(x, y);
-        this.setSize(width, height);
+            this.setPosition(x, y);
+            this.setSize(width, height);
 
-        if (strokeColor !== undefined)
-        {
-            this.setStrokeStyle(1, strokeColor, strokeAlpha);
-        }
+            if (strokeColor !== undefined) {
+                this.setStrokeStyle(1, strokeColor, strokeAlpha);
+            }
 
-        this.updateDisplayOrigin();
-    },
+            this.updateDisplayOrigin();
+        },
 
     /**
      * Sets the width of the line.
@@ -124,9 +134,10 @@ var Line = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setLineWidth: function (startWidth, endWidth)
-    {
-        if (endWidth === undefined) { endWidth = startWidth; }
+    setLineWidth: function (startWidth, endWidth) {
+        if (endWidth === undefined) {
+            endWidth = startWidth;
+        }
 
         this._startWidth = startWidth;
         this._endWidth = endWidth;
@@ -149,8 +160,7 @@ var Line = new Class({
      *
      * @return {this} This Line object.
      */
-    setTo: function (x1, y1, x2, y2)
-    {
+    setTo: function (x1, y1, x2, y2) {
         this.geom.setTo(x1, y1, x2, y2);
 
         return this;

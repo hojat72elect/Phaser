@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {Phaser.Geom.Point} The modified `out` object, or a new Point if none was provided.
  */
-var Random = function (rect, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Random = function (rect, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     out.x = rect.x + (Math.random() * rect.width);
     out.y = rect.y + (Math.random() * rect.height);

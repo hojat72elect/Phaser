@@ -17,8 +17,7 @@ var Contains = require('./Contains');
  *
  * @return {boolean} `true` if the Point is within the Polygon, otherwise `false`.
  */
-var ContainsPoint = function (polygon, point)
-{
+var ContainsPoint = function (polygon, point) {
     return Contains(polygon, point.x, point.y);
 };
 

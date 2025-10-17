@@ -19,16 +19,12 @@ var IsInLayerBounds = require('./IsInLayerBounds');
  *
  * @return {?boolean} Returns a boolean, or null if the layer given was invalid.
  */
-var HasTileAt = function (tileX, tileY, layer)
-{
-    if (IsInLayerBounds(tileX, tileY, layer))
-    {
+var HasTileAt = function (tileX, tileY, layer) {
+    if (IsInLayerBounds(tileX, tileY, layer)) {
         var tile = layer.data[tileY][tileX];
 
         return (tile !== null && tile.index > -1);
-    }
-    else
-    {
+    } else {
         return false;
     }
 };

@@ -39,8 +39,7 @@ AlignInMap[ALIGN_CONST.RIGHT_TOP] = AlignInMap[ALIGN_CONST.TOP_RIGHT];
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was aligned.
  */
-var QuickSet = function (child, alignIn, position, offsetX, offsetY)
-{
+var QuickSet = function (child, alignIn, position, offsetX, offsetY) {
     return AlignInMap[position](child, alignIn, offsetX, offsetY);
 };
 

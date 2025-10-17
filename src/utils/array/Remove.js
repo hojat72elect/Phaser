@@ -23,30 +23,26 @@ var SpliceOne = require('./SpliceOne');
  *
  * @return {*|Array.<*>} The item, or array of items, that were successfully removed from the array.
  */
-var Remove = function (array, item, callback, context)
-{
-    if (context === undefined) { context = array; }
+var Remove = function (array, item, callback, context) {
+    if (context === undefined) {
+        context = array;
+    }
 
     var index;
 
     //  Fast path to avoid array mutation and iteration
-    if (!Array.isArray(item))
-    {
+    if (!Array.isArray(item)) {
         index = array.indexOf(item);
 
-        if (index !== -1)
-        {
+        if (index !== -1) {
             SpliceOne(array, index);
 
-            if (callback)
-            {
+            if (callback) {
                 callback.call(context, item);
             }
 
             return item;
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
@@ -56,20 +52,17 @@ var Remove = function (array, item, callback, context)
     var itemLength = item.length - 1;
     var removed = [];
 
-    while (itemLength >= 0)
-    {
+    while (itemLength >= 0) {
         var entry = item[itemLength];
 
         index = array.indexOf(entry);
 
-        if (index !== -1)
-        {
+        if (index !== -1) {
             SpliceOne(array, index);
 
             removed.push(entry);
 
-            if (callback)
-            {
+            if (callback) {
                 callback.call(context, entry);
             }
         }

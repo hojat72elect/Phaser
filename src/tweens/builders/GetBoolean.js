@@ -16,18 +16,12 @@
  *
  * @return {boolean} The retrieved value.
  */
-var GetBoolean = function (source, key, defaultValue)
-{
-    if (!source)
-    {
+var GetBoolean = function (source, key, defaultValue) {
+    if (!source) {
         return defaultValue;
-    }
-    else if (source.hasOwnProperty(key))
-    {
+    } else if (source.hasOwnProperty(key)) {
         return source[key];
-    }
-    else
-    {
+    } else {
         return defaultValue;
     }
 };

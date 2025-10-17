@@ -25,34 +25,35 @@ var HasValue = require('../../utils/object/HasValue');
  * @param {boolean} recalculateFaces - Whether or not to recalculate the tile faces after the update.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var SetCollisionByProperty = function (properties, collides, recalculateFaces, layer)
-{
-    if (collides === undefined) { collides = true; }
-    if (recalculateFaces === undefined) { recalculateFaces = true; }
+var SetCollisionByProperty = function (properties, collides, recalculateFaces, layer) {
+    if (collides === undefined) {
+        collides = true;
+    }
+    if (recalculateFaces === undefined) {
+        recalculateFaces = true;
+    }
 
-    for (var ty = 0; ty < layer.height; ty++)
-    {
-        for (var tx = 0; tx < layer.width; tx++)
-        {
+    for (var ty = 0; ty < layer.height; ty++) {
+        for (var tx = 0; tx < layer.width; tx++) {
             var tile = layer.data[ty][tx];
 
-            if (!tile) { continue; }
+            if (!tile) {
+                continue;
+            }
 
-            for (var property in properties)
-            {
-                if (!HasValue(tile.properties, property)) { continue; }
+            for (var property in properties) {
+                if (!HasValue(tile.properties, property)) {
+                    continue;
+                }
 
                 var values = properties[property];
 
-                if (!Array.isArray(values))
-                {
-                    values = [ values ];
+                if (!Array.isArray(values)) {
+                    values = [values];
                 }
 
-                for (var i = 0; i < values.length; i++)
-                {
-                    if (tile.properties[property] === values[i])
-                    {
+                for (var i = 0; i < values.length; i++) {
+                    if (tile.properties[property] === values[i]) {
                         SetTileCollision(tile, collides);
                     }
                 }
@@ -60,8 +61,7 @@ var SetCollisionByProperty = function (properties, collides, recalculateFaces, l
         }
     }
 
-    if (recalculateFaces)
-    {
+    if (recalculateFaces) {
         CalculateFacesWithin(0, 0, layer.width, layer.height, layer);
     }
 };

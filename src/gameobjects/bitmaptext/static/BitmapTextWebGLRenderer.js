@@ -22,13 +22,11 @@ var Utils = require('../../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var BitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var BitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     var text = src._text;
     var textLength = text.length;
 
-    if (textLength === 0)
-    {
+    if (textLength === 0) {
         return;
     }
 
@@ -73,8 +71,7 @@ var BitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     var dropShadow = (dropShadowX !== 0 || dropShadowY !== 0);
 
-    if (dropShadow)
-    {
+    if (dropShadow) {
         var srcShadowColor = src.dropShadowColor;
         var srcShadowAlpha = src.dropShadowAlpha;
 
@@ -83,13 +80,11 @@ var BitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix)
         var shadowBL = getTint(srcShadowColor, cameraAlpha * srcShadowAlpha * src._alphaBL);
         var shadowBR = getTint(srcShadowColor, cameraAlpha * srcShadowAlpha * src._alphaBR);
 
-        for (i = 0; i < characters.length; i++)
-        {
+        for (i = 0; i < characters.length; i++) {
             char = characters[i];
             glyph = char.glyph;
 
-            if (char.code === 32 || glyph.width === 0 || glyph.height === 0)
-            {
+            if (char.code === 32 || glyph.width === 0 || glyph.height === 0) {
                 continue;
             }
 
@@ -97,24 +92,20 @@ var BitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix)
         }
     }
 
-    for (i = 0; i < characters.length; i++)
-    {
+    for (i = 0; i < characters.length; i++) {
         char = characters[i];
         glyph = char.glyph;
 
-        if (char.code === 32 || glyph.width === 0 || glyph.height === 0)
-        {
+        if (char.code === 32 || glyph.width === 0 || glyph.height === 0) {
             continue;
         }
 
-        if (pipeline.shouldFlush(6))
-        {
+        if (pipeline.shouldFlush(6)) {
             pipeline.flush();
             textureUnit = pipeline.setGameObject(src);
         }
 
-        if (charColors[char.i])
-        {
+        if (charColors[char.i]) {
             var color = charColors[char.i];
 
             var charTintEffect = color.tintEffect;
@@ -124,9 +115,7 @@ var BitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix)
             var charTintBR = getTint(color.tintBR, cameraAlpha * src._alphaBR);
 
             BatchChar(pipeline, src, char, glyph, 0, 0, calcMatrix, roundPixels, charTintTL, charTintTR, charTintBL, charTintBR, charTintEffect, texture, textureUnit);
-        }
-        else
-        {
+        } else {
             BatchChar(pipeline, src, char, glyph, 0, 0, calcMatrix, roundPixels, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, textureUnit);
         }
 

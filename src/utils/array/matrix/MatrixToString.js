@@ -34,46 +34,35 @@ var CheckMatrix = require('./CheckMatrix');
  *
  * @return {string} A string representing the matrix.
  */
-var MatrixToString = function (matrix)
-{
+var MatrixToString = function (matrix) {
     var str = '';
 
-    if (!CheckMatrix(matrix))
-    {
+    if (!CheckMatrix(matrix)) {
         return str;
     }
 
-    for (var r = 0; r < matrix.length; r++)
-    {
-        for (var c = 0; c < matrix[r].length; c++)
-        {
+    for (var r = 0; r < matrix.length; r++) {
+        for (var c = 0; c < matrix[r].length; c++) {
             var cell = matrix[r][c].toString();
 
-            if (cell !== 'undefined')
-            {
+            if (cell !== 'undefined') {
                 str += Pad(cell, 2);
-            }
-            else
-            {
+            } else {
                 str += '?';
             }
 
-            if (c < matrix[r].length - 1)
-            {
+            if (c < matrix[r].length - 1) {
                 str += ' |';
             }
         }
 
-        if (r < matrix.length - 1)
-        {
+        if (r < matrix.length - 1) {
             str += '\n';
 
-            for (var i = 0; i < matrix[r].length; i++)
-            {
+            for (var i = 0; i < matrix[r].length; i++) {
                 str += '---';
 
-                if (i < matrix[r].length - 1)
-                {
+                if (i < matrix[r].length - 1) {
                     str += '+';
                 }
             }

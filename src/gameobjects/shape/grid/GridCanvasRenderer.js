@@ -22,14 +22,12 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var GridCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var GridCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var ctx = renderer.currentContext;
 
-    if (SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         var dx = -src._displayOriginX;
         var dy = -src._displayOriginY;
 
@@ -62,38 +60,30 @@ var GridCanvasRenderer = function (renderer, src, camera, parentMatrix)
         var cw = 0;
         var ch = 0;
 
-        if (showOutline)
-        {
+        if (showOutline) {
             //  To make room for the grid lines (in case alpha < 1)
             cellWidthA--;
             cellHeightA--;
 
-            if (cellWidthB === cellWidth)
-            {
+            if (cellWidthB === cellWidth) {
                 cellWidthB--;
             }
 
-            if (cellHeightB === cellHeight)
-            {
+            if (cellHeightB === cellHeight) {
                 cellHeightB--;
             }
         }
 
-        if (showCells && src.fillAlpha > 0)
-        {
+        if (showCells && src.fillAlpha > 0) {
             FillStyleCanvas(ctx, src);
 
-            for (y = 0; y < gridHeight; y++)
-            {
-                if (showAltCells)
-                {
+            for (y = 0; y < gridHeight; y++) {
+                if (showAltCells) {
                     r = y % 2;
                 }
 
-                for (x = 0; x < gridWidth; x++)
-                {
-                    if (showAltCells && r)
-                    {
+                for (x = 0; x < gridWidth; x++) {
+                    if (showAltCells && r) {
                         r = 0;
                         continue;
                     }
@@ -113,21 +103,16 @@ var GridCanvasRenderer = function (renderer, src, camera, parentMatrix)
             }
         }
 
-        if (showAltCells && src.altFillAlpha > 0)
-        {
+        if (showAltCells && src.altFillAlpha > 0) {
             FillStyleCanvas(ctx, src, src.altFillColor, src.altFillAlpha * alpha);
 
-            for (y = 0; y < gridHeight; y++)
-            {
-                if (showAltCells)
-                {
+            for (y = 0; y < gridHeight; y++) {
+                if (showAltCells) {
                     r = y % 2;
                 }
 
-                for (x = 0; x < gridWidth; x++)
-                {
-                    if (showAltCells && !r)
-                    {
+                for (x = 0; x < gridWidth; x++) {
+                    if (showAltCells && !r) {
                         r = 1;
                         continue;
                     }
@@ -147,12 +132,10 @@ var GridCanvasRenderer = function (renderer, src, camera, parentMatrix)
             }
         }
 
-        if (showOutline && src.outlineFillAlpha > 0)
-        {
+        if (showOutline && src.outlineFillAlpha > 0) {
             LineStyleCanvas(ctx, src, src.outlineFillColor, src.outlineFillAlpha * alpha);
 
-            for (x = 1; x < gridWidth; x++)
-            {
+            for (x = 1; x < gridWidth; x++) {
                 var x1 = x * cellWidth;
 
                 ctx.beginPath();
@@ -163,8 +146,7 @@ var GridCanvasRenderer = function (renderer, src, camera, parentMatrix)
                 ctx.stroke();
             }
 
-            for (y = 1; y < gridHeight; y++)
-            {
+            for (y = 1; y < gridHeight; y++) {
                 var y1 = y * cellHeight;
 
                 ctx.beginPath();

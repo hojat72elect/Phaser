@@ -15,8 +15,7 @@
  *
  * @return {number} The random integer.
  */
-var Between = function (min, max)
-{
+var Between = function (min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 

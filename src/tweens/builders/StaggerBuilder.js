@@ -49,9 +49,10 @@ var MATH_CONST = require('../../math/const');
  *
  * @return {function} The stagger function.
  */
-var StaggerBuilder = function (value, options)
-{
-    if (options === undefined) { options = {}; }
+var StaggerBuilder = function (value, options) {
+    if (options === undefined) {
+        options = {};
+    }
 
     var result;
 
@@ -64,20 +65,18 @@ var StaggerBuilder = function (value, options)
     var fromFirst = (from === 'first');
     var fromCenter = (from === 'center');
     var fromLast = (from === 'last');
-    var fromValue = (typeof(from) === 'number');
+    var fromValue = (typeof (from) === 'number');
 
     var isRange = (Array.isArray(value));
     var value1 = (isRange) ? parseFloat(value[0]) : parseFloat(value);
     var value2 = (isRange) ? parseFloat(value[1]) : 0;
     var maxValue = Math.max(value1, value2);
 
-    if (isRange)
-    {
+    if (isRange) {
         start += value1;
     }
 
-    if (grid)
-    {
+    if (grid) {
         //  Pre-calc the grid to save doing it for every TweenData update
         var gridWidth = grid[0];
         var gridHeight = grid[1];
@@ -90,37 +89,29 @@ var StaggerBuilder = function (value, options)
 
         var gridValues = [];
 
-        if (fromLast)
-        {
+        if (fromLast) {
             fromX = gridWidth - 1;
             fromY = gridHeight - 1;
-        }
-        else if (fromValue)
-        {
+        } else if (fromValue) {
             fromX = from % gridWidth;
             fromY = Math.floor(from / gridWidth);
-        }
-        else if (fromCenter)
-        {
+        } else if (fromCenter) {
             fromX = (gridWidth - 1) / 2;
             fromY = (gridHeight - 1) / 2;
         }
 
         var gridMax = MATH_CONST.MIN_SAFE_INTEGER;
 
-        for (var toY = 0; toY < gridHeight; toY++)
-        {
+        for (var toY = 0; toY < gridHeight; toY++) {
             gridValues[toY] = [];
 
-            for (var toX = 0; toX < gridWidth; toX++)
-            {
+            for (var toX = 0; toX < gridWidth; toX++) {
                 distanceX = fromX - toX;
                 distanceY = fromY - toY;
 
                 var dist = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
-                if (dist > gridMax)
-                {
+                if (dist > gridMax) {
                     gridMax = dist;
                 }
 
@@ -131,102 +122,70 @@ var StaggerBuilder = function (value, options)
 
     var easeFunction = (ease) ? GetEaseFunction(ease) : null;
 
-    if (grid)
-    {
-        result = function (target, key, value, index)
-        {
+    if (grid) {
+        result = function (target, key, value, index) {
             var gridSpace = 0;
             var toX = index % gridWidth;
             var toY = Math.floor(index / gridWidth);
 
-            if (toX >= 0 && toX < gridWidth && toY >= 0 && toY < gridHeight)
-            {
+            if (toX >= 0 && toX < gridWidth && toY >= 0 && toY < gridHeight) {
                 gridSpace = gridValues[toY][toX];
             }
 
             var output;
 
-            if (isRange)
-            {
+            if (isRange) {
                 var diff = (value2 - value1);
 
-                if (easeFunction)
-                {
+                if (easeFunction) {
                     output = ((gridSpace / gridMax) * diff) * easeFunction(gridSpace / gridMax);
-                }
-                else
-                {
+                } else {
                     output = (gridSpace / gridMax) * diff;
                 }
-            }
-            else if (easeFunction)
-            {
+            } else if (easeFunction) {
                 output = (gridSpace * value1) * easeFunction(gridSpace / gridMax);
-            }
-            else
-            {
+            } else {
                 output = gridSpace * value1;
             }
 
             return output + start;
         };
-    }
-    else
-    {
-        result = function (target, key, value, index, total)
-        {
+    } else {
+        result = function (target, key, value, index, total) {
             //  zero offset
             total--;
 
             var fromIndex;
 
-            if (fromFirst)
-            {
+            if (fromFirst) {
                 fromIndex = index;
-            }
-            else if (fromCenter)
-            {
+            } else if (fromCenter) {
                 fromIndex = Math.abs((total / 2) - index);
-            }
-            else if (fromLast)
-            {
+            } else if (fromLast) {
                 fromIndex = total - index;
-            }
-            else if (fromValue)
-            {
+            } else if (fromValue) {
                 fromIndex = Math.abs(from - index);
             }
 
             var output;
 
-            if (isRange)
-            {
+            if (isRange) {
                 var spacing;
 
-                if (fromCenter)
-                {
+                if (fromCenter) {
                     spacing = ((value2 - value1) / total) * (fromIndex * 2);
-                }
-                else
-                {
+                } else {
                     spacing = ((value2 - value1) / total) * fromIndex;
                 }
 
-                if (easeFunction)
-                {
+                if (easeFunction) {
                     output = spacing * easeFunction(fromIndex / total);
-                }
-                else
-                {
+                } else {
                     output = spacing;
                 }
-            }
-            else if (easeFunction)
-            {
+            } else if (easeFunction) {
                 output = (total * maxValue) * easeFunction(fromIndex / total);
-            }
-            else
-            {
+            } else {
                 output = fromIndex * value1;
             }
 

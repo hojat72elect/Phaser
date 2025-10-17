@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Geom.Triangle} The destination Triangle.
  */
-var CopyFrom = function (source, dest)
-{
+var CopyFrom = function (source, dest) {
     return dest.setTo(source.x1, source.y1, source.x2, source.y2, source.x3, source.y3);
 };
 

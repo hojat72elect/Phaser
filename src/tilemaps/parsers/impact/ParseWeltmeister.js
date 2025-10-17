@@ -26,10 +26,8 @@ var ParseTilesets = require('./ParseTilesets');
  *
  * @return {?Phaser.Tilemaps.MapData} The created MapData object, or `null` if the data can't be parsed.
  */
-var ParseWeltmeister = function (name, json, insertNull)
-{
-    if (json.layer.length === 0)
-    {
+var ParseWeltmeister = function (name, json, insertNull) {
+    if (json.layer.length === 0) {
         console.warn('No layers found in the Weltmeister map: ' + name);
         return null;
     }
@@ -37,10 +35,13 @@ var ParseWeltmeister = function (name, json, insertNull)
     var width = 0;
     var height = 0;
 
-    for (var i = 0; i < json.layer.length; i++)
-    {
-        if (json.layer[i].width > width) { width = json.layer[i].width; }
-        if (json.layer[i].height > height) { height = json.layer[i].height; }
+    for (var i = 0; i < json.layer.length; i++) {
+        if (json.layer[i].width > width) {
+            width = json.layer[i].width;
+        }
+        if (json.layer[i].height > height) {
+            height = json.layer[i].height;
+        }
     }
 
     var mapData = new MapData({

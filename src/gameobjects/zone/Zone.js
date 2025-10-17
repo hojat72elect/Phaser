@@ -61,46 +61,49 @@ var Zone = new Class({
 
     initialize:
 
-    function Zone (scene, x, y, width, height)
-    {
-        if (width === undefined) { width = 1; }
-        if (height === undefined) { height = width; }
+        function Zone(scene, x, y, width, height) {
+            if (width === undefined) {
+                width = 1;
+            }
+            if (height === undefined) {
+                height = width;
+            }
 
-        GameObject.call(this, scene, 'Zone');
+            GameObject.call(this, scene, 'Zone');
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        /**
-         * The native (un-scaled) width of this Game Object.
-         *
-         * @name Phaser.GameObjects.Zone#width
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.width = width;
+            /**
+             * The native (un-scaled) width of this Game Object.
+             *
+             * @name Phaser.GameObjects.Zone#width
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.width = width;
 
-        /**
-         * The native (un-scaled) height of this Game Object.
-         *
-         * @name Phaser.GameObjects.Zone#height
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.height = height;
+            /**
+             * The native (un-scaled) height of this Game Object.
+             *
+             * @name Phaser.GameObjects.Zone#height
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.height = height;
 
-        /**
-         * The Blend Mode of the Game Object.
-         * Although a Zone never renders, it still has a blend mode to allow it to fit seamlessly into
-         * display lists without causing a batch flush.
-         *
-         * @name Phaser.GameObjects.Zone#blendMode
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.blendMode = BlendModes.NORMAL;
+            /**
+             * The Blend Mode of the Game Object.
+             * Although a Zone never renders, it still has a blend mode to allow it to fit seamlessly into
+             * display lists without causing a batch flush.
+             *
+             * @name Phaser.GameObjects.Zone#blendMode
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.blendMode = BlendModes.NORMAL;
 
-        this.updateDisplayOrigin();
-    },
+            this.updateDisplayOrigin();
+        },
 
     /**
      * The displayed width of this Game Object.
@@ -112,13 +115,11 @@ var Zone = new Class({
      */
     displayWidth: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleX * this.width;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleX = value / this.width;
         }
 
@@ -134,13 +135,11 @@ var Zone = new Class({
      */
     displayHeight: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleY * this.height;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleY = value / this.height;
         }
 
@@ -158,9 +157,10 @@ var Zone = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSize: function (width, height, resizeInput)
-    {
-        if (resizeInput === undefined) { resizeInput = true; }
+    setSize: function (width, height, resizeInput) {
+        if (resizeInput === undefined) {
+            resizeInput = true;
+        }
 
         this.width = width;
         this.height = height;
@@ -169,8 +169,7 @@ var Zone = new Class({
 
         var input = this.input;
 
-        if (resizeInput && input && !input.customHitArea)
-        {
+        if (resizeInput && input && !input.customHitArea) {
             input.hitArea.width = width;
             input.hitArea.height = height;
         }
@@ -190,8 +189,7 @@ var Zone = new Class({
      *
      * @return {this} This Game Object.
      */
-    setDisplaySize: function (width, height)
-    {
+    setDisplaySize: function (width, height) {
         this.displayWidth = width;
         this.displayHeight = height;
 
@@ -209,8 +207,7 @@ var Zone = new Class({
      *
      * @return {this} This Game Object.
      */
-    setCircleDropZone: function (radius)
-    {
+    setCircleDropZone: function (radius) {
         return this.setDropZone(new Circle(0, 0, radius), CircleContains);
     },
 
@@ -226,8 +223,7 @@ var Zone = new Class({
      *
      * @return {this} This Game Object.
      */
-    setRectangleDropZone: function (width, height)
-    {
+    setRectangleDropZone: function (width, height) {
         return this.setDropZone(new Rectangle(0, 0, width, height), RectangleContains);
     },
 
@@ -242,10 +238,8 @@ var Zone = new Class({
      *
      * @return {this} This Game Object.
      */
-    setDropZone: function (hitArea, hitAreaCallback)
-    {
-        if (!this.input)
-        {
+    setDropZone: function (hitArea, hitAreaCallback) {
+        if (!this.input) {
             this.setInteractive(hitArea, hitAreaCallback, true);
         }
 
@@ -260,8 +254,7 @@ var Zone = new Class({
      * @private
      * @since 3.11.0
      */
-    setAlpha: function ()
-    {
+    setAlpha: function () {
     },
 
     /**
@@ -272,8 +265,7 @@ var Zone = new Class({
      * @private
      * @since 3.16.2
      */
-    setBlendMode: function ()
-    {
+    setBlendMode: function () {
     },
 
     /**
@@ -288,8 +280,7 @@ var Zone = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
      */
-    renderCanvas: function (renderer, src, camera)
-    {
+    renderCanvas: function (renderer, src, camera) {
         camera.addToRenderList(src);
     },
 
@@ -305,8 +296,7 @@ var Zone = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
      * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
      */
-    renderWebGL: function (renderer, src, camera)
-    {
+    renderWebGL: function (renderer, src, camera) {
         camera.addToRenderList(src);
     }
 

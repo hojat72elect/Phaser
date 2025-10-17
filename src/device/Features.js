@@ -51,8 +51,7 @@ var Features = {
 
 // Check Little or Big Endian system.
 // @author Matt DesLauriers (@mattdesl)
-function checkIsLittleEndian ()
-{
+function checkIsLittleEndian() {
     var a = new ArrayBuffer(4);
     var b = new Uint8Array(a);
     var c = new Uint32Array(a);
@@ -62,37 +61,28 @@ function checkIsLittleEndian ()
     b[2] = 0xc3;
     b[3] = 0xd4;
 
-    if (c[0] === 0xd4c3b2a1)
-    {
+    if (c[0] === 0xd4c3b2a1) {
         return true;
     }
 
-    if (c[0] === 0xa1b2c3d4)
-    {
+    if (c[0] === 0xa1b2c3d4) {
         return false;
-    }
-    else
-    {
+    } else {
         //  Could not determine endianness
         return null;
     }
 }
 
-function init ()
-{
-    if (typeof importScripts === 'function')
-    {
+function init() {
+    if (typeof importScripts === 'function') {
         return Features;
     }
 
     Features.canvas = !!window['CanvasRenderingContext2D'];
 
-    try
-    {
+    try {
         Features.localStorage = !!localStorage.getItem;
-    }
-    catch (error)
-    {
+    } catch (error) {
         Features.localStorage = false;
     }
 
@@ -101,19 +91,16 @@ function init ()
 
     var isUint8 = false;
 
-    var testWebGL = function ()
-    {
-        if (window['WebGLRenderingContext'])
-        {
-            try
-            {
+    var testWebGL = function () {
+        if (window['WebGLRenderingContext']) {
+            try {
                 var canvas = CanvasPool.createWebGL(this);
 
                 var ctx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
                 var canvas2D = CanvasPool.create2D(this);
 
-                var ctx2D = canvas2D.getContext('2d', { willReadFrequently: true });
+                var ctx2D = canvas2D.getContext('2d', {willReadFrequently: true});
 
                 //  Can't be done on a webgl context
                 var image = ctx2D.createImageData(1, 1);
@@ -126,9 +113,7 @@ function init ()
                 CanvasPool.remove(canvas2D);
 
                 return !!ctx;
-            }
-            catch (e)
-            {
+            } catch (e) {
                 return false;
             }
         }
@@ -149,33 +134,28 @@ function init ()
     Features.getUserMedia = Features.getUserMedia && !!navigator.getUserMedia && !!window.URL;
 
     // Older versions of firefox (< 21) apparently claim support but user media does not actually work
-    if (Browser.firefox && Browser.firefoxVersion < 21)
-    {
+    if (Browser.firefox && Browser.firefoxVersion < 21) {
         Features.getUserMedia = false;
     }
 
     // Excludes iOS versions as they generally wrap UIWebView (eg. Safari WebKit) and it
     // is safer to not try and use the fast copy-over method.
-    if (!OS.iOS && (Browser.ie || Browser.firefox || Browser.chrome))
-    {
+    if (!OS.iOS && (Browser.ie || Browser.firefox || Browser.chrome)) {
         Features.canvasBitBltShift = true;
     }
 
     // Known not to work
-    if (Browser.safari || Browser.mobileSafari)
-    {
+    if (Browser.safari || Browser.mobileSafari) {
         Features.canvasBitBltShift = false;
     }
 
     navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 
-    if (navigator.vibrate)
-    {
+    if (navigator.vibrate) {
         Features.vibration = true;
     }
 
-    if (typeof ArrayBuffer !== 'undefined' && typeof Uint8Array !== 'undefined' && typeof Uint32Array !== 'undefined')
-    {
+    if (typeof ArrayBuffer !== 'undefined' && typeof Uint8Array !== 'undefined' && typeof Uint32Array !== 'undefined') {
         Features.littleEndian = checkIsLittleEndian();
     }
 

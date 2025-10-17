@@ -31,134 +31,133 @@ var Flash = new Class({
 
     initialize:
 
-    function Flash (camera)
-    {
-        /**
-         * The Camera this effect belongs to.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#camera
-         * @type {Phaser.Cameras.Scene2D.Camera}
-         * @readonly
-         * @since 3.5.0
-         */
-        this.camera = camera;
+        function Flash(camera) {
+            /**
+             * The Camera this effect belongs to.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#camera
+             * @type {Phaser.Cameras.Scene2D.Camera}
+             * @readonly
+             * @since 3.5.0
+             */
+            this.camera = camera;
 
-        /**
-         * Is this effect actively running?
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#isRunning
-         * @type {boolean}
-         * @readonly
-         * @default false
-         * @since 3.5.0
-         */
-        this.isRunning = false;
+            /**
+             * Is this effect actively running?
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#isRunning
+             * @type {boolean}
+             * @readonly
+             * @default false
+             * @since 3.5.0
+             */
+            this.isRunning = false;
 
-        /**
-         * The duration of the effect, in milliseconds.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#duration
-         * @type {number}
-         * @readonly
-         * @default 0
-         * @since 3.5.0
-         */
-        this.duration = 0;
+            /**
+             * The duration of the effect, in milliseconds.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#duration
+             * @type {number}
+             * @readonly
+             * @default 0
+             * @since 3.5.0
+             */
+            this.duration = 0;
 
-        /**
-         * The value of the red color channel the camera will use for the flash effect.
-         * A value between 0 and 255.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#red
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.red = 0;
+            /**
+             * The value of the red color channel the camera will use for the flash effect.
+             * A value between 0 and 255.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#red
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.red = 0;
 
-        /**
-         * The value of the green color channel the camera will use for the flash effect.
-         * A value between 0 and 255.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#green
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.green = 0;
+            /**
+             * The value of the green color channel the camera will use for the flash effect.
+             * A value between 0 and 255.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#green
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.green = 0;
 
-        /**
-         * The value of the blue color channel the camera will use for the flash effect.
-         * A value between 0 and 255.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#blue
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this.blue = 0;
+            /**
+             * The value of the blue color channel the camera will use for the flash effect.
+             * A value between 0 and 255.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#blue
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this.blue = 0;
 
-        /**
-         * The value of the alpha channel used during the flash effect.
-         * A value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#alpha
-         * @type {number}
-         * @since 3.5.0
-         */
-        this.alpha = 1;
+            /**
+             * The value of the alpha channel used during the flash effect.
+             * A value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#alpha
+             * @type {number}
+             * @since 3.5.0
+             */
+            this.alpha = 1;
 
-        /**
-         * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#progress
-         * @type {number}
-         * @since 3.5.0
-         */
-        this.progress = 0;
+            /**
+             * If this effect is running this holds the current percentage of the progress, a value between 0 and 1.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#progress
+             * @type {number}
+             * @since 3.5.0
+             */
+            this.progress = 0;
 
-        /**
-         * Effect elapsed timer.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#_elapsed
-         * @type {number}
-         * @private
-         * @since 3.5.0
-         */
-        this._elapsed = 0;
+            /**
+             * Effect elapsed timer.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#_elapsed
+             * @type {number}
+             * @private
+             * @since 3.5.0
+             */
+            this._elapsed = 0;
 
-        /**
-         * This is an internal copy of the initial value of `this.alpha`, used to calculate the current alpha value of the fade effect.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#_alpha
-         * @type {number}
-         * @private
-         * @readonly
-         * @since 3.60.0
-         */
-        this._alpha;
+            /**
+             * This is an internal copy of the initial value of `this.alpha`, used to calculate the current alpha value of the fade effect.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#_alpha
+             * @type {number}
+             * @private
+             * @readonly
+             * @since 3.60.0
+             */
+            this._alpha;
 
-        /**
-         * This callback is invoked every frame for the duration of the effect.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#_onUpdate
-         * @type {?Phaser.Types.Cameras.Scene2D.CameraFlashCallback}
-         * @private
-         * @default null
-         * @since 3.5.0
-         */
-        this._onUpdate;
+            /**
+             * This callback is invoked every frame for the duration of the effect.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#_onUpdate
+             * @type {?Phaser.Types.Cameras.Scene2D.CameraFlashCallback}
+             * @private
+             * @default null
+             * @since 3.5.0
+             */
+            this._onUpdate;
 
-        /**
-         * On Complete callback scope.
-         *
-         * @name Phaser.Cameras.Scene2D.Effects.Flash#_onUpdateScope
-         * @type {any}
-         * @private
-         * @since 3.5.0
-         */
-        this._onUpdateScope;
-    },
+            /**
+             * On Complete callback scope.
+             *
+             * @name Phaser.Cameras.Scene2D.Effects.Flash#_onUpdateScope
+             * @type {any}
+             * @private
+             * @since 3.5.0
+             */
+            this._onUpdateScope;
+        },
 
     /**
      * Flashes the Camera to or from the given color over the duration specified.
@@ -179,18 +178,30 @@ var Flash = new Class({
      *
      * @return {Phaser.Cameras.Scene2D.Camera} The Camera on which the effect was started.
      */
-    start: function (duration, red, green, blue, force, callback, context)
-    {
-        if (duration === undefined) { duration = 250; }
-        if (red === undefined) { red = 255; }
-        if (green === undefined) { green = 255; }
-        if (blue === undefined) { blue = 255; }
-        if (force === undefined) { force = false; }
-        if (callback === undefined) { callback = null; }
-        if (context === undefined) { context = this.camera.scene; }
+    start: function (duration, red, green, blue, force, callback, context) {
+        if (duration === undefined) {
+            duration = 250;
+        }
+        if (red === undefined) {
+            red = 255;
+        }
+        if (green === undefined) {
+            green = 255;
+        }
+        if (blue === undefined) {
+            blue = 255;
+        }
+        if (force === undefined) {
+            force = false;
+        }
+        if (callback === undefined) {
+            callback = null;
+        }
+        if (context === undefined) {
+            context = this.camera.scene;
+        }
 
-        if (!force && this.isRunning)
-        {
+        if (!force && this.isRunning) {
             return this.camera;
         }
 
@@ -222,10 +233,8 @@ var Flash = new Class({
      * @param {number} time - The current timestamp as generated by the Request Animation Frame or SetTimeout.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    update: function (time, delta)
-    {
-        if (!this.isRunning)
-        {
+    update: function (time, delta) {
+        if (!this.isRunning) {
             return;
         }
 
@@ -233,17 +242,13 @@ var Flash = new Class({
 
         this.progress = Clamp(this._elapsed / this.duration, 0, 1);
 
-        if (this._onUpdate)
-        {
+        if (this._onUpdate) {
             this._onUpdate.call(this._onUpdateScope, this.camera, this.progress);
         }
 
-        if (this._elapsed < this.duration)
-        {
+        if (this._elapsed < this.duration) {
             this.alpha = this._alpha * (1 - this.progress);
-        }
-        else
-        {
+        } else {
             this.effectComplete();
         }
     },
@@ -258,10 +263,8 @@ var Flash = new Class({
      *
      * @return {boolean} `true` if the effect drew to the renderer, otherwise `false`.
      */
-    postRenderCanvas: function (ctx)
-    {
-        if (!this.isRunning)
-        {
+    postRenderCanvas: function (ctx) {
+        if (!this.isRunning) {
             return false;
         }
 
@@ -284,10 +287,8 @@ var Flash = new Class({
      *
      * @return {boolean} `true` if the effect drew to the renderer, otherwise `false`.
      */
-    postRenderWebGL: function (pipeline, getTintFunction)
-    {
-        if (!this.isRunning)
-        {
+    postRenderWebGL: function (pipeline, getTintFunction) {
+        if (!this.isRunning) {
             return false;
         }
 
@@ -312,8 +313,7 @@ var Flash = new Class({
      * @fires Phaser.Cameras.Scene2D.Events#FLASH_COMPLETE
      * @since 3.5.0
      */
-    effectComplete: function ()
-    {
+    effectComplete: function () {
         this.alpha = this._alpha;
         this._onUpdate = null;
         this._onUpdateScope = null;
@@ -330,8 +330,7 @@ var Flash = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Flash#reset
      * @since 3.5.0
      */
-    reset: function ()
-    {
+    reset: function () {
         this.isRunning = false;
 
         this._onUpdate = null;
@@ -344,8 +343,7 @@ var Flash = new Class({
      * @method Phaser.Cameras.Scene2D.Effects.Flash#destroy
      * @since 3.5.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.reset();
 
         this.camera = null;

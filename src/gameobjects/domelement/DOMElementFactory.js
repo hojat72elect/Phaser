@@ -73,8 +73,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.DOMElement} The Game Object that was created.
  */
-GameObjectFactory.register('dom', function (x, y, element, style, innerText)
-{
+GameObjectFactory.register('dom', function (x, y, element, style, innerText) {
     var gameObject = new DOMElement(this.scene, x, y, element, style, innerText);
 
     this.displayList.add(gameObject);

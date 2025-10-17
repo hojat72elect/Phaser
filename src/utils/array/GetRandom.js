@@ -20,10 +20,13 @@
  *
  * @return {T} A random element from the array, or `null` if no element could be found in the range given.
  */
-var GetRandom = function (array, startIndex, length)
-{
-    if (startIndex === undefined) { startIndex = 0; }
-    if (length === undefined) { length = array.length; }
+var GetRandom = function (array, startIndex, length) {
+    if (startIndex === undefined) {
+        startIndex = 0;
+    }
+    if (length === undefined) {
+        length = array.length;
+    }
 
     var randomIndex = startIndex + Math.floor(Math.random() * length);
 

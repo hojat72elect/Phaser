@@ -41,81 +41,80 @@ var BlurFXPipeline = new Class({
 
     initialize:
 
-    function BlurFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            shaders: [
-                {
-                    name: 'Gaussian5',
-                    fragShader: BlurLowFrag
-                },
-                {
-                    name: 'Gaussian9',
-                    fragShader: BlurMedFrag
-                },
-                {
-                    name: 'Gaussian13',
-                    fragShader: BlurHighFrag
-                }
-            ]
-        });
+        function BlurFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                shaders: [
+                    {
+                        name: 'Gaussian5',
+                        fragShader: BlurLowFrag
+                    },
+                    {
+                        name: 'Gaussian9',
+                        fragShader: BlurMedFrag
+                    },
+                    {
+                        name: 'Gaussian13',
+                        fragShader: BlurHighFrag
+                    }
+                ]
+            });
 
-        this.activeShader = this.shaders[0];
+            this.activeShader = this.shaders[0];
 
-        /**
-         * The horizontal offset of the blur effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = 2;
+            /**
+             * The horizontal offset of the blur effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = 2;
 
-        /**
-         * The vertical offset of the blur effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = 2;
+            /**
+             * The vertical offset of the blur effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = 2;
 
-        /**
-         * The number of steps to run the Blur effect for.
-         *
-         * This value should always be an integer.
-         *
-         * It defaults to 4. The higher the value, the smoother the blur,
-         * but at the cost of exponentially more gl operations.
-         *
-         * Keep this to the lowest possible number you can have it, while
-         * still looking correct for your game.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#steps
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.steps = 4;
+            /**
+             * The number of steps to run the Blur effect for.
+             *
+             * This value should always be an integer.
+             *
+             * It defaults to 4. The higher the value, the smoother the blur,
+             * but at the cost of exponentially more gl operations.
+             *
+             * Keep this to the lowest possible number you can have it, while
+             * still looking correct for your game.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#steps
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.steps = 4;
 
-        /**
-         * The strength of the blur effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#strength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.strength = 1;
+            /**
+             * The strength of the blur effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#strength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.strength = 1;
 
-        /**
-         * The internal gl color array.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 1, 1, 1 ];
-    },
+            /**
+             * The internal gl color array.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [1, 1, 1];
+        },
 
     /**
      * Sets the quality of the blur effect to low.
@@ -125,8 +124,7 @@ var BlurFXPipeline = new Class({
      *
      * @return {this} This FX Pipeline.
      */
-    setQualityLow: function ()
-    {
+    setQualityLow: function () {
         this.activeShader = this.shaders[0];
 
         return this;
@@ -140,8 +138,7 @@ var BlurFXPipeline = new Class({
      *
      * @return {this} This FX Pipeline.
      */
-    setQualityMedium: function ()
-    {
+    setQualityMedium: function () {
         this.activeShader = this.shaders[1];
 
         return this;
@@ -155,15 +152,13 @@ var BlurFXPipeline = new Class({
      *
      * @return {this} This FX Pipeline.
      */
-    setQualityHigh: function ()
-    {
+    setQualityHigh: function () {
         this.activeShader = this.shaders[2];
 
         return this;
     },
 
-    onDraw: function (target1)
-    {
+    onDraw: function (target1) {
         var controller = this.getController();
 
         var gl = this.gl;
@@ -181,8 +176,7 @@ var BlurFXPipeline = new Class({
         this.set1f('strength', controller.strength);
         this.set3fv('color', controller.glcolor);
 
-        for (var i = 0; i < controller.steps; i++)
-        {
+        for (var i = 0; i < controller.steps; i++) {
             this.set2f('offset', controller.x, 0);
             this.copySprite(target1, target2);
 

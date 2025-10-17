@@ -39,23 +39,18 @@ var ColorMatrixFXPipeline = new Class({
 
     initialize:
 
-    function ColorMatrixFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game
-        });
-    },
+        function ColorMatrixFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game
+            });
+        },
 
-    onDraw: function (source)
-    {
+    onDraw: function (source) {
         var target = this.fullFrame1;
 
-        if (this.controller)
-        {
+        if (this.controller) {
             this.manager.drawFrame(source, target, true, this.controller);
-        }
-        else
-        {
+        } else {
             this.drawFrame(source, target);
         }
 

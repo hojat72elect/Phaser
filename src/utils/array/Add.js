@@ -27,37 +27,31 @@
  *
  * @return {array} The input array.
  */
-var Add = function (array, item, limit, callback, context)
-{
-    if (context === undefined) { context = array; }
+var Add = function (array, item, limit, callback, context) {
+    if (context === undefined) {
+        context = array;
+    }
 
-    if (limit > 0)
-    {
+    if (limit > 0) {
         var remaining = limit - array.length;
 
         //  There's nothing more we can do here, the array is full
-        if (remaining <= 0)
-        {
+        if (remaining <= 0) {
             return null;
         }
     }
 
     //  Fast path to avoid array mutation and iteration
-    if (!Array.isArray(item))
-    {
-        if (array.indexOf(item) === -1)
-        {
+    if (!Array.isArray(item)) {
+        if (array.indexOf(item) === -1) {
             array.push(item);
 
-            if (callback)
-            {
+            if (callback) {
                 callback.call(context, item);
             }
 
             return item;
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
@@ -67,10 +61,8 @@ var Add = function (array, item, limit, callback, context)
     //  Ensure all the items are unique
     var itemLength = item.length - 1;
 
-    while (itemLength >= 0)
-    {
-        if (array.indexOf(item[itemLength]) !== -1)
-        {
+    while (itemLength >= 0) {
+        if (array.indexOf(item[itemLength]) !== -1) {
             //  Already exists in array, so remove it
             item.splice(itemLength, 1);
         }
@@ -81,26 +73,22 @@ var Add = function (array, item, limit, callback, context)
     //  Anything left?
     itemLength = item.length;
 
-    if (itemLength === 0)
-    {
+    if (itemLength === 0) {
         return null;
     }
 
-    if (limit > 0 && itemLength > remaining)
-    {
+    if (limit > 0 && itemLength > remaining) {
         item.splice(remaining);
 
         itemLength = remaining;
     }
 
-    for (var i = 0; i < itemLength; i++)
-    {
+    for (var i = 0; i < itemLength; i++) {
         var entry = item[i];
 
         array.push(entry);
 
-        if (callback)
-        {
+        if (callback) {
             callback.call(context, entry);
         }
     }

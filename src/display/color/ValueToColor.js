@@ -20,20 +20,15 @@ var RGBStringToColor = require('./RGBStringToColor');
  *
  * @return {Phaser.Display.Color} A Color object.
  */
-var ValueToColor = function (input)
-{
+var ValueToColor = function (input) {
     var t = typeof input;
 
-    switch (t)
-    {
+    switch (t) {
         case 'string':
 
-            if (input.substr(0, 3).toLowerCase() === 'rgb')
-            {
+            if (input.substr(0, 3).toLowerCase() === 'rgb') {
                 return RGBStringToColor(input);
-            }
-            else
-            {
+            } else {
                 return HexStringToColor(input);
             }
 

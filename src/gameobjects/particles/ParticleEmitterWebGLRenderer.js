@@ -27,8 +27,7 @@ var tempMatrix4 = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMatrix)
-{
+var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMatrix) {
     var pipeline = renderer.pipelines.set(emitter.pipeline);
 
     var camMatrix = tempMatrix1;
@@ -36,16 +35,13 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
     var particleMatrix = tempMatrix3;
     var managerMatrix = tempMatrix4;
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         managerMatrix.loadIdentity();
         managerMatrix.multiply(parentMatrix);
         managerMatrix.translate(emitter.x, emitter.y);
         managerMatrix.rotate(emitter.rotation);
         managerMatrix.scale(emitter.scaleX, emitter.scaleY);
-    }
-    else
-    {
+    } else {
         managerMatrix.applyITRS(emitter.x, emitter.y, emitter.rotation, emitter.scaleX, emitter.scaleY);
     }
 
@@ -59,13 +55,11 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
     var particleCount = particles.length;
     var viewBounds = emitter.viewBounds;
 
-    if (particleCount === 0 || (viewBounds && !RectangleToRectangle(viewBounds, camera.worldView)))
-    {
+    if (particleCount === 0 || (viewBounds && !RectangleToRectangle(viewBounds, camera.worldView))) {
         return;
     }
 
-    if (emitter.sortCallback)
-    {
+    if (emitter.sortCallback) {
         emitter.depthSort();
     }
 
@@ -77,8 +71,7 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
 
     renderer.setBlendMode(emitter.blendMode);
 
-    if (emitter.mask)
-    {
+    if (emitter.mask) {
         emitter.mask.preRenderWebGL(renderer, emitter, camera);
 
         renderer.pipelines.set(emitter.pipeline);
@@ -88,14 +81,12 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
     var textureUnit;
     var glTexture;
 
-    for (var i = 0; i < particleCount; i++)
-    {
+    for (var i = 0; i < particleCount; i++) {
         var particle = particles[i];
 
         var alpha = particle.alpha * emitterAlpha * camerAlpha;
 
-        if (alpha <= 0 || particle.scaleX === 0 || particle.scaleY === 0)
-        {
+        if (alpha <= 0 || particle.scaleX === 0 || particle.scaleY === 0) {
             continue;
         }
 
@@ -110,8 +101,7 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
 
         var frame = particle.frame;
 
-        if (frame.glTexture !== glTexture)
-        {
+        if (frame.glTexture !== glTexture) {
             glTexture = frame.glTexture;
 
             textureUnit = pipeline.setGameObject(emitter, frame);
@@ -124,8 +114,7 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
 
         var tint = getTint(particle.tint, alpha);
 
-        if (pipeline.shouldFlush(6))
-        {
+        if (pipeline.shouldFlush(6)) {
             pipeline.flush();
 
             textureUnit = pipeline.setGameObject(emitter, frame);
@@ -142,8 +131,7 @@ var ParticleEmitterWebGLRenderer = function (renderer, emitter, camera, parentMa
         );
     }
 
-    if (emitter.mask)
-    {
+    if (emitter.mask) {
         emitter.mask.postRenderWebGL(renderer, camera);
     }
 

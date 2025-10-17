@@ -25,9 +25,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} The `out` object with modified `x` and `y` properties, or a new Point if none was provided.
  */
-var Centroid = function (triangle, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Centroid = function (triangle, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     out.x = (triangle.x1 + triangle.x2 + triangle.x3) / 3;
     out.y = (triangle.y1 + triangle.y2 + triangle.y3) / 3;

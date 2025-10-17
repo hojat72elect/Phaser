@@ -55,22 +55,21 @@ var SpineContainer = new Class({
 
     initialize:
 
-    function SpineContainer (scene, plugin, x, y, children)
-    {
-        Container.call(this, scene, x, y, children);
+        function SpineContainer(scene, plugin, x, y, children) {
+            Container.call(this, scene, x, y, children);
 
-        //  Same as SpineGameObject, to prevent the renderer from mis-typing it when batching
-        this.type = 'Spine';
+            //  Same as SpineGameObject, to prevent the renderer from mis-typing it when batching
+            this.type = 'Spine';
 
-        /**
-         * A reference to the Spine Plugin.
-         *
-         * @name SpineContainer#plugin
-         * @type {SpinePlugin}
-         * @since 3.50.0
-         */
-        this.plugin = plugin;
-    },
+            /**
+             * A reference to the Spine Plugin.
+             *
+             * @name SpineContainer#plugin
+             * @type {SpinePlugin}
+             * @since 3.50.0
+             */
+            this.plugin = plugin;
+        },
 
     /**
      * Internal destroy handler, called as part of the destroy process.
@@ -79,8 +78,7 @@ var SpineContainer = new Class({
      * @protected
      * @since 3.50.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.removeAll(!!this.exclusive);
 
         this.localTransform.destroy();

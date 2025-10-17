@@ -21,9 +21,10 @@ var Clamp = require('../../math/Clamp');
  *
  * @return {number} The clamped value from the `source` object.
  */
-var GetMinMaxValue = function (source, key, min, max, defaultValue)
-{
-    if (defaultValue === undefined) { defaultValue = min; }
+var GetMinMaxValue = function (source, key, min, max, defaultValue) {
+    if (defaultValue === undefined) {
+        defaultValue = min;
+    }
 
     var value = GetValue(source, key, defaultValue);
 

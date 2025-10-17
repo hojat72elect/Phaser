@@ -121,21 +121,20 @@ var PathFollower = {
      *
      * @return {this} This Game Object.
      */
-    setPath: function (path, config)
-    {
-        if (config === undefined) { config = this.pathConfig; }
+    setPath: function (path, config) {
+        if (config === undefined) {
+            config = this.pathConfig;
+        }
 
         var tween = this.pathTween;
 
-        if (tween && tween.isPlaying())
-        {
+        if (tween && tween.isPlaying()) {
             tween.stop();
         }
 
         this.path = path;
 
-        if (config)
-        {
+        if (config) {
             this.startFollow(config);
         }
 
@@ -153,9 +152,10 @@ var PathFollower = {
      *
      * @return {this} This Game Object.
      */
-    setRotateToPath: function (value, offset)
-    {
-        if (offset === undefined) { offset = 0; }
+    setRotateToPath: function (value, offset) {
+        if (offset === undefined) {
+            offset = 0;
+        }
 
         this.rotateToPath = value;
 
@@ -174,8 +174,7 @@ var PathFollower = {
      *
      * @return {boolean} `true` is this PathFollower is actively following a Path, otherwise `false`.
      */
-    isFollowing: function ()
-    {
+    isFollowing: function () {
         var tween = this.pathTween;
 
         return (tween && tween.isPlaying());
@@ -192,21 +191,22 @@ var PathFollower = {
      *
      * @return {this} This Game Object.
      */
-    startFollow: function (config, startAt)
-    {
-        if (config === undefined) { config = {}; }
-        if (startAt === undefined) { startAt = 0; }
+    startFollow: function (config, startAt) {
+        if (config === undefined) {
+            config = {};
+        }
+        if (startAt === undefined) {
+            startAt = 0;
+        }
 
         var tween = this.pathTween;
 
-        if (tween && tween.isPlaying())
-        {
+        if (tween && tween.isPlaying()) {
             tween.stop();
         }
 
-        if (typeof config === 'number')
-        {
-            config = { duration: config };
+        if (typeof config === 'number') {
+            config = {duration: config};
         }
 
         //  Override in case they've been specified in the config
@@ -221,10 +221,8 @@ var PathFollower = {
         //  This works, but it's not an ideal way of doing it as the follower jumps position
         var seek = GetValue(config, 'startAt', startAt);
 
-        if (seek)
-        {
-            config.onStart = function (tween)
-            {
+        if (seek) {
+            config.onStart = function (tween) {
                 var tweenData = tween.data[0];
                 tweenData.progress = seek;
                 tweenData.elapsed = tweenData.duration * seek;
@@ -234,18 +232,15 @@ var PathFollower = {
             };
         }
 
-        if (!this.pathOffset)
-        {
+        if (!this.pathOffset) {
             this.pathOffset = new Vector2(this.x, this.y);
         }
 
-        if (!this.pathVector)
-        {
+        if (!this.pathVector) {
             this.pathVector = new Vector2();
         }
 
-        if (!this.pathDelta)
-        {
+        if (!this.pathDelta) {
             this.pathDelta = new Vector2();
         }
 
@@ -258,8 +253,7 @@ var PathFollower = {
         //  The starting point of the path, relative to this follower
         this.path.getStartPoint(this.pathOffset);
 
-        if (positionOnPath)
-        {
+        if (positionOnPath) {
             this.x = this.pathOffset.x;
             this.y = this.pathOffset.y;
         }
@@ -269,8 +263,7 @@ var PathFollower = {
 
         this._prevDirection = TWEEN_CONST.PLAYING_FORWARD;
 
-        if (this.rotateToPath)
-        {
+        if (this.rotateToPath) {
             //  Set the rotation now (in case the tween has a delay on it, etc)
             var nextPoint = this.path.getPoint(0.1);
 
@@ -291,12 +284,10 @@ var PathFollower = {
      *
      * @return {this} This Game Object.
      */
-    pauseFollow: function ()
-    {
+    pauseFollow: function () {
         var tween = this.pathTween;
 
-        if (tween && tween.isPlaying())
-        {
+        if (tween && tween.isPlaying()) {
             tween.pause();
         }
 
@@ -313,12 +304,10 @@ var PathFollower = {
      *
      * @return {this} This Game Object.
      */
-    resumeFollow: function ()
-    {
+    resumeFollow: function () {
         var tween = this.pathTween;
 
-        if (tween && tween.isPaused())
-        {
+        if (tween && tween.isPaused()) {
             tween.resume();
         }
 
@@ -335,12 +324,10 @@ var PathFollower = {
      *
      * @return {this} This Game Object.
      */
-    stopFollow: function ()
-    {
+    stopFollow: function () {
         var tween = this.pathTween;
 
-        if (tween && tween.isPlaying())
-        {
+        if (tween && tween.isPlaying()) {
             tween.stop();
         }
 
@@ -355,20 +342,17 @@ var PathFollower = {
      * @method Phaser.GameObjects.Components.PathFollower#pathUpdate
      * @since 3.17.0
      */
-    pathUpdate: function ()
-    {
+    pathUpdate: function () {
         var tween = this.pathTween;
 
-        if (tween && tween.data)
-        {
+        if (tween && tween.data) {
             var tweenData = tween.data[0];
             var pathDelta = this.pathDelta;
             var pathVector = this.pathVector;
 
             pathDelta.copy(pathVector).negate();
 
-            if (tweenData.state === TWEEN_CONST.COMPLETE)
-            {
+            if (tweenData.state === TWEEN_CONST.COMPLETE) {
                 this.path.getPoint(tweenData.end, pathVector);
 
                 pathDelta.add(pathVector);
@@ -377,9 +361,7 @@ var PathFollower = {
                 this.setPosition(pathVector.x, pathVector.y);
 
                 return;
-            }
-            else if (tweenData.state !== TWEEN_CONST.PLAYING_FORWARD && tweenData.state !== TWEEN_CONST.PLAYING_BACKWARD)
-            {
+            } else if (tweenData.state !== TWEEN_CONST.PLAYING_FORWARD && tweenData.state !== TWEEN_CONST.PLAYING_BACKWARD) {
                 //  If delayed, etc then bail out
                 return;
             }
@@ -397,22 +379,19 @@ var PathFollower = {
             var speedX = this.x - oldX;
             var speedY = this.y - oldY;
 
-            if (speedX === 0 && speedY === 0)
-            {
+            if (speedX === 0 && speedY === 0) {
                 //  Bail out early
                 return;
             }
 
-            if (tweenData.state !== this._prevDirection)
-            {
+            if (tweenData.state !== this._prevDirection) {
                 //  We've changed direction, so don't do a rotate this frame
                 this._prevDirection = tweenData.state;
 
                 return;
             }
 
-            if (this.rotateToPath)
-            {
+            if (this.rotateToPath) {
                 this.rotation = Math.atan2(speedY, speedX) + DegToRad(this.pathRotationOffset);
             }
         }

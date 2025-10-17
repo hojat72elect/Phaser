@@ -15,8 +15,7 @@
  *
  * @return {boolean} `true` if the two given triangles have the exact same coordinates, otherwise `false`.
  */
-var Equals = function (triangle, toCompare)
-{
+var Equals = function (triangle, toCompare) {
     return (
         triangle.x1 === toCompare.x1 &&
         triangle.y1 === toCompare.y1 &&

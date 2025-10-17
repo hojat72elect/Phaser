@@ -23,20 +23,19 @@ var tmp = new Point();
  *
  * @return {boolean} `true` if the two objects intersect, otherwise `false`.
  */
-var LineToCircle = function (line, circle, nearest)
-{
-    if (nearest === undefined) { nearest = tmp; }
+var LineToCircle = function (line, circle, nearest) {
+    if (nearest === undefined) {
+        nearest = tmp;
+    }
 
-    if (Contains(circle, line.x1, line.y1))
-    {
+    if (Contains(circle, line.x1, line.y1)) {
         nearest.x = line.x1;
         nearest.y = line.y1;
 
         return true;
     }
 
-    if (Contains(circle, line.x2, line.y2))
-    {
+    if (Contains(circle, line.x2, line.y2)) {
         nearest.x = line.x2;
         nearest.y = line.y2;
 
@@ -54,8 +53,7 @@ var LineToCircle = function (line, circle, nearest)
     var px = dx;
     var py = dy;
 
-    if (dLen2 > 0)
-    {
+    if (dLen2 > 0) {
         var dp = ((lcx * dx) + (lcy * dy)) / dLen2;
 
         px *= dp;

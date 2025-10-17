@@ -1,14 +1,14 @@
 /**
-* The `Matter.Contact` module contains methods for creating and manipulating collision contacts.
-*
-* @class Contact
-*/
+ * The `Matter.Contact` module contains methods for creating and manipulating collision contacts.
+ *
+ * @class Contact
+ */
 
 var Contact = {};
 
 module.exports = Contact;
 
-(function() {
+(function () {
 
     /**
      * Creates a new contact.
@@ -16,7 +16,7 @@ module.exports = Contact;
      * @param {vertex} vertex
      * @return {contact} A new contact
      */
-    Contact.create = function(vertex) {
+    Contact.create = function (vertex) {
         return {
             vertex: vertex,
             normalImpulse: 0,

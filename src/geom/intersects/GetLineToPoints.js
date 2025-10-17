@@ -35,10 +35,13 @@ var tempIntersect = new Vector3();
  *
  * @return {Phaser.Math.Vector3} A Vector3 containing the intersection results, or `null`.
  */
-var GetLineToPoints = function (line, points, isRay, out)
-{
-    if (isRay === undefined) { isRay = false; }
-    if (out === undefined) { out = new Vector3(); }
+var GetLineToPoints = function (line, points, isRay, out) {
+    if (isRay === undefined) {
+        isRay = false;
+    }
+    if (out === undefined) {
+        out = new Vector3();
+    }
 
     var closestIntersect = false;
 
@@ -48,18 +51,15 @@ var GetLineToPoints = function (line, points, isRay, out)
 
     var prev = points[points.length - 1];
 
-    for (var i = 0; i < points.length; i++)
-    {
+    for (var i = 0; i < points.length; i++) {
         var current = points[i];
 
         segment.setTo(prev.x, prev.y, current.x, current.y);
 
         prev = current;
 
-        if (GetLineToLine(line, segment, isRay, tempIntersect))
-        {
-            if (!closestIntersect || tempIntersect.z < out.z)
-            {
+        if (GetLineToLine(line, segment, isRay, tempIntersect)) {
+            if (!closestIntersect || tempIntersect.z < out.z) {
                 out.copy(tempIntersect);
 
                 closestIntersect = true;

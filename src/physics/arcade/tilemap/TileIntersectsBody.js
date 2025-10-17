@@ -15,8 +15,7 @@
  *
  * @return {boolean} Returns `true` of the tile intersects with the body, otherwise `false`.
  */
-var TileIntersectsBody = function (tileWorldRect, body)
-{
+var TileIntersectsBody = function (tileWorldRect, body) {
     // Currently, all bodies are treated as rectangles when colliding with a Tile.
 
     return !(

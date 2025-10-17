@@ -22,8 +22,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Blitter} The Game Object that was created.
  */
-GameObjectFactory.register('blitter', function (x, y, texture, frame)
-{
+GameObjectFactory.register('blitter', function (x, y, texture, frame) {
     return this.displayList.add(new Blitter(this.scene, x, y, texture, frame));
 });
 

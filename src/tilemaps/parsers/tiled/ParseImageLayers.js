@@ -17,21 +17,17 @@ var CreateGroupLayer = require('./CreateGroupLayer');
  *
  * @return {array} Array of objects that include critical info about the map's image layers
  */
-var ParseImageLayers = function (json)
-{
+var ParseImageLayers = function (json) {
     var images = [];
 
     // State inherited from a parent group
     var groupStack = [];
     var curGroupState = CreateGroupLayer(json);
 
-    while (curGroupState.i < curGroupState.layers.length || groupStack.length > 0)
-    {
-        if (curGroupState.i >= curGroupState.layers.length)
-        {
+    while (curGroupState.i < curGroupState.layers.length || groupStack.length > 0) {
+        if (curGroupState.i >= curGroupState.layers.length) {
             // Ensure recursion stack is not empty first
-            if (groupStack.length < 1)
-            {
+            if (groupStack.length < 1) {
                 console.warn(
                     'TilemapParser.parseTiledJSON - Invalid layer group hierarchy'
                 );
@@ -47,10 +43,8 @@ var ParseImageLayers = function (json)
         var curi = curGroupState.layers[curGroupState.i];
         curGroupState.i++;
 
-        if (curi.type !== 'imagelayer')
-        {
-            if (curi.type === 'group')
-            {
+        if (curi.type !== 'imagelayer') {
+            if (curi.type === 'group') {
                 // Compute next state inherited from group
                 var nextGroupState = CreateGroupLayer(json, curi, curGroupState);
 

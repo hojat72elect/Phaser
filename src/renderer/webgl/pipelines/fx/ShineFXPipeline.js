@@ -39,52 +39,50 @@ var ShineFXPipeline = new Class({
 
     initialize:
 
-    function ShineFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: ShineFrag
-        });
+        function ShineFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: ShineFrag
+            });
 
-        /**
-         * The speed of the Shine effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#speed
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.speed = 0.5;
+            /**
+             * The speed of the Shine effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#speed
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.speed = 0.5;
 
-        /**
-         * The line width of the Shine effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#lineWidth
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.lineWidth = 0.5;
+            /**
+             * The line width of the Shine effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#lineWidth
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.lineWidth = 0.5;
 
-        /**
-         * The gradient of the Shine effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#gradient
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.gradient = 3;
+            /**
+             * The gradient of the Shine effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#gradient
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.gradient = 3;
 
-        /**
-         * Does this Shine effect reveal or get added to its target?
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#reveal
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.reveal = false;
-    },
+            /**
+             * Does this Shine effect reveal or get added to its target?
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#reveal
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.reveal = false;
+        },
 
-    onPreRender: function (controller, shader, width, height)
-    {
+    onPreRender: function (controller, shader, width, height) {
         controller = this.getController(controller);
 
         this.setTime('time', shader);
@@ -94,14 +92,12 @@ var ShineFXPipeline = new Class({
         this.set1f('gradient', controller.gradient, shader);
         this.setBoolean('reveal', controller.reveal, shader);
 
-        if (width && height)
-        {
+        if (width && height) {
             this.set2f('resolution', width, height, shader);
         }
     },
 
-    onDraw: function (target)
-    {
+    onDraw: function (target) {
         this.set2f('resolution', target.width, target.height);
 
         this.bindAndDraw(target);

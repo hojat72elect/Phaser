@@ -20,8 +20,7 @@
  *
  * @return {Phaser.Types.Math.Vector2Like} The given point.
  */
-var RotateTo = function (point, x, y, angle, distance)
-{
+var RotateTo = function (point, x, y, angle, distance) {
     point.x = x + (distance * Math.cos(angle));
     point.y = y + (distance * Math.sin(angle));
 

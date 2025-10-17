@@ -29,9 +29,10 @@ var PropertyValueInc = require('./PropertyValueInc');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var ScaleXY = function (items, scaleX, scaleY, stepX, stepY, index, direction)
-{
-    if (scaleY === undefined || scaleY === null) { scaleY = scaleX; }
+var ScaleXY = function (items, scaleX, scaleY, stepX, stepY, index, direction) {
+    if (scaleY === undefined || scaleY === null) {
+        scaleY = scaleX;
+    }
 
     PropertyValueInc(items, 'scaleX', scaleX, stepX, index, direction);
 

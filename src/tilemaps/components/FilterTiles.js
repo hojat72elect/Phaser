@@ -27,8 +27,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  *
  * @return {Phaser.Tilemaps.Tile[]} The filtered array of Tiles.
  */
-var FilterTiles = function (callback, context, tileX, tileY, width, height, filteringOptions, layer)
-{
+var FilterTiles = function (callback, context, tileX, tileY, width, height, filteringOptions, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, filteringOptions, layer);
 
     return tiles.filter(callback, context);

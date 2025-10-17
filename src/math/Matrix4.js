@@ -30,28 +30,24 @@ var Matrix4 = new Class({
 
     initialize:
 
-    function Matrix4 (m)
-    {
-        /**
-         * The matrix values.
-         *
-         * @name Phaser.Math.Matrix4#val
-         * @type {Float32Array}
-         * @since 3.0.0
-         */
-        this.val = new Float32Array(16);
+        function Matrix4(m) {
+            /**
+             * The matrix values.
+             *
+             * @name Phaser.Math.Matrix4#val
+             * @type {Float32Array}
+             * @since 3.0.0
+             */
+            this.val = new Float32Array(16);
 
-        if (m)
-        {
-            //  Assume Matrix4 with val:
-            this.copy(m);
-        }
-        else
-        {
-            //  Default to identity
-            this.identity();
-        }
-    },
+            if (m) {
+                //  Assume Matrix4 with val:
+                this.copy(m);
+            } else {
+                //  Default to identity
+                this.identity();
+            }
+        },
 
     /**
      * Make a clone of this Matrix4.
@@ -61,8 +57,7 @@ var Matrix4 = new Class({
      *
      * @return {Phaser.Math.Matrix4} A clone of this Matrix4.
      */
-    clone: function ()
-    {
+    clone: function () {
         return new Matrix4(this);
     },
 
@@ -76,8 +71,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    set: function (src)
-    {
+    set: function (src) {
         return this.copy(src);
     },
 
@@ -106,8 +100,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4 instance.
      */
-    setValues: function (m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33)
-    {
+    setValues: function (m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) {
         var out = this.val;
 
         out[0] = m00;
@@ -140,8 +133,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    copy: function (src)
-    {
+    copy: function (src) {
         var a = src.val;
 
         return this.setValues(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
@@ -157,8 +149,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    fromArray: function (a)
-    {
+    fromArray: function (a) {
         return this.setValues(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]);
     },
 
@@ -172,8 +163,7 @@ var Matrix4 = new Class({
      *
      * @return {Phaser.Math.Matrix4} This Matrix4.
      */
-    zero: function ()
-    {
+    zero: function () {
         return this.setValues(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     },
 
@@ -189,8 +179,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    transform: function (position, scale, rotation)
-    {
+    transform: function (position, scale, rotation) {
         var rotMatrix = _tempMat1.fromQuat(rotation);
 
         var rm = rotMatrix.val;
@@ -234,8 +223,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    xyz: function (x, y, z)
-    {
+    xyz: function (x, y, z) {
         this.identity();
 
         var out = this.val;
@@ -259,8 +247,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    scaling: function (x, y, z)
-    {
+    scaling: function (x, y, z) {
         this.zero();
 
         var out = this.val;
@@ -281,8 +268,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    identity: function ()
-    {
+    identity: function () {
         return this.setValues(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     },
 
@@ -294,8 +280,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    transpose: function ()
-    {
+    transpose: function () {
         var a = this.val;
 
         var a01 = a[1];
@@ -331,8 +316,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    getInverse: function (m)
-    {
+    getInverse: function (m) {
         this.copy(m);
 
         return this.invert();
@@ -346,8 +330,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    invert: function ()
-    {
+    invert: function () {
         var a = this.val;
 
         var a00 = a[0];
@@ -388,8 +371,7 @@ var Matrix4 = new Class({
         //  Calculate the determinant
         var det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
 
-        if (!det)
-        {
+        if (!det) {
             return this;
         }
 
@@ -423,8 +405,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    adjoint: function ()
-    {
+    adjoint: function () {
         var a = this.val;
 
         var a00 = a[0];
@@ -475,8 +456,7 @@ var Matrix4 = new Class({
      *
      * @return {number} The determinant of this Matrix.
      */
-    determinant: function ()
-    {
+    determinant: function () {
         var a = this.val;
 
         var a00 = a[0];
@@ -526,8 +506,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    multiply: function (src)
-    {
+    multiply: function (src) {
         var a = this.val;
 
         var a00 = a[0];
@@ -606,8 +585,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    multiplyLocal: function (src)
-    {
+    multiplyLocal: function (src) {
         var a = this.val;
         var b = src.val;
 
@@ -646,8 +624,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    premultiply: function (m)
-    {
+    premultiply: function (m) {
         return this.multiplyMatrices(m, this);
     },
 
@@ -662,8 +639,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    multiplyMatrices: function (a, b)
-    {
+    multiplyMatrices: function (a, b) {
         var am = a.val;
         var bm = b.val;
 
@@ -731,8 +707,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    translate: function (v)
-    {
+    translate: function (v) {
         return this.translateXYZ(v.x, v.y, v.z);
     },
 
@@ -748,8 +723,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    translateXYZ: function (x, y, z)
-    {
+    translateXYZ: function (x, y, z) {
         var a = this.val;
 
         a[12] = a[0] * x + a[4] * y + a[8] * z + a[12];
@@ -772,8 +746,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    scale: function (v)
-    {
+    scale: function (v) {
         return this.scaleXYZ(v.x, v.y, v.z);
     },
 
@@ -789,8 +762,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    scaleXYZ: function (x, y, z)
-    {
+    scaleXYZ: function (x, y, z) {
         var a = this.val;
 
         a[0] = a[0] * x;
@@ -822,8 +794,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    makeRotationAxis: function (axis, angle)
-    {
+    makeRotationAxis: function (axis, angle) {
         // Based on http://www.gamedev.net/reference/articles/article1199.asp
 
         var c = Math.cos(angle);
@@ -854,16 +825,14 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    rotate: function (rad, axis)
-    {
+    rotate: function (rad, axis) {
         var a = this.val;
         var x = axis.x;
         var y = axis.y;
         var z = axis.z;
         var len = Math.sqrt(x * x + y * y + z * z);
 
-        if (Math.abs(len) < EPSILON)
-        {
+        if (Math.abs(len) < EPSILON) {
             return this;
         }
 
@@ -937,8 +906,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    rotateX: function (rad)
-    {
+    rotateX: function (rad) {
         var a = this.val;
         var s = Math.sin(rad);
         var c = Math.cos(rad);
@@ -976,8 +944,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    rotateY: function (rad)
-    {
+    rotateY: function (rad) {
         var a = this.val;
         var s = Math.sin(rad);
         var c = Math.cos(rad);
@@ -1015,8 +982,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    rotateZ: function (rad)
-    {
+    rotateZ: function (rad) {
         var a = this.val;
         var s = Math.sin(rad);
         var c = Math.cos(rad);
@@ -1055,8 +1021,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    fromRotationTranslation: function (q, v)
-    {
+    fromRotationTranslation: function (q, v) {
         //  Quaternion math
         var x = q.x;
         var y = q.y;
@@ -1112,8 +1077,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    fromQuat: function (q)
-    {
+    fromQuat: function (q) {
         var x = q.x;
         var y = q.y;
         var z = q.z;
@@ -1173,8 +1137,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    frustum: function (left, right, bottom, top, near, far)
-    {
+    frustum: function (left, right, bottom, top, near, far) {
         var rl = 1 / (right - left);
         var tb = 1 / (top - bottom);
         var nf = 1 / (near - far);
@@ -1215,8 +1178,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    perspective: function (fovy, aspect, near, far)
-    {
+    perspective: function (fovy, aspect, near, far) {
         var f = 1.0 / Math.tan(fovy / 2);
         var nf = 1 / (near - far);
 
@@ -1256,8 +1218,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    perspectiveLH: function (width, height, near, far)
-    {
+    perspectiveLH: function (width, height, near, far) {
         return this.setValues(
             (2 * near) / width,
             0,
@@ -1296,8 +1257,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    ortho: function (left, right, bottom, top, near, far)
-    {
+    ortho: function (left, right, bottom, top, near, far) {
         var lr = left - right;
         var bt = bottom - top;
         var nf = near - far;
@@ -1342,14 +1302,12 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    lookAtRH: function (eye, target, up)
-    {
+    lookAtRH: function (eye, target, up) {
         var m = this.val;
 
         _z.subVectors(eye, target);
 
-        if (_z.lengthSq() === 0)
-        {
+        if (_z.lengthSq() === 0) {
             // eye and target are in the same position
             _z.z = 1;
         }
@@ -1357,16 +1315,12 @@ var Matrix4 = new Class({
         _z.normalize();
         _x.crossVectors(up, _z);
 
-        if (_x.lengthSq() === 0)
-        {
+        if (_x.lengthSq() === 0) {
             // up and z are parallel
 
-            if (Math.abs(up.z) === 1)
-            {
+            if (Math.abs(up.z) === 1) {
                 _z.x += 0.0001;
-            }
-            else
-            {
+            } else {
                 _z.z += 0.0001;
             }
 
@@ -1402,8 +1356,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    lookAt: function (eye, center, up)
-    {
+    lookAt: function (eye, center, up) {
         var eyex = eye.x;
         var eyey = eye.y;
         var eyez = eye.z;
@@ -1418,8 +1371,7 @@ var Matrix4 = new Class({
 
         if (Math.abs(eyex - centerx) < EPSILON &&
             Math.abs(eyey - centery) < EPSILON &&
-            Math.abs(eyez - centerz) < EPSILON)
-        {
+            Math.abs(eyez - centerz) < EPSILON) {
             return this.identity();
         }
 
@@ -1439,14 +1391,11 @@ var Matrix4 = new Class({
 
         len = Math.sqrt(x0 * x0 + x1 * x1 + x2 * x2);
 
-        if (!len)
-        {
+        if (!len) {
             x0 = 0;
             x1 = 0;
             x2 = 0;
-        }
-        else
-        {
+        } else {
             len = 1 / len;
             x0 *= len;
             x1 *= len;
@@ -1459,14 +1408,11 @@ var Matrix4 = new Class({
 
         len = Math.sqrt(y0 * y0 + y1 * y1 + y2 * y2);
 
-        if (!len)
-        {
+        if (!len) {
             y0 = 0;
             y1 = 0;
             y2 = 0;
-        }
-        else
-        {
+        } else {
             len = 1 / len;
             y0 *= len;
             y1 *= len;
@@ -1508,8 +1454,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    yawPitchRoll: function (yaw, pitch, roll)
-    {
+    yawPitchRoll: function (yaw, pitch, roll) {
         this.zero();
         _tempMat1.zero();
         _tempMat2.zero();
@@ -1571,8 +1516,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    setWorldMatrix: function (rotation, position, scale, viewMatrix, projectionMatrix)
-    {
+    setWorldMatrix: function (rotation, position, scale, viewMatrix, projectionMatrix) {
         this.yawPitchRoll(rotation.y, rotation.x, rotation.z);
 
         _tempMat1.scaling(scale.x, scale.y, scale.z);
@@ -1581,13 +1525,11 @@ var Matrix4 = new Class({
         this.multiplyLocal(_tempMat1);
         this.multiplyLocal(_tempMat2);
 
-        if (viewMatrix)
-        {
+        if (viewMatrix) {
             this.multiplyLocal(viewMatrix);
         }
 
-        if (projectionMatrix)
-        {
+        if (projectionMatrix) {
             this.multiplyLocal(projectionMatrix);
         }
 
@@ -1605,8 +1547,7 @@ var Matrix4 = new Class({
      *
      * @return {Phaser.Math.Matrix4} This `out` Matrix4.
      */
-    multiplyToMat4: function (src, out)
-    {
+    multiplyToMat4: function (src, out) {
         var a = this.val;
         var b = src.val;
 
@@ -1679,8 +1620,7 @@ var Matrix4 = new Class({
      *
      * @return {this} This Matrix4.
      */
-    fromRotationXYTranslation: function (rotation, position, translateFirst)
-    {
+    fromRotationXYTranslation: function (rotation, position, translateFirst) {
         var x = position.x;
         var y = position.y;
         var z = position.z;
@@ -1710,8 +1650,7 @@ var Matrix4 = new Class({
         var c22 = cx * cy;
 
         //  Translate
-        if (!translateFirst)
-        {
+        if (!translateFirst) {
             // a30 = cy * x + 0 * y + sy * z;
             a30 = cy * x + sy * z;
             a31 = c01 * x + cx * y + c21 * z;
@@ -1746,8 +1685,7 @@ var Matrix4 = new Class({
      *
      * @return {number} The maximum axis scale.
      */
-    getMaxScaleOnAxis: function ()
-    {
+    getMaxScaleOnAxis: function () {
         var m = this.val;
 
         var scaleXSq = m[0] * m[0] + m[1] * m[1] + m[2] * m[2];

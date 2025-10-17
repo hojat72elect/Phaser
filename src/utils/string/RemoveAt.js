@@ -6,7 +6,7 @@
 
 /**
  * Takes a string and removes the character at the given index.
- * 
+ *
  * The index is zero based.
  *
  * @function Phaser.Utils.String.RemoveAt
@@ -17,14 +17,10 @@
  *
  * @return {string} The modified string.
  */
-var RemoveAt = function (string, index)
-{
-    if (index === 0)
-    {
+var RemoveAt = function (string, index) {
+    if (index === 0) {
         return string.slice(1);
-    }
-    else
-    {
+    } else {
         return string.slice(0, index) + string.slice(index + 1);
     }
 };

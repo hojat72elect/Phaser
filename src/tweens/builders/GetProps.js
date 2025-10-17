@@ -19,32 +19,24 @@ var RESERVED = require('../tween/ReservedProps');
  *
  * @return {string[]} An array of all the properties the tween will operate on.
  */
-var GetProps = function (config)
-{
+var GetProps = function (config) {
     var key;
     var keys = [];
 
     //  First see if we have a props object
 
-    if (config.hasOwnProperty('props'))
-    {
-        for (key in config.props)
-        {
+    if (config.hasOwnProperty('props')) {
+        for (key in config.props) {
             //  Skip any property that starts with an underscore
-            if (key.substring(0, 1) !== '_')
-            {
-                keys.push({ key: key, value: config.props[key] });
+            if (key.substring(0, 1) !== '_') {
+                keys.push({key: key, value: config.props[key]});
             }
         }
-    }
-    else
-    {
-        for (key in config)
-        {
+    } else {
+        for (key in config) {
             //  Skip any property that is in the ReservedProps list or that starts with an underscore
-            if (RESERVED.indexOf(key) === -1 && key.substring(0, 1) !== '_')
-            {
-                keys.push({ key: key, value: config[key] });
+            if (RESERVED.indexOf(key) === -1 && key.substring(0, 1) !== '_') {
+                keys.push({key: key, value: config[key]});
             }
         }
     }

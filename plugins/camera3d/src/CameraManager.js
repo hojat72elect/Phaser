@@ -24,38 +24,37 @@ var CameraManager = new Class({
 
     initialize:
 
-    function CameraManager (scene)
-    {
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.CameraManager#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+        function CameraManager(scene) {
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.CameraManager#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.CameraManager#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.CameraManager#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * An Array of the Camera objects being managed by this Camera Manager.
-         *
-         * @name Phaser.Cameras.Sprite3D.CameraManager#cameras
-         * @type {Phaser.Cameras.Sprite3D.Camera[]}
-         * @since 3.0.0
-         */
-        this.cameras = [];
+            /**
+             * An Array of the Camera objects being managed by this Camera Manager.
+             *
+             * @name Phaser.Cameras.Sprite3D.CameraManager#cameras
+             * @type {Phaser.Cameras.Sprite3D.Camera[]}
+             * @since 3.0.0
+             */
+            this.cameras = [];
 
-        scene.sys.events.once('boot', this.boot, this);
-        scene.sys.events.on('start', this.start, this);
-    },
+            scene.sys.events.once('boot', this.boot, this);
+            scene.sys.events.on('start', this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -65,8 +64,7 @@ var CameraManager = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.systems.events.once('destroy', this.destroy, this);
     },
 
@@ -79,8 +77,7 @@ var CameraManager = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.on('update', this.update, this);
@@ -99,8 +96,7 @@ var CameraManager = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */
-    add: function (fieldOfView, width, height)
-    {
+    add: function (fieldOfView, width, height) {
         return this.addPerspectiveCamera(fieldOfView, width, height);
     },
 
@@ -115,12 +111,15 @@ var CameraManager = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.OrthographicCamera} [description]
      */
-    addOrthographicCamera: function (width, height)
-    {
+    addOrthographicCamera: function (width, height) {
         var config = this.scene.sys.game.config;
 
-        if (width === undefined) { width = config.width; }
-        if (height === undefined) { height = config.height; }
+        if (width === undefined) {
+            width = config.width;
+        }
+        if (height === undefined) {
+            height = config.height;
+        }
 
         var camera = new OrthographicCamera(this.scene, width, height);
 
@@ -141,13 +140,18 @@ var CameraManager = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */
-    addPerspectiveCamera: function (fieldOfView, width, height)
-    {
+    addPerspectiveCamera: function (fieldOfView, width, height) {
         var config = this.scene.sys.game.config;
 
-        if (fieldOfView === undefined) { fieldOfView = 80; }
-        if (width === undefined) { width = config.width; }
-        if (height === undefined) { height = config.height; }
+        if (fieldOfView === undefined) {
+            fieldOfView = 80;
+        }
+        if (width === undefined) {
+            width = config.width;
+        }
+        if (height === undefined) {
+            height = config.height;
+        }
 
         var camera = new PerspectiveCamera(this.scene, fieldOfView, width, height);
 
@@ -166,12 +170,9 @@ var CameraManager = new Class({
      *
      * @return {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} [description]
      */
-    getCamera: function (name)
-    {
-        for (var i = 0; i < this.cameras.length; i++)
-        {
-            if (this.cameras[i].name === name)
-            {
+    getCamera: function (name) {
+        for (var i = 0; i < this.cameras.length; i++) {
+            if (this.cameras[i].name === name) {
                 return this.cameras[i];
             }
         }
@@ -187,12 +188,10 @@ var CameraManager = new Class({
      *
      * @param {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} camera - [description]
      */
-    removeCamera: function (camera)
-    {
+    removeCamera: function (camera) {
         var cameraIndex = this.cameras.indexOf(camera);
 
-        if (cameraIndex !== -1)
-        {
+        if (cameraIndex !== -1) {
             this.cameras.splice(cameraIndex, 1);
         }
     },
@@ -205,10 +204,8 @@ var CameraManager = new Class({
      *
      * @return {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} [description]
      */
-    removeAll: function ()
-    {
-        while (this.cameras.length > 0)
-        {
+    removeAll: function () {
+        while (this.cameras.length > 0) {
             var camera = this.cameras.pop();
 
             camera.destroy();
@@ -226,10 +223,8 @@ var CameraManager = new Class({
      * @param {number} timestep - [description]
      * @param {number} delta - [description]
      */
-    update: function (timestep, delta)
-    {
-        for (var i = 0, l = this.cameras.length; i < l; ++i)
-        {
+    update: function (timestep, delta) {
+        for (var i = 0, l = this.cameras.length; i < l; ++i) {
             this.cameras[i].update(timestep, delta);
         }
     },
@@ -242,8 +237,7 @@ var CameraManager = new Class({
      * @private
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.off('update', this.update, this);
@@ -260,8 +254,7 @@ var CameraManager = new Class({
      * @private
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.scene.sys.events.off('start', this.start, this);

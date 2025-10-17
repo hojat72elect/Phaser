@@ -23,10 +23,13 @@ var GetCenterY = require('../../bounds/GetCenterY');
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was aligned.
  */
-var Center = function (gameObject, alignIn, offsetX, offsetY)
-{
-    if (offsetX === undefined) { offsetX = 0; }
-    if (offsetY === undefined) { offsetY = 0; }
+var Center = function (gameObject, alignIn, offsetX, offsetY) {
+    if (offsetX === undefined) {
+        offsetX = 0;
+    }
+    if (offsetY === undefined) {
+        offsetY = 0;
+    }
 
     CenterOn(gameObject, GetCenterX(alignIn) + offsetX, GetCenterY(alignIn) + offsetY);
 

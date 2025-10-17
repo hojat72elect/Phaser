@@ -20,23 +20,19 @@
  *
  * @return {array} The input array.
  */
-var MoveBelow = function (array, item1, item2)
-{
-    if (item1 === item2)
-    {
+var MoveBelow = function (array, item1, item2) {
+    if (item1 === item2) {
         return array;
     }
 
     var currentIndex = array.indexOf(item1);
     var baseIndex = array.indexOf(item2);
 
-    if (currentIndex < 0 || baseIndex < 0)
-    {
+    if (currentIndex < 0 || baseIndex < 0) {
         throw new Error('Supplied items must be elements of the same array');
     }
 
-    if (currentIndex < baseIndex)
-    {
+    if (currentIndex < baseIndex) {
         // item1 is already below item2
         return array;
     }
@@ -45,12 +41,9 @@ var MoveBelow = function (array, item1, item2)
     array.splice(currentIndex, 1);
 
     //  Add in new location
-    if (baseIndex === 0)
-    {
+    if (baseIndex === 0) {
         array.unshift(item1);
-    }
-    else
-    {
+    } else {
         array.splice(baseIndex, 0, item1);
     }
 

@@ -9,7 +9,7 @@
  */
 
 module.exports = {
-    
+
     COMPLETE: require('./COMPLETE_EVENT')
 
 };

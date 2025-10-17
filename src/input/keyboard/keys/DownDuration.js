@@ -16,9 +16,10 @@
  *
  * @return {boolean} `true` if the Key was pressed down within `duration` ms ago, otherwise `false`.
  */
-var DownDuration = function (key, duration)
-{
-    if (duration === undefined) { duration = 50; }
+var DownDuration = function (key, duration) {
+    if (duration === undefined) {
+        duration = 50;
+    }
 
     var current = key.plugin.game.loop.time - key.timeDown;
 

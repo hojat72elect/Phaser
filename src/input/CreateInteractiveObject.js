@@ -20,8 +20,7 @@
  *
  * @return {Phaser.Types.Input.InteractiveObject} The new Interactive Object.
  */
-var CreateInteractiveObject = function (gameObject, hitArea, hitAreaCallback)
-{
+var CreateInteractiveObject = function (gameObject, hitArea, hitAreaCallback) {
     return {
 
         gameObject: gameObject,

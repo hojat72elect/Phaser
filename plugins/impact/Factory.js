@@ -25,26 +25,25 @@ var Factory = new Class({
 
     initialize:
 
-    function Factory (world)
-    {
-        /**
-         * A reference to the Impact Physics world.
-         *
-         * @name Phaser.Physics.Impact.Factory#world
-         * @type {Phaser.Physics.Impact.World}
-         * @since 3.0.0
-         */
-        this.world = world;
+        function Factory(world) {
+            /**
+             * A reference to the Impact Physics world.
+             *
+             * @name Phaser.Physics.Impact.Factory#world
+             * @type {Phaser.Physics.Impact.World}
+             * @since 3.0.0
+             */
+            this.world = world;
 
-        /**
-         * A reference to the Scene.Systems this Impact Physics instance belongs to.
-         *
-         * @name Phaser.Physics.Impact.Factory#sys
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.sys = world.scene.sys;
-    },
+            /**
+             * A reference to the Scene.Systems this Impact Physics instance belongs to.
+             *
+             * @name Phaser.Physics.Impact.Factory#sys
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.sys = world.scene.sys;
+        },
 
     /**
      * Creates a new ImpactBody object and adds it to the physics simulation.
@@ -59,8 +58,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Impact.ImpactBody} The ImpactBody object that was created.
      */
-    body: function (x, y, width, height)
-    {
+    body: function (x, y, width, height) {
         return new ImpactBody(this.world, x, y, width, height);
     },
 
@@ -74,8 +72,7 @@ var Factory = new Class({
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object.
      */
-    existing: function (gameObject)
-    {
+    existing: function (gameObject) {
         var x = gameObject.x - gameObject.frame.centerX;
         var y = gameObject.y - gameObject.frame.centerY;
         var w = gameObject.width;
@@ -102,8 +99,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Impact.ImpactImage} The ImpactImage object that was created.
      */
-    image: function (x, y, key, frame)
-    {
+    image: function (x, y, key, frame) {
         var image = new ImpactImage(this.world, x, y, key, frame);
 
         this.sys.displayList.add(image);
@@ -124,8 +120,7 @@ var Factory = new Class({
      *
      * @return {Phaser.Physics.Impact.ImpactSprite} The ImpactSprite object that was created.
      */
-    sprite: function (x, y, key, frame)
-    {
+    sprite: function (x, y, key, frame) {
         var sprite = new ImpactSprite(this.world, x, y, key, frame);
 
         this.sys.displayList.add(sprite);
@@ -140,8 +135,7 @@ var Factory = new Class({
      * @method Phaser.Physics.Impact.Factory#destroy
      * @since 3.5.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.world = null;
         this.sys = null;
     }

@@ -18,36 +18,29 @@ var AdvanceKeyCombo = require('./AdvanceKeyCombo');
  *
  * @return {boolean} `true` if the combo was matched, otherwise `false`.
  */
-var ProcessKeyCombo = function (event, combo)
-{
-    if (combo.matched)
-    {
+var ProcessKeyCombo = function (event, combo) {
+    if (combo.matched) {
         return true;
     }
 
     var comboMatched = false;
     var keyMatched = false;
 
-    if (event.keyCode === combo.current)
-    {
+    if (event.keyCode === combo.current) {
         //  Key was correct
 
-        if (combo.index > 0 && combo.maxKeyDelay > 0)
-        {
+        if (combo.index > 0 && combo.maxKeyDelay > 0) {
             //  We have to check to see if the delay between
             //  the new key and the old one was too long (if enabled)
 
             var timeLimit = combo.timeLastMatched + combo.maxKeyDelay;
 
             //  Check if they pressed it in time or not
-            if (event.timeStamp <= timeLimit)
-            {
+            if (event.timeStamp <= timeLimit) {
                 keyMatched = true;
                 comboMatched = AdvanceKeyCombo(event, combo);
             }
-        }
-        else
-        {
+        } else {
             keyMatched = true;
 
             //  We don't check the time for the first key pressed, so just advance it
@@ -55,15 +48,13 @@ var ProcessKeyCombo = function (event, combo)
         }
     }
 
-    if (!keyMatched && combo.resetOnWrongKey)
-    {
+    if (!keyMatched && combo.resetOnWrongKey) {
         //  Wrong key was pressed
         combo.index = 0;
         combo.current = combo.keyCodes[0];
     }
 
-    if (comboMatched)
-    {
+    if (comboMatched) {
         combo.timeLastMatched = event.timeStamp;
         combo.matched = true;
         combo.timeMatched = event.timeStamp;

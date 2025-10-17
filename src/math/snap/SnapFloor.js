@@ -20,12 +20,12 @@
  *
  * @return {number} The snapped value.
  */
-var SnapFloor = function (value, gap, start, divide)
-{
-    if (start === undefined) { start = 0; }
+var SnapFloor = function (value, gap, start, divide) {
+    if (start === undefined) {
+        start = 0;
+    }
 
-    if (gap === 0)
-    {
+    if (gap === 0) {
         return value;
     }
 

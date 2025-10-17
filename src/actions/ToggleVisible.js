@@ -17,10 +17,8 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var ToggleVisible = function (items)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var ToggleVisible = function (items) {
+    for (var i = 0; i < items.length; i++) {
         items[i].visible = !items[i].visible;
     }
 

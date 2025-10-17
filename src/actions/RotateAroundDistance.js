@@ -21,19 +21,16 @@ var MathRotateAroundDistance = require('../math/RotateAroundDistance');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RotateAroundDistance = function (items, point, angle, distance)
-{
+var RotateAroundDistance = function (items, point, angle, distance) {
     var x = point.x;
     var y = point.y;
 
     //  There's nothing to do
-    if (distance === 0)
-    {
+    if (distance === 0) {
         return items;
     }
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         MathRotateAroundDistance(items[i], x, y, angle, distance);
     }
 

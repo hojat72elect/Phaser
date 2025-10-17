@@ -37,34 +37,32 @@ var TilemapCSVFile = new Class({
 
     initialize:
 
-    function TilemapCSVFile (loader, key, url, xhrSettings)
-    {
-        var extension = 'csv';
+        function TilemapCSVFile(loader, key, url, xhrSettings) {
+            var extension = 'csv';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            }
 
-        var fileConfig = {
-            type: 'tilemapCSV',
-            cache: loader.cacheManager.tilemap,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: 'tilemapCSV',
+                cache: loader.cacheManager.tilemap,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
+            File.call(this, loader, fileConfig);
 
-        this.tilemapFormat = TILEMAP_FORMATS.CSV;
-    },
+            this.tilemapFormat = TILEMAP_FORMATS.CSV;
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -73,8 +71,7 @@ var TilemapCSVFile = new Class({
      * @method Phaser.Loader.FileTypes.TilemapCSVFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = this.xhrLoader.responseText;
@@ -88,9 +85,8 @@ var TilemapCSVFile = new Class({
      * @method Phaser.Loader.FileTypes.TilemapCSVFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        var tiledata = { format: this.tilemapFormat, data: this.data };
+    addToCache: function () {
+        var tiledata = {format: this.tilemapFormat, data: this.data};
 
         this.cache.add(this.key, tiledata);
     }
@@ -166,18 +162,13 @@ var TilemapCSVFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('tilemapCSV', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('tilemapCSV', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new TilemapCSVFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new TilemapCSVFile(this, key, url, xhrSettings));
     }
 

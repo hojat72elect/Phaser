@@ -24,8 +24,7 @@ var PropertyValueSet = require('./PropertyValueSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var SetBlendMode = function (items, value, index, direction)
-{
+var SetBlendMode = function (items, value, index, direction) {
     return PropertyValueSet(items, 'blendMode', value, 0, index, direction);
 };
 

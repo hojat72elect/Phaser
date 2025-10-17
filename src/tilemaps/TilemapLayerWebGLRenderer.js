@@ -19,15 +19,13 @@ var Utils = require('../renderer/webgl/Utils');
  * @param {Phaser.Tilemaps.TilemapLayer} src - The Game Object being rendered in this call.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  */
-var TilemapLayerWebGLRenderer = function (renderer, src, camera)
-{
+var TilemapLayerWebGLRenderer = function (renderer, src, camera) {
     var renderTiles = src.cull(camera);
 
     var tileCount = renderTiles.length;
     var alpha = camera.alpha * src.alpha;
 
-    if (tileCount === 0 || alpha <= 0)
-    {
+    if (tileCount === 0 || alpha <= 0) {
         return;
     }
 
@@ -47,14 +45,12 @@ var TilemapLayerWebGLRenderer = function (renderer, src, camera)
 
     renderer.pipelines.preBatch(src);
 
-    for (var i = 0; i < tileCount; i++)
-    {
+    for (var i = 0; i < tileCount; i++) {
         var tile = renderTiles[i];
 
         var tileset = gidMap[tile.index];
 
-        if (!tileset)
-        {
+        if (!tileset) {
             continue;
         }
 
@@ -62,8 +58,7 @@ var TilemapLayerWebGLRenderer = function (renderer, src, camera)
         var tileWidth = tileset.tileWidth;
         var tileHeight = tileset.tileHeight;
 
-        if (!tileTexCoords || tileWidth === 0 || tileHeight === 0)
-        {
+        if (!tileTexCoords || tileWidth === 0 || tileHeight === 0) {
             continue;
         }
 

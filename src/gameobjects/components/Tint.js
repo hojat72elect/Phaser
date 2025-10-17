@@ -88,8 +88,7 @@ var Tint = {
      *
      * @return {this} This Game Object instance.
      */
-    clearTint: function ()
-    {
+    clearTint: function () {
         this.setTint(0xffffff);
 
         return this;
@@ -122,12 +121,12 @@ var Tint = {
      *
      * @return {this} This Game Object instance.
      */
-    setTint: function (topLeft, topRight, bottomLeft, bottomRight)
-    {
-        if (topLeft === undefined) { topLeft = 0xffffff; }
+    setTint: function (topLeft, topRight, bottomLeft, bottomRight) {
+        if (topLeft === undefined) {
+            topLeft = 0xffffff;
+        }
 
-        if (topRight === undefined)
-        {
+        if (topRight === undefined) {
             topRight = topLeft;
             bottomLeft = topLeft;
             bottomRight = topLeft;
@@ -171,8 +170,7 @@ var Tint = {
      *
      * @return {this} This Game Object instance.
      */
-    setTintFill: function (topLeft, topRight, bottomLeft, bottomRight)
-    {
+    setTintFill: function (topLeft, topRight, bottomLeft, bottomRight) {
         this.setTint(topLeft, topRight, bottomLeft, bottomRight);
 
         this.tintFill = true;
@@ -191,13 +189,11 @@ var Tint = {
      */
     tint: {
 
-        get: function ()
-        {
+        get: function () {
             return this.tintTopLeft;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.setTint(value, value, value, value);
         }
     },
@@ -216,8 +212,7 @@ var Tint = {
      */
     isTinted: {
 
-        get: function ()
-        {
+        get: function () {
             var white = 0xffffff;
 
             return (

@@ -7,17 +7,13 @@
 var GetValue = require('../object/GetValue');
 var Shuffle = require('./Shuffle');
 
-var BuildChunk = function (a, b, qty)
-{
+var BuildChunk = function (a, b, qty) {
     var out = [];
 
-    for (var aIndex = 0; aIndex < a.length; aIndex++)
-    {
-        for (var bIndex = 0; bIndex < b.length; bIndex++)
-        {
-            for (var i = 0; i < qty; i++)
-            {
-                out.push({ a: a[aIndex], b: b[bIndex] });
+    for (var aIndex = 0; aIndex < a.length; aIndex++) {
+        for (var bIndex = 0; bIndex < b.length; bIndex++) {
+            for (var i = 0; i < qty; i++) {
+                out.push({a: a[aIndex], b: b[bIndex]});
             }
         }
     }
@@ -65,8 +61,7 @@ var BuildChunk = function (a, b, qty)
  *
  * @return {array} An array of arranged elements.
  */
-var Range = function (a, b, options)
-{
+var Range = function (a, b, options) {
     var max = GetValue(options, 'max', 0);
     var qty = GetValue(options, 'qty', 1);
     var random = GetValue(options, 'random', false);
@@ -76,25 +71,19 @@ var Range = function (a, b, options)
 
     var out = [];
 
-    if (randomB)
-    {
+    if (randomB) {
         Shuffle(b);
     }
 
     //  Endless repeat, so limit by max
-    if (repeat === -1)
-    {
-        if (max === 0)
-        {
+    if (repeat === -1) {
+        if (max === 0) {
             repeat = 0;
-        }
-        else
-        {
+        } else {
             //  Work out how many repeats we need
             var total = (a.length * b.length) * qty;
 
-            if (yoyo)
-            {
+            if (yoyo) {
                 total *= 2;
             }
 
@@ -102,27 +91,23 @@ var Range = function (a, b, options)
         }
     }
 
-    for (var i = 0; i <= repeat; i++)
-    {
+    for (var i = 0; i <= repeat; i++) {
         var chunk = BuildChunk(a, b, qty);
 
-        if (random)
-        {
+        if (random) {
             Shuffle(chunk);
         }
 
         out = out.concat(chunk);
 
-        if (yoyo)
-        {
+        if (yoyo) {
             chunk.reverse();
 
             out = out.concat(chunk);
         }
     }
 
-    if (max)
-    {
+    if (max) {
         out.splice(max);
     }
 

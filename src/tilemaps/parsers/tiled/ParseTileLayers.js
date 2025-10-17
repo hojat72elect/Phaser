@@ -26,8 +26,7 @@ var Tile = require('../../Tile');
  * @return {Phaser.Tilemaps.LayerData[]} - An array of LayerData objects, one for each entry in
  * json.layers with the type 'tilelayer'.
  */
-var ParseTileLayers = function (json, insertNull)
-{
+var ParseTileLayers = function (json, insertNull) {
     var infiniteMap = GetFastValue(json, 'infinite', false);
     var tileLayers = [];
 
@@ -35,13 +34,10 @@ var ParseTileLayers = function (json, insertNull)
     var groupStack = [];
     var curGroupState = CreateGroupLayer(json);
 
-    while (curGroupState.i < curGroupState.layers.length || groupStack.length > 0)
-    {
-        if (curGroupState.i >= curGroupState.layers.length)
-        {
+    while (curGroupState.i < curGroupState.layers.length || groupStack.length > 0) {
+        if (curGroupState.i >= curGroupState.layers.length) {
             // Ensure recursion stack is not empty first
-            if (groupStack.length < 1)
-            {
+            if (groupStack.length < 1) {
                 console.warn(
                     'TilemapParser.parseTiledJSON - Invalid layer group hierarchy'
                 );
@@ -56,10 +52,8 @@ var ParseTileLayers = function (json, insertNull)
         var curl = curGroupState.layers[curGroupState.i];
         curGroupState.i++;
 
-        if (curl.type !== 'tilelayer')
-        {
-            if (curl.type === 'group')
-            {
+        if (curl.type !== 'tilelayer') {
+            if (curl.type === 'group') {
                 // Compute next state inherited from group
                 var nextGroupState = CreateGroupLayer(json, curl, curGroupState);
 
@@ -73,28 +67,22 @@ var ParseTileLayers = function (json, insertNull)
         }
 
         // Base64 decode data if necessary. NOTE: uncompressed base64 only.
-        if (curl.compression)
-        {
+        if (curl.compression) {
             console.warn(
                 'TilemapParser.parseTiledJSON - Layer compression is unsupported, skipping layer \''
                 + curl.name + '\''
             );
             continue;
-        }
-        else if (curl.encoding && curl.encoding === 'base64')
-        {
+        } else if (curl.encoding && curl.encoding === 'base64') {
             // Chunks for an infinite map
-            if (curl.chunks)
-            {
-                for (var i = 0; i < curl.chunks.length; i++)
-                {
+            if (curl.chunks) {
+                for (var i = 0; i < curl.chunks.length; i++) {
                     curl.chunks[i].data = Base64Decode(curl.chunks[i].data);
                 }
             }
 
             // Non-infinite map data
-            if (curl.data)
-            {
+            if (curl.data) {
                 curl.data = Base64Decode(curl.data);
             }
 
@@ -117,8 +105,7 @@ var ParseTileLayers = function (json, insertNull)
         var output = [];
         var x = 0;
 
-        if (infiniteMap)
-        {
+        if (infiniteMap) {
             var layerOffsetX = (GetFastValue(curl, 'startx', 0) + curl.x);
             var layerOffsetY = (GetFastValue(curl, 'starty', 0) + curl.y);
 
@@ -137,38 +124,31 @@ var ParseTileLayers = function (json, insertNull)
                 orientation: FromOrientationString(json.orientation)
             });
 
-            if (layerData.orientation === CONST.HEXAGONAL)
-            {
+            if (layerData.orientation === CONST.HEXAGONAL) {
                 layerData.hexSideLength = json.hexsidelength;
                 layerData.staggerAxis = json.staggeraxis;
                 layerData.staggerIndex = json.staggerindex;
 
-                if (layerData.staggerAxis === 'y')
-                {
+                if (layerData.staggerAxis === 'y') {
                     triangleHeight = (layerData.tileHeight - layerData.hexSideLength) / 2;
                     layerData.widthInPixels = layerData.tileWidth * (layerData.width + 0.5);
                     layerData.heightInPixels = layerData.height * (layerData.hexSideLength + triangleHeight) + triangleHeight;
-                }
-                else
-                {
+                } else {
                     triangleWidth = (layerData.tileWidth - layerData.hexSideLength) / 2;
                     layerData.widthInPixels = layerData.width * (layerData.hexSideLength + triangleWidth) + triangleWidth;
                     layerData.heightInPixels = layerData.tileHeight * (layerData.height + 0.5);
                 }
             }
 
-            for (var c = 0; c < curl.height; c++)
-            {
-                output[c] = [ null ];
+            for (var c = 0; c < curl.height; c++) {
+                output[c] = [null];
 
-                for (var j = 0; j < curl.width; j++)
-                {
+                for (var j = 0; j < curl.width; j++) {
                     output[c][j] = null;
                 }
             }
 
-            for (c = 0, len = curl.chunks.length; c < len; c++)
-            {
+            for (c = 0, len = curl.chunks.length; c < len; c++) {
                 var chunk = curl.chunks[c];
 
                 var offsetX = (chunk.x - layerOffsetX);
@@ -176,16 +156,14 @@ var ParseTileLayers = function (json, insertNull)
 
                 var y = 0;
 
-                for (var t = 0, len2 = chunk.data.length; t < len2; t++)
-                {
+                for (var t = 0, len2 = chunk.data.length; t < len2; t++) {
                     var newOffsetX = x + offsetX;
                     var newOffsetY = y + offsetY;
 
                     gidInfo = ParseGID(chunk.data[t]);
 
                     //  index, x, y, width, height
-                    if (gidInfo.gid > 0)
-                    {
+                    if (gidInfo.gid > 0) {
                         tile = new Tile(layerData, gidInfo.gid, newOffsetX, newOffsetY, json.tilewidth, json.tileheight);
 
                         // Turning Tiled's FlippedHorizontal, FlippedVertical and FlippedAntiDiagonal
@@ -194,9 +172,7 @@ var ParseTileLayers = function (json, insertNull)
                         tile.flipX = gidInfo.flipped;
 
                         output[newOffsetY][newOffsetX] = tile;
-                    }
-                    else
-                    {
+                    } else {
                         blankTile = insertNull
                             ? null
                             : new Tile(layerData, -1, newOffsetX, newOffsetY, json.tilewidth, json.tileheight);
@@ -206,16 +182,13 @@ var ParseTileLayers = function (json, insertNull)
 
                     x++;
 
-                    if (x === chunk.width)
-                    {
+                    if (x === chunk.width) {
                         y++;
                         x = 0;
                     }
                 }
             }
-        }
-        else
-        {
+        } else {
             layerData = new LayerData({
                 name: (curGroupState.name + curl.name),
                 id: curl.id,
@@ -231,20 +204,16 @@ var ParseTileLayers = function (json, insertNull)
                 orientation: FromOrientationString(json.orientation)
             });
 
-            if (layerData.orientation === CONST.HEXAGONAL)
-            {
+            if (layerData.orientation === CONST.HEXAGONAL) {
                 layerData.hexSideLength = json.hexsidelength;
                 layerData.staggerAxis = json.staggeraxis;
                 layerData.staggerIndex = json.staggerindex;
 
-                if (layerData.staggerAxis === 'y')
-                {
+                if (layerData.staggerAxis === 'y') {
                     triangleHeight = (layerData.tileHeight - layerData.hexSideLength) / 2;
                     layerData.widthInPixels = layerData.tileWidth * (layerData.width + 0.5);
                     layerData.heightInPixels = layerData.height * (layerData.hexSideLength + triangleHeight) + triangleHeight;
-                }
-                else
-                {
+                } else {
                     triangleWidth = (layerData.tileWidth - layerData.hexSideLength) / 2;
                     layerData.widthInPixels = layerData.width * (layerData.hexSideLength + triangleWidth) + triangleWidth;
                     layerData.heightInPixels = layerData.tileHeight * (layerData.height + 0.5);
@@ -253,13 +222,11 @@ var ParseTileLayers = function (json, insertNull)
             var row = [];
 
             //  Loop through the data field in the JSON.
-            for (var k = 0, len = curl.data.length; k < len; k++)
-            {
+            for (var k = 0, len = curl.data.length; k < len; k++) {
                 gidInfo = ParseGID(curl.data[k]);
 
                 //  index, x, y, width, height
-                if (gidInfo.gid > 0)
-                {
+                if (gidInfo.gid > 0) {
                     tile = new Tile(layerData, gidInfo.gid, x, output.length, json.tilewidth, json.tileheight);
 
                     // Turning Tiled's FlippedHorizontal, FlippedVertical and FlippedAntiDiagonal
@@ -268,9 +235,7 @@ var ParseTileLayers = function (json, insertNull)
                     tile.flipX = gidInfo.flipped;
 
                     row.push(tile);
-                }
-                else
-                {
+                } else {
                     blankTile = insertNull
                         ? null
                         : new Tile(layerData, -1, x, output.length, json.tilewidth, json.tileheight);
@@ -279,8 +244,7 @@ var ParseTileLayers = function (json, insertNull)
 
                 x++;
 
-                if (x === curl.width)
-                {
+                if (x === curl.width) {
                     output.push(row);
                     x = 0;
                     row = [];

@@ -14,8 +14,7 @@
  *
  * @return {number} The length of the line.
  */
-var Length = function (line)
-{
+var Length = function (line) {
     return Math.sqrt((line.x2 - line.x1) * (line.x2 - line.x1) + (line.y2 - line.y1) * (line.y2 - line.y1));
 };
 

@@ -63,13 +63,11 @@ var Size = {
      */
     displayWidth: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.abs(this.scaleX * this.frame.realWidth);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleX = value / this.frame.realWidth;
         }
 
@@ -88,13 +86,11 @@ var Size = {
      */
     displayHeight: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.abs(this.scaleY * this.frame.realHeight);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleY = value / this.frame.realHeight;
         }
 
@@ -118,17 +114,17 @@ var Size = {
      *
      * @return {this} This Game Object instance.
      */
-    setSizeToFrame: function (frame)
-    {
-        if (!frame) { frame = this.frame; }
+    setSizeToFrame: function (frame) {
+        if (!frame) {
+            frame = this.frame;
+        }
 
         this.width = frame.realWidth;
         this.height = frame.realHeight;
 
         var input = this.input;
 
-        if (input && !input.customHitArea)
-        {
+        if (input && !input.customHitArea) {
             input.hitArea.width = this.width;
             input.hitArea.height = this.height;
         }
@@ -155,8 +151,7 @@ var Size = {
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -176,8 +171,7 @@ var Size = {
      *
      * @return {this} This Game Object instance.
      */
-    setDisplaySize: function (width, height)
-    {
+    setDisplaySize: function (width, height) {
         this.displayWidth = width;
         this.displayHeight = height;
 

@@ -18,23 +18,19 @@ var GetValue = require('../../utils/object/GetValue');
  *
  * @return {array} An array of targets (may contain only one element), or `null` if no targets were specified.
  */
-var GetTargets = function (config)
-{
+var GetTargets = function (config) {
     var targets = GetValue(config, 'targets', null);
 
-    if (targets === null)
-    {
+    if (targets === null) {
         return targets;
     }
 
-    if (typeof targets === 'function')
-    {
+    if (typeof targets === 'function') {
         targets = targets.call();
     }
 
-    if (!Array.isArray(targets))
-    {
-        targets = [ targets ];
+    if (!Array.isArray(targets)) {
+        targets = [targets];
     }
 
     return targets;

@@ -65,8 +65,7 @@ var Texture = {
      *
      * @return {this} This Game Object instance.
      */
-    setTexture: function (key, frame, updateSize, updateOrigin)
-    {
+    setTexture: function (key, frame, updateSize, updateOrigin) {
         this.texture = this.scene.sys.textures.get(key);
 
         return this.setFrame(frame, updateSize, updateOrigin);
@@ -93,44 +92,36 @@ var Texture = {
      *
      * @return {this} This Game Object instance.
      */
-    setFrame: function (frame, updateSize, updateOrigin)
-    {
-        if (updateSize === undefined) { updateSize = true; }
-        if (updateOrigin === undefined) { updateOrigin = true; }
+    setFrame: function (frame, updateSize, updateOrigin) {
+        if (updateSize === undefined) {
+            updateSize = true;
+        }
+        if (updateOrigin === undefined) {
+            updateOrigin = true;
+        }
 
-        if (frame instanceof Frame)
-        {
+        if (frame instanceof Frame) {
             this.texture = this.scene.sys.textures.get(frame.texture.key);
 
             this.frame = frame;
-        }
-        else
-        {
+        } else {
             this.frame = this.texture.get(frame);
         }
 
-        if (!this.frame.cutWidth || !this.frame.cutHeight)
-        {
+        if (!this.frame.cutWidth || !this.frame.cutHeight) {
             this.renderFlags &= ~_FLAG;
-        }
-        else
-        {
+        } else {
             this.renderFlags |= _FLAG;
         }
 
-        if (this._sizeComponent && updateSize)
-        {
+        if (this._sizeComponent && updateSize) {
             this.setSizeToFrame();
         }
 
-        if (this._originComponent && updateOrigin)
-        {
-            if (this.frame.customPivot)
-            {
+        if (this._originComponent && updateOrigin) {
+            if (this.frame.customPivot) {
                 this.setOrigin(this.frame.pivotX, this.frame.pivotY);
-            }
-            else
-            {
+            } else {
                 this.updateDisplayOrigin();
             }
         }

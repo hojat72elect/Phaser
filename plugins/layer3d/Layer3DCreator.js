@@ -21,14 +21,14 @@ var Layer3D = require('./Layer3D');
  *
  * @return {Phaser.GameObjects.Layer3D} The Game Object that was created.
  */
-GameObjectCreator.register('layer3d', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('layer3d', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var layer = new Layer3D(this.scene, 0, 0);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

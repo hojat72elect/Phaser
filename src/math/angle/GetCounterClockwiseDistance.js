@@ -19,12 +19,10 @@ var TAU = 2 * Math.PI;
  *
  * @return {number} The distance in radians, in the range (-2pi, 0].
  */
-var GetCounterClockwiseDistance = function (angle1, angle2)
-{
+var GetCounterClockwiseDistance = function (angle1, angle2) {
     var distance = NormalizeAngle(angle2 - angle1);
 
-    if (distance > 0)
-    {
+    if (distance > 0) {
         distance -= TAU;
     }
 

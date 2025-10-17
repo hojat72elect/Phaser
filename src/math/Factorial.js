@@ -14,17 +14,14 @@
  *
  * @return {number} The factorial of the given number.
  */
-var Factorial = function (value)
-{
-    if (value === 0)
-    {
+var Factorial = function (value) {
+    if (value === 0) {
         return 1;
     }
 
     var res = value;
 
-    while (--value)
-    {
+    while (--value) {
         res *= value;
     }
 

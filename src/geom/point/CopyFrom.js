@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Geom.Point} The destination Point.
  */
-var CopyFrom = function (source, dest)
-{
+var CopyFrom = function (source, dest) {
     return dest.setTo(source.x, source.y);
 };
 

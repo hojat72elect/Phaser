@@ -81,7 +81,7 @@ var Events = require('./events');
  * ```js
  * timeline.repeat().play();
  * ```
- * 
+ *
  * There are lots of options available to you via the configuration object. See the
  * {@link Phaser.Types.Time.TimelineEventConfig} typedef for more details.
  *
@@ -100,146 +100,144 @@ var Timeline = new Class({
 
     initialize:
 
-    function Timeline (scene, config)
-    {
-        EventEmitter.call(this);
+        function Timeline(scene, config) {
+            EventEmitter.call(this);
 
-        /**
-         * The Scene to which this Timeline belongs.
-         *
-         * @name Phaser.Time.Timeline#scene
-         * @type {Phaser.Scene}
-         * @since 3.60.0
-         */
-        this.scene = scene;
+            /**
+             * The Scene to which this Timeline belongs.
+             *
+             * @name Phaser.Time.Timeline#scene
+             * @type {Phaser.Scene}
+             * @since 3.60.0
+             */
+            this.scene = scene;
 
-        /**
-         * A reference to the Scene Systems.
-         *
-         * @name Phaser.Time.Timeline#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.60.0
-         */
-        this.systems = scene.sys;
+            /**
+             * A reference to the Scene Systems.
+             *
+             * @name Phaser.Time.Timeline#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.60.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * The elapsed time counter.
-         *
-         * Treat this as read-only.
-         *
-         * @name Phaser.Time.Timeline#elapsed
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.elapsed = 0;
+            /**
+             * The elapsed time counter.
+             *
+             * Treat this as read-only.
+             *
+             * @name Phaser.Time.Timeline#elapsed
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.elapsed = 0;
 
-        /**
-         * The Timeline's delta time scale.
-         *
-         * Values higher than 1 increase the speed of time, while values smaller than 1 decrease it.
-         * A value of 0 freezes time and is effectively equivalent to pausing the Timeline.
-         *
-         * This doesn't affect the delta time scale of any Tweens created by the Timeline.
-         * You will have to set the `timeScale` of each Tween or the Tween Manager if you want them to match.
-         *
-         * @name Phaser.Time.Timeline#timeScale
-         * @type {number}
-         * @default
-         * @since 3.85.0
-         */
-        this.timeScale = 1;
+            /**
+             * The Timeline's delta time scale.
+             *
+             * Values higher than 1 increase the speed of time, while values smaller than 1 decrease it.
+             * A value of 0 freezes time and is effectively equivalent to pausing the Timeline.
+             *
+             * This doesn't affect the delta time scale of any Tweens created by the Timeline.
+             * You will have to set the `timeScale` of each Tween or the Tween Manager if you want them to match.
+             *
+             * @name Phaser.Time.Timeline#timeScale
+             * @type {number}
+             * @default
+             * @since 3.85.0
+             */
+            this.timeScale = 1;
 
-        /**
-         * Whether the Timeline is running (`true`) or active (`false`).
-         *
-         * When paused, the Timeline will not run any of its actions.
-         *
-         * By default a Timeline is always paused and should be started by
-         * calling the `Timeline.play` method.
-         *
-         * You can use the `Timeline.pause` and `Timeline.resume` methods to control
-         * this value in a chainable way.
-         *
-         * @name Phaser.Time.Timeline#paused
-         * @type {boolean}
-         * @default true
-         * @since 3.60.0
-         */
-        this.paused = true;
+            /**
+             * Whether the Timeline is running (`true`) or active (`false`).
+             *
+             * When paused, the Timeline will not run any of its actions.
+             *
+             * By default a Timeline is always paused and should be started by
+             * calling the `Timeline.play` method.
+             *
+             * You can use the `Timeline.pause` and `Timeline.resume` methods to control
+             * this value in a chainable way.
+             *
+             * @name Phaser.Time.Timeline#paused
+             * @type {boolean}
+             * @default true
+             * @since 3.60.0
+             */
+            this.paused = true;
 
-        /**
-         * Whether the Timeline is complete (`true`) or not (`false`).
-         *
-         * A Timeline is considered complete when all of its events have been run.
-         *
-         * If you wish to reset a Timeline after it has completed, you can do so
-         * by calling the `Timeline.reset` method.
-         *
-         * You can also use the `Timeline.stop` method to stop a running Timeline,
-         * at any point, without resetting it.
-         *
-         * @name Phaser.Time.Timeline#complete
-         * @type {boolean}
-         * @default false
-         * @since 3.60.0
-         */
-        this.complete = false;
+            /**
+             * Whether the Timeline is complete (`true`) or not (`false`).
+             *
+             * A Timeline is considered complete when all of its events have been run.
+             *
+             * If you wish to reset a Timeline after it has completed, you can do so
+             * by calling the `Timeline.reset` method.
+             *
+             * You can also use the `Timeline.stop` method to stop a running Timeline,
+             * at any point, without resetting it.
+             *
+             * @name Phaser.Time.Timeline#complete
+             * @type {boolean}
+             * @default false
+             * @since 3.60.0
+             */
+            this.complete = false;
 
-        /**
-         * The total number of events that have been run.
-         *
-         * This value is reset to zero if the Timeline is restarted.
-         *
-         * Treat this as read-only.
-         *
-         * @name Phaser.Time.Timeline#totalComplete
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.totalComplete = 0;
+            /**
+             * The total number of events that have been run.
+             *
+             * This value is reset to zero if the Timeline is restarted.
+             *
+             * Treat this as read-only.
+             *
+             * @name Phaser.Time.Timeline#totalComplete
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.totalComplete = 0;
 
-        /**
-         * The number of times this timeline should loop.
-         *
-         * If this value is -1 or any negative number this Timeline will not stop. 
-         *
-         * @name Phaser.Time.Timeline#loop
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.loop = 0;
+            /**
+             * The number of times this timeline should loop.
+             *
+             * If this value is -1 or any negative number this Timeline will not stop.
+             *
+             * @name Phaser.Time.Timeline#loop
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.loop = 0;
 
-        /**
-         * The number of times this Timeline has looped.
-         *
-         * This value is incremented each loop if looping is enabled.
-         *
-         * @name Phaser.Time.Timeline#iteration
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.iteration = 0;
+            /**
+             * The number of times this Timeline has looped.
+             *
+             * This value is incremented each loop if looping is enabled.
+             *
+             * @name Phaser.Time.Timeline#iteration
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.iteration = 0;
 
-        /**
-         * An array of all the Timeline Events.
-         *
-         * @name Phaser.Time.Timeline#events
-         * @type {Phaser.Types.Time.TimelineEvent[]}
-         * @since 3.60.0
-         */
-        this.events = [];
+            /**
+             * An array of all the Timeline Events.
+             *
+             * @name Phaser.Time.Timeline#events
+             * @type {Phaser.Types.Time.TimelineEvent[]}
+             * @since 3.60.0
+             */
+            this.events = [];
 
-        var eventEmitter = this.systems.events;
+            var eventEmitter = this.systems.events;
 
-        eventEmitter.on(SceneEvents.PRE_UPDATE, this.preUpdate, this);
-        eventEmitter.on(SceneEvents.UPDATE, this.update, this);
-        eventEmitter.once(SceneEvents.SHUTDOWN, this.destroy, this);
+            eventEmitter.on(SceneEvents.PRE_UPDATE, this.preUpdate, this);
+            eventEmitter.on(SceneEvents.UPDATE, this.update, this);
+            eventEmitter.once(SceneEvents.SHUTDOWN, this.destroy, this);
 
-        if (config)
-        {
-            this.add(config);
-        }
-    },
+            if (config) {
+                this.add(config);
+            }
+        },
 
     /**
      * Updates the elapsed time counter, if this Timeline is not paused.
@@ -250,10 +248,8 @@ var Timeline = new Class({
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    preUpdate: function (time, delta)
-    {
-        if (this.paused)
-        {
+    preUpdate: function (time, delta) {
+        if (this.paused) {
             return;
         }
 
@@ -272,7 +268,7 @@ var Timeline = new Class({
      * If the `TimelineEvent.event` property is set then the Timeline emits that event.
      *
      * If the `TimelineEvent.run` property is set then the Timeline invokes that method.
-     * 
+     *
      * If the `TimelineEvent.loop` property is set then the Timeline invokes that method when repeated.
      *
      * If the `TimelineEvent.target` property is set then the Timeline invokes the `run` method on that target.
@@ -284,10 +280,8 @@ var Timeline = new Class({
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    update: function ()
-    {
-        if (this.paused || this.complete)
-        {
+    update: function () {
+        if (this.paused || this.complete) {
             return;
         }
 
@@ -297,90 +291,70 @@ var Timeline = new Class({
         var sys = this.systems;
         var target;
 
-        for (i = 0; i < events.length; i++)
-        {
+        for (i = 0; i < events.length; i++) {
             var event = events[i];
 
-            if (!event.complete && event.time <= this.elapsed)
-            {
+            if (!event.complete && event.time <= this.elapsed) {
                 event.complete = true;
 
                 this.totalComplete++;
 
                 target = (event.target) ? event.target : this;
 
-                if (event.if)
-                {
-                    if (!event.if.call(target, event))
-                    {
+                if (event.if) {
+                    if (!event.if.call(target, event)) {
                         continue;
                     }
                 }
 
-                if (event.once)
-                {
+                if (event.once) {
                     removeSweep = true;
                 }
 
-                if (event.set && event.target)
-                {
+                if (event.set && event.target) {
                     //  set is an object of key value pairs, apply them to target
-                    for (var key in event.set)
-                    {
+                    for (var key in event.set) {
                         event.target[key] = event.set[key];
                     }
                 }
 
-                if (this.iteration)
-                {
+                if (this.iteration) {
                     event.repeat++;
                 }
 
-                if (event.loop && event.repeat)
-                {
+                if (event.loop && event.repeat) {
                     event.loop.call(target);
                 }
 
-                if (event.tween)
-                {
+                if (event.tween) {
                     event.tweenInstance = sys.tweens.add(event.tween);
                 }
 
-                if (event.sound)
-                {
-                    if (typeof event.sound === 'string')
-                    {
+                if (event.sound) {
+                    if (typeof event.sound === 'string') {
                         sys.sound.play(event.sound);
-                    }
-                    else
-                    {
+                    } else {
                         sys.sound.play(event.sound.key, event.sound.config);
                     }
                 }
 
-                if (event.event)
-                {
+                if (event.event) {
                     this.emit(event.event, target);
                 }
 
-                if (event.run)
-                {
+                if (event.run) {
                     event.run.call(target);
                 }
 
-                if (event.stop)
-                {
+                if (event.stop) {
                     this.stop();
                 }
             }
         }
 
-        if (removeSweep)
-        {
-            for (i = 0; i < events.length; i++)
-            {
-                if (events[i].complete && events[i].once)
-                {
+        if (removeSweep) {
+            for (i = 0; i < events.length; i++) {
+                if (events[i].complete && events[i].once) {
                     events.splice(i, 1);
 
                     i--;
@@ -389,22 +363,17 @@ var Timeline = new Class({
         }
 
         //  It may be greater than the length if events have been removed
-        if (this.totalComplete >= events.length)
-        {
-            if (this.loop !== 0 && (this.loop === -1 || this.loop > this.iteration))
-            {
+        if (this.totalComplete >= events.length) {
+            if (this.loop !== 0 && (this.loop === -1 || this.loop > this.iteration)) {
                 this.iteration++;
 
                 this.reset(true);
-            }
-            else
-            {
+            } else {
                 this.complete = true;
             }
         }
 
-        if (this.complete)
-        {
+        if (this.complete) {
             this.emit(Events.COMPLETE, this);
         }
     },
@@ -424,16 +393,16 @@ var Timeline = new Class({
      *
      * @return {this} This Timeline instance.
      */
-    play: function (fromStart)
-    {
-        if (fromStart === undefined) { fromStart = true; }
+    play: function (fromStart) {
+        if (fromStart === undefined) {
+            fromStart = true;
+        }
 
         this.paused = false;
         this.complete = false;
         this.totalComplete = 0;
 
-        if (fromStart)
-        {
+        if (fromStart) {
             this.reset();
         }
 
@@ -456,18 +425,15 @@ var Timeline = new Class({
      *
      * @return {this} This Timeline instance.
      */
-    pause: function ()
-    {
+    pause: function () {
         this.paused = true;
 
         var events = this.events;
 
-        for (var i = 0; i < events.length; i++)
-        {
+        for (var i = 0; i < events.length; i++) {
             var event = events[i];
 
-            if (event.tweenInstance)
-            {
+            if (event.tweenInstance) {
                 event.tweenInstance.paused = true;
             }
         }
@@ -480,23 +446,26 @@ var Timeline = new Class({
      *
      * If the value for `amount` is positive, the Timeline will repeat that many additional times.
      * For example a value of 1 will actually run this Timeline twice.
-     * 
+     *
      * Depending on the value given, `false` is 0 and `true`, undefined and negative numbers are infinite.
-     * 
+     *
      * If this Timeline had any events set to `once` that have already been removed,
      * they will **not** be repeated each loop.
      *
      * @method Phaser.Time.Timeline#repeat
      * @since 3.80.0
-     * 
+     *
      * @param {number|boolean} [amount=-1] - Amount of times to repeat, if `true` or negative it will be infinite.
      *
      * @return {this} This Timeline instance.
      */
-    repeat: function (amount)
-    {
-        if (amount === undefined || amount === true) { amount = -1; }
-        if (amount === false) { amount = 0; }
+    repeat: function (amount) {
+        if (amount === undefined || amount === true) {
+            amount = -1;
+        }
+        if (amount === false) {
+            amount = 0;
+        }
 
         this.loop = amount;
 
@@ -515,18 +484,15 @@ var Timeline = new Class({
      *
      * @return {this} This Timeline instance.
      */
-    resume: function ()
-    {
+    resume: function () {
         this.paused = false;
 
         var events = this.events;
 
-        for (var i = 0; i < events.length; i++)
-        {
+        for (var i = 0; i < events.length; i++) {
             var event = events[i];
 
-            if (event.tweenInstance)
-            {
+            if (event.tweenInstance) {
                 event.tweenInstance.paused = false;
             }
         }
@@ -546,8 +512,7 @@ var Timeline = new Class({
      *
      * @return {this} This Timeline instance.
      */
-    stop: function ()
-    {
+    stop: function () {
         this.paused = true;
         this.complete = true;
 
@@ -564,42 +529,39 @@ var Timeline = new Class({
      *
      * If the Timeline isn't currently running (i.e. it's paused or complete) then
      * calling this method resets those states, the same as calling `Timeline.play(true)`.
-     * 
+     *
      * Any Tweens that were currently running by this Timeline will be stopped.
      *
      * @method Phaser.Time.Timeline#reset
      * @since 3.60.0
-     * 
+     *
      * @param {boolean} [loop=false] - Set to true if you do not want to reset the loop counters.
-     * 
+     *
      * @return {this} This Timeline instance.
      */
-    reset: function (loop)
-    {
-        if (loop === undefined) { loop = false; }
+    reset: function (loop) {
+        if (loop === undefined) {
+            loop = false;
+        }
 
         this.elapsed = 0;
 
-        if (!loop)
-        {
+        if (!loop) {
             this.iteration = 0;
         }
 
         var events = this.events;
 
-        for (var i = 0; i < events.length; i++)
-        {
+        for (var i = 0; i < events.length; i++) {
             var event = events[i];
 
             event.complete = false;
-            
-            if (!loop)
-            {
+
+            if (!loop) {
                 event.repeat = 0;
             }
 
-            if (event.tweenInstance)
-            {
+            if (event.tweenInstance) {
                 event.tweenInstance.stop();
             }
         }
@@ -628,23 +590,19 @@ var Timeline = new Class({
      *
      * @return {this} This Timeline instance.
      */
-    add: function (config)
-    {
-        if (!Array.isArray(config))
-        {
-            config = [ config ];
+    add: function (config) {
+        if (!Array.isArray(config)) {
+            config = [config];
         }
 
         var events = this.events;
         var prevTime = 0;
 
-        if (events.length > 0)
-        {
+        if (events.length > 0) {
             prevTime = events[events.length - 1].time;
         }
 
-        for (var i = 0; i < config.length; i++)
-        {
+        for (var i = 0; i < config.length; i++) {
             var entry = config[i];
 
             //  Start at the exact time given, based on elapsed time (i.e. x ms from the start of the Timeline)
@@ -653,16 +611,14 @@ var Timeline = new Class({
             //  Start in x ms from whatever the current elapsed time is (i.e. x ms from now)
             var offsetTime = GetFastValue(entry, 'in', null);
 
-            if (offsetTime !== null)
-            {
+            if (offsetTime !== null) {
                 startTime = this.elapsed + offsetTime;
             }
 
             //  Start in x ms from whatever the previous event's start time was (i.e. x ms after the previous event)
             var fromTime = GetFastValue(entry, 'from', null);
 
-            if (fromTime !== null)
-            {
+            if (fromTime !== null) {
                 startTime = prevTime + fromTime;
             }
 
@@ -693,7 +649,7 @@ var Timeline = new Class({
     /**
      * Removes all events from this Timeline, resets the elapsed time to zero
      * and pauses the Timeline.
-     * 
+     *
      * Any Tweens that were currently running as a result of this Timeline will be stopped.
      *
      * @method Phaser.Time.Timeline#clear
@@ -701,16 +657,13 @@ var Timeline = new Class({
      *
      * @return {this} This Timeline instance.
      */
-    clear: function ()
-    {
+    clear: function () {
         var events = this.events;
 
-        for (var i = 0; i < events.length; i++)
-        {
+        for (var i = 0; i < events.length; i++) {
             var event = events[i];
 
-            if (event.tweenInstance)
-            {
+            if (event.tweenInstance) {
                 event.tweenInstance.stop();
             }
         }
@@ -733,8 +686,7 @@ var Timeline = new Class({
      *
      * @return {boolean} `true` if this Timeline is playing, otherwise `false`.
      */
-    isPlaying: function ()
-    {
+    isPlaying: function () {
         return (!this.paused && !this.complete);
     },
 
@@ -756,8 +708,7 @@ var Timeline = new Class({
      *
      * @return {number} A number between 0 and 1 representing the progress of this Timeline.
      */
-    getProgress: function ()
-    {
+    getProgress: function () {
         var total = Math.min(this.totalComplete, this.events.length);
 
         return total / this.events.length;
@@ -767,7 +718,7 @@ var Timeline = new Class({
      * Destroys this Timeline.
      *
      * This will remove all events from the Timeline and stop it from processing.
-     * 
+     *
      * Any Tweens that were currently running as a result of this Timeline will be stopped.
      *
      * This method is called automatically when the Scene shuts down, but you may
@@ -776,8 +727,7 @@ var Timeline = new Class({
      * @method Phaser.Time.Timeline#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.off(SceneEvents.PRE_UPDATE, this.preUpdate, this);
@@ -861,7 +811,7 @@ var Timeline = new Class({
  * ```js
  * timeline.repeat().play();
  * ```
- * 
+ *
  * There are lots of options available to you via the configuration object. See the
  * {@link Phaser.Types.Time.TimelineEventConfig} typedef for more details.
  *
@@ -872,8 +822,7 @@ var Timeline = new Class({
  *
  * @return {Phaser.Time.Timeline} The Timeline that was created.
  */
-GameObjectFactory.register('timeline', function (config)
-{
+GameObjectFactory.register('timeline', function (config) {
     return new Timeline(this.scene, config);
 });
 

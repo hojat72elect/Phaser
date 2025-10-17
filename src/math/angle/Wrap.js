@@ -18,8 +18,7 @@ var MathWrap = require('../Wrap');
  *
  * @return {number} The wrapped angle, in radians.
  */
-var Wrap = function (angle)
-{
+var Wrap = function (angle) {
     return MathWrap(angle, -Math.PI, Math.PI);
 };
 

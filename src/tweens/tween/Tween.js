@@ -37,134 +37,133 @@ var Tween = new Class({
 
     initialize:
 
-    function Tween (parent, targets)
-    {
-        BaseTween.call(this, parent);
+        function Tween(parent, targets) {
+            BaseTween.call(this, parent);
 
-        /**
-         * An array of references to the target/s this Tween is operating on.
-         *
-         * This array should not be manipulated outside of this Tween.
-         *
-         * @name Phaser.Tweens.Tween#targets
-         * @type {object[]}
-         * @since 3.0.0
-         */
-        this.targets = targets;
+            /**
+             * An array of references to the target/s this Tween is operating on.
+             *
+             * This array should not be manipulated outside of this Tween.
+             *
+             * @name Phaser.Tweens.Tween#targets
+             * @type {object[]}
+             * @since 3.0.0
+             */
+            this.targets = targets;
 
-        /**
-         * Cached target total.
-         *
-         * Used internally and should be treated as read-only.
-         *
-         * This is not necessarily the same as the data total.
-         *
-         * @name Phaser.Tweens.Tween#totalTargets
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.totalTargets = targets.length;
+            /**
+             * Cached target total.
+             *
+             * Used internally and should be treated as read-only.
+             *
+             * This is not necessarily the same as the data total.
+             *
+             * @name Phaser.Tweens.Tween#totalTargets
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.totalTargets = targets.length;
 
-        /**
-         * Is this Tween currently seeking?
-         *
-         * This boolean is toggled in the `Tween.seek` method.
-         *
-         * When a tween is seeking, by default it will not dispatch any events or callbacks.
-         *
-         * @name Phaser.Tweens.Tween#isSeeking
-         * @type {boolean}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.isSeeking = false;
+            /**
+             * Is this Tween currently seeking?
+             *
+             * This boolean is toggled in the `Tween.seek` method.
+             *
+             * When a tween is seeking, by default it will not dispatch any events or callbacks.
+             *
+             * @name Phaser.Tweens.Tween#isSeeking
+             * @type {boolean}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.isSeeking = false;
 
-        /**
-         * Does this Tween loop or repeat infinitely?
-         *
-         * @name Phaser.Tweens.Tween#isInfinite
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isInfinite = false;
+            /**
+             * Does this Tween loop or repeat infinitely?
+             *
+             * @name Phaser.Tweens.Tween#isInfinite
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isInfinite = false;
 
-        /**
-         * Elapsed time in milliseconds of this run through of the Tween.
-         *
-         * @name Phaser.Tweens.Tween#elapsed
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.elapsed = 0;
+            /**
+             * Elapsed time in milliseconds of this run through of the Tween.
+             *
+             * @name Phaser.Tweens.Tween#elapsed
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.elapsed = 0;
 
-        /**
-         * Total elapsed time in milliseconds of the entire Tween, including looping.
-         *
-         * @name Phaser.Tweens.Tween#totalElapsed
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.totalElapsed = 0;
+            /**
+             * Total elapsed time in milliseconds of the entire Tween, including looping.
+             *
+             * @name Phaser.Tweens.Tween#totalElapsed
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.totalElapsed = 0;
 
-        /**
-         * Time in milliseconds for the whole Tween to play through once, excluding loop amounts and loop delays.
-         *
-         * This value is set in the `Tween.initTweenData` method and is zero before that point.
-         *
-         * @name Phaser.Tweens.Tween#duration
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.duration = 0;
+            /**
+             * Time in milliseconds for the whole Tween to play through once, excluding loop amounts and loop delays.
+             *
+             * This value is set in the `Tween.initTweenData` method and is zero before that point.
+             *
+             * @name Phaser.Tweens.Tween#duration
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.duration = 0;
 
-        /**
-         * Value between 0 and 1. The amount of progress through the Tween, excluding loops.
-         *
-         * @name Phaser.Tweens.Tween#progress
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.progress = 0;
+            /**
+             * Value between 0 and 1. The amount of progress through the Tween, excluding loops.
+             *
+             * @name Phaser.Tweens.Tween#progress
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.progress = 0;
 
-        /**
-         * Time in milliseconds it takes for the Tween to complete a full playthrough (including looping)
-         *
-         * For an infinite Tween, this value is a very large integer.
-         *
-         * @name Phaser.Tweens.Tween#totalDuration
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.totalDuration = 0;
+            /**
+             * Time in milliseconds it takes for the Tween to complete a full playthrough (including looping)
+             *
+             * For an infinite Tween, this value is a very large integer.
+             *
+             * @name Phaser.Tweens.Tween#totalDuration
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.totalDuration = 0;
 
-        /**
-         * The amount of progress that has been made through the entire Tween, including looping.
-         *
-         * A value between 0 and 1.
-         *
-         * @name Phaser.Tweens.Tween#totalProgress
-         * @type {number}
-         * @default 0
-         * @since 3.60.0
-         */
-        this.totalProgress = 0;
+            /**
+             * The amount of progress that has been made through the entire Tween, including looping.
+             *
+             * A value between 0 and 1.
+             *
+             * @name Phaser.Tweens.Tween#totalProgress
+             * @type {number}
+             * @default 0
+             * @since 3.60.0
+             */
+            this.totalProgress = 0;
 
-        /**
-         * Is this Tween a Number Tween? Number Tweens are a special kind of tween that don't have a target.
-         *
-         * @name Phaser.Tweens.Tween#isNumberTween
-         * @type {boolean}
-         * @default false
-         * @since 3.88.0
-         */
-        this.isNumberTween = false;
-    },
+            /**
+             * Is this Tween a Number Tween? Number Tweens are a special kind of tween that don't have a target.
+             *
+             * @name Phaser.Tweens.Tween#isNumberTween
+             * @type {boolean}
+             * @default false
+             * @since 3.88.0
+             */
+            this.isNumberTween = false;
+        },
 
     /**
      * Adds a new TweenData to this Tween. Typically, this method is called
@@ -193,8 +192,7 @@ var Tween = new Class({
      *
      * @return {Phaser.Tweens.TweenData} The TweenData instance that was added.
      */
-    add: function (targetIndex, key, getEnd, getStart, getActive, ease, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY, interpolation, interpolationData)
-    {
+    add: function (targetIndex, key, getEnd, getStart, getActive, ease, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY, interpolation, interpolationData) {
         var tweenData = new TweenData(this, targetIndex, key, getEnd, getStart, getActive, ease, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY, interpolation, interpolationData);
 
         this.totalData = this.data.push(tweenData);
@@ -223,8 +221,7 @@ var Tween = new Class({
      *
      * @return {Phaser.Tweens.TweenFrameData} The TweenFrameData instance that was added.
      */
-    addFrame: function (targetIndex, texture, frame, delay, duration, hold, repeat, repeatDelay, flipX, flipY)
-    {
+    addFrame: function (targetIndex, texture, frame, delay, duration, hold, repeat, repeatDelay, flipX, flipY) {
         var tweenData = new TweenFrameData(this, targetIndex, texture, frame, delay, duration, hold, repeat, repeatDelay, flipX, flipY);
 
         this.totalData = this.data.push(tweenData);
@@ -244,14 +241,14 @@ var Tween = new Class({
      *
      * @return {number|null} The value of the requested Tween Data, or `null` if this Tween has been destroyed.
      */
-    getValue: function (index)
-    {
-        if (index === undefined) { index = 0; }
+    getValue: function (index) {
+        if (index === undefined) {
+            index = 0;
+        }
 
         var value = null;
 
-        if (this.data)
-        {
+        if (this.data) {
             value = this.data[index].current;
         }
 
@@ -268,8 +265,7 @@ var Tween = new Class({
      *
      * @return {boolean} `true` if the given target is a target of this Tween, otherwise `false`.
      */
-    hasTarget: function (target)
-    {
+    hasTarget: function (target) {
         return (this.targets && this.targets.indexOf(target) !== -1);
     },
 
@@ -295,22 +291,19 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    updateTo: function (key, value, startToCurrent)
-    {
-        if (startToCurrent === undefined) { startToCurrent = false; }
+    updateTo: function (key, value, startToCurrent) {
+        if (startToCurrent === undefined) {
+            startToCurrent = false;
+        }
 
-        if (key !== 'texture')
-        {
-            for (var i = 0; i < this.totalData; i++)
-            {
+        if (key !== 'texture') {
+            for (var i = 0; i < this.totalData; i++) {
                 var tweenData = this.data[i];
 
-                if (tweenData.key === key && (tweenData.isPlayingForward() || tweenData.isPlayingBackward()))
-                {
+                if (tweenData.key === key && (tweenData.isPlayingForward() || tweenData.isPlayingBackward())) {
                     tweenData.end = value;
 
-                    if (startToCurrent)
-                    {
+                    if (startToCurrent) {
                         tweenData.start = tweenData.current;
                     }
                 }
@@ -332,10 +325,8 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    restart: function ()
-    {
-        switch (this.state)
-        {
+    restart: function () {
+        switch (this.state) {
             case TWEEN_CONST.REMOVED:
             case TWEEN_CONST.FINISHED:
                 this.seek();
@@ -372,37 +363,28 @@ var Tween = new Class({
      *
      * @return {boolean} `true` if this Tween has completed, otherwise `false`.
      */
-    nextState: function ()
-    {
-        if (this.loopCounter > 0)
-        {
+    nextState: function () {
+        if (this.loopCounter > 0) {
             this.elapsed = 0;
             this.progress = 0;
             this.loopCounter--;
 
             this.initTweenData(true);
 
-            if (this.loopDelay > 0)
-            {
+            if (this.loopDelay > 0) {
                 this.countdown = this.loopDelay;
 
                 this.setLoopDelayState();
-            }
-            else
-            {
+            } else {
                 this.setActiveState();
 
                 this.dispatchEvent(Events.TWEEN_LOOP, 'onLoop');
             }
-        }
-        else if (this.completeDelay > 0)
-        {
+        } else if (this.completeDelay > 0) {
             this.countdown = this.completeDelay;
 
             this.setCompleteDelayState();
-        }
-        else
-        {
+        } else {
             this.onCompleteHandler();
 
             return true;
@@ -418,8 +400,7 @@ var Tween = new Class({
      * @method Phaser.Tweens.Tween#onCompleteHandler
      * @since 3.60.0
      */
-    onCompleteHandler: function ()
-    {
+    onCompleteHandler: function () {
         this.progress = 1;
         this.totalProgress = 1;
 
@@ -442,17 +423,14 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    play: function ()
-    {
-        if (this.isDestroyed())
-        {
+    play: function () {
+        if (this.isDestroyed()) {
             console.warn('Cannot play destroyed Tween', this);
 
             return this;
         }
 
-        if (this.isPendingRemove() || this.isFinished())
-        {
+        if (this.isPendingRemove() || this.isFinished()) {
             this.seek();
         }
 
@@ -497,21 +475,24 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    seek: function (amount, delta, emit)
-    {
-        if (amount === undefined) { amount = 0; }
-        if (delta === undefined) { delta = 16.6; }
-        if (emit === undefined) { emit = false; }
+    seek: function (amount, delta, emit) {
+        if (amount === undefined) {
+            amount = 0;
+        }
+        if (delta === undefined) {
+            delta = 16.6;
+        }
+        if (emit === undefined) {
+            emit = false;
+        }
 
-        if (this.isDestroyed())
-        {
+        if (this.isDestroyed()) {
             console.warn('Cannot seek destroyed Tween', this);
 
             return this;
         }
 
-        if (!emit)
-        {
+        if (!emit) {
             this.isSeeking = true;
         }
 
@@ -527,18 +508,15 @@ var Tween = new Class({
 
         this.paused = false;
 
-        if (amount > 0)
-        {
+        if (amount > 0) {
             var iterations = Math.floor(amount / delta);
             var remainder = amount - (iterations * delta);
 
-            for (var i = 0; i < iterations; i++)
-            {
+            for (var i = 0; i < iterations; i++) {
                 this.update(delta);
             }
 
-            if (remainder > 0)
-            {
+            if (remainder > 0) {
                 this.update(remainder);
             }
         }
@@ -560,9 +538,10 @@ var Tween = new Class({
      *
      * @param {boolean} [isSeeking=false] - Is the Tween Data being reset as part of a seek?
      */
-    initTweenData: function (isSeeking)
-    {
-        if (isSeeking === undefined) { isSeeking = false; }
+    initTweenData: function (isSeeking) {
+        if (isSeeking === undefined) {
+            isSeeking = false;
+        }
 
         //  These two values are updated directly during TweenData.reset:
         this.duration = 0;
@@ -570,8 +549,7 @@ var Tween = new Class({
 
         var data = this.data;
 
-        for (var i = 0; i < this.totalData; i++)
-        {
+        for (var i = 0; i < this.totalData; i++) {
             data[i].reset(isSeeking);
         }
 
@@ -583,12 +561,9 @@ var Tween = new Class({
         var loopCounter = this.loopCounter;
         var loopDelay = this.loopDelay;
 
-        if (loopCounter > 0)
-        {
+        if (loopCounter > 0) {
             this.totalDuration = duration + completeDelay + ((duration + loopDelay) * loopCounter);
-        }
-        else
-        {
+        } else {
             this.totalDuration = duration + completeDelay;
         }
     },
@@ -609,9 +584,10 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    reset: function (skipInit)
-    {
-        if (skipInit === undefined) { skipInit = false; }
+    reset: function (skipInit) {
+        if (skipInit === undefined) {
+            skipInit = false;
+        }
 
         this.elapsed = 0;
         this.totalElapsed = 0;
@@ -619,14 +595,12 @@ var Tween = new Class({
         this.totalProgress = 0;
         this.loopCounter = this.loop;
 
-        if (this.loop === -1)
-        {
+        if (this.loop === -1) {
             this.isInfinite = true;
             this.loopCounter = TWEEN_CONST.MAX;
         }
 
-        if (!skipInit)
-        {
+        if (!skipInit) {
             this.initTweenData();
 
             this.setActiveState();
@@ -650,44 +624,33 @@ var Tween = new Class({
      *
      * @return {boolean} Returns `true` if this Tween has finished and should be removed from the Tween Manager, otherwise returns `false`.
      */
-    update: function (delta)
-    {
-        if (this.isPendingRemove() || this.isDestroyed())
-        {
-            if (this.persist)
-            {
+    update: function (delta) {
+        if (this.isPendingRemove() || this.isDestroyed()) {
+            if (this.persist) {
                 this.setFinishedState();
 
                 return false;
             }
-            
+
             return true;
-        }
-        else if (this.paused || this.isFinished())
-        {
+        } else if (this.paused || this.isFinished()) {
             return false;
         }
 
         delta *= this.timeScale * this.parent.timeScale;
 
-        if (this.isLoopDelayed())
-        {
+        if (this.isLoopDelayed()) {
             this.updateLoopCountdown(delta);
 
             return false;
-        }
-        else if (this.isCompleteDelayed())
-        {
+        } else if (this.isCompleteDelayed()) {
             this.updateCompleteDelay(delta);
 
             return false;
-        }
-        else if (!this.hasStarted)
-        {
+        } else if (!this.hasStarted) {
             this.startDelay -= delta;
 
-            if (this.startDelay <= 0)
-            {
+            if (this.startDelay <= 0) {
                 this.hasStarted = true;
 
                 this.dispatchEvent(Events.TWEEN_START, 'onStart');
@@ -699,14 +662,11 @@ var Tween = new Class({
 
         var stillRunning = false;
 
-        if (this.isActive())
-        {
+        if (this.isActive()) {
             var data = this.data;
 
-            for (var i = 0; i < this.totalData; i++)
-            {
-                if (data[i].update(delta))
-                {
+            for (var i = 0; i < this.totalData; i++) {
+                if (data[i].update(delta)) {
                     stillRunning = true;
                 }
             }
@@ -719,8 +679,7 @@ var Tween = new Class({
         this.totalProgress = Math.min(this.totalElapsed / this.totalDuration, 1);
 
         //  Anything still running? If not, we're done
-        if (!stillRunning)
-        {
+        if (!stillRunning) {
             //  This calls onCompleteHandler if this tween is over
             this.nextState();
         }
@@ -728,8 +687,7 @@ var Tween = new Class({
         //  if nextState called onCompleteHandler then we're ready to be removed, unless we persist
         var remove = this.isPendingRemove();
 
-        if (remove && this.persist)
-        {
+        if (remove && this.persist) {
             this.setFinishedState();
 
             remove = false;
@@ -754,8 +712,7 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    forward: function (ms)
-    {
+    forward: function (ms) {
         this.update(ms);
 
         return this;
@@ -777,8 +734,7 @@ var Tween = new Class({
      *
      * @return {this} This Tween instance.
      */
-    rewind: function (ms)
-    {
+    rewind: function (ms) {
         this.update(-ms);
 
         return this;
@@ -793,22 +749,18 @@ var Tween = new Class({
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
      */
-    dispatchEvent: function (event, callback)
-    {
-        if (!this.isSeeking)
-        {
+    dispatchEvent: function (event, callback) {
+        if (!this.isSeeking) {
             this.emit(event, this, this.targets);
 
-            if (!this.callbacks)
-            {
+            if (!this.callbacks) {
                 return;
             }
 
             var handler = this.callbacks[callback];
 
-            if (handler)
-            {
-                handler.func.apply(this.callbackScope, [ this, this.targets ].concat(handler.params));
+            if (handler) {
+                handler.func.apply(this.callbackScope, [this, this.targets].concat(handler.params));
             }
         }
     },
@@ -821,8 +773,7 @@ var Tween = new Class({
      * @method Phaser.Tweens.Tween#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         BaseTween.prototype.destroy.call(this);
 
         this.targets = null;
@@ -842,8 +793,7 @@ var Tween = new Class({
  *
  * @return {Phaser.Tweens.Tween} The Tween that was created.
  */
-GameObjectFactory.register('tween', function (config)
-{
+GameObjectFactory.register('tween', function (config) {
     return this.scene.sys.tweens.add(config);
 });
 
@@ -859,8 +809,7 @@ GameObjectFactory.register('tween', function (config)
  *
  * @return {Phaser.Tweens.Tween} The Tween that was created.
  */
-GameObjectCreator.register('tween', function (config)
-{
+GameObjectCreator.register('tween', function (config) {
     return this.scene.sys.tweens.create(config);
 });
 

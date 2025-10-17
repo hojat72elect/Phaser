@@ -40,28 +40,27 @@ var TweenChain = new Class({
 
     initialize:
 
-    function TweenChain (parent)
-    {
-        BaseTween.call(this, parent);
+        function TweenChain(parent) {
+            BaseTween.call(this, parent);
 
-        /**
-         * A reference to the Tween that this TweenChain is currently playing.
-         *
-         * @name Phaser.Tweens.TweenChain#currentTween
-         * @type {Phaser.Tweens.Tween}
-         * @since 3.60.0
-         */
-        this.currentTween = null;
+            /**
+             * A reference to the Tween that this TweenChain is currently playing.
+             *
+             * @name Phaser.Tweens.TweenChain#currentTween
+             * @type {Phaser.Tweens.Tween}
+             * @since 3.60.0
+             */
+            this.currentTween = null;
 
-        /**
-         * A reference to the data array index of the currently playing tween.
-         *
-         * @name Phaser.Tweens.TweenChain#currentIndex
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.currentIndex = 0;
-    },
+            /**
+             * A reference to the data array index of the currently playing tween.
+             *
+             * @name Phaser.Tweens.TweenChain#currentIndex
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.currentIndex = 0;
+        },
 
     /**
      * Prepares this TweenChain for playback.
@@ -74,18 +73,14 @@ var TweenChain = new Class({
      *
      * @return {this} This TweenChain instance.
      */
-    init: function ()
-    {
+    init: function () {
         this.loopCounter = (this.loop === -1) ? TWEEN_CONST.MAX : this.loop;
 
         this.setCurrentTween(0);
 
-        if (this.startDelay > 0 && !this.isStartDelayed())
-        {
+        if (this.startDelay > 0 && !this.isStartDelayed()) {
             this.setStartDelayState();
-        }
-        else
-        {
+        } else {
             this.setActiveState();
         }
 
@@ -111,19 +106,16 @@ var TweenChain = new Class({
      *
      * @return {this} This TweenChain instance.
      */
-    add: function (tweens)
-    {
+    add: function (tweens) {
         var newTweens = this.parent.create(tweens);
 
-        if (!Array.isArray(newTweens))
-        {
-            newTweens = [ newTweens ];
+        if (!Array.isArray(newTweens)) {
+            newTweens = [newTweens];
         }
 
         var data = this.data;
 
-        for (var i = 0; i < newTweens.length; i++)
-        {
+        for (var i = 0; i < newTweens.length; i++) {
             var tween = newTweens[i];
 
             tween.parent = this;
@@ -152,15 +144,13 @@ var TweenChain = new Class({
      *
      * @return {this} This Tween Chain instance.
      */
-    remove: function (tween)
-    {
+    remove: function (tween) {
         //  Remove it immediately
         ArrayRemove(this.data, tween);
 
         tween.setRemovedState();
 
-        if (tween === this.currentTween)
-        {
+        if (tween === this.currentTween) {
             this.nextTween();
         }
 
@@ -179,14 +169,11 @@ var TweenChain = new Class({
      *
      * @return {boolean} `true` if the given target is a target of this TweenChain, otherwise `false`.
      */
-    hasTarget: function (target)
-    {
+    hasTarget: function (target) {
         var data = this.data;
 
-        for (var i = 0; i < this.totalData; i++)
-        {
-            if (data[i].hasTarget(target))
-            {
+        for (var i = 0; i < this.totalData; i++) {
+            if (data[i].hasTarget(target)) {
                 return true;
             }
         }
@@ -206,17 +193,14 @@ var TweenChain = new Class({
      *
      * @return {this} This TweenChain instance.
      */
-    restart: function ()
-    {
-        if (this.isDestroyed())
-        {
+    restart: function () {
+        if (this.isDestroyed()) {
             console.warn('Cannot restart destroyed TweenChain', this);
 
             return this;
         }
 
-        if (this.isRemoved())
-        {
+        if (this.isRemoved()) {
             this.parent.makeActive(this);
         }
 
@@ -239,8 +223,7 @@ var TweenChain = new Class({
      *
      * @return {this} This TweenChain instance.
      */
-    reset: function (tween)
-    {
+    reset: function (tween) {
         tween.seek();
 
         tween.setActiveState();
@@ -259,8 +242,7 @@ var TweenChain = new Class({
      *
      * @return {this} This TweenChain instance.
      */
-    makeActive: function (tween)
-    {
+    makeActive: function (tween) {
         tween.reset();
 
         tween.setActiveState();
@@ -278,35 +260,26 @@ var TweenChain = new Class({
      *
      * @return {boolean} `true` if this TweenChain has completed, otherwise `false`.
      */
-    nextState: function ()
-    {
-        if (this.loopCounter > 0)
-        {
+    nextState: function () {
+        if (this.loopCounter > 0) {
             this.loopCounter--;
 
             this.resetTweens();
 
-            if (this.loopDelay > 0)
-            {
+            if (this.loopDelay > 0) {
                 this.countdown = this.loopDelay;
 
                 this.setLoopDelayState();
-            }
-            else
-            {
+            } else {
                 this.setActiveState();
 
                 this.dispatchEvent(Events.TWEEN_LOOP, 'onLoop');
             }
-        }
-        else if (this.completeDelay > 0)
-        {
+        } else if (this.completeDelay > 0) {
             this.countdown = this.completeDelay;
 
             this.setCompleteDelayState();
-        }
-        else
-        {
+        } else {
             this.onCompleteHandler();
 
             return true;
@@ -330,28 +303,22 @@ var TweenChain = new Class({
      *
      * @return {this} This TweenChain instance.
      */
-    play: function ()
-    {
-        if (this.isDestroyed())
-        {
+    play: function () {
+        if (this.isDestroyed()) {
             console.warn('Cannot play destroyed TweenChain', this);
 
             return this;
         }
 
-        if (this.isPendingRemove() || this.isPending())
-        {
+        if (this.isPendingRemove() || this.isPending()) {
             this.resetTweens();
         }
 
         this.paused = false;
 
-        if (this.startDelay > 0 && !this.isStartDelayed())
-        {
+        if (this.startDelay > 0 && !this.isStartDelayed()) {
             this.setStartDelayState();
-        }
-        else
-        {
+        } else {
             this.setActiveState();
         }
 
@@ -364,13 +331,11 @@ var TweenChain = new Class({
      * @method Phaser.Tweens.TweenChain#resetTweens
      * @since 3.60.0
      */
-    resetTweens: function ()
-    {
+    resetTweens: function () {
         var data = this.data;
         var total = this.totalData;
 
-        for (var i = 0; i < total; i++)
-        {
+        for (var i = 0; i < total; i++) {
             data[i].reset(false);
         }
 
@@ -390,45 +355,34 @@ var TweenChain = new Class({
      *
      * @return {boolean} Returns `true` if this TweenChain has finished and should be removed from the Tween Manager, otherwise returns `false`.
      */
-    update: function (delta)
-    {
-        if (this.isPendingRemove() || this.isDestroyed())
-        {
-            if (this.persist)
-            {
+    update: function (delta) {
+        if (this.isPendingRemove() || this.isDestroyed()) {
+            if (this.persist) {
                 this.setFinishedState();
 
                 return false;
             }
-                
+
             return true;
-        }
-        else if (this.isFinished() || this.paused)
-        {
+        } else if (this.isFinished() || this.paused) {
             return false;
         }
 
         //  The TweenChain.timeScale is applied within Tween.update, so doesn't need including here
         delta *= this.parent.timeScale;
 
-        if (this.isLoopDelayed())
-        {
+        if (this.isLoopDelayed()) {
             this.updateLoopCountdown(delta);
 
             return false;
-        }
-        else if (this.isCompleteDelayed())
-        {
+        } else if (this.isCompleteDelayed()) {
             this.updateCompleteDelay(delta);
 
             return false;
-        }
-        else if (!this.hasStarted)
-        {
+        } else if (!this.hasStarted) {
             this.startDelay -= delta;
 
-            if (this.startDelay <= 0)
-            {
+            if (this.startDelay <= 0) {
                 this.hasStarted = true;
 
                 this.dispatchEvent(Events.TWEEN_START, 'onStart');
@@ -440,13 +394,10 @@ var TweenChain = new Class({
 
         var remove = false;
 
-        if (this.isActive() && this.currentTween)
-        {
-            if (this.currentTween.update(delta))
-            {
+        if (this.isActive() && this.currentTween) {
+            if (this.currentTween.update(delta)) {
                 //  This tween has finished playback, so move to the next one
-                if (this.nextTween())
-                {
+                if (this.nextTween()) {
                     this.nextState();
                 }
             }
@@ -454,8 +405,7 @@ var TweenChain = new Class({
             //  If nextState called onCompleteHandler then it is ready to be removed, unless persist is set to true
             remove = this.isPendingRemove();
 
-            if (remove && this.persist)
-            {
+            if (remove && this.persist) {
                 this.setFinishedState();
 
                 remove = false;
@@ -476,16 +426,12 @@ var TweenChain = new Class({
      *
      * @return {boolean} `true` if there are no more Tweens in the chain, otherwise `false`.
      */
-    nextTween: function ()
-    {
+    nextTween: function () {
         this.currentIndex++;
 
-        if (this.currentIndex === this.totalData)
-        {
+        if (this.currentIndex === this.totalData) {
             return true;
-        }
-        else
-        {
+        } else {
             this.setCurrentTween(this.currentIndex);
         }
 
@@ -501,8 +447,7 @@ var TweenChain = new Class({
      *
      * @param {number} index - The index of the Tween to be made current.
      */
-    setCurrentTween: function (index)
-    {
+    setCurrentTween: function (index) {
         this.currentIndex = index;
 
         this.currentTween = this.data[index];
@@ -519,15 +464,13 @@ var TweenChain = new Class({
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
      */
-    dispatchEvent: function (event, callback)
-    {
+    dispatchEvent: function (event, callback) {
         this.emit(event, this);
 
         var handler = this.callbacks[callback];
 
-        if (handler)
-        {
-            handler.func.apply(this.callbackScope, [ this ].concat(handler.params));
+        if (handler) {
+            handler.func.apply(this.callbackScope, [this].concat(handler.params));
         }
     },
 
@@ -537,8 +480,7 @@ var TweenChain = new Class({
      * @method Phaser.Tweens.TweenChain#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         BaseTween.prototype.destroy.call(this);
 
         this.currentTween = null;
@@ -558,8 +500,7 @@ var TweenChain = new Class({
  *
  * @return {Phaser.Tweens.TweenChain} The TweenChain that was created.
  */
-GameObjectFactory.register('tweenchain', function (config)
-{
+GameObjectFactory.register('tweenchain', function (config) {
     return this.scene.sys.tweens.chain(config);
 });
 
@@ -575,8 +516,7 @@ GameObjectFactory.register('tweenchain', function (config)
  *
  * @return {Phaser.Tweens.TweenChain} The TweenChain that was created.
  */
-GameObjectCreator.register('tweenchain', function (config)
-{
+GameObjectCreator.register('tweenchain', function (config) {
     return this.scene.sys.tweens.create(config);
 });
 

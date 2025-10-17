@@ -25,12 +25,10 @@
  *
  * @return {number} The shortest angle, in degrees. If greater than zero it's a counter-clockwise rotation.
  */
-var ShortestBetween = function (angle1, angle2)
-{
+var ShortestBetween = function (angle1, angle2) {
     var difference = angle2 - angle1;
 
-    if (difference === 0)
-    {
+    if (difference === 0) {
         return 0;
     }
 

@@ -51,17 +51,15 @@ var SinglePipeline = new Class({
 
     initialize:
 
-    function SinglePipeline (config)
-    {
-        config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS),
-        config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS),
-        config.forceZero = true;
+        function SinglePipeline(config) {
+            config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS),
+                config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS),
+                config.forceZero = true;
 
-        MultiPipeline.call(this, config);
-    },
+            MultiPipeline.call(this, config);
+        },
 
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         var renderer = this.renderer;

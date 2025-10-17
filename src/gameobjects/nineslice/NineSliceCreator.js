@@ -23,9 +23,10 @@ var NineSlice = require('./NineSlice');
  *
  * @return {Phaser.GameObjects.NineSlice} The Game Object that was created.
  */
-GameObjectCreator.register('nineslice', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('nineslice', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
@@ -38,8 +39,7 @@ GameObjectCreator.register('nineslice', function (config, addToScene)
 
     var nineslice = new NineSlice(this.scene, 0, 0, key, frame, width, height, leftWidth, rightWidth, topHeight, bottomHeight);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

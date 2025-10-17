@@ -14,8 +14,7 @@
  *
  * @return {number} The area of the Circle.
  */
-var Area = function (circle)
-{
+var Area = function (circle) {
     return (circle.radius > 0) ? Math.PI * circle.radius * circle.radius : 0;
 };
 

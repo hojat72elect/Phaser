@@ -19,14 +19,12 @@
  * @param {number} [cx] - An optional center of rotation. If not given, the Face in-center is used.
  * @param {number} [cy] - An optional center of rotation. If not given, the Face in-center is used.
  */
-var RotateFace = function (face, angle, cx, cy)
-{
+var RotateFace = function (face, angle, cx, cy) {
     var x;
     var y;
 
     //  No point of rotation? Use the inCenter instead, then.
-    if (cx === undefined && cy === undefined)
-    {
+    if (cx === undefined && cy === undefined) {
         var inCenter = face.getInCenter();
 
         x = inCenter.x;

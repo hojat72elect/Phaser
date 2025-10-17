@@ -17,12 +17,10 @@
  *
  * @return {string[]} The sorted input array.
  */
-var SortByDigits = function (array)
-{
+var SortByDigits = function (array) {
     var re = /\D/g;
 
-    array.sort(function (a, b)
-    {
+    array.sort(function (a, b) {
         return (parseInt(a.replace(re, ''), 10) - parseInt(b.replace(re, ''), 10));
     });
 

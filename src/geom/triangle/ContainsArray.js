@@ -24,10 +24,13 @@
  *
  * @return {Phaser.Geom.Point[]} An array containing all the points from `points` that are within the triangle, if an array was provided as `out`, points will be appended to that array and it will also be returned here.
  */
-var ContainsArray = function (triangle, points, returnFirst, out)
-{
-    if (returnFirst === undefined) { returnFirst = false; }
-    if (out === undefined) { out = []; }
+var ContainsArray = function (triangle, points, returnFirst, out) {
+    if (returnFirst === undefined) {
+        returnFirst = false;
+    }
+    if (out === undefined) {
+        out = [];
+    }
 
     var v0x = triangle.x3 - triangle.x1;
     var v0y = triangle.y3 - triangle.y1;
@@ -53,8 +56,7 @@ var ContainsArray = function (triangle, points, returnFirst, out)
     var x1 = triangle.x1;
     var y1 = triangle.y1;
 
-    for (var i = 0; i < points.length; i++)
-    {
+    for (var i = 0; i < points.length; i++) {
         v2x = points[i].x - x1;
         v2y = points[i].y - y1;
 
@@ -64,12 +66,10 @@ var ContainsArray = function (triangle, points, returnFirst, out)
         u = ((dot11 * dot02) - (dot01 * dot12)) * inv;
         v = ((dot00 * dot12) - (dot01 * dot02)) * inv;
 
-        if (u >= 0 && v >= 0 && (u + v < 1))
-        {
-            out.push({ x: points[i].x, y: points[i].y });
+        if (u >= 0 && v >= 0 && (u + v < 1)) {
+            out.push({x: points[i].x, y: points[i].y});
 
-            if (returnFirst)
-            {
+            if (returnFirst) {
                 break;
             }
         }

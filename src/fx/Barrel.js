@@ -41,23 +41,24 @@ var Barrel = new Class({
 
     initialize:
 
-    function Barrel (gameObject, amount)
-    {
-        if (amount === undefined) { amount = 1; }
+        function Barrel(gameObject, amount) {
+            if (amount === undefined) {
+                amount = 1;
+            }
 
-        Controller.call(this, FX_CONST.BARREL, gameObject);
+            Controller.call(this, FX_CONST.BARREL, gameObject);
 
-        /**
-         * The amount of distortion applied to the barrel effect.
-         *
-         * Typically keep this within the range 1 (no distortion) to +- 1.
-         *
-         * @name Phaser.FX.Barrel#amount
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.amount = amount;
-    }
+            /**
+             * The amount of distortion applied to the barrel effect.
+             *
+             * Typically keep this within the range 1 (no distortion) to +- 1.
+             *
+             * @name Phaser.FX.Barrel#amount
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.amount = amount;
+        }
 
 });
 

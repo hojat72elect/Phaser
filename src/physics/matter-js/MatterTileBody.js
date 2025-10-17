@@ -63,71 +63,62 @@ var MatterTileBody = new Class({
 
     initialize:
 
-    function MatterTileBody (world, tile, options)
-    {
-        EventEmitter.call(this);
+        function MatterTileBody(world, tile, options) {
+            EventEmitter.call(this);
 
-        /**
-         * The tile object the body is associated with.
-         *
-         * @name Phaser.Physics.Matter.TileBody#tile
-         * @type {Phaser.Tilemaps.Tile}
-         * @since 3.0.0
-         */
-        this.tile = tile;
+            /**
+             * The tile object the body is associated with.
+             *
+             * @name Phaser.Physics.Matter.TileBody#tile
+             * @type {Phaser.Tilemaps.Tile}
+             * @since 3.0.0
+             */
+            this.tile = tile;
 
-        /**
-         * The Matter world the body exists within.
-         *
-         * @name Phaser.Physics.Matter.TileBody#world
-         * @type {Phaser.Physics.Matter.World}
-         * @since 3.0.0
-         */
-        this.world = world;
+            /**
+             * The Matter world the body exists within.
+             *
+             * @name Phaser.Physics.Matter.TileBody#world
+             * @type {Phaser.Physics.Matter.World}
+             * @since 3.0.0
+             */
+            this.world = world;
 
-        // Install a reference to 'this' on the tile and ensure there can only be one matter body
-        // associated with the tile
-        if (tile.physics.matterBody)
-        {
-            tile.physics.matterBody.destroy();
-        }
-
-        tile.physics.matterBody = this;
-
-        // Set the body either from an existing body (if provided), the shapes in the tileset
-        // collision layer (if it exists) or a rectangle matching the tile.
-        var body = GetFastValue(options, 'body', null);
-
-        var addToWorld = GetFastValue(options, 'addToWorld', true);
-
-        if (!body)
-        {
-            var collisionGroup = tile.getCollisionGroup();
-            var collisionObjects = GetFastValue(collisionGroup, 'objects', []);
-
-            if (collisionObjects.length > 0)
-            {
-                this.setFromTileCollision(options);
+            // Install a reference to 'this' on the tile and ensure there can only be one matter body
+            // associated with the tile
+            if (tile.physics.matterBody) {
+                tile.physics.matterBody.destroy();
             }
-            else
-            {
-                this.setFromTileRectangle(options);
+
+            tile.physics.matterBody = this;
+
+            // Set the body either from an existing body (if provided), the shapes in the tileset
+            // collision layer (if it exists) or a rectangle matching the tile.
+            var body = GetFastValue(options, 'body', null);
+
+            var addToWorld = GetFastValue(options, 'addToWorld', true);
+
+            if (!body) {
+                var collisionGroup = tile.getCollisionGroup();
+                var collisionObjects = GetFastValue(collisionGroup, 'objects', []);
+
+                if (collisionObjects.length > 0) {
+                    this.setFromTileCollision(options);
+                } else {
+                    this.setFromTileRectangle(options);
+                }
+            } else {
+                this.setBody(body, addToWorld);
             }
-        }
-        else
-        {
-            this.setBody(body, addToWorld);
-        }
 
-        if (tile.flipX || tile.flipY)
-        {
-            var rotationPoint = { x: tile.getCenterX(), y: tile.getCenterY() };
-            var scaleX = (tile.flipX) ? -1 : 1;
-            var scaleY = (tile.flipY) ? -1 : 1;
+            if (tile.flipX || tile.flipY) {
+                var rotationPoint = {x: tile.getCenterX(), y: tile.getCenterY()};
+                var scaleX = (tile.flipX) ? -1 : 1;
+                var scaleY = (tile.flipY) ? -1 : 1;
 
-            Body.scale(body, scaleX, scaleY, rotationPoint);
-        }
-    },
+                Body.scale(body, scaleX, scaleY, rotationPoint);
+            }
+        },
 
     /**
      * Sets the current body to a rectangle that matches the bounds of the tile.
@@ -139,11 +130,16 @@ var MatterTileBody = new Class({
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */
-    setFromTileRectangle: function (options)
-    {
-        if (options === undefined) { options = {}; }
-        if (!HasValue(options, 'isStatic')) { options.isStatic = true; }
-        if (!HasValue(options, 'addToWorld')) { options.addToWorld = true; }
+    setFromTileRectangle: function (options) {
+        if (options === undefined) {
+            options = {};
+        }
+        if (!HasValue(options, 'isStatic')) {
+            options.isStatic = true;
+        }
+        if (!HasValue(options, 'addToWorld')) {
+            options.addToWorld = true;
+        }
 
         var bounds = this.tile.getBounds();
         var cx = bounds.x + (bounds.width / 2);
@@ -173,11 +169,16 @@ var MatterTileBody = new Class({
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */
-    setFromTileCollision: function (options)
-    {
-        if (options === undefined) { options = {}; }
-        if (!HasValue(options, 'isStatic')) { options.isStatic = true; }
-        if (!HasValue(options, 'addToWorld')) { options.addToWorld = true; }
+    setFromTileCollision: function (options) {
+        if (options === undefined) {
+            options = {};
+        }
+        if (!HasValue(options, 'isStatic')) {
+            options.isStatic = true;
+        }
+        if (!HasValue(options, 'addToWorld')) {
+            options.addToWorld = true;
+        }
 
         var sx = this.tile.tilemapLayer.scaleX;
         var sy = this.tile.tilemapLayer.scaleY;
@@ -188,8 +189,7 @@ var MatterTileBody = new Class({
 
         var parts = [];
 
-        for (var i = 0; i < collisionObjects.length; i++)
-        {
+        for (var i = 0; i < collisionObjects.length; i++) {
             var object = collisionObjects[i];
             var ox = tileX + (object.x * sx);
             var oy = tileY + (object.y * sy);
@@ -197,22 +197,16 @@ var MatterTileBody = new Class({
             var oh = object.height * sy;
             var body = null;
 
-            if (object.rectangle)
-            {
+            if (object.rectangle) {
                 body = Bodies.rectangle(ox + ow / 2, oy + oh / 2, ow, oh, options);
-            }
-            else if (object.ellipse)
-            {
+            } else if (object.ellipse) {
                 body = Bodies.circle(ox + ow / 2, oy + oh / 2, ow / 2, options);
-            }
-            else if (object.polygon || object.polyline)
-            {
+            } else if (object.polygon || object.polyline) {
                 // Polygons and polylines are both treated as closed polygons
                 var originalPoints = object.polygon ? object.polygon : object.polyline;
 
-                var points = originalPoints.map(function (p)
-                {
-                    return { x: p.x * sx, y: p.y * sy };
+                var points = originalPoints.map(function (p) {
+                    return {x: p.x * sx, y: p.y * sy};
                 });
 
                 var vertices = Vertices.create(points);
@@ -233,18 +227,14 @@ var MatterTileBody = new Class({
                 body = Bodies.fromVertices(ox, oy, vertices, options);
             }
 
-            if (body)
-            {
+            if (body) {
                 parts.push(body);
             }
         }
 
-        if (parts.length === 1)
-        {
+        if (parts.length === 1) {
             this.setBody(parts[0], options.addToWorld);
-        }
-        else if (parts.length > 1)
-        {
+        } else if (parts.length > 1) {
             var tempOptions = DeepCopy(options);
 
             tempOptions.parts = parts;
@@ -267,20 +257,19 @@ var MatterTileBody = new Class({
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */
-    setBody: function (body, addToWorld)
-    {
-        if (addToWorld === undefined) { addToWorld = true; }
+    setBody: function (body, addToWorld) {
+        if (addToWorld === undefined) {
+            addToWorld = true;
+        }
 
-        if (this.body)
-        {
+        if (this.body) {
             this.removeBody();
         }
 
         this.body = body;
         this.body.gameObject = this;
 
-        if (addToWorld)
-        {
+        if (addToWorld) {
             this.world.add(this.body);
         }
 
@@ -295,10 +284,8 @@ var MatterTileBody = new Class({
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */
-    removeBody: function ()
-    {
-        if (this.body)
-        {
+    removeBody: function () {
+        if (this.body) {
             this.world.remove(this.body);
             this.body.gameObject = undefined;
             this.body = undefined;
@@ -315,8 +302,7 @@ var MatterTileBody = new Class({
      *
      * @return {Phaser.Physics.Matter.TileBody} This TileBody object.
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.removeBody();
         this.tile.physics.matterBody = undefined;
         this.removeAllListeners();

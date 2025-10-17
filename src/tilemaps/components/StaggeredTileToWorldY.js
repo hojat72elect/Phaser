@@ -17,15 +17,15 @@
  *
  * @return {number} The Y location in world coordinates.
  */
-var StaggeredTileToWorldY = function (tileY, camera, layer)
-{
+var StaggeredTileToWorldY = function (tileY, camera, layer) {
     var tileHeight = layer.baseTileHeight;
     var tilemapLayer = layer.tilemapLayer;
     var layerWorldY = 0;
 
-    if (tilemapLayer)
-    {
-        if (camera === undefined) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (camera === undefined) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         layerWorldY = (tilemapLayer.y + camera.scrollY * (1 - tilemapLayer.scrollFactorY));
 

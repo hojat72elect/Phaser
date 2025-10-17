@@ -54,8 +54,7 @@ var Flip = {
      *
      * @return {this} This Game Object instance.
      */
-    toggleFlipX: function ()
-    {
+    toggleFlipX: function () {
         this.flipX = !this.flipX;
 
         return this;
@@ -69,8 +68,7 @@ var Flip = {
      *
      * @return {this} This Game Object instance.
      */
-    toggleFlipY: function ()
-    {
+    toggleFlipY: function () {
         this.flipY = !this.flipY;
 
         return this;
@@ -90,8 +88,7 @@ var Flip = {
      *
      * @return {this} This Game Object instance.
      */
-    setFlipX: function (value)
-    {
+    setFlipX: function (value) {
         this.flipX = value;
 
         return this;
@@ -107,8 +104,7 @@ var Flip = {
      *
      * @return {this} This Game Object instance.
      */
-    setFlipY: function (value)
-    {
+    setFlipY: function (value) {
         this.flipY = value;
 
         return this;
@@ -129,8 +125,7 @@ var Flip = {
      *
      * @return {this} This Game Object instance.
      */
-    setFlip: function (x, y)
-    {
+    setFlip: function (x, y) {
         this.flipX = x;
         this.flipY = y;
 
@@ -145,8 +140,7 @@ var Flip = {
      *
      * @return {this} This Game Object instance.
      */
-    resetFlip: function ()
-    {
+    resetFlip: function () {
         this.flipX = false;
         this.flipY = false;
 

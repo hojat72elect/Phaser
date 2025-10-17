@@ -1,10 +1,10 @@
 /**
-* The `Matter.Query` module contains methods for performing collision queries.
-*
-* See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-*
-* @class Query
-*/
+ * The `Matter.Query` module contains methods for performing collision queries.
+ *
+ * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+ *
+ * @class Query
+ */
 
 var Query = {};
 
@@ -16,7 +16,7 @@ var Bounds = require('../geometry/Bounds');
 var Bodies = require('../factory/Bodies');
 var Vertices = require('../geometry/Vertices');
 
-(function() {
+(function () {
 
     /**
      * Returns a list of collisions between `body` and `bodies`.
@@ -25,7 +25,7 @@ var Vertices = require('../geometry/Vertices');
      * @param {body[]} bodies
      * @return {collision[]} Collisions
      */
-    Query.collides = function(body, bodies) {
+    Query.collides = function (body, bodies) {
         var collisions = [],
             bodiesLength = bodies.length,
             bounds = body.bounds,
@@ -38,8 +38,7 @@ var Vertices = require('../geometry/Vertices');
                 partsAStart = partsALength === 1 ? 0 : 1;
 
             //  Phaser addition - skip same body checks
-            if (body === bodyA)
-            {
+            if (body === bodyA) {
                 continue;
             }
 
@@ -71,14 +70,14 @@ var Vertices = require('../geometry/Vertices');
      * @param {number} [rayWidth]
      * @return {collision[]} Collisions
      */
-    Query.ray = function(bodies, startPoint, endPoint, rayWidth) {
+    Query.ray = function (bodies, startPoint, endPoint, rayWidth) {
         rayWidth = rayWidth || 1e-100;
 
         var rayAngle = Vector.angle(startPoint, endPoint),
             rayLength = Vector.magnitude(Vector.sub(startPoint, endPoint)),
             rayX = (endPoint.x + startPoint.x) * 0.5,
             rayY = (endPoint.y + startPoint.y) * 0.5,
-            ray = Bodies.rectangle(rayX, rayY, rayLength, rayWidth, { angle: rayAngle }),
+            ray = Bodies.rectangle(rayX, rayY, rayLength, rayWidth, {angle: rayAngle}),
             collisions = Query.collides(ray, bodies);
 
         for (var i = 0; i < collisions.length; i += 1) {
@@ -97,7 +96,7 @@ var Vertices = require('../geometry/Vertices');
      * @param {bool} [outside=false]
      * @return {body[]} The bodies matching the query
      */
-    Query.region = function(bodies, bounds, outside) {
+    Query.region = function (bodies, bounds, outside) {
         var result = [];
 
         for (var i = 0; i < bodies.length; i++) {
@@ -117,7 +116,7 @@ var Vertices = require('../geometry/Vertices');
      * @param {vector} point
      * @return {body[]} The bodies matching the query
      */
-    Query.point = function(bodies, point) {
+    Query.point = function (bodies, point) {
         var result = [];
 
         for (var i = 0; i < bodies.length; i++) {

@@ -16,8 +16,7 @@
  * @param {number} [altColor] - An alternative color to render with.
  * @param {number} [altAlpha] - An alternative alpha to render with.
  */
-var LineStyleCanvas = function (ctx, src, altColor, altAlpha)
-{
+var LineStyleCanvas = function (ctx, src, altColor, altAlpha) {
     var strokeColor = (altColor) ? altColor : src.strokeColor;
     var strokeAlpha = (altAlpha) ? altAlpha : src.strokeAlpha;
 

@@ -30,8 +30,7 @@ var Collision = {
      *
      * @return {this} This Game Object.
      */
-    setCollisionCategory: function (category)
-    {
+    setCollisionCategory: function (category) {
         var target = (this.body) ? this.body : this;
 
         target.collisionCategory = category;
@@ -50,8 +49,7 @@ var Collision = {
      *
      * @return {boolean} `true` if the given category will collide with this object, otherwise `false`.
      */
-    willCollideWith: function (category)
-    {
+    willCollideWith: function (category) {
         var target = (this.body) ? this.body : this;
 
         return (target.collisionMask & category) !== 0;
@@ -68,8 +66,7 @@ var Collision = {
      *
      * @return {this} This Game Object.
      */
-    addCollidesWith: function (category)
-    {
+    addCollidesWith: function (category) {
         var target = (this.body) ? this.body : this;
 
         target.collisionMask = target.collisionMask | category;
@@ -88,8 +85,7 @@ var Collision = {
      *
      * @return {this} This Game Object.
      */
-    removeCollidesWith: function (category)
-    {
+    removeCollidesWith: function (category) {
         var target = (this.body) ? this.body : this;
 
         target.collisionMask = target.collisionMask & ~category;
@@ -118,8 +114,7 @@ var Collision = {
      *
      * @return {this} This Game Object.
      */
-    setCollidesWith: function (categories)
-    {
+    setCollidesWith: function (categories) {
         var target = (this.body) ? this.body : this;
 
         target.collisionMask = GetCollidesWith(categories);
@@ -136,8 +131,7 @@ var Collision = {
      *
      * @return {this} This Game Object.
      */
-    resetCollisionCategory: function ()
-    {
+    resetCollisionCategory: function () {
         var target = (this.body) ? this.body : this;
 
         target.collisionCategory = 0x0001;

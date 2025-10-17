@@ -38,131 +38,130 @@ var WebGLShader = new Class({
 
     initialize:
 
-    function WebGLShader (pipeline, name, vertexShader, fragmentShader, attributes)
-    {
-        /**
-         * A reference to the WebGLPipeline that owns this Shader.
-         *
-         * A Shader class can only belong to a single pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#pipeline
-         * @type {Phaser.Renderer.WebGL.WebGLPipeline}
-         * @since 3.50.0
-         */
-        this.pipeline = pipeline;
+        function WebGLShader(pipeline, name, vertexShader, fragmentShader, attributes) {
+            /**
+             * A reference to the WebGLPipeline that owns this Shader.
+             *
+             * A Shader class can only belong to a single pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#pipeline
+             * @type {Phaser.Renderer.WebGL.WebGLPipeline}
+             * @since 3.50.0
+             */
+            this.pipeline = pipeline;
 
-        /**
-         * The name of this shader.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#name
-         * @type {string}
-         * @since 3.50.0
-         */
-        this.name = name;
+            /**
+             * The name of this shader.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#name
+             * @type {string}
+             * @since 3.50.0
+             */
+            this.name = name;
 
-        /**
-         * A reference to the WebGLRenderer instance.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#renderer
-         * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-         * @since 3.50.0
-         */
-        this.renderer = pipeline.renderer;
+            /**
+             * A reference to the WebGLRenderer instance.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#renderer
+             * @type {Phaser.Renderer.WebGL.WebGLRenderer}
+             * @since 3.50.0
+             */
+            this.renderer = pipeline.renderer;
 
-        /**
-         * A reference to the WebGL Rendering Context the WebGL Renderer is using.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.50.0
-         */
-        this.gl = this.renderer.gl;
+            /**
+             * A reference to the WebGL Rendering Context the WebGL Renderer is using.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.50.0
+             */
+            this.gl = this.renderer.gl;
 
-        /**
-         * The fragment shader source code.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#fragSrc
-         * @type {string}
-         * @since 3.60.0
-         */
-        this.fragSrc = fragmentShader;
+            /**
+             * The fragment shader source code.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#fragSrc
+             * @type {string}
+             * @since 3.60.0
+             */
+            this.fragSrc = fragmentShader;
 
-        /**
-         * The vertex shader source code.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#vertSrc
-         * @type {string}
-         * @since 3.60.0
-         */
-        this.vertSrc = vertexShader;
+            /**
+             * The vertex shader source code.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#vertSrc
+             * @type {string}
+             * @since 3.60.0
+             */
+            this.vertSrc = vertexShader;
 
-        /**
-         * The WebGLProgram created from the vertex and fragment shaders.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#program
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
-         * @since 3.50.0
-         */
-        this.program = this.renderer.createProgram(vertexShader, fragmentShader);
+            /**
+             * The WebGLProgram created from the vertex and fragment shaders.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#program
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
+             * @since 3.50.0
+             */
+            this.program = this.renderer.createProgram(vertexShader, fragmentShader);
 
-        /**
-         * Array of objects that describe the vertex attributes.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#attributes
-         * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineAttribute[]}
-         * @since 3.50.0
-         */
-        this.attributes;
+            /**
+             * Array of objects that describe the vertex attributes.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#attributes
+             * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineAttribute[]}
+             * @since 3.50.0
+             */
+            this.attributes;
 
-        /**
-         * The amount of vertex attribute components of 32 bit length.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#vertexComponentCount
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.vertexComponentCount = 0;
+            /**
+             * The amount of vertex attribute components of 32 bit length.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#vertexComponentCount
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.vertexComponentCount = 0;
 
-        /**
-         * The size, in bytes, of a single vertex.
-         *
-         * This is derived by adding together all of the vertex attributes.
-         *
-         * For example, the Multi Pipeline has the following attributes:
-         *
-         * inPosition - (size 2 x gl.FLOAT) = 8
-         * inTexCoord - (size 2 x gl.FLOAT) = 8
-         * inTexId - (size 1 x gl.FLOAT) = 4
-         * inTintEffect - (size 1 x gl.FLOAT) = 4
-         * inTint - (size 4 x gl.UNSIGNED_BYTE) = 4
-         *
-         * The total, in this case, is 8 + 8 + 4 + 4 + 4 = 28.
-         *
-         * This is calculated automatically during the `createAttributes` method.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#vertexSize
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.vertexSize = 0;
+            /**
+             * The size, in bytes, of a single vertex.
+             *
+             * This is derived by adding together all of the vertex attributes.
+             *
+             * For example, the Multi Pipeline has the following attributes:
+             *
+             * inPosition - (size 2 x gl.FLOAT) = 8
+             * inTexCoord - (size 2 x gl.FLOAT) = 8
+             * inTexId - (size 1 x gl.FLOAT) = 4
+             * inTintEffect - (size 1 x gl.FLOAT) = 4
+             * inTint - (size 4 x gl.UNSIGNED_BYTE) = 4
+             *
+             * The total, in this case, is 8 + 8 + 4 + 4 + 4 = 28.
+             *
+             * This is calculated automatically during the `createAttributes` method.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#vertexSize
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.vertexSize = 0;
 
-        /**
-         * The active uniforms that this shader has.
-         *
-         * This is an object that maps the uniform names to their WebGL location and cached values.
-         *
-         * It is populated automatically via the `createUniforms` method.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLShader#uniforms
-         * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineUniformsConfig}
-         * @since 3.50.0
-         */
-        this.uniforms = {};
+            /**
+             * The active uniforms that this shader has.
+             *
+             * This is an object that maps the uniform names to their WebGL location and cached values.
+             *
+             * It is populated automatically via the `createUniforms` method.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLShader#uniforms
+             * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineUniformsConfig}
+             * @since 3.50.0
+             */
+            this.uniforms = {};
 
-        this.createAttributes(attributes);
-        this.createUniforms();
-    },
+            this.createAttributes(attributes);
+            this.createUniforms();
+        },
 
     /**
      * Takes the vertex attributes config and parses it, creating the resulting array that is stored
@@ -179,16 +178,14 @@ var WebGLShader = new Class({
      *
      * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineAttributeConfig[]} attributes - An array of attributes configs.
      */
-    createAttributes: function (attributes)
-    {
+    createAttributes: function (attributes) {
         var count = 0;
         var offset = 0;
         var result = [];
 
         this.vertexComponentCount = 0;
 
-        for (var i = 0; i < attributes.length; i++)
-        {
+        for (var i = 0; i < attributes.length; i++) {
             var element = attributes[i];
 
             var name = element.name;
@@ -209,12 +206,9 @@ var WebGLShader = new Class({
                 location: -1
             });
 
-            if (typeSize === 4)
-            {
+            if (typeSize === 4) {
                 count += size;
-            }
-            else
-            {
+            } else {
                 count++;
             }
 
@@ -239,20 +233,21 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    bind: function (setAttributes, flush)
-    {
-        if (setAttributes === undefined) { setAttributes = false; }
-        if (flush === undefined) { flush = false; }
+    bind: function (setAttributes, flush) {
+        if (setAttributes === undefined) {
+            setAttributes = false;
+        }
+        if (flush === undefined) {
+            flush = false;
+        }
 
-        if (flush)
-        {
+        if (flush) {
             this.pipeline.flush();
         }
 
         this.renderer.setProgram(this.program);
 
-        if (setAttributes)
-        {
+        if (setAttributes) {
             this.setAttribPointers();
         }
 
@@ -269,8 +264,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    rebind: function ()
-    {
+    rebind: function () {
         this.renderer.setProgram(this.program);
 
         this.setAttribPointers(true);
@@ -292,9 +286,10 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setAttribPointers: function (reset)
-    {
-        if (reset === undefined) { reset = false; }
+    setAttribPointers: function (reset) {
+        if (reset === undefined) {
+            reset = false;
+        }
 
         var gl = this.gl;
         var renderer = this.renderer;
@@ -302,8 +297,7 @@ var WebGLShader = new Class({
         var attributes = this.attributes;
         var program = this.program;
 
-        for (var i = 0; i < attributes.length; i++)
-        {
+        for (var i = 0; i < attributes.length; i++) {
             var element = attributes[i];
 
             var size = element.size;
@@ -313,34 +307,25 @@ var WebGLShader = new Class({
             var location = element.location;
             var normalized = (element.normalized) ? true : false;
 
-            if (reset)
-            {
-                if (location !== -1)
-                {
+            if (reset) {
+                if (location !== -1) {
                     renderer.deleteAttribLocation(location);
                 }
                 var attribLocation = this.renderer.createAttribLocation(program, element.name);
 
-                if (attribLocation.webGLAttribLocation >= 0)
-                {
+                if (attribLocation.webGLAttribLocation >= 0) {
                     gl.enableVertexAttribArray(attribLocation.webGLAttribLocation);
 
                     gl.vertexAttribPointer(attribLocation.webGLAttribLocation, size, type, normalized, vertexSize, offset);
 
                     element.enabled = true;
                     element.location = attribLocation;
-                }
-                else if (attribLocation.webGLAttribLocation !== -1)
-                {
+                } else if (attribLocation.webGLAttribLocation !== -1) {
                     gl.disableVertexAttribArray(attribLocation.webGLAttribLocation);
                 }
-            }
-            else if (enabled)
-            {
+            } else if (enabled) {
                 gl.vertexAttribPointer(location.webGLAttribLocation, size, type, normalized, vertexSize, offset);
-            }
-            else if (!enabled && location !== -1 && location.webGLAttribLocation > -1)
-            {
+            } else if (!enabled && location !== -1 && location.webGLAttribLocation > -1) {
                 gl.disableVertexAttribArray(location.webGLAttribLocation);
 
                 element.location = -1;
@@ -366,8 +351,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    createUniforms: function ()
-    {
+    createUniforms: function () {
         var gl = this.gl;
         var program = this.program;
         var uniforms = this.uniforms;
@@ -380,28 +364,25 @@ var WebGLShader = new Class({
 
         var totalUniforms = gl.getProgramParameter(program.webGLProgram, gl.ACTIVE_UNIFORMS);
 
-        for (i = 0; i < totalUniforms; i++)
-        {
+        for (i = 0; i < totalUniforms; i++) {
             var info = gl.getActiveUniform(program.webGLProgram, i);
 
-            if (info)
-            {
+            if (info) {
                 name = info.name;
 
                 location = this.renderer.createUniformLocation(program, name);
 
-                if (location !== null)
-                {
+                if (location !== null) {
                     uniforms[name] =
-                    {
-                        name: name,
-                        location: location,
-                        setter: null,
-                        value1: null,
-                        value2: null,
-                        value3: null,
-                        value4: null
-                    };
+                        {
+                            name: name,
+                            location: location,
+                            setter: null,
+                            value1: null,
+                            value2: null,
+                            value3: null,
+                            value4: null
+                        };
                 }
 
                 //  If the uniform name contains [] for an array struct,
@@ -410,26 +391,23 @@ var WebGLShader = new Class({
 
                 var struct = name.indexOf('[');
 
-                if (struct > 0)
-                {
+                if (struct > 0) {
                     name = name.substr(0, struct);
 
-                    if (!uniforms.hasOwnProperty(name))
-                    {
+                    if (!uniforms.hasOwnProperty(name)) {
                         location = this.renderer.createUniformLocation(program, name);
 
-                        if (location !== null)
-                        {
+                        if (location !== null) {
                             uniforms[name] =
-                            {
-                                name: name,
-                                location: location,
-                                setter: null,
-                                value1: null,
-                                value2: null,
-                                value3: null,
-                                value4: null
-                            };
+                                {
+                                    name: name,
+                                    location: location,
+                                    setter: null,
+                                    value1: null,
+                                    value2: null,
+                                    value3: null,
+                                    value4: null
+                                };
                         }
                     }
                 }
@@ -441,26 +419,23 @@ var WebGLShader = new Class({
 
     /**
      * Repopulate uniforms on the GPU.
-     * 
+     *
      * This is called automatically by the pipeline when the context is
      * lost and then recovered. By the time this method is called,
      * the WebGL resources are already recreated, so we just need to
      * re-populate them.
-     * 
+     *
      * @method Phaser.Renderer.WebGL.WebGLShader#syncUniforms
      * @since 3.80.0
      */
-    syncUniforms: function ()
-    {
+    syncUniforms: function () {
         var gl = this.gl;
         this.renderer.setProgram(this.program);
-        for (var name in this.uniforms)
-        {
+        for (var name in this.uniforms) {
             var uniform = this.uniforms[name];
 
             // A uniform that hasn't been set doesn't need to be synced.
-            if (uniform.setter)
-            {
+            if (uniform.setter) {
                 uniform.setter.call(gl, uniform.location.webGLUniformLocation, uniform.value1, uniform.value2, uniform.value3, uniform.value4);
             }
         }
@@ -476,8 +451,7 @@ var WebGLShader = new Class({
      *
      * @return {boolean} `true` if the uniform exists, otherwise `false`.
      */
-    hasUniform: function (name)
-    {
+    hasUniform: function (name) {
         return this.uniforms.hasOwnProperty(name);
     },
 
@@ -491,12 +465,10 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    resetUniform: function (name)
-    {
+    resetUniform: function (name) {
         var uniform = this.uniforms[name];
 
-        if (uniform)
-        {
+        if (uniform) {
             uniform.value1 = null;
             uniform.value2 = null;
             uniform.value3 = null;
@@ -527,19 +499,15 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setUniform1: function (setter, name, value1, skipCheck)
-    {
+    setUniform1: function (setter, name, value1, skipCheck) {
         var uniform = this.uniforms[name];
 
-        if (!uniform)
-        {
+        if (!uniform) {
             return this;
         }
 
-        if (skipCheck || uniform.value1 !== value1)
-        {
-            if (!uniform.setter)
-            {
+        if (skipCheck || uniform.value1 !== value1) {
+            if (!uniform.setter) {
                 uniform.setter = setter;
             }
 
@@ -577,19 +545,15 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setUniform2: function (setter, name, value1, value2, skipCheck)
-    {
+    setUniform2: function (setter, name, value1, value2, skipCheck) {
         var uniform = this.uniforms[name];
 
-        if (!uniform)
-        {
+        if (!uniform) {
             return this;
         }
 
-        if (skipCheck || uniform.value1 !== value1 || uniform.value2 !== value2)
-        {
-            if (!uniform.setter)
-            {
+        if (skipCheck || uniform.value1 !== value1 || uniform.value2 !== value2) {
+            if (!uniform.setter) {
                 uniform.setter = setter;
             }
 
@@ -629,19 +593,15 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setUniform3: function (setter, name, value1, value2, value3, skipCheck)
-    {
+    setUniform3: function (setter, name, value1, value2, value3, skipCheck) {
         var uniform = this.uniforms[name];
 
-        if (!uniform)
-        {
+        if (!uniform) {
             return this;
         }
 
-        if (skipCheck || uniform.value1 !== value1 || uniform.value2 !== value2 || uniform.value3 !== value3)
-        {
-            if (!uniform.setter)
-            {
+        if (skipCheck || uniform.value1 !== value1 || uniform.value2 !== value2 || uniform.value3 !== value3) {
+            if (!uniform.setter) {
                 uniform.setter = setter;
             }
 
@@ -683,19 +643,15 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setUniform4: function (setter, name, value1, value2, value3, value4, skipCheck)
-    {
+    setUniform4: function (setter, name, value1, value2, value3, value4, skipCheck) {
         var uniform = this.uniforms[name];
 
-        if (!uniform)
-        {
+        if (!uniform) {
             return this;
         }
 
-        if (skipCheck || uniform.value1 !== value1 || uniform.value2 !== value2 || uniform.value3 !== value3 || uniform.value4 !== value4)
-        {
-            if (!uniform.setter)
-            {
+        if (skipCheck || uniform.value1 !== value1 || uniform.value2 !== value2 || uniform.value3 !== value3 || uniform.value4 !== value4) {
+            if (!uniform.setter) {
                 uniform.setter = setter;
             }
 
@@ -731,8 +687,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setBoolean: function (name, value)
-    {
+    setBoolean: function (name, value) {
         return this.setUniform1(this.gl.uniform1i, name, Number(value));
     },
 
@@ -753,8 +708,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set1f: function (name, x)
-    {
+    set1f: function (name, x) {
         return this.setUniform1(this.gl.uniform1f, name, x);
     },
 
@@ -776,8 +730,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set2f: function (name, x, y)
-    {
+    set2f: function (name, x, y) {
         return this.setUniform2(this.gl.uniform2f, name, x, y);
     },
 
@@ -800,8 +753,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set3f: function (name, x, y, z)
-    {
+    set3f: function (name, x, y, z) {
         return this.setUniform3(this.gl.uniform3f, name, x, y, z);
     },
 
@@ -825,8 +777,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set4f: function (name, x, y, z, w)
-    {
+    set4f: function (name, x, y, z, w) {
         return this.setUniform4(this.gl.uniform4f, name, x, y, z, w);
     },
 
@@ -847,8 +798,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set1fv: function (name, arr)
-    {
+    set1fv: function (name, arr) {
         return this.setUniform1(this.gl.uniform1fv, name, arr, true);
     },
 
@@ -869,8 +819,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set2fv: function (name, arr)
-    {
+    set2fv: function (name, arr) {
         return this.setUniform1(this.gl.uniform2fv, name, arr, true);
     },
 
@@ -891,8 +840,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set3fv: function (name, arr)
-    {
+    set3fv: function (name, arr) {
         return this.setUniform1(this.gl.uniform3fv, name, arr, true);
     },
 
@@ -913,8 +861,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set4fv: function (name, arr)
-    {
+    set4fv: function (name, arr) {
         return this.setUniform1(this.gl.uniform4fv, name, arr, true);
     },
 
@@ -935,8 +882,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set1iv: function (name, arr)
-    {
+    set1iv: function (name, arr) {
         return this.setUniform1(this.gl.uniform1iv, name, arr, true);
     },
 
@@ -957,8 +903,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set2iv: function (name, arr)
-    {
+    set2iv: function (name, arr) {
         return this.setUniform1(this.gl.uniform2iv, name, arr, true);
     },
 
@@ -979,8 +924,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set3iv: function (name, arr)
-    {
+    set3iv: function (name, arr) {
         return this.setUniform1(this.gl.uniform3iv, name, arr, true);
     },
 
@@ -1001,8 +945,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set4iv: function (name, arr)
-    {
+    set4iv: function (name, arr) {
         return this.setUniform1(this.gl.uniform4iv, name, arr, true);
     },
 
@@ -1023,8 +966,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set1i: function (name, x)
-    {
+    set1i: function (name, x) {
         return this.setUniform1(this.gl.uniform1i, name, x);
     },
 
@@ -1046,8 +988,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set2i: function (name, x, y)
-    {
+    set2i: function (name, x, y) {
         return this.setUniform2(this.gl.uniform2i, name, x, y);
     },
 
@@ -1070,8 +1011,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set3i: function (name, x, y, z)
-    {
+    set3i: function (name, x, y, z) {
         return this.setUniform3(this.gl.uniform3i, name, x, y, z);
     },
 
@@ -1095,8 +1035,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    set4i: function (name, x, y, z, w)
-    {
+    set4i: function (name, x, y, z, w) {
         return this.setUniform4(this.gl.uniform4i, name, x, y, z, w);
     },
 
@@ -1118,8 +1057,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setMatrix2fv: function (name, transpose, matrix)
-    {
+    setMatrix2fv: function (name, transpose, matrix) {
         return this.setUniform2(this.gl.uniformMatrix2fv, name, transpose, matrix, true);
     },
 
@@ -1141,8 +1079,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setMatrix3fv: function (name, transpose, matrix)
-    {
+    setMatrix3fv: function (name, transpose, matrix) {
         return this.setUniform2(this.gl.uniformMatrix3fv, name, transpose, matrix, true);
     },
 
@@ -1164,8 +1101,7 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    setMatrix4fv: function (name, transpose, matrix)
-    {
+    setMatrix4fv: function (name, transpose, matrix) {
         return this.setUniform2(this.gl.uniformMatrix4fv, name, transpose, matrix, true);
     },
 
@@ -1192,13 +1128,15 @@ var WebGLShader = new Class({
      *
      * @return {this} This WebGLShader instance.
      */
-    createProgram: function (vertSrc, fragSrc)
-    {
-        if (vertSrc === undefined) { vertSrc = this.vertSrc; }
-        if (fragSrc === undefined) { fragSrc = this.fragSrc; }
+    createProgram: function (vertSrc, fragSrc) {
+        if (vertSrc === undefined) {
+            vertSrc = this.vertSrc;
+        }
+        if (fragSrc === undefined) {
+            fragSrc = this.fragSrc;
+        }
 
-        if (this.program)
-        {
+        if (this.program) {
             this.renderer.deleteProgram(this.program);
         }
 
@@ -1220,17 +1158,14 @@ var WebGLShader = new Class({
      * @method Phaser.Renderer.WebGL.WebGLShader#destroy
      * @since 3.50.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         var renderer = this.renderer;
-        ArrayEach(this.uniforms, function (uniform)
-        {
+        ArrayEach(this.uniforms, function (uniform) {
             renderer.deleteUniformLocation(uniform.location);
         });
         this.uniforms = null;
 
-        ArrayEach(this.attributes, function (attrib)
-        {
+        ArrayEach(this.attributes, function (attrib) {
             renderer.deleteAttribLocation(attrib.location);
         });
         this.attributes = null;

@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Geom.Rectangle} The rectangle that was passed to this function with its coordinates floored.
  */
-var Floor = function (rect)
-{
+var Floor = function (rect) {
     rect.x = Math.floor(rect.x);
     rect.y = Math.floor(rect.y);
 

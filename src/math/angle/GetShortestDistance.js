@@ -21,8 +21,7 @@ var WrapAngle = require('./Wrap');
  *
  * @return {number} The distance in radians, in the range [-pi, pi).
  */
-var GetShortestDistance = function (angle1, angle2)
-{
+var GetShortestDistance = function (angle1, angle2) {
     return WrapAngle(angle2 - angle1);
 };
 

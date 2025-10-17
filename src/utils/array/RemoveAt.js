@@ -23,19 +23,18 @@ var SpliceOne = require('./SpliceOne');
  *
  * @return {*} The item that was removed.
  */
-var RemoveAt = function (array, index, callback, context)
-{
-    if (context === undefined) { context = array; }
+var RemoveAt = function (array, index, callback, context) {
+    if (context === undefined) {
+        context = array;
+    }
 
-    if (index < 0 || index > array.length - 1)
-    {
+    if (index < 0 || index > array.length - 1) {
         throw new Error('Index out of bounds');
     }
 
     var item = SpliceOne(array, index);
 
-    if (callback)
-    {
+    if (callback) {
         callback.call(context, item);
     }
 

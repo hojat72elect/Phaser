@@ -11,8 +11,7 @@ var NOOP = require('../../utils/NOOP');
 var Vector2 = require('../../math/Vector2');
 var CONST = require('../const/ORIENTATION_CONST');
 
-var TriangleToRectangle = function (triangle, rect)
-{
+var TriangleToRectangle = function (triangle, rect) {
     return Intersects.RectangleToTriangle(rect, triangle);
 };
 
@@ -23,7 +22,7 @@ var pointEnd = new Vector2();
 /**
  * Gets the tiles that overlap with the given shape in the given layer. The shape must be a Circle,
  * Line, Rectangle or Triangle. The shape should be in world coordinates.
- * 
+ *
  * **Note:** This method currently only works with orthogonal tilemap layers.
  *
  * @function Phaser.Tilemaps.Components.GetTilesWithinShape
@@ -36,33 +35,26 @@ var pointEnd = new Vector2();
  *
  * @return {Phaser.Tilemaps.Tile[]} Array of Tile objects.
  */
-var GetTilesWithinShape = function (shape, filteringOptions, camera, layer)
-{
-    if (layer.orientation !== CONST.ORTHOGONAL)
-    {
+var GetTilesWithinShape = function (shape, filteringOptions, camera, layer) {
+    if (layer.orientation !== CONST.ORTHOGONAL) {
         console.warn('GetTilesWithinShape only works with orthogonal tilemaps');
         return [];
     }
 
-    if (shape === undefined) { return []; }
+    if (shape === undefined) {
+        return [];
+    }
 
     // intersectTest is a function with parameters: shape, rect
     var intersectTest = NOOP;
 
-    if (shape instanceof Geom.Circle)
-    {
+    if (shape instanceof Geom.Circle) {
         intersectTest = Intersects.CircleToRectangle;
-    }
-    else if (shape instanceof Geom.Rectangle)
-    {
+    } else if (shape instanceof Geom.Rectangle) {
         intersectTest = Intersects.RectangleToRectangle;
-    }
-    else if (shape instanceof Geom.Triangle)
-    {
+    } else if (shape instanceof Geom.Triangle) {
         intersectTest = TriangleToRectangle;
-    }
-    else if (shape instanceof Geom.Line)
-    {
+    } else if (shape instanceof Geom.Line) {
         intersectTest = Intersects.LineToRectangle;
     }
 
@@ -88,8 +80,7 @@ var GetTilesWithinShape = function (shape, filteringOptions, camera, layer)
     var tileWidth = layer.tileWidth;
     var tileHeight = layer.tileHeight;
 
-    if (layer.tilemapLayer)
-    {
+    if (layer.tilemapLayer) {
         tileWidth *= layer.tilemapLayer.scaleX;
         tileHeight *= layer.tilemapLayer.scaleY;
     }
@@ -97,8 +88,7 @@ var GetTilesWithinShape = function (shape, filteringOptions, camera, layer)
     var results = [];
     var tileRect = new Geom.Rectangle(0, 0, tileWidth, tileHeight);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
+    for (var i = 0; i < tiles.length; i++) {
         var tile = tiles[i];
 
         layer.tilemapLayer.tileToWorldXY(tile.x, tile.y, point, camera);
@@ -106,8 +96,7 @@ var GetTilesWithinShape = function (shape, filteringOptions, camera, layer)
         tileRect.x = point.x;
         tileRect.y = point.y;
 
-        if (intersectTest(shape, tileRect))
-        {
+        if (intersectTest(shape, tileRect)) {
             results.push(tile);
         }
     }

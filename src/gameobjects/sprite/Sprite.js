@@ -75,50 +75,47 @@ var Sprite = new Class({
 
     initialize:
 
-    function Sprite (scene, x, y, texture, frame)
-    {
-        GameObject.call(this, scene, 'Sprite');
+        function Sprite(scene, x, y, texture, frame) {
+            GameObject.call(this, scene, 'Sprite');
 
-        /**
-         * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
-         *
-         * @name Phaser.GameObjects.Sprite#_crop
-         * @type {object}
-         * @private
-         * @since 3.11.0
-         */
-        this._crop = this.resetCropObject();
+            /**
+             * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
+             *
+             * @name Phaser.GameObjects.Sprite#_crop
+             * @type {object}
+             * @private
+             * @since 3.11.0
+             */
+            this._crop = this.resetCropObject();
 
-        /**
-         * The Animation State component of this Sprite.
-         *
-         * This component provides features to apply animations to this Sprite.
-         * It is responsible for playing, loading, queuing animations for later playback,
-         * mixing between animations and setting the current animation frame to this Sprite.
-         *
-         * @name Phaser.GameObjects.Sprite#anims
-         * @type {Phaser.Animations.AnimationState}
-         * @since 3.0.0
-         */
-        this.anims = new AnimationState(this);
+            /**
+             * The Animation State component of this Sprite.
+             *
+             * This component provides features to apply animations to this Sprite.
+             * It is responsible for playing, loading, queuing animations for later playback,
+             * mixing between animations and setting the current animation frame to this Sprite.
+             *
+             * @name Phaser.GameObjects.Sprite#anims
+             * @type {Phaser.Animations.AnimationState}
+             * @since 3.0.0
+             */
+            this.anims = new AnimationState(this);
 
-        this.setTexture(texture, frame);
-        this.setPosition(x, y);
-        this.setSizeToFrame();
-        this.setOriginFromFrame();
-        this.initPipeline();
-        this.initPostPipeline(true);
-    },
+            this.setTexture(texture, frame);
+            this.setPosition(x, y);
+            this.setSizeToFrame();
+            this.setOriginFromFrame();
+            this.initPipeline();
+            this.initPostPipeline(true);
+        },
 
     //  Overrides Game Object method
-    addedToScene: function ()
-    {
+    addedToScene: function () {
         this.scene.sys.updateList.add(this);
     },
 
     //  Overrides Game Object method
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
         this.scene.sys.updateList.remove(this);
     },
 
@@ -132,8 +129,7 @@ var Sprite = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
+    preUpdate: function (time, delta) {
         this.anims.update(time, delta);
     },
 
@@ -197,8 +193,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    play: function (key, ignoreIfPlaying)
-    {
+    play: function (key, ignoreIfPlaying) {
         return this.anims.play(key, ignoreIfPlaying);
     },
 
@@ -262,8 +257,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    playReverse: function (key, ignoreIfPlaying)
-    {
+    playReverse: function (key, ignoreIfPlaying) {
         return this.anims.playReverse(key, ignoreIfPlaying);
     },
 
@@ -292,8 +286,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    playAfterDelay: function (key, delay)
-    {
+    playAfterDelay: function (key, delay) {
         return this.anims.playAfterDelay(key, delay);
     },
 
@@ -319,8 +312,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    playAfterRepeat: function (key, repeatCount)
-    {
+    playAfterRepeat: function (key, repeatCount) {
         return this.anims.playAfterRepeat(key, repeatCount);
     },
 
@@ -351,8 +343,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    chain: function (key)
-    {
+    chain: function (key) {
         return this.anims.chain(key);
     },
 
@@ -369,8 +360,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    stop: function ()
-    {
+    stop: function () {
         return this.anims.stop();
     },
 
@@ -392,8 +382,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    stopAfterDelay: function (delay)
-    {
+    stopAfterDelay: function (delay) {
         return this.anims.stopAfterDelay(delay);
     },
 
@@ -415,8 +404,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    stopAfterRepeat: function (repeatCount)
-    {
+    stopAfterRepeat: function (repeatCount) {
         return this.anims.stopAfterRepeat(repeatCount);
     },
 
@@ -439,8 +427,7 @@ var Sprite = new Class({
      *
      * @return {this} This Game Object.
      */
-    stopOnFrame: function (frame)
-    {
+    stopOnFrame: function (frame) {
         return this.anims.stopOnFrame(frame);
     },
 
@@ -452,8 +439,7 @@ var Sprite = new Class({
      *
      * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Game Object.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return Components.ToJSON(this);
     },
 
@@ -464,8 +450,7 @@ var Sprite = new Class({
      * @private
      * @since 3.14.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.anims.destroy();
 
         this.anims = undefined;

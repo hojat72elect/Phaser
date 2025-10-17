@@ -1,10 +1,10 @@
 /**
-* The `Matter.Events` module contains methods to fire and listen to events on other objects.
-*
-* See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-*
-* @class Events
-*/
+ * The `Matter.Events` module contains methods to fire and listen to events on other objects.
+ *
+ * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+ *
+ * @class Events
+ */
 
 var Events = {};
 
@@ -12,7 +12,7 @@ module.exports = Events;
 
 var Common = require('./Common');
 
-(function() {
+(function () {
 
     /**
      * Subscribes a callback function to the given object's `eventName`.
@@ -21,7 +21,7 @@ var Common = require('./Common');
      * @param {string} eventNames
      * @param {function} callback
      */
-    Events.on = function(object, eventNames, callback) {
+    Events.on = function (object, eventNames, callback) {
         var names = eventNames.split(' '),
             name;
 
@@ -42,7 +42,7 @@ var Common = require('./Common');
      * @param {string} eventNames
      * @param {function} callback
      */
-    Events.off = function(object, eventNames, callback) {
+    Events.off = function (object, eventNames, callback) {
         if (!eventNames) {
             object.events = {};
             return;
@@ -78,14 +78,14 @@ var Common = require('./Common');
      * @param {string} eventNames
      * @param {} event
      */
-    Events.trigger = function(object, eventNames, event) {
+    Events.trigger = function (object, eventNames, event) {
         var names,
             name,
             callbacks,
             eventClone;
 
         var events = object.events;
-        
+
         if (events && Common.keys(events).length > 0) {
             if (!event)
                 event = {};

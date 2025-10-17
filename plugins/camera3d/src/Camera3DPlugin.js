@@ -47,29 +47,28 @@ var Camera3DPlugin = new Class({
 
     initialize:
 
-    function Camera3DPlugin (scene, pluginManager)
-    {
-        ScenePlugin.call(this, scene, pluginManager);
+        function Camera3DPlugin(scene, pluginManager) {
+            ScenePlugin.call(this, scene, pluginManager);
 
-        /**
-         * An Array of the Camera objects being managed by this Camera Manager.
-         *
-         * @name Camera3DPlugin#cameras
-         * @type {Phaser.Cameras.Sprite3D.Camera[]}
-         * @since 3.0.0
-         */
-        this.cameras = [];
+            /**
+             * An Array of the Camera objects being managed by this Camera Manager.
+             *
+             * @name Camera3DPlugin#cameras
+             * @type {Phaser.Cameras.Sprite3D.Camera[]}
+             * @since 3.0.0
+             */
+            this.cameras = [];
 
-        //  Register the Sprite3D Game Object
-        pluginManager.registerGameObject('sprite3D', this.sprite3DFactory, this.sprite3DCreator);
-    },
+            //  Register the Sprite3D Game Object
+            pluginManager.registerGameObject('sprite3D', this.sprite3DFactory, this.sprite3DCreator);
+        },
 
     /**
      * Creates a new Sprite3D Game Object and adds it to the Scene.
      *
      * @method Phaser.GameObjects.GameObjectFactory#sprite3D
      * @since 3.0.0
-     * 
+     *
      * @param {number} x - The horizontal position of this Game Object.
      * @param {number} y - The vertical position of this Game Object.
      * @param {number} z - The z position of this Game Object.
@@ -78,8 +77,7 @@ var Camera3DPlugin = new Class({
      *
      * @return {Phaser.GameObjects.Sprite3D} The Game Object that was created.
      */
-    sprite3DFactory: function (x, y, z, key, frame)
-    {
+    sprite3DFactory: function (x, y, z, key, frame) {
         var sprite = new Sprite3D(this.scene, x, y, z, key, frame);
 
         this.displayList.add(sprite.gameObject);
@@ -93,32 +91,32 @@ var Camera3DPlugin = new Class({
      *
      * @method Phaser.GameObjects.GameObjectCreator#sprite3D
      * @since 3.0.0
-     * 
+     *
      * @param {object} config - The configuration object this Game Object will use to create itself.
      * @param {boolean} [addToScene] - Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
      *
      * @return {Phaser.GameObjects.Sprite3D} The Game Object that was created.
      */
-    sprite3DCreator: function (config, addToScene)
-    {
-        if (config === undefined) { config = {}; }
+    sprite3DCreator: function (config, addToScene) {
+        if (config === undefined) {
+            config = {};
+        }
 
         var key = GetAdvancedValue(config, 'key', null);
         var frame = GetAdvancedValue(config, 'frame', null);
-    
+
         var sprite = new Sprite3D(this.scene, 0, 0, key, frame);
-    
-        if (addToScene !== undefined)
-        {
+
+        if (addToScene !== undefined) {
             config.add = addToScene;
         }
-    
+
         BuildGameObject(this.scene, sprite, config);
-    
+
         //  Sprite specific config options:
-    
+
         BuildGameObjectAnimation(sprite, config);
-    
+
         return sprite;
     },
 
@@ -130,8 +128,7 @@ var Camera3DPlugin = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.systems.events.once('destroy', this.destroy, this);
     },
 
@@ -144,8 +141,7 @@ var Camera3DPlugin = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.on('update', this.update, this);
@@ -164,8 +160,7 @@ var Camera3DPlugin = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */
-    add: function (fieldOfView, width, height)
-    {
+    add: function (fieldOfView, width, height) {
         return this.addPerspectiveCamera(fieldOfView, width, height);
     },
 
@@ -180,12 +175,15 @@ var Camera3DPlugin = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.OrthographicCamera} [description]
      */
-    addOrthographicCamera: function (width, height)
-    {
+    addOrthographicCamera: function (width, height) {
         var config = this.scene.sys.game.config;
 
-        if (width === undefined) { width = config.width; }
-        if (height === undefined) { height = config.height; }
+        if (width === undefined) {
+            width = config.width;
+        }
+        if (height === undefined) {
+            height = config.height;
+        }
 
         var camera = new OrthographicCamera(this.scene, width, height);
 
@@ -206,13 +204,18 @@ var Camera3DPlugin = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.PerspectiveCamera} [description]
      */
-    addPerspectiveCamera: function (fieldOfView, width, height)
-    {
+    addPerspectiveCamera: function (fieldOfView, width, height) {
         var config = this.scene.sys.game.config;
 
-        if (fieldOfView === undefined) { fieldOfView = 80; }
-        if (width === undefined) { width = config.width; }
-        if (height === undefined) { height = config.height; }
+        if (fieldOfView === undefined) {
+            fieldOfView = 80;
+        }
+        if (width === undefined) {
+            width = config.width;
+        }
+        if (height === undefined) {
+            height = config.height;
+        }
 
         var camera = new PerspectiveCamera(this.scene, fieldOfView, width, height);
 
@@ -231,12 +234,9 @@ var Camera3DPlugin = new Class({
      *
      * @return {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} [description]
      */
-    getCamera: function (name)
-    {
-        for (var i = 0; i < this.cameras.length; i++)
-        {
-            if (this.cameras[i].name === name)
-            {
+    getCamera: function (name) {
+        for (var i = 0; i < this.cameras.length; i++) {
+            if (this.cameras[i].name === name) {
                 return this.cameras[i];
             }
         }
@@ -252,12 +252,10 @@ var Camera3DPlugin = new Class({
      *
      * @param {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} camera - [description]
      */
-    removeCamera: function (camera)
-    {
+    removeCamera: function (camera) {
         var cameraIndex = this.cameras.indexOf(camera);
 
-        if (cameraIndex !== -1)
-        {
+        if (cameraIndex !== -1) {
             this.cameras.splice(cameraIndex, 1);
         }
     },
@@ -270,10 +268,8 @@ var Camera3DPlugin = new Class({
      *
      * @return {(Phaser.Cameras.Sprite3D.OrthographicCamera|Phaser.Cameras.Sprite3D.PerspectiveCamera)} [description]
      */
-    removeAll: function ()
-    {
-        while (this.cameras.length > 0)
-        {
+    removeAll: function () {
+        while (this.cameras.length > 0) {
             var camera = this.cameras.pop();
 
             camera.destroy();
@@ -291,10 +287,8 @@ var Camera3DPlugin = new Class({
      * @param {number} timestep - [description]
      * @param {number} delta - [description]
      */
-    update: function (timestep, delta)
-    {
-        for (var i = 0, l = this.cameras.length; i < l; ++i)
-        {
+    update: function (timestep, delta) {
+        for (var i = 0, l = this.cameras.length; i < l; ++i) {
             this.cameras[i].update(timestep, delta);
         }
     },
@@ -307,8 +301,7 @@ var Camera3DPlugin = new Class({
      * @private
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.off('update', this.update, this);
@@ -325,8 +318,7 @@ var Camera3DPlugin = new Class({
      * @private
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.pluginManager = null;

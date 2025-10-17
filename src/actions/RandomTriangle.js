@@ -8,7 +8,7 @@ var Random = require('../geom/triangle/Random');
 
 /**
  * Takes an array of Game Objects and positions them at random locations within the Triangle.
- * 
+ *
  * If you wish to pass a `Phaser.GameObjects.Triangle` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomTriangle
@@ -21,10 +21,8 @@ var Random = require('../geom/triangle/Random');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RandomTriangle = function (items, triangle)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var RandomTriangle = function (items, triangle) {
+    for (var i = 0; i < items.length; i++) {
         Random(triangle, items[i]);
     }
 

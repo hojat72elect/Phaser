@@ -19,8 +19,7 @@ var Triangle = require('./Triangle');
  *
  * @return {Phaser.Geom.Triangle} The Triangle object of the given size.
  */
-var BuildEquilateral = function (x, y, length)
-{
+var BuildEquilateral = function (x, y, length) {
     var height = length * (Math.sqrt(3) / 2);
 
     var x1 = x;

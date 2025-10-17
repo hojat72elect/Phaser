@@ -19,8 +19,7 @@
  *
  * @return {Phaser.Geom.Triangle} The rotated Triangle.
  */
-var RotateAroundXY = function (triangle, x, y, angle)
-{
+var RotateAroundXY = function (triangle, x, y, angle) {
     var c = Math.cos(angle);
     var s = Math.sin(angle);
 

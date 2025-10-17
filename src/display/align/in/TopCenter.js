@@ -24,10 +24,13 @@ var SetTop = require('../../bounds/SetTop');
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was aligned.
  */
-var TopCenter = function (gameObject, alignIn, offsetX, offsetY)
-{
-    if (offsetX === undefined) { offsetX = 0; }
-    if (offsetY === undefined) { offsetY = 0; }
+var TopCenter = function (gameObject, alignIn, offsetX, offsetY) {
+    if (offsetX === undefined) {
+        offsetX = 0;
+    }
+    if (offsetY === undefined) {
+        offsetY = 0;
+    }
 
     SetCenterX(gameObject, GetCenterX(alignIn) + offsetX);
     SetTop(gameObject, GetTop(alignIn) - offsetY);

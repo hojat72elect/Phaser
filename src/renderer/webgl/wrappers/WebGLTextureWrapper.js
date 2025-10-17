@@ -40,164 +40,163 @@ var WebGLTextureWrapper = new Class({
 
     initialize:
 
-    function WebGLTextureWrapper (gl, mipLevel, minFilter, magFilter, wrapT, wrapS, format, pixels, width, height, pma, forceSize, flipY)
-    {
-        /**
-         * The WebGLTexture that this wrapper is wrapping.
-         *
-         * This property could change at any time.
-         * Therefore, you should never store a reference to this value.
-         * It should only be passed directly to the WebGL API for drawing.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#webGLTexture
-         * @type {?WebGLTexture}
-         * @default null
-         * @since 3.80.0
-         */
-        this.webGLTexture = null;
+        function WebGLTextureWrapper(gl, mipLevel, minFilter, magFilter, wrapT, wrapS, format, pixels, width, height, pma, forceSize, flipY) {
+            /**
+             * The WebGLTexture that this wrapper is wrapping.
+             *
+             * This property could change at any time.
+             * Therefore, you should never store a reference to this value.
+             * It should only be passed directly to the WebGL API for drawing.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#webGLTexture
+             * @type {?WebGLTexture}
+             * @default null
+             * @since 3.80.0
+             */
+            this.webGLTexture = null;
 
-        /**
-         * Whether this is used as a RenderTexture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#isRenderTexture
-         * @type {boolean}
-         * @default false
-         * @since 3.80.0
-         */
-        this.isRenderTexture = false;
+            /**
+             * Whether this is used as a RenderTexture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#isRenderTexture
+             * @type {boolean}
+             * @default false
+             * @since 3.80.0
+             */
+            this.isRenderTexture = false;
 
-        /**
-         * The WebGL context this WebGLTexture belongs to.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.80.0
-         */
-        this.gl = gl;
+            /**
+             * The WebGL context this WebGLTexture belongs to.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.80.0
+             */
+            this.gl = gl;
 
-        /**
-         * Mip level of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#mipLevel
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.mipLevel = mipLevel;
+            /**
+             * Mip level of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#mipLevel
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.mipLevel = mipLevel;
 
-        /**
-         * Filtering of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#minFilter
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.minFilter = minFilter;
+            /**
+             * Filtering of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#minFilter
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.minFilter = minFilter;
 
-        /**
-         * Filtering of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#magFilter
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.magFilter = magFilter;
+            /**
+             * Filtering of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#magFilter
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.magFilter = magFilter;
 
-        /**
-         * Wrapping mode of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#wrapT
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.wrapT = wrapT;
+            /**
+             * Wrapping mode of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#wrapT
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.wrapT = wrapT;
 
-        /**
-         * Wrapping mode of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#wrapS
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.wrapS = wrapS;
+            /**
+             * Wrapping mode of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#wrapS
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.wrapS = wrapS;
 
-        /**
-         * Which format does the texture use.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#format
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.format = format;
+            /**
+             * Which format does the texture use.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#format
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.format = format;
 
-        /**
-         * Pixel data. This is the source data used to create the WebGLTexture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#pixels
-         * @type {?object}
-         * @since 3.80.0
-         */
-        this.pixels = pixels;
+            /**
+             * Pixel data. This is the source data used to create the WebGLTexture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#pixels
+             * @type {?object}
+             * @since 3.80.0
+             */
+            this.pixels = pixels;
 
-        /**
-         * Width of the texture in pixels.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#width
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.width = width;
+            /**
+             * Width of the texture in pixels.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#width
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.width = width;
 
-        /**
-         * Height of the texture in pixels.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#height
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.height = height;
+            /**
+             * Height of the texture in pixels.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#height
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.height = height;
 
-        /**
-         * Does the texture have premultiplied alpha?
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#pma
-         * @type {boolean}
-         * @since 3.80.0
-         */
-        this.pma = (pma === undefined || pma === null) ? true : pma;
+            /**
+             * Does the texture have premultiplied alpha?
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#pma
+             * @type {boolean}
+             * @since 3.80.0
+             */
+            this.pma = (pma === undefined || pma === null) ? true : pma;
 
-        /**
-         * Whether to use the width and height properties, regardless of pixel dimensions.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#forceSize
-         * @type {boolean}
-         * @since 3.80.0
-         */
-        this.forceSize = !!forceSize;
+            /**
+             * Whether to use the width and height properties, regardless of pixel dimensions.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#forceSize
+             * @type {boolean}
+             * @since 3.80.0
+             */
+            this.forceSize = !!forceSize;
 
-        /**
-         * Sets the `UNPACK_FLIP_Y_WEBGL` flag the WebGL Texture uses during upload.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#flipY
-         * @type {boolean}
-         * @since 3.80.0
-         */
-        this.flipY = !!flipY;
+            /**
+             * Sets the `UNPACK_FLIP_Y_WEBGL` flag the WebGL Texture uses during upload.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#flipY
+             * @type {boolean}
+             * @since 3.80.0
+             */
+            this.flipY = !!flipY;
 
-        /**
-         * Metadata for the SpectorJS tool, set if debug is enabled.
-         * You should set this via the `spectorMetadata` property,
-         * which will update the `__SPECTOR_Metadata` property on the WebGLTexture.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#__SPECTOR_Metadata
-         * @type {object}
-         * @private
-         * @since 3.80.0
-         */
-        // eslint-disable-next-line camelcase
-        this.__SPECTOR_Metadata = {};
+            /**
+             * Metadata for the SpectorJS tool, set if debug is enabled.
+             * You should set this via the `spectorMetadata` property,
+             * which will update the `__SPECTOR_Metadata` property on the WebGLTexture.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#__SPECTOR_Metadata
+             * @type {object}
+             * @private
+             * @since 3.80.0
+             */
+            // eslint-disable-next-line camelcase
+            this.__SPECTOR_Metadata = {};
 
-        this.createResource();
-    },
+            this.createResource();
+        },
 
     /**
      * Creates a WebGLTexture from the given parameters.
@@ -208,19 +207,16 @@ var WebGLTextureWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#createResource
      * @since 3.80.0
      */
-    createResource: function ()
-    {
+    createResource: function () {
         var gl = this.gl;
 
-        if (gl.isContextLost())
-        {
+        if (gl.isContextLost()) {
             // GL state can't be updated right now.
             // `createResource` will run when the context is restored.
             return;
         }
 
-        if (this.pixels instanceof WebGLTextureWrapper)
-        {
+        if (this.pixels instanceof WebGLTextureWrapper) {
             // Use the source texture directly.
             this.webGLTexture = this.pixels.webGLTexture;
             return;
@@ -256,10 +252,8 @@ var WebGLTextureWrapper = new Class({
      * @param {number} magFilter - The new magnification filter for the WebGLTexture.
      * @param {number} format - The new format for the WebGLTexture.
      */
-    update: function (source, width, height, flipY, wrapS, wrapT, minFilter, magFilter, format)
-    {
-        if (width === 0 || height === 0)
-        {
+    update: function (source, width, height, flipY, wrapS, wrapT, minFilter, magFilter, format) {
+        if (width === 0 || height === 0) {
             return;
         }
 
@@ -276,8 +270,7 @@ var WebGLTextureWrapper = new Class({
 
         var gl = this.gl;
 
-        if (gl.isContextLost())
-        {
+        if (gl.isContextLost()) {
             // GL state can't be updated right now.
             // `createResource` will run when the context is restored.
             return;
@@ -294,8 +287,7 @@ var WebGLTextureWrapper = new Class({
      * @since 3.85.0
      * @ignore
      */
-    _processTexture: function ()
-    {
+    _processTexture: function () {
         var gl = this.gl;
 
         gl.activeTexture(gl.TEXTURE0);
@@ -320,33 +312,24 @@ var WebGLTextureWrapper = new Class({
 
         var generateMipmap = false;
 
-        if (pixels === null || pixels === undefined)
-        {
+        if (pixels === null || pixels === undefined) {
             gl.texImage2D(gl.TEXTURE_2D, mipLevel, format, width, height, 0, format, gl.UNSIGNED_BYTE, null);
 
             generateMipmap = IsSizePowerOfTwo(width, height);
-        }
-        else if (pixels.compressed)
-        {
+        } else if (pixels.compressed) {
             width = pixels.width;
             height = pixels.height;
             generateMipmap = pixels.generateMipmap;
 
-            for (var i = 0; i < pixels.mipmaps.length; i++)
-            {
+            for (var i = 0; i < pixels.mipmaps.length; i++) {
                 gl.compressedTexImage2D(gl.TEXTURE_2D, i, pixels.internalFormat, pixels.mipmaps[i].width, pixels.mipmaps[i].height, 0, pixels.mipmaps[i].data);
             }
-        }
-        else if (pixels instanceof Uint8Array)
-        {
+        } else if (pixels instanceof Uint8Array) {
             gl.texImage2D(gl.TEXTURE_2D, mipLevel, format, width, height, 0, format, gl.UNSIGNED_BYTE, pixels);
 
             generateMipmap = IsSizePowerOfTwo(width, height);
-        }
-        else
-        {
-            if (!this.forceSize)
-            {
+        } else {
+            if (!this.forceSize) {
                 width = pixels.width;
                 height = pixels.height;
             }
@@ -356,18 +339,14 @@ var WebGLTextureWrapper = new Class({
             generateMipmap = IsSizePowerOfTwo(width, height);
         }
 
-        if (generateMipmap)
-        {
+        if (generateMipmap) {
             gl.generateMipmap(gl.TEXTURE_2D);
         }
 
         // Restore previous texture bind.
-        if (currentTexture)
-        {
+        if (currentTexture) {
             gl.bindTexture(gl.TEXTURE_2D, currentTexture);
-        }
-        else
-        {
+        } else {
             gl.bindTexture(gl.TEXTURE_2D, null);
         }
     },
@@ -382,18 +361,15 @@ var WebGLTextureWrapper = new Class({
      */
     spectorMetadata: {
 
-        get: function ()
-        {
+        get: function () {
             return this.__SPECTOR_Metadata;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             // eslint-disable-next-line camelcase
             this.__SPECTOR_Metadata = value;
 
-            if (!this.gl.isContextLost())
-            {
+            if (!this.gl.isContextLost()) {
                 // eslint-disable-next-line camelcase
                 this.webGLTexture.__SPECTOR_Metadata = value;
             }
@@ -406,17 +382,13 @@ var WebGLTextureWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#destroy
      * @since 3.80.0
      */
-    destroy: function ()
-    {
-        if (this.webGLTexture === null)
-        {
+    destroy: function () {
+        if (this.webGLTexture === null) {
             return;
         }
 
-        if (!this.gl.isContextLost())
-        {
-            if (!(this.pixels instanceof WebGLTextureWrapper))
-            {
+        if (!this.gl.isContextLost()) {
+            if (!(this.pixels instanceof WebGLTextureWrapper)) {
                 // Do not delete a texture that belongs to another wrapper.
                 this.gl.deleteTexture(this.webGLTexture);
             }

@@ -22,17 +22,17 @@ var Image = require('./Image');
  *
  * @return {Phaser.GameObjects.Image} The Game Object that was created.
  */
-GameObjectCreator.register('image', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('image', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
 
     var image = new Image(this.scene, 0, 0, key, frame);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

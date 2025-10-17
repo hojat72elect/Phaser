@@ -50,75 +50,67 @@ var SpineFile = new Class({
 
     initialize:
 
-    function SpineFile (loader, key, jsonURL, atlasURL, preMultipliedAlpha, jsonXhrSettings, atlasXhrSettings)
-    {
-        var i;
-        var json;
-        var atlas;
-        var files = [];
-        var cache = loader.cacheManager.custom.spine;
+        function SpineFile(loader, key, jsonURL, atlasURL, preMultipliedAlpha, jsonXhrSettings, atlasXhrSettings) {
+            var i;
+            var json;
+            var atlas;
+            var files = [];
+            var cache = loader.cacheManager.custom.spine;
 
-        //  atlas can be an array of atlas files, not just a single one
+            //  atlas can be an array of atlas files, not just a single one
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
+                key = GetFastValue(config, 'key');
 
-            json = new JSONFile(loader, {
-                key: key,
-                url: GetFastValue(config, 'jsonURL'),
-                extension: GetFastValue(config, 'jsonExtension', 'json'),
-                xhrSettings: GetFastValue(config, 'jsonXhrSettings')
-            });
-
-            atlasURL = GetFastValue(config, 'atlasURL');
-            preMultipliedAlpha = GetFastValue(config, 'preMultipliedAlpha');
-
-            if (!Array.isArray(atlasURL))
-            {
-                atlasURL = [ atlasURL ];
-            }
-
-            for (i = 0; i < atlasURL.length; i++)
-            {
-                atlas = new TextFile(loader, {
-                    key: key + '!' + i,
-                    url: atlasURL[i],
-                    extension: GetFastValue(config, 'atlasExtension', 'atlas'),
-                    xhrSettings: GetFastValue(config, 'atlasXhrSettings')
+                json = new JSONFile(loader, {
+                    key: key,
+                    url: GetFastValue(config, 'jsonURL'),
+                    extension: GetFastValue(config, 'jsonExtension', 'json'),
+                    xhrSettings: GetFastValue(config, 'jsonXhrSettings')
                 });
 
-                atlas.cache = cache;
+                atlasURL = GetFastValue(config, 'atlasURL');
+                preMultipliedAlpha = GetFastValue(config, 'preMultipliedAlpha');
 
-                files.push(atlas);
+                if (!Array.isArray(atlasURL)) {
+                    atlasURL = [atlasURL];
+                }
+
+                for (i = 0; i < atlasURL.length; i++) {
+                    atlas = new TextFile(loader, {
+                        key: key + '!' + i,
+                        url: atlasURL[i],
+                        extension: GetFastValue(config, 'atlasExtension', 'atlas'),
+                        xhrSettings: GetFastValue(config, 'atlasXhrSettings')
+                    });
+
+                    atlas.cache = cache;
+
+                    files.push(atlas);
+                }
+            } else {
+                json = new JSONFile(loader, key, jsonURL, jsonXhrSettings);
+
+                if (!Array.isArray(atlasURL)) {
+                    atlasURL = [atlasURL];
+                }
+
+                for (i = 0; i < atlasURL.length; i++) {
+                    atlas = new TextFile(loader, key + '!' + i, atlasURL[i], atlasXhrSettings);
+                    atlas.cache = cache;
+
+                    files.push(atlas);
+                }
             }
-        }
-        else
-        {
-            json = new JSONFile(loader, key, jsonURL, jsonXhrSettings);
 
-            if (!Array.isArray(atlasURL))
-            {
-                atlasURL = [ atlasURL ];
-            }
+            files.unshift(json);
 
-            for (i = 0; i < atlasURL.length; i++)
-            {
-                atlas = new TextFile(loader, key + '!' + i, atlasURL[i], atlasXhrSettings);
-                atlas.cache = cache;
+            MultiFile.call(this, loader, 'spine', key, files);
 
-                files.push(atlas);
-            }
-        }
-
-        files.unshift(json);
-
-        MultiFile.call(this, loader, 'spine', key, files);
-
-        this.config.preMultipliedAlpha = preMultipliedAlpha;
-    },
+            this.config.preMultipliedAlpha = preMultipliedAlpha;
+        },
 
     /**
      * Called by each File when it finishes loading.
@@ -128,28 +120,23 @@ var SpineFile = new Class({
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
-    onFileComplete: function (file)
-    {
+    onFileComplete: function (file) {
         var index = this.files.indexOf(file);
 
-        if (index !== -1)
-        {
+        if (index !== -1) {
             this.pending--;
 
-            if (file.type === 'text')
-            {
+            if (file.type === 'text') {
                 //  Inspect the data for the files to now load
                 var content = file.data.split('\n');
 
                 //  Extract the textures
-                var textures = [ content[0] ];
+                var textures = [content[0]];
 
-                for (var t = 0; t < content.length; t++)
-                {
+                for (var t = 0; t < content.length; t++) {
                     var line = content[t];
 
-                    if (line.trim() === '' && t < content.length - 1)
-                    {
+                    if (line.trim() === '' && t < content.length - 1) {
                         line = content[t + 1];
 
                         textures.push(line);
@@ -172,16 +159,14 @@ var SpineFile = new Class({
                 loader.setPath(path);
                 loader.setPrefix(prefix);
 
-                for (var i = 0; i < textures.length; i++)
-                {
+                for (var i = 0; i < textures.length; i++) {
                     var textureURL = textures[i];
 
                     var key = textureURL;
 
                     var image = new ImageFile(loader, key, textureURL, textureXhrSettings);
 
-                    if (!loader.keyExists(image))
-                    {
+                    if (!loader.keyExists(image)) {
                         this.addToMultiFile(image);
 
                         loader.addFile(image);
@@ -202,10 +187,8 @@ var SpineFile = new Class({
      * @method Phaser.Loader.FileTypes.SpineFile#addToCache
      * @since 3.19.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
             var fileJSON = this.files[0];
 
             fileJSON.addToCache();
@@ -216,26 +199,21 @@ var SpineFile = new Class({
             var preMultipliedAlpha = (this.config.preMultipliedAlpha) ? true : false;
             var textureManager = this.loader.textureManager;
 
-            for (var i = 1; i < this.files.length; i++)
-            {
+            for (var i = 1; i < this.files.length; i++) {
                 var file = this.files[i];
 
-                if (file.type === 'text')
-                {
+                if (file.type === 'text') {
                     atlasKey = file.key.replace(/![\d]$/, '');
 
                     atlasCache = file.cache;
 
                     combinedAtlasData = combinedAtlasData.concat(file.data);
-                }
-                else
-                {
+                } else {
                     var src = file.key.trim();
                     var pos = src.indexOf('!');
                     var key = src.substr(pos + 1);
 
-                    if (!textureManager.exists(key))
-                    {
+                    if (!textureManager.exists(key)) {
                         textureManager.addImage(key, file.data);
                     }
                 }
@@ -243,7 +221,7 @@ var SpineFile = new Class({
                 file.pendingDestroy();
             }
 
-            atlasCache.add(atlasKey, { preMultipliedAlpha: preMultipliedAlpha, data: combinedAtlasData, prefix: this.prefix });
+            atlasCache.add(atlasKey, {preMultipliedAlpha: preMultipliedAlpha, data: combinedAtlasData, prefix: this.prefix});
 
             this.complete = true;
         }

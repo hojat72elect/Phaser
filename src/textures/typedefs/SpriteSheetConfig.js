@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Textures.SpriteSheetConfig
  * @since 3.0.0
- * 
+ *
  * @property {number} frameWidth - The fixed width of each frame.
  * @property {number} [frameHeight] - The fixed height of each frame. If not set it will use the frameWidth as the height.
  * @property {number} [startFrame=0] - Skip a number of frames. Useful when there are multiple sprite sheets in one Texture.

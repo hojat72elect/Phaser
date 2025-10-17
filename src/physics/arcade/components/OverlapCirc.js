@@ -24,12 +24,10 @@ var CircleToRectangle = require('../../../geom/intersects/CircleToRectangle');
  *
  * @return {(Phaser.Physics.Arcade.Body[]|Phaser.Physics.Arcade.StaticBody[])} An array of bodies that overlap with the given area.
  */
-var OverlapCirc = function (world, x, y, radius, includeDynamic, includeStatic)
-{
+var OverlapCirc = function (world, x, y, radius, includeDynamic, includeStatic) {
     var bodiesInRect = OverlapRect(world, x - radius, y - radius, 2 * radius, 2 * radius, includeDynamic, includeStatic);
 
-    if (bodiesInRect.length === 0)
-    {
+    if (bodiesInRect.length === 0) {
         return bodiesInRect;
     }
 
@@ -37,21 +35,16 @@ var OverlapCirc = function (world, x, y, radius, includeDynamic, includeStatic)
     var circFromBody = new Circle();
     var bodiesInArea = [];
 
-    for (var i = 0; i < bodiesInRect.length; i++)
-    {
+    for (var i = 0; i < bodiesInRect.length; i++) {
         var body = bodiesInRect[i];
 
-        if (body.isCircle)
-        {
+        if (body.isCircle) {
             circFromBody.setTo(body.center.x, body.center.y, body.halfWidth);
 
-            if (CircleToCircle(area, circFromBody))
-            {
+            if (CircleToCircle(area, circFromBody)) {
                 bodiesInArea.push(body);
             }
-        }
-        else if (CircleToRectangle(area, body))
-        {
+        } else if (CircleToRectangle(area, body)) {
             bodiesInArea.push(body);
         }
     }

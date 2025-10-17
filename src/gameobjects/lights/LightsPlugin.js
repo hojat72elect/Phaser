@@ -47,33 +47,31 @@ var LightsPlugin = new Class({
 
     initialize:
 
-    function LightsPlugin (scene)
-    {
-        /**
-         * A reference to the Scene that this Lights Plugin belongs to.
-         *
-         * @name Phaser.GameObjects.LightsPlugin#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+        function LightsPlugin(scene) {
+            /**
+             * A reference to the Scene that this Lights Plugin belongs to.
+             *
+             * @name Phaser.GameObjects.LightsPlugin#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * A reference to the Scene's systems.
-         *
-         * @name Phaser.GameObjects.LightsPlugin#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * A reference to the Scene's systems.
+             *
+             * @name Phaser.GameObjects.LightsPlugin#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        if (!scene.sys.settings.isBooted)
-        {
-            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-        }
+            if (!scene.sys.settings.isBooted) {
+                scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+            }
 
-        LightsManager.call(this);
-    },
+            LightsManager.call(this);
+        },
 
     /**
      * Boot the Lights Plugin.
@@ -81,8 +79,7 @@ var LightsPlugin = new Class({
      * @method Phaser.GameObjects.LightsPlugin#boot
      * @since 3.0.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var eventEmitter = this.systems.events;
 
         eventEmitter.on(SceneEvents.SHUTDOWN, this.shutdown, this);
@@ -97,8 +94,7 @@ var LightsPlugin = new Class({
      * @method Phaser.GameObjects.LightsPlugin#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         this.scene = undefined;

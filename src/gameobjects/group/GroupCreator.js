@@ -19,8 +19,7 @@ var Group = require('./Group');
  *
  * @return {Phaser.GameObjects.Group} The Game Object that was created.
  */
-GameObjectCreator.register('group', function (config)
-{
+GameObjectCreator.register('group', function (config) {
     return new Group(this.scene, null, config);
 });
 

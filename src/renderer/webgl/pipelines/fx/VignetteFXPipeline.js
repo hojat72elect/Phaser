@@ -38,52 +38,50 @@ var VignetteFXPipeline = new Class({
 
     initialize:
 
-    function VignetteFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: VignetteFrag
-        });
+        function VignetteFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: VignetteFrag
+            });
 
-        /**
-         * The horizontal offset of the vignette effect. This value is normalized to the range 0 to 1.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = 0.5;
+            /**
+             * The horizontal offset of the vignette effect. This value is normalized to the range 0 to 1.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = 0.5;
 
-        /**
-         * The vertical offset of the vignette effect. This value is normalized to the range 0 to 1.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = 0.5;
+            /**
+             * The vertical offset of the vignette effect. This value is normalized to the range 0 to 1.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = 0.5;
 
-        /**
-         * The radius of the vignette effect. This value is normalized to the range 0 to 1.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#radius
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.radius = 0.5;
+            /**
+             * The radius of the vignette effect. This value is normalized to the range 0 to 1.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#radius
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.radius = 0.5;
 
-        /**
-         * The strength of the vignette effect.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#strength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.strength = 0.5;
-    },
+            /**
+             * The strength of the vignette effect.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#strength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.strength = 0.5;
+        },
 
-    onPreRender: function (controller, shader)
-    {
+    onPreRender: function (controller, shader) {
         controller = this.getController(controller);
 
         this.set1f('radius', controller.radius, shader);

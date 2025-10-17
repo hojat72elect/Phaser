@@ -23,8 +23,7 @@ var Acceleration = {
      *
      * @return {this} This Game Object.
      */
-    setAcceleration: function (x, y)
-    {
+    setAcceleration: function (x, y) {
         this.body.acceleration.set(x, y);
 
         return this;
@@ -40,8 +39,7 @@ var Acceleration = {
      *
      * @return {this} This Game Object.
      */
-    setAccelerationX: function (value)
-    {
+    setAccelerationX: function (value) {
         this.body.acceleration.x = value;
 
         return this;
@@ -57,8 +55,7 @@ var Acceleration = {
      *
      * @return {this} This Game Object.
      */
-    setAccelerationY: function (value)
-    {
+    setAccelerationY: function (value) {
         this.body.acceleration.y = value;
 
         return this;

@@ -18,9 +18,10 @@
  *
  * @return {Phaser.Geom.Rectangle} The rectangle object with updated `width` and `height` properties as calculated from the scaling factor(s).
  */
-var Scale = function (rect, x, y)
-{
-    if (y === undefined) { y = x; }
+var Scale = function (rect, x, y) {
+    if (y === undefined) {
+        y = x;
+    }
 
     rect.width *= x;
     rect.height *= y;

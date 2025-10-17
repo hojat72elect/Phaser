@@ -1,6 +1,8 @@
 # Updating Spine
 
-1. Checkout the Esoteric Spine Runtimes repo to the `spine-runtimes` folder: https://github.com/EsotericSoftware/spine-runtimes/ and make sure this is in the `plugins/spine` folder, not the `plugins/spine/src` folder.
+1. Checkout the Esoteric Spine Runtimes repo to the `spine-runtimes`
+   folder: https://github.com/EsotericSoftware/spine-runtimes/ and make sure this is in the `plugins/spine` folder, not
+   the `plugins/spine/src` folder.
 2. Run `npm i` inside the `spine-runtimes` folder.
 3. Add the `offscreencanvas` module: `npm i --save-dev @types/offscreencanvas`.
 4. Add the `source-map` module: `npm i --save-dev source-map`.

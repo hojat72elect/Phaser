@@ -42,70 +42,68 @@ var CircleFXPipeline = new Class({
 
     initialize:
 
-    function CircleFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: CircleFrag
-        });
+        function CircleFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: CircleFrag
+            });
 
-        /**
-         * The scale of the circle. The default scale is 1, which is a circle
-         * the full size of the underlying texture. Reduce this value to create
-         * a smaller circle, or increase it to create a circle that extends off
-         * the edges of the texture.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#scale
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.scale = 1;
+            /**
+             * The scale of the circle. The default scale is 1, which is a circle
+             * the full size of the underlying texture. Reduce this value to create
+             * a smaller circle, or increase it to create a circle that extends off
+             * the edges of the texture.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#scale
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.scale = 1;
 
-        /**
-         * The amount of feathering to apply to the circle from the ring,
-         * extending into the middle of the circle. The default is 0.005,
-         * which is a very low amount of feathering just making sure the ring
-         * has a smooth edge. Increase this amount to a value such as 0.5
-         * or 0.025 for larger amounts of feathering.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#feather
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.feather = 0.005;
+            /**
+             * The amount of feathering to apply to the circle from the ring,
+             * extending into the middle of the circle. The default is 0.005,
+             * which is a very low amount of feathering just making sure the ring
+             * has a smooth edge. Increase this amount to a value such as 0.5
+             * or 0.025 for larger amounts of feathering.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#feather
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.feather = 0.005;
 
-        /**
-         * The width of the circle around the texture, in pixels. This value
-         * doesn't factor in the feather, which can extend the thickness
-         * internally depending on its value.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#thickness
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.thickness = 8;
+            /**
+             * The width of the circle around the texture, in pixels. This value
+             * doesn't factor in the feather, which can extend the thickness
+             * internally depending on its value.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#thickness
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.thickness = 8;
 
-        /**
-         * The internal gl color array for the ring color.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 1, 0.2, 0.7 ];
+            /**
+             * The internal gl color array for the ring color.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [1, 0.2, 0.7];
 
-        /**
-         * The internal gl color array for the background color.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#glcolor2
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor2 = [ 1, 0, 0, 0.4 ];
-    },
+            /**
+             * The internal gl color array for the background color.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#glcolor2
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor2 = [1, 0, 0, 0.4];
+        },
 
-    onPreRender: function (controller, shader, width, height)
-    {
+    onPreRender: function (controller, shader, width, height) {
         controller = this.getController(controller);
 
         this.set1f('scale', controller.scale, shader);
@@ -114,14 +112,12 @@ var CircleFXPipeline = new Class({
         this.set3fv('color', controller.glcolor, shader);
         this.set4fv('backgroundColor', controller.glcolor2, shader);
 
-        if (width && height)
-        {
+        if (width && height) {
             this.set2f('resolution', width, height, shader);
         }
     },
 
-    onDraw: function (target)
-    {
+    onDraw: function (target) {
         this.set2f('resolution', target.width, target.height);
 
         this.bindAndDraw(target);

@@ -20,17 +20,17 @@ var ComponentToHex = require('./ComponentToHex');
  *
  * @return {string} A string-based representation of the color values.
  */
-var RGBToString = function (r, g, b, a, prefix)
-{
-    if (a === undefined) { a = 255; }
-    if (prefix === undefined) { prefix = '#'; }
-
-    if (prefix === '#')
-    {
-        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1, 7);
+var RGBToString = function (r, g, b, a, prefix) {
+    if (a === undefined) {
+        a = 255;
     }
-    else
-    {
+    if (prefix === undefined) {
+        prefix = '#';
+    }
+
+    if (prefix === '#') {
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1, 7);
+    } else {
         return '0x' + ComponentToHex(a) + ComponentToHex(r) + ComponentToHex(g) + ComponentToHex(b);
     }
 };

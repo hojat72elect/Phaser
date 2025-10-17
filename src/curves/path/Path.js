@@ -38,104 +38,104 @@ var Path = new Class({
 
     initialize:
 
-    function Path (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+        function Path(x, y) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
 
-        /**
-         * The name of this Path.
-         * Empty by default and never populated by Phaser, this is left for developers to use.
-         *
-         * @name Phaser.Curves.Path#name
-         * @type {string}
-         * @default ''
-         * @since 3.0.0
-         */
-        this.name = '';
-		
-        /**
-         * The default number of divisions within a curve.
-         *
-         * @name Phaser.Curves.Path#defaultDivisions
-         * @type {number}
-         * @default 12
-         * @since 3.70.0
-         */
-        this.defaultDivisions = 12;
+            /**
+             * The name of this Path.
+             * Empty by default and never populated by Phaser, this is left for developers to use.
+             *
+             * @name Phaser.Curves.Path#name
+             * @type {string}
+             * @default ''
+             * @since 3.0.0
+             */
+            this.name = '';
 
-        /**
-         * The list of Curves which make up this Path.
-         *
-         * @name Phaser.Curves.Path#curves
-         * @type {Phaser.Curves.Curve[]}
-         * @default []
-         * @since 3.0.0
-         */
-        this.curves = [];
+            /**
+             * The default number of divisions within a curve.
+             *
+             * @name Phaser.Curves.Path#defaultDivisions
+             * @type {number}
+             * @default 12
+             * @since 3.70.0
+             */
+            this.defaultDivisions = 12;
 
-        /**
-         * The cached length of each Curve in the Path.
-         *
-         * Used internally by {@link #getCurveLengths}.
-         *
-         * @name Phaser.Curves.Path#cacheLengths
-         * @type {number[]}
-         * @default []
-         * @since 3.0.0
-         */
-        this.cacheLengths = [];
+            /**
+             * The list of Curves which make up this Path.
+             *
+             * @name Phaser.Curves.Path#curves
+             * @type {Phaser.Curves.Curve[]}
+             * @default []
+             * @since 3.0.0
+             */
+            this.curves = [];
 
-        /**
-         * Automatically closes the path.
-         *
-         * @name Phaser.Curves.Path#autoClose
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.autoClose = false;
+            /**
+             * The cached length of each Curve in the Path.
+             *
+             * Used internally by {@link #getCurveLengths}.
+             *
+             * @name Phaser.Curves.Path#cacheLengths
+             * @type {number[]}
+             * @default []
+             * @since 3.0.0
+             */
+            this.cacheLengths = [];
 
-        /**
-         * The starting point of the Path.
-         *
-         * This is not necessarily equivalent to the starting point of the first Curve in the Path. In an empty Path, it's also treated as the ending point.
-         *
-         * @name Phaser.Curves.Path#startPoint
-         * @type {Phaser.Math.Vector2}
-         * @since 3.0.0
-         */
-        this.startPoint = new Vector2();
+            /**
+             * Automatically closes the path.
+             *
+             * @name Phaser.Curves.Path#autoClose
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.autoClose = false;
 
-        /**
-         * A temporary vector used to avoid object creation when adding a Curve to the Path.
-         *
-         * @name Phaser.Curves.Path#_tmpVec2A
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.0.0
-         */
-        this._tmpVec2A = new Vector2();
+            /**
+             * The starting point of the Path.
+             *
+             * This is not necessarily equivalent to the starting point of the first Curve in the Path. In an empty Path, it's also treated as the ending point.
+             *
+             * @name Phaser.Curves.Path#startPoint
+             * @type {Phaser.Math.Vector2}
+             * @since 3.0.0
+             */
+            this.startPoint = new Vector2();
 
-        /**
-         * A temporary vector used to avoid object creation when adding a Curve to the Path.
-         *
-         * @name Phaser.Curves.Path#_tmpVec2B
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.0.0
-         */
-        this._tmpVec2B = new Vector2();
+            /**
+             * A temporary vector used to avoid object creation when adding a Curve to the Path.
+             *
+             * @name Phaser.Curves.Path#_tmpVec2A
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.0.0
+             */
+            this._tmpVec2A = new Vector2();
 
-        if (typeof x === 'object')
-        {
-            this.fromJSON(x);
-        }
-        else
-        {
-            this.startPoint.set(x, y);
-        }
-    },
+            /**
+             * A temporary vector used to avoid object creation when adding a Curve to the Path.
+             *
+             * @name Phaser.Curves.Path#_tmpVec2B
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.0.0
+             */
+            this._tmpVec2B = new Vector2();
+
+            if (typeof x === 'object') {
+                this.fromJSON(x);
+            } else {
+                this.startPoint.set(x, y);
+            }
+        },
 
     /**
      * Appends a Curve to the end of the Path.
@@ -149,8 +149,7 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    add: function (curve)
-    {
+    add: function (curve) {
         this.curves.push(curve);
 
         return this;
@@ -168,9 +167,10 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    circleTo: function (radius, clockwise, rotation)
-    {
-        if (clockwise === undefined) { clockwise = false; }
+    circleTo: function (radius, clockwise, rotation) {
+        if (clockwise === undefined) {
+            clockwise = false;
+        }
 
         return this.ellipseTo(radius, radius, 0, 360, clockwise, rotation);
     },
@@ -187,14 +187,12 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    closePath: function ()
-    {
+    closePath: function () {
         // Add a line curve if start and end of lines are not connected
         var startPoint = this.curves[0].getPoint(0);
         var endPoint = this.curves[this.curves.length - 1].getPoint(1);
 
-        if (!startPoint.equals(endPoint))
-        {
+        if (!startPoint.equals(endPoint)) {
             //  This will copy a reference to the vectors, which probably isn't sensible
             this.curves.push(new LineCurve(endPoint, startPoint));
         }
@@ -217,22 +215,18 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    cubicBezierTo: function (x, y, control1X, control1Y, control2X, control2Y)
-    {
+    cubicBezierTo: function (x, y, control1X, control1Y, control2X, control2Y) {
         var p0 = this.getEndPoint();
         var p1;
         var p2;
         var p3;
 
         //  Assume they're all Vector2s
-        if (x instanceof Vector2)
-        {
+        if (x instanceof Vector2) {
             p1 = x;
             p2 = y;
             p3 = control1X;
-        }
-        else
-        {
+        } else {
             p1 = new Vector2(control1X, control1Y);
             p2 = new Vector2(control2X, control2Y);
             p3 = new Vector2(x, y);
@@ -256,20 +250,16 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    quadraticBezierTo: function (x, y, controlX, controlY)
-    {
+    quadraticBezierTo: function (x, y, controlX, controlY) {
         var p0 = this.getEndPoint();
         var p1;
         var p2;
 
         //  Assume they're all Vector2s
-        if (x instanceof Vector2)
-        {
+        if (x instanceof Vector2) {
             p1 = x;
             p2 = y;
-        }
-        else
-        {
+        } else {
             p1 = new Vector2(controlX, controlY);
             p2 = new Vector2(x, y);
         }
@@ -290,14 +280,11 @@ var Path = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object which was drawn to.
      */
-    draw: function (graphics, pointsTotal)
-    {
-        for (var i = 0; i < this.curves.length; i++)
-        {
+    draw: function (graphics, pointsTotal) {
+        for (var i = 0; i < this.curves.length; i++) {
             var curve = this.curves[i];
 
-            if (!curve.active)
-            {
+            if (!curve.active) {
                 continue;
             }
 
@@ -322,8 +309,7 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    ellipseTo: function (xRadius, yRadius, startAngle, endAngle, clockwise, rotation)
-    {
+    ellipseTo: function (xRadius, yRadius, startAngle, endAngle, clockwise, rotation) {
         var ellipse = new EllipseCurve(0, 0, xRadius, yRadius, startAngle, endAngle, clockwise, rotation);
 
         var end = this.getEndPoint(this._tmpVec2A);
@@ -351,8 +337,7 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    fromJSON: function (data)
-    {
+    fromJSON: function (data) {
         //  data should be an object matching the Path.toJSON object structure.
 
         this.curves = [];
@@ -362,12 +347,10 @@ var Path = new Class({
 
         this.autoClose = data.autoClose;
 
-        for (var i = 0; i < data.curves.length; i++)
-        {
+        for (var i = 0; i < data.curves.length; i++) {
             var curve = data.curves[i];
 
-            switch (curve.type)
-            {
+            switch (curve.type) {
                 case 'LineCurve':
                     this.add(LineCurve.fromJSON(curve));
                     break;
@@ -406,10 +389,13 @@ var Path = new Class({
      *
      * @return {Phaser.Geom.Rectangle} The modified `out` Rectangle, or a new Rectangle if none was provided.
      */
-    getBounds: function (out, accuracy)
-    {
-        if (out === undefined) { out = new Rectangle(); }
-        if (accuracy === undefined) { accuracy = 16; }
+    getBounds: function (out, accuracy) {
+        if (out === undefined) {
+            out = new Rectangle();
+        }
+        if (accuracy === undefined) {
+            accuracy = 16;
+        }
 
         out.x = Number.MAX_VALUE;
         out.y = Number.MAX_VALUE;
@@ -418,12 +404,10 @@ var Path = new Class({
         var maxRight = MATH_CONST.MIN_SAFE_INTEGER;
         var maxBottom = MATH_CONST.MIN_SAFE_INTEGER;
 
-        for (var i = 0; i < this.curves.length; i++)
-        {
+        for (var i = 0; i < this.curves.length; i++) {
             var curve = this.curves[i];
 
-            if (!curve.active)
-            {
+            if (!curve.active) {
                 continue;
             }
 
@@ -452,12 +436,10 @@ var Path = new Class({
      *
      * @return {number[]} An array containing the length of the Path at the end of each one of its Curves.
      */
-    getCurveLengths: function ()
-    {
+    getCurveLengths: function () {
         // We use cache values if curves and cache array are same length
 
-        if (this.cacheLengths.length === this.curves.length)
-        {
+        if (this.cacheLengths.length === this.curves.length) {
             return this.cacheLengths;
         }
 
@@ -467,8 +449,7 @@ var Path = new Class({
         var lengths = [];
         var sums = 0;
 
-        for (var i = 0; i < this.curves.length; i++)
-        {
+        for (var i = 0; i < this.curves.length; i++) {
             sums += this.curves[i].getLength();
 
             lengths.push(sums);
@@ -489,16 +470,13 @@ var Path = new Class({
      *
      * @return {?Phaser.Curves.Curve} The Curve that is part of this Path at a given location, or `null` if no curve was found.
      */
-    getCurveAt: function (t)
-    {
+    getCurveAt: function (t) {
         var d = t * this.getLength();
         var curveLengths = this.getCurveLengths();
         var i = 0;
 
-        while (i < curveLengths.length)
-        {
-            if (curveLengths[i] >= d)
-            {
+        while (i < curveLengths.length) {
+            if (curveLengths[i] >= d) {
                 return this.curves[i];
             }
 
@@ -522,16 +500,14 @@ var Path = new Class({
      *
      * @return {Phaser.Math.Vector2} The modified `out` object, or a new Vector2 if none was provided.
      */
-    getEndPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
-
-        if (this.curves.length > 0)
-        {
-            this.curves[this.curves.length - 1].getPoint(1, out);
+    getEndPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
         }
-        else
-        {
+
+        if (this.curves.length > 0) {
+            this.curves[this.curves.length - 1].getPoint(1, out);
+        } else {
             out.copy(this.startPoint);
         }
 
@@ -548,8 +524,7 @@ var Path = new Class({
      *
      * @return {number} The total length of the Path.
      */
-    getLength: function ()
-    {
+    getLength: function () {
         var lens = this.getCurveLengths();
 
         return lens[lens.length - 1];
@@ -579,18 +554,17 @@ var Path = new Class({
      *
      * @return {?Phaser.Math.Vector2} The modified `out` object, or a new `Vector2` if none was provided.
      */
-    getPoint: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getPoint: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         var d = t * this.getLength();
         var curveLengths = this.getCurveLengths();
         var i = 0;
 
-        while (i < curveLengths.length)
-        {
-            if (curveLengths[i] >= d)
-            {
+        while (i < curveLengths.length) {
+            if (curveLengths[i] >= d) {
                 var diff = curveLengths[i] - d;
                 var curve = this.curves[i];
 
@@ -618,23 +592,19 @@ var Path = new Class({
      *
      * @return {Phaser.Math.Vector2[]} An array of Vector2 objects that containing the points along the Path.
      */
-    getPoints: function (divisions, stepRate)
-    {
+    getPoints: function (divisions, stepRate) {
         //  If divisions and stepRate are falsey values (false, null, 0, undefined, etc) then we use the default divisions value.
-        if (!divisions && !stepRate)
-        {
+        if (!divisions && !stepRate) {
             divisions = this.defaultDivisions;
         }
 
         var points = [];
         var last;
 
-        for (var i = 0; i < this.curves.length; i++)
-        {
+        for (var i = 0; i < this.curves.length; i++) {
             var curve = this.curves[i];
 
-            if (!curve.active)
-            {
+            if (!curve.active) {
                 continue;
             }
 
@@ -642,12 +612,10 @@ var Path = new Class({
 
             var pts = curve.getPoints(resolution, stepRate);
 
-            for (var j = 0; j < pts.length; j++)
-            {
+            for (var j = 0; j < pts.length; j++) {
                 var point = pts[j];
 
-                if (last && last.equals(point))
-                {
+                if (last && last.equals(point)) {
                     // ensures no consecutive points are duplicates
                     continue;
                 }
@@ -658,8 +626,7 @@ var Path = new Class({
             }
         }
 
-        if (this.autoClose && points.length > 1 && !points[points.length - 1].equals(points[0]))
-        {
+        if (this.autoClose && points.length > 1 && !points[points.length - 1].equals(points[0])) {
             points.push(points[0]);
         }
 
@@ -680,9 +647,10 @@ var Path = new Class({
      *
      * @return {Phaser.Math.Vector2} The modified `out` object, or a new `Vector2` if none was provided.
      */
-    getRandomPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getRandomPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return this.getPoint(Math.random(), out);
     },
@@ -699,19 +667,18 @@ var Path = new Class({
      *
      * @return {Phaser.Math.Vector2[]} A list of the points this path was subdivided into.
      */
-    getSpacedPoints: function (divisions)
-    {
-        if (divisions === undefined) { divisions = 40; }
+    getSpacedPoints: function (divisions) {
+        if (divisions === undefined) {
+            divisions = 40;
+        }
 
         var points = [];
 
-        for (var i = 0; i <= divisions; i++)
-        {
+        for (var i = 0; i <= divisions; i++) {
             points.push(this.getPoint(i / divisions));
         }
 
-        if (this.autoClose)
-        {
+        if (this.autoClose) {
             points.push(points[0]);
         }
 
@@ -730,9 +697,10 @@ var Path = new Class({
      *
      * @return {Phaser.Math.Vector2} The modified `out` object, or a new Vector2 if none was provided.
      */
-    getStartPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getStartPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return out.copy(this.startPoint);
     },
@@ -750,18 +718,17 @@ var Path = new Class({
      *
      * @return {Phaser.Math.Vector2} Vector approximating the tangent line at the point t (delta +/- 0.0001)
      */
-    getTangent: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getTangent: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         var d = t * this.getLength();
         var curveLengths = this.getCurveLengths();
         var i = 0;
 
-        while (i < curveLengths.length)
-        {
-            if (curveLengths[i] >= d)
-            {
+        while (i < curveLengths.length) {
+            if (curveLengths[i] >= d) {
                 var diff = curveLengths[i] - d;
                 var curve = this.curves[i];
 
@@ -788,24 +755,18 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    lineTo: function (x, y)
-    {
-        if (x instanceof Vector2)
-        {
+    lineTo: function (x, y) {
+        if (x instanceof Vector2) {
             this._tmpVec2B.copy(x);
-        }
-        else if (typeof x === 'object')
-        {
+        } else if (typeof x === 'object') {
             this._tmpVec2B.setFromObject(x);
-        }
-        else
-        {
+        } else {
             this._tmpVec2B.set(x, y);
         }
 
         var end = this.getEndPoint(this._tmpVec2A);
 
-        return this.add(new LineCurve([ end.x, end.y, this._tmpVec2B.x, this._tmpVec2B.y ]));
+        return this.add(new LineCurve([end.x, end.y, this._tmpVec2B.x, this._tmpVec2B.y]));
     },
 
     /**
@@ -818,8 +779,7 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    splineTo: function (points)
-    {
+    splineTo: function (points) {
         points.unshift(this.getEndPoint());
 
         return this.add(new SplineCurve(points));
@@ -838,14 +798,10 @@ var Path = new Class({
      *
      * @return {this} This Path object.
      */
-    moveTo: function (x, y)
-    {
-        if (x instanceof Vector2)
-        {
+    moveTo: function (x, y) {
+        if (x instanceof Vector2) {
             return this.add(new MovePathTo(x.x, x.y));
-        }
-        else
-        {
+        } else {
             return this.add(new MovePathTo(x, y));
         }
     },
@@ -858,12 +814,10 @@ var Path = new Class({
      *
      * @return {Phaser.Types.Curves.JSONPath} The JSON object containing this path's data.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         var out = [];
 
-        for (var i = 0; i < this.curves.length; i++)
-        {
+        for (var i = 0; i < this.curves.length; i++) {
             out.push(this.curves[i].toJSON());
         }
 
@@ -882,8 +836,7 @@ var Path = new Class({
      * @method Phaser.Curves.Path#updateArcLengths
      * @since 3.0.0
      */
-    updateArcLengths: function ()
-    {
+    updateArcLengths: function () {
         this.cacheLengths = [];
 
         this.getCurveLengths();
@@ -895,8 +848,7 @@ var Path = new Class({
      * @method Phaser.Curves.Path#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.curves.length = 0;
         this.cacheLengths.length = 0;
         this.startPoint = undefined;
@@ -915,8 +867,7 @@ var Path = new Class({
  *
  * @return {Phaser.Curves.Path} The Path Object that was created.
  */
-GameObjectFactory.register('path', function (x, y)
-{
+GameObjectFactory.register('path', function (x, y) {
     return new Path(x, y);
 });
 

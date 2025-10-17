@@ -24,66 +24,65 @@ var Button = new Class({
 
     initialize:
 
-    function Button (pad, index)
-    {
-        /**
-         * A reference to the Gamepad that this Button belongs to.
-         *
-         * @name Phaser.Input.Gamepad.Button#pad
-         * @type {Phaser.Input.Gamepad.Gamepad}
-         * @since 3.0.0
-         */
-        this.pad = pad;
+        function Button(pad, index) {
+            /**
+             * A reference to the Gamepad that this Button belongs to.
+             *
+             * @name Phaser.Input.Gamepad.Button#pad
+             * @type {Phaser.Input.Gamepad.Gamepad}
+             * @since 3.0.0
+             */
+            this.pad = pad;
 
-        /**
-         * An event emitter to use to emit the button events.
-         *
-         * @name Phaser.Input.Gamepad.Button#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.0.0
-         */
-        this.events = pad.manager;
+            /**
+             * An event emitter to use to emit the button events.
+             *
+             * @name Phaser.Input.Gamepad.Button#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.0.0
+             */
+            this.events = pad.manager;
 
-        /**
-         * The index of this Button.
-         *
-         * @name Phaser.Input.Gamepad.Button#index
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.index = index;
+            /**
+             * The index of this Button.
+             *
+             * @name Phaser.Input.Gamepad.Button#index
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.index = index;
 
-        /**
-         * Between 0 and 1.
-         *
-         * @name Phaser.Input.Gamepad.Button#value
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.value = 0;
+            /**
+             * Between 0 and 1.
+             *
+             * @name Phaser.Input.Gamepad.Button#value
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.value = 0;
 
-        /**
-         * Can be set for analogue buttons to enable a 'pressure' threshold,
-         * before a button is considered as being 'pressed'.
-         *
-         * @name Phaser.Input.Gamepad.Button#threshold
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.threshold = 1;
+            /**
+             * Can be set for analogue buttons to enable a 'pressure' threshold,
+             * before a button is considered as being 'pressed'.
+             *
+             * @name Phaser.Input.Gamepad.Button#threshold
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.threshold = 1;
 
-        /**
-         * Is the Button being pressed down or not?
-         *
-         * @name Phaser.Input.Gamepad.Button#pressed
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.pressed = false;
-    },
+            /**
+             * Is the Button being pressed down or not?
+             *
+             * @name Phaser.Input.Gamepad.Button#pressed
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.pressed = false;
+        },
 
     /**
      * Internal update handler for this Button.
@@ -99,24 +98,19 @@ var Button = new Class({
      *
      * @param {number} value - The value of the button. Between 0 and 1.
      */
-    update: function (value)
-    {
+    update: function (value) {
         this.value = value;
 
         var pad = this.pad;
         var index = this.index;
 
-        if (value >= this.threshold)
-        {
-            if (!this.pressed)
-            {
+        if (value >= this.threshold) {
+            if (!this.pressed) {
                 this.pressed = true;
                 this.events.emit(Events.BUTTON_DOWN, pad, this, value);
                 this.pad.emit(Events.GAMEPAD_BUTTON_DOWN, index, value, this);
             }
-        }
-        else if (this.pressed)
-        {
+        } else if (this.pressed) {
             this.pressed = false;
             this.events.emit(Events.BUTTON_UP, pad, this, value);
             this.pad.emit(Events.GAMEPAD_BUTTON_UP, index, value, this);
@@ -129,8 +123,7 @@ var Button = new Class({
      * @method Phaser.Input.Gamepad.Button#destroy
      * @since 3.10.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.pad = null;
         this.events = null;
     }

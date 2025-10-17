@@ -35,178 +35,177 @@ var FXPipeline = new Class({
 
     initialize:
 
-    function FXPipeline (config)
-    {
-        //  This order is fixed to match with the FX_CONST. Do not adjust.
-        config.shaders = [
-            Utils.setGlowQuality(Shaders.FXGlowFrag, config.game),
-            Shaders.FXShadowFrag,
-            Shaders.FXPixelateFrag,
-            Shaders.FXVignetteFrag,
-            Shaders.FXShineFrag,
-            Shaders.FXBlurLowFrag,
-            Shaders.FXBlurMedFrag,
-            Shaders.FXBlurHighFrag,
-            Shaders.FXGradientFrag,
-            Shaders.FXBloomFrag,
-            Shaders.ColorMatrixFrag,
-            Shaders.FXCircleFrag,
-            Shaders.FXBarrelFrag,
-            Shaders.FXDisplacementFrag,
-            Shaders.FXWipeFrag,
-            Shaders.FXBokehFrag
-        ];
+        function FXPipeline(config) {
+            //  This order is fixed to match with the FX_CONST. Do not adjust.
+            config.shaders = [
+                Utils.setGlowQuality(Shaders.FXGlowFrag, config.game),
+                Shaders.FXShadowFrag,
+                Shaders.FXPixelateFrag,
+                Shaders.FXVignetteFrag,
+                Shaders.FXShineFrag,
+                Shaders.FXBlurLowFrag,
+                Shaders.FXBlurMedFrag,
+                Shaders.FXBlurHighFrag,
+                Shaders.FXGradientFrag,
+                Shaders.FXBloomFrag,
+                Shaders.ColorMatrixFrag,
+                Shaders.FXCircleFrag,
+                Shaders.FXBarrelFrag,
+                Shaders.FXDisplacementFrag,
+                Shaders.FXWipeFrag,
+                Shaders.FXBokehFrag
+            ];
 
-        PreFXPipeline.call(this, config);
+            PreFXPipeline.call(this, config);
 
-        var game = this.game;
+            var game = this.game;
 
-        /**
-         * An instance of the Glow Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#glow
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline}
-         * @since 3.60.0
-         */
-        this.glow = new FX.Glow(game);
+            /**
+             * An instance of the Glow Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#glow
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline}
+             * @since 3.60.0
+             */
+            this.glow = new FX.Glow(game);
 
-        /**
-         * An instance of the Shadow Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#shadow
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline}
-         * @since 3.60.0
-         */
-        this.shadow = new FX.Shadow(game);
+            /**
+             * An instance of the Shadow Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#shadow
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline}
+             * @since 3.60.0
+             */
+            this.shadow = new FX.Shadow(game);
 
-        /**
-         * An instance of the Pixelate Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#pixelate
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.PixelateFXPipeline}
-         * @since 3.60.0
-         */
-        this.pixelate = new FX.Pixelate(game);
+            /**
+             * An instance of the Pixelate Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#pixelate
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.PixelateFXPipeline}
+             * @since 3.60.0
+             */
+            this.pixelate = new FX.Pixelate(game);
 
-        /**
-         * An instance of the Vignette Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#vignette
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline}
-         * @since 3.60.0
-         */
-        this.vignette = new FX.Vignette(game);
+            /**
+             * An instance of the Vignette Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#vignette
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline}
+             * @since 3.60.0
+             */
+            this.vignette = new FX.Vignette(game);
 
-        /**
-         * An instance of the Shine Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#shine
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline}
-         * @since 3.60.0
-         */
-        this.shine = new FX.Shine(game);
+            /**
+             * An instance of the Shine Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#shine
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline}
+             * @since 3.60.0
+             */
+            this.shine = new FX.Shine(game);
 
-        /**
-         * An instance of the Gradient Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#gradient
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline}
-         * @since 3.60.0
-         */
-        this.gradient = new FX.Gradient(game);
+            /**
+             * An instance of the Gradient Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#gradient
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline}
+             * @since 3.60.0
+             */
+            this.gradient = new FX.Gradient(game);
 
-        /**
-         * An instance of the Circle Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#circle
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline}
-         * @since 3.60.0
-         */
-        this.circle = new FX.Circle(game);
+            /**
+             * An instance of the Circle Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#circle
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline}
+             * @since 3.60.0
+             */
+            this.circle = new FX.Circle(game);
 
-        /**
-         * An instance of the Barrel Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#barrel
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.BarrelFXPipeline}
-         * @since 3.60.0
-         */
-        this.barrel = new FX.Barrel(game);
+            /**
+             * An instance of the Barrel Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#barrel
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.BarrelFXPipeline}
+             * @since 3.60.0
+             */
+            this.barrel = new FX.Barrel(game);
 
-        /**
-         * An instance of the Wipe Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#wipe
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline}
-         * @since 3.60.0
-         */
-        this.wipe = new FX.Wipe(game);
+            /**
+             * An instance of the Wipe Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#wipe
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline}
+             * @since 3.60.0
+             */
+            this.wipe = new FX.Wipe(game);
 
-        /**
-         * An instance of the Bokeh Post FX Pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#bokeh
-         * @type {Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline}
-         * @since 3.60.0
-         */
-        this.bokeh = new FX.Bokeh(game);
+            /**
+             * An instance of the Bokeh Post FX Pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#bokeh
+             * @type {Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline}
+             * @since 3.60.0
+             */
+            this.bokeh = new FX.Bokeh(game);
 
-        //  This array is intentionally sparse. Do not adjust.
-        var fxHandlers = [];
+            //  This array is intentionally sparse. Do not adjust.
+            var fxHandlers = [];
 
-        fxHandlers[FX_CONST.GLOW] = this.onGlow;
-        fxHandlers[FX_CONST.SHADOW] = this.onShadow;
-        fxHandlers[FX_CONST.PIXELATE] = this.onPixelate;
-        fxHandlers[FX_CONST.VIGNETTE] = this.onVignette;
-        fxHandlers[FX_CONST.SHINE] = this.onShine;
-        fxHandlers[FX_CONST.BLUR] = this.onBlur;
-        fxHandlers[FX_CONST.GRADIENT] = this.onGradient;
-        fxHandlers[FX_CONST.BLOOM] = this.onBloom;
-        fxHandlers[FX_CONST.COLOR_MATRIX] = this.onColorMatrix;
-        fxHandlers[FX_CONST.CIRCLE] = this.onCircle;
-        fxHandlers[FX_CONST.BARREL] = this.onBarrel;
-        fxHandlers[FX_CONST.DISPLACEMENT] = this.onDisplacement;
-        fxHandlers[FX_CONST.WIPE] = this.onWipe;
-        fxHandlers[FX_CONST.BOKEH] = this.onBokeh;
+            fxHandlers[FX_CONST.GLOW] = this.onGlow;
+            fxHandlers[FX_CONST.SHADOW] = this.onShadow;
+            fxHandlers[FX_CONST.PIXELATE] = this.onPixelate;
+            fxHandlers[FX_CONST.VIGNETTE] = this.onVignette;
+            fxHandlers[FX_CONST.SHINE] = this.onShine;
+            fxHandlers[FX_CONST.BLUR] = this.onBlur;
+            fxHandlers[FX_CONST.GRADIENT] = this.onGradient;
+            fxHandlers[FX_CONST.BLOOM] = this.onBloom;
+            fxHandlers[FX_CONST.COLOR_MATRIX] = this.onColorMatrix;
+            fxHandlers[FX_CONST.CIRCLE] = this.onCircle;
+            fxHandlers[FX_CONST.BARREL] = this.onBarrel;
+            fxHandlers[FX_CONST.DISPLACEMENT] = this.onDisplacement;
+            fxHandlers[FX_CONST.WIPE] = this.onWipe;
+            fxHandlers[FX_CONST.BOKEH] = this.onBokeh;
 
-        /**
-         * An array containing references to the methods that map to the FX CONSTs.
-         *
-         * This array is intentionally sparse. Do not adjust.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#fxHandlers
-         * @type {function[]}
-         * @since 3.60.0
-         */
-        this.fxHandlers = fxHandlers;
+            /**
+             * An array containing references to the methods that map to the FX CONSTs.
+             *
+             * This array is intentionally sparse. Do not adjust.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#fxHandlers
+             * @type {function[]}
+             * @since 3.60.0
+             */
+            this.fxHandlers = fxHandlers;
 
-        /**
-         * The source Render Target.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#source
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.60.0
-         */
-        this.source;
+            /**
+             * The source Render Target.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#source
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.60.0
+             */
+            this.source;
 
-        /**
-         * The target Render Target.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#target
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.60.0
-         */
-        this.target;
+            /**
+             * The target Render Target.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#target
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.60.0
+             */
+            this.target;
 
-        /**
-         * The swap Render Target.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#swap
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.60.0
-         */
-        this.swap;
-    },
+            /**
+             * The swap Render Target.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FXPipeline#swap
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.60.0
+             */
+            this.swap;
+        },
 
     /**
      * Takes the currently bound Game Object and runs all of its pre-render effects,
@@ -221,8 +220,7 @@ var FXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} target2 - The target Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target3 - The swap Render Target.
      */
-    onDraw: function (target1, target2, target3)
-    {
+    onDraw: function (target1, target2, target3) {
         this.source = target1;
         this.target = target2;
         this.swap = target3;
@@ -233,16 +231,13 @@ var FXPipeline = new Class({
         var sprite = this.tempSprite;
         var handlers = this.fxHandlers;
 
-        if (sprite && sprite.preFX)
-        {
+        if (sprite && sprite.preFX) {
             var fx = sprite.preFX.list;
 
-            for (var i = 0; i < fx.length; i++)
-            {
+            for (var i = 0; i < fx.length; i++) {
                 var controller = fx[i];
 
-                if (controller.active)
-                {
+                if (controller.active) {
                     handlers[controller.type].call(this, controller, width, height);
                 }
             }
@@ -259,8 +254,7 @@ var FXPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.FXPipeline#runDraw
      * @since 3.60.0
      */
-    runDraw: function ()
-    {
+    runDraw: function () {
         var source = this.source;
         var target = this.target;
 
@@ -280,8 +274,7 @@ var FXPipeline = new Class({
      * @param {number} width - The width of the target.
      * @param {number} height - The height of the target.
      */
-    onGlow: function (config, width, height)
-    {
+    onGlow: function (config, width, height) {
         var shader = this.shaders[FX_CONST.GLOW];
 
         this.setShader(shader);
@@ -299,8 +292,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Shadow} config - The Shadow FX controller.
      */
-    onShadow: function (config)
-    {
+    onShadow: function (config) {
         var shader = this.shaders[FX_CONST.SHADOW];
 
         this.setShader(shader);
@@ -320,8 +312,7 @@ var FXPipeline = new Class({
      * @param {number} width - The width of the target.
      * @param {number} height - The height of the target.
      */
-    onPixelate: function (config, width, height)
-    {
+    onPixelate: function (config, width, height) {
         var shader = this.shaders[FX_CONST.PIXELATE];
 
         this.setShader(shader);
@@ -339,8 +330,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Vignette} config - The Vignette FX controller.
      */
-    onVignette: function (config)
-    {
+    onVignette: function (config) {
         var shader = this.shaders[FX_CONST.VIGNETTE];
 
         this.setShader(shader);
@@ -360,8 +350,7 @@ var FXPipeline = new Class({
      * @param {number} width - The width of the target.
      * @param {number} height - The height of the target.
      */
-    onShine: function (config, width, height)
-    {
+    onShine: function (config, width, height) {
         var shader = this.shaders[FX_CONST.SHINE];
 
         this.setShader(shader);
@@ -381,8 +370,7 @@ var FXPipeline = new Class({
      * @param {number} width - The width of the target.
      * @param {number} height - The height of the target.
      */
-    onBlur: function (config, width, height)
-    {
+    onBlur: function (config, width, height) {
         var quality = GetFastValue(config, 'quality');
 
         var shader = this.shaders[FX_CONST.BLUR + quality];
@@ -398,8 +386,7 @@ var FXPipeline = new Class({
         var y = GetFastValue(config, 'y');
         var steps = GetFastValue(config, 'steps');
 
-        for (var i = 0; i < steps; i++)
-        {
+        for (var i = 0; i < steps; i++) {
             this.set2f('offset', x, 0);
             this.runDraw();
 
@@ -416,8 +403,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Gradient} config - The Gradient FX controller.
      */
-    onGradient: function (config)
-    {
+    onGradient: function (config) {
         var shader = this.shaders[FX_CONST.GRADIENT];
 
         this.setShader(shader);
@@ -437,8 +423,7 @@ var FXPipeline = new Class({
      * @param {number} width - The width of the target.
      * @param {number} height - The height of the target.
      */
-    onBloom: function (config, width, height)
-    {
+    onBloom: function (config, width, height) {
         var shader = this.shaders[FX_CONST.BLOOM];
 
         this.copySprite(this.source, this.swap);
@@ -453,8 +438,7 @@ var FXPipeline = new Class({
         var y = (2 / height) * GetFastValue(config, 'offsetY');
         var steps = GetFastValue(config, 'steps');
 
-        for (var i = 0; i < steps; i++)
-        {
+        for (var i = 0; i < steps; i++) {
             this.set2f('offset', x, 0);
             this.runDraw();
 
@@ -474,8 +458,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.ColorMatrix} config - The ColorMatrix FX controller.
      */
-    onColorMatrix: function (config)
-    {
+    onColorMatrix: function (config) {
         this.setShader(this.colorMatrixShader);
 
         this.set1fv('uColorMatrix', config.getData());
@@ -494,8 +477,7 @@ var FXPipeline = new Class({
      * @param {number} width - The width of the target.
      * @param {number} height - The height of the target.
      */
-    onCircle: function (config, width, height)
-    {
+    onCircle: function (config, width, height) {
         var shader = this.shaders[FX_CONST.CIRCLE];
 
         this.setShader(shader);
@@ -513,8 +495,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Barrel} config - The Barrel FX controller.
      */
-    onBarrel: function (config)
-    {
+    onBarrel: function (config) {
         var shader = this.shaders[FX_CONST.BARREL];
 
         this.setShader(shader);
@@ -532,8 +513,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Displacement} config - The Displacement FX controller.
      */
-    onDisplacement: function (config)
-    {
+    onDisplacement: function (config) {
         this.setShader(this.shaders[FX_CONST.DISPLACEMENT]);
 
         this.set1i('uDisplacementSampler', 1);
@@ -552,8 +532,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Wipe} config - The Wipe FX controller.
      */
-    onWipe: function (config)
-    {
+    onWipe: function (config) {
         var shader = this.shaders[FX_CONST.WIPE];
 
         this.setShader(shader);
@@ -571,8 +550,7 @@ var FXPipeline = new Class({
      *
      * @param {Phaser.FX.Bokeh} config - The Bokeh FX controller.
      */
-    onBokeh: function (config, width, height)
-    {
+    onBokeh: function (config, width, height) {
         var shader = this.shaders[FX_CONST.BOKEH];
 
         this.setShader(shader);
@@ -590,8 +568,7 @@ var FXPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.glow.destroy();
         this.shadow.destroy();
         this.pixelate.destroy();

@@ -21,8 +21,7 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {number} The length of the line.
  */
-function GetLength (x1, y1, x2, y2)
-{
+function GetLength(x1, y1, x2, y2) {
     var x = x1 - x2;
     var y = y1 - y2;
     var magnitude = (x * x) + (y * y);
@@ -53,56 +52,55 @@ var Face = new Class({
 
     initialize:
 
-    function Face (vertex1, vertex2, vertex3)
-    {
-        /**
-         * The first vertex in this Face.
-         *
-         * @name Phaser.Geom.Mesh.Face#vertex1
-         * @type {Phaser.Geom.Mesh.Vertex}
-         * @since 3.50.0
-         */
-        this.vertex1 = vertex1;
+        function Face(vertex1, vertex2, vertex3) {
+            /**
+             * The first vertex in this Face.
+             *
+             * @name Phaser.Geom.Mesh.Face#vertex1
+             * @type {Phaser.Geom.Mesh.Vertex}
+             * @since 3.50.0
+             */
+            this.vertex1 = vertex1;
 
-        /**
-         * The second vertex in this Face.
-         *
-         * @name Phaser.Geom.Mesh.Face#vertex2
-         * @type {Phaser.Geom.Mesh.Vertex}
-         * @since 3.50.0
-         */
-        this.vertex2 = vertex2;
+            /**
+             * The second vertex in this Face.
+             *
+             * @name Phaser.Geom.Mesh.Face#vertex2
+             * @type {Phaser.Geom.Mesh.Vertex}
+             * @since 3.50.0
+             */
+            this.vertex2 = vertex2;
 
-        /**
-         * The third vertex in this Face.
-         *
-         * @name Phaser.Geom.Mesh.Face#vertex3
-         * @type {Phaser.Geom.Mesh.Vertex}
-         * @since 3.50.0
-         */
-        this.vertex3 = vertex3;
+            /**
+             * The third vertex in this Face.
+             *
+             * @name Phaser.Geom.Mesh.Face#vertex3
+             * @type {Phaser.Geom.Mesh.Vertex}
+             * @since 3.50.0
+             */
+            this.vertex3 = vertex3;
 
-        /**
-         * The bounds of this Face.
-         *
-         * Be sure to call the `Face.updateBounds` method _before_ using this property.
-         *
-         * @name Phaser.Geom.Mesh.Face#bounds
-         * @type {Phaser.Geom.Rectangle}
-         * @since 3.50.0
-         */
-        this.bounds = new Rectangle();
+            /**
+             * The bounds of this Face.
+             *
+             * Be sure to call the `Face.updateBounds` method _before_ using this property.
+             *
+             * @name Phaser.Geom.Mesh.Face#bounds
+             * @type {Phaser.Geom.Rectangle}
+             * @since 3.50.0
+             */
+            this.bounds = new Rectangle();
 
-        /**
-         * The face inCenter. Do not access directly, instead use the `getInCenter` method.
-         *
-         * @name Phaser.Geom.Mesh.Face#_inCenter
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.50.0
-         */
-        this._inCenter = new Vector2();
-    },
+            /**
+             * The face inCenter. Do not access directly, instead use the `getInCenter` method.
+             *
+             * @name Phaser.Geom.Mesh.Face#_inCenter
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.50.0
+             */
+            this._inCenter = new Vector2();
+        },
 
     /**
      * Calculates and returns the in-center position of this Face.
@@ -114,9 +112,10 @@ var Face = new Class({
      *
      * @return {Phaser.Math.Vector2} A Vector2 containing the in center position of this Face.
      */
-    getInCenter: function (local)
-    {
-        if (local === undefined) { local = true; }
+    getInCenter: function (local) {
+        if (local === undefined) {
+            local = true;
+        }
 
         var v1 = this.vertex1;
         var v2 = this.vertex2;
@@ -131,8 +130,7 @@ var Face = new Class({
         var v3x;
         var v3y;
 
-        if (local)
-        {
+        if (local) {
             v1x = v1.x;
             v1y = v1.y;
 
@@ -141,9 +139,7 @@ var Face = new Class({
 
             v3x = v3.x;
             v3y = v3.y;
-        }
-        else
-        {
+        } else {
             v1x = v1.vx;
             v1y = v1.vy;
 
@@ -181,8 +177,7 @@ var Face = new Class({
      *
      * @return {boolean} `true` if the coordinates lay within this Face, otherwise `false`.
      */
-    contains: function (x, y, calcMatrix)
-    {
+    contains: function (x, y, calcMatrix) {
         var vertex1 = this.vertex1;
         var vertex2 = this.vertex2;
         var vertex3 = this.vertex3;
@@ -196,8 +191,7 @@ var Face = new Class({
         var v3x = vertex3.vx;
         var v3y = vertex3.vy;
 
-        if (calcMatrix)
-        {
+        if (calcMatrix) {
             var a = calcMatrix.a;
             var b = calcMatrix.b;
             var c = calcMatrix.c;
@@ -251,8 +245,7 @@ var Face = new Class({
      *
      * @return {boolean} `true` if the vertices in this Face run counter-clockwise, otherwise `false`.
      */
-    isCounterClockwise: function (z)
-    {
+    isCounterClockwise: function (z) {
         var v1 = this.vertex1;
         var v2 = this.vertex2;
         var v3 = this.vertex3;
@@ -276,8 +269,7 @@ var Face = new Class({
      *
      * @return {number} The new vertex index array offset.
      */
-    load: function (F32, U32, offset, textureUnit, tintEffect)
-    {
+    load: function (F32, U32, offset, textureUnit, tintEffect) {
         offset = this.vertex1.load(F32, U32, offset, textureUnit, tintEffect);
         offset = this.vertex2.load(F32, U32, offset, textureUnit, tintEffect);
         offset = this.vertex3.load(F32, U32, offset, textureUnit, tintEffect);
@@ -298,8 +290,7 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    transformCoordinatesLocal: function (transformMatrix, width, height, cameraZ)
-    {
+    transformCoordinatesLocal: function (transformMatrix, width, height, cameraZ) {
         this.vertex1.transformCoordinatesLocal(transformMatrix, width, height, cameraZ);
         this.vertex2.transformCoordinatesLocal(transformMatrix, width, height, cameraZ);
         this.vertex3.transformCoordinatesLocal(transformMatrix, width, height, cameraZ);
@@ -317,8 +308,7 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    updateBounds: function ()
-    {
+    updateBounds: function () {
         var v1 = this.vertex1;
         var v2 = this.vertex2;
         var v3 = this.vertex3;
@@ -366,8 +356,7 @@ var Face = new Class({
      *
      * @return {boolean} `true` if this Face can be seen by the Camera.
      */
-    isInView: function (camera, hideCCW, z, alpha, a, b, c, d, e, f, roundPixels)
-    {
+    isInView: function (camera, hideCCW, z, alpha, a, b, c, d, e, f, roundPixels) {
         this.update(alpha, a, b, c, d, e, f, roundPixels);
 
         var v1 = this.vertex1;
@@ -375,14 +364,12 @@ var Face = new Class({
         var v3 = this.vertex3;
 
         //  Alpha check first
-        if (v1.ta <= 0 && v2.ta <= 0 && v3.ta <= 0)
-        {
+        if (v1.ta <= 0 && v2.ta <= 0 && v3.ta <= 0) {
             return false;
         }
 
         //  CCW check
-        if (hideCCW && !this.isCounterClockwise(z))
-        {
+        if (hideCCW && !this.isCounterClockwise(z)) {
             return false;
         }
 
@@ -397,8 +384,7 @@ var Face = new Class({
         var cr = camera.x + camera.width;
         var cb = camera.y + camera.height;
 
-        if (bounds.width <= 0 || bounds.height <= 0 || camera.width <= 0 || camera.height <= 0)
-        {
+        if (bounds.width <= 0 || bounds.height <= 0 || camera.width <= 0 || camera.height <= 0) {
             return false;
         }
 
@@ -421,8 +407,7 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    scrollUV: function (x, y)
-    {
+    scrollUV: function (x, y) {
         this.vertex1.scrollUV(x, y);
         this.vertex2.scrollUV(x, y);
         this.vertex3.scrollUV(x, y);
@@ -446,8 +431,7 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    scaleUV: function (x, y)
-    {
+    scaleUV: function (x, y) {
         this.vertex1.scaleUV(x, y);
         this.vertex2.scaleUV(x, y);
         this.vertex3.scaleUV(x, y);
@@ -465,8 +449,7 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    setColor: function (color)
-    {
+    setColor: function (color) {
         this.vertex1.color = color;
         this.vertex2.color = color;
         this.vertex3.color = color;
@@ -492,8 +475,7 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    update: function (alpha, a, b, c, d, e, f, roundPixels)
-    {
+    update: function (alpha, a, b, c, d, e, f, roundPixels) {
         this.vertex1.update(a, b, c, d, e, f, roundPixels, alpha);
         this.vertex2.update(a, b, c, d, e, f, roundPixels, alpha);
         this.vertex3.update(a, b, c, d, e, f, roundPixels, alpha);
@@ -516,9 +498,10 @@ var Face = new Class({
      *
      * @return {this} This Face instance.
      */
-    translate: function (x, y)
-    {
-        if (y === undefined) { y = 0; }
+    translate: function (x, y) {
+        if (y === undefined) {
+            y = 0;
+        }
 
         var v1 = this.vertex1;
         var v2 = this.vertex2;
@@ -545,13 +528,11 @@ var Face = new Class({
      */
     x: {
 
-        get: function ()
-        {
+        get: function () {
             return this.getInCenter().x;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var current = this.getInCenter();
 
             this.translate(value - current.x, 0);
@@ -568,13 +549,11 @@ var Face = new Class({
      */
     y: {
 
-        get: function ()
-        {
+        get: function () {
             return this.getInCenter().y;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var current = this.getInCenter();
 
             this.translate(0, value - current.y);
@@ -597,8 +576,7 @@ var Face = new Class({
      */
     alpha: {
 
-        get: function ()
-        {
+        get: function () {
             var v1 = this.vertex1;
             var v2 = this.vertex2;
             var v3 = this.vertex3;
@@ -606,8 +584,7 @@ var Face = new Class({
             return (v1.alpha + v2.alpha + v3.alpha) / 3;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.vertex1.alpha = value;
             this.vertex2.alpha = value;
             this.vertex3.alpha = value;
@@ -627,8 +604,7 @@ var Face = new Class({
      */
     depth: {
 
-        get: function ()
-        {
+        get: function () {
             var v1 = this.vertex1;
             var v2 = this.vertex2;
             var v3 = this.vertex3;
@@ -644,8 +620,7 @@ var Face = new Class({
      * @method Phaser.Geom.Mesh.Face#destroy
      * @since 3.50.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.vertex1 = null;
         this.vertex2 = null;
         this.vertex3 = null;

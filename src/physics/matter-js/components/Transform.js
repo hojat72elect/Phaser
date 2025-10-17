@@ -31,13 +31,11 @@ var Transform = {
      */
     x: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.position.x;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._tempVec2.set(value, this.y);
 
             Body.setPosition(this.body, this._tempVec2);
@@ -54,13 +52,11 @@ var Transform = {
      */
     y: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.position.y;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._tempVec2.set(this.x, value);
 
             Body.setPosition(this.body, this._tempVec2);
@@ -81,13 +77,11 @@ var Transform = {
      */
     scale: {
 
-        get: function ()
-        {
+        get: function () {
             return (this._scaleX + this._scaleY) / 2;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.setScale(value, value);
         }
 
@@ -102,24 +96,19 @@ var Transform = {
      */
     scaleX: {
 
-        get: function ()
-        {
+        get: function () {
             return this._scaleX;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var factorX = 1 / this._scaleX;
             var factorY = 1 / this._scaleY;
 
             this._scaleX = value;
 
-            if (this._scaleX === 0)
-            {
+            if (this._scaleX === 0) {
                 this.renderFlags &= ~_FLAG;
-            }
-            else
-            {
+            } else {
                 this.renderFlags |= _FLAG;
             }
 
@@ -140,24 +129,19 @@ var Transform = {
      */
     scaleY: {
 
-        get: function ()
-        {
+        get: function () {
             return this._scaleY;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var factorX = 1 / this._scaleX;
             var factorY = 1 / this._scaleY;
 
             this._scaleY = value;
 
-            if (this._scaleY === 0)
-            {
+            if (this._scaleY === 0) {
                 this.renderFlags &= ~_FLAG;
-            }
-            else
-            {
+            } else {
                 this.renderFlags |= _FLAG;
             }
 
@@ -178,13 +162,11 @@ var Transform = {
      */
     angle: {
 
-        get: function ()
-        {
+        get: function () {
             return WrapAngleDegrees(this.body.angle * MATH_CONST.RAD_TO_DEG);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             //  value is in degrees
             this.rotation = WrapAngleDegrees(value) * MATH_CONST.DEG_TO_RAD;
         }
@@ -200,13 +182,11 @@ var Transform = {
      */
     rotation: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.angle;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             //  value is in radians
             this._rotation = WrapAngle(value);
 
@@ -227,10 +207,13 @@ var Transform = {
      *
      * @return {this} This Game Object instance.
      */
-    setPosition: function (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = x; }
+    setPosition: function (x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this._tempVec2.set(x, y);
 
@@ -250,9 +233,10 @@ var Transform = {
      *
      * @return {this} This Game Object instance.
      */
-    setRotation: function (radians)
-    {
-        if (radians === undefined) { radians = 0; }
+    setRotation: function (radians) {
+        if (radians === undefined) {
+            radians = 0;
+        }
 
         this._rotation = WrapAngle(radians);
 
@@ -270,8 +254,7 @@ var Transform = {
      *
      * @return {this} This Game Object instance.
      */
-    setFixedRotation: function ()
-    {
+    setFixedRotation: function () {
         Body.setInertia(this.body, Infinity);
 
         return this;
@@ -288,9 +271,10 @@ var Transform = {
      *
      * @return {this} This Game Object instance.
      */
-    setAngle: function (degrees)
-    {
-        if (degrees === undefined) { degrees = 0; }
+    setAngle: function (degrees) {
+        if (degrees === undefined) {
+            degrees = 0;
+        }
 
         this.angle = degrees;
 
@@ -311,10 +295,13 @@ var Transform = {
      *
      * @return {this} This Game Object instance.
      */
-    setScale: function (x, y, point)
-    {
-        if (x === undefined) { x = 1; }
-        if (y === undefined) { y = x; }
+    setScale: function (x, y, point) {
+        if (x === undefined) {
+            x = 1;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         var factorX = 1 / this._scaleX;
         var factorY = 1 / this._scaleY;

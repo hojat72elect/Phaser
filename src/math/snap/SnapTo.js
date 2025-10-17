@@ -19,12 +19,12 @@
  *
  * @return {number} The snapped value.
  */
-var SnapTo = function (value, gap, start, divide)
-{
-    if (start === undefined) { start = 0; }
+var SnapTo = function (value, gap, start, divide) {
+    if (start === undefined) {
+        start = 0;
+    }
 
-    if (gap === 0)
-    {
+    if (gap === 0) {
         return value;
     }
 

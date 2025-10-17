@@ -34,14 +34,13 @@ var TilemapJSONFile = new Class({
 
     initialize:
 
-    function TilemapJSONFile (loader, key, url, xhrSettings)
-    {
-        JSONFile.call(this, loader, key, url, xhrSettings);
+        function TilemapJSONFile(loader, key, url, xhrSettings) {
+            JSONFile.call(this, loader, key, url, xhrSettings);
 
-        this.type = 'tilemapJSON';
+            this.type = 'tilemapJSON';
 
-        this.cache = loader.cacheManager.tilemap;
-    },
+            this.cache = loader.cacheManager.tilemap;
+        },
 
     /**
      * Adds this file to its target cache upon successful loading and processing.
@@ -49,9 +48,8 @@ var TilemapJSONFile = new Class({
      * @method Phaser.Loader.FileTypes.TilemapJSONFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        var tiledata = { format: TILEMAP_FORMATS.TILED_JSON, data: this.data };
+    addToCache: function () {
+        var tiledata = {format: TILEMAP_FORMATS.TILED_JSON, data: this.data};
 
         this.cache.add(this.key, tiledata);
     }
@@ -127,18 +125,13 @@ var TilemapJSONFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('tilemapTiledJSON', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('tilemapTiledJSON', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new TilemapJSONFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new TilemapJSONFile(this, key, url, xhrSettings));
     }
 

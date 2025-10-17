@@ -17,17 +17,14 @@
  *
  * @return {*} The element that was moved.
  */
-var MoveTo = function (array, item, index)
-{
+var MoveTo = function (array, item, index) {
     var currentIndex = array.indexOf(item);
 
-    if (currentIndex === -1 || index < 0 || index >= array.length)
-    {
+    if (currentIndex === -1 || index < 0 || index >= array.length) {
         throw new Error('Supplied index out of bounds');
     }
 
-    if (currentIndex !== index)
-    {
+    if (currentIndex !== index) {
         //  Remove
         array.splice(currentIndex, 1);
 

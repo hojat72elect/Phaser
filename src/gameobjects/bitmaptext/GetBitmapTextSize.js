@@ -25,12 +25,12 @@
  *
  * @return {Phaser.Types.GameObjects.BitmapText.BitmapTextSize} The calculated bounds values of the BitmapText.
  */
-var GetBitmapTextSize = function (src, round, updateOrigin, out)
-{
-    if (updateOrigin === undefined) { updateOrigin = false; }
+var GetBitmapTextSize = function (src, round, updateOrigin, out) {
+    if (updateOrigin === undefined) {
+        updateOrigin = false;
+    }
 
-    if (out === undefined)
-    {
+    if (out === undefined) {
         out = {
             local: {
                 x: 0,
@@ -107,34 +107,29 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
     var current = null;
 
     // Measure the width of the text
-    var measureTextWidth = function (text, fontData)
-    {
+    var measureTextWidth = function (text, fontData) {
         var width = 0;
 
-        for (var i = 0; i < text.length; i++)
-        {
+        for (var i = 0; i < text.length; i++) {
             var charCode = text.charCodeAt(i);
             var glyph = fontData.chars[charCode];
 
-            if (glyph)
-            {
+            if (glyph) {
                 width += glyph.xAdvance;
             }
         }
 
         return width * sx;
     };
-    
+
     //  Scan for breach of maxWidth and insert carriage-returns
-    if (maxWidth > 0)
-    {
+    if (maxWidth > 0) {
         // Split the text into lines
         lines = text.split('\n');
         var wrappedLines = [];
 
         // Loop through each line
-        for (i = 0; i < lines.length; i++)
-        {
+        for (i = 0; i < lines.length; i++) {
             var line = lines[i];
             var word = '';
             var wrappedLine = '';
@@ -142,25 +137,20 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
             var lineWithWord = '';
 
             // Loop through each character in a line
-            for (j = 0; j < line.length; j++)
-            {
+            for (j = 0; j < line.length; j++) {
                 charCode = line.charCodeAt(j);
 
                 word += line[j];
 
                 // White space or end of line?
-                if (charCode === wordWrapCharCode || j === line.length - 1)
-                {
+                if (charCode === wordWrapCharCode || j === line.length - 1) {
                     lineWithWord = lineToCheck + word;
-                    
+
                     var textWidth = measureTextWidth(lineWithWord, src.fontData);
 
-                    if (textWidth <= maxWidth)
-                    {
+                    if (textWidth <= maxWidth) {
                         lineToCheck = lineWithWord;
-                    }
-                    else
-                    {
+                    } else {
                         // If the current word is too long to fit on a line, wrap it
                         // Remove trailing word wrap char to keep text length the same
                         wrappedLine = wrappedLine.slice(0, -1);
@@ -186,14 +176,11 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
 
     var charIndex = 0;
 
-    for (i = 0; i < textLength; i++)
-    {
+    for (i = 0; i < textLength; i++) {
         charCode = text.charCodeAt(i);
 
-        if (charCode === 10)
-        {
-            if (current !== null)
-            {
+        if (charCode === 10) {
+            if (current !== null) {
                 words.push({
                     word: current.word,
                     i: current.i,
@@ -210,13 +197,11 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
 
             lineWidths[currentLine] = currentLineWidth;
 
-            if (currentLineWidth > longestLine)
-            {
+            if (currentLineWidth > longestLine) {
                 longestLine = currentLineWidth;
             }
 
-            if (currentLineWidth < shortestLine)
-            {
+            if (currentLineWidth < shortestLine) {
                 shortestLine = currentLineWidth;
             }
 
@@ -231,50 +216,42 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
 
         glyph = chars[charCode];
 
-        if (!glyph)
-        {
+        if (!glyph) {
             continue;
         }
 
         x = xAdvance;
         y = yAdvance;
 
-        if (lastGlyph !== null)
-        {
+        if (lastGlyph !== null) {
             var kerningOffset = glyph.kerning[lastCharCode];
 
             x += (kerningOffset !== undefined) ? kerningOffset : 0;
         }
 
-        if (bx > x)
-        {
+        if (bx > x) {
             bx = x;
         }
 
-        if (by > y)
-        {
+        if (by > y) {
             by = y;
         }
 
         var gw = x + glyph.xAdvance;
         var gh = y + lineHeight;
 
-        if (bw < gw)
-        {
+        if (bw < gw) {
             bw = gw;
         }
 
-        if (bh < gh)
-        {
+        if (bh < gh) {
             bh = gh;
         }
 
         var charWidth = glyph.xOffset + glyph.xAdvance + ((kerningOffset !== undefined) ? kerningOffset : 0);
 
-        if (charCode === wordWrapCharCode)
-        {
-            if (current !== null)
-            {
+        if (charCode === wordWrapCharCode) {
+            if (current !== null) {
                 words.push({
                     word: current.word,
                     i: current.i,
@@ -286,13 +263,10 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
 
                 current = null;
             }
-        }
-        else
-        {
-            if (current === null)
-            {
+        } else {
+            if (current === null) {
                 //  We're starting a new word, recording the starting index, etc
-                current = { word: '', i: charIndex, x: xAdvance, y: yAdvance, w: 0, h: lineHeight };
+                current = {word: '', i: charIndex, x: xAdvance, y: yAdvance, w: 0, h: lineHeight};
             }
 
             current.word = current.word.concat(text[i]);
@@ -323,8 +297,7 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
     }
 
     //  Last word
-    if (current !== null)
-    {
+    if (current !== null) {
         words.push({
             word: current.word,
             i: current.i,
@@ -337,32 +310,25 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
 
     lineWidths[currentLine] = currentLineWidth;
 
-    if (currentLineWidth > longestLine)
-    {
+    if (currentLineWidth > longestLine) {
         longestLine = currentLineWidth;
     }
 
-    if (currentLineWidth < shortestLine)
-    {
+    if (currentLineWidth < shortestLine) {
         shortestLine = currentLineWidth;
     }
 
     //  Adjust all of the character positions based on alignment
-    if (align > 0)
-    {
-        for (var c = 0; c < characters.length; c++)
-        {
+    if (align > 0) {
+        for (var c = 0; c < characters.length; c++) {
             var currentChar = characters[c];
 
-            if (align === 1)
-            {
+            if (align === 1) {
                 var ax1 = ((longestLine - lineWidths[currentChar.line]) / 2);
 
                 currentChar.x += ax1;
                 currentChar.r += ax1;
-            }
-            else if (align === 2)
-            {
+            } else if (align === 2) {
                 var ax2 = (longestLine - lineWidths[currentChar.line]);
 
                 currentChar.x += ax2;
@@ -373,7 +339,7 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
 
     var local = out.local;
     var global = out.global;
-    
+
     lines = out.lines;
 
     local.x = bx * scale;
@@ -391,8 +357,7 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
     lines.longest = longestLine;
     lines.lengths = lineWidths;
 
-    if (round)
-    {
+    if (round) {
         local.x = Math.ceil(local.x);
         local.y = Math.ceil(local.y);
         local.width = Math.ceil(local.width);
@@ -407,16 +372,14 @@ var GetBitmapTextSize = function (src, round, updateOrigin, out)
         lines.longest = Math.ceil(longestLine);
     }
 
-    if (updateOrigin)
-    {
+    if (updateOrigin) {
         src._displayOriginX = (src.originX * local.width);
         src._displayOriginY = (src.originY * local.height);
 
         global.x = src.x - (src._displayOriginX * src.scaleX);
         global.y = src.y - (src._displayOriginY * src.scaleY);
 
-        if (round)
-        {
+        if (round) {
             global.x = Math.ceil(global.x);
             global.y = Math.ceil(global.y);
         }

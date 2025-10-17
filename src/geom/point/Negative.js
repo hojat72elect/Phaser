@@ -19,9 +19,10 @@ var Point = require('./Point');
  *
  * @return {Phaser.Geom.Point} The modified `out` Point, or a new Point if none was provided.
  */
-var Negative = function (point, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Negative = function (point, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     return out.setTo(-point.x, -point.y);
 };

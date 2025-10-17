@@ -22,8 +22,7 @@ var bounds = new Rectangle();
  *
  * @return {Phaser.Geom.Rectangle} A rectangle containing the culled bounds. If you wish to retain this object, clone it, as it's recycled internally.
  */
-var CullBounds = function (layer, camera)
-{
+var CullBounds = function (layer, camera) {
     var tilemap = layer.tilemapLayer.tilemap;
     var tilemapLayer = layer.tilemapLayer;
 

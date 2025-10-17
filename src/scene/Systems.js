@@ -33,276 +33,274 @@ var Systems = new Class({
 
     initialize:
 
-    function Systems (scene, config)
-    {
-        /**
-         * A reference to the Scene that these Systems belong to.
-         *
-         * @name Phaser.Scenes.Systems#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
-
-        /**
-         * A reference to the Phaser Game instance.
-         *
-         * @name Phaser.Scenes.Systems#game
-         * @type {Phaser.Game}
-         * @since 3.0.0
-         */
-        this.game;
-
-        /**
-         * A reference to either the Canvas or WebGL Renderer that this Game is using.
-         *
-         * @name Phaser.Scenes.Systems#renderer
-         * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-         * @since 3.17.0
-         */
-        this.renderer;
-
-        if (typeof PLUGIN_FBINSTANT)
-        {
+        function Systems(scene, config) {
             /**
-             * The Facebook Instant Games Plugin.
+             * A reference to the Scene that these Systems belong to.
              *
-             * @name Phaser.Scenes.Systems#facebook
-             * @type {Phaser.FacebookInstantGamesPlugin}
-             * @since 3.12.0
+             * @name Phaser.Scenes.Systems#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
              */
-            this.facebook;
-        }
+            this.scene = scene;
 
-        /**
-         * The Scene Configuration object, as passed in when creating the Scene.
-         *
-         * @name Phaser.Scenes.Systems#config
-         * @type {(string|Phaser.Types.Scenes.SettingsConfig)}
-         * @since 3.0.0
-         */
-        this.config = config;
+            /**
+             * A reference to the Phaser Game instance.
+             *
+             * @name Phaser.Scenes.Systems#game
+             * @type {Phaser.Game}
+             * @since 3.0.0
+             */
+            this.game;
 
-        /**
-         * The Scene Settings. This is the parsed output based on the Scene configuration.
-         *
-         * @name Phaser.Scenes.Systems#settings
-         * @type {Phaser.Types.Scenes.SettingsObject}
-         * @since 3.0.0
-         */
-        this.settings = Settings.create(config);
+            /**
+             * A reference to either the Canvas or WebGL Renderer that this Game is using.
+             *
+             * @name Phaser.Scenes.Systems#renderer
+             * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
+             * @since 3.17.0
+             */
+            this.renderer;
 
-        /**
-         * A handy reference to the Scene canvas / context.
-         *
-         * @name Phaser.Scenes.Systems#canvas
-         * @type {HTMLCanvasElement}
-         * @since 3.0.0
-         */
-        this.canvas;
+            if (typeof PLUGIN_FBINSTANT) {
+                /**
+                 * The Facebook Instant Games Plugin.
+                 *
+                 * @name Phaser.Scenes.Systems#facebook
+                 * @type {Phaser.FacebookInstantGamesPlugin}
+                 * @since 3.12.0
+                 */
+                this.facebook;
+            }
 
-        /**
-         * A reference to the Canvas Rendering Context being used by the renderer.
-         *
-         * @name Phaser.Scenes.Systems#context
-         * @type {CanvasRenderingContext2D}
-         * @since 3.0.0
-         */
-        this.context;
+            /**
+             * The Scene Configuration object, as passed in when creating the Scene.
+             *
+             * @name Phaser.Scenes.Systems#config
+             * @type {(string|Phaser.Types.Scenes.SettingsConfig)}
+             * @since 3.0.0
+             */
+            this.config = config;
 
-        //  Global Systems - these are single-instance global managers that belong to Game
+            /**
+             * The Scene Settings. This is the parsed output based on the Scene configuration.
+             *
+             * @name Phaser.Scenes.Systems#settings
+             * @type {Phaser.Types.Scenes.SettingsObject}
+             * @since 3.0.0
+             */
+            this.settings = Settings.create(config);
 
-        /**
-         * A reference to the global Animations Manager.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.anims` property.
-         *
-         * @name Phaser.Scenes.Systems#anims
-         * @type {Phaser.Animations.AnimationManager}
-         * @since 3.0.0
-         */
-        this.anims;
+            /**
+             * A handy reference to the Scene canvas / context.
+             *
+             * @name Phaser.Scenes.Systems#canvas
+             * @type {HTMLCanvasElement}
+             * @since 3.0.0
+             */
+            this.canvas;
 
-        /**
-         * A reference to the global Cache. The Cache stores all files brought in to Phaser via
-         * the Loader, with the exception of images. Images are stored in the Texture Manager.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.cache` property.
-         *
-         * @name Phaser.Scenes.Systems#cache
-         * @type {Phaser.Cache.CacheManager}
-         * @since 3.0.0
-         */
-        this.cache;
+            /**
+             * A reference to the Canvas Rendering Context being used by the renderer.
+             *
+             * @name Phaser.Scenes.Systems#context
+             * @type {CanvasRenderingContext2D}
+             * @since 3.0.0
+             */
+            this.context;
 
-        /**
-         * A reference to the global Plugins Manager.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.plugins` property.
-         *
-         * @name Phaser.Scenes.Systems#plugins
-         * @type {Phaser.Plugins.PluginManager}
-         * @since 3.0.0
-         */
-        this.plugins;
+            //  Global Systems - these are single-instance global managers that belong to Game
 
-        /**
-         * A reference to the global registry. This is a game-wide instance of the Data Manager, allowing
-         * you to exchange data between Scenes via a universal and shared point.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.registry` property.
-         *
-         * @name Phaser.Scenes.Systems#registry
-         * @type {Phaser.Data.DataManager}
-         * @since 3.0.0
-         */
-        this.registry;
+            /**
+             * A reference to the global Animations Manager.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.anims` property.
+             *
+             * @name Phaser.Scenes.Systems#anims
+             * @type {Phaser.Animations.AnimationManager}
+             * @since 3.0.0
+             */
+            this.anims;
 
-        /**
-         * A reference to the global Scale Manager.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.scale` property.
-         *
-         * @name Phaser.Scenes.Systems#scale
-         * @type {Phaser.Scale.ScaleManager}
-         * @since 3.15.0
-         */
-        this.scale;
+            /**
+             * A reference to the global Cache. The Cache stores all files brought in to Phaser via
+             * the Loader, with the exception of images. Images are stored in the Texture Manager.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.cache` property.
+             *
+             * @name Phaser.Scenes.Systems#cache
+             * @type {Phaser.Cache.CacheManager}
+             * @since 3.0.0
+             */
+            this.cache;
 
-        /**
-         * A reference to the global Sound Manager.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.sound` property.
-         *
-         * @name Phaser.Scenes.Systems#sound
-         * @type {(Phaser.Sound.NoAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager)}
-         * @since 3.0.0
-         */
-        this.sound;
+            /**
+             * A reference to the global Plugins Manager.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.plugins` property.
+             *
+             * @name Phaser.Scenes.Systems#plugins
+             * @type {Phaser.Plugins.PluginManager}
+             * @since 3.0.0
+             */
+            this.plugins;
 
-        /**
-         * A reference to the global Texture Manager.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.textures` property.
-         *
-         * @name Phaser.Scenes.Systems#textures
-         * @type {Phaser.Textures.TextureManager}
-         * @since 3.0.0
-         */
-        this.textures;
+            /**
+             * A reference to the global registry. This is a game-wide instance of the Data Manager, allowing
+             * you to exchange data between Scenes via a universal and shared point.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.registry` property.
+             *
+             * @name Phaser.Scenes.Systems#registry
+             * @type {Phaser.Data.DataManager}
+             * @since 3.0.0
+             */
+            this.registry;
 
-        //  Core Plugins - these are non-optional Scene plugins, needed by lots of the other systems
+            /**
+             * A reference to the global Scale Manager.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.scale` property.
+             *
+             * @name Phaser.Scenes.Systems#scale
+             * @type {Phaser.Scale.ScaleManager}
+             * @since 3.15.0
+             */
+            this.scale;
 
-        /**
-         * A reference to the Scene's Game Object Factory.
-         *
-         * Use this to quickly and easily create new Game Objects.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.add` property.
-         *
-         * @name Phaser.Scenes.Systems#add
-         * @type {Phaser.GameObjects.GameObjectFactory}
-         * @since 3.0.0
-         */
-        this.add;
+            /**
+             * A reference to the global Sound Manager.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.sound` property.
+             *
+             * @name Phaser.Scenes.Systems#sound
+             * @type {(Phaser.Sound.NoAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager)}
+             * @since 3.0.0
+             */
+            this.sound;
 
-        /**
-         * A reference to the Scene's Camera Manager.
-         *
-         * Use this to manipulate and create Cameras for this specific Scene.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.cameras` property.
-         *
-         * @name Phaser.Scenes.Systems#cameras
-         * @type {Phaser.Cameras.Scene2D.CameraManager}
-         * @since 3.0.0
-         */
-        this.cameras;
+            /**
+             * A reference to the global Texture Manager.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.textures` property.
+             *
+             * @name Phaser.Scenes.Systems#textures
+             * @type {Phaser.Textures.TextureManager}
+             * @since 3.0.0
+             */
+            this.textures;
 
-        /**
-         * A reference to the Scene's Display List.
-         *
-         * Use this to organize the children contained in the display list.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.children` property.
-         *
-         * @name Phaser.Scenes.Systems#displayList
-         * @type {Phaser.GameObjects.DisplayList}
-         * @since 3.0.0
-         */
-        this.displayList;
+            //  Core Plugins - these are non-optional Scene plugins, needed by lots of the other systems
 
-        /**
-         * A reference to the Scene's Event Manager.
-         *
-         * Use this to listen for Scene specific events, such as `pause` and `shutdown`.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.events` property.
-         *
-         * @name Phaser.Scenes.Systems#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.0.0
-         */
-        this.events;
+            /**
+             * A reference to the Scene's Game Object Factory.
+             *
+             * Use this to quickly and easily create new Game Objects.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.add` property.
+             *
+             * @name Phaser.Scenes.Systems#add
+             * @type {Phaser.GameObjects.GameObjectFactory}
+             * @since 3.0.0
+             */
+            this.add;
 
-        /**
-         * A reference to the Scene's Game Object Creator.
-         *
-         * Use this to quickly and easily create new Game Objects. The difference between this and the
-         * Game Object Factory, is that the Creator just creates and returns Game Object instances, it
-         * doesn't then add them to the Display List or Update List.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.make` property.
-         *
-         * @name Phaser.Scenes.Systems#make
-         * @type {Phaser.GameObjects.GameObjectCreator}
-         * @since 3.0.0
-         */
-        this.make;
+            /**
+             * A reference to the Scene's Camera Manager.
+             *
+             * Use this to manipulate and create Cameras for this specific Scene.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.cameras` property.
+             *
+             * @name Phaser.Scenes.Systems#cameras
+             * @type {Phaser.Cameras.Scene2D.CameraManager}
+             * @since 3.0.0
+             */
+            this.cameras;
 
-        /**
-         * A reference to the Scene Manager Plugin.
-         *
-         * Use this to manipulate both this and other Scenes in your game. For example, to launch a parallel Scene,
-         * or pause or resume a Scene, or switch from this Scene to another.
-         *
-         * In the default set-up you can access this from within a Scene via the `this.scene` property.
-         *
-         * @name Phaser.Scenes.Systems#scenePlugin
-         * @type {Phaser.Scenes.ScenePlugin}
-         * @since 3.0.0
-         */
-        this.scenePlugin;
+            /**
+             * A reference to the Scene's Display List.
+             *
+             * Use this to organize the children contained in the display list.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.children` property.
+             *
+             * @name Phaser.Scenes.Systems#displayList
+             * @type {Phaser.GameObjects.DisplayList}
+             * @since 3.0.0
+             */
+            this.displayList;
 
-        /**
-         * A reference to the Scene's Update List.
-         *
-         * Use this to organize the children contained in the update list.
-         *
-         * The Update List is responsible for managing children that need their `preUpdate` methods called,
-         * in order to process internal components - such as Sprites with Animations.
-         *
-         * In the default set-up there is no reference to this from within the Scene itself.
-         *
-         * @name Phaser.Scenes.Systems#updateList
-         * @type {Phaser.GameObjects.UpdateList}
-         * @since 3.0.0
-         */
-        this.updateList;
+            /**
+             * A reference to the Scene's Event Manager.
+             *
+             * Use this to listen for Scene specific events, such as `pause` and `shutdown`.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.events` property.
+             *
+             * @name Phaser.Scenes.Systems#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.0.0
+             */
+            this.events;
 
-        /**
-         * The Scene Update function.
-         *
-         * This starts out as NOOP during init, preload and create, and at the end of create
-         * it swaps to be whatever the Scene.update function is.
-         *
-         * @name Phaser.Scenes.Systems#sceneUpdate
-         * @type {function}
-         * @private
-         * @since 3.10.0
-         */
-        this.sceneUpdate = NOOP;
-    },
+            /**
+             * A reference to the Scene's Game Object Creator.
+             *
+             * Use this to quickly and easily create new Game Objects. The difference between this and the
+             * Game Object Factory, is that the Creator just creates and returns Game Object instances, it
+             * doesn't then add them to the Display List or Update List.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.make` property.
+             *
+             * @name Phaser.Scenes.Systems#make
+             * @type {Phaser.GameObjects.GameObjectCreator}
+             * @since 3.0.0
+             */
+            this.make;
+
+            /**
+             * A reference to the Scene Manager Plugin.
+             *
+             * Use this to manipulate both this and other Scenes in your game. For example, to launch a parallel Scene,
+             * or pause or resume a Scene, or switch from this Scene to another.
+             *
+             * In the default set-up you can access this from within a Scene via the `this.scene` property.
+             *
+             * @name Phaser.Scenes.Systems#scenePlugin
+             * @type {Phaser.Scenes.ScenePlugin}
+             * @since 3.0.0
+             */
+            this.scenePlugin;
+
+            /**
+             * A reference to the Scene's Update List.
+             *
+             * Use this to organize the children contained in the update list.
+             *
+             * The Update List is responsible for managing children that need their `preUpdate` methods called,
+             * in order to process internal components - such as Sprites with Animations.
+             *
+             * In the default set-up there is no reference to this from within the Scene itself.
+             *
+             * @name Phaser.Scenes.Systems#updateList
+             * @type {Phaser.GameObjects.UpdateList}
+             * @since 3.0.0
+             */
+            this.updateList;
+
+            /**
+             * The Scene Update function.
+             *
+             * This starts out as NOOP during init, preload and create, and at the end of create
+             * it swaps to be whatever the Scene.update function is.
+             *
+             * @name Phaser.Scenes.Systems#sceneUpdate
+             * @type {function}
+             * @private
+             * @since 3.10.0
+             */
+            this.sceneUpdate = NOOP;
+        },
 
     /**
      * This method is called only once by the Scene Manager when the Scene is instantiated.
@@ -316,8 +314,7 @@ var Systems = new Class({
      *
      * @param {Phaser.Game} game - A reference to the Phaser Game instance.
      */
-    init: function (game)
-    {
+    init: function (game) {
         this.settings.status = CONST.INIT;
 
         //  This will get replaced by the SceneManager with the actual update function, if it exists, once create is over.
@@ -333,7 +330,7 @@ var Systems = new Class({
 
         this.plugins = pluginManager;
 
-        pluginManager.addToScene(this, DefaultPlugins.Global, [ DefaultPlugins.CoreScene, GetScenePlugins(this), GetPhysicsPlugins(this) ]);
+        pluginManager.addToScene(this, DefaultPlugins.Global, [DefaultPlugins.CoreScene, GetScenePlugins(this), GetPhysicsPlugins(this)]);
 
         this.events.emit(Events.BOOT, this);
 
@@ -353,8 +350,7 @@ var Systems = new Class({
      * @param {number} time - The time value from the most recent Game step. Typically a high-resolution timer value, or Date.now().
      * @param {number} delta - The delta value since the last frame. This is smoothed to avoid delta spikes by the TimeStep class.
      */
-    step: function (time, delta)
-    {
+    step: function (time, delta) {
         var events = this.events;
 
         events.emit(Events.PRE_UPDATE, time, delta);
@@ -377,8 +373,7 @@ var Systems = new Class({
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The renderer that invoked the render call.
      */
-    render: function (renderer)
-    {
+    render: function (renderer) {
         var displayList = this.displayList;
 
         displayList.depthSort();
@@ -396,8 +391,7 @@ var Systems = new Class({
      * @method Phaser.Scenes.Systems#queueDepthSort
      * @since 3.0.0
      */
-    queueDepthSort: function ()
-    {
+    queueDepthSort: function () {
         this.displayList.queueDepthSort();
     },
 
@@ -407,8 +401,7 @@ var Systems = new Class({
      * @method Phaser.Scenes.Systems#depthSort
      * @since 3.0.0
      */
-    depthSort: function ()
-    {
+    depthSort: function () {
         this.displayList.depthSort();
     },
 
@@ -425,17 +418,13 @@ var Systems = new Class({
      *
      * @return {Phaser.Scenes.Systems} This Systems object.
      */
-    pause: function (data)
-    {
+    pause: function (data) {
         var settings = this.settings;
         var status = this.getStatus();
 
-        if (status !== CONST.CREATING && status !== CONST.RUNNING)
-        {
+        if (status !== CONST.CREATING && status !== CONST.RUNNING) {
             console.warn('Cannot pause non-running Scene', settings.key);
-        }
-        else if (this.settings.active)
-        {
+        } else if (this.settings.active) {
             settings.status = CONST.PAUSED;
 
             settings.active = false;
@@ -457,13 +446,11 @@ var Systems = new Class({
      *
      * @return {Phaser.Scenes.Systems} This Systems object.
      */
-    resume: function (data)
-    {
+    resume: function (data) {
         var events = this.events;
         var settings = this.settings;
 
-        if (!this.settings.active)
-        {
+        if (!this.settings.active) {
             settings.status = CONST.RUNNING;
 
             settings.active = true;
@@ -490,17 +477,13 @@ var Systems = new Class({
      *
      * @return {Phaser.Scenes.Systems} This Systems object.
      */
-    sleep: function (data)
-    {
+    sleep: function (data) {
         var settings = this.settings;
         var status = this.getStatus();
 
-        if (status !== CONST.CREATING && status !== CONST.RUNNING)
-        {
+        if (status !== CONST.CREATING && status !== CONST.RUNNING) {
             console.warn('Cannot sleep non-running Scene', settings.key);
-        }
-        else
-        {
+        } else {
             settings.status = CONST.SLEEPING;
 
             settings.active = false;
@@ -523,8 +506,7 @@ var Systems = new Class({
      *
      * @return {Phaser.Scenes.Systems} This Systems object.
      */
-    wake: function (data)
-    {
+    wake: function (data) {
         var events = this.events;
         var settings = this.settings;
 
@@ -535,8 +517,7 @@ var Systems = new Class({
 
         events.emit(Events.WAKE, this, data);
 
-        if (settings.isTransition)
-        {
+        if (settings.isTransition) {
             events.emit(Events.TRANSITION_WAKE, settings.transitionFrom, settings.transitionDuration);
         }
 
@@ -554,8 +535,7 @@ var Systems = new Class({
      *
      * @return {any} The Scene Data.
      */
-    getData: function ()
-    {
+    getData: function () {
         return this.settings.data;
     },
 
@@ -567,8 +547,7 @@ var Systems = new Class({
      *
      * @return {number} The status of this Scene. One of the `Phaser.Scene` constants.
      */
-    getStatus: function ()
-    {
+    getStatus: function () {
         return this.settings.status;
     },
 
@@ -580,8 +559,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene can receive Input events.
      */
-    canInput: function ()
-    {
+    canInput: function () {
         var status = this.settings.status;
 
         return (status > CONST.PENDING && status <= CONST.RUNNING);
@@ -595,8 +573,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is asleep, otherwise `false`.
      */
-    isSleeping: function ()
-    {
+    isSleeping: function () {
         return (this.settings.status === CONST.SLEEPING);
     },
 
@@ -608,8 +585,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is running, otherwise `false`.
      */
-    isActive: function ()
-    {
+    isActive: function () {
         return (this.settings.status === CONST.RUNNING);
     },
 
@@ -621,8 +597,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is paused, otherwise `false`.
      */
-    isPaused: function ()
-    {
+    isPaused: function () {
         return (this.settings.status === CONST.PAUSED);
     },
 
@@ -634,8 +609,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is currently transitioning, otherwise `false`.
      */
-    isTransitioning: function ()
-    {
+    isTransitioning: function () {
         return (this.settings.isTransition || this.scenePlugin._target !== null);
     },
 
@@ -647,8 +621,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is in transition to another Scene, otherwise `false`.
      */
-    isTransitionOut: function ()
-    {
+    isTransitionOut: function () {
         return (this.scenePlugin._target !== null && this.scenePlugin._duration > 0);
     },
 
@@ -660,8 +633,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is transitioning in from another Scene, otherwise `false`.
      */
-    isTransitionIn: function ()
-    {
+    isTransitionIn: function () {
         return (this.settings.isTransition);
     },
 
@@ -673,8 +645,7 @@ var Systems = new Class({
      *
      * @return {boolean} `true` if this Scene is visible, otherwise `false`.
      */
-    isVisible: function ()
-    {
+    isVisible: function () {
         return this.settings.visible;
     },
 
@@ -689,8 +660,7 @@ var Systems = new Class({
      *
      * @return {Phaser.Scenes.Systems} This Systems object.
      */
-    setVisible: function (value)
-    {
+    setVisible: function (value) {
         this.settings.visible = value;
 
         return this;
@@ -709,14 +679,10 @@ var Systems = new Class({
      *
      * @return {Phaser.Scenes.Systems} This Systems object.
      */
-    setActive: function (value, data)
-    {
-        if (value)
-        {
+    setActive: function (value, data) {
+        if (value) {
             return this.resume(data);
-        }
-        else
-        {
+        } else {
             return this.pause(data);
         }
     },
@@ -732,13 +698,11 @@ var Systems = new Class({
      *
      * @param {object} data - Optional data object that may have been passed to this Scene from another.
      */
-    start: function (data)
-    {
+    start: function (data) {
         var events = this.events;
         var settings = this.settings;
 
-        if (data)
-        {
+        if (data) {
             settings.data = data;
         }
 
@@ -767,8 +731,7 @@ var Systems = new Class({
      *
      * @param {object} [data] - A data object that will be passed in the 'shutdown' event.
      */
-    shutdown: function (data)
-    {
+    shutdown: function (data) {
         var events = this.events;
         var settings = this.settings;
 
@@ -795,8 +758,7 @@ var Systems = new Class({
      * @fires Phaser.Scenes.Events#DESTROY
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         var events = this.events;
         var settings = this.settings;
 
@@ -809,10 +771,9 @@ var Systems = new Class({
 
         events.removeAllListeners();
 
-        var props = [ 'scene', 'game', 'anims', 'cache', 'plugins', 'registry', 'sound', 'textures', 'add', 'camera', 'displayList', 'events', 'make', 'scenePlugin', 'updateList' ];
+        var props = ['scene', 'game', 'anims', 'cache', 'plugins', 'registry', 'sound', 'textures', 'add', 'camera', 'displayList', 'events', 'make', 'scenePlugin', 'updateList'];
 
-        for (var i = 0; i < props.length; i++)
-        {
+        for (var i = 0; i < props.length; i++) {
             this[props[i]] = null;
         }
     }

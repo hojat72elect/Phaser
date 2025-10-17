@@ -22,14 +22,11 @@ var GetTilesWithin = require('./GetTilesWithin');
  * @param {number} height - How many tiles tall from the `tileY` index the area will be.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var ReplaceByIndex = function (findIndex, newIndex, tileX, tileY, width, height, layer)
-{
+var ReplaceByIndex = function (findIndex, newIndex, tileX, tileY, width, height, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
-        if (tiles[i] && tiles[i].index === findIndex)
-        {
+    for (var i = 0; i < tiles.length; i++) {
+        if (tiles[i] && tiles[i].index === findIndex) {
             tiles[i].index = newIndex;
         }
     }

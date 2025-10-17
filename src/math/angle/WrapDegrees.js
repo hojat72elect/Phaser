@@ -18,8 +18,7 @@ var Wrap = require('../Wrap');
  *
  * @return {number} The wrapped angle, in degrees.
  */
-var WrapDegrees = function (angle)
-{
+var WrapDegrees = function (angle) {
     return Wrap(angle, -180, 180);
 };
 

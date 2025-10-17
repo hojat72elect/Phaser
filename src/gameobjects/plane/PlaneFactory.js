@@ -25,7 +25,6 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Plane} The Plane Game Object that was created.
  */
-GameObjectFactory.register('plane', function (x, y, texture, frame, width, height, tile)
-{
+GameObjectFactory.register('plane', function (x, y, texture, frame, width, height, tile) {
     return this.displayList.add(new Plane(this.scene, x, y, texture, frame, width, height, tile));
 });

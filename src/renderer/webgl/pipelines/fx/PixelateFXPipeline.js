@@ -39,37 +39,33 @@ var PixelateFXPipeline = new Class({
 
     initialize:
 
-    function PixelateFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: PixelateFrag
-        });
+        function PixelateFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: PixelateFrag
+            });
 
-        /**
-         * The amount of pixelation to apply.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.PixelateFXPipeline#amount
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.amount = 1;
-    },
+            /**
+             * The amount of pixelation to apply.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.PixelateFXPipeline#amount
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.amount = 1;
+        },
 
-    onPreRender: function (controller, shader, width, height)
-    {
+    onPreRender: function (controller, shader, width, height) {
         controller = this.getController(controller);
 
         this.set1f('amount', controller.amount, shader);
 
-        if (width && height)
-        {
+        if (width && height) {
             this.set2f('resolution', width, height, shader);
         }
     },
 
-    onDraw: function (target)
-    {
+    onDraw: function (target) {
         this.set2f('resolution', target.width, target.height);
 
         this.bindAndDraw(target);

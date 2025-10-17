@@ -27,28 +27,27 @@ var DeathZone = new Class({
 
     initialize:
 
-    function DeathZone (source, killOnEnter)
-    {
-        /**
-         * An object instance that has a `contains` method that returns a boolean when given `x` and `y` arguments.
-         * This could be a Geometry shape, such as `Phaser.Geom.Circle`, or your own custom object.
-         *
-         * @name Phaser.GameObjects.Particles.Zones.DeathZone#source
-         * @type {Phaser.Types.GameObjects.Particles.DeathZoneSource}
-         * @since 3.0.0
-         */
-        this.source = source;
+        function DeathZone(source, killOnEnter) {
+            /**
+             * An object instance that has a `contains` method that returns a boolean when given `x` and `y` arguments.
+             * This could be a Geometry shape, such as `Phaser.Geom.Circle`, or your own custom object.
+             *
+             * @name Phaser.GameObjects.Particles.Zones.DeathZone#source
+             * @type {Phaser.Types.GameObjects.Particles.DeathZoneSource}
+             * @since 3.0.0
+             */
+            this.source = source;
 
-        /**
-         * Set to `true` if the Particle should be killed if it enters this zone.
-         * Set to `false` to kill the Particle if it leaves this zone.
-         *
-         * @name Phaser.GameObjects.Particles.Zones.DeathZone#killOnEnter
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.killOnEnter = killOnEnter;
-    },
+            /**
+             * Set to `true` if the Particle should be killed if it enters this zone.
+             * Set to `false` to kill the Particle if it leaves this zone.
+             *
+             * @name Phaser.GameObjects.Particles.Zones.DeathZone#killOnEnter
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.killOnEnter = killOnEnter;
+        },
 
     /**
      * Checks if the given Particle will be killed or not by this zone.
@@ -60,8 +59,7 @@ var DeathZone = new Class({
      *
      * @return {boolean} Return `true` if the Particle is to be killed, otherwise return `false`.
      */
-    willKill: function (particle)
-    {
+    willKill: function (particle) {
         var pos = particle.worldPosition;
         var withinZone = this.source.contains(pos.x, pos.y);
 

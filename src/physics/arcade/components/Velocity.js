@@ -25,8 +25,7 @@ var Velocity = {
      *
      * @return {this} This Game Object.
      */
-    setVelocity: function (x, y)
-    {
+    setVelocity: function (x, y) {
         this.body.setVelocity(x, y);
 
         return this;
@@ -44,8 +43,7 @@ var Velocity = {
      *
      * @return {this} This Game Object.
      */
-    setVelocityX: function (x)
-    {
+    setVelocityX: function (x) {
         this.body.setVelocityX(x);
 
         return this;
@@ -63,8 +61,7 @@ var Velocity = {
      *
      * @return {this} This Game Object.
      */
-    setVelocityY: function (y)
-    {
+    setVelocityY: function (y) {
         this.body.setVelocityY(y);
 
         return this;
@@ -81,8 +78,7 @@ var Velocity = {
      *
      * @return {this} This Game Object.
      */
-    setMaxVelocity: function (x, y)
-    {
+    setMaxVelocity: function (x, y) {
         this.body.maxVelocity.set(x, y);
 
         return this;

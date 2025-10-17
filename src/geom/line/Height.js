@@ -14,8 +14,7 @@
  *
  * @return {number} The height of the line.
  */
-var Height = function (line)
-{
+var Height = function (line) {
     return Math.abs(line.y1 - line.y2);
 };
 

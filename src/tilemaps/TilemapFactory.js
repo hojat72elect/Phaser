@@ -36,17 +36,26 @@ var ParseToTilemap = require('./ParseToTilemap');
  *
  * @return {Phaser.Tilemaps.Tilemap}
  */
-GameObjectFactory.register('tilemap', function (key, tileWidth, tileHeight, width, height, data, insertNull)
-{
+GameObjectFactory.register('tilemap', function (key, tileWidth, tileHeight, width, height, data, insertNull) {
     // Allow users to specify null to indicate that they want the default value, since null is
     // shorter & more legible than undefined. Convert null to undefined to allow ParseToTilemap
     // defaults to take effect.
 
-    if (key === null) { key = undefined; }
-    if (tileWidth === null) { tileWidth = undefined; }
-    if (tileHeight === null) { tileHeight = undefined; }
-    if (width === null) { width = undefined; }
-    if (height === null) { height = undefined; }
+    if (key === null) {
+        key = undefined;
+    }
+    if (tileWidth === null) {
+        tileWidth = undefined;
+    }
+    if (tileHeight === null) {
+        tileHeight = undefined;
+    }
+    if (width === null) {
+        width = undefined;
+    }
+    if (height === null) {
+        height = undefined;
+    }
 
     return ParseToTilemap(this.scene, key, tileWidth, tileHeight, width, height, data, insertNull);
 });

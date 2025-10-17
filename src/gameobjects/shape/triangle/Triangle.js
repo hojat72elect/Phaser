@@ -50,33 +50,47 @@ var Triangle = new Class({
 
     initialize:
 
-    function Triangle (scene, x, y, x1, y1, x2, y2, x3, y3, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (x1 === undefined) { x1 = 0; }
-        if (y1 === undefined) { y1 = 128; }
-        if (x2 === undefined) { x2 = 64; }
-        if (y2 === undefined) { y2 = 0; }
-        if (x3 === undefined) { x3 = 128; }
-        if (y3 === undefined) { y3 = 128; }
+        function Triangle(scene, x, y, x1, y1, x2, y2, x3, y3, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (x1 === undefined) {
+                x1 = 0;
+            }
+            if (y1 === undefined) {
+                y1 = 128;
+            }
+            if (x2 === undefined) {
+                x2 = 64;
+            }
+            if (y2 === undefined) {
+                y2 = 0;
+            }
+            if (x3 === undefined) {
+                x3 = 128;
+            }
+            if (y3 === undefined) {
+                y3 = 128;
+            }
 
-        Shape.call(this, scene, 'Triangle', new GeomTriangle(x1, y1, x2, y2, x3, y3));
+            Shape.call(this, scene, 'Triangle', new GeomTriangle(x1, y1, x2, y2, x3, y3));
 
-        var width = this.geom.right - this.geom.left;
-        var height = this.geom.bottom - this.geom.top;
+            var width = this.geom.right - this.geom.left;
+            var height = this.geom.bottom - this.geom.top;
 
-        this.setPosition(x, y);
-        this.setSize(width, height);
+            this.setPosition(x, y);
+            this.setSize(width, height);
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-        this.updateData();
-    },
+            this.updateDisplayOrigin();
+            this.updateData();
+        },
 
     /**
      * Sets the data for the lines that make up this Triangle shape.
@@ -93,8 +107,7 @@ var Triangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setTo: function (x1, y1, x2, y2, x3, y3)
-    {
+    setTo: function (x1, y1, x2, y2, x3, y3) {
         this.geom.setTo(x1, y1, x2, y2, x3, y3);
 
         return this.updateData();
@@ -109,8 +122,7 @@ var Triangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
+    updateData: function () {
         var path = [];
         var tri = this.geom;
         var line = this._tempLine;

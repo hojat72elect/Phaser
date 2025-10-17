@@ -14,18 +14,12 @@
  *
  * @return {number} The tweened value.
  */
-var Out = function (v)
-{
-    if (v === 0)
-    {
+var Out = function (v) {
+    if (v === 0) {
         return 0;
-    }
-    else if (v === 1)
-    {
+    } else if (v === 1) {
         return 1;
-    }
-    else
-    {
+    } else {
         return Math.sin(v * Math.PI / 2);
     }
 };

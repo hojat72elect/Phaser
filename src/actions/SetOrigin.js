@@ -29,15 +29,15 @@ var PropertyValueSet = require('./PropertyValueSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var SetOrigin = function (items, originX, originY, stepX, stepY, index, direction)
-{
-    if (originY === undefined || originY === null) { originY = originX; }
+var SetOrigin = function (items, originX, originY, stepX, stepY, index, direction) {
+    if (originY === undefined || originY === null) {
+        originY = originX;
+    }
 
     PropertyValueSet(items, 'originX', originX, stepX, index, direction);
     PropertyValueSet(items, 'originY', originY, stepY, index, direction);
 
-    items.forEach(function (item)
-    {
+    items.forEach(function (item) {
         item.updateDisplayOrigin();
     });
 

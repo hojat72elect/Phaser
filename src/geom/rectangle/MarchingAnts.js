@@ -23,24 +23,21 @@ var Point = require('../point/Point');
  *
  * @return {(array|Phaser.Geom.Point[])} An array containing the perimeter points from the Rectangle.
  */
-var MarchingAnts = function (rect, step, quantity, out)
-{
-    if (out === undefined) { out = []; }
+var MarchingAnts = function (rect, step, quantity, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    if (!step && !quantity)
-    {
+    if (!step && !quantity) {
         //  Bail out
         return out;
     }
 
     //  If step is a falsey value (false, null, 0, undefined, etc) then we calculate
     //  it based on the quantity instead, otherwise we always use the step value
-    if (!step)
-    {
+    if (!step) {
         step = Perimeter(rect) / quantity;
-    }
-    else
-    {
+    } else {
         quantity = Math.round(Perimeter(rect) / step);
     }
 
@@ -50,19 +47,16 @@ var MarchingAnts = function (rect, step, quantity, out)
 
     //  Loop across each face of the rectangle
 
-    for (var i = 0; i < quantity; i++)
-    {
+    for (var i = 0; i < quantity; i++) {
         out.push(new Point(x, y));
 
-        switch (face)
-        {
+        switch (face) {
 
             //  Top face
             case 0:
                 x += step;
 
-                if (x >= rect.right)
-                {
+                if (x >= rect.right) {
                     face = 1;
                     y += (x - rect.right);
                     x = rect.right;
@@ -73,8 +67,7 @@ var MarchingAnts = function (rect, step, quantity, out)
             case 1:
                 y += step;
 
-                if (y >= rect.bottom)
-                {
+                if (y >= rect.bottom) {
                     face = 2;
                     x -= (y - rect.bottom);
                     y = rect.bottom;
@@ -85,8 +78,7 @@ var MarchingAnts = function (rect, step, quantity, out)
             case 2:
                 x -= step;
 
-                if (x <= rect.left)
-                {
+                if (x <= rect.left) {
                     face = 3;
                     y -= (rect.left - x);
                     x = rect.left;
@@ -97,8 +89,7 @@ var MarchingAnts = function (rect, step, quantity, out)
             case 3:
                 y -= step;
 
-                if (y <= rect.top)
-                {
+                if (y <= rect.top) {
                     face = 0;
                     y = rect.top;
                 }

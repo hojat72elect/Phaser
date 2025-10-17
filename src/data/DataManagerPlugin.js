@@ -29,31 +29,30 @@ var DataManagerPlugin = new Class({
 
     initialize:
 
-    function DataManagerPlugin (scene)
-    {
-        DataManager.call(this, scene, scene.sys.events);
+        function DataManagerPlugin(scene) {
+            DataManager.call(this, scene, scene.sys.events);
 
-        /**
-         * A reference to the Scene that this DataManager belongs to.
-         *
-         * @name Phaser.Data.DataManagerPlugin#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * A reference to the Scene that this DataManager belongs to.
+             *
+             * @name Phaser.Data.DataManagerPlugin#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * A reference to the Scene's Systems.
-         *
-         * @name Phaser.Data.DataManagerPlugin#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.0.0
-         */
-        this.systems = scene.sys;
+            /**
+             * A reference to the Scene's Systems.
+             *
+             * @name Phaser.Data.DataManagerPlugin#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.0.0
+             */
+            this.systems = scene.sys;
 
-        scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-        scene.sys.events.on(SceneEvents.START, this.start, this);
-    },
+            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+            scene.sys.events.on(SceneEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -63,8 +62,7 @@ var DataManagerPlugin = new Class({
      * @private
      * @since 3.5.1
      */
-    boot: function ()
-    {
+    boot: function () {
         this.events = this.systems.events;
 
         this.events.once(SceneEvents.DESTROY, this.destroy, this);
@@ -79,8 +77,7 @@ var DataManagerPlugin = new Class({
      * @private
      * @since 3.5.0
      */
-    start: function ()
-    {
+    start: function () {
         this.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);
     },
 
@@ -92,8 +89,7 @@ var DataManagerPlugin = new Class({
      * @private
      * @since 3.5.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.systems.events.off(SceneEvents.SHUTDOWN, this.shutdown, this);
     },
 
@@ -104,8 +100,7 @@ var DataManagerPlugin = new Class({
      * @method Phaser.Data.DataManagerPlugin#destroy
      * @since 3.5.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         DataManager.prototype.destroy.call(this);
 
         this.events.off(SceneEvents.START, this.start, this);

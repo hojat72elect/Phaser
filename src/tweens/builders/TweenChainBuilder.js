@@ -23,10 +23,8 @@ var TweenChain = require('../tween/TweenChain');
  *
  * @return {Phaser.Tweens.TweenChain} The new Tween Chain.
  */
-var TweenChainBuilder = function (parent, config)
-{
-    if (config instanceof TweenChain)
-    {
+var TweenChainBuilder = function (parent, config) {
+    if (config instanceof TweenChain) {
         config.parent = parent;
 
         return config;
@@ -49,14 +47,12 @@ var TweenChainBuilder = function (parent, config)
     var i;
     var callbacks = BaseTween.TYPES;
 
-    for (i = 0; i < callbacks.length; i++)
-    {
+    for (i = 0; i < callbacks.length; i++) {
         var type = callbacks[i];
 
         var callback = GetValue(config, type, false);
 
-        if (callback)
-        {
+        if (callback) {
             var callbackParams = GetValue(config, type + 'Params', []);
 
             chain.setCallback(type, callback, callbackParams);
@@ -66,20 +62,17 @@ var TweenChainBuilder = function (parent, config)
     //  Add in the Tweens
     var tweens = GetValue(config, 'tweens', null);
 
-    if (Array.isArray(tweens))
-    {
+    if (Array.isArray(tweens)) {
         var chainedTweens = [];
 
         var targets = GetTargets(config);
         var defaults = undefined;
 
-        if (targets)
-        {
-            defaults = { targets: targets };
+        if (targets) {
+            defaults = {targets: targets};
         }
 
-        for (i = 0; i < tweens.length; i++)
-        {
+        for (i = 0; i < tweens.length; i++) {
             chainedTweens.push(TweenBuilder(chain, tweens[i], defaults));
         }
 

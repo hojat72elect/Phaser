@@ -18,8 +18,7 @@
  *
  * @return {number} The Catmull-Rom value.
  */
-var CatmullRom = function (t, p0, p1, p2, p3)
-{
+var CatmullRom = function (t, p0, p1, p2, p3) {
     var v0 = (p2 - p0) * 0.5;
     var v1 = (p3 - p1) * 0.5;
     var t2 = t * t;

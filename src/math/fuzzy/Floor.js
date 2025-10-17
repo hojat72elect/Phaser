@@ -15,9 +15,10 @@
  *
  * @return {number} The floor of the value.
  */
-var Floor = function (value, epsilon)
-{
-    if (epsilon === undefined) { epsilon = 0.0001; }
+var Floor = function (value, epsilon) {
+    if (epsilon === undefined) {
+        epsilon = 0.0001;
+    }
 
     return Math.floor(value + epsilon);
 };

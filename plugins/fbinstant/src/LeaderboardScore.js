@@ -17,8 +17,7 @@
  * @property {string} playerID - The game's unique identifier for the player.
  */
 
-var LeaderboardScore = function (entry)
-{
+var LeaderboardScore = function (entry) {
     return {
         score: entry.getScore(),
         scoreFormatted: entry.getFormattedScore(),

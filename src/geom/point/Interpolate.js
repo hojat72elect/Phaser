@@ -21,10 +21,13 @@ var Point = require('./Point');
  *
  * @return {(Phaser.Geom.Point|object)} Either the object from the `out` argument with the properties `x` and `y` set to the result of the interpolation or a newly created `Point` object.
  */
-var Interpolate = function (pointA, pointB, t, out)
-{
-    if (t === undefined) { t = 0; }
-    if (out === undefined) { out = new Point(); }
+var Interpolate = function (pointA, pointB, t, out) {
+    if (t === undefined) {
+        t = 0;
+    }
+    if (out === undefined) {
+        out = new Point();
+    }
 
     out.x = pointA.x + ((pointB.x - pointA.x) * t);
     out.y = pointA.y + ((pointB.y - pointA.y) * t);

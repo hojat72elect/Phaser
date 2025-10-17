@@ -23,9 +23,10 @@ var Mesh = require('./Mesh');
  *
  * @return {Phaser.GameObjects.Mesh} The Game Object that was created.
  */
-GameObjectCreator.register('mesh', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('mesh', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
     var frame = GetAdvancedValue(config, 'frame', null);
@@ -39,8 +40,7 @@ GameObjectCreator.register('mesh', function (config, addToScene)
 
     var mesh = new Mesh(this.scene, 0, 0, key, frame, vertices, uvs, indicies, containsZ, normals, colors, alphas);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

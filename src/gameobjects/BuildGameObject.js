@@ -19,8 +19,7 @@ var GetAdvancedValue = require('../utils/object/GetAdvancedValue');
  *
  * @return {Phaser.GameObjects.GameObject} The built Game Object.
  */
-var BuildGameObject = function (scene, gameObject, config)
-{
+var BuildGameObject = function (scene, gameObject, config) {
     //  Position
 
     gameObject.x = GetAdvancedValue(config, 'x', 0);
@@ -37,12 +36,9 @@ var BuildGameObject = function (scene, gameObject, config)
 
     var scale = GetAdvancedValue(config, 'scale', null);
 
-    if (typeof scale === 'number')
-    {
+    if (typeof scale === 'number') {
         gameObject.setScale(scale);
-    }
-    else if (scale !== null)
-    {
+    } else if (scale !== null) {
         gameObject.scaleX = GetAdvancedValue(scale, 'x', 1);
         gameObject.scaleY = GetAdvancedValue(scale, 'y', 1);
     }
@@ -52,12 +48,9 @@ var BuildGameObject = function (scene, gameObject, config)
 
     var scrollFactor = GetAdvancedValue(config, 'scrollFactor', null);
 
-    if (typeof scrollFactor === 'number')
-    {
+    if (typeof scrollFactor === 'number') {
         gameObject.setScrollFactor(scrollFactor);
-    }
-    else if (scrollFactor !== null)
-    {
+    } else if (scrollFactor !== null) {
         gameObject.scrollFactorX = GetAdvancedValue(scrollFactor, 'x', 1);
         gameObject.scrollFactorY = GetAdvancedValue(scrollFactor, 'y', 1);
     }
@@ -68,8 +61,7 @@ var BuildGameObject = function (scene, gameObject, config)
 
     var angle = GetAdvancedValue(config, 'angle', null);
 
-    if (angle !== null)
-    {
+    if (angle !== null) {
         gameObject.angle = angle;
     }
 
@@ -82,12 +74,9 @@ var BuildGameObject = function (scene, gameObject, config)
 
     var origin = GetAdvancedValue(config, 'origin', null);
 
-    if (typeof origin === 'number')
-    {
+    if (typeof origin === 'number') {
         gameObject.setOrigin(origin);
-    }
-    else if (origin !== null)
-    {
+    } else if (origin !== null) {
         var ox = GetAdvancedValue(origin, 'x', 0.5);
         var oy = GetAdvancedValue(origin, 'y', 0.5);
 
@@ -106,13 +95,11 @@ var BuildGameObject = function (scene, gameObject, config)
 
     var add = GetAdvancedValue(config, 'add', true);
 
-    if (add)
-    {
+    if (add) {
         scene.sys.displayList.add(gameObject);
     }
 
-    if (gameObject.preUpdate)
-    {
+    if (gameObject.preUpdate) {
         scene.sys.updateList.add(gameObject);
     }
 

@@ -37,34 +37,32 @@ var BinaryFile = new Class({
 
     initialize:
 
-    function BinaryFile (loader, key, url, xhrSettings, dataType)
-    {
-        var extension = 'bin';
+        function BinaryFile(loader, key, url, xhrSettings, dataType) {
+            var extension = 'bin';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            dataType = GetFastValue(config, 'dataType', dataType);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                dataType = GetFastValue(config, 'dataType', dataType);
+            }
 
-        var fileConfig = {
-            type: 'binary',
-            cache: loader.cacheManager.binary,
-            extension: extension,
-            responseType: 'arraybuffer',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: { dataType: dataType }
-        };
+            var fileConfig = {
+                type: 'binary',
+                cache: loader.cacheManager.binary,
+                extension: extension,
+                responseType: 'arraybuffer',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: {dataType: dataType}
+            };
 
-        File.call(this, loader, fileConfig);
-    },
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -73,8 +71,7 @@ var BinaryFile = new Class({
      * @method Phaser.Loader.FileTypes.BinaryFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         var ctor = this.config.dataType;
@@ -155,18 +152,13 @@ var BinaryFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('binary', function (key, url, dataType, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('binary', function (key, url, dataType, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new BinaryFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new BinaryFile(this, key, url, xhrSettings, dataType));
     }
 

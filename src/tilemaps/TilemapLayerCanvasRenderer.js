@@ -24,15 +24,13 @@ var tempMatrix3 = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     var renderTiles = src.cull(camera);
 
     var tileCount = renderTiles.length;
     var alpha = camera.alpha * src.alpha;
 
-    if (tileCount === 0 || alpha <= 0)
-    {
+    if (tileCount === 0 || alpha <= 0) {
         return;
     }
 
@@ -49,8 +47,7 @@ var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
     ctx.save();
 
-    if (parentMatrix)
-    {
+    if (parentMatrix) {
         //  Multiply the camera by the parent matrix
         camMatrix.multiplyWithOffset(parentMatrix, -camera.scrollX * src.scrollFactorX, -camera.scrollY * src.scrollFactorY);
 
@@ -62,28 +59,23 @@ var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix)
         camMatrix.multiply(layerMatrix, calcMatrix);
 
         calcMatrix.copyToContext(ctx);
-    }
-    else
-    {
+    } else {
         layerMatrix.e -= camera.scrollX * src.scrollFactorX;
         layerMatrix.f -= camera.scrollY * src.scrollFactorY;
 
         layerMatrix.copyToContext(ctx);
     }
 
-    if (!renderer.antialias || src.scaleX > 1 || src.scaleY > 1)
-    {
+    if (!renderer.antialias || src.scaleX > 1 || src.scaleY > 1) {
         ctx.imageSmoothingEnabled = false;
     }
 
-    for (var i = 0; i < tileCount; i++)
-    {
+    for (var i = 0; i < tileCount; i++) {
         var tile = renderTiles[i];
 
         var tileset = gidMap[tile.index];
 
-        if (!tileset)
-        {
+        if (!tileset) {
             continue;
         }
 
@@ -93,8 +85,7 @@ var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix)
         var tileWidth = tileset.tileWidth;
         var tileHeight = tileset.tileHeight;
 
-        if (tileTexCoords === null || tileWidth === 0 || tileHeight === 0)
-        {
+        if (tileTexCoords === null || tileWidth === 0 || tileHeight === 0) {
             continue;
         }
 
@@ -108,13 +99,11 @@ var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         ctx.translate(tile.pixelX + halfWidth, tile.pixelY + halfHeight);
 
-        if (tile.rotation !== 0)
-        {
+        if (tile.rotation !== 0) {
             ctx.rotate(tile.rotation);
         }
 
-        if (tile.flipX || tile.flipY)
-        {
+        if (tile.flipX || tile.flipY) {
             ctx.scale((tile.flipX) ? -1 : 1, (tile.flipY) ? -1 : 1);
         }
 
@@ -123,7 +112,7 @@ var TilemapLayerCanvasRenderer = function (renderer, src, camera, parentMatrix)
         ctx.drawImage(
             image,
             tileTexCoords.x, tileTexCoords.y,
-            tileWidth , tileHeight,
+            tileWidth, tileHeight,
             -halfWidth, -halfHeight,
             tileWidth, tileHeight
         );

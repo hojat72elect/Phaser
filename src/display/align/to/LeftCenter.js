@@ -24,10 +24,13 @@ var SetRight = require('../../bounds/SetRight');
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was aligned.
  */
-var LeftCenter = function (gameObject, alignTo, offsetX, offsetY)
-{
-    if (offsetX === undefined) { offsetX = 0; }
-    if (offsetY === undefined) { offsetY = 0; }
+var LeftCenter = function (gameObject, alignTo, offsetX, offsetY) {
+    if (offsetX === undefined) {
+        offsetX = 0;
+    }
+    if (offsetY === undefined) {
+        offsetY = 0;
+    }
 
     SetRight(gameObject, GetLeft(alignTo) - offsetX);
     SetCenterY(gameObject, GetCenterY(alignTo) + offsetY);

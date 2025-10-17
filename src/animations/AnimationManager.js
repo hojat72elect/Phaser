@@ -40,86 +40,85 @@ var AnimationManager = new Class({
 
     initialize:
 
-    function AnimationManager (game)
-    {
-        EventEmitter.call(this);
+        function AnimationManager(game) {
+            EventEmitter.call(this);
 
-        /**
-         * A reference to the Phaser.Game instance.
-         *
-         * @name Phaser.Animations.AnimationManager#game
-         * @type {Phaser.Game}
-         * @protected
-         * @since 3.0.0
-         */
-        this.game = game;
+            /**
+             * A reference to the Phaser.Game instance.
+             *
+             * @name Phaser.Animations.AnimationManager#game
+             * @type {Phaser.Game}
+             * @protected
+             * @since 3.0.0
+             */
+            this.game = game;
 
-        /**
-         * A reference to the Texture Manager.
-         *
-         * @name Phaser.Animations.AnimationManager#textureManager
-         * @type {Phaser.Textures.TextureManager}
-         * @protected
-         * @since 3.0.0
-         */
-        this.textureManager = null;
+            /**
+             * A reference to the Texture Manager.
+             *
+             * @name Phaser.Animations.AnimationManager#textureManager
+             * @type {Phaser.Textures.TextureManager}
+             * @protected
+             * @since 3.0.0
+             */
+            this.textureManager = null;
 
-        /**
-         * The global time scale of the Animation Manager.
-         *
-         * This scales the time delta between two frames, thus influencing the speed of time for the Animation Manager.
-         *
-         * @name Phaser.Animations.AnimationManager#globalTimeScale
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.globalTimeScale = 1;
+            /**
+             * The global time scale of the Animation Manager.
+             *
+             * This scales the time delta between two frames, thus influencing the speed of time for the Animation Manager.
+             *
+             * @name Phaser.Animations.AnimationManager#globalTimeScale
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.globalTimeScale = 1;
 
-        /**
-         * The Animations registered in the Animation Manager.
-         *
-         * This map should be modified with the {@link #add} and {@link #create} methods of the Animation Manager.
-         *
-         * @name Phaser.Animations.AnimationManager#anims
-         * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
-         * @protected
-         * @since 3.0.0
-         */
-        this.anims = new CustomMap();
+            /**
+             * The Animations registered in the Animation Manager.
+             *
+             * This map should be modified with the {@link #add} and {@link #create} methods of the Animation Manager.
+             *
+             * @name Phaser.Animations.AnimationManager#anims
+             * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
+             * @protected
+             * @since 3.0.0
+             */
+            this.anims = new CustomMap();
 
-        /**
-         * A list of animation mix times.
-         *
-         * See the {@link #setMix} method for more details.
-         *
-         * @name Phaser.Animations.AnimationManager#mixes
-         * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
-         * @since 3.50.0
-         */
-        this.mixes = new CustomMap();
+            /**
+             * A list of animation mix times.
+             *
+             * See the {@link #setMix} method for more details.
+             *
+             * @name Phaser.Animations.AnimationManager#mixes
+             * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
+             * @since 3.50.0
+             */
+            this.mixes = new CustomMap();
 
-        /**
-         * Whether the Animation Manager is paused along with all of its Animations.
-         *
-         * @name Phaser.Animations.AnimationManager#paused
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.paused = false;
+            /**
+             * Whether the Animation Manager is paused along with all of its Animations.
+             *
+             * @name Phaser.Animations.AnimationManager#paused
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.paused = false;
 
-        /**
-         * The name of this Animation Manager.
-         *
-         * @name Phaser.Animations.AnimationManager#name
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.name = 'AnimationManager';
+            /**
+             * The name of this Animation Manager.
+             *
+             * @name Phaser.Animations.AnimationManager#name
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.name = 'AnimationManager';
 
-        game.events.once(GameEvents.BOOT, this.boot, this);
-    },
+            game.events.once(GameEvents.BOOT, this.boot, this);
+        },
 
     /**
      * Registers event listeners after the Game boots.
@@ -128,8 +127,7 @@ var AnimationManager = new Class({
      * @listens Phaser.Core.Events#DESTROY
      * @since 3.0.0
      */
-    boot: function ()
-    {
+    boot: function () {
         this.textureManager = this.game.textures;
 
         this.game.events.once(GameEvents.DESTROY, this.destroy, this);
@@ -163,20 +161,17 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    addMix: function (animA, animB, delay)
-    {
+    addMix: function (animA, animB, delay) {
         var anims = this.anims;
         var mixes = this.mixes;
 
-        var keyA = (typeof(animA) === 'string') ? animA : animA.key;
-        var keyB = (typeof(animB) === 'string') ? animB : animB.key;
+        var keyA = (typeof (animA) === 'string') ? animA : animA.key;
+        var keyB = (typeof (animB) === 'string') ? animB : animB.key;
 
-        if (anims.has(keyA) && anims.has(keyB))
-        {
+        if (anims.has(keyA) && anims.has(keyB)) {
             var mixObj = mixes.get(keyA);
 
-            if (!mixObj)
-            {
+            if (!mixObj) {
                 mixObj = {};
             }
 
@@ -208,28 +203,22 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    removeMix: function (animA, animB)
-    {
+    removeMix: function (animA, animB) {
         var mixes = this.mixes;
 
-        var keyA = (typeof(animA) === 'string') ? animA : animA.key;
+        var keyA = (typeof (animA) === 'string') ? animA : animA.key;
 
         var mixObj = mixes.get(keyA);
 
-        if (mixObj)
-        {
-            if (animB)
-            {
-                var keyB = (typeof(animB) === 'string') ? animB : animB.key;
+        if (mixObj) {
+            if (animB) {
+                var keyB = (typeof (animB) === 'string') ? animB : animB.key;
 
-                if (mixObj.hasOwnProperty(keyB))
-                {
+                if (mixObj.hasOwnProperty(keyB)) {
                     //  Remove just this pairing
                     delete mixObj[keyB];
                 }
-            }
-            else if (!animB)
-            {
+            } else if (!animB) {
                 //  Remove everything for animA
                 mixes.delete(keyA);
             }
@@ -254,21 +243,17 @@ var AnimationManager = new Class({
      *
      * @return {number} The mix duration, or zero if no mix exists.
      */
-    getMix: function (animA, animB)
-    {
+    getMix: function (animA, animB) {
         var mixes = this.mixes;
 
-        var keyA = (typeof(animA) === 'string') ? animA : animA.key;
-        var keyB = (typeof(animB) === 'string') ? animB : animB.key;
+        var keyA = (typeof (animA) === 'string') ? animA : animA.key;
+        var keyB = (typeof (animB) === 'string') ? animB : animB.key;
 
         var mixObj = mixes.get(keyA);
 
-        if (mixObj && mixObj.hasOwnProperty(keyB))
-        {
+        if (mixObj && mixObj.hasOwnProperty(keyB)) {
             return mixObj[keyB];
-        }
-        else
-        {
+        } else {
             return 0;
         }
     },
@@ -285,10 +270,8 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    add: function (key, animation)
-    {
-        if (this.anims.has(key))
-        {
+    add: function (key, animation) {
+        if (this.anims.has(key)) {
             console.warn('Animation key exists: ' + key);
 
             return this;
@@ -315,8 +298,7 @@ var AnimationManager = new Class({
      *
      * @return {boolean} `true` if the Animation already exists in the Animation Manager, or `false` if the key is available.
      */
-    exists: function (key)
-    {
+    exists: function (key) {
         return this.anims.has(key);
     },
 
@@ -397,14 +379,12 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Animations.Animation[]} An array of Animation instances that were successfully created.
      */
-    createFromAseprite: function (key, tags, target)
-    {
+    createFromAseprite: function (key, tags, target) {
         var output = [];
 
         var data = this.game.cache.json.get(key);
 
-        if (!data)
-        {
+        if (!data) {
             console.warn('No Aseprite data found for: ' + key);
 
             return output;
@@ -415,12 +395,10 @@ var AnimationManager = new Class({
         var meta = GetValue(data, 'meta', null);
         var frames = GetValue(data, 'frames', null);
 
-        if (meta && frames)
-        {
+        if (meta && frames) {
             var frameTags = GetValue(meta, 'frameTags', []);
 
-            frameTags.forEach(function (tag)
-            {
+            frameTags.forEach(function (tag) {
                 var animFrames = [];
 
                 var name = GetFastValue(tag, 'name', null);
@@ -428,31 +406,26 @@ var AnimationManager = new Class({
                 var to = GetFastValue(tag, 'to', 0);
                 var direction = GetFastValue(tag, 'direction', 'forward');
 
-                if (!name)
-                {
+                if (!name) {
                     //  Skip if no name
                     return;
                 }
 
-                if (!tags || (tags && tags.indexOf(name) > -1))
-                {
+                if (!tags || (tags && tags.indexOf(name) > -1)) {
                     //  Get all the frames for this tag and calculate the total duration in milliseconds.
                     var totalDuration = 0;
-                    for (var i = from; i <= to; i++)
-                    {
+                    for (var i = from; i <= to; i++) {
                         var frameKey = i.toString();
                         var frame = frames[frameKey];
 
-                        if (frame)
-                        {
+                        if (frame) {
                             var frameDuration = GetFastValue(frame, 'duration', MATH_CONST.MAX_SAFE_INTEGER);
-                            animFrames.push({ key: key, frame: frameKey, duration: frameDuration });
+                            animFrames.push({key: key, frame: frameKey, duration: frameDuration});
                             totalDuration += frameDuration;
                         }
                     }
 
-                    if (direction === 'reverse')
-                    {
+                    if (direction === 'reverse') {
                         animFrames = animFrames.reverse();
                     }
 
@@ -466,20 +439,15 @@ var AnimationManager = new Class({
 
                     var result;
 
-                    if (target)
-                    {
-                        if (target.anims)
-                        {
+                    if (target) {
+                        if (target.anims) {
                             result = target.anims.create(createConfig);
                         }
-                    }
-                    else
-                    {
+                    } else {
                         result = _this.create(createConfig);
                     }
 
-                    if (result)
-                    {
+                    if (result) {
                         output.push(result);
                     }
                 }
@@ -510,26 +478,21 @@ var AnimationManager = new Class({
      *
      * @return {(Phaser.Animations.Animation|false)} The Animation that was created, or `false` if the key is already in use.
      */
-    create: function (config)
-    {
+    create: function (config) {
         var key = config.key;
 
         var anim = false;
 
-        if (key)
-        {
+        if (key) {
             anim = this.get(key);
 
-            if (!anim)
-            {
+            if (!anim) {
                 anim = new Animation(this, key, config);
 
                 this.anims.set(key, anim);
 
                 this.emit(Events.ADD_ANIMATION, key, anim);
-            }
-            else
-            {
+            } else {
                 console.warn('AnimationManager key already exists: ' + key);
             }
         }
@@ -548,38 +511,32 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Animations.Animation[]} An array containing all of the Animation objects that were created as a result of this call.
      */
-    fromJSON: function (data, clearCurrentAnimations)
-    {
-        if (clearCurrentAnimations === undefined) { clearCurrentAnimations = false; }
+    fromJSON: function (data, clearCurrentAnimations) {
+        if (clearCurrentAnimations === undefined) {
+            clearCurrentAnimations = false;
+        }
 
-        if (clearCurrentAnimations)
-        {
+        if (clearCurrentAnimations) {
             this.anims.clear();
         }
 
         //  Do we have a String (i.e. from JSON, or an Object?)
-        if (typeof data === 'string')
-        {
+        if (typeof data === 'string') {
             data = JSON.parse(data);
         }
 
         var output = [];
 
         //  Array of animations, or a single animation?
-        if (data.hasOwnProperty('anims') && Array.isArray(data.anims))
-        {
-            for (var i = 0; i < data.anims.length; i++)
-            {
+        if (data.hasOwnProperty('anims') && Array.isArray(data.anims)) {
+            for (var i = 0; i < data.anims.length; i++) {
                 output.push(this.create(data.anims[i]));
             }
 
-            if (data.hasOwnProperty('globalTimeScale'))
-            {
+            if (data.hasOwnProperty('globalTimeScale')) {
                 this.globalTimeScale = data.globalTimeScale;
             }
-        }
-        else if (data.hasOwnProperty('key') && data.type === 'frame')
-        {
+        } else if (data.hasOwnProperty('key') && data.type === 'frame') {
             output.push(this.create(data));
         }
 
@@ -625,8 +582,7 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Types.Animations.AnimationFrame[]} The array of {@link Phaser.Types.Animations.AnimationFrame} objects.
      */
-    generateFrameNames: function (key, config)
-    {
+    generateFrameNames: function (key, config) {
         var prefix = GetValue(config, 'prefix', '');
         var start = GetValue(config, 'start', 0);
         var end = GetValue(config, 'end', 0);
@@ -635,8 +591,7 @@ var AnimationManager = new Class({
         var out = GetValue(config, 'outputArray', []);
         var frames = GetValue(config, 'frames', false);
 
-        if (!this.textureManager.exists(key))
-        {
+        if (!this.textureManager.exists(key)) {
             console.warn('Texture "%s" not found', key);
 
             return out;
@@ -644,40 +599,30 @@ var AnimationManager = new Class({
 
         var texture = this.textureManager.get(key);
 
-        if (!texture)
-        {
+        if (!texture) {
             return out;
         }
 
         var i;
 
-        if (!config)
-        {
+        if (!config) {
             //  Use every frame in the atlas
             frames = texture.getFrameNames();
 
-            for (i = 0; i < frames.length; i++)
-            {
-                out.push({ key: key, frame: frames[i] });
+            for (i = 0; i < frames.length; i++) {
+                out.push({key: key, frame: frames[i]});
             }
-        }
-        else
-        {
-            if (!frames)
-            {
+        } else {
+            if (!frames) {
                 frames = NumberArray(start, end);
             }
 
-            for (i = 0; i < frames.length; i++)
-            {
+            for (i = 0; i < frames.length; i++) {
                 var frame = prefix + Pad(frames[i], zeroPad, '0', 1) + suffix;
 
-                if (texture.has(frame))
-                {
-                    out.push({ key: key, frame: frame });
-                }
-                else
-                {
+                if (texture.has(frame)) {
+                    out.push({key: key, frame: frame});
+                } else {
                     console.warn('Frame "%s" not found in texture "%s"', frame, key);
                 }
             }
@@ -733,16 +678,14 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Types.Animations.AnimationFrame[]} The array of {@link Phaser.Types.Animations.AnimationFrame} objects.
      */
-    generateFrameNumbers: function (key, config)
-    {
+    generateFrameNumbers: function (key, config) {
         var start = GetValue(config, 'start', 0);
         var end = GetValue(config, 'end', -1);
         var first = GetValue(config, 'first', false);
         var out = GetValue(config, 'outputArray', []);
         var frames = GetValue(config, 'frames', false);
 
-        if (!this.textureManager.exists(key))
-        {
+        if (!this.textureManager.exists(key)) {
             console.warn('Texture "%s" not found', key);
 
             return out;
@@ -750,21 +693,17 @@ var AnimationManager = new Class({
 
         var texture = this.textureManager.get(key);
 
-        if (!texture)
-        {
+        if (!texture) {
             return out;
         }
 
-        if (first && texture.has(first))
-        {
-            out.push({ key: key, frame: first });
+        if (first && texture.has(first)) {
+            out.push({key: key, frame: first});
         }
 
         //  No 'frames' array? Then generate one automatically
-        if (!frames)
-        {
-            if (end === -1)
-            {
+        if (!frames) {
+            if (end === -1) {
                 //  -1 because of __BASE, which we don't want in our results
                 //  and -1 because frames are zero based
                 end = texture.frameTotal - 2;
@@ -773,16 +712,12 @@ var AnimationManager = new Class({
             frames = NumberArray(start, end);
         }
 
-        for (var i = 0; i < frames.length; i++)
-        {
+        for (var i = 0; i < frames.length; i++) {
             var frameName = frames[i];
 
-            if (texture.has(frameName))
-            {
-                out.push({ key: key, frame: frameName });
-            }
-            else
-            {
+            if (texture.has(frameName)) {
+                out.push({key: key, frame: frameName});
+            } else {
                 console.warn('Frame "%s" not found in texture "%s"', frameName, key);
             }
         }
@@ -800,8 +735,7 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Animations.Animation} The Animation.
      */
-    get: function (key)
-    {
+    get: function (key) {
         return this.anims.get(key);
     },
 
@@ -817,8 +751,7 @@ var AnimationManager = new Class({
      *
      * @return {string[]} An array of Animation keys that feature the given Texture.
      */
-    getAnimsFromTexture: function (key)
-    {
+    getAnimsFromTexture: function (key) {
         var texture = this.textureManager.get(key);
 
         var match = texture.key;
@@ -826,15 +759,12 @@ var AnimationManager = new Class({
 
         var out = [];
 
-        for (var i = 0; i < anims.length; i++)
-        {
+        for (var i = 0; i < anims.length; i++) {
             var anim = anims[i];
             var frames = anim.frames;
 
-            for (var c = 0; c < frames.length; c++)
-            {
-                if (frames[c].textureKey === match)
-                {
+            for (var c = 0; c < frames.length; c++) {
+                if (frames[c].textureKey === match) {
                     out.push(anim.key);
 
                     break;
@@ -854,10 +784,8 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    pauseAll: function ()
-    {
-        if (!this.paused)
-        {
+    pauseAll: function () {
+        if (!this.paused) {
             this.paused = true;
 
             this.emit(Events.PAUSE_ALL);
@@ -877,15 +805,12 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    play: function (key, children)
-    {
-        if (!Array.isArray(children))
-        {
-            children = [ children ];
+    play: function (key, children) {
+        if (!Array.isArray(children)) {
+            children = [children];
         }
 
-        for (var i = 0; i < children.length; i++)
-        {
+        for (var i = 0; i < children.length; i++) {
             children[i].anims.play(key);
         }
 
@@ -931,25 +856,25 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    staggerPlay: function (key, children, stagger, staggerFirst)
-    {
-        if (stagger === undefined) { stagger = 0; }
-        if (staggerFirst === undefined) { staggerFirst = true; }
+    staggerPlay: function (key, children, stagger, staggerFirst) {
+        if (stagger === undefined) {
+            stagger = 0;
+        }
+        if (staggerFirst === undefined) {
+            staggerFirst = true;
+        }
 
-        if (!Array.isArray(children))
-        {
-            children = [ children ];
+        if (!Array.isArray(children)) {
+            children = [children];
         }
 
         var len = children.length;
 
-        if (!staggerFirst)
-        {
+        if (!staggerFirst) {
             len--;
         }
 
-        for (var i = 0; i < children.length; i++)
-        {
+        for (var i = 0; i < children.length; i++) {
             var time = (stagger < 0) ? Math.abs(stagger) * (len - i) : stagger * i;
 
             children[i].anims.playAfterDelay(key, time);
@@ -972,12 +897,10 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Animations.Animation} The Animation instance that was removed from the Animation Manager.
      */
-    remove: function (key)
-    {
+    remove: function (key) {
         var anim = this.get(key);
 
-        if (anim)
-        {
+        if (anim) {
             this.emit(Events.REMOVE_ANIMATION, key, anim);
 
             this.anims.delete(key);
@@ -997,10 +920,8 @@ var AnimationManager = new Class({
      *
      * @return {this} This Animation Manager.
      */
-    resumeAll: function ()
-    {
-        if (this.paused)
-        {
+    resumeAll: function () {
+        if (this.paused) {
             this.paused = false;
 
             this.emit(Events.RESUME_ALL);
@@ -1020,21 +941,16 @@ var AnimationManager = new Class({
      *
      * @return {Phaser.Types.Animations.JSONAnimations} The resulting JSONAnimations formatted object.
      */
-    toJSON: function (key)
-    {
+    toJSON: function (key) {
         var output = {
             anims: [],
             globalTimeScale: this.globalTimeScale
         };
 
-        if (key !== undefined && key !== '')
-        {
+        if (key !== undefined && key !== '') {
             output.anims.push(this.anims.get(key).toJSON());
-        }
-        else
-        {
-            this.anims.each(function (animationKey, animation)
-            {
+        } else {
+            this.anims.each(function (animationKey, animation) {
                 output.anims.push(animation.toJSON());
             });
         }
@@ -1049,8 +965,7 @@ var AnimationManager = new Class({
      * @method Phaser.Animations.AnimationManager#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.anims.clear();
         this.mixes.clear();
 

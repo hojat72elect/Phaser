@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Geom.Rectangle} The destination Rectangle.
  */
-var CopyFrom = function (source, dest)
-{
+var CopyFrom = function (source, dest) {
     return dest.setTo(source.x, source.y, source.width, source.height);
 };
 

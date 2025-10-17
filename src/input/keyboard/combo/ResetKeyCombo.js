@@ -15,8 +15,7 @@
  *
  * @return {Phaser.Input.Keyboard.KeyCombo} The KeyCombo.
  */
-var ResetKeyCombo = function (combo)
-{
+var ResetKeyCombo = function (combo) {
     combo.current = combo.keyCodes[0];
     combo.index = 0;
     combo.timeLastMatched = 0;

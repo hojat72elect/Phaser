@@ -60,16 +60,31 @@ var tempMatrix = new Matrix4();
  *
  * @return {Phaser.Types.Geom.Mesh.GenerateVertsResult} The parsed Face and Vertex objects.
  */
-var GenerateObjVerts = function (data, mesh, scale, x, y, z, rotateX, rotateY, rotateZ, zIsUp)
-{
-    if (scale === undefined) { scale = 1; }
-    if (x === undefined) { x = 0; }
-    if (y === undefined) { y = 0; }
-    if (z === undefined) { z = 0; }
-    if (rotateX === undefined) { rotateX = 0; }
-    if (rotateY === undefined) { rotateY = 0; }
-    if (rotateZ === undefined) { rotateZ = 0; }
-    if (zIsUp === undefined) { zIsUp = true; }
+var GenerateObjVerts = function (data, mesh, scale, x, y, z, rotateX, rotateY, rotateZ, zIsUp) {
+    if (scale === undefined) {
+        scale = 1;
+    }
+    if (x === undefined) {
+        x = 0;
+    }
+    if (y === undefined) {
+        y = 0;
+    }
+    if (z === undefined) {
+        z = 0;
+    }
+    if (rotateX === undefined) {
+        rotateX = 0;
+    }
+    if (rotateY === undefined) {
+        rotateY = 0;
+    }
+    if (rotateZ === undefined) {
+        rotateZ = 0;
+    }
+    if (zIsUp === undefined) {
+        zIsUp = true;
+    }
 
     var result = {
         faces: [],
@@ -82,16 +97,14 @@ var GenerateObjVerts = function (data, mesh, scale, x, y, z, rotateX, rotateY, r
     tempRotation.set(rotateX, rotateY, rotateZ);
     tempMatrix.fromRotationXYTranslation(tempRotation, tempPosition, zIsUp);
 
-    for (var m = 0; m < data.models.length; m++)
-    {
+    for (var m = 0; m < data.models.length; m++) {
         var model = data.models[m];
 
         var vertices = model.vertices;
         var textureCoords = model.textureCoords;
         var faces = model.faces;
 
-        for (var i = 0; i < faces.length; i++)
-        {
+        for (var i = 0; i < faces.length; i++) {
             var face = faces[i];
 
             var v1 = face.vertices[0];
@@ -106,14 +119,13 @@ var GenerateObjVerts = function (data, mesh, scale, x, y, z, rotateX, rotateY, r
             var t2 = v2.textureCoordsIndex;
             var t3 = v3.textureCoordsIndex;
 
-            var uv1 = (t1 === -1) ? { u: 0, v: 1 } : textureCoords[t1];
-            var uv2 = (t2 === -1) ? { u: 0, v: 0 } : textureCoords[t2];
-            var uv3 = (t3 === -1) ? { u: 1, v: 1 } : textureCoords[t3];
+            var uv1 = (t1 === -1) ? {u: 0, v: 1} : textureCoords[t1];
+            var uv2 = (t2 === -1) ? {u: 0, v: 0} : textureCoords[t2];
+            var uv3 = (t3 === -1) ? {u: 1, v: 1} : textureCoords[t3];
 
             var color = 0xffffff;
 
-            if (face.material !== '' && materials[face.material])
-            {
+            if (face.material !== '' && materials[face.material]) {
                 color = materials[face.material];
             }
 
@@ -126,8 +138,7 @@ var GenerateObjVerts = function (data, mesh, scale, x, y, z, rotateX, rotateY, r
         }
     }
 
-    if (mesh)
-    {
+    if (mesh) {
         mesh.faces = mesh.faces.concat(result.faces);
         mesh.vertices = mesh.vertices.concat(result.verts);
     }

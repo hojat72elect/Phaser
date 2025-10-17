@@ -108,209 +108,207 @@ var Text = new Class({
 
     initialize:
 
-    function Text (scene, x, y, text, style)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+        function Text(scene, x, y, text, style) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
 
-        GameObject.call(this, scene, 'Text');
+            GameObject.call(this, scene, 'Text');
 
-        /**
-         * The renderer in use by this Text object.
-         *
-         * @name Phaser.GameObjects.Text#renderer
-         * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-         * @since 3.12.0
-         */
-        this.renderer = scene.sys.renderer;
+            /**
+             * The renderer in use by this Text object.
+             *
+             * @name Phaser.GameObjects.Text#renderer
+             * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
+             * @since 3.12.0
+             */
+            this.renderer = scene.sys.renderer;
 
-        this.setPosition(x, y);
-        this.setOrigin(0, 0);
-        this.initPipeline();
-        this.initPostPipeline(true);
+            this.setPosition(x, y);
+            this.setOrigin(0, 0);
+            this.initPipeline();
+            this.initPostPipeline(true);
 
-        /**
-         * The canvas element that the text is rendered to.
-         *
-         * @name Phaser.GameObjects.Text#canvas
-         * @type {HTMLCanvasElement}
-         * @since 3.0.0
-         */
-        this.canvas = CanvasPool.create(this);
+            /**
+             * The canvas element that the text is rendered to.
+             *
+             * @name Phaser.GameObjects.Text#canvas
+             * @type {HTMLCanvasElement}
+             * @since 3.0.0
+             */
+            this.canvas = CanvasPool.create(this);
 
-        /**
-         * The context of the canvas element that the text is rendered to.
-         *
-         * @name Phaser.GameObjects.Text#context
-         * @type {CanvasRenderingContext2D}
-         * @since 3.0.0
-         */
-        this.context;
+            /**
+             * The context of the canvas element that the text is rendered to.
+             *
+             * @name Phaser.GameObjects.Text#context
+             * @type {CanvasRenderingContext2D}
+             * @since 3.0.0
+             */
+            this.context;
 
-        /**
-         * The Text Style object.
-         *
-         * Manages the style of this Text object.
-         *
-         * @name Phaser.GameObjects.Text#style
-         * @type {Phaser.GameObjects.TextStyle}
-         * @since 3.0.0
-         */
-        this.style = new TextStyle(this, style);
+            /**
+             * The Text Style object.
+             *
+             * Manages the style of this Text object.
+             *
+             * @name Phaser.GameObjects.Text#style
+             * @type {Phaser.GameObjects.TextStyle}
+             * @since 3.0.0
+             */
+            this.style = new TextStyle(this, style);
 
-        /**
-         * Whether to automatically round line positions.
-         *
-         * @name Phaser.GameObjects.Text#autoRound
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.autoRound = true;
+            /**
+             * Whether to automatically round line positions.
+             *
+             * @name Phaser.GameObjects.Text#autoRound
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.autoRound = true;
 
-        /**
-         * The Regular Expression that is used to split the text up into lines, in
-         * multi-line text. By default this is `/(?:\r\n|\r|\n)/`.
-         * You can change this RegExp to be anything else that you may need.
-         *
-         * @name Phaser.GameObjects.Text#splitRegExp
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.splitRegExp = /(?:\r\n|\r|\n)/;
+            /**
+             * The Regular Expression that is used to split the text up into lines, in
+             * multi-line text. By default this is `/(?:\r\n|\r|\n)/`.
+             * You can change this RegExp to be anything else that you may need.
+             *
+             * @name Phaser.GameObjects.Text#splitRegExp
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.splitRegExp = /(?:\r\n|\r|\n)/;
 
-        /**
-         * The text to display.
-         *
-         * @name Phaser.GameObjects.Text#_text
-         * @type {string}
-         * @private
-         * @since 3.12.0
-         */
-        this._text = undefined;
+            /**
+             * The text to display.
+             *
+             * @name Phaser.GameObjects.Text#_text
+             * @type {string}
+             * @private
+             * @since 3.12.0
+             */
+            this._text = undefined;
 
-        /**
-         * Specify a padding value which is added to the line width and height when calculating the Text size.
-         * Allows you to add extra spacing if the browser is unable to accurately determine the true font dimensions.
-         *
-         * @name Phaser.GameObjects.Text#padding
-         * @type {Phaser.Types.GameObjects.Text.TextPadding}
-         * @since 3.0.0
-         */
-        this.padding = { left: 0, right: 0, top: 0, bottom: 0 };
+            /**
+             * Specify a padding value which is added to the line width and height when calculating the Text size.
+             * Allows you to add extra spacing if the browser is unable to accurately determine the true font dimensions.
+             *
+             * @name Phaser.GameObjects.Text#padding
+             * @type {Phaser.Types.GameObjects.Text.TextPadding}
+             * @since 3.0.0
+             */
+            this.padding = {left: 0, right: 0, top: 0, bottom: 0};
 
-        /**
-         * The width of this Text object.
-         *
-         * @name Phaser.GameObjects.Text#width
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.width = 1;
+            /**
+             * The width of this Text object.
+             *
+             * @name Phaser.GameObjects.Text#width
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.width = 1;
 
-        /**
-         * The height of this Text object.
-         *
-         * @name Phaser.GameObjects.Text#height
-         * @type {number}
-         * @default 1
-         * @since 3.0.0
-         */
-        this.height = 1;
+            /**
+             * The height of this Text object.
+             *
+             * @name Phaser.GameObjects.Text#height
+             * @type {number}
+             * @default 1
+             * @since 3.0.0
+             */
+            this.height = 1;
 
-        /**
-         * The line spacing value.
-         * This value is added to the font height to calculate the overall line height.
-         * Only has an effect if this Text object contains multiple lines of text.
-         *
-         * If you update this property directly, instead of using the `setLineSpacing` method, then
-         * be sure to call `updateText` after, or you won't see the change reflected in the Text object.
-         *
-         * @name Phaser.GameObjects.Text#lineSpacing
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.lineSpacing = 0;
+            /**
+             * The line spacing value.
+             * This value is added to the font height to calculate the overall line height.
+             * Only has an effect if this Text object contains multiple lines of text.
+             *
+             * If you update this property directly, instead of using the `setLineSpacing` method, then
+             * be sure to call `updateText` after, or you won't see the change reflected in the Text object.
+             *
+             * @name Phaser.GameObjects.Text#lineSpacing
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.lineSpacing = 0;
 
-        /**
-         * Adds / Removes spacing between characters.
-         * Can be a negative or positive number.
-         *
-         * If you update this property directly, instead of using the `setLetterSpacing` method, then
-         * be sure to call `updateText` after, or you won't see the change reflected in the Text object.
-         *
-         * @name Phaser.GameObjects.Text#letterSpacing
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.letterSpacing = 0;
+            /**
+             * Adds / Removes spacing between characters.
+             * Can be a negative or positive number.
+             *
+             * If you update this property directly, instead of using the `setLetterSpacing` method, then
+             * be sure to call `updateText` after, or you won't see the change reflected in the Text object.
+             *
+             * @name Phaser.GameObjects.Text#letterSpacing
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.letterSpacing = 0;
 
-        //  If resolution wasn't set, force it to 1
-        if (this.style.resolution === 0)
-        {
-            this.style.resolution = 1;
-        }
+            //  If resolution wasn't set, force it to 1
+            if (this.style.resolution === 0) {
+                this.style.resolution = 1;
+            }
 
-        /**
-         * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
-         *
-         * @name Phaser.GameObjects.Text#_crop
-         * @type {object}
-         * @private
-         * @since 3.12.0
-         */
-        this._crop = this.resetCropObject();
+            /**
+             * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
+             *
+             * @name Phaser.GameObjects.Text#_crop
+             * @type {object}
+             * @private
+             * @since 3.12.0
+             */
+            this._crop = this.resetCropObject();
 
-        /**
-         * The internal unique key to refer to the texture in the TextureManager.
-         *
-         * @name Phaser.GameObjects.Text#_textureKey
-         * @type {string}
-         * @private
-         * @since 3.80.0
-         */
-        this._textureKey = UUID();
+            /**
+             * The internal unique key to refer to the texture in the TextureManager.
+             *
+             * @name Phaser.GameObjects.Text#_textureKey
+             * @type {string}
+             * @private
+             * @since 3.80.0
+             */
+            this._textureKey = UUID();
 
-        //  Create a Texture for this Text object
-        this.texture = scene.sys.textures.addCanvas(this._textureKey, this.canvas);
+            //  Create a Texture for this Text object
+            this.texture = scene.sys.textures.addCanvas(this._textureKey, this.canvas);
 
-        //  Set the context to be the CanvasTexture context
-        this.context = this.texture.context;
+            //  Set the context to be the CanvasTexture context
+            this.context = this.texture.context;
 
-        //  Get the frame
-        this.frame = this.texture.get();
+            //  Get the frame
+            this.frame = this.texture.get();
 
-        //  Set the resolution
-        this.frame.source.resolution = this.style.resolution;
+            //  Set the resolution
+            this.frame.source.resolution = this.style.resolution;
 
-        if (this.renderer && this.renderer.gl)
-        {
-            //  Clear the default 1x1 glTexture, as we override it later
-            this.renderer.deleteTexture(this.frame.source.glTexture);
+            if (this.renderer && this.renderer.gl) {
+                //  Clear the default 1x1 glTexture, as we override it later
+                this.renderer.deleteTexture(this.frame.source.glTexture);
 
-            this.frame.source.glTexture = null;
-        }
+                this.frame.source.glTexture = null;
+            }
 
-        this.initRTL();
+            this.initRTL();
 
-        this.setText(text);
+            this.setText(text);
 
-        if (style && style.padding)
-        {
-            this.setPadding(style.padding);
-        }
+            if (style && style.padding) {
+                this.setPadding(style.padding);
+            }
 
-        if (style && style.lineSpacing)
-        {
-            this.setLineSpacing(style.lineSpacing);
-        }
+            if (style && style.lineSpacing) {
+                this.setLineSpacing(style.lineSpacing);
+            }
 
-        if (style && style.letterSpacing)
-        {
-            this.setLetterSpacing(style.letterSpacing);
-        }
-    },
+            if (style && style.letterSpacing) {
+                this.setLetterSpacing(style.letterSpacing);
+            }
+        },
 
     /**
      * Initialize right to left text.
@@ -318,10 +316,8 @@ var Text = new Class({
      * @method Phaser.GameObjects.Text#initRTL
      * @since 3.0.0
      */
-    initRTL: function ()
-    {
-        if (!this.style.rtl)
-        {
+    initRTL: function () {
+        if (!this.style.rtl) {
             this.canvas.dir = 'ltr';
             this.context.direction = 'ltr';
             return;
@@ -357,34 +353,24 @@ var Text = new Class({
      *
      * @return {string} The text after wrapping has been applied.
      */
-    runWordWrap: function (text)
-    {
+    runWordWrap: function (text) {
         var style = this.style;
 
-        if (style.wordWrapCallback)
-        {
+        if (style.wordWrapCallback) {
             var wrappedLines = style.wordWrapCallback.call(style.wordWrapCallbackScope, text, this);
 
-            if (Array.isArray(wrappedLines))
-            {
+            if (Array.isArray(wrappedLines)) {
                 wrappedLines = wrappedLines.join('\n');
             }
 
             return wrappedLines;
-        }
-        else if (style.wordWrapWidth)
-        {
-            if (style.wordWrapUseAdvanced)
-            {
+        } else if (style.wordWrapWidth) {
+            if (style.wordWrapUseAdvanced) {
                 return this.advancedWordWrap(text, this.context, this.style.wordWrapWidth);
-            }
-            else
-            {
+            } else {
                 return this.basicWordWrap(text, this.context, this.style.wordWrapWidth);
             }
-        }
-        else
-        {
+        } else {
             return text;
         }
     },
@@ -404,8 +390,7 @@ var Text = new Class({
      *
      * @return {string} The wrapped text.
      */
-    advancedWordWrap: function (text, context, wordWrapWidth)
-    {
+    advancedWordWrap: function (text, context, wordWrapWidth) {
         var output = '';
 
         // Condense consecutive spaces and split into lines
@@ -415,8 +400,7 @@ var Text = new Class({
 
         var linesCount = lines.length;
 
-        for (var i = 0; i < linesCount; i++)
-        {
+        for (var i = 0; i < linesCount; i++) {
             var line = lines[i];
             var out = '';
 
@@ -427,8 +411,7 @@ var Text = new Class({
             var lineLetterSpacingWidth = line.length * this.letterSpacing;
             var lineWidth = context.measureText(line).width + lineLetterSpacingWidth;
 
-            if (lineWidth < wordWrapWidth)
-            {
+            if (lineWidth < wordWrapWidth) {
                 output += line + '\n';
                 continue;
             }
@@ -439,37 +422,31 @@ var Text = new Class({
             // Split into words
             var words = line.split(' ');
 
-            for (var j = 0; j < words.length; j++)
-            {
+            for (var j = 0; j < words.length; j++) {
                 var word = words[j];
                 var wordWithSpace = word + ' ';
                 var letterSpacingWidth = wordWithSpace.length * this.letterSpacing;
                 var wordWidth = context.measureText(wordWithSpace).width + letterSpacingWidth;
 
-                if (wordWidth > currentLineWidth)
-                {
+                if (wordWidth > currentLineWidth) {
                     // Break word
-                    if (j === 0)
-                    {
+                    if (j === 0) {
                         // Shave off letters from word until it's small enough
                         var newWord = wordWithSpace;
 
-                        while (newWord.length)
-                        {
+                        while (newWord.length) {
                             newWord = newWord.slice(0, -1);
                             var newLetterSpacingWidth = newWord.length * this.letterSpacing;
                             wordWidth = context.measureText(newWord).width + newLetterSpacingWidth;
 
-                            if (wordWidth <= currentLineWidth)
-                            {
+                            if (wordWidth <= currentLineWidth) {
                                 break;
                             }
                         }
 
                         // If wordWrapWidth is too small for even a single letter, shame user
                         // failure with a fatal error
-                        if (!newWord.length)
-                        {
+                        if (!newWord.length) {
                             throw new Error('wordWrapWidth < a single character');
                         }
 
@@ -495,9 +472,7 @@ var Text = new Class({
                     break; // Processing on this line
 
                     // Append word with space to output
-                }
-                else
-                {
+                } else {
                     out += wordWithSpace;
                     currentLineWidth -= wordWidth;
                 }
@@ -526,37 +501,31 @@ var Text = new Class({
      *
      * @return {string} The wrapped text.
      */
-    basicWordWrap: function (text, context, wordWrapWidth)
-    {
+    basicWordWrap: function (text, context, wordWrapWidth) {
         var result = '';
         var lines = text.split(this.splitRegExp);
         var lastLineIndex = lines.length - 1;
         var whiteSpaceWidth = context.measureText(' ').width;
 
-        for (var i = 0; i <= lastLineIndex; i++)
-        {
+        for (var i = 0; i <= lastLineIndex; i++) {
             var spaceLeft = wordWrapWidth;
             var words = lines[i].split(' ');
             var lastWordIndex = words.length - 1;
 
-            for (var j = 0; j <= lastWordIndex; j++)
-            {
+            for (var j = 0; j <= lastWordIndex; j++) {
                 var word = words[j];
                 var letterSpacingWidth = word.length * this.letterSpacing;
                 var wordWidth = context.measureText(word).width + letterSpacingWidth;
                 var wordWidthWithSpace = wordWidth;
 
-                if (j < lastWordIndex)
-                {
+                if (j < lastWordIndex) {
                     wordWidthWithSpace += whiteSpaceWidth;
                 }
 
-                if (wordWidthWithSpace > spaceLeft)
-                {
+                if (wordWidthWithSpace > spaceLeft) {
                     // Skip printing the newline if it's the first word of the line that is greater
                     // than the word wrap width.
-                    if (j > 0)
-                    {
+                    if (j > 0) {
                         result += '\n';
                         spaceLeft = wordWrapWidth;
                     }
@@ -564,19 +533,15 @@ var Text = new Class({
 
                 result += word;
 
-                if (j < lastWordIndex)
-                {
+                if (j < lastWordIndex) {
                     result += ' ';
                     spaceLeft -= wordWidthWithSpace;
-                }
-                else
-                {
+                } else {
                     spaceLeft -= wordWidth;
                 }
             }
 
-            if (i < lastLineIndex)
-            {
+            if (i < lastLineIndex) {
                 result += '\n';
             }
         }
@@ -595,9 +560,10 @@ var Text = new Class({
      *
      * @return {string[]} An array of strings with the pieces of wrapped text.
      */
-    getWrappedText: function (text)
-    {
-        if (text === undefined) { text = this._text; }
+    getWrappedText: function (text) {
+        if (text === undefined) {
+            text = this._text;
+        }
 
         this.style.syncFont(this.canvas, this.context);
 
@@ -618,20 +584,16 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setText: function (value)
-    {
-        if (!value && value !== 0)
-        {
+    setText: function (value) {
+        if (!value && value !== 0) {
             value = '';
         }
 
-        if (Array.isArray(value))
-        {
+        if (Array.isArray(value)) {
             value = value.join('\n');
         }
 
-        if (value !== this._text)
-        {
+        if (value !== this._text) {
             this._text = value.toString();
 
             this.updateText();
@@ -653,17 +615,16 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    appendText: function (value, addCR)
-    {
-        if (addCR === undefined) { addCR = true; }
+    appendText: function (value, addCR) {
+        if (addCR === undefined) {
+            addCR = true;
+        }
 
-        if (!value && value !== 0)
-        {
+        if (!value && value !== 0) {
             value = '';
         }
 
-        if (Array.isArray(value))
-        {
+        if (Array.isArray(value)) {
             value = value.join('\n');
         }
 
@@ -671,8 +632,7 @@ var Text = new Class({
 
         var newText = this._text.concat((addCR) ? '\n' + value : value);
 
-        if (newText !== this._text)
-        {
+        if (newText !== this._text) {
             this._text = newText;
 
             this.updateText();
@@ -700,8 +660,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setStyle: function (style)
-    {
+    setStyle: function (style) {
         return this.style.setStyle(style);
     },
 
@@ -736,8 +695,7 @@ var Text = new Class({
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#Valid_family_names
      */
-    setFont: function (font)
-    {
+    setFont: function (font) {
         return this.style.setFont(font);
     },
 
@@ -767,8 +725,7 @@ var Text = new Class({
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#Valid_family_names
      */
-    setFontFamily: function (family)
-    {
+    setFontFamily: function (family) {
         return this.style.setFontFamily(family);
     },
 
@@ -782,8 +739,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setFontSize: function (size)
-    {
+    setFontSize: function (size) {
         return this.style.setFontSize(size);
     },
 
@@ -797,8 +753,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setFontStyle: function (style)
-    {
+    setFontStyle: function (style) {
         return this.style.setFontStyle(style);
     },
 
@@ -815,8 +770,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setFixedSize: function (width, height)
-    {
+    setFixedSize: function (width, height) {
         return this.style.setFixedSize(width, height);
     },
 
@@ -830,8 +784,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setBackgroundColor: function (color)
-    {
+    setBackgroundColor: function (color) {
         return this.style.setBackgroundColor(color);
     },
 
@@ -850,8 +803,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setFill: function (fillStyle)
-    {
+    setFill: function (fillStyle) {
         return this.style.setFill(fillStyle);
     },
 
@@ -865,8 +817,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setColor: function (color)
-    {
+    setColor: function (color) {
         return this.style.setColor(color);
     },
 
@@ -881,8 +832,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setStroke: function (color, thickness)
-    {
+    setStroke: function (color, thickness) {
         return this.style.setStroke(color, thickness);
     },
 
@@ -901,8 +851,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setShadow: function (x, y, color, blur, shadowStroke, shadowFill)
-    {
+    setShadow: function (x, y, color, blur, shadowStroke, shadowFill) {
         return this.style.setShadow(x, y, color, blur, shadowStroke, shadowFill);
     },
 
@@ -917,8 +866,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setShadowOffset: function (x, y)
-    {
+    setShadowOffset: function (x, y) {
         return this.style.setShadowOffset(x, y);
     },
 
@@ -932,8 +880,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setShadowColor: function (color)
-    {
+    setShadowColor: function (color) {
         return this.style.setShadowColor(color);
     },
 
@@ -947,8 +894,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setShadowBlur: function (blur)
-    {
+    setShadowBlur: function (blur) {
         return this.style.setShadowBlur(blur);
     },
 
@@ -962,8 +908,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setShadowStroke: function (enabled)
-    {
+    setShadowStroke: function (enabled) {
         return this.style.setShadowStroke(enabled);
     },
 
@@ -977,8 +922,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setShadowFill: function (enabled)
-    {
+    setShadowFill: function (enabled) {
         return this.style.setShadowFill(enabled);
     },
 
@@ -995,8 +939,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setWordWrapWidth: function (width, useAdvancedWrap)
-    {
+    setWordWrapWidth: function (width, useAdvancedWrap) {
         return this.style.setWordWrapWidth(width, useAdvancedWrap);
     },
 
@@ -1014,8 +957,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setWordWrapCallback: function (callback, scope)
-    {
+    setWordWrapCallback: function (callback, scope) {
         return this.style.setWordWrapCallback(callback, scope);
     },
 
@@ -1033,8 +975,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setAlign: function (align)
-    {
+    setAlign: function (align) {
         return this.style.setAlign(align);
     },
 
@@ -1053,8 +994,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setResolution: function (value)
-    {
+    setResolution: function (value) {
         return this.style.setResolution(value);
     },
 
@@ -1071,8 +1011,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setLineSpacing: function (value)
-    {
+    setLineSpacing: function (value) {
         this.lineSpacing = value;
 
         return this.updateText();
@@ -1097,8 +1036,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setLetterSpacing: function (value)
-    {
+    setLetterSpacing: function (value) {
         this.letterSpacing = value;
 
         return this.updateText();
@@ -1121,45 +1059,43 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setPadding: function (left, top, right, bottom)
-    {
-        if (typeof left === 'object')
-        {
+    setPadding: function (left, top, right, bottom) {
+        if (typeof left === 'object') {
             var config = left;
 
             //  If they specify x and/or y this applies to all
             var x = GetValue(config, 'x', null);
 
-            if (x !== null)
-            {
+            if (x !== null) {
                 left = x;
                 right = x;
-            }
-            else
-            {
+            } else {
                 left = GetValue(config, 'left', 0);
                 right = GetValue(config, 'right', left);
             }
 
             var y = GetValue(config, 'y', null);
 
-            if (y !== null)
-            {
+            if (y !== null) {
                 top = y;
                 bottom = y;
-            }
-            else
-            {
+            } else {
                 top = GetValue(config, 'top', 0);
                 bottom = GetValue(config, 'bottom', top);
             }
-        }
-        else
-        {
-            if (left === undefined) { left = 0; }
-            if (top === undefined) { top = left; }
-            if (right === undefined) { right = left; }
-            if (bottom === undefined) { bottom = top; }
+        } else {
+            if (left === undefined) {
+                left = 0;
+            }
+            if (top === undefined) {
+                top = left;
+            }
+            if (right === undefined) {
+                right = left;
+            }
+            if (bottom === undefined) {
+                bottom = top;
+            }
         }
 
         this.padding.left = left;
@@ -1180,8 +1116,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setMaxLines: function (max)
-    {
+    setMaxLines: function (max) {
         return this.style.setMaxLines(max);
     },
 
@@ -1195,39 +1130,33 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    setRTL: function (rtl)
-    {
-        if (rtl === undefined) { rtl = true; }
+    setRTL: function (rtl) {
+        if (rtl === undefined) {
+            rtl = true;
+        }
 
         var style = this.style;
 
-        if (style.rtl === rtl)
-        {
+        if (style.rtl === rtl) {
             return this;
         }
 
         style.rtl = rtl;
 
-        if (rtl)
-        {
+        if (rtl) {
             this.canvas.dir = 'rtl';
             this.context.direction = 'rtl';
             this.canvas.style.display = 'none';
 
             AddToDOM(this.canvas, this.scene.sys.canvas);
-        }
-        else
-        {
+        } else {
             this.canvas.dir = 'ltr';
             this.context.direction = 'ltr';
         }
 
-        if (style.align === 'left')
-        {
+        if (style.align === 'left') {
             style.align = 'right';
-        }
-        else if (style.align === 'right')
-        {
+        } else if (style.align === 'right') {
             style.align = 'left';
         }
 
@@ -1242,8 +1171,7 @@ var Text = new Class({
      *
      * @return {this} This Text object.
      */
-    updateText: function ()
-    {
+    updateText: function () {
         var canvas = this.canvas;
         var context = this.context;
         var style = this.style;
@@ -1254,8 +1182,7 @@ var Text = new Class({
 
         var outputText = this._text;
 
-        if (style.wordWrapWidth || style.wordWrapCallback)
-        {
+        if (style.wordWrapWidth || style.wordWrapCallback) {
             outputText = this.runWordWrap(this._text);
         }
 
@@ -1268,30 +1195,23 @@ var Text = new Class({
 
         var textWidth;
 
-        if (style.fixedWidth === 0)
-        {
+        if (style.fixedWidth === 0) {
             this.width = textSize.width + padding.left + padding.right;
 
             textWidth = textSize.width;
-        }
-        else
-        {
+        } else {
             this.width = style.fixedWidth;
 
             textWidth = this.width - padding.left - padding.right;
 
-            if (textWidth < textSize.width)
-            {
+            if (textWidth < textSize.width) {
                 textWidth = textSize.width;
             }
         }
 
-        if (style.fixedHeight === 0)
-        {
+        if (style.fixedHeight === 0) {
             this.height = textSize.height + padding.top + padding.bottom;
-        }
-        else
-        {
+        } else {
             this.height = style.fixedHeight;
         }
 
@@ -1306,8 +1226,7 @@ var Text = new Class({
         w = Math.max(w, 1);
         h = Math.max(h, 1);
 
-        if (canvas.width !== w || canvas.height !== h)
-        {
+        if (canvas.width !== w || canvas.height !== h) {
             canvas.width = w;
             canvas.height = h;
 
@@ -1316,13 +1235,10 @@ var Text = new Class({
             //  Because resizing the canvas resets the context
             style.syncFont(canvas, context);
 
-            if (style.rtl)
-            {
+            if (style.rtl) {
                 context.direction = 'rtl';
             }
-        }
-        else
-        {
+        } else {
             context.clearRect(0, 0, w, h);
         }
 
@@ -1330,8 +1246,7 @@ var Text = new Class({
 
         context.scale(resolution, resolution);
 
-        if (style.backgroundColor)
-        {
+        if (style.backgroundColor) {
             context.fillStyle = style.backgroundColor;
             context.fillRect(0, 0, w, h);
         }
@@ -1345,35 +1260,25 @@ var Text = new Class({
         var linePositionY;
 
         //  Draw text line by line
-        for (var i = 0; i < textSize.lines; i++)
-        {
+        for (var i = 0; i < textSize.lines; i++) {
             linePositionX = style.strokeThickness / 2;
             linePositionY = (style.strokeThickness / 2 + i * textSize.lineHeight) + size.ascent;
 
-            if (i > 0)
-            {
+            if (i > 0) {
                 linePositionY += (textSize.lineSpacing * i);
             }
 
-            if (style.rtl)
-            {
+            if (style.rtl) {
                 linePositionX = w - linePositionX - padding.left - padding.right;
-            }
-            else if (style.align === 'right')
-            {
+            } else if (style.align === 'right') {
                 linePositionX += textWidth - textSize.lineWidths[i];
-            }
-            else if (style.align === 'center')
-            {
+            } else if (style.align === 'center') {
                 linePositionX += (textWidth - textSize.lineWidths[i]) / 2;
-            }
-            else if (style.align === 'justify')
-            {
+            } else if (style.align === 'justify') {
                 //  To justify text line its width must be no less than 85% of defined width
                 var minimumLengthToApplyJustification = 0.85;
 
-                if (textSize.lineWidths[i] / textSize.width >= minimumLengthToApplyJustification)
-                {
+                if (textSize.lineWidths[i] / textSize.width >= minimumLengthToApplyJustification) {
                     var extraSpace = textSize.width - textSize.lineWidths[i];
                     var spaceSize = context.measureText(' ').width;
                     var trimmedLine = lines[i].trim();
@@ -1384,8 +1289,7 @@ var Text = new Class({
                     var extraSpaceCharacters = Math.floor(extraSpace / spaceSize);
                     var idx = 0;
 
-                    while (extraSpaceCharacters > 0)
-                    {
+                    while (extraSpaceCharacters > 0) {
                         array[idx] += ' ';
                         idx = (idx + 1) % (array.length - 1 || 1);
                         --extraSpaceCharacters;
@@ -1395,8 +1299,7 @@ var Text = new Class({
                 }
             }
 
-            if (this.autoRound)
-            {
+            if (this.autoRound) {
                 linePositionX = Math.round(linePositionX);
                 linePositionY = Math.round(linePositionY);
             }
@@ -1405,30 +1308,25 @@ var Text = new Class({
 
             // Apply stroke to the whole line only if there's no custom letter spacing
 
-            if (style.strokeThickness && letterSpacing === 0)
-            {
+            if (style.strokeThickness && letterSpacing === 0) {
                 style.syncShadow(context, style.shadowStroke);
 
                 context.strokeText(lines[i], linePositionX, linePositionY);
             }
 
-            if (style.color)
-            {
+            if (style.color) {
                 style.syncShadow(context, style.shadowFill);
 
                 // Looping fillText could be an expensive operation, we should ignore it if it is not needed
 
-                if (letterSpacing !== 0)
-                {
+                if (letterSpacing !== 0) {
                     var charPositionX = 0;
 
                     var line = lines[i].split('');
 
                     //  Draw text letter by letter
-                    for (var l = 0; l < line.length; l++)
-                    {
-                        if (style.strokeThickness)
-                        {
+                    for (var l = 0; l < line.length; l++) {
+                        if (style.strokeThickness) {
                             style.syncShadow(context, style.shadowStroke);
 
                             context.strokeText(line[l], linePositionX + charPositionX, linePositionY);
@@ -1440,9 +1338,7 @@ var Text = new Class({
 
                         charPositionX += context.measureText(line[l]).width + letterSpacing;
                     }
-                }
-                else
-                {
+                } else {
                     context.fillText(lines[i], linePositionX, linePositionY);
                 }
             }
@@ -1450,20 +1346,17 @@ var Text = new Class({
 
         context.restore();
 
-        if (this.renderer && this.renderer.gl)
-        {
+        if (this.renderer && this.renderer.gl) {
             this.frame.source.glTexture = this.renderer.canvasToTexture(canvas, this.frame.source.glTexture, true);
 
-            if (typeof WEBGL_DEBUG)
-            {
-                this.frame.glTexture.spectorMetadata = { textureKey: 'Text Game Object' };
+            if (typeof WEBGL_DEBUG) {
+                this.frame.glTexture.spectorMetadata = {textureKey: 'Text Game Object'};
             }
         }
 
         var input = this.input;
 
-        if (input && !input.customHitArea)
-        {
+        if (input && !input.customHitArea) {
             input.hitArea.width = this.width;
             input.hitArea.height = this.height;
         }
@@ -1479,8 +1372,7 @@ var Text = new Class({
      *
      * @return {Phaser.Types.GameObjects.Text.TextMetrics} The text metrics.
      */
-    getTextMetrics: function ()
-    {
+    getTextMetrics: function () {
         return this.style.getTextMetrics();
     },
 
@@ -1493,13 +1385,11 @@ var Text = new Class({
      */
     text: {
 
-        get: function ()
-        {
+        get: function () {
             return this._text;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.setText(value);
         }
 
@@ -1513,8 +1403,7 @@ var Text = new Class({
      *
      * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Text object.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         var out = Components.ToJSON(this);
 
         //  Extra Text data is added here
@@ -1543,16 +1432,14 @@ var Text = new Class({
      * @protected
      * @since 3.0.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         RemoveFromDOM(this.canvas);
 
         CanvasPool.remove(this.canvas);
 
         var texture = this.texture;
 
-        if (texture)
-        {
+        if (texture) {
             texture.destroy();
         }
     }

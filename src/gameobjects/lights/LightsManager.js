@@ -35,58 +35,57 @@ var LightsManager = new Class({
 
     initialize:
 
-    function LightsManager ()
-    {
-        /**
-         * The Lights in the Scene.
-         *
-         * @name Phaser.GameObjects.LightsManager#lights
-         * @type {Phaser.GameObjects.Light[]}
-         * @default []
-         * @since 3.0.0
-         */
-        this.lights = [];
+        function LightsManager() {
+            /**
+             * The Lights in the Scene.
+             *
+             * @name Phaser.GameObjects.LightsManager#lights
+             * @type {Phaser.GameObjects.Light[]}
+             * @default []
+             * @since 3.0.0
+             */
+            this.lights = [];
 
-        /**
-         * The ambient color.
-         *
-         * @name Phaser.GameObjects.LightsManager#ambientColor
-         * @type {Phaser.Display.RGB}
-         * @since 3.50.0
-         */
-        this.ambientColor = new RGB(0.1, 0.1, 0.1);
+            /**
+             * The ambient color.
+             *
+             * @name Phaser.GameObjects.LightsManager#ambientColor
+             * @type {Phaser.Display.RGB}
+             * @since 3.50.0
+             */
+            this.ambientColor = new RGB(0.1, 0.1, 0.1);
 
-        /**
-         * Whether the Lights Manager is enabled.
-         *
-         * @name Phaser.GameObjects.LightsManager#active
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.active = false;
+            /**
+             * Whether the Lights Manager is enabled.
+             *
+             * @name Phaser.GameObjects.LightsManager#active
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.active = false;
 
-        /**
-         * The maximum number of lights that a single Camera and the lights shader can process.
-         * Change this via the `maxLights` property in your game config, as it cannot be changed at runtime.
-         *
-         * @name Phaser.GameObjects.LightsManager#maxLights
-         * @type {number}
-         * @readonly
-         * @since 3.15.0
-         */
-        this.maxLights = -1;
+            /**
+             * The maximum number of lights that a single Camera and the lights shader can process.
+             * Change this via the `maxLights` property in your game config, as it cannot be changed at runtime.
+             *
+             * @name Phaser.GameObjects.LightsManager#maxLights
+             * @type {number}
+             * @readonly
+             * @since 3.15.0
+             */
+            this.maxLights = -1;
 
-        /**
-         * The number of lights that the LightPipeline processed in the _previous_ frame.
-         *
-         * @name Phaser.GameObjects.LightsManager#visibleLights
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.visibleLights = 0;
-    },
+            /**
+             * The number of lights that the LightPipeline processed in the _previous_ frame.
+             *
+             * @name Phaser.GameObjects.LightsManager#visibleLights
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.visibleLights = 0;
+        },
 
     /**
      * Creates a new Point Light Game Object and adds it to the Scene.
@@ -129,8 +128,7 @@ var LightsManager = new Class({
      *
      * @return {Phaser.GameObjects.PointLight} The Game Object that was created.
      */
-    addPointLight: function (x, y, color, radius, intensity, attenuation)
-    {
+    addPointLight: function (x, y, color, radius, intensity, attenuation) {
         return this.systems.displayList.add(new PointLight(this.scene, x, y, color, radius, intensity, attenuation));
     },
 
@@ -142,10 +140,8 @@ var LightsManager = new Class({
      *
      * @return {this} This Lights Manager instance.
      */
-    enable: function ()
-    {
-        if (this.maxLights === -1)
-        {
+    enable: function () {
+        if (this.maxLights === -1) {
             this.maxLights = this.systems.renderer.config.maxLights;
         }
 
@@ -162,8 +158,7 @@ var LightsManager = new Class({
      *
      * @return {this} This Lights Manager instance.
      */
-    disable: function ()
-    {
+    disable: function () {
         this.active = false;
 
         return this;
@@ -184,19 +179,16 @@ var LightsManager = new Class({
      *
      * @return {Phaser.GameObjects.Light[]} The culled Lights.
      */
-    getLights: function (camera)
-    {
+    getLights: function (camera) {
         var lights = this.lights;
         var worldView = camera.worldView;
 
         var visibleLights = [];
 
-        for (var i = 0; i < lights.length; i++)
-        {
+        for (var i = 0; i < lights.length; i++) {
             var light = lights[i];
 
-            if (light.willRender(camera) && CircleToRectangle(light, worldView))
-            {
+            if (light.willRender(camera) && CircleToRectangle(light, worldView)) {
                 visibleLights.push({
                     light: light,
                     distance: DistanceBetween(light.x, light.y, worldView.centerX, worldView.centerY)
@@ -204,8 +196,7 @@ var LightsManager = new Class({
             }
         }
 
-        if (visibleLights.length > this.maxLights)
-        {
+        if (visibleLights.length > this.maxLights) {
             //  We've got too many lights, so sort by distance from camera and cull those far away
             //  This isn't ideal because it doesn't factor in the radius of the lights, but it'll do for now
             //  and is significantly better than we had before!
@@ -220,8 +211,7 @@ var LightsManager = new Class({
         return visibleLights;
     },
 
-    sortByDistance: function (a, b)
-    {
+    sortByDistance: function (a, b) {
         return (a.distance >= b.distance);
     },
 
@@ -235,8 +225,7 @@ var LightsManager = new Class({
      *
      * @return {this} This Lights Manager instance.
      */
-    setAmbientColor: function (rgb)
-    {
+    setAmbientColor: function (rgb) {
         var color = Utils.getFloatsFromUintRGB(rgb);
 
         this.ambientColor.set(color[0], color[1], color[2]);
@@ -252,8 +241,7 @@ var LightsManager = new Class({
      *
      * @return {number} The maximum number of Lights allowed to appear at once.
      */
-    getMaxVisibleLights: function ()
-    {
+    getMaxVisibleLights: function () {
         return this.maxLights;
     },
 
@@ -265,8 +253,7 @@ var LightsManager = new Class({
      *
      * @return {number} The number of Lights managed by this Lights Manager.
      */
-    getLightCount: function ()
-    {
+    getLightCount: function () {
         return this.lights.length;
     },
 
@@ -284,13 +271,22 @@ var LightsManager = new Class({
      *
      * @return {Phaser.GameObjects.Light} The Light that was added.
      */
-    addLight: function (x, y, radius, rgb, intensity)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (radius === undefined) { radius = 128; }
-        if (rgb === undefined) { rgb = 0xffffff; }
-        if (intensity === undefined) { intensity = 1; }
+    addLight: function (x, y, radius, rgb, intensity) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
+        if (radius === undefined) {
+            radius = 128;
+        }
+        if (rgb === undefined) {
+            rgb = 0xffffff;
+        }
+        if (intensity === undefined) {
+            intensity = 1;
+        }
 
         var color = Utils.getFloatsFromUintRGB(rgb);
 
@@ -311,12 +307,10 @@ var LightsManager = new Class({
      *
      * @return {this} This Lights Manager instance.
      */
-    removeLight: function (light)
-    {
+    removeLight: function (light) {
         var index = this.lights.indexOf(light);
 
-        if (index >= 0)
-        {
+        if (index >= 0) {
             SpliceOne(this.lights, index);
         }
 
@@ -332,8 +326,7 @@ var LightsManager = new Class({
      * @method Phaser.GameObjects.LightsManager#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.lights.length = 0;
     },
 
@@ -345,8 +338,7 @@ var LightsManager = new Class({
      * @method Phaser.GameObjects.LightsManager#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
     }
 

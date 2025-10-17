@@ -31,29 +31,23 @@ var Tween = require('../tween/Tween');
  *
  * @return {Phaser.Tweens.Tween} The new tween.
  */
-var TweenBuilder = function (parent, config, defaults)
-{
-    if (config instanceof Tween)
-    {
+var TweenBuilder = function (parent, config, defaults) {
+    if (config instanceof Tween) {
         config.parent = parent;
 
         return config;
     }
 
-    if (defaults === undefined)
-    {
+    if (defaults === undefined) {
         defaults = Defaults;
-    }
-    else
-    {
+    } else {
         defaults = MergeRight(Defaults, defaults);
     }
 
     //  Create arrays of the Targets and the Properties. This Targets array should not be manipulated outside of this Tween.
     var targets = GetTargets(config);
 
-    if (!targets && defaults.targets)
-    {
+    if (!targets && defaults.targets) {
         targets = defaults.targets;
     }
 
@@ -73,34 +67,24 @@ var TweenBuilder = function (parent, config, defaults)
     var flipY = GetBoolean(config, 'flipY', defaults.flipY);
     var interpolation = GetFastValue(config, 'interpolation', defaults.interpolation);
 
-    var addTarget = function (tween, targetIndex, key, value)
-    {
-        if (key === 'texture')
-        {
+    var addTarget = function (tween, targetIndex, key, value) {
+        if (key === 'texture') {
             var texture = value;
             var frame = undefined;
 
-            if (Array.isArray(value))
-            {
+            if (Array.isArray(value)) {
                 texture = value[0];
                 frame = value[1];
-            }
-            else if (value.hasOwnProperty('value'))
-            {
+            } else if (value.hasOwnProperty('value')) {
                 texture = value.value;
 
-                if (Array.isArray(value.value))
-                {
+                if (Array.isArray(value.value)) {
                     texture = value.value[0];
                     frame = value.value[1];
-                }
-                else if (typeof value.value === 'string')
-                {
+                } else if (typeof value.value === 'string') {
                     texture = value.value;
                 }
-            }
-            else if (typeof value === 'string')
-            {
+            } else if (typeof value === 'string') {
                 texture = value;
             }
 
@@ -116,9 +100,7 @@ var TweenBuilder = function (parent, config, defaults)
                 GetBoolean(value, 'flipX', flipX),
                 GetBoolean(value, 'flipY', flipY)
             );
-        }
-        else
-        {
+        } else {
             var ops = GetValueOp(key, value);
 
             var interpolationFunc = GetInterpolationFunction(GetFastValue(value, 'interpolation', interpolation));
@@ -147,22 +129,17 @@ var TweenBuilder = function (parent, config, defaults)
     var tween = new Tween(parent, targets);
 
     //  Loop through every property defined in the Tween, i.e.: props { x, y, alpha }
-    for (var p = 0; p < props.length; p++)
-    {
+    for (var p = 0; p < props.length; p++) {
         var key = props[p].key;
         var value = props[p].value;
 
         //  Create 1 TweenData per target, per property
-        for (var targetIndex = 0; targetIndex < targets.length; targetIndex++)
-        {
+        for (var targetIndex = 0; targetIndex < targets.length; targetIndex++) {
             //  Special-case for scale short-cut:
-            if (key === 'scale' && !targets[targetIndex].hasOwnProperty('scale'))
-            {
+            if (key === 'scale' && !targets[targetIndex].hasOwnProperty('scale')) {
                 addTarget(tween, targetIndex, 'scaleX', value);
                 addTarget(tween, targetIndex, 'scaleY', value);
-            }
-            else
-            {
+            } else {
                 addTarget(tween, targetIndex, key, value);
             }
         }
@@ -179,14 +156,12 @@ var TweenBuilder = function (parent, config, defaults)
 
     var callbacks = BaseTween.TYPES;
 
-    for (var i = 0; i < callbacks.length; i++)
-    {
+    for (var i = 0; i < callbacks.length; i++) {
         var type = callbacks[i];
 
         var callback = GetValue(config, type, false);
 
-        if (callback)
-        {
+        if (callback) {
             var callbackParams = GetValue(config, type + 'Params', []);
 
             tween.setCallback(type, callback, callbackParams);

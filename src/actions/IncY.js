@@ -27,8 +27,7 @@ var PropertyValueInc = require('./PropertyValueInc');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var IncY = function (items, value, step, index, direction)
-{
+var IncY = function (items, value, step, index, direction) {
     return PropertyValueInc(items, 'y', value, step, index, direction);
 };
 

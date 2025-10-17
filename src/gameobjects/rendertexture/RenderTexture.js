@@ -64,46 +64,55 @@ var RenderTexture = new Class({
 
     initialize:
 
-    function RenderTexture (scene, x, y, width, height, forceEven)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = 32; }
-        if (height === undefined) { height = 32; }
-        if (forceEven === undefined) { forceEven = true; }
+        function RenderTexture(scene, x, y, width, height, forceEven) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (width === undefined) {
+                width = 32;
+            }
+            if (height === undefined) {
+                height = 32;
+            }
+            if (forceEven === undefined) {
+                forceEven = true;
+            }
 
-        var dynamicTexture = new DynamicTexture(scene.sys.textures, '', width, height, forceEven);
+            var dynamicTexture = new DynamicTexture(scene.sys.textures, '', width, height, forceEven);
 
-        Image.call(this, scene, x, y, dynamicTexture);
+            Image.call(this, scene, x, y, dynamicTexture);
 
-        this.type = 'RenderTexture';
+            this.type = 'RenderTexture';
 
-        /**
-         * An internal Camera that can be used to move around this Render Texture.
-         *
-         * Control it just like you would any Scene Camera. The difference is that it only impacts
-         * the placement of Game Objects that you then draw to this texture.
-         *
-         * You can scroll, zoom and rotate this Camera.
-         *
-         * This property is a reference to `RenderTexture.texture.camera`.
-         *
-         * @name Phaser.GameObjects.RenderTexture#camera
-         * @type {Phaser.Cameras.Scene2D.BaseCamera}
-         * @since 3.12.0
-         */
-        this.camera = this.texture.camera;
+            /**
+             * An internal Camera that can be used to move around this Render Texture.
+             *
+             * Control it just like you would any Scene Camera. The difference is that it only impacts
+             * the placement of Game Objects that you then draw to this texture.
+             *
+             * You can scroll, zoom and rotate this Camera.
+             *
+             * This property is a reference to `RenderTexture.texture.camera`.
+             *
+             * @name Phaser.GameObjects.RenderTexture#camera
+             * @type {Phaser.Cameras.Scene2D.BaseCamera}
+             * @since 3.12.0
+             */
+            this.camera = this.texture.camera;
 
-        /**
-         * Internal saved texture flag.
-         *
-         * @name Phaser.GameObjects.RenderTexture#_saved
-         * @type {boolean}
-         * @private
-         * @since 3.12.0
-         */
-        this._saved = false;
-    },
+            /**
+             * Internal saved texture flag.
+             *
+             * @name Phaser.GameObjects.RenderTexture#_saved
+             * @type {boolean}
+             * @private
+             * @since 3.12.0
+             */
+            this._saved = false;
+        },
 
     /**
      * Sets the internal size of this Render Texture, as used for frame or physics body creation.
@@ -125,8 +134,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -134,8 +142,7 @@ var RenderTexture = new Class({
 
         var input = this.input;
 
-        if (input && !input.customHitArea)
-        {
+        if (input && !input.customHitArea) {
             input.hitArea.width = width;
             input.hitArea.height = height;
         }
@@ -150,7 +157,7 @@ var RenderTexture = new Class({
      * In Canvas it will resize the underlying canvas element.
      *
      * Both approaches will erase everything currently drawn to the Render Texture.
-     * 
+     *
      * Calling this will then invoke the `setSize` method, setting the internal size of this Game Object
      * to the values given to this method.
      *
@@ -165,8 +172,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture.
      */
-    resize: function (width, height, forceEven)
-    {
+    resize: function (width, height, forceEven) {
         this.texture.setSize(width, height, forceEven);
 
         this.setSize(this.texture.width, this.texture.height);
@@ -209,14 +215,12 @@ var RenderTexture = new Class({
      *
      * @return {Phaser.Textures.DynamicTexture} The Texture that was saved.
      */
-    saveTexture: function (key)
-    {
+    saveTexture: function (key) {
         var texture = this.texture;
 
         texture.key = key;
 
-        if (texture.manager.addDynamicTexture(texture))
-        {
+        if (texture.manager.addDynamicTexture(texture)) {
             this._saved = true;
         }
 
@@ -243,8 +247,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    fill: function (rgb, alpha, x, y, width, height)
-    {
+    fill: function (rgb, alpha, x, y, width, height) {
         this.texture.fill(rgb, alpha, x, y, width, height);
 
         return this;
@@ -259,8 +262,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    clear: function ()
-    {
+    clear: function () {
         this.texture.clear();
 
         return this;
@@ -288,8 +290,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    stamp: function (key, frame, x, y, config)
-    {
+    stamp: function (key, frame, x, y, config) {
         this.texture.stamp(key, frame, x, y, config);
 
         return this;
@@ -342,8 +343,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    erase: function (entries, x, y)
-    {
+    erase: function (entries, x, y) {
         this.texture.erase(entries, x, y);
 
         return this;
@@ -404,8 +404,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    draw: function (entries, x, y, alpha, tint)
-    {
+    draw: function (entries, x, y, alpha, tint) {
         this.texture.draw(entries, x, y, alpha, tint);
 
         return this;
@@ -441,8 +440,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    drawFrame: function (key, frame, x, y, alpha, tint)
-    {
+    drawFrame: function (key, frame, x, y, alpha, tint) {
         this.texture.drawFrame(key, frame, x, y, alpha, tint);
 
         return this;
@@ -478,8 +476,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    repeat: function (key, frame, x, y, width, height, alpha, tint, skipBatch)
-    {
+    repeat: function (key, frame, x, y, width, height, alpha, tint, skipBatch) {
         this.texture.repeat(key, frame, x, y, width, height, alpha, tint, skipBatch);
 
         return this;
@@ -526,8 +523,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    beginDraw: function ()
-    {
+    beginDraw: function () {
         this.texture.beginDraw();
 
         return this;
@@ -609,8 +605,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    batchDraw: function (entries, x, y, alpha, tint)
-    {
+    batchDraw: function (entries, x, y, alpha, tint) {
         this.texture.batchDraw(entries, x, y, alpha, tint);
 
         return this;
@@ -666,8 +661,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    batchDrawFrame: function (key, frame, x, y, alpha, tint)
-    {
+    batchDrawFrame: function (key, frame, x, y, alpha, tint) {
         this.texture.batchDrawFrame(key, frame, x, y, alpha, tint);
 
         return this;
@@ -716,8 +710,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    endDraw: function (erase)
-    {
+    endDraw: function (erase) {
         this.texture.endDraw(erase);
 
         return this;
@@ -751,8 +744,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    snapshotArea: function (x, y, width, height, callback, type, encoderOptions)
-    {
+    snapshotArea: function (x, y, width, height, callback, type, encoderOptions) {
         this.texture.snapshotArea(x, y, width, height, callback, type, encoderOptions);
 
         return this;
@@ -782,8 +774,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    snapshot: function (callback, type, encoderOptions)
-    {
+    snapshot: function (callback, type, encoderOptions) {
         return this.snapshotArea(0, 0, this.width, this.height, callback, type, encoderOptions);
     },
 
@@ -808,8 +799,7 @@ var RenderTexture = new Class({
      *
      * @return {this} This Render Texture instance.
      */
-    snapshotPixel: function (x, y, callback)
-    {
+    snapshotPixel: function (x, y, callback) {
         return this.snapshotArea(x, y, 1, 1, callback, 'pixel');
     },
 
@@ -820,12 +810,10 @@ var RenderTexture = new Class({
      * @protected
      * @since 3.9.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.camera = null;
 
-        if (!this._saved)
-        {
+        if (!this._saved) {
             this.texture.destroy();
         }
     }

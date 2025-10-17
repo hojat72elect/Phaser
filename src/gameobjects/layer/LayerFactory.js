@@ -19,7 +19,6 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Layer} The Game Object that was created.
  */
-GameObjectFactory.register('layer', function (children)
-{
+GameObjectFactory.register('layer', function (children) {
     return this.displayList.add(new Layer(this.scene, children));
 });

@@ -40,8 +40,7 @@ var AlphaSingle = {
      *
      * @return {this} This Game Object instance.
      */
-    clearAlpha: function ()
-    {
+    clearAlpha: function () {
         return this.setAlpha(1);
     },
 
@@ -56,9 +55,10 @@ var AlphaSingle = {
      *
      * @return {this} This Game Object instance.
      */
-    setAlpha: function (value)
-    {
-        if (value === undefined) { value = 1; }
+    setAlpha: function (value) {
+        if (value === undefined) {
+            value = 1;
+        }
 
         this.alpha = value;
 
@@ -76,23 +76,18 @@ var AlphaSingle = {
      */
     alpha: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alpha;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
             this._alpha = v;
 
-            if (v === 0)
-            {
+            if (v === 0) {
                 this.renderFlags &= ~_FLAG;
-            }
-            else
-            {
+            } else {
                 this.renderFlags |= _FLAG;
             }
         }

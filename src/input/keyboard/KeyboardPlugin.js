@@ -70,117 +70,116 @@ var KeyboardPlugin = new Class({
 
     initialize:
 
-    function KeyboardPlugin (sceneInputPlugin)
-    {
-        EventEmitter.call(this);
+        function KeyboardPlugin(sceneInputPlugin) {
+            EventEmitter.call(this);
 
-        /**
-         * A reference to the core game, so we can listen for visibility events.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#game
-         * @type {Phaser.Game}
-         * @since 3.16.0
-         */
-        this.game = sceneInputPlugin.systems.game;
+            /**
+             * A reference to the core game, so we can listen for visibility events.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#game
+             * @type {Phaser.Game}
+             * @since 3.16.0
+             */
+            this.game = sceneInputPlugin.systems.game;
 
-        /**
-         * A reference to the Scene that this Input Plugin is responsible for.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#scene
-         * @type {Phaser.Scene}
-         * @since 3.10.0
-         */
-        this.scene = sceneInputPlugin.scene;
+            /**
+             * A reference to the Scene that this Input Plugin is responsible for.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#scene
+             * @type {Phaser.Scene}
+             * @since 3.10.0
+             */
+            this.scene = sceneInputPlugin.scene;
 
-        /**
-         * A reference to the Scene Systems Settings.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#settings
-         * @type {Phaser.Types.Scenes.SettingsObject}
-         * @since 3.10.0
-         */
-        this.settings = this.scene.sys.settings;
+            /**
+             * A reference to the Scene Systems Settings.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#settings
+             * @type {Phaser.Types.Scenes.SettingsObject}
+             * @since 3.10.0
+             */
+            this.settings = this.scene.sys.settings;
 
-        /**
-         * A reference to the Scene Input Plugin that created this Keyboard Plugin.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#sceneInputPlugin
-         * @type {Phaser.Input.InputPlugin}
-         * @since 3.10.0
-         */
-        this.sceneInputPlugin = sceneInputPlugin;
+            /**
+             * A reference to the Scene Input Plugin that created this Keyboard Plugin.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#sceneInputPlugin
+             * @type {Phaser.Input.InputPlugin}
+             * @since 3.10.0
+             */
+            this.sceneInputPlugin = sceneInputPlugin;
 
-        /**
-         * A reference to the global Keyboard Manager.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#manager
-         * @type {Phaser.Input.Keyboard.KeyboardManager}
-         * @since 3.16.0
-         */
-        this.manager = sceneInputPlugin.manager.keyboard;
+            /**
+             * A reference to the global Keyboard Manager.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#manager
+             * @type {Phaser.Input.Keyboard.KeyboardManager}
+             * @since 3.16.0
+             */
+            this.manager = sceneInputPlugin.manager.keyboard;
 
-        /**
-         * A boolean that controls if this Keyboard Plugin is enabled or not.
-         * Can be toggled on the fly.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#enabled
-         * @type {boolean}
-         * @default true
-         * @since 3.10.0
-         */
-        this.enabled = true;
+            /**
+             * A boolean that controls if this Keyboard Plugin is enabled or not.
+             * Can be toggled on the fly.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#enabled
+             * @type {boolean}
+             * @default true
+             * @since 3.10.0
+             */
+            this.enabled = true;
 
-        /**
-         * An array of Key objects to process.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#keys
-         * @type {Phaser.Input.Keyboard.Key[]}
-         * @since 3.10.0
-         */
-        this.keys = [];
+            /**
+             * An array of Key objects to process.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#keys
+             * @type {Phaser.Input.Keyboard.Key[]}
+             * @since 3.10.0
+             */
+            this.keys = [];
 
-        /**
-         * An array of KeyCombo objects to process.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#combos
-         * @type {Phaser.Input.Keyboard.KeyCombo[]}
-         * @since 3.10.0
-         */
-        this.combos = [];
+            /**
+             * An array of KeyCombo objects to process.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#combos
+             * @type {Phaser.Input.Keyboard.KeyCombo[]}
+             * @since 3.10.0
+             */
+            this.combos = [];
 
-        /**
-         * Internal repeat key flag.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#prevCode
-         * @type {string}
-         * @private
-         * @since 3.50.0
-         */
-        this.prevCode = null;
+            /**
+             * Internal repeat key flag.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#prevCode
+             * @type {string}
+             * @private
+             * @since 3.50.0
+             */
+            this.prevCode = null;
 
-        /**
-         * Internal repeat key flag.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#prevTime
-         * @type {number}
-         * @private
-         * @since 3.50.0
-         */
-        this.prevTime = 0;
+            /**
+             * Internal repeat key flag.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#prevTime
+             * @type {number}
+             * @private
+             * @since 3.50.0
+             */
+            this.prevTime = 0;
 
-        /**
-         * Internal repeat key flag.
-         *
-         * @name Phaser.Input.Keyboard.KeyboardPlugin#prevType
-         * @type {string}
-         * @private
-         * @since 3.50.1
-         */
-        this.prevType = null;
+            /**
+             * Internal repeat key flag.
+             *
+             * @name Phaser.Input.Keyboard.KeyboardPlugin#prevType
+             * @type {string}
+             * @private
+             * @since 3.50.1
+             */
+            this.prevType = null;
 
-        sceneInputPlugin.pluginEvents.once(InputEvents.BOOT, this.boot, this);
-        sceneInputPlugin.pluginEvents.on(InputEvents.START, this.start, this);
-    },
+            sceneInputPlugin.pluginEvents.once(InputEvents.BOOT, this.boot, this);
+            sceneInputPlugin.pluginEvents.on(InputEvents.START, this.start, this);
+        },
 
     /**
      * This method is called automatically, only once, when the Scene is first created.
@@ -190,16 +189,14 @@ var KeyboardPlugin = new Class({
      * @private
      * @since 3.10.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var settings = this.settings.input;
 
         this.enabled = GetValue(settings, 'keyboard', true);
 
         var captures = GetValue(settings, 'keyboard.capture', null);
 
-        if (captures)
-        {
+        if (captures) {
             this.addCaptures(captures);
         }
 
@@ -215,8 +212,7 @@ var KeyboardPlugin = new Class({
      * @private
      * @since 3.10.0
      */
-    start: function ()
-    {
+    start: function () {
         this.sceneInputPlugin.manager.events.on(InputEvents.MANAGER_PROCESS, this.update, this);
 
         this.sceneInputPlugin.pluginEvents.once(InputEvents.SHUTDOWN, this.shutdown, this);
@@ -235,8 +231,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {boolean} `true` if the plugin and the Scene it belongs to is active.
      */
-    isActive: function ()
-    {
+    isActive: function () {
         return (this.enabled && this.scene.sys.canInput());
     },
 
@@ -279,8 +274,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    addCapture: function (keycode)
-    {
+    addCapture: function (keycode) {
         this.manager.addCapture(keycode);
 
         return this;
@@ -321,8 +315,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    removeCapture: function (keycode)
-    {
+    removeCapture: function (keycode) {
         this.manager.removeCapture(keycode);
 
         return this;
@@ -336,8 +329,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {number[]} An array of all the currently capturing key codes.
      */
-    getCaptures: function ()
-    {
+    getCaptures: function () {
         return this.manager.captures;
     },
 
@@ -350,8 +342,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    enableGlobalCapture: function ()
-    {
+    enableGlobalCapture: function () {
         this.manager.preventDefault = true;
 
         return this;
@@ -366,8 +357,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    disableGlobalCapture: function ()
-    {
+    disableGlobalCapture: function () {
         this.manager.preventDefault = false;
 
         return this;
@@ -383,8 +373,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    clearCaptures: function ()
-    {
+    clearCaptures: function () {
         this.manager.clearCaptures();
 
         return this;
@@ -398,8 +387,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {Phaser.Types.Input.Keyboard.CursorKeys} An object containing the properties: `up`, `down`, `left`, `right`, `space` and `shift`.
      */
-    createCursorKeys: function ()
-    {
+    createCursorKeys: function () {
         return this.addKeys({
             up: KeyCodes.UP,
             down: KeyCodes.DOWN,
@@ -440,31 +428,28 @@ var KeyboardPlugin = new Class({
      *
      * @return {object} An object containing Key objects mapped to the input properties.
      */
-    addKeys: function (keys, enableCapture, emitOnRepeat)
-    {
-        if (enableCapture === undefined) { enableCapture = true; }
-        if (emitOnRepeat === undefined) { emitOnRepeat = false; }
+    addKeys: function (keys, enableCapture, emitOnRepeat) {
+        if (enableCapture === undefined) {
+            enableCapture = true;
+        }
+        if (emitOnRepeat === undefined) {
+            emitOnRepeat = false;
+        }
 
         var output = {};
 
-        if (typeof keys === 'string')
-        {
+        if (typeof keys === 'string') {
             keys = keys.split(',');
 
-            for (var i = 0; i < keys.length; i++)
-            {
+            for (var i = 0; i < keys.length; i++) {
                 var currentKey = keys[i].trim();
 
-                if (currentKey)
-                {
+                if (currentKey) {
                     output[currentKey] = this.addKey(currentKey, enableCapture, emitOnRepeat);
                 }
             }
-        }
-        else
-        {
-            for (var key in keys)
-            {
+        } else {
+            for (var key in keys) {
                 output[key] = this.addKey(keys[key], enableCapture, emitOnRepeat);
             }
         }
@@ -488,28 +473,26 @@ var KeyboardPlugin = new Class({
      *
      * @return {Phaser.Input.Keyboard.Key} The newly created Key object, or a reference to it if it already existed in the keys array.
      */
-    addKey: function (key, enableCapture, emitOnRepeat)
-    {
-        if (enableCapture === undefined) { enableCapture = true; }
-        if (emitOnRepeat === undefined) { emitOnRepeat = false; }
+    addKey: function (key, enableCapture, emitOnRepeat) {
+        if (enableCapture === undefined) {
+            enableCapture = true;
+        }
+        if (emitOnRepeat === undefined) {
+            emitOnRepeat = false;
+        }
 
         var keys = this.keys;
 
-        if (key instanceof Key)
-        {
+        if (key instanceof Key) {
             var idx = keys.indexOf(key);
 
-            if (idx > -1)
-            {
+            if (idx > -1) {
                 keys[idx] = key;
-            }
-            else
-            {
+            } else {
                 keys[key.keyCode] = key;
             }
 
-            if (enableCapture)
-            {
+            if (enableCapture) {
                 this.addCapture(key.keyCode);
             }
 
@@ -518,17 +501,14 @@ var KeyboardPlugin = new Class({
             return key;
         }
 
-        if (typeof key === 'string')
-        {
+        if (typeof key === 'string') {
             key = KeyCodes[key.toUpperCase()];
         }
 
-        if (!keys[key])
-        {
+        if (!keys[key]) {
             keys[key] = new Key(this, key);
 
-            if (enableCapture)
-            {
+            if (enableCapture) {
                 this.addCapture(key);
             }
 
@@ -552,48 +532,43 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    removeKey: function (key, destroy, removeCapture)
-    {
-        if (destroy === undefined) { destroy = false; }
-        if (removeCapture === undefined) { removeCapture = false; }
+    removeKey: function (key, destroy, removeCapture) {
+        if (destroy === undefined) {
+            destroy = false;
+        }
+        if (removeCapture === undefined) {
+            removeCapture = false;
+        }
 
         var keys = this.keys;
         var ref;
 
-        if (key instanceof Key)
-        {
+        if (key instanceof Key) {
             var idx = keys.indexOf(key);
 
-            if (idx > -1)
-            {
+            if (idx > -1) {
                 ref = this.keys[idx];
 
                 this.keys[idx] = undefined;
             }
-        }
-        else if (typeof key === 'string')
-        {
+        } else if (typeof key === 'string') {
             key = KeyCodes[key.toUpperCase()];
         }
 
-        if (keys[key])
-        {
+        if (keys[key]) {
             ref = keys[key];
 
             keys[key] = undefined;
         }
 
-        if (ref)
-        {
+        if (ref) {
             ref.plugin = null;
 
-            if (removeCapture)
-            {
+            if (removeCapture) {
                 this.removeCapture(ref.keyCode);
             }
 
-            if (destroy)
-            {
+            if (destroy) {
                 ref.destroy();
             }
         }
@@ -612,28 +587,27 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    removeAllKeys: function (destroy, removeCapture)
-    {
-        if (destroy === undefined) { destroy = false; }
-        if (removeCapture === undefined) { removeCapture = false; }
+    removeAllKeys: function (destroy, removeCapture) {
+        if (destroy === undefined) {
+            destroy = false;
+        }
+        if (removeCapture === undefined) {
+            removeCapture = false;
+        }
 
         var keys = this.keys;
 
-        for (var i = 0; i < keys.length; i++)
-        {
+        for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
 
-            if (key)
-            {
+            if (key) {
                 keys[i] = undefined;
 
-                if (removeCapture)
-                {
+                if (removeCapture) {
                     this.removeCapture(key.keyCode);
                 }
 
-                if (destroy)
-                {
+                if (destroy) {
                     key.destroy();
                 }
             }
@@ -679,8 +653,7 @@ var KeyboardPlugin = new Class({
      *
      * @return {Phaser.Input.Keyboard.KeyCombo} The new KeyCombo object.
      */
-    createCombo: function (keys, config)
-    {
+    createCombo: function (keys, config) {
         return new KeyCombo(this, keys, config);
     },
 
@@ -702,16 +675,15 @@ var KeyboardPlugin = new Class({
      *
      * @return {boolean} `true` if the Key is down within the duration specified, otherwise `false`.
      */
-    checkDown: function (key, duration)
-    {
-        if (duration === undefined) { duration = 0; }
+    checkDown: function (key, duration) {
+        if (duration === undefined) {
+            duration = 0;
+        }
 
-        if (this.enabled && key.isDown)
-        {
+        if (this.enabled && key.isDown) {
             var t = SnapFloor(this.time - key.timeDown, duration);
 
-            if (t > key._tick)
-            {
+            if (t > key._tick) {
                 key._tick = t;
 
                 return true;
@@ -728,54 +700,46 @@ var KeyboardPlugin = new Class({
      * @private
      * @since 3.10.0
      */
-    update: function ()
-    {
+    update: function () {
         var queue = this.manager.queue;
         var len = queue.length;
 
-        if (!this.isActive() || len === 0)
-        {
+        if (!this.isActive() || len === 0) {
             return;
         }
 
         var keys = this.keys;
 
         //  Process the event queue, dispatching all of the events that have stored up
-        for (var i = 0; i < len; i++)
-        {
+        for (var i = 0; i < len; i++) {
             var event = queue[i];
             var code = event.keyCode;
             var key = keys[code];
             var repeat = false;
 
             //  Override the default functions (it's too late for the browser to use them anyway, so we may as well)
-            if (event.cancelled === undefined)
-            {
+            if (event.cancelled === undefined) {
                 //  Event allowed to flow across all handlers in this Scene, and any other Scene in the Scene list
                 event.cancelled = 0;
 
                 //  Won't reach any more local (Scene level) handlers
-                event.stopImmediatePropagation = function ()
-                {
+                event.stopImmediatePropagation = function () {
                     event.cancelled = 1;
                 };
 
                 //  Won't reach any more handlers in any Scene further down the Scene list
-                event.stopPropagation = function ()
-                {
+                event.stopPropagation = function () {
                     event.cancelled = -1;
                 };
             }
 
-            if (event.cancelled === -1)
-            {
+            if (event.cancelled === -1) {
                 //  This event has been stopped from broadcasting to any other Scene, so abort.
                 continue;
             }
 
             //  Duplicate event bailout
-            if (code === this.prevCode && event.timeStamp === this.prevTime && event.type === this.prevType)
-            {
+            if (code === this.prevCode && event.timeStamp === this.prevTime && event.type === this.prevType) {
                 //  On some systems, the exact same event will fire multiple times. This prevents it.
                 continue;
             }
@@ -784,54 +748,42 @@ var KeyboardPlugin = new Class({
             this.prevTime = event.timeStamp;
             this.prevType = event.type;
 
-            if (event.type === 'keydown')
-            {
+            if (event.type === 'keydown') {
                 //  Key specific callback first
-                if (key)
-                {
+                if (key) {
                     repeat = key.isDown;
 
                     key.onDown(event);
                 }
 
-                if (!event.cancelled && (!key || !repeat))
-                {
-                    if (KeyMap[code])
-                    {
+                if (!event.cancelled && (!key || !repeat)) {
+                    if (KeyMap[code]) {
                         this.emit(Events.KEY_DOWN + KeyMap[code], event);
                     }
 
-                    if (!event.cancelled)
-                    {
+                    if (!event.cancelled) {
                         this.emit(Events.ANY_KEY_DOWN, event);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 //  Key specific callback first
-                if (key)
-                {
+                if (key) {
                     key.onUp(event);
                 }
 
-                if (!event.cancelled)
-                {
-                    if (KeyMap[code])
-                    {
+                if (!event.cancelled) {
+                    if (KeyMap[code]) {
                         this.emit(Events.KEY_UP + KeyMap[code], event);
                     }
 
-                    if (!event.cancelled)
-                    {
+                    if (!event.cancelled) {
                         this.emit(Events.ANY_KEY_UP, event);
                     }
                 }
             }
 
             //  Reset the cancel state for other Scenes to use
-            if (event.cancelled === 1)
-            {
+            if (event.cancelled === 1) {
                 event.cancelled = 0;
             }
         }
@@ -850,15 +802,12 @@ var KeyboardPlugin = new Class({
      *
      * @return {this} This KeyboardPlugin object.
      */
-    resetKeys: function ()
-    {
+    resetKeys: function () {
         var keys = this.keys;
 
-        for (var i = 0; i < keys.length; i++)
-        {
+        for (var i = 0; i < keys.length; i++) {
             //  Because it's a sparsely populated array
-            if (keys[i])
-            {
+            if (keys[i]) {
                 keys[i].reset();
             }
         }
@@ -877,8 +826,7 @@ var KeyboardPlugin = new Class({
      * @private
      * @since 3.10.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         this.removeAllKeys(true);
         this.removeAllListeners();
 
@@ -899,17 +847,14 @@ var KeyboardPlugin = new Class({
      * @private
      * @since 3.10.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
 
         var keys = this.keys;
 
-        for (var i = 0; i < keys.length; i++)
-        {
+        for (var i = 0; i < keys.length; i++) {
             //  Because it's a sparsely populated array
-            if (keys[i])
-            {
+            if (keys[i]) {
                 keys[i].destroy();
             }
         }
@@ -934,8 +879,7 @@ var KeyboardPlugin = new Class({
      */
     time: {
 
-        get: function ()
-        {
+        get: function () {
             return this.sceneInputPlugin.manager.time;
         }
 

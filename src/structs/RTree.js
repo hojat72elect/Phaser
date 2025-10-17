@@ -26,9 +26,8 @@ var quickselect = require('../utils/array/QuickSelect');
  * @since 3.0.0
  */
 
-function rbush (maxEntries)
-{
-    var format = [ '.left', '.top', '.right', '.bottom' ];
+function rbush(maxEntries) {
+    var format = ['.left', '.top', '.right', '.bottom'];
 
     if (!(this instanceof rbush)) return new rbush(maxEntries, format);
 
@@ -41,13 +40,11 @@ function rbush (maxEntries)
 
 rbush.prototype = {
 
-    all: function ()
-    {
+    all: function () {
         return this._all(this.data, []);
     },
 
-    search: function (bbox)
-    {
+    search: function (bbox) {
         var node = this.data,
             result = [],
             toBBox = this.toBBox;
@@ -75,8 +72,7 @@ rbush.prototype = {
         return result;
     },
 
-    collides: function (bbox)
-    {
+    collides: function (bbox) {
         var node = this.data,
             toBBox = this.toBBox;
 
@@ -102,8 +98,7 @@ rbush.prototype = {
         return false;
     },
 
-    load: function (data)
-    {
+    load: function (data) {
         if (!(data && data.length)) return this;
 
         if (data.length < this._minEntries) {
@@ -139,20 +134,17 @@ rbush.prototype = {
         return this;
     },
 
-    insert: function (item)
-    {
+    insert: function (item) {
         if (item) this._insert(item, this.data.height - 1);
         return this;
     },
 
-    clear: function ()
-    {
+    clear: function () {
         this.data = createNode([]);
         return this;
     },
 
-    remove: function (item, equalsFn)
-    {
+    remove: function (item, equalsFn) {
         if (!item) return this;
 
         var node = this.data,
@@ -201,21 +193,23 @@ rbush.prototype = {
         return this;
     },
 
-    toBBox: function (item) { return item; },
+    toBBox: function (item) {
+        return item;
+    },
 
     compareMinX: compareNodeMinX,
     compareMinY: compareNodeMinY,
 
-    toJSON: function () { return this.data; },
+    toJSON: function () {
+        return this.data;
+    },
 
-    fromJSON: function (data)
-    {
+    fromJSON: function (data) {
         this.data = data;
         return this;
     },
 
-    _all: function (node, result)
-    {
+    _all: function (node, result) {
         var nodesToSearch = [];
         while (node) {
             if (node.leaf) result.push.apply(result, node.children);
@@ -226,8 +220,7 @@ rbush.prototype = {
         return result;
     },
 
-    _build: function (items, left, right, height)
-    {
+    _build: function (items, left, right, height) {
         var N = right - left + 1,
             M = this._maxEntries,
             node;
@@ -279,8 +272,7 @@ rbush.prototype = {
         return node;
     },
 
-    _chooseSubtree: function (bbox, node, level, path)
-    {
+    _chooseSubtree: function (bbox, node, level, path) {
         var i, len, child, targetNode, area, enlargement, minArea, minEnlargement;
 
         while (true) {
@@ -316,8 +308,7 @@ rbush.prototype = {
         return node;
     },
 
-    _insert: function (item, level, isNode)
-    {
+    _insert: function (item, level, isNode) {
         var toBBox = this.toBBox,
             bbox = isNode ? item : toBBox(item),
             insertPath = [];
@@ -342,8 +333,7 @@ rbush.prototype = {
     },
 
     // split overflowed node into two
-    _split: function (insertPath, level)
-    {
+    _split: function (insertPath, level) {
         var node = insertPath[level],
             M = node.children.length,
             m = this._minEntries;
@@ -363,8 +353,7 @@ rbush.prototype = {
         else this._splitRoot(node, newNode);
     },
 
-    _splitRoot: function (node, newNode)
-    {
+    _splitRoot: function (node, newNode) {
         // split root node
         this.data = createNode([node, newNode]);
         this.data.height = node.height + 1;
@@ -372,8 +361,7 @@ rbush.prototype = {
         calcBBox(this.data, this.toBBox);
     },
 
-    _chooseSplitIndex: function (node, m, M)
-    {
+    _chooseSplitIndex: function (node, m, M) {
         var i, bbox1, bbox2, overlap, area, minOverlap, minArea, index;
 
         minOverlap = minArea = Infinity;
@@ -405,8 +393,7 @@ rbush.prototype = {
     },
 
     // sorts node children by the best axis for split
-    _chooseSplitAxis: function (node, m, M)
-    {
+    _chooseSplitAxis: function (node, m, M) {
         var compareMinX = node.leaf ? this.compareMinX : compareNodeMinX,
             compareMinY = node.leaf ? this.compareMinY : compareNodeMinY,
             xMargin = this._allDistMargin(node, m, M, compareMinX),
@@ -418,8 +405,7 @@ rbush.prototype = {
     },
 
     // total margin of all possible split distributions where each node is at least m full
-    _allDistMargin: function (node, m, M, compare)
-    {
+    _allDistMargin: function (node, m, M, compare) {
         node.children.sort(compare);
 
         var toBBox = this.toBBox,
@@ -443,16 +429,14 @@ rbush.prototype = {
         return margin;
     },
 
-    _adjustParentBBoxes: function (bbox, path, level)
-    {
+    _adjustParentBBoxes: function (bbox, path, level) {
         // adjust bboxes along the given tree path
         for (var i = level; i >= 0; i--) {
             extend(path[i], bbox);
         }
     },
 
-    _condense: function (path)
-    {
+    _condense: function (path) {
         // go through the path, removing empty nodes and updating bboxes
         for (var i = path.length - 1, siblings; i >= 0; i--) {
             if (path[i].children.length === 0) {
@@ -466,18 +450,15 @@ rbush.prototype = {
         }
     },
 
-    compareMinX: function (a, b)
-    {
+    compareMinX: function (a, b) {
         return a.left - b.left;
     },
 
-    compareMinY: function (a, b)
-    {
+    compareMinY: function (a, b) {
         return a.top - b.top;
     },
 
-    toBBox: function (a)
-    {
+    toBBox: function (a) {
         return {
             minX: a.left,
             minY: a.top,
@@ -487,8 +468,7 @@ rbush.prototype = {
     }
 };
 
-function findItem (item, items, equalsFn)
-{
+function findItem(item, items, equalsFn) {
     if (!equalsFn) return items.indexOf(item);
 
     for (var i = 0; i < items.length; i++) {
@@ -498,14 +478,12 @@ function findItem (item, items, equalsFn)
 }
 
 // calculate node's bbox from bboxes of its children
-function calcBBox (node, toBBox)
-{
+function calcBBox(node, toBBox) {
     distBBox(node, 0, node.children.length, toBBox, node);
 }
 
 // min bounding rectangle of node children from k to p-1
-function distBBox (node, k, p, toBBox, destNode)
-{
+function distBBox(node, k, p, toBBox, destNode) {
     if (!destNode) destNode = createNode(null);
     destNode.minX = Infinity;
     destNode.minY = Infinity;
@@ -520,8 +498,7 @@ function distBBox (node, k, p, toBBox, destNode)
     return destNode;
 }
 
-function extend (a, b)
-{
+function extend(a, b) {
     a.minX = Math.min(a.minX, b.minX);
     a.minY = Math.min(a.minY, b.minY);
     a.maxX = Math.max(a.maxX, b.maxX);
@@ -529,47 +506,52 @@ function extend (a, b)
     return a;
 }
 
-function compareNodeMinX (a, b) { return a.minX - b.minX; }
-function compareNodeMinY (a, b) { return a.minY - b.minY; }
-
-function bboxArea (a) { return (a.maxX - a.minX) * (a.maxY - a.minY); }
-function bboxMargin (a) { return (a.maxX - a.minX) + (a.maxY - a.minY); }
-
-function enlargedArea (a, b)
-{
-    return (Math.max(b.maxX, a.maxX) - Math.min(b.minX, a.minX)) *
-           (Math.max(b.maxY, a.maxY) - Math.min(b.minY, a.minY));
+function compareNodeMinX(a, b) {
+    return a.minX - b.minX;
 }
 
-function intersectionArea (a, b)
-{
+function compareNodeMinY(a, b) {
+    return a.minY - b.minY;
+}
+
+function bboxArea(a) {
+    return (a.maxX - a.minX) * (a.maxY - a.minY);
+}
+
+function bboxMargin(a) {
+    return (a.maxX - a.minX) + (a.maxY - a.minY);
+}
+
+function enlargedArea(a, b) {
+    return (Math.max(b.maxX, a.maxX) - Math.min(b.minX, a.minX)) *
+        (Math.max(b.maxY, a.maxY) - Math.min(b.minY, a.minY));
+}
+
+function intersectionArea(a, b) {
     var minX = Math.max(a.minX, b.minX),
         minY = Math.max(a.minY, b.minY),
         maxX = Math.min(a.maxX, b.maxX),
         maxY = Math.min(a.maxY, b.maxY);
 
     return Math.max(0, maxX - minX) *
-           Math.max(0, maxY - minY);
+        Math.max(0, maxY - minY);
 }
 
-function contains (a, b)
-{
+function contains(a, b) {
     return a.minX <= b.minX &&
-           a.minY <= b.minY &&
-           b.maxX <= a.maxX &&
-           b.maxY <= a.maxY;
+        a.minY <= b.minY &&
+        b.maxX <= a.maxX &&
+        b.maxY <= a.maxY;
 }
 
-function intersects (a, b)
-{
+function intersects(a, b) {
     return b.minX <= a.maxX &&
-           b.minY <= a.maxY &&
-           b.maxX >= a.minX &&
-           b.maxY >= a.minY;
+        b.minY <= a.maxY &&
+        b.maxX >= a.minX &&
+        b.maxY >= a.minY;
 }
 
-function createNode (children)
-{
+function createNode(children) {
     return {
         children: children,
         height: 1,
@@ -584,13 +566,11 @@ function createNode (children)
 // sort an array so that items come in groups of n unsorted items, with groups sorted between each other;
 // combines selection algorithm with binary divide & conquer approach
 
-function multiSelect (arr, left, right, n, compare)
-{
+function multiSelect(arr, left, right, n, compare) {
     var stack = [left, right],
         mid;
 
-    while (stack.length)
-    {
+    while (stack.length) {
         right = stack.pop();
         left = stack.pop();
 

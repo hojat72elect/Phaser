@@ -26,8 +26,7 @@ var Bounce = {
      *
      * @return {this} This Game Object.
      */
-    setBounce: function (x, y)
-    {
+    setBounce: function (x, y) {
         this.body.bounce.set(x, y);
 
         return this;
@@ -43,8 +42,7 @@ var Bounce = {
      *
      * @return {this} This Game Object.
      */
-    setBounceX: function (value)
-    {
+    setBounceX: function (value) {
         this.body.bounce.x = value;
 
         return this;
@@ -60,8 +58,7 @@ var Bounce = {
      *
      * @return {this} This Game Object.
      */
-    setBounceY: function (value)
-    {
+    setBounceY: function (value) {
         this.body.bounce.y = value;
 
         return this;
@@ -82,8 +79,7 @@ var Bounce = {
      *
      * @return {this} This Game Object.
      */
-    setCollideWorldBounds: function (value, bounceX, bounceY, onWorldBounds)
-    {
+    setCollideWorldBounds: function (value, bounceX, bounceY, onWorldBounds) {
         this.body.setCollideWorldBounds(value, bounceX, bounceY, onWorldBounds);
 
         return this;

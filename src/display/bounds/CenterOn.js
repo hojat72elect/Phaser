@@ -21,8 +21,7 @@ var SetCenterY = require('./SetCenterY');
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was positioned.
  */
-var CenterOn = function (gameObject, x, y)
-{
+var CenterOn = function (gameObject, x, y) {
     SetCenterX(gameObject, x);
 
     return SetCenterY(gameObject, y);

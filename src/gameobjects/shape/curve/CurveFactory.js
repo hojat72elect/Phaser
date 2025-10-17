@@ -38,7 +38,6 @@ var Curve = require('./Curve');
  *
  * @return {Phaser.GameObjects.Curve} The Game Object that was created.
  */
-GameObjectFactory.register('curve', function (x, y, curve, fillColor, fillAlpha)
-{
+GameObjectFactory.register('curve', function (x, y, curve, fillColor, fillAlpha) {
     return this.displayList.add(new Curve(this.scene, x, y, curve, fillColor, fillAlpha));
 });

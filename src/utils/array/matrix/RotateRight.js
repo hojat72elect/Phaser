@@ -34,12 +34,12 @@ var RotateMatrix = require('./RotateMatrix');
  *
  * @return {T[][]} The rotated matrix array. The source matrix should be discard for the returned matrix.
  */
-var RotateRight = function (matrix, amount)
-{
-    if (amount === undefined) { amount = 1; }
+var RotateRight = function (matrix, amount) {
+    if (amount === undefined) {
+        amount = 1;
+    }
 
-    for (var i = 0; i < amount; i++)
-    {
+    for (var i = 0; i < amount; i++) {
         matrix = RotateMatrix(matrix, -90);
     }
 

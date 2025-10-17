@@ -19,26 +19,16 @@ var GetTileCorners = require('./GetTileCorners');
  *
  * @return {function} The function to use to translate tiles for the given map type.
  */
-var GetTileCornersFunction = function (orientation)
-{
-    if (orientation === CONST.ORTHOGONAL)
-    {
+var GetTileCornersFunction = function (orientation) {
+    if (orientation === CONST.ORTHOGONAL) {
         return GetTileCorners;
-    }
-    else if (orientation === CONST.ISOMETRIC)
-    {
+    } else if (orientation === CONST.ISOMETRIC) {
         return NOOP;
-    }
-    else if (orientation === CONST.HEXAGONAL)
-    {
+    } else if (orientation === CONST.HEXAGONAL) {
         return HexagonalGetTileCorners;
-    }
-    else if (orientation === CONST.STAGGERED)
-    {
+    } else if (orientation === CONST.STAGGERED) {
         return NOOP;
-    }
-    else
-    {
+    } else {
         return NOOP;
     }
 };

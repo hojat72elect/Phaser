@@ -17,8 +17,7 @@ var GetFastValue = require('../../../src/utils/object/GetFastValue');
  * @property {string} [priceCurrencyCode] - The currency code for the product.
  */
 
-var Product = function (data)
-{
+var Product = function (data) {
     return {
         title: GetFastValue(data, 'title', ''),
         productID: GetFastValue(data, 'productID', ''),

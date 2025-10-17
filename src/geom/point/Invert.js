@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Geom.Point} The modified `point`.
  */
-var Invert = function (point)
-{
+var Invert = function (point) {
     return point.setTo(point.y, point.x);
 };
 

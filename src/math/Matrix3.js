@@ -26,28 +26,24 @@ var Matrix3 = new Class({
 
     initialize:
 
-    function Matrix3 (m)
-    {
-        /**
-         * The matrix values.
-         *
-         * @name Phaser.Math.Matrix3#val
-         * @type {Float32Array}
-         * @since 3.0.0
-         */
-        this.val = new Float32Array(9);
+        function Matrix3(m) {
+            /**
+             * The matrix values.
+             *
+             * @name Phaser.Math.Matrix3#val
+             * @type {Float32Array}
+             * @since 3.0.0
+             */
+            this.val = new Float32Array(9);
 
-        if (m)
-        {
-            //  Assume Matrix3 with val:
-            this.copy(m);
-        }
-        else
-        {
-            //  Default to identity
-            this.identity();
-        }
-    },
+            if (m) {
+                //  Assume Matrix3 with val:
+                this.copy(m);
+            } else {
+                //  Default to identity
+                this.identity();
+            }
+        },
 
     /**
      * Make a clone of this Matrix3.
@@ -57,8 +53,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} A clone of this Matrix3.
      */
-    clone: function ()
-    {
+    clone: function () {
         return new Matrix3(this);
     },
 
@@ -72,8 +67,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    set: function (src)
-    {
+    set: function (src) {
         return this.copy(src);
     },
 
@@ -87,8 +81,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    copy: function (src)
-    {
+    copy: function (src) {
         var out = this.val;
         var a = src.val;
 
@@ -115,8 +108,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    fromMat4: function (m)
-    {
+    fromMat4: function (m) {
         var a = m.val;
         var out = this.val;
 
@@ -143,8 +135,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    fromArray: function (a)
-    {
+    fromArray: function (a) {
         var out = this.val;
 
         out[0] = a[0];
@@ -168,8 +159,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    identity: function ()
-    {
+    identity: function () {
         var out = this.val;
 
         out[0] = 1;
@@ -193,8 +183,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    transpose: function ()
-    {
+    transpose: function () {
         var a = this.val;
         var a01 = a[1];
         var a02 = a[2];
@@ -218,8 +207,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    invert: function ()
-    {
+    invert: function () {
         var a = this.val;
 
         var a00 = a[0];
@@ -239,8 +227,7 @@ var Matrix3 = new Class({
         // Calculate the determinant
         var det = a00 * b01 + a01 * b11 + a02 * b21;
 
-        if (!det)
-        {
+        if (!det) {
             return null;
         }
 
@@ -267,8 +254,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    adjoint: function ()
-    {
+    adjoint: function () {
         var a = this.val;
 
         var a00 = a[0];
@@ -302,8 +288,7 @@ var Matrix3 = new Class({
      *
      * @return {number} The determinant of this Matrix.
      */
-    determinant: function ()
-    {
+    determinant: function () {
         var a = this.val;
 
         var a00 = a[0];
@@ -329,8 +314,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    multiply: function (src)
-    {
+    multiply: function (src) {
         var a = this.val;
 
         var a00 = a[0];
@@ -380,8 +364,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    translate: function (v)
-    {
+    translate: function (v) {
         var a = this.val;
         var x = v.x;
         var y = v.y;
@@ -403,8 +386,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    rotate: function (rad)
-    {
+    rotate: function (rad) {
         var a = this.val;
 
         var a00 = a[0];
@@ -440,8 +422,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    scale: function (v)
-    {
+    scale: function (v) {
         var a = this.val;
         var x = v.x;
         var y = v.y;
@@ -467,8 +448,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    fromQuat: function (q)
-    {
+    fromQuat: function (q) {
         var x = q.x;
         var y = q.y;
         var z = q.z;
@@ -517,8 +497,7 @@ var Matrix3 = new Class({
      *
      * @return {Phaser.Math.Matrix3} This Matrix3.
      */
-    normalFromMat4: function (m)
-    {
+    normalFromMat4: function (m) {
         var a = m.val;
         var out = this.val;
 
@@ -560,8 +539,7 @@ var Matrix3 = new Class({
         // Calculate the determinant
         var det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
 
-        if (!det)
-        {
+        if (!det) {
             return null;
         }
 

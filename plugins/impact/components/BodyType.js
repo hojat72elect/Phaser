@@ -23,8 +23,7 @@ var BodyType = {
      *
      * @return {number} [description]
      */
-    getBodyType: function ()
-    {
+    getBodyType: function () {
         return this.body.type;
     },
 
@@ -36,8 +35,7 @@ var BodyType = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setTypeNone: function ()
-    {
+    setTypeNone: function () {
         this.body.type = TYPE.NONE;
 
         return this;
@@ -51,8 +49,7 @@ var BodyType = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setTypeA: function ()
-    {
+    setTypeA: function () {
         this.body.type = TYPE.A;
 
         return this;
@@ -66,8 +63,7 @@ var BodyType = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setTypeB: function ()
-    {
+    setTypeB: function () {
         this.body.type = TYPE.B;
 
         return this;

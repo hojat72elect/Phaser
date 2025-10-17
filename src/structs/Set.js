@@ -33,28 +33,25 @@ var Set = new Class({
 
     initialize:
 
-    function Set (elements)
-    {
-        /**
-         * The entries of this Set. Stored internally as an array.
-         *
-         * @genericUse {T[]} - [$type]
-         *
-         * @name Phaser.Structs.Set#entries
-         * @type {Array.<*>}
-         * @default []
-         * @since 3.0.0
-         */
-        this.entries = [];
+        function Set(elements) {
+            /**
+             * The entries of this Set. Stored internally as an array.
+             *
+             * @genericUse {T[]} - [$type]
+             *
+             * @name Phaser.Structs.Set#entries
+             * @type {Array.<*>}
+             * @default []
+             * @since 3.0.0
+             */
+            this.entries = [];
 
-        if (Array.isArray(elements))
-        {
-            for (var i = 0; i < elements.length; i++)
-            {
-                this.set(elements[i]);
+            if (Array.isArray(elements)) {
+                for (var i = 0; i < elements.length; i++) {
+                    this.set(elements[i]);
+                }
             }
-        }
-    },
+        },
 
     /**
      * Inserts the provided value into this Set. If the value is already contained in this Set this method will have no effect.
@@ -69,10 +66,8 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} This Set object.
      */
-    set: function (value)
-    {
-        if (this.entries.indexOf(value) === -1)
-        {
+    set: function (value) {
+        if (this.entries.indexOf(value) === -1) {
             this.entries.push(value);
         }
 
@@ -93,14 +88,11 @@ var Set = new Class({
      *
      * @return {*} The first element of this Set that meets the required condition, or `null` if this Set contains no elements that meet the condition.
      */
-    get: function (property, value)
-    {
-        for (var i = 0; i < this.entries.length; i++)
-        {
+    get: function (property, value) {
+        for (var i = 0; i < this.entries.length; i++) {
             var entry = this.entries[i];
 
-            if (entry[property] === value)
-            {
+            if (entry[property] === value) {
                 return entry;
             }
         }
@@ -116,8 +108,7 @@ var Set = new Class({
      *
      * @return {Array.<*>} An array containing all the values in this Set.
      */
-    getArray: function ()
-    {
+    getArray: function () {
         return this.entries.slice(0);
     },
 
@@ -134,12 +125,10 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} This Set object.
      */
-    delete: function (value)
-    {
+    delete: function (value) {
         var index = this.entries.indexOf(value);
 
-        if (index > -1)
-        {
+        if (index > -1) {
             this.entries.splice(index, 1);
         }
 
@@ -152,13 +141,11 @@ var Set = new Class({
      * @method Phaser.Structs.Set#dump
      * @since 3.0.0
      */
-    dump: function ()
-    {
+    dump: function () {
         // eslint-disable-next-line no-console
         console.group('Set');
 
-        for (var i = 0; i < this.entries.length; i++)
-        {
+        for (var i = 0; i < this.entries.length; i++) {
             var entry = this.entries[i];
             console.log(entry);
         }
@@ -182,28 +169,20 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} This Set object.
      */
-    each: function (callback, callbackScope)
-    {
+    each: function (callback, callbackScope) {
         var i;
         var temp = this.entries.slice();
         var len = temp.length;
 
-        if (callbackScope)
-        {
-            for (i = 0; i < len; i++)
-            {
-                if (callback.call(callbackScope, temp[i], i) === false)
-                {
+        if (callbackScope) {
+            for (i = 0; i < len; i++) {
+                if (callback.call(callbackScope, temp[i], i) === false) {
                     break;
                 }
             }
-        }
-        else
-        {
-            for (i = 0; i < len; i++)
-            {
-                if (callback(temp[i], i) === false)
-                {
+        } else {
+            for (i = 0; i < len; i++) {
+                if (callback(temp[i], i) === false) {
                     break;
                 }
             }
@@ -232,27 +211,19 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} This Set object.
      */
-    iterate: function (callback, callbackScope)
-    {
+    iterate: function (callback, callbackScope) {
         var i;
         var len = this.entries.length;
 
-        if (callbackScope)
-        {
-            for (i = 0; i < len; i++)
-            {
-                if (callback.call(callbackScope, this.entries[i], i) === false)
-                {
+        if (callbackScope) {
+            for (i = 0; i < len; i++) {
+                if (callback.call(callbackScope, this.entries[i], i) === false) {
                     break;
                 }
             }
-        }
-        else
-        {
-            for (i = 0; i < len; i++)
-            {
-                if (callback(this.entries[i], i) === false)
-                {
+        } else {
+            for (i = 0; i < len; i++) {
+                if (callback(this.entries[i], i) === false) {
                     break;
                 }
             }
@@ -274,20 +245,17 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} This Set object.
      */
-    iterateLocal: function (callbackKey)
-    {
+    iterateLocal: function (callbackKey) {
         var i;
         var args = [];
 
-        for (i = 1; i < arguments.length; i++)
-        {
+        for (i = 1; i < arguments.length; i++) {
             args.push(arguments[i]);
         }
 
         var len = this.entries.length;
 
-        for (i = 0; i < len; i++)
-        {
+        for (i = 0; i < len; i++) {
             var entry = this.entries[i];
 
             entry[callbackKey].apply(entry, args);
@@ -306,8 +274,7 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} This Set object.
      */
-    clear: function ()
-    {
+    clear: function () {
         this.entries.length = 0;
 
         return this;
@@ -325,8 +292,7 @@ var Set = new Class({
      *
      * @return {boolean} `true` if the given value was found in this Set, otherwise `false`.
      */
-    contains: function (value)
-    {
+    contains: function (value) {
         return (this.entries.indexOf(value) > -1);
     },
 
@@ -342,17 +308,14 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} A new Set containing all the values in this Set and the Set provided as an argument.
      */
-    union: function (set)
-    {
+    union: function (set) {
         var newSet = new Set();
 
-        set.entries.forEach(function (value)
-        {
+        set.entries.forEach(function (value) {
             newSet.set(value);
         });
 
-        this.entries.forEach(function (value)
-        {
+        this.entries.forEach(function (value) {
             newSet.set(value);
         });
 
@@ -371,14 +334,11 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} The result of the intersection, as a new Set.
      */
-    intersect: function (set)
-    {
+    intersect: function (set) {
         var newSet = new Set();
 
-        this.entries.forEach(function (value)
-        {
-            if (set.contains(value))
-            {
+        this.entries.forEach(function (value) {
+            if (set.contains(value)) {
                 newSet.set(value);
             }
         });
@@ -398,14 +358,11 @@ var Set = new Class({
      *
      * @return {Phaser.Structs.Set} A new Set containing all the values in this Set that are not also in the Set provided as an argument to this method.
      */
-    difference: function (set)
-    {
+    difference: function (set) {
         var newSet = new Set();
 
-        this.entries.forEach(function (value)
-        {
-            if (!set.contains(value))
-            {
+        this.entries.forEach(function (value) {
+            if (!set.contains(value)) {
                 newSet.set(value);
             }
         });
@@ -424,19 +381,14 @@ var Set = new Class({
      */
     size: {
 
-        get: function ()
-        {
+        get: function () {
             return this.entries.length;
         },
 
-        set: function (value)
-        {
-            if (value < this.entries.length)
-            {
+        set: function (value) {
+            if (value < this.entries.length) {
                 return this.entries.length = value;
-            }
-            else
-            {
+            } else {
                 return this.entries.length;
             }
         }

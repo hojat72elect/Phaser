@@ -1,14 +1,14 @@
 /**
-* The `Matter.Runner` module is an optional utility which provides a game loop,
-* that handles continuously updating a `Matter.Engine` for you within a browser.
-* It is intended for development and debugging purposes, but may also be suitable for simple games.
-* If you are using your own game loop instead, then you do not need the `Matter.Runner` module.
-* Instead just call `Engine.update(engine, delta)` in your own loop.
-*
-* See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-*
-* @class Runner
-*/
+ * The `Matter.Runner` module is an optional utility which provides a game loop,
+ * that handles continuously updating a `Matter.Engine` for you within a browser.
+ * It is intended for development and debugging purposes, but may also be suitable for simple games.
+ * If you are using your own game loop instead, then you do not need the `Matter.Runner` module.
+ * Instead just call `Engine.update(engine, delta)` in your own loop.
+ *
+ * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+ *
+ * @class Runner
+ */
 
 var Runner = {};
 
@@ -18,7 +18,7 @@ var Events = require('./Events');
 var Engine = require('./Engine');
 var Common = require('./Common');
 
-(function() {
+(function () {
 
     Runner._maxFrameDelta = 1000 / 15;
     Runner._frameDeltaFallback = 1000 / 60;
@@ -33,7 +33,7 @@ var Common = require('./Common');
      * @method create
      * @param {} options
      */
-    Runner.create = function(options) {
+    Runner.create = function (options) {
         var defaults = {
             delta: 1000 / 60,
             frameDelta: null,
@@ -63,11 +63,11 @@ var Common = require('./Common');
      * @method run
      * @param {engine} engine
      */
-    Runner.run = function(runner, engine) {
+    Runner.run = function (runner, engine) {
         // create runner if engine is first argument
         runner.timeBuffer = Runner._frameDeltaFallback;
 
-        (function onFrame(time){
+        (function onFrame(time) {
             runner.frameRequestId = Runner._onNextFrame(runner, onFrame);
 
             if (time && runner.enabled) {
@@ -87,12 +87,12 @@ var Common = require('./Common');
      * @param {engine} engine
      * @param {number} time
      */
-    Runner.tick = function(runner, engine, time) {
+    Runner.tick = function (runner, engine, time) {
         var tickStartTime = Common.now(),
             engineDelta = runner.delta,
             updateCount = 0;
 
-            // fixed timestep
+        // fixed timestep
         var frameDelta = time - runner.timeLastTick;
 
         if (!frameDelta || !runner.timeLastTick || frameDelta > Math.max(Runner._maxFrameDelta, runner.maxFrameTime)) {
@@ -141,11 +141,11 @@ var Common = require('./Common');
 
         var updateStartTime = Common.now();
         while (engineDelta > 0 && runner.timeBuffer >= engineDelta * Runner._timeBufferMargin) {
-        // update
-        Events.trigger(runner, 'beforeUpdate', event);
+            // update
+            Events.trigger(runner, 'beforeUpdate', event);
 
             Engine.update(engine, engineDelta);
-        Events.trigger(runner, 'afterUpdate', event);
+            Events.trigger(runner, 'afterUpdate', event);
 
             runner.timeBuffer -= engineDelta;
             updateCount += 1;
@@ -183,7 +183,7 @@ var Common = require('./Common');
      * @method stop
      * @param {runner} runner
      */
-    Runner.stop = function(runner) {
+    Runner.stop = function (runner) {
         Runner._cancelNextFrame(runner);
     };
 
@@ -193,7 +193,7 @@ var Common = require('./Common');
      * @param {runner} runner
      * @param {engine} engine
      */
-    Runner._onNextFrame = function(runner, callback) {
+    Runner._onNextFrame = function (runner, callback) {
         if (typeof window !== 'undefined' && window.requestAnimationFrame) {
             runner.frameRequestId = window.requestAnimationFrame(callback);
         } else {
@@ -201,7 +201,7 @@ var Common = require('./Common');
         }
         return runner.frameRequestId;
     };
-    Runner._cancelNextFrame = function(runner) {
+    Runner._cancelNextFrame = function (runner) {
         if (typeof window !== 'undefined' && window.cancelAnimationFrame) {
             window.cancelAnimationFrame(runner.frameRequestId);
         } else {
@@ -209,7 +209,7 @@ var Common = require('./Common');
         }
     };
 
-    var _mean = function(values) {
+    var _mean = function (values) {
         var result = 0,
             valuesLength = values.length;
         for (var i = 0; i < valuesLength; i += 1) {
@@ -225,54 +225,54 @@ var Common = require('./Common');
     */
 
     /**
-    * Fired at the start of a tick, before any updates to the engine or timing
-    *
-    * @event beforeTick
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired at the start of a tick, before any updates to the engine or timing
+     *
+     * @event beforeTick
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /**
-    * Fired after engine timing updated, but just before update
-    *
-    * @event tick
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired after engine timing updated, but just before update
+     *
+     * @event tick
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /**
-    * Fired at the end of a tick, after engine update and after rendering
-    *
-    * @event afterTick
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired at the end of a tick, after engine update and after rendering
+     *
+     * @event afterTick
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /**
-    * Fired before update
-    *
-    * @event beforeUpdate
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired before update
+     *
+     * @event beforeUpdate
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /**
-    * Fired after update
-    *
-    * @event afterUpdate
-    * @param {} event An event object
-    * @param {number} event.timestamp The engine.timing.timestamp of the event
-    * @param {} event.source The source object of the event
-    * @param {} event.name The name of the event
-    */
+     * Fired after update
+     *
+     * @event afterUpdate
+     * @param {} event An event object
+     * @param {number} event.timestamp The engine.timing.timestamp of the event
+     * @param {} event.source The source object of the event
+     * @param {} event.name The name of the event
+     */
 
     /*
     *

@@ -25,8 +25,7 @@ var Debug = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setDebug: function (showBody, showVelocity, bodyColor)
-    {
+    setDebug: function (showBody, showVelocity, bodyColor) {
         this.debugShowBody = showBody;
         this.debugShowVelocity = showVelocity;
         this.debugBodyColor = bodyColor;
@@ -44,8 +43,7 @@ var Debug = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setDebugBodyColor: function (value)
-    {
+    setDebugBodyColor: function (value) {
         this.body.debugBodyColor = value;
 
         return this;
@@ -60,13 +58,11 @@ var Debug = {
      */
     debugShowBody: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.debugShowBody;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.debugShowBody = value;
         }
 
@@ -81,13 +77,11 @@ var Debug = {
      */
     debugShowVelocity: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.debugShowVelocity;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.debugShowVelocity = value;
         }
 
@@ -102,13 +96,11 @@ var Debug = {
      */
     debugBodyColor: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.debugBodyColor;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.debugBodyColor = value;
         }
 

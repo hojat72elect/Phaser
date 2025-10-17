@@ -32,11 +32,12 @@ var PluginCache = {};
  * @param {string} mapping - If this plugin is to be injected into the Scene Systems, this is the property key map used.
  * @param {boolean} [custom=false] - Core Scene plugin or a Custom Scene plugin?
  */
-PluginCache.register = function (key, plugin, mapping, custom)
-{
-    if (custom === undefined) { custom = false; }
+PluginCache.register = function (key, plugin, mapping, custom) {
+    if (custom === undefined) {
+        custom = false;
+    }
 
-    corePlugins[key] = { plugin: plugin, mapping: mapping, custom: custom };
+    corePlugins[key] = {plugin: plugin, mapping: mapping, custom: custom};
 };
 
 /**
@@ -51,9 +52,8 @@ PluginCache.register = function (key, plugin, mapping, custom)
  * @param {string} mapping - If this plugin is to be injected into the Scene Systems, this is the property key map used.
  * @param {?any} data - A value to be passed to the plugin's `init` method.
  */
-PluginCache.registerCustom = function (key, plugin, mapping, data)
-{
-    customPlugins[key] = { plugin: plugin, mapping: mapping, data: data };
+PluginCache.registerCustom = function (key, plugin, mapping, data) {
+    customPlugins[key] = {plugin: plugin, mapping: mapping, data: data};
 };
 
 /**
@@ -66,8 +66,7 @@ PluginCache.registerCustom = function (key, plugin, mapping, data)
  *
  * @return {boolean} `true` if the key is already in use in the core cache, otherwise `false`.
  */
-PluginCache.hasCore = function (key)
-{
+PluginCache.hasCore = function (key) {
     return corePlugins.hasOwnProperty(key);
 };
 
@@ -81,8 +80,7 @@ PluginCache.hasCore = function (key)
  *
  * @return {boolean} `true` if the key is already in use in the custom cache, otherwise `false`.
  */
-PluginCache.hasCustom = function (key)
-{
+PluginCache.hasCustom = function (key) {
     return customPlugins.hasOwnProperty(key);
 };
 
@@ -96,8 +94,7 @@ PluginCache.hasCustom = function (key)
  *
  * @return {Phaser.Types.Plugins.CorePluginContainer} The core plugin object.
  */
-PluginCache.getCore = function (key)
-{
+PluginCache.getCore = function (key) {
     return corePlugins[key];
 };
 
@@ -111,8 +108,7 @@ PluginCache.getCore = function (key)
  *
  * @return {Phaser.Types.Plugins.CustomPluginContainer} The custom plugin object.
  */
-PluginCache.getCustom = function (key)
-{
+PluginCache.getCustom = function (key) {
     return customPlugins[key];
 };
 
@@ -126,8 +122,7 @@ PluginCache.getCustom = function (key)
  *
  * @return {function} The custom plugin object.
  */
-PluginCache.getCustomClass = function (key)
-{
+PluginCache.getCustomClass = function (key) {
     return (customPlugins.hasOwnProperty(key)) ? customPlugins[key].plugin : null;
 };
 
@@ -139,10 +134,8 @@ PluginCache.getCustomClass = function (key)
  *
  * @param {string} key - The key of the core plugin to remove.
  */
-PluginCache.remove = function (key)
-{
-    if (corePlugins.hasOwnProperty(key))
-    {
+PluginCache.remove = function (key) {
+    if (corePlugins.hasOwnProperty(key)) {
         delete corePlugins[key];
     }
 };
@@ -155,10 +148,8 @@ PluginCache.remove = function (key)
  *
  * @param {string} key - The key of the custom plugin to remove.
  */
-PluginCache.removeCustom = function (key)
-{
-    if (customPlugins.hasOwnProperty(key))
-    {
+PluginCache.removeCustom = function (key) {
+    if (customPlugins.hasOwnProperty(key)) {
         delete customPlugins[key];
     }
 };
@@ -172,12 +163,9 @@ PluginCache.removeCustom = function (key)
  * @method Phaser.Plugins.PluginCache.destroyCorePlugins
  * @since 3.12.0
  */
-PluginCache.destroyCorePlugins = function ()
-{
-    for (var key in corePlugins)
-    {
-        if (corePlugins.hasOwnProperty(key))
-        {
+PluginCache.destroyCorePlugins = function () {
+    for (var key in corePlugins) {
+        if (corePlugins.hasOwnProperty(key)) {
             delete corePlugins[key];
         }
     }
@@ -189,12 +177,9 @@ PluginCache.destroyCorePlugins = function ()
  * @method Phaser.Plugins.PluginCache.destroyCustomPlugins
  * @since 3.12.0
  */
-PluginCache.destroyCustomPlugins = function ()
-{
-    for (var key in customPlugins)
-    {
-        if (customPlugins.hasOwnProperty(key))
-        {
+PluginCache.destroyCustomPlugins = function () {
+    for (var key in customPlugins) {
+        if (customPlugins.hasOwnProperty(key)) {
             delete customPlugins[key];
         }
     }

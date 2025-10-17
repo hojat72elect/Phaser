@@ -17,37 +17,25 @@
  *
  * @return {function} A function which, when called, will return the property value from the source.
  */
-var GetNewValue = function (source, key, defaultValue)
-{
+var GetNewValue = function (source, key, defaultValue) {
     var valueCallback;
 
-    if (source.hasOwnProperty(key))
-    {
-        var t = typeof(source[key]);
+    if (source.hasOwnProperty(key)) {
+        var t = typeof (source[key]);
 
-        if (t === 'function')
-        {
-            valueCallback = function (target, targetKey, value, targetIndex, totalTargets, tween)
-            {
+        if (t === 'function') {
+            valueCallback = function (target, targetKey, value, targetIndex, totalTargets, tween) {
                 return source[key](target, targetKey, value, targetIndex, totalTargets, tween);
             };
-        }
-        else
-        {
-            valueCallback = function ()
-            {
+        } else {
+            valueCallback = function () {
                 return source[key];
             };
         }
-    }
-    else if (typeof defaultValue === 'function')
-    {
+    } else if (typeof defaultValue === 'function') {
         valueCallback = defaultValue;
-    }
-    else
-    {
-        valueCallback = function ()
-        {
+    } else {
+        valueCallback = function () {
             return defaultValue;
         };
     }

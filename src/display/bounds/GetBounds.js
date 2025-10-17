@@ -21,9 +21,10 @@ var Rectangle = require('../../geom/rectangle/Rectangle');
  *
  * @return {(Phaser.Geom.Rectangle|object)} - The bounds of the Game Object.
  */
-var GetBounds = function (gameObject, output)
-{
-    if (output === undefined) { output = new Rectangle(); }
+var GetBounds = function (gameObject, output) {
+    if (output === undefined) {
+        output = new Rectangle();
+    }
 
     var left = GetLeft(gameObject);
     var top = GetTop(gameObject);

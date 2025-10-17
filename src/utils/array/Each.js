@@ -17,18 +17,15 @@
  *
  * @return {array} The input array.
  */
-var Each = function (array, callback, context)
-{
+var Each = function (array, callback, context) {
     var i;
-    var args = [ null ];
+    var args = [null];
 
-    for (i = 3; i < arguments.length; i++)
-    {
+    for (i = 3; i < arguments.length; i++) {
         args.push(arguments[i]);
     }
 
-    for (i = 0; i < array.length; i++)
-    {
+    for (i = 0; i < array.length; i++) {
         args[0] = array[i];
 
         callback.apply(context, args);

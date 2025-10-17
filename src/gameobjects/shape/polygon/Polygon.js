@@ -60,26 +60,28 @@ var Polygon = new Class({
 
     initialize:
 
-    function Polygon (scene, x, y, points, fillColor, fillAlpha)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+        function Polygon(scene, x, y, points, fillColor, fillAlpha) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
 
-        Shape.call(this, scene, 'Polygon', new GeomPolygon(points));
+            Shape.call(this, scene, 'Polygon', new GeomPolygon(points));
 
-        var bounds = GetAABB(this.geom);
+            var bounds = GetAABB(this.geom);
 
-        this.setPosition(x, y);
-        this.setSize(bounds.width, bounds.height);
+            this.setPosition(x, y);
+            this.setSize(bounds.width, bounds.height);
 
-        if (fillColor !== undefined)
-        {
-            this.setFillStyle(fillColor, fillAlpha);
-        }
+            if (fillColor !== undefined) {
+                this.setFillStyle(fillColor, fillAlpha);
+            }
 
-        this.updateDisplayOrigin();
-        this.updateData();
-    },
+            this.updateDisplayOrigin();
+            this.updateData();
+        },
 
     /**
      * Smooths the polygon over the number of iterations specified.
@@ -93,12 +95,12 @@ var Polygon = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    smooth: function (iterations)
-    {
-        if (iterations === undefined) { iterations = 1; }
+    smooth: function (iterations) {
+        if (iterations === undefined) {
+            iterations = 1;
+        }
 
-        for (var i = 0; i < iterations; i++)
-        {
+        for (var i = 0; i < iterations; i++) {
             Smooth(this.geom);
         }
 
@@ -128,8 +130,7 @@ var Polygon = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setTo: function (points)
-    {
+    setTo: function (points) {
         this.geom.setTo(points);
 
         var bounds = GetAABB(this.geom);
@@ -150,13 +151,11 @@ var Polygon = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    updateData: function ()
-    {
+    updateData: function () {
         var path = [];
         var points = this.geom.points;
 
-        for (var i = 0; i < points.length; i++)
-        {
+        for (var i = 0; i < points.length; i++) {
             path.push(points[i].x, points[i].y);
         }
 

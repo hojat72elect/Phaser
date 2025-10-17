@@ -54,411 +54,410 @@ var WebGLPipeline = new Class({
 
     initialize:
 
-    function WebGLPipeline (config)
-    {
-        EventEmitter.call(this);
+        function WebGLPipeline(config) {
+            EventEmitter.call(this);
 
-        var game = config.game;
-        var renderer = game.renderer;
-        var gl = renderer.gl;
+            var game = config.game;
+            var renderer = game.renderer;
+            var gl = renderer.gl;
 
-        /**
-         * Name of the pipeline. Used for identification and setting from Game Objects.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#name
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.name = GetFastValue(config, 'name', 'WebGLPipeline');
+            /**
+             * Name of the pipeline. Used for identification and setting from Game Objects.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#name
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.name = GetFastValue(config, 'name', 'WebGLPipeline');
 
-        /**
-         * The Phaser Game instance to which this pipeline is bound.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#game
-         * @type {Phaser.Game}
-         * @since 3.0.0
-         */
-        this.game = game;
+            /**
+             * The Phaser Game instance to which this pipeline is bound.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#game
+             * @type {Phaser.Game}
+             * @since 3.0.0
+             */
+            this.game = game;
 
-        /**
-         * The WebGL Renderer instance to which this pipeline is bound.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#renderer
-         * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-         * @since 3.0.0
-         */
-        this.renderer = renderer;
+            /**
+             * The WebGL Renderer instance to which this pipeline is bound.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#renderer
+             * @type {Phaser.Renderer.WebGL.WebGLRenderer}
+             * @since 3.0.0
+             */
+            this.renderer = renderer;
 
-        /**
-         * A reference to the WebGL Pipeline Manager.
-         *
-         * This is initially undefined and only set when this pipeline is added
-         * to the manager.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#manager
-         * @type {?Phaser.Renderer.WebGL.PipelineManager}
-         * @since 3.50.0
-         */
-        this.manager;
+            /**
+             * A reference to the WebGL Pipeline Manager.
+             *
+             * This is initially undefined and only set when this pipeline is added
+             * to the manager.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#manager
+             * @type {?Phaser.Renderer.WebGL.PipelineManager}
+             * @since 3.50.0
+             */
+            this.manager;
 
-        /**
-         * The WebGL context this WebGL Pipeline uses.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.0.0
-         */
-        this.gl = gl;
+            /**
+             * The WebGL context this WebGL Pipeline uses.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.0.0
+             */
+            this.gl = gl;
 
-        /**
-         * The canvas which this WebGL Pipeline renders to.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#view
-         * @type {HTMLCanvasElement}
-         * @since 3.0.0
-         */
-        this.view = game.canvas;
+            /**
+             * The canvas which this WebGL Pipeline renders to.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#view
+             * @type {HTMLCanvasElement}
+             * @since 3.0.0
+             */
+            this.view = game.canvas;
 
-        /**
-         * Width of the current viewport.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#width
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.width = 0;
+            /**
+             * Width of the current viewport.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#width
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.width = 0;
 
-        /**
-         * Height of the current viewport.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#height
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.height = 0;
+            /**
+             * Height of the current viewport.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#height
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.height = 0;
 
-        /**
-         * The current number of vertices that have been added to the pipeline batch.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexCount
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.vertexCount = 0;
+            /**
+             * The current number of vertices that have been added to the pipeline batch.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexCount
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.vertexCount = 0;
 
-        /**
-         * The total number of vertices that this pipeline batch can hold before it will flush.
-         *
-         * This defaults to `renderer batchSize * 6`, where `batchSize` is defined in the Renderer Game Config.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexCapacity
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.vertexCapacity = 0;
+            /**
+             * The total number of vertices that this pipeline batch can hold before it will flush.
+             *
+             * This defaults to `renderer batchSize * 6`, where `batchSize` is defined in the Renderer Game Config.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexCapacity
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.vertexCapacity = 0;
 
-        /**
-         * Raw byte buffer of vertices.
-         *
-         * Either set via the config object `vertices` property, or generates a new Array Buffer of
-         * size `vertexCapacity * vertexSize`.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexData
-         * @type {ArrayBuffer}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.vertexData;
+            /**
+             * Raw byte buffer of vertices.
+             *
+             * Either set via the config object `vertices` property, or generates a new Array Buffer of
+             * size `vertexCapacity * vertexSize`.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexData
+             * @type {ArrayBuffer}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.vertexData;
 
-        /**
-         * The WebGLBuffer that holds the vertex data.
-         *
-         * Created from the `vertexData` ArrayBuffer. If `vertices` are set in the config, a `STATIC_DRAW` buffer
-         * is created. If not, a `DYNAMIC_DRAW` buffer is created.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexBuffer
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.vertexBuffer;
+            /**
+             * The WebGLBuffer that holds the vertex data.
+             *
+             * Created from the `vertexData` ArrayBuffer. If `vertices` are set in the config, a `STATIC_DRAW` buffer
+             * is created. If not, a `DYNAMIC_DRAW` buffer is created.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexBuffer
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.vertexBuffer;
 
-        /**
-         * The currently active WebGLBuffer.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#activeBuffer
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
-         * @since 3.60.0
-         */
-        this.activeBuffer;
+            /**
+             * The currently active WebGLBuffer.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#activeBuffer
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
+             * @since 3.60.0
+             */
+            this.activeBuffer;
 
-        /**
-         * The primitive topology which the pipeline will use to submit draw calls.
-         *
-         * Defaults to GL_TRIANGLES if not otherwise set in the config.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#topology
-         * @type {GLenum}
-         * @since 3.0.0
-         */
-        this.topology = GetFastValue(config, 'topology', gl.TRIANGLES);
+            /**
+             * The primitive topology which the pipeline will use to submit draw calls.
+             *
+             * Defaults to GL_TRIANGLES if not otherwise set in the config.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#topology
+             * @type {GLenum}
+             * @since 3.0.0
+             */
+            this.topology = GetFastValue(config, 'topology', gl.TRIANGLES);
 
-        /**
-         * Uint8 view to the `vertexData` ArrayBuffer. Used for uploading vertex buffer resources to the GPU.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#bytes
-         * @type {Uint8Array}
-         * @since 3.0.0
-         */
-        this.bytes;
+            /**
+             * Uint8 view to the `vertexData` ArrayBuffer. Used for uploading vertex buffer resources to the GPU.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#bytes
+             * @type {Uint8Array}
+             * @since 3.0.0
+             */
+            this.bytes;
 
-        /**
-         * Float32 view of the array buffer containing the pipeline's vertices.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexViewF32
-         * @type {Float32Array}
-         * @since 3.0.0
-         */
-        this.vertexViewF32;
+            /**
+             * Float32 view of the array buffer containing the pipeline's vertices.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexViewF32
+             * @type {Float32Array}
+             * @since 3.0.0
+             */
+            this.vertexViewF32;
 
-        /**
-         * Uint32 view of the array buffer containing the pipeline's vertices.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexViewU32
-         * @type {Uint32Array}
-         * @since 3.0.0
-         */
-        this.vertexViewU32;
+            /**
+             * Uint32 view of the array buffer containing the pipeline's vertices.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#vertexViewU32
+             * @type {Uint32Array}
+             * @since 3.0.0
+             */
+            this.vertexViewU32;
 
-        /**
-         * Indicates if the current pipeline is active, or not.
-         *
-         * Toggle this property to enable or disable a pipeline from rendering anything.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#active
-         * @type {boolean}
-         * @since 3.10.0
-         */
-        this.active = true;
+            /**
+             * Indicates if the current pipeline is active, or not.
+             *
+             * Toggle this property to enable or disable a pipeline from rendering anything.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#active
+             * @type {boolean}
+             * @since 3.10.0
+             */
+            this.active = true;
 
-        /**
-         * Some pipelines require the forced use of texture zero (like the light pipeline).
-         *
-         * This property should be set when that is the case.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#forceZero
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.forceZero = GetFastValue(config, 'forceZero', false);
+            /**
+             * Some pipelines require the forced use of texture zero (like the light pipeline).
+             *
+             * This property should be set when that is the case.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#forceZero
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.forceZero = GetFastValue(config, 'forceZero', false);
 
-        /**
-         * Indicates if this pipeline has booted or not.
-         *
-         * A pipeline boots only when the Game instance itself, and all associated systems, is
-         * fully ready.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#hasBooted
-         * @type {boolean}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.hasBooted = false;
+            /**
+             * Indicates if this pipeline has booted or not.
+             *
+             * A pipeline boots only when the Game instance itself, and all associated systems, is
+             * fully ready.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#hasBooted
+             * @type {boolean}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.hasBooted = false;
 
-        /**
-         * Indicates if this is a Post FX Pipeline, or not.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#isPostFX
-         * @type {boolean}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.isPostFX = false;
+            /**
+             * Indicates if this is a Post FX Pipeline, or not.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#isPostFX
+             * @type {boolean}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.isPostFX = false;
 
-        /**
-         * Indicates if this is a Pre FX Pipeline, or not.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#isPreFX
-         * @type {boolean}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.isPreFX = false;
+            /**
+             * Indicates if this is a Pre FX Pipeline, or not.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#isPreFX
+             * @type {boolean}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.isPreFX = false;
 
-        /**
-         * An array of RenderTarget instances that belong to this pipeline.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#renderTargets
-         * @type {Phaser.Renderer.WebGL.RenderTarget[]}
-         * @since 3.50.0
-         */
-        this.renderTargets = [];
+            /**
+             * An array of RenderTarget instances that belong to this pipeline.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#renderTargets
+             * @type {Phaser.Renderer.WebGL.RenderTarget[]}
+             * @since 3.50.0
+             */
+            this.renderTargets = [];
 
-        /**
-         * A reference to the currently bound Render Target instance from the `WebGLPipeline.renderTargets` array.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#currentRenderTarget
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @since 3.50.0
-         */
-        this.currentRenderTarget;
+            /**
+             * A reference to the currently bound Render Target instance from the `WebGLPipeline.renderTargets` array.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#currentRenderTarget
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @since 3.50.0
+             */
+            this.currentRenderTarget;
 
-        /**
-         * An array of all the WebGLShader instances that belong to this pipeline.
-         *
-         * Shaders manage their own attributes and uniforms, but share the same vertex data buffer,
-         * which belongs to this pipeline.
-         *
-         * Shaders are set in a call to the `setShadersFromConfig` method, which happens automatically,
-         * but can also be called at any point in your game. See the method documentation for details.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#shaders
-         * @type {Phaser.Renderer.WebGL.WebGLShader[]}
-         * @since 3.50.0
-         */
-        this.shaders = [];
+            /**
+             * An array of all the WebGLShader instances that belong to this pipeline.
+             *
+             * Shaders manage their own attributes and uniforms, but share the same vertex data buffer,
+             * which belongs to this pipeline.
+             *
+             * Shaders are set in a call to the `setShadersFromConfig` method, which happens automatically,
+             * but can also be called at any point in your game. See the method documentation for details.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#shaders
+             * @type {Phaser.Renderer.WebGL.WebGLShader[]}
+             * @since 3.50.0
+             */
+            this.shaders = [];
 
-        /**
-         * A reference to the currently bound WebGLShader instance from the `WebGLPipeline.shaders` array.
-         *
-         * For lots of pipelines, this is the only shader, so it is a quick way to reference it without
-         * an array look-up.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#currentShader
-         * @type {Phaser.Renderer.WebGL.WebGLShader}
-         * @since 3.50.0
-         */
-        this.currentShader;
+            /**
+             * A reference to the currently bound WebGLShader instance from the `WebGLPipeline.shaders` array.
+             *
+             * For lots of pipelines, this is the only shader, so it is a quick way to reference it without
+             * an array look-up.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#currentShader
+             * @type {Phaser.Renderer.WebGL.WebGLShader}
+             * @since 3.50.0
+             */
+            this.currentShader;
 
-        /**
-         * The Projection matrix, used by shaders as 'uProjectionMatrix' uniform.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionMatrix
-         * @type {Phaser.Math.Matrix4}
-         * @since 3.50.0
-         */
-        this.projectionMatrix;
+            /**
+             * The Projection matrix, used by shaders as 'uProjectionMatrix' uniform.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionMatrix
+             * @type {Phaser.Math.Matrix4}
+             * @since 3.50.0
+             */
+            this.projectionMatrix;
 
-        /**
-         * The cached width of the Projection matrix.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionWidth
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.projectionWidth = 0;
+            /**
+             * The cached width of the Projection matrix.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionWidth
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.projectionWidth = 0;
 
-        /**
-         * The cached height of the Projection matrix.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionHeight
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.projectionHeight = 0;
+            /**
+             * The cached height of the Projection matrix.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionHeight
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.projectionHeight = 0;
 
-        /**
-         * The configuration object that was used to create this pipeline.
-         *
-         * Treat this object as 'read only', because changing it post-creation will not
-         * impact this pipeline in any way. However, it is used internally for cloning
-         * and post-boot set-up.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#config
-         * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig}
-         * @since 3.50.0
-         */
-        this.config = config;
+            /**
+             * The configuration object that was used to create this pipeline.
+             *
+             * Treat this object as 'read only', because changing it post-creation will not
+             * impact this pipeline in any way. However, it is used internally for cloning
+             * and post-boot set-up.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#config
+             * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig}
+             * @since 3.50.0
+             */
+            this.config = config;
 
-        /**
-         * Has the GL Context been reset to the Phaser defaults since the last time
-         * this pipeline was bound? This is set automatically when the Pipeline Manager
-         * resets itself, usually after handing off to a 3rd party renderer like Spine.
-         *
-         * You should treat this property as read-only.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#glReset
-         * @type {boolean}
-         * @since 3.53.0
-         */
-        this.glReset = false;
+            /**
+             * Has the GL Context been reset to the Phaser defaults since the last time
+             * this pipeline was bound? This is set automatically when the Pipeline Manager
+             * resets itself, usually after handing off to a 3rd party renderer like Spine.
+             *
+             * You should treat this property as read-only.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#glReset
+             * @type {boolean}
+             * @since 3.53.0
+             */
+            this.glReset = false;
 
-        /**
-         * The temporary Pipeline batch. This array contains the batch entries for
-         * the current frame, which is a package of textures and vertex offsets used
-         * for drawing. This package is built dynamically as the frame is built
-         * and cleared during the flush method.
-         *
-         * Treat this array and all of its contents as read-only.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#batch
-         * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineBatchEntry[]}
-         * @since 3.60.0
-         */
-        this.batch = [];
+            /**
+             * The temporary Pipeline batch. This array contains the batch entries for
+             * the current frame, which is a package of textures and vertex offsets used
+             * for drawing. This package is built dynamically as the frame is built
+             * and cleared during the flush method.
+             *
+             * Treat this array and all of its contents as read-only.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#batch
+             * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineBatchEntry[]}
+             * @since 3.60.0
+             */
+            this.batch = [];
 
-        /**
-         * The most recently created Pipeline batch entry.
-         *
-         * Reset to null as part of the flush method.
-         *
-         * Treat this value as read-only.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#currentBatch
-         * @type {?Phaser.Types.Renderer.WebGL.WebGLPipelineBatchEntry}
-         * @since 3.60.0
-         */
-        this.currentBatch = null;
+            /**
+             * The most recently created Pipeline batch entry.
+             *
+             * Reset to null as part of the flush method.
+             *
+             * Treat this value as read-only.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#currentBatch
+             * @type {?Phaser.Types.Renderer.WebGL.WebGLPipelineBatchEntry}
+             * @since 3.60.0
+             */
+            this.currentBatch = null;
 
-        /**
-         * The most recently bound texture, used as part of the batch process.
-         *
-         * Reset to null as part of the flush method.
-         *
-         * Treat this value as read-only.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#currentTexture
-         * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.60.0
-         */
-        this.currentTexture = null;
+            /**
+             * The most recently bound texture, used as part of the batch process.
+             *
+             * Reset to null as part of the flush method.
+             *
+             * Treat this value as read-only.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#currentTexture
+             * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.60.0
+             */
+            this.currentTexture = null;
 
-        /**
-         * Holds the most recently assigned texture unit.
-         *
-         * Treat this value as read-only.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#currentUnit
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.currentUnit = 0;
+            /**
+             * Holds the most recently assigned texture unit.
+             *
+             * Treat this value as read-only.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#currentUnit
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.currentUnit = 0;
 
-        /**
-         * The currently active WebGLTextures, used as part of the batch process.
-         *
-         * Reset to empty as part of the bind method.
-         *
-         * Treat this array as read-only.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#activeTextures
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper[]}
-         * @since 3.60.0
-         */
-        this.activeTextures = [];
+            /**
+             * The currently active WebGLTextures, used as part of the batch process.
+             *
+             * Reset to empty as part of the bind method.
+             *
+             * Treat this array as read-only.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#activeTextures
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper[]}
+             * @since 3.60.0
+             */
+            this.activeTextures = [];
 
-        /**
-         * If the WebGL Renderer changes size, this uniform will be set with the new width and height values
-         * as part of the pipeline resize method. Various built-in pipelines, such as the MultiPipeline, set
-         * this property automatically to `uResolution`.
-         *
-         * @name Phaser.Renderer.WebGL.WebGLPipeline#resizeUniform
-         * @type {string}
-         * @since 3.80.0
-         */
-        this.resizeUniform = GetFastValue(config, 'resizeUniform', '');
-    },
+            /**
+             * If the WebGL Renderer changes size, this uniform will be set with the new width and height values
+             * as part of the pipeline resize method. Various built-in pipelines, such as the MultiPipeline, set
+             * this property automatically to `uResolution`.
+             *
+             * @name Phaser.Renderer.WebGL.WebGLPipeline#resizeUniform
+             * @type {string}
+             * @since 3.80.0
+             */
+            this.resizeUniform = GetFastValue(config, 'resizeUniform', '');
+        },
 
     /**
      * Called when the Game has fully booted and the Renderer has finished setting up.
@@ -470,15 +469,13 @@ var WebGLPipeline = new Class({
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#BOOT
      * @since 3.11.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var i;
         var gl = this.gl;
         var config = this.config;
         var renderer = this.renderer;
 
-        if (!this.isPostFX)
-        {
+        if (!this.isPostFX) {
             this.projectionMatrix = new Matrix4().identity();
         }
 
@@ -489,26 +486,20 @@ var WebGLPipeline = new Class({
         var targets = GetFastValue(config, 'renderTarget', false);
 
         //  If boolean, set to number = 1
-        if (typeof(targets) === 'boolean' && targets)
-        {
+        if (typeof (targets) === 'boolean' && targets) {
             targets = 1;
         }
 
         var width = renderer.width;
         var height = renderer.height;
 
-        if (typeof(targets) === 'number')
-        {
+        if (typeof (targets) === 'number') {
             //  Create this many default RTs
-            for (i = 0; i < targets; i++)
-            {
+            for (i = 0; i < targets; i++) {
                 renderTargets.push(new RenderTarget(renderer, width, height, 1, 0, true));
             }
-        }
-        else if (Array.isArray(targets))
-        {
-            for (i = 0; i < targets.length; i++)
-            {
+        } else if (Array.isArray(targets)) {
+            for (i = 0; i < targets.length; i++) {
                 var scale = GetFastValue(targets[i], 'scale', 1);
                 var minFilter = GetFastValue(targets[i], 'minFilter', 0);
                 var autoClear = GetFastValue(targets[i], 'autoClear', 1);
@@ -516,19 +507,15 @@ var WebGLPipeline = new Class({
                 var targetWidth = GetFastValue(targets[i], 'width', null);
                 var targetHeight = GetFastValue(targets[i], 'height', targetWidth);
 
-                if (targetWidth)
-                {
+                if (targetWidth) {
                     renderTargets.push(new RenderTarget(renderer, targetWidth, targetHeight, 1, minFilter, autoClear, autoResize));
-                }
-                else
-                {
+                } else {
                     renderTargets.push(new RenderTarget(renderer, width, height, scale, minFilter, autoClear, autoResize));
                 }
             }
         }
 
-        if (renderTargets.length)
-        {
+        if (renderTargets.length) {
             //  Default to the first one in the array
             this.currentRenderTarget = renderTargets[0];
         }
@@ -541,10 +528,8 @@ var WebGLPipeline = new Class({
         var shaders = this.shaders;
         var vertexSize = 0;
 
-        for (i = 0; i < shaders.length; i++)
-        {
-            if (shaders[i].vertexSize > vertexSize)
-            {
+        for (i = 0; i < shaders.length; i++) {
+            if (shaders[i].vertexSize > vertexSize) {
                 vertexSize = shaders[i].vertexSize;
             }
         }
@@ -564,14 +549,11 @@ var WebGLPipeline = new Class({
 
         var configVerts = GetFastValue(config, 'vertices', null);
 
-        if (configVerts)
-        {
+        if (configVerts) {
             this.vertexViewF32.set(configVerts);
 
             this.vertexBuffer = renderer.createVertexBuffer(data, gl.STATIC_DRAW);
-        }
-        else
-        {
+        } else {
             this.vertexBuffer = renderer.createVertexBuffer(data.byteLength, gl.DYNAMIC_DRAW);
         }
 
@@ -579,8 +561,7 @@ var WebGLPipeline = new Class({
 
         this.setVertexBuffer();
 
-        for (i = shaders.length - 1; i >= 0; i--)
-        {
+        for (i = shaders.length - 1; i >= 0; i--) {
             shaders[i].rebind();
         }
 
@@ -604,8 +585,7 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onBoot
      * @since 3.50.0
      */
-    onBoot: function ()
-    {
+    onBoot: function () {
     },
 
     /**
@@ -620,8 +600,7 @@ var WebGLPipeline = new Class({
      * @param {number} width - The new width of this WebGL Pipeline.
      * @param {number} height - The new height of this WebGL Pipeline.
      */
-    onResize: function ()
-    {
+    onResize: function () {
     },
 
     /**
@@ -636,18 +615,15 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setShader: function (shader, setAttributes, vertexBuffer)
-    {
+    setShader: function (shader, setAttributes, vertexBuffer) {
         var renderer = this.renderer;
 
-        if (shader !== this.currentShader || renderer.currentProgram !== this.currentShader.program)
-        {
+        if (shader !== this.currentShader || renderer.currentProgram !== this.currentShader.program) {
             this.flush();
 
             var wasBound = this.setVertexBuffer(vertexBuffer);
 
-            if (wasBound && !setAttributes)
-            {
+            if (wasBound && !setAttributes) {
                 setAttributes = true;
             }
 
@@ -669,14 +645,11 @@ var WebGLPipeline = new Class({
      *
      * @return {Phaser.Renderer.WebGL.WebGLShader} The WebGLShader instance, if found.
      */
-    getShaderByName: function (name)
-    {
+    getShaderByName: function (name) {
         var shaders = this.shaders;
 
-        for (var i = 0; i < shaders.length; i++)
-        {
-            if (shaders[i].name === name)
-            {
+        for (var i = 0; i < shaders.length; i++) {
+            if (shaders[i].name === name) {
                 return shaders[i];
             }
         }
@@ -696,14 +669,12 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setShadersFromConfig: function (config)
-    {
+    setShadersFromConfig: function (config) {
         var i;
         var shaders = this.shaders;
         var renderer = this.renderer;
 
-        for (i = 0; i < shaders.length; i++)
-        {
+        for (i = 0; i < shaders.length; i++) {
             shaders[i].destroy();
         }
 
@@ -719,19 +690,14 @@ var WebGLPipeline = new Class({
 
         var len = configShaders.length;
 
-        if (len === 0)
-        {
-            if (defaultVertShader && defaultFragShader)
-            {
-                this.shaders = [ new WebGLShader(this, 'default', defaultVertShader, defaultFragShader, DeepCopy(defaultAttribs)) ];
+        if (len === 0) {
+            if (defaultVertShader && defaultFragShader) {
+                this.shaders = [new WebGLShader(this, 'default', defaultVertShader, defaultFragShader, DeepCopy(defaultAttribs))];
             }
-        }
-        else
-        {
+        } else {
             var newShaders = [];
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 var shaderEntry = configShaders[i];
 
                 var name;
@@ -739,34 +705,28 @@ var WebGLPipeline = new Class({
                 var fragShader;
                 var attributes;
 
-                if (typeof shaderEntry === 'string')
-                {
+                if (typeof shaderEntry === 'string') {
                     name = 'default';
                     vertShader = defaultVertShader;
                     fragShader = Utils.parseFragmentShaderMaxTextures(shaderEntry, renderer.maxTextures);
                     attributes = defaultAttribs;
-                }
-                else
-                {
+                } else {
                     name = GetFastValue(shaderEntry, 'name', 'default');
                     vertShader = GetFastValue(shaderEntry, vName, defaultVertShader);
                     fragShader = Utils.parseFragmentShaderMaxTextures(GetFastValue(shaderEntry, fName, defaultFragShader), renderer.maxTextures);
                     attributes = GetFastValue(shaderEntry, aName, defaultAttribs);
                 }
 
-                if (name === 'default')
-                {
+                if (name === 'default') {
                     var lines = fragShader.split('\n');
                     var test = lines[0].trim();
 
-                    if (test.indexOf('#define SHADER_NAME') > -1)
-                    {
+                    if (test.indexOf('#define SHADER_NAME') > -1) {
                         name = test.substring(20);
                     }
                 }
 
-                if (vertShader && fragShader)
-                {
+                if (vertShader && fragShader) {
                     newShaders.push(new WebGLShader(this, name, vertShader, fragShader, DeepCopy(attributes)));
                 }
             }
@@ -774,12 +734,9 @@ var WebGLPipeline = new Class({
             this.shaders = newShaders;
         }
 
-        if (this.shaders.length === 0)
-        {
+        if (this.shaders.length === 0) {
             console.warn('Pipeline: ' + this.name + ' - Invalid shader config');
-        }
-        else
-        {
+        } else {
             this.currentShader = this.shaders[0];
         }
 
@@ -797,12 +754,11 @@ var WebGLPipeline = new Class({
      *
      * @return {number} The texture unit that was bound.
      */
-    createBatch: function (texture)
-    {
+    createBatch: function (texture) {
         this.currentBatch = {
             start: this.vertexCount,
             count: 0,
-            texture: [ texture ],
+            texture: [texture],
             unit: 0,
             maxUnit: 0
         };
@@ -824,12 +780,10 @@ var WebGLPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The texture assigned to this batch entry.
      */
-    addTextureToBatch: function (texture)
-    {
+    addTextureToBatch: function (texture) {
         var batch = this.currentBatch;
 
-        if (batch)
-        {
+        if (batch) {
             batch.texture.push(texture);
             batch.unit++;
             batch.maxUnit++;
@@ -858,36 +812,27 @@ var WebGLPipeline = new Class({
      *
      * @return {number} The texture unit that was bound.
      */
-    pushBatch: function (texture)
-    {
+    pushBatch: function (texture) {
         //  No current batch? Create one and return
-        if (!this.currentBatch || (this.forceZero && texture !== this.currentTexture))
-        {
+        if (!this.currentBatch || (this.forceZero && texture !== this.currentTexture)) {
             return this.createBatch(texture);
         }
 
         //  Otherwise, check if the texture is in the current batch
-        if (texture === this.currentTexture)
-        {
+        if (texture === this.currentTexture) {
             return this.currentUnit;
-        }
-        else
-        {
+        } else {
             var current = this.currentBatch;
 
             var idx = current.texture.indexOf(texture);
 
-            if (idx === -1)
-            {
+            if (idx === -1) {
                 //  This is a brand new texture, not in the current batch
 
                 //  Have we exceed our limit?
-                if (current.texture.length === this.renderer.maxTextures)
-                {
+                if (current.texture.length === this.renderer.maxTextures) {
                     return this.createBatch(texture);
-                }
-                else
-                {
+                } else {
                     //  We're good, push it in
                     current.unit++;
                     current.maxUnit++;
@@ -898,9 +843,7 @@ var WebGLPipeline = new Class({
 
                     return current.unit;
                 }
-            }
-            else
-            {
+            } else {
                 this.currentUnit = idx;
                 this.currentTexture = texture;
 
@@ -921,9 +864,10 @@ var WebGLPipeline = new Class({
      *
      * @return {number} The texture unit the Game Object has been assigned.
      */
-    setGameObject: function (gameObject, frame)
-    {
-        if (frame === undefined) { frame = gameObject.frame; }
+    setGameObject: function (gameObject, frame) {
+        if (frame === undefined) {
+            frame = gameObject.frame;
+        }
 
         return this.pushBatch(frame.source.glTexture);
     },
@@ -942,9 +886,10 @@ var WebGLPipeline = new Class({
      *
      * @return {boolean} `true` if the current batch should be flushed, otherwise `false`.
      */
-    shouldFlush: function (amount)
-    {
-        if (amount === undefined) { amount = 0; }
+    shouldFlush: function (amount) {
+        if (amount === undefined) {
+            amount = 0;
+        }
 
         return (this.vertexCount + amount > this.vertexCapacity);
     },
@@ -958,8 +903,7 @@ var WebGLPipeline = new Class({
      *
      * @return {number} The number of vertices that can still be added to the current batch before it will flush.
      */
-    vertexAvailable: function ()
-    {
+    vertexAvailable: function () {
         return this.vertexCapacity - this.vertexCount;
     },
 
@@ -977,10 +921,8 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    resize: function (width, height)
-    {
-        if (width !== this.width || height !== this.height)
-        {
+    resize: function (width, height) {
+        if (width !== this.width || height !== this.height) {
             this.flush();
         }
 
@@ -989,15 +931,13 @@ var WebGLPipeline = new Class({
 
         var targets = this.renderTargets;
 
-        for (var i = 0; i < targets.length; i++)
-        {
+        for (var i = 0; i < targets.length; i++) {
             targets[i].resize(width, height);
         }
 
         this.setProjectionMatrix(width, height);
 
-        if (this.resizeUniform)
-        {
+        if (this.resizeUniform) {
             this.set2f(this.resizeUniform, width, height);
         }
 
@@ -1022,13 +962,11 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setProjectionMatrix: function (width, height)
-    {
+    setProjectionMatrix: function (width, height) {
         var projectionMatrix = this.projectionMatrix;
 
         //  Because not all pipelines have them
-        if (!projectionMatrix)
-        {
+        if (!projectionMatrix) {
             return this;
         }
 
@@ -1041,12 +979,10 @@ var WebGLPipeline = new Class({
 
         var name = 'uProjectionMatrix';
 
-        for (var i = 0; i < shaders.length; i++)
-        {
+        for (var i = 0; i < shaders.length; i++) {
             var shader = shaders[i];
 
-            if (shader.hasUniform(name))
-            {
+            if (shader.hasUniform(name)) {
                 shader.resetUniform(name);
 
                 shader.setMatrix4fv(name, false, projectionMatrix.val, shader);
@@ -1066,27 +1002,24 @@ var WebGLPipeline = new Class({
      *
      * @param {boolean} [flipY=true] - Flip the y and bottom values?
      */
-    flipProjectionMatrix: function (flipY)
-    {
-        if (flipY === undefined) { flipY = true; }
+    flipProjectionMatrix: function (flipY) {
+        if (flipY === undefined) {
+            flipY = true;
+        }
 
         var projectionMatrix = this.projectionMatrix;
 
         //  Because not all pipelines have them
-        if (!projectionMatrix)
-        {
+        if (!projectionMatrix) {
             return this;
         }
 
         var width = this.projectionWidth;
         var height = this.projectionHeight;
 
-        if (flipY)
-        {
+        if (flipY) {
             projectionMatrix.ortho(0, width, 0, height, -1000, 1000);
-        }
-        else
-        {
+        } else {
             projectionMatrix.ortho(0, width, height, 0, -1000, 1000);
         }
 
@@ -1103,15 +1036,12 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#updateProjectionMatrix
      * @since 3.50.0
      */
-    updateProjectionMatrix: function ()
-    {
-        if (this.projectionMatrix)
-        {
+    updateProjectionMatrix: function () {
+        if (this.projectionMatrix) {
             var globalWidth = this.renderer.projectionWidth;
             var globalHeight = this.renderer.projectionHeight;
 
-            if (this.projectionWidth !== globalWidth || this.projectionHeight !== globalHeight)
-            {
+            if (this.projectionWidth !== globalWidth || this.projectionHeight !== globalHeight) {
                 this.setProjectionMatrix(globalWidth, globalHeight);
             }
         }
@@ -1131,12 +1061,12 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    bind: function (currentShader)
-    {
-        if (currentShader === undefined) { currentShader = this.currentShader; }
+    bind: function (currentShader) {
+        if (currentShader === undefined) {
+            currentShader = this.currentShader;
+        }
 
-        if (this.glReset)
-        {
+        if (this.glReset) {
             return this.rebind(currentShader);
         }
 
@@ -1144,8 +1074,7 @@ var WebGLPipeline = new Class({
 
         var gl = this.gl;
 
-        if (gl.getParameter(gl.ARRAY_BUFFER_BINDING) !== this.vertexBuffer)
-        {
+        if (gl.getParameter(gl.ARRAY_BUFFER_BINDING) !== this.vertexBuffer) {
             gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer.webGLBuffer);
 
             this.activeBuffer = this.vertexBuffer;
@@ -1179,8 +1108,7 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    rebind: function (currentShader)
-    {
+    rebind: function (currentShader) {
         this.activeBuffer = null;
 
         this.setVertexBuffer();
@@ -1188,12 +1116,10 @@ var WebGLPipeline = new Class({
         var shaders = this.shaders;
 
         //  Loop in reverse, so the first shader in the array is left as being bound
-        for (var i = shaders.length - 1; i >= 0; i--)
-        {
+        for (var i = shaders.length - 1; i >= 0; i--) {
             var shader = shaders[i].rebind();
 
-            if (!currentShader || shader === currentShader)
-            {
+            if (!currentShader || shader === currentShader) {
                 this.currentShader = shader;
             }
         }
@@ -1219,8 +1145,7 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#restoreContext
      * @since 3.80.0
      */
-    restoreContext: function ()
-    {
+    restoreContext: function () {
         var shaders = this.shaders;
         var hasVertexBuffer = !!this.vertexBuffer;
 
@@ -1232,17 +1157,14 @@ var WebGLPipeline = new Class({
         this.currentTexture = null;
         this.currentUnit = 0;
 
-        if (hasVertexBuffer)
-        {
+        if (hasVertexBuffer) {
             this.setVertexBuffer();
         }
 
-        for (var i = 0; i < shaders.length; i++)
-        {
+        for (var i = 0; i < shaders.length; i++) {
             var shader = shaders[i];
             shader.syncUniforms();
-            if (hasVertexBuffer)
-            {
+            if (hasVertexBuffer) {
                 shader.rebind();
             }
         }
@@ -1261,12 +1183,12 @@ var WebGLPipeline = new Class({
      *
      * @return {boolean} `true` if the vertex buffer was bound, or `false` if it was already bound.
      */
-    setVertexBuffer: function (buffer)
-    {
-        if (buffer === undefined) { buffer = this.vertexBuffer; }
+    setVertexBuffer: function (buffer) {
+        if (buffer === undefined) {
+            buffer = this.vertexBuffer;
+        }
 
-        if (buffer !== this.activeBuffer)
-        {
+        if (buffer !== this.activeBuffer) {
             var gl = this.gl;
 
             this.gl.bindBuffer(gl.ARRAY_BUFFER, buffer.webGLBuffer);
@@ -1294,10 +1216,8 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    preBatch: function (gameObject)
-    {
-        if (this.currentRenderTarget)
-        {
+    preBatch: function (gameObject) {
+        if (this.currentRenderTarget) {
             this.currentRenderTarget.bind();
         }
 
@@ -1323,8 +1243,7 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    postBatch: function (gameObject)
-    {
+    postBatch: function (gameObject) {
         this.onDraw(this.currentRenderTarget);
 
         this.onPostBatch(gameObject);
@@ -1348,8 +1267,7 @@ var WebGLPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} renderTarget - The Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [swapTarget] - A Swap Render Target, useful for double-buffer effects. Only set by SpriteFX Pipelines.
      */
-    onDraw: function ()
-    {
+    onDraw: function () {
     },
 
     /**
@@ -1359,10 +1277,8 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#unbind
      * @since 3.50.0
      */
-    unbind: function ()
-    {
-        if (this.currentRenderTarget)
-        {
+    unbind: function () {
+        if (this.currentRenderTarget) {
             this.currentRenderTarget.unbind();
         }
     },
@@ -1379,12 +1295,12 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    flush: function (isPostFlush)
-    {
-        if (isPostFlush === undefined) { isPostFlush = false; }
+    flush: function (isPostFlush) {
+        if (isPostFlush === undefined) {
+            isPostFlush = false;
+        }
 
-        if (this.vertexCount > 0)
-        {
+        if (this.vertexCount > 0) {
             this.emit(Events.BEFORE_FLUSH, this, isPostFlush);
 
             this.onBeforeFlush(isPostFlush);
@@ -1394,16 +1310,12 @@ var WebGLPipeline = new Class({
             var vertexSize = this.currentShader.vertexSize;
             var topology = this.topology;
 
-            if (this.active)
-            {
+            if (this.active) {
                 this.setVertexBuffer();
 
-                if (vertexCount === this.vertexCapacity)
-                {
+                if (vertexCount === this.vertexCapacity) {
                     gl.bufferData(gl.ARRAY_BUFFER, this.vertexData, gl.DYNAMIC_DRAW);
-                }
-                else
-                {
+                } else {
                     gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.bytes.subarray(0, vertexCount * vertexSize));
                 }
 
@@ -1413,21 +1325,17 @@ var WebGLPipeline = new Class({
                 var batch = this.batch;
                 var activeTextures = this.activeTextures;
 
-                if (this.forceZero)
-                {
+                if (this.forceZero) {
                     //  Single Texture Pipeline
-                    if (!activeTextures[0])
-                    {
+                    if (!activeTextures[0]) {
                         gl.activeTexture(gl.TEXTURE0);
                     }
 
-                    for (i = 0; i < batch.length; i++)
-                    {
+                    for (i = 0; i < batch.length; i++) {
                         entry = batch[i];
                         texture = entry.texture[0];
 
-                        if (activeTextures[0] !== texture)
-                        {
+                        if (activeTextures[0] !== texture) {
                             gl.bindTexture(gl.TEXTURE_2D, texture.webGLTexture);
 
                             activeTextures[0] = texture;
@@ -1435,19 +1343,14 @@ var WebGLPipeline = new Class({
 
                         gl.drawArrays(topology, entry.start, entry.count);
                     }
-                }
-                else
-                {
-                    for (i = 0; i < batch.length; i++)
-                    {
+                } else {
+                    for (i = 0; i < batch.length; i++) {
                         entry = batch[i];
 
-                        for (var t = 0; t <= entry.maxUnit; t++)
-                        {
+                        for (var t = 0; t <= entry.maxUnit; t++) {
                             texture = entry.texture[t];
 
-                            if (activeTextures[t] !== texture)
-                            {
+                            if (activeTextures[t] !== texture) {
                                 gl.activeTexture(gl.TEXTURE0 + t);
                                 gl.bindTexture(gl.TEXTURE_2D, texture.webGLTexture);
 
@@ -1492,8 +1395,7 @@ var WebGLPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.WebGLShader} currentShader - The shader that was set as current.
      */
-    onActive: function ()
-    {
+    onActive: function () {
     },
 
     /**
@@ -1511,8 +1413,7 @@ var WebGLPipeline = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
-    onBind: function ()
-    {
+    onBind: function () {
     },
 
     /**
@@ -1525,8 +1426,7 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onRebind
      * @since 3.50.0
      */
-    onRebind: function ()
-    {
+    onRebind: function () {
     },
 
     /**
@@ -1546,8 +1446,7 @@ var WebGLPipeline = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
-    onBatch: function ()
-    {
+    onBatch: function () {
     },
 
     /**
@@ -1560,8 +1459,7 @@ var WebGLPipeline = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
-    onPreBatch: function ()
-    {
+    onPreBatch: function () {
     },
 
     /**
@@ -1574,8 +1472,7 @@ var WebGLPipeline = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
-    onPostBatch: function ()
-    {
+    onPostBatch: function () {
     },
 
     /**
@@ -1587,8 +1484,7 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onPreRender
      * @since 3.50.0
      */
-    onPreRender: function ()
-    {
+    onPreRender: function () {
     },
 
     /**
@@ -1604,8 +1500,7 @@ var WebGLPipeline = new Class({
      * @param {Phaser.Scene} scene - The Scene being rendered.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Scene Camera being rendered with.
      */
-    onRender: function ()
-    {
+    onRender: function () {
     },
 
     /**
@@ -1619,8 +1514,7 @@ var WebGLPipeline = new Class({
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onPostRender
      * @since 3.50.0
      */
-    onPostRender: function ()
-    {
+    onPostRender: function () {
     },
 
     /**
@@ -1636,8 +1530,7 @@ var WebGLPipeline = new Class({
      *
      * @param {boolean} [isPostFlush=false] - Was this flush invoked as part of a post-process, or not?
      */
-    onBeforeFlush: function ()
-    {
+    onBeforeFlush: function () {
     },
 
     /**
@@ -1657,8 +1550,7 @@ var WebGLPipeline = new Class({
      *
      * @param {boolean} [isPostFlush=false] - Was this flush invoked as part of a post-process, or not?
      */
-    onAfterFlush: function ()
-    {
+    onAfterFlush: function () {
     },
 
     /**
@@ -1681,8 +1573,7 @@ var WebGLPipeline = new Class({
      * @param {(number|boolean)} tintEffect - The tint effect for the shader to use.
      * @param {number} tint - The tint color value.
      */
-    batchVert: function (x, y, u, v, unit, tintEffect, tint)
-    {
+    batchVert: function (x, y, u, v, unit, tintEffect, tint) {
         var vertexViewF32 = this.vertexViewF32;
         var vertexViewU32 = this.vertexViewU32;
 
@@ -1744,21 +1635,20 @@ var WebGLPipeline = new Class({
      *
      * @return {boolean} `true` if this method caused the batch to flush, otherwise `false`.
      */
-    batchQuad: function (gameObject, x0, y0, x1, y1, x2, y2, x3, y3, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, unit)
-    {
-        if (unit === undefined) { unit = this.currentUnit; }
+    batchQuad: function (gameObject, x0, y0, x1, y1, x2, y2, x3, y3, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, unit) {
+        if (unit === undefined) {
+            unit = this.currentUnit;
+        }
 
         var hasFlushed = false;
 
-        if (this.shouldFlush(6))
-        {
+        if (this.shouldFlush(6)) {
             this.flush();
 
             hasFlushed = true;
         }
 
-        if (!this.currentBatch)
-        {
+        if (!this.currentBatch) {
             unit = this.setTexture2D(texture);
         }
 
@@ -1862,21 +1752,20 @@ var WebGLPipeline = new Class({
      *
      * @return {boolean} `true` if this method caused the batch to flush, otherwise `false`.
      */
-    batchTri: function (gameObject, x0, y0, x1, y1, x2, y2, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintEffect, texture, unit)
-    {
-        if (unit === undefined) { unit = this.currentUnit; }
+    batchTri: function (gameObject, x0, y0, x1, y1, x2, y2, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintEffect, texture, unit) {
+        if (unit === undefined) {
+            unit = this.currentUnit;
+        }
 
         var hasFlushed = false;
 
-        if (this.shouldFlush(3))
-        {
+        if (this.shouldFlush(3)) {
             this.flush();
 
             hasFlushed = true;
         }
 
-        if (!this.currentBatch)
-        {
+        if (!this.currentBatch) {
             unit = this.setTexture2D(texture);
         }
 
@@ -1939,10 +1828,13 @@ var WebGLPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [texture] - texture that will be assigned to the current batch if a flush occurs.
      * @param {boolean} [flipUV=true] - Flip the vertical UV coordinates of the texture before rendering?
      */
-    drawFillRect: function (x, y, width, height, color, alpha, texture, flipUV)
-    {
-        if (texture === undefined) { texture = this.renderer.whiteTexture; }
-        if (flipUV === undefined) { flipUV = true; }
+    drawFillRect: function (x, y, width, height, color, alpha, texture, flipUV) {
+        if (texture === undefined) {
+            texture = this.renderer.whiteTexture;
+        }
+        if (flipUV === undefined) {
+            flipUV = true;
+        }
 
         x = Math.floor(x);
         y = Math.floor(y);
@@ -1959,8 +1851,7 @@ var WebGLPipeline = new Class({
         var u1 = 1;
         var v1 = 1;
 
-        if (flipUV)
-        {
+        if (flipUV) {
             v0 = 1;
             v1 = 0;
         }
@@ -1979,9 +1870,10 @@ var WebGLPipeline = new Class({
      *
      * @return {number} The assigned texture unit.
      */
-    setTexture2D: function (texture)
-    {
-        if (texture === undefined) { texture = this.renderer.whiteTexture; }
+    setTexture2D: function (texture) {
+        if (texture === undefined) {
+            texture = this.renderer.whiteTexture;
+        }
 
         return this.pushBatch(texture);
     },
@@ -1997,9 +1889,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGL Pipeline instance.
      */
-    bindTexture: function (texture, unit)
-    {
-        if (unit === undefined) { unit = 0; }
+    bindTexture: function (texture, unit) {
+        if (unit === undefined) {
+            unit = 0;
+        }
 
         var gl = this.gl;
 
@@ -2022,8 +1915,7 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGL Pipeline instance.
      */
-    bindRenderTarget: function (target, unit)
-    {
+    bindRenderTarget: function (target, unit) {
         return this.bindTexture(target.texture, unit);
     },
 
@@ -2040,8 +1932,7 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setTime: function (name, shader)
-    {
+    setTime: function (name, shader) {
         this.set1f(name, this.game.loop.getDuration(), shader);
 
         return this;
@@ -2065,9 +1956,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setBoolean: function (name, value, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    setBoolean: function (name, value, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.setBoolean(name, value);
 
@@ -2092,9 +1984,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set1f: function (name, x, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set1f: function (name, x, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set1f(name, x);
 
@@ -2120,9 +2013,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set2f: function (name, x, y, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set2f: function (name, x, y, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set2f(name, x, y);
 
@@ -2149,9 +2043,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set3f: function (name, x, y, z, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set3f: function (name, x, y, z, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set3f(name, x, y, z);
 
@@ -2179,9 +2074,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set4f: function (name, x, y, z, w, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set4f: function (name, x, y, z, w, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set4f(name, x, y, z, w);
 
@@ -2206,9 +2102,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set1fv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set1fv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set1fv(name, arr);
 
@@ -2233,9 +2130,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set2fv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set2fv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set2fv(name, arr);
 
@@ -2260,9 +2158,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set3fv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set3fv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set3fv(name, arr);
 
@@ -2287,9 +2186,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set4fv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set4fv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set4fv(name, arr);
 
@@ -2314,9 +2214,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set1iv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set1iv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set1iv(name, arr);
 
@@ -2341,9 +2242,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set2iv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set2iv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set2iv(name, arr);
 
@@ -2368,9 +2270,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set3iv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set3iv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set3iv(name, arr);
 
@@ -2395,9 +2298,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set4iv: function (name, arr, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set4iv: function (name, arr, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set4iv(name, arr);
 
@@ -2422,9 +2326,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set1i: function (name, x, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set1i: function (name, x, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set1i(name, x);
 
@@ -2450,9 +2355,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set2i: function (name, x, y, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set2i: function (name, x, y, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set2i(name, x, y);
 
@@ -2479,9 +2385,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set3i: function (name, x, y, z, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set3i: function (name, x, y, z, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set3i(name, x, y, z);
 
@@ -2509,9 +2416,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    set4i: function (name, x, y, z, w, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    set4i: function (name, x, y, z, w, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.set4i(name, x, y, z, w);
 
@@ -2537,9 +2445,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setMatrix2fv: function (name, transpose, matrix, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    setMatrix2fv: function (name, transpose, matrix, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.setMatrix2fv(name, transpose, matrix);
 
@@ -2565,9 +2474,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setMatrix3fv: function (name, transpose, matrix, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    setMatrix3fv: function (name, transpose, matrix, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.setMatrix3fv(name, transpose, matrix);
 
@@ -2593,9 +2503,10 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    setMatrix4fv: function (name, transpose, matrix, shader)
-    {
-        if (shader === undefined) { shader = this.currentShader; }
+    setMatrix4fv: function (name, transpose, matrix, shader) {
+        if (shader === undefined) {
+            shader = this.currentShader;
+        }
 
         shader.setMatrix4fv(name, transpose, matrix);
 
@@ -2611,23 +2522,20 @@ var WebGLPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.emit(Events.DESTROY, this);
 
         var i;
 
         var shaders = this.shaders;
 
-        for (i = 0; i < shaders.length; i++)
-        {
+        for (i = 0; i < shaders.length; i++) {
             shaders[i].destroy();
         }
 
         var targets = this.renderTargets;
 
-        for (i = 0; i < targets.length; i++)
-        {
+        for (i = 0; i < targets.length; i++) {
             targets[i].destroy();
         }
 

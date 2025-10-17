@@ -37,161 +37,157 @@ var FixedKeyControl = new Class({
 
     initialize:
 
-    function FixedKeyControl (config)
-    {
-        /**
-         * The Camera that this Control will update.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#camera
-         * @type {?Phaser.Cameras.Scene2D.Camera}
-         * @default null
-         * @since 3.0.0
-         */
-        this.camera = GetValue(config, 'camera', null);
+        function FixedKeyControl(config) {
+            /**
+             * The Camera that this Control will update.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#camera
+             * @type {?Phaser.Cameras.Scene2D.Camera}
+             * @default null
+             * @since 3.0.0
+             */
+            this.camera = GetValue(config, 'camera', null);
 
-        /**
-         * The Key to be pressed that will move the Camera left.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#left
-         * @type {?Phaser.Input.Keyboard.Key}
-         * @default null
-         * @since 3.0.0
-         */
-        this.left = GetValue(config, 'left', null);
+            /**
+             * The Key to be pressed that will move the Camera left.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#left
+             * @type {?Phaser.Input.Keyboard.Key}
+             * @default null
+             * @since 3.0.0
+             */
+            this.left = GetValue(config, 'left', null);
 
-        /**
-         * The Key to be pressed that will move the Camera right.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#right
-         * @type {?Phaser.Input.Keyboard.Key}
-         * @default null
-         * @since 3.0.0
-         */
-        this.right = GetValue(config, 'right', null);
+            /**
+             * The Key to be pressed that will move the Camera right.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#right
+             * @type {?Phaser.Input.Keyboard.Key}
+             * @default null
+             * @since 3.0.0
+             */
+            this.right = GetValue(config, 'right', null);
 
-        /**
-         * The Key to be pressed that will move the Camera up.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#up
-         * @type {?Phaser.Input.Keyboard.Key}
-         * @default null
-         * @since 3.0.0
-         */
-        this.up = GetValue(config, 'up', null);
+            /**
+             * The Key to be pressed that will move the Camera up.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#up
+             * @type {?Phaser.Input.Keyboard.Key}
+             * @default null
+             * @since 3.0.0
+             */
+            this.up = GetValue(config, 'up', null);
 
-        /**
-         * The Key to be pressed that will move the Camera down.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#down
-         * @type {?Phaser.Input.Keyboard.Key}
-         * @default null
-         * @since 3.0.0
-         */
-        this.down = GetValue(config, 'down', null);
+            /**
+             * The Key to be pressed that will move the Camera down.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#down
+             * @type {?Phaser.Input.Keyboard.Key}
+             * @default null
+             * @since 3.0.0
+             */
+            this.down = GetValue(config, 'down', null);
 
-        /**
-         * The Key to be pressed that will zoom the Camera in.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#zoomIn
-         * @type {?Phaser.Input.Keyboard.Key}
-         * @default null
-         * @since 3.0.0
-         */
-        this.zoomIn = GetValue(config, 'zoomIn', null);
+            /**
+             * The Key to be pressed that will zoom the Camera in.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#zoomIn
+             * @type {?Phaser.Input.Keyboard.Key}
+             * @default null
+             * @since 3.0.0
+             */
+            this.zoomIn = GetValue(config, 'zoomIn', null);
 
-        /**
-         * The Key to be pressed that will zoom the Camera out.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#zoomOut
-         * @type {?Phaser.Input.Keyboard.Key}
-         * @default null
-         * @since 3.0.0
-         */
-        this.zoomOut = GetValue(config, 'zoomOut', null);
+            /**
+             * The Key to be pressed that will zoom the Camera out.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#zoomOut
+             * @type {?Phaser.Input.Keyboard.Key}
+             * @default null
+             * @since 3.0.0
+             */
+            this.zoomOut = GetValue(config, 'zoomOut', null);
 
-        /**
-         * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#zoomSpeed
-         * @type {number}
-         * @default 0.01
-         * @since 3.0.0
-         */
-        this.zoomSpeed = GetValue(config, 'zoomSpeed', 0.01);
+            /**
+             * The speed at which the camera will zoom if the `zoomIn` or `zoomOut` keys are pressed.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#zoomSpeed
+             * @type {number}
+             * @default 0.01
+             * @since 3.0.0
+             */
+            this.zoomSpeed = GetValue(config, 'zoomSpeed', 0.01);
 
-        /**
-         * The smallest zoom value the camera will reach when zoomed out.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#minZoom
-         * @type {number}
-         * @default 0.001
-         * @since 3.53.0
-         */
-        this.minZoom = GetValue(config, 'minZoom', 0.001);
+            /**
+             * The smallest zoom value the camera will reach when zoomed out.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#minZoom
+             * @type {number}
+             * @default 0.001
+             * @since 3.53.0
+             */
+            this.minZoom = GetValue(config, 'minZoom', 0.001);
 
-        /**
-         * The largest zoom value the camera will reach when zoomed in.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#maxZoom
-         * @type {number}
-         * @default 1000
-         * @since 3.53.0
-         */
-        this.maxZoom = GetValue(config, 'maxZoom', 1000);
+            /**
+             * The largest zoom value the camera will reach when zoomed in.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#maxZoom
+             * @type {number}
+             * @default 1000
+             * @since 3.53.0
+             */
+            this.maxZoom = GetValue(config, 'maxZoom', 1000);
 
-        /**
-         * The horizontal speed the camera will move.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#speedX
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.speedX = 0;
+            /**
+             * The horizontal speed the camera will move.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#speedX
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.speedX = 0;
 
-        /**
-         * The vertical speed the camera will move.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#speedY
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.speedY = 0;
+            /**
+             * The vertical speed the camera will move.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#speedY
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.speedY = 0;
 
-        var speed = GetValue(config, 'speed', null);
+            var speed = GetValue(config, 'speed', null);
 
-        if (typeof speed === 'number')
-        {
-            this.speedX = speed;
-            this.speedY = speed;
-        }
-        else
-        {
-            this.speedX = GetValue(config, 'speed.x', 0);
-            this.speedY = GetValue(config, 'speed.y', 0);
-        }
+            if (typeof speed === 'number') {
+                this.speedX = speed;
+                this.speedY = speed;
+            } else {
+                this.speedX = GetValue(config, 'speed.x', 0);
+                this.speedY = GetValue(config, 'speed.y', 0);
+            }
 
-        /**
-         * Internal property to track the current zoom level.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#_zoom
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._zoom = 0;
+            /**
+             * Internal property to track the current zoom level.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#_zoom
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._zoom = 0;
 
-        /**
-         * A flag controlling if the Controls will update the Camera or not.
-         *
-         * @name Phaser.Cameras.Controls.FixedKeyControl#active
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.active = (this.camera !== null);
-    },
+            /**
+             * A flag controlling if the Controls will update the Camera or not.
+             *
+             * @name Phaser.Cameras.Controls.FixedKeyControl#active
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.active = (this.camera !== null);
+        },
 
     /**
      * Starts the Key Control running, providing it has been linked to a camera.
@@ -201,8 +197,7 @@ var FixedKeyControl = new Class({
      *
      * @return {this} This Key Control instance.
      */
-    start: function ()
-    {
+    start: function () {
         this.active = (this.camera !== null);
 
         return this;
@@ -216,8 +211,7 @@ var FixedKeyControl = new Class({
      *
      * @return {this} This Key Control instance.
      */
-    stop: function ()
-    {
+    stop: function () {
         this.active = false;
 
         return this;
@@ -233,8 +227,7 @@ var FixedKeyControl = new Class({
      *
      * @return {this} This Key Control instance.
      */
-    setCamera: function (camera)
-    {
+    setCamera: function (camera) {
         this.camera = camera;
 
         return this;
@@ -250,52 +243,41 @@ var FixedKeyControl = new Class({
      *
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    update: function (delta)
-    {
-        if (!this.active)
-        {
+    update: function (delta) {
+        if (!this.active) {
             return;
         }
 
-        if (delta === undefined) { delta = 1; }
+        if (delta === undefined) {
+            delta = 1;
+        }
 
         var cam = this.camera;
 
-        if (this.up && this.up.isDown)
-        {
+        if (this.up && this.up.isDown) {
             cam.scrollY -= ((this.speedY * delta) | 0);
-        }
-        else if (this.down && this.down.isDown)
-        {
+        } else if (this.down && this.down.isDown) {
             cam.scrollY += ((this.speedY * delta) | 0);
         }
 
-        if (this.left && this.left.isDown)
-        {
+        if (this.left && this.left.isDown) {
             cam.scrollX -= ((this.speedX * delta) | 0);
-        }
-        else if (this.right && this.right.isDown)
-        {
+        } else if (this.right && this.right.isDown) {
             cam.scrollX += ((this.speedX * delta) | 0);
         }
 
         //  Camera zoom
 
-        if (this.zoomIn && this.zoomIn.isDown)
-        {
+        if (this.zoomIn && this.zoomIn.isDown) {
             cam.zoom -= this.zoomSpeed;
 
-            if (cam.zoom < this.minZoom)
-            {
+            if (cam.zoom < this.minZoom) {
                 cam.zoom = this.minZoom;
             }
-        }
-        else if (this.zoomOut && this.zoomOut.isDown)
-        {
+        } else if (this.zoomOut && this.zoomOut.isDown) {
             cam.zoom += this.zoomSpeed;
 
-            if (cam.zoom > this.maxZoom)
-            {
+            if (cam.zoom > this.maxZoom) {
                 cam.zoom = this.maxZoom;
             }
         }
@@ -307,8 +289,7 @@ var FixedKeyControl = new Class({
      * @method Phaser.Cameras.Controls.FixedKeyControl#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.camera = null;
 
         this.left = null;

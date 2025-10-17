@@ -1,11 +1,11 @@
 /**
-* The `Matter.Bodies` module contains factory methods for creating rigid body models
-* with commonly used body configurations (such as rectangles, circles and other polygons).
-*
-* See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
-*
-* @class Bodies
-*/
+ * The `Matter.Bodies` module contains factory methods for creating rigid body models
+ * with commonly used body configurations (such as rectangles, circles and other polygons).
+ *
+ * See the included usage [examples](https://github.com/liabru/matter-js/tree/master/examples).
+ *
+ * @class Bodies
+ */
 
 // TODO: true circle bodies
 
@@ -19,7 +19,7 @@ var Body = require('../body/Body');
 var Bounds = require('../geometry/Bounds');
 var Vector = require('../geometry/Vector');
 
-(function() {
+(function () {
 
     /**
      * Creates a new rigid body model with a rectangle hull.
@@ -33,12 +33,12 @@ var Vector = require('../geometry/Vector');
      * @param {object} [options]
      * @return {body} A new rectangle body
      */
-    Bodies.rectangle = function(x, y, width, height, options) {
+    Bodies.rectangle = function (x, y, width, height, options) {
         options = options || {};
 
         var rectangle = {
             label: 'Rectangle Body',
-            position: { x: x, y: y },
+            position: {x: x, y: y},
             vertices: Vertices.fromPath('L 0 0 L ' + width + ' 0 L ' + width + ' ' + height + ' L 0 ' + height)
         };
 
@@ -66,7 +66,7 @@ var Vector = require('../geometry/Vector');
      * @param {object} [options]
      * @return {body} A new trapezoid body
      */
-    Bodies.trapezoid = function(x, y, width, height, slope, options) {
+    Bodies.trapezoid = function (x, y, width, height, slope, options) {
         options = options || {};
 
         if (slope >= 1) {
@@ -88,7 +88,7 @@ var Vector = require('../geometry/Vector');
 
         var trapezoid = {
             label: 'Trapezoid Body',
-            position: { x: x, y: y },
+            position: {x: x, y: y},
             vertices: Vertices.fromPath(verticesPath)
         };
 
@@ -114,7 +114,7 @@ var Vector = require('../geometry/Vector');
      * @param {number} [maxSides]
      * @return {body} A new circle body
      */
-    Bodies.circle = function(x, y, radius, options, maxSides) {
+    Bodies.circle = function (x, y, radius, options, maxSides) {
         options = options || {};
 
         var circle = {
@@ -145,7 +145,7 @@ var Vector = require('../geometry/Vector');
      * @param {object} [options]
      * @return {body} A new regular polygon body
      */
-    Bodies.polygon = function(x, y, sides, radius, options) {
+    Bodies.polygon = function (x, y, sides, radius, options) {
         options = options || {};
 
         if (sides < 3)
@@ -165,7 +165,7 @@ var Vector = require('../geometry/Vector');
 
         var polygon = {
             label: 'Polygon Body',
-            position: { x: x, y: y },
+            position: {x: x, y: y},
             vertices: Vertices.fromPath(path)
         };
 
@@ -213,7 +213,7 @@ var Vector = require('../geometry/Vector');
      * @param {number} [removeDuplicatePoints=0.01] Threshold when simplifying nearby vertices.
      * @return {body}
      */
-    Bodies.fromVertices = function(x, y, vertexSets, options, flagInternal, removeCollinear, minimumArea, removeDuplicatePoints) {
+    Bodies.fromVertices = function (x, y, vertexSets, options, flagInternal, removeCollinear, minimumArea, removeDuplicatePoints) {
         var decomp = Common.getDecomp(),
             canDecomp,
             body,
@@ -263,12 +263,12 @@ var Vector = require('../geometry/Vector');
                 }
 
                 parts.push({
-                    position: { x: x, y: y },
+                    position: {x: x, y: y},
                     vertices: vertices
                 });
             } else {
                 // initialise a decomposition
-                var concave = vertices.map(function(vertex) {
+                var concave = vertices.map(function (vertex) {
                     return [vertex.x, vertex.y];
                 });
 
@@ -287,7 +287,7 @@ var Vector = require('../geometry/Vector');
                     var chunk = decomposed[i];
 
                     // convert vertices into the correct structure
-                    var chunkVertices = chunk.map(function(vertices) {
+                    var chunkVertices = chunk.map(function (vertices) {
                         return {
                             x: vertices[0],
                             y: vertices[1]
@@ -348,10 +348,10 @@ var Vector = require('../geometry/Vector');
 
         if (parts.length > 1) {
             // create the parent body to be returned, that contains generated compound parts
-            body = Body.create(Common.extend({ parts: parts.slice(0) }, options));
+            body = Body.create(Common.extend({parts: parts.slice(0)}, options));
 
             // offset such that body.position is at the centre off mass
-            Body.setPosition(body, { x: x, y: y });
+            Body.setPosition(body, {x: x, y: y});
 
             return body;
         } else {
@@ -368,35 +368,30 @@ var Vector = require('../geometry/Vector');
      * @param {number} [maxDistance=5]
      * @return {body[]} The modified `parts` parameter.
      */
-    Bodies.flagCoincidentParts = function (parts, maxDistance)
-    {
-        if (maxDistance === undefined) { maxDistance = 5; }
+    Bodies.flagCoincidentParts = function (parts, maxDistance) {
+        if (maxDistance === undefined) {
+            maxDistance = 5;
+        }
 
-        for (var i = 0; i < parts.length; i++)
-        {
+        for (var i = 0; i < parts.length; i++) {
             var partA = parts[i];
 
-            for (var j = i + 1; j < parts.length; j++)
-            {
+            for (var j = i + 1; j < parts.length; j++) {
                 var partB = parts[j];
 
-                if (Bounds.overlaps(partA.bounds, partB.bounds))
-                {
+                if (Bounds.overlaps(partA.bounds, partB.bounds)) {
                     var pav = partA.vertices;
                     var pbv = partB.vertices;
 
                     // iterate vertices of both parts
-                    for (var k = 0; k < partA.vertices.length; k++)
-                    {
-                        for (var z = 0; z < partB.vertices.length; z++)
-                        {
+                    for (var k = 0; k < partA.vertices.length; k++) {
+                        for (var z = 0; z < partB.vertices.length; z++) {
                             // find distances between the vertices
                             var da = Vector.magnitudeSquared(Vector.sub(pav[(k + 1) % pav.length], pbv[z]));
                             var db = Vector.magnitudeSquared(Vector.sub(pav[k], pbv[(z + 1) % pbv.length]));
 
                             // if both vertices are very close, consider the edge concident (internal)
-                            if (da < maxDistance && db < maxDistance)
-                            {
+                            if (da < maxDistance && db < maxDistance) {
                                 pav[k].isInternal = true;
                                 pbv[z].isInternal = true;
                             }

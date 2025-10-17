@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects.
  */
-var RunCull = function (layer, bounds, renderOrder, outputArray)
-{
+var RunCull = function (layer, bounds, renderOrder, outputArray) {
     var mapData = layer.data;
     var mapWidth = layer.width;
     var mapHeight = layer.height;
@@ -34,75 +33,56 @@ var RunCull = function (layer, bounds, renderOrder, outputArray)
     var y;
     var tile;
 
-    if (renderOrder === 0)
-    {
+    if (renderOrder === 0) {
         //  right-down
 
-        for (y = drawTop; y < drawBottom; y++)
-        {
-            for (x = drawLeft; mapData[y] && x < drawRight; x++)
-            {
+        for (y = drawTop; y < drawBottom; y++) {
+            for (x = drawLeft; mapData[y] && x < drawRight; x++) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
                 outputArray.push(tile);
             }
         }
-    }
-    else if (renderOrder === 1)
-    {
+    } else if (renderOrder === 1) {
         //  left-down
 
-        for (y = drawTop; y < drawBottom; y++)
-        {
-            for (x = drawRight; mapData[y] && x >= drawLeft; x--)
-            {
+        for (y = drawTop; y < drawBottom; y++) {
+            for (x = drawRight; mapData[y] && x >= drawLeft; x--) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
                 outputArray.push(tile);
             }
         }
-    }
-    else if (renderOrder === 2)
-    {
+    } else if (renderOrder === 2) {
         //  right-up
 
-        for (y = drawBottom; y >= drawTop; y--)
-        {
-            for (x = drawLeft; mapData[y] && x < drawRight; x++)
-            {
+        for (y = drawBottom; y >= drawTop; y--) {
+            for (x = drawLeft; mapData[y] && x < drawRight; x++) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 
                 outputArray.push(tile);
             }
         }
-    }
-    else if (renderOrder === 3)
-    {
+    } else if (renderOrder === 3) {
         //  left-up
 
-        for (y = drawBottom; y >= drawTop; y--)
-        {
-            for (x = drawRight; mapData[y] && x >= drawLeft; x--)
-            {
+        for (y = drawBottom; y >= drawTop; y--) {
+            for (x = drawRight; mapData[y] && x >= drawLeft; x--) {
                 tile = mapData[y][x];
 
-                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0)
-                {
+                if (!tile || tile.index === -1 || !tile.visible || tile.alpha === 0) {
                     continue;
                 }
 

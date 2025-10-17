@@ -22,16 +22,16 @@ var Video = require('./Video');
  *
  * @return {Phaser.GameObjects.Video} The Game Object that was created.
  */
-GameObjectCreator.register('video', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('video', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
     var key = GetAdvancedValue(config, 'key', null);
 
     var video = new Video(this.scene, 0, 0, key);
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 

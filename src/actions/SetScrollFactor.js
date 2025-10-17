@@ -29,9 +29,10 @@ var PropertyValueSet = require('./PropertyValueSet');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of objects that were passed to this Action.
  */
-var SetScrollFactor = function (items, scrollFactorX, scrollFactorY, stepX, stepY, index, direction)
-{
-    if (scrollFactorY === undefined || scrollFactorY === null) { scrollFactorY = scrollFactorX; }
+var SetScrollFactor = function (items, scrollFactorX, scrollFactorY, stepX, stepY, index, direction) {
+    if (scrollFactorY === undefined || scrollFactorY === null) {
+        scrollFactorY = scrollFactorX;
+    }
 
     PropertyValueSet(items, 'scrollFactorX', scrollFactorX, stepX, index, direction);
 

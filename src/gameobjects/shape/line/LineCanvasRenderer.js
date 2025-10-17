@@ -21,19 +21,16 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var LineCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var LineCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var ctx = renderer.currentContext;
 
-    if (SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         var dx = src._displayOriginX;
         var dy = src._displayOriginY;
 
-        if (src.isStroked)
-        {
+        if (src.isStroked) {
             LineStyleCanvas(ctx, src);
 
             ctx.beginPath();

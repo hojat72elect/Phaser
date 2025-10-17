@@ -1,8 +1,8 @@
 /**
-* @author       Richard Davey <rich@phaser.io>
-* @copyright    2013-2025 Phaser Studio Inc.
-* @license      {@link https://github.com/photonstorm/phaser3-plugin-template/blob/master/LICENSE|MIT License}
-*/
+ * @author       Richard Davey <rich@phaser.io>
+ * @copyright    2013-2025 Phaser Studio Inc.
+ * @license      {@link https://github.com/photonstorm/phaser3-plugin-template/blob/master/LICENSE|MIT License}
+ */
 
 var BasePlugin = require('./BasePlugin');
 var Class = require('../utils/Class');
@@ -30,51 +30,50 @@ var ScenePlugin = new Class({
 
     initialize:
 
-    function ScenePlugin (scene, pluginManager, pluginKey)
-    {
-        BasePlugin.call(this, pluginManager);
+        function ScenePlugin(scene, pluginManager, pluginKey) {
+            BasePlugin.call(this, pluginManager);
 
-        /**
-         * A reference to the Scene that has installed this plugin.
-         * Only set if it's a Scene Plugin, otherwise `null`.
-         * This property is only set when the plugin is instantiated and added to the Scene, not before.
-         * You can use it during the `boot` method.
-         *
-         * @name Phaser.Plugins.ScenePlugin#scene
-         * @type {?Phaser.Scene}
-         * @protected
-         * @since 3.8.0
-         */
-        this.scene = scene;
+            /**
+             * A reference to the Scene that has installed this plugin.
+             * Only set if it's a Scene Plugin, otherwise `null`.
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             * You can use it during the `boot` method.
+             *
+             * @name Phaser.Plugins.ScenePlugin#scene
+             * @type {?Phaser.Scene}
+             * @protected
+             * @since 3.8.0
+             */
+            this.scene = scene;
 
-        /**
-         * A reference to the Scene Systems of the Scene that has installed this plugin.
-         * Only set if it's a Scene Plugin, otherwise `null`.
-         * This property is only set when the plugin is instantiated and added to the Scene, not before.
-         * You can use it during the `boot` method.
-         *
-         * @name Phaser.Plugins.ScenePlugin#systems
-         * @type {?Phaser.Scenes.Systems}
-         * @protected
-         * @since 3.8.0
-         */
-        this.systems = scene.sys;
+            /**
+             * A reference to the Scene Systems of the Scene that has installed this plugin.
+             * Only set if it's a Scene Plugin, otherwise `null`.
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             * You can use it during the `boot` method.
+             *
+             * @name Phaser.Plugins.ScenePlugin#systems
+             * @type {?Phaser.Scenes.Systems}
+             * @protected
+             * @since 3.8.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * The key under which this plugin was installed into the Scene Systems.
-         *
-         * This property is only set when the plugin is instantiated and added to the Scene, not before.
-         * You can use it during the `boot` method.
-         *
-         * @name Phaser.Plugins.ScenePlugin#pluginKey
-         * @type {string}
-         * @readonly
-         * @since 3.54.0
-         */
-        this.pluginKey = pluginKey;
+            /**
+             * The key under which this plugin was installed into the Scene Systems.
+             *
+             * This property is only set when the plugin is instantiated and added to the Scene, not before.
+             * You can use it during the `boot` method.
+             *
+             * @name Phaser.Plugins.ScenePlugin#pluginKey
+             * @type {string}
+             * @readonly
+             * @since 3.54.0
+             */
+            this.pluginKey = pluginKey;
 
-        scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
-    },
+            scene.sys.events.once(SceneEvents.BOOT, this.boot, this);
+        },
 
     /**
      * This method is called when the Scene boots. It is only ever called once.
@@ -111,8 +110,7 @@ var ScenePlugin = new Class({
      * @method Phaser.Plugins.ScenePlugin#boot
      * @since 3.8.0
      */
-    boot: function ()
-    {
+    boot: function () {
     },
 
     /**
@@ -123,8 +121,7 @@ var ScenePlugin = new Class({
      * @method Phaser.Plugins.ScenePlugin#destroy
      * @since 3.8.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.pluginManager = null;
         this.game = null;
         this.scene = null;

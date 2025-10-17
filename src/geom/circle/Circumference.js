@@ -14,8 +14,7 @@
  *
  * @return {number} The circumference of the Circle.
  */
-var Circumference = function (circle)
-{
+var Circumference = function (circle) {
     return 2 * (Math.PI * circle.radius);
 };
 

@@ -43,14 +43,18 @@ var RoundAwayFromZero = require('../../math/RoundAwayFromZero');
  *
  * @return {number[]} The array of number values.
  */
-var NumberArrayStep = function (start, end, step)
-{
-    if (start === undefined) { start = 0; }
-    if (end === undefined) { end = null; }
-    if (step === undefined) { step = 1; }
+var NumberArrayStep = function (start, end, step) {
+    if (start === undefined) {
+        start = 0;
+    }
+    if (end === undefined) {
+        end = null;
+    }
+    if (step === undefined) {
+        step = 1;
+    }
 
-    if (end === null)
-    {
+    if (end === null) {
         end = start;
         start = 0;
     }
@@ -59,8 +63,7 @@ var NumberArrayStep = function (start, end, step)
 
     var total = Math.max(RoundAwayFromZero((end - start) / (step || 1)), 0);
 
-    for (var i = 0; i < total; i++)
-    {
+    for (var i = 0; i < total; i++) {
         result.push(start);
         start += step;
     }

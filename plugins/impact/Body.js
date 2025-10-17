@@ -37,279 +37,282 @@ var Body = new Class({
 
     initialize:
 
-    function Body (world, x, y, sx, sy)
-    {
-        if (sx === undefined) { sx = 16; }
-        if (sy === undefined) { sy = sx; }
+        function Body(world, x, y, sx, sy) {
+            if (sx === undefined) {
+                sx = 16;
+            }
+            if (sy === undefined) {
+                sy = sx;
+            }
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#world
-         * @type {Phaser.Physics.Impact.World}
-         * @since 3.0.0
-         */
-        this.world = world;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#world
+             * @type {Phaser.Physics.Impact.World}
+             * @since 3.0.0
+             */
+            this.world = world;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#gameObject
-         * @type {Phaser.GameObjects.GameObject}
-         * @default null
-         * @since 3.0.0
-         */
-        this.gameObject = null;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#gameObject
+             * @type {Phaser.GameObjects.GameObject}
+             * @default null
+             * @since 3.0.0
+             */
+            this.gameObject = null;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#enabled
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.enabled = true;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#enabled
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.enabled = true;
 
-        /**
-         * The ImpactBody, ImpactSprite or ImpactImage object that owns this Body, if any.
-         *
-         * @name Phaser.Physics.Impact.Body#parent
-         * @type {?(Phaser.Physics.Impact.ImpactBody|Phaser.Physics.Impact.ImpactImage|Phaser.Physics.Impact.ImpactSprite)}
-         * @since 3.0.0
-         */
-        this.parent;
+            /**
+             * The ImpactBody, ImpactSprite or ImpactImage object that owns this Body, if any.
+             *
+             * @name Phaser.Physics.Impact.Body#parent
+             * @type {?(Phaser.Physics.Impact.ImpactBody|Phaser.Physics.Impact.ImpactImage|Phaser.Physics.Impact.ImpactSprite)}
+             * @since 3.0.0
+             */
+            this.parent;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#id
-         * @type {integer}
-         * @since 3.0.0
-         */
-        this.id = world.getNextID();
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#id
+             * @type {integer}
+             * @since 3.0.0
+             */
+            this.id = world.getNextID();
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#name
-         * @type {string}
-         * @default ''
-         * @since 3.0.0
-         */
-        this.name = '';
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#name
+             * @type {string}
+             * @default ''
+             * @since 3.0.0
+             */
+            this.name = '';
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#size
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.size = { x: sx, y: sy };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#size
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.size = {x: sx, y: sy};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#offset
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.offset = { x: 0, y: 0 };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#offset
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.offset = {x: 0, y: 0};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#pos
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.pos = { x: x, y: y };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#pos
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.pos = {x: x, y: y};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#last
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.last = { x: x, y: y };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#last
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.last = {x: x, y: y};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#vel
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.vel = { x: 0, y: 0 };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#vel
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.vel = {x: 0, y: 0};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#accel
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.accel = { x: 0, y: 0 };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#accel
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.accel = {x: 0, y: 0};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#friction
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.friction = { x: 0, y: 0 };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#friction
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.friction = {x: 0, y: 0};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#maxVel
-         * @type {Phaser.Types.Math.Vector2Like}
-         * @since 3.0.0
-         */
-        this.maxVel = { x: world.defaults.maxVelocityX, y: world.defaults.maxVelocityY };
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#maxVel
+             * @type {Phaser.Types.Math.Vector2Like}
+             * @since 3.0.0
+             */
+            this.maxVel = {x: world.defaults.maxVelocityX, y: world.defaults.maxVelocityY};
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#standing
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.standing = false;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#standing
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.standing = false;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#gravityFactor
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.gravityFactor = world.defaults.gravityFactor;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#gravityFactor
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.gravityFactor = world.defaults.gravityFactor;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#bounciness
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.bounciness = world.defaults.bounciness;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#bounciness
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.bounciness = world.defaults.bounciness;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#minBounceVelocity
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.minBounceVelocity = world.defaults.minBounceVelocity;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#minBounceVelocity
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.minBounceVelocity = world.defaults.minBounceVelocity;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#accelGround
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.accelGround = 0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#accelGround
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.accelGround = 0;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#accelAir
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.accelAir = 0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#accelAir
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.accelAir = 0;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#jumpSpeed
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.jumpSpeed = 0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#jumpSpeed
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.jumpSpeed = 0;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#type
-         * @type {Phaser.Physics.Impact.TYPE}
-         * @since 3.0.0
-         */
-        this.type = TYPE.NONE;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#type
+             * @type {Phaser.Physics.Impact.TYPE}
+             * @since 3.0.0
+             */
+            this.type = TYPE.NONE;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#checkAgainst
-         * @type {Phaser.Physics.Impact.TYPE}
-         * @since 3.0.0
-         */
-        this.checkAgainst = TYPE.NONE;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#checkAgainst
+             * @type {Phaser.Physics.Impact.TYPE}
+             * @since 3.0.0
+             */
+            this.checkAgainst = TYPE.NONE;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#collides
-         * @type {Phaser.Physics.Impact.COLLIDES}
-         * @since 3.0.0
-         */
-        this.collides = COLLIDES.NEVER;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#collides
+             * @type {Phaser.Physics.Impact.COLLIDES}
+             * @since 3.0.0
+             */
+            this.collides = COLLIDES.NEVER;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#debugShowBody
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.debugShowBody = world.defaults.debugShowBody;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#debugShowBody
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.debugShowBody = world.defaults.debugShowBody;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#debugShowVelocity
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.debugShowVelocity = world.defaults.debugShowVelocity;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#debugShowVelocity
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.debugShowVelocity = world.defaults.debugShowVelocity;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#debugBodyColor
-         * @type {integer}
-         * @since 3.0.0
-         */
-        this.debugBodyColor = world.defaults.bodyDebugColor;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#debugBodyColor
+             * @type {integer}
+             * @since 3.0.0
+             */
+            this.debugBodyColor = world.defaults.bodyDebugColor;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.Body#updateCallback
-         * @type {?Phaser.Types.Physics.Impact.BodyUpdateCallback}
-         * @since 3.0.0
-         */
-        this.updateCallback;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.Body#updateCallback
+             * @type {?Phaser.Types.Physics.Impact.BodyUpdateCallback}
+             * @since 3.0.0
+             */
+            this.updateCallback;
 
-        /**
-         * min 44 deg, max 136 deg
-         *
-         * @name Phaser.Physics.Impact.Body#slopeStanding
-         * @type {{ min: number, max: number }}
-         * @since 3.0.0
-         */
-        this.slopeStanding = { min: 0.767944870877505, max: 2.3736477827122884 };
-    },
+            /**
+             * min 44 deg, max 136 deg
+             *
+             * @name Phaser.Physics.Impact.Body#slopeStanding
+             * @type {{ min: number, max: number }}
+             * @since 3.0.0
+             */
+            this.slopeStanding = {min: 0.767944870877505, max: 2.3736477827122884};
+        },
 
     /**
      * [description]
@@ -320,14 +323,13 @@ var Body = new Class({
      * @param {number} x - [description]
      * @param {number} y - [description]
      */
-    reset: function (x, y)
-    {
-        this.pos = { x: x, y: y };
-        this.last = { x: x, y: y };
-        this.vel = { x: 0, y: 0 };
-        this.accel = { x: 0, y: 0 };
-        this.friction = { x: 0, y: 0 };
-        this.maxVel = { x: 100, y: 100 };
+    reset: function (x, y) {
+        this.pos = {x: x, y: y};
+        this.last = {x: x, y: y};
+        this.vel = {x: 0, y: 0};
+        this.accel = {x: 0, y: 0};
+        this.friction = {x: 0, y: 0};
+        this.maxVel = {x: 100, y: 100};
 
         this.standing = false;
 
@@ -352,8 +354,7 @@ var Body = new Class({
      *
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    update: function (delta)
-    {
+    update: function (delta) {
         var pos = this.pos;
 
         this.last.x = pos.x;
@@ -369,21 +370,18 @@ var Body = new Class({
 
         var res = this.world.collisionMap.trace(pos.x, pos.y, mx, my, this.size.x, this.size.y);
 
-        if (this.handleMovementTrace(res))
-        {
+        if (this.handleMovementTrace(res)) {
             UpdateMotion(this, res);
         }
 
         var go = this.gameObject;
 
-        if (go)
-        {
+        if (go) {
             go.x = (pos.x - this.offset.x) + go.displayOriginX * go.scaleX;
             go.y = (pos.y - this.offset.y) + go.displayOriginY * go.scaleY;
         }
 
-        if (this.updateCallback)
-        {
+        if (this.updateCallback) {
             this.updateCallback(this);
         }
     },
@@ -396,18 +394,15 @@ var Body = new Class({
      *
      * @param {Phaser.GameObjects.Graphics} graphic - [description]
      */
-    drawDebug: function (graphic)
-    {
+    drawDebug: function (graphic) {
         var pos = this.pos;
 
-        if (this.debugShowBody)
-        {
+        if (this.debugShowBody) {
             graphic.lineStyle(1, this.debugBodyColor, 1);
             graphic.strokeRect(pos.x, pos.y, this.size.x, this.size.y);
         }
 
-        if (this.debugShowVelocity)
-        {
+        if (this.debugShowVelocity) {
             var x = pos.x + this.size.x / 2;
             var y = pos.y + this.size.y / 2;
 
@@ -424,8 +419,7 @@ var Body = new Class({
      *
      * @return {boolean} [description]
      */
-    willDrawDebug: function ()
-    {
+    willDrawDebug: function () {
         return (this.debugShowBody || this.debugShowVelocity);
     },
 
@@ -437,8 +431,7 @@ var Body = new Class({
      *
      * @return {boolean} [description]
      */
-    skipHash: function ()
-    {
+    skipHash: function () {
         return (!this.enabled || (this.type === 0 && this.checkAgainst === 0 && this.collides === 0));
     },
 
@@ -452,8 +445,7 @@ var Body = new Class({
      *
      * @return {boolean} [description]
      */
-    touches: function (other)
-    {
+    touches: function (other) {
         return !(
             this.pos.x >= other.pos.x + other.size.x ||
             this.pos.x + this.size.x <= other.pos.x ||
@@ -475,8 +467,7 @@ var Body = new Class({
      *
      * @return {Phaser.Physics.Impact.Body} This Body object.
      */
-    resetSize: function (x, y, width, height)
-    {
+    resetSize: function (x, y, width, height) {
         this.pos.x = x;
         this.pos.y = y;
         this.size.x = width;
@@ -493,16 +484,15 @@ var Body = new Class({
      *
      * @return {Phaser.Types.Physics.Impact.JSONImpactBody} JSON representation of this body object.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         var output = {
             name: this.name,
-            size: { x: this.size.x, y: this.size.y },
-            pos: { x: this.pos.x, y: this.pos.y },
-            vel: { x: this.vel.x, y: this.vel.y },
-            accel: { x: this.accel.x, y: this.accel.y },
-            friction: { x: this.friction.x, y: this.friction.y },
-            maxVel: { x: this.maxVel.x, y: this.maxVel.y },
+            size: {x: this.size.x, y: this.size.y},
+            pos: {x: this.pos.x, y: this.pos.y},
+            vel: {x: this.vel.x, y: this.vel.y},
+            accel: {x: this.accel.x, y: this.accel.y},
+            friction: {x: this.friction.x, y: this.friction.y},
+            maxVel: {x: this.maxVel.x, y: this.maxVel.y},
             gravityFactor: this.gravityFactor,
             bounciness: this.bounciness,
             minBounceVelocity: this.minBounceVelocity,
@@ -523,8 +513,7 @@ var Body = new Class({
      *
      * @param {object} config - [description]
      */
-    fromJSON: function ()
-    {
+    fromJSON: function () {
     },
 
     /**
@@ -535,8 +524,7 @@ var Body = new Class({
      *
      * @param {Phaser.Physics.Impact.Body} other - [description]
      */
-    check: function ()
-    {
+    check: function () {
     },
 
     /**
@@ -548,10 +536,8 @@ var Body = new Class({
      * @param {Phaser.Physics.Impact.Body} other - [description]
      * @param {string} axis - [description]
      */
-    collideWith: function (other, axis)
-    {
-        if (this.parent && this.parent._collideCallback)
-        {
+    collideWith: function (other, axis) {
+        if (this.parent && this.parent._collideCallback) {
             this.parent._collideCallback.call(this.parent._callbackScope, this, other, axis);
         }
     },
@@ -566,8 +552,7 @@ var Body = new Class({
      *
      * @return {boolean} [description]
      */
-    handleMovementTrace: function ()
-    {
+    handleMovementTrace: function () {
         return true;
     },
 
@@ -577,8 +562,7 @@ var Body = new Class({
      * @method Phaser.Physics.Impact.Body#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.world.remove(this);
 
         this.enabled = false;

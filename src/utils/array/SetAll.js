@@ -25,19 +25,19 @@ var SafeRange = require('./SafeRange');
  *
  * @return {array} The input array.
  */
-var SetAll = function (array, property, value, startIndex, endIndex)
-{
-    if (startIndex === undefined) { startIndex = 0; }
-    if (endIndex === undefined) { endIndex = array.length; }
+var SetAll = function (array, property, value, startIndex, endIndex) {
+    if (startIndex === undefined) {
+        startIndex = 0;
+    }
+    if (endIndex === undefined) {
+        endIndex = array.length;
+    }
 
-    if (SafeRange(array, startIndex, endIndex))
-    {
-        for (var i = startIndex; i < endIndex; i++)
-        {
+    if (SafeRange(array, startIndex, endIndex)) {
+        for (var i = startIndex; i < endIndex; i++) {
             var entry = array[i];
 
-            if (entry.hasOwnProperty(property))
-            {
+            if (entry.hasOwnProperty(property)) {
                 entry[property] = value;
             }
         }

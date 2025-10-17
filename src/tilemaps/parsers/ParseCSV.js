@@ -26,12 +26,13 @@ var Parse2DArray = require('./Parse2DArray');
  *
  * @return {Phaser.Tilemaps.MapData} The resulting MapData object.
  */
-var ParseCSV = function (name, data, tileWidth, tileHeight, insertNull)
-{
+var ParseCSV = function (name, data, tileWidth, tileHeight, insertNull) {
     var array2D = data
         .trim()
         .split('\n')
-        .map(function (row) { return row.split(','); });
+        .map(function (row) {
+            return row.split(',');
+        });
 
     var map = Parse2DArray(name, array2D, tileWidth, tileHeight, insertNull);
     map.format = Formats.CSV;

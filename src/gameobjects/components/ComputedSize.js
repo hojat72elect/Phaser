@@ -53,13 +53,11 @@ var ComputedSize = {
      */
     displayWidth: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleX * this.width;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleX = value / this.width;
         }
 
@@ -78,13 +76,11 @@ var ComputedSize = {
      */
     displayHeight: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleY * this.height;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleY = value / this.height;
         }
 
@@ -109,8 +105,7 @@ var ComputedSize = {
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -130,8 +125,7 @@ var ComputedSize = {
      *
      * @return {this} This Game Object instance.
      */
-    setDisplaySize: function (width, height)
-    {
+    setDisplaySize: function (width, height) {
         this.displayWidth = width;
         this.displayHeight = height;
 

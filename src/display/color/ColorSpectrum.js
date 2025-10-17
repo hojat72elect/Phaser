@@ -22,9 +22,10 @@ var GetColor = require('./GetColor');
  *
  * @return {Phaser.Types.Display.ColorObject[]} An array containing `limit` parameter number of elements, where each contains a Color Object.
  */
-var ColorSpectrum = function (limit)
-{
-    if (limit === undefined) { limit = 1024; }
+var ColorSpectrum = function (limit) {
+    if (limit === undefined) {
+        limit = 1024;
+    }
 
     var colors = [];
 
@@ -36,49 +37,41 @@ var ColorSpectrum = function (limit)
     var b = 0;
 
     //  Red to Yellow
-    for (i = 0; i <= range; i++)
-    {
-        colors.push({ r: r, g: i, b: b, color: GetColor(r, i, b) });
+    for (i = 0; i <= range; i++) {
+        colors.push({r: r, g: i, b: b, color: GetColor(r, i, b)});
     }
 
     g = 255;
 
     //  Yellow to Green
-    for (i = range; i >= 0; i--)
-    {
-        colors.push({ r: i, g: g, b: b, color: GetColor(i, g, b) });
+    for (i = range; i >= 0; i--) {
+        colors.push({r: i, g: g, b: b, color: GetColor(i, g, b)});
     }
 
     r = 0;
 
     //  Green to Blue
-    for (i = 0; i <= range; i++, g--)
-    {
-        colors.push({ r: r, g: g, b: i, color: GetColor(r, g, i) });
+    for (i = 0; i <= range; i++, g--) {
+        colors.push({r: r, g: g, b: i, color: GetColor(r, g, i)});
     }
 
     g = 0;
     b = 255;
 
     //  Blue to Red
-    for (i = 0; i <= range; i++, b--, r++)
-    {
-        colors.push({ r: r, g: g, b: b, color: GetColor(r, g, b) });
+    for (i = 0; i <= range; i++, b--, r++) {
+        colors.push({r: r, g: g, b: b, color: GetColor(r, g, b)});
     }
 
-    if (limit === 1024)
-    {
+    if (limit === 1024) {
         return colors;
-    }
-    else
-    {
+    } else {
         var out = [];
 
         var t = 0;
         var inc = 1024 / limit;
 
-        for (i = 0; i < limit; i++)
-        {
+        for (i = 0; i < limit; i++) {
             out.push(colors[Math.floor(t)]);
 
             t += inc;

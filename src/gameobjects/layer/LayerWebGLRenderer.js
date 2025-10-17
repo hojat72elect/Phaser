@@ -17,13 +17,11 @@
  * @param {Phaser.GameObjects.Layer} layer - The Game Object being rendered in this call.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  */
-var LayerWebGLRenderer = function (renderer, layer, camera)
-{
+var LayerWebGLRenderer = function (renderer, layer, camera) {
     var children = layer.list;
     var childCount = children.length;
 
-    if (childCount === 0)
-    {
+    if (childCount === 0) {
         return;
     }
 
@@ -33,20 +31,17 @@ var LayerWebGLRenderer = function (renderer, layer, camera)
 
     var layerHasBlendMode = (layer.blendMode !== -1);
 
-    if (!layerHasBlendMode)
-    {
+    if (!layerHasBlendMode) {
         //  If Layer is SKIP_TEST then set blend mode to be Normal
         renderer.setBlendMode(0);
     }
 
     var alpha = layer.alpha;
 
-    for (var i = 0; i < childCount; i++)
-    {
+    for (var i = 0; i < childCount; i++) {
         var child = children[i];
 
-        if (!child.willRender(camera))
-        {
+        if (!child.willRender(camera)) {
             continue;
         }
 
@@ -55,15 +50,12 @@ var LayerWebGLRenderer = function (renderer, layer, camera)
         var childAlphaBottomLeft;
         var childAlphaBottomRight;
 
-        if (child.alphaTopLeft !== undefined)
-        {
+        if (child.alphaTopLeft !== undefined) {
             childAlphaTopLeft = child.alphaTopLeft;
             childAlphaTopRight = child.alphaTopRight;
             childAlphaBottomLeft = child.alphaBottomLeft;
             childAlphaBottomRight = child.alphaBottomRight;
-        }
-        else
-        {
+        } else {
             var childAlpha = child.alpha;
 
             childAlphaTopLeft = childAlpha;
@@ -72,23 +64,20 @@ var LayerWebGLRenderer = function (renderer, layer, camera)
             childAlphaBottomRight = childAlpha;
         }
 
-        if (!layerHasBlendMode && child.blendMode !== renderer.currentBlendMode)
-        {
+        if (!layerHasBlendMode && child.blendMode !== renderer.currentBlendMode) {
             //  If Layer doesn't have its own blend mode, then a child can have one
             renderer.setBlendMode(child.blendMode);
         }
 
         var mask = child.mask;
 
-        if (mask)
-        {
+        if (mask) {
             mask.preRenderWebGL(renderer, child, camera);
         }
 
         var type = child.type;
 
-        if (type !== renderer.currentType)
-        {
+        if (type !== renderer.currentType) {
             renderer.newType = true;
             renderer.currentType = type;
         }
@@ -103,8 +92,7 @@ var LayerWebGLRenderer = function (renderer, layer, camera)
         //  Restore original values
         child.setAlpha(childAlphaTopLeft, childAlphaTopRight, childAlphaBottomLeft, childAlphaBottomRight);
 
-        if (mask)
-        {
+        if (mask) {
             mask.postRenderWebGL(renderer, camera);
         }
 

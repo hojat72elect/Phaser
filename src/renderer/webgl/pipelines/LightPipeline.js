@@ -63,77 +63,76 @@ var LightPipeline = new Class({
 
     initialize:
 
-    function LightPipeline (config)
-    {
-        var fragShader = GetFastValue(config, 'fragShader', LightShaderSourceFS);
+        function LightPipeline(config) {
+            var fragShader = GetFastValue(config, 'fragShader', LightShaderSourceFS);
 
-        config.fragShader = fragShader.replace('%LIGHT_COUNT%', config.game.renderer.config.maxLights);
+            config.fragShader = fragShader.replace('%LIGHT_COUNT%', config.game.renderer.config.maxLights);
 
-        MultiPipeline.call(this, config);
+            MultiPipeline.call(this, config);
 
-        /**
-         * Inverse rotation matrix for normal map rotations.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#inverseRotationMatrix
-         * @type {Float32Array}
-         * @private
-         * @since 3.16.0
-         */
-        this.inverseRotationMatrix = new Float32Array([
-            1, 0, 0,
-            0, 1, 0,
-            0, 0, 1
-        ]);
+            /**
+             * Inverse rotation matrix for normal map rotations.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#inverseRotationMatrix
+             * @type {Float32Array}
+             * @private
+             * @since 3.16.0
+             */
+            this.inverseRotationMatrix = new Float32Array([
+                1, 0, 0,
+                0, 1, 0,
+                0, 0, 1
+            ]);
 
-        /**
-         * The currently bound normal map texture at texture unit one, if any.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#currentNormalMap;
-         * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.60.0
-         */
-        this.currentNormalMap;
+            /**
+             * The currently bound normal map texture at texture unit one, if any.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#currentNormalMap;
+             * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.60.0
+             */
+            this.currentNormalMap;
 
-        /**
-         * A boolean that is set automatically during `onRender` that determines
-         * if the Scene LightManager is active, or not.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#lightsActive
-         * @type {boolean}
-         * @readonly
-         * @since 3.53.0
-         */
-        this.lightsActive = true;
+            /**
+             * A boolean that is set automatically during `onRender` that determines
+             * if the Scene LightManager is active, or not.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#lightsActive
+             * @type {boolean}
+             * @readonly
+             * @since 3.53.0
+             */
+            this.lightsActive = true;
 
-        /**
-         * A persistent calculation vector used when processing the lights.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#tempVec2
-         * @type {Phaser.Math.Vector2}
-         * @since 3.60.0
-         */
-        this.tempVec2 = new Vec2();
+            /**
+             * A persistent calculation vector used when processing the lights.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#tempVec2
+             * @type {Phaser.Math.Vector2}
+             * @since 3.60.0
+             */
+            this.tempVec2 = new Vec2();
 
-        /**
-         * A temporary Transform Matrix used for parent Container calculations without them needing their own local copy.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#_tempMatrix
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @private
-         * @since 3.60.0
-         */
-        this._tempMatrix = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix used for parent Container calculations without them needing their own local copy.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#_tempMatrix
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @private
+             * @since 3.60.0
+             */
+            this._tempMatrix = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix used for parent Container calculations without them needing their own local copy.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#_tempMatrix2
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @private
-         * @since 3.60.0
-         */
-        this._tempMatrix2 = new TransformMatrix();
-    },
+            /**
+             * A temporary Transform Matrix used for parent Container calculations without them needing their own local copy.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#_tempMatrix2
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @private
+             * @since 3.60.0
+             */
+            this._tempMatrix2 = new TransformMatrix();
+        },
 
     /**
      * Called when the Game has fully booted and the Renderer has finished setting up.
@@ -144,8 +143,7 @@ var LightPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#boot
      * @since 3.11.0
      */
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
     },
 
@@ -159,14 +157,12 @@ var LightPipeline = new Class({
      * @param {Phaser.Scene} scene - The Scene being rendered.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Scene Camera being rendered with.
      */
-    onRender: function (scene, camera)
-    {
+    onRender: function (scene, camera) {
         var lightManager = scene.sys.lights;
 
         this.lightsActive = false;
 
-        if (!lightManager || !lightManager.active)
-        {
+        if (!lightManager || !lightManager.active) {
             return;
         }
 
@@ -190,8 +186,7 @@ var LightPipeline = new Class({
         this.set3f('uAmbientLightColor', lightManager.ambientColor.r, lightManager.ambientColor.g, lightManager.ambientColor.b);
         this.set1i('uLightCount', lightsCount);
 
-        for (i = 0; i < lightsCount; i++)
-        {
+        for (i = 0; i < lightsCount; i++) {
             var light = lights[i].light;
             var color = light.color;
 
@@ -217,19 +212,15 @@ var LightPipeline = new Class({
      *
      * @param {number} rotation - The angle of rotation in radians.
      */
-    setNormalMapRotation: function (rotation)
-    {
-        if (rotation !== this.currentNormalMapRotation || this.vertexCount === 0)
-        {
-            if (this.vertexCount > 0)
-            {
+    setNormalMapRotation: function (rotation) {
+        if (rotation !== this.currentNormalMapRotation || this.vertexCount === 0) {
+            if (this.vertexCount > 0) {
                 this.flush();
             }
 
             var inverseRotationMatrix = this.inverseRotationMatrix;
 
-            if (rotation)
-            {
+            if (rotation) {
                 var rot = -rotation;
                 var c = Math.cos(rot);
                 var s = Math.sin(rot);
@@ -237,9 +228,7 @@ var LightPipeline = new Class({
                 inverseRotationMatrix[1] = s;
                 inverseRotationMatrix[3] = -s;
                 inverseRotationMatrix[0] = inverseRotationMatrix[4] = c;
-            }
-            else
-            {
+            } else {
                 inverseRotationMatrix[0] = inverseRotationMatrix[4] = 1;
                 inverseRotationMatrix[1] = inverseRotationMatrix[3] = 0;
             }
@@ -260,16 +249,16 @@ var LightPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [texture] - Texture that will be assigned to the current batch. If not given uses blankTexture.
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object being rendered or added to the batch.
      */
-    setTexture2D: function (texture, gameObject)
-    {
+    setTexture2D: function (texture, gameObject) {
         var renderer = this.renderer;
 
-        if (texture === undefined) { texture = renderer.whiteTexture; }
+        if (texture === undefined) {
+            texture = renderer.whiteTexture;
+        }
 
         var normalMap = this.getNormalMap(gameObject);
 
-        if (this.isNewNormalMap(texture, normalMap))
-        {
+        if (this.isNewNormalMap(texture, normalMap)) {
             this.flush();
 
             this.createBatch(texture);
@@ -281,19 +270,15 @@ var LightPipeline = new Class({
 
         var rotation = 0;
 
-        if (gameObject && gameObject.parentContainer)
-        {
+        if (gameObject && gameObject.parentContainer) {
             var matrix = gameObject.getWorldTransformMatrix(this._tempMatrix, this._tempMatrix2);
 
             rotation = matrix.rotationNormalized;
-        }
-        else if (gameObject)
-        {
+        } else if (gameObject) {
             rotation = gameObject.rotation;
         }
 
-        if (this.currentBatch === null)
-        {
+        if (this.currentBatch === null) {
             this.createBatch(texture);
 
             this.addTextureToBatch(normalMap);
@@ -317,15 +302,15 @@ var LightPipeline = new Class({
      *
      * @return {number} The texture unit the Game Object has been assigned.
      */
-    setGameObject: function (gameObject, frame)
-    {
-        if (frame === undefined) { frame = gameObject.frame; }
+    setGameObject: function (gameObject, frame) {
+        if (frame === undefined) {
+            frame = gameObject.frame;
+        }
 
         var texture = frame.glTexture;
         var normalMap = this.getNormalMap(gameObject);
 
-        if (this.isNewNormalMap(texture, normalMap))
-        {
+        if (this.isNewNormalMap(texture, normalMap)) {
             this.flush();
 
             this.createBatch(texture);
@@ -335,19 +320,15 @@ var LightPipeline = new Class({
             this.currentNormalMap = normalMap;
         }
 
-        if (gameObject.parentContainer)
-        {
+        if (gameObject.parentContainer) {
             var matrix = gameObject.getWorldTransformMatrix(this._tempMatrix, this._tempMatrix2);
 
             this.setNormalMapRotation(matrix.rotationNormalized);
-        }
-        else
-        {
+        } else {
             this.setNormalMapRotation(gameObject.rotation);
         }
 
-        if (this.currentBatch === null)
-        {
+        if (this.currentBatch === null) {
             this.createBatch(texture);
 
             this.addTextureToBatch(normalMap);
@@ -367,8 +348,7 @@ var LightPipeline = new Class({
      *
      * @return {boolean} Returns `false` if this combination is already set, or `true` if it's a new combination.
      */
-    isNewNormalMap: function (texture, normalMap)
-    {
+    isNewNormalMap: function (texture, normalMap) {
         return (this.currentTexture !== texture || this.currentNormalMap !== normalMap);
     },
 
@@ -383,36 +363,24 @@ var LightPipeline = new Class({
      *
      * @return {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} The normal map texture.
      */
-    getNormalMap: function (gameObject)
-    {
+    getNormalMap: function (gameObject) {
         var normalMap;
 
-        if (!gameObject)
-        {
+        if (!gameObject) {
             return this.renderer.normalTexture;
-        }
-        else if (gameObject.displayTexture)
-        {
+        } else if (gameObject.displayTexture) {
             normalMap = gameObject.displayTexture.dataSource[gameObject.displayFrame.sourceIndex];
-        }
-        else if (gameObject.texture)
-        {
+        } else if (gameObject.texture) {
             normalMap = gameObject.texture.dataSource[gameObject.frame.sourceIndex];
-        }
-        else if (gameObject.tileset)
-        {
-            if (Array.isArray(gameObject.tileset))
-            {
+        } else if (gameObject.tileset) {
+            if (Array.isArray(gameObject.tileset)) {
                 normalMap = gameObject.tileset[0].image.dataSource[0];
-            }
-            else
-            {
+            } else {
                 normalMap = gameObject.tileset.image.dataSource[0];
             }
         }
 
-        if (!normalMap)
-        {
+        if (!normalMap) {
             return this.renderer.normalTexture;
         }
 
@@ -429,10 +397,8 @@ var LightPipeline = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use for the rendering transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} [parentTransformMatrix] - The transform matrix of the parent container, if set.
      */
-    batchSprite: function (gameObject, camera, parentTransformMatrix)
-    {
-        if (this.lightsActive)
-        {
+    batchSprite: function (gameObject, camera, parentTransformMatrix) {
+        if (this.lightsActive) {
             MultiPipeline.prototype.batchSprite.call(this, gameObject, camera, parentTransformMatrix);
         }
     },
@@ -493,10 +459,8 @@ var LightPipeline = new Class({
         camera,
         parentTransformMatrix,
         skipFlip,
-        textureUnit)
-    {
-        if (this.lightsActive)
-        {
+        textureUnit) {
+        if (this.lightsActive) {
             MultiPipeline.prototype.batchTexture.call(
                 this,
                 gameObject,
@@ -540,10 +504,8 @@ var LightPipeline = new Class({
         tint, alpha,
         transformMatrix,
         parentTransformMatrix
-    )
-    {
-        if (this.lightsActive)
-        {
+    ) {
+        if (this.lightsActive) {
             MultiPipeline.prototype.batchTextureFrame.call(
                 this,
                 frame,

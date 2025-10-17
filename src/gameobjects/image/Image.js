@@ -71,27 +71,26 @@ var Image = new Class({
 
     initialize:
 
-    function Image (scene, x, y, texture, frame)
-    {
-        GameObject.call(this, scene, 'Image');
+        function Image(scene, x, y, texture, frame) {
+            GameObject.call(this, scene, 'Image');
 
-        /**
-         * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
-         *
-         * @name Phaser.GameObjects.Image#_crop
-         * @type {object}
-         * @private
-         * @since 3.11.0
-         */
-        this._crop = this.resetCropObject();
+            /**
+             * The internal crop data object, as used by `setCrop` and passed to the `Frame.setCropUVs` method.
+             *
+             * @name Phaser.GameObjects.Image#_crop
+             * @type {object}
+             * @private
+             * @since 3.11.0
+             */
+            this._crop = this.resetCropObject();
 
-        this.setTexture(texture, frame);
-        this.setPosition(x, y);
-        this.setSizeToFrame();
-        this.setOriginFromFrame();
-        this.initPipeline();
-        this.initPostPipeline(true);
-    }
+            this.setTexture(texture, frame);
+            this.setPosition(x, y);
+            this.setSizeToFrame();
+            this.setOriginFromFrame();
+            this.initPipeline();
+            this.initPostPipeline(true);
+        }
 
 });
 

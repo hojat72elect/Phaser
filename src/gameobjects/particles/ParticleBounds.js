@@ -44,67 +44,74 @@ var ParticleBounds = new Class({
 
     initialize:
 
-    function ParticleBounds (x, y, width, height, collideLeft, collideRight, collideTop, collideBottom)
-    {
-        if (collideLeft === undefined) { collideLeft = true; }
-        if (collideRight === undefined) { collideRight = true; }
-        if (collideTop === undefined) { collideTop = true; }
-        if (collideBottom === undefined) { collideBottom = true; }
+        function ParticleBounds(x, y, width, height, collideLeft, collideRight, collideTop, collideBottom) {
+            if (collideLeft === undefined) {
+                collideLeft = true;
+            }
+            if (collideRight === undefined) {
+                collideRight = true;
+            }
+            if (collideTop === undefined) {
+                collideTop = true;
+            }
+            if (collideBottom === undefined) {
+                collideBottom = true;
+            }
 
-        ParticleProcessor.call(this, x, y, true);
+            ParticleProcessor.call(this, x, y, true);
 
-        /**
-         * A rectangular boundary constraining particle movement. Use the Emitter properties `collideLeft`,
-         * `collideRight`, `collideTop` and `collideBottom` to control if a particle will rebound off
-         * the sides of this boundary, or not. This happens when the particles x/y coordinate hits
-         * the boundary.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleBounds#bounds
-         * @type {Phaser.Geom.Rectangle}
-         * @since 3.60.0
-         */
-        this.bounds = new Rectangle(x, y, width, height);
+            /**
+             * A rectangular boundary constraining particle movement. Use the Emitter properties `collideLeft`,
+             * `collideRight`, `collideTop` and `collideBottom` to control if a particle will rebound off
+             * the sides of this boundary, or not. This happens when the particles x/y coordinate hits
+             * the boundary.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleBounds#bounds
+             * @type {Phaser.Geom.Rectangle}
+             * @since 3.60.0
+             */
+            this.bounds = new Rectangle(x, y, width, height);
 
-        /**
-         * Whether particles interact with the left edge of the emitter {@link Phaser.GameObjects.Particles.ParticleEmitter#bounds}.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleBounds#collideLeft
-         * @type {boolean}
-         * @default true
-         * @since 3.60.0
-         */
-        this.collideLeft = collideLeft;
+            /**
+             * Whether particles interact with the left edge of the emitter {@link Phaser.GameObjects.Particles.ParticleEmitter#bounds}.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleBounds#collideLeft
+             * @type {boolean}
+             * @default true
+             * @since 3.60.0
+             */
+            this.collideLeft = collideLeft;
 
-        /**
-         * Whether particles interact with the right edge of the emitter {@link Phaser.GameObjects.Particles.ParticleBounds#bounds}.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleBounds#collideRight
-         * @type {boolean}
-         * @default true
-         * @since 3.60.0
-         */
-        this.collideRight = collideRight;
+            /**
+             * Whether particles interact with the right edge of the emitter {@link Phaser.GameObjects.Particles.ParticleBounds#bounds}.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleBounds#collideRight
+             * @type {boolean}
+             * @default true
+             * @since 3.60.0
+             */
+            this.collideRight = collideRight;
 
-        /**
-         * Whether particles interact with the top edge of the emitter {@link Phaser.GameObjects.Particles.ParticleBounds#bounds}.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleBounds#collideTop
-         * @type {boolean}
-         * @default true
-         * @since 3.60.0
-         */
-        this.collideTop = collideTop;
+            /**
+             * Whether particles interact with the top edge of the emitter {@link Phaser.GameObjects.Particles.ParticleBounds#bounds}.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleBounds#collideTop
+             * @type {boolean}
+             * @default true
+             * @since 3.60.0
+             */
+            this.collideTop = collideTop;
 
-        /**
-         * Whether particles interact with the bottom edge of the emitter {@link Phaser.GameObjects.Particles.ParticleBounds#bounds}.
-         *
-         * @name Phaser.GameObjects.Particles.ParticleBounds#collideBottom
-         * @type {boolean}
-         * @default true
-         * @since 3.60.0
-         */
-        this.collideBottom = collideBottom;
-    },
+            /**
+             * Whether particles interact with the bottom edge of the emitter {@link Phaser.GameObjects.Particles.ParticleBounds#bounds}.
+             *
+             * @name Phaser.GameObjects.Particles.ParticleBounds#collideBottom
+             * @type {boolean}
+             * @default true
+             * @since 3.60.0
+             */
+            this.collideBottom = collideBottom;
+        },
 
     /**
      * Takes a Particle and updates it against the bounds.
@@ -114,30 +121,23 @@ var ParticleBounds = new Class({
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The Particle to update.
      */
-    update: function (particle)
-    {
+    update: function (particle) {
         var bounds = this.bounds;
         var bounce = -particle.bounce;
         var pos = particle.worldPosition;
 
-        if (pos.x < bounds.x && this.collideLeft)
-        {
+        if (pos.x < bounds.x && this.collideLeft) {
             particle.x += bounds.x - pos.x;
             particle.velocityX *= bounce;
-        }
-        else if (pos.x > bounds.right && this.collideRight)
-        {
+        } else if (pos.x > bounds.right && this.collideRight) {
             particle.x -= pos.x - bounds.right;
             particle.velocityX *= bounce;
         }
 
-        if (pos.y < bounds.y && this.collideTop)
-        {
+        if (pos.y < bounds.y && this.collideTop) {
             particle.y += bounds.y - pos.y;
             particle.velocityY *= bounce;
-        }
-        else if (pos.y > bounds.bottom && this.collideBottom)
-        {
+        } else if (pos.y > bounds.bottom && this.collideBottom) {
             particle.y -= pos.y - bounds.bottom;
             particle.velocityY *= bounce;
         }

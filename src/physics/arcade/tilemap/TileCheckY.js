@@ -22,8 +22,7 @@ var ProcessTileSeparationY = require('./ProcessTileSeparationY');
  *
  * @return {number} The amount of separation that occurred.
  */
-var TileCheckY = function (body, tile, tileTop, tileBottom, tileBias, isLayer)
-{
+var TileCheckY = function (body, tile, tileTop, tileBottom, tileBias, isLayer) {
     var oy = 0;
 
     var faceTop = tile.faceTop;
@@ -31,49 +30,37 @@ var TileCheckY = function (body, tile, tileTop, tileBottom, tileBias, isLayer)
     var collideUp = tile.collideUp;
     var collideDown = tile.collideDown;
 
-    if (!isLayer)
-    {
+    if (!isLayer) {
         faceTop = true;
         faceBottom = true;
         collideUp = true;
         collideDown = true;
     }
 
-    if (body.deltaY() < 0 && collideDown && body.checkCollision.up)
-    {
+    if (body.deltaY() < 0 && collideDown && body.checkCollision.up) {
         //  Body is moving UP
-        if (faceBottom && body.y < tileBottom)
-        {
+        if (faceBottom && body.y < tileBottom) {
             oy = body.y - tileBottom;
 
-            if (oy < -tileBias)
-            {
+            if (oy < -tileBias) {
                 oy = 0;
             }
         }
-    }
-    else if (body.deltaY() > 0 && collideUp && body.checkCollision.down)
-    {
+    } else if (body.deltaY() > 0 && collideUp && body.checkCollision.down) {
         //  Body is moving DOWN
-        if (faceTop && body.bottom > tileTop)
-        {
+        if (faceTop && body.bottom > tileTop) {
             oy = body.bottom - tileTop;
 
-            if (oy > tileBias)
-            {
+            if (oy > tileBias) {
                 oy = 0;
             }
         }
     }
 
-    if (oy !== 0)
-    {
-        if (body.customSeparateY)
-        {
+    if (oy !== 0) {
+        if (body.customSeparateY) {
             body.overlapY = oy;
-        }
-        else
-        {
+        } else {
             ProcessTileSeparationY(body, oy);
         }
     }

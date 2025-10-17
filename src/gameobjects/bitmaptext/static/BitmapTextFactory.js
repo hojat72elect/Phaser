@@ -9,12 +9,12 @@ var GameObjectFactory = require('../../GameObjectFactory');
 
 /**
  * Creates a new Bitmap Text Game Object and adds it to the Scene.
- * 
+ *
  * BitmapText objects work by taking a texture file and an XML or JSON file that describes the font structure.
- * 
+ *
  * During rendering for each letter of the text is rendered to the display, proportionally spaced out and aligned to
  * match the font structure.
- * 
+ *
  * BitmapText objects are less flexible than Text objects, in that they have less features such as shadows, fills and the ability
  * to use Web Fonts, however you trade this flexibility for rendering speed. You can also create visually compelling BitmapTexts by
  * processing the font texture in an image editor, applying fills and any other effects required.
@@ -44,8 +44,7 @@ var GameObjectFactory = require('../../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.BitmapText} The Game Object that was created.
  */
-GameObjectFactory.register('bitmapText', function (x, y, font, text, size, align)
-{
+GameObjectFactory.register('bitmapText', function (x, y, font, text, size, align) {
     return this.displayList.add(new BitmapText(this.scene, x, y, font, text, size, align));
 });
 

@@ -21,15 +21,12 @@
  *
  * @return {number} The percentage of interpolation, between 0 and 1.
  */
-var SmoothStep = function (x, min, max)
-{
-    if (x <= min)
-    {
+var SmoothStep = function (x, min, max) {
+    if (x <= min) {
         return 0;
     }
 
-    if (x >= max)
-    {
+    if (x >= max) {
         return 1;
     }
 

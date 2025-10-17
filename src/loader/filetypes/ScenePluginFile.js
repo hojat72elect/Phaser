@@ -38,46 +38,43 @@ var ScenePluginFile = new Class({
 
     initialize:
 
-    function ScenePluginFile (loader, key, url, systemKey, sceneKey, xhrSettings)
-    {
-        var extension = 'js';
+        function ScenePluginFile(loader, key, url, systemKey, sceneKey, xhrSettings) {
+            var extension = 'js';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            systemKey = GetFastValue(config, 'systemKey');
-            sceneKey = GetFastValue(config, 'sceneKey');
-        }
-
-        var fileConfig = {
-            type: 'scenePlugin',
-            cache: false,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: {
-                systemKey: systemKey,
-                sceneKey: sceneKey
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                systemKey = GetFastValue(config, 'systemKey');
+                sceneKey = GetFastValue(config, 'sceneKey');
             }
-        };
 
-        File.call(this, loader, fileConfig);
+            var fileConfig = {
+                type: 'scenePlugin',
+                cache: false,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: {
+                    systemKey: systemKey,
+                    sceneKey: sceneKey
+                }
+            };
 
-        // If the url variable refers to a class, add the plugin directly
-        if (typeof url === 'function')
-        {
-            this.data = url;
+            File.call(this, loader, fileConfig);
 
-            this.state = CONST.FILE_POPULATED;
-        }
-    },
+            // If the url variable refers to a class, add the plugin directly
+            if (typeof url === 'function') {
+                this.data = url;
+
+                this.state = CONST.FILE_POPULATED;
+            }
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -86,8 +83,7 @@ var ScenePluginFile = new Class({
      * @method Phaser.Loader.FileTypes.ScenePluginFile#onProcess
      * @since 3.8.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         var pluginManager = this.loader.systems.plugins;
         var config = this.config;
 
@@ -95,12 +91,9 @@ var ScenePluginFile = new Class({
         var systemKey = GetFastValue(config, 'systemKey', key);
         var sceneKey = GetFastValue(config, 'sceneKey', key);
 
-        if (this.state === CONST.FILE_POPULATED)
-        {
+        if (this.state === CONST.FILE_POPULATED) {
             pluginManager.installScenePlugin(systemKey, this.data, sceneKey, this.loader.scene, true);
-        }
-        else
-        {
+        } else {
             //  Plugin added via a js file
             this.state = CONST.FILE_PROCESSING;
 
@@ -179,18 +172,13 @@ var ScenePluginFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('scenePlugin', function (key, url, systemKey, sceneKey, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('scenePlugin', function (key, url, systemKey, sceneKey, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new ScenePluginFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new ScenePluginFile(this, key, url, systemKey, sceneKey, xhrSettings));
     }
 

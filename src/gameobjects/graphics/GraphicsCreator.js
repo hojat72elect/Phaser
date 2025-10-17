@@ -20,19 +20,18 @@ var Graphics = require('./Graphics');
  *
  * @return {Phaser.GameObjects.Graphics} The Game Object that was created.
  */
-GameObjectCreator.register('graphics', function (config, addToScene)
-{
-    if (config === undefined) { config = {}; }
+GameObjectCreator.register('graphics', function (config, addToScene) {
+    if (config === undefined) {
+        config = {};
+    }
 
-    if (addToScene !== undefined)
-    {
+    if (addToScene !== undefined) {
         config.add = addToScene;
     }
 
     var graphics = new Graphics(this.scene, config);
 
-    if (config.add)
-    {
+    if (config.add) {
         this.scene.sys.displayList.add(graphics);
     }
 

@@ -14,8 +14,7 @@ var segment = new Line();
 /**
  * @ignore
  */
-function CheckIntersects (angle, x, y, polygons, intersects)
-{
+function CheckIntersects(angle, x, y, polygons, intersects) {
     var dx = Math.cos(angle);
     var dy = Math.sin(angle);
 
@@ -23,8 +22,7 @@ function CheckIntersects (angle, x, y, polygons, intersects)
 
     var closestIntersect = GetLineToPolygon(segment, polygons, true);
 
-    if (closestIntersect)
-    {
+    if (closestIntersect) {
         intersects.push(new Vector4(closestIntersect.x, closestIntersect.y, angle, closestIntersect.w));
     }
 }
@@ -32,8 +30,7 @@ function CheckIntersects (angle, x, y, polygons, intersects)
 /**
  * @ignore
  */
-function SortIntersects (a, b)
-{
+function SortIntersects(a, b) {
     return a.z - b.z;
 }
 
@@ -59,26 +56,21 @@ function SortIntersects (a, b)
  *
  * @return {Phaser.Math.Vector4[]} An array containing all intersections in Vector4s.
  */
-var GetRaysFromPointToPolygon = function (x, y, polygons)
-{
-    if (!Array.isArray(polygons))
-    {
-        polygons = [ polygons ];
+var GetRaysFromPointToPolygon = function (x, y, polygons) {
+    if (!Array.isArray(polygons)) {
+        polygons = [polygons];
     }
 
     var intersects = [];
     var angles = [];
 
-    for (var i = 0; i < polygons.length; i++)
-    {
+    for (var i = 0; i < polygons.length; i++) {
         var points = polygons[i].points;
 
-        for (var p = 0; p < points.length; p++)
-        {
+        for (var p = 0; p < points.length; p++) {
             var angle = Math.atan2(points[p].y - y, points[p].x - x);
 
-            if (angles.indexOf(angle) === -1)
-            {
+            if (angles.indexOf(angle) === -1) {
                 //  +- 0.00001 rads to catch lines behind segment corners
 
                 CheckIntersects(angle, x, y, polygons, intersects);

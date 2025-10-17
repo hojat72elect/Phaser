@@ -23,8 +23,7 @@ var CheckAgainst = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setAvsB: function ()
-    {
+    setAvsB: function () {
         this.setTypeA();
 
         return this.setCheckAgainstB();
@@ -38,8 +37,7 @@ var CheckAgainst = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setBvsA: function ()
-    {
+    setBvsA: function () {
         this.setTypeB();
 
         return this.setCheckAgainstA();
@@ -53,8 +51,7 @@ var CheckAgainst = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setCheckAgainstNone: function ()
-    {
+    setCheckAgainstNone: function () {
         this.body.checkAgainst = TYPE.NONE;
 
         return this;
@@ -68,8 +65,7 @@ var CheckAgainst = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setCheckAgainstA: function ()
-    {
+    setCheckAgainstA: function () {
         this.body.checkAgainst = TYPE.A;
 
         return this;
@@ -83,8 +79,7 @@ var CheckAgainst = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setCheckAgainstB: function ()
-    {
+    setCheckAgainstB: function () {
         this.body.checkAgainst = TYPE.B;
 
         return this;
@@ -99,13 +94,11 @@ var CheckAgainst = {
      */
     checkAgainst: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.checkAgainst;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.checkAgainst = value;
         }
 

@@ -40,22 +40,14 @@
  *
  * @return {*} The value of the requested key.
  */
-var GetValue = function (source, key, defaultValue, altSource)
-{
-    if ((!source && !altSource) || typeof source === 'number')
-    {
+var GetValue = function (source, key, defaultValue, altSource) {
+    if ((!source && !altSource) || typeof source === 'number') {
         return defaultValue;
-    }
-    else if (source && source.hasOwnProperty(key))
-    {
+    } else if (source && source.hasOwnProperty(key)) {
         return source[key];
-    }
-    else if (altSource && altSource.hasOwnProperty(key))
-    {
+    } else if (altSource && altSource.hasOwnProperty(key)) {
         return altSource[key];
-    }
-    else if (key.indexOf('.') !== -1)
-    {
+    } else if (key.indexOf('.') !== -1) {
         var keys = key.split('.');
         var parentA = source;
         var parentB = altSource;
@@ -65,46 +57,32 @@ var GetValue = function (source, key, defaultValue, altSource)
         var valueBFound = true;
 
         //  Use for loop here so we can break early
-        for (var i = 0; i < keys.length; i++)
-        {
-            if (parentA && parentA.hasOwnProperty(keys[i]))
-            {
+        for (var i = 0; i < keys.length; i++) {
+            if (parentA && parentA.hasOwnProperty(keys[i])) {
                 //  Yes parentA has a key property, let's carry on down
                 valueA = parentA[keys[i]];
                 parentA = parentA[keys[i]];
-            }
-            else
-            {
+            } else {
                 valueAFound = false;
             }
 
-            if (parentB && parentB.hasOwnProperty(keys[i]))
-            {
+            if (parentB && parentB.hasOwnProperty(keys[i])) {
                 //  Yes parentB has a key property, let's carry on down
                 valueB = parentB[keys[i]];
                 parentB = parentB[keys[i]];
-            }
-            else
-            {
+            } else {
                 valueBFound = false;
             }
         }
 
-        if (valueAFound)
-        {
+        if (valueAFound) {
             return valueA;
-        }
-        else if (valueBFound)
-        {
+        } else if (valueBFound) {
             return valueB;
-        }
-        else
-        {
+        } else {
             return defaultValue;
         }
-    }
-    else
-    {
+    } else {
         return defaultValue;
     }
 };

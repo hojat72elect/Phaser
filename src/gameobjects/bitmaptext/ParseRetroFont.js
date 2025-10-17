@@ -18,8 +18,7 @@ var GetValue = require('../../utils/object/GetValue');
  *
  * @return {Phaser.Types.GameObjects.BitmapText.BitmapFontData} A parsed Bitmap Font data entry for the Bitmap Font cache.
  */
-var ParseRetroFont = function (scene, config)
-{
+var ParseRetroFont = function (scene, config) {
     var w = config.width;
     var h = config.height;
 
@@ -28,8 +27,7 @@ var ParseRetroFont = function (scene, config)
 
     var letters = GetValue(config, 'chars', '');
 
-    if (letters === '')
-    {
+    if (letters === '') {
         return;
     }
 
@@ -49,12 +47,10 @@ var ParseRetroFont = function (scene, config)
 
     var charsPerRow = GetValue(config, 'charsPerRow', null);
 
-    if (charsPerRow === null)
-    {
+    if (charsPerRow === null) {
         charsPerRow = textureWidth / w;
 
-        if (charsPerRow > letters.length)
-        {
+        if (charsPerRow > letters.length) {
             charsPerRow = letters.length;
         }
     }
@@ -72,8 +68,7 @@ var ParseRetroFont = function (scene, config)
 
     var r = 0;
 
-    for (var i = 0; i < letters.length; i++)
-    {
+    for (var i = 0; i < letters.length; i++) {
         var charCode = letters.charCodeAt(i);
 
         var u0 = (textureX + x) / textureWidth;
@@ -82,34 +77,31 @@ var ParseRetroFont = function (scene, config)
         var v1 = (textureY + y + h) / textureHeight;
 
         data.chars[charCode] =
-        {
-            x: x,
-            y: y,
-            width: w,
-            height: h,
-            centerX: cx,
-            centerY: cy,
-            xOffset: 0,
-            yOffset: 0,
-            xAdvance: w,
-            data: {},
-            kerning: {},
-            u0: u0,
-            v0: v0,
-            u1: u1,
-            v1: v1
-        };
+            {
+                x: x,
+                y: y,
+                width: w,
+                height: h,
+                centerX: cx,
+                centerY: cy,
+                xOffset: 0,
+                yOffset: 0,
+                xAdvance: w,
+                data: {},
+                kerning: {},
+                u0: u0,
+                v0: v0,
+                u1: u1,
+                v1: v1
+            };
 
         r++;
 
-        if (r === charsPerRow)
-        {
+        if (r === charsPerRow) {
             r = 0;
             x = offsetX;
             y += h + spacingY;
-        }
-        else
-        {
+        } else {
             x += w + spacingX;
         }
     }

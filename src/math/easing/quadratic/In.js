@@ -14,8 +14,7 @@
  *
  * @return {number} The tweened value.
  */
-var In = function (v)
-{
+var In = function (v) {
     return v * v;
 };
 

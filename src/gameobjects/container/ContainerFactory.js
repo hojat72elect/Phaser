@@ -22,7 +22,6 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Container} The Game Object that was created.
  */
-GameObjectFactory.register('container', function (x, y, children)
-{
+GameObjectFactory.register('container', function (x, y, children) {
     return this.displayList.add(new Container(this.scene, x, y, children));
 });

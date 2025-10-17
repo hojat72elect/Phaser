@@ -20,36 +20,30 @@ var Contains = require('../triangle/Contains');
  *
  * @return {boolean} `true` if the Triangle and the `Circle` intersect, otherwise `false`.
  */
-var TriangleToCircle = function (triangle, circle)
-{
+var TriangleToCircle = function (triangle, circle) {
     //  First the cheapest ones:
 
     if (
         triangle.left > circle.right ||
         triangle.right < circle.left ||
         triangle.top > circle.bottom ||
-        triangle.bottom < circle.top)
-    {
+        triangle.bottom < circle.top) {
         return false;
     }
 
-    if (Contains(triangle, circle.x, circle.y))
-    {
+    if (Contains(triangle, circle.x, circle.y)) {
         return true;
     }
 
-    if (LineToCircle(triangle.getLineA(), circle))
-    {
+    if (LineToCircle(triangle.getLineA(), circle)) {
         return true;
     }
 
-    if (LineToCircle(triangle.getLineB(), circle))
-    {
+    if (LineToCircle(triangle.getLineB(), circle)) {
         return true;
     }
 
-    if (LineToCircle(triangle.getLineC(), circle))
-    {
+    if (LineToCircle(triangle.getLineC(), circle)) {
         return true;
     }
 

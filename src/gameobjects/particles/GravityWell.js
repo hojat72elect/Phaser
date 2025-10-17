@@ -36,61 +36,67 @@ var GravityWell = new Class({
 
     initialize:
 
-    function GravityWell (x, y, power, epsilon, gravity)
-    {
-        if (typeof x === 'object')
-        {
-            var config = x;
+        function GravityWell(x, y, power, epsilon, gravity) {
+            if (typeof x === 'object') {
+                var config = x;
 
-            x = GetFastValue(config, 'x', 0);
-            y = GetFastValue(config, 'y', 0);
-            power = GetFastValue(config, 'power', 0);
-            epsilon = GetFastValue(config, 'epsilon', 100);
-            gravity = GetFastValue(config, 'gravity', 50);
-        }
-        else
-        {
-            if (x === undefined) { x = 0; }
-            if (y === undefined) { y = 0; }
-            if (power === undefined) { power = 0; }
-            if (epsilon === undefined) { epsilon = 100; }
-            if (gravity === undefined) { gravity = 50; }
-        }
+                x = GetFastValue(config, 'x', 0);
+                y = GetFastValue(config, 'y', 0);
+                power = GetFastValue(config, 'power', 0);
+                epsilon = GetFastValue(config, 'epsilon', 100);
+                gravity = GetFastValue(config, 'gravity', 50);
+            } else {
+                if (x === undefined) {
+                    x = 0;
+                }
+                if (y === undefined) {
+                    y = 0;
+                }
+                if (power === undefined) {
+                    power = 0;
+                }
+                if (epsilon === undefined) {
+                    epsilon = 100;
+                }
+                if (gravity === undefined) {
+                    gravity = 50;
+                }
+            }
 
-        ParticleProcessor.call(this, x, y, true);
+            ParticleProcessor.call(this, x, y, true);
 
-        /**
-         * Internal gravity value.
-         *
-         * @name Phaser.GameObjects.Particles.GravityWell#_gravity
-         * @type {number}
-         * @private
-         * @since 3.0.0
-         */
-        this._gravity = gravity;
+            /**
+             * Internal gravity value.
+             *
+             * @name Phaser.GameObjects.Particles.GravityWell#_gravity
+             * @type {number}
+             * @private
+             * @since 3.0.0
+             */
+            this._gravity = gravity;
 
-        /**
-         * Internal power value.
-         *
-         * @name Phaser.GameObjects.Particles.GravityWell#_power
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._power = power * gravity;
+            /**
+             * Internal power value.
+             *
+             * @name Phaser.GameObjects.Particles.GravityWell#_power
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._power = power * gravity;
 
-        /**
-         * Internal epsilon value.
-         *
-         * @name Phaser.GameObjects.Particles.GravityWell#_epsilon
-         * @type {number}
-         * @private
-         * @default 0
-         * @since 3.0.0
-         */
-        this._epsilon = epsilon * epsilon;
-    },
+            /**
+             * Internal epsilon value.
+             *
+             * @name Phaser.GameObjects.Particles.GravityWell#_epsilon
+             * @type {number}
+             * @private
+             * @default 0
+             * @since 3.0.0
+             */
+            this._epsilon = epsilon * epsilon;
+        },
 
     /**
      * Takes a Particle and updates it based on the properties of this Gravity Well.
@@ -102,21 +108,18 @@ var GravityWell = new Class({
      * @param {number} delta - The delta time in ms.
      * @param {number} step - The delta value divided by 1000.
      */
-    update: function (particle, delta)
-    {
+    update: function (particle, delta) {
         var x = this.x - particle.x;
         var y = this.y - particle.y;
         var dSq = x * x + y * y;
 
-        if (dSq === 0)
-        {
+        if (dSq === 0) {
             return;
         }
 
         var d = Math.sqrt(dSq);
 
-        if (dSq < this._epsilon)
-        {
+        if (dSq < this._epsilon) {
             dSq = this._epsilon;
         }
 
@@ -137,13 +140,11 @@ var GravityWell = new Class({
      */
     epsilon: {
 
-        get: function ()
-        {
+        get: function () {
             return Math.sqrt(this._epsilon);
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._epsilon = value * value;
         }
 
@@ -160,13 +161,11 @@ var GravityWell = new Class({
      */
     power: {
 
-        get: function ()
-        {
+        get: function () {
             return this._power / this._gravity;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._power = value * this._gravity;
         }
 
@@ -183,13 +182,11 @@ var GravityWell = new Class({
      */
     gravity: {
 
-        get: function ()
-        {
+        get: function () {
             return this._gravity;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var pwr = this.power;
             this._gravity = value;
             this.power = pwr;

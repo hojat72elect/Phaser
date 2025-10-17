@@ -19,8 +19,7 @@
  *
  * @return {boolean} `true` if the two Lines intersect, and the `out` object will be populated, if given. Otherwise, `false`.
  */
-var LineToLine = function (line1, line2, out)
-{
+var LineToLine = function (line1, line2, out) {
     var x1 = line1.x1;
     var y1 = line1.y1;
     var x2 = line1.x2;
@@ -32,8 +31,7 @@ var LineToLine = function (line1, line2, out)
     var y4 = line2.y2;
 
     //  Check that none of the lines are length zero
-    if ((x1 === x2 && y1 === y2) || (x3 === x4 && y3 === y4))
-    {
+    if ((x1 === x2 && y1 === y2) || (x3 === x4 && y3 === y4)) {
         return false;
     }
 
@@ -43,8 +41,7 @@ var LineToLine = function (line1, line2, out)
     //  If numA and numB were both equal to zero the lines would be on top of each other (coincidental).
     //  This check is not done because it is not necessary for this implementation (the parallel check accounts for this).
 
-    if (denom === 0)
-    {
+    if (denom === 0) {
         //  Lines are parallel
         return false;
     }
@@ -57,14 +54,10 @@ var LineToLine = function (line1, line2, out)
     //  The fractional point will be between 0 and 1 inclusive if the lines intersect.
     //  If the fractional calculation is larger than 1 or smaller than 0 the lines would need to be longer to intersect.
 
-    if (ua < 0 || ua > 1 || ub < 0 || ub > 1)
-    {
+    if (ua < 0 || ua > 1 || ub < 0 || ub > 1) {
         return false;
-    }
-    else
-    {
-        if (out)
-        {
+    } else {
+        if (out) {
             out.x = x1 + ua * (x2 - x1);
             out.y = y1 + ua * (y2 - y1);
         }

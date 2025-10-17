@@ -31,10 +31,8 @@
  *
  * @return {boolean} `true` if the given `matrix` array is a valid matrix.
  */
-var CheckMatrix = function (matrix)
-{
-    if (!Array.isArray(matrix) || !Array.isArray(matrix[0]))
-    {
+var CheckMatrix = function (matrix) {
+    if (!Array.isArray(matrix) || !Array.isArray(matrix[0])) {
         return false;
     }
 
@@ -42,10 +40,8 @@ var CheckMatrix = function (matrix)
     var size = matrix[0].length;
 
     //  Validate the rest of the rows are the same length
-    for (var i = 1; i < matrix.length; i++)
-    {
-        if (matrix[i].length !== size)
-        {
+    for (var i = 1; i < matrix.length; i++) {
+        if (matrix[i].length !== size) {
             return false;
         }
     }

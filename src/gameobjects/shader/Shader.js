@@ -99,284 +99,291 @@ var Shader = new Class({
 
     initialize:
 
-    function Shader (scene, key, x, y, width, height, textures, textureData)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = 128; }
-        if (height === undefined) { height = 128; }
+        function Shader(scene, key, x, y, width, height, textures, textureData) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (width === undefined) {
+                width = 128;
+            }
+            if (height === undefined) {
+                height = 128;
+            }
 
-        GameObject.call(this, scene, 'Shader');
+            GameObject.call(this, scene, 'Shader');
 
-        /**
-         * This Game Object cannot have a blend mode, so skip all checks.
-         *
-         * @name Phaser.GameObjects.Shader#blendMode
-         * @type {number}
-         * @private
-         * @since 3.17.0
-         */
-        this.blendMode = -1;
+            /**
+             * This Game Object cannot have a blend mode, so skip all checks.
+             *
+             * @name Phaser.GameObjects.Shader#blendMode
+             * @type {number}
+             * @private
+             * @since 3.17.0
+             */
+            this.blendMode = -1;
 
-        /**
-         * The underlying shader object being used.
-         * Empty by default and set during a call to the `setShader` method.
-         *
-         * @name Phaser.GameObjects.Shader#shader
-         * @type {Phaser.Display.BaseShader}
-         * @since 3.17.0
-         */
-        this.shader;
+            /**
+             * The underlying shader object being used.
+             * Empty by default and set during a call to the `setShader` method.
+             *
+             * @name Phaser.GameObjects.Shader#shader
+             * @type {Phaser.Display.BaseShader}
+             * @since 3.17.0
+             */
+            this.shader;
 
-        var renderer = scene.sys.renderer;
+            var renderer = scene.sys.renderer;
 
-        /**
-         * A reference to the current renderer.
-         * Shaders only work with the WebGL Renderer.
-         *
-         * @name Phaser.GameObjects.Shader#renderer
-         * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-         * @since 3.17.0
-         */
-        this.renderer = renderer;
+            /**
+             * A reference to the current renderer.
+             * Shaders only work with the WebGL Renderer.
+             *
+             * @name Phaser.GameObjects.Shader#renderer
+             * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
+             * @since 3.17.0
+             */
+            this.renderer = renderer;
 
-        /**
-         * The WebGL context belonging to the renderer.
-         *
-         * @name Phaser.GameObjects.Shader#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.17.0
-         */
-        this.gl = renderer.gl;
+            /**
+             * The WebGL context belonging to the renderer.
+             *
+             * @name Phaser.GameObjects.Shader#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.17.0
+             */
+            this.gl = renderer.gl;
 
-        /**
-         * Raw byte buffer of vertices this Shader uses.
-         *
-         * @name Phaser.GameObjects.Shader#vertexData
-         * @type {ArrayBuffer}
-         * @since 3.17.0
-         */
-        this.vertexData = new ArrayBuffer(6 * (Float32Array.BYTES_PER_ELEMENT * 2));
+            /**
+             * Raw byte buffer of vertices this Shader uses.
+             *
+             * @name Phaser.GameObjects.Shader#vertexData
+             * @type {ArrayBuffer}
+             * @since 3.17.0
+             */
+            this.vertexData = new ArrayBuffer(6 * (Float32Array.BYTES_PER_ELEMENT * 2));
 
-        /**
-         * The WebGL vertex buffer object this shader uses.
-         *
-         * @name Phaser.GameObjects.Shader#vertexBuffer
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
-         * @since 3.17.0
-         */
-        this.vertexBuffer = renderer.createVertexBuffer(this.vertexData.byteLength, this.gl.STREAM_DRAW);
+            /**
+             * The WebGL vertex buffer object this shader uses.
+             *
+             * @name Phaser.GameObjects.Shader#vertexBuffer
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
+             * @since 3.17.0
+             */
+            this.vertexBuffer = renderer.createVertexBuffer(this.vertexData.byteLength, this.gl.STREAM_DRAW);
 
-        /**
-         * Internal property: whether the shader needs to be created,
-         * and if so, the key and textures to use for the shader.
-         *
-         * @name Phaser.GameObjects.Shader#_deferSetShader
-         * @type {?{ key: string, textures: string[]|undefined, textureData: any|undefined }}
-         * @private
-         * @since 3.80.0
-         */
-        this._deferSetShader = null;
+            /**
+             * Internal property: whether the shader needs to be created,
+             * and if so, the key and textures to use for the shader.
+             *
+             * @name Phaser.GameObjects.Shader#_deferSetShader
+             * @type {?{ key: string, textures: string[]|undefined, textureData: any|undefined }}
+             * @private
+             * @since 3.80.0
+             */
+            this._deferSetShader = null;
 
-        /**
-         * Internal property: whether the projection matrix needs to be set,
-         * and if so, the data to use for the orthographic projection.
-         *
-         * @name Phaser.GameObjects.Shader#_deferProjOrtho
-         * @type {?{ left: number, right: number, bottom: number, top: number }}
-         * @private
-         * @since 3.80.0
-         */
-        this._deferProjOrtho = null;
+            /**
+             * Internal property: whether the projection matrix needs to be set,
+             * and if so, the data to use for the orthographic projection.
+             *
+             * @name Phaser.GameObjects.Shader#_deferProjOrtho
+             * @type {?{ left: number, right: number, bottom: number, top: number }}
+             * @private
+             * @since 3.80.0
+             */
+            this._deferProjOrtho = null;
 
-        /**
-         * The WebGL shader program this shader uses.
-         *
-         * @name Phaser.GameObjects.Shader#program
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
-         * @since 3.17.0
-         */
-        this.program = null;
+            /**
+             * The WebGL shader program this shader uses.
+             *
+             * @name Phaser.GameObjects.Shader#program
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
+             * @since 3.17.0
+             */
+            this.program = null;
 
-        /**
-         * Uint8 view to the vertex raw buffer. Used for uploading vertex buffer resources to the GPU.
-         *
-         * @name Phaser.GameObjects.Shader#bytes
-         * @type {Uint8Array}
-         * @since 3.17.0
-         */
-        this.bytes = new Uint8Array(this.vertexData);
+            /**
+             * Uint8 view to the vertex raw buffer. Used for uploading vertex buffer resources to the GPU.
+             *
+             * @name Phaser.GameObjects.Shader#bytes
+             * @type {Uint8Array}
+             * @since 3.17.0
+             */
+            this.bytes = new Uint8Array(this.vertexData);
 
-        /**
-         * Float32 view of the array buffer containing the shaders vertices.
-         *
-         * @name Phaser.GameObjects.Shader#vertexViewF32
-         * @type {Float32Array}
-         * @since 3.17.0
-         */
-        this.vertexViewF32 = new Float32Array(this.vertexData);
+            /**
+             * Float32 view of the array buffer containing the shaders vertices.
+             *
+             * @name Phaser.GameObjects.Shader#vertexViewF32
+             * @type {Float32Array}
+             * @since 3.17.0
+             */
+            this.vertexViewF32 = new Float32Array(this.vertexData);
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.GameObjects.Shader#_tempMatrix1
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.17.0
-         */
-        this._tempMatrix1 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.GameObjects.Shader#_tempMatrix1
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.17.0
+             */
+            this._tempMatrix1 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.GameObjects.Shader#_tempMatrix2
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.17.0
-         */
-        this._tempMatrix2 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.GameObjects.Shader#_tempMatrix2
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.17.0
+             */
+            this._tempMatrix2 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.GameObjects.Shader#_tempMatrix3
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.17.0
-         */
-        this._tempMatrix3 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.GameObjects.Shader#_tempMatrix3
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.17.0
+             */
+            this._tempMatrix3 = new TransformMatrix();
 
-        /**
-         * The view matrix the shader uses during rendering.
-         *
-         * @name Phaser.GameObjects.Shader#viewMatrix
-         * @type {Float32Array}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.viewMatrix = new Float32Array([ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]);
+            /**
+             * The view matrix the shader uses during rendering.
+             *
+             * @name Phaser.GameObjects.Shader#viewMatrix
+             * @type {Float32Array}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.viewMatrix = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
-        /**
-         * The projection matrix the shader uses during rendering.
-         *
-         * @name Phaser.GameObjects.Shader#projectionMatrix
-         * @type {Float32Array}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.projectionMatrix = new Float32Array([ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]);
+            /**
+             * The projection matrix the shader uses during rendering.
+             *
+             * @name Phaser.GameObjects.Shader#projectionMatrix
+             * @type {Float32Array}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.projectionMatrix = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
-        /**
-         * The default uniform mappings. These can be added to (or replaced) by specifying your own uniforms when
-         * creating this shader game object. The uniforms are updated automatically during the render step.
-         *
-         * The defaults are:
-         *
-         * `resolution` (2f) - Set to the size of this shader.
-         * `time` (1f) - The elapsed game time, in seconds.
-         * `mouse` (2f) - If a pointer has been bound (with `setPointer`), this uniform contains its position each frame.
-         * `date` (4fv) - A vec4 containing the year, month, day and time in seconds.
-         * `sampleRate` (1f) - Sound sample rate. 44100 by default.
-         * `iChannel0...3` (sampler2D) - Input channels 0 to 3. `null` by default.
-         *
-         * @name Phaser.GameObjects.Shader#uniforms
-         * @type {any}
-         * @since 3.17.0
-         */
-        this.uniforms = {};
+            /**
+             * The default uniform mappings. These can be added to (or replaced) by specifying your own uniforms when
+             * creating this shader game object. The uniforms are updated automatically during the render step.
+             *
+             * The defaults are:
+             *
+             * `resolution` (2f) - Set to the size of this shader.
+             * `time` (1f) - The elapsed game time, in seconds.
+             * `mouse` (2f) - If a pointer has been bound (with `setPointer`), this uniform contains its position each frame.
+             * `date` (4fv) - A vec4 containing the year, month, day and time in seconds.
+             * `sampleRate` (1f) - Sound sample rate. 44100 by default.
+             * `iChannel0...3` (sampler2D) - Input channels 0 to 3. `null` by default.
+             *
+             * @name Phaser.GameObjects.Shader#uniforms
+             * @type {any}
+             * @since 3.17.0
+             */
+            this.uniforms = {};
 
-        /**
-         * The pointer bound to this shader, if any.
-         * Set via the chainable `setPointer` method, or by modifying this property directly.
-         *
-         * @name Phaser.GameObjects.Shader#pointer
-         * @type {Phaser.Input.Pointer}
-         * @since 3.17.0
-         */
-        this.pointer = null;
+            /**
+             * The pointer bound to this shader, if any.
+             * Set via the chainable `setPointer` method, or by modifying this property directly.
+             *
+             * @name Phaser.GameObjects.Shader#pointer
+             * @type {Phaser.Input.Pointer}
+             * @since 3.17.0
+             */
+            this.pointer = null;
 
-        /**
-         * The cached width of the renderer.
-         *
-         * @name Phaser.GameObjects.Shader#_rendererWidth
-         * @type {number}
-         * @private
-         * @since 3.17.0
-         */
-        this._rendererWidth = renderer.width;
+            /**
+             * The cached width of the renderer.
+             *
+             * @name Phaser.GameObjects.Shader#_rendererWidth
+             * @type {number}
+             * @private
+             * @since 3.17.0
+             */
+            this._rendererWidth = renderer.width;
 
-        /**
-         * The cached height of the renderer.
-         *
-         * @name Phaser.GameObjects.Shader#_rendererHeight
-         * @type {number}
-         * @private
-         * @since 3.17.0
-         */
-        this._rendererHeight = renderer.height;
+            /**
+             * The cached height of the renderer.
+             *
+             * @name Phaser.GameObjects.Shader#_rendererHeight
+             * @type {number}
+             * @private
+             * @since 3.17.0
+             */
+            this._rendererHeight = renderer.height;
 
-        /**
-         * Internal texture count tracker.
-         *
-         * @name Phaser.GameObjects.Shader#_textureCount
-         * @type {number}
-         * @private
-         * @since 3.17.0
-         */
-        this._textureCount = 0;
+            /**
+             * Internal texture count tracker.
+             *
+             * @name Phaser.GameObjects.Shader#_textureCount
+             * @type {number}
+             * @private
+             * @since 3.17.0
+             */
+            this._textureCount = 0;
 
-        /**
-         * A reference to the GL Frame Buffer this Shader is drawing to.
-         * This property is only set if you have called `Shader.setRenderToTexture`.
-         *
-         * @name Phaser.GameObjects.Shader#framebuffer
-         * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
-         * @since 3.19.0
-         */
-        this.framebuffer = null;
+            /**
+             * A reference to the GL Frame Buffer this Shader is drawing to.
+             * This property is only set if you have called `Shader.setRenderToTexture`.
+             *
+             * @name Phaser.GameObjects.Shader#framebuffer
+             * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
+             * @since 3.19.0
+             */
+            this.framebuffer = null;
 
-        /**
-         * A reference to the WebGLTextureWrapper this Shader is rendering to.
-         * This property is only set if you have called `Shader.setRenderToTexture`.
-         *
-         * @name Phaser.GameObjects.Shader#glTexture
-         * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.19.0
-         */
-        this.glTexture = null;
+            /**
+             * A reference to the WebGLTextureWrapper this Shader is rendering to.
+             * This property is only set if you have called `Shader.setRenderToTexture`.
+             *
+             * @name Phaser.GameObjects.Shader#glTexture
+             * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.19.0
+             */
+            this.glTexture = null;
 
-        /**
-         * A flag that indicates if this Shader has been set to render to a texture instead of the display list.
-         *
-         * This property is `true` if you have called `Shader.setRenderToTexture`, otherwise it's `false`.
-         *
-         * A Shader that is rendering to a texture _does not_ appear on the display list.
-         *
-         * @name Phaser.GameObjects.Shader#renderToTexture
-         * @type {boolean}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.renderToTexture = false;
+            /**
+             * A flag that indicates if this Shader has been set to render to a texture instead of the display list.
+             *
+             * This property is `true` if you have called `Shader.setRenderToTexture`, otherwise it's `false`.
+             *
+             * A Shader that is rendering to a texture _does not_ appear on the display list.
+             *
+             * @name Phaser.GameObjects.Shader#renderToTexture
+             * @type {boolean}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.renderToTexture = false;
 
-        /**
-         * A reference to the Phaser.Textures.Texture that has been stored in the Texture Manager for this Shader.
-         *
-         * This property is only set if you have called `Shader.setRenderToTexture` with a key, otherwise it is `null`.
-         *
-         * @name Phaser.GameObjects.Shader#texture
-         * @type {Phaser.Textures.Texture}
-         * @since 3.19.0
-         */
-        this.texture = null;
+            /**
+             * A reference to the Phaser.Textures.Texture that has been stored in the Texture Manager for this Shader.
+             *
+             * This property is only set if you have called `Shader.setRenderToTexture` with a key, otherwise it is `null`.
+             *
+             * @name Phaser.GameObjects.Shader#texture
+             * @type {Phaser.Textures.Texture}
+             * @since 3.19.0
+             */
+            this.texture = null;
 
-        this.setPosition(x, y);
-        this.setSize(width, height);
-        this.setOrigin(0.5, 0.5);
-        this.setShader(key, textures, textureData);
+            this.setPosition(x, y);
+            this.setSize(width, height);
+            this.setOrigin(0.5, 0.5);
+            this.setShader(key, textures, textureData);
 
-        this.renderer.on(RenderEvents.RESTORE_WEBGL, this.onContextRestored, this);
-    },
+            this.renderer.on(RenderEvents.RESTORE_WEBGL, this.onContextRestored, this);
+        },
 
     /**
      * Compares the renderMask with the renderFlags to see if this Game Object will render or not.
@@ -389,14 +396,10 @@ var Shader = new Class({
      *
      * @return {boolean} True if the Game Object should be rendered, otherwise false.
      */
-    willRender: function (camera)
-    {
-        if (this.renderToTexture)
-        {
+    willRender: function (camera) {
+        if (this.renderToTexture) {
             return true;
-        }
-        else
-        {
+        } else {
             return !(GameObject.RENDER_MASK !== this.renderFlags || (this.cameraFilter !== 0 && (this.cameraFilter & camera.id)));
         }
     },
@@ -440,12 +443,12 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setRenderToTexture: function (key, flipY)
-    {
-        if (flipY === undefined) { flipY = false; }
+    setRenderToTexture: function (key, flipY) {
+        if (flipY === undefined) {
+            flipY = false;
+        }
 
-        if (!this.renderToTexture)
-        {
+        if (!this.renderToTexture) {
             var width = this.width;
             var height = this.height;
             var renderer = this.renderer;
@@ -461,16 +464,14 @@ var Shader = new Class({
 
             this.projOrtho(0, this.width, this.height, 0);
 
-            if (key)
-            {
+            if (key) {
                 this.texture = this.scene.sys.textures.addGLTexture(key, this.glTexture);
             }
         }
 
         //  And now render at least once, so our texture isn't blank on the first update
 
-        if (this.shader)
-        {
+        if (this.shader) {
             renderer.pipelines.clear();
 
             this.load();
@@ -496,38 +497,33 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setShader: function (key, textures, textureData)
-    {
-        if (this.renderer.contextLost)
-        {
-            this._deferSetShader = { key: key, textures: textures, textureData: textureData };
+    setShader: function (key, textures, textureData) {
+        if (this.renderer.contextLost) {
+            this._deferSetShader = {key: key, textures: textures, textureData: textureData};
             return this;
         }
 
-        if (textures === undefined) { textures = []; }
+        if (textures === undefined) {
+            textures = [];
+        }
 
-        if (typeof key === 'string')
-        {
+        if (typeof key === 'string') {
             var cache = this.scene.sys.cache.shader;
 
-            if (!cache.has(key))
-            {
+            if (!cache.has(key)) {
                 console.warn('Shader missing: ' + key);
                 return this;
             }
 
             this.shader = cache.get(key);
-        }
-        else
-        {
+        } else {
             this.shader = key;
         }
 
         var gl = this.gl;
         var renderer = this.renderer;
 
-        if (this.program)
-        {
+        if (this.program) {
             renderer.deleteProgram(this.program);
         }
 
@@ -544,30 +540,25 @@ var Shader = new Class({
 
         //  The default uniforms available within the fragment shader
         var defaultUniforms = {
-            resolution: { type: '2f', value: { x: this.width, y: this.height } },
-            time: { type: '1f', value: 0 },
-            mouse: { type: '2f', value: { x: this.width / 2, y: this.height / 2 } },
-            date: { type: '4fv', value: [ d.getFullYear(), d.getMonth(), d.getDate(), d.getHours() * 60 * 60 + d.getMinutes() * 60 + d.getSeconds() ] },
-            sampleRate: { type: '1f', value: 44100.0 },
-            iChannel0: { type: 'sampler2D', value: null, textureData: { repeat: true } },
-            iChannel1: { type: 'sampler2D', value: null, textureData: { repeat: true } },
-            iChannel2: { type: 'sampler2D', value: null, textureData: { repeat: true } },
-            iChannel3: { type: 'sampler2D', value: null, textureData: { repeat: true } }
+            resolution: {type: '2f', value: {x: this.width, y: this.height}},
+            time: {type: '1f', value: 0},
+            mouse: {type: '2f', value: {x: this.width / 2, y: this.height / 2}},
+            date: {type: '4fv', value: [d.getFullYear(), d.getMonth(), d.getDate(), d.getHours() * 60 * 60 + d.getMinutes() * 60 + d.getSeconds()]},
+            sampleRate: {type: '1f', value: 44100.0},
+            iChannel0: {type: 'sampler2D', value: null, textureData: {repeat: true}},
+            iChannel1: {type: 'sampler2D', value: null, textureData: {repeat: true}},
+            iChannel2: {type: 'sampler2D', value: null, textureData: {repeat: true}},
+            iChannel3: {type: 'sampler2D', value: null, textureData: {repeat: true}}
         };
 
-        if (this.shader.uniforms)
-        {
+        if (this.shader.uniforms) {
             this.uniforms = Extend(true, {}, this.shader.uniforms, defaultUniforms);
-        }
-        else
-        {
+        } else {
             this.uniforms = defaultUniforms;
         }
 
-        for (var i = 0; i < 4; i++)
-        {
-            if (textures[i])
-            {
+        for (var i = 0; i < 4; i++) {
+            if (textures[i]) {
                 this.setSampler2D('iChannel' + i, textures[i], i, textureData);
             }
         }
@@ -592,8 +583,7 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setPointer: function (pointer)
-    {
+    setPointer: function (pointer) {
         this.pointer = pointer;
 
         return this;
@@ -612,11 +602,9 @@ var Shader = new Class({
      * @param {number} bottom - The bottom value.
      * @param {number} top - The top value.
      */
-    projOrtho: function (left, right, bottom, top)
-    {
-        if (this.renderer.contextLost)
-        {
-            this._deferProjOrtho = { left: left, right: right, bottom: bottom, top: top };
+    projOrtho: function (left, right, bottom, top) {
+        if (this.renderer.contextLost) {
+            this._deferProjOrtho = {left: left, right: right, bottom: bottom, top: top};
             return;
         }
 
@@ -659,15 +647,13 @@ var Shader = new Class({
      * @private
      * @since 3.17.0
      */
-    initUniforms: function ()
-    {
+    initUniforms: function () {
         var map = this.renderer.glFuncMap;
         var program = this.program;
 
         this._textureCount = 0;
 
-        for (var key in this.uniforms)
-        {
+        for (var key in this.uniforms) {
             var uniform = this.uniforms[key];
 
             var type = uniform.type;
@@ -675,8 +661,7 @@ var Shader = new Class({
 
             uniform.uniformLocation = this.renderer.createUniformLocation(program, key);
 
-            if (type !== 'sampler2D')
-            {
+            if (type !== 'sampler2D') {
                 uniform.glMatrix = data.matrix;
                 uniform.glValueLength = data.length;
                 uniform.glFunc = data.func;
@@ -715,10 +700,13 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setSampler2DBuffer: function (uniformKey, texture, width, height, textureIndex, textureData)
-    {
-        if (textureIndex === undefined) { textureIndex = 0; }
-        if (textureData === undefined) { textureData = {}; }
+    setSampler2DBuffer: function (uniformKey, texture, width, height, textureIndex, textureData) {
+        if (textureIndex === undefined) {
+            textureIndex = 0;
+        }
+        if (textureData === undefined) {
+            textureData = {};
+        }
 
         var uniform = this.uniforms[uniformKey];
 
@@ -754,18 +742,17 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setSampler2D: function (uniformKey, textureKey, textureIndex, textureData)
-    {
-        if (textureIndex === undefined) { textureIndex = 0; }
+    setSampler2D: function (uniformKey, textureKey, textureIndex, textureData) {
+        if (textureIndex === undefined) {
+            textureIndex = 0;
+        }
 
         var textureManager = this.scene.sys.textures;
 
-        if (textureManager.exists(textureKey))
-        {
+        if (textureManager.exists(textureKey)) {
             var frame = textureManager.getFrame(textureKey);
 
-            if (frame.glTexture && frame.glTexture.isRenderTexture)
-            {
+            if (frame.glTexture && frame.glTexture.isRenderTexture) {
                 return this.setSampler2DBuffer(uniformKey, frame.glTexture, frame.width, frame.height, textureIndex, textureData);
             }
 
@@ -776,10 +763,8 @@ var Shader = new Class({
             uniform.source = source.image;
             uniform.value = frame.glTexture;
 
-            if (source.isGLTexture)
-            {
-                if (!textureData)
-                {
+            if (source.isGLTexture) {
+                if (!textureData) {
                     textureData = {};
                 }
 
@@ -787,8 +772,7 @@ var Shader = new Class({
                 textureData.height = source.height;
             }
 
-            if (textureData)
-            {
+            if (textureData) {
                 uniform.textureData = textureData;
             }
 
@@ -825,8 +809,7 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setUniform: function (key, value)
-    {
+    setUniform: function (key, value) {
         SetValue(this.uniforms, key, value);
 
         return this;
@@ -842,8 +825,7 @@ var Shader = new Class({
      *
      * @return {any} A reference to the uniform object. This is not a copy, so modifying it will update the original object also.
      */
-    getUniform: function (key)
-    {
+    getUniform: function (key) {
         return GetFastValue(this.uniforms, key, null);
     },
 
@@ -861,8 +843,7 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setChannel0: function (textureKey, textureData)
-    {
+    setChannel0: function (textureKey, textureData) {
         return this.setSampler2D('iChannel0', textureKey, 0, textureData);
     },
 
@@ -880,8 +861,7 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setChannel1: function (textureKey, textureData)
-    {
+    setChannel1: function (textureKey, textureData) {
         return this.setSampler2D('iChannel1', textureKey, 1, textureData);
     },
 
@@ -899,8 +879,7 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setChannel2: function (textureKey, textureData)
-    {
+    setChannel2: function (textureKey, textureData) {
         return this.setSampler2D('iChannel2', textureKey, 2, textureData);
     },
 
@@ -918,8 +897,7 @@ var Shader = new Class({
      *
      * @return {this} This Shader instance.
      */
-    setChannel3: function (textureKey, textureData)
-    {
+    setChannel3: function (textureKey, textureData) {
         return this.setSampler2D('iChannel3', textureKey, 3, textureData);
     },
 
@@ -933,10 +911,8 @@ var Shader = new Class({
      *
      * @param {any} uniform - The sampler2D uniform to process.
      */
-    initSampler2D: function (uniform)
-    {
-        if (!uniform.value)
-        {
+    initSampler2D: function (uniform) {
+        if (!uniform.value) {
             return;
         }
 
@@ -944,11 +920,10 @@ var Shader = new Class({
 
         var data = uniform.textureData;
 
-        if (data && !uniform.value.isRenderTexture)
-        {
+        if (data && !uniform.value.isRenderTexture) {
             var gl = this.gl;
             var wrapper = uniform.value;
-            
+
             // https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D
 
             //  mag / minFilter can be: gl.LINEAR, gl.LINEAR_MIPMAP_LINEAR or gl.NEAREST
@@ -965,14 +940,12 @@ var Shader = new Class({
             var height = GetFastValue(data, 'height', wrapper.height);
             var source = GetFastValue(data, 'source', wrapper.pixels);
 
-            if (data.repeat)
-            {
+            if (data.repeat) {
                 wrapS = gl.REPEAT;
                 wrapT = gl.REPEAT;
             }
 
-            if (data.width)
-            {
+            if (data.width) {
                 // If the uniform has resolution, use a blank texture.
                 source = null;
             }
@@ -993,8 +966,7 @@ var Shader = new Class({
      * @private
      * @since 3.17.0
      */
-    syncUniforms: function ()
-    {
+    syncUniforms: function () {
         var gl = this.gl;
 
         var uniforms = this.uniforms;
@@ -1005,8 +977,7 @@ var Shader = new Class({
         var value;
         var textureCount = 0;
 
-        for (var key in uniforms)
-        {
+        for (var key in uniforms) {
             uniform = uniforms[key];
 
             glFunc = uniform.glFunc;
@@ -1014,36 +985,23 @@ var Shader = new Class({
             location = uniform.uniformLocation;
             value = uniform.value;
 
-            if (value === null)
-            {
+            if (value === null) {
                 continue;
             }
 
-            if (length === 1)
-            {
-                if (uniform.glMatrix)
-                {
+            if (length === 1) {
+                if (uniform.glMatrix) {
                     glFunc.call(gl, location.webGLUniformLocation, uniform.transpose, value);
-                }
-                else
-                {
+                } else {
                     glFunc.call(gl, location.webGLUniformLocation, value);
                 }
-            }
-            else if (length === 2)
-            {
+            } else if (length === 2) {
                 glFunc.call(gl, location.webGLUniformLocation, value.x, value.y);
-            }
-            else if (length === 3)
-            {
+            } else if (length === 3) {
                 glFunc.call(gl, location.webGLUniformLocation, value.x, value.y, value.z);
-            }
-            else if (length === 4)
-            {
+            } else if (length === 4) {
                 glFunc.call(gl, location.webGLUniformLocation, value.x, value.y, value.z, value.w);
-            }
-            else if (uniform.type === 'sampler2D')
-            {
+            } else if (uniform.type === 'sampler2D') {
                 gl.activeTexture(gl.TEXTURE0 + textureCount);
 
                 gl.bindTexture(gl.TEXTURE_2D, value.webGLTexture);
@@ -1067,8 +1025,7 @@ var Shader = new Class({
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} [matrix2D] - The transform matrix to use during rendering.
      */
-    load: function (matrix2D)
-    {
+    load: function (matrix2D) {
         //  ITRS
 
         var gl = this.gl;
@@ -1078,8 +1035,7 @@ var Shader = new Class({
         var program = this.program;
         var vm = this.viewMatrix;
 
-        if (!this.renderToTexture)
-        {
+        if (!this.renderToTexture) {
             var x = -this._displayOriginX;
             var y = -this._displayOriginY;
 
@@ -1113,8 +1069,7 @@ var Shader = new Class({
 
         var pointer = this.pointer;
 
-        if (pointer)
-        {
+        if (pointer) {
             var mouse = uniforms.mouse;
 
             var px = pointer.x / width;
@@ -1135,8 +1090,7 @@ var Shader = new Class({
      * @method Phaser.GameObjects.Shader#flush
      * @since 3.17.0
      */
-    flush: function ()
-    {
+    flush: function () {
         //  Bind
 
         var width = this.width;
@@ -1148,8 +1102,7 @@ var Shader = new Class({
         var renderer = this.renderer;
         var vertexSize = Float32Array.BYTES_PER_ELEMENT * 2;
 
-        if (this.renderToTexture)
-        {
+        if (this.renderToTexture) {
             renderer.setFramebuffer(this.framebuffer);
 
             gl.clearColor(0, 0, 0, 0);
@@ -1161,8 +1114,7 @@ var Shader = new Class({
 
         var location = gl.getAttribLocation(program.webGLProgram, 'inPosition');
 
-        if (location !== -1)
-        {
+        if (location !== -1) {
             gl.enableVertexAttribArray(location);
 
             gl.vertexAttribPointer(location, 2, gl.FLOAT, false, vertexSize, 0);
@@ -1187,8 +1139,7 @@ var Shader = new Class({
 
         gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
 
-        if (this.renderToTexture)
-        {
+        if (this.renderToTexture) {
             renderer.setFramebuffer(null, false);
         }
     },
@@ -1201,8 +1152,7 @@ var Shader = new Class({
      * @private
      * @since 3.17.0
      */
-    setAlpha: function ()
-    {
+    setAlpha: function () {
     },
 
     /**
@@ -1213,20 +1163,17 @@ var Shader = new Class({
      * @private
      * @since 3.17.0
      */
-    setBlendMode: function ()
-    {
+    setBlendMode: function () {
     },
 
     /**
      * Run any logic that was deferred during context loss.
-     * 
+     *
      * @method Phaser.GameObjects.Shader#onContextRestored
      * @since 3.80.0
      */
-    onContextRestored: function ()
-    {
-        if (this._deferSetShader !== null)
-        {
+    onContextRestored: function () {
+        if (this._deferSetShader !== null) {
             var key = this._deferSetShader.key;
             var textures = this._deferSetShader.textures;
             var textureData = this._deferSetShader.textureData;
@@ -1234,8 +1181,7 @@ var Shader = new Class({
             this.setShader(key, textures, textureData);
         }
 
-        if (this._deferProjOrtho !== null)
-        {
+        if (this._deferProjOrtho !== null) {
             var left = this._deferProjOrtho.left;
             var right = this._deferProjOrtho.right;
             var bottom = this._deferProjOrtho.bottom;
@@ -1252,16 +1198,14 @@ var Shader = new Class({
      * @protected
      * @since 3.17.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         var renderer = this.renderer;
 
         renderer.off(RenderEvents.RESTORE_WEBGL, this.onContextRestored, this);
         renderer.deleteProgram(this.program);
         renderer.deleteBuffer(this.vertexBuffer);
 
-        if (this.renderToTexture)
-        {
+        if (this.renderToTexture) {
             renderer.deleteFramebuffer(this.framebuffer);
 
             this.texture.destroy();
@@ -1271,8 +1215,7 @@ var Shader = new Class({
             this.texture = null;
         }
 
-        ArrayEach(this.uniforms, function (uniform)
-        {
+        ArrayEach(this.uniforms, function (uniform) {
             renderer.deleteUniformLocation(uniform.uniformLocation);
             uniform.uniformLocation = null;
         });

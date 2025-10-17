@@ -46,43 +46,48 @@ var Displacement = new Class({
 
     initialize:
 
-    function Displacement (gameObject, texture, x, y)
-    {
-        if (texture === undefined) { texture = '__WHITE'; }
-        if (x === undefined) { x = 0.005; }
-        if (y === undefined) { y = 0.005; }
+        function Displacement(gameObject, texture, x, y) {
+            if (texture === undefined) {
+                texture = '__WHITE';
+            }
+            if (x === undefined) {
+                x = 0.005;
+            }
+            if (y === undefined) {
+                y = 0.005;
+            }
 
-        Controller.call(this, FX_CONST.DISPLACEMENT, gameObject);
+            Controller.call(this, FX_CONST.DISPLACEMENT, gameObject);
 
-        /**
-         * The amount of horizontal displacement to apply.
-         *
-         * @name Phaser.FX.Displacement#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = x;
+            /**
+             * The amount of horizontal displacement to apply.
+             *
+             * @name Phaser.FX.Displacement#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = x;
 
-        /**
-         * The amount of vertical displacement to apply.
-         *
-         * @name Phaser.FX.Displacement#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = y;
+            /**
+             * The amount of vertical displacement to apply.
+             *
+             * @name Phaser.FX.Displacement#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = y;
 
-        /**
-         * The underlying texture used for displacement.
-         *
-         * @name Phaser.FX.Displacement#glTexture
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.60.0
-         */
-        this.glTexture;
+            /**
+             * The underlying texture used for displacement.
+             *
+             * @name Phaser.FX.Displacement#glTexture
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.60.0
+             */
+            this.glTexture;
 
-        this.setTexture(texture);
-    },
+            this.setTexture(texture);
+        },
 
     /**
      * Sets the Texture to be used for the displacement effect.
@@ -96,12 +101,10 @@ var Displacement = new Class({
      *
      * @return {this} This FX Controller.
      */
-    setTexture: function (texture)
-    {
+    setTexture: function (texture) {
         var phaserTexture = this.gameObject.scene.sys.textures.getFrame(texture);
 
-        if (phaserTexture)
-        {
+        if (phaserTexture) {
             this.glTexture = phaserTexture.glTexture;
         }
 

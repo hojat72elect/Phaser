@@ -36,46 +36,41 @@ var MultiScriptFile = new Class({
 
     initialize:
 
-    function MultiScriptFile (loader, key, url, xhrSettings)
-    {
-        var extension = 'js';
-        var files = [];
+        function MultiScriptFile(loader, key, url, xhrSettings) {
+            var extension = 'js';
+            var files = [];
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            }
 
-        if (!Array.isArray(url))
-        {
-            url = [ url ];
-        }
+            if (!Array.isArray(url)) {
+                url = [url];
+            }
 
-        for (var i = 0; i < url.length; i++)
-        {
-            var scriptFile = new ScriptFile(loader, {
-                key: key + '_' + i.toString(),
-                url: url[i],
-                extension: extension,
-                xhrSettings: xhrSettings
-            });
+            for (var i = 0; i < url.length; i++) {
+                var scriptFile = new ScriptFile(loader, {
+                    key: key + '_' + i.toString(),
+                    url: url[i],
+                    extension: extension,
+                    xhrSettings: xhrSettings
+                });
 
-            //  Override the default onProcess function
-            scriptFile.onProcess = function ()
-            {
-                this.onProcessComplete();
-            };
+                //  Override the default onProcess function
+                scriptFile.onProcess = function () {
+                    this.onProcessComplete();
+                };
 
-            files.push(scriptFile);
-        }
+                files.push(scriptFile);
+            }
 
-        MultiFile.call(this, loader, 'scripts', key, files);
-    },
+            MultiFile.call(this, loader, 'scripts', key, files);
+        },
 
     /**
      * Adds this file to its target cache upon successful loading and processing.
@@ -83,12 +78,9 @@ var MultiScriptFile = new Class({
      * @method Phaser.Loader.FileTypes.MultiScriptFile#addToCache
      * @since 3.17.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
-            for (var i = 0; i < this.files.length; i++)
-            {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
+            for (var i = 0; i < this.files.length; i++) {
                 var file = this.files[i];
 
                 file.data = document.createElement('script');
@@ -181,25 +173,20 @@ var MultiScriptFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('scripts', function (key, url, xhrSettings)
-{
+FileTypesManager.register('scripts', function (key, url, xhrSettings) {
     var multifile;
 
     //  Supports an Object file definition in the key argument
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             multifile = new MultiScriptFile(this, key[i]);
 
             this.addFile(multifile.files);
         }
-    }
-    else
-    {
+    } else {
         multifile = new MultiScriptFile(this, key, url, xhrSettings);
 
         this.addFile(multifile.files);

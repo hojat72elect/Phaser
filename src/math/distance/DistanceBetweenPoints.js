@@ -15,8 +15,7 @@
  *
  * @return {number} The distance between the points.
  */
-var DistanceBetweenPoints = function (a, b)
-{
+var DistanceBetweenPoints = function (a, b) {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
 

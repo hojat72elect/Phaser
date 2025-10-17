@@ -25,8 +25,7 @@ var point = new Vector2();
  *
  * @return {Phaser.Tilemaps.Tile} The Tile object that was removed.
  */
-var RemoveTileAtWorldXY = function (worldX, worldY, replaceWithNull, recalculateFaces, camera, layer)
-{
+var RemoveTileAtWorldXY = function (worldX, worldY, replaceWithNull, recalculateFaces, camera, layer) {
     layer.tilemapLayer.worldToTileXY(worldX, worldY, true, point, camera, layer);
 
     return RemoveTileAt(point.x, point.y, replaceWithNull, recalculateFaces, layer);

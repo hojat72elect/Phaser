@@ -16,10 +16,8 @@
  *
  * @return {boolean} True if the coordinates are within the ellipse, otherwise false.
  */
-var Contains = function (ellipse, x, y)
-{
-    if (ellipse.width <= 0 || ellipse.height <= 0)
-    {
+var Contains = function (ellipse, x, y) {
+    if (ellipse.width <= 0 || ellipse.height <= 0) {
         return false;
     }
 

@@ -40,98 +40,95 @@ var Texture = new Class({
 
     initialize:
 
-    function Texture (manager, key, source, width, height)
-    {
-        if (!Array.isArray(source))
-        {
-            source = [ source ];
-        }
+        function Texture(manager, key, source, width, height) {
+            if (!Array.isArray(source)) {
+                source = [source];
+            }
 
-        /**
-         * A reference to the Texture Manager this Texture belongs to.
-         *
-         * @name Phaser.Textures.Texture#manager
-         * @type {Phaser.Textures.TextureManager}
-         * @since 3.0.0
-         */
-        this.manager = manager;
+            /**
+             * A reference to the Texture Manager this Texture belongs to.
+             *
+             * @name Phaser.Textures.Texture#manager
+             * @type {Phaser.Textures.TextureManager}
+             * @since 3.0.0
+             */
+            this.manager = manager;
 
-        /**
-         * The unique string-based key of this Texture.
-         *
-         * @name Phaser.Textures.Texture#key
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.key = key;
+            /**
+             * The unique string-based key of this Texture.
+             *
+             * @name Phaser.Textures.Texture#key
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.key = key;
 
-        /**
-         * An array of TextureSource instances.
-         * These are unique to this Texture and contain the actual Image (or Canvas) data.
-         *
-         * @name Phaser.Textures.Texture#source
-         * @type {Phaser.Textures.TextureSource[]}
-         * @since 3.0.0
-         */
-        this.source = [];
+            /**
+             * An array of TextureSource instances.
+             * These are unique to this Texture and contain the actual Image (or Canvas) data.
+             *
+             * @name Phaser.Textures.Texture#source
+             * @type {Phaser.Textures.TextureSource[]}
+             * @since 3.0.0
+             */
+            this.source = [];
 
-        /**
-         * An array of TextureSource data instances.
-         * Used to store additional data images, such as normal maps or specular maps.
-         *
-         * @name Phaser.Textures.Texture#dataSource
-         * @type {array}
-         * @since 3.0.0
-         */
-        this.dataSource = [];
+            /**
+             * An array of TextureSource data instances.
+             * Used to store additional data images, such as normal maps or specular maps.
+             *
+             * @name Phaser.Textures.Texture#dataSource
+             * @type {array}
+             * @since 3.0.0
+             */
+            this.dataSource = [];
 
-        /**
-         * A key-value object pair associating the unique Frame keys with the Frames objects.
-         *
-         * @name Phaser.Textures.Texture#frames
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.frames = {};
+            /**
+             * A key-value object pair associating the unique Frame keys with the Frames objects.
+             *
+             * @name Phaser.Textures.Texture#frames
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.frames = {};
 
-        /**
-         * Any additional data that was set in the source JSON (if any),
-         * or any extra data you'd like to store relating to this texture
-         *
-         * @name Phaser.Textures.Texture#customData
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.customData = {};
+            /**
+             * Any additional data that was set in the source JSON (if any),
+             * or any extra data you'd like to store relating to this texture
+             *
+             * @name Phaser.Textures.Texture#customData
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.customData = {};
 
-        /**
-         * The name of the first frame of the Texture.
-         *
-         * @name Phaser.Textures.Texture#firstFrame
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.firstFrame = '__BASE';
+            /**
+             * The name of the first frame of the Texture.
+             *
+             * @name Phaser.Textures.Texture#firstFrame
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.firstFrame = '__BASE';
 
-        /**
-         * The total number of Frames in this Texture, including the `__BASE` frame.
-         *
-         * A Texture will always contain at least 1 frame because every Texture contains a `__BASE` frame by default,
-         * in addition to any extra frames that have been added to it, such as when parsing a Sprite Sheet or Texture Atlas.
-         *
-         * @name Phaser.Textures.Texture#frameTotal
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.frameTotal = 0;
+            /**
+             * The total number of Frames in this Texture, including the `__BASE` frame.
+             *
+             * A Texture will always contain at least 1 frame because every Texture contains a `__BASE` frame by default,
+             * in addition to any extra frames that have been added to it, such as when parsing a Sprite Sheet or Texture Atlas.
+             *
+             * @name Phaser.Textures.Texture#frameTotal
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.frameTotal = 0;
 
-        //  Load the Sources
-        for (var i = 0; i < source.length; i++)
-        {
-            this.source.push(new TextureSource(this, source[i], width, height));
-        }
-    },
+            //  Load the Sources
+            for (var i = 0; i < source.length; i++) {
+                this.source.push(new TextureSource(this, source[i], width, height));
+            }
+        },
 
     /**
      * Adds a new Frame to this Texture.
@@ -152,10 +149,8 @@ var Texture = new Class({
      *
      * @return {?Phaser.Textures.Frame} The Frame that was added to this Texture, or `null` if the given name already exists.
      */
-    add: function (name, sourceIndex, x, y, width, height)
-    {
-        if (this.has(name))
-        {
+    add: function (name, sourceIndex, x, y, width, height) {
+        if (this.has(name)) {
             return null;
         }
 
@@ -167,8 +162,7 @@ var Texture = new Class({
         //  This is used to ensure we don't spam the display with entire
         //  atlases of sprite sheets, but instead just the first frame of them
         //  should the dev incorrectly specify the frame index
-        if (this.firstFrame === '__BASE')
-        {
+        if (this.firstFrame === '__BASE') {
             this.firstFrame = name;
         }
 
@@ -190,10 +184,8 @@ var Texture = new Class({
      *
      * @return {boolean} True if a Frame with the matching key was removed from this Texture.
      */
-    remove: function (name)
-    {
-        if (this.has(name))
-        {
+    remove: function (name) {
+        if (this.has(name)) {
             var frame = this.get(name);
 
             frame.destroy();
@@ -216,8 +208,7 @@ var Texture = new Class({
      *
      * @return {boolean} True if a Frame with the matching key exists in this Texture.
      */
-    has: function (name)
-    {
+    has: function (name) {
         return this.frames.hasOwnProperty(name);
     },
 
@@ -235,18 +226,15 @@ var Texture = new Class({
      *
      * @return {Phaser.Textures.Frame} The Texture Frame.
      */
-    get: function (name)
-    {
+    get: function (name) {
         //  null, undefined, empty string, zero
-        if (!name)
-        {
+        if (!name) {
             name = this.firstFrame;
         }
 
         var frame = this.frames[name];
 
-        if (!frame)
-        {
+        if (!frame) {
             console.warn(TEXTURE_MISSING_ERROR, this.key, name);
 
             frame = this.frames[this.firstFrame];
@@ -268,12 +256,9 @@ var Texture = new Class({
      *
      * @return {number} The index of the TextureSource within this Texture, or -1 if not in this Texture.
      */
-    getTextureSourceIndex: function (source)
-    {
-        for (var i = 0; i < this.source.length; i++)
-        {
-            if (this.source[i] === source)
-            {
+    getTextureSourceIndex: function (source) {
+        for (var i = 0; i < this.source.length; i++) {
+            if (this.source[i] === source) {
                 return i;
             }
         }
@@ -292,23 +277,21 @@ var Texture = new Class({
      *
      * @return {Phaser.Textures.Frame[]} An array of Texture Frames.
      */
-    getFramesFromTextureSource: function (sourceIndex, includeBase)
-    {
-        if (includeBase === undefined) { includeBase = false; }
+    getFramesFromTextureSource: function (sourceIndex, includeBase) {
+        if (includeBase === undefined) {
+            includeBase = false;
+        }
 
         var out = [];
 
-        for (var frameName in this.frames)
-        {
-            if (frameName === '__BASE' && !includeBase)
-            {
+        for (var frameName in this.frames) {
+            if (frameName === '__BASE' && !includeBase) {
                 continue;
             }
 
             var frame = this.frames[frameName];
 
-            if (frame.sourceIndex === sourceIndex)
-            {
+            if (frame.sourceIndex === sourceIndex) {
                 out.push(frame);
             }
         }
@@ -330,9 +313,10 @@ var Texture = new Class({
      *
      * @return {Phaser.Types.Math.RectangleLike} An object containing the bounds of the Frames using the given Texture Source Index.
      */
-    getFrameBounds: function (sourceIndex)
-    {
-        if (sourceIndex === undefined) { sourceIndex = 0; }
+    getFrameBounds: function (sourceIndex) {
+        if (sourceIndex === undefined) {
+            sourceIndex = 0;
+        }
 
         var frames = this.getFramesFromTextureSource(sourceIndex, true);
 
@@ -343,32 +327,27 @@ var Texture = new Class({
         var maxX = baseFrame.cutX + baseFrame.cutWidth;
         var maxY = baseFrame.cutY + baseFrame.cutHeight;
 
-        for (var i = 1; i < frames.length; i++)
-        {
+        for (var i = 1; i < frames.length; i++) {
             var frame = frames[i];
 
-            if (frame.cutX < minX)
-            {
+            if (frame.cutX < minX) {
                 minX = frame.cutX;
             }
 
-            if (frame.cutY < minY)
-            {
+            if (frame.cutY < minY) {
                 minY = frame.cutY;
             }
 
-            if (frame.cutX + frame.cutWidth > maxX)
-            {
+            if (frame.cutX + frame.cutWidth > maxX) {
                 maxX = frame.cutX + frame.cutWidth;
             }
 
-            if (frame.cutY + frame.cutHeight > maxY)
-            {
+            if (frame.cutY + frame.cutHeight > maxY) {
                 maxY = frame.cutY + frame.cutHeight;
             }
         }
 
-        return { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
+        return {x: minX, y: minY, width: maxX - minX, height: maxY - minY};
     },
 
     /**
@@ -384,18 +363,17 @@ var Texture = new Class({
      *
      * @return {string[]} An array of all Frame names in this Texture.
      */
-    getFrameNames: function (includeBase)
-    {
-        if (includeBase === undefined) { includeBase = false; }
+    getFrameNames: function (includeBase) {
+        if (includeBase === undefined) {
+            includeBase = false;
+        }
 
         var out = Object.keys(this.frames);
 
-        if (!includeBase)
-        {
+        if (!includeBase) {
             var idx = out.indexOf('__BASE');
 
-            if (idx !== -1)
-            {
+            if (idx !== -1) {
                 out.splice(idx, 1);
             }
         }
@@ -415,21 +393,16 @@ var Texture = new Class({
      *
      * @return {(HTMLImageElement|HTMLCanvasElement|Phaser.GameObjects.RenderTexture)} The DOM Image, Canvas Element or Render Texture.
      */
-    getSourceImage: function (name)
-    {
-        if (name === undefined || name === null || this.frameTotal === 1)
-        {
+    getSourceImage: function (name) {
+        if (name === undefined || name === null || this.frameTotal === 1) {
             name = '__BASE';
         }
 
         var frame = this.frames[name];
 
-        if (frame)
-        {
+        if (frame) {
             return frame.source.image;
-        }
-        else
-        {
+        } else {
             console.warn(TEXTURE_MISSING_ERROR, this.key, name);
 
             return this.frames['__BASE'].source.image;
@@ -449,24 +422,19 @@ var Texture = new Class({
      *
      * @return {(HTMLImageElement|HTMLCanvasElement)} The DOM Image or Canvas Element.
      */
-    getDataSourceImage: function (name)
-    {
-        if (name === undefined || name === null || this.frameTotal === 1)
-        {
+    getDataSourceImage: function (name) {
+        if (name === undefined || name === null || this.frameTotal === 1) {
             name = '__BASE';
         }
 
         var frame = this.frames[name];
         var idx;
 
-        if (!frame)
-        {
+        if (!frame) {
             console.warn(TEXTURE_MISSING_ERROR, this.key, name);
 
             idx = this.frames['__BASE'].sourceIndex;
-        }
-        else
-        {
+        } else {
             idx = frame.sourceIndex;
         }
 
@@ -484,15 +452,12 @@ var Texture = new Class({
      *
      * @param {(HTMLImageElement|HTMLCanvasElement|HTMLImageElement[]|HTMLCanvasElement[])} data - The source image.
      */
-    setDataSource: function (data)
-    {
-        if (!Array.isArray(data))
-        {
-            data = [ data ];
+    setDataSource: function (data) {
+        if (!Array.isArray(data)) {
+            data = [data];
         }
 
-        for (var i = 0; i < data.length; i++)
-        {
+        for (var i = 0; i < data.length; i++) {
             var source = this.source[i];
 
             this.dataSource.push(new TextureSource(this, data[i], source.width, source.height));
@@ -513,17 +478,14 @@ var Texture = new Class({
      *
      * @param {Phaser.Textures.FilterMode} filterMode - The Filter Mode.
      */
-    setFilter: function (filterMode)
-    {
+    setFilter: function (filterMode) {
         var i;
 
-        for (i = 0; i < this.source.length; i++)
-        {
+        for (i = 0; i < this.source.length; i++) {
             this.source[i].setFilter(filterMode);
         }
 
-        for (i = 0; i < this.dataSource.length; i++)
-        {
+        for (i = 0; i < this.dataSource.length; i++) {
             this.dataSource[i].setFilter(filterMode);
         }
     },
@@ -534,34 +496,27 @@ var Texture = new Class({
      * @method Phaser.Textures.Texture#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         var i;
         var source = this.source;
         var dataSource = this.dataSource;
 
-        for (i = 0; i < source.length; i++)
-        {
-            if (source[i])
-            {
+        for (i = 0; i < source.length; i++) {
+            if (source[i]) {
                 source[i].destroy();
             }
         }
 
-        for (i = 0; i < dataSource.length; i++)
-        {
-            if (dataSource[i])
-            {
+        for (i = 0; i < dataSource.length; i++) {
+            if (dataSource[i]) {
                 dataSource[i].destroy();
             }
         }
 
-        for (var frameName in this.frames)
-        {
+        for (var frameName in this.frames) {
             var frame = this.frames[frameName];
 
-            if (frame)
-            {
+            if (frame) {
                 frame.destroy();
             }
         }

@@ -27,8 +27,7 @@
  * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The texture.
  * @param {number} textureUnit - The texture unit.
  */
-var BatchChar = function (pipeline, src, char, glyph, offsetX, offsetY, calcMatrix, roundPixels, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, textureUnit)
-{
+var BatchChar = function (pipeline, src, char, glyph, offsetX, offsetY, calcMatrix, roundPixels, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, textureUnit) {
     var x = (char.x - src.displayOriginX) + offsetX;
     var y = (char.y - src.displayOriginY) + offsetY;
 
@@ -54,8 +53,7 @@ var BatchChar = function (pipeline, src, char, glyph, offsetX, offsetY, calcMatr
     var tx3 = xw * a + y * c + e;
     var ty3 = xw * b + y * d + f;
 
-    if (roundPixels)
-    {
+    if (roundPixels) {
         tx0 = Math.round(tx0);
         ty0 = Math.round(ty0);
 

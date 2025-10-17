@@ -35,9 +35,8 @@ var SetBody = {
      *
      * @return {this} This Game Object instance.
      */
-    setRectangle: function (width, height, options)
-    {
-        return this.setBody({ type: 'rectangle', width: width, height: height }, options);
+    setRectangle: function (width, height, options) {
+        return this.setBody({type: 'rectangle', width: width, height: height}, options);
     },
 
     /**
@@ -54,9 +53,8 @@ var SetBody = {
      *
      * @return {this} This Game Object instance.
      */
-    setCircle: function (radius, options)
-    {
-        return this.setBody({ type: 'circle', radius: radius }, options);
+    setCircle: function (radius, options) {
+        return this.setBody({type: 'circle', radius: radius}, options);
     },
 
     /**
@@ -74,9 +72,8 @@ var SetBody = {
      *
      * @return {this} This Game Object instance.
      */
-    setPolygon: function (radius, sides, options)
-    {
-        return this.setBody({ type: 'polygon', sides: sides, radius: radius }, options);
+    setPolygon: function (radius, sides, options) {
+        return this.setBody({type: 'polygon', sides: sides, radius: radius}, options);
     },
 
     /**
@@ -95,9 +92,8 @@ var SetBody = {
      *
      * @return {this} This Game Object instance.
      */
-    setTrapezoid: function (width, height, slope, options)
-    {
-        return this.setBody({ type: 'trapezoid', width: width, height: height, slope: slope }, options);
+    setTrapezoid: function (width, height, slope, options) {
+        return this.setBody({type: 'trapezoid', width: width, height: height, slope: slope}, options);
     },
 
     /**
@@ -113,34 +109,30 @@ var SetBody = {
      *
      * @return {this} This Game Object instance.
      */
-    setExistingBody: function (body, addToWorld)
-    {
-        if (addToWorld === undefined) { addToWorld = true; }
+    setExistingBody: function (body, addToWorld) {
+        if (addToWorld === undefined) {
+            addToWorld = true;
+        }
 
-        if (this.body)
-        {
+        if (this.body) {
             this.world.remove(this.body, true);
         }
 
         this.body = body;
 
-        for (var i = 0; i < body.parts.length; i++)
-        {
+        for (var i = 0; i < body.parts.length; i++) {
             body.parts[i].gameObject = this;
         }
 
         var _this = this;
 
-        body.destroy = function destroy ()
-        {
+        body.destroy = function destroy() {
             _this.world.remove(_this.body, true);
             _this.body.gameObject = null;
         };
 
-        if (addToWorld)
-        {
-            if (this.world.has(body))
-            {
+        if (addToWorld) {
+            if (this.world.has(body)) {
                 //  Because it could be part of another Composite
                 this.world.remove(body, true);
             }
@@ -148,20 +140,16 @@ var SetBody = {
             this.world.add(body);
         }
 
-        if (this._originComponent)
-        {
+        if (this._originComponent) {
             var rx = body.render.sprite.xOffset;
             var ry = body.render.sprite.yOffset;
 
             var comx = body.centerOfMass.x;
             var comy = body.centerOfMass.y;
 
-            if (FuzzyEquals(comx, 0.5) && FuzzyEquals(comy, 0.5))
-            {
+            if (FuzzyEquals(comx, 0.5) && FuzzyEquals(comy, 0.5)) {
                 this.setOrigin(rx + 0.5, ry + 0.5);
-            }
-            else
-            {
+            } else {
                 var cx = body.centerOffset.x;
                 var cy = body.centerOffset.y;
 
@@ -186,20 +174,17 @@ var SetBody = {
      *
      * @return {this} This Game Object instance.
      */
-    setBody: function (config, options)
-    {
-        if (!config)
-        {
+    setBody: function (config, options) {
+        if (!config) {
             return this;
         }
 
         var body;
 
         //  Allow them to do: shape: 'circle' instead of shape: { type: 'circle' }
-        if (typeof config === 'string')
-        {
+        if (typeof config === 'string') {
             //  Using defaults
-            config = { type: config };
+            config = {type: config};
         }
 
         var shapeType = GetFastValue(config, 'type', 'rectangle');
@@ -208,8 +193,7 @@ var SetBody = {
         var bodyWidth = GetFastValue(config, 'width', this.width);
         var bodyHeight = GetFastValue(config, 'height', this.height);
 
-        switch (shapeType)
-        {
+        switch (shapeType) {
             case 'rectangle':
                 body = Bodies.rectangle(bodyX, bodyY, bodyWidth, bodyHeight, options);
                 break;
@@ -236,22 +220,17 @@ var SetBody = {
 
                 var verts = GetFastValue(config, 'verts', null);
 
-                if (verts)
-                {
+                if (verts) {
                     //  Has the verts array come from Vertices.fromPath, or is it raw?
-                    if (typeof verts === 'string')
-                    {
+                    if (typeof verts === 'string') {
                         verts = Vertices.fromPath(verts);
                     }
 
-                    if (this.body && !this.body.hasOwnProperty('temp'))
-                    {
+                    if (this.body && !this.body.hasOwnProperty('temp')) {
                         Body.setVertices(this.body, verts);
 
                         body = this.body;
-                    }
-                    else
-                    {
+                    } else {
                         var flagInternal = GetFastValue(config, 'flagInternal', false);
                         var removeCollinear = GetFastValue(config, 'removeCollinear', 0.01);
                         var minimumArea = GetFastValue(config, 'minimumArea', 10);
@@ -271,8 +250,7 @@ var SetBody = {
                 break;
         }
 
-        if (body)
-        {
+        if (body) {
             this.setExistingBody(body, config.addToWorld);
         }
 

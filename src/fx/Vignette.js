@@ -45,51 +45,58 @@ var Vignette = new Class({
 
     initialize:
 
-    function Vignette (gameObject, x, y, radius, strength)
-    {
-        if (x === undefined) { x = 0.5; }
-        if (y === undefined) { y = 0.5; }
-        if (radius === undefined) { radius = 0.5; }
-        if (strength === undefined) { strength = 0.5; }
+        function Vignette(gameObject, x, y, radius, strength) {
+            if (x === undefined) {
+                x = 0.5;
+            }
+            if (y === undefined) {
+                y = 0.5;
+            }
+            if (radius === undefined) {
+                radius = 0.5;
+            }
+            if (strength === undefined) {
+                strength = 0.5;
+            }
 
-        Controller.call(this, FX_CONST.VIGNETTE, gameObject);
+            Controller.call(this, FX_CONST.VIGNETTE, gameObject);
 
-        /**
-         * The horizontal offset of the vignette effect. This value is normalized to the range 0 to 1.
-         *
-         * @name Phaser.FX.Vignette#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = x;
+            /**
+             * The horizontal offset of the vignette effect. This value is normalized to the range 0 to 1.
+             *
+             * @name Phaser.FX.Vignette#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = x;
 
-        /**
-         * The vertical offset of the vignette effect. This value is normalized to the range 0 to 1.
-         *
-         * @name Phaser.FX.Vignette#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = y;
+            /**
+             * The vertical offset of the vignette effect. This value is normalized to the range 0 to 1.
+             *
+             * @name Phaser.FX.Vignette#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = y;
 
-        /**
-         * The radius of the vignette effect. This value is normalized to the range 0 to 1.
-         *
-         * @name Phaser.FX.Vignette#radius
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.radius = radius;
+            /**
+             * The radius of the vignette effect. This value is normalized to the range 0 to 1.
+             *
+             * @name Phaser.FX.Vignette#radius
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.radius = radius;
 
-        /**
-         * The strength of the vignette effect.
-         *
-         * @name Phaser.FX.Vignette#strength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.strength = strength;
-    }
+            /**
+             * The strength of the vignette effect.
+             *
+             * @name Phaser.FX.Vignette#strength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.strength = strength;
+        }
 
 });
 

@@ -26,8 +26,7 @@ var pointEnd = new Vector2();
  *
  * @return {Phaser.Tilemaps.Tile[]} Array of Tile objects.
  */
-var GetTilesWithinWorldXY = function (worldX, worldY, width, height, filteringOptions, camera, layer)
-{
+var GetTilesWithinWorldXY = function (worldX, worldY, width, height, filteringOptions, camera, layer) {
     var worldToTileXY = layer.tilemapLayer.tilemap._convert.WorldToTileXY;
 
     //  Top left corner of the rect, rounded down to include partial tiles

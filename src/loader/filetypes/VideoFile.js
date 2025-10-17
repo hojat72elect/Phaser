@@ -37,39 +37,38 @@ var VideoFile = new Class({
 
     initialize:
 
-    function VideoFile (loader, key, url, noAudio)
-    {
-        if (noAudio === undefined) { noAudio = false; }
-
-        if (IsPlainObject(key))
-        {
-            var config = key;
-
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url', []);
-            noAudio = GetFastValue(config, 'noAudio', false);
-        }
-
-        var urlConfig = loader.systems.game.device.video.getVideoURL(url);
-
-        if (!urlConfig)
-        {
-            console.warn('VideoFile: No supported format for ' + key);
-        }
-
-        var fileConfig = {
-            type: 'video',
-            cache: loader.cacheManager.video,
-            extension: urlConfig.type,
-            key: key,
-            url: urlConfig.url,
-            config: {
-                noAudio: noAudio
+        function VideoFile(loader, key, url, noAudio) {
+            if (noAudio === undefined) {
+                noAudio = false;
             }
-        };
 
-        File.call(this, loader, fileConfig);
-    },
+            if (IsPlainObject(key)) {
+                var config = key;
+
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url', []);
+                noAudio = GetFastValue(config, 'noAudio', false);
+            }
+
+            var urlConfig = loader.systems.game.device.video.getVideoURL(url);
+
+            if (!urlConfig) {
+                console.warn('VideoFile: No supported format for ' + key);
+            }
+
+            var fileConfig = {
+                type: 'video',
+                cache: loader.cacheManager.video,
+                extension: urlConfig.type,
+                key: key,
+                url: urlConfig.url,
+                config: {
+                    noAudio: noAudio
+                }
+            };
+
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -77,9 +76,8 @@ var VideoFile = new Class({
      *
      * @method Phaser.Loader.FileTypes.VideoFile#onProcess
      * @since 3.20.0
-    */
-    onProcess: function ()
-    {
+     */
+    onProcess: function () {
         this.data = {
             url: this.src,
             noAudio: this.config.noAudio,
@@ -97,8 +95,7 @@ var VideoFile = new Class({
      * @method Phaser.Loader.FileTypes.VideoFile#load
      * @since 3.20.0
      */
-    load: function ()
-    {
+    load: function () {
         //  We set these, but we don't actually load anything (the Video Game Object does that)
 
         this.src = GetURL(this, this.loader.baseURL);
@@ -134,7 +131,7 @@ var VideoFile = new Class({
  * The key should be unique both in terms of files being loaded and files already present in the Video Cache.
  * Loading a file using a key that is already taken will result in a warning. If you wish to replace an existing file
  * then remove it from the Video Cache first, before loading a new one.
-  *
+ *
  * Instead of passing arguments you can pass a configuration object, such as:
  *
  * ```javascript
@@ -169,17 +166,12 @@ var VideoFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('video', function (key, urls, noAudio)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('video', function (key, urls, noAudio) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             this.addFile(new VideoFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new VideoFile(this, key, urls, noAudio));
     }
 

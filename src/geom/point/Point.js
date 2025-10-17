@@ -23,42 +23,45 @@ var Point = new Class({
 
     initialize:
 
-    function Point (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = x; }
+        function Point(x, y) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = x;
+            }
 
-        /**
-         * The geometry constant type of this object: `GEOM_CONST.POINT`.
-         * Used for fast type comparisons.
-         *
-         * @name Phaser.Geom.Point#type
-         * @type {number}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.type = GEOM_CONST.POINT;
+            /**
+             * The geometry constant type of this object: `GEOM_CONST.POINT`.
+             * Used for fast type comparisons.
+             *
+             * @name Phaser.Geom.Point#type
+             * @type {number}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.type = GEOM_CONST.POINT;
 
-        /**
-         * The x coordinate of this Point.
-         *
-         * @name Phaser.Geom.Point#x
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.x = x;
+            /**
+             * The x coordinate of this Point.
+             *
+             * @name Phaser.Geom.Point#x
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.x = x;
 
-        /**
-         * The y coordinate of this Point.
-         *
-         * @name Phaser.Geom.Point#y
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.y = y;
-    },
+            /**
+             * The y coordinate of this Point.
+             *
+             * @name Phaser.Geom.Point#y
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.y = y;
+        },
 
     /**
      * Set the x and y coordinates of the point to the given values.
@@ -71,10 +74,13 @@ var Point = new Class({
      *
      * @return {this} This Point object.
      */
-    setTo: function (x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = x; }
+    setTo: function (x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = x;
+        }
 
         this.x = x;
         this.y = y;

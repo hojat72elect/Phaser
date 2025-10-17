@@ -14,8 +14,7 @@
  *
  * @return {string} A string of length 2 characters, i.e. 255 = ff, 100 = 64.
  */
-var ComponentToHex = function (color)
-{
+var ComponentToHex = function (color) {
     var hex = color.toString(16);
 
     return (hex.length === 1) ? '0' + hex : hex;

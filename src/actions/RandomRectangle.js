@@ -19,10 +19,8 @@ var Random = require('../geom/rectangle/Random');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RandomRectangle = function (items, rect)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var RandomRectangle = function (items, rect) {
+    for (var i = 0; i < items.length; i++) {
         Random(rect, items[i]);
     }
 

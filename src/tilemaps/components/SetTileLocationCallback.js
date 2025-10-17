@@ -22,12 +22,10 @@ var GetTilesWithin = require('./GetTilesWithin');
  * @param {object} callbackContext - The context under which the callback is called.
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  */
-var SetTileLocationCallback = function (tileX, tileY, width, height, callback, callbackContext, layer)
-{
+var SetTileLocationCallback = function (tileX, tileY, width, height, callback, callbackContext, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
+    for (var i = 0; i < tiles.length; i++) {
         tiles[i].setCollisionCallback(callback, callbackContext);
     }
 };

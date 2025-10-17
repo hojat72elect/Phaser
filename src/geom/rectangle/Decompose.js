@@ -16,14 +16,15 @@
  *
  * @return {array} Will return the array you specified or a new array containing the points of the Rectangle.
  */
-var Decompose = function (rect, out)
-{
-    if (out === undefined) { out = []; }
+var Decompose = function (rect, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    out.push({ x: rect.x, y: rect.y });
-    out.push({ x: rect.right, y: rect.y });
-    out.push({ x: rect.right, y: rect.bottom });
-    out.push({ x: rect.x, y: rect.bottom });
+    out.push({x: rect.x, y: rect.y});
+    out.push({x: rect.right, y: rect.y});
+    out.push({x: rect.right, y: rect.bottom});
+    out.push({x: rect.x, y: rect.bottom});
 
     return out;
 };

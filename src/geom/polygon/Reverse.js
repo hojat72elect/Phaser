@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Geom.Polygon} The modified Polygon.
  */
-var Reverse = function (polygon)
-{
+var Reverse = function (polygon) {
     polygon.points.reverse();
 
     return polygon;

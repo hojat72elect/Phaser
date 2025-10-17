@@ -24,21 +24,18 @@ var SetTileCollision = require('./SetTileCollision');
  * @param {boolean} recalculateFaces - `true` if the faces data should be recalculated.
  * @param {Phaser.Tilemaps.LayerData} layer - The tile layer to use. If not given the current layer is used.
  */
-var Fill = function (index, tileX, tileY, width, height, recalculateFaces, layer)
-{
+var Fill = function (index, tileX, tileY, width, height, recalculateFaces, layer) {
     var doesIndexCollide = (layer.collideIndexes.indexOf(index) !== -1);
 
     var tiles = GetTilesWithin(tileX, tileY, width, height, null, layer);
 
-    for (var i = 0; i < tiles.length; i++)
-    {
+    for (var i = 0; i < tiles.length; i++) {
         tiles[i].index = index;
 
         SetTileCollision(tiles[i], doesIndexCollide);
     }
 
-    if (recalculateFaces)
-    {
+    if (recalculateFaces) {
         // Recalculate the faces within the area and neighboring tiles
         CalculateFacesWithin(tileX - 1, tileY - 1, width + 2, height + 2, layer);
     }

@@ -25,37 +25,31 @@ var ProcessX = require('./ProcessX');
  *
  * @return {boolean} `true` if the two bodies overlap vertically, otherwise `false`.
  */
-var SeparateX = function (body1, body2, overlapOnly, bias, overlap)
-{
-    if (overlap === undefined) { overlap = GetOverlapX(body1, body2, overlapOnly, bias); }
+var SeparateX = function (body1, body2, overlapOnly, bias, overlap) {
+    if (overlap === undefined) {
+        overlap = GetOverlapX(body1, body2, overlapOnly, bias);
+    }
 
     var body1Immovable = body1.immovable;
     var body2Immovable = body2.immovable;
 
     //  Can't separate two immovable bodies, or a body with its own custom separation logic
-    if (overlapOnly || overlap === 0 || (body1Immovable && body2Immovable) || body1.customSeparateX || body2.customSeparateX)
-    {
+    if (overlapOnly || overlap === 0 || (body1Immovable && body2Immovable) || body1.customSeparateX || body2.customSeparateX) {
         //  return true if there was some overlap, otherwise false
         return (overlap !== 0) || (body1.embedded && body2.embedded);
     }
 
     var blockedState = ProcessX.Set(body1, body2, overlap);
 
-    if (!body1Immovable && !body2Immovable)
-    {
-        if (blockedState > 0)
-        {
+    if (!body1Immovable && !body2Immovable) {
+        if (blockedState > 0) {
             return true;
         }
 
         return ProcessX.Check();
-    }
-    else if (body1Immovable)
-    {
+    } else if (body1Immovable) {
         ProcessX.RunImmovableBody1(blockedState);
-    }
-    else if (body2Immovable)
-    {
+    } else if (body2Immovable) {
         ProcessX.RunImmovableBody2(blockedState);
     }
 

@@ -1,8 +1,8 @@
 /**
-* The `Matter.Plugin` module contains functions for registering and installing plugins on modules.
-*
-* @class Plugin
-*/
+ * The `Matter.Plugin` module contains functions for registering and installing plugins on modules.
+ *
+ * @class Plugin
+ */
 
 var Plugin = {};
 
@@ -10,7 +10,7 @@ module.exports = Plugin;
 
 var Common = require('./Common');
 
-(function() {
+(function () {
 
     Plugin._registry = {};
 
@@ -20,7 +20,7 @@ var Common = require('./Common');
      * @param plugin {} The plugin to register.
      * @return {object} The plugin.
      */
-    Plugin.register = function(plugin) {
+    Plugin.register = function (plugin) {
         if (!Plugin.isPlugin(plugin)) {
             Common.warn('Plugin.register:', Plugin.toString(plugin), 'does not implement all required fields.');
         }
@@ -52,7 +52,7 @@ var Common = require('./Common');
      * @param dependency {string} The dependency.
      * @return {object} The plugin if resolved, otherwise `undefined`.
      */
-    Plugin.resolve = function(dependency) {
+    Plugin.resolve = function (dependency) {
         return Plugin._registry[Plugin.dependencyParse(dependency).name];
     };
 
@@ -62,7 +62,7 @@ var Common = require('./Common');
      * @param plugin {} The plugin.
      * @return {string} Pretty printed plugin name and version.
      */
-    Plugin.toString = function(plugin) {
+    Plugin.toString = function (plugin) {
         return typeof plugin === 'string' ? plugin : (plugin.name || 'anonymous') + '@' + (plugin.version || plugin.range || '0.0.0');
     };
 
@@ -76,7 +76,7 @@ var Common = require('./Common');
      * @param obj {} The obj to test.
      * @return {boolean} `true` if the object can be considered a plugin otherwise `false`.
      */
-    Plugin.isPlugin = function(obj) {
+    Plugin.isPlugin = function (obj) {
         return obj && obj.name && obj.version && obj.install;
     };
 
@@ -87,7 +87,7 @@ var Common = require('./Common');
      * @param name {string} The plugin name.
      * @return {boolean} `true` if a plugin with the given `name` been installed on `module`, otherwise `false`.
      */
-    Plugin.isUsed = function(module, name) {
+    Plugin.isUsed = function (module, name) {
         return module.used.indexOf(name) > -1;
     };
 
@@ -100,7 +100,7 @@ var Common = require('./Common');
      * @param module {} The module.
      * @return {boolean} `true` if `plugin.for` is applicable to `module`, otherwise `false`.
      */
-    Plugin.isFor = function(plugin, module) {
+    Plugin.isFor = function (plugin, module) {
         var parsed = plugin.for && Plugin.dependencyParse(plugin.for);
         return !plugin.for || (module.name === parsed.name && Plugin.versionSatisfies(module.version, parsed.range));
     };
@@ -121,7 +121,7 @@ var Common = require('./Common');
      * @param module {} The module install plugins on.
      * @param [plugins=module.uses] {} The plugins to install on module (optional, defaults to `module.uses`).
      */
-    Plugin.use = function(module, plugins) {
+    Plugin.use = function (module, plugins) {
         module.uses = (module.uses || []).concat(plugins || []);
 
         if (module.uses.length === 0) {
@@ -182,7 +182,7 @@ var Common = require('./Common');
      * @param module {} The module.
      * @return {object} A dependency graph.
      */
-    Plugin.dependencies = function(module, tracked) {
+    Plugin.dependencies = function (module, tracked) {
         var parsedBase = Plugin.dependencyParse(module),
             name = parsedBase.name;
 
@@ -194,7 +194,7 @@ var Common = require('./Common');
 
         module = Plugin.resolve(module) || module;
 
-        tracked[name] = Common.map(module.uses || [], function(dependency) {
+        tracked[name] = Common.map(module.uses || [], function (dependency) {
             if (Plugin.isPlugin(dependency)) {
                 Plugin.register(dependency);
             }
@@ -238,7 +238,7 @@ var Common = require('./Common');
      * @param dependency {string} The dependency of the format `'module-name'` or `'module-name@version'`.
      * @return {object} The dependency parsed into its components.
      */
-    Plugin.dependencyParse = function(dependency) {
+    Plugin.dependencyParse = function (dependency) {
         if (Common.isString(dependency)) {
             var pattern = /^[\w-]+(@(\*|[\^~]?\d+\.\d+\.\d+(-[0-9A-Za-z-+]+)?))?$/;
 
@@ -274,7 +274,7 @@ var Common = require('./Common');
      * @param range {string} The version string.
      * @return {object} The version range parsed into its components.
      */
-    Plugin.versionParse = function(range) {
+    Plugin.versionParse = function (range) {
         var pattern = /^(\*)|(\^|~|>=|>)?\s*((\d+)\.(\d+)\.(\d+))(-[0-9A-Za-z-+]+)?$/;
 
         if (!pattern.test(range)) {
@@ -309,7 +309,7 @@ var Common = require('./Common');
      * @param range {string} The range string.
      * @return {boolean} `true` if `version` satisfies `range`, otherwise `false`.
      */
-    Plugin.versionSatisfies = function(version, range) {
+    Plugin.versionSatisfies = function (version, range) {
         range = range || '*';
 
         var r = Plugin.versionParse(range),

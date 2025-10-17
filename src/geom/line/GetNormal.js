@@ -23,9 +23,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} The normal of the Line.
  */
-var GetNormal = function (line, out)
-{
-    if (out === undefined) { out = new Point(); }
+var GetNormal = function (line, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var a = Angle(line) - MATH_CONST.TAU;
 

@@ -29,24 +29,25 @@ var SplineCurve = new Class({
 
     initialize:
 
-    function SplineCurve (points)
-    {
-        if (points === undefined) { points = []; }
+        function SplineCurve(points) {
+            if (points === undefined) {
+                points = [];
+            }
 
-        Curve.call(this, 'SplineCurve');
+            Curve.call(this, 'SplineCurve');
 
-        /**
-         * The Vector2 points that configure the curve.
-         *
-         * @name Phaser.Curves.Spline#points
-         * @type {Phaser.Math.Vector2[]}
-         * @default []
-         * @since 3.0.0
-         */
-        this.points = [];
+            /**
+             * The Vector2 points that configure the curve.
+             *
+             * @name Phaser.Curves.Spline#points
+             * @type {Phaser.Math.Vector2[]}
+             * @default []
+             * @since 3.0.0
+             */
+            this.points = [];
 
-        this.addPoints(points);
-    },
+            this.addPoints(points);
+        },
 
     /**
      * Add a list of points to the current list of Vector2 points of the curve.
@@ -58,26 +59,19 @@ var SplineCurve = new Class({
      *
      * @return {this} This curve object.
      */
-    addPoints: function (points)
-    {
-        for (var i = 0; i < points.length; i++)
-        {
+    addPoints: function (points) {
+        for (var i = 0; i < points.length; i++) {
             var p = new Vector2();
 
-            if (typeof points[i] === 'number')
-            {
+            if (typeof points[i] === 'number') {
                 p.x = points[i];
                 p.y = points[i + 1];
                 i++;
-            }
-            else if (Array.isArray(points[i]))
-            {
+            } else if (Array.isArray(points[i])) {
                 //  An array of arrays?
                 p.x = points[i][0];
                 p.y = points[i][1];
-            }
-            else
-            {
+            } else {
                 p.x = points[i].x;
                 p.y = points[i].y;
             }
@@ -99,8 +93,7 @@ var SplineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The new Vector2 added to the curve
      */
-    addPoint: function (x, y)
-    {
+    addPoint: function (x, y) {
         var vec = new Vector2(x, y);
 
         this.points.push(vec);
@@ -120,9 +113,10 @@ var SplineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getStartPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getStartPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return out.copy(this.points[0]);
     },
@@ -137,8 +131,7 @@ var SplineCurve = new Class({
      *
      * @return {number} The curve resolution.
      */
-    getResolution: function (divisions)
-    {
+    getResolution: function (divisions) {
         return divisions * this.points.length;
     },
 
@@ -155,9 +148,10 @@ var SplineCurve = new Class({
      *
      * @return {Phaser.Math.Vector2} The coordinates of the point on the curve. If an `out` object was given this will be returned.
      */
-    getPoint: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getPoint: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         var points = this.points;
 
@@ -183,12 +177,10 @@ var SplineCurve = new Class({
      *
      * @return {Phaser.Types.Curves.JSONCurve} The JSON object containing this curve data.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         var points = [];
 
-        for (var i = 0; i < this.points.length; i++)
-        {
+        for (var i = 0; i < this.points.length; i++) {
             points.push(this.points[i].x);
             points.push(this.points[i].y);
         }
@@ -211,8 +203,7 @@ var SplineCurve = new Class({
  *
  * @return {Phaser.Curves.Spline} The spline curve created.
  */
-SplineCurve.fromJSON = function (data)
-{
+SplineCurve.fromJSON = function (data) {
     return new SplineCurve(data.points);
 };
 

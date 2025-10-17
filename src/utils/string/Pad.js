@@ -34,20 +34,23 @@
  *
  * @return {string} The padded string.
  */
-var Pad = function (str, len, pad, dir)
-{
-    if (len === undefined) { len = 0; }
-    if (pad === undefined) { pad = ' '; }
-    if (dir === undefined) { dir = 3; }
+var Pad = function (str, len, pad, dir) {
+    if (len === undefined) {
+        len = 0;
+    }
+    if (pad === undefined) {
+        pad = ' ';
+    }
+    if (dir === undefined) {
+        dir = 3;
+    }
 
     str = str.toString();
 
     var padlen = 0;
 
-    if (len + 1 >= str.length)
-    {
-        switch (dir)
-        {
+    if (len + 1 >= str.length) {
+        switch (dir) {
             case 1:
                 str = new Array(len + 1 - str.length).join(pad) + str;
                 break;

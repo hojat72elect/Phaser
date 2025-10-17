@@ -20,14 +20,11 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var PlayAnimation = function (items, key, ignoreIfPlaying)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var PlayAnimation = function (items, key, ignoreIfPlaying) {
+    for (var i = 0; i < items.length; i++) {
         var gameObject = items[i];
 
-        if (gameObject.anims)
-        {
+        if (gameObject.anims) {
             gameObject.anims.play(key, ignoreIfPlaying);
         }
     }

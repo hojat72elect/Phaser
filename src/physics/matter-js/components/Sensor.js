@@ -23,8 +23,7 @@ var Sensor = {
      *
      * @return {this} This Game Object instance.
      */
-    setSensor: function (value)
-    {
+    setSensor: function (value) {
         this.body.isSensor = value;
 
         return this;
@@ -38,8 +37,7 @@ var Sensor = {
      *
      * @return {boolean} `true` if the body is a sensor, otherwise `false`.
      */
-    isSensor: function ()
-    {
+    isSensor: function () {
         return this.body.isSensor;
     }
 

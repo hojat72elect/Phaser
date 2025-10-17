@@ -27,51 +27,50 @@ var WebGLProgramWrapper = new Class({
 
     initialize:
 
-    function WebGLProgramWrapper (gl, vertexSource, fragmentSource)
-    {
-        /**
-         * The WebGLProgram being wrapped by this class.
-         *
-         * This property could change at any time.
-         * Therefore, you should never store a reference to this value.
-         * It should only be passed directly to the WebGL API for drawing.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#webGLProgram
-         * @type {?WebGLProgram}
-         * @default null
-         * @since 3.80.0
-         */
-        this.webGLProgram = null;
+        function WebGLProgramWrapper(gl, vertexSource, fragmentSource) {
+            /**
+             * The WebGLProgram being wrapped by this class.
+             *
+             * This property could change at any time.
+             * Therefore, you should never store a reference to this value.
+             * It should only be passed directly to the WebGL API for drawing.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#webGLProgram
+             * @type {?WebGLProgram}
+             * @default null
+             * @since 3.80.0
+             */
+            this.webGLProgram = null;
 
-        /**
-         * The WebGLRenderingContext that owns this WebGLProgram.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.80.0
-         */
-        this.gl = gl;
+            /**
+             * The WebGLRenderingContext that owns this WebGLProgram.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.80.0
+             */
+            this.gl = gl;
 
-        /**
-         * The vertex shader source code as a string.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#vertexSource
-         * @type {string}
-         * @since 3.80.0
-         */
-        this.vertexSource = vertexSource;
+            /**
+             * The vertex shader source code as a string.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#vertexSource
+             * @type {string}
+             * @since 3.80.0
+             */
+            this.vertexSource = vertexSource;
 
-        /**
-         * The fragment shader source code as a string.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#fragmentSource
-         * @type {string}
-         * @since 3.80.0
-         */
-        this.fragmentSource = fragmentSource;
+            /**
+             * The fragment shader source code as a string.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#fragmentSource
+             * @type {string}
+             * @since 3.80.0
+             */
+            this.fragmentSource = fragmentSource;
 
-        this.createResource();
-    },
+            this.createResource();
+        },
 
     /**
      * Creates a WebGLProgram from the given vertex and fragment shaders.
@@ -83,12 +82,10 @@ var WebGLProgramWrapper = new Class({
      * @throws {Error} If the shaders failed to compile or link.
      * @since 3.80.0
      */
-    createResource: function ()
-    {
+    createResource: function () {
         var gl = this.gl;
 
-        if (gl.isContextLost())
-        {
+        if (gl.isContextLost()) {
             // GL state can't be updated right now.
             // `createResource` will run when the context is restored.
             return;
@@ -107,13 +104,11 @@ var WebGLProgramWrapper = new Class({
 
         var failed = 'Shader failed:\n';
 
-        if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
-        {
+        if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) {
             throw new Error('Vertex ' + failed + gl.getShaderInfoLog(vs));
         }
 
-        if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
-        {
+        if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) {
             throw new Error('Fragment ' + failed + gl.getShaderInfoLog(fs));
         }
 
@@ -122,8 +117,7 @@ var WebGLProgramWrapper = new Class({
 
         gl.linkProgram(program);
 
-        if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-        {
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
             throw new Error('Link ' + failed + gl.getProgramInfoLog(program));
         }
 
@@ -138,15 +132,12 @@ var WebGLProgramWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#destroy
      * @since 3.80.0
      */
-    destroy: function ()
-    {
-        if (!this.webGLProgram)
-        {
+    destroy: function () {
+        if (!this.webGLProgram) {
             return;
         }
 
-        if (!this.gl.isContextLost())
-        {
+        if (!this.gl.isContextLost()) {
             this.gl.deleteProgram(this.webGLProgram);
         }
 

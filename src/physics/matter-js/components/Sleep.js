@@ -24,8 +24,7 @@ var Sleep = {
      *
      * @return {this} This Game Object instance.
      */
-    setToSleep: function ()
-    {
+    setToSleep: function () {
         Sleeping.set(this.body, true);
 
         return this;
@@ -39,8 +38,7 @@ var Sleep = {
      *
      * @return {this} This Game Object instance.
      */
-    setAwake: function ()
-    {
+    setAwake: function () {
         Sleeping.set(this.body, false);
 
         return this;
@@ -56,9 +54,10 @@ var Sleep = {
      *
      * @return {this} This Game Object instance.
      */
-    setSleepThreshold: function (value)
-    {
-        if (value === undefined) { value = 60; }
+    setSleepThreshold: function (value) {
+        if (value === undefined) {
+            value = 60;
+        }
 
         this.body.sleepThreshold = value;
 
@@ -81,8 +80,7 @@ var Sleep = {
      *
      * @return {this} This Game Object instance.
      */
-    setSleepEvents: function (start, end)
-    {
+    setSleepEvents: function (start, end) {
         this.setSleepStartEvent(start);
         this.setSleepEndEvent(end);
 
@@ -99,19 +97,14 @@ var Sleep = {
      *
      * @return {this} This Game Object instance.
      */
-    setSleepStartEvent: function (value)
-    {
-        if (value)
-        {
+    setSleepStartEvent: function (value) {
+        if (value) {
             var world = this.world;
 
-            MatterEvents.on(this.body, 'sleepStart', function (event)
-            {
+            MatterEvents.on(this.body, 'sleepStart', function (event) {
                 world.emit(Events.SLEEP_START, event, this);
             });
-        }
-        else
-        {
+        } else {
             MatterEvents.off(this.body, 'sleepStart');
         }
 
@@ -128,19 +121,14 @@ var Sleep = {
      *
      * @return {this} This Game Object instance.
      */
-    setSleepEndEvent: function (value)
-    {
-        if (value)
-        {
+    setSleepEndEvent: function (value) {
+        if (value) {
             var world = this.world;
 
-            MatterEvents.on(this.body, 'sleepEnd', function (event)
-            {
+            MatterEvents.on(this.body, 'sleepEnd', function (event) {
                 world.emit(Events.SLEEP_END, event, this);
             });
-        }
-        else
-        {
+        } else {
             MatterEvents.off(this.body, 'sleepEnd');
         }
 

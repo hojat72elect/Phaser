@@ -18,8 +18,7 @@
  *
  * @return {Phaser.Geom.Circle} The destination Circle.
  */
-var CopyFrom = function (source, dest)
-{
+var CopyFrom = function (source, dest) {
     return dest.setTo(source.x, source.y, source.radius);
 };
 

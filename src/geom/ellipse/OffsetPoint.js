@@ -17,8 +17,7 @@
  *
  * @return {Phaser.Geom.Ellipse} The Ellipse that was offset.
  */
-var OffsetPoint = function (ellipse, point)
-{
+var OffsetPoint = function (ellipse, point) {
     ellipse.x += point.x;
     ellipse.y += point.y;
 

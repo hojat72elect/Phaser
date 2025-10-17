@@ -19,10 +19,10 @@
  * Using the category/mask rules, two bodies `A` and `B` collide if each includes the other's
  * category in its mask, i.e. `(categoryA & maskB) !== 0` and `(categoryB & maskA) !== 0`
  * are both true.
- * 
+ *
  * @typedef {object} Phaser.Types.Physics.Matter.MatterCollisionFilter
  * @since 3.22.0
- * 
+ *
  * @property {number} [category=0x0001] - A bit field that specifies the collision category this body belongs to. The category value should have only one bit set, for example `0x0001`. This means there are up to 32 unique collision categories available.
  * @property {number} [mask=0xFFFFFFFF] - A bit mask that specifies the collision categories this body may collide with.
  * @property {number} [group=0] - An Integer `Number`, that specifies the collision group this body belongs to.

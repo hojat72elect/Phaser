@@ -15,9 +15,10 @@
  *
  * @return {Phaser.Math.Vector4} The given Vector.
  */
-var RandomXYZW = function (vec4, scale)
-{
-    if (scale === undefined) { scale = 1; }
+var RandomXYZW = function (vec4, scale) {
+    if (scale === undefined) {
+        scale = 1;
+    }
 
     vec4.x = (Math.random() * 2 - 1) * scale;
     vec4.y = (Math.random() * 2 - 1) * scale;

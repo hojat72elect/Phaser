@@ -20,10 +20,13 @@ var RunCull = require('./RunCull');
  *
  * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects.
  */
-var StaggeredCullTiles = function (layer, camera, outputArray, renderOrder)
-{
-    if (outputArray === undefined) { outputArray = []; }
-    if (renderOrder === undefined) { renderOrder = 0; }
+var StaggeredCullTiles = function (layer, camera, outputArray, renderOrder) {
+    if (outputArray === undefined) {
+        outputArray = [];
+    }
+    if (renderOrder === undefined) {
+        renderOrder = 0;
+    }
 
     outputArray.length = 0;
 
@@ -34,8 +37,7 @@ var StaggeredCullTiles = function (layer, camera, outputArray, renderOrder)
 
     var bounds = CullBounds(layer, camera);
 
-    if (tilemapLayer.skipCull && tilemapLayer.scrollFactorX === 1 && tilemapLayer.scrollFactorY === 1)
-    {
+    if (tilemapLayer.skipCull && tilemapLayer.scrollFactorX === 1 && tilemapLayer.scrollFactorY === 1) {
         bounds.left = 0;
         bounds.right = layer.width;
         bounds.top = 0;

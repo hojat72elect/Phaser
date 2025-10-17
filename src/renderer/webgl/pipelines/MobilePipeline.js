@@ -61,37 +61,36 @@ var MobilePipeline = new Class({
 
     initialize:
 
-    function MobilePipeline (config)
-    {
-        config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS);
-        config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS);
-        config.attributes = GetFastValue(config, 'attributes', [
-            {
-                name: 'inPosition',
-                size: 2
-            },
-            {
-                name: 'inTexCoord',
-                size: 2
-            },
-            {
-                name: 'inTexId'
-            },
-            {
-                name: 'inTintEffect'
-            },
-            {
-                name: 'inTint',
-                size: 4,
-                type: WEBGL_CONST.UNSIGNED_BYTE,
-                normalized: true
-            }
-        ]);
-        config.forceZero = true;
-        config.resizeUniform = 'uResolution';
+        function MobilePipeline(config) {
+            config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS);
+            config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS);
+            config.attributes = GetFastValue(config, 'attributes', [
+                {
+                    name: 'inPosition',
+                    size: 2
+                },
+                {
+                    name: 'inTexCoord',
+                    size: 2
+                },
+                {
+                    name: 'inTexId'
+                },
+                {
+                    name: 'inTintEffect'
+                },
+                {
+                    name: 'inTint',
+                    size: 4,
+                    type: WEBGL_CONST.UNSIGNED_BYTE,
+                    normalized: true
+                }
+            ]);
+            config.forceZero = true;
+            config.resizeUniform = 'uResolution';
 
-        MultiPipeline.call(this, config);
-    },
+            MultiPipeline.call(this, config);
+        },
 
     /**
      * Called when the Game has fully booted and the Renderer has finished setting up.
@@ -102,8 +101,7 @@ var MobilePipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.MobilePipeline#boot
      * @since 3.60.0
      */
-    boot: function ()
-    {
+    boot: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         var renderer = this.renderer;

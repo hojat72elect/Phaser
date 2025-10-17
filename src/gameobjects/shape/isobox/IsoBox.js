@@ -49,92 +49,105 @@ var IsoBox = new Class({
 
     initialize:
 
-    function IsoBox (scene, x, y, size, height, fillTop, fillLeft, fillRight)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (size === undefined) { size = 48; }
-        if (height === undefined) { height = 32; }
-        if (fillTop === undefined) { fillTop = 0xeeeeee; }
-        if (fillLeft === undefined) { fillLeft = 0x999999; }
-        if (fillRight === undefined) { fillRight = 0xcccccc; }
+        function IsoBox(scene, x, y, size, height, fillTop, fillLeft, fillRight) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (size === undefined) {
+                size = 48;
+            }
+            if (height === undefined) {
+                height = 32;
+            }
+            if (fillTop === undefined) {
+                fillTop = 0xeeeeee;
+            }
+            if (fillLeft === undefined) {
+                fillLeft = 0x999999;
+            }
+            if (fillRight === undefined) {
+                fillRight = 0xcccccc;
+            }
 
-        Shape.call(this, scene, 'IsoBox', null);
+            Shape.call(this, scene, 'IsoBox', null);
 
-        /**
-         * The projection level of the iso box. Change this to change the 'angle' at which you are looking at the box.
-         *
-         * @name Phaser.GameObjects.IsoBox#projection
-         * @type {number}
-         * @default 4
-         * @since 3.13.0
-         */
-        this.projection = 4;
+            /**
+             * The projection level of the iso box. Change this to change the 'angle' at which you are looking at the box.
+             *
+             * @name Phaser.GameObjects.IsoBox#projection
+             * @type {number}
+             * @default 4
+             * @since 3.13.0
+             */
+            this.projection = 4;
 
-        /**
-         * The color used to fill in the top of the iso box.
-         *
-         * @name Phaser.GameObjects.IsoBox#fillTop
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillTop = fillTop;
+            /**
+             * The color used to fill in the top of the iso box.
+             *
+             * @name Phaser.GameObjects.IsoBox#fillTop
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillTop = fillTop;
 
-        /**
-         * The color used to fill in the left-facing side of the iso box.
-         *
-         * @name Phaser.GameObjects.IsoBox#fillLeft
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillLeft = fillLeft;
+            /**
+             * The color used to fill in the left-facing side of the iso box.
+             *
+             * @name Phaser.GameObjects.IsoBox#fillLeft
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillLeft = fillLeft;
 
-        /**
-         * The color used to fill in the right-facing side of the iso box.
-         *
-         * @name Phaser.GameObjects.IsoBox#fillRight
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillRight = fillRight;
+            /**
+             * The color used to fill in the right-facing side of the iso box.
+             *
+             * @name Phaser.GameObjects.IsoBox#fillRight
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillRight = fillRight;
 
-        /**
-         * Controls if the top-face of the iso box be rendered.
-         *
-         * @name Phaser.GameObjects.IsoBox#showTop
-         * @type {boolean}
-         * @default true
-         * @since 3.13.0
-         */
-        this.showTop = true;
+            /**
+             * Controls if the top-face of the iso box be rendered.
+             *
+             * @name Phaser.GameObjects.IsoBox#showTop
+             * @type {boolean}
+             * @default true
+             * @since 3.13.0
+             */
+            this.showTop = true;
 
-        /**
-         * Controls if the left-face of the iso box be rendered.
-         *
-         * @name Phaser.GameObjects.IsoBox#showLeft
-         * @type {boolean}
-         * @default true
-         * @since 3.13.0
-         */
-        this.showLeft = true;
+            /**
+             * Controls if the left-face of the iso box be rendered.
+             *
+             * @name Phaser.GameObjects.IsoBox#showLeft
+             * @type {boolean}
+             * @default true
+             * @since 3.13.0
+             */
+            this.showLeft = true;
 
-        /**
-         * Controls if the right-face of the iso box be rendered.
-         *
-         * @name Phaser.GameObjects.IsoBox#showRight
-         * @type {boolean}
-         * @default true
-         * @since 3.13.0
-         */
-        this.showRight = true;
+            /**
+             * Controls if the right-face of the iso box be rendered.
+             *
+             * @name Phaser.GameObjects.IsoBox#showRight
+             * @type {boolean}
+             * @default true
+             * @since 3.13.0
+             */
+            this.showRight = true;
 
-        this.isFilled = true;
+            this.isFilled = true;
 
-        this.setPosition(x, y);
-        this.setSize(size, height);
+            this.setPosition(x, y);
+            this.setSize(size, height);
 
-        this.updateDisplayOrigin();
-    },
+            this.updateDisplayOrigin();
+        },
 
     /**
      * Sets the projection level of the iso box. Change this to change the 'angle' at which you are looking at the box.
@@ -147,8 +160,7 @@ var IsoBox = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setProjection: function (value)
-    {
+    setProjection: function (value) {
         this.projection = value;
 
         return this;
@@ -167,11 +179,16 @@ var IsoBox = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setFaces: function (showTop, showLeft, showRight)
-    {
-        if (showTop === undefined) { showTop = true; }
-        if (showLeft === undefined) { showLeft = true; }
-        if (showRight === undefined) { showRight = true; }
+    setFaces: function (showTop, showLeft, showRight) {
+        if (showTop === undefined) {
+            showTop = true;
+        }
+        if (showLeft === undefined) {
+            showLeft = true;
+        }
+        if (showRight === undefined) {
+            showRight = true;
+        }
 
         this.showTop = showTop;
         this.showLeft = showLeft;
@@ -193,8 +210,7 @@ var IsoBox = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setFillStyle: function (fillTop, fillLeft, fillRight)
-    {
+    setFillStyle: function (fillTop, fillLeft, fillRight) {
         this.fillTop = fillTop;
         this.fillLeft = fillLeft;
         this.fillRight = fillRight;

@@ -46,51 +46,58 @@ var Shine = new Class({
 
     initialize:
 
-    function Shine (gameObject, speed, lineWidth, gradient, reveal)
-    {
-        if (speed === undefined) { speed = 0.5; }
-        if (lineWidth === undefined) { lineWidth = 0.5; }
-        if (gradient === undefined) { gradient = 3; }
-        if (reveal === undefined) { reveal = false; }
+        function Shine(gameObject, speed, lineWidth, gradient, reveal) {
+            if (speed === undefined) {
+                speed = 0.5;
+            }
+            if (lineWidth === undefined) {
+                lineWidth = 0.5;
+            }
+            if (gradient === undefined) {
+                gradient = 3;
+            }
+            if (reveal === undefined) {
+                reveal = false;
+            }
 
-        Controller.call(this, FX_CONST.SHINE, gameObject);
+            Controller.call(this, FX_CONST.SHINE, gameObject);
 
-        /**
-         * The speed of the Shine effect.
-         *
-         * @name Phaser.FX.Shine#speed
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.speed = speed;
+            /**
+             * The speed of the Shine effect.
+             *
+             * @name Phaser.FX.Shine#speed
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.speed = speed;
 
-        /**
-         * The line width of the Shine effect.
-         *
-         * @name Phaser.FX.Shine#lineWidth
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.lineWidth = lineWidth;
+            /**
+             * The line width of the Shine effect.
+             *
+             * @name Phaser.FX.Shine#lineWidth
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.lineWidth = lineWidth;
 
-        /**
-         * The gradient of the Shine effect.
-         *
-         * @name Phaser.FX.Shine#gradient
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.gradient = gradient;
+            /**
+             * The gradient of the Shine effect.
+             *
+             * @name Phaser.FX.Shine#gradient
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.gradient = gradient;
 
-        /**
-         * Does this Shine effect reveal or get added to its target?
-         *
-         * @name Phaser.FX.Shine#reveal
-         * @type {boolean}
-         * @since 3.60.0
-         */
-        this.reveal = reveal;
-    }
+            /**
+             * Does this Shine effect reveal or get added to its target?
+             *
+             * @name Phaser.FX.Shine#reveal
+             * @type {boolean}
+             * @since 3.60.0
+             */
+            this.reveal = reveal;
+        }
 
 });
 

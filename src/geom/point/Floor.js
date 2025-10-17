@@ -16,8 +16,7 @@
  *
  * @return {Phaser.Geom.Point} The Point with `Math.floor()` applied to its coordinates.
  */
-var Floor = function (point)
-{
+var Floor = function (point) {
     return point.setTo(Math.floor(point.x), Math.floor(point.y));
 };
 

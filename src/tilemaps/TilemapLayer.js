@@ -16,7 +16,7 @@ var Vector2 = require('../math/Vector2');
  * @classdesc
  * A Tilemap Layer is a Game Object that renders LayerData from a Tilemap when used in combination
  * with one, or more, Tilesets.
- * 
+ *
  * Do not add TilemapLayers to Containers, they are stand-alone display objects.
  *
  * @class TilemapLayer
@@ -71,273 +71,272 @@ var TilemapLayer = new Class({
 
     initialize:
 
-    function TilemapLayer (scene, tilemap, layerIndex, tileset, x, y)
-    {
-        GameObject.call(this, scene, 'TilemapLayer');
+        function TilemapLayer(scene, tilemap, layerIndex, tileset, x, y) {
+            GameObject.call(this, scene, 'TilemapLayer');
 
-        /**
-         * Used internally by physics system to perform fast type checks.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#isTilemap
-         * @type {boolean}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.isTilemap = true;
+            /**
+             * Used internally by physics system to perform fast type checks.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#isTilemap
+             * @type {boolean}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.isTilemap = true;
 
-        /**
-         * The Tilemap that this layer is a part of.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#tilemap
-         * @type {Phaser.Tilemaps.Tilemap}
-         * @since 3.50.0
-         */
-        this.tilemap = tilemap;
+            /**
+             * The Tilemap that this layer is a part of.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#tilemap
+             * @type {Phaser.Tilemaps.Tilemap}
+             * @since 3.50.0
+             */
+            this.tilemap = tilemap;
 
-        /**
-         * The index of the LayerData associated with this layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#layerIndex
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.layerIndex = layerIndex;
+            /**
+             * The index of the LayerData associated with this layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#layerIndex
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.layerIndex = layerIndex;
 
-        /**
-         * The LayerData associated with this layer. LayerData can only be associated with one
-         * tilemap layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#layer
-         * @type {Phaser.Tilemaps.LayerData}
-         * @since 3.50.0
-         */
-        this.layer = tilemap.layers[layerIndex];
+            /**
+             * The LayerData associated with this layer. LayerData can only be associated with one
+             * tilemap layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#layer
+             * @type {Phaser.Tilemaps.LayerData}
+             * @since 3.50.0
+             */
+            this.layer = tilemap.layers[layerIndex];
 
-        // Link the LayerData with this static tilemap layer
-        this.layer.tilemapLayer = this;
+            // Link the LayerData with this static tilemap layer
+            this.layer.tilemapLayer = this;
 
-        /**
-         * An array of `Tileset` objects associated with this layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#tileset
-         * @type {Phaser.Tilemaps.Tileset[]}
-         * @since 3.50.0
-         */
-        this.tileset = [];
+            /**
+             * An array of `Tileset` objects associated with this layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#tileset
+             * @type {Phaser.Tilemaps.Tileset[]}
+             * @since 3.50.0
+             */
+            this.tileset = [];
 
-        /**
-         * The total number of tiles drawn by the renderer in the last frame.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#tilesDrawn
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.tilesDrawn = 0;
+            /**
+             * The total number of tiles drawn by the renderer in the last frame.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#tilesDrawn
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.tilesDrawn = 0;
 
-        /**
-         * The total number of tiles in this layer. Updated every frame.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#tilesTotal
-         * @type {number}
-         * @readonly
-         * @since 3.50.0
-         */
-        this.tilesTotal = this.layer.width * this.layer.height;
+            /**
+             * The total number of tiles in this layer. Updated every frame.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#tilesTotal
+             * @type {number}
+             * @readonly
+             * @since 3.50.0
+             */
+            this.tilesTotal = this.layer.width * this.layer.height;
 
-        /**
-         * Used internally during rendering. This holds the tiles that are visible within the Camera.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#culledTiles
-         * @type {Phaser.Tilemaps.Tile[]}
-         * @since 3.50.0
-         */
-        this.culledTiles = [];
+            /**
+             * Used internally during rendering. This holds the tiles that are visible within the Camera.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#culledTiles
+             * @type {Phaser.Tilemaps.Tile[]}
+             * @since 3.50.0
+             */
+            this.culledTiles = [];
 
-        /**
-         * You can control if the camera should cull tiles on this layer before rendering them or not.
-         *
-         * By default the camera will try to cull the tiles in this layer, to avoid over-drawing to the renderer.
-         *
-         * However, there are some instances when you may wish to disable this, and toggling this flag allows
-         * you to do so. Also see `setSkipCull` for a chainable method that does the same thing.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#skipCull
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.skipCull = false;
+            /**
+             * You can control if the camera should cull tiles on this layer before rendering them or not.
+             *
+             * By default the camera will try to cull the tiles in this layer, to avoid over-drawing to the renderer.
+             *
+             * However, there are some instances when you may wish to disable this, and toggling this flag allows
+             * you to do so. Also see `setSkipCull` for a chainable method that does the same thing.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#skipCull
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.skipCull = false;
 
-        /**
-         * The amount of extra tiles to add into the cull rectangle when calculating its horizontal size.
-         *
-         * See the method `setCullPadding` for more details.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#cullPaddingX
-         * @type {number}
-         * @default 1
-         * @since 3.50.0
-         */
-        this.cullPaddingX = 1;
+            /**
+             * The amount of extra tiles to add into the cull rectangle when calculating its horizontal size.
+             *
+             * See the method `setCullPadding` for more details.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#cullPaddingX
+             * @type {number}
+             * @default 1
+             * @since 3.50.0
+             */
+            this.cullPaddingX = 1;
 
-        /**
-         * The amount of extra tiles to add into the cull rectangle when calculating its vertical size.
-         *
-         * See the method `setCullPadding` for more details.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#cullPaddingY
-         * @type {number}
-         * @default 1
-         * @since 3.50.0
-         */
-        this.cullPaddingY = 1;
+            /**
+             * The amount of extra tiles to add into the cull rectangle when calculating its vertical size.
+             *
+             * See the method `setCullPadding` for more details.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#cullPaddingY
+             * @type {number}
+             * @default 1
+             * @since 3.50.0
+             */
+            this.cullPaddingY = 1;
 
-        /**
-         * The callback that is invoked when the tiles are culled.
-         *
-         * It will call a different function based on the map orientation:
-         *
-         * Orthogonal (the default) is `TilemapComponents.CullTiles`
-         * Isometric is `TilemapComponents.IsometricCullTiles`
-         * Hexagonal is `TilemapComponents.HexagonalCullTiles`
-         * Staggered is `TilemapComponents.StaggeredCullTiles`
-         *
-         * However, you can override this to call any function you like.
-         *
-         * It will be sent 4 arguments:
-         *
-         * 1. The Phaser.Tilemaps.LayerData object for this Layer
-         * 2. The Camera that is culling the layer. You can check its `dirty` property to see if it has changed since the last cull.
-         * 3. A reference to the `culledTiles` array, which should be used to store the tiles you want rendered.
-         * 4. The Render Order constant.
-         *
-         * See the `TilemapComponents.CullTiles` source code for details on implementing your own culling system.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#cullCallback
-         * @type {function}
-         * @since 3.50.0
-         */
-        this.cullCallback = TilemapComponents.GetCullTilesFunction(this.layer.orientation);
+            /**
+             * The callback that is invoked when the tiles are culled.
+             *
+             * It will call a different function based on the map orientation:
+             *
+             * Orthogonal (the default) is `TilemapComponents.CullTiles`
+             * Isometric is `TilemapComponents.IsometricCullTiles`
+             * Hexagonal is `TilemapComponents.HexagonalCullTiles`
+             * Staggered is `TilemapComponents.StaggeredCullTiles`
+             *
+             * However, you can override this to call any function you like.
+             *
+             * It will be sent 4 arguments:
+             *
+             * 1. The Phaser.Tilemaps.LayerData object for this Layer
+             * 2. The Camera that is culling the layer. You can check its `dirty` property to see if it has changed since the last cull.
+             * 3. A reference to the `culledTiles` array, which should be used to store the tiles you want rendered.
+             * 4. The Render Order constant.
+             *
+             * See the `TilemapComponents.CullTiles` source code for details on implementing your own culling system.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#cullCallback
+             * @type {function}
+             * @since 3.50.0
+             */
+            this.cullCallback = TilemapComponents.GetCullTilesFunction(this.layer.orientation);
 
-        /**
-         * The rendering (draw) order of the tiles in this layer.
-         *
-         * The default is 0 which is 'right-down', meaning it will draw the tiles starting from the top-left,
-         * drawing to the right and then moving down to the next row.
-         *
-         * The draw orders are:
-         *
-         * 0 = right-down
-         * 1 = left-down
-         * 2 = right-up
-         * 3 = left-up
-         *
-         * This can be changed via the `setRenderOrder` method.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#_renderOrder
-         * @type {number}
-         * @default 0
-         * @private
-         * @since 3.50.0
-         */
-        this._renderOrder = 0;
+            /**
+             * The rendering (draw) order of the tiles in this layer.
+             *
+             * The default is 0 which is 'right-down', meaning it will draw the tiles starting from the top-left,
+             * drawing to the right and then moving down to the next row.
+             *
+             * The draw orders are:
+             *
+             * 0 = right-down
+             * 1 = left-down
+             * 2 = right-up
+             * 3 = left-up
+             *
+             * This can be changed via the `setRenderOrder` method.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#_renderOrder
+             * @type {number}
+             * @default 0
+             * @private
+             * @since 3.50.0
+             */
+            this._renderOrder = 0;
 
-        /**
-         * An array holding the mapping between the tile indexes and the tileset they belong to.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#gidMap
-         * @type {Phaser.Tilemaps.Tileset[]}
-         * @since 3.50.0
-         */
-        this.gidMap = [];
+            /**
+             * An array holding the mapping between the tile indexes and the tileset they belong to.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#gidMap
+             * @type {Phaser.Tilemaps.Tileset[]}
+             * @since 3.50.0
+             */
+            this.gidMap = [];
 
-        /**
-         * A temporary Vector2 used in the tile coordinate methods.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#tempVec
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.60.0
-         */
-        this.tempVec = new Vector2();
+            /**
+             * A temporary Vector2 used in the tile coordinate methods.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#tempVec
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.60.0
+             */
+            this.tempVec = new Vector2();
 
-        /**
-         * The Tilemap Layer Collision Category.
-         *
-         * This is exclusively used by the Arcade Physics system.
-         *
-         * This can be set to any valid collision bitfield value.
-         *
-         * See the `setCollisionCategory` method for more details.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#collisionCategory
-         * @type {number}
-         * @since 3.70.0
-         */
-        this.collisionCategory = 0x0001;
+            /**
+             * The Tilemap Layer Collision Category.
+             *
+             * This is exclusively used by the Arcade Physics system.
+             *
+             * This can be set to any valid collision bitfield value.
+             *
+             * See the `setCollisionCategory` method for more details.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#collisionCategory
+             * @type {number}
+             * @since 3.70.0
+             */
+            this.collisionCategory = 0x0001;
 
-        /**
-         * The Tilemap Layer Collision Mask.
-         *
-         * This is exclusively used by the Arcade Physics system.
-         *
-         * See the `setCollidesWith` method for more details.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#collisionMask
-         * @type {number}
-         * @since 3.70.0
-         */
-        this.collisionMask = 1;
+            /**
+             * The Tilemap Layer Collision Mask.
+             *
+             * This is exclusively used by the Arcade Physics system.
+             *
+             * See the `setCollidesWith` method for more details.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#collisionMask
+             * @type {number}
+             * @since 3.70.0
+             */
+            this.collisionMask = 1;
 
-        /**
-         * The horizontal origin of this Tilemap Layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#originX
-         * @type {number}
-         * @default 0
-         * @readOnly
-         * @since 3.0.0
-         */
+            /**
+             * The horizontal origin of this Tilemap Layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#originX
+             * @type {number}
+             * @default 0
+             * @readOnly
+             * @since 3.0.0
+             */
 
-        /**
-         * The vertical origin of this Tilemap Layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#originY
-         * @type {number}
-         * @default 0
-         * @readOnly
-         * @since 3.0.0
-         */
+            /**
+             * The vertical origin of this Tilemap Layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#originY
+             * @type {number}
+             * @default 0
+             * @readOnly
+             * @since 3.0.0
+             */
 
-        /**
-         * The horizontal display origin of this Tilemap Layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#displayOriginX
-         * @type {number}
-         * @default 0
-         * @readOnly
-         * @since 3.0.0
-         */
+            /**
+             * The horizontal display origin of this Tilemap Layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#displayOriginX
+             * @type {number}
+             * @default 0
+             * @readOnly
+             * @since 3.0.0
+             */
 
-        /**
-         * The vertical display origin of this Tilemap Layer.
-         *
-         * @name Phaser.Tilemaps.TilemapLayer#displayOriginY
-         * @type {number}
-         * @default 0
-         * @readOnly
-         * @since 3.0.0
-         */
+            /**
+             * The vertical display origin of this Tilemap Layer.
+             *
+             * @name Phaser.Tilemaps.TilemapLayer#displayOriginY
+             * @type {number}
+             * @default 0
+             * @readOnly
+             * @since 3.0.0
+             */
 
-        this.setTilesets(tileset);
-        this.setAlpha(this.layer.alpha);
-        this.setPosition(x, y);
-        this.setOrigin(0, 0);
-        this.setSize(tilemap.tileWidth * this.layer.width, tilemap.tileHeight * this.layer.height);
+            this.setTilesets(tileset);
+            this.setAlpha(this.layer.alpha);
+            this.setPosition(x, y);
+            this.setOrigin(0, 0);
+            this.setSize(tilemap.tileWidth * this.layer.width, tilemap.tileHeight * this.layer.height);
 
-        this.initPipeline();
-        this.initPostPipeline(false);
-    },
+            this.initPipeline();
+            this.initPostPipeline(false);
+        },
 
     /**
      * Populates the internal `tileset` array with the Tileset references this Layer requires for rendering.
@@ -348,34 +347,28 @@ var TilemapLayer = new Class({
      *
      * @param {(string|string[]|Phaser.Tilemaps.Tileset|Phaser.Tilemaps.Tileset[])} tileset - The tileset, or an array of tilesets, used to render this layer. Can be a string or a Tileset object.
      */
-    setTilesets: function (tilesets)
-    {
+    setTilesets: function (tilesets) {
         var gidMap = [];
         var setList = [];
         var map = this.tilemap;
 
-        if (!Array.isArray(tilesets))
-        {
-            tilesets = [ tilesets ];
+        if (!Array.isArray(tilesets)) {
+            tilesets = [tilesets];
         }
 
-        for (var i = 0; i < tilesets.length; i++)
-        {
+        for (var i = 0; i < tilesets.length; i++) {
             var tileset = tilesets[i];
 
-            if (typeof tileset === 'string')
-            {
+            if (typeof tileset === 'string') {
                 tileset = map.getTileset(tileset);
             }
 
-            if (tileset)
-            {
+            if (tileset) {
                 setList.push(tileset);
 
                 var s = tileset.firstgid;
 
-                for (var t = 0; t < tileset.total; t++)
-                {
+                for (var t = 0; t < tileset.total; t++) {
                     gidMap[s + t] = tileset;
                 }
             }
@@ -410,17 +403,14 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setRenderOrder: function (renderOrder)
-    {
-        var orders = [ 'right-down', 'left-down', 'right-up', 'left-up' ];
+    setRenderOrder: function (renderOrder) {
+        var orders = ['right-down', 'left-down', 'right-up', 'left-up'];
 
-        if (typeof renderOrder === 'string')
-        {
+        if (typeof renderOrder === 'string') {
             renderOrder = orders.indexOf(renderOrder);
         }
 
-        if (renderOrder >= 0 && renderOrder < 4)
-        {
+        if (renderOrder >= 0 && renderOrder < 4) {
             this._renderOrder = renderOrder;
         }
 
@@ -440,8 +430,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    calculateFacesAt: function (tileX, tileY)
-    {
+    calculateFacesAt: function (tileX, tileY) {
         TilemapComponents.CalculateFacesAt(tileX, tileY, this.layer);
 
         return this;
@@ -462,8 +451,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    calculateFacesWithin: function (tileX, tileY, width, height)
-    {
+    calculateFacesWithin: function (tileX, tileY, width, height) {
         TilemapComponents.CalculateFacesWithin(tileX, tileY, width, height, this.layer);
 
         return this;
@@ -489,8 +477,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.GameObjects.Sprite[]} An array of the Sprites that were created.
      */
-    createFromTiles: function (indexes, replacements, spriteConfig, scene, camera)
-    {
+    createFromTiles: function (indexes, replacements, spriteConfig, scene, camera) {
         return TilemapComponents.CreateFromTiles(indexes, replacements, spriteConfig, scene, camera, this.layer);
     },
 
@@ -505,8 +492,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects to render.
      */
-    cull: function (camera)
-    {
+    cull: function (camera) {
         return this.cullCallback(this.layer, camera, this.culledTiles, this._renderOrder);
     },
 
@@ -528,8 +514,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    copy: function (srcTileX, srcTileY, width, height, destTileX, destTileY, recalculateFaces)
-    {
+    copy: function (srcTileX, srcTileY, width, height, destTileX, destTileY, recalculateFaces) {
         TilemapComponents.Copy(srcTileX, srcTileY, width, height, destTileX, destTileY, recalculateFaces, this.layer);
 
         return this;
@@ -552,8 +537,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    fill: function (index, tileX, tileY, width, height, recalculateFaces)
-    {
+    fill: function (index, tileX, tileY, width, height, recalculateFaces) {
         TilemapComponents.Fill(index, tileX, tileY, width, height, recalculateFaces, this.layer);
 
         return this;
@@ -579,8 +563,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects.
      */
-    filterTiles: function (callback, context, tileX, tileY, width, height, filteringOptions)
-    {
+    filterTiles: function (callback, context, tileX, tileY, width, height, filteringOptions) {
         return TilemapComponents.FilterTiles(callback, context, tileX, tileY, width, height, filteringOptions, this.layer);
     },
 
@@ -600,8 +583,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The first matching Tile object.
      */
-    findByIndex: function (findIndex, skip, reverse)
-    {
+    findByIndex: function (findIndex, skip, reverse) {
         return TilemapComponents.FindByIndex(findIndex, skip, reverse, this.layer);
     },
 
@@ -623,8 +605,7 @@ var TilemapLayer = new Class({
      *
      * @return {?Phaser.Tilemaps.Tile} The first Tile found at the given location.
      */
-    findTile: function (callback, context, tileX, tileY, width, height, filteringOptions)
-    {
+    findTile: function (callback, context, tileX, tileY, width, height, filteringOptions) {
         return TilemapComponents.FindTile(callback, context, tileX, tileY, width, height, filteringOptions, this.layer);
     },
 
@@ -645,8 +626,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    forEachTile: function (callback, context, tileX, tileY, width, height, filteringOptions)
-    {
+    forEachTile: function (callback, context, tileX, tileY, width, height, filteringOptions) {
         TilemapComponents.ForEachTile(callback, context, tileX, tileY, width, height, filteringOptions, this.layer);
 
         return this;
@@ -677,12 +657,12 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setTint: function (tint, tileX, tileY, width, height, filteringOptions)
-    {
-        if (tint === undefined) { tint = 0xffffff; }
+    setTint: function (tint, tileX, tileY, width, height, filteringOptions) {
+        if (tint === undefined) {
+            tint = 0xffffff;
+        }
 
-        var tintTile = function (tile)
-        {
+        var tintTile = function (tile) {
             tile.tint = tint;
             tile.tintFill = false;
         };
@@ -715,12 +695,12 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setTintFill: function (tint, tileX, tileY, width, height, filteringOptions)
-    {
-        if (tint === undefined) { tint = 0xffffff; }
+    setTintFill: function (tint, tileX, tileY, width, height, filteringOptions) {
+        if (tint === undefined) {
+            tint = 0xffffff;
+        }
 
-        var tintTile = function (tile)
-        {
+        var tintTile = function (tile) {
             tile.tint = tint;
             tile.tintFill = true;
         };
@@ -740,8 +720,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The Tile at the given coordinates or null if no tile was found or the coordinates were invalid.
      */
-    getTileAt: function (tileX, tileY, nonNull)
-    {
+    getTileAt: function (tileX, tileY, nonNull) {
         return TilemapComponents.GetTileAt(tileX, tileY, nonNull, this.layer);
     },
 
@@ -758,8 +737,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The tile at the given coordinates or null if no tile was found or the coordinates were invalid.
      */
-    getTileAtWorldXY: function (worldX, worldY, nonNull, camera)
-    {
+    getTileAtWorldXY: function (worldX, worldY, nonNull, camera) {
         return TilemapComponents.GetTileAtWorldXY(worldX, worldY, nonNull, camera, this.layer);
     },
 
@@ -777,9 +755,10 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The tile at the given coordinates or null if no tile was found or the coordinates were invalid.
      */
-    getIsoTileAtWorldXY: function (worldX, worldY, originTop, nonNull, camera)
-    {
-        if (originTop === undefined) { originTop = true; }
+    getIsoTileAtWorldXY: function (worldX, worldY, originTop, nonNull, camera) {
+        if (originTop === undefined) {
+            originTop = true;
+        }
 
         var point = this.tempVec;
 
@@ -802,8 +781,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects found within the area.
      */
-    getTilesWithin: function (tileX, tileY, width, height, filteringOptions)
-    {
+    getTilesWithin: function (tileX, tileY, width, height, filteringOptions) {
         return TilemapComponents.GetTilesWithin(tileX, tileY, width, height, filteringOptions, this.layer);
     },
 
@@ -820,8 +798,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects found within the shape.
      */
-    getTilesWithinShape: function (shape, filteringOptions, camera)
-    {
+    getTilesWithinShape: function (shape, filteringOptions, camera) {
         return TilemapComponents.GetTilesWithinShape(shape, filteringOptions, camera, this.layer);
     },
 
@@ -840,8 +817,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile[]} An array of Tile objects found within the area.
      */
-    getTilesWithinWorldXY: function (worldX, worldY, width, height, filteringOptions, camera)
-    {
+    getTilesWithinWorldXY: function (worldX, worldY, width, height, filteringOptions, camera) {
         return TilemapComponents.GetTilesWithinWorldXY(worldX, worldY, width, height, filteringOptions, camera, this.layer);
     },
 
@@ -857,8 +833,7 @@ var TilemapLayer = new Class({
      *
      * @return {boolean} `true` if a tile was found at the given location, otherwise `false`.
      */
-    hasTileAt: function (tileX, tileY)
-    {
+    hasTileAt: function (tileX, tileY) {
         return TilemapComponents.HasTileAt(tileX, tileY, this.layer);
     },
 
@@ -875,8 +850,7 @@ var TilemapLayer = new Class({
      *
      * @return {boolean} `true` if a tile was found at the given location, otherwise `false`.
      */
-    hasTileAtWorldXY: function (worldX, worldY, camera)
-    {
+    hasTileAtWorldXY: function (worldX, worldY, camera) {
         return TilemapComponents.HasTileAtWorldXY(worldX, worldY, camera, this.layer);
     },
 
@@ -896,8 +870,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The Tile object that was inserted at the given coordinates.
      */
-    putTileAt: function (tile, tileX, tileY, recalculateFaces)
-    {
+    putTileAt: function (tile, tileX, tileY, recalculateFaces) {
         return TilemapComponents.PutTileAt(tile, tileX, tileY, recalculateFaces, this.layer);
     },
 
@@ -918,8 +891,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The Tile object that was inserted at the given coordinates.
      */
-    putTileAtWorldXY: function (tile, worldX, worldY, recalculateFaces, camera)
-    {
+    putTileAtWorldXY: function (tile, worldX, worldY, recalculateFaces, camera) {
         return TilemapComponents.PutTileAtWorldXY(tile, worldX, worldY, recalculateFaces, camera, this.layer);
     },
 
@@ -940,8 +912,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    putTilesAt: function (tilesArray, tileX, tileY, recalculateFaces)
-    {
+    putTilesAt: function (tilesArray, tileX, tileY, recalculateFaces) {
         TilemapComponents.PutTilesAt(tilesArray, tileX, tileY, recalculateFaces, this.layer);
 
         return this;
@@ -965,8 +936,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    randomize: function (tileX, tileY, width, height, indexes)
-    {
+    randomize: function (tileX, tileY, width, height, indexes) {
         TilemapComponents.Randomize(tileX, tileY, width, height, indexes, this.layer);
 
         return this;
@@ -986,8 +956,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} A Tile object.
      */
-    removeTileAt: function (tileX, tileY, replaceWithNull, recalculateFaces)
-    {
+    removeTileAt: function (tileX, tileY, replaceWithNull, recalculateFaces) {
         return TilemapComponents.RemoveTileAt(tileX, tileY, replaceWithNull, recalculateFaces, this.layer);
     },
 
@@ -1006,8 +975,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Tilemaps.Tile} The Tile object that was removed from the given location.
      */
-    removeTileAtWorldXY: function (worldX, worldY, replaceWithNull, recalculateFaces, camera)
-    {
+    removeTileAtWorldXY: function (worldX, worldY, replaceWithNull, recalculateFaces, camera) {
         return TilemapComponents.RemoveTileAtWorldXY(worldX, worldY, replaceWithNull, recalculateFaces, camera, this.layer);
     },
 
@@ -1025,8 +993,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    renderDebug: function (graphics, styleConfig)
-    {
+    renderDebug: function (graphics, styleConfig) {
         TilemapComponents.RenderDebug(graphics, styleConfig, this.layer);
 
         return this;
@@ -1049,8 +1016,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    replaceByIndex: function (findIndex, newIndex, tileX, tileY, width, height)
-    {
+    replaceByIndex: function (findIndex, newIndex, tileX, tileY, width, height) {
         TilemapComponents.ReplaceByIndex(findIndex, newIndex, tileX, tileY, width, height, this.layer);
 
         return this;
@@ -1070,9 +1036,10 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setSkipCull: function (value)
-    {
-        if (value === undefined) { value = true; }
+    setSkipCull: function (value) {
+        if (value === undefined) {
+            value = true;
+        }
 
         this.skipCull = value;
 
@@ -1094,10 +1061,13 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setCullPadding: function (paddingX, paddingY)
-    {
-        if (paddingX === undefined) { paddingX = 1; }
-        if (paddingY === undefined) { paddingY = 1; }
+    setCullPadding: function (paddingX, paddingY) {
+        if (paddingX === undefined) {
+            paddingX = 1;
+        }
+        if (paddingY === undefined) {
+            paddingY = 1;
+        }
 
         this.cullPaddingX = paddingX;
         this.cullPaddingY = paddingY;
@@ -1120,8 +1090,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setCollision: function (indexes, collides, recalculateFaces, updateLayer)
-    {
+    setCollision: function (indexes, collides, recalculateFaces, updateLayer) {
         TilemapComponents.SetCollision(indexes, collides, recalculateFaces, this.layer, updateLayer);
 
         return this;
@@ -1143,8 +1112,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setCollisionBetween: function (start, stop, collides, recalculateFaces)
-    {
+    setCollisionBetween: function (start, stop, collides, recalculateFaces) {
         TilemapComponents.SetCollisionBetween(start, stop, collides, recalculateFaces, this.layer);
 
         return this;
@@ -1168,8 +1136,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setCollisionByProperty: function (properties, collides, recalculateFaces)
-    {
+    setCollisionByProperty: function (properties, collides, recalculateFaces) {
         TilemapComponents.SetCollisionByProperty(properties, collides, recalculateFaces, this.layer);
 
         return this;
@@ -1189,8 +1156,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setCollisionByExclusion: function (indexes, collides, recalculateFaces)
-    {
+    setCollisionByExclusion: function (indexes, collides, recalculateFaces) {
         TilemapComponents.SetCollisionByExclusion(indexes, collides, recalculateFaces, this.layer);
 
         return this;
@@ -1210,8 +1176,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setCollisionFromCollisionGroup: function (collides, recalculateFaces)
-    {
+    setCollisionFromCollisionGroup: function (collides, recalculateFaces) {
         TilemapComponents.SetCollisionFromCollisionGroup(collides, recalculateFaces, this.layer);
 
         return this;
@@ -1232,8 +1197,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setTileIndexCallback: function (indexes, callback, callbackContext)
-    {
+    setTileIndexCallback: function (indexes, callback, callbackContext) {
         TilemapComponents.SetTileIndexCallback(indexes, callback, callbackContext, this.layer);
 
         return this;
@@ -1256,8 +1220,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    setTileLocationCallback: function (tileX, tileY, width, height, callback, callbackContext)
-    {
+    setTileLocationCallback: function (tileX, tileY, width, height, callback, callbackContext) {
         TilemapComponents.SetTileLocationCallback(tileX, tileY, width, height, callback, callbackContext, this.layer);
 
         return this;
@@ -1279,8 +1242,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    shuffle: function (tileX, tileY, width, height)
-    {
+    shuffle: function (tileX, tileY, width, height) {
         TilemapComponents.Shuffle(tileX, tileY, width, height, this.layer);
 
         return this;
@@ -1303,8 +1265,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    swapByIndex: function (indexA, indexB, tileX, tileY, width, height)
-    {
+    swapByIndex: function (indexA, indexB, tileX, tileY, width, height) {
         TilemapComponents.SwapByIndex(indexA, indexB, tileX, tileY, width, height, this.layer);
 
         return this;
@@ -1322,8 +1283,7 @@ var TilemapLayer = new Class({
      *
      * @return {number} The Tile X coordinate converted to pixels.
      */
-    tileToWorldX: function (tileX, camera)
-    {
+    tileToWorldX: function (tileX, camera) {
         return this.tilemap.tileToWorldX(tileX, camera, this);
     },
 
@@ -1339,8 +1299,7 @@ var TilemapLayer = new Class({
      *
      * @return {number} The Tile Y coordinate converted to pixels.
      */
-    tileToWorldY: function (tileY, camera)
-    {
+    tileToWorldY: function (tileY, camera) {
         return this.tilemap.tileToWorldY(tileY, camera, this);
     },
 
@@ -1359,8 +1318,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Math.Vector2} A Vector2 containing the world coordinates of the Tile.
      */
-    tileToWorldXY: function (tileX, tileY, point, camera)
-    {
+    tileToWorldXY: function (tileX, tileY, point, camera) {
         return this.tilemap.tileToWorldXY(tileX, tileY, point, camera, this);
     },
 
@@ -1385,8 +1343,7 @@ var TilemapLayer = new Class({
      *
      * @return {?Phaser.Math.Vector2[]} Returns an array of Vector2s, or null if the layer given was invalid.
      */
-    getTileCorners: function (tileX, tileY, camera)
-    {
+    getTileCorners: function (tileX, tileY, camera) {
         return this.tilemap.getTileCorners(tileX, tileY, camera, this);
     },
 
@@ -1416,8 +1373,7 @@ var TilemapLayer = new Class({
      *
      * @return {this} This Tilemap Layer object.
      */
-    weightedRandomize: function (weightedIndexes, tileX, tileY, width, height)
-    {
+    weightedRandomize: function (weightedIndexes, tileX, tileY, width, height) {
         TilemapComponents.WeightedRandomize(tileX, tileY, width, height, weightedIndexes, this.layer);
 
         return this;
@@ -1440,8 +1396,7 @@ var TilemapLayer = new Class({
      *
      * @return {number} The tile X coordinate based on the world value.
      */
-    worldToTileX: function (worldX, snapToFloor, camera)
-    {
+    worldToTileX: function (worldX, snapToFloor, camera) {
         return this.tilemap.worldToTileX(worldX, snapToFloor, camera, this);
     },
 
@@ -1462,8 +1417,7 @@ var TilemapLayer = new Class({
      *
      * @return {number} The tile Y coordinate based on the world value.
      */
-    worldToTileY: function (worldY, snapToFloor, camera)
-    {
+    worldToTileY: function (worldY, snapToFloor, camera) {
         return this.tilemap.worldToTileY(worldY, snapToFloor, camera, this);
     },
 
@@ -1483,8 +1437,7 @@ var TilemapLayer = new Class({
      *
      * @return {Phaser.Math.Vector2} A Vector2 containing the tile coordinates of the world values.
      */
-    worldToTileXY: function (worldX, worldY, snapToFloor, point, camera)
-    {
+    worldToTileXY: function (worldX, worldY, snapToFloor, point, camera) {
         return this.tilemap.worldToTileXY(worldX, worldY, snapToFloor, point, camera, this);
     },
 
@@ -1496,24 +1449,22 @@ var TilemapLayer = new Class({
      *
      * @param {boolean} [removeFromTilemap=true] - Remove this layer from the parent Tilemap?
      */
-    destroy: function (removeFromTilemap)
-    {
-        if (removeFromTilemap === undefined) { removeFromTilemap = true; }
+    destroy: function (removeFromTilemap) {
+        if (removeFromTilemap === undefined) {
+            removeFromTilemap = true;
+        }
 
-        if (!this.tilemap)
-        {
+        if (!this.tilemap) {
             //  Abort, we've already been destroyed
             return;
         }
 
         //  Uninstall this layer only if it is still installed on the LayerData object
-        if (this.layer.tilemapLayer === this)
-        {
+        if (this.layer.tilemapLayer === this) {
             this.layer.tilemapLayer = undefined;
         }
 
-        if (removeFromTilemap)
-        {
+        if (removeFromTilemap) {
             this.tilemap.removeLayer(this);
         }
 

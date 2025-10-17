@@ -56,158 +56,159 @@ var Shape = new Class({
 
     initialize:
 
-    function Shape (scene, type, data)
-    {
-        if (type === undefined) { type = 'Shape'; }
+        function Shape(scene, type, data) {
+            if (type === undefined) {
+                type = 'Shape';
+            }
 
-        GameObject.call(this, scene, type);
+            GameObject.call(this, scene, type);
 
-        /**
-         * The source Shape data. Typically a geometry object.
-         * You should not manipulate this directly.
-         *
-         * @name Phaser.GameObjects.Shape#geom
-         * @type {any}
-         * @readonly
-         * @since 3.13.0
-         */
-        this.geom = data;
+            /**
+             * The source Shape data. Typically a geometry object.
+             * You should not manipulate this directly.
+             *
+             * @name Phaser.GameObjects.Shape#geom
+             * @type {any}
+             * @readonly
+             * @since 3.13.0
+             */
+            this.geom = data;
 
-        /**
-         * Holds the polygon path data for filled rendering.
-         *
-         * @name Phaser.GameObjects.Shape#pathData
-         * @type {number[]}
-         * @readonly
-         * @since 3.13.0
-         */
-        this.pathData = [];
+            /**
+             * Holds the polygon path data for filled rendering.
+             *
+             * @name Phaser.GameObjects.Shape#pathData
+             * @type {number[]}
+             * @readonly
+             * @since 3.13.0
+             */
+            this.pathData = [];
 
-        /**
-         * Holds the earcut polygon path index data for filled rendering.
-         *
-         * @name Phaser.GameObjects.Shape#pathIndexes
-         * @type {number[]}
-         * @readonly
-         * @since 3.13.0
-         */
-        this.pathIndexes = [];
+            /**
+             * Holds the earcut polygon path index data for filled rendering.
+             *
+             * @name Phaser.GameObjects.Shape#pathIndexes
+             * @type {number[]}
+             * @readonly
+             * @since 3.13.0
+             */
+            this.pathIndexes = [];
 
-        /**
-         * The fill color used by this Shape.
-         *
-         * @name Phaser.GameObjects.Shape#fillColor
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillColor = 0xffffff;
+            /**
+             * The fill color used by this Shape.
+             *
+             * @name Phaser.GameObjects.Shape#fillColor
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillColor = 0xffffff;
 
-        /**
-         * The fill alpha value used by this Shape.
-         *
-         * @name Phaser.GameObjects.Shape#fillAlpha
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillAlpha = 1;
+            /**
+             * The fill alpha value used by this Shape.
+             *
+             * @name Phaser.GameObjects.Shape#fillAlpha
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillAlpha = 1;
 
-        /**
-         * The stroke color used by this Shape.
-         *
-         * @name Phaser.GameObjects.Shape#strokeColor
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.strokeColor = 0xffffff;
+            /**
+             * The stroke color used by this Shape.
+             *
+             * @name Phaser.GameObjects.Shape#strokeColor
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.strokeColor = 0xffffff;
 
-        /**
-         * The stroke alpha value used by this Shape.
-         *
-         * @name Phaser.GameObjects.Shape#strokeAlpha
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.strokeAlpha = 1;
+            /**
+             * The stroke alpha value used by this Shape.
+             *
+             * @name Phaser.GameObjects.Shape#strokeAlpha
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.strokeAlpha = 1;
 
-        /**
-         * The stroke line width used by this Shape.
-         *
-         * @name Phaser.GameObjects.Shape#lineWidth
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.lineWidth = 1;
+            /**
+             * The stroke line width used by this Shape.
+             *
+             * @name Phaser.GameObjects.Shape#lineWidth
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.lineWidth = 1;
 
-        /**
-         * Controls if this Shape is filled or not.
-         * Note that some Shapes do not support being filled (such as Line shapes)
-         *
-         * @name Phaser.GameObjects.Shape#isFilled
-         * @type {boolean}
-         * @since 3.13.0
-         */
-        this.isFilled = false;
+            /**
+             * Controls if this Shape is filled or not.
+             * Note that some Shapes do not support being filled (such as Line shapes)
+             *
+             * @name Phaser.GameObjects.Shape#isFilled
+             * @type {boolean}
+             * @since 3.13.0
+             */
+            this.isFilled = false;
 
-        /**
-         * Controls if this Shape is stroked or not.
-         * Note that some Shapes do not support being stroked (such as Iso Box shapes)
-         *
-         * @name Phaser.GameObjects.Shape#isStroked
-         * @type {boolean}
-         * @since 3.13.0
-         */
-        this.isStroked = false;
+            /**
+             * Controls if this Shape is stroked or not.
+             * Note that some Shapes do not support being stroked (such as Iso Box shapes)
+             *
+             * @name Phaser.GameObjects.Shape#isStroked
+             * @type {boolean}
+             * @since 3.13.0
+             */
+            this.isStroked = false;
 
-        /**
-         * Controls if this Shape path is closed during rendering when stroked.
-         * Note that some Shapes are always closed when stroked (such as Ellipse shapes)
-         *
-         * @name Phaser.GameObjects.Shape#closePath
-         * @type {boolean}
-         * @since 3.13.0
-         */
-        this.closePath = true;
+            /**
+             * Controls if this Shape path is closed during rendering when stroked.
+             * Note that some Shapes are always closed when stroked (such as Ellipse shapes)
+             *
+             * @name Phaser.GameObjects.Shape#closePath
+             * @type {boolean}
+             * @since 3.13.0
+             */
+            this.closePath = true;
 
-        /**
-         * Private internal value.
-         * A Line used when parsing internal path data to avoid constant object re-creation.
-         *
-         * @name Phaser.GameObjects.Shape#_tempLine
-         * @type {Phaser.Geom.Line}
-         * @private
-         * @since 3.13.0
-         */
-        this._tempLine = new Line();
+            /**
+             * Private internal value.
+             * A Line used when parsing internal path data to avoid constant object re-creation.
+             *
+             * @name Phaser.GameObjects.Shape#_tempLine
+             * @type {Phaser.Geom.Line}
+             * @private
+             * @since 3.13.0
+             */
+            this._tempLine = new Line();
 
-        /**
-         * The native (un-scaled) width of this Game Object.
-         *
-         * Changing this value will not change the size that the Game Object is rendered in-game.
-         * For that you need to either set the scale of the Game Object (`setScale`) or use
-         * the `displayWidth` property.
-         *
-         * @name Phaser.GameObjects.Shape#width
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.width = 0;
+            /**
+             * The native (un-scaled) width of this Game Object.
+             *
+             * Changing this value will not change the size that the Game Object is rendered in-game.
+             * For that you need to either set the scale of the Game Object (`setScale`) or use
+             * the `displayWidth` property.
+             *
+             * @name Phaser.GameObjects.Shape#width
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.width = 0;
 
-        /**
-         * The native (un-scaled) height of this Game Object.
-         *
-         * Changing this value will not change the size that the Game Object is rendered in-game.
-         * For that you need to either set the scale of the Game Object (`setScale`) or use
-         * the `displayHeight` property.
-         *
-         * @name Phaser.GameObjects.Shape#height
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.height = 0;
+            /**
+             * The native (un-scaled) height of this Game Object.
+             *
+             * Changing this value will not change the size that the Game Object is rendered in-game.
+             * For that you need to either set the scale of the Game Object (`setScale`) or use
+             * the `displayHeight` property.
+             *
+             * @name Phaser.GameObjects.Shape#height
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.height = 0;
 
-        this.initPipeline();
-        this.initPostPipeline();
-    },
+            this.initPipeline();
+            this.initPostPipeline();
+        },
 
     /**
      * Sets the fill color and alpha for this Shape.
@@ -226,16 +227,14 @@ var Shape = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setFillStyle: function (color, alpha)
-    {
-        if (alpha === undefined) { alpha = 1; }
-
-        if (color === undefined)
-        {
-            this.isFilled = false;
+    setFillStyle: function (color, alpha) {
+        if (alpha === undefined) {
+            alpha = 1;
         }
-        else
-        {
+
+        if (color === undefined) {
+            this.isFilled = false;
+        } else {
             this.fillColor = color;
             this.fillAlpha = alpha;
             this.isFilled = true;
@@ -262,16 +261,14 @@ var Shape = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setStrokeStyle: function (lineWidth, color, alpha)
-    {
-        if (alpha === undefined) { alpha = 1; }
-
-        if (lineWidth === undefined)
-        {
-            this.isStroked = false;
+    setStrokeStyle: function (lineWidth, color, alpha) {
+        if (alpha === undefined) {
+            alpha = 1;
         }
-        else
-        {
+
+        if (lineWidth === undefined) {
+            this.isStroked = false;
+        } else {
             this.lineWidth = lineWidth;
             this.strokeColor = color;
             this.strokeAlpha = alpha;
@@ -294,8 +291,7 @@ var Shape = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setClosePath: function (value)
-    {
+    setClosePath: function (value) {
         this.closePath = value;
 
         return this;
@@ -321,8 +317,7 @@ var Shape = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -342,8 +337,7 @@ var Shape = new Class({
      *
      * @return {this} This Shape instance.
      */
-    setDisplaySize: function (width, height)
-    {
+    setDisplaySize: function (width, height) {
         this.displayWidth = width;
         this.displayHeight = height;
 
@@ -357,8 +351,7 @@ var Shape = new Class({
      * @protected
      * @since 3.13.0
      */
-    preDestroy: function ()
-    {
+    preDestroy: function () {
         this.geom = null;
         this._tempLine = null;
         this.pathData = [];
@@ -378,13 +371,11 @@ var Shape = new Class({
      */
     displayWidth: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleX * this.width;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleX = value / this.width;
         }
 
@@ -403,13 +394,11 @@ var Shape = new Class({
      */
     displayHeight: {
 
-        get: function ()
-        {
+        get: function () {
             return this.scaleY * this.height;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.scaleY = value / this.height;
         }
 

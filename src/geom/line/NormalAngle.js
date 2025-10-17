@@ -18,8 +18,7 @@ var Angle = require('./Angle');
  *
  * @return {number} The angle of the normal of the line in radians.
  */
-var NormalAngle = function (line)
-{
+var NormalAngle = function (line) {
     var angle = Angle(line) - MATH_CONST.TAU;
 
     return Wrap(angle, -Math.PI, Math.PI);

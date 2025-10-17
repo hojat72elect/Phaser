@@ -19,27 +19,21 @@ var MergeXHRSettings = require('./MergeXHRSettings');
  *
  * @return {XMLHttpRequest} The XHR object, or a FakeXHR Object in the base of base64 data.
  */
-var XHRLoader = function (file, globalXHRSettings)
-{
+var XHRLoader = function (file, globalXHRSettings) {
     var config = MergeXHRSettings(globalXHRSettings, file.xhrSettings);
 
-    if (file.base64)
-    {
+    if (file.base64) {
         var base64Data = file.url.split(';base64,').pop() || file.url.split(',').pop();
 
         var fakeXHR;
 
-        if (file.xhrSettings.responseType === 'arraybuffer')
-        {
+        if (file.xhrSettings.responseType === 'arraybuffer') {
             fakeXHR = {
-                response: Uint8Array.from(atob(base64Data), function (c)
-                {
+                response: Uint8Array.from(atob(base64Data), function (c) {
                     return c.charCodeAt(0);
                 }).buffer
             };
-        }
-        else
-        {
+        } else {
             fakeXHR = {
                 responseText: atob(base64Data)
             };
@@ -57,31 +51,25 @@ var XHRLoader = function (file, globalXHRSettings)
     xhr.responseType = file.xhrSettings.responseType;
     xhr.timeout = config.timeout;
 
-    if (config.headers)
-    {
-        for (var key in config.headers)
-        {
+    if (config.headers) {
+        for (var key in config.headers) {
             xhr.setRequestHeader(key, config.headers[key]);
         }
     }
 
-    if (config.header && config.headerValue)
-    {
+    if (config.header && config.headerValue) {
         xhr.setRequestHeader(config.header, config.headerValue);
     }
 
-    if (config.requestedWith)
-    {
+    if (config.requestedWith) {
         xhr.setRequestHeader('X-Requested-With', config.requestedWith);
     }
 
-    if (config.overrideMimeType)
-    {
+    if (config.overrideMimeType) {
         xhr.overrideMimeType(config.overrideMimeType);
     }
 
-    if (config.withCredentials)
-    {
+    if (config.withCredentials) {
         xhr.withCredentials = true;
     }
 

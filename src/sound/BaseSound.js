@@ -31,153 +31,152 @@ var BaseSound = new Class({
 
     initialize:
 
-    function BaseSound (manager, key, config)
-    {
-        EventEmitter.call(this);
+        function BaseSound(manager, key, config) {
+            EventEmitter.call(this);
 
-        /**
-         * Local reference to the sound manager.
-         *
-         * @name Phaser.Sound.BaseSound#manager
-         * @type {Phaser.Sound.BaseSoundManager}
-         * @since 3.0.0
-         */
-        this.manager = manager;
+            /**
+             * Local reference to the sound manager.
+             *
+             * @name Phaser.Sound.BaseSound#manager
+             * @type {Phaser.Sound.BaseSoundManager}
+             * @since 3.0.0
+             */
+            this.manager = manager;
 
-        /**
-         * Asset key for the sound.
-         *
-         * @name Phaser.Sound.BaseSound#key
-         * @type {string}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.key = key;
+            /**
+             * Asset key for the sound.
+             *
+             * @name Phaser.Sound.BaseSound#key
+             * @type {string}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.key = key;
 
-        /**
-         * Flag indicating if sound is currently playing.
-         *
-         * @name Phaser.Sound.BaseSound#isPlaying
-         * @type {boolean}
-         * @default false
-         * @readonly
-         * @since 3.0.0
-         */
-        this.isPlaying = false;
+            /**
+             * Flag indicating if sound is currently playing.
+             *
+             * @name Phaser.Sound.BaseSound#isPlaying
+             * @type {boolean}
+             * @default false
+             * @readonly
+             * @since 3.0.0
+             */
+            this.isPlaying = false;
 
-        /**
-         * Flag indicating if sound is currently paused.
-         *
-         * @name Phaser.Sound.BaseSound#isPaused
-         * @type {boolean}
-         * @default false
-         * @readonly
-         * @since 3.0.0
-         */
-        this.isPaused = false;
+            /**
+             * Flag indicating if sound is currently paused.
+             *
+             * @name Phaser.Sound.BaseSound#isPaused
+             * @type {boolean}
+             * @default false
+             * @readonly
+             * @since 3.0.0
+             */
+            this.isPaused = false;
 
-        /**
-         * A property that holds the value of sound's actual playback rate,
-         * after its rate and detune values has been combined with global
-         * rate and detune values.
-         *
-         * @name Phaser.Sound.BaseSound#totalRate
-         * @type {number}
-         * @default 1
-         * @readonly
-         * @since 3.0.0
-         */
-        this.totalRate = 1;
+            /**
+             * A property that holds the value of sound's actual playback rate,
+             * after its rate and detune values has been combined with global
+             * rate and detune values.
+             *
+             * @name Phaser.Sound.BaseSound#totalRate
+             * @type {number}
+             * @default 1
+             * @readonly
+             * @since 3.0.0
+             */
+            this.totalRate = 1;
 
-        /**
-         * A value representing the duration, in seconds.
-         * It could be total sound duration or a marker duration.
-         *
-         * @name Phaser.Sound.BaseSound#duration
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.duration = this.duration || 0;
+            /**
+             * A value representing the duration, in seconds.
+             * It could be total sound duration or a marker duration.
+             *
+             * @name Phaser.Sound.BaseSound#duration
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.duration = this.duration || 0;
 
-        /**
-         * The total duration of the sound in seconds.
-         *
-         * @name Phaser.Sound.BaseSound#totalDuration
-         * @type {number}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.totalDuration = this.totalDuration || 0;
+            /**
+             * The total duration of the sound in seconds.
+             *
+             * @name Phaser.Sound.BaseSound#totalDuration
+             * @type {number}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.totalDuration = this.totalDuration || 0;
 
-        /**
-         * A config object used to store default sound settings' values.
-         * Default values will be set by properties' setters.
-         *
-         * @name Phaser.Sound.BaseSound#config
-         * @type {Phaser.Types.Sound.SoundConfig}
-         * @private
-         * @since 3.0.0
-         */
-        this.config = {
+            /**
+             * A config object used to store default sound settings' values.
+             * Default values will be set by properties' setters.
+             *
+             * @name Phaser.Sound.BaseSound#config
+             * @type {Phaser.Types.Sound.SoundConfig}
+             * @private
+             * @since 3.0.0
+             */
+            this.config = {
 
-            mute: false,
-            volume: 1,
-            rate: 1,
-            detune: 0,
-            seek: 0,
-            loop: false,
-            delay: 0,
-            pan: 0
+                mute: false,
+                volume: 1,
+                rate: 1,
+                detune: 0,
+                seek: 0,
+                loop: false,
+                delay: 0,
+                pan: 0
 
-        };
+            };
 
-        /**
-         * Reference to the currently used config.
-         * It could be default config or marker config.
-         *
-         * @name Phaser.Sound.BaseSound#currentConfig
-         * @type {Phaser.Types.Sound.SoundConfig}
-         * @private
-         * @since 3.0.0
-         */
-        this.currentConfig = this.config;
+            /**
+             * Reference to the currently used config.
+             * It could be default config or marker config.
+             *
+             * @name Phaser.Sound.BaseSound#currentConfig
+             * @type {Phaser.Types.Sound.SoundConfig}
+             * @private
+             * @since 3.0.0
+             */
+            this.currentConfig = this.config;
 
-        this.config = Extend(this.config, config);
+            this.config = Extend(this.config, config);
 
-        /**
-         * Object containing markers definitions.
-         *
-         * @name Phaser.Sound.BaseSound#markers
-         * @type {Object.<string, Phaser.Types.Sound.SoundMarker>}
-         * @default {}
-         * @readonly
-         * @since 3.0.0
-         */
-        this.markers = {};
+            /**
+             * Object containing markers definitions.
+             *
+             * @name Phaser.Sound.BaseSound#markers
+             * @type {Object.<string, Phaser.Types.Sound.SoundMarker>}
+             * @default {}
+             * @readonly
+             * @since 3.0.0
+             */
+            this.markers = {};
 
-        /**
-         * Currently playing marker.
-         * 'null' if whole sound is playing.
-         *
-         * @name Phaser.Sound.BaseSound#currentMarker
-         * @type {Phaser.Types.Sound.SoundMarker}
-         * @default null
-         * @readonly
-         * @since 3.0.0
-         */
-        this.currentMarker = null;
+            /**
+             * Currently playing marker.
+             * 'null' if whole sound is playing.
+             *
+             * @name Phaser.Sound.BaseSound#currentMarker
+             * @type {Phaser.Types.Sound.SoundMarker}
+             * @default null
+             * @readonly
+             * @since 3.0.0
+             */
+            this.currentMarker = null;
 
-        /**
-         * Flag indicating if destroy method was called on this sound.
-         *
-         * @name Phaser.Sound.BaseSound#pendingRemove
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.pendingRemove = false;
-    },
+            /**
+             * Flag indicating if destroy method was called on this sound.
+             *
+             * @name Phaser.Sound.BaseSound#pendingRemove
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.pendingRemove = false;
+        },
 
     /**
      * Adds a marker into the current sound. A marker is represented by name, start time, duration, and optionally config object.
@@ -190,15 +189,12 @@ var BaseSound = new Class({
      *
      * @return {boolean} Whether the marker was added successfully.
      */
-    addMarker: function (marker)
-    {
-        if (!marker || !marker.name || typeof marker.name !== 'string')
-        {
+    addMarker: function (marker) {
+        if (!marker || !marker.name || typeof marker.name !== 'string') {
             return false;
         }
 
-        if (this.markers[marker.name])
-        {
+        if (this.markers[marker.name]) {
             // eslint-disable-next-line no-console
             console.error('addMarker ' + marker.name + ' already exists in Sound');
 
@@ -236,15 +232,12 @@ var BaseSound = new Class({
      *
      * @return {boolean} Whether the marker was updated successfully.
      */
-    updateMarker: function (marker)
-    {
-        if (!marker || !marker.name || typeof marker.name !== 'string')
-        {
+    updateMarker: function (marker) {
+        if (!marker || !marker.name || typeof marker.name !== 'string') {
             return false;
         }
 
-        if (!this.markers[marker.name])
-        {
+        if (!this.markers[marker.name]) {
             // eslint-disable-next-line no-console
             console.warn('Audio Marker: ' + marker.name + ' missing in Sound: ' + this.key);
 
@@ -266,12 +259,10 @@ var BaseSound = new Class({
      *
      * @return {?Phaser.Types.Sound.SoundMarker} Removed marker object or 'null' if there was no marker with provided name.
      */
-    removeMarker: function (markerName)
-    {
+    removeMarker: function (markerName) {
         var marker = this.markers[markerName];
 
-        if (!marker)
-        {
+        if (!marker) {
             return null;
         }
 
@@ -294,31 +285,26 @@ var BaseSound = new Class({
      *
      * @return {boolean} Whether the sound started playing successfully.
      */
-    play: function (markerName, config)
-    {
-        if (markerName === undefined) { markerName = ''; }
+    play: function (markerName, config) {
+        if (markerName === undefined) {
+            markerName = '';
+        }
 
-        if (typeof markerName === 'object')
-        {
+        if (typeof markerName === 'object') {
             config = markerName;
             markerName = '';
         }
 
-        if (typeof markerName !== 'string')
-        {
+        if (typeof markerName !== 'string') {
             return false;
         }
 
-        if (!markerName)
-        {
+        if (!markerName) {
             this.currentMarker = null;
             this.currentConfig = this.config;
             this.duration = this.totalDuration;
-        }
-        else
-        {
-            if (!this.markers[markerName])
-            {
+        } else {
+            if (!this.markers[markerName]) {
                 // eslint-disable-next-line no-console
                 console.warn('Marker: ' + markerName + ' missing in Sound: ' + this.key);
 
@@ -350,10 +336,8 @@ var BaseSound = new Class({
      *
      * @return {boolean} Whether the sound was paused successfully.
      */
-    pause: function ()
-    {
-        if (this.isPaused || !this.isPlaying)
-        {
+    pause: function () {
+        if (this.isPaused || !this.isPlaying) {
             return false;
         }
 
@@ -373,10 +357,8 @@ var BaseSound = new Class({
      *
      * @return {boolean} Whether the sound was resumed successfully.
      */
-    resume: function ()
-    {
-        if (!this.isPaused || this.isPlaying)
-        {
+    resume: function () {
+        if (!this.isPaused || this.isPlaying) {
             return false;
         }
 
@@ -394,10 +376,8 @@ var BaseSound = new Class({
      *
      * @return {boolean} Whether the sound was stopped successfully.
      */
-    stop: function ()
-    {
-        if (!this.isPaused && !this.isPlaying)
-        {
+    stop: function () {
+        if (!this.isPaused && !this.isPlaying) {
             return false;
         }
 
@@ -415,8 +395,7 @@ var BaseSound = new Class({
      * @method Phaser.Sound.BaseSound#applyConfig
      * @since 3.0.0
      */
-    applyConfig: function ()
-    {
+    applyConfig: function () {
         this.mute = this.currentConfig.mute;
         this.volume = this.currentConfig.volume;
         this.rate = this.currentConfig.rate;
@@ -431,8 +410,7 @@ var BaseSound = new Class({
      * @method Phaser.Sound.BaseSound#resetConfig
      * @since 3.0.0
      */
-    resetConfig: function ()
-    {
+    resetConfig: function () {
         this.currentConfig.seek = 0;
         this.currentConfig.delay = 0;
     },
@@ -454,8 +432,7 @@ var BaseSound = new Class({
      * @method Phaser.Sound.BaseSound#calculateRate
      * @since 3.0.0
      */
-    calculateRate: function ()
-    {
+    calculateRate: function () {
         var cent = 1.0005777895065548; // Math.pow(2, 1/1200);
         var totalDetune = this.currentConfig.detune + this.manager.detune;
         var detuneRate = Math.pow(cent, totalDetune);
@@ -470,10 +447,8 @@ var BaseSound = new Class({
      * @fires Phaser.Sound.Events#DESTROY
      * @since 3.0.0
      */
-    destroy: function ()
-    {
-        if (this.pendingRemove)
-        {
+    destroy: function () {
+        if (this.pendingRemove) {
             return;
         }
 

@@ -16,8 +16,7 @@
  *
  * @return {number} The resulting value.
  */
-var MinSub = function (value, amount, min)
-{
+var MinSub = function (value, amount, min) {
     return Math.max(value - amount, min);
 };
 

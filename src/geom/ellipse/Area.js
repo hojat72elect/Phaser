@@ -14,10 +14,8 @@
  *
  * @return {number} The area of the Ellipse.
  */
-var Area = function (ellipse)
-{
-    if (ellipse.isEmpty())
-    {
+var Area = function (ellipse) {
+    if (ellipse.isEmpty()) {
         return 0;
     }
 

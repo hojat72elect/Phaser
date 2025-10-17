@@ -14,27 +14,21 @@
  *
  * @param {HTMLElement} element - The DOM element to look-up.
  */
-var GetTarget = function (element)
-{
+var GetTarget = function (element) {
     var target;
 
-    if (element !== '')
-    {
-        if (typeof element === 'string')
-        {
+    if (element !== '') {
+        if (typeof element === 'string') {
             //  Hopefully an element ID
             target = document.getElementById(element);
-        }
-        else if (element && element.nodeType === 1)
-        {
+        } else if (element && element.nodeType === 1) {
             //  Quick test for a HTMLElement
             target = element;
         }
     }
 
     //  Fallback to the document body. Covers an invalid ID and a non HTMLElement object.
-    if (!target)
-    {
+    if (!target) {
         //  Use the full window
         target = document.body;
     }

@@ -38,46 +38,43 @@ var PluginFile = new Class({
 
     initialize:
 
-    function PluginFile (loader, key, url, start, mapping, xhrSettings)
-    {
-        var extension = 'js';
+        function PluginFile(loader, key, url, start, mapping, xhrSettings) {
+            var extension = 'js';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            start = GetFastValue(config, 'start');
-            mapping = GetFastValue(config, 'mapping');
-        }
-
-        var fileConfig = {
-            type: 'plugin',
-            cache: false,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: {
-                start: start,
-                mapping: mapping
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                start = GetFastValue(config, 'start');
+                mapping = GetFastValue(config, 'mapping');
             }
-        };
 
-        File.call(this, loader, fileConfig);
+            var fileConfig = {
+                type: 'plugin',
+                cache: false,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: {
+                    start: start,
+                    mapping: mapping
+                }
+            };
 
-        // If the url variable refers to a class, add the plugin directly
-        if (typeof url === 'function')
-        {
-            this.data = url;
+            File.call(this, loader, fileConfig);
 
-            this.state = CONST.FILE_POPULATED;
-        }
-    },
+            // If the url variable refers to a class, add the plugin directly
+            if (typeof url === 'function') {
+                this.data = url;
+
+                this.state = CONST.FILE_POPULATED;
+            }
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -86,20 +83,16 @@ var PluginFile = new Class({
      * @method Phaser.Loader.FileTypes.PluginFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         var pluginManager = this.loader.systems.plugins;
         var config = this.config;
 
         var start = GetFastValue(config, 'start', false);
         var mapping = GetFastValue(config, 'mapping', null);
 
-        if (this.state === CONST.FILE_POPULATED)
-        {
+        if (this.state === CONST.FILE_POPULATED) {
             pluginManager.install(this.key, this.data, start, mapping);
-        }
-        else
-        {
+        } else {
             //  Plugin added via a js file
             this.state = CONST.FILE_PROCESSING;
 
@@ -113,8 +106,7 @@ var PluginFile = new Class({
 
             var plugin = pluginManager.install(this.key, window[this.key], start, mapping);
 
-            if (start || mapping)
-            {
+            if (start || mapping) {
                 //  Install into the current Scene Systems and Scene
                 this.loader.systems[mapping] = plugin;
                 this.loader.scene[mapping] = plugin;
@@ -185,18 +177,13 @@ var PluginFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('plugin', function (key, url, start, mapping, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('plugin', function (key, url, start, mapping, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new PluginFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new PluginFile(this, key, url, start, mapping, xhrSettings));
     }
 

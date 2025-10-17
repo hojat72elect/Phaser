@@ -25,40 +25,39 @@ var RGB = new Class({
 
     initialize:
 
-    function RGB (red, green, blue)
-    {
-        /**
-         * Cached RGB values.
-         *
-         * @name Phaser.Display.RGB#_rgb
-         * @type {number[]}
-         * @private
-         * @since 3.50.0
-         */
-        this._rgb = [ 0, 0, 0 ];
+        function RGB(red, green, blue) {
+            /**
+             * Cached RGB values.
+             *
+             * @name Phaser.Display.RGB#_rgb
+             * @type {number[]}
+             * @private
+             * @since 3.50.0
+             */
+            this._rgb = [0, 0, 0];
 
-        /**
-         * This callback will be invoked each time one of the RGB color values change.
-         *
-         * The callback is sent the new color values as the parameters.
-         *
-         * @name Phaser.Display.RGB#onChangeCallback
-         * @type {function}
-         * @since 3.50.0
-         */
-        this.onChangeCallback = NOOP;
+            /**
+             * This callback will be invoked each time one of the RGB color values change.
+             *
+             * The callback is sent the new color values as the parameters.
+             *
+             * @name Phaser.Display.RGB#onChangeCallback
+             * @type {function}
+             * @since 3.50.0
+             */
+            this.onChangeCallback = NOOP;
 
-        /**
-         * Is this color dirty?
-         *
-         * @name Phaser.Display.RGB#dirty
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.dirty = false;
+            /**
+             * Is this color dirty?
+             *
+             * @name Phaser.Display.RGB#dirty
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.dirty = false;
 
-        this.set(red, green, blue);
-    },
+            this.set(red, green, blue);
+        },
 
     /**
      * Sets the red, green and blue values of this RGB object, flags it as being
@@ -73,13 +72,18 @@ var RGB = new Class({
      *
      * @return {this} This RGB instance.
      */
-    set: function (red, green, blue)
-    {
-        if (red === undefined) { red = 0; }
-        if (green === undefined) { green = 0; }
-        if (blue === undefined) { blue = 0; }
+    set: function (red, green, blue) {
+        if (red === undefined) {
+            red = 0;
+        }
+        if (green === undefined) {
+            green = 0;
+        }
+        if (blue === undefined) {
+            blue = 0;
+        }
 
-        this._rgb = [ red, green, blue ];
+        this._rgb = [red, green, blue];
 
         this.onChange();
 
@@ -99,8 +103,7 @@ var RGB = new Class({
      *
      * @return {boolean} `true` if the given values match those in this object, otherwise `false`.
      */
-    equals: function (red, green, blue)
-    {
+    equals: function (red, green, blue) {
         var rgb = this._rgb;
 
         return (rgb[0] === red && rgb[1] === green && rgb[2] === blue);
@@ -114,8 +117,7 @@ var RGB = new Class({
      * @method Phaser.Display.RGB#onChange
      * @since 3.50.0
      */
-    onChange: function ()
-    {
+    onChange: function () {
         this.dirty = true;
 
         var rgb = this._rgb;
@@ -135,13 +137,11 @@ var RGB = new Class({
      */
     r: {
 
-        get: function ()
-        {
+        get: function () {
             return this._rgb[0];
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._rgb[0] = value;
             this.onChange();
         }
@@ -160,13 +160,11 @@ var RGB = new Class({
      */
     g: {
 
-        get: function ()
-        {
+        get: function () {
             return this._rgb[1];
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._rgb[1] = value;
             this.onChange();
         }
@@ -185,13 +183,11 @@ var RGB = new Class({
      */
     b: {
 
-        get: function ()
-        {
+        get: function () {
             return this._rgb[2];
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._rgb[2] = value;
             this.onChange();
         }
@@ -204,8 +200,7 @@ var RGB = new Class({
      * @method Phaser.Display.RGB#destroy
      * @since 3.50.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.onChangeCallback = null;
     }
 

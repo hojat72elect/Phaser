@@ -24,7 +24,7 @@ module.exports = {
         umdNamedDefine: true
     },
 
-    performance: { hints: false },
+    performance: {hints: false},
 
     module: {
         rules: [
@@ -61,7 +61,7 @@ module.exports = {
         new RemovePlugin({
             before: {
                 root: './plugins/spine/dist/',
-                include: [ 'SpinePluginDebug.js', 'SpinePluginDebug.js.map' ]
+                include: ['SpinePluginDebug.js', 'SpinePluginDebug.js.map']
             }
         }),
         {

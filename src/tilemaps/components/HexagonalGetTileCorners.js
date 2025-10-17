@@ -22,14 +22,12 @@ var tempVec = new Vector2();
  *
  * @return {Phaser.Math.Vector2[]} An array of Vector2s corresponding to the world XY location of each tile corner.
  */
-var HexagonalGetTileCorners = function (tileX, tileY, camera, layer)
-{
+var HexagonalGetTileCorners = function (tileX, tileY, camera, layer) {
     var tileWidth = layer.baseTileWidth;
     var tileHeight = layer.baseTileHeight;
     var tilemapLayer = layer.tilemapLayer;
 
-    if (tilemapLayer)
-    {
+    if (tilemapLayer) {
         tileWidth *= tilemapLayer.scaleX;
         tileHeight *= tilemapLayer.scaleY;
     }
@@ -45,19 +43,15 @@ var HexagonalGetTileCorners = function (tileX, tileY, camera, layer)
     var hexWidth;
     var hexHeight;
 
-    if (layer.staggerAxis === 'y')
-    {
+    if (layer.staggerAxis === 'y') {
         hexWidth = b0 * tileWidth;
         hexHeight = tileHeight / 2;
-    }
-    else
-    {
+    } else {
         hexWidth = tileWidth / 2;
         hexHeight = b0 * tileHeight;
     }
 
-    for (var i = 0; i < 6; i++)
-    {
+    for (var i = 0; i < 6; i++) {
         var angle = 2 * Math.PI * (0.5 - i) / 6;
 
         corners.push(new Vector2(center.x + (hexWidth * Math.cos(angle)), center.y + (hexHeight * Math.sin(angle))));

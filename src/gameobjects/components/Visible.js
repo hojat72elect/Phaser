@@ -39,20 +39,15 @@ var Visible = {
      */
     visible: {
 
-        get: function ()
-        {
+        get: function () {
             return this._visible;
         },
 
-        set: function (value)
-        {
-            if (value)
-            {
+        set: function (value) {
+            if (value) {
                 this._visible = true;
                 this.renderFlags |= _FLAG;
-            }
-            else
-            {
+            } else {
                 this._visible = false;
                 this.renderFlags &= ~_FLAG;
             }
@@ -72,8 +67,7 @@ var Visible = {
      *
      * @return {this} This Game Object instance.
      */
-    setVisible: function (value)
-    {
+    setVisible: function (value) {
         this.visible = value;
 
         return this;

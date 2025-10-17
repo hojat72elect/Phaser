@@ -22,7 +22,7 @@ module.exports = {
         libraryTarget: 'window'
     },
 
-    performance: { hints: false },
+    performance: {hints: false},
 
     module: {
         rules: [
@@ -79,7 +79,7 @@ module.exports = {
             before: {
                 before: {
                     root: './plugins/spine/dist/',
-                    include: [ 'SpineCanvasPlugin.js', 'SpineCanvasPlugin.min.js' ]
+                    include: ['SpineCanvasPlugin.js', 'SpineCanvasPlugin.min.js']
                 }
             }
         }),

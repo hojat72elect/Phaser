@@ -31,26 +31,25 @@ var BodyBounds = new Class({
 
     initialize:
 
-    function BodyBounds ()
-    {
-        /**
-         * A Vector2 that stores the temporary bounds center value during calculations by methods in this class.
-         *
-         * @name Phaser.Physics.Matter.BodyBounds#boundsCenter
-         * @type {Phaser.Math.Vector2}
-         * @since 3.22.0
-         */
-        this.boundsCenter = new Vector2();
+        function BodyBounds() {
+            /**
+             * A Vector2 that stores the temporary bounds center value during calculations by methods in this class.
+             *
+             * @name Phaser.Physics.Matter.BodyBounds#boundsCenter
+             * @type {Phaser.Math.Vector2}
+             * @since 3.22.0
+             */
+            this.boundsCenter = new Vector2();
 
-        /**
-         * A Vector2 that stores the temporary center diff values during calculations by methods in this class.
-         *
-         * @name Phaser.Physics.Matter.BodyBounds#centerDiff
-         * @type {Phaser.Math.Vector2}
-         * @since 3.22.0
-         */
-        this.centerDiff = new Vector2();
-    },
+            /**
+             * A Vector2 that stores the temporary center diff values during calculations by methods in this class.
+             *
+             * @name Phaser.Physics.Matter.BodyBounds#centerDiff
+             * @type {Phaser.Math.Vector2}
+             * @since 3.22.0
+             */
+            this.centerDiff = new Vector2();
+        },
 
     /**
      * Parses the given body to get the bounds diff values from it.
@@ -66,12 +65,10 @@ var BodyBounds = new Class({
      *
      * @return {boolean} `true` if it was able to get the bounds, otherwise `false`.
      */
-    parseBody: function (body)
-    {
+    parseBody: function (body) {
         body = (body.hasOwnProperty('body')) ? body.body : body;
 
-        if (!body.hasOwnProperty('bounds') || !body.hasOwnProperty('centerOfMass'))
-        {
+        if (!body.hasOwnProperty('bounds') || !body.hasOwnProperty('centerOfMass')) {
             return false;
         }
 
@@ -105,13 +102,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getTopLeft: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getTopLeft: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -139,13 +138,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getTopCenter: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getTopCenter: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -173,13 +174,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getTopRight: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getTopRight: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -207,13 +210,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getLeftCenter: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getLeftCenter: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -241,13 +246,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getCenter: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getCenter: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var diff = this.centerDiff;
 
             return new Vector2(
@@ -274,13 +281,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getRightCenter: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getRightCenter: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -308,13 +317,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getBottomLeft: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getBottomLeft: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -342,13 +353,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getBottomCenter: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getBottomCenter: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 
@@ -376,13 +389,15 @@ var BodyBounds = new Class({
      *
      * @return {(Phaser.Math.Vector2|false)} A Vector2 containing the coordinates, or `false` if it was unable to parse the body.
      */
-    getBottomRight: function (body, x, y)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
+    getBottomRight: function (body, x, y) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
 
-        if (this.parseBody(body))
-        {
+        if (this.parseBody(body)) {
             var center = this.boundsCenter;
             var diff = this.centerDiff;
 

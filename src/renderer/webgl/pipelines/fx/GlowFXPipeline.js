@@ -42,55 +42,53 @@ var GlowFXPipeline = new Class({
 
     initialize:
 
-    function GlowFXPipeline (game, config)
-    {
-        var quality = GetFastValue(config, 'quality', 0.1);
-        var distance = GetFastValue(config, 'distance', 10);
+        function GlowFXPipeline(game, config) {
+            var quality = GetFastValue(config, 'quality', 0.1);
+            var distance = GetFastValue(config, 'distance', 10);
 
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: Utils.setGlowQuality(GlowFrag, game, quality, distance)
-        });
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: Utils.setGlowQuality(GlowFrag, game, quality, distance)
+            });
 
-        /**
-         * The strength of the glow outward from the edge of the Sprite.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#outerStrength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.outerStrength = 4;
+            /**
+             * The strength of the glow outward from the edge of the Sprite.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#outerStrength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.outerStrength = 4;
 
-        /**
-         * The strength of the glow inward from the edge of the Sprite.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#innerStrength
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.innerStrength = 0;
+            /**
+             * The strength of the glow inward from the edge of the Sprite.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#innerStrength
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.innerStrength = 0;
 
-        /**
-         * If `true` only the glow is drawn, not the texture itself.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#knockout
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.knockout = false;
+            /**
+             * If `true` only the glow is drawn, not the texture itself.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#knockout
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.knockout = false;
 
-        /**
-         * A 4 element array of gl color values.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#glcolor
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.glcolor = [ 1, 1, 1, 1 ];
-    },
+            /**
+             * A 4 element array of gl color values.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#glcolor
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.glcolor = [1, 1, 1, 1];
+        },
 
-    onPreRender: function (controller, shader, width, height)
-    {
+    onPreRender: function (controller, shader, width, height) {
         controller = this.getController(controller);
 
         this.set1f('outerStrength', controller.outerStrength, shader);
@@ -98,14 +96,12 @@ var GlowFXPipeline = new Class({
         this.set4fv('glowColor', controller.glcolor, shader);
         this.setBoolean('knockout', controller.knockout, shader);
 
-        if (width && height)
-        {
+        if (width && height) {
             this.set2f('resolution', width, height, shader);
         }
     },
 
-    onDraw: function (target)
-    {
+    onDraw: function (target) {
         this.set2f('resolution', target.width, target.height);
 
         this.bindAndDraw(target);

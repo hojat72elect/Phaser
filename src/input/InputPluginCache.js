@@ -32,9 +32,8 @@ var InputPluginCache = {};
  * @param {string} settingsKey - The key in the Scene Settings to check to see if this plugin should install or not.
  * @param {string} configKey - The key in the Game Config to check to see if this plugin should install or not.
  */
-InputPluginCache.register = function (key, plugin, mapping, settingsKey, configKey)
-{
-    inputPlugins[key] = { plugin: plugin, mapping: mapping, settingsKey: settingsKey, configKey: configKey };
+InputPluginCache.register = function (key, plugin, mapping, settingsKey, configKey) {
+    inputPlugins[key] = {plugin: plugin, mapping: mapping, settingsKey: settingsKey, configKey: configKey};
 };
 
 /**
@@ -48,8 +47,7 @@ InputPluginCache.register = function (key, plugin, mapping, settingsKey, configK
  *
  * @return {Phaser.Types.Input.InputPluginContainer} The input plugin object.
  */
-InputPluginCache.getPlugin = function (key)
-{
+InputPluginCache.getPlugin = function (key) {
     return inputPlugins[key];
 };
 
@@ -62,21 +60,18 @@ InputPluginCache.getPlugin = function (key)
  *
  * @param {Phaser.Input.InputPlugin} target - The target InputPlugin to install the plugins into.
  */
-InputPluginCache.install = function (target)
-{
+InputPluginCache.install = function (target) {
     var sys = target.scene.sys;
     var settings = sys.settings.input;
     var config = sys.game.config;
 
-    for (var key in inputPlugins)
-    {
+    for (var key in inputPlugins) {
         var source = inputPlugins[key].plugin;
         var mapping = inputPlugins[key].mapping;
         var settingsKey = inputPlugins[key].settingsKey;
         var configKey = inputPlugins[key].configKey;
 
-        if (GetValue(settings, settingsKey, config[configKey]))
-        {
+        if (GetValue(settings, settingsKey, config[configKey])) {
             target[mapping] = new source(target);
         }
     }
@@ -91,10 +86,8 @@ InputPluginCache.install = function (target)
  *
  * @param {string} key - The key of the input plugin to remove.
  */
-InputPluginCache.remove = function (key)
-{
-    if (inputPlugins.hasOwnProperty(key))
-    {
+InputPluginCache.remove = function (key) {
+    if (inputPlugins.hasOwnProperty(key)) {
         delete inputPlugins[key];
     }
 };

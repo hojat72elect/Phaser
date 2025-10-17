@@ -14,8 +14,7 @@
  *
  * @return {number} Returns square of the magnitude of given point.
  */
-var GetMagnitudeSq = function (point)
-{
+var GetMagnitudeSq = function (point) {
     return (point.x * point.x) + (point.y * point.y);
 };
 

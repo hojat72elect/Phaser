@@ -24,9 +24,10 @@ var Vector2 = require('./Vector2');
  *
  * @return {(Phaser.Math.Vector2|Phaser.Geom.Point|object)} The translated point.
  */
-var TransformXY = function (x, y, positionX, positionY, rotation, scaleX, scaleY, output)
-{
-    if (output === undefined) { output = new Vector2(); }
+var TransformXY = function (x, y, positionX, positionY, rotation, scaleX, scaleY, output) {
+    if (output === undefined) {
+        output = new Vector2();
+    }
 
     var radianSin = Math.sin(rotation);
     var radianCos = Math.cos(rotation);

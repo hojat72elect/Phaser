@@ -35,8 +35,7 @@ var GetTilesWithin = require('./GetTilesWithin');
  *
  * @return {?Phaser.Tilemaps.Tile} A Tile that matches the search, or null if no Tile found
  */
-var FindTile = function (callback, context, tileX, tileY, width, height, filteringOptions, layer)
-{
+var FindTile = function (callback, context, tileX, tileY, width, height, filteringOptions, layer) {
     var tiles = GetTilesWithin(tileX, tileY, width, height, filteringOptions, layer);
 
     return tiles.find(callback, context) || null;

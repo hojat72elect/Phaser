@@ -50,266 +50,256 @@ var World = new Class({
 
     initialize:
 
-    function World (scene, config)
-    {
-        EventEmitter.call(this);
+        function World(scene, config) {
+            EventEmitter.call(this);
 
-        /**
-         * The Scene to which this Matter World instance belongs.
-         *
-         * @name Phaser.Physics.Matter.World#scene
-         * @type {Phaser.Scene}
-         * @since 3.0.0
-         */
-        this.scene = scene;
+            /**
+             * The Scene to which this Matter World instance belongs.
+             *
+             * @name Phaser.Physics.Matter.World#scene
+             * @type {Phaser.Scene}
+             * @since 3.0.0
+             */
+            this.scene = scene;
 
-        /**
-         * An instance of the MatterJS Engine.
-         *
-         * @name Phaser.Physics.Matter.World#engine
-         * @type {MatterJS.Engine}
-         * @since 3.0.0
-         */
-        this.engine = Engine.create(config);
+            /**
+             * An instance of the MatterJS Engine.
+             *
+             * @name Phaser.Physics.Matter.World#engine
+             * @type {MatterJS.Engine}
+             * @since 3.0.0
+             */
+            this.engine = Engine.create(config);
 
-        /**
-         * A `World` composite object that will contain all simulated bodies and constraints.
-         *
-         * @name Phaser.Physics.Matter.World#localWorld
-         * @type {MatterJS.World}
-         * @since 3.0.0
-         */
-        this.localWorld = this.engine.world;
+            /**
+             * A `World` composite object that will contain all simulated bodies and constraints.
+             *
+             * @name Phaser.Physics.Matter.World#localWorld
+             * @type {MatterJS.World}
+             * @since 3.0.0
+             */
+            this.localWorld = this.engine.world;
 
-        var gravity = GetValue(config, 'gravity', null);
+            var gravity = GetValue(config, 'gravity', null);
 
-        if (gravity)
-        {
-            this.setGravity(gravity.x, gravity.y, gravity.scale);
-        }
-        else if (gravity === false)
-        {
-            this.setGravity(0, 0, 0);
-        }
-
-        /**
-         * An object containing the 4 wall bodies that bound the physics world.
-         *
-         * @name Phaser.Physics.Matter.World#walls
-         * @type {Phaser.Types.Physics.Matter.MatterWalls}
-         * @since 3.0.0
-         */
-        this.walls = { left: null, right: null, top: null, bottom: null };
-
-        /**
-         * A flag that toggles if the world is enabled or not.
-         *
-         * @name Phaser.Physics.Matter.World#enabled
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.enabled = GetValue(config, 'enabled', true);
-
-        /**
-         * This function is called every time the core game loop steps, which is bound to the
-         * Request Animation Frame frequency unless otherwise modified.
-         *
-         * The function is passed two values: `time` and `delta`, both of which come from the game step values.
-         *
-         * It must return a number. This number is used as the delta value passed to Matter.Engine.update.
-         *
-         * You can override this function with your own to define your own timestep.
-         *
-         * If you need to update the Engine multiple times in a single game step then call
-         * `World.update` as many times as required. Each call will trigger the `getDelta` function.
-         * If you wish to have full control over when the Engine updates then see the property `autoUpdate`.
-         *
-         * You can also adjust the number of iterations that Engine.update performs.
-         * Use the Scene Matter Physics config object to set the following properties:
-         *
-         * positionIterations (defaults to 6)
-         * velocityIterations (defaults to 4)
-         * constraintIterations (defaults to 2)
-         *
-         * Adjusting these values can help performance in certain situations, depending on the physics requirements
-         * of your game.
-         *
-         * @name Phaser.Physics.Matter.World#getDelta
-         * @type {function}
-         * @since 3.4.0
-         */
-        this.getDelta = GetValue(config, 'getDelta', this.update60Hz);
-
-        var runnerConfig = GetFastValue(config, 'runner', {});
-
-        var hasFPS = GetFastValue(runnerConfig, 'fps', false);
-
-        if (hasFPS)
-        {
-            runnerConfig.delta = 1000 / GetFastValue(runnerConfig, 'fps', 60);
-        }
-
-        /**
-         * The Matter JS Runner Configuration object.
-         *
-         * This object is populated via the Matter Configuration object's `runner` property and is
-         * updated constantly during the game step.
-         *
-         * @name Phaser.Physics.Matter.World#runner
-         * @type {Phaser.Types.Physics.Matter.MatterRunnerConfig}
-         * @since 3.22.0
-         */
-        this.runner = MatterRunner.create(runnerConfig);
-
-        /**
-         * Automatically call Engine.update every time the game steps.
-         * If you disable this then you are responsible for calling `World.step` directly from your game.
-         * If you call `set60Hz` or `set30Hz` then `autoUpdate` is reset to `true`.
-         *
-         * @name Phaser.Physics.Matter.World#autoUpdate
-         * @type {boolean}
-         * @default true
-         * @since 3.4.0
-         */
-        this.autoUpdate = GetValue(config, 'autoUpdate', true);
-
-        var debugConfig = GetValue(config, 'debug', false);
-
-        /**
-         * A flag that controls if the debug graphics will be drawn to or not.
-         *
-         * @name Phaser.Physics.Matter.World#drawDebug
-         * @type {boolean}
-         * @default false
-         * @since 3.0.0
-         */
-        this.drawDebug = (typeof(debugConfig) === 'object') ? true : debugConfig;
-
-        /**
-         * An instance of the Graphics object the debug bodies are drawn to, if enabled.
-         *
-         * @name Phaser.Physics.Matter.World#debugGraphic
-         * @type {Phaser.GameObjects.Graphics}
-         * @since 3.0.0
-         */
-        this.debugGraphic;
-
-        /**
-         * The debug configuration object.
-         *
-         * The values stored in this object are read from the Matter World Config `debug` property.
-         *
-         * When a new Body or Constraint is _added to the World_, they are given the values stored in this object,
-         * unless they have their own `render` object set that will override them.
-         *
-         * Note that while you can modify the values of properties in this object at run-time, it will not change
-         * any of the Matter objects _already added_. It will only impact objects newly added to the world, or one
-         * that is removed and then re-added at a later time.
-         *
-         * @name Phaser.Physics.Matter.World#debugConfig
-         * @type {Phaser.Types.Physics.Matter.MatterDebugConfig}
-         * @since 3.22.0
-         */
-        this.debugConfig = {
-            showAxes: GetFastValue(debugConfig, 'showAxes', false),
-            showAngleIndicator: GetFastValue(debugConfig, 'showAngleIndicator', false),
-            angleColor: GetFastValue(debugConfig, 'angleColor', 0xe81153),
-
-            showBroadphase: GetFastValue(debugConfig, 'showBroadphase', false),
-            broadphaseColor: GetFastValue(debugConfig, 'broadphaseColor', 0xffb400),
-
-            showBounds: GetFastValue(debugConfig, 'showBounds', false),
-            boundsColor: GetFastValue(debugConfig, 'boundsColor', 0xffffff),
-
-            showVelocity: GetFastValue(debugConfig, 'showVelocity', false),
-            velocityColor: GetFastValue(debugConfig, 'velocityColor', 0x00aeef),
-
-            showCollisions: GetFastValue(debugConfig, 'showCollisions', false),
-            collisionColor: GetFastValue(debugConfig, 'collisionColor', 0xf5950c),
-
-            showSeparations: GetFastValue(debugConfig, 'showSeparations', false),
-            separationColor: GetFastValue(debugConfig, 'separationColor', 0xffa500),
-
-            showBody: GetFastValue(debugConfig, 'showBody', true),
-            showStaticBody: GetFastValue(debugConfig, 'showStaticBody', true),
-            showInternalEdges: GetFastValue(debugConfig, 'showInternalEdges', false),
-
-            renderFill: GetFastValue(debugConfig, 'renderFill', false),
-            renderLine: GetFastValue(debugConfig, 'renderLine', true),
-
-            fillColor: GetFastValue(debugConfig, 'fillColor', 0x106909),
-            fillOpacity: GetFastValue(debugConfig, 'fillOpacity', 1),
-            lineColor: GetFastValue(debugConfig, 'lineColor', 0x28de19),
-            lineOpacity: GetFastValue(debugConfig, 'lineOpacity', 1),
-            lineThickness: GetFastValue(debugConfig, 'lineThickness', 1),
-
-            staticFillColor: GetFastValue(debugConfig, 'staticFillColor', 0x0d177b),
-            staticLineColor: GetFastValue(debugConfig, 'staticLineColor', 0x1327e4),
-
-            showSleeping: GetFastValue(debugConfig, 'showSleeping', false),
-            staticBodySleepOpacity: GetFastValue(debugConfig, 'staticBodySleepOpacity', 0.7),
-            sleepFillColor: GetFastValue(debugConfig, 'sleepFillColor', 0x464646),
-            sleepLineColor: GetFastValue(debugConfig, 'sleepLineColor', 0x999a99),
-
-            showSensors: GetFastValue(debugConfig, 'showSensors', true),
-            sensorFillColor: GetFastValue(debugConfig, 'sensorFillColor', 0x0d177b),
-            sensorLineColor: GetFastValue(debugConfig, 'sensorLineColor', 0x1327e4),
-
-            showPositions: GetFastValue(debugConfig, 'showPositions', true),
-            positionSize: GetFastValue(debugConfig, 'positionSize', 4),
-            positionColor: GetFastValue(debugConfig, 'positionColor', 0xe042da),
-
-            showJoint: GetFastValue(debugConfig, 'showJoint', true),
-            jointColor: GetFastValue(debugConfig, 'jointColor', 0xe0e042),
-            jointLineOpacity: GetFastValue(debugConfig, 'jointLineOpacity', 1),
-            jointLineThickness: GetFastValue(debugConfig, 'jointLineThickness', 2),
-
-            pinSize: GetFastValue(debugConfig, 'pinSize', 4),
-            pinColor: GetFastValue(debugConfig, 'pinColor', 0x42e0e0),
-
-            springColor: GetFastValue(debugConfig, 'springColor', 0xe042e0),
-
-            anchorColor: GetFastValue(debugConfig, 'anchorColor', 0xefefef),
-            anchorSize: GetFastValue(debugConfig, 'anchorSize', 4),
-
-            showConvexHulls: GetFastValue(debugConfig, 'showConvexHulls', false),
-            hullColor: GetFastValue(debugConfig, 'hullColor', 0xd703d0)
-        };
-
-        if (this.drawDebug)
-        {
-            this.createDebugGraphic();
-        }
-
-        this.setEventsProxy();
-
-        //  Create the walls
-
-        if (GetFastValue(config, 'setBounds', false))
-        {
-            var boundsConfig = config['setBounds'];
-
-            if (typeof boundsConfig === 'boolean')
-            {
-                this.setBounds();
+            if (gravity) {
+                this.setGravity(gravity.x, gravity.y, gravity.scale);
+            } else if (gravity === false) {
+                this.setGravity(0, 0, 0);
             }
-            else
-            {
-                var x = GetFastValue(boundsConfig, 'x', 0);
-                var y = GetFastValue(boundsConfig, 'y', 0);
-                var width = GetFastValue(boundsConfig, 'width', scene.sys.scale.width);
-                var height = GetFastValue(boundsConfig, 'height', scene.sys.scale.height);
-                var thickness = GetFastValue(boundsConfig, 'thickness', 64);
-                var left = GetFastValue(boundsConfig, 'left', true);
-                var right = GetFastValue(boundsConfig, 'right', true);
-                var top = GetFastValue(boundsConfig, 'top', true);
-                var bottom = GetFastValue(boundsConfig, 'bottom', true);
 
-                this.setBounds(x, y, width, height, thickness, left, right, top, bottom);
+            /**
+             * An object containing the 4 wall bodies that bound the physics world.
+             *
+             * @name Phaser.Physics.Matter.World#walls
+             * @type {Phaser.Types.Physics.Matter.MatterWalls}
+             * @since 3.0.0
+             */
+            this.walls = {left: null, right: null, top: null, bottom: null};
+
+            /**
+             * A flag that toggles if the world is enabled or not.
+             *
+             * @name Phaser.Physics.Matter.World#enabled
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.enabled = GetValue(config, 'enabled', true);
+
+            /**
+             * This function is called every time the core game loop steps, which is bound to the
+             * Request Animation Frame frequency unless otherwise modified.
+             *
+             * The function is passed two values: `time` and `delta`, both of which come from the game step values.
+             *
+             * It must return a number. This number is used as the delta value passed to Matter.Engine.update.
+             *
+             * You can override this function with your own to define your own timestep.
+             *
+             * If you need to update the Engine multiple times in a single game step then call
+             * `World.update` as many times as required. Each call will trigger the `getDelta` function.
+             * If you wish to have full control over when the Engine updates then see the property `autoUpdate`.
+             *
+             * You can also adjust the number of iterations that Engine.update performs.
+             * Use the Scene Matter Physics config object to set the following properties:
+             *
+             * positionIterations (defaults to 6)
+             * velocityIterations (defaults to 4)
+             * constraintIterations (defaults to 2)
+             *
+             * Adjusting these values can help performance in certain situations, depending on the physics requirements
+             * of your game.
+             *
+             * @name Phaser.Physics.Matter.World#getDelta
+             * @type {function}
+             * @since 3.4.0
+             */
+            this.getDelta = GetValue(config, 'getDelta', this.update60Hz);
+
+            var runnerConfig = GetFastValue(config, 'runner', {});
+
+            var hasFPS = GetFastValue(runnerConfig, 'fps', false);
+
+            if (hasFPS) {
+                runnerConfig.delta = 1000 / GetFastValue(runnerConfig, 'fps', 60);
             }
-        }
-    },
+
+            /**
+             * The Matter JS Runner Configuration object.
+             *
+             * This object is populated via the Matter Configuration object's `runner` property and is
+             * updated constantly during the game step.
+             *
+             * @name Phaser.Physics.Matter.World#runner
+             * @type {Phaser.Types.Physics.Matter.MatterRunnerConfig}
+             * @since 3.22.0
+             */
+            this.runner = MatterRunner.create(runnerConfig);
+
+            /**
+             * Automatically call Engine.update every time the game steps.
+             * If you disable this then you are responsible for calling `World.step` directly from your game.
+             * If you call `set60Hz` or `set30Hz` then `autoUpdate` is reset to `true`.
+             *
+             * @name Phaser.Physics.Matter.World#autoUpdate
+             * @type {boolean}
+             * @default true
+             * @since 3.4.0
+             */
+            this.autoUpdate = GetValue(config, 'autoUpdate', true);
+
+            var debugConfig = GetValue(config, 'debug', false);
+
+            /**
+             * A flag that controls if the debug graphics will be drawn to or not.
+             *
+             * @name Phaser.Physics.Matter.World#drawDebug
+             * @type {boolean}
+             * @default false
+             * @since 3.0.0
+             */
+            this.drawDebug = (typeof (debugConfig) === 'object') ? true : debugConfig;
+
+            /**
+             * An instance of the Graphics object the debug bodies are drawn to, if enabled.
+             *
+             * @name Phaser.Physics.Matter.World#debugGraphic
+             * @type {Phaser.GameObjects.Graphics}
+             * @since 3.0.0
+             */
+            this.debugGraphic;
+
+            /**
+             * The debug configuration object.
+             *
+             * The values stored in this object are read from the Matter World Config `debug` property.
+             *
+             * When a new Body or Constraint is _added to the World_, they are given the values stored in this object,
+             * unless they have their own `render` object set that will override them.
+             *
+             * Note that while you can modify the values of properties in this object at run-time, it will not change
+             * any of the Matter objects _already added_. It will only impact objects newly added to the world, or one
+             * that is removed and then re-added at a later time.
+             *
+             * @name Phaser.Physics.Matter.World#debugConfig
+             * @type {Phaser.Types.Physics.Matter.MatterDebugConfig}
+             * @since 3.22.0
+             */
+            this.debugConfig = {
+                showAxes: GetFastValue(debugConfig, 'showAxes', false),
+                showAngleIndicator: GetFastValue(debugConfig, 'showAngleIndicator', false),
+                angleColor: GetFastValue(debugConfig, 'angleColor', 0xe81153),
+
+                showBroadphase: GetFastValue(debugConfig, 'showBroadphase', false),
+                broadphaseColor: GetFastValue(debugConfig, 'broadphaseColor', 0xffb400),
+
+                showBounds: GetFastValue(debugConfig, 'showBounds', false),
+                boundsColor: GetFastValue(debugConfig, 'boundsColor', 0xffffff),
+
+                showVelocity: GetFastValue(debugConfig, 'showVelocity', false),
+                velocityColor: GetFastValue(debugConfig, 'velocityColor', 0x00aeef),
+
+                showCollisions: GetFastValue(debugConfig, 'showCollisions', false),
+                collisionColor: GetFastValue(debugConfig, 'collisionColor', 0xf5950c),
+
+                showSeparations: GetFastValue(debugConfig, 'showSeparations', false),
+                separationColor: GetFastValue(debugConfig, 'separationColor', 0xffa500),
+
+                showBody: GetFastValue(debugConfig, 'showBody', true),
+                showStaticBody: GetFastValue(debugConfig, 'showStaticBody', true),
+                showInternalEdges: GetFastValue(debugConfig, 'showInternalEdges', false),
+
+                renderFill: GetFastValue(debugConfig, 'renderFill', false),
+                renderLine: GetFastValue(debugConfig, 'renderLine', true),
+
+                fillColor: GetFastValue(debugConfig, 'fillColor', 0x106909),
+                fillOpacity: GetFastValue(debugConfig, 'fillOpacity', 1),
+                lineColor: GetFastValue(debugConfig, 'lineColor', 0x28de19),
+                lineOpacity: GetFastValue(debugConfig, 'lineOpacity', 1),
+                lineThickness: GetFastValue(debugConfig, 'lineThickness', 1),
+
+                staticFillColor: GetFastValue(debugConfig, 'staticFillColor', 0x0d177b),
+                staticLineColor: GetFastValue(debugConfig, 'staticLineColor', 0x1327e4),
+
+                showSleeping: GetFastValue(debugConfig, 'showSleeping', false),
+                staticBodySleepOpacity: GetFastValue(debugConfig, 'staticBodySleepOpacity', 0.7),
+                sleepFillColor: GetFastValue(debugConfig, 'sleepFillColor', 0x464646),
+                sleepLineColor: GetFastValue(debugConfig, 'sleepLineColor', 0x999a99),
+
+                showSensors: GetFastValue(debugConfig, 'showSensors', true),
+                sensorFillColor: GetFastValue(debugConfig, 'sensorFillColor', 0x0d177b),
+                sensorLineColor: GetFastValue(debugConfig, 'sensorLineColor', 0x1327e4),
+
+                showPositions: GetFastValue(debugConfig, 'showPositions', true),
+                positionSize: GetFastValue(debugConfig, 'positionSize', 4),
+                positionColor: GetFastValue(debugConfig, 'positionColor', 0xe042da),
+
+                showJoint: GetFastValue(debugConfig, 'showJoint', true),
+                jointColor: GetFastValue(debugConfig, 'jointColor', 0xe0e042),
+                jointLineOpacity: GetFastValue(debugConfig, 'jointLineOpacity', 1),
+                jointLineThickness: GetFastValue(debugConfig, 'jointLineThickness', 2),
+
+                pinSize: GetFastValue(debugConfig, 'pinSize', 4),
+                pinColor: GetFastValue(debugConfig, 'pinColor', 0x42e0e0),
+
+                springColor: GetFastValue(debugConfig, 'springColor', 0xe042e0),
+
+                anchorColor: GetFastValue(debugConfig, 'anchorColor', 0xefefef),
+                anchorSize: GetFastValue(debugConfig, 'anchorSize', 4),
+
+                showConvexHulls: GetFastValue(debugConfig, 'showConvexHulls', false),
+                hullColor: GetFastValue(debugConfig, 'hullColor', 0xd703d0)
+            };
+
+            if (this.drawDebug) {
+                this.createDebugGraphic();
+            }
+
+            this.setEventsProxy();
+
+            //  Create the walls
+
+            if (GetFastValue(config, 'setBounds', false)) {
+                var boundsConfig = config['setBounds'];
+
+                if (typeof boundsConfig === 'boolean') {
+                    this.setBounds();
+                } else {
+                    var x = GetFastValue(boundsConfig, 'x', 0);
+                    var y = GetFastValue(boundsConfig, 'y', 0);
+                    var width = GetFastValue(boundsConfig, 'width', scene.sys.scale.width);
+                    var height = GetFastValue(boundsConfig, 'height', scene.sys.scale.height);
+                    var thickness = GetFastValue(boundsConfig, 'thickness', 64);
+                    var left = GetFastValue(boundsConfig, 'left', true);
+                    var right = GetFastValue(boundsConfig, 'right', true);
+                    var top = GetFastValue(boundsConfig, 'top', true);
+                    var bottom = GetFastValue(boundsConfig, 'bottom', true);
+
+                    this.setBounds(x, y, width, height, thickness, left, right, top, bottom);
+                }
+            }
+        },
 
     /**
      * Sets the debug render style for the children of the given Matter Composite.
@@ -325,8 +315,7 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    setCompositeRenderStyle: function (composite)
-    {
+    setCompositeRenderStyle: function (composite) {
         var bodies = composite.bodies;
         var constraints = composite.constraints;
         var composites = composite.composites;
@@ -335,24 +324,21 @@ var World = new Class({
         var obj;
         var render;
 
-        for (i = 0; i < bodies.length; i++)
-        {
+        for (i = 0; i < bodies.length; i++) {
             obj = bodies[i];
             render = obj.render;
 
             this.setBodyRenderStyle(obj, render.lineColor, render.lineOpacity, render.lineThickness, render.fillColor, render.fillOpacity);
         }
 
-        for (i = 0; i < constraints.length; i++)
-        {
+        for (i = 0; i < constraints.length; i++) {
             obj = constraints[i];
             render = obj.render;
 
             this.setConstraintRenderStyle(obj, render.lineColor, render.lineOpacity, render.lineThickness, render.pinSize, render.anchorColor, render.anchorSize);
         }
 
-        for (i = 0; i < composites.length; i++)
-        {
+        for (i = 0; i < composites.length; i++) {
             obj = composites[i];
 
             this.setCompositeRenderStyle(obj);
@@ -384,63 +370,51 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    setBodyRenderStyle: function (body, lineColor, lineOpacity, lineThickness, fillColor, fillOpacity)
-    {
+    setBodyRenderStyle: function (body, lineColor, lineOpacity, lineThickness, fillColor, fillOpacity) {
         var render = body.render;
         var config = this.debugConfig;
 
-        if (!render)
-        {
+        if (!render) {
             return this;
         }
 
-        if (lineColor === undefined || lineColor === null)
-        {
+        if (lineColor === undefined || lineColor === null) {
             lineColor = (body.isStatic) ? config.staticLineColor : config.lineColor;
         }
 
-        if (lineOpacity === undefined || lineOpacity === null)
-        {
+        if (lineOpacity === undefined || lineOpacity === null) {
             lineOpacity = config.lineOpacity;
         }
 
-        if (lineThickness === undefined || lineThickness === null)
-        {
+        if (lineThickness === undefined || lineThickness === null) {
             lineThickness = config.lineThickness;
         }
 
-        if (fillColor === undefined || fillColor === null)
-        {
+        if (fillColor === undefined || fillColor === null) {
             fillColor = (body.isStatic) ? config.staticFillColor : config.fillColor;
         }
 
-        if (fillOpacity === undefined || fillOpacity === null)
-        {
+        if (fillOpacity === undefined || fillOpacity === null) {
             fillOpacity = config.fillOpacity;
         }
 
-        if (lineColor !== false)
-        {
+        if (lineColor !== false) {
             render.lineColor = lineColor;
         }
 
-        if (lineOpacity !== false)
-        {
+        if (lineOpacity !== false) {
             render.lineOpacity = lineOpacity;
         }
 
-        if (lineThickness !== false)
-        {
+        if (lineThickness !== false) {
             render.lineThickness = lineThickness;
         }
 
-        if (fillColor !== false)
-        {
+        if (fillColor !== false) {
             render.fillColor = fillColor;
         }
 
-        if (fillOpacity !== false)
-        {
+        if (fillOpacity !== false) {
             render.fillOpacity = fillOpacity;
         }
 
@@ -471,87 +445,68 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    setConstraintRenderStyle: function (constraint, lineColor, lineOpacity, lineThickness, pinSize, anchorColor, anchorSize)
-    {
+    setConstraintRenderStyle: function (constraint, lineColor, lineOpacity, lineThickness, pinSize, anchorColor, anchorSize) {
         var render = constraint.render;
         var config = this.debugConfig;
 
-        if (!render)
-        {
+        if (!render) {
             return this;
         }
 
         //  Reset them
-        if (lineColor === undefined || lineColor === null)
-        {
+        if (lineColor === undefined || lineColor === null) {
             var type = render.type;
 
-            if (type === 'line')
-            {
+            if (type === 'line') {
                 lineColor = config.jointColor;
-            }
-            else if (type === 'pin')
-            {
+            } else if (type === 'pin') {
                 lineColor = config.pinColor;
-            }
-            else if (type === 'spring')
-            {
+            } else if (type === 'spring') {
                 lineColor = config.springColor;
             }
         }
 
-        if (lineOpacity === undefined || lineOpacity === null)
-        {
+        if (lineOpacity === undefined || lineOpacity === null) {
             lineOpacity = config.jointLineOpacity;
         }
 
-        if (lineThickness === undefined || lineThickness === null)
-        {
+        if (lineThickness === undefined || lineThickness === null) {
             lineThickness = config.jointLineThickness;
         }
 
-        if (pinSize === undefined || pinSize === null)
-        {
+        if (pinSize === undefined || pinSize === null) {
             pinSize = config.pinSize;
         }
 
-        if (anchorColor === undefined || anchorColor === null)
-        {
+        if (anchorColor === undefined || anchorColor === null) {
             anchorColor = config.anchorColor;
         }
 
-        if (anchorSize === undefined || anchorSize === null)
-        {
+        if (anchorSize === undefined || anchorSize === null) {
             anchorSize = config.anchorSize;
         }
 
-        if (lineColor !== false)
-        {
+        if (lineColor !== false) {
             render.lineColor = lineColor;
         }
 
-        if (lineOpacity !== false)
-        {
+        if (lineOpacity !== false) {
             render.lineOpacity = lineOpacity;
         }
 
-        if (lineThickness !== false)
-        {
+        if (lineThickness !== false) {
             render.lineThickness = lineThickness;
         }
 
-        if (pinSize !== false)
-        {
+        if (pinSize !== false) {
             render.pinSize = pinSize;
         }
 
-        if (anchorColor !== false)
-        {
+        if (anchorColor !== false) {
             render.anchorColor = anchorColor;
         }
 
-        if (anchorSize !== false)
-        {
+        if (anchorSize !== false) {
             render.anchorSize = anchorSize;
         }
 
@@ -565,119 +520,94 @@ var World = new Class({
      * @method Phaser.Physics.Matter.World#setEventsProxy
      * @since 3.0.0
      */
-    setEventsProxy: function ()
-    {
+    setEventsProxy: function () {
         var _this = this;
         var engine = this.engine;
         var world = this.localWorld;
 
         //  Inject debug styles
 
-        if (this.drawDebug)
-        {
-            MatterEvents.on(world, 'compositeModified', function (composite)
-            {
+        if (this.drawDebug) {
+            MatterEvents.on(world, 'compositeModified', function (composite) {
                 _this.setCompositeRenderStyle(composite);
             });
 
-            MatterEvents.on(world, 'beforeAdd', function (event)
-            {
+            MatterEvents.on(world, 'beforeAdd', function (event) {
                 var objects = [].concat(event.object);
 
-                for (var i = 0; i < objects.length; i++)
-                {
+                for (var i = 0; i < objects.length; i++) {
                     var obj = objects[i];
                     var render = obj.render;
 
-                    if (obj.type === 'body')
-                    {
+                    if (obj.type === 'body') {
                         _this.setBodyRenderStyle(obj, render.lineColor, render.lineOpacity, render.lineThickness, render.fillColor, render.fillOpacity);
-                    }
-                    else if (obj.type === 'composite')
-                    {
+                    } else if (obj.type === 'composite') {
                         _this.setCompositeRenderStyle(obj);
-                    }
-                    else if (obj.type === 'constraint')
-                    {
+                    } else if (obj.type === 'constraint') {
                         _this.setConstraintRenderStyle(obj, render.lineColor, render.lineOpacity, render.lineThickness, render.pinSize, render.anchorColor, render.anchorSize);
                     }
                 }
             });
         }
 
-        MatterEvents.on(world, 'beforeAdd', function (event)
-        {
+        MatterEvents.on(world, 'beforeAdd', function (event) {
             _this.emit(Events.BEFORE_ADD, event);
         });
 
-        MatterEvents.on(world, 'afterAdd', function (event)
-        {
+        MatterEvents.on(world, 'afterAdd', function (event) {
             _this.emit(Events.AFTER_ADD, event);
         });
 
-        MatterEvents.on(world, 'beforeRemove', function (event)
-        {
+        MatterEvents.on(world, 'beforeRemove', function (event) {
             _this.emit(Events.BEFORE_REMOVE, event);
         });
 
-        MatterEvents.on(world, 'afterRemove', function (event)
-        {
+        MatterEvents.on(world, 'afterRemove', function (event) {
             _this.emit(Events.AFTER_REMOVE, event);
         });
 
-        MatterEvents.on(engine, 'beforeUpdate', function (event)
-        {
+        MatterEvents.on(engine, 'beforeUpdate', function (event) {
             _this.emit(Events.BEFORE_UPDATE, event);
         });
 
-        MatterEvents.on(engine, 'afterUpdate', function (event)
-        {
+        MatterEvents.on(engine, 'afterUpdate', function (event) {
             _this.emit(Events.AFTER_UPDATE, event);
         });
 
-        MatterEvents.on(engine, 'collisionStart', function (event)
-        {
+        MatterEvents.on(engine, 'collisionStart', function (event) {
             var pairs = event.pairs;
             var bodyA;
             var bodyB;
 
-            if (pairs.length > 0)
-            {
-                pairs.map(function (pair)
-                {
+            if (pairs.length > 0) {
+                pairs.map(function (pair) {
                     bodyA = pair.bodyA;
                     bodyB = pair.bodyB;
 
-                    if (bodyA.gameObject)
-                    {
+                    if (bodyA.gameObject) {
                         bodyA.gameObject.emit('collide', bodyA, bodyB, pair);
                     }
 
-                    if (bodyB.gameObject)
-                    {
+                    if (bodyB.gameObject) {
                         bodyB.gameObject.emit('collide', bodyB, bodyA, pair);
                     }
 
-                    MatterEvents.trigger(bodyA, 'onCollide', { pair: pair });
-                    MatterEvents.trigger(bodyB, 'onCollide', { pair: pair });
+                    MatterEvents.trigger(bodyA, 'onCollide', {pair: pair});
+                    MatterEvents.trigger(bodyB, 'onCollide', {pair: pair});
 
-                    if (bodyA.onCollideCallback)
-                    {
+                    if (bodyA.onCollideCallback) {
                         bodyA.onCollideCallback(pair);
                     }
 
-                    if (bodyB.onCollideCallback)
-                    {
+                    if (bodyB.onCollideCallback) {
                         bodyB.onCollideCallback(pair);
                     }
 
-                    if (bodyA.onCollideWith[bodyB.id])
-                    {
+                    if (bodyA.onCollideWith[bodyB.id]) {
                         bodyA.onCollideWith[bodyB.id](bodyB, pair);
                     }
 
-                    if (bodyB.onCollideWith[bodyA.id])
-                    {
+                    if (bodyB.onCollideWith[bodyA.id]) {
                         bodyB.onCollideWith[bodyA.id](bodyA, pair);
                     }
                 });
@@ -686,39 +616,32 @@ var World = new Class({
             _this.emit(Events.COLLISION_START, event, bodyA, bodyB);
         });
 
-        MatterEvents.on(engine, 'collisionActive', function (event)
-        {
+        MatterEvents.on(engine, 'collisionActive', function (event) {
             var pairs = event.pairs;
             var bodyA;
             var bodyB;
 
-            if (pairs.length > 0)
-            {
-                pairs.map(function (pair)
-                {
+            if (pairs.length > 0) {
+                pairs.map(function (pair) {
                     bodyA = pair.bodyA;
                     bodyB = pair.bodyB;
 
-                    if (bodyA.gameObject)
-                    {
+                    if (bodyA.gameObject) {
                         bodyA.gameObject.emit('collideActive', bodyA, bodyB, pair);
                     }
 
-                    if (bodyB.gameObject)
-                    {
+                    if (bodyB.gameObject) {
                         bodyB.gameObject.emit('collideActive', bodyB, bodyA, pair);
                     }
 
-                    MatterEvents.trigger(bodyA, 'onCollideActive', { pair: pair });
-                    MatterEvents.trigger(bodyB, 'onCollideActive', { pair: pair });
+                    MatterEvents.trigger(bodyA, 'onCollideActive', {pair: pair});
+                    MatterEvents.trigger(bodyB, 'onCollideActive', {pair: pair});
 
-                    if (bodyA.onCollideActiveCallback)
-                    {
+                    if (bodyA.onCollideActiveCallback) {
                         bodyA.onCollideActiveCallback(pair);
                     }
 
-                    if (bodyB.onCollideActiveCallback)
-                    {
+                    if (bodyB.onCollideActiveCallback) {
                         bodyB.onCollideActiveCallback(pair);
                     }
                 });
@@ -727,39 +650,32 @@ var World = new Class({
             _this.emit(Events.COLLISION_ACTIVE, event, bodyA, bodyB);
         });
 
-        MatterEvents.on(engine, 'collisionEnd', function (event)
-        {
+        MatterEvents.on(engine, 'collisionEnd', function (event) {
             var pairs = event.pairs;
             var bodyA;
             var bodyB;
 
-            if (pairs.length > 0)
-            {
-                pairs.map(function (pair)
-                {
+            if (pairs.length > 0) {
+                pairs.map(function (pair) {
                     bodyA = pair.bodyA;
                     bodyB = pair.bodyB;
 
-                    if (bodyA.gameObject)
-                    {
+                    if (bodyA.gameObject) {
                         bodyA.gameObject.emit('collideEnd', bodyA, bodyB, pair);
                     }
 
-                    if (bodyB.gameObject)
-                    {
+                    if (bodyB.gameObject) {
                         bodyB.gameObject.emit('collideEnd', bodyB, bodyA, pair);
                     }
 
-                    MatterEvents.trigger(bodyA, 'onCollideEnd', { pair: pair });
-                    MatterEvents.trigger(bodyB, 'onCollideEnd', { pair: pair });
+                    MatterEvents.trigger(bodyA, 'onCollideEnd', {pair: pair});
+                    MatterEvents.trigger(bodyB, 'onCollideEnd', {pair: pair});
 
-                    if (bodyA.onCollideEndCallback)
-                    {
+                    if (bodyA.onCollideEndCallback) {
                         bodyA.onCollideEndCallback(pair);
                     }
 
-                    if (bodyB.onCollideEndCallback)
-                    {
+                    if (bodyB.onCollideEndCallback) {
                         bodyB.onCollideEndCallback(pair);
                     }
                 });
@@ -793,17 +709,34 @@ var World = new Class({
      *
      * @return {Phaser.Physics.Matter.World} This Matter World object.
      */
-    setBounds: function (x, y, width, height, thickness, left, right, top, bottom)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (width === undefined) { width = this.scene.sys.scale.width; }
-        if (height === undefined) { height = this.scene.sys.scale.height; }
-        if (thickness === undefined) { thickness = 64; }
-        if (left === undefined) { left = true; }
-        if (right === undefined) { right = true; }
-        if (top === undefined) { top = true; }
-        if (bottom === undefined) { bottom = true; }
+    setBounds: function (x, y, width, height, thickness, left, right, top, bottom) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 0;
+        }
+        if (width === undefined) {
+            width = this.scene.sys.scale.width;
+        }
+        if (height === undefined) {
+            height = this.scene.sys.scale.height;
+        }
+        if (thickness === undefined) {
+            thickness = 64;
+        }
+        if (left === undefined) {
+            left = true;
+        }
+        if (right === undefined) {
+            right = true;
+        }
+        if (top === undefined) {
+            top = true;
+        }
+        if (bottom === undefined) {
+            bottom = true;
+        }
 
         this.updateWall(left, 'left', x - thickness, y - thickness, thickness, height + (thickness * 2));
         this.updateWall(right, 'right', x + width, y - thickness, thickness, height + (thickness * 2));
@@ -827,14 +760,11 @@ var World = new Class({
      * @param {number} [width] - The width of the walls, in pixels. Only optional if `add` is `false`.
      * @param {number} [height] - The height of the walls, in pixels. Only optional if `add` is `false`.
      */
-    updateWall: function (add, position, x, y, width, height)
-    {
+    updateWall: function (add, position, x, y, width, height) {
         var wall = this.walls[position];
 
-        if (add)
-        {
-            if (wall)
-            {
+        if (add) {
+            if (wall) {
                 MatterWorld.remove(this.localWorld, wall);
             }
 
@@ -842,12 +772,9 @@ var World = new Class({
             x += (width / 2);
             y += (height / 2);
 
-            this.walls[position] = this.create(x, y, width, height, { isStatic: true, friction: 0, frictionStatic: 0 });
-        }
-        else
-        {
-            if (wall)
-            {
+            this.walls[position] = this.create(x, y, width, height, {isStatic: true, friction: 0, frictionStatic: 0});
+        } else {
+            if (wall) {
                 MatterWorld.remove(this.localWorld, wall);
             }
 
@@ -870,9 +797,8 @@ var World = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The newly created Graphics object.
      */
-    createDebugGraphic: function ()
-    {
-        var graphic = this.scene.sys.add.graphics({ x: 0, y: 0 });
+    createDebugGraphic: function () {
+        var graphic = this.scene.sys.add.graphics({x: 0, y: 0});
 
         graphic.setDepth(Number.MAX_VALUE);
 
@@ -891,8 +817,7 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    disableGravity: function ()
-    {
+    disableGravity: function () {
         this.localWorld.gravity.x = 0;
         this.localWorld.gravity.y = 0;
         this.localWorld.gravity.scale = 0;
@@ -914,11 +839,16 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    setGravity: function (x, y, scale)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 1; }
-        if (scale === undefined) { scale = 0.001; }
+    setGravity: function (x, y, scale) {
+        if (x === undefined) {
+            x = 0;
+        }
+        if (y === undefined) {
+            y = 1;
+        }
+        if (scale === undefined) {
+            scale = 0.001;
+        }
 
         this.localWorld.gravity.x = x;
         this.localWorld.gravity.y = y;
@@ -941,8 +871,7 @@ var World = new Class({
      *
      * @return {MatterJS.BodyType} The Matter.js body that was created.
      */
-    create: function (x, y, width, height, options)
-    {
+    create: function (x, y, width, height, options) {
         var body = Bodies.rectangle(x, y, width, height, options);
 
         MatterWorld.add(this.localWorld, body);
@@ -964,8 +893,7 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    add: function (object)
-    {
+    add: function (object) {
         MatterWorld.add(this.localWorld, object);
 
         return this;
@@ -986,15 +914,12 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    remove: function (object, deep)
-    {
-        if (!Array.isArray(object))
-        {
-            object = [ object ];
+    remove: function (object, deep) {
+        if (!Array.isArray(object)) {
+            object = [object];
         }
 
-        for (var i = 0; i < object.length; i++)
-        {
+        for (var i = 0; i < object.length; i++) {
             var entity = object[i];
 
             var body = (entity.body) ? entity.body : entity;
@@ -1018,8 +943,7 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    removeConstraint: function (constraint, deep)
-    {
+    removeConstraint: function (constraint, deep) {
         Composite.remove(this.localWorld, constraint, deep);
 
         return this;
@@ -1042,10 +966,9 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    convertTilemapLayer: function (tilemapLayer, options)
-    {
+    convertTilemapLayer: function (tilemapLayer, options) {
         var layerData = tilemapLayer.layer;
-        var tiles = tilemapLayer.getTilesWithin(0, 0, layerData.width, layerData.height, { isColliding: true });
+        var tiles = tilemapLayer.getTilesWithin(0, 0, layerData.width, layerData.height, {isColliding: true});
 
         this.convertTiles(tiles, options);
 
@@ -1066,15 +989,12 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    convertTiles: function (tiles, options)
-    {
-        if (tiles.length === 0)
-        {
+    convertTiles: function (tiles, options) {
+        if (tiles.length === 0) {
             return this;
         }
 
-        for (var i = 0; i < tiles.length; i++)
-        {
+        for (var i = 0; i < tiles.length; i++) {
             new MatterTileBody(this, tiles[i], options);
         }
 
@@ -1092,8 +1012,7 @@ var World = new Class({
      *
      * @return {number} Unique category bitfield
      */
-    nextGroup: function (isNonColliding)
-    {
+    nextGroup: function (isNonColliding) {
         return MatterBody.nextGroup(isNonColliding);
     },
 
@@ -1106,8 +1025,7 @@ var World = new Class({
      *
      * @return {number} Unique category bitfield
      */
-    nextCategory: function ()
-    {
+    nextCategory: function () {
         return MatterBody.nextCategory();
     },
 
@@ -1122,8 +1040,7 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    pause: function ()
-    {
+    pause: function () {
         this.enabled = false;
 
         this.emit(Events.PAUSE);
@@ -1140,8 +1057,7 @@ var World = new Class({
      *
      * @return {this} This Matter World object.
      */
-    resume: function ()
-    {
+    resume: function () {
         this.enabled = true;
 
         this.runner.timeLastTick = Common.now();
@@ -1171,16 +1087,14 @@ var World = new Class({
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      */
-    update: function (time)
-    {
-        if (!this.enabled || !this.autoUpdate)
-        {
+    update: function (time) {
+        if (!this.enabled || !this.autoUpdate) {
             return;
         }
 
         var engine = this.engine;
         var runner = this.runner;
-        
+
         var tickStartTime = Common.now(),
             engineDelta = runner.delta,
             updateCount = 0;
@@ -1189,14 +1103,12 @@ var World = new Class({
         var frameDelta = time - runner.timeLastTick;
 
         // fallback for unusable frame delta values (e.g. 0, NaN, on first frame or long pauses)
-        if (!frameDelta || !runner.timeLastTick || frameDelta > Math.max(MatterRunner._maxFrameDelta, runner.maxFrameTime))
-        {
+        if (!frameDelta || !runner.timeLastTick || frameDelta > Math.max(MatterRunner._maxFrameDelta, runner.maxFrameTime)) {
             // reuse last accepted frame delta else fallback
             frameDelta = runner.frameDelta || MatterRunner._frameDeltaFallback;
         }
 
-        if (runner.frameDeltaSmoothing)
-        {
+        if (runner.frameDeltaSmoothing) {
             // record frame delta over a number of frames
             runner.frameDeltaHistory.push(frameDelta);
             runner.frameDeltaHistory = runner.frameDeltaHistory.slice(-runner.frameDeltaHistorySize);
@@ -1215,8 +1127,7 @@ var World = new Class({
             frameDelta = frameDeltaSmoothed || frameDelta;
         }
 
-        if (runner.frameDeltaSnapping)
-        {
+        if (runner.frameDeltaSnapping) {
             // snap frame delta to the nearest 1 Hz
             frameDelta = 1000 / Math.round(1000 / frameDelta);
         }
@@ -1242,8 +1153,7 @@ var World = new Class({
         var updateStartTime = Common.now();
 
         // simulate time elapsed between calls
-        while (engineDelta > 0 && runner.timeBuffer >= engineDelta * MatterRunner._timeBufferMargin)
-        {
+        while (engineDelta > 0 && runner.timeBuffer >= engineDelta * MatterRunner._timeBufferMargin) {
             // update the engine
             Engine.update(engine, engineDelta);
 
@@ -1257,8 +1167,7 @@ var World = new Class({
                 elapsedNextEstimate = elapsedTimeTotal + MatterRunner._elapsedNextEstimate * elapsedTimeUpdates / updateCount;
 
             // defer updates if over performance budgets for this frame
-            if (updateCount >= maxUpdates || elapsedNextEstimate > runner.maxFrameTime)
-            {
+            if (updateCount >= maxUpdates || elapsedNextEstimate > runner.maxFrameTime) {
                 runner.lastUpdatesDeferred = Math.round(Math.max(0, (runner.timeBuffer / engineDelta) - MatterRunner._timeBufferMargin));
                 break;
             }
@@ -1291,8 +1200,7 @@ var World = new Class({
      *
      * @param {number} [delta=16.666] - The delta value.
      */
-    step: function (delta)
-    {
+    step: function (delta) {
         Engine.update(this.engine, delta);
     },
 
@@ -1304,8 +1212,7 @@ var World = new Class({
      *
      * @return {number} The delta value to be passed to Engine.update.
      */
-    update60Hz: function ()
-    {
+    update60Hz: function () {
         return 1000 / 60;
     },
 
@@ -1317,8 +1224,7 @@ var World = new Class({
      *
      * @return {number} The delta value to be passed to Engine.update.
      */
-    update30Hz: function ()
-    {
+    update30Hz: function () {
         return 1000 / 30;
     },
 
@@ -1332,8 +1238,7 @@ var World = new Class({
      *
      * @return {MatterJS.BodyType[]} An array of all the Matter JS Bodies in this World.
      */
-    has: function (body)
-    {
+    has: function (body) {
         var src = (body.hasOwnProperty('body')) ? body.body : body;
 
         return (Composite.get(this.localWorld, src.id, src.type) !== null);
@@ -1347,8 +1252,7 @@ var World = new Class({
      *
      * @return {MatterJS.BodyType[]} An array of all the Matter JS Bodies in this World.
      */
-    getAllBodies: function ()
-    {
+    getAllBodies: function () {
         return Composite.allBodies(this.localWorld);
     },
 
@@ -1360,8 +1264,7 @@ var World = new Class({
      *
      * @return {MatterJS.ConstraintType[]} An array of all the Matter JS Constraints in this World.
      */
-    getAllConstraints: function ()
-    {
+    getAllConstraints: function () {
         return Composite.allConstraints(this.localWorld);
     },
 
@@ -1373,8 +1276,7 @@ var World = new Class({
      *
      * @return {MatterJS.CompositeType[]} An array of all the Matter JS Composites in this World.
      */
-    getAllComposites: function ()
-    {
+    getAllComposites: function () {
         return Composite.allComposites(this.localWorld);
     },
 
@@ -1387,10 +1289,8 @@ var World = new Class({
      * @private
      * @since 3.0.0
      */
-    postUpdate: function ()
-    {
-        if (!this.drawDebug)
-        {
+    postUpdate: function () {
+        if (!this.drawDebug) {
             return;
         }
 
@@ -1402,43 +1302,35 @@ var World = new Class({
 
         this.debugGraphic.clear();
 
-        if (config.showBroadphase && engine.broadphase.controller)
-        {
+        if (config.showBroadphase && engine.broadphase.controller) {
             this.renderGrid(engine.broadphase, graphics, config.broadphaseColor, 0.5);
         }
 
-        if (config.showBounds)
-        {
+        if (config.showBounds) {
             this.renderBodyBounds(bodies, graphics, config.boundsColor, 0.5);
         }
 
-        if (config.showBody || config.showStaticBody)
-        {
+        if (config.showBody || config.showStaticBody) {
             this.renderBodies(bodies);
         }
 
-        if (config.showJoint)
-        {
+        if (config.showJoint) {
             this.renderJoints();
         }
 
-        if (config.showAxes || config.showAngleIndicator)
-        {
+        if (config.showAxes || config.showAngleIndicator) {
             this.renderBodyAxes(bodies, graphics, config.showAxes, config.angleColor, 0.5);
         }
 
-        if (config.showVelocity)
-        {
+        if (config.showVelocity) {
             this.renderBodyVelocity(bodies, graphics, config.velocityColor, 1, 2);
         }
 
-        if (config.showSeparations)
-        {
+        if (config.showSeparations) {
             this.renderSeparations(engine.pairs.list, graphics, config.separationColor);
         }
 
-        if (config.showCollisions)
-        {
+        if (config.showCollisions) {
             this.renderCollisions(engine.pairs.list, graphics, config.collisionColor);
         }
     },
@@ -1461,18 +1353,15 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    renderGrid: function (grid, graphics, lineColor, lineOpacity)
-    {
+    renderGrid: function (grid, graphics, lineColor, lineOpacity) {
         graphics.lineStyle(1, lineColor, lineOpacity);
 
         var bucketKeys = Common.keys(grid.buckets);
 
-        for (var i = 0; i < bucketKeys.length; i++)
-        {
+        for (var i = 0; i < bucketKeys.length; i++) {
             var bucketId = bucketKeys[i];
 
-            if (grid.buckets[bucketId].length < 2)
-            {
+            if (grid.buckets[bucketId].length < 2) {
                 continue;
             }
 
@@ -1506,16 +1395,13 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    renderSeparations: function (pairs, graphics, lineColor)
-    {
+    renderSeparations: function (pairs, graphics, lineColor) {
         graphics.lineStyle(1, lineColor, 1);
 
-        for (var i = 0; i < pairs.length; i++)
-        {
+        for (var i = 0; i < pairs.length; i++) {
             var pair = pairs[i];
 
-            if (!pair.isActive)
-            {
+            if (!pair.isActive) {
                 continue;
             }
 
@@ -1528,8 +1414,7 @@ var World = new Class({
 
             var k = (!bodyA.isStatic && !bodyB.isStatic) ? 4 : 1;
 
-            if (bodyB.isStatic)
-            {
+            if (bodyB.isStatic) {
                 k = 0;
             }
 
@@ -1542,8 +1427,7 @@ var World = new Class({
 
             k = (!bodyA.isStatic && !bodyB.isStatic) ? 4 : 1;
 
-            if (bodyA.isStatic)
-            {
+            if (bodyA.isStatic) {
                 k = 0;
             }
 
@@ -1575,8 +1459,7 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    renderCollisions: function (pairs, graphics, lineColor)
-    {
+    renderCollisions: function (pairs, graphics, lineColor) {
         graphics.lineStyle(1, lineColor, 0.5);
         graphics.fillStyle(lineColor, 1);
 
@@ -1585,22 +1468,18 @@ var World = new Class({
 
         //  Collision Positions
 
-        for (i = 0; i < pairs.length; i++)
-        {
+        for (i = 0; i < pairs.length; i++) {
             pair = pairs[i];
 
-            if (!pair.isActive)
-            {
+            if (!pair.isActive) {
                 continue;
             }
 
-            for (var j = 0; j < pair.contactCount; j++)
-            {
+            for (var j = 0; j < pair.contactCount; j++) {
                 var contact = pair.contacts[j];
                 var vertex = contact.vertex;
-                
-                if (vertex)
-                {
+
+                if (vertex) {
                     graphics.fillRect(vertex.x - 2, vertex.y - 2, 5, 5);
                 }
             }
@@ -1608,40 +1487,33 @@ var World = new Class({
 
         //  Collision Normals
 
-        for (i = 0; i < pairs.length; i++)
-        {
+        for (i = 0; i < pairs.length; i++) {
             pair = pairs[i];
 
-            if (!pair.isActive)
-            {
+            if (!pair.isActive) {
                 continue;
             }
 
             var collision = pair.collision;
             var contacts = pair.contacts;
 
-            if (pair.contactCount > 0)
-            {
+            if (pair.contactCount > 0) {
                 var normalPosX = contacts[0].vertex.x;
                 var normalPosY = contacts[0].vertex.y;
 
-                if (pair.contactCount === 2)
-                {
+                if (pair.contactCount === 2) {
                     normalPosX = (contacts[0].vertex.x + contacts[1].vertex.x) / 2;
                     normalPosY = (contacts[0].vertex.y + contacts[1].vertex.y) / 2;
                 }
 
-                if (collision.bodyB === collision.supports[0].body || collision.bodyA.isStatic)
-                {
+                if (collision.bodyB === collision.supports[0].body || collision.bodyA.isStatic) {
                     graphics.lineBetween(
                         normalPosX - collision.normal.x * 8,
                         normalPosY - collision.normal.y * 8,
                         normalPosX,
                         normalPosY
                     );
-                }
-                else
-                {
+                } else {
                     graphics.lineBetween(
                         normalPosX + collision.normal.x * 8,
                         normalPosY + collision.normal.y * 8,
@@ -1673,37 +1545,30 @@ var World = new Class({
      * @param {number} lineColor - The line color.
      * @param {number} lineOpacity - The line opacity, between 0 and 1.
      */
-    renderBodyBounds: function (bodies, graphics, lineColor, lineOpacity)
-    {
+    renderBodyBounds: function (bodies, graphics, lineColor, lineOpacity) {
         graphics.lineStyle(1, lineColor, lineOpacity);
 
-        for (var i = 0; i < bodies.length; i++)
-        {
+        for (var i = 0; i < bodies.length; i++) {
             var body = bodies[i];
 
             //  1) Don't show invisible bodies
-            if (!body.render.visible)
-            {
+            if (!body.render.visible) {
                 continue;
             }
 
             var bounds = body.bounds;
 
-            if (bounds)
-            {
+            if (bounds) {
                 graphics.strokeRect(
                     bounds.min.x,
                     bounds.min.y,
                     bounds.max.x - bounds.min.x,
                     bounds.max.y - bounds.min.y
                 );
-            }
-            else
-            {
+            } else {
                 var parts = body.parts;
 
-                for (var j = parts.length > 1 ? 1 : 0; j < parts.length; j++)
-                {
+                for (var j = parts.length > 1 ? 1 : 0; j < parts.length; j++) {
                     var part = parts[j];
 
                     graphics.strokeRect(
@@ -1736,18 +1601,15 @@ var World = new Class({
      * @param {number} lineColor - The line color.
      * @param {number} lineOpacity - The line opacity, between 0 and 1.
      */
-    renderBodyAxes: function (bodies, graphics, showAxes, lineColor, lineOpacity)
-    {
+    renderBodyAxes: function (bodies, graphics, showAxes, lineColor, lineOpacity) {
         graphics.lineStyle(1, lineColor, lineOpacity);
 
-        for (var i = 0; i < bodies.length; i++)
-        {
+        for (var i = 0; i < bodies.length; i++) {
             var body = bodies[i];
             var parts = body.parts;
 
             //  1) Don't show invisible bodies
-            if (!body.render.visible)
-            {
+            if (!body.render.visible) {
                 continue;
             }
 
@@ -1755,14 +1617,11 @@ var World = new Class({
             var j;
             var k;
 
-            if (showAxes)
-            {
-                for (j = parts.length > 1 ? 1 : 0; j < parts.length; j++)
-                {
+            if (showAxes) {
+                for (j = parts.length > 1 ? 1 : 0; j < parts.length; j++) {
                     part = parts[j];
 
-                    for (k = 0; k < part.axes.length; k++)
-                    {
+                    for (k = 0; k < part.axes.length; k++) {
                         var axis = part.axes[k];
 
                         graphics.lineBetween(
@@ -1773,15 +1632,11 @@ var World = new Class({
                         );
                     }
                 }
-            }
-            else
-            {
-                for (j = parts.length > 1 ? 1 : 0; j < parts.length; j++)
-                {
+            } else {
+                for (j = parts.length > 1 ? 1 : 0; j < parts.length; j++) {
                     part = parts[j];
 
-                    for (k = 0; k < part.axes.length; k++)
-                    {
+                    for (k = 0; k < part.axes.length; k++) {
                         graphics.lineBetween(
                             part.position.x,
                             part.position.y,
@@ -1813,17 +1668,14 @@ var World = new Class({
      * @param {number} lineOpacity - The line opacity, between 0 and 1.
      * @param {number} lineThickness - The line thickness.
      */
-    renderBodyVelocity: function (bodies, graphics, lineColor, lineOpacity, lineThickness)
-    {
+    renderBodyVelocity: function (bodies, graphics, lineColor, lineOpacity, lineThickness) {
         graphics.lineStyle(lineThickness, lineColor, lineOpacity);
 
-        for (var i = 0; i < bodies.length; i++)
-        {
+        for (var i = 0; i < bodies.length; i++) {
             var body = bodies[i];
 
             //  1) Don't show invisible bodies
-            if (!body.render.visible)
-            {
+            if (!body.render.visible) {
                 continue;
             }
 
@@ -1849,8 +1701,7 @@ var World = new Class({
      *
      * @param {array} bodies - An array of bodies from the localWorld.
      */
-    renderBodies: function (bodies)
-    {
+    renderBodies: function (bodies) {
         var graphics = this.debugGraphic;
 
         var config = this.debugConfig;
@@ -1870,20 +1721,17 @@ var World = new Class({
 
         var hullColor = config.hullColor;
 
-        for (var i = 0; i < bodies.length; i++)
-        {
+        for (var i = 0; i < bodies.length; i++) {
             var body = bodies[i];
 
             //  1) Don't show invisible bodies
-            if (!body.render.visible)
-            {
+            if (!body.render.visible) {
                 continue;
             }
 
             //  2) Don't show static bodies, OR
             //  3) Don't show dynamic bodies
-            if ((!showStaticBody && body.isStatic) || (!showBody && !body.isStatic))
-            {
+            if ((!showStaticBody && body.isStatic) || (!showBody && !body.isStatic)) {
                 continue;
             }
 
@@ -1893,27 +1741,21 @@ var World = new Class({
             var fillColor = body.render.fillColor;
             var fillOpacity = body.render.fillOpacity;
 
-            if (showSleeping && body.isSleeping)
-            {
-                if (body.isStatic)
-                {
+            if (showSleeping && body.isSleeping) {
+                if (body.isStatic) {
                     lineOpacity *= staticBodySleepOpacity;
                     fillOpacity *= staticBodySleepOpacity;
-                }
-                else
-                {
+                } else {
                     lineColor = sleepLineColor;
                     fillColor = sleepFillColor;
                 }
             }
 
-            if (!renderFill)
-            {
+            if (!renderFill) {
                 fillColor = null;
             }
 
-            if (!renderLine)
-            {
+            if (!renderLine) {
                 lineColor = null;
             }
 
@@ -1921,8 +1763,7 @@ var World = new Class({
 
             var partsLength = body.parts.length;
 
-            if (showConvexHulls && partsLength > 1)
-            {
+            if (showConvexHulls && partsLength > 1) {
                 this.renderConvexHull(body, graphics, hullColor, lineThickness);
             }
         }
@@ -1951,13 +1792,22 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    renderBody: function (body, graphics, showInternalEdges, lineColor, lineOpacity, lineThickness, fillColor, fillOpacity)
-    {
-        if (lineColor === undefined) { lineColor = null; }
-        if (lineOpacity === undefined) { lineOpacity = null; }
-        if (lineThickness === undefined) { lineThickness = 1; }
-        if (fillColor === undefined) { fillColor = null; }
-        if (fillOpacity === undefined) { fillOpacity = null; }
+    renderBody: function (body, graphics, showInternalEdges, lineColor, lineOpacity, lineThickness, fillColor, fillOpacity) {
+        if (lineColor === undefined) {
+            lineColor = null;
+        }
+        if (lineOpacity === undefined) {
+            lineOpacity = null;
+        }
+        if (lineThickness === undefined) {
+            lineThickness = 1;
+        }
+        if (fillColor === undefined) {
+            fillColor = null;
+        }
+        if (fillOpacity === undefined) {
+            fillOpacity = null;
+        }
 
         var config = this.debugConfig;
 
@@ -1968,14 +1818,12 @@ var World = new Class({
         var parts = body.parts;
         var partsLength = parts.length;
 
-        for (var k = (partsLength > 1) ? 1 : 0; k < partsLength; k++)
-        {
+        for (var k = (partsLength > 1) ? 1 : 0; k < partsLength; k++) {
             var part = parts[k];
             var render = part.render;
             var opacity = render.opacity;
 
-            if (!render.visible || opacity === 0 || (part.isSensor && !config.showSensors))
-            {
+            if (!render.visible || opacity === 0 || (part.isSensor && !config.showSensors)) {
                 continue;
             }
 
@@ -1984,57 +1832,42 @@ var World = new Class({
 
             graphics.beginPath();
 
-            if (part.isSensor)
-            {
-                if (fillColor !== null)
-                {
+            if (part.isSensor) {
+                if (fillColor !== null) {
                     graphics.fillStyle(sensorFillColor, fillOpacity * opacity);
                 }
 
-                if (lineColor !== null)
-                {
+                if (lineColor !== null) {
                     graphics.lineStyle(lineThickness, sensorLineColor, lineOpacity * opacity);
                 }
-            }
-            else
-            {
-                if (fillColor !== null)
-                {
+            } else {
+                if (fillColor !== null) {
                     graphics.fillStyle(fillColor, fillOpacity * opacity);
                 }
 
-                if (lineColor !== null)
-                {
+                if (lineColor !== null) {
                     graphics.lineStyle(lineThickness, lineColor, lineOpacity * opacity);
                 }
             }
 
-            if (circleRadius)
-            {
+            if (circleRadius) {
                 graphics.arc(part.position.x, part.position.y, circleRadius, 0, 2 * Math.PI);
-            }
-            else
-            {
+            } else {
                 var vertices = part.vertices;
                 var vertLength = vertices.length;
 
                 graphics.moveTo(vertices[0].x, vertices[0].y);
 
-                for (var j = 1; j < vertLength; j++)
-                {
+                for (var j = 1; j < vertLength; j++) {
                     var vert = vertices[j];
 
-                    if (!vertices[j - 1].isInternal || showInternalEdges)
-                    {
+                    if (!vertices[j - 1].isInternal || showInternalEdges) {
                         graphics.lineTo(vert.x, vert.y);
-                    }
-                    else
-                    {
+                    } else {
                         graphics.moveTo(vert.x, vert.y);
                     }
 
-                    if (j < vertLength && vert.isInternal && !showInternalEdges)
-                    {
+                    if (j < vertLength && vert.isInternal && !showInternalEdges) {
                         var nextIndex = (j + 1) % vertLength;
 
                         graphics.moveTo(vertices[nextIndex].x, vertices[nextIndex].y);
@@ -2044,19 +1877,16 @@ var World = new Class({
                 graphics.closePath();
             }
 
-            if (fillColor !== null)
-            {
+            if (fillColor !== null) {
                 graphics.fillPath();
             }
 
-            if (lineColor !== null)
-            {
+            if (lineColor !== null) {
                 graphics.strokePath();
             }
         }
 
-        if (config.showPositions && !body.isStatic)
-        {
+        if (config.showPositions && !body.isStatic) {
             var px = body.position.x;
             var py = body.position.y;
             var hs = Math.ceil(config.positionSize / 2);
@@ -2084,16 +1914,16 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    renderConvexHull: function (body, graphics, hullColor, lineThickness)
-    {
-        if (lineThickness === undefined) { lineThickness = 1; }
+    renderConvexHull: function (body, graphics, hullColor, lineThickness) {
+        if (lineThickness === undefined) {
+            lineThickness = 1;
+        }
 
         var parts = body.parts;
         var partsLength = parts.length;
 
         //  Render Convex Hulls
-        if (partsLength > 1)
-        {
+        if (partsLength > 1) {
             var verts = body.vertices;
 
             graphics.lineStyle(lineThickness, hullColor);
@@ -2102,8 +1932,7 @@ var World = new Class({
 
             graphics.moveTo(verts[0].x, verts[0].y);
 
-            for (var v = 1; v < verts.length; v++)
-            {
+            for (var v = 1; v < verts.length; v++) {
                 graphics.lineTo(verts[v].x, verts[v].y);
             }
 
@@ -2124,15 +1953,13 @@ var World = new Class({
      * @private
      * @since 3.14.0
      */
-    renderJoints: function ()
-    {
+    renderJoints: function () {
         var graphics = this.debugGraphic;
 
         // Render constraints
         var constraints = Composite.allConstraints(this.localWorld);
 
-        for (var i = 0; i < constraints.length; i++)
-        {
+        for (var i = 0; i < constraints.length; i++) {
             var config = constraints[i].render;
 
             var lineColor = config.lineColor;
@@ -2166,12 +1993,10 @@ var World = new Class({
      *
      * @return {this} This Matter World instance for method chaining.
      */
-    renderConstraint: function (constraint, graphics, lineColor, lineOpacity, lineThickness, pinSize, anchorColor, anchorSize)
-    {
+    renderConstraint: function (constraint, graphics, lineColor, lineOpacity, lineThickness, pinSize, anchorColor, anchorSize) {
         var render = constraint.render;
 
-        if (!render.visible || !constraint.pointA || !constraint.pointB)
-        {
+        if (!render.visible || !constraint.pointA || !constraint.pointB) {
             return this;
         }
 
@@ -2182,42 +2007,31 @@ var World = new Class({
         var start;
         var end;
 
-        if (bodyA)
-        {
+        if (bodyA) {
             start = Vector.add(bodyA.position, constraint.pointA);
-        }
-        else
-        {
+        } else {
             start = constraint.pointA;
         }
 
-        if (render.type === 'pin')
-        {
+        if (render.type === 'pin') {
             graphics.strokeCircle(start.x, start.y, pinSize);
-        }
-        else
-        {
-            if (bodyB)
-            {
+        } else {
+            if (bodyB) {
                 end = Vector.add(bodyB.position, constraint.pointB);
-            }
-            else
-            {
+            } else {
                 end = constraint.pointB;
             }
 
             graphics.beginPath();
             graphics.moveTo(start.x, start.y);
 
-            if (render.type === 'spring')
-            {
+            if (render.type === 'spring') {
                 var delta = Vector.sub(end, start);
                 var normal = Vector.perp(Vector.normalise(delta));
                 var coils = Math.ceil(Common.clamp(constraint.length / 5, 12, 20));
                 var offset;
 
-                for (var j = 1; j < coils; j += 1)
-                {
+                for (var j = 1; j < coils; j += 1) {
                     offset = (j % 2 === 0) ? 1 : -1;
 
                     graphics.lineTo(
@@ -2232,8 +2046,7 @@ var World = new Class({
 
         graphics.strokePath();
 
-        if (render.anchors && anchorSize > 0)
-        {
+        if (render.anchors && anchorSize > 0) {
             graphics.fillStyle(anchorColor);
             graphics.fillCircle(start.x, start.y, anchorSize);
             graphics.fillCircle(end.x, end.y, anchorSize);
@@ -2253,8 +2066,7 @@ var World = new Class({
      * @method Phaser.Physics.Matter.World#resetCollisionIDs
      * @since 3.17.0
      */
-    resetCollisionIDs: function ()
-    {
+    resetCollisionIDs: function () {
         Body._nextCollidingGroupId = 1;
         Body._nextNonCollidingGroupId = -1;
         Body._nextCategory = 0x0001;
@@ -2269,8 +2081,7 @@ var World = new Class({
      * @method Phaser.Physics.Matter.World#shutdown
      * @since 3.0.0
      */
-    shutdown: function ()
-    {
+    shutdown: function () {
         MatterEvents.off(this.engine);
 
         this.removeAllListeners();
@@ -2279,8 +2090,7 @@ var World = new Class({
 
         Engine.clear(this.engine);
 
-        if (this.drawDebug)
-        {
+        if (this.drawDebug) {
             this.debugGraphic.destroy();
         }
     },
@@ -2294,8 +2104,7 @@ var World = new Class({
      * @method Phaser.Physics.Matter.World#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.shutdown();
     }
 

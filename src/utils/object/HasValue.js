@@ -15,8 +15,7 @@
  *
  * @return {boolean} `true` if the provided `key` exists on the `source` object, otherwise `false`.
  */
-var HasValue = function (source, key)
-{
+var HasValue = function (source, key) {
     return (source.hasOwnProperty(key));
 };
 

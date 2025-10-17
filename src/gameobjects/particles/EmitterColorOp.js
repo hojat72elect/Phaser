@@ -32,47 +32,46 @@ var EmitterColorOp = new Class({
 
     initialize:
 
-    function EmitterColorOp (key)
-    {
-        EmitterOp.call(this, key, null, false);
+        function EmitterColorOp(key) {
+            EmitterOp.call(this, key, null, false);
 
-        this.active = false;
+            this.active = false;
 
-        this.easeName = 'Linear';
+            this.easeName = 'Linear';
 
-        /**
-         * An array containing the red color values.
-         *
-         * Populated during the `setMethods` method.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterColorOp#r
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.r = [];
+            /**
+             * An array containing the red color values.
+             *
+             * Populated during the `setMethods` method.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterColorOp#r
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.r = [];
 
-        /**
-         * An array containing the green color values.
-         *
-         * Populated during the `setMethods` method.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterColorOp#g
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.g = [];
+            /**
+             * An array containing the green color values.
+             *
+             * Populated during the `setMethods` method.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterColorOp#g
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.g = [];
 
-        /**
-         * An array containing the blue color values.
-         *
-         * Populated during the `setMethods` method.
-         *
-         * @name Phaser.GameObjects.Particles.EmitterColorOp#b
-         * @type {number[]}
-         * @since 3.60.0
-         */
-        this.b = [];
-    },
+            /**
+             * An array containing the blue color values.
+             *
+             * Populated during the `setMethods` method.
+             *
+             * @name Phaser.GameObjects.Particles.EmitterColorOp#b
+             * @type {number[]}
+             * @since 3.60.0
+             */
+            this.b = [];
+        },
 
     /**
      * Checks the type of `EmitterOp.propertyValue` to determine which
@@ -83,8 +82,7 @@ var EmitterColorOp = new Class({
      *
      * @return {number} A number between 0 and 9 which should be passed to `setMethods`.
      */
-    getMethod: function ()
-    {
+    getMethod: function () {
         return (this.propertyValue === null) ? 0 : 9;
     },
 
@@ -96,16 +94,14 @@ var EmitterColorOp = new Class({
      *
      * @return {this} This Emitter Op object.
      */
-    setMethods: function ()
-    {
+    setMethods: function () {
         var value = this.propertyValue;
         var current = value;
 
         var onEmit = this.defaultEmit;
         var onUpdate = this.defaultUpdate;
 
-        if (this.method === 9)
-        {
+        if (this.method === 9) {
             this.start = value[0];
             this.ease = GetEaseFunction('Linear');
             this.interpolation = GetInterpolationFunction('linear');
@@ -121,8 +117,7 @@ var EmitterColorOp = new Class({
             this.b.length = 0;
 
             //  Populate the r,g,b arrays
-            for (var i = 0; i < value.length; i++)
-            {
+            for (var i = 0; i < value.length; i++) {
                 //  in hex format 0xff0000
                 var color = IntegerToRGB(value[i]);
 
@@ -147,8 +142,7 @@ var EmitterColorOp = new Class({
      *
      * @param {string} ease - The string-based name of the Ease function to use.
      */
-    setEase: function (value)
-    {
+    setEase: function (value) {
         this.easeName = value;
 
         this.ease = GetEaseFunction(value);
@@ -167,8 +161,7 @@ var EmitterColorOp = new Class({
      *
      * @return {number} {@link Phaser.GameObjects.Particles.EmitterColorOp#start}, as the new value of the property.
      */
-    easedValueEmit: function ()
-    {
+    easedValueEmit: function () {
         this.current = this.start;
 
         return this.start;
@@ -188,8 +181,7 @@ var EmitterColorOp = new Class({
      *
      * @return {number} The new value of the property.
      */
-    easeValueUpdate: function (particle, key, t)
-    {
+    easeValueUpdate: function (particle, key, t) {
         var v = this.ease(t);
 
         var r = this.interpolation(this.r, v);

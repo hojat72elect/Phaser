@@ -14,14 +14,10 @@
  * @param {Phaser.Tilemaps.Tile} tile - The Tile to set the collision on.
  * @param {boolean} [collides=true] - Should the tile index collide or not?
  */
-var SetTileCollision = function (tile, collides)
-{
-    if (collides)
-    {
+var SetTileCollision = function (tile, collides) {
+    if (collides) {
         tile.setCollision(true, true, true, true, false);
-    }
-    else
-    {
+    } else {
         tile.resetCollision(false);
     }
 };

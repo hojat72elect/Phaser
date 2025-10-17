@@ -23,8 +23,7 @@ var point = new Vector2();
  *
  * @return {?boolean} Returns a boolean, or null if the layer given was invalid.
  */
-var HasTileAtWorldXY = function (worldX, worldY, camera, layer)
-{
+var HasTileAtWorldXY = function (worldX, worldY, camera, layer) {
     layer.tilemapLayer.worldToTileXY(worldX, worldY, true, point, camera);
 
     var tileX = point.x;

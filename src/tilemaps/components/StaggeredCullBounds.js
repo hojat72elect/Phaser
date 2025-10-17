@@ -19,8 +19,7 @@ var SnapFloor = require('../../math/snap/SnapFloor');
  *
  * @return {object} An object containing the `left`, `right`, `top` and `bottom` bounds.
  */
-var StaggeredCullBounds = function (layer, camera)
-{
+var StaggeredCullBounds = function (layer, camera) {
     var tilemap = layer.tilemapLayer.tilemap;
     var tilemapLayer = layer.tilemapLayer;
 

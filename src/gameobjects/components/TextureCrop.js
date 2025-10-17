@@ -82,20 +82,13 @@ var TextureCrop = {
      *
      * @return {this} This Game Object instance.
      */
-    setCrop: function (x, y, width, height)
-    {
-        if (x === undefined)
-        {
+    setCrop: function (x, y, width, height) {
+        if (x === undefined) {
             this.isCropped = false;
-        }
-        else if (this.frame)
-        {
-            if (typeof x === 'number')
-            {
+        } else if (this.frame) {
+            if (typeof x === 'number') {
                 this.frame.setCropUVs(this._crop, x, y, width, height, this.flipX, this.flipY);
-            }
-            else
-            {
+            } else {
                 var rect = x;
 
                 this.frame.setCropUVs(this._crop, rect.x, rect.y, rect.width, rect.height, this.flipX, this.flipY);
@@ -120,8 +113,7 @@ var TextureCrop = {
      *
      * @return {this} This Game Object instance.
      */
-    setTexture: function (key, frame)
-    {
+    setTexture: function (key, frame) {
         this.texture = this.scene.sys.textures.get(key);
 
         return this.setFrame(frame);
@@ -148,50 +140,41 @@ var TextureCrop = {
      *
      * @return {this} This Game Object instance.
      */
-    setFrame: function (frame, updateSize, updateOrigin)
-    {
-        if (updateSize === undefined) { updateSize = true; }
-        if (updateOrigin === undefined) { updateOrigin = true; }
+    setFrame: function (frame, updateSize, updateOrigin) {
+        if (updateSize === undefined) {
+            updateSize = true;
+        }
+        if (updateOrigin === undefined) {
+            updateOrigin = true;
+        }
 
-        if (frame instanceof Frame)
-        {
+        if (frame instanceof Frame) {
             this.texture = this.scene.sys.textures.get(frame.texture.key);
 
             this.frame = frame;
-        }
-        else
-        {
+        } else {
             this.frame = this.texture.get(frame);
         }
 
-        if (!this.frame.cutWidth || !this.frame.cutHeight)
-        {
+        if (!this.frame.cutWidth || !this.frame.cutHeight) {
             this.renderFlags &= ~_FLAG;
-        }
-        else
-        {
+        } else {
             this.renderFlags |= _FLAG;
         }
 
-        if (this._sizeComponent && updateSize)
-        {
+        if (this._sizeComponent && updateSize) {
             this.setSizeToFrame();
         }
 
-        if (this._originComponent && updateOrigin)
-        {
-            if (this.frame.customPivot)
-            {
+        if (this._originComponent && updateOrigin) {
+            if (this.frame.customPivot) {
                 this.setOrigin(this.frame.pivotX, this.frame.pivotY);
-            }
-            else
-            {
+            } else {
                 this.updateDisplayOrigin();
             }
         }
 
-        if (this.isCropped)
-        {
+        if (this.isCropped) {
             this.frame.updateCropUVs(this._crop, this.flipX, this.flipY);
         }
 
@@ -207,9 +190,8 @@ var TextureCrop = {
      *
      * @return {object} The crop object.
      */
-    resetCropObject: function ()
-    {
-        return { u0: 0, v0: 0, u1: 0, v1: 0, width: 0, height: 0, x: 0, y: 0, flipX: false, flipY: false, cx: 0, cy: 0, cw: 0, ch: 0 };
+    resetCropObject: function () {
+        return {u0: 0, v0: 0, u1: 0, v1: 0, width: 0, height: 0, x: 0, y: 0, flipX: false, flipY: false, cx: 0, cy: 0, cw: 0, ch: 0};
     }
 
 };

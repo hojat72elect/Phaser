@@ -7,8 +7,7 @@
 /**
  * @ignore
  */
-function swap (arr, i, j)
-{
+function swap(arr, i, j) {
     var tmp = arr[i];
     arr[i] = arr[j];
     arr[j] = tmp;
@@ -17,8 +16,7 @@ function swap (arr, i, j)
 /**
  * @ignore
  */
-function defaultCompare (a, b)
-{
+function defaultCompare(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
 }
 
@@ -41,16 +39,19 @@ function defaultCompare (a, b)
  * @param {number} [right] - The index of the right part of the range.
  * @param {function} [compare] - An optional comparison function. Is passed two elements and should return 0, 1 or -1.
  */
-var QuickSelect = function (arr, k, left, right, compare)
-{
-    if (left === undefined) { left = 0; }
-    if (right === undefined) { right = arr.length - 1; }
-    if (compare === undefined) { compare = defaultCompare; }
+var QuickSelect = function (arr, k, left, right, compare) {
+    if (left === undefined) {
+        left = 0;
+    }
+    if (right === undefined) {
+        right = arr.length - 1;
+    }
+    if (compare === undefined) {
+        compare = defaultCompare;
+    }
 
-    while (right > left)
-    {
-        if (right - left > 600)
-        {
+    while (right > left) {
+        if (right - left > 600) {
             var n = right - left + 1;
             var m = k - left + 1;
             var z = Math.log(n);
@@ -68,46 +69,37 @@ var QuickSelect = function (arr, k, left, right, compare)
 
         swap(arr, left, k);
 
-        if (compare(arr[right], t) > 0)
-        {
+        if (compare(arr[right], t) > 0) {
             swap(arr, left, right);
         }
 
-        while (i < j)
-        {
+        while (i < j) {
             swap(arr, i, j);
 
             i++;
             j--;
 
-            while (compare(arr[i], t) < 0)
-            {
+            while (compare(arr[i], t) < 0) {
                 i++;
             }
 
-            while (compare(arr[j], t) > 0)
-            {
+            while (compare(arr[j], t) > 0) {
                 j--;
             }
         }
 
-        if (compare(arr[left], t) === 0)
-        {
+        if (compare(arr[left], t) === 0) {
             swap(arr, left, j);
-        }
-        else
-        {
+        } else {
             j++;
             swap(arr, j, right);
         }
 
-        if (j <= k)
-        {
+        if (j <= k) {
             left = j + 1;
         }
 
-        if (k <= j)
-        {
+        if (k <= j) {
             right = j - 1;
         }
     }

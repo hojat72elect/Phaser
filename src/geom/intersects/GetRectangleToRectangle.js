@@ -22,12 +22,12 @@ var RectangleToRectangle = require('./RectangleToRectangle');
  *
  * @return {array} An array with the points of intersection if objects intersect, otherwise an empty array.
  */
-var GetRectangleToRectangle = function (rectA, rectB, out)
-{
-    if (out === undefined) { out = []; }
+var GetRectangleToRectangle = function (rectA, rectB, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
-    if (RectangleToRectangle(rectA, rectB))
-    {
+    if (RectangleToRectangle(rectA, rectB)) {
         var lineA = rectA.getLineA();
         var lineB = rectA.getLineB();
         var lineC = rectA.getLineC();

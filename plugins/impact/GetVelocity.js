@@ -20,26 +20,17 @@ var Clamp = require('../../math/Clamp');
  *
  * @return {number} [description]
  */
-var GetVelocity = function (delta, vel, accel, friction, max)
-{
-    if (accel)
-    {
+var GetVelocity = function (delta, vel, accel, friction, max) {
+    if (accel) {
         return Clamp(vel + accel * delta, -max, max);
-    }
-    else if (friction)
-    {
+    } else if (friction) {
         var frictionDelta = friction * delta;
-        
-        if (vel - frictionDelta > 0)
-        {
+
+        if (vel - frictionDelta > 0) {
             return vel - frictionDelta;
-        }
-        else if (vel + frictionDelta < 0)
-        {
+        } else if (vel + frictionDelta < 0) {
             return vel + frictionDelta;
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }

@@ -15,18 +15,15 @@
  *
  * @return {array} The flattened output array.
  */
-var Flatten = function (array, output)
-{
-    if (output === undefined) { output = []; }
+var Flatten = function (array, output) {
+    if (output === undefined) {
+        output = [];
+    }
 
-    for (var i = 0; i < array.length; i++)
-    {
-        if (Array.isArray(array[i]))
-        {
+    for (var i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
             Flatten(array[i], output);
-        }
-        else
-        {
+        } else {
             output.push(array[i]);
         }
     }

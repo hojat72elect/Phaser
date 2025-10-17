@@ -19,10 +19,13 @@ var SpliceOne = require('./SpliceOne');
  *
  * @return {object} The random element that was removed, or `null` if there were no array elements that fell within the given range.
  */
-var RemoveRandomElement = function (array, start, length)
-{
-    if (start === undefined) { start = 0; }
-    if (length === undefined) { length = array.length; }
+var RemoveRandomElement = function (array, start, length) {
+    if (start === undefined) {
+        start = 0;
+    }
+    if (length === undefined) {
+        length = array.length;
+    }
 
     var randomIndex = start + Math.floor(Math.random() * length);
 

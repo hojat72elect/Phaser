@@ -8,7 +8,7 @@ var Random = require('../geom/circle/Random');
 
 /**
  * Takes an array of Game Objects and positions them at random locations within the Circle.
- * 
+ *
  * If you wish to pass a `Phaser.GameObjects.Circle` Shape to this function, you should pass its `geom` property.
  *
  * @function Phaser.Actions.RandomCircle
@@ -21,10 +21,8 @@ var Random = require('../geom/circle/Random');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var RandomCircle = function (items, circle)
-{
-    for (var i = 0; i < items.length; i++)
-    {
+var RandomCircle = function (items, circle) {
+    for (var i = 0; i < items.length; i++) {
         Random(circle, items[i]);
     }
 

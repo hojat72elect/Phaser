@@ -1,8 +1,8 @@
 /**
-* The `Matter.Pair` module contains methods for creating and manipulating collision pairs.
-*
-* @class Pair
-*/
+ * The `Matter.Pair` module contains methods for creating and manipulating collision pairs.
+ *
+ * @class Pair
+ */
 
 var Pair = {};
 
@@ -10,8 +10,8 @@ module.exports = Pair;
 
 var Contact = require('./Contact');
 
-(function() {
-    
+(function () {
+
     /**
      * Creates a pair.
      * @method create
@@ -19,7 +19,7 @@ var Contact = require('./Contact');
      * @param {number} timestamp
      * @return {pair} A new pair
      */
-    Pair.create = function(collision, timestamp) {
+    Pair.create = function (collision, timestamp) {
         var bodyA = collision.bodyA,
             bodyB = collision.bodyB;
 
@@ -54,13 +54,13 @@ var Contact = require('./Contact');
      * @param {collision} collision
      * @param {number} timestamp
      */
-    Pair.update = function(pair, collision, timestamp) {
+    Pair.update = function (pair, collision, timestamp) {
         var supports = collision.supports,
             supportCount = collision.supportCount,
             contacts = pair.contacts,
             parentA = collision.parentA,
             parentB = collision.parentB;
-        
+
         pair.isActive = true;
         pair.timeUpdated = timestamp;
         pair.collision = collision;
@@ -75,7 +75,7 @@ var Contact = require('./Contact');
         collision.pair = pair;
         var supportA = supports[0],
             contactA = contacts[0],
-        
+
             supportB = supports[1],
             contactB = contacts[1];
         if (contactB.vertex === supportA || contactA.vertex === supportB) {
@@ -83,12 +83,12 @@ var Contact = require('./Contact');
             contacts[0] = contactA = contactB;
 
             contactB = contacts[1];
-            }
+        }
 
         contactA.vertex = supportA;
         contactB.vertex = supportB;
     };
-    
+
     /**
      * Set a pair as active or inactive.
      * @method setActive
@@ -96,7 +96,7 @@ var Contact = require('./Contact');
      * @param {bool} isActive
      * @param {number} timestamp
      */
-    Pair.setActive = function(pair, isActive, timestamp) {
+    Pair.setActive = function (pair, isActive, timestamp) {
         if (isActive) {
             pair.isActive = true;
             pair.timeUpdated = timestamp;
@@ -113,8 +113,8 @@ var Contact = require('./Contact');
      * @param {body} bodyB
      * @return {string} Unique pairId
      */
-    Pair.id = function(bodyA, bodyB) {
-        return bodyA.id < bodyB.id ? bodyA.id.toString(36) + ':' + bodyB.id.toString(36) 
+    Pair.id = function (bodyA, bodyB) {
+        return bodyA.id < bodyB.id ? bodyA.id.toString(36) + ':' + bodyB.id.toString(36)
             : bodyB.id.toString(36) + ':' + bodyA.id.toString(36);
     };
 

@@ -40,58 +40,53 @@ var DisplacementFXPipeline = new Class({
 
     initialize:
 
-    function DisplacementFXPipeline (game)
-    {
-        PostFXPipeline.call(this, {
-            game: game,
-            fragShader: DisplacementFrag
-        });
+        function DisplacementFXPipeline(game) {
+            PostFXPipeline.call(this, {
+                game: game,
+                fragShader: DisplacementFrag
+            });
 
-        /**
-         * The amount of horizontal displacement to apply.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#x
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.x = 0.005;
+            /**
+             * The amount of horizontal displacement to apply.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#x
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.x = 0.005;
 
-        /**
-         * The amount of vertical displacement to apply.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#y
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.y = 0.005;
+            /**
+             * The amount of vertical displacement to apply.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#y
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.y = 0.005;
 
-        /**
-         * The underlying texture used for displacement.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#glTexture
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.60.0
-         */
-        this.glTexture;
-    },
+            /**
+             * The underlying texture used for displacement.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#glTexture
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.60.0
+             */
+            this.glTexture;
+        },
 
-    onBoot: function ()
-    {
+    onBoot: function () {
         this.setTexture('__WHITE');
     },
 
-    setTexture: function (texture)
-    {
+    setTexture: function (texture) {
         var phaserTexture = this.game.textures.getFrame(texture);
 
-        if (phaserTexture)
-        {
+        if (phaserTexture) {
             this.glTexture = phaserTexture.glTexture;
         }
     },
 
-    onDraw: function (source)
-    {
+    onDraw: function (source) {
         var controller = this.getController();
 
         var target = this.fullFrame1;

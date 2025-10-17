@@ -26,87 +26,86 @@ var Curve = new Class({
 
     initialize:
 
-    function Curve (type)
-    {
-        /**
-         * String based identifier for the type of curve.
-         *
-         * @name Phaser.Curves.Curve#type
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.type = type;
+        function Curve(type) {
+            /**
+             * String based identifier for the type of curve.
+             *
+             * @name Phaser.Curves.Curve#type
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.type = type;
 
-        /**
-         * The default number of divisions within the curve.
-         *
-         * @name Phaser.Curves.Curve#defaultDivisions
-         * @type {number}
-         * @default 5
-         * @since 3.0.0
-         */
-        this.defaultDivisions = 5;
+            /**
+             * The default number of divisions within the curve.
+             *
+             * @name Phaser.Curves.Curve#defaultDivisions
+             * @type {number}
+             * @default 5
+             * @since 3.0.0
+             */
+            this.defaultDivisions = 5;
 
-        /**
-         * The quantity of arc length divisions within the curve.
-         *
-         * @name Phaser.Curves.Curve#arcLengthDivisions
-         * @type {number}
-         * @default 100
-         * @since 3.0.0
-         */
-        this.arcLengthDivisions = 100;
+            /**
+             * The quantity of arc length divisions within the curve.
+             *
+             * @name Phaser.Curves.Curve#arcLengthDivisions
+             * @type {number}
+             * @default 100
+             * @since 3.0.0
+             */
+            this.arcLengthDivisions = 100;
 
-        /**
-         * An array of cached arc length values.
-         *
-         * @name Phaser.Curves.Curve#cacheArcLengths
-         * @type {number[]}
-         * @default []
-         * @since 3.0.0
-         */
-        this.cacheArcLengths = [];
+            /**
+             * An array of cached arc length values.
+             *
+             * @name Phaser.Curves.Curve#cacheArcLengths
+             * @type {number[]}
+             * @default []
+             * @since 3.0.0
+             */
+            this.cacheArcLengths = [];
 
-        /**
-         * Does the data of this curve need updating?
-         *
-         * @name Phaser.Curves.Curve#needsUpdate
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.needsUpdate = true;
+            /**
+             * Does the data of this curve need updating?
+             *
+             * @name Phaser.Curves.Curve#needsUpdate
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.needsUpdate = true;
 
-        /**
-         * For a curve on a Path, `false` means the Path will ignore this curve.
-         *
-         * @name Phaser.Curves.Curve#active
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.active = true;
+            /**
+             * For a curve on a Path, `false` means the Path will ignore this curve.
+             *
+             * @name Phaser.Curves.Curve#active
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.active = true;
 
-        /**
-         * A temporary calculation Vector.
-         *
-         * @name Phaser.Curves.Curve#_tmpVec2A
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.0.0
-         */
-        this._tmpVec2A = new Vector2();
+            /**
+             * A temporary calculation Vector.
+             *
+             * @name Phaser.Curves.Curve#_tmpVec2A
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.0.0
+             */
+            this._tmpVec2A = new Vector2();
 
-        /**
-         * A temporary calculation Vector.
-         *
-         * @name Phaser.Curves.Curve#_tmpVec2B
-         * @type {Phaser.Math.Vector2}
-         * @private
-         * @since 3.0.0
-         */
-        this._tmpVec2B = new Vector2();
-    },
+            /**
+             * A temporary calculation Vector.
+             *
+             * @name Phaser.Curves.Curve#_tmpVec2B
+             * @type {Phaser.Math.Vector2}
+             * @private
+             * @since 3.0.0
+             */
+            this._tmpVec2B = new Vector2();
+        },
 
     /**
      * Draws this curve on the given Graphics object.
@@ -124,9 +123,10 @@ var Curve = new Class({
      *
      * @return {Phaser.GameObjects.Graphics} The Graphics object to which the curve was drawn.
      */
-    draw: function (graphics, pointsTotal)
-    {
-        if (pointsTotal === undefined) { pointsTotal = 32; }
+    draw: function (graphics, pointsTotal) {
+        if (pointsTotal === undefined) {
+            pointsTotal = 32;
+        }
 
         //  So you can chain graphics calls
         return graphics.strokePoints(this.getPoints(pointsTotal));
@@ -146,15 +146,17 @@ var Curve = new Class({
      *
      * @return {Phaser.Geom.Rectangle} A Rectangle object holding the bounds of this curve. If `out` was given it will be this object.
      */
-    getBounds: function (out, accuracy)
-    {
-        if (!out) { out = new Rectangle(); }
-        if (accuracy === undefined) { accuracy = 16; }
+    getBounds: function (out, accuracy) {
+        if (!out) {
+            out = new Rectangle();
+        }
+        if (accuracy === undefined) {
+            accuracy = 16;
+        }
 
         var len = this.getLength();
 
-        if (accuracy > len)
-        {
+        if (accuracy > len) {
             accuracy = len / 2;
         }
 
@@ -177,8 +179,7 @@ var Curve = new Class({
      *
      * @return {Phaser.Geom.Point[]} An Array of Point objects.
      */
-    getDistancePoints: function (distance)
-    {
+    getDistancePoints: function (distance) {
         var len = this.getLength();
 
         var spaced = Math.max(1, len / distance);
@@ -196,9 +197,10 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2} Vector2 containing the coordinates of the curves end point.
      */
-    getEndPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getEndPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return this.getPointAt(1, out);
     },
@@ -211,8 +213,7 @@ var Curve = new Class({
      *
      * @return {number} The total length of the curve.
      */
-    getLength: function ()
-    {
+    getLength: function () {
         var lengths = this.getLengths();
 
         return lengths[lengths.length - 1];
@@ -237,12 +238,12 @@ var Curve = new Class({
      *
      * @return {number[]} An array of cumulative lengths.
      */
-    getLengths: function (divisions)
-    {
-        if (divisions === undefined) { divisions = this.arcLengthDivisions; }
+    getLengths: function (divisions) {
+        if (divisions === undefined) {
+            divisions = this.arcLengthDivisions;
+        }
 
-        if ((this.cacheArcLengths.length === divisions + 1) && !this.needsUpdate)
-        {
+        if ((this.cacheArcLengths.length === divisions + 1) && !this.needsUpdate) {
             return this.cacheArcLengths;
         }
 
@@ -255,8 +256,7 @@ var Curve = new Class({
 
         cache.push(0);
 
-        for (var p = 1; p <= divisions; p++)
-        {
+        for (var p = 1; p <= divisions; p++) {
             current = this.getPoint(p / divisions, this._tmpVec2B);
 
             sum += current.distance(last);
@@ -288,8 +288,7 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2} The point.
      */
-    getPointAt: function (u, out)
-    {
+    getPointAt: function (u, out) {
         var t = this.getUtoTmapping(u);
 
         return this.getPoint(t, out);
@@ -321,25 +320,21 @@ var Curve = new Class({
      *
      * @return {(array|Phaser.Math.Vector2[])} An array of Points from the curve.
      */
-    getPoints: function (divisions, stepRate, out)
-    {
-        if (out === undefined) { out = []; }
+    getPoints: function (divisions, stepRate, out) {
+        if (out === undefined) {
+            out = [];
+        }
 
         //  If divisions is a falsey value (false, null, 0, undefined, etc) then we calculate it based on the stepRate instead.
-        if (!divisions)
-        {
-            if (!stepRate)
-            {
+        if (!divisions) {
+            if (!stepRate) {
                 divisions = this.defaultDivisions;
-            }
-            else
-            {
+            } else {
                 divisions = this.getLength() / stepRate;
             }
         }
 
-        for (var d = 0; d <= divisions; d++)
-        {
+        for (var d = 0; d <= divisions; d++) {
             out.push(this.getPoint(d / divisions));
         }
 
@@ -358,9 +353,10 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2} The point.
      */
-    getRandomPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getRandomPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return this.getPoint(Math.random(), out);
     },
@@ -381,25 +377,21 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2[]} An array of points.
      */
-    getSpacedPoints: function (divisions, stepRate, out)
-    {
-        if (out === undefined) { out = []; }
+    getSpacedPoints: function (divisions, stepRate, out) {
+        if (out === undefined) {
+            out = [];
+        }
 
         //  If divisions is a falsey value (false, null, 0, undefined, etc) then we calculate it based on the stepRate instead.
-        if (!divisions)
-        {
-            if (!stepRate)
-            {
+        if (!divisions) {
+            if (!stepRate) {
                 divisions = this.defaultDivisions;
-            }
-            else
-            {
+            } else {
                 divisions = this.getLength() / stepRate;
             }
         }
 
-        for (var d = 0; d <= divisions; d++)
-        {
+        for (var d = 0; d <= divisions; d++) {
             var t = this.getUtoTmapping(d / divisions, null, divisions);
 
             out.push(this.getPoint(t));
@@ -420,9 +412,10 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2} The point.
      */
-    getStartPoint: function (out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getStartPoint: function (out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         return this.getPointAt(0, out);
     },
@@ -443,9 +436,10 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2} Vector approximating the tangent line at the point t (delta +/- 0.0001)
      */
-    getTangent: function (t, out)
-    {
-        if (out === undefined) { out = new Vector2(); }
+    getTangent: function (t, out) {
+        if (out === undefined) {
+            out = new Vector2();
+        }
 
         var delta = 0.0001;
         var t1 = t - delta;
@@ -453,13 +447,11 @@ var Curve = new Class({
 
         // Capping in case of danger
 
-        if (t1 < 0)
-        {
+        if (t1 < 0) {
             t1 = 0;
         }
 
-        if (t2 > 1)
-        {
+        if (t2 > 1) {
             t2 = 1;
         }
 
@@ -482,8 +474,7 @@ var Curve = new Class({
      *
      * @return {Phaser.Math.Vector2} The tangent vector.
      */
-    getTangentAt: function (u, out)
-    {
+    getTangentAt: function (u, out) {
         var t = this.getUtoTmapping(u);
 
         return this.getTangent(t, out);
@@ -500,10 +491,8 @@ var Curve = new Class({
      *
      * @return {number} The distance.
      */
-    getTFromDistance: function (distance, divisions)
-    {
-        if (distance <= 0)
-        {
+    getTFromDistance: function (distance, divisions) {
+        if (distance <= 0) {
             return 0;
         }
 
@@ -522,8 +511,7 @@ var Curve = new Class({
      *
      * @return {number} The equidistant value.
      */
-    getUtoTmapping: function (u, distance, divisions)
-    {
+    getUtoTmapping: function (u, distance, divisions) {
         var arcLengths = this.getLengths(divisions);
 
         var i = 0;
@@ -531,13 +519,10 @@ var Curve = new Class({
 
         var targetArcLength; // The targeted u distance value to get
 
-        if (distance)
-        {
+        if (distance) {
             //  Cannot overshoot the curve
             targetArcLength = Math.min(distance, arcLengths[il - 1]);
-        }
-        else
-        {
+        } else {
             targetArcLength = u * arcLengths[il - 1];
         }
 
@@ -547,22 +532,16 @@ var Curve = new Class({
         var high = il - 1;
         var comparison;
 
-        while (low <= high)
-        {
+        while (low <= high) {
             i = Math.floor(low + (high - low) / 2); // less likely to overflow, though probably not issue here, JS doesn't really have integers, all numbers are floats
 
             comparison = arcLengths[i] - targetArcLength;
 
-            if (comparison < 0)
-            {
+            if (comparison < 0) {
                 low = i + 1;
-            }
-            else if (comparison > 0)
-            {
+            } else if (comparison > 0) {
                 high = i - 1;
-            }
-            else
-            {
+            } else {
                 high = i;
                 break;
             }
@@ -570,8 +549,7 @@ var Curve = new Class({
 
         i = high;
 
-        if (arcLengths[i] === targetArcLength)
-        {
+        if (arcLengths[i] === targetArcLength) {
             return i / (il - 1);
         }
 
@@ -599,8 +577,7 @@ var Curve = new Class({
      *
      * @see Phaser.Curves.Curve#getLengths()
      */
-    updateArcLengths: function ()
-    {
+    updateArcLengths: function () {
         this.needsUpdate = true;
 
         this.getLengths();

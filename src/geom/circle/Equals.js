@@ -16,8 +16,7 @@
  *
  * @return {boolean} `true` if the two Circles equal each other, otherwise `false`.
  */
-var Equals = function (circle, toCompare)
-{
+var Equals = function (circle, toCompare) {
     return (
         circle.x === toCompare.x &&
         circle.y === toCompare.y &&

@@ -41,49 +41,43 @@ var JSONFile = new Class({
     //  url can either be a string, in which case it is treated like a proper url, or an object, in which case it is treated as a ready-made JS Object
     //  dataKey allows you to pluck a specific object out of the JSON and put just that into the cache, rather than the whole thing
 
-    function JSONFile (loader, key, url, xhrSettings, dataKey)
-    {
-        var extension = 'json';
+        function JSONFile(loader, key, url, xhrSettings, dataKey) {
+            var extension = 'json';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            dataKey = GetFastValue(config, 'dataKey', dataKey);
-        }
-
-        var fileConfig = {
-            type: 'json',
-            cache: loader.cacheManager.json,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings,
-            config: dataKey
-        };
-
-        File.call(this, loader, fileConfig);
-
-        //  A JSON object has been provided (instead of a URL), so we'll use it directly as the File.data. No need to load it.
-        if (IsPlainObject(url))
-        {
-            if (dataKey)
-            {
-                this.data = GetValue(url, dataKey);
-            }
-            else
-            {
-                this.data = url;
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                dataKey = GetFastValue(config, 'dataKey', dataKey);
             }
 
-            this.state = CONST.FILE_POPULATED;
-        }
-    },
+            var fileConfig = {
+                type: 'json',
+                cache: loader.cacheManager.json,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings,
+                config: dataKey
+            };
+
+            File.call(this, loader, fileConfig);
+
+            //  A JSON object has been provided (instead of a URL), so we'll use it directly as the File.data. No need to load it.
+            if (IsPlainObject(url)) {
+                if (dataKey) {
+                    this.data = GetValue(url, dataKey);
+                } else {
+                    this.data = url;
+                }
+
+                this.state = CONST.FILE_POPULATED;
+            }
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -92,18 +86,13 @@ var JSONFile = new Class({
      * @method Phaser.Loader.FileTypes.JSONFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
-        if (this.state !== CONST.FILE_POPULATED)
-        {
+    onProcess: function () {
+        if (this.state !== CONST.FILE_POPULATED) {
             this.state = CONST.FILE_PROCESSING;
 
-            try
-            {
+            try {
                 var json = JSON.parse(this.xhrLoader.responseText);
-            }
-            catch (e)
-            {
+            } catch (e) {
                 this.onProcessError();
 
                 throw e;
@@ -111,12 +100,9 @@ var JSONFile = new Class({
 
             var key = this.config;
 
-            if (typeof key === 'string')
-            {
+            if (typeof key === 'string') {
                 this.data = GetValue(json, key, json);
-            }
-            else
-            {
+            } else {
                 this.data = json;
             }
         }
@@ -212,18 +198,13 @@ var JSONFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('json', function (key, url, dataKey, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('json', function (key, url, dataKey, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new JSONFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new JSONFile(this, key, url, xhrSettings, dataKey));
     }
 

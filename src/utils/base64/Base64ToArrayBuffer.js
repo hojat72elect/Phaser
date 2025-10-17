@@ -10,8 +10,7 @@ var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 //  Use a lookup table to find the index.
 var lookup = new Uint8Array(256);
 
-for (var i = 0; i < chars.length; i++)
-{
+for (var i = 0; i < chars.length; i++) {
     lookup[chars.charCodeAt(i)] = i;
 }
 
@@ -25,8 +24,7 @@ for (var i = 0; i < chars.length; i++)
  *
  * @return {ArrayBuffer} An ArrayBuffer decoded from the base64 data.
  */
-var Base64ToArrayBuffer = function (base64)
-{
+var Base64ToArrayBuffer = function (base64) {
     //  Is it a data uri? if so, strip the header away
     base64 = base64.substr(base64.indexOf(',') + 1);
 
@@ -38,12 +36,10 @@ var Base64ToArrayBuffer = function (base64)
     var encoded3;
     var encoded4;
 
-    if (base64[len - 1] === '=')
-    {
+    if (base64[len - 1] === '=') {
         bufferLength--;
 
-        if (base64[len - 2] === '=')
-        {
+        if (base64[len - 2] === '=') {
             bufferLength--;
         }
     }
@@ -51,8 +47,7 @@ var Base64ToArrayBuffer = function (base64)
     var arrayBuffer = new ArrayBuffer(bufferLength);
     var bytes = new Uint8Array(arrayBuffer);
 
-    for (var i = 0; i < len; i += 4)
-    {
+    for (var i = 0; i < len; i += 4) {
         encoded1 = lookup[base64.charCodeAt(i)];
         encoded2 = lookup[base64.charCodeAt(i + 1)];
         encoded3 = lookup[base64.charCodeAt(i + 2)];

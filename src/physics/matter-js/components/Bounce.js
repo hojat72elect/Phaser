@@ -22,8 +22,7 @@ var Bounce = {
      *
      * @return {this} This Game Object instance.
      */
-    setBounce: function (value)
-    {
+    setBounce: function (value) {
         this.body.restitution = value;
 
         return this;

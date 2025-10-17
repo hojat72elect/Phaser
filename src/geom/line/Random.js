@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} A random Point on the Line.
  */
-var Random = function (line, out)
-{
-    if (out === undefined) { out = new Point(); }
+var Random = function (line, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     var t = Math.random();
 

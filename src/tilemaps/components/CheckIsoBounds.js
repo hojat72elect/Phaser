@@ -21,8 +21,7 @@ var point = new Vector2();
  *
  * @return {boolean} Returns `true` if the coordinates are within the iso bounds.
  */
-var CheckIsoBounds = function (tileX, tileY, layer, camera)
-{
+var CheckIsoBounds = function (tileX, tileY, layer, camera) {
     var tilemapLayer = layer.tilemapLayer;
 
     var cullPaddingX = tilemapLayer.cullPaddingX;

@@ -43,10 +43,8 @@ var Audio = {
 
 };
 
-function init ()
-{
-    if (typeof importScripts === 'function')
-    {
+function init() {
+    if (typeof importScripts === 'function') {
         return Audio;
     }
 
@@ -57,20 +55,14 @@ function init ()
     var audioElement = document.createElement('audio');
     var result = !!audioElement.canPlayType;
 
-    try
-    {
-        if (result)
-        {
-            var CanPlay = function (type1, type2)
-            {
+    try {
+        if (result) {
+            var CanPlay = function (type1, type2) {
                 var canPlayType1 = audioElement.canPlayType('audio/' + type1).replace(/^no$/, '');
 
-                if (type2)
-                {
+                if (type2) {
                     return Boolean(canPlayType1 || audioElement.canPlayType('audio/' + type2).replace(/^no$/, ''));
-                }
-                else
-                {
+                } else {
                     return Boolean(canPlayType1);
                 }
             };
@@ -87,30 +79,22 @@ function init ()
             Audio.flac = CanPlay('flac', 'x-flac');
             Audio.webm = CanPlay('webm; codecs="vorbis"');
 
-            if (audioElement.canPlayType('audio/mp4; codecs="ec-3"') !== '')
-            {
-                if (Browser.edge)
-                {
+            if (audioElement.canPlayType('audio/mp4; codecs="ec-3"') !== '') {
+                if (Browser.edge) {
                     Audio.dolby = true;
-                }
-                else if (Browser.safari && Browser.safariVersion >= 9)
-                {
-                    if ((/Mac OS X (\d+)_(\d+)/).test(navigator.userAgent))
-                    {
+                } else if (Browser.safari && Browser.safariVersion >= 9) {
+                    if ((/Mac OS X (\d+)_(\d+)/).test(navigator.userAgent)) {
                         var major = parseInt(RegExp.$1, 10);
                         var minor = parseInt(RegExp.$2, 10);
 
-                        if ((major === 10 && minor >= 11) || major > 10)
-                        {
+                        if ((major === 10 && minor >= 11) || major > 10) {
                             Audio.dolby = true;
                         }
                     }
                 }
             }
         }
-    }
-    catch (e)
-    {
+    } catch (e) {
         //  Nothing to do here
     }
 

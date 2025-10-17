@@ -108,140 +108,138 @@ var SpineGameObject = new Class({
 
     initialize:
 
-    function SpineGameObject (scene, plugin, x, y, key, animationName, loop)
-    {
-        GameObject.call(this, scene, 'Spine');
+        function SpineGameObject(scene, plugin, x, y, key, animationName, loop) {
+            GameObject.call(this, scene, 'Spine');
 
-        /**
-         * A reference to the Spine Plugin.
-         *
-         * @name SpineGameObject#plugin
-         * @type {SpinePlugin}
-         * @since 3.19.0
-         */
-        this.plugin = plugin;
+            /**
+             * A reference to the Spine Plugin.
+             *
+             * @name SpineGameObject#plugin
+             * @type {SpinePlugin}
+             * @since 3.19.0
+             */
+            this.plugin = plugin;
 
-        /**
-         * The Spine Skeleton this Game Object is using.
-         *
-         * @name SpineGameObject#skeleton
-         * @type {spine.Skeleton}
-         * @since 3.19.0
-         */
-        this.skeleton = null;
+            /**
+             * The Spine Skeleton this Game Object is using.
+             *
+             * @name SpineGameObject#skeleton
+             * @type {spine.Skeleton}
+             * @since 3.19.0
+             */
+            this.skeleton = null;
 
-        /**
-         * The Spine Skeleton Data associated with the Skeleton this Game Object is using.
-         *
-         * @name SpineGameObject#skeletonData
-         * @type {spine.SkeletonData}
-         * @since 3.19.0
-         */
-        this.skeletonData = null;
+            /**
+             * The Spine Skeleton Data associated with the Skeleton this Game Object is using.
+             *
+             * @name SpineGameObject#skeletonData
+             * @type {spine.SkeletonData}
+             * @since 3.19.0
+             */
+            this.skeletonData = null;
 
-        /**
-         * The Spine Animation State this Game Object is using.
-         *
-         * @name SpineGameObject#state
-         * @type {spine.AnimationState}
-         * @since 3.19.0
-         */
-        this.state = null;
+            /**
+             * The Spine Animation State this Game Object is using.
+             *
+             * @name SpineGameObject#state
+             * @type {spine.AnimationState}
+             * @since 3.19.0
+             */
+            this.state = null;
 
-        /**
-         * The Spine Animation State Data associated with the Animation State this Game Object is using.
-         *
-         * @name SpineGameObject#stateData
-         * @type {spine.AnimationStateData}
-         * @since 3.19.0
-         */
-        this.stateData = null;
+            /**
+             * The Spine Animation State Data associated with the Animation State this Game Object is using.
+             *
+             * @name SpineGameObject#stateData
+             * @type {spine.AnimationStateData}
+             * @since 3.19.0
+             */
+            this.stateData = null;
 
-        /**
-         * A reference to the root bone of the Skeleton.
-         *
-         * @name SpineGameObject#root
-         * @type {spine.Bone}
-         * @since 3.19.0
-         */
-        this.root = null;
+            /**
+             * A reference to the root bone of the Skeleton.
+             *
+             * @name SpineGameObject#root
+             * @type {spine.Bone}
+             * @since 3.19.0
+             */
+            this.root = null;
 
-        /**
-         * This object holds the calculated bounds of the current
-         * pose, as set when a new Skeleton is applied.
-         *
-         * @name SpineGameObject#bounds
-         * @type {any}
-         * @since 3.19.0
-         */
-        this.bounds = null;
+            /**
+             * This object holds the calculated bounds of the current
+             * pose, as set when a new Skeleton is applied.
+             *
+             * @name SpineGameObject#bounds
+             * @type {any}
+             * @since 3.19.0
+             */
+            this.bounds = null;
 
-        /**
-         * A Game Object level flag that allows you to enable debug drawing
-         * to the Skeleton Debug Renderer by toggling it.
-         *
-         * @name SpineGameObject#drawDebug
-         * @type {boolean}
-         * @since 3.19.0
-         */
-        this.drawDebug = false;
+            /**
+             * A Game Object level flag that allows you to enable debug drawing
+             * to the Skeleton Debug Renderer by toggling it.
+             *
+             * @name SpineGameObject#drawDebug
+             * @type {boolean}
+             * @since 3.19.0
+             */
+            this.drawDebug = false;
 
-        /**
-         * The factor to scale the Animation update time by.
-         *
-         * @name SpineGameObject#timeScale
-         * @type {number}
-         * @since 3.19.0
-         */
-        this.timeScale = 1;
+            /**
+             * The factor to scale the Animation update time by.
+             *
+             * @name SpineGameObject#timeScale
+             * @type {number}
+             * @since 3.19.0
+             */
+            this.timeScale = 1;
 
-        /**
-         * The calculated Display Origin of this Game Object.
-         *
-         * @name SpineGameObject#displayOriginX
-         * @type {number}
-         * @since 3.19.0
-         */
-        this.displayOriginX = 0;
+            /**
+             * The calculated Display Origin of this Game Object.
+             *
+             * @name SpineGameObject#displayOriginX
+             * @type {number}
+             * @since 3.19.0
+             */
+            this.displayOriginX = 0;
 
-        /**
-         * The calculated Display Origin of this Game Object.
-         *
-         * @name SpineGameObject#displayOriginY
-         * @type {number}
-         * @since 3.19.0
-         */
-        this.displayOriginY = 0;
+            /**
+             * The calculated Display Origin of this Game Object.
+             *
+             * @name SpineGameObject#displayOriginY
+             * @type {number}
+             * @since 3.19.0
+             */
+            this.displayOriginY = 0;
 
-        /**
-         * A flag that stores if the texture associated with the current
-         * Skin being used by this Game Object, has its alpha pre-multiplied
-         * into it, or not.
-         *
-         * @name SpineGameObject#preMultipliedAlpha
-         * @type {boolean}
-         * @since 3.19.0
-         */
-        this.preMultipliedAlpha = false;
+            /**
+             * A flag that stores if the texture associated with the current
+             * Skin being used by this Game Object, has its alpha pre-multiplied
+             * into it, or not.
+             *
+             * @name SpineGameObject#preMultipliedAlpha
+             * @type {boolean}
+             * @since 3.19.0
+             */
+            this.preMultipliedAlpha = false;
 
-        /**
-         * A default Blend Mode. You cannot change the blend mode of a
-         * Spine Game Object.
-         *
-         * @name SpineGameObject#blendMode
-         * @type {number}
-         * @readonly
-         * @since 3.19.0
-         */
-        this.blendMode = -1;
+            /**
+             * A default Blend Mode. You cannot change the blend mode of a
+             * Spine Game Object.
+             *
+             * @name SpineGameObject#blendMode
+             * @type {number}
+             * @readonly
+             * @since 3.19.0
+             */
+            this.blendMode = -1;
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        if (key)
-        {
-            this.setSkeleton(key, animationName, loop);
-        }
-    },
+            if (key) {
+                this.setSkeleton(key, animationName, loop);
+            }
+        },
 
     /**
      * Returns `true` if this Spine Game Object both has a skeleton and
@@ -255,19 +253,16 @@ var SpineGameObject = new Class({
      *
      * @return {boolean} `true` if this Game Object should be rendered, otherwise `false`.
      */
-    willRender: function (camera, container)
-    {
+    willRender: function (camera, container) {
         var GameObjectRenderMask = 15;
 
         var result = (!this.skeleton || !(GameObjectRenderMask !== this.renderFlags || (this.cameraFilter !== 0 && (this.cameraFilter & camera.id))));
 
-        if (!container && !result && this.parentContainer)
-        {
+        if (!container && !result && this.parentContainer) {
             var plugin = this.plugin;
             var sceneRenderer = plugin.sceneRenderer;
 
-            if (plugin.gl && sceneRenderer.batcher.isDrawing)
-            {
+            if (plugin.gl && sceneRenderer.batcher.isDrawing) {
                 sceneRenderer.end();
 
                 plugin.renderer.pipelines.rebind();
@@ -293,9 +288,10 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setAlpha: function (value)
-    {
-        if (value === undefined) { value = 1; }
+    setAlpha: function (value) {
+        if (value === undefined) {
+            value = 1;
+        }
 
         this.alpha = value;
 
@@ -319,14 +315,14 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setSlotAlpha: function (value, slotName)
-    {
-        if (value === undefined) { value = 1; }
+    setSlotAlpha: function (value, slotName) {
+        if (value === undefined) {
+            value = 1;
+        }
 
         var slot = this.findSlot(slotName);
 
-        if (slot)
-        {
+        if (slot) {
             slot.color.a = Clamp(value, 0, 1);
         }
 
@@ -346,26 +342,20 @@ var SpineGameObject = new Class({
      */
     alpha: {
 
-        get: function ()
-        {
+        get: function () {
             return this.skeleton.color.a;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
-            if (this.skeleton)
-            {
+            if (this.skeleton) {
                 this.skeleton.color.a = v;
             }
 
-            if (v === 0)
-            {
+            if (v === 0) {
                 this.renderFlags &= ~2;
-            }
-            else
-            {
+            } else {
                 this.renderFlags |= 2;
             }
         }
@@ -385,17 +375,14 @@ var SpineGameObject = new Class({
      */
     red: {
 
-        get: function ()
-        {
+        get: function () {
             return this.skeleton.color.r;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
-            if (this.skeleton)
-            {
+            if (this.skeleton) {
                 this.skeleton.color.r = v;
             }
         }
@@ -415,17 +402,14 @@ var SpineGameObject = new Class({
      */
     green: {
 
-        get: function ()
-        {
+        get: function () {
             return this.skeleton.color.g;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
-            if (this.skeleton)
-            {
+            if (this.skeleton) {
                 this.skeleton.color.g = v;
             }
         }
@@ -445,17 +429,14 @@ var SpineGameObject = new Class({
      */
     blue: {
 
-        get: function ()
-        {
+        get: function () {
             return this.skeleton.color.b;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             var v = Clamp(value, 0, 1);
 
-            if (this.skeleton)
-            {
+            if (this.skeleton) {
                 this.skeleton.color.b = v;
             }
         }
@@ -473,9 +454,10 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setColor: function (color, slotName)
-    {
-        if (color === undefined) { color = 0xffffff; }
+    setColor: function (color, slotName) {
+        if (color === undefined) {
+            color = 0xffffff;
+        }
 
         var red = (color >> 16 & 0xFF) / 255;
         var green = (color >> 8 & 0xFF) / 255;
@@ -484,12 +466,10 @@ var SpineGameObject = new Class({
 
         var target = this.skeleton;
 
-        if (slotName)
-        {
+        if (slotName) {
             var slot = this.findSlot(slotName);
 
-            if (slot)
-            {
+            if (slot) {
                 target = slot;
             }
         }
@@ -498,8 +478,7 @@ var SpineGameObject = new Class({
         target.color.g = green;
         target.color.b = blue;
 
-        if (alpha !== null)
-        {
+        if (alpha !== null) {
             target.color.a = alpha;
         }
 
@@ -520,8 +499,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSkeletonFromJSON: function (atlasDataKey, skeletonJSON, animationName, loop)
-    {
+    setSkeletonFromJSON: function (atlasDataKey, skeletonJSON, animationName, loop) {
         return this.setSkeleton(atlasDataKey, skeletonJSON, animationName, loop);
     },
 
@@ -541,10 +519,8 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSkeleton: function (atlasDataKey, animationName, loop, skeletonJSON)
-    {
-        if (this.state)
-        {
+    setSkeleton: function (atlasDataKey, animationName, loop, skeletonJSON) {
+        if (this.state) {
             this.state.clearListeners();
             this.state.clearListenerNotifications();
         }
@@ -565,8 +541,7 @@ var SpineGameObject = new Class({
         //  AnimationState
         data = this.plugin.createAnimationState(skeleton);
 
-        if (this.state)
-        {
+        if (this.state) {
             this.state.clearListeners();
             this.state.clearListenerNotifications();
         }
@@ -583,15 +558,13 @@ var SpineGameObject = new Class({
             interrupted: this.onInterrupted.bind(this)
         });
 
-        if (animationName)
-        {
+        if (animationName) {
             this.setAnimation(0, animationName, loop);
         }
 
         this.root = this.getRootBone();
 
-        if (this.root)
-        {
+        if (this.root) {
             //  +90 degrees to account for the difference in Spine vs. Phaser rotation
             this.root.rotation = RadToDeg(CounterClockwise(this.rotation)) + 90;
         }
@@ -613,8 +586,7 @@ var SpineGameObject = new Class({
      *
      * @param {any} entry - The event data from Spine.
      */
-    onComplete: function (entry)
-    {
+    onComplete: function (entry) {
         this.emit(SpineEvents.COMPLETE, entry);
     },
 
@@ -628,8 +600,7 @@ var SpineGameObject = new Class({
      *
      * @param {any} entry - The event data from Spine.
      */
-    onDispose: function (entry)
-    {
+    onDispose: function (entry) {
         this.emit(SpineEvents.DISPOSE, entry);
     },
 
@@ -643,8 +614,7 @@ var SpineGameObject = new Class({
      *
      * @param {any} entry - The event data from Spine.
      */
-    onEnd: function (entry)
-    {
+    onEnd: function (entry) {
         this.emit(SpineEvents.END, entry);
     },
 
@@ -659,8 +629,7 @@ var SpineGameObject = new Class({
      * @param {any} entry - The event data from Spine.
      * @param {spine.Event} event - The Spine event.
      */
-    onEvent: function (entry, event)
-    {
+    onEvent: function (entry, event) {
         this.emit(SpineEvents.EVENT, entry, event);
     },
 
@@ -674,8 +643,7 @@ var SpineGameObject = new Class({
      *
      * @param {any} entry - The event data from Spine.
      */
-    onInterrupted: function (entry)
-    {
+    onInterrupted: function (entry) {
         this.emit(SpineEvents.INTERRUPTED, entry);
     },
 
@@ -689,8 +657,7 @@ var SpineGameObject = new Class({
      *
      * @param {any} entry - The event data from Spine.
      */
-    onStart: function (entry)
-    {
+    onStart: function (entry) {
         this.emit(SpineEvents.START, entry);
     },
 
@@ -707,10 +674,8 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    refresh: function ()
-    {
-        if (this.root)
-        {
+    refresh: function () {
+        if (this.root) {
             //  +90 degrees to account for the difference in Spine vs. Phaser rotation
             this.root.rotation = RadToDeg(CounterClockwise(this.rotation)) + 90;
         }
@@ -740,14 +705,21 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSize: function (width, height, offsetX, offsetY)
-    {
+    setSize: function (width, height, offsetX, offsetY) {
         var skeleton = this.skeleton;
 
-        if (width === undefined) { width = skeleton.data.width; }
-        if (height === undefined) { height = skeleton.data.height; }
-        if (offsetX === undefined) { offsetX = 0; }
-        if (offsetY === undefined) { offsetY = 0; }
+        if (width === undefined) {
+            width = skeleton.data.width;
+        }
+        if (height === undefined) {
+            height = skeleton.data.height;
+        }
+        if (offsetX === undefined) {
+            offsetX = 0;
+        }
+        if (offsetY === undefined) {
+            offsetY = 0;
+        }
 
         this.width = width;
         this.height = height;
@@ -771,12 +743,15 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setOffset: function (offsetX, offsetY)
-    {
+    setOffset: function (offsetX, offsetY) {
         var skeleton = this.skeleton;
 
-        if (offsetX === undefined) { offsetX = 0; }
-        if (offsetY === undefined) { offsetY = 0; }
+        if (offsetX === undefined) {
+            offsetX = 0;
+        }
+        if (offsetY === undefined) {
+            offsetY = 0;
+        }
 
         this.displayOriginX = skeleton.x - offsetX;
         this.displayOriginY = skeleton.y - offsetY;
@@ -796,8 +771,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    updateSize: function ()
-    {
+    updateSize: function () {
         var skeleton = this.skeleton;
         var renderer = this.plugin.renderer;
 
@@ -839,13 +813,11 @@ var SpineGameObject = new Class({
      */
     scaleX: {
 
-        get: function ()
-        {
+        get: function () {
             return this._scaleX;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._scaleX = value;
 
             this.refresh();
@@ -863,13 +835,11 @@ var SpineGameObject = new Class({
      */
     scaleY: {
 
-        get: function ()
-        {
+        get: function () {
             return this._scaleY;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._scaleY = value;
 
             this.refresh();
@@ -885,16 +855,13 @@ var SpineGameObject = new Class({
      *
      * @return {string[]} An array containing the names of all the bones in the Skeleton Data.
      */
-    getBoneList: function ()
-    {
+    getBoneList: function () {
         var output = [];
 
         var skeletonData = this.skeletonData;
 
-        if (skeletonData)
-        {
-            for (var i = 0; i < skeletonData.bones.length; i++)
-            {
+        if (skeletonData) {
+            for (var i = 0; i < skeletonData.bones.length; i++) {
                 output.push(skeletonData.bones[i].name);
             }
         }
@@ -910,16 +877,13 @@ var SpineGameObject = new Class({
      *
      * @return {string[]} An array containing the names of all the skins in the Skeleton Data.
      */
-    getSkinList: function ()
-    {
+    getSkinList: function () {
         var output = [];
 
         var skeletonData = this.skeletonData;
 
-        if (skeletonData)
-        {
-            for (var i = 0; i < skeletonData.skins.length; i++)
-            {
+        if (skeletonData) {
+            for (var i = 0; i < skeletonData.skins.length; i++) {
                 output.push(skeletonData.skins[i].name);
             }
         }
@@ -935,14 +899,12 @@ var SpineGameObject = new Class({
      *
      * @return {string[]} An array containing the names of all the slots in the Skeleton.
      */
-    getSlotList: function ()
-    {
+    getSlotList: function () {
         var output = [];
 
         var skeleton = this.skeleton;
 
-        for (var i = 0; i < skeleton.slots.length; i++)
-        {
+        for (var i = 0; i < skeleton.slots.length; i++) {
             output.push(skeleton.slots[i].data.name);
         }
 
@@ -957,16 +919,13 @@ var SpineGameObject = new Class({
      *
      * @return {string[]} An array containing the names of all the animations in the Skeleton Data.
      */
-    getAnimationList: function ()
-    {
+    getAnimationList: function () {
         var output = [];
 
         var skeletonData = this.skeletonData;
 
-        if (skeletonData)
-        {
-            for (var i = 0; i < skeletonData.animations.length; i++)
-            {
+        if (skeletonData) {
+            for (var i = 0; i < skeletonData.animations.length; i++) {
                 output.push(skeletonData.animations[i].name);
             }
         }
@@ -984,14 +943,14 @@ var SpineGameObject = new Class({
      *
      * @return {?spine.Animation} The current Animation on the given track, or `undefined` if there is no current animation.
      */
-    getCurrentAnimation: function (trackIndex)
-    {
-        if (trackIndex === undefined) { trackIndex = 0; }
+    getCurrentAnimation: function (trackIndex) {
+        if (trackIndex === undefined) {
+            trackIndex = 0;
+        }
 
         var current = this.state.getCurrent(trackIndex);
 
-        if (current)
-        {
+        if (current) {
             return current.animation;
         }
     },
@@ -1012,8 +971,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object. If you need the TrackEntry, see `setAnimation` instead.
      */
-    play: function (animationName, loop, ignoreIfPlaying)
-    {
+    play: function (animationName, loop, ignoreIfPlaying) {
         this.setAnimation(0, animationName, loop, ignoreIfPlaying);
 
         this.preUpdate(0, 16.6);
@@ -1038,23 +996,23 @@ var SpineGameObject = new Class({
      *
      * @return {spine.TrackEntry} A track entry to allow further customization of animation playback.
      */
-    setAnimation: function (trackIndex, animationName, loop, ignoreIfPlaying)
-    {
-        if (loop === undefined) { loop = false; }
-        if (ignoreIfPlaying === undefined) { ignoreIfPlaying = false; }
+    setAnimation: function (trackIndex, animationName, loop, ignoreIfPlaying) {
+        if (loop === undefined) {
+            loop = false;
+        }
+        if (ignoreIfPlaying === undefined) {
+            ignoreIfPlaying = false;
+        }
 
-        if (ignoreIfPlaying && this.state)
-        {
+        if (ignoreIfPlaying && this.state) {
             var currentTrack = this.state.getCurrent(trackIndex);
 
-            if (currentTrack && currentTrack.animation.name === animationName && !currentTrack.isComplete())
-            {
+            if (currentTrack && currentTrack.animation.name === animationName && !currentTrack.isComplete()) {
                 return;
             }
         }
 
-        if (this.findAnimation(animationName))
-        {
+        if (this.findAnimation(animationName)) {
             return this.state.setAnimation(trackIndex, animationName, loop);
         }
     },
@@ -1080,10 +1038,13 @@ var SpineGameObject = new Class({
      *
      * @return {spine.TrackEntry} A track entry to allow further customization of animation playback.
      */
-    addAnimation: function (trackIndex, animationName, loop, delay)
-    {
-        if (loop === undefined) { loop = false; }
-        if (delay === undefined) { delay = 0; }
+    addAnimation: function (trackIndex, animationName, loop, delay) {
+        if (loop === undefined) {
+            loop = false;
+        }
+        if (delay === undefined) {
+            delay = 0;
+        }
 
         return this.state.addAnimation(trackIndex, animationName, loop, delay);
     },
@@ -1112,8 +1073,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.TrackEntry} The returned Track Entry.
      */
-    setEmptyAnimation: function (trackIndex, mixDuration)
-    {
+    setEmptyAnimation: function (trackIndex, mixDuration) {
         return this.state.setEmptyAnimation(trackIndex, mixDuration);
     },
 
@@ -1130,8 +1090,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    clearTrack: function (trackIndex)
-    {
+    clearTrack: function (trackIndex) {
         this.state.clearTrack(trackIndex);
 
         return this;
@@ -1148,8 +1107,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    clearTracks: function ()
-    {
+    clearTracks: function () {
         this.state.clearTracks();
 
         return this;
@@ -1174,8 +1132,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSkinByName: function (skinName)
-    {
+    setSkinByName: function (skinName) {
         var skeleton = this.skeleton;
 
         skeleton.setSkinByName(skinName);
@@ -1206,8 +1163,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSkin: function (newSkin)
-    {
+    setSkin: function (newSkin) {
         var skeleton = this.skeleton;
 
         skeleton.setSkin(newSkin);
@@ -1231,8 +1187,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setMix: function (fromName, toName, duration)
-    {
+    setMix: function (fromName, toName, duration) {
         this.stateData.setMix(fromName, toName, duration);
 
         return this;
@@ -1251,8 +1206,7 @@ var SpineGameObject = new Class({
      *
      * @return {?spine.Attachment} The Attachment, if found. May be null.
      */
-    getAttachment: function (slotIndex, attachmentName)
-    {
+    getAttachment: function (slotIndex, attachmentName) {
         return this.skeleton.getAttachment(slotIndex, attachmentName);
     },
 
@@ -1267,8 +1221,7 @@ var SpineGameObject = new Class({
      *
      * @return {?spine.Attachment} The Attachment, if found. May be null.
      */
-    getAttachmentByName: function (slotName, attachmentName)
-    {
+    getAttachmentByName: function (slotName, attachmentName) {
         return this.skeleton.getAttachmentByName(slotName, attachmentName);
     },
 
@@ -1284,17 +1237,12 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setAttachment: function (slotName, attachmentName)
-    {
-        if (Array.isArray(slotName) && Array.isArray(attachmentName) && slotName.length === attachmentName.length)
-        {
-            for (var i = 0; i < slotName.length; i++)
-            {
+    setAttachment: function (slotName, attachmentName) {
+        if (Array.isArray(slotName) && Array.isArray(attachmentName) && slotName.length === attachmentName.length) {
+            for (var i = 0; i < slotName.length; i++) {
                 this.skeleton.setAttachment(slotName[i], attachmentName[i]);
             }
-        }
-        else
-        {
+        } else {
             this.skeleton.setAttachment(slotName, attachmentName);
         }
 
@@ -1309,8 +1257,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setToSetupPose: function ()
-    {
+    setToSetupPose: function () {
         this.skeleton.setToSetupPose();
 
         return this;
@@ -1324,8 +1271,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSlotsToSetupPose: function ()
-    {
+    setSlotsToSetupPose: function () {
         this.skeleton.setSlotsToSetupPose();
 
         return this;
@@ -1339,8 +1285,7 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    setBonesToSetupPose: function ()
-    {
+    setBonesToSetupPose: function () {
         this.skeleton.setBonesToSetupPose();
 
         return this;
@@ -1354,8 +1299,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.Bone} The root bone, or null.
      */
-    getRootBone: function ()
-    {
+    getRootBone: function () {
         return this.skeleton.getRootBone();
     },
 
@@ -1376,11 +1320,16 @@ var SpineGameObject = new Class({
      *
      * @return {this} This Game Object.
      */
-    angleBoneToXY: function (bone, worldX, worldY, offset, minAngle, maxAngle)
-    {
-        if (offset === undefined) { offset = 0; }
-        if (minAngle === undefined) { minAngle = 0; }
-        if (maxAngle === undefined) { maxAngle = 360; }
+    angleBoneToXY: function (bone, worldX, worldY, offset, minAngle, maxAngle) {
+        if (offset === undefined) {
+            offset = 0;
+        }
+        if (minAngle === undefined) {
+            minAngle = 0;
+        }
+        if (maxAngle === undefined) {
+            maxAngle = 360;
+        }
 
         var renderer = this.plugin.renderer;
         var height = renderer.height;
@@ -1403,8 +1352,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.Bone} The bone, or null.
      */
-    findBone: function (boneName)
-    {
+    findBone: function (boneName) {
         return this.skeleton.findBone(boneName);
     },
 
@@ -1419,8 +1367,7 @@ var SpineGameObject = new Class({
      *
      * @return {integer} The bone index. Or -1 if the bone was not found.
      */
-    findBoneIndex: function (boneName)
-    {
+    findBoneIndex: function (boneName) {
         return this.skeleton.findBoneIndex(boneName);
     },
 
@@ -1435,8 +1382,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.Slot} The Slot. May be null.
      */
-    findSlot: function (slotName)
-    {
+    findSlot: function (slotName) {
         return this.skeleton.findSlot(slotName);
     },
 
@@ -1451,8 +1397,7 @@ var SpineGameObject = new Class({
      *
      * @return {integer} The slot index. Or -1 if the Slot was not found.
      */
-    findSlotIndex: function (slotName)
-    {
+    findSlotIndex: function (slotName) {
         return this.skeleton.findSlotIndex(slotName);
     },
 
@@ -1467,8 +1412,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.Skin} The Skin. May be null.
      */
-    findSkin: function (skinName)
-    {
+    findSkin: function (skinName) {
         return this.skeletonData.findSkin(skinName);
     },
 
@@ -1483,8 +1427,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.EventData} The Event Data. May be null.
      */
-    findEvent: function (eventDataName)
-    {
+    findEvent: function (eventDataName) {
         return this.skeletonData.findEvent(eventDataName);
     },
 
@@ -1499,8 +1442,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.Animation} The Animation. May be null.
      */
-    findAnimation: function (animationName)
-    {
+    findAnimation: function (animationName) {
         return this.skeletonData.findAnimation(animationName);
     },
 
@@ -1515,8 +1457,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.IkConstraintData} The IK constraint. May be null.
      */
-    findIkConstraint: function (constraintName)
-    {
+    findIkConstraint: function (constraintName) {
         return this.skeletonData.findIkConstraint(constraintName);
     },
 
@@ -1531,8 +1472,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.TransformConstraintData} The transform constraint. May be null.
      */
-    findTransformConstraint: function (constraintName)
-    {
+    findTransformConstraint: function (constraintName) {
         return this.skeletonData.findTransformConstraint(constraintName);
     },
 
@@ -1547,8 +1487,7 @@ var SpineGameObject = new Class({
      *
      * @return {spine.PathConstraintData} The path constraint. May be null.
      */
-    findPathConstraint: function (constraintName)
-    {
+    findPathConstraint: function (constraintName) {
         return this.skeletonData.findPathConstraint(constraintName);
     },
 
@@ -1563,8 +1502,7 @@ var SpineGameObject = new Class({
      *
      * @return {integer} The constraint index. Or -1 if the constraint was not found.
      */
-    findPathConstraintIndex: function (constraintName)
-    {
+    findPathConstraintIndex: function (constraintName) {
         return this.skeletonData.findPathConstraintIndex(constraintName);
     },
 
@@ -1581,8 +1519,7 @@ var SpineGameObject = new Class({
      *
      * @return {any} The bounds object.
      */
-    getBounds: function ()
-    {
+    getBounds: function () {
         return this.plugin.getBounds(this.skeleton);
     },
 
@@ -1596,8 +1533,7 @@ var SpineGameObject = new Class({
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
      */
-    preUpdate: function (time, delta)
-    {
+    preUpdate: function (time, delta) {
         var skeleton = this.skeleton;
 
         this.state.update((delta / 1000) * this.timeScale);
@@ -1612,10 +1548,8 @@ var SpineGameObject = new Class({
      * @protected
      * @since 3.19.0
      */
-    preDestroy: function ()
-    {
-        if (this.state)
-        {
+    preDestroy: function () {
+        if (this.state) {
             this.state.clearListeners();
             this.state.clearListenerNotifications();
         }

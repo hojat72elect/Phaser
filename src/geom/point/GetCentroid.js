@@ -20,30 +20,24 @@ var Point = require('./Point');
  *
  * @return {Phaser.Geom.Point} A Point object representing the geometric center of the given points.
  */
-var GetCentroid = function (points, out)
-{
-    if (out === undefined) { out = new Point(); }
+var GetCentroid = function (points, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
-    if (!Array.isArray(points))
-    {
+    if (!Array.isArray(points)) {
         throw new Error('GetCentroid points argument must be an array');
     }
 
     var len = points.length;
 
-    if (len < 1)
-    {
+    if (len < 1) {
         throw new Error('GetCentroid points array must not be empty');
-    }
-    else if (len === 1)
-    {
+    } else if (len === 1) {
         out.x = points[0].x;
         out.y = points[0].y;
-    }
-    else
-    {
-        for (var i = 0; i < len; i++)
-        {
+    } else {
+        for (var i = 0; i < len; i++) {
             out.x += points[i].x;
             out.y += points[i].y;
         }

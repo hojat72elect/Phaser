@@ -14,8 +14,7 @@
  *
  * @return {number} The center y coordinate of the bounds of the Game Object.
  */
-var GetCenterY = function (gameObject)
-{
+var GetCenterY = function (gameObject) {
     return gameObject.y - (gameObject.height * gameObject.originY) + (gameObject.height * 0.5);
 };
 

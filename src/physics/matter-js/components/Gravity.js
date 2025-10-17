@@ -22,8 +22,7 @@ var Gravity = {
      *
      * @return {this} This Game Object instance.
      */
-    setIgnoreGravity: function (value)
-    {
+    setIgnoreGravity: function (value) {
         this.body.ignoreGravity = value;
 
         return this;

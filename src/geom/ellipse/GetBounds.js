@@ -19,9 +19,10 @@ var Rectangle = require('../rectangle/Rectangle');
  *
  * @return {(Phaser.Geom.Rectangle|object)} The Rectangle object containing the Ellipse bounds.
  */
-var GetBounds = function (ellipse, out)
-{
-    if (out === undefined) { out = new Rectangle(); }
+var GetBounds = function (ellipse, out) {
+    if (out === undefined) {
+        out = new Rectangle();
+    }
 
     out.x = ellipse.left;
     out.y = ellipse.top;

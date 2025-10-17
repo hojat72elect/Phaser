@@ -22,8 +22,7 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {number} the determinant.
  */
-function det (m00, m01, m10, m11)
-{
+function det(m00, m01, m10, m11) {
     return (m00 * m11) - (m01 * m10);
 }
 
@@ -44,9 +43,10 @@ function det (m00, m01, m10, m11)
  *
  * @return {Phaser.Math.Vector2} A Vector2 object holding the coordinates of the circumcenter of the Triangle.
  */
-var CircumCenter = function (triangle, out)
-{
-    if (out === undefined) { out = new Vector2(); }
+var CircumCenter = function (triangle, out) {
+    if (out === undefined) {
+        out = new Vector2();
+    }
 
     var cx = triangle.x3;
     var cy = triangle.y3;

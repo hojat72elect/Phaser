@@ -19,9 +19,10 @@ var Rectangle = require('../rectangle/Rectangle');
  *
  * @return {(Phaser.Geom.Rectangle|object)} The Rectangle object containing the Circles bounds.
  */
-var GetBounds = function (circle, out)
-{
-    if (out === undefined) { out = new Rectangle(); }
+var GetBounds = function (circle, out) {
+    if (out === undefined) {
+        out = new Rectangle();
+    }
 
     out.x = circle.left;
     out.y = circle.top;

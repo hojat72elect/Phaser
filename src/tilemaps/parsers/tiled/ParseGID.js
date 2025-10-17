@@ -19,8 +19,7 @@ var FLIPPED_ANTI_DIAGONAL = 0x20000000; // Top-right is swapped with bottom-left
  *
  * @return {Phaser.Types.Tilemaps.GIDData} The GID Data.
  */
-var ParseGID = function (gid)
-{
+var ParseGID = function (gid) {
     var flippedHorizontal = Boolean(gid & FLIPPED_HORIZONTAL);
     var flippedVertical = Boolean(gid & FLIPPED_VERTICAL);
     var flippedAntiDiagonal = Boolean(gid & FLIPPED_ANTI_DIAGONAL);
@@ -30,43 +29,28 @@ var ParseGID = function (gid)
     var rotation = 0;
     var flipped = false;
 
-    if (flippedHorizontal && flippedVertical && flippedAntiDiagonal)
-    {
+    if (flippedHorizontal && flippedVertical && flippedAntiDiagonal) {
         rotation = Math.PI / 2;
         flipped = true;
-    }
-    else if (flippedHorizontal && flippedVertical && !flippedAntiDiagonal)
-    {
+    } else if (flippedHorizontal && flippedVertical && !flippedAntiDiagonal) {
         rotation = Math.PI;
         flipped = false;
-    }
-    else if (flippedHorizontal && !flippedVertical && flippedAntiDiagonal)
-    {
+    } else if (flippedHorizontal && !flippedVertical && flippedAntiDiagonal) {
         rotation = Math.PI / 2;
         flipped = false;
-    }
-    else if (flippedHorizontal && !flippedVertical && !flippedAntiDiagonal)
-    {
+    } else if (flippedHorizontal && !flippedVertical && !flippedAntiDiagonal) {
         rotation = 0;
         flipped = true;
-    }
-    else if (!flippedHorizontal && flippedVertical && flippedAntiDiagonal)
-    {
+    } else if (!flippedHorizontal && flippedVertical && flippedAntiDiagonal) {
         rotation = 3 * Math.PI / 2;
         flipped = false;
-    }
-    else if (!flippedHorizontal && flippedVertical && !flippedAntiDiagonal)
-    {
+    } else if (!flippedHorizontal && flippedVertical && !flippedAntiDiagonal) {
         rotation = Math.PI;
         flipped = true;
-    }
-    else if (!flippedHorizontal && !flippedVertical && flippedAntiDiagonal)
-    {
+    } else if (!flippedHorizontal && !flippedVertical && flippedAntiDiagonal) {
         rotation = 3 * Math.PI / 2;
         flipped = true;
-    }
-    else if (!flippedHorizontal && !flippedVertical && !flippedAntiDiagonal)
-    {
+    } else if (!flippedHorizontal && !flippedVertical && !flippedAntiDiagonal) {
         rotation = 0;
         flipped = false;
     }

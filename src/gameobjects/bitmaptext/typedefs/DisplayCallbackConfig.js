@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.BitmapText.DisplayCallbackConfig
  * @since 3.0.0
- * 
+ *
  * @property {Phaser.GameObjects.DynamicBitmapText} parent - The Dynamic Bitmap Text object that owns this character being rendered.
  * @property {Phaser.Types.GameObjects.BitmapText.TintConfig} tint - The tint of the character being rendered. Always zero in Canvas.
  * @property {number} index - The index of the character being rendered.

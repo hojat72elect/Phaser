@@ -22,8 +22,7 @@ var ProcessTileSeparationX = require('./ProcessTileSeparationX');
  *
  * @return {number} The amount of separation that occurred.
  */
-var TileCheckX = function (body, tile, tileLeft, tileRight, tileBias, isLayer)
-{
+var TileCheckX = function (body, tile, tileLeft, tileRight, tileBias, isLayer) {
     var ox = 0;
 
     var faceLeft = tile.faceLeft;
@@ -31,49 +30,37 @@ var TileCheckX = function (body, tile, tileLeft, tileRight, tileBias, isLayer)
     var collideLeft = tile.collideLeft;
     var collideRight = tile.collideRight;
 
-    if (!isLayer)
-    {
+    if (!isLayer) {
         faceLeft = true;
         faceRight = true;
         collideLeft = true;
         collideRight = true;
     }
 
-    if (body.deltaX() < 0 && collideRight && body.checkCollision.left)
-    {
+    if (body.deltaX() < 0 && collideRight && body.checkCollision.left) {
         //  Body is moving LEFT
-        if (faceRight && body.x < tileRight)
-        {
+        if (faceRight && body.x < tileRight) {
             ox = body.x - tileRight;
 
-            if (ox < -tileBias)
-            {
+            if (ox < -tileBias) {
                 ox = 0;
             }
         }
-    }
-    else if (body.deltaX() > 0 && collideLeft && body.checkCollision.right)
-    {
+    } else if (body.deltaX() > 0 && collideLeft && body.checkCollision.right) {
         //  Body is moving RIGHT
-        if (faceLeft && body.right > tileLeft)
-        {
+        if (faceLeft && body.right > tileLeft) {
             ox = body.right - tileLeft;
 
-            if (ox > tileBias)
-            {
+            if (ox > tileBias) {
                 ox = 0;
             }
         }
     }
 
-    if (ox !== 0)
-    {
-        if (body.customSeparateX)
-        {
+    if (ox !== 0) {
+        if (body.customSeparateX) {
             body.overlapX = ox;
-        }
-        else
-        {
+        } else {
             ProcessTileSeparationX(body, ox);
         }
     }

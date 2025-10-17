@@ -18,21 +18,15 @@
  * @param {Phaser.Physics.Impact.Body} body - [description]
  * @param {object} res - [description]
  */
-var UpdateMotion = function (body, res)
-{
+var UpdateMotion = function (body, res) {
     body.standing = false;
 
     //  Y
-    if (res.collision.y)
-    {
-        if (body.bounciness > 0 && Math.abs(body.vel.y) > body.minBounceVelocity)
-        {
+    if (res.collision.y) {
+        if (body.bounciness > 0 && Math.abs(body.vel.y) > body.minBounceVelocity) {
             body.vel.y *= -body.bounciness;
-        }
-        else
-        {
-            if (body.vel.y > 0)
-            {
+        } else {
+            if (body.vel.y > 0) {
                 body.standing = true;
             }
 
@@ -41,42 +35,33 @@ var UpdateMotion = function (body, res)
     }
 
     //  X
-    if (res.collision.x)
-    {
-        if (body.bounciness > 0 && Math.abs(body.vel.x) > body.minBounceVelocity)
-        {
+    if (res.collision.x) {
+        if (body.bounciness > 0 && Math.abs(body.vel.x) > body.minBounceVelocity) {
             body.vel.x *= -body.bounciness;
-        }
-        else
-        {
+        } else {
             body.vel.x = 0;
         }
     }
 
     //  SLOPE
-    if (res.collision.slope)
-    {
+    if (res.collision.slope) {
         var s = res.collision.slope;
-       
-        if (body.bounciness > 0)
-        {
+
+        if (body.bounciness > 0) {
             var proj = body.vel.x * s.nx + body.vel.y * s.ny;
 
             body.vel.x = (body.vel.x - s.nx * proj * 2) * body.bounciness;
             body.vel.y = (body.vel.y - s.ny * proj * 2) * body.bounciness;
-        }
-        else
-        {
+        } else {
             var lengthSquared = s.x * s.x + s.y * s.y;
             var dot = (body.vel.x * s.x + body.vel.y * s.y) / lengthSquared;
-            
+
             body.vel.x = s.x * dot;
             body.vel.y = s.y * dot;
-            
+
             var angle = Math.atan2(s.x, s.y);
 
-            if (angle > body.slopeStanding.min && angle < body.slopeStanding.max)
-            {
+            if (angle > body.slopeStanding.min && angle < body.slopeStanding.max) {
                 body.standing = true;
             }
         }

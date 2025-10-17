@@ -14,8 +14,7 @@
  *
  * @return {number} The tweened value.
  */
-var Out = function (v)
-{
+var Out = function (v) {
     return 1 - Math.pow(2, -10 * v);
 };
 

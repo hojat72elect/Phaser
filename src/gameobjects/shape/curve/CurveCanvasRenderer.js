@@ -22,14 +22,12 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var CurveCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var CurveCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var ctx = renderer.currentContext;
 
-    if (SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         var dx = src._displayOriginX + src._curveBounds.x;
         var dy = src._displayOriginY + src._curveBounds.y;
 
@@ -43,33 +41,28 @@ var CurveCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         ctx.moveTo(px1, py1);
 
-        if (!src.closePath)
-        {
+        if (!src.closePath) {
             pathLength -= 2;
         }
 
-        for (var i = 2; i < pathLength; i += 2)
-        {
+        for (var i = 2; i < pathLength; i += 2) {
             var px2 = path[i] - dx;
             var py2 = path[i + 1] - dy;
 
             ctx.lineTo(px2, py2);
         }
 
-        if (src.closePath)
-        {
+        if (src.closePath) {
             ctx.closePath();
         }
 
-        if (src.isFilled)
-        {
+        if (src.isFilled) {
             FillStyleCanvas(ctx, src);
 
             ctx.fill();
         }
 
-        if (src.isStroked)
-        {
+        if (src.isStroked) {
             LineStyleCanvas(ctx, src);
 
             ctx.stroke();

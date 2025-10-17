@@ -16,8 +16,7 @@ var Polygon = require('./Polygon');
  *
  * @return {Phaser.Geom.Polygon} A new separate Polygon cloned from the specified polygon, based on the same points.
  */
-var Clone = function (polygon)
-{
+var Clone = function (polygon) {
     return new Polygon(polygon.points);
 };
 

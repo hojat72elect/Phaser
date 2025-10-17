@@ -21,10 +21,13 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var PlaceOnCircle = function (items, circle, startAngle, endAngle)
-{
-    if (startAngle === undefined) { startAngle = 0; }
-    if (endAngle === undefined) { endAngle = 6.28; }
+var PlaceOnCircle = function (items, circle, startAngle, endAngle) {
+    if (startAngle === undefined) {
+        startAngle = 0;
+    }
+    if (endAngle === undefined) {
+        endAngle = 6.28;
+    }
 
     var angle = startAngle;
     var angleStep = (endAngle - startAngle) / items.length;
@@ -33,8 +36,7 @@ var PlaceOnCircle = function (items, circle, startAngle, endAngle)
     var cy = circle.y;
     var radius = circle.radius;
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         items[i].x = cx + (radius * Math.cos(angle));
         items[i].y = cy + (radius * Math.sin(angle));
 

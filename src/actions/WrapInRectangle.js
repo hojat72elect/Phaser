@@ -24,15 +24,12 @@ var Wrap = require('../math/Wrap');
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that was passed to this Action.
  */
-var WrapInRectangle = function (items, rect, padding)
-{
-    if (padding === undefined)
-    {
+var WrapInRectangle = function (items, rect, padding) {
+    if (padding === undefined) {
         padding = 0;
     }
 
-    for (var i = 0; i < items.length; i++)
-    {
+    for (var i = 0; i < items.length; i++) {
         var item = items[i];
 
         item.x = Wrap(item.x, rect.left - padding, rect.right + padding);

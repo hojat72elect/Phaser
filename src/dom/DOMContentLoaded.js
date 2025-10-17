@@ -20,17 +20,14 @@ var OS = require('../device/OS');
  *
  * @param {ContentLoadedCallback} callback - The callback to be invoked when the device is ready and the DOM content is loaded.
  */
-var DOMContentLoaded = function (callback)
-{
-    if (document.readyState === 'complete' || document.readyState === 'interactive')
-    {
+var DOMContentLoaded = function (callback) {
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
         callback();
 
         return;
     }
 
-    var check = function ()
-    {
+    var check = function () {
         document.removeEventListener('deviceready', check, true);
         document.removeEventListener('DOMContentLoaded', check, true);
         window.removeEventListener('load', check, true);
@@ -38,17 +35,12 @@ var DOMContentLoaded = function (callback)
         callback();
     };
 
-    if (!document.body)
-    {
+    if (!document.body) {
         window.setTimeout(check, 20);
-    }
-    else if (OS.cordova)
-    {
+    } else if (OS.cordova) {
         //  Ref. http://docs.phonegap.com/en/3.5.0/cordova_events_events.md.html#deviceready
         document.addEventListener('deviceready', check, false);
-    }
-    else
-    {
+    } else {
         document.addEventListener('DOMContentLoaded', check, true);
         window.addEventListener('load', check, true);
     }

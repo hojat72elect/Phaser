@@ -17,8 +17,7 @@ var Contains = require('./Contains');
  *
  * @return {boolean} True if the Point coordinates are within the circle, otherwise false.
  */
-var ContainsPoint = function (circle, point)
-{
+var ContainsPoint = function (circle, point) {
     return Contains(circle, point.x, point.y);
 };
 

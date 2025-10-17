@@ -38,187 +38,186 @@ var CanvasRenderer = new Class({
 
     initialize:
 
-    function CanvasRenderer (game)
-    {
-        EventEmitter.call(this);
+        function CanvasRenderer(game) {
+            EventEmitter.call(this);
 
-        var gameConfig = game.config;
+            var gameConfig = game.config;
 
-        /**
-         * The local configuration settings of the CanvasRenderer.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#config
-         * @type {object}
-         * @since 3.0.0
-         */
-        this.config = {
-            clearBeforeRender: gameConfig.clearBeforeRender,
-            backgroundColor: gameConfig.backgroundColor,
-            antialias: gameConfig.antialias,
-            roundPixels: gameConfig.roundPixels,
-            transparent: gameConfig.transparent
-        };
+            /**
+             * The local configuration settings of the CanvasRenderer.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#config
+             * @type {object}
+             * @since 3.0.0
+             */
+            this.config = {
+                clearBeforeRender: gameConfig.clearBeforeRender,
+                backgroundColor: gameConfig.backgroundColor,
+                antialias: gameConfig.antialias,
+                roundPixels: gameConfig.roundPixels,
+                transparent: gameConfig.transparent
+            };
 
-        /**
-         * The Phaser Game instance that owns this renderer.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#game
-         * @type {Phaser.Game}
-         * @since 3.0.0
-         */
-        this.game = game;
+            /**
+             * The Phaser Game instance that owns this renderer.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#game
+             * @type {Phaser.Game}
+             * @since 3.0.0
+             */
+            this.game = game;
 
-        /**
-         * A constant which allows the renderer to be easily identified as a Canvas Renderer.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#type
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.type = CONST.CANVAS;
+            /**
+             * A constant which allows the renderer to be easily identified as a Canvas Renderer.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#type
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.type = CONST.CANVAS;
 
-        /**
-         * The total number of Game Objects which were rendered in a frame.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#drawCount
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.drawCount = 0;
+            /**
+             * The total number of Game Objects which were rendered in a frame.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#drawCount
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.drawCount = 0;
 
-        /**
-         * The width of the canvas being rendered to.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#width
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.width = 0;
+            /**
+             * The width of the canvas being rendered to.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#width
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.width = 0;
 
-        /**
-         * The height of the canvas being rendered to.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#height
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.height = 0;
+            /**
+             * The height of the canvas being rendered to.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#height
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.height = 0;
 
-        /**
-         * The canvas element which the Game uses.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#gameCanvas
-         * @type {HTMLCanvasElement}
-         * @since 3.0.0
-         */
-        this.gameCanvas = game.canvas;
+            /**
+             * The canvas element which the Game uses.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#gameCanvas
+             * @type {HTMLCanvasElement}
+             * @since 3.0.0
+             */
+            this.gameCanvas = game.canvas;
 
-        var contextOptions = {
-            alpha: gameConfig.transparent,
-            desynchronized: gameConfig.desynchronized,
-            willReadFrequently: false
-        };
+            var contextOptions = {
+                alpha: gameConfig.transparent,
+                desynchronized: gameConfig.desynchronized,
+                willReadFrequently: false
+            };
 
-        /**
-         * The canvas context used to render all Cameras in all Scenes during the game loop.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#gameContext
-         * @type {CanvasRenderingContext2D}
-         * @since 3.0.0
-         */
-        this.gameContext = (gameConfig.context) ? gameConfig.context : this.gameCanvas.getContext('2d', contextOptions);
+            /**
+             * The canvas context used to render all Cameras in all Scenes during the game loop.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#gameContext
+             * @type {CanvasRenderingContext2D}
+             * @since 3.0.0
+             */
+            this.gameContext = (gameConfig.context) ? gameConfig.context : this.gameCanvas.getContext('2d', contextOptions);
 
-        /**
-         * The canvas context currently used by the CanvasRenderer for all rendering operations.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#currentContext
-         * @type {CanvasRenderingContext2D}
-         * @since 3.0.0
-         */
-        this.currentContext = this.gameContext;
+            /**
+             * The canvas context currently used by the CanvasRenderer for all rendering operations.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#currentContext
+             * @type {CanvasRenderingContext2D}
+             * @since 3.0.0
+             */
+            this.currentContext = this.gameContext;
 
-        /**
-         * Should the Canvas use Image Smoothing or not when drawing Sprites?
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#antialias
-         * @type {boolean}
-         * @since 3.20.0
-         */
-        this.antialias = gameConfig.antialias;
+            /**
+             * Should the Canvas use Image Smoothing or not when drawing Sprites?
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#antialias
+             * @type {boolean}
+             * @since 3.20.0
+             */
+            this.antialias = gameConfig.antialias;
 
-        /**
-         * The blend modes supported by the Canvas Renderer.
-         *
-         * This object maps the {@link Phaser.BlendModes} to canvas compositing operations.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#blendModes
-         * @type {array}
-         * @since 3.0.0
-         */
-        this.blendModes = GetBlendModes();
+            /**
+             * The blend modes supported by the Canvas Renderer.
+             *
+             * This object maps the {@link Phaser.BlendModes} to canvas compositing operations.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#blendModes
+             * @type {array}
+             * @since 3.0.0
+             */
+            this.blendModes = GetBlendModes();
 
-        /**
-         * Details about the currently scheduled snapshot.
-         *
-         * If a non-null `callback` is set in this object, a snapshot of the canvas will be taken after the current frame is fully rendered.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#snapshotState
-         * @type {Phaser.Types.Renderer.Snapshot.SnapshotState}
-         * @since 3.16.0
-         */
-        this.snapshotState = {
-            x: 0,
-            y: 0,
-            width: 1,
-            height: 1,
-            getPixel: false,
-            callback: null,
-            type: 'image/png',
-            encoder: 0.92
-        };
+            /**
+             * Details about the currently scheduled snapshot.
+             *
+             * If a non-null `callback` is set in this object, a snapshot of the canvas will be taken after the current frame is fully rendered.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#snapshotState
+             * @type {Phaser.Types.Renderer.Snapshot.SnapshotState}
+             * @since 3.16.0
+             */
+            this.snapshotState = {
+                x: 0,
+                y: 0,
+                width: 1,
+                height: 1,
+                getPixel: false,
+                callback: null,
+                type: 'image/png',
+                encoder: 0.92
+            };
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix1
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.11.0
-         */
-        this._tempMatrix1 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix1
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.11.0
+             */
+            this._tempMatrix1 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix2
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.11.0
-         */
-        this._tempMatrix2 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix2
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.11.0
+             */
+            this._tempMatrix2 = new TransformMatrix();
 
-        /**
-         * A temporary Transform Matrix, re-used internally during batching.
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix3
-         * @private
-         * @type {Phaser.GameObjects.Components.TransformMatrix}
-         * @since 3.11.0
-         */
-        this._tempMatrix3 = new TransformMatrix();
+            /**
+             * A temporary Transform Matrix, re-used internally during batching.
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix3
+             * @private
+             * @type {Phaser.GameObjects.Components.TransformMatrix}
+             * @since 3.11.0
+             */
+            this._tempMatrix3 = new TransformMatrix();
 
-        /**
-         * Has this renderer fully booted yet?
-         *
-         * @name Phaser.Renderer.Canvas.CanvasRenderer#isBooted
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.isBooted = false;
+            /**
+             * Has this renderer fully booted yet?
+             *
+             * @name Phaser.Renderer.Canvas.CanvasRenderer#isBooted
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.isBooted = false;
 
-        this.init();
-    },
+            this.init();
+        },
 
     /**
      * Prepares the game canvas for rendering.
@@ -226,16 +225,13 @@ var CanvasRenderer = new Class({
      * @method Phaser.Renderer.Canvas.CanvasRenderer#init
      * @since 3.0.0
      */
-    init: function ()
-    {
+    init: function () {
         var game = this.game;
 
-        game.events.once(GameEvents.BOOT, function ()
-        {
+        game.events.once(GameEvents.BOOT, function () {
             var config = this.config;
 
-            if (!config.transparent)
-            {
+            if (!config.transparent) {
                 var ctx = this.gameContext;
                 var gameCanvas = this.gameCanvas;
 
@@ -255,8 +251,7 @@ var CanvasRenderer = new Class({
      * @private
      * @since 3.50.0
      */
-    boot: function ()
-    {
+    boot: function () {
         var game = this.game;
 
         var baseSize = game.scale.baseSize;
@@ -280,11 +275,9 @@ var CanvasRenderer = new Class({
      * @param {Phaser.Structs.Size} gameSize - The default Game Size object. This is the un-modified game dimensions.
      * @param {Phaser.Structs.Size} baseSize - The base Size object. The game dimensions multiplied by the resolution. The canvas width / height values match this.
      */
-    onResize: function (gameSize, baseSize)
-    {
+    onResize: function (gameSize, baseSize) {
         //  Has the underlying canvas size changed?
-        if (baseSize.width !== this.width || baseSize.height !== this.height)
-        {
+        if (baseSize.width !== this.width || baseSize.height !== this.height) {
             this.resize(baseSize.width, baseSize.height);
         }
     },
@@ -299,8 +292,7 @@ var CanvasRenderer = new Class({
      * @param {number} [width] - The new width of the renderer.
      * @param {number} [height] - The new height of the renderer.
      */
-    resize: function (width, height)
-    {
+    resize: function (width, height) {
         this.width = width;
         this.height = height;
 
@@ -313,8 +305,7 @@ var CanvasRenderer = new Class({
      * @method Phaser.Renderer.Canvas.CanvasRenderer#resetTransform
      * @since 3.0.0
      */
-    resetTransform: function ()
-    {
+    resetTransform: function () {
         this.currentContext.setTransform(1, 0, 0, 1, 0, 0);
     },
 
@@ -328,8 +319,7 @@ var CanvasRenderer = new Class({
      *
      * @return {this} This CanvasRenderer object.
      */
-    setBlendMode: function (blendMode)
-    {
+    setBlendMode: function (blendMode) {
         this.currentContext.globalCompositeOperation = blendMode;
 
         return this;
@@ -345,8 +335,7 @@ var CanvasRenderer = new Class({
      *
      * @return {this} The Canvas Renderer instance.
      */
-    setContext: function (ctx)
-    {
+    setContext: function (ctx) {
         this.currentContext = (ctx) ? ctx : this.gameContext;
 
         return this;
@@ -362,8 +351,7 @@ var CanvasRenderer = new Class({
      *
      * @return {this} This CanvasRenderer object.
      */
-    setAlpha: function (alpha)
-    {
+    setAlpha: function (alpha) {
         this.currentContext.globalAlpha = alpha;
 
         return this;
@@ -377,8 +365,7 @@ var CanvasRenderer = new Class({
      * @fires Phaser.Renderer.Events#PRE_RENDER
      * @since 3.0.0
      */
-    preRender: function ()
-    {
+    preRender: function () {
         var ctx = this.gameContext;
         var config = this.config;
 
@@ -391,12 +378,10 @@ var CanvasRenderer = new Class({
 
         this.emit(Events.PRE_RENDER_CLEAR);
 
-        if (config.clearBeforeRender)
-        {
+        if (config.clearBeforeRender) {
             ctx.clearRect(0, 0, width, height);
 
-            if (!config.transparent)
-            {
+            if (!config.transparent) {
                 ctx.fillStyle = config.backgroundColor.rgba;
                 ctx.fillRect(0, 0, width, height);
             }
@@ -427,8 +412,7 @@ var CanvasRenderer = new Class({
      * @param {Phaser.GameObjects.GameObject[]} children - An array of filtered Game Objects that can be rendered by the given Camera.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Scene Camera to render with.
      */
-    render: function (scene, children, camera)
-    {
+    render: function (scene, children, camera) {
         var childCount = children.length;
 
         this.emit(Events.RENDER, scene, camera);
@@ -443,8 +427,7 @@ var CanvasRenderer = new Class({
         //  Save context pre-clip
         ctx.save();
 
-        if (this.game.scene.customViewports)
-        {
+        if (this.game.scene.customViewports) {
             ctx.beginPath();
             ctx.rect(cx, cy, cw, ch);
             ctx.clip();
@@ -456,13 +439,11 @@ var CanvasRenderer = new Class({
 
         var mask = camera.mask;
 
-        if (mask)
-        {
+        if (mask) {
             mask.preRenderCanvas(this, null, camera._maskCamera);
         }
 
-        if (!camera.transparent)
-        {
+        if (!camera.transparent) {
             ctx.fillStyle = camera.backgroundColor.rgba;
             ctx.fillRect(cx, cy, cw, ch);
         }
@@ -473,26 +454,22 @@ var CanvasRenderer = new Class({
 
         this.drawCount += childCount;
 
-        if (camera.renderToTexture)
-        {
+        if (camera.renderToTexture) {
             camera.emit(CameraEvents.PRE_RENDER, camera);
         }
 
         camera.matrix.copyToContext(ctx);
 
-        for (var i = 0; i < childCount; i++)
-        {
+        for (var i = 0; i < childCount; i++) {
             var child = children[i];
 
-            if (child.mask)
-            {
+            if (child.mask) {
                 child.mask.preRenderCanvas(this, child, camera);
             }
 
             child.renderCanvas(this, child, camera);
 
-            if (child.mask)
-            {
+            if (child.mask) {
                 child.mask.postRenderCanvas(this, child, camera);
             }
         }
@@ -506,20 +483,17 @@ var CanvasRenderer = new Class({
 
         camera.dirty = false;
 
-        if (mask)
-        {
+        if (mask) {
             mask.postRenderCanvas(this);
         }
 
         //  Restore pre-clip context
         ctx.restore();
 
-        if (camera.renderToTexture)
-        {
+        if (camera.renderToTexture) {
             camera.emit(CameraEvents.POST_RENDER, camera);
 
-            if (camera.renderToGame)
-            {
+            if (camera.renderToGame) {
                 scene.sys.context.drawImage(camera.canvas, cx, cy);
             }
         }
@@ -536,8 +510,7 @@ var CanvasRenderer = new Class({
      * @fires Phaser.Renderer.Events#POST_RENDER
      * @since 3.0.0
      */
-    postRender: function ()
-    {
+    postRender: function () {
         var ctx = this.gameContext;
 
         ctx.restore();
@@ -546,8 +519,7 @@ var CanvasRenderer = new Class({
 
         var state = this.snapshotState;
 
-        if (state.callback)
-        {
+        if (state.callback) {
             CanvasSnapshot(this.gameCanvas, state);
 
             state.callback = null;
@@ -577,9 +549,10 @@ var CanvasRenderer = new Class({
      *
      * @return {this} This Canvas Renderer.
      */
-    snapshotCanvas: function (canvas, callback, getPixel, x, y, width, height, type, encoderOptions)
-    {
-        if (getPixel === undefined) { getPixel = false; }
+    snapshotCanvas: function (canvas, callback, getPixel, x, y, width, height, type, encoderOptions) {
+        if (getPixel === undefined) {
+            getPixel = false;
+        }
 
         this.snapshotArea(x, y, width, height, callback, type, encoderOptions);
 
@@ -614,8 +587,7 @@ var CanvasRenderer = new Class({
      *
      * @return {this} This WebGL Renderer.
      */
-    snapshot: function (callback, type, encoderOptions)
-    {
+    snapshot: function (callback, type, encoderOptions) {
         return this.snapshotArea(0, 0, this.gameCanvas.width, this.gameCanvas.height, callback, type, encoderOptions);
     },
 
@@ -643,8 +615,7 @@ var CanvasRenderer = new Class({
      *
      * @return {this} This WebGL Renderer.
      */
-    snapshotArea: function (x, y, width, height, callback, type, encoderOptions)
-    {
+    snapshotArea: function (x, y, width, height, callback, type, encoderOptions) {
         var state = this.snapshotState;
 
         state.callback = callback;
@@ -680,8 +651,7 @@ var CanvasRenderer = new Class({
      *
      * @return {this} This WebGL Renderer.
      */
-    snapshotPixel: function (x, y, callback)
-    {
+    snapshotPixel: function (x, y, callback) {
         this.snapshotArea(x, y, 1, 1, callback);
 
         this.snapshotState.getPixel = true;
@@ -700,12 +670,10 @@ var CanvasRenderer = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use for the rendering transform.
      * @param {Phaser.GameObjects.Components.TransformMatrix} [parentTransformMatrix] - The transform matrix of the parent container, if set.
      */
-    batchSprite: function (sprite, frame, camera, parentTransformMatrix)
-    {
+    batchSprite: function (sprite, frame, camera, parentTransformMatrix) {
         var alpha = camera.alpha * sprite.alpha;
 
-        if (alpha === 0)
-        {
+        if (alpha === 0) {
             //  Nothing to see, so abort early
             return;
         }
@@ -731,12 +699,10 @@ var CanvasRenderer = new Class({
         var x = -displayOriginX + frame.x;
         var y = -displayOriginY + frame.y;
 
-        if (sprite.isCropped)
-        {
+        if (sprite.isCropped) {
             var crop = sprite._crop;
 
-            if (crop.flipX !== sprite.flipX || crop.flipY !== sprite.flipY)
-            {
+            if (crop.flipX !== sprite.flipX || crop.flipY !== sprite.flipY) {
                 frame.updateCropUVs(crop, sprite.flipX, sprite.flipY);
             }
 
@@ -749,26 +715,18 @@ var CanvasRenderer = new Class({
             x = -displayOriginX + crop.x;
             y = -displayOriginY + crop.y;
 
-            if (sprite.flipX)
-            {
-                if (x >= 0)
-                {
+            if (sprite.flipX) {
+                if (x >= 0) {
                     x = -(x + frameWidth);
-                }
-                else if (x < 0)
-                {
+                } else if (x < 0) {
                     x = (Math.abs(x) - frameWidth);
                 }
             }
 
-            if (sprite.flipY)
-            {
-                if (y >= 0)
-                {
+            if (sprite.flipY) {
+                if (y >= 0) {
                     y = -(y + frameHeight);
-                }
-                else if (y < 0)
-                {
+                } else if (y < 0) {
                     y = (Math.abs(y) - frameHeight);
                 }
             }
@@ -777,10 +735,8 @@ var CanvasRenderer = new Class({
         var flipX = 1;
         var flipY = 1;
 
-        if (sprite.flipX)
-        {
-            if (!customPivot)
-            {
+        if (sprite.flipX) {
+            if (!customPivot) {
                 x += (-frame.realWidth + (displayOriginX * 2));
             }
 
@@ -788,10 +744,8 @@ var CanvasRenderer = new Class({
         }
 
         //  Auto-invert the flipY if this is coming from a GLTexture
-        if (sprite.flipY)
-        {
-            if (!customPivot)
-            {
+        if (sprite.flipY) {
+            if (!customPivot) {
                 y += (-frame.realHeight + (displayOriginY * 2));
             }
 
@@ -801,8 +755,7 @@ var CanvasRenderer = new Class({
         var gx = sprite.x;
         var gy = sprite.y;
 
-        if (camera.roundPixels)
-        {
+        if (camera.roundPixels) {
             gx = Math.floor(gx);
             gy = Math.floor(gy);
         }
@@ -811,17 +764,14 @@ var CanvasRenderer = new Class({
 
         camMatrix.copyFrom(camera.matrix);
 
-        if (parentTransformMatrix)
-        {
+        if (parentTransformMatrix) {
             //  Multiply the camera by the parent matrix
             camMatrix.multiplyWithOffset(parentTransformMatrix, -camera.scrollX * sprite.scrollFactorX, -camera.scrollY * sprite.scrollFactorY);
 
             //  Undo the camera scroll
             spriteMatrix.e = gx;
             spriteMatrix.f = gy;
-        }
-        else
-        {
+        } else {
             spriteMatrix.e -= camera.scrollX * sprite.scrollFactorX;
             spriteMatrix.f -= camera.scrollY * sprite.scrollFactorY;
         }
@@ -829,8 +779,7 @@ var CanvasRenderer = new Class({
         //  Multiply by the Sprite matrix
         camMatrix.multiply(spriteMatrix);
 
-        if (camera.renderRoundPixels)
-        {
+        if (camera.renderRoundPixels) {
             camMatrix.e = Math.floor(camMatrix.e + 0.5);
             camMatrix.f = Math.floor(camMatrix.f + 0.5);
         }
@@ -845,18 +794,15 @@ var CanvasRenderer = new Class({
 
         ctx.imageSmoothingEnabled = !frame.source.scaleMode;
 
-        if (sprite.mask)
-        {
+        if (sprite.mask) {
             sprite.mask.preRenderCanvas(this, sprite, camera);
         }
 
-        if (frameWidth > 0 && frameHeight > 0)
-        {
+        if (frameWidth > 0 && frameHeight > 0) {
             var fw = frameWidth / res;
             var fh = frameHeight / res;
 
-            if (camera.roundPixels)
-            {
+            if (camera.roundPixels) {
                 x = Math.floor(x + 0.5);
                 y = Math.floor(y + 0.5);
                 fw += 0.5;
@@ -872,8 +818,7 @@ var CanvasRenderer = new Class({
             );
         }
 
-        if (sprite.mask)
-        {
+        if (sprite.mask) {
             sprite.mask.postRenderCanvas(this, sprite, camera);
         }
 
@@ -886,8 +831,7 @@ var CanvasRenderer = new Class({
      * @method Phaser.Renderer.Canvas.CanvasRenderer#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.removeAllListeners();
 
         this.game = null;

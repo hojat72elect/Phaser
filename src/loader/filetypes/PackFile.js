@@ -38,12 +38,11 @@ var PackFile = new Class({
     //  url can either be a string, in which case it is treated like a proper url, or an object, in which case it is treated as a ready-made JS Object
     //  dataKey allows you to pluck a specific object out of the JSON and put just that into the cache, rather than the whole thing
 
-    function PackFile (loader, key, url, xhrSettings, dataKey)
-    {
-        JSONFile.call(this, loader, key, url, xhrSettings, dataKey);
+        function PackFile(loader, key, url, xhrSettings, dataKey) {
+            JSONFile.call(this, loader, key, url, xhrSettings, dataKey);
 
-        this.type = 'packfile';
-    },
+            this.type = 'packfile';
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -52,17 +51,14 @@ var PackFile = new Class({
      * @method Phaser.Loader.FileTypes.PackFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
-        if (this.state !== CONST.FILE_POPULATED)
-        {
+    onProcess: function () {
+        if (this.state !== CONST.FILE_POPULATED) {
             this.state = CONST.FILE_PROCESSING;
 
             this.data = JSON.parse(this.xhrLoader.responseText);
         }
 
-        if (this.data.hasOwnProperty('files') && this.config)
-        {
+        if (this.data.hasOwnProperty('files') && this.config) {
             var newData = {};
 
             newData[this.config] = this.data;
@@ -197,21 +193,16 @@ var PackFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('pack', function (key, url, dataKey, xhrSettings)
-{
+FileTypesManager.register('pack', function (key, url, dataKey, xhrSettings) {
     //  Supports an Object file definition in the key argument
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             this.addFile(new PackFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new PackFile(this, key, url, xhrSettings, dataKey));
     }
 

@@ -17,8 +17,7 @@ var GetFastValue = require('../../../src/utils/object/GetFastValue');
  * @property {string} [signedRequest] - Server-signed encoding of the purchase request.
  */
 
-var Purchase = function (data)
-{
+var Purchase = function (data) {
     return {
         developerPayload: GetFastValue(data, 'developerPayload', ''),
         paymentID: GetFastValue(data, 'paymentID', ''),

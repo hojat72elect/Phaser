@@ -81,61 +81,68 @@ var PointLight = new Class({
 
     initialize:
 
-    function PointLight (scene, x, y, color, radius, intensity, attenuation)
-    {
-        if (color === undefined) { color = 0xffffff; }
-        if (radius === undefined) { radius = 128; }
-        if (intensity === undefined) { intensity = 1; }
-        if (attenuation === undefined) { attenuation = 0.1; }
+        function PointLight(scene, x, y, color, radius, intensity, attenuation) {
+            if (color === undefined) {
+                color = 0xffffff;
+            }
+            if (radius === undefined) {
+                radius = 128;
+            }
+            if (intensity === undefined) {
+                intensity = 1;
+            }
+            if (attenuation === undefined) {
+                attenuation = 0.1;
+            }
 
-        GameObject.call(this, scene, 'PointLight');
+            GameObject.call(this, scene, 'PointLight');
 
-        this.initPipeline(PIPELINES_CONST.POINTLIGHT_PIPELINE);
-        this.initPostPipeline();
+            this.initPipeline(PIPELINES_CONST.POINTLIGHT_PIPELINE);
+            this.initPostPipeline();
 
-        this.setPosition(x, y);
+            this.setPosition(x, y);
 
-        /**
-         * The color of this Point Light. This property is an instance of a
-         * Color object, so you can use the methods within it, such as `setTo(r, g, b)`
-         * to change the color value.
-         *
-         * @name Phaser.GameObjects.PointLight#color
-         * @type {Phaser.Display.Color}
-         * @since 3.50.0
-         */
-        this.color = IntegerToColor(color);
+            /**
+             * The color of this Point Light. This property is an instance of a
+             * Color object, so you can use the methods within it, such as `setTo(r, g, b)`
+             * to change the color value.
+             *
+             * @name Phaser.GameObjects.PointLight#color
+             * @type {Phaser.Display.Color}
+             * @since 3.50.0
+             */
+            this.color = IntegerToColor(color);
 
-        /**
-         * The intensity of the Point Light.
-         *
-         * The colors of the light are multiplied by this value during rendering.
-         *
-         * @name Phaser.GameObjects.PointLight#intensity
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.intensity = intensity;
+            /**
+             * The intensity of the Point Light.
+             *
+             * The colors of the light are multiplied by this value during rendering.
+             *
+             * @name Phaser.GameObjects.PointLight#intensity
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.intensity = intensity;
 
-        /**
-         * The attenuation of the Point Light.
-         *
-         * This value controls the force with which the light falls-off from the center of the light.
-         *
-         * Use small float-based values, i.e. 0.1.
-         *
-         * @name Phaser.GameObjects.PointLight#attenuation
-         * @type {number}
-         * @since 3.50.0
-         */
-        this.attenuation = attenuation;
+            /**
+             * The attenuation of the Point Light.
+             *
+             * This value controls the force with which the light falls-off from the center of the light.
+             *
+             * Use small float-based values, i.e. 0.1.
+             *
+             * @name Phaser.GameObjects.PointLight#attenuation
+             * @type {number}
+             * @since 3.50.0
+             */
+            this.attenuation = attenuation;
 
-        //  read only:
-        this.width = radius * 2;
-        this.height = radius * 2;
+            //  read only:
+            this.width = radius * 2;
+            this.height = radius * 2;
 
-        this._radius = radius;
-    },
+            this._radius = radius;
+        },
 
     /**
      * The radius of the Point Light.
@@ -146,13 +153,11 @@ var PointLight = new Class({
      */
     radius: {
 
-        get: function ()
-        {
+        get: function () {
             return this._radius;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._radius = value;
             this.width = value * 2;
             this.height = value * 2;
@@ -162,8 +167,7 @@ var PointLight = new Class({
 
     originX: {
 
-        get: function ()
-        {
+        get: function () {
             return 0.5;
         }
 
@@ -171,8 +175,7 @@ var PointLight = new Class({
 
     originY: {
 
-        get: function ()
-        {
+        get: function () {
             return 0.5;
         }
 
@@ -180,8 +183,7 @@ var PointLight = new Class({
 
     displayOriginX: {
 
-        get: function ()
-        {
+        get: function () {
             return this._radius;
         }
 
@@ -189,8 +191,7 @@ var PointLight = new Class({
 
     displayOriginY: {
 
-        get: function ()
-        {
+        get: function () {
             return this._radius;
         }
 

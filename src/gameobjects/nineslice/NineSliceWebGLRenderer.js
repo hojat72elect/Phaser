@@ -21,13 +21,11 @@ var Utils = require('../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var NineSliceWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var NineSliceWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     var verts = src.vertices;
     var totalVerts = verts.length;
 
-    if (totalVerts === 0)
-    {
+    if (totalVerts === 0) {
         return;
     }
 
@@ -56,17 +54,14 @@ var NineSliceWebGLRenderer = function (renderer, src, camera, parentMatrix)
     var available = pipeline.vertexAvailable();
     var flushCount = -1;
 
-    if (available < totalVerts)
-    {
+    if (available < totalVerts) {
         flushCount = available;
     }
 
-    for (var i = 0; i < totalVerts; i++)
-    {
+    for (var i = 0; i < totalVerts; i++) {
         var vert = verts[i];
 
-        if (i === flushCount)
-        {
+        if (i === flushCount) {
             pipeline.flush();
 
             textureUnit = pipeline.setGameObject(src);

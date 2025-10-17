@@ -19,9 +19,10 @@ var Point = require('../point/Point');
  *
  * @return {(Phaser.Geom.Point|object)} The midpoint of the Line.
  */
-var GetMidPoint = function (line, out)
-{
-    if (out === undefined) { out = new Point(); }
+var GetMidPoint = function (line, out) {
+    if (out === undefined) {
+        out = new Point();
+    }
 
     out.x = (line.x1 + line.x2) / 2;
     out.y = (line.y1 + line.y2) / 2;

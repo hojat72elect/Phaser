@@ -14,5 +14,5 @@ declare namespace Phaser.Loader.FileTypes {
         constructor(loader: Phaser.Loader.LoaderPlugin, key: string | Phaser.Loader.FileTypes.SpineFileConfig, jsonURL: string | string[], atlasURL: string, preMultipliedAlpha: boolean, jsonXhrSettings: Phaser.Types.Loader.XHRSettingsObject, atlasXhrSettings: Phaser.Types.Loader.XHRSettingsObject)
 
         addToCache();
-	}
+    }
 }

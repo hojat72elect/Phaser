@@ -6,12 +6,10 @@
 
 var AddToDOM = require('../dom/AddToDOM');
 
-var CreateDOMContainer = function (game)
-{
+var CreateDOMContainer = function (game) {
     var config = game.config;
 
-    if (!config.parent || !config.domCreateContainer)
-    {
+    if (!config.parent || !config.domCreateContainer) {
         return;
     }
 

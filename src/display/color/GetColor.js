@@ -16,8 +16,7 @@
  *
  * @return {number} The combined color value.
  */
-var GetColor = function (red, green, blue)
-{
+var GetColor = function (red, green, blue) {
     return red << 16 | green << 8 | blue;
 };
 

@@ -16,8 +16,7 @@ var Rectangle = require('./Rectangle');
  *
  * @return {Phaser.Geom.Rectangle} The newly created Rectangle, which is separate from the given one.
  */
-var Clone = function (source)
-{
+var Clone = function (source) {
     return new Rectangle(source.x, source.y, source.width, source.height);
 };
 

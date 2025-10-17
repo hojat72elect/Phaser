@@ -19,18 +19,12 @@ var WorldToTileY = require('./WorldToTileY');
  *
  * @return {function} The function to use to translate tiles for the given map type.
  */
-var GetWorldToTileYFunction = function (orientation)
-{
-    if (orientation === CONST.ORTHOGONAL)
-    {
+var GetWorldToTileYFunction = function (orientation) {
+    if (orientation === CONST.ORTHOGONAL) {
         return WorldToTileY;
-    }
-    else if (orientation === CONST.STAGGERED)
-    {
+    } else if (orientation === CONST.STAGGERED) {
         return StaggeredWorldToTileY;
-    }
-    else
-    {
+    } else {
         return NULL;
     }
 };

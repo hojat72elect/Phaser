@@ -31,53 +31,56 @@ var OrthographicCamera = new Class({
 
     initialize:
 
-    function OrthographicCamera (scene, viewportWidth, viewportHeight)
-    {
-        if (viewportWidth === undefined) { viewportWidth = 0; }
-        if (viewportHeight === undefined) { viewportHeight = 0; }
+        function OrthographicCamera(scene, viewportWidth, viewportHeight) {
+            if (viewportWidth === undefined) {
+                viewportWidth = 0;
+            }
+            if (viewportHeight === undefined) {
+                viewportHeight = 0;
+            }
 
-        Camera.call(this, scene);
+            Camera.call(this, scene);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.OrthographicCamera#viewportWidth
-         * @type {integer}
-         * @since 3.0.0
-         */
-        this.viewportWidth = viewportWidth;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.OrthographicCamera#viewportWidth
+             * @type {integer}
+             * @since 3.0.0
+             */
+            this.viewportWidth = viewportWidth;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.OrthographicCamera#viewportHeight
-         * @type {integer}
-         * @since 3.0.0
-         */
-        this.viewportHeight = viewportHeight;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.OrthographicCamera#viewportHeight
+             * @type {integer}
+             * @since 3.0.0
+             */
+            this.viewportHeight = viewportHeight;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.OrthographicCamera#_zoom
-         * @type {number}
-         * @private
-         * @since 3.0.0
-         */
-        this._zoom = 1.0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.OrthographicCamera#_zoom
+             * @type {number}
+             * @private
+             * @since 3.0.0
+             */
+            this._zoom = 1.0;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Cameras.Sprite3D.OrthographicCamera#near
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.near = 0;
+            /**
+             * [description]
+             *
+             * @name Phaser.Cameras.Sprite3D.OrthographicCamera#near
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.near = 0;
 
-        this.update();
-    },
+            this.update();
+        },
 
     /**
      * [description]
@@ -91,10 +94,13 @@ var OrthographicCamera = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.OrthographicCamera} [description]
      */
-    setToOrtho: function (yDown, viewportWidth, viewportHeight)
-    {
-        if (viewportWidth === undefined) { viewportWidth = this.viewportWidth; }
-        if (viewportHeight === undefined) { viewportHeight = this.viewportHeight; }
+    setToOrtho: function (yDown, viewportWidth, viewportHeight) {
+        if (viewportWidth === undefined) {
+            viewportWidth = this.viewportWidth;
+        }
+        if (viewportHeight === undefined) {
+            viewportHeight = this.viewportHeight;
+        }
 
         var zoom = this.zoom;
 
@@ -116,16 +122,14 @@ var OrthographicCamera = new Class({
      *
      * @return {Phaser.Cameras.Sprite3D.OrthographicCamera} [description]
      */
-    update: function ()
-    {
+    update: function () {
         var w = this.viewportWidth;
         var h = this.viewportHeight;
         var near = Math.abs(this.near);
         var far = Math.abs(this.far);
         var zoom = this.zoom;
 
-        if (w === 0 || h === 0)
-        {
+        if (w === 0 || h === 0) {
             //  What to do here... hmm?
             return this;
         }
@@ -164,13 +168,11 @@ var OrthographicCamera = new Class({
      */
     zoom: {
 
-        get: function ()
-        {
+        get: function () {
             return this._zoom;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._zoom = value;
             this.update();
         }

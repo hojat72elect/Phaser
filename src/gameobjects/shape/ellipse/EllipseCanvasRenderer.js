@@ -22,14 +22,12 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var EllipseCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var EllipseCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var ctx = renderer.currentContext;
 
-    if (SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         var dx = src._displayOriginX;
         var dy = src._displayOriginY;
 
@@ -43,13 +41,11 @@ var EllipseCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         ctx.moveTo(px1, py1);
 
-        if (!src.closePath)
-        {
+        if (!src.closePath) {
             pathLength -= 2;
         }
 
-        for (var i = 2; i < pathLength; i += 2)
-        {
+        for (var i = 2; i < pathLength; i += 2) {
             var px2 = path[i] - dx;
             var py2 = path[i + 1] - dy;
 
@@ -58,15 +54,13 @@ var EllipseCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         ctx.closePath();
 
-        if (src.isFilled)
-        {
+        if (src.isFilled) {
             FillStyleCanvas(ctx, src);
 
             ctx.fill();
         }
 
-        if (src.isStroked)
-        {
+        if (src.isStroked) {
             LineStyleCanvas(ctx, src);
 
             ctx.stroke();

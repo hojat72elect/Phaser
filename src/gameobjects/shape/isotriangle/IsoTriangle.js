@@ -51,103 +51,118 @@ var IsoTriangle = new Class({
 
     initialize:
 
-    function IsoTriangle (scene, x, y, size, height, reversed, fillTop, fillLeft, fillRight)
-    {
-        if (x === undefined) { x = 0; }
-        if (y === undefined) { y = 0; }
-        if (size === undefined) { size = 48; }
-        if (height === undefined) { height = 32; }
-        if (reversed === undefined) { reversed = false; }
-        if (fillTop === undefined) { fillTop = 0xeeeeee; }
-        if (fillLeft === undefined) { fillLeft = 0x999999; }
-        if (fillRight === undefined) { fillRight = 0xcccccc; }
+        function IsoTriangle(scene, x, y, size, height, reversed, fillTop, fillLeft, fillRight) {
+            if (x === undefined) {
+                x = 0;
+            }
+            if (y === undefined) {
+                y = 0;
+            }
+            if (size === undefined) {
+                size = 48;
+            }
+            if (height === undefined) {
+                height = 32;
+            }
+            if (reversed === undefined) {
+                reversed = false;
+            }
+            if (fillTop === undefined) {
+                fillTop = 0xeeeeee;
+            }
+            if (fillLeft === undefined) {
+                fillLeft = 0x999999;
+            }
+            if (fillRight === undefined) {
+                fillRight = 0xcccccc;
+            }
 
-        Shape.call(this, scene, 'IsoTriangle', null);
+            Shape.call(this, scene, 'IsoTriangle', null);
 
-        /**
-         * The projection level of the iso box. Change this to change the 'angle' at which you are looking at the box.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#projection
-         * @type {number}
-         * @default 4
-         * @since 3.13.0
-         */
-        this.projection = 4;
+            /**
+             * The projection level of the iso box. Change this to change the 'angle' at which you are looking at the box.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#projection
+             * @type {number}
+             * @default 4
+             * @since 3.13.0
+             */
+            this.projection = 4;
 
-        /**
-         * The color used to fill in the top of the iso triangle. This is only used if the triangle is reversed.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#fillTop
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillTop = fillTop;
+            /**
+             * The color used to fill in the top of the iso triangle. This is only used if the triangle is reversed.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#fillTop
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillTop = fillTop;
 
-        /**
-         * The color used to fill in the left-facing side of the iso triangle.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#fillLeft
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillLeft = fillLeft;
+            /**
+             * The color used to fill in the left-facing side of the iso triangle.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#fillLeft
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillLeft = fillLeft;
 
-        /**
-         * The color used to fill in the right-facing side of the iso triangle.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#fillRight
-         * @type {number}
-         * @since 3.13.0
-         */
-        this.fillRight = fillRight;
+            /**
+             * The color used to fill in the right-facing side of the iso triangle.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#fillRight
+             * @type {number}
+             * @since 3.13.0
+             */
+            this.fillRight = fillRight;
 
-        /**
-         * Controls if the top-face of the iso triangle be rendered.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#showTop
-         * @type {boolean}
-         * @default true
-         * @since 3.13.0
-         */
-        this.showTop = true;
+            /**
+             * Controls if the top-face of the iso triangle be rendered.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#showTop
+             * @type {boolean}
+             * @default true
+             * @since 3.13.0
+             */
+            this.showTop = true;
 
-        /**
-         * Controls if the left-face of the iso triangle be rendered.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#showLeft
-         * @type {boolean}
-         * @default true
-         * @since 3.13.0
-         */
-        this.showLeft = true;
+            /**
+             * Controls if the left-face of the iso triangle be rendered.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#showLeft
+             * @type {boolean}
+             * @default true
+             * @since 3.13.0
+             */
+            this.showLeft = true;
 
-        /**
-         * Controls if the right-face of the iso triangle be rendered.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#showRight
-         * @type {boolean}
-         * @default true
-         * @since 3.13.0
-         */
-        this.showRight = true;
+            /**
+             * Controls if the right-face of the iso triangle be rendered.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#showRight
+             * @type {boolean}
+             * @default true
+             * @since 3.13.0
+             */
+            this.showRight = true;
 
-        /**
-         * Sets if the iso triangle will be rendered upside down or not.
-         *
-         * @name Phaser.GameObjects.IsoTriangle#isReversed
-         * @type {boolean}
-         * @default false
-         * @since 3.13.0
-         */
-        this.isReversed = reversed;
+            /**
+             * Sets if the iso triangle will be rendered upside down or not.
+             *
+             * @name Phaser.GameObjects.IsoTriangle#isReversed
+             * @type {boolean}
+             * @default false
+             * @since 3.13.0
+             */
+            this.isReversed = reversed;
 
-        this.isFilled = true;
+            this.isFilled = true;
 
-        this.setPosition(x, y);
-        this.setSize(size, height);
+            this.setPosition(x, y);
+            this.setSize(size, height);
 
-        this.updateDisplayOrigin();
-    },
+            this.updateDisplayOrigin();
+        },
 
     /**
      * Sets the projection level of the iso triangle. Change this to change the 'angle' at which you are looking at the pyramid.
@@ -160,8 +175,7 @@ var IsoTriangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setProjection: function (value)
-    {
+    setProjection: function (value) {
         this.projection = value;
 
         return this;
@@ -178,8 +192,7 @@ var IsoTriangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setReversed: function (reversed)
-    {
+    setReversed: function (reversed) {
         this.isReversed = reversed;
 
         return this;
@@ -198,11 +211,16 @@ var IsoTriangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setFaces: function (showTop, showLeft, showRight)
-    {
-        if (showTop === undefined) { showTop = true; }
-        if (showLeft === undefined) { showLeft = true; }
-        if (showRight === undefined) { showRight = true; }
+    setFaces: function (showTop, showLeft, showRight) {
+        if (showTop === undefined) {
+            showTop = true;
+        }
+        if (showLeft === undefined) {
+            showLeft = true;
+        }
+        if (showRight === undefined) {
+            showRight = true;
+        }
 
         this.showTop = showTop;
         this.showLeft = showLeft;
@@ -224,8 +242,7 @@ var IsoTriangle = new Class({
      *
      * @return {this} This Game Object instance.
      */
-    setFillStyle: function (fillTop, fillLeft, fillRight)
-    {
+    setFillStyle: function (fillTop, fillLeft, fillRight) {
         this.fillTop = fillTop;
         this.fillLeft = fillLeft;
         this.fillRight = fillRight;

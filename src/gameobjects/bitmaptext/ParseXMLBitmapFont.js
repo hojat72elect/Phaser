@@ -16,8 +16,7 @@
  *
  * @return {number} The parsed value.
  */
-function getValue (node, attribute)
-{
+function getValue(node, attribute) {
     return parseInt(node.getAttribute(attribute), 10);
 }
 
@@ -36,10 +35,13 @@ function getValue (node, attribute)
  *
  * @return {Phaser.Types.GameObjects.BitmapText.BitmapFontData} The parsed Bitmap Font data.
  */
-var ParseXMLBitmapFont = function (xml, frame, xSpacing, ySpacing, texture)
-{
-    if (xSpacing === undefined) { xSpacing = 0; }
-    if (ySpacing === undefined) { ySpacing = 0; }
+var ParseXMLBitmapFont = function (xml, frame, xSpacing, ySpacing, texture) {
+    if (xSpacing === undefined) {
+        xSpacing = 0;
+    }
+    if (ySpacing === undefined) {
+        ySpacing = 0;
+    }
 
     var textureX = frame.cutX;
     var textureY = frame.cutY;
@@ -60,14 +62,12 @@ var ParseXMLBitmapFont = function (xml, frame, xSpacing, ySpacing, texture)
 
     var adjustForTrim = (frame !== undefined && frame.trimmed);
 
-    if (adjustForTrim)
-    {
+    if (adjustForTrim) {
         var top = frame.height;
         var left = frame.width;
     }
 
-    for (var i = 0; i < letters.length; i++)
-    {
+    for (var i = 0; i < letters.length; i++) {
         var node = letters[i];
 
         var charCode = getValue(node, 'id');
@@ -79,21 +79,17 @@ var ParseXMLBitmapFont = function (xml, frame, xSpacing, ySpacing, texture)
 
         //  Handle frame trim issues
 
-        if (adjustForTrim)
-        {
-            if (gx < left)
-            {
+        if (adjustForTrim) {
+            if (gx < left) {
                 left = gx;
             }
 
-            if (gy < top)
-            {
+            if (gy < top) {
                 top = gy;
             }
         }
 
-        if (adjustForTrim && top !== 0 && left !== 0)
-        {
+        if (adjustForTrim && top !== 0 && left !== 0) {
             //  Now we know the top and left coordinates of the glyphs in the original data
             //  so we can work out how much to adjust the glyphs by
 
@@ -107,30 +103,28 @@ var ParseXMLBitmapFont = function (xml, frame, xSpacing, ySpacing, texture)
         var v1 = (textureY + gy + gh) / textureHeight;
 
         data.chars[charCode] =
-        {
-            x: gx,
-            y: gy,
-            width: gw,
-            height: gh,
-            centerX: Math.floor(gw / 2),
-            centerY: Math.floor(gh / 2),
-            xOffset: getValue(node, 'xoffset'),
-            yOffset: getValue(node, 'yoffset'),
-            xAdvance: getValue(node, 'xadvance') + xSpacing,
-            data: {},
-            kerning: {},
-            u0: u0,
-            v0: v0,
-            u1: u1,
-            v1: v1
-        };
+            {
+                x: gx,
+                y: gy,
+                width: gw,
+                height: gh,
+                centerX: Math.floor(gw / 2),
+                centerY: Math.floor(gh / 2),
+                xOffset: getValue(node, 'xoffset'),
+                yOffset: getValue(node, 'yoffset'),
+                xAdvance: getValue(node, 'xadvance') + xSpacing,
+                data: {},
+                kerning: {},
+                u0: u0,
+                v0: v0,
+                u1: u1,
+                v1: v1
+            };
 
-        if (texture && gw !== 0 && gh !== 0)
-        {
+        if (texture && gw !== 0 && gh !== 0) {
             var charFrame = texture.add(letter, sourceIndex, gx, gy, gw, gh);
 
-            if (charFrame)
-            {
+            if (charFrame) {
                 charFrame.setUVs(gw, gh, u0, v0, u1, v1);
             }
         }
@@ -138,8 +132,7 @@ var ParseXMLBitmapFont = function (xml, frame, xSpacing, ySpacing, texture)
 
     var kernings = xml.getElementsByTagName('kerning');
 
-    for (i = 0; i < kernings.length; i++)
-    {
+    for (i = 0; i < kernings.length; i++) {
         var kern = kernings[i];
 
         var first = getValue(kern, 'first');

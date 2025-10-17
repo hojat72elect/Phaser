@@ -38,120 +38,119 @@ var Bob = new Class({
 
     initialize:
 
-    function Bob (blitter, x, y, frame, visible)
-    {
-        /**
-         * The Blitter object that this Bob belongs to.
-         *
-         * @name Phaser.GameObjects.Bob#parent
-         * @type {Phaser.GameObjects.Blitter}
-         * @since 3.0.0
-         */
-        this.parent = blitter;
+        function Bob(blitter, x, y, frame, visible) {
+            /**
+             * The Blitter object that this Bob belongs to.
+             *
+             * @name Phaser.GameObjects.Bob#parent
+             * @type {Phaser.GameObjects.Blitter}
+             * @since 3.0.0
+             */
+            this.parent = blitter;
 
-        /**
-         * The x position of this Bob, relative to the x position of the Blitter.
-         *
-         * @name Phaser.GameObjects.Bob#x
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.x = x;
+            /**
+             * The x position of this Bob, relative to the x position of the Blitter.
+             *
+             * @name Phaser.GameObjects.Bob#x
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.x = x;
 
-        /**
-         * The y position of this Bob, relative to the y position of the Blitter.
-         *
-         * @name Phaser.GameObjects.Bob#y
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.y = y;
+            /**
+             * The y position of this Bob, relative to the y position of the Blitter.
+             *
+             * @name Phaser.GameObjects.Bob#y
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.y = y;
 
-        /**
-         * The frame that the Bob uses to render with.
-         * To change the frame use the `Bob.setFrame` method.
-         *
-         * @name Phaser.GameObjects.Bob#frame
-         * @type {Phaser.Textures.Frame}
-         * @protected
-         * @since 3.0.0
-         */
-        this.frame = frame;
+            /**
+             * The frame that the Bob uses to render with.
+             * To change the frame use the `Bob.setFrame` method.
+             *
+             * @name Phaser.GameObjects.Bob#frame
+             * @type {Phaser.Textures.Frame}
+             * @protected
+             * @since 3.0.0
+             */
+            this.frame = frame;
 
-        /**
-         * A blank object which can be used to store data related to this Bob in.
-         *
-         * @name Phaser.GameObjects.Bob#data
-         * @type {object}
-         * @default {}
-         * @since 3.0.0
-         */
-        this.data = {};
+            /**
+             * A blank object which can be used to store data related to this Bob in.
+             *
+             * @name Phaser.GameObjects.Bob#data
+             * @type {object}
+             * @default {}
+             * @since 3.0.0
+             */
+            this.data = {};
 
-        /**
-         * The tint value of this Bob.
-         *
-         * @name Phaser.GameObjects.Bob#tint
-         * @type {number}
-         * @default 0xffffff
-         * @since 3.20.0
-         */
-        this.tint = 0xffffff;
+            /**
+             * The tint value of this Bob.
+             *
+             * @name Phaser.GameObjects.Bob#tint
+             * @type {number}
+             * @default 0xffffff
+             * @since 3.20.0
+             */
+            this.tint = 0xffffff;
 
-        /**
-         * The visible state of this Bob.
-         *
-         * @name Phaser.GameObjects.Bob#_visible
-         * @type {boolean}
-         * @private
-         * @since 3.0.0
-         */
-        this._visible = visible;
+            /**
+             * The visible state of this Bob.
+             *
+             * @name Phaser.GameObjects.Bob#_visible
+             * @type {boolean}
+             * @private
+             * @since 3.0.0
+             */
+            this._visible = visible;
 
-        /**
-         * The alpha value of this Bob.
-         *
-         * @name Phaser.GameObjects.Bob#_alpha
-         * @type {number}
-         * @private
-         * @default 1
-         * @since 3.0.0
-         */
-        this._alpha = 1;
+            /**
+             * The alpha value of this Bob.
+             *
+             * @name Phaser.GameObjects.Bob#_alpha
+             * @type {number}
+             * @private
+             * @default 1
+             * @since 3.0.0
+             */
+            this._alpha = 1;
 
-        /**
-         * The horizontally flipped state of the Bob.
-         * A Bob that is flipped horizontally will render inversed on the horizontal axis.
-         * Flipping always takes place from the middle of the texture.
-         *
-         * @name Phaser.GameObjects.Bob#flipX
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.flipX = false;
+            /**
+             * The horizontally flipped state of the Bob.
+             * A Bob that is flipped horizontally will render inversed on the horizontal axis.
+             * Flipping always takes place from the middle of the texture.
+             *
+             * @name Phaser.GameObjects.Bob#flipX
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.flipX = false;
 
-        /**
-         * The vertically flipped state of the Bob.
-         * A Bob that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
-         * Flipping always takes place from the middle of the texture.
-         *
-         * @name Phaser.GameObjects.Bob#flipY
-         * @type {boolean}
-         * @since 3.0.0
-         */
-        this.flipY = false;
+            /**
+             * The vertically flipped state of the Bob.
+             * A Bob that is flipped vertically will render inversed on the vertical axis (i.e. upside down)
+             * Flipping always takes place from the middle of the texture.
+             *
+             * @name Phaser.GameObjects.Bob#flipY
+             * @type {boolean}
+             * @since 3.0.0
+             */
+            this.flipY = false;
 
-        /**
-         * Private read-only property used to allow Bobs to have physics bodies.
-         *
-         * @name Phaser.GameObjects.Bob#hasTransformComponent
-         * @type {boolean}
-         * @private
-         * @readonly
-         * @since 3.60.0
-         */
-        this.hasTransformComponent = true;
-    },
+            /**
+             * Private read-only property used to allow Bobs to have physics bodies.
+             *
+             * @name Phaser.GameObjects.Bob#hasTransformComponent
+             * @type {boolean}
+             * @private
+             * @readonly
+             * @since 3.60.0
+             */
+            this.hasTransformComponent = true;
+        },
 
     /**
      * Changes the Texture Frame being used by this Bob.
@@ -165,18 +164,12 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setFrame: function (frame)
-    {
-        if (frame === undefined)
-        {
+    setFrame: function (frame) {
+        if (frame === undefined) {
             this.frame = this.parent.frame;
-        }
-        else if (frame instanceof Frame && frame.texture === this.parent.texture)
-        {
+        } else if (frame instanceof Frame && frame.texture === this.parent.texture) {
             this.frame = frame;
-        }
-        else
-        {
+        } else {
             this.frame = this.parent.texture.get(frame);
         }
 
@@ -191,8 +184,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    resetFlip: function ()
-    {
+    resetFlip: function () {
         this.flipX = false;
         this.flipY = false;
 
@@ -215,8 +207,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    reset: function (x, y, frame)
-    {
+    reset: function (x, y, frame) {
         this.x = x;
         this.y = y;
 
@@ -228,8 +219,7 @@ var Bob = new Class({
 
         this.parent.dirty = true;
 
-        if (frame)
-        {
+        if (frame) {
             this.setFrame(frame);
         }
 
@@ -247,8 +237,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setPosition: function (x, y)
-    {
+    setPosition: function (x, y) {
         this.x = x;
         this.y = y;
 
@@ -265,8 +254,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setFlipX: function (value)
-    {
+    setFlipX: function (value) {
         this.flipX = value;
 
         return this;
@@ -282,8 +270,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setFlipY: function (value)
-    {
+    setFlipY: function (value) {
         this.flipY = value;
 
         return this;
@@ -300,8 +287,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setFlip: function (x, y)
-    {
+    setFlip: function (x, y) {
         this.flipX = x;
         this.flipY = y;
 
@@ -320,8 +306,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setVisible: function (value)
-    {
+    setVisible: function (value) {
         this.visible = value;
 
         return this;
@@ -340,8 +325,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setAlpha: function (value)
-    {
+    setAlpha: function (value) {
         this.alpha = value;
 
         return this;
@@ -357,8 +341,7 @@ var Bob = new Class({
      *
      * @return {this} This Bob Game Object.
      */
-    setTint: function (value)
-    {
+    setTint: function (value) {
         this.tint = value;
 
         return this;
@@ -371,8 +354,7 @@ var Bob = new Class({
      * @method Phaser.GameObjects.Bob#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.parent.dirty = true;
 
         this.parent.children.remove(this);
@@ -393,13 +375,11 @@ var Bob = new Class({
      */
     visible: {
 
-        get: function ()
-        {
+        get: function () {
             return this._visible;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.parent.dirty |= (this._visible !== value);
             this._visible = value;
         }
@@ -417,13 +397,11 @@ var Bob = new Class({
      */
     alpha: {
 
-        get: function ()
-        {
+        get: function () {
             return this._alpha;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.parent.dirty |= ((this._alpha > 0) !== (value > 0));
             this._alpha = value;
         }

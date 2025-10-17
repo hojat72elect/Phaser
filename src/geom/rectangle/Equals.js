@@ -15,8 +15,7 @@
  *
  * @return {boolean} `true` if the rectangles' properties are an exact match, otherwise `false`.
  */
-var Equals = function (rect, toCompare)
-{
+var Equals = function (rect, toCompare) {
     return (
         rect.x === toCompare.x &&
         rect.y === toCompare.y &&

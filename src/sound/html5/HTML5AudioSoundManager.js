@@ -40,104 +40,103 @@ var HTML5AudioSoundManager = new Class({
 
     initialize:
 
-    function HTML5AudioSoundManager (game)
-    {
-        /**
-         * Flag indicating whether if there are no idle instances of HTML5 Audio tag,
-         * for any particular sound, if one of the used tags should be hijacked and used
-         * for succeeding playback or if succeeding Phaser.Sound.HTML5AudioSound#play
-         * call should be ignored.
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#override
-         * @type {boolean}
-         * @default true
-         * @since 3.0.0
-         */
-        this.override = true;
+        function HTML5AudioSoundManager(game) {
+            /**
+             * Flag indicating whether if there are no idle instances of HTML5 Audio tag,
+             * for any particular sound, if one of the used tags should be hijacked and used
+             * for succeeding playback or if succeeding Phaser.Sound.HTML5AudioSound#play
+             * call should be ignored.
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#override
+             * @type {boolean}
+             * @default true
+             * @since 3.0.0
+             */
+            this.override = true;
 
-        /**
-         * Value representing time difference, in seconds, between calling
-         * play method on an audio tag and when it actually starts playing.
-         * It is used to achieve more accurate delayed sound playback.
-         *
-         * You might need to tweak this value to get the desired results
-         * since audio play delay varies depending on the browser/platform.
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#audioPlayDelay
-         * @type {number}
-         * @default 0.1
-         * @since 3.0.0
-         */
-        this.audioPlayDelay = 0.1;
+            /**
+             * Value representing time difference, in seconds, between calling
+             * play method on an audio tag and when it actually starts playing.
+             * It is used to achieve more accurate delayed sound playback.
+             *
+             * You might need to tweak this value to get the desired results
+             * since audio play delay varies depending on the browser/platform.
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#audioPlayDelay
+             * @type {number}
+             * @default 0.1
+             * @since 3.0.0
+             */
+            this.audioPlayDelay = 0.1;
 
-        /**
-         * A value by which we should offset the loop end marker of the
-         * looping sound to compensate for lag, caused by changing audio
-         * tag playback position, in order to achieve gapless looping.
-         *
-         * You might need to tweak this value to get the desired results
-         * since loop lag varies depending on the browser/platform.
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#loopEndOffset
-         * @type {number}
-         * @default 0.05
-         * @since 3.0.0
-         */
-        this.loopEndOffset = 0.05;
+            /**
+             * A value by which we should offset the loop end marker of the
+             * looping sound to compensate for lag, caused by changing audio
+             * tag playback position, in order to achieve gapless looping.
+             *
+             * You might need to tweak this value to get the desired results
+             * since loop lag varies depending on the browser/platform.
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#loopEndOffset
+             * @type {number}
+             * @default 0.05
+             * @since 3.0.0
+             */
+            this.loopEndOffset = 0.05;
 
-        /**
-         * An array for keeping track of all the sounds
-         * that were paused when game lost focus.
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#onBlurPausedSounds
-         * @type {Phaser.Sound.HTML5AudioSound[]}
-         * @private
-         * @default []
-         * @since 3.0.0
-         */
-        this.onBlurPausedSounds = [];
+            /**
+             * An array for keeping track of all the sounds
+             * that were paused when game lost focus.
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#onBlurPausedSounds
+             * @type {Phaser.Sound.HTML5AudioSound[]}
+             * @private
+             * @default []
+             * @since 3.0.0
+             */
+            this.onBlurPausedSounds = [];
 
-        this.locked = 'ontouchstart' in window;
+            this.locked = 'ontouchstart' in window;
 
-        /**
-         * A queue of all actions performed on sound objects while audio was locked.
-         * Once the audio gets unlocked, after an explicit user interaction,
-         * all actions will be performed in chronological order.
-         * Array of object types: { sound: Phaser.Sound.HTML5AudioSound, name: string, value?: * }
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#lockedActionsQueue
-         * @type {array}
-         * @private
-         * @since 3.0.0
-         */
-        this.lockedActionsQueue = this.locked ? [] : null;
+            /**
+             * A queue of all actions performed on sound objects while audio was locked.
+             * Once the audio gets unlocked, after an explicit user interaction,
+             * all actions will be performed in chronological order.
+             * Array of object types: { sound: Phaser.Sound.HTML5AudioSound, name: string, value?: * }
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#lockedActionsQueue
+             * @type {array}
+             * @private
+             * @since 3.0.0
+             */
+            this.lockedActionsQueue = this.locked ? [] : null;
 
-        /**
-         * Property that actually holds the value of global mute
-         * for HTML5 Audio sound manager implementation.
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#_mute
-         * @type {boolean}
-         * @private
-         * @default false
-         * @since 3.0.0
-         */
-        this._mute = false;
+            /**
+             * Property that actually holds the value of global mute
+             * for HTML5 Audio sound manager implementation.
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#_mute
+             * @type {boolean}
+             * @private
+             * @default false
+             * @since 3.0.0
+             */
+            this._mute = false;
 
-        /**
-         * Property that actually holds the value of global volume
-         * for HTML5 Audio sound manager implementation.
-         *
-         * @name Phaser.Sound.HTML5AudioSoundManager#_volume
-         * @type {boolean}
-         * @private
-         * @default 1
-         * @since 3.0.0
-         */
-        this._volume = 1;
+            /**
+             * Property that actually holds the value of global volume
+             * for HTML5 Audio sound manager implementation.
+             *
+             * @name Phaser.Sound.HTML5AudioSoundManager#_volume
+             * @type {boolean}
+             * @private
+             * @default 1
+             * @since 3.0.0
+             */
+            this._volume = 1;
 
-        BaseSoundManager.call(this, game);
-    },
+            BaseSoundManager.call(this, game);
+        },
 
     /**
      * Adds a new sound into the sound manager.
@@ -150,8 +149,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @return {Phaser.Sound.HTML5AudioSound} The new sound instance.
      */
-    add: function (key, config)
-    {
+    add: function (key, config) {
         var sound = new HTML5AudioSound(this, key, config);
 
         this.sounds.push(sound);
@@ -166,18 +164,14 @@ var HTML5AudioSoundManager = new Class({
      * @method Phaser.Sound.HTML5AudioSoundManager#unlock
      * @since 3.0.0
      */
-    unlock: function ()
-    {
+    unlock: function () {
         this.locked = false;
 
         var _this = this;
 
-        this.game.cache.audio.entries.each(function (key, tags)
-        {
-            for (var i = 0; i < tags.length; i++)
-            {
-                if (tags[i].dataset.locked === 'true')
-                {
+        this.game.cache.audio.entries.each(function (key, tags) {
+            for (var i = 0; i < tags.length; i++) {
+                if (tags[i].dataset.locked === 'true') {
                     _this.locked = true;
 
                     return false;
@@ -187,22 +181,18 @@ var HTML5AudioSoundManager = new Class({
             return true;
         });
 
-        if (!this.locked)
-        {
+        if (!this.locked) {
             return;
         }
 
         var moved = false;
 
-        var detectMove = function ()
-        {
+        var detectMove = function () {
             moved = true;
         };
 
-        var unlock = function ()
-        {
-            if (moved)
-            {
+        var unlock = function () {
+            if (moved) {
                 moved = false;
                 return;
             }
@@ -212,14 +202,11 @@ var HTML5AudioSoundManager = new Class({
 
             var lockedTags = [];
 
-            _this.game.cache.audio.entries.each(function (key, tags)
-            {
-                for (var i = 0; i < tags.length; i++)
-                {
+            _this.game.cache.audio.entries.each(function (key, tags) {
+                for (var i = 0; i < tags.length; i++) {
                     var tag = tags[i];
 
-                    if (tag.dataset.locked === 'true')
-                    {
+                    if (tag.dataset.locked === 'true') {
                         lockedTags.push(tag);
                     }
                 }
@@ -227,53 +214,42 @@ var HTML5AudioSoundManager = new Class({
                 return true;
             });
 
-            if (lockedTags.length === 0)
-            {
+            if (lockedTags.length === 0) {
                 return;
             }
 
             var lastTag = lockedTags[lockedTags.length - 1];
 
-            lastTag.oncanplaythrough = function ()
-            {
+            lastTag.oncanplaythrough = function () {
                 lastTag.oncanplaythrough = null;
 
-                lockedTags.forEach(function (tag)
-                {
+                lockedTags.forEach(function (tag) {
                     tag.dataset.locked = 'false';
                 });
 
                 _this.unlocked = true;
             };
 
-            lockedTags.forEach(function (tag)
-            {
+            lockedTags.forEach(function (tag) {
                 tag.load();
             });
         };
 
-        this.once(Events.UNLOCKED, function ()
-        {
-            this.forEachActiveSound(function (sound)
-            {
-                if (sound.currentMarker === null && sound.duration === 0)
-                {
+        this.once(Events.UNLOCKED, function () {
+            this.forEachActiveSound(function (sound) {
+                if (sound.currentMarker === null && sound.duration === 0) {
                     sound.duration = sound.tags[0].duration;
                 }
 
                 sound.totalDuration = sound.tags[0].duration;
             });
 
-            while (this.lockedActionsQueue.length)
-            {
+            while (this.lockedActionsQueue.length) {
                 var lockedAction = this.lockedActionsQueue.shift();
 
-                if (lockedAction.sound[lockedAction.prop].apply)
-                {
+                if (lockedAction.sound[lockedAction.prop].apply) {
                     lockedAction.sound[lockedAction.prop].apply(lockedAction.sound, lockedAction.value || []);
-                }
-                else
-                {
+                } else {
                     lockedAction.sound[lockedAction.prop] = lockedAction.value;
                 }
             }
@@ -292,12 +268,9 @@ var HTML5AudioSoundManager = new Class({
      * @protected
      * @since 3.0.0
      */
-    onBlur: function ()
-    {
-        this.forEachActiveSound(function (sound)
-        {
-            if (sound.isPlaying)
-            {
+    onBlur: function () {
+        this.forEachActiveSound(function (sound) {
+            if (sound.isPlaying) {
                 this.onBlurPausedSounds.push(sound);
                 sound.onBlur();
             }
@@ -312,10 +285,8 @@ var HTML5AudioSoundManager = new Class({
      * @protected
      * @since 3.0.0
      */
-    onFocus: function ()
-    {
-        this.onBlurPausedSounds.forEach(function (sound)
-        {
+    onFocus: function () {
+        this.onBlurPausedSounds.forEach(function (sound) {
             sound.onFocus();
         });
 
@@ -329,8 +300,7 @@ var HTML5AudioSoundManager = new Class({
      * @method Phaser.Sound.HTML5AudioSoundManager#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         BaseSoundManager.prototype.destroy.call(this);
 
         this.onBlurPausedSounds.length = 0;
@@ -352,10 +322,8 @@ var HTML5AudioSoundManager = new Class({
      *
      * @return {boolean} Whether the sound manager is locked.
      */
-    isLocked: function (sound, prop, value)
-    {
-        if (sound.tags[0].dataset.locked === 'true')
-        {
+    isLocked: function (sound, prop, value) {
+        if (sound.tags[0].dataset.locked === 'true') {
             this.lockedActionsQueue.push({
                 sound: sound,
                 prop: prop,
@@ -379,8 +347,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @return {Phaser.Sound.HTML5AudioSoundManager} This Sound Manager.
      */
-    setMute: function (value)
-    {
+    setMute: function (value) {
         this.mute = value;
 
         return this;
@@ -394,17 +361,14 @@ var HTML5AudioSoundManager = new Class({
      */
     mute: {
 
-        get: function ()
-        {
+        get: function () {
             return this._mute;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._mute = value;
 
-            this.forEachActiveSound(function (sound)
-            {
+            this.forEachActiveSound(function (sound) {
                 sound.updateMute();
             });
 
@@ -424,8 +388,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @return {Phaser.Sound.HTML5AudioSoundManager} This Sound Manager.
      */
-    setVolume: function (value)
-    {
+    setVolume: function (value) {
         this.volume = value;
 
         return this;
@@ -439,17 +402,14 @@ var HTML5AudioSoundManager = new Class({
      */
     volume: {
 
-        get: function ()
-        {
+        get: function () {
             return this._volume;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this._volume = value;
 
-            this.forEachActiveSound(function (sound)
-            {
+            this.forEachActiveSound(function (sound) {
                 sound.updateVolume();
             });
 

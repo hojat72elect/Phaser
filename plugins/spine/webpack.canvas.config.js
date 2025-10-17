@@ -24,7 +24,7 @@ module.exports = {
         umdNamedDefine: true
     },
 
-    performance: { hints: false },
+    performance: {hints: false},
 
     module: {
         rules: [
@@ -62,7 +62,7 @@ module.exports = {
             before: {
                 before: {
                     root: './plugins/spine/dist/',
-                    include: [ 'SpineCanvasPluginDebug.js', 'SpineCanvasPluginDebug.js.map' ]
+                    include: ['SpineCanvasPluginDebug.js', 'SpineCanvasPluginDebug.js.map']
                 }
             }
         }),

@@ -44,15 +44,12 @@ var Depth = {
      */
     depth: {
 
-        get: function ()
-        {
+        get: function () {
             return this._depth;
         },
 
-        set: function (value)
-        {
-            if (this.displayList)
-            {
+        set: function (value) {
+            if (this.displayList) {
                 this.displayList.queueDepthSort();
             }
 
@@ -79,9 +76,10 @@ var Depth = {
      *
      * @return {this} This Game Object instance.
      */
-    setDepth: function (value)
-    {
-        if (value === undefined) { value = 0; }
+    setDepth: function (value) {
+        if (value === undefined) {
+            value = 0;
+        }
 
         this.depth = value;
 
@@ -90,22 +88,20 @@ var Depth = {
 
     /**
      * Sets this Game Object to be at the top of the display list, or the top of its parent container.
-     * 
+     *
      * Being at the top means it will render on-top of everything else.
-     * 
+     *
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setToTop
      * @since 3.85.0
-     * 
+     *
      * @return {this} This Game Object instance.
      */
-    setToTop: function ()
-    {
+    setToTop: function () {
         var list = this.getDisplayList();
 
-        if (list)
-        {
+        if (list) {
             ArrayUtils.BringToTop(list, this);
         }
 
@@ -114,22 +110,20 @@ var Depth = {
 
     /**
      * Sets this Game Object to the back of the display list, or the back of its parent container.
-     * 
+     *
      * Being at the back means it will render below everything else.
-     * 
+     *
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setToBack
      * @since 3.85.0
-     * 
+     *
      * @return {this} This Game Object instance.
      */
-    setToBack: function ()
-    {
+    setToBack: function () {
         var list = this.getDisplayList();
 
-        if (list)
-        {
+        if (list) {
             ArrayUtils.SendToBack(list, this);
         }
 
@@ -138,26 +132,24 @@ var Depth = {
 
     /**
      * Move this Game Object so that it appears above the given Game Object.
-     * 
+     *
      * This means it will render immediately after the other object in the display list.
-     * 
+     *
      * Both objects must belong to the same display list, or parent container.
-     * 
+     *
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setAbove
      * @since 3.85.0
-     * 
+     *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that this Game Object will be moved to be above.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
-    setAbove: function (gameObject)
-    {
+    setAbove: function (gameObject) {
         var list = this.getDisplayList();
 
-        if (list && gameObject)
-        {
+        if (list && gameObject) {
             ArrayUtils.MoveAbove(list, this, gameObject);
         }
 
@@ -166,26 +158,24 @@ var Depth = {
 
     /**
      * Move this Game Object so that it appears below the given Game Object.
-     * 
+     *
      * This means it will render immediately under the other object in the display list.
-     * 
+     *
      * Both objects must belong to the same display list, or parent container.
-     * 
+     *
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setBelow
      * @since 3.85.0
-     * 
+     *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that this Game Object will be moved to be below.
-     * 
+     *
      * @return {this} This Game Object instance.
      */
-    setBelow: function (gameObject)
-    {
+    setBelow: function (gameObject) {
         var list = this.getDisplayList();
 
-        if (list && gameObject)
-        {
+        if (list && gameObject) {
             ArrayUtils.MoveBelow(list, this, gameObject);
         }
 

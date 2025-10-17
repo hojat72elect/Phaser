@@ -63,30 +63,25 @@ var Pipeline = {
      *
      * @return {boolean} `true` if the pipeline was set successfully, otherwise `false`.
      */
-    initPipeline: function (pipeline)
-    {
+    initPipeline: function (pipeline) {
         this.pipelineData = {};
 
         var renderer = this.scene.sys.renderer;
 
-        if (!renderer)
-        {
+        if (!renderer) {
             return false;
         }
 
         var pipelines = renderer.pipelines;
 
-        if (pipelines)
-        {
-            if (pipeline === undefined)
-            {
+        if (pipelines) {
+            if (pipeline === undefined) {
                 pipeline = pipelines.default;
             }
 
             var instance = pipelines.get(pipeline);
 
-            if (instance)
-            {
+            if (instance) {
                 this.defaultPipeline = instance;
                 this.pipeline = instance;
 
@@ -112,28 +107,23 @@ var Pipeline = {
      *
      * @return {this} This Game Object instance.
      */
-    setPipeline: function (pipeline, pipelineData, copyData)
-    {
+    setPipeline: function (pipeline, pipelineData, copyData) {
         var renderer = this.scene.sys.renderer;
 
-        if (!renderer)
-        {
+        if (!renderer) {
             return this;
         }
 
         var pipelines = renderer.pipelines;
 
-        if (pipelines)
-        {
+        if (pipelines) {
             var instance = pipelines.get(pipeline);
 
-            if (instance)
-            {
+            if (instance) {
                 this.pipeline = instance;
             }
 
-            if (pipelineData)
-            {
+            if (pipelineData) {
                 this.pipelineData = (copyData) ? DeepCopy(pipelineData) : pipelineData;
             }
         }
@@ -157,16 +147,12 @@ var Pipeline = {
      *
      * @return {this} This Game Object instance.
      */
-    setPipelineData: function (key, value)
-    {
+    setPipelineData: function (key, value) {
         var data = this.pipelineData;
 
-        if (value === undefined)
-        {
+        if (value === undefined) {
             delete data[key];
-        }
-        else
-        {
+        } else {
             data[key] = value;
         }
 
@@ -184,14 +170,14 @@ var Pipeline = {
      *
      * @return {boolean} `true` if the pipeline was reset successfully, otherwise `false`.
      */
-    resetPipeline: function (resetData)
-    {
-        if (resetData === undefined) { resetData = false; }
+    resetPipeline: function (resetData) {
+        if (resetData === undefined) {
+            resetData = false;
+        }
 
         this.pipeline = this.defaultPipeline;
 
-        if (resetData)
-        {
+        if (resetData) {
             this.pipelineData = {};
         }
 
@@ -207,8 +193,7 @@ var Pipeline = {
      *
      * @return {?string} The string-based name of the pipeline being used by this Game Object, or null.
      */
-    getPipelineName: function ()
-    {
+    getPipelineName: function () {
         return (this.pipeline === null) ? null : this.pipeline.name;
     }
 

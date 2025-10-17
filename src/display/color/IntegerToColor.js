@@ -17,8 +17,7 @@ var IntegerToRGB = require('./IntegerToRGB');
  *
  * @return {Phaser.Display.Color} A Color object.
  */
-var IntegerToColor = function (input)
-{
+var IntegerToColor = function (input) {
     var rgb = IntegerToRGB(input);
 
     return new Color(rgb.r, rgb.g, rgb.b, rgb.a);

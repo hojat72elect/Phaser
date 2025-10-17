@@ -16,23 +16,18 @@ var CONST = require('../const');
  *
  * @param {Phaser.Game} game - The Phaser.Game instance which will output this debug header.
  */
-var DebugHeader = function (game)
-{
+var DebugHeader = function (game) {
     var config = game.config;
 
-    if (config.hideBanner)
-    {
+    if (config.hideBanner) {
         return;
     }
 
     var renderType = 'WebGL';
 
-    if (config.renderType === CONST.CANVAS)
-    {
+    if (config.renderType === CONST.CANVAS) {
         renderType = 'Canvas';
-    }
-    else if (config.renderType === CONST.HEADLESS)
-    {
+    } else if (config.renderType === CONST.HEADLESS) {
         renderType = 'Headless';
     }
 
@@ -41,30 +36,22 @@ var DebugHeader = function (game)
 
     var audioType;
 
-    if (deviceAudio.webAudio && !audioConfig.disableWebAudio)
-    {
+    if (deviceAudio.webAudio && !audioConfig.disableWebAudio) {
         audioType = 'Web Audio';
-    }
-    else if (audioConfig.noAudio || (!deviceAudio.webAudio && !deviceAudio.audioData))
-    {
+    } else if (audioConfig.noAudio || (!deviceAudio.webAudio && !deviceAudio.audioData)) {
         audioType = 'No Audio';
-    }
-    else
-    {
+    } else {
         audioType = 'HTML5 Audio';
     }
 
-    if (!game.device.browser.ie)
-    {
+    if (!game.device.browser.ie) {
         var c = '';
-        var args = [ c ];
+        var args = [c];
 
-        if (Array.isArray(config.bannerBackgroundColor))
-        {
+        if (Array.isArray(config.bannerBackgroundColor)) {
             var lastColor;
 
-            config.bannerBackgroundColor.forEach(function (color)
-            {
+            config.bannerBackgroundColor.forEach(function (color) {
                 c = c.concat('%c ');
 
                 args.push('background: ' + color);
@@ -74,9 +61,7 @@ var DebugHeader = function (game)
 
             //  inject the text color
             args[args.length - 1] = 'color: ' + config.bannerTextColor + '; background: ' + lastColor;
-        }
-        else
-        {
+        } else {
             c = c.concat('%c ');
 
             args.push('color: ' + config.bannerTextColor + '; background: ' + config.bannerBackgroundColor);
@@ -85,25 +70,21 @@ var DebugHeader = function (game)
         //  URL link background color (always transparent to support different browser themes)
         args.push('background: transparent');
 
-        if (config.gameTitle)
-        {
+        if (config.gameTitle) {
             c = c.concat(config.gameTitle);
 
-            if (config.gameVersion)
-            {
+            if (config.gameVersion) {
                 c = c.concat(' v' + config.gameVersion);
             }
 
-            if (!config.hidePhaser)
-            {
+            if (!config.hidePhaser) {
                 c = c.concat(' / ');
             }
         }
 
         var fb = (typeof PLUGIN_FBINSTANT) ? '-FB' : '';
 
-        if (!config.hidePhaser)
-        {
+        if (!config.hidePhaser) {
             c = c.concat('Phaser v' + CONST.VERSION + fb + ' (' + renderType + ' | ' + audioType + ')');
         }
 
@@ -113,9 +94,7 @@ var DebugHeader = function (game)
         args[0] = c;
 
         console.log.apply(console, args);
-    }
-    else if (window['console'])
-    {
+    } else if (window['console']) {
         console.log('Phaser v' + CONST.VERSION + ' / https://phaser.io');
     }
 };

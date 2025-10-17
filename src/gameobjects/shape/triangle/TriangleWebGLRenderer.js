@@ -22,8 +22,7 @@ var Utils = require('../../../renderer/webgl/Utils');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var TriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var TriangleWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     camera.addToRenderList(src);
 
     var pipeline = renderer.pipelines.set(src.pipeline);
@@ -38,8 +37,7 @@ var TriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     renderer.pipelines.preBatch(src);
 
-    if (src.isFilled)
-    {
+    if (src.isFilled) {
         var fillTint = pipeline.fillTint;
         var fillTintColor = Utils.getTintAppendFloatAlpha(src.fillColor, src.fillAlpha * alpha);
 
@@ -67,8 +65,7 @@ var TriangleWebGLRenderer = function (renderer, src, camera, parentMatrix)
         );
     }
 
-    if (src.isStroked)
-    {
+    if (src.isStroked) {
         StrokePathWebGL(pipeline, src, alpha, dx, dy);
     }
 

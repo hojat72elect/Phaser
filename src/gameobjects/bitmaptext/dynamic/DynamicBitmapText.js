@@ -61,91 +61,90 @@ var DynamicBitmapText = new Class({
 
     initialize:
 
-    function DynamicBitmapText (scene, x, y, font, text, size, align)
-    {
-        BitmapText.call(this, scene, x, y, font, text, size, align);
+        function DynamicBitmapText(scene, x, y, font, text, size, align) {
+            BitmapText.call(this, scene, x, y, font, text, size, align);
 
-        this.type = 'DynamicBitmapText';
+            this.type = 'DynamicBitmapText';
 
-        /**
-         * The horizontal scroll position of the Bitmap Text.
-         *
-         * @name Phaser.GameObjects.DynamicBitmapText#scrollX
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.scrollX = 0;
+            /**
+             * The horizontal scroll position of the Bitmap Text.
+             *
+             * @name Phaser.GameObjects.DynamicBitmapText#scrollX
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.scrollX = 0;
 
-        /**
-         * The vertical scroll position of the Bitmap Text.
-         *
-         * @name Phaser.GameObjects.DynamicBitmapText#scrollY
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.scrollY = 0;
+            /**
+             * The vertical scroll position of the Bitmap Text.
+             *
+             * @name Phaser.GameObjects.DynamicBitmapText#scrollY
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.scrollY = 0;
 
-        /**
-         * The crop width of the Bitmap Text.
-         *
-         * @name Phaser.GameObjects.DynamicBitmapText#cropWidth
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.cropWidth = 0;
+            /**
+             * The crop width of the Bitmap Text.
+             *
+             * @name Phaser.GameObjects.DynamicBitmapText#cropWidth
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.cropWidth = 0;
 
-        /**
-         * The crop height of the Bitmap Text.
-         *
-         * @name Phaser.GameObjects.DynamicBitmapText#cropHeight
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.cropHeight = 0;
+            /**
+             * The crop height of the Bitmap Text.
+             *
+             * @name Phaser.GameObjects.DynamicBitmapText#cropHeight
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.cropHeight = 0;
 
-        /**
-         * A callback that alters how each character of the Bitmap Text is rendered.
-         *
-         * @name Phaser.GameObjects.DynamicBitmapText#displayCallback
-         * @type {Phaser.Types.GameObjects.BitmapText.DisplayCallback}
-         * @since 3.0.0
-         */
-        this.displayCallback;
+            /**
+             * A callback that alters how each character of the Bitmap Text is rendered.
+             *
+             * @name Phaser.GameObjects.DynamicBitmapText#displayCallback
+             * @type {Phaser.Types.GameObjects.BitmapText.DisplayCallback}
+             * @since 3.0.0
+             */
+            this.displayCallback;
 
-        /**
-         * The data object that is populated during rendering, then passed to the displayCallback.
-         * You should modify this object then return it back from the callback. It's updated values
-         * will be used to render the specific glyph.
-         *
-         * Please note that if you need a reference to this object locally in your game code then you
-         * should shallow copy it, as it's updated and re-used for every glyph in the text.
-         *
-         * @name Phaser.GameObjects.DynamicBitmapText#callbackData
-         * @type {Phaser.Types.GameObjects.BitmapText.DisplayCallbackConfig}
-         * @since 3.11.0
-         */
-        this.callbackData = {
-            parent: this,
-            color: 0,
-            tint: {
-                topLeft: 0,
-                topRight: 0,
-                bottomLeft: 0,
-                bottomRight: 0
-            },
-            index: 0,
-            charCode: 0,
-            x: 0,
-            y: 0,
-            scale: 0,
-            rotation: 0,
-            data: 0
-        };
-    },
+            /**
+             * The data object that is populated during rendering, then passed to the displayCallback.
+             * You should modify this object then return it back from the callback. It's updated values
+             * will be used to render the specific glyph.
+             *
+             * Please note that if you need a reference to this object locally in your game code then you
+             * should shallow copy it, as it's updated and re-used for every glyph in the text.
+             *
+             * @name Phaser.GameObjects.DynamicBitmapText#callbackData
+             * @type {Phaser.Types.GameObjects.BitmapText.DisplayCallbackConfig}
+             * @since 3.11.0
+             */
+            this.callbackData = {
+                parent: this,
+                color: 0,
+                tint: {
+                    topLeft: 0,
+                    topRight: 0,
+                    bottomLeft: 0,
+                    bottomRight: 0
+                },
+                index: 0,
+                charCode: 0,
+                x: 0,
+                y: 0,
+                scale: 0,
+                rotation: 0,
+                data: 0
+            };
+        },
 
     /**
      * Set the crop size of this Bitmap Text.
@@ -158,8 +157,7 @@ var DynamicBitmapText = new Class({
      *
      * @return {this} This Game Object.
      */
-    setSize: function (width, height)
-    {
+    setSize: function (width, height) {
         this.cropWidth = width;
         this.cropHeight = height;
 
@@ -182,8 +180,7 @@ var DynamicBitmapText = new Class({
      *
      * @return {this} This Game Object.
      */
-    setDisplayCallback: function (callback)
-    {
+    setDisplayCallback: function (callback) {
         this.displayCallback = callback;
 
         return this;
@@ -199,8 +196,7 @@ var DynamicBitmapText = new Class({
      *
      * @return {this} This Game Object.
      */
-    setScrollX: function (value)
-    {
+    setScrollX: function (value) {
         this.scrollX = value;
 
         return this;
@@ -216,8 +212,7 @@ var DynamicBitmapText = new Class({
      *
      * @return {this} This Game Object.
      */
-    setScrollY: function (value)
-    {
+    setScrollY: function (value) {
         this.scrollY = value;
 
         return this;

@@ -53,122 +53,121 @@ var TweenData = new Class({
 
     initialize:
 
-    function TweenData (tween, targetIndex, key, getEnd, getStart, getActive, ease, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY, interpolation, interpolationData)
-    {
-        BaseTweenData.call(this, tween, targetIndex, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY);
+        function TweenData(tween, targetIndex, key, getEnd, getStart, getActive, ease, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY, interpolation, interpolationData) {
+            BaseTweenData.call(this, tween, targetIndex, delay, duration, yoyo, hold, repeat, repeatDelay, flipX, flipY);
 
-        /**
-         * The property of the target to be tweened.
-         *
-         * @name Phaser.Tweens.TweenData#key
-         * @type {string}
-         * @readonly
-         * @since 3.60.0
-         */
-        this.key = key;
+            /**
+             * The property of the target to be tweened.
+             *
+             * @name Phaser.Tweens.TweenData#key
+             * @type {string}
+             * @readonly
+             * @since 3.60.0
+             */
+            this.key = key;
 
-        /**
-         * A function that returns what to set the target property to,
-         * the moment the TweenData is invoked.
-         *
-         * This is called when this TweenData is initialised or reset.
-         *
-         * @name Phaser.Tweens.TweenData#getActiveValue
-         * @type {?Phaser.Types.Tweens.GetActiveCallback}
-         * @since 3.60.0
-         */
-        this.getActiveValue = getActive;
+            /**
+             * A function that returns what to set the target property to,
+             * the moment the TweenData is invoked.
+             *
+             * This is called when this TweenData is initialised or reset.
+             *
+             * @name Phaser.Tweens.TweenData#getActiveValue
+             * @type {?Phaser.Types.Tweens.GetActiveCallback}
+             * @since 3.60.0
+             */
+            this.getActiveValue = getActive;
 
-        /**
-         * A function that returns what to set the target property to
-         * at the end of the tween.
-         *
-         * This is called when the tween starts playing, after any initial
-         * start delay, or if the tween is reset, or is set to repeat.
-         *
-         * @name Phaser.Tweens.TweenData#getEndValue
-         * @type {Phaser.Types.Tweens.GetEndCallback}
-         * @since 3.60.0
-         */
-        this.getEndValue = getEnd;
+            /**
+             * A function that returns what to set the target property to
+             * at the end of the tween.
+             *
+             * This is called when the tween starts playing, after any initial
+             * start delay, or if the tween is reset, or is set to repeat.
+             *
+             * @name Phaser.Tweens.TweenData#getEndValue
+             * @type {Phaser.Types.Tweens.GetEndCallback}
+             * @since 3.60.0
+             */
+            this.getEndValue = getEnd;
 
-        /**
-         * A function that returns what to set the target property to
-         * at the start of the tween.
-         *
-         * This is called when the tween starts playing, after any initial
-         * start delay, or if the tween is reset, or is set to repeat.
-         *
-         * @name Phaser.Tweens.TweenData#getStartValue
-         * @type {Phaser.Types.Tweens.GetStartCallback}
-         * @since 3.60.0
-         */
-        this.getStartValue = getStart;
+            /**
+             * A function that returns what to set the target property to
+             * at the start of the tween.
+             *
+             * This is called when the tween starts playing, after any initial
+             * start delay, or if the tween is reset, or is set to repeat.
+             *
+             * @name Phaser.Tweens.TweenData#getStartValue
+             * @type {Phaser.Types.Tweens.GetStartCallback}
+             * @since 3.60.0
+             */
+            this.getStartValue = getStart;
 
-        /**
-         * The ease function this Tween uses to calculate the target value.
-         *
-         * @name Phaser.Tweens.TweenData#ease
-         * @type {function}
-         * @since 3.60.0
-         */
-        this.ease = ease;
+            /**
+             * The ease function this Tween uses to calculate the target value.
+             *
+             * @name Phaser.Tweens.TweenData#ease
+             * @type {function}
+             * @since 3.60.0
+             */
+            this.ease = ease;
 
-        /**
-         * The targets starting value, as returned by `getStartValue`.
-         *
-         * @name Phaser.Tweens.TweenData#start
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.start = 0;
+            /**
+             * The targets starting value, as returned by `getStartValue`.
+             *
+             * @name Phaser.Tweens.TweenData#start
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.start = 0;
 
-        /**
-         * The target value from the previous step.
-         *
-         * @name Phaser.Tweens.TweenData#previous
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.previous = 0;
+            /**
+             * The target value from the previous step.
+             *
+             * @name Phaser.Tweens.TweenData#previous
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.previous = 0;
 
-        /**
-         * The targets current value, as recorded in the most recent step.
-         *
-         * @name Phaser.Tweens.TweenData#current
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.current = 0;
+            /**
+             * The targets current value, as recorded in the most recent step.
+             *
+             * @name Phaser.Tweens.TweenData#current
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.current = 0;
 
-        /**
-         * The targets ending value, as returned by `getEndValue`.
-         *
-         * @name Phaser.Tweens.TweenData#end
-         * @type {number}
-         * @since 3.60.0
-         */
-        this.end = 0;
+            /**
+             * The targets ending value, as returned by `getEndValue`.
+             *
+             * @name Phaser.Tweens.TweenData#end
+             * @type {number}
+             * @since 3.60.0
+             */
+            this.end = 0;
 
-        /**
-         * The interpolation function to be used for arrays of data.
-         *
-         * @name Phaser.Tweens.TweenData#interpolation
-         * @type {?function}
-         * @default null
-         * @since 3.60.0
-         */
-        this.interpolation = interpolation;
+            /**
+             * The interpolation function to be used for arrays of data.
+             *
+             * @name Phaser.Tweens.TweenData#interpolation
+             * @type {?function}
+             * @default null
+             * @since 3.60.0
+             */
+            this.interpolation = interpolation;
 
-        /**
-         * The array of data to interpolate, if interpolation is being used.
-         *
-         * @name Phaser.Tweens.TweenData#interpolationData
-         * @type {?number[]}
-         * @since 3.60.0
-         */
-        this.interpolationData = interpolationData;
-    },
+            /**
+             * The array of data to interpolate, if interpolation is being used.
+             *
+             * @name Phaser.Tweens.TweenData#interpolationData
+             * @type {?number[]}
+             * @since 3.60.0
+             */
+            this.interpolationData = interpolationData;
+        },
 
     /**
      * Internal method that resets this Tween Data entirely, including the progress and elapsed values.
@@ -180,15 +179,13 @@ var TweenData = new Class({
      *
      * @param {boolean} [isSeeking=false] - Is the Tween Data being reset as part of a Tween seek?
      */
-    reset: function (isSeeking)
-    {
+    reset: function (isSeeking) {
         BaseTweenData.prototype.reset.call(this);
 
         var target = this.tween.targets[this.targetIndex];
         var key = this.key;
 
-        if (isSeeking)
-        {
+        if (isSeeking) {
             target[key] = this.start;
         }
 
@@ -197,8 +194,7 @@ var TweenData = new Class({
         this.current = 0;
         this.end = 0;
 
-        if (this.getActiveValue)
-        {
+        if (this.getActiveValue) {
             target[key] = this.getActiveValue(target, key, 0);
         }
     },
@@ -215,8 +211,7 @@ var TweenData = new Class({
      *
      * @return {boolean} `true` if this TweenData is still playing, or `false` if it has finished entirely.
      */
-    update: function (delta)
-    {
+    update: function (delta) {
         var tween = this.tween;
         var totalTargets = tween.totalTargets;
 
@@ -225,35 +220,27 @@ var TweenData = new Class({
         var key = this.key;
 
         //  Bail out if we don't have a target to act upon
-        if (!target)
-        {
+        if (!target) {
             this.setCompleteState();
 
             return false;
         }
 
-        if (this.isCountdown)
-        {
+        if (this.isCountdown) {
             this.elapsed -= delta;
 
-            if (this.elapsed <= 0)
-            {
+            if (this.elapsed <= 0) {
                 this.elapsed = 0;
 
                 delta = 0;
 
-                if (this.isDelayed())
-                {
+                if (this.isDelayed()) {
                     this.setPendingRenderState();
-                }
-                else if (this.isRepeating())
-                {
+                } else if (this.isRepeating()) {
                     this.setPlayingForwardState();
 
                     this.dispatchEvent(Events.TWEEN_REPEAT, 'onRepeat');
-                }
-                else if (this.isHolding())
-                {
+                } else if (this.isHolding()) {
                     this.setStateFromEnd(0);
                 }
             }
@@ -261,8 +248,7 @@ var TweenData = new Class({
 
         //  All of the above have the ability to change the state, so put this in its own check
 
-        if (this.isPendingRender())
-        {
+        if (this.isPendingRender()) {
             this.start = this.getStartValue(target, key, target[key], targetIndex, totalTargets, tween);
 
             this.end = this.getEndValue(target, key, this.start, targetIndex, totalTargets, tween);
@@ -279,8 +265,7 @@ var TweenData = new Class({
         var forward = this.isPlayingForward();
         var backward = this.isPlayingBackward();
 
-        if (forward || backward)
-        {
+        if (forward || backward) {
             var elapsed = this.elapsed;
             var duration = this.duration;
             var diff = 0;
@@ -288,14 +273,11 @@ var TweenData = new Class({
 
             elapsed += delta;
 
-            if (elapsed >= duration)
-            {
+            if (elapsed >= duration) {
                 diff = elapsed - duration;
                 elapsed = duration;
                 complete = true;
-            }
-            else if (elapsed < 0)
-            {
+            } else if (elapsed < 0) {
                 elapsed = 0;
             }
 
@@ -305,49 +287,36 @@ var TweenData = new Class({
             this.progress = progress;
             this.previous = this.current;
 
-            if (!forward)
-            {
+            if (!forward) {
                 progress = 1 - progress;
             }
 
             var v = this.ease(progress);
 
-            if (this.interpolation)
-            {
+            if (this.interpolation) {
                 this.current = this.interpolation(this.interpolationData, v);
-            }
-            else
-            {
+            } else {
                 this.current = this.start + ((this.end - this.start) * v);
             }
 
             target[key] = this.current;
 
-            if (complete)
-            {
-                if (forward)
-                {
-                    if (tween.isNumberTween)
-                    {
+            if (complete) {
+                if (forward) {
+                    if (tween.isNumberTween) {
                         this.current = this.end;
                         target[key] = this.current;
                     }
 
-                    if (this.hold > 0)
-                    {
+                    if (this.hold > 0) {
                         this.elapsed = this.hold;
 
                         this.setHoldState();
-                    }
-                    else
-                    {
+                    } else {
                         this.setStateFromEnd(diff);
                     }
-                }
-                else
-                {
-                    if (tween.isNumberTween)
-                    {
+                } else {
+                    if (tween.isNumberTween) {
                         this.current = this.start;
                         target[key] = this.current;
                     }
@@ -373,12 +342,10 @@ var TweenData = new Class({
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
      */
-    dispatchEvent: function (event, callback)
-    {
+    dispatchEvent: function (event, callback) {
         var tween = this.tween;
 
-        if (!tween.isSeeking)
-        {
+        if (!tween.isSeeking) {
             var target = tween.targets[this.targetIndex];
             var key = this.key;
 
@@ -389,9 +356,8 @@ var TweenData = new Class({
 
             var handler = tween.callbacks[callback];
 
-            if (handler)
-            {
-                handler.func.apply(tween.callbackScope, [ tween, target, key, current, previous ].concat(handler.params));
+            if (handler) {
+                handler.func.apply(tween.callbackScope, [tween, target, key, current, previous].concat(handler.params));
             }
         }
     },
@@ -402,8 +368,7 @@ var TweenData = new Class({
      * @method Phaser.Tweens.TweenData#destroy
      * @since 3.60.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         BaseTweenData.prototype.destroy.call(this);
 
         this.getActiveValue = null;

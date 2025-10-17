@@ -23,17 +23,13 @@ var GetAspectRatio = require('./GetAspectRatio');
  *
  * @return {Phaser.Geom.Rectangle} The modified target rectangle instance.
  */
-var FitInside = function (target, source)
-{
+var FitInside = function (target, source) {
     var ratio = GetAspectRatio(target);
 
-    if (ratio < GetAspectRatio(source))
-    {
+    if (ratio < GetAspectRatio(source)) {
         //  Taller than Wide
         target.setSize(source.height * ratio, source.height);
-    }
-    else
-    {
+    } else {
         //  Wider than Tall
         target.setSize(source.width, source.width / ratio);
     }

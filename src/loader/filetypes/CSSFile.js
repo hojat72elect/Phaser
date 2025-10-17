@@ -36,32 +36,30 @@ var CSSFile = new Class({
 
     initialize:
 
-    function CSSFile (loader, key, url, xhrSettings)
-    {
-        var extension = 'css';
+        function CSSFile(loader, key, url, xhrSettings) {
+            var extension = 'css';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            }
 
-        var fileConfig = {
-            type: 'script',
-            cache: false,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: 'script',
+                cache: false,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
-    },
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -70,8 +68,7 @@ var CSSFile = new Class({
      * @method Phaser.Loader.FileTypes.CSSFile#onProcess
      * @since 3.17.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = document.createElement('style');
@@ -141,18 +138,13 @@ var CSSFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('css', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('css', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new CSSFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new CSSFile(this, key, url, xhrSettings));
     }
 

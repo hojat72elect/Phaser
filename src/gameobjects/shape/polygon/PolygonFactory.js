@@ -41,7 +41,6 @@ var Polygon = require('./Polygon');
  *
  * @return {Phaser.GameObjects.Polygon} The Game Object that was created.
  */
-GameObjectFactory.register('polygon', function (x, y, points, fillColor, fillAlpha)
-{
+GameObjectFactory.register('polygon', function (x, y, points, fillColor, fillAlpha) {
     return this.displayList.add(new Polygon(this.scene, x, y, points, fillColor, fillAlpha));
 });

@@ -21,11 +21,9 @@ var Clone = require('../../utils/object/Clone');
  *
  * @return {Phaser.Textures.Texture} The Texture modified by this parser.
  */
-var JSONHash = function (texture, sourceIndex, json)
-{
+var JSONHash = function (texture, sourceIndex, json) {
     //  Malformed?
-    if (!json['frames'])
-    {
+    if (!json['frames']) {
         console.warn('Invalid Texture Atlas JSON Hash given, missing \'frames\' Object');
         return;
     }
@@ -39,10 +37,8 @@ var JSONHash = function (texture, sourceIndex, json)
     var frames = json.frames;
     var newFrame;
 
-    for (var key in frames)
-    {
-        if (!frames.hasOwnProperty(key))
-        {
+    for (var key in frames) {
+        if (!frames.hasOwnProperty(key)) {
             continue;
         }
 
@@ -51,16 +47,14 @@ var JSONHash = function (texture, sourceIndex, json)
         //  The frame values are the exact coordinates to cut the frame out of the atlas from
         newFrame = texture.add(key, sourceIndex, src.frame.x, src.frame.y, src.frame.w, src.frame.h);
 
-        if (!newFrame)
-        {
+        if (!newFrame) {
             console.warn('Invalid atlas json, frame already exists: ' + key);
 
             continue;
         }
 
         //  These are the original (non-trimmed) sprite values
-        if (src.trimmed)
-        {
+        if (src.trimmed) {
             newFrame.setTrim(
                 src.sourceSize.w,
                 src.sourceSize.h,
@@ -71,23 +65,20 @@ var JSONHash = function (texture, sourceIndex, json)
             );
         }
 
-        if (src.rotated)
-        {
+        if (src.rotated) {
             newFrame.rotated = true;
             newFrame.updateUVsInverted();
         }
 
         var pivot = src.anchor || src.pivot;
 
-        if (pivot)
-        {
+        if (pivot) {
             newFrame.customPivot = true;
             newFrame.pivotX = pivot.x;
             newFrame.pivotY = pivot.y;
         }
 
-        if (src.scale9Borders)
-        {
+        if (src.scale9Borders) {
             newFrame.setScale9(
                 src.scale9Borders.x,
                 src.scale9Borders.y,
@@ -101,19 +92,14 @@ var JSONHash = function (texture, sourceIndex, json)
     }
 
     //  Copy over any additional data that was in the JSON to Texture.customData
-    for (var dataKey in json)
-    {
-        if (dataKey === 'frames')
-        {
+    for (var dataKey in json) {
+        if (dataKey === 'frames') {
             continue;
         }
 
-        if (Array.isArray(json[dataKey]))
-        {
+        if (Array.isArray(json[dataKey])) {
             texture.customData[dataKey] = json[dataKey].slice(0);
-        }
-        else
-        {
+        } else {
             texture.customData[dataKey] = json[dataKey];
         }
     }

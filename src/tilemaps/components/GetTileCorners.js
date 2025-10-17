@@ -19,8 +19,7 @@ var Vector2 = require('../../math/Vector2');
  *
  * @return {Phaser.Math.Vector2[]} An array of Vector2s corresponding to the world XY location of each tile corner.
  */
-var GetTileCorners = function (tileX, tileY, camera, layer)
-{
+var GetTileCorners = function (tileX, tileY, camera, layer) {
     var tileWidth = layer.baseTileWidth;
     var tileHeight = layer.baseTileHeight;
     var tilemapLayer = layer.tilemapLayer;
@@ -28,9 +27,10 @@ var GetTileCorners = function (tileX, tileY, camera, layer)
     var worldX = 0;
     var worldY = 0;
 
-    if (tilemapLayer)
-    {
-        if (!camera) { camera = tilemapLayer.scene.cameras.main; }
+    if (tilemapLayer) {
+        if (!camera) {
+            camera = tilemapLayer.scene.cameras.main;
+        }
 
         worldX = tilemapLayer.x + camera.scrollX * (1 - tilemapLayer.scrollFactorX);
         worldY = (tilemapLayer.y + camera.scrollY * (1 - tilemapLayer.scrollFactorY));

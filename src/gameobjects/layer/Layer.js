@@ -93,231 +93,229 @@ var Layer = new Class({
 
     initialize:
 
-    function Layer (scene, children)
-    {
-        List.call(this, scene);
-        EventEmitter.call(this);
+        function Layer(scene, children) {
+            List.call(this, scene);
+            EventEmitter.call(this);
 
-        /**
-         * A reference to the Scene to which this Game Object belongs.
-         *
-         * Game Objects can only belong to one Scene.
-         *
-         * You should consider this property as being read-only. You cannot move a
-         * Game Object to another Scene by simply changing it.
-         *
-         * @name Phaser.GameObjects.Layer#scene
-         * @type {Phaser.Scene}
-         * @since 3.50.0
-         */
-        this.scene = scene;
+            /**
+             * A reference to the Scene to which this Game Object belongs.
+             *
+             * Game Objects can only belong to one Scene.
+             *
+             * You should consider this property as being read-only. You cannot move a
+             * Game Object to another Scene by simply changing it.
+             *
+             * @name Phaser.GameObjects.Layer#scene
+             * @type {Phaser.Scene}
+             * @since 3.50.0
+             */
+            this.scene = scene;
 
-        /**
-         * Holds a reference to the Display List that contains this Game Object.
-         *
-         * This is set automatically when this Game Object is added to a Scene or Layer.
-         *
-         * You should treat this property as being read-only.
-         *
-         * @name Phaser.GameObjects.Layer#displayList
-         * @type {(Phaser.GameObjects.DisplayList|Phaser.GameObjects.Layer)}
-         * @default null
-         * @since 3.50.0
-         */
-        this.displayList = null;
+            /**
+             * Holds a reference to the Display List that contains this Game Object.
+             *
+             * This is set automatically when this Game Object is added to a Scene or Layer.
+             *
+             * You should treat this property as being read-only.
+             *
+             * @name Phaser.GameObjects.Layer#displayList
+             * @type {(Phaser.GameObjects.DisplayList|Phaser.GameObjects.Layer)}
+             * @default null
+             * @since 3.50.0
+             */
+            this.displayList = null;
 
-        /**
-         * A textual representation of this Game Object, i.e. `sprite`.
-         * Used internally by Phaser but is available for your own custom classes to populate.
-         *
-         * @name Phaser.GameObjects.Layer#type
-         * @type {string}
-         * @since 3.50.0
-         */
-        this.type = 'Layer';
+            /**
+             * A textual representation of this Game Object, i.e. `sprite`.
+             * Used internally by Phaser but is available for your own custom classes to populate.
+             *
+             * @name Phaser.GameObjects.Layer#type
+             * @type {string}
+             * @since 3.50.0
+             */
+            this.type = 'Layer';
 
-        /**
-         * The current state of this Game Object.
-         *
-         * Phaser itself will never modify this value, although plugins may do so.
-         *
-         * Use this property to track the state of a Game Object during its lifetime. For example, it could change from
-         * a state of 'moving', to 'attacking', to 'dead'. The state value should be an integer (ideally mapped to a constant
-         * in your game code), or a string. These are recommended to keep it light and simple, with fast comparisons.
-         * If you need to store complex data about your Game Object, look at using the Data Component instead.
-         *
-         * @name Phaser.GameObjects.Layer#state
-         * @type {(number|string)}
-         * @since 3.50.0
-         */
-        this.state = 0;
+            /**
+             * The current state of this Game Object.
+             *
+             * Phaser itself will never modify this value, although plugins may do so.
+             *
+             * Use this property to track the state of a Game Object during its lifetime. For example, it could change from
+             * a state of 'moving', to 'attacking', to 'dead'. The state value should be an integer (ideally mapped to a constant
+             * in your game code), or a string. These are recommended to keep it light and simple, with fast comparisons.
+             * If you need to store complex data about your Game Object, look at using the Data Component instead.
+             *
+             * @name Phaser.GameObjects.Layer#state
+             * @type {(number|string)}
+             * @since 3.50.0
+             */
+            this.state = 0;
 
-        /**
-         * A Layer cannot be placed inside a Container.
-         *
-         * This property is kept purely so a Layer has the same
-         * shape as a Game Object.
-         *
-         * @name Phaser.GameObjects.Layer#parentContainer
-         * @type {Phaser.GameObjects.Container}
-         * @since 3.51.0
-         */
-        this.parentContainer = null;
+            /**
+             * A Layer cannot be placed inside a Container.
+             *
+             * This property is kept purely so a Layer has the same
+             * shape as a Game Object.
+             *
+             * @name Phaser.GameObjects.Layer#parentContainer
+             * @type {Phaser.GameObjects.Container}
+             * @since 3.51.0
+             */
+            this.parentContainer = null;
 
-        /**
-         * The name of this Game Object.
-         * Empty by default and never populated by Phaser, this is left for developers to use.
-         *
-         * @name Phaser.GameObjects.Layer#name
-         * @type {string}
-         * @default ''
-         * @since 3.50.0
-         */
-        this.name = '';
+            /**
+             * The name of this Game Object.
+             * Empty by default and never populated by Phaser, this is left for developers to use.
+             *
+             * @name Phaser.GameObjects.Layer#name
+             * @type {string}
+             * @default ''
+             * @since 3.50.0
+             */
+            this.name = '';
 
-        /**
-         * The active state of this Game Object.
-         * A Game Object with an active state of `true` is processed by the Scenes UpdateList, if added to it.
-         * An active object is one which is having its logic and internal systems updated.
-         *
-         * @name Phaser.GameObjects.Layer#active
-         * @type {boolean}
-         * @default true
-         * @since 3.50.0
-         */
-        this.active = true;
+            /**
+             * The active state of this Game Object.
+             * A Game Object with an active state of `true` is processed by the Scenes UpdateList, if added to it.
+             * An active object is one which is having its logic and internal systems updated.
+             *
+             * @name Phaser.GameObjects.Layer#active
+             * @type {boolean}
+             * @default true
+             * @since 3.50.0
+             */
+            this.active = true;
 
-        /**
-         * The Tab Index of the Game Object.
-         * Reserved for future use by plugins and the Input Manager.
-         *
-         * @name Phaser.GameObjects.Layer#tabIndex
-         * @type {number}
-         * @default -1
-         * @since 3.51.0
-         */
-        this.tabIndex = -1;
+            /**
+             * The Tab Index of the Game Object.
+             * Reserved for future use by plugins and the Input Manager.
+             *
+             * @name Phaser.GameObjects.Layer#tabIndex
+             * @type {number}
+             * @default -1
+             * @since 3.51.0
+             */
+            this.tabIndex = -1;
 
-        /**
-         * A Data Manager.
-         * It allows you to store, query and get key/value paired information specific to this Game Object.
-         * `null` by default. Automatically created if you use `getData` or `setData` or `setDataEnabled`.
-         *
-         * @name Phaser.GameObjects.Layer#data
-         * @type {Phaser.Data.DataManager}
-         * @default null
-         * @since 3.50.0
-         */
-        this.data = null;
+            /**
+             * A Data Manager.
+             * It allows you to store, query and get key/value paired information specific to this Game Object.
+             * `null` by default. Automatically created if you use `getData` or `setData` or `setDataEnabled`.
+             *
+             * @name Phaser.GameObjects.Layer#data
+             * @type {Phaser.Data.DataManager}
+             * @default null
+             * @since 3.50.0
+             */
+            this.data = null;
 
-        /**
-         * The flags that are compared against `RENDER_MASK` to determine if this Game Object will render or not.
-         * The bits are 0001 | 0010 | 0100 | 1000 set by the components Visible, Alpha, Transform and Texture respectively.
-         * If those components are not used by your custom class then you can use this bitmask as you wish.
-         *
-         * @name Phaser.GameObjects.Layer#renderFlags
-         * @type {number}
-         * @default 15
-         * @since 3.50.0
-         */
-        this.renderFlags = 15;
+            /**
+             * The flags that are compared against `RENDER_MASK` to determine if this Game Object will render or not.
+             * The bits are 0001 | 0010 | 0100 | 1000 set by the components Visible, Alpha, Transform and Texture respectively.
+             * If those components are not used by your custom class then you can use this bitmask as you wish.
+             *
+             * @name Phaser.GameObjects.Layer#renderFlags
+             * @type {number}
+             * @default 15
+             * @since 3.50.0
+             */
+            this.renderFlags = 15;
 
-        /**
-         * A bitmask that controls if this Game Object is drawn by a Camera or not.
-         * Not usually set directly, instead call `Camera.ignore`, however you can
-         * set this property directly using the Camera.id property:
-         *
-         * @example
-         * this.cameraFilter |= camera.id
-         *
-         * @name Phaser.GameObjects.Layer#cameraFilter
-         * @type {number}
-         * @default 0
-         * @since 3.50.0
-         */
-        this.cameraFilter = 0;
+            /**
+             * A bitmask that controls if this Game Object is drawn by a Camera or not.
+             * Not usually set directly, instead call `Camera.ignore`, however you can
+             * set this property directly using the Camera.id property:
+             *
+             * @example
+             * this.cameraFilter |= camera.id
+             *
+             * @name Phaser.GameObjects.Layer#cameraFilter
+             * @type {number}
+             * @default 0
+             * @since 3.50.0
+             */
+            this.cameraFilter = 0;
 
-        /**
-         * This property is kept purely so a Layer has the same
-         * shape as a Game Object. You cannot input enable a Layer.
-         *
-         * @name Phaser.GameObjects.Layer#input
-         * @type {?Phaser.Types.Input.InteractiveObject}
-         * @default null
-         * @since 3.51.0
-         */
-        this.input = null;
+            /**
+             * This property is kept purely so a Layer has the same
+             * shape as a Game Object. You cannot input enable a Layer.
+             *
+             * @name Phaser.GameObjects.Layer#input
+             * @type {?Phaser.Types.Input.InteractiveObject}
+             * @default null
+             * @since 3.51.0
+             */
+            this.input = null;
 
-        /**
-         * This property is kept purely so a Layer has the same
-         * shape as a Game Object. You cannot give a Layer a physics body.
-         *
-         * @name Phaser.GameObjects.Layer#body
-         * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody|MatterJS.BodyType)}
-         * @default null
-         * @since 3.51.0
-         */
-        this.body = null;
+            /**
+             * This property is kept purely so a Layer has the same
+             * shape as a Game Object. You cannot give a Layer a physics body.
+             *
+             * @name Phaser.GameObjects.Layer#body
+             * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody|MatterJS.BodyType)}
+             * @default null
+             * @since 3.51.0
+             */
+            this.body = null;
 
-        /**
-         * This Game Object will ignore all calls made to its destroy method if this flag is set to `true`.
-         * This includes calls that may come from a Group, Container or the Scene itself.
-         * While it allows you to persist a Game Object across Scenes, please understand you are entirely
-         * responsible for managing references to and from this Game Object.
-         *
-         * @name Phaser.GameObjects.Layer#ignoreDestroy
-         * @type {boolean}
-         * @default false
-         * @since 3.50.0
-         */
-        this.ignoreDestroy = false;
+            /**
+             * This Game Object will ignore all calls made to its destroy method if this flag is set to `true`.
+             * This includes calls that may come from a Group, Container or the Scene itself.
+             * While it allows you to persist a Game Object across Scenes, please understand you are entirely
+             * responsible for managing references to and from this Game Object.
+             *
+             * @name Phaser.GameObjects.Layer#ignoreDestroy
+             * @type {boolean}
+             * @default false
+             * @since 3.50.0
+             */
+            this.ignoreDestroy = false;
 
-        /**
-         * A reference to the Scene Systems.
-         *
-         * @name Phaser.GameObjects.Layer#systems
-         * @type {Phaser.Scenes.Systems}
-         * @since 3.50.0
-         */
-        this.systems = scene.sys;
+            /**
+             * A reference to the Scene Systems.
+             *
+             * @name Phaser.GameObjects.Layer#systems
+             * @type {Phaser.Scenes.Systems}
+             * @since 3.50.0
+             */
+            this.systems = scene.sys;
 
-        /**
-         * A reference to the Scene Event Emitter.
-         *
-         * @name Phaser.GameObjects.Layer#events
-         * @type {Phaser.Events.EventEmitter}
-         * @since 3.50.0
-         */
-        this.events = scene.sys.events;
+            /**
+             * A reference to the Scene Event Emitter.
+             *
+             * @name Phaser.GameObjects.Layer#events
+             * @type {Phaser.Events.EventEmitter}
+             * @since 3.50.0
+             */
+            this.events = scene.sys.events;
 
-        /**
-         * The flag the determines whether Game Objects should be sorted when `depthSort()` is called.
-         *
-         * @name Phaser.GameObjects.Layer#sortChildrenFlag
-         * @type {boolean}
-         * @default false
-         * @since 3.50.0
-         */
-        this.sortChildrenFlag = false;
+            /**
+             * The flag the determines whether Game Objects should be sorted when `depthSort()` is called.
+             *
+             * @name Phaser.GameObjects.Layer#sortChildrenFlag
+             * @type {boolean}
+             * @default false
+             * @since 3.50.0
+             */
+            this.sortChildrenFlag = false;
 
-        //  Set the List callbacks
-        this.addCallback = this.addChildCallback;
-        this.removeCallback = this.removeChildCallback;
+            //  Set the List callbacks
+            this.addCallback = this.addChildCallback;
+            this.removeCallback = this.removeChildCallback;
 
-        this.initPostPipeline();
+            this.initPostPipeline();
 
-        this.clearAlpha();
+            this.clearAlpha();
 
-        this.setBlendMode(BlendModes.SKIP_CHECK);
+            this.setBlendMode(BlendModes.SKIP_CHECK);
 
-        if (children)
-        {
-            this.add(children);
-        }
+            if (children) {
+                this.add(children);
+            }
 
-        //  Tell the Scene to re-sort the children
-        scene.sys.queueDepthSort();
-    },
+            //  Tell the Scene to re-sort the children
+            scene.sys.queueDepthSort();
+        },
 
     /**
      * Sets the `active` property of this Game Object and returns this Game Object for further chaining.
@@ -330,8 +328,7 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    setActive: function (value)
-    {
+    setActive: function (value) {
         this.active = value;
 
         return this;
@@ -348,8 +345,7 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    setName: function (value)
-    {
+    setName: function (value) {
         this.name = value;
 
         return this;
@@ -372,8 +368,7 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    setState: function (value)
-    {
+    setState: function (value) {
         this.state = value;
 
         return this;
@@ -388,10 +383,8 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    setDataEnabled: function ()
-    {
-        if (!this.data)
-        {
+    setDataEnabled: function () {
+        if (!this.data) {
             this.data = new DataManager(this);
         }
 
@@ -445,10 +438,8 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    setData: function (key, value)
-    {
-        if (!this.data)
-        {
+    setData: function (key, value) {
+        if (!this.data) {
             this.data = new DataManager(this);
         }
 
@@ -475,10 +466,8 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    incData: function (key, value)
-    {
-        if (!this.data)
-        {
+    incData: function (key, value) {
+        if (!this.data) {
             this.data = new DataManager(this);
         }
 
@@ -504,10 +493,8 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    toggleData: function (key)
-    {
-        if (!this.data)
-        {
+    toggleData: function (key) {
+        if (!this.data) {
             this.data = new DataManager(this);
         }
 
@@ -546,10 +533,8 @@ var Layer = new Class({
      *
      * @return {*} The value belonging to the given key, or an array of values, the order of which will match the input array.
      */
-    getData: function (key)
-    {
-        if (!this.data)
-        {
+    getData: function (key) {
+        if (!this.data) {
             this.data = new DataManager(this);
         }
 
@@ -567,8 +552,7 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    setInteractive: function ()
-    {
+    setInteractive: function () {
         return this;
     },
 
@@ -583,8 +567,7 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    disableInteractive: function ()
-    {
+    disableInteractive: function () {
         return this;
     },
 
@@ -599,8 +582,7 @@ var Layer = new Class({
      *
      * @return {this} This GameObject.
      */
-    removeInteractive: function ()
-    {
+    removeInteractive: function () {
         return this;
     },
 
@@ -615,8 +597,7 @@ var Layer = new Class({
      * @method Phaser.GameObjects.Layer#addedToScene
      * @since 3.50.0
      */
-    addedToScene: function ()
-    {
+    addedToScene: function () {
     },
 
     /**
@@ -630,8 +611,7 @@ var Layer = new Class({
      * @method Phaser.GameObjects.Layer#removedFromScene
      * @since 3.50.0
      */
-    removedFromScene: function ()
-    {
+    removedFromScene: function () {
     },
 
     /**
@@ -642,8 +622,7 @@ var Layer = new Class({
      *
      * @param {...*} [args] - args
      */
-    update: function ()
-    {
+    update: function () {
     },
 
     /**
@@ -654,8 +633,7 @@ var Layer = new Class({
      *
      * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Game Object.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return ComponentsToJSON(this);
     },
 
@@ -670,8 +648,7 @@ var Layer = new Class({
      *
      * @return {boolean} True if the Game Object should be rendered, otherwise false.
      */
-    willRender: function (camera)
-    {
+    willRender: function (camera) {
         return !(this.renderFlags !== 15 || this.list.length === 0 || (this.cameraFilter !== 0 && (this.cameraFilter & camera.id)));
     },
 
@@ -688,26 +665,21 @@ var Layer = new Class({
      *
      * @return {number[]} An array of display list position indexes.
      */
-    getIndexList: function ()
-    {
+    getIndexList: function () {
         // eslint-disable-next-line consistent-this
         var child = this;
         var parent = this.parentContainer;
 
         var indexes = [];
 
-        while (parent)
-        {
+        while (parent) {
             indexes.unshift(parent.getIndex(child));
 
             child = parent;
 
-            if (!parent.parentContainer)
-            {
+            if (!parent.parentContainer) {
                 break;
-            }
-            else
-            {
+            } else {
                 parent = parent.parentContainer;
             }
         }
@@ -728,17 +700,14 @@ var Layer = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was added to the list.
      */
-    addChildCallback: function (gameObject)
-    {
+    addChildCallback: function (gameObject) {
         var displayList = gameObject.displayList;
 
-        if (displayList && displayList !== this)
-        {
+        if (displayList && displayList !== this) {
             gameObject.removeFromDisplayList();
         }
 
-        if (!gameObject.displayList)
-        {
+        if (!gameObject.displayList) {
             this.queueDepthSort();
 
             gameObject.displayList = this;
@@ -760,8 +729,7 @@ var Layer = new Class({
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was removed from the list.
      */
-    removeChildCallback: function (gameObject)
-    {
+    removeChildCallback: function (gameObject) {
         this.queueDepthSort();
 
         gameObject.displayList = null;
@@ -777,8 +745,7 @@ var Layer = new Class({
      * @method Phaser.GameObjects.Layer#queueDepthSort
      * @since 3.50.0
      */
-    queueDepthSort: function ()
-    {
+    queueDepthSort: function () {
         this.sortChildrenFlag = true;
     },
 
@@ -788,10 +755,8 @@ var Layer = new Class({
      * @method Phaser.GameObjects.Layer#depthSort
      * @since 3.50.0
      */
-    depthSort: function ()
-    {
-        if (this.sortChildrenFlag)
-        {
+    depthSort: function () {
+        if (this.sortChildrenFlag) {
             StableSort(this.list, this.sortByDepth);
 
             this.sortChildrenFlag = false;
@@ -809,8 +774,7 @@ var Layer = new Class({
      *
      * @return {number} The difference between the depths of each Game Object.
      */
-    sortByDepth: function (childA, childB)
-    {
+    sortByDepth: function (childA, childB) {
         return childA._depth - childB._depth;
     },
 
@@ -824,8 +788,7 @@ var Layer = new Class({
      *
      * @return {Phaser.GameObjects.GameObject[]} An array of Game Objects within this Layer.
      */
-    getChildren: function ()
-    {
+    getChildren: function () {
         return this.list;
     },
 
@@ -854,18 +817,17 @@ var Layer = new Class({
      *
      * @return {this} This Layer instance.
      */
-    addToDisplayList: function (displayList)
-    {
-        if (displayList === undefined) { displayList = this.scene.sys.displayList; }
+    addToDisplayList: function (displayList) {
+        if (displayList === undefined) {
+            displayList = this.scene.sys.displayList;
+        }
 
-        if (this.displayList && this.displayList !== displayList)
-        {
+        if (this.displayList && this.displayList !== displayList) {
             this.removeFromDisplayList();
         }
 
         //  Don't repeat if it's already on this list
-        if (!displayList.exists(this))
-        {
+        if (!displayList.exists(this)) {
             this.displayList = displayList;
 
             displayList.add(this, true);
@@ -898,12 +860,10 @@ var Layer = new Class({
      *
      * @return {this} This Layer instance.
      */
-    removeFromDisplayList: function ()
-    {
+    removeFromDisplayList: function () {
         var displayList = this.displayList || this.scene.sys.displayList;
 
-        if (displayList.exists(this))
-        {
+        if (displayList.exists(this)) {
             displayList.remove(this, true);
 
             displayList.queueDepthSort();
@@ -922,9 +882,9 @@ var Layer = new Class({
      * Returns a reference to the underlying display list _array_ that contains this Game Object,
      * which will be either the Scene's Display List or the internal list belonging
      * to its parent Container, if it has one.
-     * 
+     *
      * If this Game Object is not on a display list or in a container, it will return `null`.
-     * 
+     *
      * You should be very careful with this method, and understand that it returns a direct reference to the
      * internal array used by the Display List. Mutating this array directly can cause all kinds of subtle
      * and difficult to debug issues in your game.
@@ -934,16 +894,12 @@ var Layer = new Class({
      *
      * @return {?Phaser.GameObjects.GameObject[]} The internal Display List array of Game Objects, or `null`.
      */
-    getDisplayList: function ()
-    {
+    getDisplayList: function () {
         var list = null;
 
-        if (this.parentContainer)
-        {
+        if (this.parentContainer) {
             list = this.parentContainer.list;
-        }
-        else if (this.displayList)
-        {
+        } else if (this.displayList) {
             list = this.displayList.list;
         }
 
@@ -970,11 +926,9 @@ var Layer = new Class({
      *
      * @param {boolean} [fromScene=false] - `True` if this Game Object is being destroyed by the Scene, `false` if not.
      */
-    destroy: function (fromScene)
-    {
+    destroy: function (fromScene) {
         //  This Game Object has already been destroyed
-        if (!this.scene || this.ignoreDestroy)
-        {
+        if (!this.scene || this.ignoreDestroy) {
             return;
         }
 
@@ -982,8 +936,7 @@ var Layer = new Class({
 
         var list = this.list;
 
-        while (list.length)
-        {
+        while (list.length) {
             list[0].destroy(fromScene);
         }
 
@@ -991,15 +944,13 @@ var Layer = new Class({
 
         this.resetPostPipeline(true);
 
-        if (this.displayList)
-        {
+        if (this.displayList) {
             this.displayList.remove(this, true, false);
 
             this.displayList.queueDepthSort();
         }
 
-        if (this.data)
-        {
+        if (this.data) {
             this.data.destroy();
 
             this.data = undefined;

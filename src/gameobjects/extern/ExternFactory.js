@@ -17,8 +17,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @return {Phaser.GameObjects.Extern} The Game Object that was created.
  */
-GameObjectFactory.register('extern', function ()
-{
+GameObjectFactory.register('extern', function () {
     var extern = new Extern(this.scene);
 
     this.displayList.add(extern);

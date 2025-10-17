@@ -30,121 +30,122 @@ var AnimationFrame = new Class({
 
     initialize:
 
-    function AnimationFrame (textureKey, textureFrame, index, frame, isKeyFrame)
-    {
-        if (isKeyFrame === undefined) { isKeyFrame = false; }
+        function AnimationFrame(textureKey, textureFrame, index, frame, isKeyFrame) {
+            if (isKeyFrame === undefined) {
+                isKeyFrame = false;
+            }
 
-        /**
-         * The key of the Texture this AnimationFrame uses.
-         *
-         * @name Phaser.Animations.AnimationFrame#textureKey
-         * @type {string}
-         * @since 3.0.0
-         */
-        this.textureKey = textureKey;
+            /**
+             * The key of the Texture this AnimationFrame uses.
+             *
+             * @name Phaser.Animations.AnimationFrame#textureKey
+             * @type {string}
+             * @since 3.0.0
+             */
+            this.textureKey = textureKey;
 
-        /**
-         * The key of the Frame within the Texture that this AnimationFrame uses.
-         *
-         * @name Phaser.Animations.AnimationFrame#textureFrame
-         * @type {(string|number)}
-         * @since 3.0.0
-         */
-        this.textureFrame = textureFrame;
+            /**
+             * The key of the Frame within the Texture that this AnimationFrame uses.
+             *
+             * @name Phaser.Animations.AnimationFrame#textureFrame
+             * @type {(string|number)}
+             * @since 3.0.0
+             */
+            this.textureFrame = textureFrame;
 
-        /**
-         * The index of this AnimationFrame within the Animation sequence.
-         *
-         * @name Phaser.Animations.AnimationFrame#index
-         * @type {number}
-         * @since 3.0.0
-         */
-        this.index = index;
+            /**
+             * The index of this AnimationFrame within the Animation sequence.
+             *
+             * @name Phaser.Animations.AnimationFrame#index
+             * @type {number}
+             * @since 3.0.0
+             */
+            this.index = index;
 
-        /**
-         * A reference to the Texture Frame this AnimationFrame uses for rendering.
-         *
-         * @name Phaser.Animations.AnimationFrame#frame
-         * @type {Phaser.Textures.Frame}
-         * @since 3.0.0
-         */
-        this.frame = frame;
+            /**
+             * A reference to the Texture Frame this AnimationFrame uses for rendering.
+             *
+             * @name Phaser.Animations.AnimationFrame#frame
+             * @type {Phaser.Textures.Frame}
+             * @since 3.0.0
+             */
+            this.frame = frame;
 
-        /**
-         * Is this the first frame in an animation sequence?
-         *
-         * @name Phaser.Animations.AnimationFrame#isFirst
-         * @type {boolean}
-         * @default false
-         * @readonly
-         * @since 3.0.0
-         */
-        this.isFirst = false;
+            /**
+             * Is this the first frame in an animation sequence?
+             *
+             * @name Phaser.Animations.AnimationFrame#isFirst
+             * @type {boolean}
+             * @default false
+             * @readonly
+             * @since 3.0.0
+             */
+            this.isFirst = false;
 
-        /**
-         * Is this the last frame in an animation sequence?
-         *
-         * @name Phaser.Animations.AnimationFrame#isLast
-         * @type {boolean}
-         * @default false
-         * @readonly
-         * @since 3.0.0
-         */
-        this.isLast = false;
+            /**
+             * Is this the last frame in an animation sequence?
+             *
+             * @name Phaser.Animations.AnimationFrame#isLast
+             * @type {boolean}
+             * @default false
+             * @readonly
+             * @since 3.0.0
+             */
+            this.isLast = false;
 
-        /**
-         * A reference to the AnimationFrame that comes before this one in the animation, if any.
-         *
-         * @name Phaser.Animations.AnimationFrame#prevFrame
-         * @type {?Phaser.Animations.AnimationFrame}
-         * @default null
-         * @readonly
-         * @since 3.0.0
-         */
-        this.prevFrame = null;
+            /**
+             * A reference to the AnimationFrame that comes before this one in the animation, if any.
+             *
+             * @name Phaser.Animations.AnimationFrame#prevFrame
+             * @type {?Phaser.Animations.AnimationFrame}
+             * @default null
+             * @readonly
+             * @since 3.0.0
+             */
+            this.prevFrame = null;
 
-        /**
-         * A reference to the AnimationFrame that comes after this one in the animation, if any.
-         *
-         * @name Phaser.Animations.AnimationFrame#nextFrame
-         * @type {?Phaser.Animations.AnimationFrame}
-         * @default null
-         * @readonly
-         * @since 3.0.0
-         */
-        this.nextFrame = null;
+            /**
+             * A reference to the AnimationFrame that comes after this one in the animation, if any.
+             *
+             * @name Phaser.Animations.AnimationFrame#nextFrame
+             * @type {?Phaser.Animations.AnimationFrame}
+             * @default null
+             * @readonly
+             * @since 3.0.0
+             */
+            this.nextFrame = null;
 
-        /**
-         * The duration, in ms, of this frame of the animation.
-         *
-         * @name Phaser.Animations.AnimationFrame#duration
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.duration = 0;
+            /**
+             * The duration, in ms, of this frame of the animation.
+             *
+             * @name Phaser.Animations.AnimationFrame#duration
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.duration = 0;
 
-        /**
-         * What % through the animation does this frame come?
-         * This value is generated when the animation is created and cached here.
-         *
-         * @name Phaser.Animations.AnimationFrame#progress
-         * @type {number}
-         * @default 0
-         * @readonly
-         * @since 3.0.0
-         */
-        this.progress = 0;
+            /**
+             * What % through the animation does this frame come?
+             * This value is generated when the animation is created and cached here.
+             *
+             * @name Phaser.Animations.AnimationFrame#progress
+             * @type {number}
+             * @default 0
+             * @readonly
+             * @since 3.0.0
+             */
+            this.progress = 0;
 
-        /**
-         * Is this Frame a KeyFrame within the Animation?
-         *
-         * @name Phaser.Animations.AnimationFrame#isKeyFrame
-         * @type {boolean}
-         * @since 3.50.0
-         */
-        this.isKeyFrame = isKeyFrame;
-    },
+            /**
+             * Is this Frame a KeyFrame within the Animation?
+             *
+             * @name Phaser.Animations.AnimationFrame#isKeyFrame
+             * @type {boolean}
+             * @since 3.50.0
+             */
+            this.isKeyFrame = isKeyFrame;
+        },
 
     /**
      * Generates a JavaScript object suitable for converting to JSON.
@@ -154,8 +155,7 @@ var AnimationFrame = new Class({
      *
      * @return {Phaser.Types.Animations.JSONAnimationFrame} The AnimationFrame data.
      */
-    toJSON: function ()
-    {
+    toJSON: function () {
         return {
             key: this.textureKey,
             frame: this.textureFrame,
@@ -170,8 +170,7 @@ var AnimationFrame = new Class({
      * @method Phaser.Animations.AnimationFrame#destroy
      * @since 3.0.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.frame = undefined;
     }
 

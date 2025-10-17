@@ -37,37 +37,33 @@ var ScriptFile = new Class({
 
     initialize:
 
-    function ScriptFile (loader, key, url, type, xhrSettings)
-    {
-        var extension = 'js';
+        function ScriptFile(loader, key, url, type, xhrSettings) {
+            var extension = 'js';
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            type = GetFastValue(config, 'type', 'script');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-        }
-        else if (type === undefined)
-        {
-            type = 'script';
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                type = GetFastValue(config, 'type', 'script');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+            } else if (type === undefined) {
+                type = 'script';
+            }
 
-        var fileConfig = {
-            type: type,
-            cache: false,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: type,
+                cache: false,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
-    },
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -76,8 +72,7 @@ var ScriptFile = new Class({
      * @method Phaser.Loader.FileTypes.ScriptFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = document.createElement('script');
@@ -161,18 +156,13 @@ var ScriptFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('script', function (key, url, type, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('script', function (key, url, type, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new ScriptFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new ScriptFile(this, key, url, type, xhrSettings));
     }
 

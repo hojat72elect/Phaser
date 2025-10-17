@@ -17,10 +17,8 @@ var PointToLine = require('./PointToLine');
  *
  * @return {boolean} `true` if the Point is on the given line segment, otherwise `false`.
  */
-var PointToLineSegment = function (point, line)
-{
-    if (!PointToLine(point, line))
-    {
+var PointToLineSegment = function (point, line) {
+    if (!PointToLine(point, line)) {
         return false;
     }
 

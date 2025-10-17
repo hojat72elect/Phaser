@@ -19,8 +19,7 @@ var SnapFloor = require('../../math/snap/SnapFloor');
  *
  * @return {object} An object containing the `left`, `right`, `top` and `bottom` bounds.
  */
-var HexagonalCullBounds = function (layer, camera)
-{
+var HexagonalCullBounds = function (layer, camera) {
     var tilemap = layer.tilemapLayer.tilemap;
     var tilemapLayer = layer.tilemapLayer;
 
@@ -37,8 +36,7 @@ var HexagonalCullBounds = function (layer, camera)
     var boundsTop;
     var boundsBottom;
 
-    if (layer.staggerAxis === 'y')
-    {
+    if (layer.staggerAxis === 'y') {
         var rowH = ((tileH - len) / 2 + len);
 
         boundsLeft = SnapFloor(camera.worldView.x - tilemapLayer.x, tileW, 0, true) - tilemapLayer.cullPaddingX;
@@ -46,9 +44,7 @@ var HexagonalCullBounds = function (layer, camera)
 
         boundsTop = SnapFloor(camera.worldView.y - tilemapLayer.y, rowH, 0, true) - tilemapLayer.cullPaddingY;
         boundsBottom = SnapCeil(camera.worldView.bottom - tilemapLayer.y, rowH, 0, true) + tilemapLayer.cullPaddingY;
-    }
-    else
-    {
+    } else {
         var rowW = ((tileW - len) / 2 + len);
 
         boundsLeft = SnapFloor(camera.worldView.x - tilemapLayer.x, rowW, 0, true) - tilemapLayer.cullPaddingX;

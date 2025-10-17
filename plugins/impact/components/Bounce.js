@@ -23,8 +23,7 @@ var Bounce = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setBounce: function (value)
-    {
+    setBounce: function (value) {
         this.body.bounciness = value;
 
         return this;
@@ -40,8 +39,7 @@ var Bounce = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setMinBounceVelocity: function (value)
-    {
+    setMinBounceVelocity: function (value) {
         this.body.minBounceVelocity = value;
 
         return this;
@@ -57,13 +55,11 @@ var Bounce = {
      */
     bounce: {
 
-        get: function ()
-        {
+        get: function () {
             return this.body.bounciness;
         },
 
-        set: function (value)
-        {
+        set: function (value) {
             this.body.bounciness = value;
         }
 

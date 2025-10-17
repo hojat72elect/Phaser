@@ -8,13 +8,11 @@ var NOOP = require('../../utils/NOOP');
 var renderWebGL = NOOP;
 var renderCanvas = NOOP;
 
-if (typeof WEBGL_RENDERER)
-{
+if (typeof WEBGL_RENDERER) {
     renderWebGL = require('./ParticleEmitterWebGLRenderer');
 }
 
-if (typeof CANVAS_RENDERER)
-{
+if (typeof CANVAS_RENDERER) {
     renderCanvas = require('./ParticleEmitterCanvasRenderer');
 }
 

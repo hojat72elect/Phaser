@@ -79,76 +79,75 @@ var ImpactSprite = new Class({
 
     initialize:
 
-    function ImpactSprite (world, x, y, texture, frame)
-    {
-        Sprite.call(this, world.scene, x, y, texture, frame);
+        function ImpactSprite(world, x, y, texture, frame) {
+            Sprite.call(this, world.scene, x, y, texture, frame);
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#body
-         * @type {Phaser.Physics.Impact.Body}
-         * @since 3.0.0
-         */
-        this.body = world.create(x - this.frame.centerX, y - this.frame.centerY, this.width, this.height);
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#body
+             * @type {Phaser.Physics.Impact.Body}
+             * @since 3.0.0
+             */
+            this.body = world.create(x - this.frame.centerX, y - this.frame.centerY, this.width, this.height);
 
-        this.body.parent = this;
-        this.body.gameObject = this;
+            this.body.parent = this;
+            this.body.gameObject = this;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#size
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.size = this.body.size;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#size
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.size = this.body.size;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#offset
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.offset = this.body.offset;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#offset
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.offset = this.body.offset;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#vel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.vel = this.body.vel;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#vel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.vel = this.body.vel;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#accel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.accel = this.body.accel;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#accel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.accel = this.body.accel;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#friction
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.friction = this.body.friction;
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#friction
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.friction = this.body.friction;
 
-        /**
-         * [description]
-         *
-         * @name Phaser.Physics.Impact.ImpactSprite#maxVel
-         * @type {{x: number, y: number}}
-         * @since 3.0.0
-         */
-        this.maxVel = this.body.maxVel;
-    }
+            /**
+             * [description]
+             *
+             * @name Phaser.Physics.Impact.ImpactSprite#maxVel
+             * @type {{x: number, y: number}}
+             * @since 3.0.0
+             */
+            this.maxVel = this.body.maxVel;
+        }
 
 });
 

@@ -28,51 +28,47 @@ var Vector3 = new Class({
 
     initialize:
 
-    function Vector3 (x, y, z)
-    {
-        /**
-         * The x component of this Vector.
-         *
-         * @name Phaser.Math.Vector3#x
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.x = 0;
+        function Vector3(x, y, z) {
+            /**
+             * The x component of this Vector.
+             *
+             * @name Phaser.Math.Vector3#x
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.x = 0;
 
-        /**
-         * The y component of this Vector.
-         *
-         * @name Phaser.Math.Vector3#y
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.y = 0;
+            /**
+             * The y component of this Vector.
+             *
+             * @name Phaser.Math.Vector3#y
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.y = 0;
 
-        /**
-         * The z component of this Vector.
-         *
-         * @name Phaser.Math.Vector3#z
-         * @type {number}
-         * @default 0
-         * @since 3.0.0
-         */
-        this.z = 0;
+            /**
+             * The z component of this Vector.
+             *
+             * @name Phaser.Math.Vector3#z
+             * @type {number}
+             * @default 0
+             * @since 3.0.0
+             */
+            this.z = 0;
 
-        if (typeof x === 'object')
-        {
-            this.x = x.x || 0;
-            this.y = x.y || 0;
-            this.z = x.z || 0;
-        }
-        else
-        {
-            this.x = x || 0;
-            this.y = y || 0;
-            this.z = z || 0;
-        }
-    },
+            if (typeof x === 'object') {
+                this.x = x.x || 0;
+                this.y = x.y || 0;
+                this.z = x.z || 0;
+            } else {
+                this.x = x || 0;
+                this.y = y || 0;
+                this.z = z || 0;
+            }
+        },
 
     /**
      * Set this Vector to point up.
@@ -84,8 +80,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    up: function ()
-    {
+    up: function () {
         this.x = 0;
         this.y = 1;
         this.z = 0;
@@ -103,8 +98,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    min: function (v)
-    {
+    min: function (v) {
         this.x = Math.min(this.x, v.x);
         this.y = Math.min(this.y, v.y);
         this.z = Math.min(this.z, v.z);
@@ -122,8 +116,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    max: function (v)
-    {
+    max: function (v) {
         this.x = Math.max(this.x, v.x);
         this.y = Math.max(this.y, v.y);
         this.z = Math.max(this.z, v.z);
@@ -139,8 +132,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} A new Vector3 object containing this Vectors values.
      */
-    clone: function ()
-    {
+    clone: function () {
         return new Vector3(this.x, this.y, this.z);
     },
 
@@ -155,8 +147,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    addVectors: function (a, b)
-    {
+    addVectors: function (a, b) {
         this.x = a.x + b.x;
         this.y = a.y + b.y;
         this.z = a.z + b.z;
@@ -175,8 +166,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    subVectors: function (a, b)
-    {
+    subVectors: function (a, b) {
         this.x = a.x - b.x;
         this.y = a.y - b.y;
         this.z = a.z - b.z;
@@ -195,8 +185,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    crossVectors: function (a, b)
-    {
+    crossVectors: function (a, b) {
         var ax = a.x;
         var ay = a.y;
         var az = a.z;
@@ -223,8 +212,7 @@ var Vector3 = new Class({
      *
      * @return {boolean} True if the two vectors strictly match, otherwise false.
      */
-    equals: function (v)
-    {
+    equals: function (v) {
         return ((this.x === v.x) && (this.y === v.y) && (this.z === v.z));
     },
 
@@ -238,8 +226,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    copy: function (src)
-    {
+    copy: function (src) {
         this.x = src.x;
         this.y = src.y;
         this.z = src.z || 0;
@@ -259,16 +246,12 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    set: function (x, y, z)
-    {
-        if (typeof x === 'object')
-        {
+    set: function (x, y, z) {
+        if (typeof x === 'object') {
             this.x = x.x || 0;
             this.y = x.y || 0;
             this.z = x.z || 0;
-        }
-        else
-        {
+        } else {
             this.x = x || 0;
             this.y = y || 0;
             this.z = z || 0;
@@ -287,8 +270,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    setFromMatrixPosition: function (m)
-    {
+    setFromMatrixPosition: function (m) {
         return this.fromArray(m.val, 12);
     },
 
@@ -303,8 +285,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    setFromMatrixColumn: function (mat4, index)
-    {
+    setFromMatrixColumn: function (mat4, index) {
         return this.fromArray(mat4.val, index * 4);
     },
 
@@ -323,9 +304,10 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    fromArray: function (array, offset)
-    {
-        if (offset === undefined) { offset = 0; }
+    fromArray: function (array, offset) {
+        if (offset === undefined) {
+            offset = 0;
+        }
 
         this.x = array[offset];
         this.y = array[offset + 1];
@@ -344,8 +326,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    add: function (v)
-    {
+    add: function (v) {
         this.x += v.x;
         this.y += v.y;
         this.z += v.z || 0;
@@ -363,8 +344,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    addScalar: function (s)
-    {
+    addScalar: function (s) {
         this.x += s;
         this.y += s;
         this.z += s;
@@ -383,8 +363,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    addScale: function (v, scale)
-    {
+    addScale: function (v, scale) {
         this.x += v.x * scale;
         this.y += v.y * scale;
         this.z += v.z * scale || 0;
@@ -402,8 +381,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    subtract: function (v)
-    {
+    subtract: function (v) {
         this.x -= v.x;
         this.y -= v.y;
         this.z -= v.z || 0;
@@ -423,8 +401,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    multiply: function (v)
-    {
+    multiply: function (v) {
         this.x *= v.x;
         this.y *= v.y;
         this.z *= v.z || 1;
@@ -442,16 +419,12 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    scale: function (scale)
-    {
-        if (isFinite(scale))
-        {
+    scale: function (scale) {
+        if (isFinite(scale)) {
             this.x *= scale;
             this.y *= scale;
             this.z *= scale;
-        }
-        else
-        {
+        } else {
             this.x = 0;
             this.y = 0;
             this.z = 0;
@@ -472,8 +445,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    divide: function (v)
-    {
+    divide: function (v) {
         this.x /= v.x;
         this.y /= v.y;
         this.z /= v.z || 1;
@@ -489,8 +461,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    negate: function ()
-    {
+    negate: function () {
         this.x = -this.x;
         this.y = -this.y;
         this.z = -this.z;
@@ -508,8 +479,7 @@ var Vector3 = new Class({
      *
      * @return {number} The distance from this Vector to the given Vector.
      */
-    distance: function (v)
-    {
+    distance: function (v) {
         var dx = v.x - this.x;
         var dy = v.y - this.y;
         var dz = v.z - this.z || 0;
@@ -527,8 +497,7 @@ var Vector3 = new Class({
      *
      * @return {number} The distance from this Vector to the given Vector, squared.
      */
-    distanceSq: function (v)
-    {
+    distanceSq: function (v) {
         var dx = v.x - this.x;
         var dy = v.y - this.y;
         var dz = v.z - this.z || 0;
@@ -544,8 +513,7 @@ var Vector3 = new Class({
      *
      * @return {number} The length of this Vector.
      */
-    length: function ()
-    {
+    length: function () {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -561,8 +529,7 @@ var Vector3 = new Class({
      *
      * @return {number} The length of this Vector, squared.
      */
-    lengthSq: function ()
-    {
+    lengthSq: function () {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -580,15 +547,13 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    normalize: function ()
-    {
+    normalize: function () {
         var x = this.x;
         var y = this.y;
         var z = this.z;
         var len = x * x + y * y + z * z;
 
-        if (len > 0)
-        {
+        if (len > 0) {
             len = 1 / Math.sqrt(len);
 
             this.x = x * len;
@@ -609,8 +574,7 @@ var Vector3 = new Class({
      *
      * @return {number} The dot product of this Vector and `v`.
      */
-    dot: function (v)
-    {
+    dot: function (v) {
         return this.x * v.x + this.y * v.y + this.z * v.z;
     },
 
@@ -624,8 +588,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    cross: function (v)
-    {
+    cross: function (v) {
         var ax = this.x;
         var ay = this.y;
         var az = this.z;
@@ -653,9 +616,10 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    lerp: function (v, t)
-    {
-        if (t === undefined) { t = 0; }
+    lerp: function (v, t) {
+        if (t === undefined) {
+            t = 0;
+        }
 
         var ax = this.x;
         var ay = this.y;
@@ -678,8 +642,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    applyMatrix3: function (mat3)
-    {
+    applyMatrix3: function (mat3) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -702,8 +665,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    applyMatrix4: function (mat4)
-    {
+    applyMatrix4: function (mat4) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -728,8 +690,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    transformMat3: function (mat)
-    {
+    transformMat3: function (mat) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -752,8 +713,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    transformMat4: function (mat)
-    {
+    transformMat4: function (mat) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -776,8 +736,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    transformCoordinates: function (mat)
-    {
+    transformCoordinates: function (mat) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -805,8 +764,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    transformQuat: function (q)
-    {
+    transformQuat: function (q) {
         // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
         var x = this.x;
         var y = this.y;
@@ -841,8 +799,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    project: function (mat)
-    {
+    project: function (mat) {
         var x = this.x;
         var y = this.y;
         var z = this.z;
@@ -885,8 +842,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    projectViewMatrix: function (viewMatrix, projectionMatrix)
-    {
+    projectViewMatrix: function (viewMatrix, projectionMatrix) {
         return this.applyMatrix4(viewMatrix).applyMatrix4(projectionMatrix);
     },
 
@@ -901,8 +857,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    unprojectViewMatrix: function (projectionMatrix, worldMatrix)
-    {
+    unprojectViewMatrix: function (projectionMatrix, worldMatrix) {
         return this.applyMatrix4(projectionMatrix).applyMatrix4(worldMatrix);
     },
 
@@ -924,8 +879,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    unproject: function (viewport, invProjectionView)
-    {
+    unproject: function (viewport, invProjectionView) {
         var viewX = viewport.x;
         var viewY = viewport.y;
         var viewWidth = viewport.z;
@@ -950,8 +904,7 @@ var Vector3 = new Class({
      *
      * @return {Phaser.Math.Vector3} This Vector3.
      */
-    reset: function ()
-    {
+    reset: function () {
         this.x = 0;
         this.y = 0;
         this.z = 0;

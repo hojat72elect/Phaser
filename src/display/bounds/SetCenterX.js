@@ -17,8 +17,7 @@
  *
  * @return {Phaser.GameObjects.GameObject} The Game Object that was positioned.
  */
-var SetCenterX = function (gameObject, x)
-{
+var SetCenterX = function (gameObject, x) {
     var offsetX = gameObject.width * gameObject.originX;
 
     gameObject.x = (x + offsetX) - (gameObject.width * 0.5);

@@ -19,27 +19,22 @@ var LineToLine = require('./LineToLine');
  *
  * @return {boolean} `true` if the Triangle and the Line intersect, otherwise `false`.
  */
-var TriangleToLine = function (triangle, line)
-{
+var TriangleToLine = function (triangle, line) {
     //  If the Triangle contains either the start or end point of the line, it intersects
-    if (triangle.contains(line.x1, line.y1) || triangle.contains(line.x2, line.y2))
-    {
+    if (triangle.contains(line.x1, line.y1) || triangle.contains(line.x2, line.y2)) {
         return true;
     }
 
     //  Now check the line against each line of the Triangle
-    if (LineToLine(triangle.getLineA(), line))
-    {
+    if (LineToLine(triangle.getLineA(), line)) {
         return true;
     }
 
-    if (LineToLine(triangle.getLineB(), line))
-    {
+    if (LineToLine(triangle.getLineB(), line)) {
         return true;
     }
 
-    if (LineToLine(triangle.getLineC(), line))
-    {
+    if (LineToLine(triangle.getLineC(), line)) {
         return true;
     }
 

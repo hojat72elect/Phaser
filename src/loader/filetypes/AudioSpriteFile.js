@@ -40,47 +40,41 @@ var AudioSpriteFile = new Class({
 
     initialize:
 
-    function AudioSpriteFile (loader, key, jsonURL, audioURL, audioConfig, audioXhrSettings, jsonXhrSettings)
-    {
-        if (IsPlainObject(key))
-        {
-            var config = key;
+        function AudioSpriteFile(loader, key, jsonURL, audioURL, audioConfig, audioXhrSettings, jsonXhrSettings) {
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            jsonURL = GetFastValue(config, 'jsonURL');
-            audioURL = GetFastValue(config, 'audioURL');
-            audioConfig = GetFastValue(config, 'audioConfig');
-            audioXhrSettings = GetFastValue(config, 'audioXhrSettings');
-            jsonXhrSettings = GetFastValue(config, 'jsonXhrSettings');
-        }
+                key = GetFastValue(config, 'key');
+                jsonURL = GetFastValue(config, 'jsonURL');
+                audioURL = GetFastValue(config, 'audioURL');
+                audioConfig = GetFastValue(config, 'audioConfig');
+                audioXhrSettings = GetFastValue(config, 'audioXhrSettings');
+                jsonXhrSettings = GetFastValue(config, 'jsonXhrSettings');
+            }
 
-        var data;
+            var data;
 
-        //  No url? then we're going to do a json load and parse it from that
-        if (!audioURL)
-        {
-            data = new JSONFile(loader, key, jsonURL, jsonXhrSettings);
-
-            MultiFile.call(this, loader, 'audiosprite', key, [ data ]);
-
-            this.config.resourceLoad = true;
-            this.config.audioConfig = audioConfig;
-            this.config.audioXhrSettings = audioXhrSettings;
-        }
-        else
-        {
-            var audio = AudioFile.create(loader, key, audioURL, audioConfig, audioXhrSettings);
-
-            if (audio)
-            {
+            //  No url? then we're going to do a json load and parse it from that
+            if (!audioURL) {
                 data = new JSONFile(loader, key, jsonURL, jsonXhrSettings);
 
-                MultiFile.call(this, loader, 'audiosprite', key, [ audio, data ]);
+                MultiFile.call(this, loader, 'audiosprite', key, [data]);
 
-                this.config.resourceLoad = false;
+                this.config.resourceLoad = true;
+                this.config.audioConfig = audioConfig;
+                this.config.audioXhrSettings = audioXhrSettings;
+            } else {
+                var audio = AudioFile.create(loader, key, audioURL, audioConfig, audioXhrSettings);
+
+                if (audio) {
+                    data = new JSONFile(loader, key, jsonURL, jsonXhrSettings);
+
+                    MultiFile.call(this, loader, 'audiosprite', key, [audio, data]);
+
+                    this.config.resourceLoad = false;
+                }
             }
-        }
-    },
+        },
 
     /**
      * Called by each File when it finishes loading.
@@ -90,16 +84,13 @@ var AudioSpriteFile = new Class({
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
-    onFileComplete: function (file)
-    {
+    onFileComplete: function (file) {
         var index = this.files.indexOf(file);
 
-        if (index !== -1)
-        {
+        if (index !== -1) {
             this.pending--;
 
-            if (this.config.resourceLoad && file.type === 'json' && file.data.hasOwnProperty('resources'))
-            {
+            if (this.config.resourceLoad && file.type === 'json' && file.data.hasOwnProperty('resources')) {
                 //  Inspect the data for the files to now load
                 var urls = file.data.resources;
 
@@ -108,8 +99,7 @@ var AudioSpriteFile = new Class({
 
                 var audio = AudioFile.create(this.loader, file.key, urls, audioConfig, audioXhrSettings);
 
-                if (audio)
-                {
+                if (audio) {
                     this.addToMultiFile(audio);
 
                     this.loader.addFile(audio);
@@ -124,10 +114,8 @@ var AudioSpriteFile = new Class({
      * @method Phaser.Loader.FileTypes.AudioSpriteFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
-        if (this.isReadyToProcess())
-        {
+    addToCache: function () {
+        if (this.isReadyToProcess()) {
             var fileA = this.files[0];
             var fileB = this.files[1];
 
@@ -240,14 +228,12 @@ var AudioSpriteFile = new Class({
  *
  * @return {this} The Loader.
  */
-FileTypesManager.register('audioSprite', function (key, jsonURL, audioURL, audioConfig, audioXhrSettings, jsonXhrSettings)
-{
+FileTypesManager.register('audioSprite', function (key, jsonURL, audioURL, audioConfig, audioXhrSettings, jsonXhrSettings) {
     var game = this.systems.game;
     var gameAudioConfig = game.config.audio;
     var deviceAudio = game.device.audio;
 
-    if ((gameAudioConfig && gameAudioConfig.noAudio) || (!deviceAudio.webAudio && !deviceAudio.audioData))
-    {
+    if ((gameAudioConfig && gameAudioConfig.noAudio) || (!deviceAudio.webAudio && !deviceAudio.audioData)) {
         //  Sounds are disabled, so skip loading audio
         return this;
     }
@@ -258,24 +244,18 @@ FileTypesManager.register('audioSprite', function (key, jsonURL, audioURL, audio
     //  Or an array of objects in the key argument
     //  Or a single entry where all arguments have been defined
 
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             multifile = new AudioSpriteFile(this, key[i]);
 
-            if (multifile.files)
-            {
+            if (multifile.files) {
                 this.addFile(multifile.files);
             }
         }
-    }
-    else
-    {
+    } else {
         multifile = new AudioSpriteFile(this, key, jsonURL, audioURL, audioConfig, audioXhrSettings, jsonXhrSettings);
 
-        if (multifile.files)
-        {
+        if (multifile.files) {
             this.addFile(multifile.files);
         }
     }

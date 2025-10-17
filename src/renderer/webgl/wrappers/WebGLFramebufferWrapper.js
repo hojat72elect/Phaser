@@ -8,7 +8,7 @@ var Class = require('../../../utils/Class');
 
 // Possible errors that can be thrown by `gl.checkFramebufferStatus()`.
 /**
- * @ignore 
+ * @ignore
  */
 var errors = {
     36054: 'Incomplete Attachment',
@@ -42,70 +42,69 @@ var WebGLFramebufferWrapper = new Class({
 
     initialize:
 
-    function WebGLFramebufferWrapper (gl, width, height, renderTexture, addDepthStencilBuffer)
-    {
-        /**
-         * The WebGLFramebuffer being wrapped by this class.
-         *
-         * This property could change at any time.
-         * Therefore, you should never store a reference to this value.
-         * It should only be passed directly to the WebGL API for drawing.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#webGLFramebuffer
-         * @type {?WebGLFramebuffer}
-         * @default null
-         * @since 3.80.0
-         */
-        this.webGLFramebuffer = null;
+        function WebGLFramebufferWrapper(gl, width, height, renderTexture, addDepthStencilBuffer) {
+            /**
+             * The WebGLFramebuffer being wrapped by this class.
+             *
+             * This property could change at any time.
+             * Therefore, you should never store a reference to this value.
+             * It should only be passed directly to the WebGL API for drawing.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#webGLFramebuffer
+             * @type {?WebGLFramebuffer}
+             * @default null
+             * @since 3.80.0
+             */
+            this.webGLFramebuffer = null;
 
-        /**
-         * The WebGL context this WebGLFramebuffer belongs to.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#gl
-         * @type {WebGLRenderingContext}
-         * @since 3.80.0
-         */
-        this.gl = gl;
+            /**
+             * The WebGL context this WebGLFramebuffer belongs to.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#gl
+             * @type {WebGLRenderingContext}
+             * @since 3.80.0
+             */
+            this.gl = gl;
 
-        /**
-         * Width of the depth stencil.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#width
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.width = width;
+            /**
+             * Width of the depth stencil.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#width
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.width = width;
 
-        /**
-         * Height of the depth stencil.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#height
-         * @type {number}
-         * @since 3.80.0
-         */
-        this.height = height;
+            /**
+             * Height of the depth stencil.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#height
+             * @type {number}
+             * @since 3.80.0
+             */
+            this.height = height;
 
-        /**
-         * The color texture where the color pixels are written.
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#renderTexture
-         * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-         * @since 3.80.0
-         */
-        this.renderTexture = renderTexture;
+            /**
+             * The color texture where the color pixels are written.
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#renderTexture
+             * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
+             * @since 3.80.0
+             */
+            this.renderTexture = renderTexture;
 
-        /**
-         * Create a Renderbuffer for the depth stencil?
-         *
-         * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#addDepthStencilBuffer
-         * @type {boolean}
-         * @default false
-         * @since 3.80.0
-         */
-        this.addDepthStencilBuffer = !!addDepthStencilBuffer;
+            /**
+             * Create a Renderbuffer for the depth stencil?
+             *
+             * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#addDepthStencilBuffer
+             * @type {boolean}
+             * @default false
+             * @since 3.80.0
+             */
+            this.addDepthStencilBuffer = !!addDepthStencilBuffer;
 
-        this.createResource();
-    },
+            this.createResource();
+        },
 
     /**
      * Creates a WebGLFramebuffer from the given parameters.
@@ -116,12 +115,10 @@ var WebGLFramebufferWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#createResource
      * @since 3.80.0
      */
-    createResource: function ()
-    {
+    createResource: function () {
         var gl = this.gl;
 
-        if (gl.isContextLost())
-        {
+        if (gl.isContextLost()) {
             // GL state can't be updated right now.
             // `createResource` will run when the context is restored.
             return;
@@ -141,13 +138,11 @@ var WebGLFramebufferWrapper = new Class({
 
         complete = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
 
-        if (complete !== gl.FRAMEBUFFER_COMPLETE)
-        {
+        if (complete !== gl.FRAMEBUFFER_COMPLETE) {
             throw new Error('Framebuffer status: ' + (errors[complete] || complete));
         }
 
-        if (this.addDepthStencilBuffer)
-        {
+        if (this.addDepthStencilBuffer) {
             var depthStencilBuffer = gl.createRenderbuffer();
 
             gl.bindRenderbuffer(gl.RENDERBUFFER, depthStencilBuffer);
@@ -164,24 +159,20 @@ var WebGLFramebufferWrapper = new Class({
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#destroy
      * @since 3.80.0
      */
-    destroy: function ()
-    {
-        if (this.webGLFramebuffer === null)
-        {
+    destroy: function () {
+        if (this.webGLFramebuffer === null) {
             return;
         }
 
         var gl = this.gl;
 
-        if (!gl.isContextLost())
-        {
+        if (!gl.isContextLost()) {
             gl.bindFramebuffer(gl.FRAMEBUFFER, this.webGLFramebuffer);
 
             // Check for a color attachment and remove it
             var colorAttachment = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
 
-            if (colorAttachment !== null)
-            {
+            if (colorAttachment !== null) {
                 gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, null, 0);
 
                 gl.deleteTexture(colorAttachment);
@@ -190,8 +181,7 @@ var WebGLFramebufferWrapper = new Class({
             // Check for a depth-stencil attachment and remove it
             var depthStencilAttachment = gl.getFramebufferAttachmentParameter(gl.FRAMEBUFFER, gl.DEPTH_STENCIL_ATTACHMENT, gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME);
 
-            if (depthStencilAttachment !== null)
-            {
+            if (depthStencilAttachment !== null) {
                 gl.deleteRenderbuffer(depthStencilAttachment);
             }
 

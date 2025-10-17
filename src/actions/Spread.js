@@ -7,11 +7,11 @@
 /**
  * Takes an array of Game Objects and then modifies their `property` so the value equals, or is incremented, by the
  * calculated spread value.
- * 
+ *
  * The spread value is derived from the given `min` and `max` values and the total number of items in the array.
- * 
+ *
  * For example, to cause an array of Sprites to change in alpha from 0 to 1 you could call:
- * 
+ *
  * ```javascript
  * Phaser.Actions.Spread(itemsArray, 'alpha', 0, 1);
  * ```
@@ -29,18 +29,18 @@
  *
  * @return {(array|Phaser.GameObjects.GameObject[])} The array of Game Objects that were passed to this Action.
  */
-var Spread = function (items, property, min, max, inc)
-{
-    if (inc === undefined) { inc = false; }
-    if (items.length === 0) { return items; }
+var Spread = function (items, property, min, max, inc) {
+    if (inc === undefined) {
+        inc = false;
+    }
+    if (items.length === 0) {
+        return items;
+    }
     if (items.length === 1) // if only one item put it at the center
     {
-        if (inc)
-        {
+        if (inc) {
             items[0][property] += (max + min) / 2;
-        }
-        else
-        {
+        } else {
             items[0][property] = (max + min) / 2;
         }
 
@@ -50,17 +50,12 @@ var Spread = function (items, property, min, max, inc)
     var step = Math.abs(max - min) / (items.length - 1);
     var i;
 
-    if (inc)
-    {
-        for (i = 0; i < items.length; i++)
-        {
+    if (inc) {
+        for (i = 0; i < items.length; i++) {
             items[i][property] += i * step + min;
         }
-    }
-    else
-    {
-        for (i = 0; i < items.length; i++)
-        {
+    } else {
+        for (i = 0; i < items.length; i++) {
             items[i][property] = i * step + min;
         }
     }

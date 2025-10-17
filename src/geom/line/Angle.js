@@ -14,8 +14,7 @@
  *
  * @return {number} The angle of the line, in radians.
  */
-var Angle = function (line)
-{
+var Angle = function (line) {
     return Math.atan2(line.y2 - line.y1, line.x2 - line.x1);
 };
 

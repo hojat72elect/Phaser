@@ -36,36 +36,34 @@ var TextFile = new Class({
 
     initialize:
 
-    function TextFile (loader, key, url, xhrSettings)
-    {
-        var type = 'text';
-        var extension = 'txt';
-        var cache = loader.cacheManager.text;
+        function TextFile(loader, key, url, xhrSettings) {
+            var type = 'text';
+            var extension = 'txt';
+            var cache = loader.cacheManager.text;
 
-        if (IsPlainObject(key))
-        {
-            var config = key;
+            if (IsPlainObject(key)) {
+                var config = key;
 
-            key = GetFastValue(config, 'key');
-            url = GetFastValue(config, 'url');
-            xhrSettings = GetFastValue(config, 'xhrSettings');
-            extension = GetFastValue(config, 'extension', extension);
-            type = GetFastValue(config, 'type', type);
-            cache = GetFastValue(config, 'cache', cache);
-        }
+                key = GetFastValue(config, 'key');
+                url = GetFastValue(config, 'url');
+                xhrSettings = GetFastValue(config, 'xhrSettings');
+                extension = GetFastValue(config, 'extension', extension);
+                type = GetFastValue(config, 'type', type);
+                cache = GetFastValue(config, 'cache', cache);
+            }
 
-        var fileConfig = {
-            type: type,
-            cache: cache,
-            extension: extension,
-            responseType: 'text',
-            key: key,
-            url: url,
-            xhrSettings: xhrSettings
-        };
+            var fileConfig = {
+                type: type,
+                cache: cache,
+                extension: extension,
+                responseType: 'text',
+                key: key,
+                url: url,
+                xhrSettings: xhrSettings
+            };
 
-        File.call(this, loader, fileConfig);
-    },
+            File.call(this, loader, fileConfig);
+        },
 
     /**
      * Called automatically by Loader.nextFile.
@@ -74,8 +72,7 @@ var TextFile = new Class({
      * @method Phaser.Loader.FileTypes.TextFile#onProcess
      * @since 3.7.0
      */
-    onProcess: function ()
-    {
+    onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
 
         this.data = this.xhrLoader.responseText;
@@ -152,18 +149,13 @@ var TextFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('text', function (key, url, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('text', function (key, url, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new TextFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new TextFile(this, key, url, xhrSettings));
     }
 

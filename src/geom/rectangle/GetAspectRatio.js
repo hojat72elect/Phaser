@@ -14,8 +14,7 @@
  *
  * @return {number} The width/height ratio of the rectangle.
  */
-var GetAspectRatio = function (rect)
-{
+var GetAspectRatio = function (rect) {
     return (rect.height === 0) ? NaN : rect.width / rect.height;
 };
 

@@ -20,15 +20,13 @@ var SetTransform = require('../../../renderer/canvas/utils/SetTransform');
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
-{
+var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix) {
     var text = src._text;
     var textLength = text.length;
 
     var ctx = renderer.currentContext;
 
-    if (textLength === 0 || !SetTransform(renderer, ctx, src, camera, parentMatrix))
-    {
+    if (textLength === 0 || !SetTransform(renderer, ctx, src, camera, parentMatrix)) {
         return;
     }
 
@@ -75,20 +73,16 @@ var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
     var bounds = src.getTextBounds(false);
 
     //  In case the method above changed it (word wrapping)
-    if (src.maxWidth > 0)
-    {
+    if (src.maxWidth > 0) {
         text = bounds.wrappedText;
         textLength = text.length;
     }
 
     var lineData = src._bounds.lines;
 
-    if (align === 1)
-    {
+    if (align === 1) {
         lineOffsetX = (lineData.longest - lineData.lengths[0]) / 2;
-    }
-    else if (align === 2)
-    {
+    } else if (align === 2) {
         lineOffsetX = (lineData.longest - lineData.lengths[0]);
     }
 
@@ -96,20 +90,15 @@ var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
     var roundPixels = camera.roundPixels;
 
-    for (var i = 0; i < textLength; i++)
-    {
+    for (var i = 0; i < textLength; i++) {
         charCode = text.charCodeAt(i);
 
-        if (charCode === 10)
-        {
+        if (charCode === 10) {
             currentLine++;
 
-            if (align === 1)
-            {
+            if (align === 1) {
                 lineOffsetX = (lineData.longest - lineData.lengths[currentLine]) / 2;
-            }
-            else if (align === 2)
-            {
+            } else if (align === 2) {
                 lineOffsetX = (lineData.longest - lineData.lengths[currentLine]);
             }
 
@@ -123,8 +112,7 @@ var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
 
         glyph = chars[charCode];
 
-        if (!glyph)
-        {
+        if (!glyph) {
             continue;
         }
 
@@ -137,8 +125,7 @@ var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
         x = glyph.xOffset + xAdvance;
         y = glyph.yOffset + yAdvance;
 
-        if (lastGlyph !== null)
-        {
+        if (lastGlyph !== null) {
             var kerningOffset = glyph.kerning[lastCharCode];
             x += (kerningOffset !== undefined) ? kerningOffset : 0;
         }
@@ -153,13 +140,11 @@ var BitmapTextCanvasRenderer = function (renderer, src, camera, parentMatrix)
         lastCharCode = charCode;
 
         //  Nothing to render or a space? Then skip to the next glyph
-        if (glyphW === 0 || glyphH === 0 || charCode === 32)
-        {
+        if (glyphW === 0 || glyphH === 0 || charCode === 32) {
             continue;
         }
 
-        if (roundPixels)
-        {
+        if (roundPixels) {
             x = Math.round(x);
             y = Math.round(y);
         }

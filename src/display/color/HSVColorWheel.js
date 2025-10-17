@@ -17,15 +17,17 @@ var HSVToRGB = require('./HSVToRGB');
  *
  * @return {Phaser.Types.Display.ColorObject[]} An array containing 360 ColorObject elements, where each element contains a Color object corresponding to the color at that point in the HSV color wheel.
  */
-var HSVColorWheel = function (s, v)
-{
-    if (s === undefined) { s = 1; }
-    if (v === undefined) { v = 1; }
+var HSVColorWheel = function (s, v) {
+    if (s === undefined) {
+        s = 1;
+    }
+    if (v === undefined) {
+        v = 1;
+    }
 
     var colors = [];
 
-    for (var c = 0; c <= 359; c++)
-    {
+    for (var c = 0; c <= 359; c++) {
         colors.push(HSVToRGB(c / 359, s, v));
     }
 

@@ -31,8 +31,7 @@
  *
  * @return {T[][]} The column reversed matrix.
  */
-var ReverseColumns = function (matrix)
-{
+var ReverseColumns = function (matrix) {
     return matrix.reverse();
 };
 

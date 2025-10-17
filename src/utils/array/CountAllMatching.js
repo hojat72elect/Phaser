@@ -20,21 +20,21 @@ var SafeRange = require('./SafeRange');
  *
  * @return {number} The total number of elements with properties matching the given value.
  */
-var CountAllMatching = function (array, property, value, startIndex, endIndex)
-{
-    if (startIndex === undefined) { startIndex = 0; }
-    if (endIndex === undefined) { endIndex = array.length; }
+var CountAllMatching = function (array, property, value, startIndex, endIndex) {
+    if (startIndex === undefined) {
+        startIndex = 0;
+    }
+    if (endIndex === undefined) {
+        endIndex = array.length;
+    }
 
     var total = 0;
 
-    if (SafeRange(array, startIndex, endIndex))
-    {
-        for (var i = startIndex; i < endIndex; i++)
-        {
+    if (SafeRange(array, startIndex, endIndex)) {
+        for (var i = startIndex; i < endIndex; i++) {
             var child = array[i];
 
-            if (child[property] === value)
-            {
+            if (child[property] === value) {
                 total++;
             }
         }

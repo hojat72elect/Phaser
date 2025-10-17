@@ -21,26 +21,16 @@ var StaggeredCullTiles = require('./StaggeredCullTiles');
  *
  * @return {function} The function to use to cull tiles for the given map type.
  */
-var GetCullTilesFunction = function (orientation)
-{
-    if (orientation === CONST.ORTHOGONAL)
-    {
+var GetCullTilesFunction = function (orientation) {
+    if (orientation === CONST.ORTHOGONAL) {
         return CullTiles;
-    }
-    else if (orientation === CONST.HEXAGONAL)
-    {
+    } else if (orientation === CONST.HEXAGONAL) {
         return HexagonalCullTiles;
-    }
-    else if (orientation === CONST.STAGGERED)
-    {
+    } else if (orientation === CONST.STAGGERED) {
         return StaggeredCullTiles;
-    }
-    else if (orientation === CONST.ISOMETRIC)
-    {
+    } else if (orientation === CONST.ISOMETRIC) {
         return IsometricCullTiles;
-    }
-    else
-    {
+    } else {
         return NOOP;
     }
 };

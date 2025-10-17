@@ -20,28 +20,22 @@ var UppercaseFirst = require('../../utils/string/UppercaseFirst');
  *
  * @return {function} The ease function.
  */
-var GetEaseFunction = function (ease, easeParams)
-{
+var GetEaseFunction = function (ease, easeParams) {
     //  Default ease function
     var easeFunction = EaseMap.Power0;
 
     //  Prepare ease function
-    if (typeof ease === 'string')
-    {
+    if (typeof ease === 'string') {
         //  String based look-up
 
         //  1) They specified it correctly
-        if (EaseMap.hasOwnProperty(ease))
-        {
+        if (EaseMap.hasOwnProperty(ease)) {
             easeFunction = EaseMap[ease];
-        }
-        else
-        {
+        } else {
             //  Do some string manipulation to try and find it
             var direction = '';
 
-            if (ease.indexOf('.'))
-            {
+            if (ease.indexOf('.')) {
                 //  quad.in = Quad.easeIn
                 //  quad.out = Quad.easeOut
                 //  quad.inout = Quad.easeInOut
@@ -50,37 +44,28 @@ var GetEaseFunction = function (ease, easeParams)
 
                 var directionLower = direction.toLowerCase();
 
-                if (directionLower === 'in')
-                {
+                if (directionLower === 'in') {
                     direction = 'easeIn';
-                }
-                else if (directionLower === 'out')
-                {
+                } else if (directionLower === 'out') {
                     direction = 'easeOut';
-                }
-                else if (directionLower === 'inout')
-                {
+                } else if (directionLower === 'inout') {
                     direction = 'easeInOut';
                 }
             }
 
             ease = UppercaseFirst(ease.substring(0, ease.indexOf('.') + 1) + direction);
 
-            if (EaseMap.hasOwnProperty(ease))
-            {
+            if (EaseMap.hasOwnProperty(ease)) {
                 easeFunction = EaseMap[ease];
             }
         }
-    }
-    else if (typeof ease === 'function')
-    {
+    } else if (typeof ease === 'function') {
         //  Custom function
         easeFunction = ease;
     }
 
     //  No custom ease parameters?
-    if (!easeParams)
-    {
+    if (!easeParams) {
         //  Return ease function
         return easeFunction;
     }
@@ -90,8 +75,7 @@ var GetEaseFunction = function (ease, easeParams)
     cloneParams.unshift(0);
 
     //  Return ease function with custom ease parameters
-    return function (v)
-    {
+    return function (v) {
         cloneParams[0] = v;
 
         return easeFunction.apply(this, cloneParams);

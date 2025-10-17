@@ -24,13 +24,11 @@ var tempMatrix = new TransformMatrix();
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that is rendering the Game Object.
  * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - This transform matrix is defined if the game object is nested
  */
-var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix)
-{
+var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatrix) {
     var text = src.text;
     var textLength = text.length;
 
-    if (textLength === 0)
-    {
+    if (textLength === 0) {
         return;
     }
 
@@ -50,8 +48,7 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
 
     var crop = (src.cropWidth > 0 || src.cropHeight > 0);
 
-    if (crop)
-    {
+    if (crop) {
         pipeline.flush();
 
         renderer.pushScissor(
@@ -99,20 +96,16 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
     var bounds = src.getTextBounds(false);
 
     //  In case the method above changed it (word wrapping)
-    if (src.maxWidth > 0)
-    {
+    if (src.maxWidth > 0) {
         text = bounds.wrappedText;
         textLength = text.length;
     }
 
     var lineData = src._bounds.lines;
 
-    if (align === 1)
-    {
+    if (align === 1) {
         lineOffsetX = (lineData.longest - lineData.lengths[0]) / 2;
-    }
-    else if (align === 2)
-    {
+    } else if (align === 2) {
         lineOffsetX = (lineData.longest - lineData.lengths[0]);
     }
 
@@ -120,21 +113,16 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
     var displayCallback = src.displayCallback;
     var callbackData = src.callbackData;
 
-    for (var i = 0; i < textLength; i++)
-    {
+    for (var i = 0; i < textLength; i++) {
         charCode = text.charCodeAt(i);
 
         //  Carriage-return
-        if (charCode === 10)
-        {
+        if (charCode === 10) {
             currentLine++;
 
-            if (align === 1)
-            {
+            if (align === 1) {
                 lineOffsetX = (lineData.longest - lineData.lengths[currentLine]) / 2;
-            }
-            else if (align === 2)
-            {
+            } else if (align === 2) {
                 lineOffsetX = (lineData.longest - lineData.lengths[currentLine]);
             }
 
@@ -147,8 +135,7 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
 
         glyph = chars[charCode];
 
-        if (!glyph)
-        {
+        if (!glyph) {
             continue;
         }
 
@@ -158,8 +145,7 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
         var x = (glyph.xOffset + xAdvance) - scrollX;
         var y = (glyph.yOffset + yAdvance) - scrollY;
 
-        if (lastGlyph !== null)
-        {
+        if (lastGlyph !== null) {
             var kerningOffset = glyph.kerning[lastCharCode] || 0;
             x += kerningOffset;
             xAdvance += kerningOffset;
@@ -170,16 +156,14 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
         lastCharCode = charCode;
 
         //  Nothing to render or a space? Then skip to the next glyph
-        if (glyphW === 0 || glyphH === 0 || charCode === 32)
-        {
+        if (glyphW === 0 || glyphH === 0 || charCode === 32) {
             continue;
         }
 
         scale = (src.fontSize / src.fontData.size);
         rotation = 0;
 
-        if (displayCallback)
-        {
+        if (displayCallback) {
             callbackData.color = 0;
             callbackData.tint.topLeft = tintTL;
             callbackData.tint.topRight = tintTR;
@@ -200,15 +184,12 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
             scale = output.scale;
             rotation = output.rotation;
 
-            if (output.color)
-            {
+            if (output.color) {
                 tintTL = output.color;
                 tintTR = output.color;
                 tintBL = output.color;
                 tintBR = output.color;
-            }
-            else
-            {
+            } else {
                 tintTL = output.tint.topLeft;
                 tintTR = output.tint.topRight;
                 tintBL = output.tint.bottomLeft;
@@ -253,8 +234,7 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
         var tx3 = xw * spriteMatrix.a + spriteMatrix.e;
         var ty3 = xw * spriteMatrix.b + spriteMatrix.f;
 
-        if (roundPixels)
-        {
+        if (roundPixels) {
             tx0 = Math.round(tx0);
             ty0 = Math.round(ty0);
 
@@ -268,8 +248,7 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
             ty3 = Math.round(ty3);
         }
 
-        if (pipeline.shouldFlush(6))
-        {
+        if (pipeline.shouldFlush(6)) {
             pipeline.flush();
             textureUnit = pipeline.setGameObject(src);
         }
@@ -277,8 +256,7 @@ var DynamicBitmapTextWebGLRenderer = function (renderer, src, camera, parentMatr
         pipeline.batchQuad(src, tx0, ty0, tx1, ty1, tx2, ty2, tx3, ty3, u0, v0, u1, v1, tintTL, tintTR, tintBL, tintBR, tintEffect, texture, textureUnit);
     }
 
-    if (crop)
-    {
+    if (crop) {
         pipeline.flush();
 
         renderer.popScissor();

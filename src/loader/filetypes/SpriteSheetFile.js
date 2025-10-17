@@ -35,12 +35,11 @@ var SpriteSheetFile = new Class({
 
     initialize:
 
-    function SpriteSheetFile (loader, key, url, frameConfig, xhrSettings)
-    {
-        ImageFile.call(this, loader, key, url, xhrSettings, frameConfig);
+        function SpriteSheetFile(loader, key, url, frameConfig, xhrSettings) {
+            ImageFile.call(this, loader, key, url, xhrSettings, frameConfig);
 
-        this.type = 'spritesheet';
-    },
+            this.type = 'spritesheet';
+        },
 
     /**
      * Adds this file to its target cache upon successful loading and processing.
@@ -48,25 +47,19 @@ var SpriteSheetFile = new Class({
      * @method Phaser.Loader.FileTypes.SpriteSheetFile#addToCache
      * @since 3.7.0
      */
-    addToCache: function ()
-    {
+    addToCache: function () {
         //  Check if we have a linked normal map
         var linkFile = this.linkFile;
 
-        if (linkFile)
-        {
+        if (linkFile) {
             //  We do, but has it loaded?
-            if (linkFile.state >= CONST.FILE_COMPLETE)
-            {
+            if (linkFile.state >= CONST.FILE_COMPLETE) {
                 //  Both files have loaded
-                if (this.type === 'normalMap')
-                {
+                if (this.type === 'normalMap') {
                     //  linkFile.data = Image
                     //  this.data = Normal Map
                     this.cache.addSpriteSheet(this.key, linkFile.data, this.config, this.data);
-                }
-                else
-                {
+                } else {
                     //  linkFile.data = Normal Map
                     //  this.data = Image
                     this.cache.addSpriteSheet(this.key, this.data, this.config, linkFile.data);
@@ -75,9 +68,7 @@ var SpriteSheetFile = new Class({
 
             //  Nothing to do here, we'll use the linkFile `addToCache` call
             //  to process this pair
-        }
-        else
-        {
+        } else {
             this.cache.addSpriteSheet(this.key, this.data, this.config);
         }
     }
@@ -192,18 +183,13 @@ var SpriteSheetFile = new Class({
  *
  * @return {this} The Loader instance.
  */
-FileTypesManager.register('spritesheet', function (key, url, frameConfig, xhrSettings)
-{
-    if (Array.isArray(key))
-    {
-        for (var i = 0; i < key.length; i++)
-        {
+FileTypesManager.register('spritesheet', function (key, url, frameConfig, xhrSettings) {
+    if (Array.isArray(key)) {
+        for (var i = 0; i < key.length; i++) {
             //  If it's an array it has to be an array of Objects, so we get everything out of the 'key' object
             this.addFile(new SpriteSheetFile(this, key[i]));
         }
-    }
-    else
-    {
+    } else {
         this.addFile(new SpriteSheetFile(this, key, url, frameConfig, xhrSettings));
     }
 

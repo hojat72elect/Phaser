@@ -24,21 +24,18 @@ var SetGameObject = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    setGameObject: function (gameObject, sync)
-    {
-        if (sync === undefined) { sync = true; }
+    setGameObject: function (gameObject, sync) {
+        if (sync === undefined) {
+            sync = true;
+        }
 
-        if (gameObject)
-        {
+        if (gameObject) {
             this.body.gameObject = gameObject;
 
-            if (sync)
-            {
+            if (sync) {
                 this.syncGameObject();
             }
-        }
-        else
-        {
+        } else {
             this.body.gameObject = null;
         }
 
@@ -53,12 +50,10 @@ var SetGameObject = {
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
-    syncGameObject: function ()
-    {
+    syncGameObject: function () {
         var gameObject = this.body.gameObject;
 
-        if (gameObject)
-        {
+        if (gameObject) {
             this.setBodySize(gameObject.width * gameObject.scaleX, gameObject.height * gameObject.scaleY);
         }
 

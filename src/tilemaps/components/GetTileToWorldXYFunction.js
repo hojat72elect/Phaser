@@ -21,26 +21,16 @@ var TileToWorldXY = require('./TileToWorldXY');
  *
  * @return {function} The function to use to translate tiles for the given map type.
  */
-var GetTileToWorldXYFunction = function (orientation)
-{
-    if (orientation === CONST.ORTHOGONAL)
-    {
+var GetTileToWorldXYFunction = function (orientation) {
+    if (orientation === CONST.ORTHOGONAL) {
         return TileToWorldXY;
-    }
-    else if (orientation === CONST.ISOMETRIC)
-    {
+    } else if (orientation === CONST.ISOMETRIC) {
         return IsometricTileToWorldXY;
-    }
-    else if (orientation === CONST.HEXAGONAL)
-    {
+    } else if (orientation === CONST.HEXAGONAL) {
         return HexagonalTileToWorldXY;
-    }
-    else if (orientation === CONST.STAGGERED)
-    {
+    } else if (orientation === CONST.STAGGERED) {
         return StaggeredTileToWorldXY;
-    }
-    else
-    {
+    } else {
         return NOOP;
     }
 };

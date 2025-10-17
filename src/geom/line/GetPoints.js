@@ -29,13 +29,13 @@ var Point = require('../point/Point');
  *
  * @return {(array|Phaser.Geom.Point[])} An array of Points, or point-like objects, containing the coordinates of the points on the line.
  */
-var GetPoints = function (line, quantity, stepRate, out)
-{
-    if (out === undefined) { out = []; }
+var GetPoints = function (line, quantity, stepRate, out) {
+    if (out === undefined) {
+        out = [];
+    }
 
     //  If quantity is a falsey value (false, null, 0, undefined, etc) then we calculate it based on the stepRate instead.
-    if (!quantity && stepRate > 0)
-    {
+    if (!quantity && stepRate > 0) {
         quantity = Length(line) / stepRate;
     }
 
@@ -45,8 +45,7 @@ var GetPoints = function (line, quantity, stepRate, out)
     var x2 = line.x2;
     var y2 = line.y2;
 
-    for (var i = 0; i < quantity; i++)
-    {
+    for (var i = 0; i < quantity; i++) {
         var position = i / quantity;
 
         var x = x1 + (x2 - x1) * position;

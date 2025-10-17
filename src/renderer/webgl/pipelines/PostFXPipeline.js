@@ -100,135 +100,133 @@ var PostFXPipeline = new Class({
 
     initialize:
 
-    function PostFXPipeline (config)
-    {
-        config.renderTarget = GetFastValue(config, 'renderTarget', 1);
-        config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS);
-        config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS);
-        config.attributes = GetFastValue(config, 'attributes', [
-            {
-                name: 'inPosition',
-                size: 2
-            },
-            {
-                name: 'inTexCoord',
-                size: 2
+        function PostFXPipeline(config) {
+            config.renderTarget = GetFastValue(config, 'renderTarget', 1);
+            config.fragShader = GetFastValue(config, 'fragShader', ShaderSourceFS);
+            config.vertShader = GetFastValue(config, 'vertShader', ShaderSourceVS);
+            config.attributes = GetFastValue(config, 'attributes', [
+                {
+                    name: 'inPosition',
+                    size: 2
+                },
+                {
+                    name: 'inTexCoord',
+                    size: 2
+                }
+            ]);
+            config.batchSize = 1;
+            config.vertices = [
+                -1, -1, 0, 0,
+                -1, 1, 0, 1,
+                1, 1, 1, 1,
+                -1, -1, 0, 0,
+                1, 1, 1, 1,
+                1, -1, 1, 0
+            ];
+
+            WebGLPipeline.call(this, config);
+
+            this.isPostFX = true;
+
+            /**
+             * If this Post Pipeline belongs to a Game Object or Camera,
+             * this property contains a reference to it.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#gameObject
+             * @type {(Phaser.GameObjects.GameObject|Phaser.Cameras.Scene2D.Camera)}
+             * @since 3.50.0
+             */
+            this.gameObject;
+
+            /**
+             * If this Post Pipeline belongs to an FX Controller, this is a
+             * reference to it.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#controller
+             * @type {Phaser.FX.Controller}
+             * @since 3.60.0
+             */
+            this.controller;
+
+            /**
+             * A Color Matrix instance belonging to this pipeline.
+             *
+             * Used during calls to the `drawFrame` method.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#colorMatrix
+             * @type {Phaser.Display.ColorMatrix}
+             * @since 3.50.0
+             */
+            this.colorMatrix = new ColorMatrix();
+
+            /**
+             * A reference to the Full Frame 1 Render Target that belongs to the
+             * Utility Pipeline. This property is set during the `boot` method.
+             *
+             * This Render Target is the full size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#fullFrame1
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @default null
+             * @since 3.50.0
+             */
+            this.fullFrame1;
+
+            /**
+             * A reference to the Full Frame 2 Render Target that belongs to the
+             * Utility Pipeline. This property is set during the `boot` method.
+             *
+             * This Render Target is the full size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#fullFrame2
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @default null
+             * @since 3.50.0
+             */
+            this.fullFrame2;
+
+            /**
+             * A reference to the Half Frame 1 Render Target that belongs to the
+             * Utility Pipeline. This property is set during the `boot` method.
+             *
+             * This Render Target is half the size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#halfFrame1
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @default null
+             * @since 3.50.0
+             */
+            this.halfFrame1;
+
+            /**
+             * A reference to the Half Frame 2 Render Target that belongs to the
+             * Utility Pipeline. This property is set during the `boot` method.
+             *
+             * This Render Target is half the size of the renderer.
+             *
+             * You can use this directly in Post FX Pipelines for multi-target effects.
+             * However, be aware that these targets are shared between all post fx pipelines.
+             *
+             * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#halfFrame2
+             * @type {Phaser.Renderer.WebGL.RenderTarget}
+             * @default null
+             * @since 3.50.0
+             */
+            this.halfFrame2;
+
+            if (this.renderer.isBooted) {
+                this.manager = this.renderer.pipelines;
             }
-        ]);
-        config.batchSize = 1;
-        config.vertices = [
-            -1, -1, 0, 0,
-            -1, 1, 0, 1,
-            1, 1, 1, 1,
-            -1, -1, 0, 0,
-            1, 1, 1, 1,
-            1, -1, 1, 0
-        ];
-
-        WebGLPipeline.call(this, config);
-
-        this.isPostFX = true;
-
-        /**
-         * If this Post Pipeline belongs to a Game Object or Camera,
-         * this property contains a reference to it.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#gameObject
-         * @type {(Phaser.GameObjects.GameObject|Phaser.Cameras.Scene2D.Camera)}
-         * @since 3.50.0
-         */
-        this.gameObject;
-
-        /**
-         * If this Post Pipeline belongs to an FX Controller, this is a
-         * reference to it.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#controller
-         * @type {Phaser.FX.Controller}
-         * @since 3.60.0
-         */
-        this.controller;
-
-        /**
-         * A Color Matrix instance belonging to this pipeline.
-         *
-         * Used during calls to the `drawFrame` method.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#colorMatrix
-         * @type {Phaser.Display.ColorMatrix}
-         * @since 3.50.0
-         */
-        this.colorMatrix = new ColorMatrix();
-
-        /**
-         * A reference to the Full Frame 1 Render Target that belongs to the
-         * Utility Pipeline. This property is set during the `boot` method.
-         *
-         * This Render Target is the full size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#fullFrame1
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @default null
-         * @since 3.50.0
-         */
-        this.fullFrame1;
-
-        /**
-         * A reference to the Full Frame 2 Render Target that belongs to the
-         * Utility Pipeline. This property is set during the `boot` method.
-         *
-         * This Render Target is the full size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#fullFrame2
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @default null
-         * @since 3.50.0
-         */
-        this.fullFrame2;
-
-        /**
-         * A reference to the Half Frame 1 Render Target that belongs to the
-         * Utility Pipeline. This property is set during the `boot` method.
-         *
-         * This Render Target is half the size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#halfFrame1
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @default null
-         * @since 3.50.0
-         */
-        this.halfFrame1;
-
-        /**
-         * A reference to the Half Frame 2 Render Target that belongs to the
-         * Utility Pipeline. This property is set during the `boot` method.
-         *
-         * This Render Target is half the size of the renderer.
-         *
-         * You can use this directly in Post FX Pipelines for multi-target effects.
-         * However, be aware that these targets are shared between all post fx pipelines.
-         *
-         * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#halfFrame2
-         * @type {Phaser.Renderer.WebGL.RenderTarget}
-         * @default null
-         * @since 3.50.0
-         */
-        this.halfFrame2;
-
-        if (this.renderer.isBooted)
-        {
-            this.manager = this.renderer.pipelines;
-        }
-    },
+        },
 
     /**
      * This method is called once, when this Post FX Pipeline needs to be used.
@@ -241,8 +239,7 @@ var PostFXPipeline = new Class({
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#bootFX
      * @since 3.70.0
      */
-    bootFX: function ()
-    {
+    bootFX: function () {
         WebGLPipeline.prototype.boot.call(this);
 
         var utility = this.manager.UTILITY_PIPELINE;
@@ -259,8 +256,7 @@ var PostFXPipeline = new Class({
 
         var targets = this.renderTargets;
 
-        for (var i = 0; i < targets.length; i++)
-        {
+        for (var i = 0; i < targets.length; i++) {
             targets[i].autoResize = true;
         }
     },
@@ -282,14 +278,11 @@ var PostFXPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    postBatch: function (gameObject)
-    {
-        if (!this.hasBooted)
-        {
+    postBatch: function (gameObject) {
+        if (!this.hasBooted) {
             this.bootFX();
 
-            if (this.currentRenderTarget)
-            {
+            if (this.currentRenderTarget) {
                 this.currentRenderTarget.bind();
             }
         }
@@ -301,8 +294,7 @@ var PostFXPipeline = new Class({
         return this;
     },
 
-    onDraw: function (renderTarget)
-    {
+    onDraw: function (renderTarget) {
         this.bindAndDraw(renderTarget);
     },
 
@@ -318,18 +310,12 @@ var PostFXPipeline = new Class({
      *
      * @return {Phaser.FX.Controller|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline} The FX Controller responsible, or this Pipeline.
      */
-    getController: function (controller)
-    {
-        if (controller !== undefined)
-        {
+    getController: function (controller) {
+        if (controller !== undefined) {
             return controller;
-        }
-        else if (this.controller)
-        {
+        } else if (this.controller) {
             return this.controller;
-        }
-        else
-        {
+        } else {
             return this;
         }
     },
@@ -348,9 +334,10 @@ var PostFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
      */
-    copySprite: function (source, target, reset)
-    {
-        if (reset === undefined) { reset = false; }
+    copySprite: function (source, target, reset) {
+        if (reset === undefined) {
+            reset = false;
+        }
 
         var gl = this.gl;
 
@@ -368,8 +355,7 @@ var PostFXPipeline = new Class({
         gl.bufferData(gl.ARRAY_BUFFER, this.vertexData, gl.STATIC_DRAW);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-        if (reset)
-        {
+        if (reset) {
             gl.bindTexture(gl.TEXTURE_2D, null);
             gl.bindFramebuffer(gl.FRAMEBUFFER, currentFBO);
         }
@@ -393,8 +379,7 @@ var PostFXPipeline = new Class({
      * @param {boolean} [clear=true] - Clear the target before copying?
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    copyFrame: function (source, target, brightness, clear, clearAlpha)
-    {
+    copyFrame: function (source, target, brightness, clear, clearAlpha) {
         this.manager.copyFrame(source, target, brightness, clear, clearAlpha);
     },
 
@@ -413,8 +398,7 @@ var PostFXPipeline = new Class({
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw from.
      */
-    copyToGame: function (source)
-    {
+    copyToGame: function (source) {
         this.manager.copyToGame(source);
     },
 
@@ -434,8 +418,7 @@ var PostFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    drawFrame: function (source, target, clearAlpha)
-    {
+    drawFrame: function (source, target, clearAlpha) {
         this.manager.drawFrame(source, target, clearAlpha, this.colorMatrix);
     },
 
@@ -452,8 +435,7 @@ var PostFXPipeline = new Class({
      * @param {number} [strength=1] - The strength of the blend.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    blendFrames: function (source1, source2, target, strength, clearAlpha)
-    {
+    blendFrames: function (source1, source2, target, strength, clearAlpha) {
         this.manager.blendFrames(source1, source2, target, strength, clearAlpha);
     },
 
@@ -470,8 +452,7 @@ var PostFXPipeline = new Class({
      * @param {number} [strength=1] - The strength of the blend.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    blendFramesAdditive: function (source1, source2, target, strength, clearAlpha)
-    {
+    blendFramesAdditive: function (source1, source2, target, strength, clearAlpha) {
         this.manager.blendFramesAdditive(source1, source2, target, strength, clearAlpha);
     },
 
@@ -484,8 +465,7 @@ var PostFXPipeline = new Class({
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The Render Target to clear.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    clearFrame: function (target, clearAlpha)
-    {
+    clearFrame: function (target, clearAlpha) {
         this.manager.clearFrame(target, clearAlpha);
     },
 
@@ -508,8 +488,7 @@ var PostFXPipeline = new Class({
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      * @param {boolean} [eraseMode=false] - Erase source from target using ERASE Blend Mode?
      */
-    blitFrame: function (source, target, brightness, clear, clearAlpha, eraseMode)
-    {
+    blitFrame: function (source, target, brightness, clear, clearAlpha, eraseMode) {
         this.manager.blitFrame(source, target, brightness, clear, clearAlpha, eraseMode);
     },
 
@@ -534,8 +513,7 @@ var PostFXPipeline = new Class({
      * @param {boolean} [clear=true] - Clear the target before copying?
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      */
-    copyFrameRect: function (source, target, x, y, width, height, clear, clearAlpha)
-    {
+    copyFrameRect: function (source, target, x, y, width, height, clear, clearAlpha) {
         this.manager.copyFrameRect(source, target, x, y, width, height, clear, clearAlpha);
     },
 
@@ -559,10 +537,13 @@ var PostFXPipeline = new Class({
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
      * @param {Phaser.Renderer.WebGL.WebGLShader} [currentShader] - The shader to use during the draw.
      */
-    bindAndDraw: function (source, target, clear, clearAlpha, currentShader)
-    {
-        if (clear === undefined) { clear = true; }
-        if (clearAlpha === undefined) { clearAlpha = true; }
+    bindAndDraw: function (source, target, clear, clearAlpha, currentShader) {
+        if (clear === undefined) {
+            clear = true;
+        }
+        if (clearAlpha === undefined) {
+            clearAlpha = true;
+        }
 
         var gl = this.gl;
         var renderer = this.renderer;
@@ -571,32 +552,24 @@ var PostFXPipeline = new Class({
 
         this.set1i('uMainSampler', 0);
 
-        if (target)
-        {
+        if (target) {
             gl.viewport(0, 0, target.width, target.height);
             gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer.webGLFramebuffer);
             gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, target.texture.webGLTexture, 0);
 
-            if (clear)
-            {
-                if (clearAlpha)
-                {
+            if (clear) {
+                if (clearAlpha) {
                     gl.clearColor(0, 0, 0, 0);
-                }
-                else
-                {
+                } else {
                     gl.clearColor(0, 0, 0, 1);
                 }
 
                 gl.clear(gl.COLOR_BUFFER_BIT);
             }
-        }
-        else
-        {
+        } else {
             renderer.popFramebuffer(false, false);
 
-            if (!renderer.currentFramebuffer)
-            {
+            if (!renderer.currentFramebuffer) {
                 gl.viewport(0, 0, renderer.width, renderer.height);
             }
         }
@@ -609,8 +582,7 @@ var PostFXPipeline = new Class({
         gl.bufferData(gl.ARRAY_BUFFER, this.vertexData, gl.STATIC_DRAW);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-        if (target)
-        {
+        if (target) {
             gl.bindTexture(gl.TEXTURE_2D, null);
             gl.bindFramebuffer(gl.FRAMEBUFFER, renderer.currentFramebuffer.webGLFramebuffer);
         }
@@ -624,10 +596,8 @@ var PostFXPipeline = new Class({
      *
      * @return {this} This WebGLPipeline instance.
      */
-    destroy: function ()
-    {
-        if (this.controller)
-        {
+    destroy: function () {
+        if (this.controller) {
             this.controller.destroy();
         }
 

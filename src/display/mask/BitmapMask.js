@@ -53,45 +53,43 @@ var BitmapMask = new Class({
 
     initialize:
 
-    function BitmapMask (scene, maskObject, x, y, texture, frame)
-    {
-        if (!maskObject)
-        {
-            maskObject = scene.sys.make.image({ x: x, y: y, key: texture, frame: frame, add: false });
-        }
+        function BitmapMask(scene, maskObject, x, y, texture, frame) {
+            if (!maskObject) {
+                maskObject = scene.sys.make.image({x: x, y: y, key: texture, frame: frame, add: false});
+            }
 
-        /**
-         * The Game Object that is used as the mask. Must use a texture, such as a Sprite.
-         *
-         * @name Phaser.Display.Masks.BitmapMask#bitmapMask
-         * @type {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)}
-         * @since 3.0.0
-         */
-        this.bitmapMask = maskObject;
+            /**
+             * The Game Object that is used as the mask. Must use a texture, such as a Sprite.
+             *
+             * @name Phaser.Display.Masks.BitmapMask#bitmapMask
+             * @type {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)}
+             * @since 3.0.0
+             */
+            this.bitmapMask = maskObject;
 
-        /**
-         * Whether to invert the masks alpha.
-         *
-         * If `true`, the alpha of the masking pixel will be inverted before it's multiplied with the masked pixel.
-         *
-         * Essentially, this means that a masked area will be visible only if the corresponding area in the mask is invisible.
-         *
-         * @name Phaser.Display.Masks.BitmapMask#invertAlpha
-         * @type {boolean}
-         * @since 3.1.2
-         */
-        this.invertAlpha = false;
+            /**
+             * Whether to invert the masks alpha.
+             *
+             * If `true`, the alpha of the masking pixel will be inverted before it's multiplied with the masked pixel.
+             *
+             * Essentially, this means that a masked area will be visible only if the corresponding area in the mask is invisible.
+             *
+             * @name Phaser.Display.Masks.BitmapMask#invertAlpha
+             * @type {boolean}
+             * @since 3.1.2
+             */
+            this.invertAlpha = false;
 
-        /**
-         * Is this mask a stencil mask? This is false by default and should not be changed.
-         *
-         * @name Phaser.Display.Masks.BitmapMask#isStencil
-         * @type {boolean}
-         * @readonly
-         * @since 3.17.0
-         */
-        this.isStencil = false;
-    },
+            /**
+             * Is this mask a stencil mask? This is false by default and should not be changed.
+             *
+             * @name Phaser.Display.Masks.BitmapMask#isStencil
+             * @type {boolean}
+             * @readonly
+             * @since 3.17.0
+             */
+            this.isStencil = false;
+        },
 
     /**
      * Sets a new Game Object or Dynamic Texture for this Bitmap Mask to use.
@@ -105,8 +103,7 @@ var BitmapMask = new Class({
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)} maskObject - The Game Object or Dynamic Texture that will be used as the mask. If a Game Object, it must have a texture, such as a Sprite.
      */
-    setBitmap: function (maskObject)
-    {
+    setBitmap: function (maskObject) {
         this.bitmapMask = maskObject;
     },
 
@@ -122,8 +119,7 @@ var BitmapMask = new Class({
      * @param {Phaser.GameObjects.GameObject} maskedObject - The masked Game Object which will be drawn.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
      */
-    preRenderWebGL: function (renderer, maskedObject, camera)
-    {
+    preRenderWebGL: function (renderer, maskedObject, camera) {
         renderer.pipelines.BITMAPMASK_PIPELINE.beginMask(this, maskedObject, camera);
     },
 
@@ -139,8 +135,7 @@ var BitmapMask = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [renderTarget] - Optional WebGL RenderTarget.
      */
-    postRenderWebGL: function (renderer, camera, renderTarget)
-    {
+    postRenderWebGL: function (renderer, camera, renderTarget) {
         renderer.pipelines.BITMAPMASK_PIPELINE.endMask(this, camera, renderTarget);
     },
 
@@ -154,8 +149,7 @@ var BitmapMask = new Class({
      * @param {Phaser.GameObjects.GameObject} mask - The masked Game Object which would be rendered.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to render to.
      */
-    preRenderCanvas: function ()
-    {
+    preRenderCanvas: function () {
         // NOOP
     },
 
@@ -167,8 +161,7 @@ var BitmapMask = new Class({
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The Canvas Renderer which would be rendered to.
      */
-    postRenderCanvas: function ()
-    {
+    postRenderCanvas: function () {
         // NOOP
     },
 
@@ -181,8 +174,7 @@ var BitmapMask = new Class({
      * @method Phaser.Display.Masks.BitmapMask#destroy
      * @since 3.7.0
      */
-    destroy: function ()
-    {
+    destroy: function () {
         this.bitmapMask = null;
     }
 
@@ -228,8 +220,7 @@ var BitmapMask = new Class({
  *
  * @return {Phaser.Display.Masks.BitmapMask} The Bitmap Mask that was created.
  */
-GameObjectFactory.register('bitmapMask', function (maskObject, x, y, key, frame)
-{
+GameObjectFactory.register('bitmapMask', function (maskObject, x, y, key, frame) {
     return new BitmapMask(this.scene, maskObject, x, y, key, frame);
 });
 
