@@ -1,9 +1,4 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @author       @samme
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var FloatBetween = require('../FloatBetween');
 

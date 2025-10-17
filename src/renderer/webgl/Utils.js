@@ -1,10 +1,4 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @author       Felipe Alfonso <@bitnenfer>
- * @author       Matthew Groves <@doormat>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 /**
  * @namespace Phaser.Renderer.WebGL.Utils

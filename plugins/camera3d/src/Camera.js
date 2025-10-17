@@ -1,8 +1,3 @@
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2018 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
- */
 
 var Class = require('../../../src/utils/Class');
 var Matrix4 = require('../../../src/math/Matrix4');
@@ -22,7 +17,7 @@ var dirvec = new Vector3();
 var rightvec = new Vector3();
 var billboardMatrix = new Matrix4();
 
-//  @author attribute https://github.com/mattdesl/cam3d/wiki
+// https://github.com/mattdesl/cam3d/wiki
 
 /**
  * @typedef {object} RayDef

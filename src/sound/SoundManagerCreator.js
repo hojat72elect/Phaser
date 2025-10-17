@@ -1,9 +1,4 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @author       Pavle Goloskokovic <pgoloskokovic@gmail.com> (http://prunegames.com)
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var HTML5AudioSoundManager = require('./html5/HTML5AudioSoundManager');
 var NoAudioSoundManager = require('./noaudio/NoAudioSoundManager');

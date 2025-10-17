@@ -1,8 +1,4 @@
-/**
- * @author       samme
- * @copyright    2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var WrapAngle = require('./Wrap');
 
@@ -14,7 +10,6 @@ var WrapAngle = require('./Wrap');
  * For calculation in degrees use {@link Phaser.Math.Angle.ShortestBetween} instead.
  *
  * @function Phaser.Math.Angle.GetShortestDistance
- * @since 4.0.0
  *
  * @param {number} angle1 - The first angle in radians.
  * @param {number} angle2 - The second angle in radians.

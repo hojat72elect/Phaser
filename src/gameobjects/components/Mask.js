@@ -34,7 +34,7 @@ var Mask = {
      * that allows you to limit what is visible during the render pass.
      *
      * @method Phaser.GameObjects.Components.Mask#setMask
-     * @since 3.6.2
+     * 
      *
      * @param {Phaser.Display.Masks.BitmapMask|Phaser.Display.Masks.GeometryMask} mask - The mask this Game Object will use when rendering.
      *
@@ -50,7 +50,7 @@ var Mask = {
      * Clears the mask that this Game Object was using.
      *
      * @method Phaser.GameObjects.Components.Mask#clearMask
-     * @since 3.6.2
+     * 
      *
      * @param {boolean} [destroyMask=false] - Destroy the mask before clearing it?
      *
@@ -85,7 +85,7 @@ var Mask = {
      * a Bitmap Mask from any renderable texture-based Game Object.
      *
      * @method Phaser.GameObjects.Components.Mask#createBitmapMask
-     * @since 3.6.2
+     * 
      *
      * @generic {Phaser.GameObjects.GameObject} G
      * @generic {Phaser.Textures.DynamicTexture} T
@@ -120,7 +120,7 @@ var Mask = {
      * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
      *
      * @method Phaser.GameObjects.Components.Mask#createGeometryMask
-     * @since 3.6.2
+     * 
      *
      * @generic {Phaser.GameObjects.Graphics} G
      * @generic {Phaser.GameObjects.Shape} S

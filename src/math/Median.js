@@ -1,8 +1,4 @@
-/**
- * @author       Vladislav Forsh <vlad@robowhale.com>
- * @copyright    2021 RoboWhale
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 /**
  * Calculate the median of the given values. The values are sorted and the middle value is returned.

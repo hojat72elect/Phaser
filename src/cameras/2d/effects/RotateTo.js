@@ -1,8 +1,4 @@
-/**
- * @author       Jason Nicholls <nicholls.jason@gmail.com>
- * @copyright    2018 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
- */
+
 
 var Clamp = require('../../../math/Clamp');
 var Class = require('../../../utils/Class');

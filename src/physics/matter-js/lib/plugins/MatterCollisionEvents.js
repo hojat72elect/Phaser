@@ -1,8 +1,4 @@
-/**
- * @author       @dxu https://github.com/dxu/matter-collision-events
- * @author       Richard Davey <rich@phaser.io>
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var MatterCollisionEvents = {
 

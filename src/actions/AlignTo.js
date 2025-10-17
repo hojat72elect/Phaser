@@ -1,8 +1,4 @@
-/**
- * @author       samme
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var QuickSet = require('../display/align/to/QuickSet');
 

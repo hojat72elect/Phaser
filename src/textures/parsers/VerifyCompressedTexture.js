@@ -1,8 +1,4 @@
-/**
- * @author       Ben Richards <benjamindrichards@gmail.com>
- * @copyright    2024 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var IsSizePowerOfTwo = require('../../math/pow2/IsSizePowerOfTwo');
 

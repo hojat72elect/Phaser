@@ -1,8 +1,4 @@
-/**
- * @author       Greg McLean <GregDevProjects>
- * @copyright    2021 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 /**
  * Interpolates two given Vectors and returns a new Vector between them.

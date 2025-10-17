@@ -1,8 +1,3 @@
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2020 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
 
 var Layer3D = require('./Layer3D');
 var GameObjectFactory = require('../GameObjectFactory');

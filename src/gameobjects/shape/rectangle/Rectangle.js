@@ -64,7 +64,7 @@ var Rectangle = new Class({
              * @name Phaser.GameObjects.Shape#radius
              * @type {number}
              * @readonly
-             * @since 3.90.0
+             * 
              */
             this.radius = 20;
 
@@ -77,7 +77,7 @@ var Rectangle = new Class({
              * @name Phaser.GameObjects.Shape#isRounded
              * @type {boolean}
              * @readonly
-             * @since 3.90.0
+             * 
              */
             this.isRounded = false;
 
@@ -100,7 +100,7 @@ var Rectangle = new Class({
      * To disable rounded corners, set the `radius` parameter to 0.
      *
      * @method Phaser.GameObjects.Rectangle#setRounded
-     * @since 3.90.0
+     * 
      *
      * @param {number} [radius=16] - The radius of all four rounded corners.
      *
@@ -195,7 +195,7 @@ var Rectangle = new Class({
      *
      * @method Phaser.GameObjects.Rectangle#updateRoundedData
      * @private
-     * @since 3.90.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -248,7 +248,7 @@ var Rectangle = new Class({
      *
      * @method Phaser.GameObjects.Rectangle#arcTo
      * @private
-     * @since 3.90.0
+     * 
      *
      * @param {number[]} path - The array to push the points into.
      * @param {number} centerX - The center x coordinate of the circle.

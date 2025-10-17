@@ -1,8 +1,4 @@
-/**
- * @author       samme
- * @copyright    2021 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 /**
  * The Scene Systems Pre-Render Event.

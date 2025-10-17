@@ -1,9 +1,4 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @author       Felipe Alfonso <@bitnenfer>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 /**
  * Renders this Game Object with the WebGL Renderer to the given Camera.

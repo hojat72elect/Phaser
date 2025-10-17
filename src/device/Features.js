@@ -44,7 +44,6 @@ var Features = {
 };
 
 // Check Little or Big Endian system.
-// @author Matt DesLauriers (@mattdesl)
 function checkIsLittleEndian() {
     var a = new ArrayBuffer(4);
     var b = new Uint8Array(a);
@@ -100,7 +99,6 @@ function init() {
                 var image = ctx2D.createImageData(1, 1);
 
                 //  Test to see if ImageData uses CanvasPixelArray or Uint8ClampedArray.
-                //  @author Matt DesLauriers (@mattdesl)
                 isUint8 = image.data instanceof Uint8ClampedArray;
 
                 CanvasPool.remove(canvas);

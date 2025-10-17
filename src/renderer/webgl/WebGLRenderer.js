@@ -1,9 +1,4 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @author       Felipe Alfonso <@bitnenfer>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var ArrayEach = require('../../utils/array/Each');
 var ArrayRemove = require('../../utils/array/Remove');
@@ -925,7 +920,6 @@ var WebGLRenderer = new Class({
      * Called automatically during the `init` method.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setExtensions
-     * @since 3.85.2
      */
     setExtensions: function () {
         var gl = this.gl;

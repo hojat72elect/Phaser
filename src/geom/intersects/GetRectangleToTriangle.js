@@ -1,9 +1,4 @@
-/**
- * @author       Florian Vazelle
- * @author       Geoffrey Glaive
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var RectangleToTriangle = require('./RectangleToTriangle');
 var GetLineToRectangle = require('./GetLineToRectangle');

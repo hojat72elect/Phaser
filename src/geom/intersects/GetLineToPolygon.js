@@ -1,8 +1,4 @@
-/**
- * @author       Richard Davey
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var Vector3 = require('../../math/Vector3');
 var Vector4 = require('../../math/Vector4');

@@ -1,8 +1,3 @@
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2020 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
 
 /**
  * This is a stub function for Layer3D.Render. There is no Canvas renderer for Layer3D objects.

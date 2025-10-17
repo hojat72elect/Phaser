@@ -1,10 +1,5 @@
 /* eslint no-console: 0 */
 
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2018 Photon Storm Ltd.
- * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
- */
 
 var AdInstance = require('./AdInstance');
 var Class = require('../../../src/utils/Class');

@@ -1,7 +1,4 @@
-/**
- * @author       Stefan Hedman <schteppe@gmail.com> (http://steffe.se)
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 //  v0.3.0
 

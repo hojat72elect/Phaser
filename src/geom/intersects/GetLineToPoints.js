@@ -1,8 +1,4 @@
-/**
- * @author       Richard Davey
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var GetLineToLine = require('./GetLineToLine');
 var Line = require('../line/Line');

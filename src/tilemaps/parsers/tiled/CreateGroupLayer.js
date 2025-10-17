@@ -1,8 +1,4 @@
-/**
- * @author       Seth Berrier <berriers@uwstout.edu>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
+
 
 var GetFastValue = require('../../../utils/object/GetFastValue');
 
