@@ -27,7 +27,7 @@ function P2(t, p) {
  * A quadratic bezier interpolation method.
  *
  * @function Phaser.Math.Interpolation.QuadraticBezier
- * @since 3.2.0
+ * 
  *
  * @param {number} t - The percentage of interpolation, between 0 and 1.
  * @param {number} p0 - The start point.

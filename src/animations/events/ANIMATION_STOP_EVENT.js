@@ -21,7 +21,7 @@
  *
  * @event Phaser.Animations.Events#ANIMATION_STOP
  * @type {string}
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Animations.Animation} animation - A reference to the Animation that has stopped.
  * @param {Phaser.Animations.AnimationFrame} frame - The current Animation Frame of the Animation.

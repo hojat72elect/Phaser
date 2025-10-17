@@ -13,7 +13,7 @@
  * You can optionally specify a callback to be invoked for each item successfully added to the array.
  *
  * @function Phaser.Utils.Array.AddAt
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to be added to.
  * @param {any|any[]} item - The item, or array of items, to add to the array.

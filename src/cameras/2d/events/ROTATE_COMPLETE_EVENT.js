@@ -17,7 +17,7 @@
  *
  * @event Phaser.Cameras.Scene2D.Events#ROTATE_COMPLETE
  * @type {string}
- * @since 3.23.0
+ * 
  *
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera that the effect began on.
  * @param {Phaser.Cameras.Scene2D.Effects.RotateTo} effect - A reference to the effect instance.

@@ -14,7 +14,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  * Note: This method will only be available if the Container Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#container
- * @since 3.4.0
+ * 
  *
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
  * @param {number} [y=0] - The vertical position of this Game Object in the world.

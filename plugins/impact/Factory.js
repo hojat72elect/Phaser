@@ -133,7 +133,7 @@ var Factory = new Class({
      * Destroys this Factory.
      *
      * @method Phaser.Physics.Impact.Factory#destroy
-     * @since 3.5.0
+     * 
      */
     destroy: function () {
         this.world = null;

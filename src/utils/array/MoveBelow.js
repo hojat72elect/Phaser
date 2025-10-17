@@ -5,7 +5,7 @@
  * The array is modified in-place.
  *
  * @function Phaser.Utils.Array.MoveBelow
- * @since 3.55.0
+ * 
  *
  * @param {array} array - The input array.
  * @param {*} item1 - The element to move below base element.

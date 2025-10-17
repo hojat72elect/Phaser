@@ -29,7 +29,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.WebGLPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -75,7 +75,7 @@ var PointLightPipeline = new Class({
      * Adds a Point Light Game Object to the batch, flushing if required.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PointLightPipeline#batchPointLight
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.PointLight} light - The Point Light Game Object.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera rendering the Point Light.
@@ -126,7 +126,7 @@ var PointLightPipeline = new Class({
      * This method is called directly by `batchPointLight`.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PointLightPipeline#batchLightVert
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The vertex x position.
      * @param {number} y - The vertex y position.

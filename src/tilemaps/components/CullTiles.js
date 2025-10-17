@@ -5,7 +5,7 @@ var RunCull = require('./RunCull');
  * Returns the tiles in the given layer that are within the cameras viewport. This is used internally.
  *
  * @function Phaser.Tilemaps.Components.CullTiles
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to run the cull check against.

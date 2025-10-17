@@ -11,7 +11,7 @@
  * See https://doc.mapeditor.org/en/latest/manual/using-wang-tiles/ for more information.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.ParseWangsets
- * @since 3.53.0
+ * 
  *
  * @param {Array.<object>} wangsets - The array of wangset objects (parsed from JSON)
  * @param {object} datas - The field into which to put wangset data from Tiled.

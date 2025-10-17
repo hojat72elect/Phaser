@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterChamferConfig
- * @since 3.22.0
+ * 
  *
  * @property {(number|number[])} [radius=8] - A single number, or an array, to specify the radius for each vertex.
  * @property {number} [quality=-1] - The quality of the chamfering. -1 means 'auto'.

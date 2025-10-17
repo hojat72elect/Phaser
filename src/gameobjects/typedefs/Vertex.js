@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Vertex
- * @since 3.50.0
+ * 
  *
  * @property {number} x - The x coordinate of the vertex.
  * @property {number} y - The y coordinate of the vertex.

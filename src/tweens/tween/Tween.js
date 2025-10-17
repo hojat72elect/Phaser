@@ -154,7 +154,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#isNumberTween
              * @type {boolean}
              * @default false
-             * @since 3.88.0
+             * 
              */
             this.isNumberTween = false;
         },

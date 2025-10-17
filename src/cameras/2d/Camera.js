@@ -76,7 +76,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#fadeEffect
              * @type {Phaser.Cameras.Scene2D.Effects.Fade}
-             * @since 3.5.0
+             * 
              */
             this.fadeEffect = new Effects.Fade(this);
 
@@ -86,7 +86,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#flashEffect
              * @type {Phaser.Cameras.Scene2D.Effects.Flash}
-             * @since 3.5.0
+             * 
              */
             this.flashEffect = new Effects.Flash(this);
 
@@ -96,7 +96,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#shakeEffect
              * @type {Phaser.Cameras.Scene2D.Effects.Shake}
-             * @since 3.5.0
+             * 
              */
             this.shakeEffect = new Effects.Shake(this);
 
@@ -116,7 +116,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#rotateToEffect
              * @type {Phaser.Cameras.Scene2D.Effects.RotateTo}
-             * @since 3.23.0
+             * 
              */
             this.rotateToEffect = new Effects.RotateTo(this);
 
@@ -144,7 +144,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#lerp
              * @type {Phaser.Math.Vector2}
-             * @since 3.9.0
+             * 
              */
             this.lerp = new Vector2(1, 1);
 
@@ -155,7 +155,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#followOffset
              * @type {Phaser.Math.Vector2}
-             * @since 3.9.0
+             * 
              */
             this.followOffset = new Vector2();
 
@@ -256,7 +256,7 @@ var Camera = new Class({
      * @method Phaser.Cameras.Scene2D.Camera#fadeIn
      * @fires Phaser.Cameras.Scene2D.Events#FADE_IN_START
      * @fires Phaser.Cameras.Scene2D.Events#FADE_IN_COMPLETE
-     * @since 3.3.0
+     * 
      *
      * @param {number} [duration=1000] - The duration of the effect in milliseconds.
      * @param {number} [red=0] - The amount to fade the red channel towards. A value between 0 and 255.
@@ -279,7 +279,7 @@ var Camera = new Class({
      * @method Phaser.Cameras.Scene2D.Camera#fadeOut
      * @fires Phaser.Cameras.Scene2D.Events#FADE_OUT_START
      * @fires Phaser.Cameras.Scene2D.Events#FADE_OUT_COMPLETE
-     * @since 3.3.0
+     * 
      *
      * @param {number} [duration=1000] - The duration of the effect in milliseconds.
      * @param {number} [red=0] - The amount to fade the red channel towards. A value between 0 and 255.
@@ -301,7 +301,7 @@ var Camera = new Class({
      * @method Phaser.Cameras.Scene2D.Camera#fadeFrom
      * @fires Phaser.Cameras.Scene2D.Events#FADE_IN_START
      * @fires Phaser.Cameras.Scene2D.Events#FADE_IN_COMPLETE
-     * @since 3.5.0
+     * 
      *
      * @param {number} [duration=1000] - The duration of the effect in milliseconds.
      * @param {number} [red=0] - The amount to fade the red channel towards. A value between 0 and 255.
@@ -415,7 +415,7 @@ var Camera = new Class({
      * over the duration and with the ease specified.
      *
      * @method Phaser.Cameras.Scene2D.Camera#rotateTo
-     * @since 3.23.0
+     * 
      *
      * @param {number} radians - The destination angle in radians to rotate the Camera viewport to. If the angle is positive then the rotation is clockwise else anticlockwise
      * @param {boolean} [shortestPath=false] - If shortest path is set to true the camera will rotate in the quickest direction clockwise or anti-clockwise.
@@ -575,7 +575,7 @@ var Camera = new Class({
      * Be sure to keep the value between 0 and 1. A value of zero will disable tracking on that axis.
      *
      * @method Phaser.Cameras.Scene2D.Camera#setLerp
-     * @since 3.9.0
+     * 
      *
      * @param {number} [x=1] - The amount added to the horizontal linear interpolation of the follow target.
      * @param {number} [y=1] - The amount added to the vertical linear interpolation of the follow target.
@@ -600,7 +600,7 @@ var Camera = new Class({
      * The values are subtracted from the targets position during the Cameras update step.
      *
      * @method Phaser.Cameras.Scene2D.Camera#setFollowOffset
-     * @since 3.9.0
+     * 
      *
      * @param {number} [x=0] - The horizontal offset from the camera follow target.x position.
      * @param {number} [y=0] - The vertical offset from the camera follow target.y position.

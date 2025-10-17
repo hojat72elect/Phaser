@@ -202,7 +202,7 @@ var TweenManager = new Class({
      *
      * @method Phaser.Tweens.TweenManager#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.events.once(SceneEvents.DESTROY, this.destroy, this);
@@ -215,7 +215,7 @@ var TweenManager = new Class({
      *
      * @method Phaser.Tweens.TweenManager#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         this.timeScale = 1;

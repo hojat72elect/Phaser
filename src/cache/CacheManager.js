@@ -92,7 +92,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#video
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.20.0
+             * 
              */
             this.video = new BaseCache();
 

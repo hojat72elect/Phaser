@@ -10,7 +10,7 @@ var Rectangle = require('./Rectangle');
  * Create the smallest Rectangle containing two coordinate pairs.
  *
  * @function Phaser.Geom.Rectangle.FromXY
- * @since 3.23.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [out,$return]
  *

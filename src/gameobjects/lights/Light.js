@@ -54,7 +54,7 @@ var Light = new Class({
              *
              * @name Phaser.GameObjects.Light#color
              * @type {Phaser.Display.RGB}
-             * @since 3.50.0
+             * 
              */
             this.color = new RGB(r, g, b);
 
@@ -63,7 +63,7 @@ var Light = new Class({
              *
              * @name Phaser.GameObjects.Light#intensity
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.intensity = intensity;
 
@@ -180,7 +180,7 @@ var Light = new Class({
      * Also checks the Game Object against the given Cameras exclusion list.
      *
      * @method Phaser.GameObjects.Light#willRender
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to check against this Game Object.
      *

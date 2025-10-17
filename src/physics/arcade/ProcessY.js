@@ -26,7 +26,7 @@ var overlap;
  *
  * @function Phaser.Physics.Arcade.ProcessY.Set
  * @ignore
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Physics.Arcade.Body} b1 - The first Body to separate.
  * @param {Phaser.Physics.Arcade.Body} b2 - The second Body to separate.
@@ -67,7 +67,7 @@ var Set = function (b1, b2, ov) {
  *
  * @function Phaser.Physics.Arcade.ProcessY.BlockCheck
  * @ignore
- * @since 3.50.0
+ * 
  *
  * @return {number} The BlockCheck result. 0 = not blocked. 1 = Body 1 blocked. 2 = Body 2 blocked.
  */
@@ -108,7 +108,7 @@ var BlockCheck = function () {
  *
  * @function Phaser.Physics.Arcade.ProcessY.Check
  * @ignore
- * @since 3.50.0
+ * 
  *
  * @return {boolean} `true` if a check passed, otherwise `false`.
  */
@@ -154,7 +154,7 @@ var Check = function () {
  *
  * @function Phaser.Physics.Arcade.ProcessY.Run
  * @ignore
- * @since 3.50.0
+ * 
  *
  * @param {number} side - The side to test. As passed in by the `Check` function.
  *
@@ -272,7 +272,7 @@ var Run = function (side) {
  *
  * @function Phaser.Physics.Arcade.ProcessY.RunImmovableBody1
  * @ignore
- * @since 3.50.0
+ * 
  *
  * @param {number} blockedState - The block state value.
  */
@@ -301,7 +301,7 @@ var RunImmovableBody1 = function (blockedState) {
  *
  * @function Phaser.Physics.Arcade.ProcessY.RunImmovableBody2
  * @ignore
- * @since 3.50.0
+ * 
  *
  * @param {number} blockedState - The block state value.
  */

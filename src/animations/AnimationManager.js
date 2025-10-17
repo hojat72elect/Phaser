@@ -88,7 +88,7 @@ var AnimationManager = new Class({
              *
              * @name Phaser.Animations.AnimationManager#mixes
              * @type {Phaser.Structs.Map.<string, Phaser.Animations.Animation>}
-             * @since 3.50.0
+             * 
              */
             this.mixes = new CustomMap();
 
@@ -147,7 +147,7 @@ var AnimationManager = new Class({
      * To remove a mix pairing, see the `removeMix` method.
      *
      * @method Phaser.Animations.AnimationManager#addMix
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation)} animA - The string-based key, or instance of, Animation A.
      * @param {(string|Phaser.Animations.Animation)} animB - The string-based key, or instance of, Animation B.
@@ -190,7 +190,7 @@ var AnimationManager = new Class({
      * new delay.
      *
      * @method Phaser.Animations.AnimationManager#removeMix
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation)} animA - The string-based key, or instance of, Animation A.
      * @param {(string|Phaser.Animations.Animation)} [animB] - The string-based key, or instance of, Animation B. If not given, all mixes for Animation A will be removed.
@@ -230,7 +230,7 @@ var AnimationManager = new Class({
      * If you wish to remove a mix, call the `removeMix` method.
      *
      * @method Phaser.Animations.AnimationManager#getMix
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation)} animA - The string-based key, or instance of, Animation A.
      * @param {(string|Phaser.Animations.Animation)} animB - The string-based key, or instance of, Animation B.
@@ -365,7 +365,7 @@ var AnimationManager = new Class({
      * This will only create the 3 animations defined. Note that the tag names are case-sensitive.
      *
      * @method Phaser.Animations.AnimationManager#createFromAseprite
-     * @since 3.50.0
+     * 
      *
      * @param {string} key - The key of the loaded Aseprite atlas. It must have been loaded prior to calling this method.
      * @param {string[]} [tags] - An array of Tag names. If provided, only animations found in this array will be created.

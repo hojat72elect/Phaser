@@ -7,7 +7,7 @@
  * To use this with a Group: `PropertyValueSet(group.getChildren(), key, value, step)`
  *
  * @function Phaser.Actions.PropertyValueSet
- * @since 3.3.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

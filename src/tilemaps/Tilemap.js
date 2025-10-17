@@ -288,7 +288,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#hexSideLength
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.hexSideLength = mapData.hexSideLength;
 
@@ -301,7 +301,7 @@ var Tilemap = new Class({
              * @name Phaser.Tilemaps.Tilemap#_convert
              * @private
              * @type {object}
-             * @since 3.50.0
+             * 
              */
             this._convert = {
                 WorldToTileXY: TilemapComponents.GetWorldToTileXYFunction(orientation),
@@ -1188,7 +1188,7 @@ var Tilemap = new Class({
      * Return a list of all valid imagelayer names loaded in this Tilemap.
      *
      * @method Phaser.Tilemaps.Tilemap#getImageLayerNames
-     * @since 3.21.0
+     * 
      *
      * @return {string[]} Array of valid imagelayer names / IDs loaded into this Tilemap.
      */
@@ -1260,7 +1260,7 @@ var Tilemap = new Class({
      * Return a list of all valid objectgroup names loaded in this Tilemap.
      *
      * @method Phaser.Tilemaps.Tilemap#getObjectLayerNames
-     * @since 3.21.0
+     * 
      *
      * @return {string[]} Array of valid objectgroup names / IDs loaded into this Tilemap.
      */
@@ -1369,7 +1369,7 @@ var Tilemap = new Class({
      * Return a list of all valid tilelayer names loaded in this Tilemap.
      *
      * @method Phaser.Tilemaps.Tilemap#getTileLayerNames
-     * @since 3.21.0
+     * 
      *
      * @return {string[]} Array of valid tilelayer names / IDs loaded into this Tilemap.
      */

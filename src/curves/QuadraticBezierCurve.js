@@ -11,7 +11,7 @@ var Vector2 = require('../math/Vector2');
  * @extends Phaser.Curves.Curve
  * @memberof Phaser.Curves
  * @constructor
- * @since 3.2.0
+ * 
  *
  * @param {(Phaser.Math.Vector2|number[])} p0 - Start point, or an array of point pairs.
  * @param {Phaser.Math.Vector2} p1 - Control Point 1.
@@ -37,7 +37,7 @@ var QuadraticBezier = new Class({
              *
              * @name Phaser.Curves.QuadraticBezier#p0
              * @type {Phaser.Math.Vector2}
-             * @since 3.2.0
+             * 
              */
             this.p0 = p0;
 
@@ -46,7 +46,7 @@ var QuadraticBezier = new Class({
              *
              * @name Phaser.Curves.QuadraticBezier#p1
              * @type {Phaser.Math.Vector2}
-             * @since 3.2.0
+             * 
              */
             this.p1 = p1;
 
@@ -55,7 +55,7 @@ var QuadraticBezier = new Class({
              *
              * @name Phaser.Curves.QuadraticBezier#p2
              * @type {Phaser.Math.Vector2}
-             * @since 3.2.0
+             * 
              */
             this.p2 = p2;
         },
@@ -64,7 +64,7 @@ var QuadraticBezier = new Class({
      * Gets the starting point on the curve.
      *
      * @method Phaser.Curves.QuadraticBezier#getStartPoint
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -84,7 +84,7 @@ var QuadraticBezier = new Class({
      * Get the resolution of the curve.
      *
      * @method Phaser.Curves.QuadraticBezier#getResolution
-     * @since 3.2.0
+     * 
      *
      * @param {number} divisions - Optional divisions value.
      *
@@ -98,7 +98,7 @@ var QuadraticBezier = new Class({
      * Get point at relative position in curve according to length.
      *
      * @method Phaser.Curves.QuadraticBezier#getPoint
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *
@@ -129,7 +129,7 @@ var QuadraticBezier = new Class({
      * The Graphics object is not cleared before the draw, so the curve will appear on-top of anything else already rendered to it.
      *
      * @method Phaser.Curves.QuadraticBezier#draw
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.GameObjects.Graphics} G - [graphics,$return]
      *
@@ -162,7 +162,7 @@ var QuadraticBezier = new Class({
      * Converts the curve into a JSON compatible object.
      *
      * @method Phaser.Curves.QuadraticBezier#toJSON
-     * @since 3.2.0
+     * 
      *
      * @return {Phaser.Types.Curves.JSONCurve} The JSON object containing this curve data.
      */
@@ -183,7 +183,7 @@ var QuadraticBezier = new Class({
  * Creates a curve from a JSON object, e. g. created by `toJSON`.
  *
  * @function Phaser.Curves.QuadraticBezier.fromJSON
- * @since 3.2.0
+ * 
  *
  * @param {Phaser.Types.Curves.JSONCurve} data - The JSON object containing this curve data.
  *

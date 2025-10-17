@@ -53,7 +53,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.MultiPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -100,7 +100,7 @@ var LightPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#lightsActive
              * @type {boolean}
              * @readonly
-             * @since 3.53.0
+             * 
              */
             this.lightsActive = true;
 
@@ -244,7 +244,7 @@ var LightPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#setTexture2D
      * @ignore
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [texture] - Texture that will be assigned to the current batch. If not given uses blankTexture.
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object being rendered or added to the batch.
@@ -295,7 +295,7 @@ var LightPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#setGameObject
      * @ignore
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object being rendered or added to the batch.
      * @param {Phaser.Textures.Frame} [frame] - Optional frame to use. Can override that of the Game Object.
@@ -341,7 +341,7 @@ var LightPipeline = new Class({
      * Checks to see if the given diffuse and normal map textures are already bound, or not.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#isNewNormalMap
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The diffuse texture.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} normalMap - The normal map texture.
@@ -357,7 +357,7 @@ var LightPipeline = new Class({
      * If the Game Object doesn't have one, it returns the default normal map from this pipeline instead.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#getNormalMap
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object to get the normal map from.
      *
@@ -391,7 +391,7 @@ var LightPipeline = new Class({
      * Takes a Sprite Game Object, or any object that extends it, and adds it to the batch.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#batchSprite
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.GameObjects.Image|Phaser.GameObjects.Sprite)} gameObject - The texture based Game Object to add to the batch.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use for the rendering transform.
@@ -407,7 +407,7 @@ var LightPipeline = new Class({
      * Generic function for batching a textured quad using argument values instead of a Game Object.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#batchTexture
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - Source GameObject.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - Texture associated with the quad.
@@ -488,7 +488,7 @@ var LightPipeline = new Class({
      * Adds a Texture Frame into the batch for rendering.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#batchTextureFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Textures.Frame} frame - The Texture Frame to be rendered.
      * @param {number} x - The horizontal position to render the texture at.

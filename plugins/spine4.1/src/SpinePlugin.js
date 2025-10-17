@@ -1100,7 +1100,7 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#gameDestroy
      * @private
-     * @since 3.50.0
+     * 
      */
     gameDestroy: function () {
         this.pluginManager.removeGameObject('spine', true, true);

@@ -87,7 +87,7 @@ var Bob = new Class({
              * @name Phaser.GameObjects.Bob#tint
              * @type {number}
              * @default 0xffffff
-             * @since 3.20.0
+             * 
              */
             this.tint = 0xffffff;
 
@@ -224,7 +224,7 @@ var Bob = new Class({
      * Changes the position of this Bob to the values given.
      *
      * @method Phaser.GameObjects.Bob#setPosition
-     * @since 3.20.0
+     * 
      *
      * @param {number} x - The x position of the Bob. Bob coordinate are relative to the position of the Blitter object.
      * @param {number} y - The y position of the Bob. Bob coordinate are relative to the position of the Blitter object.
@@ -329,7 +329,7 @@ var Bob = new Class({
      * Sets the tint of this Bob.
      *
      * @method Phaser.GameObjects.Bob#setTint
-     * @since 3.20.0
+     * 
      *
      * @param {number} value - The tint value used for this Bob. Between 0 and 0xffffff.
      *

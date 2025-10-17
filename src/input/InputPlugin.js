@@ -97,7 +97,7 @@ var InputPlugin = new Class({
              *
              * @name Phaser.Input.InputPlugin#settings
              * @type {Phaser.Types.Scenes.SettingsObject}
-             * @since 3.5.0
+             * 
              */
             this.settings = scene.sys.settings;
 
@@ -126,7 +126,7 @@ var InputPlugin = new Class({
              * @name Phaser.Input.InputPlugin#enabled
              * @type {boolean}
              * @default true
-             * @since 3.5.0
+             * 
              */
             this.enabled = true;
 
@@ -389,7 +389,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#boot
      * @fires Phaser.Input.Events#BOOT
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.cameras = this.systems.cameras;
@@ -410,7 +410,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#start
      * @fires Phaser.Input.Events#START
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         var eventEmitter = this.systems.events;
@@ -528,7 +528,7 @@ var InputPlugin = new Class({
      * https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
      *
      * @method Phaser.Input.InputPlugin#setCursor
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Types.Input.InteractiveObject} interactiveObject - The Interactive Object that will set the cursor on the canvas.
      */
@@ -543,7 +543,7 @@ var InputPlugin = new Class({
      * interactive state of any Game Objects.
      *
      * @method Phaser.Input.InputPlugin#resetCursor
-     * @since 3.85.0
+     * 
      */
     resetCursor: function () {
         if (this.manager) {
@@ -1909,7 +1909,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#forceDownState
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_DOWN
      * @fires Phaser.Input.Events#GAMEOBJECT_DOWN
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to use when setting the state.
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to have its state set.
@@ -1931,7 +1931,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#forceUpState
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_UP
      * @fires Phaser.Input.Events#GAMEOBJECT_UP
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to use when setting the state.
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to have its state set.
@@ -1953,7 +1953,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#forceOverState
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_OVER
      * @fires Phaser.Input.Events#GAMEOBJECT_OVER
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to use when setting the state.
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to have its state set.
@@ -1975,7 +1975,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#forceOutState
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_OUT
      * @fires Phaser.Input.Events#GAMEOBJECT_OUT
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to use when setting the state.
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to have its state set.
@@ -1988,7 +1988,7 @@ var InputPlugin = new Class({
      * This method will force the given Game Object into the given input state.
      *
      * @method Phaser.Input.InputPlugin#forceState
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to use when setting the state.
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to have its state set.
@@ -2678,7 +2678,7 @@ var InputPlugin = new Class({
      * so that the objects are in depth index order with the lowest at the bottom.
      *
      * @method Phaser.Input.InputPlugin#sortDropZones
-     * @since 3.52.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject[]} gameObjects - An array of Game Objects to be sorted.
      *
@@ -2702,7 +2702,7 @@ var InputPlugin = new Class({
      *
      * @method Phaser.Input.InputPlugin#sortDropZoneHandler
      * @private
-     * @since 3.52.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} childA - The first Game Object to compare.
      * @param {Phaser.GameObjects.GameObject} childB - The second Game Object to compare.
@@ -2826,7 +2826,7 @@ var InputPlugin = new Class({
      *
      * @method Phaser.Input.InputPlugin#transitionIn
      * @private
-     * @since 3.5.0
+     * 
      */
     transitionIn: function () {
         this.enabled = this.settings.transitionAllowInput;
@@ -2837,7 +2837,7 @@ var InputPlugin = new Class({
      *
      * @method Phaser.Input.InputPlugin#transitionComplete
      * @private
-     * @since 3.5.0
+     * 
      */
     transitionComplete: function () {
         if (!this.settings.transitionAllowInput) {
@@ -2850,7 +2850,7 @@ var InputPlugin = new Class({
      *
      * @method Phaser.Input.InputPlugin#transitionOut
      * @private
-     * @since 3.5.0
+     * 
      */
     transitionOut: function () {
         this.enabled = this.settings.transitionAllowInput;

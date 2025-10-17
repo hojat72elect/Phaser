@@ -19,7 +19,7 @@ var PluginCache = {};
  * Mapping is what the plugin is injected into the Scene.Systems as (i.e. input)
  *
  * @method Phaser.Plugins.PluginCache.register
- * @since 3.8.0
+ * 
  *
  * @param {string} key - A reference used to get this plugin from the plugin cache.
  * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
@@ -39,7 +39,7 @@ PluginCache.register = function (key, plugin, mapping, custom) {
  * The key must be unique, within the scope of the cache.
  *
  * @method Phaser.Plugins.PluginCache.registerCustom
- * @since 3.8.0
+ * 
  *
  * @param {string} key - A reference used to get this plugin from the plugin cache.
  * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
@@ -54,7 +54,7 @@ PluginCache.registerCustom = function (key, plugin, mapping, data) {
  * Checks if the given key is already being used in the core plugin cache.
  *
  * @method Phaser.Plugins.PluginCache.hasCore
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key to check for.
  *
@@ -68,7 +68,7 @@ PluginCache.hasCore = function (key) {
  * Checks if the given key is already being used in the custom plugin cache.
  *
  * @method Phaser.Plugins.PluginCache.hasCustom
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key to check for.
  *
@@ -82,7 +82,7 @@ PluginCache.hasCustom = function (key) {
  * Returns the core plugin object from the cache based on the given key.
  *
  * @method Phaser.Plugins.PluginCache.getCore
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key of the core plugin to get.
  *
@@ -96,7 +96,7 @@ PluginCache.getCore = function (key) {
  * Returns the custom plugin object from the cache based on the given key.
  *
  * @method Phaser.Plugins.PluginCache.getCustom
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key of the custom plugin to get.
  *
@@ -110,7 +110,7 @@ PluginCache.getCustom = function (key) {
  * Returns an object from the custom cache based on the given key that can be instantiated.
  *
  * @method Phaser.Plugins.PluginCache.getCustomClass
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key of the custom plugin to get.
  *
@@ -124,7 +124,7 @@ PluginCache.getCustomClass = function (key) {
  * Removes a core plugin based on the given key.
  *
  * @method Phaser.Plugins.PluginCache.remove
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key of the core plugin to remove.
  */
@@ -138,7 +138,7 @@ PluginCache.remove = function (key) {
  * Removes a custom plugin based on the given key.
  *
  * @method Phaser.Plugins.PluginCache.removeCustom
- * @since 3.8.0
+ * 
  *
  * @param {string} key - The key of the custom plugin to remove.
  */

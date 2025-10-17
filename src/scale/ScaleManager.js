@@ -872,7 +872,7 @@ var ScaleManager = new Class({
      *
      * @method Phaser.Scale.ScaleManager#setSnap
      * @fires Phaser.Scale.Events#RESIZE
-     * @since 3.80.0
+     * 
      *
      * @param {number} [snapWidth=0] - The amount to snap the width to. If you don't want to snap the width, pass a value of zero.
      * @param {number} [snapHeight=snapWidth] - The amount to snap the height to. If not provided it will use the `snapWidth` value. If you don't want to snap the height, pass a value of zero.
@@ -1377,7 +1377,7 @@ var ScaleManager = new Class({
      *
      * @method Phaser.Scale.ScaleManager#leaveFullScreenSuccessHandler
      * @fires Phaser.Scale.Events#LEAVE_FULLSCREEN
-     * @since 3.85.0
+     * 
      */
     leaveFullScreenSuccessHandler: function () {
         //  Get the parent size again as it will have changed

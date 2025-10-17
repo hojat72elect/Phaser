@@ -79,7 +79,7 @@ var ScenePlugin = new Class({
              *
              * @name Phaser.Scenes.ScenePlugin#transitionProgress
              * @type {number}
-             * @since 3.5.0
+             * 
              */
             this.transitionProgress = 0;
 
@@ -89,7 +89,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_elapsed
              * @type {number}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._elapsed = 0;
 
@@ -99,7 +99,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_target
              * @type {?Phaser.Scene}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._target = null;
 
@@ -109,7 +109,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_duration
              * @type {number}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._duration = 0;
 
@@ -119,7 +119,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_onUpdate
              * @type {function}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._onUpdate;
 
@@ -129,7 +129,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_onUpdateScope
              * @type {object}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._onUpdateScope;
 
@@ -139,7 +139,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_willSleep
              * @type {boolean}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._willSleep = false;
 
@@ -149,7 +149,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Scenes.ScenePlugin#_willRemove
              * @type {boolean}
              * @private
-             * @since 3.5.0
+             * 
              */
             this._willRemove = false;
 
@@ -176,7 +176,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#pluginStart
      * @private
-     * @since 3.5.0
+     * 
      */
     pluginStart: function () {
         this._target = null;
@@ -217,7 +217,7 @@ var ScenePlugin = new Class({
      * This will happen at the next Scene Manager update, not immediately.
      *
      * @method Phaser.Scenes.ScenePlugin#restart
-     * @since 3.4.0
+     * 
      *
      * @param {object} [data] - The Scene data. If no value is given it will not overwrite any previous data that may exist.
      *
@@ -266,7 +266,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#transition
      * @fires Phaser.Scenes.Events#TRANSITION_OUT
-     * @since 3.5.0
+     * 
      *
      * @param {Phaser.Types.Scenes.SceneTransitionConfig} config - The transition configuration object.
      *
@@ -341,7 +341,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#checkValidTransition
      * @private
-     * @since 3.5.0
+     * 
      *
      * @param {Phaser.Scene} target - The Scene to test against.
      *
@@ -362,7 +362,7 @@ var ScenePlugin = new Class({
      *
      * @method Phaser.Scenes.ScenePlugin#step
      * @private
-     * @since 3.5.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -387,7 +387,7 @@ var ScenePlugin = new Class({
      * @method Phaser.Scenes.ScenePlugin#transitionComplete
      * @private
      * @fires Phaser.Scenes.Events#TRANSITION_COMPLETE
-     * @since 3.5.0
+     * 
      */
     transitionComplete: function () {
         var targetSys = this._target.sys;
@@ -788,7 +788,7 @@ var ScenePlugin = new Class({
      * This controls the order in which they are rendered and updated.
      *
      * @method Phaser.Scenes.ScenePlugin#swapPosition
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [keyA,keyB]
@@ -817,7 +817,7 @@ var ScenePlugin = new Class({
      * This means it will render over the top of the other Scene.
      *
      * @method Phaser.Scenes.ScenePlugin#moveAbove
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [keyA,keyB]
@@ -846,7 +846,7 @@ var ScenePlugin = new Class({
      * This means it will render behind the other Scene.
      *
      * @method Phaser.Scenes.ScenePlugin#moveBelow
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [keyA,keyB]
@@ -878,7 +878,7 @@ var ScenePlugin = new Class({
      * queue the operation for the next update sequence.
      *
      * @method Phaser.Scenes.ScenePlugin#remove
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]

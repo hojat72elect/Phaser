@@ -65,7 +65,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.MIN_SAFE_INTEGER
      * @type {number}
-     * @since 3.21.0
+     * 
      */
     MIN_SAFE_INTEGER: Number.MIN_SAFE_INTEGER || -9007199254740991,
 
@@ -75,7 +75,7 @@ var MATH_CONST = {
      *
      * @name Phaser.Math.MAX_SAFE_INTEGER
      * @type {number}
-     * @since 3.21.0
+     * 
      */
     MAX_SAFE_INTEGER: Number.MAX_SAFE_INTEGER || 9007199254740991
 

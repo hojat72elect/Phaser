@@ -333,7 +333,7 @@ var Frame = new Class({
      * Sets the x and y position within the source image to cut from.
      *
      * @method Phaser.Textures.Frame#setCutPosition
-     * @since 3.85.0
+     * 
      *
      * @param {number} [x=0] - X position within the source image to cut from.
      * @param {number} [y=0] - Y position within the source image to cut from.
@@ -358,7 +358,7 @@ var Frame = new Class({
      * Sets the width, and height of the area in the source image to cut.
      *
      * @method Phaser.Textures.Frame#setCutSize
-     * @since 3.85.0
+     * 
      *
      * @param {number} width - The width of the area in the source image to cut.
      * @param {number} height - The height of the area in the source image to cut.
@@ -493,7 +493,7 @@ var Frame = new Class({
      * This is set automatically by the JSONArray and JSONHash parsers.
      *
      * @method Phaser.Textures.Frame#setScale9
-     * @since 3.70.0
+     * 
      *
      * @param {number} x - The left coordinate of the center scale9 rectangle.
      * @param {number} y - The top coordinate of the center scale9 rectangle.
@@ -668,7 +668,7 @@ var Frame = new Class({
      * when the Frame is created.
      *
      * @method Phaser.Textures.Frame#setUVs
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - Width of this frame for the Canvas data.
      * @param {number} height - Height of this frame for the Canvas data.
@@ -891,7 +891,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#scale9
      * @type {boolean}
      * @readonly
-     * @since 3.70.0
+     * 
      */
     scale9: {
 
@@ -907,7 +907,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#is3Slice
      * @type {boolean}
      * @readonly
-     * @since 3.70.0
+     * 
      */
     is3Slice: {
 

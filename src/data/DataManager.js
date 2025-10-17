@@ -265,7 +265,7 @@ var DataManager = new Class({
      * @fires Phaser.Data.Events#SET_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA_KEY
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - The key to change the value for.
      * @param {number} [amount=1] - The amount to increase the given key by. Pass a negative value to decrease the key.
@@ -301,7 +301,7 @@ var DataManager = new Class({
      * @fires Phaser.Data.Events#SET_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA_KEY
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - The key to toggle the value for.
      *

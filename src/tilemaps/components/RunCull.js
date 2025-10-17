@@ -2,7 +2,7 @@
  * Returns the tiles in the given layer that are within the cameras viewport. This is used internally.
  *
  * @function Phaser.Tilemaps.Components.RunCull
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  * @param {object} bounds - An object containing the `left`, `right`, `top` and `bottom` bounds.

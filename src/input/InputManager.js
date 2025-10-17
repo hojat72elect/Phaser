@@ -254,7 +254,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#_tempMatrix
              * @type {Phaser.GameObjects.Components.TransformMatrix}
              * @private
-             * @since 3.4.0
+             * 
              */
             this._tempMatrix = new TransformMatrix();
 

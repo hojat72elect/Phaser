@@ -273,7 +273,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#baselineX
              * @type {number}
              * @default 1.2
-             * @since 3.3.0
+             * 
              */
             this.baselineX;
 
@@ -283,7 +283,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#baselineY
              * @type {number}
              * @default 1.4
-             * @since 3.3.0
+             * 
              */
             this.baselineY;
 
@@ -295,7 +295,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#wordWrapWidth
              * @type {number | null}
              * @default null
-             * @since 3.24.0
+             * 
              */
             this.wordWrapWidth;
 
@@ -310,7 +310,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#wordWrapCallback
              * @type {TextStyleWordWrapCallback | null}
              * @default null
-             * @since 3.24.0
+             * 
              */
             this.wordWrapCallback;
 
@@ -322,7 +322,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#wordWrapCallbackScope
              * @type {object | null}
              * @default null
-             * @since 3.24.0
+             * 
              */
             this.wordWrapCallbackScope;
 
@@ -335,7 +335,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#wordWrapUseAdvanced
              * @type {boolean}
              * @default false
-             * @since 3.24.0
+             * 
              */
             this.wordWrapUseAdvanced;
 

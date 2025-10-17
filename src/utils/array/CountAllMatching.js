@@ -4,7 +4,7 @@ var SafeRange = require('./SafeRange');
  * Returns the total number of elements in the array which have a property matching the given value.
  *
  * @function Phaser.Utils.Array.CountAllMatching
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to search.
  * @param {string} property - The property to test on each array element.

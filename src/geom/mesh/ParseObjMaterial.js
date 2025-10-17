@@ -12,7 +12,7 @@ var GetColor = require('../../display/color/GetColor');
  * or any other material statement (such as `Ka` or `Ks`)
  *
  * @method Phaser.Geom.Mesh.ParseObjMaterial
- * @since 3.50.0
+ * 
  *
  * @param {string} mtl - The OBJ MTL file as a raw string, i.e. loaded via `this.load.text`.
  *

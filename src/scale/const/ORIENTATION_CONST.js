@@ -34,7 +34,7 @@ module.exports = {
      * @name Phaser.Scale.Orientation.LANDSCAPE_SECONDARY
      * @type {string}
      * @const
-     * @since 3.85.0
+     * 
      */
     LANDSCAPE_SECONDARY: 'landscape-secondary',
 

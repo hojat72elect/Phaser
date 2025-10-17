@@ -35,7 +35,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.MultiPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */

@@ -127,7 +127,7 @@ var Clock = new Class({
      *
      * @method Phaser.Time.Clock#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         //  Sync with the TimeStep
@@ -143,7 +143,7 @@ var Clock = new Class({
      *
      * @method Phaser.Time.Clock#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         this.startTime = this.systems.game.loop.time;
@@ -239,7 +239,7 @@ var Clock = new Class({
      * freeing the event up to be re-used.
      *
      * @method Phaser.Time.Clock#removeEvent
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.Time.TimerEvent | Phaser.Time.TimerEvent[])} events - The Timer Event, or an array of Timer Events, to remove from this Clock.
      *

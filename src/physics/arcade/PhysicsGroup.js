@@ -122,7 +122,7 @@ var PhysicsGroup = new Class({
              *
              * @name Phaser.Physics.Arcade.Group#collisionCategory
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionCategory = 0x0001;
 
@@ -133,7 +133,7 @@ var PhysicsGroup = new Class({
              *
              * @name Phaser.Physics.Arcade.Group#collisionMask
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionMask = 2147483647;
 
@@ -185,7 +185,7 @@ var PhysicsGroup = new Class({
              * @name Phaser.Physics.Arcade.Group#type
              * @type {string}
              * @default 'PhysicsGroup'
-             * @since 3.21.0
+             * 
              */
             this.type = 'PhysicsGroup';
         },

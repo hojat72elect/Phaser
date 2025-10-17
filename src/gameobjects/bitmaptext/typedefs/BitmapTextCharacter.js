@@ -5,7 +5,7 @@
  * but are not translated into the local space of the Game Object itself.
  *
  * @typedef {object} Phaser.Types.GameObjects.BitmapText.BitmapTextCharacter
- * @since 3.50.0
+ * 
  *
  * @property {number} i - The index of this character within the BitmapText wrapped text string.
  * @property {number} idx - The index of this character within the BitmapText text string.

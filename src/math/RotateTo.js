@@ -8,7 +8,7 @@
  * Position a `point` at the given `angle` and `distance` to (`x`, `y`).
  *
  * @function Phaser.Math.RotateTo
- * @since 3.24.0
+ * 
  *
  * @generic {Phaser.Types.Math.Vector2Like} T - [point,$return]
  *

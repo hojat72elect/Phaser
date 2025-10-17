@@ -394,7 +394,7 @@ var BaseTween = new Class({
      *
      * @method Phaser.Tweens.BaseTween#complete
      * @fires Phaser.Tweens.Events#TWEEN_COMPLETE
-     * @since 3.2.0
+     * 
      *
      * @param {number} [delay=0] - The time to wait before invoking the complete callback. If zero it will fire immediately.
      *

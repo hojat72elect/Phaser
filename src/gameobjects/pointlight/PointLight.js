@@ -35,7 +35,7 @@ var Render = require('./PointLightRender');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -103,7 +103,7 @@ var PointLight = new Class({
              *
              * @name Phaser.GameObjects.PointLight#color
              * @type {Phaser.Display.Color}
-             * @since 3.50.0
+             * 
              */
             this.color = IntegerToColor(color);
 
@@ -114,7 +114,7 @@ var PointLight = new Class({
              *
              * @name Phaser.GameObjects.PointLight#intensity
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.intensity = intensity;
 
@@ -127,7 +127,7 @@ var PointLight = new Class({
              *
              * @name Phaser.GameObjects.PointLight#attenuation
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.attenuation = attenuation;
 
@@ -143,7 +143,7 @@ var PointLight = new Class({
      *
      * @name Phaser.GameObjects.PointLight#radius
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     radius: {
 

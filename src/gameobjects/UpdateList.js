@@ -56,7 +56,7 @@ var UpdateList = new Class({
              * @type {Array.<*>}
              * @private
              * @default []
-             * @since 3.20.0
+             * 
              */
 
             /**
@@ -66,7 +66,7 @@ var UpdateList = new Class({
              * @type {Array.<*>}
              * @private
              * @default []
-             * @since 3.20.0
+             * 
              */
 
             /**
@@ -76,7 +76,7 @@ var UpdateList = new Class({
              * @type {Array.<*>}
              * @private
              * @default []
-             * @since 3.20.0
+             * 
              */
 
             /**
@@ -99,7 +99,7 @@ var UpdateList = new Class({
      *
      * @method Phaser.GameObjects.UpdateList#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.systems.events.once(SceneEvents.DESTROY, this.destroy, this);
@@ -112,7 +112,7 @@ var UpdateList = new Class({
      *
      * @method Phaser.GameObjects.UpdateList#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         var eventEmitter = this.systems.events;
@@ -128,7 +128,7 @@ var UpdateList = new Class({
      * Pre-updates every active Game Object in the list.
      *
      * @method Phaser.GameObjects.UpdateList#sceneUpdate
-     * @since 3.20.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time elapsed since the last frame.
@@ -237,7 +237,7 @@ var UpdateList = new Class({
      * All the items are marked as 'pending destroy' and fully removed in the next update.
      *
      * @method Phaser.GameObjects.UpdateList#removeAll
-     * @since 3.20.0
+     * 
      *
      * @return {this} This Update List object.
      */
@@ -272,7 +272,7 @@ var UpdateList = new Class({
      * @name Phaser.GameObjects.UpdateList#length
      * @type {number}
      * @readonly
-     * @since 3.20.0
+     * 
      */
 });
 

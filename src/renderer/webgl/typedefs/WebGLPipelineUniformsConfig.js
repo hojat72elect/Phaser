@@ -1,6 +1,5 @@
 /**
  * @typedef {object} Phaser.Types.Renderer.WebGL.WebGLPipelineUniformsConfig
- * @since 3.55.1
  *
  * @property {string} name - The name of the uniform as defined in the shader.
  * @property {number} location - The location of the uniform.

@@ -17,7 +17,7 @@ var Vector2 = require('../math/Vector2');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Alpha
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -74,7 +74,7 @@ var TilemapLayer = new Class({
              * @name Phaser.Tilemaps.TilemapLayer#isTilemap
              * @type {boolean}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.isTilemap = true;
 
@@ -83,7 +83,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#tilemap
              * @type {Phaser.Tilemaps.Tilemap}
-             * @since 3.50.0
+             * 
              */
             this.tilemap = tilemap;
 
@@ -92,7 +92,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#layerIndex
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.layerIndex = layerIndex;
 
@@ -102,7 +102,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#layer
              * @type {Phaser.Tilemaps.LayerData}
-             * @since 3.50.0
+             * 
              */
             this.layer = tilemap.layers[layerIndex];
 
@@ -114,7 +114,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#tileset
              * @type {Phaser.Tilemaps.Tileset[]}
-             * @since 3.50.0
+             * 
              */
             this.tileset = [];
 
@@ -124,7 +124,7 @@ var TilemapLayer = new Class({
              * @name Phaser.Tilemaps.TilemapLayer#tilesDrawn
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.tilesDrawn = 0;
 
@@ -134,7 +134,7 @@ var TilemapLayer = new Class({
              * @name Phaser.Tilemaps.TilemapLayer#tilesTotal
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.tilesTotal = this.layer.width * this.layer.height;
 
@@ -143,7 +143,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#culledTiles
              * @type {Phaser.Tilemaps.Tile[]}
-             * @since 3.50.0
+             * 
              */
             this.culledTiles = [];
 
@@ -157,7 +157,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#skipCull
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.skipCull = false;
 
@@ -169,7 +169,7 @@ var TilemapLayer = new Class({
              * @name Phaser.Tilemaps.TilemapLayer#cullPaddingX
              * @type {number}
              * @default 1
-             * @since 3.50.0
+             * 
              */
             this.cullPaddingX = 1;
 
@@ -181,7 +181,7 @@ var TilemapLayer = new Class({
              * @name Phaser.Tilemaps.TilemapLayer#cullPaddingY
              * @type {number}
              * @default 1
-             * @since 3.50.0
+             * 
              */
             this.cullPaddingY = 1;
 
@@ -208,7 +208,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#cullCallback
              * @type {function}
-             * @since 3.50.0
+             * 
              */
             this.cullCallback = TilemapComponents.GetCullTilesFunction(this.layer.orientation);
 
@@ -231,7 +231,7 @@ var TilemapLayer = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.50.0
+             * 
              */
             this._renderOrder = 0;
 
@@ -240,7 +240,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#gidMap
              * @type {Phaser.Tilemaps.Tileset[]}
-             * @since 3.50.0
+             * 
              */
             this.gidMap = [];
 
@@ -265,7 +265,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#collisionCategory
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionCategory = 0x0001;
 
@@ -278,7 +278,7 @@ var TilemapLayer = new Class({
              *
              * @name Phaser.Tilemaps.TilemapLayer#collisionMask
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionMask = 1;
 
@@ -337,7 +337,7 @@ var TilemapLayer = new Class({
      *
      * @method Phaser.Tilemaps.TilemapLayer#setTilesets
      * @private
-     * @since 3.50.0
+     * 
      *
      * @param {(string|string[]|Phaser.Tilemaps.Tileset|Phaser.Tilemaps.Tileset[])} tileset - The tileset, or an array of tilesets, used to render this layer. Can be a string or a Tileset object.
      */
@@ -391,7 +391,7 @@ var TilemapLayer = new Class({
      * You can provide either an integer (0 to 3), or the string version of the order.
      *
      * @method Phaser.Tilemaps.TilemapLayer#setRenderOrder
-     * @since 3.50.0
+     * 
      *
      * @param {(number|string)} renderOrder - The render (draw) order value. Either an integer between 0 and 3, or a string: 'right-down', 'left-down', 'right-up' or 'left-up'.
      *
@@ -417,7 +417,7 @@ var TilemapLayer = new Class({
      * internally to optimize recalculating faces when only one tile has been changed.
      *
      * @method Phaser.Tilemaps.TilemapLayer#calculateFacesAt
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileX - The x coordinate.
      * @param {number} tileY - The y coordinate.
@@ -436,7 +436,7 @@ var TilemapLayer = new Class({
      * is mostly used internally.
      *
      * @method Phaser.Tilemaps.TilemapLayer#calculateFacesWithin
-     * @since 3.50.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -458,7 +458,7 @@ var TilemapLayer = new Class({
      * Sprites, but want to replace the tile itself with a floor tile or similar once converted.
      *
      * @method Phaser.Tilemaps.TilemapLayer#createFromTiles
-     * @since 3.50.0
+     * 
      *
      * @param {(number|array)} indexes - The tile index, or array of indexes, to create Sprites from.
      * @param {?(number|array)} replacements - The tile index, or array of indexes, to change a converted
@@ -480,7 +480,7 @@ var TilemapLayer = new Class({
      * This is used internally during rendering.
      *
      * @method Phaser.Tilemaps.TilemapLayer#cull
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to run the cull check against.
      *
@@ -496,7 +496,7 @@ var TilemapLayer = new Class({
      * information in the destination region.
      *
      * @method Phaser.Tilemaps.TilemapLayer#copy
-     * @since 3.50.0
+     * 
      *
      * @param {number} srcTileX - The x coordinate of the area to copy from, in tiles, not pixels.
      * @param {number} srcTileY - The y coordinate of the area to copy from, in tiles, not pixels.
@@ -520,7 +520,7 @@ var TilemapLayer = new Class({
      * Collision information in the region will be recalculated.
      *
      * @method Phaser.Tilemaps.TilemapLayer#fill
-     * @since 3.50.0
+     * 
      *
      * @param {number} index - The tile index to fill the area with.
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
@@ -543,7 +543,7 @@ var TilemapLayer = new Class({
      * true) will returned as a new array. Similar to Array.prototype.Filter in vanilla JS.
      *
      * @method Phaser.Tilemaps.TilemapLayer#filterTiles
-     * @since 3.50.0
+     * 
      *
      * @param {function} callback - The callback. Each tile in the given area will be passed to this
      * callback as the first and only parameter. The callback should return true for tiles that pass the
@@ -569,7 +569,7 @@ var TilemapLayer = new Class({
      * the top-left.
      *
      * @method Phaser.Tilemaps.TilemapLayer#findByIndex
-     * @since 3.50.0
+     * 
      *
      * @param {number} index - The tile index value to search for.
      * @param {number} [skip=0] - The number of times to skip a matching tile before returning.
@@ -587,7 +587,7 @@ var TilemapLayer = new Class({
      * true. Similar to Array.prototype.find in vanilla JS.
      *
      * @method Phaser.Tilemaps.TilemapLayer#findTile
-     * @since 3.50.0
+     * 
      *
      * @param {FindTileCallback} callback - The callback. Each tile in the given area will be passed to this callback as the first and only parameter.
      * @param {object} [context] - The context under which the callback should be run.
@@ -608,7 +608,7 @@ var TilemapLayer = new Class({
      * callback. Similar to Array.prototype.forEach in vanilla JS.
      *
      * @method Phaser.Tilemaps.TilemapLayer#forEachTile
-     * @since 3.50.0
+     * 
      *
      * @param {EachTileCallback} callback - The callback. Each tile in the given area will be passed to this callback as the first and only parameter.
      * @param {object} [context] - The context, or scope, under which the callback should be run.
@@ -678,7 +678,7 @@ var TilemapLayer = new Class({
      *
      * @method Phaser.Tilemaps.TilemapLayer#setTintFill
      * @webglOnly
-     * @since 3.70.0
+     * 
      *
      * @param {number} [tint=0xffffff] - The tint color being applied to each tile within the region. Given as a hex value, i.e. `0xff0000` for red. Set to white (`0xffffff`) to reset the tint.
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area to search.
@@ -706,7 +706,7 @@ var TilemapLayer = new Class({
      * Gets a tile at the given tile coordinates from the given layer.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getTileAt
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileX - X position to get the tile from (given in tile units, not pixels).
      * @param {number} tileY - Y position to get the tile from (given in tile units, not pixels).
@@ -722,7 +722,7 @@ var TilemapLayer = new Class({
      * Gets a tile at the given world coordinates from the given layer.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getTileAtWorldXY
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldX - X position to get the tile from (given in pixels)
      * @param {number} worldY - Y position to get the tile from (given in pixels)
@@ -765,7 +765,7 @@ var TilemapLayer = new Class({
      * Gets the tiles in the given rectangular area (in tile coordinates) of the layer.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getTilesWithin
-     * @since 3.50.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -784,7 +784,7 @@ var TilemapLayer = new Class({
      * Line, Rectangle or Triangle. The shape should be in world coordinates.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getTilesWithinShape
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.Geom.Circle|Phaser.Geom.Line|Phaser.Geom.Rectangle|Phaser.Geom.Triangle)} shape - A shape in world (pixel) coordinates
      * @param {Phaser.Types.Tilemaps.FilteringOptions} [filteringOptions] - Optional filters to apply when getting the tiles.
@@ -800,7 +800,7 @@ var TilemapLayer = new Class({
      * Gets the tiles in the given rectangular area (in world coordinates) of the layer.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getTilesWithinWorldXY
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldX - The world x coordinate for the top-left of the area.
      * @param {number} worldY - The world y coordinate for the top-left of the area.
@@ -820,7 +820,7 @@ var TilemapLayer = new Class({
      * false if there is no tile or if the tile at that location has an index of -1.
      *
      * @method Phaser.Tilemaps.TilemapLayer#hasTileAt
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -836,7 +836,7 @@ var TilemapLayer = new Class({
      * false if there is no tile or if the tile at that location has an index of -1.
      *
      * @method Phaser.Tilemaps.TilemapLayer#hasTileAtWorldXY
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldX - The x coordinate, in pixels.
      * @param {number} worldY - The y coordinate, in pixels.
@@ -855,7 +855,7 @@ var TilemapLayer = new Class({
      * Collision information will be recalculated at the specified location.
      *
      * @method Phaser.Tilemaps.TilemapLayer#putTileAt
-     * @since 3.50.0
+     * 
      *
      * @param {(number|Phaser.Tilemaps.Tile)} tile - The index of this tile to set or a Tile object.
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
@@ -875,7 +875,7 @@ var TilemapLayer = new Class({
      * changed. Collision information will be recalculated at the specified location.
      *
      * @method Phaser.Tilemaps.TilemapLayer#putTileAtWorldXY
-     * @since 3.50.0
+     * 
      *
      * @param {(number|Phaser.Tilemaps.Tile)} tile - The index of this tile to set or a Tile object.
      * @param {number} worldX - The x coordinate, in pixels.
@@ -897,7 +897,7 @@ var TilemapLayer = new Class({
      * within the region tiles were changed.
      *
      * @method Phaser.Tilemaps.TilemapLayer#putTilesAt
-     * @since 3.50.0
+     * 
      *
      * @param {(number[]|number[][]|Phaser.Tilemaps.Tile[]|Phaser.Tilemaps.Tile[][])} tile - A row (array) or grid (2D array) of Tiles or tile indexes to place.
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
@@ -920,7 +920,7 @@ var TilemapLayer = new Class({
      * indexes. This method only modifies tile indexes and does not change collision information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#randomize
-     * @since 3.50.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -941,7 +941,7 @@ var TilemapLayer = new Class({
      * collision information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#removeTileAt
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -959,7 +959,7 @@ var TilemapLayer = new Class({
      * collision information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#removeTileAtWorldXY
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldX - The x coordinate, in pixels.
      * @param {number} worldY - The y coordinate, in pixels.
@@ -980,7 +980,7 @@ var TilemapLayer = new Class({
      * wherever you want on the screen.
      *
      * @method Phaser.Tilemaps.TilemapLayer#renderDebug
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} graphics - The target Graphics object to draw upon.
      * @param {Phaser.Types.Tilemaps.StyleConfig} [styleConfig] - An object specifying the colors to use for the debug drawing.
@@ -999,7 +999,7 @@ var TilemapLayer = new Class({
      * not change collision information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#replaceByIndex
-     * @since 3.50.0
+     * 
      *
      * @param {number} findIndex - The index of the tile to search for.
      * @param {number} newIndex - The index of the tile to replace it with.
@@ -1024,7 +1024,7 @@ var TilemapLayer = new Class({
      * However, there are some instances when you may wish to disable this.
      *
      * @method Phaser.Tilemaps.TilemapLayer#setSkipCull
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [value=true] - Set to `true` to stop culling tiles. Set to `false` to enable culling again.
      *
@@ -1048,7 +1048,7 @@ var TilemapLayer = new Class({
      * and you set `paddingX` to be 4, it would add 32px x 4 to the cull rectangle (adjusted for scale)
      *
      * @method Phaser.Tilemaps.TilemapLayer#setCullPadding
-     * @since 3.50.0
+     * 
      *
      * @param {number} [paddingX=1] - The amount of extra horizontal tiles to add to the cull check padding.
      * @param {number} [paddingY=1] - The amount of extra vertical tiles to add to the cull check padding.
@@ -1075,7 +1075,7 @@ var TilemapLayer = new Class({
      * collision will be enabled (true) or disabled (false).
      *
      * @method Phaser.Tilemaps.TilemapLayer#setCollision
-     * @since 3.50.0
+     * 
      *
      * @param {(number|array)} indexes - Either a single tile index, or an array of tile indexes.
      * @param {boolean} [collides=true] - If true it will enable collision. If false it will clear collision.
@@ -1097,7 +1097,7 @@ var TilemapLayer = new Class({
      * enabled (true) or disabled (false).
      *
      * @method Phaser.Tilemaps.TilemapLayer#setCollisionBetween
-     * @since 3.50.0
+     * 
      *
      * @param {number} start - The first index of the tile to be set for collision.
      * @param {number} stop - The last index of the tile to be set for collision.
@@ -1122,7 +1122,7 @@ var TilemapLayer = new Class({
      * "types" property that matches any of those values, its collision flag will be updated.
      *
      * @method Phaser.Tilemaps.TilemapLayer#setCollisionByProperty
-     * @since 3.50.0
+     * 
      *
      * @param {object} properties - An object with tile properties and corresponding values that should be checked.
      * @param {boolean} [collides=true] - If true it will enable collision. If false it will clear collision.
@@ -1142,7 +1142,7 @@ var TilemapLayer = new Class({
      * disabled (false). Tile indexes not currently in the layer are not affected.
      *
      * @method Phaser.Tilemaps.TilemapLayer#setCollisionByExclusion
-     * @since 3.50.0
+     * 
      *
      * @param {number[]} indexes - An array of the tile indexes to not be counted for collision.
      * @param {boolean} [collides=true] - If true it will enable collision. If false it will clear collision.
@@ -1163,7 +1163,7 @@ var TilemapLayer = new Class({
      * controls if collision will be enabled (true) or disabled (false).
      *
      * @method Phaser.Tilemaps.TilemapLayer#setCollisionFromCollisionGroup
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [collides=true] - If true it will enable collision. If false it will clear collision.
      * @param {boolean} [recalculateFaces=true] - Whether or not to recalculate the tile faces after the update.
@@ -1183,7 +1183,7 @@ var TilemapLayer = new Class({
      * at a specific location on the map then see setTileLocationCallback.
      *
      * @method Phaser.Tilemaps.TilemapLayer#setTileIndexCallback
-     * @since 3.50.0
+     * 
      *
      * @param {(number|number[])} indexes - Either a single tile index, or an array of tile indexes to have a collision callback set for.
      * @param {function} callback - The callback that will be invoked when the tile is collided with.
@@ -1203,7 +1203,7 @@ var TilemapLayer = new Class({
      * remove it.
      *
      * @method Phaser.Tilemaps.TilemapLayer#setTileLocationCallback
-     * @since 3.50.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -1227,7 +1227,7 @@ var TilemapLayer = new Class({
      * information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#shuffle
-     * @since 3.50.0
+     * 
      *
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
      * @param {number} [tileY] - The top most tile index (in tile coordinates) to use as the origin of the area.
@@ -1248,7 +1248,7 @@ var TilemapLayer = new Class({
      * information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#swapByIndex
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileA - First tile index.
      * @param {number} tileB - Second tile index.
@@ -1270,7 +1270,7 @@ var TilemapLayer = new Class({
      * layers position, scale and scroll.
      *
      * @method Phaser.Tilemaps.TilemapLayer#tileToWorldX
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use when calculating the tile index from the world values.
@@ -1286,7 +1286,7 @@ var TilemapLayer = new Class({
      * layers position, scale and scroll.
      *
      * @method Phaser.Tilemaps.TilemapLayer#tileToWorldY
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use when calculating the tile index from the world values.
@@ -1303,7 +1303,7 @@ var TilemapLayer = new Class({
      * `point` object.
      *
      * @method Phaser.Tilemaps.TilemapLayer#tileToWorldXY
-     * @since 3.50.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.
@@ -1357,7 +1357,7 @@ var TilemapLayer = new Class({
      * method only modifies tile indexes and does not change collision information.
      *
      * @method Phaser.Tilemaps.TilemapLayer#weightedRandomize
-     * @since 3.50.0
+     * 
      *
      * @param {object[]} weightedIndexes - An array of objects to randomly draw from during randomization. They should be in the form: { index: 0, weight: 4 } or { index: [0, 1], weight: 4 } if you wish to draw from multiple tile indexes.
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area.
@@ -1382,7 +1382,7 @@ var TilemapLayer = new Class({
      * should use the `worldToTileXY` method.
      *
      * @method Phaser.Tilemaps.TilemapLayer#worldToTileX
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldX - The x coordinate to be converted, in pixels, not tiles.
      * @param {boolean} [snapToFloor] - Whether or not to round the tile coordinate down to the nearest integer.
@@ -1403,7 +1403,7 @@ var TilemapLayer = new Class({
      * should use the `worldToTileXY` method.
      *
      * @method Phaser.Tilemaps.TilemapLayer#worldToTileY
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldY - The y coordinate to be converted, in pixels, not tiles.
      * @param {boolean} [snapToFloor] - Whether or not to round the tile coordinate down to the nearest integer.
@@ -1421,7 +1421,7 @@ var TilemapLayer = new Class({
      * `point` object.
      *
      * @method Phaser.Tilemaps.TilemapLayer#worldToTileXY
-     * @since 3.50.0
+     * 
      *
      * @param {number} worldX - The x coordinate to be converted, in pixels, not tiles.
      * @param {number} worldY - The y coordinate to be converted, in pixels, not tiles.
@@ -1439,7 +1439,7 @@ var TilemapLayer = new Class({
      * Destroys this TilemapLayer and removes its link to the associated LayerData.
      *
      * @method Phaser.Tilemaps.TilemapLayer#destroy
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [removeFromTilemap=true] - Remove this layer from the parent Tilemap?
      */

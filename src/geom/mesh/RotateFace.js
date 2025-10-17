@@ -6,7 +6,7 @@
  * Therefore, this updates the vertex data directly.
  *
  * @function Phaser.Geom.Mesh.RotateFace
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Geom.Mesh.Face} face - The Face to rotate.
  * @param {number} angle - The angle to rotate to, in radians.

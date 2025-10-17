@@ -24,7 +24,7 @@ function hasGetterOrSetter(def) {
  * this Game Object.
  *
  * @function Phaser.Physics.Matter.MatterGameObject
- * @since 3.3.0
+ * 
  *
  * @param {Phaser.Physics.Matter.World} world - The Matter world to add the body to.
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that will have the Matter body applied to it.

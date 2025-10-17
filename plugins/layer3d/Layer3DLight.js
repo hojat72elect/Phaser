@@ -15,7 +15,7 @@ var Vector3 = require('../../math/Vector3');
  * @class Layer3DLight
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.50.0
+ * 
  */
 var Layer3DLight = new Class({
 
@@ -32,7 +32,7 @@ var Layer3DLight = new Class({
              *
              * @name Phaser.GameObjects.Layer3DLight#layer
              * @type {Phaser.GameObjects.Layer3D}
-             * @since 3.50.0
+             * 
              */
             this.layer = layer;
 
@@ -44,7 +44,7 @@ var Layer3DLight = new Class({
              *
              * @name Phaser.GameObjects.Layer3DLight#position
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.position = new Vector3(x, y, z);
 
@@ -60,7 +60,7 @@ var Layer3DLight = new Class({
              *
              * @name Phaser.GameObjects.Layer3DLight#ambient
              * @type {Phaser.Display.RGB}
-             * @since 3.50.0
+             * 
              */
             this.ambient = new RGB(1, 1, 1);
 
@@ -76,7 +76,7 @@ var Layer3DLight = new Class({
              *
              * @name Phaser.GameObjects.Layer3DLight#diffuse
              * @type {Phaser.Display.RGB}
-             * @since 3.50.0
+             * 
              */
             this.diffuse = new RGB(1, 1, 1);
 
@@ -92,7 +92,7 @@ var Layer3DLight = new Class({
              *
              * @name Phaser.GameObjects.Layer3DLight#specular
              * @type {Phaser.Display.RGB}
-             * @since 3.50.0
+             * 
              */
             this.specular = new RGB(1, 1, 1);
 
@@ -102,7 +102,7 @@ var Layer3DLight = new Class({
              * @name Phaser.GameObjects.Layer3DLight#dirtyCache
              * @type {number[]}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.dirtyCache = [0, 0, 0];
         },
@@ -114,7 +114,7 @@ var Layer3DLight = new Class({
      * is used to set the `uLightPosition` uniform.
      *
      * @method Phaser.GameObjects.Layer3DLight#isDirty
-     * @since 3.50.0
+     * 
      *
      * @return {boolean} `true` if this light is dirty, otherwise `false`.
      */
@@ -141,7 +141,7 @@ var Layer3DLight = new Class({
      * Sets the position of this light.
      *
      * @method Phaser.GameObjects.Layer3DLight#setPosition
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x position of this light.
      * @param {number} y - The y position of this light.
@@ -159,7 +159,7 @@ var Layer3DLight = new Class({
      * Sets the ambient color of this light.
      *
      * @method Phaser.GameObjects.Layer3DLight#setAmbient
-     * @since 3.50.0
+     * 
      *
      * @param {number} r - The red color value. Between 0 and 1.
      * @param {number} g - The green color value. Between 0 and 1.
@@ -177,7 +177,7 @@ var Layer3DLight = new Class({
      * Sets the diffuse color of this light.
      *
      * @method Phaser.GameObjects.Layer3DLight#setDiffuse
-     * @since 3.50.0
+     * 
      *
      * @param {number} r - The red color value. Between 0 and 1.
      * @param {number} g - The green color value. Between 0 and 1.
@@ -195,7 +195,7 @@ var Layer3DLight = new Class({
      * Sets the specular color of this light.
      *
      * @method Phaser.GameObjects.Layer3DLight#setSpecular
-     * @since 3.50.0
+     * 
      *
      * @param {number} r - The red color value. Between 0 and 1.
      * @param {number} g - The green color value. Between 0 and 1.
@@ -214,7 +214,7 @@ var Layer3DLight = new Class({
      *
      * @name Phaser.GameObjects.Layer3DLight#x
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     x: {
 
@@ -233,7 +233,7 @@ var Layer3DLight = new Class({
      *
      * @name Phaser.GameObjects.Layer3DLight#y
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     y: {
 
@@ -252,7 +252,7 @@ var Layer3DLight = new Class({
      *
      * @name Phaser.GameObjects.Layer3DLight#z
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     z: {
 
@@ -270,7 +270,7 @@ var Layer3DLight = new Class({
      * Destroy handler for this light.
      *
      * @method Phaser.GameObjects.Layer3DLight#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         this.layer = null;

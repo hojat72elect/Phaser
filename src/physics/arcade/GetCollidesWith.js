@@ -3,7 +3,7 @@
  * categories will collide with each other or not.
  *
  * @function Phaser.Physics.Arcade.GetCollidesWith
- * @since 3.70.0
+ * 
  *
  * @param {(number|number[])} categories - A unique category bitfield, or an array of them.
  *

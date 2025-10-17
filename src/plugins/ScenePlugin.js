@@ -18,7 +18,7 @@ var SceneEvents = require('../scene/events');
  * @memberof Phaser.Plugins
  * @extends Phaser.Plugins.BasePlugin
  * @constructor
- * @since 3.8.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene that has installed this plugin.
  * @param {Phaser.Plugins.PluginManager} pluginManager - A reference to the Plugin Manager.
@@ -42,7 +42,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Plugins.ScenePlugin#scene
              * @type {?Phaser.Scene}
              * @protected
-             * @since 3.8.0
+             * 
              */
             this.scene = scene;
 
@@ -55,7 +55,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Plugins.ScenePlugin#systems
              * @type {?Phaser.Scenes.Systems}
              * @protected
-             * @since 3.8.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -68,7 +68,7 @@ var ScenePlugin = new Class({
              * @name Phaser.Plugins.ScenePlugin#pluginKey
              * @type {string}
              * @readonly
-             * @since 3.54.0
+             * 
              */
             this.pluginKey = pluginKey;
 
@@ -108,7 +108,7 @@ var ScenePlugin = new Class({
      * ```
      *
      * @method Phaser.Plugins.ScenePlugin#boot
-     * @since 3.8.0
+     * 
      */
     boot: function () {
     },
@@ -119,7 +119,7 @@ var ScenePlugin = new Class({
      * You must release everything in here, all references, all objects, free it all up.
      *
      * @method Phaser.Plugins.ScenePlugin#destroy
-     * @since 3.8.0
+     * 
      */
     destroy: function () {
         this.pluginManager = null;

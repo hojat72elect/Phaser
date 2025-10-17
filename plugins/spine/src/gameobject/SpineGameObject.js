@@ -308,7 +308,7 @@ var SpineGameObject = new Class({
      * To set the alpha for the whole skeleton, use the `setAlpha` method instead.
      *
      * @method SpineGameObject#setSlotAlpha
-     * @since 3.80.0
+     * 
      *
      * @param {string} slotName - The name of the slot to find.
      * @param {number} [value=1] - The alpha value used for the slot.

@@ -2,7 +2,7 @@
  * Deep Copy the given object or array.
  *
  * @function Phaser.Utils.Objects.DeepCopy
- * @since 3.50.0
+ * 
  *
  * @param {object} obj - The object to deep copy.
  *

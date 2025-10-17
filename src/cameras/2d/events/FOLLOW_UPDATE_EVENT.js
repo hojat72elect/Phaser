@@ -9,7 +9,7 @@
  *
  * @event Phaser.Cameras.Scene2D.Events#FOLLOW_UPDATE
  * @type {string}
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Cameras.Scene2D.BaseCamera} camera - The camera that emitted the event.
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object the camera is following.

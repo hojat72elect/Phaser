@@ -13,7 +13,7 @@ var tempMatrix = new Float32Array(20);
  * @class ColorMatrix
  * @memberof Phaser.Display
  * @constructor
- * @since 3.50.0
+ * 
  */
 var ColorMatrix = new Class({
 
@@ -26,7 +26,7 @@ var ColorMatrix = new Class({
              * @name Phaser.Display.ColorMatrix#_matrix
              * @type {Float32Array}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._matrix = new Float32Array(20);
 
@@ -36,7 +36,7 @@ var ColorMatrix = new Class({
              *
              * @name Phaser.Display.ColorMatrix#alpha
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.alpha = 1;
 
@@ -46,7 +46,7 @@ var ColorMatrix = new Class({
              * @name Phaser.Display.ColorMatrix#_dirty
              * @type {boolean}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._dirty = true;
 
@@ -58,7 +58,7 @@ var ColorMatrix = new Class({
              * @name Phaser.Display.ColorMatrix#data
              * @type {Float32Array}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._data = new Float32Array(20);
 
@@ -69,7 +69,7 @@ var ColorMatrix = new Class({
      * Sets this ColorMatrix from the given array of color values.
      *
      * @method Phaser.Display.ColorMatrix#set
-     * @since 3.50.0
+     * 
      *
      * @param {(number[]|Float32Array)} value - The ColorMatrix values to set. Must have 20 elements.
      *
@@ -88,7 +88,7 @@ var ColorMatrix = new Class({
      * the `alpha` property back to 1.
      *
      * @method Phaser.Display.ColorMatrix#reset
-     * @since 3.50.0
+     * 
      *
      * @return {this} This ColorMatrix instance.
      */
@@ -115,7 +115,7 @@ var ColorMatrix = new Class({
      * Can be used directly as a 1fv shader uniform value.
      *
      * @method Phaser.Display.ColorMatrix#getData
-     * @since 3.50.0
+     * 
      *
      * @return {Float32Array} The ColorMatrix as a Float32Array.
      */
@@ -140,7 +140,7 @@ var ColorMatrix = new Class({
      * Changes the brightness of this ColorMatrix by the given amount.
      *
      * @method Phaser.Display.ColorMatrix#brightness
-     * @since 3.50.0
+     * 
      *
      * @param {number} [value=0] - The amount of brightness to apply to this ColorMatrix. Between 0 (black) and 1.
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
@@ -169,7 +169,7 @@ var ColorMatrix = new Class({
      * Changes the saturation of this ColorMatrix by the given amount.
      *
      * @method Phaser.Display.ColorMatrix#saturate
-     * @since 3.50.0
+     * 
      *
      * @param {number} [value=0] - The amount of saturation to apply to this ColorMatrix.
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
@@ -199,7 +199,7 @@ var ColorMatrix = new Class({
      * Desaturates this ColorMatrix (removes color from it).
      *
      * @method Phaser.Display.ColorMatrix#saturation
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -217,7 +217,7 @@ var ColorMatrix = new Class({
      * Rotates the hues of this ColorMatrix by the value given.
      *
      * @method Phaser.Display.ColorMatrix#hue
-     * @since 3.50.0
+     * 
      *
      * @param {number} [rotation=0] - The amount of hue rotation to apply to this ColorMatrix, in degrees.
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
@@ -252,7 +252,7 @@ var ColorMatrix = new Class({
      * Sets this ColorMatrix to be grayscale.
      *
      * @method Phaser.Display.ColorMatrix#grayscale
-     * @since 3.50.0
+     * 
      *
      * @param {number} [value=1] - The grayscale scale (0 is black).
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
@@ -274,7 +274,7 @@ var ColorMatrix = new Class({
      * Sets this ColorMatrix to be black and white.
      *
      * @method Phaser.Display.ColorMatrix#blackWhite
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -292,7 +292,7 @@ var ColorMatrix = new Class({
      * Change the contrast of this ColorMatrix by the amount given.
      *
      * @method Phaser.Display.ColorMatrix#contrast
-     * @since 3.50.0
+     * 
      *
      * @param {number} [value=0] - The amount of contrast to apply to this ColorMatrix.
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
@@ -322,7 +322,7 @@ var ColorMatrix = new Class({
      * Converts this ColorMatrix to have negative values.
      *
      * @method Phaser.Display.ColorMatrix#negative
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -340,7 +340,7 @@ var ColorMatrix = new Class({
      * Apply a desaturated luminance to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#desaturateLuminance
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -358,7 +358,7 @@ var ColorMatrix = new Class({
      * Applies a sepia tone to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#sepia
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -376,7 +376,7 @@ var ColorMatrix = new Class({
      * Applies a night vision tone to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#night
-     * @since 3.50.0
+     * 
      *
      * @param {number} [intensity=0.1] - The intensity of this effect.
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
@@ -403,7 +403,7 @@ var ColorMatrix = new Class({
      * Applies a trippy color tone to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#lsd
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -421,7 +421,7 @@ var ColorMatrix = new Class({
      * Applies a brown tone to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#brown
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -439,7 +439,7 @@ var ColorMatrix = new Class({
      * Applies a vintage pinhole color effect to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#vintagePinhole
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -457,7 +457,7 @@ var ColorMatrix = new Class({
      * Applies a kodachrome color effect to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#kodachrome
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -475,7 +475,7 @@ var ColorMatrix = new Class({
      * Applies a technicolor color effect to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#technicolor
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -493,7 +493,7 @@ var ColorMatrix = new Class({
      * Applies a polaroid color effect to this ColorMatrix.
      *
      * @method Phaser.Display.ColorMatrix#polaroid
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -511,7 +511,7 @@ var ColorMatrix = new Class({
      * Shifts the values of this ColorMatrix into BGR order.
      *
      * @method Phaser.Display.ColorMatrix#shiftToBGR
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
      *
@@ -529,7 +529,7 @@ var ColorMatrix = new Class({
      * Multiplies the two given matrices.
      *
      * @method Phaser.Display.ColorMatrix#multiply
-     * @since 3.50.0
+     * 
      *
      * @param {number[]} a - The 5x4 array to multiply with ColorMatrix._matrix.
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?

@@ -11,7 +11,7 @@ var Events = require('../events');
  * @class RenderTarget
  * @memberof Phaser.Renderer.WebGL
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the WebGLRenderer.
  * @param {number} width - The width of this Render Target.
@@ -52,7 +52,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#renderer
              * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-             * @since 3.50.0
+             * 
              */
             this.renderer = renderer;
 
@@ -63,7 +63,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#framebuffer
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
-             * @since 3.50.0
+             * 
              */
             this.framebuffer = null;
 
@@ -74,7 +74,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#texture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.50.0
+             * 
              */
             this.texture = null;
 
@@ -84,7 +84,7 @@ var RenderTarget = new Class({
              * @name Phaser.Renderer.WebGL.RenderTarget#width
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.width = 0;
 
@@ -94,7 +94,7 @@ var RenderTarget = new Class({
              * @name Phaser.Renderer.WebGL.RenderTarget#height
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.height = 0;
 
@@ -105,7 +105,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#scale
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.scale = scale;
 
@@ -114,7 +114,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#minFilter
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.minFilter = minFilter;
 
@@ -127,7 +127,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#autoClear
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.autoClear = autoClear;
 
@@ -139,7 +139,7 @@ var RenderTarget = new Class({
              * @name Phaser.Renderer.WebGL.RenderTarget#autoResize
              * @type {boolean}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.autoResize = true;
 
@@ -181,7 +181,7 @@ var RenderTarget = new Class({
      * and at no other time.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#init
-     * @since 3.86.0
+     * 
      *
      * @param {number} width - The new width of this Render Target.
      * @param {number} height - The new height of this Render Target.
@@ -201,7 +201,7 @@ var RenderTarget = new Class({
      * emits a resize event.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#setAutoResize
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} autoResize - Automatically resize this Render Target when the WebGL Renderer resizes?
      *
@@ -231,7 +231,7 @@ var RenderTarget = new Class({
      * This method is called automatically by the pipeline during its resize handler.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#resize
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - The new width of this Render Target.
      * @param {number} height - The new height of this Render Target.
@@ -261,7 +261,7 @@ var RenderTarget = new Class({
      * width and height values.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#willResize
-     * @since 3.70.0
+     * 
      *
      * @param {number} width - The new width of this Render Target.
      * @param {number} height - The new height of this Render Target.
@@ -290,7 +290,7 @@ var RenderTarget = new Class({
      * If `adjustViewport` is `true` then it will flush the renderer and then adjust the GL viewport.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#bind
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [adjustViewport=false] - Adjust the GL viewport by calling `RenderTarget.adjustViewport` ?
      * @param {number} [width] - Optional new width of this Render Target.
@@ -334,7 +334,7 @@ var RenderTarget = new Class({
      * Also disables `SCISSOR_TEST`.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#adjustViewport
-     * @since 3.50.0
+     * 
      */
     adjustViewport: function () {
         var gl = this.renderer.gl;
@@ -354,7 +354,7 @@ var RenderTarget = new Class({
      * @param {number} [height=this.height] - The height of the fill rectangle.
      *
      * @method Phaser.Renderer.WebGL.RenderTarget#clear
-     * @since 3.50.0
+     * 
      */
     clear: function (x, y, width, height) {
         var renderer = this.renderer;
@@ -382,7 +382,7 @@ var RenderTarget = new Class({
      * Unbinds this Render Target and optionally flushes the WebGL Renderer first.
      *
      * @name Phaser.Renderer.WebGL.RenderTarget#unbind
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [flush=false] - Flush the WebGL Renderer before unbinding?
      *
@@ -409,7 +409,7 @@ var RenderTarget = new Class({
      * Does not remove this Render Target from the parent pipeline.
      *
      * @name Phaser.Renderer.WebGL.RenderTarget#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         var renderer = this.renderer;

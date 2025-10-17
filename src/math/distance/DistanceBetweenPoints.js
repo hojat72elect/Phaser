@@ -8,7 +8,7 @@
  * Calculate the distance between two points.
  *
  * @function Phaser.Math.Distance.BetweenPoints
- * @since 3.22.0
+ * 
  *
  * @param {Phaser.Types.Math.Vector2Like} a - The first point.
  * @param {Phaser.Types.Math.Vector2Like} b - The second point.

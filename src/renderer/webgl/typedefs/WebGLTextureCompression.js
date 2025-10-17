@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Renderer.WebGL.WebGLTextureCompression
- * @since 3.55.0
+ * 
  *
  * @property {object|undefined} ASTC - Indicates if ASTC compression is supported (mostly iOS).
  * @property {object|undefined} ATC - Indicates if ATC compression is supported.

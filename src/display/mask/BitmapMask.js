@@ -70,7 +70,6 @@ var BitmapMask = new Class({
              *
              * @name Phaser.Display.Masks.BitmapMask#invertAlpha
              * @type {boolean}
-             * @since 3.1.2
              */
             this.invertAlpha = false;
 

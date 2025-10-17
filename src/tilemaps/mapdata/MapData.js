@@ -110,7 +110,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#orientation
              * @type {Phaser.Tilemaps.OrientationType}
-             * @since 3.50.0
+             * 
              */
             this.orientation = GetFastValue(config, 'orientation', CONST.ORTHOGONAL);
 
@@ -221,7 +221,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#hexSideLength
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.hexSideLength = GetFastValue(config, 'hexSideLength', 0);
 

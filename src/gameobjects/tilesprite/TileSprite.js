@@ -214,7 +214,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#_textureKey
              * @type {string}
              * @private
-             * @since 3.80.0
+             * 
              */
             this._textureKey = UUID();
 
@@ -352,7 +352,7 @@ var TileSprite = new Class({
      * Sets {@link Phaser.GameObjects.TileSprite#tilePositionX} and {@link Phaser.GameObjects.TileSprite#tilePositionY}.
      *
      * @method Phaser.GameObjects.TileSprite#setTilePosition
-     * @since 3.3.0
+     * 
      *
      * @param {number} [x] - The x position of this sprite's tiling texture.
      * @param {number} [y] - The y position of this sprite's tiling texture.
@@ -518,7 +518,7 @@ var TileSprite = new Class({
      *
      * @method Phaser.GameObjects.TileSprite#preDestroy
      * @protected
-     * @since 3.9.0
+     * 
      */
     preDestroy: function () {
         if (this.renderer && this.renderer.gl) {

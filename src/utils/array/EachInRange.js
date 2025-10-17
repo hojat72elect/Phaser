@@ -4,7 +4,7 @@ var SafeRange = require('./SafeRange');
  * Passes each element in the array, between the start and end indexes, to the given callback.
  *
  * @function Phaser.Utils.Array.EachInRange
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to search.
  * @param {function} callback - A callback to be invoked for each item in the array.

@@ -5,7 +5,7 @@
  * of the Renderer resizing.
  *
  * @event Phaser.Renderer.WebGL.Pipelines.Events#RESIZE
- * @since 3.50.0
+ * 
  *
  * @param {number} width - The new width of the pipeline.
  * @param {number} height - The new height of the pipeline.

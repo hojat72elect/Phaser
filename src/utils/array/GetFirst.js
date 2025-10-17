@@ -13,7 +13,7 @@ var SafeRange = require('./SafeRange');
  * You can also specify a negative `startIndex`, such as `-1`, which would start the search at the end of the array
  *
  * @function Phaser.Utils.Array.GetFirst
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to search.
  * @param {string} [property] - The property to test on each array element.

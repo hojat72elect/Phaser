@@ -86,7 +86,7 @@ var Vector3 = new Class({
      * Sets the components of this Vector to be the `Math.min` result from the given vector.
      *
      * @method Phaser.Math.Vector3#min
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Vector3} v - The Vector3 to check the minimum values against.
      *
@@ -104,7 +104,7 @@ var Vector3 = new Class({
      * Sets the components of this Vector to be the `Math.max` result from the given vector.
      *
      * @method Phaser.Math.Vector3#max
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Vector3} v - The Vector3 to check the maximum values against.
      *
@@ -134,7 +134,7 @@ var Vector3 = new Class({
      * Adds the two given Vector3s and sets the results into this Vector3.
      *
      * @method Phaser.Math.Vector3#addVectors
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Vector3} a - The first Vector to add.
      * @param {Phaser.Math.Vector3} b - The second Vector to add.
@@ -153,7 +153,7 @@ var Vector3 = new Class({
      * Subtracts the two given Vector3s and sets the results into this Vector3.
      *
      * @method Phaser.Math.Vector3#subVectors
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Math.Vector3} a - The first Vector to sub.
      * @param {Phaser.Math.Vector3} b - The second Vector to sub.
@@ -258,7 +258,7 @@ var Vector3 = new Class({
      * Sets the components of this Vector3 from the position of the given Matrix4.
      *
      * @method Phaser.Math.Vector3#setFromMatrixPosition
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} mat4 - The Matrix4 to get the position from.
      *
@@ -272,7 +272,7 @@ var Vector3 = new Class({
      * Sets the components of this Vector3 from the Matrix4 column specified.
      *
      * @method Phaser.Math.Vector3#setFromMatrixColumn
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} mat4 - The Matrix4 to get the column from.
      * @param {number} index - The column index.
@@ -291,7 +291,7 @@ var Vector3 = new Class({
      * Vector3.z = array[offset + 2]
      *
      * @method Phaser.Math.Vector3#fromArray
-     * @since 3.50.0
+     * 
      *
      * @param {number[]} array - The array of values to get this Vector from.
      * @param {number} [offset=0] - The offset index into the array.
@@ -332,7 +332,7 @@ var Vector3 = new Class({
      * Add the given value to each component of this Vector.
      *
      * @method Phaser.Math.Vector3#addScalar
-     * @since 3.50.0
+     * 
      *
      * @param {number} s - The amount to add to this Vector.
      *
@@ -350,7 +350,7 @@ var Vector3 = new Class({
      * Add and scale a given Vector to this Vector. Addition is component-wise.
      *
      * @method Phaser.Math.Vector3#addScale
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.Math.Vector2|Phaser.Math.Vector3)} v - The Vector to add to this Vector.
      * @param {number} scale - The amount to scale `v` by.
@@ -630,7 +630,7 @@ var Vector3 = new Class({
      * Takes a Matrix3 and applies it to this Vector3.
      *
      * @method Phaser.Math.Vector3#applyMatrix3
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix3} mat3 - The Matrix3 to apply to this Vector3.
      *
@@ -653,7 +653,7 @@ var Vector3 = new Class({
      * Takes a Matrix4 and applies it to this Vector3.
      *
      * @method Phaser.Math.Vector3#applyMatrix4
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} mat4 - The Matrix4 to apply to this Vector3.
      *
@@ -829,7 +829,7 @@ var Vector3 = new Class({
      * Multiplies this Vector3 by the given view and projection matrices.
      *
      * @method Phaser.Math.Vector3#projectViewMatrix
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} viewMatrix - A View Matrix.
      * @param {Phaser.Math.Matrix4} projectionMatrix - A Projection Matrix.
@@ -844,7 +844,7 @@ var Vector3 = new Class({
      * Multiplies this Vector3 by the given inversed projection matrix and world matrix.
      *
      * @method Phaser.Math.Vector3#unprojectViewMatrix
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} projectionMatrix - An inversed Projection Matrix.
      * @param {Phaser.Math.Matrix4} worldMatrix - A World View Matrix.

@@ -88,7 +88,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#pendingDestroy
              * @type {Phaser.Structs.Set.<(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)>}
-             * @since 3.1.0
+             * 
              */
             this.pendingDestroy = new Set();
 
@@ -158,7 +158,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#fixedStep
              * @type {boolean}
              * @default true
-             * @since 3.23.0
+             * 
              */
             this.fixedStep = GetValue(config, 'fixedStep', true);
 
@@ -1020,7 +1020,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#singleStep
      * @fires Phaser.Physics.Arcade.Events#WORLD_STEP
-     * @since 3.70.0
+     * 
      */
     singleStep: function () {
         this.update(0, this._frameTimeMS);
@@ -1814,7 +1814,7 @@ var World = new Class({
      * based on their collision mask and collision categories.
      *
      * @method Phaser.Physics.Arcade.World#canCollide
-     * @since 3.70.0
+     * 
      *
      * @param {Phaser.Types.Physics.Arcade.ArcadeCollider} body1 - The first body to check.
      * @param {Phaser.Types.Physics.Arcade.ArcadeCollider} body2 - The second body to check.
@@ -2203,7 +2203,7 @@ var World = new Class({
      * If the object is outside any boundary edge (left, top, right, bottom), it will be moved to the same offset from the opposite edge (the interior).
      *
      * @method Phaser.Physics.Arcade.World#wrap
-     * @since 3.3.0
+     * 
      *
      * @param {any} object - A Game Object, a Group, an object with `x` and `y` coordinates, or an array of such objects.
      * @param {number} [padding=0] - An amount added to each boundary edge during the operation.
@@ -2224,7 +2224,7 @@ var World = new Class({
      * Wrap each object's coordinates within {@link Phaser.Physics.Arcade.World#bounds}.
      *
      * @method Phaser.Physics.Arcade.World#wrapArray
-     * @since 3.3.0
+     * 
      *
      * @param {Array.<*>} objects - An array of objects to be wrapped.
      * @param {number} [padding=0] - An amount added to the boundary.
@@ -2239,7 +2239,7 @@ var World = new Class({
      * Wrap an object's coordinates within {@link Phaser.Physics.Arcade.World#bounds}.
      *
      * @method Phaser.Physics.Arcade.World#wrapObject
-     * @since 3.3.0
+     * 
      *
      * @param {*} object - A Game Object, a Physics Body, or any object with `x` and `y` coordinates
      * @param {number} [padding=0] - An amount added to the boundary.

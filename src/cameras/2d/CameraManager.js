@@ -131,7 +131,7 @@ var CameraManager = new Class({
      * @method Phaser.Cameras.Scene2D.CameraManager#boot
      * @private
      * @listens Phaser.Scenes.Events#DESTROY
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         var sys = this.systems;
@@ -163,7 +163,7 @@ var CameraManager = new Class({
      * @private
      * @listens Phaser.Scenes.Events#UPDATE
      * @listens Phaser.Scenes.Events#SHUTDOWN
-     * @since 3.5.0
+     * 
      */
     start: function () {
         if (!this.main) {
@@ -580,7 +580,7 @@ var CameraManager = new Class({
      * against the given Camera.
      *
      * @method Phaser.Cameras.Scene2D.CameraManager#getVisibleChildren
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject[]} children - An array of Game Objects to be checked against the camera.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera to filter the Game Objects against.
@@ -658,7 +658,7 @@ var CameraManager = new Class({
      * Resizes all cameras to the given dimensions.
      *
      * @method Phaser.Cameras.Scene2D.CameraManager#resize
-     * @since 3.2.0
+     * 
      *
      * @param {number} width - The new width of the camera.
      * @param {number} height - The new height of the camera.

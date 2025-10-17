@@ -47,7 +47,7 @@ var ArrayRemove = require('../../utils/array/Remove');
  * @class PipelineManager
  * @memberof Phaser.Renderer.WebGL
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the WebGL Renderer that owns this Pipeline Manager.
  */
@@ -61,7 +61,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#game
              * @type {Phaser.Game}
-             * @since 3.50.0
+             * 
              */
             this.game = renderer.game;
 
@@ -70,7 +70,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#renderer
              * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-             * @since 3.50.0
+             * 
              */
             this.renderer = renderer;
 
@@ -81,7 +81,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#classes
              * @type {Phaser.Structs.Map.<string, Class>}
-             * @since 3.50.0
+             * 
              */
             this.classes = new CustomMap([
                 [CONST.UTILITY_PIPELINE, UtilityPipeline],
@@ -123,7 +123,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#postPipelineClasses
              * @type {Phaser.Structs.Map.<string, Class>}
-             * @since 3.50.0
+             * 
              */
             this.postPipelineClasses = new CustomMap();
 
@@ -134,7 +134,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#pipelines
              * @type {Phaser.Structs.Map.<string, Phaser.Renderer.WebGL.WebGLPipeline>}
-             * @since 3.50.0
+             * 
              */
             this.pipelines = new CustomMap();
 
@@ -162,7 +162,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#current
              * @type {Phaser.Renderer.WebGL.WebGLPipeline}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.current = null;
 
@@ -174,7 +174,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#previous
              * @type {Phaser.Renderer.WebGL.WebGLPipeline}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.previous = null;
 
@@ -187,7 +187,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#MULTI_PIPELINE
              * @type {Phaser.Renderer.WebGL.Pipelines.MultiPipeline}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.MULTI_PIPELINE = null;
 
@@ -200,7 +200,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#BITMAPMASK_PIPELINE
              * @type {Phaser.Renderer.WebGL.Pipelines.BitmapMaskPipeline}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.BITMAPMASK_PIPELINE = null;
 
@@ -210,7 +210,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#UTILITY_PIPELINE
              * @type {Phaser.Renderer.WebGL.Pipelines.UtilityPipeline}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.UTILITY_PIPELINE = null;
 
@@ -252,7 +252,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#fullFrame1
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.fullFrame1;
 
@@ -268,7 +268,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#fullFrame2
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.fullFrame2;
 
@@ -284,7 +284,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#halfFrame1
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.halfFrame1;
 
@@ -300,7 +300,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#halfFrame2
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.halfFrame2;
 
@@ -353,7 +353,7 @@ var PipelineManager = new Class({
      * Finally, the default pipeline is set.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#boot
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Types.Core.PipelineConfig} pipelineConfig - The pipeline configuration object as set in the Game Config.
      * @param {string} defaultPipeline - The name of the default Game Object pipeline, as set in the Game Config
@@ -529,7 +529,7 @@ var PipelineManager = new Class({
      * To add a **Post Pipeline**, see `addPostPipeline` instead.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#add
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - A unique string-based key for the pipeline within the manager.
      * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - A pipeline _instance_ which must extend `WebGLPipeline`.
@@ -586,7 +586,7 @@ var PipelineManager = new Class({
      * To add a regular pipeline, see the `add` method instead.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#addPostPipeline
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - A unique string-based key for the pipeline within the manager.
      * @param {function} pipeline - A pipeline class which must extend `PostFXPipeline`.
@@ -603,7 +603,7 @@ var PipelineManager = new Class({
      * Flushes the current pipeline, if one is bound.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#flush
-     * @since 3.50.0
+     * 
      */
     flush: function () {
         if (this.current) {
@@ -615,7 +615,7 @@ var PipelineManager = new Class({
      * Checks if a pipeline is present in this Pipeline Manager.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#has
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Renderer.WebGL.WebGLPipeline)} pipeline - Either the string-based name of the pipeline to get, or a pipeline instance to look-up.
      *
@@ -639,7 +639,7 @@ var PipelineManager = new Class({
      * If no instance, or matching name, exists in this manager, it returns `undefined`.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#get
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Renderer.WebGL.WebGLPipeline)} pipeline - Either the string-based name of the pipeline to get, or a pipeline instance to look-up.
      *
@@ -661,7 +661,7 @@ var PipelineManager = new Class({
      * If no instance, or matching name, exists in this manager, it returns `undefined`.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#getPostPipeline
-     * @since 3.50.0
+     * 
      *
      * @param {(string|function|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline)} pipeline - Either the string-based name of the pipeline to get, or a pipeline instance, or class to look-up.
      * @param {Phaser.GameObjects.GameObject} [gameObject] - If this post pipeline is being installed into a Game Object or Camera, this is a reference to it.
@@ -715,7 +715,7 @@ var PipelineManager = new Class({
      * this manager.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#removePostPipeline
-     * @since 3.80.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Pipelines.PostFXPipeline} pipeline - The pipeline instance to be removed.
      */
@@ -732,7 +732,7 @@ var PipelineManager = new Class({
      * this manager.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#remove
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the pipeline to be removed.
      * @param {boolean} [removeClass=true] - Remove the pipeline class as well as the instance?
@@ -768,7 +768,7 @@ var PipelineManager = new Class({
      * apply it to either a Camera, Container or other supporting Game Object.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#set
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The pipeline instance to be set as current.
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
@@ -813,7 +813,7 @@ var PipelineManager = new Class({
      * It should be followed by a call to `postBatch` to complete the process.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#preBatch
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object about to be batched.
      */
@@ -847,7 +847,7 @@ var PipelineManager = new Class({
      * It should be preceeded by a call to `preBatch` to start the process.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#postBatch
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was just added to the batch.
      */
@@ -874,7 +874,7 @@ var PipelineManager = new Class({
      * `preBatch` method on the post-fx pipelines belonging to the Camera.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#preBatchCamera
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera about to be rendered.
      */
@@ -902,7 +902,7 @@ var PipelineManager = new Class({
      * `postBatch` method on the post-fx pipelines belonging to the Camera.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#postBatchCamera
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera that was just rendered.
      */
@@ -927,7 +927,7 @@ var PipelineManager = new Class({
      * Pipeline Manager and also has the same shader set in the Renderer.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#isCurrent
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The pipeline instance to be checked.
      * @param {Phaser.Renderer.WebGL.WebGLShader} [currentShader] - The shader to set as being current.
@@ -957,7 +957,7 @@ var PipelineManager = new Class({
      * The copy itself is handled by the Utility Pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#copyFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
@@ -984,7 +984,7 @@ var PipelineManager = new Class({
      * those cases, use the `bindAndDraw` method.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#copyToGame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw from.
      */
@@ -1006,7 +1006,7 @@ var PipelineManager = new Class({
      * The copy itself is handled by the Utility Pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#drawFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
@@ -1028,7 +1028,7 @@ var PipelineManager = new Class({
      * The draw itself is handled by the Utility Pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#blendFrames
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source1 - The first source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} source2 - The second source Render Target.
@@ -1051,7 +1051,7 @@ var PipelineManager = new Class({
      * The draw itself is handled by the Utility Pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#blendFramesAdditive
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source1 - The first source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} source2 - The second source Render Target.
@@ -1071,7 +1071,7 @@ var PipelineManager = new Class({
      * Clears the given Render Target.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#clearFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The Render Target to clear.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
@@ -1094,7 +1094,7 @@ var PipelineManager = new Class({
      * You can optionally set the brightness factor of the copy.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#blitFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -1121,7 +1121,7 @@ var PipelineManager = new Class({
      * place.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#copyFrameRect
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -1144,7 +1144,7 @@ var PipelineManager = new Class({
      * Returns `true` if the current pipeline is forced to use texture unit zero.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#forceZero
-     * @since 3.50.0
+     * 
      *
      * @return {boolean} `true` if the current pipeline is forced to use texture unit zero.
      */
@@ -1158,7 +1158,7 @@ var PipelineManager = new Class({
      * This is the default Phaser 3 rendering pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#setMulti
-     * @since 3.50.0
+     * 
      *
      * @return {Phaser.Renderer.WebGL.Pipelines.MultiPipeline} The Multi Pipeline instance.
      */
@@ -1170,7 +1170,7 @@ var PipelineManager = new Class({
      * Sets the Utility Pipeline to be the currently bound pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#setUtility
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLShader} [currentShader] - The shader to set as being current.
      *
@@ -1199,7 +1199,7 @@ var PipelineManager = new Class({
      * Then calls `restoreContext` on each pipeline in turn.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#restoreContext
-     * @since 3.80.0
+     * 
      */
     restoreContext: function () {
         this.rebind();
@@ -1227,7 +1227,7 @@ var PipelineManager = new Class({
      * rendering control to Phaser again.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#rebind
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLPipeline} [pipeline] - The pipeline instance to be rebound. If not given, the previous pipeline will be bound.
      */
@@ -1285,7 +1285,7 @@ var PipelineManager = new Class({
      * you wish to return control to Phaser again.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#clear
-     * @since 3.50.0
+     * 
      */
     clear: function () {
         var renderer = this.renderer;
@@ -1374,7 +1374,7 @@ var PipelineManager = new Class({
      * Destroy the Pipeline Manager, cleaning up all related resources and references.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         this.flush();

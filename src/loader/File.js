@@ -224,7 +224,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#base64
              * @type {boolean}
-             * @since 3.80.0
+             * 
              */
             this.base64 = (typeof url === 'string') && (url.indexOf('data:') === 0);
 
@@ -243,7 +243,7 @@ var File = new Class({
              * @name Phaser.Loader.File#retryAttempts
              * @type {number}
              * @default 2
-             * @since 3.85.0
+             * 
              */
             this.retryAttempts = GetFastValue(fileConfig, 'maxRetries', loader.maxRetries);
         },
@@ -339,7 +339,7 @@ var File = new Class({
      * Called by the XHRLoader if it was given a File with base64 data to load.
      *
      * @method Phaser.Loader.File#onBase64Load
-     * @since 3.80.0
+     * 
      *
      * @param {XMLHttpRequest} xhr - The FakeXHR object containing the decoded base64 data.
      */

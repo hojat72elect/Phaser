@@ -8,7 +8,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_SEEKING
  * @type {string}
- * @since 3.20.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which started seeking.
  */

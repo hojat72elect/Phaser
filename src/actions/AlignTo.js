@@ -17,7 +17,7 @@ var QuickSet = require('../display/align/to/QuickSet');
  * then the third next to the second, and so on.
  *
  * @function Phaser.Actions.AlignTo
- * @since 3.22.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items,$return]
  *

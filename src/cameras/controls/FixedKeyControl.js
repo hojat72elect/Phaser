@@ -118,7 +118,7 @@ var FixedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.FixedKeyControl#minZoom
              * @type {number}
              * @default 0.001
-             * @since 3.53.0
+             * 
              */
             this.minZoom = GetValue(config, 'minZoom', 0.001);
 
@@ -128,7 +128,7 @@ var FixedKeyControl = new Class({
              * @name Phaser.Cameras.Controls.FixedKeyControl#maxZoom
              * @type {number}
              * @default 1000
-             * @since 3.53.0
+             * 
              */
             this.maxZoom = GetValue(config, 'maxZoom', 1000);
 

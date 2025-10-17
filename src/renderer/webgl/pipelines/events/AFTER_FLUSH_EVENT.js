@@ -5,7 +5,7 @@
  * and cleared its vertex count.
  *
  * @event Phaser.Renderer.WebGL.Pipelines.Events#AFTER_FLUSH
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The pipeline that has flushed.
  * @param {boolean} isPostFlush - Was this flush invoked as part of a post-process, or not?

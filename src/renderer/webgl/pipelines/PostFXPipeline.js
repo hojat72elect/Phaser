@@ -84,7 +84,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.WebGLPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -128,7 +128,7 @@ var PostFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#gameObject
              * @type {(Phaser.GameObjects.GameObject|Phaser.Cameras.Scene2D.Camera)}
-             * @since 3.50.0
+             * 
              */
             this.gameObject;
 
@@ -149,7 +149,7 @@ var PostFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#colorMatrix
              * @type {Phaser.Display.ColorMatrix}
-             * @since 3.50.0
+             * 
              */
             this.colorMatrix = new ColorMatrix();
 
@@ -165,7 +165,7 @@ var PostFXPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#fullFrame1
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.fullFrame1;
 
@@ -181,7 +181,7 @@ var PostFXPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#fullFrame2
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.fullFrame2;
 
@@ -197,7 +197,7 @@ var PostFXPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#halfFrame1
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.halfFrame1;
 
@@ -213,7 +213,7 @@ var PostFXPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#halfFrame2
              * @type {Phaser.Renderer.WebGL.RenderTarget}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.halfFrame2;
 
@@ -231,7 +231,7 @@ var PostFXPipeline = new Class({
      * actual Game Object needs to use them.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#bootFX
-     * @since 3.70.0
+     * 
      */
     bootFX: function () {
         WebGLPipeline.prototype.boot.call(this);
@@ -266,7 +266,7 @@ var PostFXPipeline = new Class({
      * It is also called as part of the `PipelineManager.postBatch` method when processing Post FX Pipelines.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#postBatch
-     * @since 3.70.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.Cameras.Scene2D.Camera)} [gameObject] - The Game Object or Camera that invoked this pipeline, if any.
      *
@@ -365,7 +365,7 @@ var PostFXPipeline = new Class({
      * If you need color level manipulation, see `drawFrame` instead.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#copyFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
@@ -388,7 +388,7 @@ var PostFXPipeline = new Class({
      * those cases, use the `bindAndDraw` method.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#copyToGame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw from.
      */
@@ -406,7 +406,7 @@ var PostFXPipeline = new Class({
      * `copyFrame` method instead.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#drawFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
@@ -421,7 +421,7 @@ var PostFXPipeline = new Class({
      * using a linear blend effect, which is controlled by the `strength` parameter.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#blendFrames
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source1 - The first source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} source2 - The second source Render Target.
@@ -438,7 +438,7 @@ var PostFXPipeline = new Class({
      * using an additive blend effect, which is controlled by the `strength` parameter.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#blendFramesAdditive
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source1 - The first source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} source2 - The second source Render Target.
@@ -454,7 +454,7 @@ var PostFXPipeline = new Class({
      * Clears the given Render Target.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#clearFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The Render Target to clear.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
@@ -473,7 +473,7 @@ var PostFXPipeline = new Class({
      * You can optionally set the brightness factor of the copy.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#blitFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -496,7 +496,7 @@ var PostFXPipeline = new Class({
      * place.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#copyFrameRect
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -523,7 +523,7 @@ var PostFXPipeline = new Class({
      * a target, just pass `null` as the `target` parameter.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#bindAndDraw
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw from.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The Render Target to draw to. If not set, it will pop the fbo from the stack.

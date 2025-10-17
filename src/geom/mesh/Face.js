@@ -36,7 +36,7 @@ function GetLength(x1, y1, x2, y2) {
  * @class Face
  * @memberof Phaser.Geom.Mesh
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Geom.Mesh.Vertex} vertex1 - The first vertex of the Face.
  * @param {Phaser.Geom.Mesh.Vertex} vertex2 - The second vertex of the Face.
@@ -52,7 +52,7 @@ var Face = new Class({
              *
              * @name Phaser.Geom.Mesh.Face#vertex1
              * @type {Phaser.Geom.Mesh.Vertex}
-             * @since 3.50.0
+             * 
              */
             this.vertex1 = vertex1;
 
@@ -61,7 +61,7 @@ var Face = new Class({
              *
              * @name Phaser.Geom.Mesh.Face#vertex2
              * @type {Phaser.Geom.Mesh.Vertex}
-             * @since 3.50.0
+             * 
              */
             this.vertex2 = vertex2;
 
@@ -70,7 +70,7 @@ var Face = new Class({
              *
              * @name Phaser.Geom.Mesh.Face#vertex3
              * @type {Phaser.Geom.Mesh.Vertex}
-             * @since 3.50.0
+             * 
              */
             this.vertex3 = vertex3;
 
@@ -81,7 +81,7 @@ var Face = new Class({
              *
              * @name Phaser.Geom.Mesh.Face#bounds
              * @type {Phaser.Geom.Rectangle}
-             * @since 3.50.0
+             * 
              */
             this.bounds = new Rectangle();
 
@@ -91,7 +91,7 @@ var Face = new Class({
              * @name Phaser.Geom.Mesh.Face#_inCenter
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._inCenter = new Vector2();
         },
@@ -100,7 +100,7 @@ var Face = new Class({
      * Calculates and returns the in-center position of this Face.
      *
      * @method Phaser.Geom.Mesh.Face#getInCenter
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [local=true] Return the in center from the un-transformed vertex positions (`true`), or transformed? (`false`)
      *
@@ -163,7 +163,7 @@ var Face = new Class({
      * will be transformed first, before being checked against the coordinates.
      *
      * @method Phaser.Geom.Mesh.Face#contains
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The horizontal position to check.
      * @param {number} y - The vertical position to check.
@@ -233,7 +233,7 @@ var Face = new Class({
      * It checks the transformed position of the vertices, not the local one.
      *
      * @method Phaser.Geom.Mesh.Face#isCounterClockwise
-     * @since 3.50.0
+     * 
      *
      * @param {number} z - The z-axis value to test against. Typically the `Mesh.modelPosition.z`.
      *
@@ -253,7 +253,7 @@ var Face = new Class({
      * Loads the data from this Vertex into the given Typed Arrays.
      *
      * @method Phaser.Geom.Mesh.Face#load
-     * @since 3.50.0
+     * 
      *
      * @param {Float32Array} F32 - A Float32 Array to insert the position, UV and unit data in to.
      * @param {Uint32Array} U32 - A Uint32 Array to insert the color and alpha data in to.
@@ -275,7 +275,7 @@ var Face = new Class({
      * Transforms all Face vertices by the given matrix, storing the results in their `vx`, `vy` and `vz` properties.
      *
      * @method Phaser.Geom.Mesh.Face#transformCoordinatesLocal
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} transformMatrix - The transform matrix to apply to this vertex.
      * @param {number} width - The width of the parent Mesh.
@@ -298,7 +298,7 @@ var Face = new Class({
      * Call this method prior to accessing the `Face.bounds` property.
      *
      * @method Phaser.Geom.Mesh.Face#updateBounds
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Face instance.
      */
@@ -334,7 +334,7 @@ var Face = new Class({
      * rectangle.
      *
      * @method Phaser.Geom.Mesh.Face#isInView
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to check against.
      * @param {boolean} hideCCW - Test the counter-clockwise orientation of the verts?
@@ -485,7 +485,7 @@ var Face = new Class({
      * Therefore, this updates the vertex data directly.
      *
      * @method Phaser.Geom.Mesh.Face#translate
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The amount to horizontally translate by.
      * @param {number} [y=0] - The amount to vertically translate by.
@@ -518,7 +518,7 @@ var Face = new Class({
      *
      * @name Phaser.Geom.Mesh.Face#x
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     x: {
 
@@ -539,7 +539,7 @@ var Face = new Class({
      *
      * @name Phaser.Geom.Mesh.Face#y
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     y: {
 
@@ -566,7 +566,7 @@ var Face = new Class({
      *
      * @name Phaser.Geom.Mesh.Face#alpha
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     alpha: {
 
@@ -594,7 +594,7 @@ var Face = new Class({
      * @name Phaser.Geom.Mesh.Face#depth
      * @type {number}
      * @readonly
-     * @since 3.50.0
+     * 
      */
     depth: {
 
@@ -612,7 +612,7 @@ var Face = new Class({
      * Destroys this Face and nulls the references to the vertices.
      *
      * @method Phaser.Geom.Mesh.Face#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         this.vertex1 = null;

@@ -6,7 +6,7 @@ var SnapFloor = require('../../math/snap/SnapFloor');
  * This is used internally by the cull tiles function.
  *
  * @function Phaser.Tilemaps.Components.HexagonalCullBounds
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Tilemaps.LayerData} layer - The Tilemap Layer to act upon.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to run the cull check against.

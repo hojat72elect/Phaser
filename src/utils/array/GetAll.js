@@ -12,7 +12,7 @@ var SafeRange = require('./SafeRange');
  * the first 50 elements.
  *
  * @function Phaser.Utils.Array.GetAll
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to search.
  * @param {string} [property] - The property to test on each array element.

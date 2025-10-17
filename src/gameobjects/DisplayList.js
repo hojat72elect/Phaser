@@ -63,7 +63,7 @@ var DisplayList = new Class({
              *
              * @name Phaser.GameObjects.DisplayList#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.50.0
+             * 
              */
             this.events = scene.sys.events;
 
@@ -81,7 +81,7 @@ var DisplayList = new Class({
      *
      * @method Phaser.GameObjects.DisplayList#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.events.once(SceneEvents.DESTROY, this.destroy, this);
@@ -94,7 +94,7 @@ var DisplayList = new Class({
      * @private
      * @fires Phaser.Scenes.Events#ADDED_TO_SCENE
      * @fires Phaser.GameObjects.Events#ADDED_TO_SCENE
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was added to the list.
      */
@@ -125,7 +125,7 @@ var DisplayList = new Class({
      * @private
      * @fires Phaser.Scenes.Events#REMOVED_FROM_SCENE
      * @fires Phaser.GameObjects.Events#REMOVED_FROM_SCENE
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was removed from the list.
      */
@@ -146,7 +146,7 @@ var DisplayList = new Class({
      *
      * @method Phaser.GameObjects.DisplayList#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         this.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);

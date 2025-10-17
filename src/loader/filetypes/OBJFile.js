@@ -19,7 +19,7 @@ var TextFile = require('./TextFile');
  * @extends Phaser.Loader.MultiFile
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.OBJFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -101,7 +101,7 @@ var OBJFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.OBJFile#addToCache
-     * @since 3.50.0
+     * 
      */
     addToCache: function () {
         if (this.isReadyToProcess()) {
@@ -196,7 +196,7 @@ var OBJFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#obj
  * @fires Phaser.Loader.Events#ADD
- * @since 3.50.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.OBJFileConfig|Phaser.Types.Loader.FileTypes.OBJFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [objURL] - The absolute or relative URL to load the obj file from. If undefined or `null` it will be set to `<key>.obj`, i.e. if `key` was "alien" then the URL will be "alien.obj".

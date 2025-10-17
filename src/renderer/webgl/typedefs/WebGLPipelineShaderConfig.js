@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Renderer.WebGL.WebGLPipelineShaderConfig
- * @since 3.50.0
+ * 
  *
  * @property {string} [name] - The name of the shader. Doesn't have to be unique, but makes shader look-up easier if it is.
  * @property {string} [vertShader] - The source code, as a string, for the vertex shader. If not given, uses the `Phaser.Types.Renderer.WebGL.WebGLPipelineConfig.vertShader` property instead.

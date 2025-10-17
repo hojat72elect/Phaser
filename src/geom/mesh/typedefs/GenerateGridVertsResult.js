@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Geom.Mesh.GenerateGridVertsResult
- * @since 3.50.0
+ * 
  *
  * @property {number[]} verts - An array of vertex values in x, y pairs.
  * @property {number[]} indices - An array of vertex indexes. This array will be empty if the `tile` parameter was `true`.

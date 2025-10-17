@@ -9,7 +9,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_CREATED
  * @type {string}
- * @since 3.20.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which raised the event.
  * @param {number} width - The width of the video.

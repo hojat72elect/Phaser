@@ -88,7 +88,7 @@ var Depth = {
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setToTop
-     * @since 3.85.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -110,7 +110,7 @@ var Depth = {
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setToBack
-     * @since 3.85.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -134,7 +134,7 @@ var Depth = {
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setAbove
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that this Game Object will be moved to be above.
      *
@@ -160,7 +160,7 @@ var Depth = {
      * This method does not change this Game Objects `depth` value, it simply alters its list position.
      *
      * @method Phaser.GameObjects.Components.Depth#setBelow
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that this Game Object will be moved to be below.
      *

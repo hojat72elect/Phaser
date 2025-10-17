@@ -7,7 +7,7 @@
  *
  * @event Phaser.GameObjects.Events#ADDED_TO_SCENE
  * @type {string}
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was added to the Scene.
  * @param {Phaser.Scene} scene - The Scene to which the Game Object was added.

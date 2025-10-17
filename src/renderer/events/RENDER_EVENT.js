@@ -7,7 +7,7 @@
  *
  * @event Phaser.Renderer.Events#RENDER
  * @type {string}
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene being rendered.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Scene Camera being rendered.

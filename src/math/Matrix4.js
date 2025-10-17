@@ -73,7 +73,7 @@ var Matrix4 = new Class({
      * Sets all values of this Matrix4.
      *
      * @method Phaser.Math.Matrix4#setValues
-     * @since 3.50.0
+     * 
      *
      * @param {number} m00 - The m00 value.
      * @param {number} m01 - The m01 value.
@@ -165,7 +165,7 @@ var Matrix4 = new Class({
      * Generates a transform matrix based on the given position, scale and rotation.
      *
      * @method Phaser.Math.Matrix4#transform
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Vector3} position - The position vector.
      * @param {Phaser.Math.Vector3} scale - The scale vector.
@@ -304,7 +304,7 @@ var Matrix4 = new Class({
      * Copies the given Matrix4 into this Matrix and then inverses it.
      *
      * @method Phaser.Math.Matrix4#getInverse
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} m - The Matrix4 to invert into this Matrix4.
      *
@@ -612,7 +612,7 @@ var Matrix4 = new Class({
      * This is the same as calling `multiplyMatrices(m, this)`.
      *
      * @method Phaser.Math.Matrix4#premultiply
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} m - The Matrix4 to multiply with this one.
      *
@@ -626,7 +626,7 @@ var Matrix4 = new Class({
      * Multiplies the two given Matrix4 objects and stores the results in this Matrix.
      *
      * @method Phaser.Math.Matrix4#multiplyMatrices
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} a - The first Matrix4 to multiply.
      * @param {Phaser.Math.Matrix4} b - The second Matrix4 to multiply.
@@ -1288,7 +1288,7 @@ var Matrix4 = new Class({
      * Generate a right-handed look-at matrix with the given eye position, target and up axis.
      *
      * @method Phaser.Math.Matrix4#lookAtRH
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Vector3} eye - Position of the viewer.
      * @param {Phaser.Math.Vector3} target - Point the viewer is looking at.
@@ -1534,7 +1534,7 @@ var Matrix4 = new Class({
      * Multiplies this Matrix4 by the given `src` Matrix4 and stores the results in the `out` Matrix4.
      *
      * @method Phaser.Math.Matrix4#multiplyToMat4
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} src - The Matrix4 to multiply with this one.
      * @param {Phaser.Math.Matrix4} out - The receiving Matrix.
@@ -1606,7 +1606,7 @@ var Matrix4 = new Class({
      * Takes the rotation and position vectors and builds this Matrix4 from them.
      *
      * @method Phaser.Math.Matrix4#fromRotationXYTranslation
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Vector3} rotation - The rotation vector.
      * @param {Phaser.Math.Vector3} position - The position vector.
@@ -1675,7 +1675,7 @@ var Matrix4 = new Class({
      * Returns the maximum axis scale from this Matrix4.
      *
      * @method Phaser.Math.Matrix4#getMaxScaleOnAxis
-     * @since 3.50.0
+     * 
      *
      * @return {number} The maximum axis scale.
      */

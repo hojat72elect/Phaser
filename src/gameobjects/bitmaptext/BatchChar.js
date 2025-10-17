@@ -2,7 +2,7 @@
  * Renders one character of the Bitmap Text to the WebGL Pipeline.
  *
  * @function BatchChar
- * @since 3.50.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The WebGLPipeline. Must have a `batchQuad` method.

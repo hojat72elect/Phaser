@@ -83,7 +83,7 @@ var ImpactPhysics = new Class({
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.world = new World(this.scene, this.config);
@@ -99,7 +99,7 @@ var ImpactPhysics = new Class({
      *
      * @method Phaser.Physics.Impact.ImpactPhysics#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         if (!this.world) {

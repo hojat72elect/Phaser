@@ -4,7 +4,7 @@ var SmoothStep = require('../SmoothStep');
  * A Smooth Step interpolation method.
  *
  * @function Phaser.Math.Interpolation.SmoothStep
- * @since 3.9.0
+ * 
  * @see {@link https://en.wikipedia.org/wiki/Smoothstep}
  *
  * @param {number} t - The percentage of interpolation, between 0 and 1.

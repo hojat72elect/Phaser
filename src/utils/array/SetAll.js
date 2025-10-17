@@ -9,7 +9,7 @@ var SafeRange = require('./SafeRange');
  * and you set `startIndex` to 0 and `endIndex` to 50, it would update only the first 50 elements.
  *
  * @function Phaser.Utils.Array.SetAll
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to search.
  * @param {string} property - The property to test for on each array element.

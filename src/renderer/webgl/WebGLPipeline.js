@@ -90,7 +90,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#manager
              * @type {?Phaser.Renderer.WebGL.PipelineManager}
-             * @since 3.50.0
+             * 
              */
             this.manager;
 
@@ -242,7 +242,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#forceZero
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.forceZero = GetFastValue(config, 'forceZero', false);
 
@@ -255,7 +255,7 @@ var WebGLPipeline = new Class({
              * @name Phaser.Renderer.WebGL.WebGLPipeline#hasBooted
              * @type {boolean}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.hasBooted = false;
 
@@ -265,7 +265,7 @@ var WebGLPipeline = new Class({
              * @name Phaser.Renderer.WebGL.WebGLPipeline#isPostFX
              * @type {boolean}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.isPostFX = false;
 
@@ -284,7 +284,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#renderTargets
              * @type {Phaser.Renderer.WebGL.RenderTarget[]}
-             * @since 3.50.0
+             * 
              */
             this.renderTargets = [];
 
@@ -293,7 +293,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#currentRenderTarget
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.50.0
+             * 
              */
             this.currentRenderTarget;
 
@@ -308,7 +308,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#shaders
              * @type {Phaser.Renderer.WebGL.WebGLShader[]}
-             * @since 3.50.0
+             * 
              */
             this.shaders = [];
 
@@ -320,7 +320,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#currentShader
              * @type {Phaser.Renderer.WebGL.WebGLShader}
-             * @since 3.50.0
+             * 
              */
             this.currentShader;
 
@@ -329,7 +329,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.projectionMatrix;
 
@@ -338,7 +338,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionWidth
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.projectionWidth = 0;
 
@@ -347,7 +347,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#projectionHeight
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.projectionHeight = 0;
 
@@ -360,7 +360,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#config
              * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig}
-             * @since 3.50.0
+             * 
              */
             this.config = config;
 
@@ -373,7 +373,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#glReset
              * @type {boolean}
-             * @since 3.53.0
+             * 
              */
             this.glReset = false;
 
@@ -424,7 +424,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#currentUnit
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.currentUnit = 0;
 
@@ -448,7 +448,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#resizeUniform
              * @type {string}
-             * @since 3.80.0
+             * 
              */
             this.resizeUniform = GetFastValue(config, 'resizeUniform', '');
         },
@@ -577,7 +577,7 @@ var WebGLPipeline = new Class({
      * of the shaders are ready and configured.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onBoot
-     * @since 3.50.0
+     * 
      */
     onBoot: function () {
     },
@@ -589,7 +589,7 @@ var WebGLPipeline = new Class({
      * changes size.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onResize
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - The new width of this WebGL Pipeline.
      * @param {number} height - The new height of this WebGL Pipeline.
@@ -601,7 +601,7 @@ var WebGLPipeline = new Class({
      * Sets the currently active shader within this pipeline.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setShader
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLShader} shader - The shader to set as being current.
      * @param {boolean} [setAttributes=false] - Should the vertex attribute pointers be set?
@@ -633,7 +633,7 @@ var WebGLPipeline = new Class({
      * Searches all shaders in this pipeline for one matching the given name, then returns it.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#getShaderByName
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The index of the shader to set.
      *
@@ -657,7 +657,7 @@ var WebGLPipeline = new Class({
      * This is a destructive process. Be very careful when you call it, should you need to.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setShadersFromConfig
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration object for this WebGL Pipeline.
      *
@@ -851,7 +851,7 @@ var WebGLPipeline = new Class({
      * for the given Game Object. It must return the texture unit the Game Object was assigned.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setGameObject
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object being rendered or added to the batch.
      * @param {Phaser.Textures.Frame} [frame] - Optional frame to use. Can override that of the Game Object.
@@ -949,7 +949,7 @@ var WebGLPipeline = new Class({
      * This method is called automatically by the renderer during its resize handler.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setProjectionMatrix
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - The new width of this WebGL Pipeline.
      * @param {number} height - The new height of this WebGL Pipeline.
@@ -1028,7 +1028,7 @@ var WebGLPipeline = new Class({
      * pipeline is set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#updateProjectionMatrix
-     * @since 3.50.0
+     * 
      */
     updateProjectionMatrix: function () {
         if (this.projectionMatrix) {
@@ -1137,7 +1137,7 @@ var WebGLPipeline = new Class({
      * for all shaders in this pipeline.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#restoreContext
-     * @since 3.80.0
+     * 
      */
     restoreContext: function () {
         var shaders = this.shaders;
@@ -1171,7 +1171,7 @@ var WebGLPipeline = new Class({
      * binds itself if not.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setVertexBuffer
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper} [buffer] - The Vertex Buffer to be bound. Defaults to the one owned by this pipeline.
      *
@@ -1204,7 +1204,7 @@ var WebGLPipeline = new Class({
      * It is also called as part of the `PipelineManager.preBatch` method when processing Post FX Pipelines.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#preBatch
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.Cameras.Scene2D.Camera)} [gameObject] - The Game Object or Camera that invoked this pipeline, if any.
      *
@@ -1231,7 +1231,7 @@ var WebGLPipeline = new Class({
      * It is also called as part of the `PipelineManager.postBatch` method when processing Post FX Pipelines.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#postBatch
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|Phaser.Cameras.Scene2D.Camera)} [gameObject] - The Game Object or Camera that invoked this pipeline, if any.
      *
@@ -1256,7 +1256,7 @@ var WebGLPipeline = new Class({
      * you override it from within your own pipelines.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onDraw
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} renderTarget - The Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [swapTarget] - A Swap Render Target, useful for double-buffer effects. Only set by SpriteFX Pipelines.
@@ -1269,7 +1269,7 @@ var WebGLPipeline = new Class({
      * it to another one. This happens after a call to `flush` and before the new pipeline is bound.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#unbind
-     * @since 3.50.0
+     * 
      */
     unbind: function () {
         if (this.currentRenderTarget) {
@@ -1385,7 +1385,7 @@ var WebGLPipeline = new Class({
      * If you need to listen for that event instead, use the `onBind` hook.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onActive
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLShader} currentShader - The shader that was set as current.
      */
@@ -1403,7 +1403,7 @@ var WebGLPipeline = new Class({
      * perform per-object set-up, such as loading shader uniform data.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onBind
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
@@ -1418,7 +1418,7 @@ var WebGLPipeline = new Class({
      * and then returing to Phaser again.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onRebind
-     * @since 3.50.0
+     * 
      */
     onRebind: function () {
     },
@@ -1436,7 +1436,7 @@ var WebGLPipeline = new Class({
      * for example the Graphics Game Object.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onBatch
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
@@ -1449,7 +1449,7 @@ var WebGLPipeline = new Class({
      * This method is called immediately before a **Game Object** is about to add itself to the batch.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onPreBatch
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
@@ -1462,7 +1462,7 @@ var WebGLPipeline = new Class({
      * This method is called immediately after a **Game Object** has been added to the batch.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onPostBatch
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} [gameObject] - The Game Object that invoked this pipeline, if any.
      */
@@ -1476,7 +1476,7 @@ var WebGLPipeline = new Class({
      * has been cleared. If this pipeline has a render target, it will also have been cleared by this point.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onPreRender
-     * @since 3.50.0
+     * 
      */
     onPreRender: function () {
     },
@@ -1489,7 +1489,7 @@ var WebGLPipeline = new Class({
      * It is called at the start of the rendering process, before anything has been drawn to the Camera.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onRender
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Scene} scene - The Scene being rendered.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Scene Camera being rendered with.
@@ -1506,7 +1506,7 @@ var WebGLPipeline = new Class({
      * been rendered.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onPostRender
-     * @since 3.50.0
+     * 
      */
     onPostRender: function () {
     },
@@ -1520,7 +1520,7 @@ var WebGLPipeline = new Class({
      * perform any final pre-render modifications. To apply changes post-render, see `onAfterFlush`.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onBeforeFlush
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [isPostFlush=false] - Was this flush invoked as part of a post-process, or not?
      */
@@ -1540,7 +1540,7 @@ var WebGLPipeline = new Class({
      * To apply changes pre-render, see `onBeforeFlush`.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#onAfterFlush
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [isPostFlush=false] - Was this flush invoked as part of a post-process, or not?
      */
@@ -1557,7 +1557,7 @@ var WebGLPipeline = new Class({
      * this method directly, do so in the same way that `batchQuad` does, for example.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#batchVert
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The vertex x position.
      * @param {number} y - The vertex y position.
@@ -1604,7 +1604,7 @@ var WebGLPipeline = new Class({
      * Where tx0/ty0 = 0, tx1/ty1 = 1, tx2/ty2 = 2 and tx3/ty3 = 3
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#batchQuad
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|null)} gameObject - The Game Object, if any, drawing this quad.
      * @param {number} x0 - The top-left x position.
@@ -1724,7 +1724,7 @@ var WebGLPipeline = new Class({
      * ```
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#batchTri
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.GameObjects.GameObject|null)} gameObject - The Game Object, if any, drawing this quad.
      * @param {number} x1 - The bottom-left x position.
@@ -1811,7 +1811,7 @@ var WebGLPipeline = new Class({
      * Used for directly batching untransformed rectangles, such as Camera background colors.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#drawFillRect
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - Horizontal top left coordinate of the rectangle.
      * @param {number} y - Vertical top left coordinate of the rectangle.
@@ -1858,7 +1858,7 @@ var WebGLPipeline = new Class({
      * the unit id.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setTexture2D
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [texture] - Texture that will be assigned to the current batch. If not given uses `whiteTexture`.
      *
@@ -1876,7 +1876,7 @@ var WebGLPipeline = new Class({
      * Activates the given WebGL Texture and binds it to the requested texture slot.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#bindTexture
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [target] - Texture to activate and bind.
      * @param {number} [unit=0] - The WebGL texture ID to activate. Defaults to `gl.TEXTURE0`.
@@ -1902,7 +1902,7 @@ var WebGLPipeline = new Class({
      * requested WebGL texture slot.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#bindRenderTarget
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The Render Target to activate and bind.
      * @param {number} [unit=0] - The WebGL texture ID to activate. Defaults to `gl.TEXTURE0`.
@@ -1919,7 +1919,7 @@ var WebGLPipeline = new Class({
      * This can be used for mapping time uniform values, such as `iTime`.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setTime
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {Phaser.Renderer.WebGL.WebGLShader} [shader] - The shader to set the value on. If not given, the `currentShader` is used.
@@ -1970,7 +1970,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set1f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new value of the `float` uniform.
@@ -1998,7 +1998,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set2f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `vec2` uniform.
@@ -2027,7 +2027,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set3f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `vec3` uniform.
@@ -2057,7 +2057,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set4f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - X component of the uniform
@@ -2088,7 +2088,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set1fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2116,7 +2116,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set2fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2144,7 +2144,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set3fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2172,7 +2172,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set4fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2200,7 +2200,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set1iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2228,7 +2228,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set2iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2256,7 +2256,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set3iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2284,7 +2284,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set4iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -2312,7 +2312,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set1i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new value of the `int` uniform.
@@ -2340,7 +2340,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set2i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `ivec2` uniform.
@@ -2369,7 +2369,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set3i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `ivec3` uniform.
@@ -2399,7 +2399,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#set4i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - X component of the uniform.
@@ -2430,7 +2430,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setMatrix2fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} transpose - Whether to transpose the matrix. Should be `false`.
@@ -2459,7 +2459,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setMatrix3fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} transpose - Whether to transpose the matrix. Should be `false`.
@@ -2488,7 +2488,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setMatrix4fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} transpose - Whether to transpose the matrix. Should be `false`.

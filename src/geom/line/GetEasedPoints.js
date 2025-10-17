@@ -25,7 +25,7 @@ var Point = require('../point/Point');
  * contain `quantity` points.
  *
  * @function Phaser.Geom.Line.GetEasedPoints
- * @since 3.23.0
+ * 
  *
  * @generic {Phaser.Geom.Point[]} O - [out,$return]
  *

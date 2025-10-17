@@ -198,7 +198,7 @@ function parseUseMtl(lineItems) {
  * The model data *must* be triangulated for a Mesh Game Object to be able to render it.
  *
  * @function Phaser.Geom.Mesh.ParseObj
- * @since 3.50.0
+ * 
  *
  * @param {string} data - The OBJ File data as a raw string.
  * @param {boolean} [flipUV=true] - Flip the UV coordinates?

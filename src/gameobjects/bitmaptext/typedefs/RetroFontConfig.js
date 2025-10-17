@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.BitmapText.RetroFontConfig
- * @since 3.6.0
+ * 
  *
  * @property {string} image - The key of the image containing the font.
  * @property {number} offset.x - If the font set doesn't start at the top left of the given image, specify the X coordinate offset here.

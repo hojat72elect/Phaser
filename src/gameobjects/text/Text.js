@@ -264,7 +264,7 @@ var Text = new Class({
              * @name Phaser.GameObjects.Text#_textureKey
              * @type {string}
              * @private
-             * @since 3.80.0
+             * 
              */
             this._textureKey = UUID();
 
@@ -1024,7 +1024,7 @@ var Text = new Class({
      * need to display large quantities of characters with fine control over the letter spacing.
      *
      * @method Phaser.GameObjects.Text#setLetterSpacing
-     * @since 3.70.0
+     * 
      *
      * @param {number} value - The amount to add to the letter width. Set to zero to disable.
      *
@@ -1118,7 +1118,7 @@ var Text = new Class({
      * Render text from right-to-left or left-to-right.
      *
      * @method Phaser.GameObjects.Text#setRTL
-     * @since 3.70.0
+     * 
      *
      * @param {boolean} [rtl=true] - Set to `true` to render from right-to-left.
      *

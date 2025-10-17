@@ -10,7 +10,7 @@ var Rope = require('./Rope');
  * Note: This method will only be available if the Rope Game Object and WebGL support have been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#rope
- * @since 3.23.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Rope.RopeConfig} config - The configuration object this Game Object will use to create itself.
  * @param {boolean} [addToScene] - Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.

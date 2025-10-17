@@ -6,7 +6,7 @@
  *
  * @event Phaser.Renderer.Events#RESIZE
  * @type {string}
- * @since 3.50.0
+ * 
  *
  * @param {number} width - The new width of the renderer.
  * @param {number} height - The new height of the renderer.

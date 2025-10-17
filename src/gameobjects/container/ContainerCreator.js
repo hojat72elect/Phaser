@@ -17,7 +17,7 @@ var GetFastValue = require('../../utils/object/GetFastValue');
  * Note: This method will only be available if the Container Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#container
- * @since 3.4.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.Container.ContainerConfig} config - The configuration object this Game Object will use to create itself.
  * @param {boolean} [addToScene] - Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.

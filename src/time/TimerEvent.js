@@ -260,7 +260,7 @@ var TimerEvent = new Class({
      * Returns the time interval until the next iteration of the Timer Event.
      *
      * @method Phaser.Time.TimerEvent#getRemaining
-     * @since 3.50.0
+     * 
      *
      * @return {number} The time interval in milliseconds.
      */
@@ -272,7 +272,7 @@ var TimerEvent = new Class({
      * Returns the time interval until the next iteration of the Timer Event in seconds.
      *
      * @method Phaser.Time.TimerEvent#getRemainingSeconds
-     * @since 3.50.0
+     * 
      *
      * @return {number} The time interval in seconds.
      */
@@ -284,7 +284,7 @@ var TimerEvent = new Class({
      * Returns the time interval until the last iteration of the Timer Event.
      *
      * @method Phaser.Time.TimerEvent#getOverallRemaining
-     * @since 3.50.0
+     * 
      *
      * @return {number} The time interval in milliseconds.
      */
@@ -296,7 +296,7 @@ var TimerEvent = new Class({
      * Returns the time interval until the last iteration of the Timer Event in seconds.
      *
      * @method Phaser.Time.TimerEvent#getOverallRemainingSeconds
-     * @since 3.50.0
+     * 
      *
      * @return {number} The time interval in seconds.
      */

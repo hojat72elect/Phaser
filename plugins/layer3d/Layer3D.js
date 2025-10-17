@@ -28,7 +28,7 @@ var RGB = require('../../display/RGB');
  * @memberof Phaser.GameObjects
  * @constructor
  * @webglOnly
- * @since 3.50.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -74,7 +74,7 @@ var Layer3D = new Class({
              *
              * @name Phaser.GameObjects.Layer3D#camera
              * @type {Phaser.GameObjects.Layer3DCamera}
-             * @since 3.50.0
+             * 
              */
             this.camera = new Layer3DCamera(this, 45, 0, 0, -10, 0.01, 1000);
 
@@ -87,7 +87,7 @@ var Layer3D = new Class({
              *
              * @name Phaser.GameObjects.Layer3D#light
              * @type {Phaser.GameObjects.Layer3DLight}
-             * @since 3.50.0
+             * 
              */
             this.light = new Layer3DLight(this, 0, 100, 0);
 
@@ -98,7 +98,7 @@ var Layer3D = new Class({
              *
              * @name Phaser.GameObjects.Layer3D#fogColor
              * @type {Phaser.Display.RGB}
-             * @since 3.50.0
+             * 
              */
             this.fogColor = new RGB();
 
@@ -107,7 +107,7 @@ var Layer3D = new Class({
              *
              * @name Phaser.GameObjects.Layer3D#fogNear
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.fogNear = 0;
 
@@ -116,7 +116,7 @@ var Layer3D = new Class({
              *
              * @name Phaser.GameObjects.Layer3D#fogFar
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.fogFar = Infinity;
 
@@ -127,7 +127,7 @@ var Layer3D = new Class({
              *
              * @name Phaser.GameObjects.Layer3D#models
              * @type {Phaser.Geom.Mesh.Model[]}
-             * @since 3.50.0
+             * 
              */
             this.models = [];
 
@@ -137,7 +137,7 @@ var Layer3D = new Class({
              * @name Phaser.GameObjects.Layer3D#_prevWidth
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._prevWidth = 0;
 
@@ -147,7 +147,7 @@ var Layer3D = new Class({
              * @name Phaser.GameObjects.Layer3D#_prevHeight
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._prevHeight = 0;
 
@@ -175,7 +175,7 @@ var Layer3D = new Class({
      * Removes all models from this Layer3D, calling `destroy` on each one of them.
      *
      * @method Phaser.GameObjects.Layer3D#clearModels
-     * @since 3.50.0
+     * 
      */
     clearModels: function () {
         var models = this.models;
@@ -195,7 +195,7 @@ var Layer3D = new Class({
      * while it has no vertices.
      *
      * @method Phaser.GameObjects.Layer3D#addModel
-     * @since 3.50.0
+     * 
      *
      * @param {number} verticesCount - The total number of vertices this model can contain.
      * @param {string|Phaser.Textures.Texture} [texture] - The key, or instance of the Texture this model will use to render with, as stored in the Texture Manager.
@@ -241,7 +241,7 @@ var Layer3D = new Class({
      * use them to offset the base values.
      *
      * @method Phaser.GameObjects.Layer3D#addModelFromOBJ
-     * @since 3.50.0
+     * 
      *
      * @param {string} key - The key of the data in the OBJ Cache to create the model from.
      * @param {string|Phaser.Textures.Texture} [texture] - The key, or instance of the Texture this model will use to render with, as stored in the Texture Manager.
@@ -291,7 +291,7 @@ var Layer3D = new Class({
      * use them to offset the base values.
      *
      * @method Phaser.GameObjects.Layer3D#addModelFromData
-     * @since 3.50.0
+     * 
      *
      * @param {array} data - The parsed model data.
      * @param {string|Phaser.Textures.Texture} [texture] - The key, or instance of the Texture this model will use to render with, as stored in the Texture Manager.
@@ -422,7 +422,7 @@ var Layer3D = new Class({
      * If you need to clear all vertices first, call `Model.resetVertices`.
      *
      * @method Phaser.GameObjects.Layer3D#addModelFromVertices
-     * @since 3.50.0
+     * 
      *
      * @param {number[]} vertices - The vertices array. Either `xy` pairs, or `xyz` if the `containsZ` parameter is `true`.
      * @param {number[]} uvs - The UVs pairs array.
@@ -459,7 +459,7 @@ var Layer3D = new Class({
      * If you do not wish to have a fog effect, see the `disableFog` method.
      *
      * @method Phaser.GameObjects.Layer3D#setFog
-     * @since 3.50.0
+     * 
      *
      * @param {number} red - The red color component of the fog. A value between 0 and 1.
      * @param {number} green - The green color component of the fog. A value between 0 and 1.
@@ -491,7 +491,7 @@ var Layer3D = new Class({
      * To re-enable fog, just call `setFog` and provide new color, near and far values.
      *
      * @method Phaser.GameObjects.Layer3D#disableFog
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Layer3D Game Object.
      */
@@ -506,7 +506,7 @@ var Layer3D = new Class({
      *
      * @method Phaser.GameObjects.Layer3D#preUpdate
      * @protected
-     * @since 3.50.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
@@ -542,7 +542,7 @@ var Layer3D = new Class({
      *
      * @method Phaser.GameObjects.Layer3D#resetDirtyFlags
      * @protected
-     * @since 3.50.0
+     * 
      */
     resetDirtyFlags: function () {
         this.camera.dirtyView = false;
@@ -561,7 +561,7 @@ var Layer3D = new Class({
      *
      * @method Phaser.GameObjects.Layer3D#preDestroy
      * @private
-     * @since 3.50.0
+     * 
      */
     preDestroy: function () {
         this.clearModels();

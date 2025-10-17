@@ -11,7 +11,7 @@
  * It's the effective distance when movement is allowed only horizontally or vertically (but not both).
  *
  * @function Phaser.Math.Distance.Snake
- * @since 3.22.0
+ * 
  *
  * @param {number} x1 - The x coordinate of the first point.
  * @param {number} y1 - The y coordinate of the first point.

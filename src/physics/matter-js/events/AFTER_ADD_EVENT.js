@@ -16,7 +16,7 @@
  *
  * @event Phaser.Physics.Matter.Events#AFTER_ADD
  * @type {string}
- * @since 3.22.0
+ * 
  *
  * @param {Phaser.Physics.Matter.Events.AfterAddEvent} event - The Add Event object.
  */

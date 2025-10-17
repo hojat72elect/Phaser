@@ -105,7 +105,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#right
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.right;
 
@@ -116,7 +116,7 @@ var Tile = new Class({
              *
              * @name Phaser.Tilemaps.Tile#bottom
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.bottom;
 
@@ -304,7 +304,7 @@ var Tile = new Class({
              * @name Phaser.Tilemaps.Tile#tintFill
              * @type {boolean}
              * @default
-             * @since 3.70.0
+             * 
              */
             this.tintFill = false;
 

@@ -10,7 +10,7 @@ var GetFastValue = require('../../../utils/object/GetFastValue');
  * Parse a Tiled group layer and create a state object for inheriting.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.CreateGroupLayer
- * @since 3.21.0
+ * 
  *
  * @param {object} json - The Tiled JSON object.
  * @param {object} [group] - The current group layer from the Tiled JSON file.

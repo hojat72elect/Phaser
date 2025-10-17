@@ -90,7 +90,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.EXPAND
      * @type {number}
      * @const
-     * @since 3.80.0
+     * 
      */
     EXPAND: 6
 

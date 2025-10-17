@@ -99,7 +99,7 @@ var WebAudioSoundManager = new Class({
      *
      * @method Phaser.Sound.WebAudioSoundManager#onGameVisible
      * @private
-     * @since 3.88.0
+     * 
      */
     onGameVisible: function () {
         var context = this.context;
@@ -153,7 +153,7 @@ var WebAudioSoundManager = new Class({
      * nodes and then re-creates them on the new given context.
      *
      * @method Phaser.Sound.WebAudioSoundManager#setAudioContext
-     * @since 3.21.0
+     * 
      *
      * @param {AudioContext} context - Reference to an already created AudioContext instance.
      *
@@ -464,7 +464,7 @@ var WebAudioSoundManager = new Class({
      *
      * @method Phaser.Sound.WebAudioSoundManager#setMute
      * @fires Phaser.Sound.Events#GLOBAL_MUTE
-     * @since 3.3.0
+     * 
      *
      * @param {boolean} value - `true` to mute all sounds, `false` to unmute them.
      *
@@ -501,7 +501,7 @@ var WebAudioSoundManager = new Class({
      *
      * @method Phaser.Sound.WebAudioSoundManager#setVolume
      * @fires Phaser.Sound.Events#GLOBAL_VOLUME
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The global volume of this Sound Manager.
      *

@@ -87,7 +87,7 @@ var ArcadePhysics = new Class({
              * @name Phaser.Physics.Arcade.World#_category
              * @private
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this._category = 0x0001;
 
@@ -101,7 +101,7 @@ var ArcadePhysics = new Class({
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.world = new World(this.scene, this.config);
@@ -117,7 +117,7 @@ var ArcadePhysics = new Class({
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         if (!this.world) {
@@ -141,7 +141,7 @@ var ArcadePhysics = new Class({
      * calling if you have specifically disabled it.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#enableUpdate
-     * @since 3.50.0
+     * 
      */
     enableUpdate: function () {
         this.systems.events.on(SceneEvents.UPDATE, this.world.update, this.world);
@@ -159,7 +159,7 @@ var ArcadePhysics = new Class({
      * emits a `POST_UPDATE` event, regardless of this setting.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#disableUpdate
-     * @since 3.50.0
+     * 
      */
     disableUpdate: function () {
         this.systems.events.off(SceneEvents.UPDATE, this.world.update, this.world);
@@ -196,7 +196,7 @@ var ArcadePhysics = new Class({
      * `Body.setCollidesWith()` methods to change this.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#nextCategory
-     * @since 3.70.0
+     * 
      *
      * @return {number} The next collision category.
      */
@@ -671,7 +671,7 @@ var ArcadePhysics = new Class({
      * otherwise the search is O(N) for Dynamic Bodies.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#overlapCirc
-     * @since 3.21.0
+     * 
      *
      * @param {number} x - The x coordinate of the center of the area to search within.
      * @param {number} y - The y coordinate of the center of the area to search within.

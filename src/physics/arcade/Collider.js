@@ -40,7 +40,7 @@ var Collider = new Class({
              *
              * @name Phaser.Physics.Arcade.Collider#name
              * @type {string}
-             * @since 3.1.0
+             * 
              */
             this.name = '';
 
@@ -115,7 +115,7 @@ var Collider = new Class({
      * Phaser does not use this value, it's for your own reference.
      *
      * @method Phaser.Physics.Arcade.Collider#setName
-     * @since 3.1.0
+     * 
      *
      * @param {string} name - The name to assign to the Collider.
      *

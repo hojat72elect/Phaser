@@ -175,7 +175,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_deferSetShader
              * @type {?{ key: string, textures: string[]|undefined, textureData: any|undefined }}
              * @private
-             * @since 3.80.0
+             * 
              */
             this._deferSetShader = null;
 
@@ -186,7 +186,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_deferProjOrtho
              * @type {?{ left: number, right: number, bottom: number, top: number }}
              * @private
-             * @since 3.80.0
+             * 
              */
             this._deferProjOrtho = null;
 
@@ -1164,7 +1164,7 @@ var Shader = new Class({
      * Run any logic that was deferred during context loss.
      *
      * @method Phaser.GameObjects.Shader#onContextRestored
-     * @since 3.80.0
+     * 
      */
     onContextRestored: function () {
         if (this._deferSetShader !== null) {

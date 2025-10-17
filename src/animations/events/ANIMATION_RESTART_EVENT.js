@@ -20,7 +20,7 @@
  *
  * @event Phaser.Animations.Events#ANIMATION_RESTART
  * @type {string}
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Animations.Animation} animation - A reference to the Animation that has restarted.
  * @param {Phaser.Animations.AnimationFrame} frame - The current Animation Frame of the Animation.

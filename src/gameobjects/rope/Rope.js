@@ -25,7 +25,7 @@ var Vector2 = require('../../math/Vector2');
  * @memberof Phaser.GameObjects
  * @constructor
  * @webglOnly
- * @since 3.23.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -90,7 +90,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#anims
              * @type {Phaser.Animations.AnimationState}
-             * @since 3.23.0
+             * 
              */
             this.anims = new AnimationState(this);
 
@@ -109,7 +109,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#points
              * @type {Phaser.Types.Math.Vector2Like[]}
-             * @since 3.23.0
+             * 
              */
             this.points = points;
 
@@ -120,7 +120,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#vertices
              * @type {Float32Array}
-             * @since 3.23.0
+             * 
              */
             this.vertices;
 
@@ -131,7 +131,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#uv
              * @type {Float32Array}
-             * @since 3.23.0
+             * 
              */
             this.uv;
 
@@ -146,7 +146,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#colors
              * @type {Uint32Array}
-             * @since 3.23.0
+             * 
              */
             this.colors;
 
@@ -161,7 +161,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#alphas
              * @type {Float32Array}
-             * @since 3.23.0
+             * 
              */
             this.alphas;
 
@@ -173,7 +173,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#tintFill
              * @type {boolean}
-             * @since 3.23.0
+             * 
              */
             this.tintFill = (texture === '__DEFAULT') ? true : false;
 
@@ -183,7 +183,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#dirty
              * @type {boolean}
-             * @since 3.23.0
+             * 
              */
             this.dirty = false;
 
@@ -196,7 +196,7 @@ var Rope = new Class({
              * @name Phaser.GameObjects.Rope#horizontal
              * @type {boolean}
              * @readonly
-             * @since 3.23.0
+             * 
              */
             this.horizontal = horizontal;
 
@@ -211,7 +211,7 @@ var Rope = new Class({
              * @type {boolean}
              * @default false
              * @private
-             * @since 3.23.0
+             * 
              */
             this._flipX = false;
 
@@ -226,7 +226,7 @@ var Rope = new Class({
              * @type {boolean}
              * @default false
              * @private
-             * @since 3.23.0
+             * 
              */
             this._flipY = false;
 
@@ -236,7 +236,7 @@ var Rope = new Class({
              * @name Phaser.GameObjects.Rope#_perp
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.23.0
+             * 
              */
             this._perp = new Vector2();
 
@@ -259,7 +259,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#debugCallback
              * @type {function}
-             * @since 3.23.0
+             * 
              */
             this.debugCallback = null;
 
@@ -269,7 +269,7 @@ var Rope = new Class({
              *
              * @name Phaser.GameObjects.Rope#debugGraphic
              * @type {Phaser.GameObjects.Graphics}
-             * @since 3.23.0
+             * 
              */
             this.debugGraphic = null;
 
@@ -303,7 +303,7 @@ var Rope = new Class({
      *
      * @method Phaser.GameObjects.Rope#preUpdate
      * @protected
-     * @since 3.23.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
@@ -323,7 +323,7 @@ var Rope = new Class({
      * Start playing the given animation.
      *
      * @method Phaser.GameObjects.Rope#play
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - The string-based key of the animation to play.
      * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
@@ -343,7 +343,7 @@ var Rope = new Class({
      * array directly.
      *
      * @method Phaser.GameObjects.Rope#setDirty
-     * @since 3.23.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -360,7 +360,7 @@ var Rope = new Class({
      * values will be reset to thoes values given as parameters.
      *
      * @method Phaser.GameObjects.Rope#setHorizontal
-     * @since 3.23.0
+     * 
      *
      * @param {(number|Phaser.Types.Math.Vector2Like[])} [points] - An array containing the vertices data for this Rope, or a number that indicates how many segments to split the texture frame into. If none is provided the current points length is used.
      * @param {(number|number[])} [colors] - Either a single color value, or an array of values.
@@ -389,7 +389,7 @@ var Rope = new Class({
      * values will be reset to thoes values given as parameters.
      *
      * @method Phaser.GameObjects.Rope#setVertical
-     * @since 3.23.0
+     * 
      *
      * @param {(number|Phaser.Types.Math.Vector2Like[])} [points] - An array containing the vertices data for this Rope, or a number that indicates how many segments to split the texture frame into. If none is provided the current points length is used.
      * @param {(number|number[])} [colors] - Either a single color value, or an array of values.
@@ -425,7 +425,7 @@ var Rope = new Class({
      *
      * @method Phaser.GameObjects.Rope#setTintFill
      * @webglOnly
-     * @since 3.23.0
+     * 
      *
      * @param {boolean} [value=false] - Set to `false` for an Additive tint or `true` fill tint with alpha.
      *
@@ -460,7 +460,7 @@ var Rope = new Class({
      * Note this method is called `setAlphas` (plural) and not `setAlpha`.
      *
      * @method Phaser.GameObjects.Rope#setAlphas
-     * @since 3.23.0
+     * 
      *
      * @param {(number|number[])} [alphas] - Either a single alpha value, or an array of values. If nothing is provided alpha is reset to 1.
      * @param {number} [bottomAlpha] - An optional bottom alpha value. See the method description for details.
@@ -543,7 +543,7 @@ var Rope = new Class({
      * vertices in the Rope.
      *
      * @method Phaser.GameObjects.Rope#setColors
-     * @since 3.23.0
+     * 
      *
      * @param {(number|number[])} [colors] - Either a single color value, or an array of values. If nothing is provided color is reset to 0xffffff.
      *
@@ -631,7 +631,7 @@ var Rope = new Class({
      * _reset_ the color and alpha values, unless you provide them as arguments to this method.
      *
      * @method Phaser.GameObjects.Rope#setPoints
-     * @since 3.23.0
+     * 
      *
      * @param {(number|Phaser.Types.Math.Vector2Like[])} [points=2] - An array containing the vertices data for this Rope, or a number that indicates how many segments to split the texture frame into. If none is provided a simple quad is created.
      * @param {(number|number[])} [colors] - Either a single color value, or an array of values.
@@ -712,7 +712,7 @@ var Rope = new Class({
      * Updates all of the UVs based on the Rope.points and `flipX` and `flipY` settings.
      *
      * @method Phaser.GameObjects.Rope#updateUVs
-     * @since 3.23.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -784,7 +784,7 @@ var Rope = new Class({
      * given Rope segment total.
      *
      * @method Phaser.GameObjects.Rope#resizeArrays
-     * @since 3.23.0
+     * 
      *
      * @param {number} newSize - The amount of segments to split the Rope in to.
      *
@@ -822,7 +822,7 @@ var Rope = new Class({
      * the Rope points directly.
      *
      * @method Phaser.GameObjects.Rope#updateVertices
-     * @since 3.23.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -901,7 +901,7 @@ var Rope = new Class({
      * with no arguments.
      *
      * @method Phaser.GameObjects.Rope#setDebug
-     * @since 3.23.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} [graphic] - The Graphic instance to render to if using the built-in callback.
      * @param {function} [callback] - The callback to invoke during debug render. Leave as undefined to use the built-in callback.
@@ -928,7 +928,7 @@ var Rope = new Class({
      * See `Rope.setDebug` for more details.
      *
      * @method Phaser.GameObjects.Rope#renderDebugVerts
-     * @since 3.23.0
+     * 
      *
      * @param {Phaser.GameObjects.Rope} src - The Rope object being rendered.
      * @param {number} meshLength - The number of vertices in the mesh.
@@ -967,7 +967,7 @@ var Rope = new Class({
      *
      * @method Phaser.GameObjects.Rope#preDestroy
      * @private
-     * @since 3.23.0
+     * 
      */
     preDestroy: function () {
         this.anims.destroy();
@@ -994,7 +994,7 @@ var Rope = new Class({
      * @name Phaser.GameObjects.Rope#flipX
      * @type {boolean}
      * @default false
-     * @since 3.23.0
+     * 
      */
     flipX: {
 
@@ -1020,7 +1020,7 @@ var Rope = new Class({
      * @name Phaser.GameObjects.Rope#flipY
      * @type {boolean}
      * @default false
-     * @since 3.23.0
+     * 
      */
     flipY: {
 

@@ -8,7 +8,7 @@
  * Depending on the size of the frame delta, the Runner makes zero or more updates per game step.
  *
  * @typedef {object} Phaser.Types.Physics.Matter.MatterRunnerConfig
- * @since 3.22.0
+ * 
  *
  * @property {number} [fps] - The number of physics updates per second. If set, this overrides `delta`.
  * @property {number} [delta=16.666] - The size of the update time step in milliseconds. If `fps` is set, it overrides `delta`.

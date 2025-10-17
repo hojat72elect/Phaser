@@ -14,7 +14,7 @@ var Rectangle = require('../../geom/rectangle/Rectangle');
  * Returns the unrotated bounds of the Game Object as a rectangle.
  *
  * @function Phaser.Display.Bounds.GetBounds
- * @since 3.24.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to get the bounds value from.
  * @param {(Phaser.Geom.Rectangle|object)} [output] - An object to store the values in. If not provided a new Rectangle will be created.

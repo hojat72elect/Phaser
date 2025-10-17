@@ -136,7 +136,7 @@ var AnimationFrame = new Class({
              *
              * @name Phaser.Animations.AnimationFrame#isKeyFrame
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.isKeyFrame = isKeyFrame;
         },

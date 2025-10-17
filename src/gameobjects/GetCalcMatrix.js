@@ -17,7 +17,7 @@ var result = {camera: tempMatrix1, sprite: tempMatrix2, calc: tempMatrix3};
  *
  * @function Phaser.GameObjects.GetCalcMatrix
  * @memberof Phaser.GameObjects
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} src - The Game Object to calculate the transform matrix for.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera being used to render the Game Object.

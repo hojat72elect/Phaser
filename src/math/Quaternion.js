@@ -44,7 +44,7 @@ var Quaternion = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.50.0
+             * 
              */
 
             /**
@@ -54,7 +54,7 @@ var Quaternion = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.50.0
+             * 
              */
 
             /**
@@ -64,7 +64,7 @@ var Quaternion = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.50.0
+             * 
              */
 
             /**
@@ -74,7 +74,7 @@ var Quaternion = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.50.0
+             * 
              */
 
             /**
@@ -83,7 +83,7 @@ var Quaternion = new Class({
              *
              * @name Phaser.Math.Quaternion#onChangeCallback
              * @type {function}
-             * @since 3.50.0
+             * 
              */
             this.onChangeCallback = NOOP;
 
@@ -739,7 +739,7 @@ var Quaternion = new Class({
      * Set this Quaternion from the given Euler, based on Euler order.
      *
      * @method Phaser.Math.Quaternion#setFromEuler
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Euler} euler - The Euler to convert from.
      * @param {boolean} [update=true] - Run the `onChangeCallback`?
@@ -840,7 +840,7 @@ var Quaternion = new Class({
      * Sets the rotation of this Quaternion from the given Matrix4.
      *
      * @method Phaser.Math.Quaternion#setFromRotationMatrix
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} mat4 - The Matrix4 to set the rotation from.
      *

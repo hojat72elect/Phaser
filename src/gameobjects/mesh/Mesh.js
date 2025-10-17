@@ -122,7 +122,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#faces
              * @type {Phaser.Geom.Mesh.Face[]}
-             * @since 3.50.0
+             * 
              */
             this.faces = [];
 
@@ -133,7 +133,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#vertices
              * @type {Phaser.Geom.Mesh.Vertex[]}
-             * @since 3.50.0
+             * 
              */
             this.vertices = [];
 
@@ -146,7 +146,7 @@ var Mesh = new Class({
              * @name Phaser.GameObjects.Mesh#tintFill
              * @type {boolean}
              * @default false
-             * @since 3.50.0
+             * 
              */
             this.tintFill = false;
 
@@ -171,7 +171,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#debugCallback
              * @type {function}
-             * @since 3.50.0
+             * 
              */
             this.debugCallback = null;
 
@@ -181,7 +181,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#debugGraphic
              * @type {Phaser.GameObjects.Graphics}
-             * @since 3.50.0
+             * 
              */
             this.debugGraphic = null;
 
@@ -194,7 +194,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#hideCCW
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.hideCCW = true;
 
@@ -211,7 +211,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#modelPosition
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.modelPosition = new Vector3();
 
@@ -226,7 +226,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#modelScale
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.modelScale = new Vector3(1, 1, 1);
 
@@ -244,7 +244,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#modelRotation
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.modelRotation = new Vector3();
 
@@ -257,7 +257,7 @@ var Mesh = new Class({
              * @name Phaser.GameObjects.Mesh#dirtyCache
              * @type {number[]}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.dirtyCache = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -266,7 +266,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#transformMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.transformMatrix = new Matrix4();
 
@@ -277,7 +277,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#viewPosition
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.viewPosition = new Vector3();
 
@@ -286,7 +286,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#viewMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.viewMatrix = new Matrix4();
 
@@ -297,7 +297,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#projectionMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.projectionMatrix = new Matrix4();
 
@@ -311,7 +311,7 @@ var Mesh = new Class({
              * @name Phaser.GameObjects.Mesh#totalRendered
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.totalRendered = 0;
 
@@ -323,7 +323,7 @@ var Mesh = new Class({
              * @name Phaser.GameObjects.Mesh#totalFrame
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.totalFrame = 0;
 
@@ -343,7 +343,7 @@ var Mesh = new Class({
              *
              * @name Phaser.GameObjects.Mesh#ignoreDirtyCache
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.ignoreDirtyCache = false;
 
@@ -396,7 +396,7 @@ var Mesh = new Class({
      * Translates the view position of this Mesh on the x axis by the given amount.
      *
      * @method Phaser.GameObjects.Mesh#panX
-     * @since 3.50.0
+     * 
      *
      * @param {number} v - The amount to pan by.
      */
@@ -412,7 +412,7 @@ var Mesh = new Class({
      * Translates the view position of this Mesh on the y axis by the given amount.
      *
      * @method Phaser.GameObjects.Mesh#panY
-     * @since 3.50.0
+     * 
      *
      * @param {number} v - The amount to pan by.
      */
@@ -434,7 +434,7 @@ var Mesh = new Class({
      * which will interpret vertex geometry 1:1 with pixel geometry (or see `setOrtho`).
      *
      * @method Phaser.GameObjects.Mesh#panZ
-     * @since 3.50.0
+     * 
      *
      * @param {number} v - The amount to pan by.
      */
@@ -454,7 +454,7 @@ var Mesh = new Class({
      * See also `setOrtho`.
      *
      * @method Phaser.GameObjects.Mesh#setPerspective
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - The width of the projection matrix. Typically the same as the Mesh and/or Renderer.
      * @param {number} height - The height of the projection matrix. Typically the same as the Mesh and/or Renderer.
@@ -495,7 +495,7 @@ var Mesh = new Class({
      * See also `setPerspective`.
      *
      * @method Phaser.GameObjects.Mesh#setOrtho
-     * @since 3.50.0
+     * 
      *
      * @param {number} [scaleX=1] - The default horizontal scale in relation to the Mesh / Renderer dimensions.
      * @param {number} [scaleY=1] - The default vertical scale in relation to the Mesh / Renderer dimensions.
@@ -531,7 +531,7 @@ var Mesh = new Class({
      * `faces` and `vertices` arrays.
      *
      * @method Phaser.GameObjects.Mesh#clear
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Mesh Game Object.
      */
@@ -566,7 +566,7 @@ var Mesh = new Class({
      * You can also offset the vertices of the model via the `x`, `y` and `z` parameters.
      *
      * @method Phaser.GameObjects.Mesh#addVerticesFromObj
-     * @since 3.50.0
+     * 
      *
      * @param {string} key - The key of the model data in the OBJ Cache to add to this Mesh.
      * @param {number} [scale=1] - An amount to scale the model data by. Use this if the model has exported too small, or large, to see.
@@ -599,7 +599,7 @@ var Mesh = new Class({
      * Compare the depth of two Faces.
      *
      * @method Phaser.GameObjects.Mesh#sortByDepth
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Geom.Mesh.Face} faceA - The first Face.
      * @param {Phaser.Geom.Mesh.Face} faceB - The second Face.
@@ -617,7 +617,7 @@ var Mesh = new Class({
      * also invoke it to sort the Faces should you manually position them.
      *
      * @method Phaser.GameObjects.Mesh#depthSort
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Mesh Game Object.
      */
@@ -634,7 +634,7 @@ var Mesh = new Class({
      * make it part of a Face, with 3 Vertex instances per Face.
      *
      * @method Phaser.GameObjects.Mesh#addVertex
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x position of the vertex.
      * @param {number} y - The y position of the vertex.
@@ -660,7 +660,7 @@ var Mesh = new Class({
      * A Face consists of references to 3 Vertex instances, which must be provided.
      *
      * @method Phaser.GameObjects.Mesh#addFace
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Geom.Mesh.Vertex} vertex1 - The first vertex of the Face.
      * @param {Phaser.Geom.Mesh.Vertex} vertex2 - The second vertex of the Face.
@@ -728,7 +728,7 @@ var Mesh = new Class({
      * If the data is not indexed, it's assumed that the arrays all contain sequential data.
      *
      * @method Phaser.GameObjects.Mesh#addVertices
-     * @since 3.50.0
+     * 
      *
      * @param {number[]} vertices - The vertices array. Either `xy` pairs, or `xyz` if the `containsZ` parameter is `true`.
      * @param {number[]} uvs - The UVs pairs array.
@@ -759,7 +759,7 @@ var Mesh = new Class({
      * Returns the total number of Faces in this Mesh Game Object.
      *
      * @method Phaser.GameObjects.Mesh#getFaceCount
-     * @since 3.50.0
+     * 
      *
      * @return {number} The number of Faces in this Mesh Game Object.
      */
@@ -771,7 +771,7 @@ var Mesh = new Class({
      * Returns the total number of Vertices in this Mesh Game Object.
      *
      * @method Phaser.GameObjects.Mesh#getVertexCount
-     * @since 3.50.0
+     * 
      *
      * @return {number} The number of Vertices in this Mesh Game Object.
      */
@@ -783,7 +783,7 @@ var Mesh = new Class({
      * Returns the Face at the given index in this Mesh Game Object.
      *
      * @method Phaser.GameObjects.Mesh#getFace
-     * @since 3.50.0
+     * 
      *
      * @param {number} index - The index of the Face to get.
      *
@@ -838,7 +838,7 @@ var Mesh = new Class({
      * be depth sorted first, so the first element will always be that closest to the camera.
      *
      * @method Phaser.GameObjects.Mesh#getFaceAt
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x position to check against.
      * @param {number} y - The y position to check against.
@@ -906,7 +906,7 @@ var Mesh = new Class({
      * with no arguments.
      *
      * @method Phaser.GameObjects.Mesh#setDebug
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} [graphic] - The Graphic instance to render to if using the built-in callback.
      * @param {function} [callback] - The callback to invoke during debug render. Leave as undefined to use the built-in callback.
@@ -934,7 +934,7 @@ var Mesh = new Class({
      * be recalculated or not.
      *
      * @method Phaser.GameObjects.Mesh#isDirty
-     * @since 3.50.0
+     * 
      *
      * @return {boolean} Returns `true` if the data of this mesh is dirty, otherwise `false`.
      */
@@ -1013,7 +1013,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#preUpdate
      * @protected
-     * @since 3.50.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
@@ -1070,7 +1070,7 @@ var Mesh = new Class({
      * See `Mesh.setDebug` for more details.
      *
      * @method Phaser.GameObjects.Mesh#renderDebug
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.Mesh} src - The Mesh object being rendered.
      * @param {Phaser.Geom.Mesh.Face[]} faces - An array of Faces.
@@ -1097,7 +1097,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#preDestroy
      * @private
-     * @since 3.50.0
+     * 
      */
     preDestroy: function () {
         this.clear();

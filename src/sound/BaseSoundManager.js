@@ -243,7 +243,7 @@ var BaseSoundManager = new Class({
      * If none can be found it returns `null`.
      *
      * @method Phaser.Sound.BaseSoundManager#get
-     * @since 3.23.0
+     * 
      *
      * @generic {Phaser.Sound.BaseSound} T
      * @genericUse {T} - [$return]
@@ -263,7 +263,7 @@ var BaseSoundManager = new Class({
      * will be returned.
      *
      * @method Phaser.Sound.BaseSoundManager#getAll
-     * @since 3.23.0
+     * 
      *
      * @generic {Phaser.Sound.BaseSound} T
      * @genericUse {T[]} - [$return]
@@ -383,7 +383,7 @@ var BaseSoundManager = new Class({
      * Removes all sounds from the manager, destroying the sounds.
      *
      * @method Phaser.Sound.BaseSoundManager#removeAll
-     * @since 3.23.0
+     * 
      */
     removeAll: function () {
         this.sounds.forEach(function (sound) {
@@ -488,7 +488,7 @@ var BaseSoundManager = new Class({
      * Stops any sounds matching the given key.
      *
      * @method Phaser.Sound.BaseSoundManager#stopByKey
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - Sound asset key.
      *
@@ -512,7 +512,7 @@ var BaseSoundManager = new Class({
      * When no key is given, returns true if any sound is playing.
      *
      * @method Phaser.Sound.BaseSoundManager#isPlaying
-     * @since 3.85.0
+     * 
      *
      * @param {?string} key - Sound asset key.
      *
@@ -584,7 +584,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#onGameBlur
      * @private
-     * @since 3.23.0
+     * 
      */
     onGameBlur: function () {
         this.gameLostFocus = true;
@@ -599,7 +599,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#onGameFocus
      * @private
-     * @since 3.23.0
+     * 
      */
     onGameFocus: function () {
         this.gameLostFocus = false;
@@ -689,7 +689,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#setRate
      * @fires Phaser.Sound.Events#GLOBAL_RATE
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - Global playback rate at which all the sounds will be played.
      *
@@ -735,7 +735,7 @@ var BaseSoundManager = new Class({
      *
      * @method Phaser.Sound.BaseSoundManager#setDetune
      * @fires Phaser.Sound.Events#GLOBAL_DETUNE
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
      *

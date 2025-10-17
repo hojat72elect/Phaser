@@ -382,7 +382,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_ADD
      * @type {number}
-     * @since 3.21.0
+     * 
      */
     NUMPAD_ADD: 107,
 
@@ -391,7 +391,7 @@ var KeyCodes = {
      *
      * @name Phaser.Input.Keyboard.KeyCodes.NUMPAD_SUBTRACT
      * @type {number}
-     * @since 3.21.0
+     * 
      */
     NUMPAD_SUBTRACT: 109,
 

@@ -48,7 +48,7 @@ function SortIntersects(a, b) {
  * The `w` component contains the index of the polygon, in the given array, that triggered the intersection.
  *
  * @function Phaser.Geom.Intersects.GetRaysFromPointToPolygon
- * @since 3.50.0
+ * 
  *
  * @param {number} x - The x coordinate to project the rays from.
  * @param {number} y - The y coordinate to project the rays from.

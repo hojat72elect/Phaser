@@ -14,7 +14,7 @@ var Size = {
      * @type {boolean}
      * @private
      * @default true
-     * @since 3.2.0
+     * 
      */
     _sizeComponent: true,
 

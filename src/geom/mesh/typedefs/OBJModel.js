@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Geom.Mesh.OBJModel
- * @since 3.50.0
+ * 
  *
  * @property {Phaser.Types.Geom.Mesh.OBJFace[]} faces - An array of Faces.
  * @property {string} name - The name of the model.

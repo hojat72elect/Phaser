@@ -341,7 +341,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#setMute
      * @fires Phaser.Sound.Events#GLOBAL_MUTE
-     * @since 3.3.0
+     * 
      *
      * @param {boolean} value - `true` to mute all sounds, `false` to unmute them.
      *
@@ -382,7 +382,7 @@ var HTML5AudioSoundManager = new Class({
      *
      * @method Phaser.Sound.HTML5AudioSoundManager#setVolume
      * @fires Phaser.Sound.Events#GLOBAL_VOLUME
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The global volume of this Sound Manager.
      *

@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Tilemaps.Orientation
  * @memberof Phaser.Tilemaps
- * @since 3.50.0
+ * 
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  * @typedef {Phaser.Tilemaps.Orientation} Phaser.Tilemaps.OrientationType
  * @memberof Phaser.Tilemaps
- * @since 3.50.0
+ * 
  */
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
      * @name Phaser.Tilemaps.Orientation.ORTHOGONAL
      * @type {number}
      * @const
-     * @since 3.50.0
+     * 
      */
     ORTHOGONAL: 0,
 
@@ -34,7 +34,7 @@ module.exports = {
      * @name Phaser.Tilemaps.Orientation.ISOMETRIC
      * @type {number}
      * @const
-     * @since 3.50.0
+     * 
      */
     ISOMETRIC: 1,
 
@@ -44,7 +44,7 @@ module.exports = {
      * @name Phaser.Tilemaps.Orientation.STAGGERED
      * @type {number}
      * @const
-     * @since 3.50.0
+     * 
      */
     STAGGERED: 2,
 
@@ -54,7 +54,7 @@ module.exports = {
      * @name Phaser.Tilemaps.Orientation.HEXAGONAL
      * @type {number}
      * @const
-     * @since 3.50.0
+     * 
      */
     HEXAGONAL: 3
 

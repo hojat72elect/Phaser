@@ -87,7 +87,7 @@ var ProcessQueue = new Class({
              *
              * @name Phaser.Structs.ProcessQueue#checkQueue
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.checkQueue = false;
         },
@@ -216,7 +216,7 @@ var ProcessQueue = new Class({
      * All the items are marked as 'pending destroy' and fully removed in the next update.
      *
      * @method Phaser.Structs.ProcessQueue#removeAll
-     * @since 3.20.0
+     * 
      *
      * @return {this} This Process Queue object.
      */
@@ -320,7 +320,7 @@ var ProcessQueue = new Class({
      * @name Phaser.Structs.ProcessQueue#length
      * @type {number}
      * @readonly
-     * @since 3.20.0
+     * 
      */
     length: {
 

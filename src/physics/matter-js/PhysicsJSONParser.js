@@ -40,7 +40,7 @@ var Body = require('./lib/body/Body');
  * At the time of writing, only the Phaser Physics Tracer App exports in this format.
  *
  * @namespace Phaser.Physics.Matter.PhysicsJSONParser
- * @since 3.22.0
+ * 
  */
 var PhysicsJSONParser = {
 
@@ -48,7 +48,7 @@ var PhysicsJSONParser = {
      * Parses a body element from the given JSON data.
      *
      * @function Phaser.Physics.Matter.PhysicsJSONParser.parseBody
-     * @since 3.22.0
+     * 
      *
      * @param {number} x - The horizontal world location of the body.
      * @param {number} y - The vertical world location of the body.

@@ -74,7 +74,7 @@ var PluginManager = new Class({
              *
              * @name Phaser.Plugins.PluginManager#plugins
              * @type {Phaser.Types.Plugins.GlobalPlugin[]}
-             * @since 3.8.0
+             * 
              */
             this.plugins = [];
 
@@ -83,7 +83,7 @@ var PluginManager = new Class({
              *
              * @name Phaser.Plugins.PluginManager#scenePlugins
              * @type {string[]}
-             * @since 3.8.0
+             * 
              */
             this.scenePlugins = [];
 
@@ -93,7 +93,7 @@ var PluginManager = new Class({
              * @name Phaser.Plugins.PluginManager#_pendingGlobal
              * @private
              * @type {array}
-             * @since 3.8.0
+             * 
              */
             this._pendingGlobal = [];
 
@@ -103,7 +103,7 @@ var PluginManager = new Class({
              * @name Phaser.Plugins.PluginManager#_pendingScene
              * @private
              * @type {array}
-             * @since 3.8.0
+             * 
              */
             this._pendingScene = [];
 
@@ -197,7 +197,7 @@ var PluginManager = new Class({
      *
      * @method Phaser.Plugins.PluginManager#addToScene
      * @protected
-     * @since 3.8.0
+     * 
      *
      * @param {Phaser.Scenes.Systems} sys - The Scene Systems class to install all the plugins in to.
      * @param {array} globalPlugins - An array of global plugins to install.
@@ -277,7 +277,7 @@ var PluginManager = new Class({
      *
      * @method Phaser.Plugins.PluginManager#getDefaultScenePlugins
      * @protected
-     * @since 3.8.0
+     * 
      *
      * @return {string[]} A list keys of all the Scene Plugins to install.
      */
@@ -311,7 +311,7 @@ var PluginManager = new Class({
      * Game Configuration object, or by preloading them via the Loader.
      *
      * @method Phaser.Plugins.PluginManager#installScenePlugin
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The property key that will be used to add this plugin to Scene.Systems.
      * @param {function} plugin - The plugin code. This should be the non-instantiated version.
@@ -376,7 +376,7 @@ var PluginManager = new Class({
      * instance its own unique key.
      *
      * @method Phaser.Plugins.PluginManager#install
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The unique handle given to this plugin within the Plugin Manager.
      * @param {function} plugin - The plugin code. This should be the non-instantiated version.
@@ -430,7 +430,7 @@ var PluginManager = new Class({
      *
      * @method Phaser.Plugins.PluginManager#getIndex
      * @protected
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The unique plugin key.
      *
@@ -455,7 +455,7 @@ var PluginManager = new Class({
      *
      * @method Phaser.Plugins.PluginManager#getEntry
      * @protected
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The unique plugin key.
      *
@@ -473,7 +473,7 @@ var PluginManager = new Class({
      * Checks if the given global plugin, based on its key, is active or not.
      *
      * @method Phaser.Plugins.PluginManager#isActive
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The unique plugin key.
      *
@@ -497,7 +497,7 @@ var PluginManager = new Class({
      * If the plugin is already running under the given key then nothing happens.
      *
      * @method Phaser.Plugins.PluginManager#start
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the plugin to start.
      * @param {string} [runAs] - Run the plugin under a new key. This allows you to run one plugin multiple times.
@@ -528,7 +528,7 @@ var PluginManager = new Class({
      *
      * @method Phaser.Plugins.PluginManager#createEntry
      * @private
-     * @since 3.9.0
+     * 
      *
      * @param {string} key - The key of the plugin to create an instance of.
      * @param {string} [runAs] - Run the plugin under a new key. This allows you to run one plugin multiple times.
@@ -567,7 +567,7 @@ var PluginManager = new Class({
      * If the plugin is not already running, nothing will happen.
      *
      * @method Phaser.Plugins.PluginManager#stop
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the plugin to stop.
      *
@@ -591,7 +591,7 @@ var PluginManager = new Class({
      * then it will create a new instance of the cached plugin and return that.
      *
      * @method Phaser.Plugins.PluginManager#get
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the plugin to get.
      * @param {boolean} [autoStart=true] - Automatically start a new instance of the plugin if found in the cache, but not actively running.
@@ -627,7 +627,7 @@ var PluginManager = new Class({
      * Used internally by the Plugin Manager.
      *
      * @method Phaser.Plugins.PluginManager#getClass
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the plugin to get.
      *
@@ -643,7 +643,7 @@ var PluginManager = new Class({
      * It is up to you to remove all references to this plugin that you may hold within your game code.
      *
      * @method Phaser.Plugins.PluginManager#removeGlobalPlugin
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the plugin to remove.
      */
@@ -665,7 +665,7 @@ var PluginManager = new Class({
      * It is up to you to remove all references to this plugin that you may hold within your game code.
      *
      * @method Phaser.Plugins.PluginManager#removeScenePlugin
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the plugin to remove.
      */
@@ -703,7 +703,7 @@ var PluginManager = new Class({
      * Any public property or method listed is available from your callbacks under `this`.
      *
      * @method Phaser.Plugins.PluginManager#registerGameObject
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the Game Object that the given callbacks will create, i.e. `image`, `sprite`.
      * @param {function} [factoryCallback] - The callback to invoke when the Game Object Factory is called.
@@ -779,7 +779,7 @@ var PluginManager = new Class({
      * your callback under `this`.
      *
      * @method Phaser.Plugins.PluginManager#registerFileType
-     * @since 3.8.0
+     * 
      *
      * @param {string} key - The key of the Game Object that the given callbacks will create, i.e. `image`, `sprite`.
      * @param {function} callback - The callback to invoke when the Game Object Factory is called.
@@ -800,7 +800,7 @@ var PluginManager = new Class({
      * The PluginCache will remove all custom plugins.
      *
      * @method Phaser.Plugins.PluginManager#destroy
-     * @since 3.8.0
+     * 
      */
     destroy: function () {
         for (var i = 0; i < this.plugins.length; i++) {

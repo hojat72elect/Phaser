@@ -17,7 +17,7 @@ var Class = require('../../../utils/Class');
  * @class WebGLUniformLocationWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers
  * @constructor
- * @since 3.80.0
+ * 
  *
  * @param {WebGLRenderingContext} gl - The WebGLRenderingContext to create the WebGLUniformLocation for.
  * @param {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper} program - The WebGLProgram that this location refers to. This must be created first.
@@ -38,7 +38,7 @@ var WebGLUniformLocationWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper#webGLUniformLocation
              * @type {?WebGLUniformLocation}
              * @default null
-             * @since 3.80.0
+             * 
              */
             this.webGLUniformLocation = null;
 
@@ -47,7 +47,7 @@ var WebGLUniformLocationWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper#gl
              * @type {WebGLRenderingContext}
-             * @since 3.80.0
+             * 
              */
             this.gl = gl;
 
@@ -56,7 +56,7 @@ var WebGLUniformLocationWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper#program
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
-             * @since 3.80.0
+             * 
              */
             this.program = program;
 
@@ -65,7 +65,7 @@ var WebGLUniformLocationWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper#name
              * @type {string}
-             * @since 3.80.0
+             * 
              */
             this.name = name;
 
@@ -76,7 +76,7 @@ var WebGLUniformLocationWrapper = new Class({
      * Creates the WebGLUniformLocation.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper#createResource
-     * @since 3.80.0
+     * 
      */
     createResource: function () {
         if (this.program.webGLProgram === null) {
@@ -99,7 +99,7 @@ var WebGLUniformLocationWrapper = new Class({
      * Destroys this WebGLUniformLocationWrapper.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper#destroy
-     * @since 3.80.0
+     * 
      */
     destroy: function () {
         this.gl = null;

@@ -96,7 +96,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.2.0
+             * 
              */
             this.renderer = renderer;
 
@@ -138,7 +138,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#canvas
              * @type {HTMLCanvasElement}
-             * @since 3.2.0
+             * 
              */
             this.canvas = (isCanvas) ? source : null;
 
@@ -328,7 +328,7 @@ var DynamicTexture = new Class({
      * or if you change its size.
      *
      * @method Phaser.Textures.DynamicTexture#setFromRenderTarget
-     * @since 3.70.0
+     * 
      *
      * @return {this} This Dynamic Texture instance.
      */
@@ -372,7 +372,7 @@ var DynamicTexture = new Class({
      * The color should be given in hex format, i.e. 0xff0000 for red, 0x00ff00 for green, etc.
      *
      * @method Phaser.Textures.DynamicTexture#fill
-     * @since 3.2.0
+     * 
      *
      * @param {number} rgb - The color to fill this Dynamic Texture with, such as 0xff0000 for red.
      * @param {number} [alpha=1] - The alpha value used by the fill.
@@ -448,7 +448,7 @@ var DynamicTexture = new Class({
      * Clears a portion or everything from this Dynamic Texture by erasing it and resetting it back to
      * a blank, transparent, texture. To clear an area, specify the `x`, `y`, `width` and `height`.
      * @method Phaser.Textures.DynamicTexture#clear
-     * @since 3.2.0
+     * 
      *
      * @param {number} [x=0] - The left coordinate of the fill rectangle.
      * @param {number} [y=0] - The top coordinate of the fill rectangle.
@@ -667,7 +667,7 @@ var DynamicTexture = new Class({
      * calling this method, otherwise you will get vertically inverted frames in WebGL.
      *
      * @method Phaser.Textures.DynamicTexture#draw
-     * @since 3.2.0
+     * 
      *
      * @param {any} entries - Any renderable Game Object, or Group, Container, Display List, other Render Texture, Texture Frame or an array of any of these.
      * @param {number} [x=0] - The x position to draw the Frame at, or the offset applied to the object.
@@ -946,7 +946,7 @@ var DynamicTexture = new Class({
      * currently open, or not.
      *
      * @method Phaser.Textures.DynamicTexture#beginDraw
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Dynamic Texture instance.
      */
@@ -1036,7 +1036,7 @@ var DynamicTexture = new Class({
      * Game Objects use their own alpha and tint values when being drawn.
      *
      * @method Phaser.Textures.DynamicTexture#batchDraw
-     * @since 3.50.0
+     * 
      *
      * @param {any} entries - Any renderable Game Object, or Group, Container, Display List, other Dynamic or Texture, Texture Frame or an array of any of these.
      * @param {number} [x=0] - The x position to draw the Frame at, or the offset applied to the object.
@@ -1095,7 +1095,7 @@ var DynamicTexture = new Class({
      * before it is drawn.
      *
      * @method Phaser.Textures.DynamicTexture#batchDrawFrame
-     * @since 3.50.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture.
@@ -1170,7 +1170,7 @@ var DynamicTexture = new Class({
      * currently open, or not.
      *
      * @method Phaser.Textures.DynamicTexture#endDraw
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [erase=false] - Draws all objects in this batch using a blend mode of ERASE. This has the effect of erasing any filled pixels in the objects being drawn.
      *

@@ -4,7 +4,7 @@
  * The array is modified in-place.
  *
  * @function Phaser.Utils.Array.Replace
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to search within.
  * @param {*} oldChild - The element in the array that will be replaced.

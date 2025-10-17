@@ -43,7 +43,7 @@ var Image = require('../image/Image');
  * @extends Phaser.GameObjects.Image
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.2.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -230,7 +230,7 @@ var RenderTexture = new Class({
      * The color should be given in hex format, i.e. 0xff0000 for red, 0x00ff00 for green, etc.
      *
      * @method Phaser.GameObjects.RenderTexture#fill
-     * @since 3.2.0
+     * 
      *
      * @param {number} rgb - The color to fill this Render Texture with, such as 0xff0000 for red.
      * @param {number} [alpha=1] - The alpha value used by the fill.
@@ -252,7 +252,7 @@ var RenderTexture = new Class({
      * a blank, transparent, texture.
      *
      * @method Phaser.GameObjects.RenderTexture#clear
-     * @since 3.2.0
+     * 
      *
      * @return {this} This Render Texture instance.
      */
@@ -388,7 +388,7 @@ var RenderTexture = new Class({
      * separate calls.
      *
      * @method Phaser.GameObjects.RenderTexture#draw
-     * @since 3.2.0
+     * 
      *
      * @param {any} entries - Any renderable Game Object, or Group, Container, Display List, other Render Texture, Texture Frame or an array of any of these.
      * @param {number} [x=0] - The x position to draw the Frame at, or the offset applied to the object.
@@ -513,7 +513,7 @@ var RenderTexture = new Class({
      * currently open, or not.
      *
      * @method Phaser.GameObjects.RenderTexture#beginDraw
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Render Texture instance.
      */
@@ -589,7 +589,7 @@ var RenderTexture = new Class({
      * Game Objects use their own alpha and tint values when being drawn.
      *
      * @method Phaser.GameObjects.RenderTexture#batchDraw
-     * @since 3.50.0
+     * 
      *
      * @param {any} entries - Any renderable Game Object, or Group, Container, Display List, other Dynamic or Texture, Texture Frame or an array of any of these.
      * @param {number} [x=0] - The x position to draw the Frame at, or the offset applied to the object.
@@ -644,7 +644,7 @@ var RenderTexture = new Class({
      * before it is drawn.
      *
      * @method Phaser.GameObjects.RenderTexture#batchDrawFrame
-     * @since 3.50.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture.
@@ -698,7 +698,7 @@ var RenderTexture = new Class({
      * currently open, or not.
      *
      * @method Phaser.GameObjects.RenderTexture#endDraw
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [erase=false] - Draws all objects in this batch using a blend mode of ERASE. This has the effect of erasing any filled pixels in the objects being drawn.
      *
@@ -802,7 +802,7 @@ var RenderTexture = new Class({
      *
      * @method Phaser.GameObjects.RenderTexture#preDestroy
      * @protected
-     * @since 3.9.0
+     * 
      */
     preDestroy: function () {
         this.camera = null;

@@ -98,7 +98,7 @@ var SceneManager = new Class({
              * @name Phaser.Scenes.SceneManager#_data
              * @type {object}
              * @private
-             * @since 3.4.0
+             * 
              */
             this._data = {};
 
@@ -120,7 +120,7 @@ var SceneManager = new Class({
              * @type {boolean}
              * @default false
              * @readonly
-             * @since 3.4.0
+             * 
              */
             this.isBooted = false;
 
@@ -172,7 +172,7 @@ var SceneManager = new Class({
      * @method Phaser.Scenes.SceneManager#bootQueue
      * @private
      * @fires Phaser.Core.Events#SYSTEM_READY
-     * @since 3.2.0
+     * 
      */
     bootQueue: function () {
         if (this.isBooted) {
@@ -381,7 +381,7 @@ var SceneManager = new Class({
      * queue the operation for the next update sequence.
      *
      * @method Phaser.Scenes.SceneManager#remove
-     * @since 3.2.0
+     * 
      *
      * @param {string} key - A unique key used to reference the Scene, i.e. `MainMenu` or `Level1`.
      *
@@ -1375,7 +1375,7 @@ var SceneManager = new Class({
      * This means it will render over the top of the other Scene.
      *
      * @method Phaser.Scenes.SceneManager#moveAbove
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [keyA,keyB]
@@ -1417,7 +1417,7 @@ var SceneManager = new Class({
      * This means it will render behind the other Scene.
      *
      * @method Phaser.Scenes.SceneManager#moveBelow
-     * @since 3.2.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [keyA,keyB]
@@ -1516,7 +1516,7 @@ var SceneManager = new Class({
      * Dumps debug information about each Scene to the developer console.
      *
      * @method Phaser.Scenes.SceneManager#dump
-     * @since 3.2.0
+     * 
      */
     dump: function () {
         var out = [];

@@ -31,7 +31,7 @@ var PointLight = require('./PointLight');
  * Point Lights are a WebGL only feature and do not have a Canvas counterpart.
  *
  * @method Phaser.GameObjects.GameObjectFactory#pointlight
- * @since 3.50.0
+ * 
  *
  * @param {number} x - The horizontal position of this Point Light in the world.
  * @param {number} y - The vertical position of this Point Light in the world.

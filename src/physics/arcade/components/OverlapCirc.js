@@ -14,7 +14,7 @@ var CircleToRectangle = require('../../../geom/intersects/CircleToRectangle');
  * otherwise the search is O(N) for Dynamic Bodies.
  *
  * @function Phaser.Physics.Arcade.Components.OverlapCirc
- * @since 3.21.0
+ * 
  *
  * @param {number} x - The x coordinate of the center of the area to search within.
  * @param {number} y - The y coordinate of the center of the area to search within.

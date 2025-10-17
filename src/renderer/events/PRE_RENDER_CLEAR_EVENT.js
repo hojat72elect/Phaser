@@ -15,6 +15,6 @@
  *
  * @event Phaser.Renderer.Events#PRE_RENDER_CLEAR
  * @type {string}
- * @since 3.85.0
+ * 
  */
 module.exports = 'prerenderclear';

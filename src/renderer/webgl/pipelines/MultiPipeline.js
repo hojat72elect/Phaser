@@ -107,7 +107,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.WebGLPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -186,7 +186,7 @@ var MultiPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#calcMatrix
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.55.0
+             * 
              */
             this.calcMatrix = new TransformMatrix();
 
@@ -196,7 +196,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#tempTriangle
              * @type {array}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.tempTriangle = [
                 {x: 0, y: 0, width: 0},
@@ -211,7 +211,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#strokeTint
              * @type {object}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.strokeTint = {TL: 0, TR: 0, BL: 0, BR: 0};
 
@@ -221,7 +221,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#fillTint
              * @type {object}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.fillTint = {TL: 0, TR: 0, BL: 0, BR: 0};
 
@@ -231,7 +231,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#currentFrame
              * @type {Phaser.Textures.Frame}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.currentFrame = {u0: 0, v0: 0, u1: 1, v1: 1};
 
@@ -241,7 +241,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#firstQuad
              * @type {number[]}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.firstQuad = [0, 0, 0, 0, 0];
 
@@ -251,7 +251,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#prevQuad
              * @type {number[]}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.prevQuad = [0, 0, 0, 0, 0];
 
@@ -261,7 +261,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#polygonCache
              * @type {array}
              * @private
-             * @since 3.55.0
+             * 
              */
             this.polygonCache = [];
         },
@@ -272,7 +272,7 @@ var MultiPipeline = new Class({
      * Should only be called when changing pipeline.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#boot
-     * @since 3.50.0
+     * 
      */
     boot: function () {
         WebGLPipeline.prototype.boot.call(this);
@@ -626,7 +626,7 @@ var MultiPipeline = new Class({
      * Rectangle factors in the given transform matrices before adding to the batch.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchFillRect
-     * @since 3.55.0
+     * 
      *
      * @param {number} x - Horizontal top left coordinate of the rectangle.
      * @param {number} y - Vertical top left coordinate of the rectangle.
@@ -658,7 +658,7 @@ var MultiPipeline = new Class({
      * Triangle factors in the given transform matrices before adding to the batch.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchFillTriangle
-     * @since 3.55.0
+     * 
      *
      * @param {number} x0 - Point 0 x coordinate.
      * @param {number} y0 - Point 0 y coordinate.
@@ -701,7 +701,7 @@ var MultiPipeline = new Class({
      * The triangle is created from 3 lines and drawn using the `batchStrokePath` method.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchStrokeTriangle
-     * @since 3.55.0
+     * 
      *
      * @param {number} x0 - Point 0 x coordinate.
      * @param {number} y0 - Point 0 y coordinate.
@@ -744,7 +744,7 @@ var MultiPipeline = new Class({
      * The path is always automatically closed because it's filled.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchFillPath
-     * @since 3.55.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like[]} path - Collection of points that represent the path.
      * @param {Phaser.GameObjects.Components.TransformMatrix} currentMatrix - The current transform.
@@ -813,7 +813,7 @@ var MultiPipeline = new Class({
      * The path is optionally closed at the end.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchStrokePath
-     * @since 3.55.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like[]} path - Collection of points that represent the path.
      * @param {number} lineWidth - The width of the line segments in pixels.
@@ -854,7 +854,7 @@ var MultiPipeline = new Class({
      * Creates a line out of 4 quads and adds it to the vertex batch based on the given line values.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchLine
-     * @since 3.55.0
+     * 
      *
      * @param {number} ax - x coordinate of the start of the line.
      * @param {number} ay - y coordinate of the start of the line.

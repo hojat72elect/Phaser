@@ -304,7 +304,7 @@ var TimeStep = new Class({
              * @type {number}
              * @readonly
              * @default 0
-             * @since 3.85.0
+             * 
              */
             this.pauseDuration = 0;
 
@@ -423,7 +423,7 @@ var TimeStep = new Class({
              *
              * @name Phaser.Core.TimeStep#smoothStep
              * @type {boolean}
-             * @since 3.22.0
+             * 
              */
             this.smoothStep = GetValue(config, 'smoothStep', true);
         },

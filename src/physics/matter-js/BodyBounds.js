@@ -19,7 +19,7 @@ var Vector2 = require('../../math/Vector2');
  * @class BodyBounds
  * @memberof Phaser.Physics.Matter
  * @constructor
- * @since 3.22.0
+ * 
  */
 var BodyBounds = new Class({
 
@@ -31,7 +31,7 @@ var BodyBounds = new Class({
              *
              * @name Phaser.Physics.Matter.BodyBounds#boundsCenter
              * @type {Phaser.Math.Vector2}
-             * @since 3.22.0
+             * 
              */
             this.boundsCenter = new Vector2();
 
@@ -40,7 +40,7 @@ var BodyBounds = new Class({
              *
              * @name Phaser.Physics.Matter.BodyBounds#centerDiff
              * @type {Phaser.Math.Vector2}
-             * @since 3.22.0
+             * 
              */
             this.centerDiff = new Vector2();
         },
@@ -53,7 +53,7 @@ var BodyBounds = new Class({
      * This method is called automatically by all other methods in this class.
      *
      * @method Phaser.Physics.Matter.BodyBounds#parseBody
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the bounds position from.
      *
@@ -88,7 +88,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getTopLeft
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -124,7 +124,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getTopCenter
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -160,7 +160,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getTopRight
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -196,7 +196,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getLeftCenter
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -232,7 +232,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getCenter
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -267,7 +267,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getRightCenter
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -303,7 +303,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getBottomLeft
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -339,7 +339,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getBottomCenter
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.
@@ -375,7 +375,7 @@ var BodyBounds = new Class({
      * This will return the world coordinate based on the bodies _current_ position and bounds.
      *
      * @method Phaser.Physics.Matter.BodyBounds#getBottomRight
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to get the position from.
      * @param {number} [x=0] - Optional horizontal offset to add to the returned coordinates.

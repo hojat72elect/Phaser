@@ -4,7 +4,7 @@
  * The index is zero based.
  *
  * @function Phaser.Utils.String.RemoveAt
- * @since 3.50.0
+ * 
  *
  * @param {string} string - The string to be worked on.
  * @param {number} index - The index of the character to be removed. This value is zero-based.

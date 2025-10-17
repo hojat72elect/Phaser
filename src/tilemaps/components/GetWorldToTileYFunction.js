@@ -7,7 +7,7 @@ var WorldToTileY = require('./WorldToTileY');
  * Gets the correct function to use to translate tiles, based on the map orientation.
  *
  * @function Phaser.Tilemaps.Components.GetWorldToTileYFunction
- * @since 3.50.0
+ * 
  *
  * @param {number} orientation - The Tilemap orientation constant.
  *

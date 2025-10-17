@@ -8,7 +8,7 @@ var SpliceOne = require('./SpliceOne');
  * You can optionally specify a callback to be invoked for each item successfully removed from the array.
  *
  * @function Phaser.Utils.Array.Remove
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to be modified.
  * @param {*|Array.<*>} item - The item, or array of items, to be removed from the array.

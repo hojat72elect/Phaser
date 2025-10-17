@@ -9,7 +9,7 @@
  * In case of an even number of values, the average of the two middle values is returned.
  *
  * @function Phaser.Math.Median
- * @since 3.54.0
+ * 
  *
  * @param {number[]} values - The values to average.
  *

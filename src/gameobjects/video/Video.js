@@ -87,7 +87,7 @@ var VideoRender = require('./VideoRender');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.20.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.Alpha
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -145,7 +145,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#video
              * @type {?HTMLVideoElement}
-             * @since 3.20.0
+             * 
              */
             this.video;
 
@@ -156,7 +156,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#videoTexture
              * @type {?Phaser.Textures.Texture}
-             * @since 3.20.0
+             * 
              */
             this.videoTexture;
 
@@ -167,7 +167,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#videoTextureSource
              * @type {?Phaser.Textures.TextureSource}
-             * @since 3.20.0
+             * 
              */
             this.videoTextureSource;
 
@@ -180,7 +180,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#snapshotTexture
              * @type {?Phaser.Textures.CanvasTexture}
-             * @since 3.20.0
+             * 
              */
             this.snapshotTexture;
 
@@ -192,7 +192,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#flipY
              * @type {boolean}
-             * @since 3.20.0
+             * 
              */
             this.flipY = false;
 
@@ -202,7 +202,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_key
              * @type {string}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._key = UUID();
 
@@ -213,7 +213,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#touchLocked
              * @type {boolean}
              * @readonly
-             * @since 3.20.0
+             * 
              */
             this.touchLocked = false;
 
@@ -222,7 +222,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#playWhenUnlocked
              * @type {boolean}
-             * @since 3.20.0
+             * 
              */
             this.playWhenUnlocked = false;
 
@@ -298,7 +298,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#retry
              * @type {number}
-             * @since 3.20.0
+             * 
              */
             this.retry = 0;
 
@@ -309,7 +309,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#retryInterval
              * @type {number}
-             * @since 3.20.0
+             * 
              */
             this.retryInterval = 500;
 
@@ -319,7 +319,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_systemMuted
              * @type {boolean}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._systemMuted = false;
 
@@ -329,7 +329,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_codeMuted
              * @type {boolean}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._codeMuted = false;
 
@@ -339,7 +339,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_systemPaused
              * @type {boolean}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._systemPaused = false;
 
@@ -349,7 +349,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_codePaused
              * @type {boolean}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._codePaused = false;
 
@@ -359,7 +359,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_callbacks
              * @type {any}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._callbacks = {
                 ended: this.completeHandler.bind(this),
@@ -388,7 +388,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_metadataCallbackHandler
              * @type {function}
              * @private
-             * @since 3.80.0
+             * 
              */
             this._metadataCallbackHandler = this.metadataHandler.bind(this);
 
@@ -398,7 +398,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_crop
              * @type {object}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._crop = this.resetCropObject();
 
@@ -407,7 +407,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#markers
              * @type {any}
-             * @since 3.20.0
+             * 
              */
             this.markers = {};
 
@@ -417,7 +417,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_markerIn
              * @type {number}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._markerIn = 0;
 
@@ -427,7 +427,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_markerOut
              * @type {number}
              * @private
-             * @since 3.20.0
+             * 
              */
             this._markerOut = 0;
 
@@ -492,7 +492,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_getFrame
              * @type {boolean}
              * @private
-             * @since 3.85.0
+             * 
              */
             this._getFrame = false;
 
@@ -588,7 +588,7 @@ var Video = new Class({
      * go through the unlock process again.
      *
      * @method Phaser.GameObjects.Video#changeSource
-     * @since 3.20.0
+     * 
      *
      * @param {string} key - The key of the Video this Game Object will swap to playing, as stored in the Video Cache.
      * @param {boolean} [autoplay=true] - Should the video start playing immediately, once the swap is complete?
@@ -621,7 +621,7 @@ var Video = new Class({
      * If the video did not come from the cache this will return an empty string.
      *
      * @method Phaser.GameObjects.Video#getVideoKey
-     * @since 3.20.0
+     * 
      *
      * @return {string} The key of the video being played from the Video Cache, if any.
      */
@@ -670,7 +670,7 @@ var Video = new Class({
      * Loads a Video from the given MediaStream object, ready for playback with the `Video.play` method.
      *
      * @method Phaser.GameObjects.Video#loadMediaStream
-     * @since 3.50.0
+     * 
      *
      * @param {MediaStream} stream - The MediaStream object.
      * @param {boolean} [noAudio=false] - Does the video have an audio track? If not you can enable auto-playing on it.
@@ -920,7 +920,7 @@ var Video = new Class({
      * user has interacted with the browser, into your game flow.
      *
      * @method Phaser.GameObjects.Video#play
-     * @since 3.20.0
+     * 
      *
      * @param {boolean} [loop=false] - Should the video loop automatically when it reaches the end? Please note that not all browsers support _seamless_ video looping for all encoding formats.
      * @param {number} [markerIn] - Optional in marker time, in seconds, for playback of a sequence of the video.
@@ -981,7 +981,7 @@ var Video = new Class({
      * If the video is already playing, or has been queued to play with `changeSource` then this method just returns.
      *
      * @method Phaser.GameObjects.Video#getFirstFrame
-     * @since 3.85.0
+     * 
      *
      * @return {this} This Video Game Object for method chaining.
      */
@@ -1135,7 +1135,7 @@ var Video = new Class({
      * See https://github.com/w3c/media-and-entertainment/issues/4 for more details about this issue.
      *
      * @method Phaser.GameObjects.Video#addMarker
-     * @since 3.20.0
+     * 
      *
      * @param {string} key - A unique name to give this marker.
      * @param {number} markerIn - The time, in seconds, representing the start of this marker.
@@ -1163,7 +1163,7 @@ var Video = new Class({
      * See https://github.com/w3c/media-and-entertainment/issues/4 for more details about this issue.
      *
      * @method Phaser.GameObjects.Video#playMarker
-     * @since 3.20.0
+     * 
      *
      * @param {string} key - The name of the marker sequence to play.
      * @param {boolean} [loop=false] - Should the video loop automatically when it reaches the end? Please note that not all browsers support _seamless_ video looping for all encoding formats.
@@ -1186,7 +1186,7 @@ var Video = new Class({
      * If the marker is currently playing it will _not_ stop playback.
      *
      * @method Phaser.GameObjects.Video#removeMarker
-     * @since 3.20.0
+     * 
      *
      * @param {string} key - The name of the marker to remove.
      *
@@ -1206,7 +1206,7 @@ var Video = new Class({
      * multiple times will overwrite the previous snapshot with the most recent one.
      *
      * @method Phaser.GameObjects.Video#snapshot
-     * @since 3.20.0
+     * 
      *
      * @param {number} [width] - The width of the resulting CanvasTexture.
      * @param {number} [height] - The height of the resulting CanvasTexture.
@@ -1232,7 +1232,7 @@ var Video = new Class({
      * multiple times will overwrite the previous snapshot with the most recent one.
      *
      * @method Phaser.GameObjects.Video#snapshotArea
-     * @since 3.20.0
+     * 
      *
      * @param {number} [x=0] - The horizontal location of the top-left of the area to grab from.
      * @param {number} [y=0] - The vertical location of the top-left of the area to grab from.
@@ -1313,7 +1313,7 @@ var Video = new Class({
      * to use a specific frame.
      *
      * @method Phaser.GameObjects.Video#saveSnapshotTexture
-     * @since 3.20.0
+     * 
      *
      * @param {string} key - The unique key to store the texture as within the global Texture Manager.
      *
@@ -1432,7 +1432,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#loadErrorHandler
      * @fires Phaser.GameObjects.Events#VIDEO_ERROR
-     * @since 3.20.0
+     * 
      *
      * @param {Event} event - The error Event.
      */
@@ -1447,7 +1447,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#metadataHandler
      * @fires Phaser.GameObjects.Events#VIDEO_METADATA
-     * @since 3.80.0
+     * 
      *
      * @param {Event} event - The loadedmetadata Event.
      */
@@ -1521,7 +1521,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#completeHandler
      * @fires Phaser.GameObjects.Events#VIDEO_COMPLETE
-     * @since 3.20.0
+     * 
      */
     completeHandler: function () {
         this._playCalled = false;
@@ -1534,7 +1534,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#preUpdate
      * @private
-     * @since 3.20.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time in ms since the last frame.
@@ -1572,7 +1572,7 @@ var Video = new Class({
      * This has been an ongoing subject of discussion: https://github.com/w3c/media-and-entertainment/issues/4
      *
      * @method Phaser.GameObjects.Video#seekTo
-     * @since 3.20.0
+     * 
      *
      * @param {number} value - The point in the video to seek to. A value between 0 and 1.
      *
@@ -1602,7 +1602,7 @@ var Video = new Class({
      * For a more accurate value, use the `Video.metadata.mediaTime` property instead.
      *
      * @method Phaser.GameObjects.Video#getCurrentTime
-     * @since 3.20.0
+     * 
      *
      * @return {number} A double-precision floating-point value indicating the current playback time in seconds.
      */
@@ -1624,7 +1624,7 @@ var Video = new Class({
      * If you wish to seek based on a duration percentage instead, use the `Video.seekTo` method.
      *
      * @method Phaser.GameObjects.Video#setCurrentTime
-     * @since 3.20.0
+     * 
      *
      * @param {(string|number)} value - The playback time to seek to in seconds. Can be expressed as a string, such as `+2` to seek 2 seconds ahead from the current time.
      *
@@ -1657,7 +1657,7 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#seekingHandler
      * @fires Phaser.GameObjects.Events#VIDEO_SEEKING
      * @private
-     * @since 3.20.0
+     * 
      */
     seekingHandler: function () {
         this.isSeeking = true;
@@ -1671,7 +1671,7 @@ var Video = new Class({
      * @method Phaser.GameObjects.Video#seekedHandler
      * @fires Phaser.GameObjects.Events#VIDEO_SEEKED
      * @private
-     * @since 3.20.0
+     * 
      */
     seekedHandler: function () {
         this.isSeeking = false;
@@ -1689,7 +1689,7 @@ var Video = new Class({
      * case the method will return -1.
      *
      * @method Phaser.GameObjects.Video#getProgress
-     * @since 3.20.0
+     * 
      *
      * @return {number} The current progress of playback. If the video has no duration, will always return -1.
      */
@@ -1717,7 +1717,7 @@ var Video = new Class({
      * If no video has been loaded, this method will return 0.
      *
      * @method Phaser.GameObjects.Video#getDuration
-     * @since 3.20.0
+     * 
      *
      * @return {number} A double-precision floating-point value indicating the duration of the media in seconds.
      */
@@ -1729,7 +1729,7 @@ var Video = new Class({
      * Sets the muted state of the currently playing video, if one is loaded.
      *
      * @method Phaser.GameObjects.Video#setMute
-     * @since 3.20.0
+     * 
      *
      * @param {boolean} [value=true] - The mute value. `true` if the video should be muted, otherwise `false`.
      *
@@ -1755,7 +1755,7 @@ var Video = new Class({
      * Returns a boolean indicating if this Video is currently muted.
      *
      * @method Phaser.GameObjects.Video#isMuted
-     * @since 3.20.0
+     * 
      *
      * @return {boolean} A boolean indicating if this Video is currently muted, or not.
      */
@@ -1768,7 +1768,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#globalMute
      * @private
-     * @since 3.20.0
+     * 
      *
      * @param {(Phaser.Sound.WebAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager)} soundManager - A reference to the Sound Manager that emitted the event.
      * @param {boolean} mute - The mute value. `true` if the Sound Manager is now muted, otherwise `false`.
@@ -1788,7 +1788,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#globalPause
      * @private
-     * @since 3.20.0
+     * 
      */
     globalPause: function () {
         this._systemPaused = true;
@@ -1805,7 +1805,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#globalResume
      * @private
-     * @since 3.20.0
+     * 
      */
     globalResume: function () {
         this._systemPaused = false;
@@ -1828,7 +1828,7 @@ var Video = new Class({
      * If the video has ended, this method will do nothing.
      *
      * @method Phaser.GameObjects.Video#setPaused
-     * @since 3.20.0
+     * 
      *
      * @param {boolean} [value=true] - The paused value. `true` if the video should be paused, `false` to resume it.
      *
@@ -1898,7 +1898,7 @@ var Video = new Class({
      * Returns a double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest).
      *
      * @method Phaser.GameObjects.Video#getVolume
-     * @since 3.20.0
+     * 
      *
      * @return {number} A double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest).
      */
@@ -1912,7 +1912,7 @@ var Video = new Class({
      * The value given is a double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest).
      *
      * @method Phaser.GameObjects.Video#setVolume
-     * @since 3.20.0
+     * 
      *
      * @param {number} [value=1] - A double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest).
      *
@@ -1934,7 +1934,7 @@ var Video = new Class({
      * Returns a double that indicates the rate at which the media is being played back.
      *
      * @method Phaser.GameObjects.Video#getPlaybackRate
-     * @since 3.20.0
+     * 
      *
      * @return {number} A double that indicates the rate at which the media is being played back.
      */
@@ -1948,7 +1948,7 @@ var Video = new Class({
      * The value given is a double that indicates the rate at which the media is being played back.
      *
      * @method Phaser.GameObjects.Video#setPlaybackRate
-     * @since 3.20.0
+     * 
      *
      * @param {number} [rate] - A double that indicates the rate at which the media is being played back.
      *
@@ -1966,7 +1966,7 @@ var Video = new Class({
      * Returns a boolean which indicates whether the media element should start over when it reaches the end.
      *
      * @method Phaser.GameObjects.Video#getLoop
-     * @since 3.20.0
+     * 
      *
      * @return {boolean} A boolean which indicates whether the media element will start over when it reaches the end.
      */
@@ -1984,7 +1984,7 @@ var Video = new Class({
      * Please note that not all browsers support _seamless_ video looping for all encoding formats.
      *
      * @method Phaser.GameObjects.Video#setLoop
-     * @since 3.20.0
+     * 
      *
      * @param {boolean} [value=true] - A boolean which indicates whether the media element will start over when it reaches the end.
      *
@@ -2006,7 +2006,7 @@ var Video = new Class({
      * Returns a boolean which indicates whether the video is currently playing.
      *
      * @method Phaser.GameObjects.Video#isPlaying
-     * @since 3.20.0
+     * 
      *
      * @return {boolean} A boolean which indicates whether the video is playing, or not.
      */
@@ -2018,7 +2018,7 @@ var Video = new Class({
      * Returns a boolean which indicates whether the video is currently paused.
      *
      * @method Phaser.GameObjects.Video#isPaused
-     * @since 3.20.0
+     * 
      *
      * @return {boolean} A boolean which indicates whether the video is paused, or not.
      */
@@ -2070,7 +2070,7 @@ var Video = new Class({
      * `flipY` parameter to `true` if you find the video renders upside down in your shader.
      *
      * @method Phaser.GameObjects.Video#saveTexture
-     * @since 3.20.0
+     * 
      *
      * @param {string} key - The unique key to store the texture as within the global Texture Manager.
      * @param {boolean} [flipY=false] - Should the WebGL Texture set `UNPACK_MULTIPLY_FLIP_Y` during upload?
@@ -2103,7 +2103,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#stop
      * @fires Phaser.GameObjects.Events#VIDEO_STOP
-     * @since 3.20.0
+     * 
      *
      * @param {boolean} [emitStopEvent=true] - Should the `VIDEO_STOP` event be emitted?
      *
@@ -2146,7 +2146,7 @@ var Video = new Class({
      * This method is called automatically by `Video.destroy`.
      *
      * @method Phaser.GameObjects.Video#removeVideoElement
-     * @since 3.20.0
+     * 
      */
     removeVideoElement: function () {
         var video = this.video;
@@ -2178,7 +2178,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#preDestroy
      * @private
-     * @since 3.21.0
+     * 
      */
     preDestroy: function () {
         this.stop(false);

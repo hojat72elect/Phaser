@@ -4,7 +4,7 @@
  * The array is modified in-place.
  *
  * @function Phaser.Utils.Array.Swap
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The input array.
  * @param {*} item1 - The first element to swap.

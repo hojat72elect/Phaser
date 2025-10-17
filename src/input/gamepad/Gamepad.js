@@ -311,7 +311,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_created
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._created = performance.now();
         },

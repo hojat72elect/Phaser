@@ -72,7 +72,7 @@ var MultiFile = new Class({
              * @name Phaser.Loader.MultiFile#multiKeyIndex
              * @type {number}
              * @private
-             * @since 3.20.0
+             * 
              */
             this.multiKeyIndex = loader.multiKeyIndex++;
 
@@ -139,7 +139,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#baseURL
              * @type {string}
-             * @since 3.20.0
+             * 
              */
             this.baseURL = loader.baseURL;
 
@@ -149,7 +149,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#path
              * @type {string}
-             * @since 3.20.0
+             * 
              */
             this.path = loader.path;
 
@@ -159,7 +159,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#prefix
              * @type {string}
-             * @since 3.20.0
+             * 
              */
             this.prefix = loader.prefix;
 

@@ -14,7 +14,7 @@ var Vector3 = require('../../math/Vector3');
  * @memberof Phaser.Geom.Mesh
  * @constructor
  * @extends Phaser.Math.Vector3
- * @since 3.50.0
+ * 
  *
  * @param {number} x - The x position of the vertex.
  * @param {number} y - The y position of the vertex.
@@ -57,7 +57,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#vx
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.vx = 0;
 
@@ -66,7 +66,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#vy
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.vy = 0;
 
@@ -75,7 +75,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#vz
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.vz = 0;
 
@@ -84,7 +84,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#nx
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.nx = nx;
 
@@ -93,7 +93,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#ny
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.ny = ny;
 
@@ -102,7 +102,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#nz
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.nz = nz;
 
@@ -111,7 +111,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#u
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.u = u;
 
@@ -120,7 +120,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#v
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.v = v;
 
@@ -129,7 +129,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#color
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.color = color;
 
@@ -138,7 +138,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#alpha
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.alpha = alpha;
 
@@ -147,7 +147,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#tx
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.tx = 0;
 
@@ -156,7 +156,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#ty
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.ty = 0;
 
@@ -165,7 +165,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#ta
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.ta = 0;
 
@@ -195,7 +195,7 @@ var Vertex = new Class({
      * or shift they may have had.
      *
      * @method Phaser.Geom.Mesh.Vertex#setUVs
-     * @since 3.50.0
+     * 
      *
      * @param {number} u - The UV u coordinate of the vertex.
      * @param {number} v - The UV v coordinate of the vertex.
@@ -262,7 +262,7 @@ var Vertex = new Class({
      * Transforms this vertex by the given matrix, storing the results in `vx`, `vy` and `vz`.
      *
      * @method Phaser.Geom.Mesh.Vertex#transformCoordinatesLocal
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Math.Matrix4} transformMatrix - The transform matrix to apply to this vertex.
      * @param {number} width - The width of the parent Mesh.
@@ -334,7 +334,7 @@ var Vertex = new Class({
      * Updates this Vertex based on the given transform.
      *
      * @method Phaser.Geom.Mesh.Vertex#update
-     * @since 3.50.0
+     * 
      *
      * @param {number} a - The parent transform matrix data a component.
      * @param {number} b - The parent transform matrix data b component.
@@ -367,7 +367,7 @@ var Vertex = new Class({
      * Loads the data from this Vertex into the given Typed Arrays.
      *
      * @method Phaser.Geom.Mesh.Vertex#load
-     * @since 3.50.0
+     * 
      *
      * @param {Float32Array} F32 - A Float32 Array to insert the position, UV and unit data in to.
      * @param {Uint32Array} U32 - A Uint32 Array to insert the color and alpha data in to.

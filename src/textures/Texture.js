@@ -301,7 +301,7 @@ var Texture = new Class({
      * need to know the total bounds of the sprite sheet.
      *
      * @method Phaser.Textures.Texture#getFrameBounds
-     * @since 3.80.0
+     * 
      *
      * @param {number} [sourceIndex=0] - The index of the TextureSource to get the Frame bounds from.
      *

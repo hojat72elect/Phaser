@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Renderer.WebGL.WebGLPipelineAttribute
- * @since 3.50.0
+ * 
  *
  * @property {string} name - The name of the attribute as defined in the vertex shader.
  * @property {number} size - The number of components in the attribute, i.e. 1 for a float, 2 for a vec2, 3 for a vec3, etc.

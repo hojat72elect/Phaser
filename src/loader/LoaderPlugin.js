@@ -336,7 +336,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#multiKeyIndex
              * @type {number}
              * @private
-             * @since 3.20.0
+             * 
              */
             this.multiKeyIndex = 0;
 
@@ -354,7 +354,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#maxRetries
              * @type {number}
              * @default 2
-             * @since 3.85.0
+             * 
              */
             this.maxRetries = GetFastValue(sceneConfig, 'maxRetries', gameConfig.loaderMaxRetries);
 
@@ -368,7 +368,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.systems.events.once(SceneEvents.DESTROY, this.destroy, this);
@@ -381,7 +381,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#pluginStart
      * @private
-     * @since 3.5.1
+     * 
      */
     pluginStart: function () {
         this.systems.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);
@@ -674,7 +674,7 @@ var LoaderPlugin = new Class({
      * If the Pack includes another Pack, its resources will be removed too.
      *
      * @method Phaser.Loader.LoaderPlugin#removePack
-     * @since 3.85.0
+     * 
      *
      * @param {(string|object)} packKey - The key of an Asset Pack in the JSON cache, or a Pack File data.
      * @param {string} [dataKey] - A key in the Pack data, if you want to process only a section of it.

@@ -142,7 +142,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#isVideo
              * @type {boolean}
-             * @since 3.20.0
+             * 
              */
             this.isVideo = (window.hasOwnProperty('HTMLVideoElement') && source instanceof HTMLVideoElement);
 
@@ -190,7 +190,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#flipY
              * @type {boolean}
-             * @since 3.20.0
+             * 
              */
             this.flipY = flipY;
 
@@ -271,7 +271,7 @@ var TextureSource = new Class({
      * Sets the `UNPACK_FLIP_Y_WEBGL` flag for the WebGL Texture during texture upload.
      *
      * @method Phaser.Textures.TextureSource#setFlipY
-     * @since 3.20.0
+     * 
      *
      * @param {boolean} [value=true] - Should the WebGL Texture be flipped on the Y axis on texture upload or not?
      */

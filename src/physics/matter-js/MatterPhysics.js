@@ -148,7 +148,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#bodyBounds
              * @type {Phaser.Physics.Matter.BodyBounds}
-             * @since 3.22.0
+             * 
              */
             this.bodyBounds;
 
@@ -177,7 +177,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#composite
              * @type {MatterJS.CompositeFactory}
-             * @since 3.22.0
+             * 
              */
             this.composite = Composite;
 
@@ -203,7 +203,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#detector
              * @type {MatterJS.DetectorFactory}
-             * @since 3.22.0
+             * 
              */
             this.detector = Detector;
 
@@ -214,7 +214,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#pair
              * @type {MatterJS.PairFactory}
-             * @since 3.22.0
+             * 
              */
             this.pair = Pair;
 
@@ -225,7 +225,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#pairs
              * @type {MatterJS.PairsFactory}
-             * @since 3.22.0
+             * 
              */
             this.pairs = Pairs;
 
@@ -236,7 +236,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#query
              * @type {MatterJS.QueryFactory}
-             * @since 3.22.0
+             * 
              */
             this.query = Query;
 
@@ -247,7 +247,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#resolver
              * @type {MatterJS.ResolverFactory}
-             * @since 3.22.0
+             * 
              */
             this.resolver = Resolver;
 
@@ -262,7 +262,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#constraint
              * @type {MatterJS.ConstraintFactory}
-             * @since 3.22.0
+             * 
              */
             this.constraint = Constraint;
 
@@ -288,7 +288,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#composites
              * @type {MatterJS.CompositesFactory}
-             * @since 3.22.0
+             * 
              */
             this.composites = Composites;
 
@@ -301,7 +301,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#axes
              * @type {MatterJS.AxesFactory}
-             * @since 3.22.0
+             * 
              */
             this.axes = Axes;
 
@@ -312,7 +312,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#bounds
              * @type {MatterJS.BoundsFactory}
-             * @since 3.22.0
+             * 
              */
             this.bounds = Bounds;
 
@@ -325,7 +325,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#svg
              * @type {MatterJS.SvgFactory}
-             * @since 3.22.0
+             * 
              */
             this.svg = Svg;
 
@@ -338,7 +338,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#vector
              * @type {MatterJS.VectorFactory}
-             * @since 3.22.0
+             * 
              */
             this.vector = Vector;
 
@@ -351,7 +351,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#vertices
              * @type {MatterJS.VerticesFactory}
-             * @since 3.22.0
+             * 
              */
             this.vertices = Vertices;
 
@@ -374,7 +374,7 @@ var MatterPhysics = new Class({
              * @name Phaser.Physics.Matter.MatterPhysics#_tempVec2
              * @type {MatterJS.Vector}
              * @private
-             * @since 3.22.0
+             * 
              */
             this._tempVec2 = Vector.create();
 
@@ -394,7 +394,7 @@ var MatterPhysics = new Class({
      *
      * @method Phaser.Physics.Matter.MatterPhysics#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.world = new World(this.scene, this.config);
@@ -411,7 +411,7 @@ var MatterPhysics = new Class({
      *
      * @method Phaser.Physics.Matter.MatterPhysics#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         if (!this.world) {
@@ -478,7 +478,7 @@ var MatterPhysics = new Class({
      * If you have set a custom `getDelta` function then this will override it.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#set60Hz
-     * @since 3.4.0
+     * 
      *
      * @return {this} This Matter Physics instance.
      */
@@ -494,7 +494,7 @@ var MatterPhysics = new Class({
      * If you have set a custom `getDelta` function then this will override it.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#set30Hz
-     * @since 3.4.0
+     * 
      *
      * @return {this} This Matter Physics instance.
      */
@@ -527,7 +527,7 @@ var MatterPhysics = new Class({
      * of your game.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#step
-     * @since 3.4.0
+     * 
      *
      * @param {number} [delta=16.666] - The delta value.
      * @param {number} [correction=1] - Optional delta correction value.
@@ -548,7 +548,7 @@ var MatterPhysics = new Class({
      * transform them before passing them.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#containsPoint
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} body - The body, or an array of bodies, to check against the point.
      * @param {number} x - The horizontal coordinate of the point.
@@ -576,7 +576,7 @@ var MatterPhysics = new Class({
      * transform them before passing them.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#intersectPoint
-     * @since 3.22.0
+     * 
      *
      * @param {number} x - The horizontal coordinate of the point.
      * @param {number} y - The vertical coordinate of the point.
@@ -610,7 +610,7 @@ var MatterPhysics = new Class({
      * If no bodies are provided it will search all bodies in the Matter World, including within Composites.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#intersectRect
-     * @since 3.22.0
+     * 
      *
      * @param {number} x - The horizontal coordinate of the top-left of the area.
      * @param {number} y - The vertical coordinate of the top-left of the area.
@@ -654,7 +654,7 @@ var MatterPhysics = new Class({
      * The width of the ray can be specified via the `rayWidth` parameter.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#intersectRay
-     * @since 3.22.0
+     * 
      *
      * @param {number} x1 - The horizontal coordinate of the start of the ray segment.
      * @param {number} y1 - The vertical coordinate of the start of the ray segment.
@@ -688,7 +688,7 @@ var MatterPhysics = new Class({
      * If no bodies are provided it will check against all bodies in the Matter World.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#intersectBody
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The target body.
      * @param {Phaser.Types.Physics.Matter.MatterBody[]} [bodies] - An array of bodies to check the target body against. If not provided it will search all bodies in the world.
@@ -733,7 +733,7 @@ var MatterPhysics = new Class({
      * the target body. The `collisionInfo` object contains additional data, such as the angle and depth of penetration.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#overlap
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} target - The target body, or array of target bodies, to check.
      * @param {Phaser.Types.Physics.Matter.MatterBody[]} [bodies] - The second body, or array of bodies, to check. If falsey it will check against all bodies in the world.
@@ -797,7 +797,7 @@ var MatterPhysics = new Class({
      * categories are included in their collision masks (see {@link #setCollidesWith}).
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setCollisionCategory
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody[]} bodies - An array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} value - Unique category bitfield.
@@ -824,7 +824,7 @@ var MatterPhysics = new Class({
      * if they have the same negative group value they will never collide.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setCollisionGroup
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody[]} bodies - An array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} value - Unique group index.
@@ -849,7 +849,7 @@ var MatterPhysics = new Class({
      * `(categoryB & maskA) !== 0` are both true.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setCollidesWith
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody[]} bodies - An array of bodies to update. If falsey it will use all bodies in the world.
      * @param {(number|number[])} categories - A unique category bitfield, or an array of them.
@@ -885,7 +885,7 @@ var MatterPhysics = new Class({
      * If the `bodies` argument is falsey, it will return all bodies in the world.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#getMatterBodies
-     * @since 3.22.0
+     * 
      *
      * @param {array} [bodies] - An array of objects to extract the bodies from. If falsey, it will return all bodies in the world.
      *
@@ -915,7 +915,7 @@ var MatterPhysics = new Class({
      * Sets both the horizontal and vertical linear velocity of the physics bodies.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setVelocity
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} x - The horizontal linear velocity value.
@@ -943,7 +943,7 @@ var MatterPhysics = new Class({
      * The vertical velocity of the body is unchanged.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setVelocityX
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} x - The horizontal linear velocity value.
@@ -970,7 +970,7 @@ var MatterPhysics = new Class({
      * The horizontal velocity of the body is unchanged.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setVelocityY
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} y - The vertical linear velocity value.
@@ -997,7 +997,7 @@ var MatterPhysics = new Class({
      * Position, angle, force etc. are unchanged.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#setAngularVelocity
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} value - The angular velocity.
@@ -1018,7 +1018,7 @@ var MatterPhysics = new Class({
      * Applies a force to a body, at the bodies current position, including resulting torque.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#applyForce
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {Phaser.Types.Math.Vector2Like} force - A Vector that specifies the force to apply.
@@ -1047,7 +1047,7 @@ var MatterPhysics = new Class({
      * Use very small speed values, such as 0.1, depending on the mass and required velocity.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#applyForceFromPosition
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {Phaser.Types.Math.Vector2Like} position - A Vector that specifies the world-space position to apply the force at.
@@ -1082,7 +1082,7 @@ var MatterPhysics = new Class({
      * Use very small speed values, such as 0.1, depending on the mass and required velocity.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#applyForceFromAngle
-     * @since 3.22.0
+     * 
      *
      * @param {(Phaser.Types.Physics.Matter.MatterBody|Phaser.Types.Physics.Matter.MatterBody[])} bodies - Either a single Body, or an array of bodies to update. If falsey it will use all bodies in the world.
      * @param {number} speed - A speed value to be applied to a directional force.
@@ -1113,7 +1113,7 @@ var MatterPhysics = new Class({
      * Returns the length of the given constraint, which is the distance between the two points.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#getConstraintLength
-     * @since 3.22.0
+     * 
      *
      * @param {MatterJS.ConstraintType} constraint - The constraint to get the length from.
      *
@@ -1160,7 +1160,7 @@ var MatterPhysics = new Class({
      * the y coordinate, as that is the base of the world.
      *
      * @method Phaser.Physics.Matter.MatterPhysics#alignBody
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Types.Physics.Matter.MatterBody} body - The Body to align.
      * @param {number} x - The horizontal position to align the body to.

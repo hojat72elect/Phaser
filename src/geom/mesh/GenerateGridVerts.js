@@ -31,7 +31,7 @@ var tempMatrix = new Matrix4();
  * such as from a texture atlas, the UVs will be generated within the range of that frame.
  *
  * @function Phaser.Geom.Mesh.GenerateGridVerts
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Geom.Mesh.GenerateGridConfig} config - A Grid configuration object.
  *

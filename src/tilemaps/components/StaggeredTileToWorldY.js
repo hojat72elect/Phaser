@@ -3,7 +3,7 @@
  * layers position, scale and scroll.
  *
  * @function Phaser.Tilemaps.Components.StaggeredTileToWorldY
- * @since 3.50.0
+ * 
  *
  * @param {number} tileY - The y coordinate, in tiles, not pixels.
  * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to use when calculating the tile index from the world values.

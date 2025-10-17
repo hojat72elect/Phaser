@@ -147,7 +147,7 @@ function simplifyDouglasPeucker(points, sqTolerance) {
  * it and also reducing visual noise.
  *
  * @function Phaser.Geom.Polygon.Simplify
- * @since 3.50.0
+ * 
  *
  * @generic {Phaser.Geom.Polygon} O - [polygon,$return]
  *

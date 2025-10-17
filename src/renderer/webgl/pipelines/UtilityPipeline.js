@@ -39,7 +39,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.WebGLPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -120,7 +120,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#colorMatrix
              * @type {Phaser.Display.ColorMatrix}
-             * @since 3.50.0
+             * 
              */
             this.colorMatrix = new ColorMatrix();
 
@@ -132,7 +132,7 @@ var UtilityPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#copyShader
              * @type {Phaser.Renderer.WebGL.WebGLShader}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.copyShader;
 
@@ -143,7 +143,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#addShader
              * @type {Phaser.Renderer.WebGL.WebGLShader}
-             * @since 3.50.0
+             * 
              */
             this.addShader;
 
@@ -154,7 +154,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#linearShader
              * @type {Phaser.Renderer.WebGL.WebGLShader}
-             * @since 3.50.0
+             * 
              */
             this.linearShader;
 
@@ -165,7 +165,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#colorMatrixShader
              * @type {Phaser.Renderer.WebGL.WebGLShader}
-             * @since 3.50.0
+             * 
              */
             this.colorMatrixShader;
 
@@ -181,7 +181,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#fullFrame1
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.50.0
+             * 
              */
             this.fullFrame1;
 
@@ -197,7 +197,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#fullFrame2
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.50.0
+             * 
              */
             this.fullFrame2;
 
@@ -213,7 +213,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#halfFrame1
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.50.0
+             * 
              */
             this.halfFrame1;
 
@@ -229,7 +229,7 @@ var UtilityPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#halfFrame2
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.50.0
+             * 
              */
             this.halfFrame2;
         },
@@ -261,7 +261,7 @@ var UtilityPipeline = new Class({
      * If you need color level manipulation, see `drawFrame` instead.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#copyFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
@@ -325,7 +325,7 @@ var UtilityPipeline = new Class({
      * You can optionally set the brightness factor of the copy.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#blitFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -418,7 +418,7 @@ var UtilityPipeline = new Class({
      * place.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#copyFrameRect
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -472,7 +472,7 @@ var UtilityPipeline = new Class({
      * those cases, use the `bindAndDraw` method.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#copyToGame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The Render Target to draw from.
      */
@@ -503,7 +503,7 @@ var UtilityPipeline = new Class({
      * `copyFrame` method instead.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#drawFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} [target] - The target Render Target.
@@ -557,7 +557,7 @@ var UtilityPipeline = new Class({
      * using a linear blend effect, which is controlled by the `strength` parameter.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#blendFrames
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source1 - The first source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} source2 - The second source Render Target.
@@ -619,7 +619,7 @@ var UtilityPipeline = new Class({
      * using an additive blend effect, which is controlled by the `strength` parameter.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#blendFramesAdditive
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source1 - The first source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} source2 - The second source Render Target.
@@ -635,7 +635,7 @@ var UtilityPipeline = new Class({
      * Clears the given Render Target.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#clearFrame
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The Render Target to clear.
      * @param {boolean} [clearAlpha=true] - Clear the alpha channel when running `gl.clear` on the target?
@@ -671,7 +671,7 @@ var UtilityPipeline = new Class({
      * Be sure to call `resetUVs` once you have finished manipulating the UV coordinates.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#setUVs
-     * @since 3.50.0
+     * 
      *
      * @param {number} uA - The u value of vertex A.
      * @param {number} vA - The v value of vertex A.
@@ -706,7 +706,7 @@ var UtilityPipeline = new Class({
      * Be sure to call `resetUVs` once you have finished manipulating the UV coordinates.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#setTargetUVs
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -730,7 +730,7 @@ var UtilityPipeline = new Class({
      * Be sure to call `resetUVs` once you have finished manipulating the UV coordinates.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#flipX
-     * @since 3.50.0
+     * 
      */
     flipX: function () {
         this.setUVs(1, 0, 1, 1, 0, 1, 0, 0);
@@ -743,7 +743,7 @@ var UtilityPipeline = new Class({
      * Be sure to call `resetUVs` once you have finished manipulating the UV coordinates.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#flipY
-     * @since 3.50.0
+     * 
      */
     flipY: function () {
         this.setUVs(0, 1, 0, 0, 1, 0, 1, 1);
@@ -755,7 +755,7 @@ var UtilityPipeline = new Class({
      * The quad is used by all shaders of the Utility Pipeline.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.UtilityPipeline#resetUVs
-     * @since 3.50.0
+     * 
      */
     resetUVs: function () {
         this.setUVs(0, 0, 0, 1, 1, 1, 1, 0);

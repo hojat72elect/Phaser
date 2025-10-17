@@ -126,7 +126,7 @@ var Camera3DPlugin = new Class({
      *
      * @method Phaser.Cameras.Scene3D.CameraManager#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.systems.events.once('destroy', this.destroy, this);
@@ -139,7 +139,7 @@ var Camera3DPlugin = new Class({
      *
      * @method Camera3DPlugin#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         var eventEmitter = this.systems.events;

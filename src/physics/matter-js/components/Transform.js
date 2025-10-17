@@ -67,7 +67,7 @@ var Transform = {
      *
      * @name Phaser.Physics.Matter.Components.Transform#scale
      * @type {number}
-     * @since 3.88.0
+     * 
      */
     scale: {
 

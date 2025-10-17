@@ -3,7 +3,7 @@ var Extend = require('../../utils/object/Extend');
 
 /**
  * @namespace Phaser.GameObjects.RetroFont
- * @since 3.6.0
+ * 
  */
 
 var RetroFont = {Parse: require('./ParseRetroFont')};

@@ -26,7 +26,7 @@ var tempIntersect = new Vector3();
  * The `z` component contains the closest distance.
  *
  * @function Phaser.Geom.Intersects.GetLineToPoints
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line segment, or ray, to check. If a ray, set the `isRay` parameter to `true`.
  * @param {Phaser.Math.Vector2[] | Phaser.Geom.Point[]} points - An array of points to check.

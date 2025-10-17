@@ -91,7 +91,7 @@ var NoAudioSoundManager = new Class({
      * Gets the first sound in the manager matching the given key, if any.
      *
      * @method Phaser.Sound.NoAudioSoundManager#get
-     * @since 3.23.0
+     * 
      *
      * @generic {Phaser.Sound.BaseSound} T
      * @genericUse {T} - [$return]
@@ -108,7 +108,7 @@ var NoAudioSoundManager = new Class({
      * Gets any sounds in the manager matching the given key.
      *
      * @method Phaser.Sound.NoAudioSoundManager#getAll
-     * @since 3.23.0
+     * 
      *
      * @generic {Phaser.Sound.BaseSound} T
      * @genericUse {T[]} - [$return]
@@ -175,7 +175,7 @@ var NoAudioSoundManager = new Class({
      * Removes all sounds from the manager, destroying the sounds.
      *
      * @method Phaser.Sound.NoAudioSoundManager#removeAll
-     * @since 3.23.0
+     * 
      */
     removeAll: function () {
         return BaseSoundManager.prototype.removeAll.call(this);
@@ -200,7 +200,7 @@ var NoAudioSoundManager = new Class({
      * Stops any sounds matching the given key.
      *
      * @method Phaser.Sound.NoAudioSoundManager#stopByKey
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - Sound asset key.
      *

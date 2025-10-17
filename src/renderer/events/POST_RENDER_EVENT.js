@@ -6,6 +6,6 @@
  *
  * @event Phaser.Renderer.Events#POST_RENDER
  * @type {string}
- * @since 3.50.0
+ * 
  */
 module.exports = 'postrender';

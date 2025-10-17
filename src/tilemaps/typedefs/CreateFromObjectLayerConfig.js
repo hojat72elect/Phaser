@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tilemaps.CreateFromObjectLayerConfig
- * @since 3.50.0
+ * 
  *
  * @property {number} [id] - A unique Object ID to convert.
  * @property {number} [gid] - An Object GID to convert.

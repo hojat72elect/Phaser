@@ -53,7 +53,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#displayList
              * @type {(Phaser.GameObjects.DisplayList|Phaser.GameObjects.Layer)}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.displayList = null;
 
@@ -88,7 +88,7 @@ var GameObject = new Class({
              *
              * @name Phaser.GameObjects.GameObject#parentContainer
              * @type {Phaser.GameObjects.Container}
-             * @since 3.4.0
+             * 
              */
             this.parentContainer = null;
 
@@ -195,7 +195,7 @@ var GameObject = new Class({
              * @name Phaser.GameObjects.GameObject#ignoreDestroy
              * @type {boolean}
              * @default false
-             * @since 3.5.0
+             * 
              */
             this.ignoreDestroy = false;
 
@@ -351,7 +351,7 @@ var GameObject = new Class({
      * When the value is first set, a `setdata` event is emitted from this Game Object.
      *
      * @method Phaser.GameObjects.GameObject#incData
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - The key to change the value for.
      * @param {number} [amount=1] - The amount to increase the given key by. Pass a negative value to decrease the key.
@@ -379,7 +379,7 @@ var GameObject = new Class({
      * When the value is first set, a `setdata` event is emitted from this Game Object.
      *
      * @method Phaser.GameObjects.GameObject#toggleData
-     * @since 3.23.0
+     * 
      *
      * @param {string} key - The key to toggle the value for.
      *
@@ -548,7 +548,7 @@ var GameObject = new Class({
      * You can also listen for the `ADDED_TO_SCENE` event from this Game Object.
      *
      * @method Phaser.GameObjects.GameObject#addedToScene
-     * @since 3.50.0
+     * 
      */
     addedToScene: function () {
     },
@@ -562,7 +562,7 @@ var GameObject = new Class({
      * You can also listen for the `REMOVED_FROM_SCENE` event from this Game Object.
      *
      * @method Phaser.GameObjects.GameObject#removedFromScene
-     * @since 3.50.0
+     * 
      */
     removedFromScene: function () {
     },
@@ -616,7 +616,7 @@ var GameObject = new Class({
      * this Game Object and all of its ancestors.
      *
      * @method Phaser.GameObjects.GameObject#getIndexList
-     * @since 3.4.0
+     * 
      *
      * @return {number[]} An array of display list position indexes.
      */
@@ -667,7 +667,7 @@ var GameObject = new Class({
      * @method Phaser.GameObjects.GameObject#addToDisplayList
      * @fires Phaser.Scenes.Events#ADDED_TO_SCENE
      * @fires Phaser.GameObjects.Events#ADDED_TO_SCENE
-     * @since 3.53.0
+     * 
      *
      * @param {(Phaser.GameObjects.DisplayList|Phaser.GameObjects.Layer)} [displayList] - The Display List to add to. Defaults to the Scene Display List.
      *
@@ -709,7 +709,7 @@ var GameObject = new Class({
      * such as Sprite animations.
      *
      * @method Phaser.GameObjects.GameObject#addToUpdateList
-     * @since 3.53.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -735,7 +735,7 @@ var GameObject = new Class({
      * @method Phaser.GameObjects.GameObject#removeFromDisplayList
      * @fires Phaser.Scenes.Events#REMOVED_FROM_SCENE
      * @fires Phaser.GameObjects.Events#REMOVED_FROM_SCENE
-     * @since 3.53.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -768,7 +768,7 @@ var GameObject = new Class({
      * run animations.
      *
      * @method Phaser.GameObjects.GameObject#removeFromUpdateList
-     * @since 3.53.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -792,7 +792,7 @@ var GameObject = new Class({
      * and difficult to debug issues in your game.
      *
      * @method Phaser.GameObjects.GameObject#getDisplayList
-     * @since 3.85.0
+     * 
      *
      * @return {?Phaser.GameObjects.GameObject[]} The internal Display List array of Game Objects, or `null`.
      */

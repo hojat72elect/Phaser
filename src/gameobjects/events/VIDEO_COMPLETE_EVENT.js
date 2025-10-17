@@ -14,7 +14,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_COMPLETE
  * @type {string}
- * @since 3.20.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which completed playback.
  */

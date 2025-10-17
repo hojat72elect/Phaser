@@ -138,7 +138,7 @@ var Timeline = new Class({
              * @name Phaser.Time.Timeline#timeScale
              * @type {number}
              * @default
-             * @since 3.85.0
+             * 
              */
             this.timeScale = 1;
 
@@ -198,7 +198,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#loop
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.loop = 0;
 
@@ -209,7 +209,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#iteration
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.iteration = 0;
 
@@ -447,7 +447,7 @@ var Timeline = new Class({
      * they will **not** be repeated each loop.
      *
      * @method Phaser.Time.Timeline#repeat
-     * @since 3.80.0
+     * 
      *
      * @param {number|boolean} [amount=-1] - Amount of times to repeat, if `true` or negative it will be infinite.
      *

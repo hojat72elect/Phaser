@@ -9,7 +9,7 @@
  *
  * @event Phaser.Structs.Events#PROCESS_QUEUE_ADD
  * @type {string}
- * @since 3.20.0
+ * 
  *
  * @param {*} item - The item that was added to the Process Queue.
  */

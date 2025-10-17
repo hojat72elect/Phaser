@@ -306,7 +306,7 @@ var BaseCamera = new Class({
              * @type {number}
              * @private
              * @default 1
-             * @since 3.50.0
+             * 
              */
             this._zoomX = 1;
 
@@ -325,7 +325,7 @@ var BaseCamera = new Class({
              * @type {number}
              * @private
              * @default 1
-             * @since 3.50.0
+             * 
              */
             this._zoomY = 1;
 
@@ -504,7 +504,7 @@ var BaseCamera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.BaseCamera#renderList
              * @type {Phaser.GameObjects.GameObject[]}
-             * @since 3.52.0
+             * 
              */
             this.renderList = [];
 
@@ -531,7 +531,7 @@ var BaseCamera = new Class({
              * @type {boolean}
              * @readonly
              * @default true
-             * @since 3.86.0
+             * 
              */
             this.renderRoundPixels = true;
         },
@@ -543,7 +543,7 @@ var BaseCamera = new Class({
      * will appear in the render list.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#addToRenderList
-     * @since 3.52.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} child - The Game Object to add to the render list.
      */
@@ -1749,7 +1749,7 @@ var BaseCamera = new Class({
      * @name Phaser.Cameras.Scene2D.BaseCamera#zoomX
      * @type {number}
      * @default 1
-     * @since 3.50.0
+     * 
      */
     zoomX: {
 
@@ -1778,7 +1778,7 @@ var BaseCamera = new Class({
      * @name Phaser.Cameras.Scene2D.BaseCamera#zoomY
      * @type {number}
      * @default 1
-     * @since 3.50.0
+     * 
      */
     zoomY: {
 

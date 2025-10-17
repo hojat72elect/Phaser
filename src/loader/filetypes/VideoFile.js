@@ -18,7 +18,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.20.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.VideoFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -69,7 +69,7 @@ var VideoFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.VideoFile#onProcess
-     * @since 3.20.0
+     * 
      */
     onProcess: function () {
         this.data = {
@@ -87,7 +87,7 @@ var VideoFile = new Class({
      * You shouldn't normally call this method directly, it's meant to be invoked by the Loader.
      *
      * @method Phaser.Loader.FileTypes.VideoFile#load
-     * @since 3.20.0
+     * 
      */
     load: function () {
         //  We set these, but we don't actually load anything (the Video Game Object does that)
@@ -152,7 +152,7 @@ var VideoFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#video
  * @fires Phaser.Loader.Events#ADD
- * @since 3.20.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.VideoFileConfig|Phaser.Types.Loader.FileTypes.VideoFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {(string|string[]|Phaser.Types.Loader.FileTypes.VideoFileURLConfig|Phaser.Types.Loader.FileTypes.VideoFileURLConfig[])} [urls] - The absolute or relative URL to load the video files from.

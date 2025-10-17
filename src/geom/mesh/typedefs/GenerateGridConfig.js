@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Geom.Mesh.GenerateGridConfig
- * @since 3.50.0
+ * 
  *
  * @property {(string|Phaser.Textures.Texture)} texture - The texture to be used for this Grid. Must be a Texture instance. Can also be a string but only if the `mesh` property is set.
  * @property {(string|number)} [frame] - The name or index of the frame within the Texture.

@@ -5,7 +5,7 @@
  * You should only run this on arrays containing strings.
  *
  * @function Phaser.Utils.Array.SortByDigits
- * @since 3.50.0
+ * 
  *
  * @param {string[]} array - The input array of strings.
  *

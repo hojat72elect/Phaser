@@ -65,7 +65,7 @@ var Collides = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Collides#setLiteCollision
-     * @since 3.6.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -79,7 +79,7 @@ var Collides = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Collides#setPassiveCollision
-     * @since 3.6.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -93,7 +93,7 @@ var Collides = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Collides#setActiveCollision
-     * @since 3.6.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */
@@ -107,7 +107,7 @@ var Collides = {
      * [description]
      *
      * @method Phaser.Physics.Impact.Components.Collides#setFixedCollision
-     * @since 3.6.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} This Game Object.
      */

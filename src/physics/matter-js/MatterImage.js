@@ -87,7 +87,7 @@ var MatterImage = new Class({
              * @name Phaser.Physics.Matter.Image#_crop
              * @type {object}
              * @private
-             * @since 3.24.0
+             * 
              */
             this._crop = this.resetCropObject();
 

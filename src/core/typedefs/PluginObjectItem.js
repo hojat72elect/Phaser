@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Core.PluginObjectItem
- * @since 3.8.0
+ * 
  *
  * @property {string} [key] - A key to identify the plugin in the Plugin Manager.
  * @property {*} [plugin] - The plugin itself. Usually a class/constructor.

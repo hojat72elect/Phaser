@@ -269,7 +269,7 @@ var Blitter = new Class({
      *
      * @method Phaser.GameObjects.Blitter#preDestroy
      * @protected
-     * @since 3.9.0
+     * 
      */
     preDestroy: function () {
         this.children.destroy();

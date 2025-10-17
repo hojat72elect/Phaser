@@ -30,7 +30,7 @@ var errors = {
  * @class WebGLFramebufferWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers
  * @constructor
- * @since 3.80.0
+ * 
  *
  * @param {WebGLRenderingContext} gl - The WebGLRenderingContext to create the WebGLFramebuffer for.
  * @param {number} width - If `addDepthStencilBuffer` is true, this controls the width of the depth stencil.
@@ -53,7 +53,7 @@ var WebGLFramebufferWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#webGLFramebuffer
              * @type {?WebGLFramebuffer}
              * @default null
-             * @since 3.80.0
+             * 
              */
             this.webGLFramebuffer = null;
 
@@ -62,7 +62,7 @@ var WebGLFramebufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#gl
              * @type {WebGLRenderingContext}
-             * @since 3.80.0
+             * 
              */
             this.gl = gl;
 
@@ -71,7 +71,7 @@ var WebGLFramebufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#width
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.width = width;
 
@@ -80,7 +80,7 @@ var WebGLFramebufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#height
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.height = height;
 
@@ -89,7 +89,7 @@ var WebGLFramebufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#renderTexture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.80.0
+             * 
              */
             this.renderTexture = renderTexture;
 
@@ -99,7 +99,7 @@ var WebGLFramebufferWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#addDepthStencilBuffer
              * @type {boolean}
              * @default false
-             * @since 3.80.0
+             * 
              */
             this.addDepthStencilBuffer = !!addDepthStencilBuffer;
 
@@ -113,7 +113,7 @@ var WebGLFramebufferWrapper = new Class({
      * called again if the WebGLFramebuffer needs re-creating.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#createResource
-     * @since 3.80.0
+     * 
      */
     createResource: function () {
         var gl = this.gl;
@@ -157,7 +157,7 @@ var WebGLFramebufferWrapper = new Class({
      * Destroys this WebGLFramebufferWrapper.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper#destroy
-     * @since 3.80.0
+     * 
      */
     destroy: function () {
         if (this.webGLFramebuffer === null) {

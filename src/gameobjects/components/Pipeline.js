@@ -40,7 +40,7 @@ var Pipeline = {
      * @name Phaser.GameObjects.Components.Pipeline#pipelineData
      * @type {object}
      * @webglOnly
-     * @since 3.50.0
+     * 
      */
     pipelineData: null,
 
@@ -134,7 +134,7 @@ var Pipeline = {
      *
      * @method Phaser.GameObjects.Components.Pipeline#setPipelineData
      * @webglOnly
-     * @since 3.50.0
+     * 
      *
      * @param {string} key - The key of the pipeline data to set, update, or delete.
      * @param {any} [value] - The value to be set with the key. If `undefined` then `key` will be deleted from the object.

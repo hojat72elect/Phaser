@@ -244,7 +244,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#playReverse
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
@@ -273,7 +273,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#playAfterDelay
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {number} delay - The delay, in milliseconds, to wait before starting the animation playing.
@@ -299,7 +299,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#playAfterRepeat
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {number} [repeatCount=1] - How many times should the animation repeat before the next one starts?
@@ -331,7 +331,7 @@ var Sprite = new Class({
      * search the global Animation Manager and look for it there.
      *
      * @method Phaser.GameObjects.Sprite#chain
-     * @since 3.50.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig|string[]|Phaser.Animations.Animation[]|Phaser.Types.Animations.PlayAnimationConfig[])} [key] - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object, or an array of them.
      *
@@ -350,7 +350,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#stop
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.50.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -370,7 +370,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#stopAfterDelay
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.50.0
+     * 
      *
      * @param {number} delay - The number of milliseconds to wait before stopping this animation.
      *
@@ -392,7 +392,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#stopAfterRepeat
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.50.0
+     * 
      *
      * @param {number} [repeatCount=1] - How many times should the animation repeat before stopping?
      *
@@ -415,7 +415,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#stopOnFrame
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Animations.AnimationFrame} frame - The frame to check before stopping this animation.
      *

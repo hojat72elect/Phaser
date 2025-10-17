@@ -8,7 +8,7 @@
  * This is a stub function for Layer3D.Render. There is no Canvas renderer for Layer3D objects.
  *
  * @method Phaser.GameObjects.Layer3D#renderCanvas
- * @since 3.50.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.Canvas.CanvasRenderer} renderer - A reference to the current active Canvas renderer.

@@ -57,7 +57,7 @@ var Path = new Class({
              * @name Phaser.Curves.Path#defaultDivisions
              * @type {number}
              * @default 12
-             * @since 3.70.0
+             * 
              */
             this.defaultDivisions = 12;
 
@@ -235,7 +235,7 @@ var Path = new Class({
      * Creates a Quadratic Bezier Curve starting at the ending point of the Path.
      *
      * @method Phaser.Curves.Path#quadraticBezierTo
-     * @since 3.2.0
+     * 
      *
      * @param {(number|Phaser.Math.Vector2[])} x - The X coordinate of the second control point or, if it's a `Vector2`, the first control point.
      * @param {number} [y] - The Y coordinate of the second control point or, if `x` is a `Vector2`, the second control point.
@@ -703,7 +703,7 @@ var Path = new Class({
      * Gets a unit vector tangent at a relative position on the path.
      *
      * @method Phaser.Curves.Path#getTangent
-     * @since 3.23.0
+     * 
      *
      * @generic {Phaser.Math.Vector2} O - [out,$return]
      *

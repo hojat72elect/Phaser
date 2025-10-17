@@ -17,7 +17,7 @@ var Class = require('../../../utils/Class');
  * @class WebGLAttribLocationWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers
  * @constructor
- * @since 3.80.0
+ * 
  *
  * @param {WebGLRenderingContext} gl - The WebGLRenderingContext to create the WebGLAttribLocation for.
  * @param {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper} program - The WebGLProgram that this location refers to. This must be created first.
@@ -38,7 +38,7 @@ var WebGLAttribLocationWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper#webGLAttribLocation
              * @type {GLint}
              * @default -1
-             * @since 3.80.0
+             * 
              */
             this.webGLAttribLocation = -1;
 
@@ -47,7 +47,7 @@ var WebGLAttribLocationWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper#gl
              * @type {WebGLRenderingContext}
-             * @since 3.80.0
+             * 
              */
             this.gl = gl;
 
@@ -56,7 +56,7 @@ var WebGLAttribLocationWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper#program
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
-             * @since 3.80.0
+             * 
              */
             this.program = program;
 
@@ -65,7 +65,7 @@ var WebGLAttribLocationWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper#name
              * @type {string}
-             * @since 3.80.0
+             * 
              */
             this.name = name;
 
@@ -76,7 +76,7 @@ var WebGLAttribLocationWrapper = new Class({
      * Creates the WebGLAttribLocation.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper#createResource
-     * @since 3.80.0
+     * 
      */
     createResource: function () {
         if (this.program.webGLProgram === null) {
@@ -99,7 +99,7 @@ var WebGLAttribLocationWrapper = new Class({
      * Destroys this WebGLAttribLocationWrapper.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper#destroy
-     * @since 3.80.0
+     * 
      */
     destroy: function () {
         this.gl = null;

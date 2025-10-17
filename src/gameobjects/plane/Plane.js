@@ -139,7 +139,7 @@ var Plane = new Class({
      * @type {number}
      * @readonly
      * @override
-     * @since 3.70.0
+     * 
      */
     originX: {
 
@@ -156,7 +156,7 @@ var Plane = new Class({
      * @type {number}
      * @readonly
      * @override
-     * @since 3.70.0
+     * 
      */
     originY: {
 

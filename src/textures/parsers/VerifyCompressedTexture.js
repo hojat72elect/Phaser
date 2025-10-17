@@ -16,7 +16,7 @@ var IsSizePowerOfTwo = require('../../math/pow2/IsSizePowerOfTwo');
  *
  * @function Phaser.Textures.Parsers.verifyCompressedTexture
  * @param {Phaser.Types.Textures.CompressedTextureData} data - The compressed texture data to verify.
- * @since 3.80.0
+ * 
  * @returns {boolean} Whether the compressed texture data is valid.
  */
 var verifyCompressedTexture = function (data) {

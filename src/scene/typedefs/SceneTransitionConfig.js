@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Scenes.SceneTransitionConfig
- * @since 3.5.0
+ * 
  *
  * @property {string} target - The Scene key to transition to.
  * @property {number} [duration=1000] - The duration, in ms, for the transition to last.

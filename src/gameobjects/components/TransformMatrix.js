@@ -89,7 +89,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#a
      * @type {number}
-     * @since 3.4.0
+     * 
      */
     a: {
 
@@ -108,7 +108,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#b
      * @type {number}
-     * @since 3.4.0
+     * 
      */
     b: {
 
@@ -127,7 +127,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#c
      * @type {number}
-     * @since 3.4.0
+     * 
      */
     c: {
 
@@ -146,7 +146,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#d
      * @type {number}
-     * @since 3.4.0
+     * 
      */
     d: {
 
@@ -203,7 +203,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#tx
      * @type {number}
-     * @since 3.4.0
+     * 
      */
     tx: {
 
@@ -222,7 +222,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#ty
      * @type {number}
-     * @since 3.4.0
+     * 
      */
     ty: {
 
@@ -242,7 +242,7 @@ var TransformMatrix = new Class({
      * @name Phaser.GameObjects.Components.TransformMatrix#rotation
      * @type {number}
      * @readonly
-     * @since 3.4.0
+     * 
      */
     rotation: {
 
@@ -292,7 +292,7 @@ var TransformMatrix = new Class({
      * @name Phaser.GameObjects.Components.TransformMatrix#scaleX
      * @type {number}
      * @readonly
-     * @since 3.4.0
+     * 
      */
     scaleX: {
 
@@ -308,7 +308,7 @@ var TransformMatrix = new Class({
      * @name Phaser.GameObjects.Components.TransformMatrix#scaleY
      * @type {number}
      * @readonly
-     * @since 3.4.0
+     * 
      */
     scaleY: {
 
@@ -987,7 +987,7 @@ var TransformMatrix = new Class({
      * This is the same as `x * a + y * c + e`, optionally passing via `Math.round`.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getXRound
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
@@ -1011,7 +1011,7 @@ var TransformMatrix = new Class({
      * This is the same as `x * b + y * d + f`, optionally passing via `Math.round`.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getYRound
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
@@ -1047,7 +1047,7 @@ var TransformMatrix = new Class({
      * Destroys this Transform Matrix.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#destroy
-     * @since 3.4.0
+     * 
      */
     destroy: function () {
         this.matrix = null;

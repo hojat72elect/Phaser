@@ -8,7 +8,7 @@ var WorldToTileX = require('./WorldToTileX');
  * Only orthogonal maps support this feature.
  *
  * @function Phaser.Tilemaps.Components.GetWorldToTileXFunction
- * @since 3.50.0
+ * 
  *
  * @param {number} orientation - The Tilemap orientation constant.
  *

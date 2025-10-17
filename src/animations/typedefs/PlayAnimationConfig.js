@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Animations.PlayAnimationConfig
- * @since 3.50.0
+ * 
  *
  * @property {(string|Phaser.Animations.Animation)} key - The string-based key of the animation to play, or an Animation instance.
  * @property {number} [frameRate] - The frame rate of playback in frames per second (default 24 if duration is null)

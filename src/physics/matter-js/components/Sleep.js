@@ -14,7 +14,7 @@ var Sleep = {
      * Sets this Body to sleep.
      *
      * @method Phaser.Physics.Matter.Components.Sleep#setToSleep
-     * @since 3.22.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -28,7 +28,7 @@ var Sleep = {
      * Wakes this Body if asleep.
      *
      * @method Phaser.Physics.Matter.Components.Sleep#setAwake
-     * @since 3.22.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

@@ -267,7 +267,7 @@ var Zone = new Class({
      *
      * @method Phaser.GameObjects.Zone#renderCanvas
      * @private
-     * @since 3.53.0
+     * 
      *
      * @param {Phaser.Renderer.Canvas.CanvasRenderer} renderer - A reference to the current active Canvas renderer.
      * @param {Phaser.GameObjects.Image} src - The Game Object being rendered in this call.
@@ -283,7 +283,7 @@ var Zone = new Class({
      *
      * @method Phaser.GameObjects.Zone#renderWebGL
      * @private
-     * @since 3.53.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the current active WebGL renderer.
      * @param {Phaser.GameObjects.Image} src - The Game Object being rendered in this call.

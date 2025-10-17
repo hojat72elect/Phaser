@@ -1251,7 +1251,7 @@ var Graphics = new Class({
      * To display the actual slice you need to call either `strokePath` or `fillPath` after it.
      *
      * @method Phaser.GameObjects.Graphics#slice
-     * @since 3.4.0
+     * 
      *
      * @param {number} x - The horizontal center of the slice.
      * @param {number} y - The vertical center of the slice.
@@ -1502,7 +1502,7 @@ var Graphics = new Class({
      *
      * @method Phaser.GameObjects.Graphics#preDestroy
      * @protected
-     * @since 3.9.0
+     * 
      */
     preDestroy: function () {
         this.commandBuffer = [];
@@ -1515,7 +1515,7 @@ var Graphics = new Class({
  *
  * @name Phaser.GameObjects.Graphics.TargetCamera
  * @type {Phaser.Cameras.Scene2D.Camera}
- * @since 3.1.0
+ * 
  */
 Graphics.TargetCamera = new BaseCamera();
 

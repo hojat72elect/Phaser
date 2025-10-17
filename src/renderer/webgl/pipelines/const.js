@@ -6,7 +6,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.BITMAPMASK_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     BITMAPMASK_PIPELINE: 'BitmapMaskPipeline',
 
@@ -16,7 +16,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.LIGHT_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     LIGHT_PIPELINE: 'Light2D',
 
@@ -26,7 +26,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.POINTLIGHT_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     POINTLIGHT_PIPELINE: 'PointLightPipeline',
 
@@ -36,7 +36,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.SINGLE_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     SINGLE_PIPELINE: 'SinglePipeline',
 
@@ -46,7 +46,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.MULTI_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     MULTI_PIPELINE: 'MultiPipeline',
 
@@ -56,7 +56,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.ROPE_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     ROPE_PIPELINE: 'RopePipeline',
 
@@ -66,7 +66,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.GRAPHICS_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     GRAPHICS_PIPELINE: 'GraphicsPipeline',
 
@@ -76,7 +76,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.POSTFX_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     POSTFX_PIPELINE: 'PostFXPipeline',
 
@@ -86,7 +86,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.UTILITY_PIPELINE
      * @type {string}
      * @const
-     * @since 3.50.0
+     * 
      */
     UTILITY_PIPELINE: 'UtilityPipeline',
 

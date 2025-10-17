@@ -240,7 +240,7 @@ var NoAudioSound = new Class({
              * @type {number}
              * @default 0
              * @fires Phaser.Sound.Events#PAN
-             * @since 3.50.0
+             * 
              */
             this.pan = 0;
 
@@ -351,7 +351,7 @@ var NoAudioSound = new Class({
      * Sets the muted state of this Sound.
      *
      * @method Phaser.Sound.NoAudioSound#setMute
-     * @since 3.4.0
+     * 
      *
      * @param {boolean} value - `true` to mute this sound, `false` to unmute it.
      *
@@ -363,7 +363,7 @@ var NoAudioSound = new Class({
      * Sets the volume of this Sound.
      *
      * @method Phaser.Sound.NoAudioSound#setVolume
-     * @since 3.4.0
+     * 
      *
      * @param {number} value - The volume of the sound.
      *
@@ -378,7 +378,7 @@ var NoAudioSound = new Class({
      * and 2.0 doubles the audios playback speed.
      *
      * @method Phaser.Sound.NoAudioSound#setRate
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The playback rate at of this Sound.
      *
@@ -391,7 +391,7 @@ var NoAudioSound = new Class({
      * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
      *
      * @method Phaser.Sound.NoAudioSound#setDetune
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
      *
@@ -403,7 +403,7 @@ var NoAudioSound = new Class({
      * Seeks to a specific point in this sound.
      *
      * @method Phaser.Sound.NoAudioSound#setSeek
-     * @since 3.4.0
+     * 
      *
      * @param {number} value - The point in the sound to seek to.
      *
@@ -415,7 +415,7 @@ var NoAudioSound = new Class({
      * Sets the loop state of this Sound.
      *
      * @method Phaser.Sound.NoAudioSound#setLoop
-     * @since 3.4.0
+     * 
      *
      * @param {boolean} value - `true` to loop this sound, `false` to not loop it.
      *
@@ -429,7 +429,7 @@ var NoAudioSound = new Class({
      * Note: iOS / Safari doesn't support the stereo panner node.
      *
      * @method Phaser.Sound.NoAudioSound#setPan
-     * @since 3.50.0
+     * 
      *
      * @param {number} value - The pan of the sound. A value between -1 (full left pan) and 1 (full right pan).
      *

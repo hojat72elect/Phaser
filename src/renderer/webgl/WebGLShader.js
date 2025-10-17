@@ -20,7 +20,7 @@ var WEBGL_CONST = require('./const');
  * @class WebGLShader
  * @memberof Phaser.Renderer.WebGL
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The WebGLPipeline to which this Shader belongs.
  * @param {string} name - The name of this Shader.
@@ -40,7 +40,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#pipeline
              * @type {Phaser.Renderer.WebGL.WebGLPipeline}
-             * @since 3.50.0
+             * 
              */
             this.pipeline = pipeline;
 
@@ -49,7 +49,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#name
              * @type {string}
-             * @since 3.50.0
+             * 
              */
             this.name = name;
 
@@ -58,7 +58,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#renderer
              * @type {Phaser.Renderer.WebGL.WebGLRenderer}
-             * @since 3.50.0
+             * 
              */
             this.renderer = pipeline.renderer;
 
@@ -67,7 +67,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#gl
              * @type {WebGLRenderingContext}
-             * @since 3.50.0
+             * 
              */
             this.gl = this.renderer.gl;
 
@@ -94,7 +94,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#program
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
-             * @since 3.50.0
+             * 
              */
             this.program = this.renderer.createProgram(vertexShader, fragmentShader);
 
@@ -103,7 +103,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#attributes
              * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineAttribute[]}
-             * @since 3.50.0
+             * 
              */
             this.attributes;
 
@@ -112,7 +112,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#vertexComponentCount
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.vertexComponentCount = 0;
 
@@ -136,7 +136,7 @@ var WebGLShader = new Class({
              * @name Phaser.Renderer.WebGL.WebGLShader#vertexSize
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.vertexSize = 0;
 
@@ -149,7 +149,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#uniforms
              * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineUniformsConfig}
-             * @since 3.50.0
+             * 
              */
             this.uniforms = {};
 
@@ -168,7 +168,7 @@ var WebGLShader = new Class({
      * It is called automatically when this class is created, but can be called manually if required.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#createAttributes
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineAttributeConfig[]} attributes - An array of attributes configs.
      */
@@ -220,7 +220,7 @@ var WebGLShader = new Class({
      * This method is called every time the parent pipeline is made the current active pipeline.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#bind
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [setAttributes=false] - Should the vertex attribute pointers be set?
      * @param {boolean} [flush=false] - Flush the pipeline before binding this shader?
@@ -254,7 +254,7 @@ var WebGLShader = new Class({
      * Then resets all of the attribute pointers.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#rebind
-     * @since 3.50.0
+     * 
      *
      * @return {this} This WebGLShader instance.
      */
@@ -274,7 +274,7 @@ var WebGLShader = new Class({
      * It is called automatically during the `bind` method.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setAttribPointers
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [reset=false] - Reset the vertex attribute locations?
      *
@@ -341,7 +341,7 @@ var WebGLShader = new Class({
      * This method is called automatically when this class is created.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#createUniforms
-     * @since 3.50.0
+     * 
      *
      * @return {this} This WebGLShader instance.
      */
@@ -420,7 +420,7 @@ var WebGLShader = new Class({
      * re-populate them.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#syncUniforms
-     * @since 3.80.0
+     * 
      */
     syncUniforms: function () {
         var gl = this.gl;
@@ -439,7 +439,7 @@ var WebGLShader = new Class({
      * Checks to see if the given uniform name exists and is active in this shader.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#hasUniform
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to check for.
      *
@@ -453,7 +453,7 @@ var WebGLShader = new Class({
      * Resets the cached values of the given uniform.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#resetUniform
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to reset.
      *
@@ -484,7 +484,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setUniform1
-     * @since 3.50.0
+     * 
      *
      * @param {function} setter - The GL function to call.
      * @param {string} name - The name of the uniform to set.
@@ -529,7 +529,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setUniform2
-     * @since 3.50.0
+     * 
      *
      * @param {function} setter - The GL function to call.
      * @param {string} name - The name of the uniform to set.
@@ -576,7 +576,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setUniform3
-     * @since 3.50.0
+     * 
      *
      * @param {function} setter - The GL function to call.
      * @param {string} name - The name of the uniform to set.
@@ -625,7 +625,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setUniform4
-     * @since 3.50.0
+     * 
      *
      * @param {function} setter - The GL function to call.
      * @param {string} name - The name of the uniform to set.
@@ -695,7 +695,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set1f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new value of the `float` uniform.
@@ -716,7 +716,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set2f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `vec2` uniform.
@@ -738,7 +738,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set3f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `vec3` uniform.
@@ -761,7 +761,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set4f
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - X component of the uniform
@@ -785,7 +785,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set1fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -806,7 +806,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set2fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -827,7 +827,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set3fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -848,7 +848,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set4fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -869,7 +869,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set1iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -890,7 +890,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set2iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -911,7 +911,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set3iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -932,7 +932,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set4iv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number[]|Float32Array} arr - The new value to be used for the uniform variable.
@@ -953,7 +953,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set1i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new value of the `int` uniform.
@@ -974,7 +974,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set2i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `ivec2` uniform.
@@ -996,7 +996,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set3i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - The new X component of the `ivec3` uniform.
@@ -1019,7 +1019,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#set4i
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {number} x - X component of the uniform
@@ -1043,7 +1043,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setMatrix2fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} transpose - Whether to transpose the matrix. Should be `false`.
@@ -1065,7 +1065,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setMatrix3fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} transpose - Whether to transpose the matrix. Should be `false`.
@@ -1087,7 +1087,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setMatrix4fv
-     * @since 3.50.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} transpose - Should the matrix be transpose
@@ -1150,7 +1150,7 @@ var WebGLShader = new Class({
      * Does not remove this shader from the parent pipeline.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         var renderer = this.renderer;

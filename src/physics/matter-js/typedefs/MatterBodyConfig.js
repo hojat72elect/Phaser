@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterBodyConfig
- * @since 3.22.0
+ * 
  *
  * @property {string} [label='Body'] - An arbitrary string-based name to help identify this body.
  * @property {(string|Phaser.Types.Physics.Matter.MatterSetBodyConfig)} [shape=null] - Set this Game Object to create and use a new Body based on the configuration object given.

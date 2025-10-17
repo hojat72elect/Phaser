@@ -49,7 +49,7 @@ var GameObjectCreator = new Class({
              * @name Phaser.GameObjects.GameObjectCreator#events
              * @type {Phaser.Events.EventEmitter}
              * @protected
-             * @since 3.50.0
+             * 
              */
             this.events = scene.sys.events;
 
@@ -83,7 +83,7 @@ var GameObjectCreator = new Class({
      *
      * @method Phaser.GameObjects.GameObjectCreator#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.displayList = this.systems.displayList;
@@ -99,7 +99,7 @@ var GameObjectCreator = new Class({
      *
      * @method Phaser.GameObjects.GameObjectCreator#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         this.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);

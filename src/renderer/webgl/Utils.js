@@ -99,7 +99,7 @@ module.exports = {
      * This value is hard-clamped to 16 for performance reasons on Android devices.
      *
      * @function Phaser.Renderer.WebGL.Utils.checkShaderMax
-     * @since 3.50.0
+     * 
      *
      * @param {WebGLRenderingContext} gl - The WebGLContext used to create the shaders.
      * @param {number} maxTextures - The Game Config maxTextures value.
@@ -125,7 +125,7 @@ module.exports = {
      * replaces those with GLSL code for setting `texture = texture2D(uMainSampler[i], outTexCoord)`.
      *
      * @function Phaser.Renderer.WebGL.Utils.parseFragmentShaderMaxTextures
-     * @since 3.50.0
+     * 
      *
      * @param {string} fragmentShaderSource - The Fragment Shader source code to operate on.
      * @param {number} maxTextures - The number of maxTextures value.

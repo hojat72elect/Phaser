@@ -58,7 +58,7 @@ var StableSort = require('../../utils/array/StableSort');
  * @extends Phaser.Structs.List.<Phaser.GameObjects.GameObject>
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -101,7 +101,7 @@ var Layer = new Class({
              *
              * @name Phaser.GameObjects.Layer#scene
              * @type {Phaser.Scene}
-             * @since 3.50.0
+             * 
              */
             this.scene = scene;
 
@@ -115,7 +115,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#displayList
              * @type {(Phaser.GameObjects.DisplayList|Phaser.GameObjects.Layer)}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.displayList = null;
 
@@ -125,7 +125,7 @@ var Layer = new Class({
              *
              * @name Phaser.GameObjects.Layer#type
              * @type {string}
-             * @since 3.50.0
+             * 
              */
             this.type = 'Layer';
 
@@ -141,7 +141,7 @@ var Layer = new Class({
              *
              * @name Phaser.GameObjects.Layer#state
              * @type {(number|string)}
-             * @since 3.50.0
+             * 
              */
             this.state = 0;
 
@@ -153,7 +153,7 @@ var Layer = new Class({
              *
              * @name Phaser.GameObjects.Layer#parentContainer
              * @type {Phaser.GameObjects.Container}
-             * @since 3.51.0
+             * 
              */
             this.parentContainer = null;
 
@@ -164,7 +164,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#name
              * @type {string}
              * @default ''
-             * @since 3.50.0
+             * 
              */
             this.name = '';
 
@@ -176,7 +176,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#active
              * @type {boolean}
              * @default true
-             * @since 3.50.0
+             * 
              */
             this.active = true;
 
@@ -187,7 +187,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#tabIndex
              * @type {number}
              * @default -1
-             * @since 3.51.0
+             * 
              */
             this.tabIndex = -1;
 
@@ -199,7 +199,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#data
              * @type {Phaser.Data.DataManager}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.data = null;
 
@@ -211,7 +211,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#renderFlags
              * @type {number}
              * @default 15
-             * @since 3.50.0
+             * 
              */
             this.renderFlags = 15;
 
@@ -226,7 +226,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#cameraFilter
              * @type {number}
              * @default 0
-             * @since 3.50.0
+             * 
              */
             this.cameraFilter = 0;
 
@@ -237,7 +237,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#input
              * @type {?Phaser.Types.Input.InteractiveObject}
              * @default null
-             * @since 3.51.0
+             * 
              */
             this.input = null;
 
@@ -248,7 +248,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#body
              * @type {?(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody|MatterJS.BodyType)}
              * @default null
-             * @since 3.51.0
+             * 
              */
             this.body = null;
 
@@ -261,7 +261,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#ignoreDestroy
              * @type {boolean}
              * @default false
-             * @since 3.50.0
+             * 
              */
             this.ignoreDestroy = false;
 
@@ -270,7 +270,7 @@ var Layer = new Class({
              *
              * @name Phaser.GameObjects.Layer#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.50.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -279,7 +279,7 @@ var Layer = new Class({
              *
              * @name Phaser.GameObjects.Layer#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.50.0
+             * 
              */
             this.events = scene.sys.events;
 
@@ -289,7 +289,7 @@ var Layer = new Class({
              * @name Phaser.GameObjects.Layer#sortChildrenFlag
              * @type {boolean}
              * @default false
-             * @since 3.50.0
+             * 
              */
             this.sortChildrenFlag = false;
 
@@ -316,7 +316,7 @@ var Layer = new Class({
      * A Game Object with its `active` property set to `true` will be updated by the Scenes UpdateList.
      *
      * @method Phaser.GameObjects.Layer#setActive
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} value - True if this Game Object should be set as active, false if not.
      *
@@ -333,7 +333,7 @@ var Layer = new Class({
      * The `name` property is not populated by Phaser and is presented for your own use.
      *
      * @method Phaser.GameObjects.Layer#setName
-     * @since 3.50.0
+     * 
      *
      * @param {string} value - The name to be given to this Game Object.
      *
@@ -356,7 +356,7 @@ var Layer = new Class({
      * If you need to store complex data about your Game Object, look at using the Data Component instead.
      *
      * @method Phaser.GameObjects.Layer#setState
-     * @since 3.50.0
+     * 
      *
      * @param {(number|string)} value - The state of the Game Object.
      *
@@ -372,7 +372,7 @@ var Layer = new Class({
      * Adds a Data Manager component to this Game Object.
      *
      * @method Phaser.GameObjects.Layer#setDataEnabled
-     * @since 3.50.0
+     * 
      * @see Phaser.Data.DataManager
      *
      * @return {this} This GameObject.
@@ -425,7 +425,7 @@ var Layer = new Class({
      * This means the keys `gold` and `Gold` are treated as two unique values within the Data Manager.
      *
      * @method Phaser.GameObjects.Layer#setData
-     * @since 3.50.0
+     * 
      *
      * @param {(string|object)} key - The key to set the value for. Or an object of key value pairs. If an object the `data` argument is ignored.
      * @param {*} [data] - The value to set for the given key. If an object is provided as the key this argument is ignored.
@@ -453,7 +453,7 @@ var Layer = new Class({
      * When the value is first set, a `setdata` event is emitted from this Game Object.
      *
      * @method Phaser.GameObjects.Layer#incData
-     * @since 3.50.0
+     * 
      *
      * @param {(string|object)} key - The key to increase the value for.
      * @param {*} [data] - The value to increase for the given key.
@@ -481,7 +481,7 @@ var Layer = new Class({
      * When the value is first set, a `setdata` event is emitted from this Game Object.
      *
      * @method Phaser.GameObjects.Layer#toggleData
-     * @since 3.50.0
+     * 
      *
      * @param {(string|object)} key - The key to toggle the value for.
      *
@@ -521,7 +521,7 @@ var Layer = new Class({
      * This approach is useful for destructuring arrays in ES6.
      *
      * @method Phaser.GameObjects.Layer#getData
-     * @since 3.50.0
+     * 
      *
      * @param {(string|string[])} key - The key of the value to retrieve, or an array of keys.
      *
@@ -542,7 +542,7 @@ var Layer = new Class({
      * the Layer has the same shape as a Game Object.
      *
      * @method Phaser.GameObjects.Layer#setInteractive
-     * @since 3.51.0
+     * 
      *
      * @return {this} This GameObject.
      */
@@ -557,7 +557,7 @@ var Layer = new Class({
      * the Layer has the same shape as a Game Object.
      *
      * @method Phaser.GameObjects.Layer#disableInteractive
-     * @since 3.51.0
+     * 
      *
      * @return {this} This GameObject.
      */
@@ -572,7 +572,7 @@ var Layer = new Class({
      * the Layer has the same shape as a Game Object.
      *
      * @method Phaser.GameObjects.Layer#removeInteractive
-     * @since 3.51.0
+     * 
      *
      * @return {this} This GameObject.
      */
@@ -589,7 +589,7 @@ var Layer = new Class({
      * You can also listen for the `ADDED_TO_SCENE` event from this Game Object.
      *
      * @method Phaser.GameObjects.Layer#addedToScene
-     * @since 3.50.0
+     * 
      */
     addedToScene: function () {
     },
@@ -603,7 +603,7 @@ var Layer = new Class({
      * You can also listen for the `REMOVED_FROM_SCENE` event from this Game Object.
      *
      * @method Phaser.GameObjects.Layer#removedFromScene
-     * @since 3.50.0
+     * 
      */
     removedFromScene: function () {
     },
@@ -612,7 +612,7 @@ var Layer = new Class({
      * To be overridden by custom GameObjects. Allows base objects to be used in a Pool.
      *
      * @method Phaser.GameObjects.Layer#update
-     * @since 3.50.0
+     * 
      *
      * @param {...*} [args] - args
      */
@@ -623,7 +623,7 @@ var Layer = new Class({
      * Returns a JSON representation of the Game Object.
      *
      * @method Phaser.GameObjects.Layer#toJSON
-     * @since 3.50.0
+     * 
      *
      * @return {Phaser.Types.GameObjects.JSONGameObject} A JSON representation of the Game Object.
      */
@@ -636,7 +636,7 @@ var Layer = new Class({
      * Also checks the Game Object against the given Cameras exclusion list.
      *
      * @method Phaser.GameObjects.Layer#willRender
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to check against this Game Object.
      *
@@ -655,7 +655,7 @@ var Layer = new Class({
      * this Game Object and all of its ancestors.
      *
      * @method Phaser.GameObjects.Layer#getIndexList
-     * @since 3.51.0
+     * 
      *
      * @return {number[]} An array of display list position indexes.
      */
@@ -690,7 +690,7 @@ var Layer = new Class({
      * @private
      * @fires Phaser.Scenes.Events#ADDED_TO_SCENE
      * @fires Phaser.GameObjects.Events#ADDED_TO_SCENE
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was added to the list.
      */
@@ -719,7 +719,7 @@ var Layer = new Class({
      * @private
      * @fires Phaser.Scenes.Events#REMOVED_FROM_SCENE
      * @fires Phaser.GameObjects.Events#REMOVED_FROM_SCENE
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object that was removed from the list.
      */
@@ -737,7 +737,7 @@ var Layer = new Class({
      * Force a sort of the display list on the next call to depthSort.
      *
      * @method Phaser.GameObjects.Layer#queueDepthSort
-     * @since 3.50.0
+     * 
      */
     queueDepthSort: function () {
         this.sortChildrenFlag = true;
@@ -747,7 +747,7 @@ var Layer = new Class({
      * Immediately sorts the display list if the flag is set.
      *
      * @method Phaser.GameObjects.Layer#depthSort
-     * @since 3.50.0
+     * 
      */
     depthSort: function () {
         if (this.sortChildrenFlag) {
@@ -761,7 +761,7 @@ var Layer = new Class({
      * Compare the depth of two Game Objects.
      *
      * @method Phaser.GameObjects.Layer#sortByDepth
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} childA - The first Game Object.
      * @param {Phaser.GameObjects.GameObject} childB - The second Game Object.
@@ -778,7 +778,7 @@ var Layer = new Class({
      * This is a reference, not a copy of it, so be very careful not to mutate it.
      *
      * @method Phaser.GameObjects.Layer#getChildren
-     * @since 3.50.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject[]} An array of Game Objects within this Layer.
      */
@@ -884,7 +884,7 @@ var Layer = new Class({
      * and difficult to debug issues in your game.
      *
      * @method Phaser.GameObjects.Layer#getDisplayList
-     * @since 3.88.0
+     * 
      *
      * @return {?Phaser.GameObjects.GameObject[]} The internal Display List array of Game Objects, or `null`.
      */
@@ -916,7 +916,7 @@ var Layer = new Class({
      *
      * @method Phaser.GameObjects.Layer#destroy
      * @fires Phaser.GameObjects.Events#DESTROY
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [fromScene=false] - `True` if this Game Object is being destroyed by the Scene, `false` if not.
      */
@@ -964,7 +964,7 @@ var Layer = new Class({
      * Return an array listing the events for which the emitter has registered listeners.
      *
      * @method Phaser.GameObjects.Layer#eventNames
-     * @since 3.50.0
+     * 
      *
      * @return {Array.<string|symbol>}
      */
@@ -973,7 +973,7 @@ var Layer = new Class({
      * Return the listeners registered for a given event.
      *
      * @method Phaser.GameObjects.Layer#listeners
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      *
@@ -984,7 +984,7 @@ var Layer = new Class({
      * Return the number of listeners listening to a given event.
      *
      * @method Phaser.GameObjects.Layer#listenerCount
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      *
@@ -995,7 +995,7 @@ var Layer = new Class({
      * Calls each of the listeners registered for a given event.
      *
      * @method Phaser.GameObjects.Layer#emit
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      * @param {...*} [args] - Additional arguments that will be passed to the event handler.
@@ -1007,7 +1007,7 @@ var Layer = new Class({
      * Add a listener for a given event.
      *
      * @method Phaser.GameObjects.Layer#on
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      * @param {function} fn - The listener function.
@@ -1020,7 +1020,7 @@ var Layer = new Class({
      * Add a listener for a given event.
      *
      * @method Phaser.GameObjects.Layer#addListener
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      * @param {function} fn - The listener function.
@@ -1033,7 +1033,7 @@ var Layer = new Class({
      * Add a one-time listener for a given event.
      *
      * @method Phaser.GameObjects.Layer#once
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      * @param {function} fn - The listener function.
@@ -1046,7 +1046,7 @@ var Layer = new Class({
      * Remove the listeners of a given event.
      *
      * @method Phaser.GameObjects.Layer#removeListener
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      * @param {function} [fn] - Only remove the listeners that match this function.
@@ -1060,7 +1060,7 @@ var Layer = new Class({
      * Remove the listeners of a given event.
      *
      * @method Phaser.GameObjects.Layer#off
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} event - The event name.
      * @param {function} [fn] - Only remove the listeners that match this function.
@@ -1074,7 +1074,7 @@ var Layer = new Class({
      * Remove all listeners, or those of the specified event.
      *
      * @method Phaser.GameObjects.Layer#removeAllListeners
-     * @since 3.50.0
+     * 
      *
      * @param {(string|symbol)} [event] - The event name.
      *

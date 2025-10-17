@@ -14,7 +14,7 @@ var Class = require('../utils/Class');
  * @class BasePlugin
  * @memberof Phaser.Plugins
  * @constructor
- * @since 3.8.0
+ * 
  *
  * @param {Phaser.Plugins.PluginManager} pluginManager - A reference to the Plugin Manager.
  */
@@ -30,7 +30,7 @@ var BasePlugin = new Class({
              * @name Phaser.Plugins.BasePlugin#pluginManager
              * @type {Phaser.Plugins.PluginManager}
              * @protected
-             * @since 3.8.0
+             * 
              */
             this.pluginManager = pluginManager;
 
@@ -40,7 +40,7 @@ var BasePlugin = new Class({
              * @name Phaser.Plugins.BasePlugin#game
              * @type {Phaser.Game}
              * @protected
-             * @since 3.8.0
+             * 
              */
             this.game = pluginManager.game;
         },
@@ -53,7 +53,7 @@ var BasePlugin = new Class({
      * On a Scene Plugin, this method is never called. Use {@link Phaser.Plugins.ScenePlugin#boot} instead.
      *
      * @method Phaser.Plugins.BasePlugin#init
-     * @since 3.8.0
+     * 
      *
      * @param {?any} [data] - A value specified by the user, if any, from the `data` property of the plugin's configuration object (if started at game boot) or passed in the PluginManager's `install` method (if started manually).
      */
@@ -67,7 +67,7 @@ var BasePlugin = new Class({
      * On a Scene Plugin, this method is never called.
      *
      * @method Phaser.Plugins.BasePlugin#start
-     * @since 3.8.0
+     * 
      */
     start: function () {
         //  Here are the game-level events you can listen to.
@@ -95,7 +95,7 @@ var BasePlugin = new Class({
      * On a Scene Plugin, this method is never called.
      *
      * @method Phaser.Plugins.BasePlugin#stop
-     * @since 3.8.0
+     * 
      */
     stop: function () {
     },
@@ -105,7 +105,7 @@ var BasePlugin = new Class({
      * You must release everything in here, all references, all objects, free it all up.
      *
      * @method Phaser.Plugins.BasePlugin#destroy
-     * @since 3.8.0
+     * 
      */
     destroy: function () {
         this.pluginManager = null;

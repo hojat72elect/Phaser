@@ -93,7 +93,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#transform
              * @type {object}
-             * @since 3.4.0
+             * 
              */
             this.transform = {
                 x: gameObject.x,
@@ -201,7 +201,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#prevFrame
              * @type {Phaser.Math.Vector2}
-             * @since 3.20.0
+             * 
              */
             this.prevFrame = this.position.clone();
 
@@ -438,7 +438,6 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#customBoundsRectangle
              * @type {Phaser.Geom.Rectangle}
-             * @since 3.20
              */
             this.customBoundsRectangle = world.bounds;
 
@@ -643,7 +642,7 @@ var Body = new Class({
              * @name Phaser.Physics.Arcade.Body#pushable
              * @type {boolean}
              * @default true
-             * @since 3.50.0
+             * 
              * @see Phaser.GameObjects.Components.Pushable#setPushable
              */
             this.pushable = true;
@@ -668,7 +667,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#slideFactor
              * @type {Phaser.Math.Vector2}
-             * @since 3.70.0
+             * 
              * @see Phaser.GameObjects.Components.Pushable#setSlideFactor
              */
             this.slideFactor = new Vector2(1, 1);
@@ -833,7 +832,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#collisionCategory
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionCategory = 0x0001;
 
@@ -844,7 +843,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#collisionMask
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionMask = 1;
 
@@ -897,7 +896,7 @@ var Body = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.22.0
+             * 
              */
             this._tx = 0;
 
@@ -908,7 +907,7 @@ var Body = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.22.0
+             * 
              */
             this._ty = 0;
 
@@ -932,7 +931,7 @@ var Body = new Class({
              *
              * @name Phaser.Physics.Arcade.Body#directControl
              * @type {boolean}
-             * @since 3.70.0
+             * 
              */
             this.directControl = false;
 
@@ -942,7 +941,7 @@ var Body = new Class({
              * @name Phaser.Physics.Arcade.Body#autoFrame
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.70.0
+             * 
              */
             this.autoFrame = this.position.clone();
         },
@@ -1029,7 +1028,7 @@ var Body = new Class({
      * To resynchronize the Body with its Game Object, use `reset()` instead.
      *
      * @method Phaser.Physics.Arcade.Body#updateFromGameObject
-     * @since 3.24.0
+     * 
      */
     updateFromGameObject: function () {
         this.updateBounds();
@@ -1257,7 +1256,6 @@ var Body = new Class({
      * boundary instead of the world boundaries.
      *
      * @method Phaser.Physics.Arcade.Body#setBoundsRectangle
-     * @since 3.20
      *
      * @param {?Phaser.Geom.Rectangle} [bounds] - The new boundary rectangle. Pass `null` to use the World bounds.
      *
@@ -1713,7 +1711,7 @@ var Body = new Class({
      * will represent the delta from the _previous_ game frame.
      *
      * @method Phaser.Physics.Arcade.Body#deltaXFinal
-     * @since 3.22.0
+     * 
      *
      * @return {number} The final delta x value.
      */
@@ -1733,7 +1731,7 @@ var Body = new Class({
      * will represent the delta from the _previous_ game frame.
      *
      * @method Phaser.Physics.Arcade.Body#deltaYFinal
-     * @since 3.22.0
+     * 
      *
      * @return {number} The final delta y value.
      */
@@ -1833,7 +1831,7 @@ var Body = new Class({
      * bodies, something that isn't possible if you're just changing its position directly.
      *
      * @method Phaser.Physics.Arcade.Body#setDirectControl
-     * @since 3.70.0
+     * 
      *
      * @param {boolean} [value=true] - `true` if the Body calculate velocity based on changes in position, otherwise `false`.
      *
@@ -1966,7 +1964,7 @@ var Body = new Class({
      * Sets the Body's maximum horizontal velocity.
      *
      * @method Phaser.Physics.Arcade.Body#setMaxVelocityX
-     * @since 3.50.0
+     * 
      *
      * @param {number} value - The maximum horizontal velocity, in pixels per second.
      *
@@ -1982,7 +1980,7 @@ var Body = new Class({
      * Sets the Body's maximum vertical velocity.
      *
      * @method Phaser.Physics.Arcade.Body#setMaxVelocityY
-     * @since 3.50.0
+     * 
      *
      * @param {number} value - The maximum vertical velocity, in pixels per second.
      *
@@ -2029,7 +2027,7 @@ var Body = new Class({
      * can combine this with the `setDrag()` method to create deceleration.
      *
      * @method Phaser.Physics.Arcade.Body#setSlideFactor
-     * @since 3.70.0
+     * 
      *
      * @param {number} x - The horizontal slide factor. A value between 0 and 1.
      * @param {number} [y=x] - The vertical slide factor. A value between 0 and 1.
@@ -2144,7 +2142,7 @@ var Body = new Class({
      * Enables or disables drag.
      *
      * @method Phaser.Physics.Arcade.Body#setAllowDrag
-     * @since 3.9.0
+     * 
      * @see Phaser.Physics.Arcade.Body#allowDrag
      *
      * @param {boolean} [value=true] - `true` to allow drag on this body, or `false` to disable it.
@@ -2165,7 +2163,7 @@ var Body = new Class({
      * Enables or disables gravity's effect on this Body.
      *
      * @method Phaser.Physics.Arcade.Body#setAllowGravity
-     * @since 3.9.0
+     * 
      * @see Phaser.Physics.Arcade.Body#allowGravity
      *
      * @param {boolean} [value=true] - `true` to allow gravity on this body, or `false` to disable it.
@@ -2186,7 +2184,7 @@ var Body = new Class({
      * Enables or disables rotation.
      *
      * @method Phaser.Physics.Arcade.Body#setAllowRotation
-     * @since 3.9.0
+     * 
      * @see Phaser.Physics.Arcade.Body#allowRotation
      *
      * @param {boolean} [value=true] - `true` to allow rotation on this body, or `false` to disable it.
@@ -2232,7 +2230,7 @@ var Body = new Class({
      * deceleration, where-as smaller values, such as 0.5 will stop an object almost immediately.
      *
      * @method Phaser.Physics.Arcade.Body#setDamping
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} value - `true` to use damping, or `false` to use drag.
      *
@@ -2483,7 +2481,7 @@ var Body = new Class({
      * of the collision step. You should almost never call this directly.
      *
      * @method Phaser.Physics.Arcade.Body#processX
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The amount to add to the Body position.
      * @param {number} [vx] - The amount to add to the Body velocity.
@@ -2517,7 +2515,7 @@ var Body = new Class({
      * of the collision step. You should almost never call this directly.
      *
      * @method Phaser.Physics.Arcade.Body#processY
-     * @since 3.50.0
+     * 
      *
      * @param {number} y - The amount to add to the Body position.
      * @param {number} [vy] - The amount to add to the Body velocity.

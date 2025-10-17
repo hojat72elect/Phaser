@@ -219,7 +219,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#pointerEvents
              * @type {string}
-             * @since 3.55.0
+             * 
              */
             this.pointerEvents = 'auto';
 
@@ -308,7 +308,7 @@ var DOMElement = new Class({
      *
      * @method Phaser.GameObjects.DOMElement#handleSceneEvent
      * @private
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Scenes.Systems} sys - The Scene Systems.
      */

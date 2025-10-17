@@ -39,7 +39,7 @@ var tempMatrix = new Matrix4();
  * You can also offset the model via the `x`, `y` and `z` parameters.
  *
  * @function Phaser.Geom.Mesh.GenerateObjVerts
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Geom.Mesh.OBJData} data - The parsed OBJ model data.
  * @param {Phaser.GameObjects.Mesh} [mesh] - An optional Mesh Game Object. If given, the generated Faces will be automatically added to this Mesh. Set to `null` to skip.

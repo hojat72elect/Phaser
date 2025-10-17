@@ -410,7 +410,7 @@ var FacebookInstantGamesPlugin = new Class({
      *
      * @method Phaser.FacebookInstantGamesPlugin#gameStartedHandler
      * @private
-     * @since 3.20.0
+     * 
      */
     gameStartedHandler: function () {
         var APIs = FBInstant.getSupportedAPIs();

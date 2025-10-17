@@ -69,7 +69,7 @@ var PathFollower = {
      *
      * @name Phaser.GameObjects.PathFollower#pathDelta
      * @type {Phaser.Math.Vector2}
-     * @since 3.23.0
+     * 
      */
     pathDelta: null,
 
@@ -178,7 +178,7 @@ var PathFollower = {
      * Starts this PathFollower following its given Path.
      *
      * @method Phaser.GameObjects.Components.PathFollower#startFollow
-     * @since 3.3.0
+     * 
      *
      * @param {(number|Phaser.Types.GameObjects.PathFollower.PathConfig|Phaser.Types.Tweens.NumberTweenBuilderConfig)} [config={}] - The duration of the follow, or a PathFollower config object.
      * @param {number} [startAt=0] - Optional start position of the follow, between 0 and 1.
@@ -274,7 +274,7 @@ var PathFollower = {
      * point on the Path at which you paused it.
      *
      * @method Phaser.GameObjects.Components.PathFollower#pauseFollow
-     * @since 3.3.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -294,7 +294,7 @@ var PathFollower = {
      * If the PathFollower was not paused this has no effect.
      *
      * @method Phaser.GameObjects.Components.PathFollower#resumeFollow
-     * @since 3.3.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -314,7 +314,7 @@ var PathFollower = {
      * This will invoke any 'stop' conditions that may exist on the Path, or for the follower.
      *
      * @method Phaser.GameObjects.Components.PathFollower#stopFollow
-     * @since 3.3.0
+     * 
      *
      * @return {this} This Game Object.
      */

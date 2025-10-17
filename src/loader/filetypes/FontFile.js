@@ -18,7 +18,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.87.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.FontFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -74,7 +74,7 @@ var FontFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.FontFile#onProcess
-     * @since 3.87.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -175,7 +175,7 @@ var FontFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#font
  * @fires Phaser.Loader.Events#ADD
- * @since 3.87.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.FontFileConfig|Phaser.Types.Loader.FileTypes.FontFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.ttf`, i.e. if `key` was "alien" then the URL will be "alien.ttf".

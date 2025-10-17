@@ -128,7 +128,7 @@ var Vector2 = new Class({
      * This method is an alias for `Vector2.set`.
      *
      * @method Phaser.Math.Vector2#setTo
-     * @since 3.4.0
+     * 
      *
      * @param {number} x - The x value to set for this Vector.
      * @param {number} [y=x] - The y value to set for this Vector.
@@ -181,7 +181,7 @@ var Vector2 = new Class({
      * Check whether this Vector is approximately equal to a given Vector.
      *
      * @method Phaser.Math.Vector2#fuzzyEquals
-     * @since 3.23.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} v - The vector to compare with this Vector.
      * @param {number} [epsilon=0.0001] - The tolerance value.
@@ -216,7 +216,7 @@ var Vector2 = new Class({
      * Set the angle of this Vector.
      *
      * @method Phaser.Math.Vector2#setAngle
-     * @since 3.23.0
+     * 
      *
      * @param {number} angle - The angle, in radians.
      *
@@ -388,7 +388,7 @@ var Vector2 = new Class({
      * Set the length (or magnitude) of this Vector.
      *
      * @method Phaser.Math.Vector2#setLength
-     * @since 3.23.0
+     * 
      *
      * @param {number} length
      *
@@ -459,7 +459,7 @@ var Vector2 = new Class({
      * Rotate this Vector to its perpendicular, in the negative direction.
      *
      * @method Phaser.Math.Vector2#normalizeLeftHand
-     * @since 3.23.0
+     * 
      *
      * @return {Phaser.Math.Vector2} This Vector2.
      */
@@ -588,7 +588,7 @@ var Vector2 = new Class({
      * Limit the length (or magnitude) of this Vector.
      *
      * @method Phaser.Math.Vector2#limit
-     * @since 3.23.0
+     * 
      *
      * @param {number} max - The maximum length.
      *
@@ -608,7 +608,7 @@ var Vector2 = new Class({
      * Reflect this Vector off a line defined by a normal.
      *
      * @method Phaser.Math.Vector2#reflect
-     * @since 3.23.0
+     * 
      *
      * @param {Phaser.Math.Vector2} normal - A vector perpendicular to the line.
      *
@@ -624,7 +624,7 @@ var Vector2 = new Class({
      * Reflect this Vector across another.
      *
      * @method Phaser.Math.Vector2#mirror
-     * @since 3.23.0
+     * 
      *
      * @param {Phaser.Math.Vector2} axis - A vector to reflect across.
      *
@@ -638,7 +638,7 @@ var Vector2 = new Class({
      * Rotate this Vector by an angle amount.
      *
      * @method Phaser.Math.Vector2#rotate
-     * @since 3.23.0
+     * 
      *
      * @param {number} delta - The angle to rotate by, in radians.
      *
@@ -677,7 +677,7 @@ var Vector2 = new Class({
  * @constant
  * @name Phaser.Math.Vector2.ZERO
  * @type {Phaser.Math.Vector2}
- * @since 3.1.0
+ * 
  */
 Vector2.ZERO = new Vector2();
 

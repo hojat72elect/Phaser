@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Rope.RopeConfig
  * @extends Phaser.Types.GameObjects.GameObjectConfig
- * @since 3.50.0
+ * 
  *
  * @property {string} [key] - The key of the Texture this Game Object will use to render with, as stored in the Texture Manager. If not given, `__DEFAULT` is used.
  * @property {(string|integer|null)} [frame] - An optional frame from the Texture this Game Object is rendering with.

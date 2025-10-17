@@ -320,7 +320,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#pushable
              * @type {boolean}
              * @default false
-             * @since 3.50.0
+             * 
              * @see Phaser.GameObjects.Components.Pushable#setPushable
              */
             this.pushable = false;
@@ -456,7 +456,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#collisionCategory
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionCategory = 0x0001;
 
@@ -467,7 +467,7 @@ var StaticBody = new Class({
              *
              * @name Phaser.Physics.Arcade.StaticBody#collisionMask
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.collisionMask = 1;
 
@@ -505,7 +505,7 @@ var StaticBody = new Class({
      * You can optionally update the position and dimensions of this Body to reflect that of the new Game Object.
      *
      * @method Phaser.Physics.Arcade.StaticBody#setGameObject
-     * @since 3.1.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to assign this Body to.
      * @param {boolean} [update=true] - Reposition and resize this Body to match the new Game Object?
@@ -562,7 +562,7 @@ var StaticBody = new Class({
      * Syncs the Static Body's position and size with its parent Game Object.
      *
      * @method Phaser.Physics.Arcade.StaticBody#updateFromGameObject
-     * @since 3.1.0
+     * 
      *
      * @return {Phaser.Physics.Arcade.StaticBody} This Static Body object.
      */
@@ -590,7 +590,7 @@ var StaticBody = new Class({
      * Positions the Static Body at an offset from its Game Object.
      *
      * @method Phaser.Physics.Arcade.StaticBody#setOffset
-     * @since 3.4.0
+     * 
      *
      * @param {number} x - The horizontal offset of the Static Body from the Game Object's `x`.
      * @param {number} y - The vertical offset of the Static Body from the Game Object's `y`.

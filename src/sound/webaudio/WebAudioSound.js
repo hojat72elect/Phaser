@@ -94,7 +94,7 @@ var WebAudioSound = new Class({
              *
              * @name Phaser.Sound.WebAudioSound#pannerNode
              * @type {StereoPannerNode}
-             * @since 3.50.0
+             * 
              */
             this.pannerNode = null;
 
@@ -742,7 +742,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setRate
      * @fires Phaser.Sound.Events#RATE
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The playback rate at of this Sound.
      *
@@ -786,7 +786,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setDetune
      * @fires Phaser.Sound.Events#DETUNE
-     * @since 3.3.0
+     * 
      *
      * @param {number} value - The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
      *
@@ -828,7 +828,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setMute
      * @fires Phaser.Sound.Events#MUTE
-     * @since 3.4.0
+     * 
      *
      * @param {boolean} value - `true` to mute this sound, `false` to unmute it.
      *
@@ -868,7 +868,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setVolume
      * @fires Phaser.Sound.Events#VOLUME
-     * @since 3.4.0
+     * 
      *
      * @param {number} value - The volume of the sound.
      *
@@ -932,7 +932,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setSeek
      * @fires Phaser.Sound.Events#SEEK
-     * @since 3.4.0
+     * 
      *
      * @param {number} value - The point in the sound to seek to.
      *
@@ -979,7 +979,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setLoop
      * @fires Phaser.Sound.Events#LOOP
-     * @since 3.4.0
+     * 
      *
      * @param {boolean} value - `true` to loop this sound, `false` to not loop it.
      *
@@ -1000,7 +1000,7 @@ var WebAudioSound = new Class({
      * @type {number}
      * @default 0
      * @fires Phaser.Sound.Events#PAN
-     * @since 3.50.0
+     * 
      */
     pan: {
 
@@ -1030,7 +1030,7 @@ var WebAudioSound = new Class({
      *
      * @method Phaser.Sound.WebAudioSound#setPan
      * @fires Phaser.Sound.Events#PAN
-     * @since 3.50.0
+     * 
      *
      * @param {number} value - The pan of the sound. A value between -1 (full left pan) and 1 (full right pan).
      *

@@ -525,7 +525,7 @@ var Systems = new Class({
      * you can access it at any point via this method.
      *
      * @method Phaser.Scenes.Systems#getData
-     * @since 3.22.0
+     * 
      *
      * @return {any} The Scene Data.
      */
@@ -599,7 +599,7 @@ var Systems = new Class({
      * Is this Scene currently transitioning out to, or in from another Scene?
      *
      * @method Phaser.Scenes.Systems#isTransitioning
-     * @since 3.5.0
+     * 
      *
      * @return {boolean} `true` if this Scene is currently transitioning, otherwise `false`.
      */
@@ -611,7 +611,7 @@ var Systems = new Class({
      * Is this Scene currently transitioning out from itself to another Scene?
      *
      * @method Phaser.Scenes.Systems#isTransitionOut
-     * @since 3.5.0
+     * 
      *
      * @return {boolean} `true` if this Scene is in transition to another Scene, otherwise `false`.
      */
@@ -623,7 +623,7 @@ var Systems = new Class({
      * Is this Scene currently transitioning in from another Scene?
      *
      * @method Phaser.Scenes.Systems#isTransitionIn
-     * @since 3.5.0
+     * 
      *
      * @return {boolean} `true` if this Scene is transitioning in from another Scene, otherwise `false`.
      */

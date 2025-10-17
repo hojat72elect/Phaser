@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterSetBodyConfig
- * @since 3.22.0
+ * 
  *
  * @property {string} [type='rectangle'] - The shape type. Either `rectangle`, `circle`, `trapezoid`, `polygon`, `fromVertices`, `fromVerts` or `fromPhysicsEditor`.
  * @property {number} [x] - The horizontal world position to place the body at.

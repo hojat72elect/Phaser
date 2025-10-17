@@ -22,7 +22,7 @@ var CONST = {
      * @name Phaser.LOG_VERSION
      * @const
      * @type {string}
-     * @since 3.87.0
+     * 
      */
     LOG_VERSION: 'v390',
 

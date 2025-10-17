@@ -11,7 +11,7 @@
  * This method should not be called directly. It is a utility function of the Render module.
  *
  * @method Phaser.GameObjects.Container#renderWebGL
- * @since 3.4.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the current active WebGL renderer.

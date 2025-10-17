@@ -373,7 +373,7 @@ var ParticleEmitter = new Class({
              *
              * @name Phaser.GameObjects.Particles.ParticleEmitter#config
              * @type {Phaser.Types.GameObjects.Particles.ParticleEmitterConfig}
-             * @since 3.85.0
+             * 
              */
             this.config = null;
 
@@ -1047,7 +1047,7 @@ var ParticleEmitter = new Class({
      * the Emitter with the updated configuration.
      *
      * @method Phaser.GameObjects.Particles.ParticleEmitter#updateConfig
-     * @since 3.85.0
+     * 
      *
      * @param {Phaser.Types.GameObjects.Particles.ParticleEmitterConfig} config - Settings for this emitter.
      *
@@ -1708,7 +1708,7 @@ var ParticleEmitter = new Class({
      * Clear all Death Zones from this Particle Emitter.
      *
      * @method Phaser.GameObjects.Particles.ParticleEmitter#clearDeathZones
-     * @since 3.70.0
+     * 
      *
      * @return {this} This Particle Emitter.
      */
@@ -1806,7 +1806,7 @@ var ParticleEmitter = new Class({
      * Clear all Emission Zones from this Particle Emitter.
      *
      * @method Phaser.GameObjects.Particles.ParticleEmitter#clearEmitZones
-     * @since 3.70.0
+     * 
      *
      * @return {this} This Particle Emitter.
      */

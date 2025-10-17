@@ -4,7 +4,7 @@
  * Mostly only used internally.
  *
  * @function Phaser.Physics.Arcade.SetCollisionObject
- * @since 3.70.0
+ * 
  *
  * @param {boolean} noneFlip - Is `none` true or false?
  * @param {Phaser.Types.Physics.Arcade.ArcadeBodyCollision} [data] - The collision data object to populate, or create if not given.

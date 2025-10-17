@@ -45,7 +45,7 @@ var LightsManager = new Class({
              *
              * @name Phaser.GameObjects.LightsManager#ambientColor
              * @type {Phaser.Display.RGB}
-             * @since 3.50.0
+             * 
              */
             this.ambientColor = new RGB(0.1, 0.1, 0.1);
 
@@ -76,7 +76,7 @@ var LightsManager = new Class({
              * @name Phaser.GameObjects.LightsManager#visibleLights
              * @type {number}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.visibleLights = 0;
         },
@@ -111,7 +111,7 @@ var LightsManager = new Class({
      * Point Lights are a WebGL only feature and do not have a Canvas counterpart.
      *
      * @method Phaser.GameObjects.LightsManager#addPointLight
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The horizontal position of this Point Light in the world.
      * @param {number} y - The vertical position of this Point Light in the world.
@@ -167,7 +167,7 @@ var LightsManager = new Class({
      * based on the distance from the center of the camera. Only those closest are rendered.
      *
      * @method Phaser.GameObjects.LightsManager#getLights
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera to cull Lights for.
      *

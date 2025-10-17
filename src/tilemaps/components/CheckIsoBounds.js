@@ -6,7 +6,7 @@ var point = new Vector2();
  * Checks if the given tile coordinate is within the isometric layer bounds, or not.
  *
  * @function Phaser.Tilemaps.Components.CheckIsoBounds
- * @since 3.50.0
+ * 
  *
  * @param {number} tileX - The x coordinate, in tiles, not pixels.
  * @param {number} tileY - The y coordinate, in tiles, not pixels.

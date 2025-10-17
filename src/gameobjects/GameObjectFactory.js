@@ -48,7 +48,7 @@ var GameObjectFactory = new Class({
              * @name Phaser.GameObjects.GameObjectFactory#events
              * @type {Phaser.Events.EventEmitter}
              * @protected
-             * @since 3.50.0
+             * 
              */
             this.events = scene.sys.events;
 
@@ -82,7 +82,7 @@ var GameObjectFactory = new Class({
      *
      * @method Phaser.GameObjects.GameObjectFactory#boot
      * @private
-     * @since 3.5.1
+     * 
      */
     boot: function () {
         this.displayList = this.systems.displayList;
@@ -98,7 +98,7 @@ var GameObjectFactory = new Class({
      *
      * @method Phaser.GameObjects.GameObjectFactory#start
      * @private
-     * @since 3.5.0
+     * 
      */
     start: function () {
         this.events.once(SceneEvents.SHUTDOWN, this.shutdown, this);

@@ -10,7 +10,7 @@ var GetColor = require('./GetColor');
  * However, you can reduce this to a smaller quantity if needed, by specitying the `limit` parameter.
  *
  * @function Phaser.Display.Color.ColorSpectrum
- * @since 3.50.0
+ * 
  *
  * @param {number} [limit=1024] - How many colors should be returned? The maximum is 1024 but you can set a smaller quantity if required.
  *

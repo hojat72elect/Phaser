@@ -19,7 +19,7 @@ var Vector4 = require('../../math/Vector4');
  * @class Layer3DCamera
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.50.0
+ * 
  */
 var Layer3DCamera = new Class({
 
@@ -36,7 +36,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#layer
              * @type {Phaser.GameObjects.Layer3D}
-             * @since 3.50.0
+             * 
              */
             this.layer = layer;
 
@@ -45,7 +45,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#input
              * @type {Phaser.Input.InputPlugin}
-             * @since 3.50.0
+             * 
              */
             this.input = layer.scene.sys.input;
 
@@ -55,7 +55,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#dirtyView
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.dirtyView = true;
 
@@ -65,7 +65,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#dirtyProjection
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.dirtyProjection = true;
 
@@ -75,7 +75,7 @@ var Layer3DCamera = new Class({
              * @name Phaser.GameObjects.Layer3DCamera#_fov
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._fov = fov;
 
@@ -85,7 +85,7 @@ var Layer3DCamera = new Class({
              * @name Phaser.GameObjects.Layer3DCamera#_near
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._near = near;
 
@@ -95,7 +95,7 @@ var Layer3DCamera = new Class({
              * @name Phaser.GameObjects.Layer3DCamera#_far
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._far = far;
 
@@ -104,7 +104,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#aspectRatio
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.aspectRatio = 1;
 
@@ -116,7 +116,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#position
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.position = new Vector3(x, y, z);
 
@@ -128,7 +128,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#rotation
              * @type {Phaser.Math.Vector3}
-             * @since 3.50.0
+             * 
              */
             this.rotation = new Vector3();
 
@@ -139,7 +139,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#forward
              * @type {Phaser.Math.Vector4}
-             * @since 3.50.0
+             * 
              */
             this.forward = new Vector4();
 
@@ -151,7 +151,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#up
              * @type {Phaser.Math.Vector4}
-             * @since 3.50.0
+             * 
              */
             this.up = new Vector4();
 
@@ -163,7 +163,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#right
              * @type {Phaser.Math.Vector4}
-             * @since 3.50.0
+             * 
              */
             this.right = new Vector4();
 
@@ -174,7 +174,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#matrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.matrix = new Matrix4();
 
@@ -185,7 +185,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#viewMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.viewMatrix = new Matrix4();
 
@@ -196,7 +196,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#projectionMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.projectionMatrix = new Matrix4();
 
@@ -207,7 +207,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#viewProjectionMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.viewProjectionMatrix = new Matrix4();
 
@@ -217,7 +217,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#mode
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.mode = Layer3DCamera.MODE_ORBIT;
 
@@ -229,7 +229,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#rotateSpeed
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.rotateSpeed = 0.5;
 
@@ -241,7 +241,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#panSpeed
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.panSpeed = 4;
 
@@ -253,7 +253,7 @@ var Layer3DCamera = new Class({
              *
              * @name Phaser.GameObjects.Layer3DCamera#zoomSpeed
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.zoomSpeed = 3;
 
@@ -319,7 +319,7 @@ var Layer3DCamera = new Class({
      * Pans this camera on the x axis by the given amount.
      *
      * @method Phaser.GameObjects.Layer3DCamera#panX
-     * @since 3.50.0
+     * 
      *
      * @param {number} v - The amount to pan by.
      */
@@ -333,7 +333,7 @@ var Layer3DCamera = new Class({
      * Pans this camera on the y axis by the given amount.
      *
      * @method Phaser.GameObjects.Layer3DCamera#panY
-     * @since 3.50.0
+     * 
      *
      * @param {number} v - The amount to pan by.
      */
@@ -355,7 +355,7 @@ var Layer3DCamera = new Class({
      * Pans this camera on the z axis by the given amount.
      *
      * @method Phaser.GameObjects.Layer3DCamera#panZ
-     * @since 3.50.0
+     * 
      *
      * @param {number} v - The amount to pan by.
      */
@@ -377,7 +377,7 @@ var Layer3DCamera = new Class({
      * and then applied to the view projection matrix, ready for rendering.
      *
      * @method Phaser.GameObjects.Layer3DCamera#update
-     * @since 3.50.0
+     * 
      */
     update: function () {
         if (this.dirtyView) {
@@ -394,7 +394,7 @@ var Layer3DCamera = new Class({
      * and position of the camera. Called automatically when the camera is updated.
      *
      * @method Phaser.GameObjects.Layer3DCamera#updateViewMatrix
-     * @since 3.50.0
+     * 
      */
     updateViewMatrix: function () {
         var matView = this.matrix;
@@ -416,7 +416,7 @@ var Layer3DCamera = new Class({
      * width or height has changed, then a new projection matrix is calculated.
      *
      * @method Phaser.GameObjects.Layer3DCamera#updateProjectionMatrix
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - The width of the renderer.
      * @param {number} height - The height of the renderer.
@@ -433,7 +433,7 @@ var Layer3DCamera = new Class({
      * `updateViewMatrix` method.
      *
      * @method Phaser.GameObjects.Layer3DCamera#updateDirection
-     * @since 3.50.0
+     * 
      */
     updateDirection: function () {
         var matView = this.matrix;
@@ -450,7 +450,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#fov
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     fov: {
 
@@ -475,7 +475,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#near
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     near: {
 
@@ -500,7 +500,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#far
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     far: {
 
@@ -522,7 +522,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#x
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     x: {
 
@@ -542,7 +542,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#y
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     y: {
 
@@ -562,7 +562,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#z
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     z: {
 
@@ -582,7 +582,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#rotationX
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     rotationX: {
 
@@ -602,7 +602,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#rotationY
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     rotationY: {
 
@@ -622,7 +622,7 @@ var Layer3DCamera = new Class({
      *
      * @name Phaser.GameObjects.Layer3DCamera#rotationZ
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     rotationZ: {
 
@@ -641,7 +641,7 @@ var Layer3DCamera = new Class({
      * Destroy handler for this camera.
      *
      * @method Phaser.GameObjects.Layer3DCamera#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         this.layer = null;

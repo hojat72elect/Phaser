@@ -2,7 +2,7 @@
  * Tests if the start and end indexes are a safe range for the given array.
  *
  * @function Phaser.Utils.Array.SafeRange
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to check.
  * @param {number} startIndex - The start index.

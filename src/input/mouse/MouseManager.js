@@ -41,7 +41,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#preventDefaultDown
              * @type {boolean}
              * @default true
-             * @since 3.50.0
+             * 
              */
             this.preventDefaultDown = true;
 
@@ -51,7 +51,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#preventDefaultUp
              * @type {boolean}
              * @default true
-             * @since 3.50.0
+             * 
              */
             this.preventDefaultUp = true;
 
@@ -61,7 +61,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#preventDefaultMove
              * @type {boolean}
              * @default true
-             * @since 3.50.0
+             * 
              */
             this.preventDefaultMove = true;
 
@@ -71,7 +71,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#preventDefaultWheel
              * @type {boolean}
              * @default true
-             * @since 3.50.0
+             * 
              */
             this.preventDefaultWheel = false;
 
@@ -215,7 +215,7 @@ var MouseManager = new Class({
              * @name Phaser.Input.Mouse.MouseManager#isTop
              * @type {boolean}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.isTop = true;
 

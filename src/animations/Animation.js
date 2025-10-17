@@ -222,7 +222,7 @@ var Animation = new Class({
      * Gets the total number of frames in this animation.
      *
      * @method Phaser.Animations.Animation#getTotalFrames
-     * @since 3.50.0
+     * 
      *
      * @return {number} The total number of frames in this animation.
      */
@@ -234,7 +234,7 @@ var Animation = new Class({
      * Calculates the duration, frame rate and msPerFrame values.
      *
      * @method Phaser.Animations.Animation#calculateDuration
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Animations.Animation} target - The target to set the values on.
      * @param {number} totalFrames - The total number of frames in the animation.
@@ -485,7 +485,7 @@ var Animation = new Class({
      * Returns the frame closest to the given progress value between 0 and 1.
      *
      * @method Phaser.Animations.Animation#getFrameByProgress
-     * @since 3.4.0
+     * 
      *
      * @param {number} value - A value between 0 and 1.
      *

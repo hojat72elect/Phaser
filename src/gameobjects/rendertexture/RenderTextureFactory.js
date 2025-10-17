@@ -20,7 +20,7 @@ var RenderTexture = require('./RenderTexture');
  * expensive GPU uploads on each change.
  *
  * @method Phaser.GameObjects.GameObjectFactory#renderTexture
- * @since 3.2.0
+ * 
  *
  * @param {number} x - The horizontal position of this Game Object in the world.
  * @param {number} y - The vertical position of this Game Object in the world.

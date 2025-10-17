@@ -3,7 +3,7 @@
  * The array is modified in-place.
  *
  * @function Phaser.Utils.Array.MoveTo
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array.
  * @param {*} item - The element to move.

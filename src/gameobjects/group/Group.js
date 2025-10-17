@@ -104,7 +104,7 @@ var Group = new Class({
              * @name Phaser.GameObjects.Group#type
              * @type {string}
              * @default 'Group'
-             * @since 3.21.0
+             * 
              */
             this.type = 'Group';
 
@@ -215,7 +215,7 @@ var Group = new Class({
              * @name Phaser.GameObjects.Group#internalCreateCallback
              * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
              * @private
-             * @since 3.22.0
+             * 
              */
             this.internalCreateCallback = GetFastValue(config, 'internalCreateCallback', null);
 
@@ -226,7 +226,7 @@ var Group = new Class({
              * @name Phaser.GameObjects.Group#internalRemoveCallback
              * @type {?Phaser.Types.GameObjects.Group.GroupCallback}
              * @private
-             * @since 3.22.0
+             * 
              */
             this.internalRemoveCallback = GetFastValue(config, 'internalRemoveCallback', null);
 
@@ -738,7 +738,7 @@ var Group = new Class({
      * the first 50.
      *
      * @method Phaser.GameObjects.Group#getMatching
-     * @since 3.50.0
+     * 
      *
      * @param {string} [property] - The property to test on each array element.
      * @param {*} [value] - The value to test the property against. Must pass a strict (`===`) comparison check.
@@ -783,7 +783,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#getFirstNth
-     * @since 3.6.0
+     * 
      *
      * @param {number} nth - The nth matching Group member to search for.
      * @param {boolean} [state=false] - The {@link Phaser.GameObjects.GameObject#active} value to match.
@@ -808,7 +808,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#getLast
-     * @since 3.6.0
+     * 
      *
      * @param {boolean} [state=false] - The {@link Phaser.GameObjects.GameObject#active} value to match.
      * @param {boolean} [createIfNull=false] - Create a new Game Object if no matching members are found, using the following arguments.
@@ -832,7 +832,7 @@ var Group = new Class({
      * Unless a new member is created, `key`, `frame`, and `visible` are ignored.
      *
      * @method Phaser.GameObjects.Group#getLastNth
-     * @since 3.6.0
+     * 
      *
      * @param {number} nth - The nth matching Group member to search for.
      * @param {boolean} [state=false] - The {@link Phaser.GameObjects.GameObject#active} value to match.
@@ -858,7 +858,7 @@ var Group = new Class({
      *
      * @method Phaser.GameObjects.Group#getHandler
      * @private
-     * @since 3.6.0
+     * 
      *
      * @param {boolean} forwards - Search front to back or back to front?
      * @param {number} nth - Stop matching after nth successful matches.
@@ -1099,7 +1099,7 @@ var Group = new Class({
      * When active, this Group runs its `preUpdate` method.
      *
      * @method Phaser.GameObjects.Group#setActive
-     * @since 3.24.0
+     * 
      *
      * @param {boolean} value - True if this Group should be set as active, false if not.
      *
@@ -1116,7 +1116,7 @@ var Group = new Class({
      * The `name` property is not populated by Phaser and is presented for your own use.
      *
      * @method Phaser.GameObjects.Group#setName
-     * @since 3.24.0
+     * 
      *
      * @param {string} value - The name to be given to this Group.
      *
@@ -1132,7 +1132,7 @@ var Group = new Class({
      * Sets the property as defined in `key` of each group member to the given value.
      *
      * @method Phaser.GameObjects.Group#propertyValueSet
-     * @since 3.21.0
+     * 
      *
      * @param {string} key - The property to be updated.
      * @param {number} value - The amount to set the property to.
@@ -1152,7 +1152,7 @@ var Group = new Class({
      * Adds the given value to the property as defined in `key` of each group member.
      *
      * @method Phaser.GameObjects.Group#propertyValueInc
-     * @since 3.21.0
+     * 
      *
      * @param {string} key - The property to be updated.
      * @param {number} value - The amount to set the property to.
@@ -1172,7 +1172,7 @@ var Group = new Class({
      * Sets the x of each group member.
      *
      * @method Phaser.GameObjects.Group#setX
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the property to.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1189,7 +1189,7 @@ var Group = new Class({
      * Sets the y of each group member.
      *
      * @method Phaser.GameObjects.Group#setY
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the property to.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1206,7 +1206,7 @@ var Group = new Class({
      * Sets the x, y of each group member.
      *
      * @method Phaser.GameObjects.Group#setXY
-     * @since 3.21.0
+     * 
      *
      * @param {number} x - The amount to set the `x` property to.
      * @param {number} [y=x] - The amount to set the `y` property to. If `undefined` or `null` it uses the `x` value.
@@ -1225,7 +1225,7 @@ var Group = new Class({
      * Adds the given value to the x of each group member.
      *
      * @method Phaser.GameObjects.Group#incX
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to be added to the `x` property.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1242,7 +1242,7 @@ var Group = new Class({
      * Adds the given value to the y of each group member.
      *
      * @method Phaser.GameObjects.Group#incY
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to be added to the `y` property.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1259,7 +1259,7 @@ var Group = new Class({
      * Adds the given value to the x, y of each group member.
      *
      * @method Phaser.GameObjects.Group#incXY
-     * @since 3.21.0
+     * 
      *
      * @param {number} x - The amount to be added to the `x` property.
      * @param {number} [y=x] - The amount to be added to the `y` property. If `undefined` or `null` it uses the `x` value.
@@ -1281,7 +1281,7 @@ var Group = new Class({
      * The first group member position is set to x/y.
      *
      * @method Phaser.GameObjects.Group#shiftPosition
-     * @since 3.21.0
+     * 
      *
      * @param {number} x - The x coordinate to place the first item in the array at.
      * @param {number} y - The y coordinate to place the first item in the array at.
@@ -1299,7 +1299,7 @@ var Group = new Class({
      * Sets the angle of each group member.
      *
      * @method Phaser.GameObjects.Group#angle
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the angle to, in degrees.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1316,7 +1316,7 @@ var Group = new Class({
      * Sets the rotation of each group member.
      *
      * @method Phaser.GameObjects.Group#rotate
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the rotation to, in radians.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1333,7 +1333,7 @@ var Group = new Class({
      * Rotates each group member around the given point by the given angle.
      *
      * @method Phaser.GameObjects.Group#rotateAround
-     * @since 3.21.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} point - Any object with public `x` and `y` properties.
      * @param {number} angle - The angle to rotate by, in radians.
@@ -1350,7 +1350,7 @@ var Group = new Class({
      * Rotates each group member around the given point by the given angle and distance.
      *
      * @method Phaser.GameObjects.Group#rotateAroundDistance
-     * @since 3.21.0
+     * 
      *
      * @param {Phaser.Types.Math.Vector2Like} point - Any object with public `x` and `y` properties.
      * @param {number} angle - The angle to rotate by, in radians.
@@ -1368,7 +1368,7 @@ var Group = new Class({
      * Sets the alpha of each group member.
      *
      * @method Phaser.GameObjects.Group#setAlpha
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the alpha to.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1385,7 +1385,7 @@ var Group = new Class({
      * Sets the tint of each group member.
      *
      * @method Phaser.GameObjects.Group#setTint
-     * @since 3.21.0
+     * 
      *
      * @param {number} topLeft - The tint being applied to top-left corner of item. If other parameters are given no value, this tint will be applied to whole item.
      * @param {number} [topRight] - The tint to be applied to top-right corner of item.
@@ -1404,7 +1404,7 @@ var Group = new Class({
      * Sets the originX, originY of each group member.
      *
      * @method Phaser.GameObjects.Group#setOrigin
-     * @since 3.21.0
+     * 
      *
      * @param {number} originX - The amount to set the `originX` property to.
      * @param {number} [originY] - The amount to set the `originY` property to. If `undefined` or `null` it uses the `originX` value.
@@ -1423,7 +1423,7 @@ var Group = new Class({
      * Sets the scaleX of each group member.
      *
      * @method Phaser.GameObjects.Group#scaleX
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the property to.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1440,7 +1440,7 @@ var Group = new Class({
      * Sets the scaleY of each group member.
      *
      * @method Phaser.GameObjects.Group#scaleY
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the property to.
      * @param {number} [step=0] - This is added to the `value` amount, multiplied by the iteration counter.
@@ -1457,7 +1457,7 @@ var Group = new Class({
      * Sets the scaleX, scaleY of each group member.
      *
      * @method Phaser.GameObjects.Group#scaleXY
-     * @since 3.21.0
+     * 
      *
      * @param {number} scaleX - The amount to be added to the `scaleX` property.
      * @param {number} [scaleY] - The amount to be added to the `scaleY` property. If `undefined` or `null` it uses the `scaleX` value.
@@ -1493,7 +1493,7 @@ var Group = new Class({
      * Sets the blendMode of each group member.
      *
      * @method Phaser.GameObjects.Group#setBlendMode
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The amount to set the property to.
      *
@@ -1509,7 +1509,7 @@ var Group = new Class({
      * Passes all group members to the Input Manager to enable them for input with identical areas and callbacks.
      *
      * @method Phaser.GameObjects.Group#setHitArea
-     * @since 3.21.0
+     * 
      *
      * @param {*} hitArea - Either an input configuration object, or a geometric shape that defines the hit area for the Game Object. If not specified a Rectangle will be used.
      * @param {Phaser.Types.Input.HitAreaCallback} hitAreaCallback - A callback to be invoked when the Game Object is interacted with. If you provide a shape you must also provide a callback.
@@ -1526,7 +1526,7 @@ var Group = new Class({
      * Shuffles the group members in place.
      *
      * @method Phaser.GameObjects.Group#shuffle
-     * @since 3.21.0
+     * 
      *
      * @return {this} This Group object.
      */
@@ -1569,7 +1569,7 @@ var Group = new Class({
      * Sets the visible of each group member.
      *
      * @method Phaser.GameObjects.Group#setVisible
-     * @since 3.21.0
+     * 
      *
      * @param {boolean} value - The value to set the property to.
      * @param {number} [index=0] - An optional offset to start searching from within the items array.

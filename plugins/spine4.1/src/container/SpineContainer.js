@@ -37,7 +37,7 @@ var SpineContainerRender = require('./SpineContainerRender');
  * @class SpineContainer
  * @extends Phaser.GameObjects.Container
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene that this Game Object belongs to.
  * @param {SpinePlugin} pluginManager - A reference to the Phaser Spine Plugin.
@@ -66,7 +66,7 @@ var SpineContainer = new Class({
              *
              * @name SpineContainer#plugin
              * @type {SpinePlugin}
-             * @since 3.50.0
+             * 
              */
             this.plugin = plugin;
         },
@@ -76,7 +76,7 @@ var SpineContainer = new Class({
      *
      * @method SpineContainer#preDestroy
      * @protected
-     * @since 3.50.0
+     * 
      */
     preDestroy: function () {
         this.removeAll(!!this.exclusive);

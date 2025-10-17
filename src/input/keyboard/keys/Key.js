@@ -313,7 +313,7 @@ var Key = new Class({
      * As of version 3.60.0 it no longer resets the `enabled` or `preventDefault` flags.
      *
      * @method Phaser.Input.Keyboard.Key#reset
-     * @since 3.6.0
+     * 
      *
      * @return {this} This Key instance.
      */

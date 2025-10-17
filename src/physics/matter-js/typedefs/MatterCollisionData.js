@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Physics.Matter.MatterCollisionData
- * @since 3.22.0
+ * 
  *
  * @property {boolean} collided - Have the pair collided or not?
  * @property {MatterJS.BodyType} bodyA - A reference to the first body involved in the collision.

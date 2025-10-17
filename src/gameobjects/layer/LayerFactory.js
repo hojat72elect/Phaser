@@ -7,7 +7,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  * Note: This method will only be available if the Layer Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#layer
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject|Phaser.GameObjects.GameObject[]} [children] - An optional array of Game Objects to add to this Layer.
  *

@@ -47,7 +47,7 @@ var Vertex = require('./Vertex');
  * If the data is not indexed, it's assumed that the arrays all contain sequential data.
  *
  * @function Phaser.Geom.Mesh.GenerateVerts
- * @since 3.50.0
+ * 
  *
  * @param {number[]} vertices - The vertices array. Either `xy` pairs, or `xyz` if the `containsZ` parameter is `true`.
  * @param {number[]} uvs - The UVs pairs array.

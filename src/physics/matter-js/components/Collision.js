@@ -78,7 +78,7 @@ var Collision = {
      * to the callback.
      *
      * @method Phaser.Physics.Matter.Components.Collision#setOnCollide
-     * @since 3.22.0
+     * 
      *
      * @param {function} callback - The callback to invoke when this body starts colliding with another.
      *
@@ -97,7 +97,7 @@ var Collision = {
      * to the callback.
      *
      * @method Phaser.Physics.Matter.Components.Collision#setOnCollideEnd
-     * @since 3.22.0
+     * 
      *
      * @param {function} callback - The callback to invoke when this body stops colliding with another.
      *
@@ -116,7 +116,7 @@ var Collision = {
      * to the callback.
      *
      * @method Phaser.Physics.Matter.Components.Collision#setOnCollideActive
-     * @since 3.22.0
+     * 
      *
      * @param {function} callback - The callback to invoke for the duration of this body colliding with another.
      *
@@ -135,7 +135,7 @@ var Collision = {
      * to the callback.
      *
      * @method Phaser.Physics.Matter.Components.Collision#setOnCollideWith
-     * @since 3.22.0
+     * 
      *
      * @param {(MatterJS.Body|MatterJS.Body[])} body - The body, or an array of bodies, to test for collisions with.
      * @param {function} callback - The callback to invoke when this body collides with the given body or bodies.

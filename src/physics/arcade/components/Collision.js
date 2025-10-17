@@ -4,7 +4,7 @@ var GetCollidesWith = require('../GetCollidesWith');
  * Provides methods used for setting the collision category and mask of an Arcade Physics Body.
  *
  * @namespace Phaser.Physics.Arcade.Components.Collision
- * @since 3.70.0
+ * 
  */
 var Collision = {
 
@@ -18,7 +18,7 @@ var Collision = {
      * the `resetCollisionCategory` method.
      *
      * @method Phaser.Physics.Arcade.Components.Collision#setCollisionCategory
-     * @since 3.70.0
+     * 
      *
      * @param {number} category - The collision category.
      *
@@ -37,7 +37,7 @@ var Collision = {
      * this Arcade Physics object or not.
      *
      * @method Phaser.Physics.Arcade.Components.Collision#willCollideWith
-     * @since 3.70.0
+     * 
      *
      * @param {number} category - Collision category value to test.
      *
@@ -54,7 +54,7 @@ var Collision = {
      * Arcade Physics Body will collide with.
      *
      * @method Phaser.Physics.Arcade.Components.Collision#addCollidesWith
-     * @since 3.70.0
+     * 
      *
      * @param {number} category - The collision category to add.
      *
@@ -73,7 +73,7 @@ var Collision = {
      * Arcade Physics Body will collide with.
      *
      * @method Phaser.Physics.Arcade.Components.Collision#removeCollidesWith
-     * @since 3.70.0
+     * 
      *
      * @param {number} category - The collision category to add.
      *
@@ -102,7 +102,7 @@ var Collision = {
      * the `resetCollisionCategory` method.
      *
      * @method Phaser.Physics.Arcade.Components.Collision#setCollidesWith
-     * @since 3.70.0
+     * 
      *
      * @param {(number|number[])} categories - The collision category to collide with, or an array of them.
      *
@@ -121,7 +121,7 @@ var Collision = {
      * which is to collide with everything.
      *
      * @method Phaser.Physics.Arcade.Components.Collision#resetCollisionCategory
-     * @since 3.70.0
+     * 
      *
      * @return {this} This Game Object.
      */

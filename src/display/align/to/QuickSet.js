@@ -26,7 +26,7 @@ AlignToMap[ALIGN_CONST.TOP_RIGHT] = require('./TopRight');
  * The alignment used is based on the `position` argument, which is a `Phaser.Display.Align` property such as `LEFT_CENTER` or `TOP_RIGHT`.
  *
  * @function Phaser.Display.Align.To.QuickSet
- * @since 3.22.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject} G - [child,$return]
  *

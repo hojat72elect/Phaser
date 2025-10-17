@@ -142,7 +142,7 @@ var CanvasRenderer = new Class({
              *
              * @name Phaser.Renderer.Canvas.CanvasRenderer#antialias
              * @type {boolean}
-             * @since 3.20.0
+             * 
              */
             this.antialias = gameConfig.antialias;
 
@@ -212,7 +212,7 @@ var CanvasRenderer = new Class({
              *
              * @name Phaser.Renderer.Canvas.CanvasRenderer#isBooted
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.isBooted = false;
 
@@ -249,7 +249,7 @@ var CanvasRenderer = new Class({
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#boot
      * @private
-     * @since 3.50.0
+     * 
      */
     boot: function () {
         var game = this.game;

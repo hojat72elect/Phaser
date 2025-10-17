@@ -147,7 +147,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_letterSpacing
              * @type {number}
              * @private
-             * @since 3.4.0
+             * 
              */
             this._letterSpacing = 0;
 
@@ -209,7 +209,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_maxWidth
              * @type {number}
              * @private
-             * @since 3.21.0
+             * 
              */
             this._maxWidth = 0;
 
@@ -219,7 +219,7 @@ var BitmapText = new Class({
              *
              * @name Phaser.GameObjects.BitmapText#wordWrapCharCode
              * @type {number}
-             * @since 3.21.0
+             * 
              */
             this.wordWrapCharCode = 32;
 
@@ -229,7 +229,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#charColors
              * @type {array}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.charColors = [];
 
@@ -240,7 +240,7 @@ var BitmapText = new Class({
              *
              * @name Phaser.GameObjects.BitmapText#dropShadowX
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.dropShadowX = 0;
 
@@ -251,7 +251,7 @@ var BitmapText = new Class({
              *
              * @name Phaser.GameObjects.BitmapText#dropShadowY
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.dropShadowY = 0;
 
@@ -262,7 +262,7 @@ var BitmapText = new Class({
              *
              * @name Phaser.GameObjects.BitmapText#dropShadowColor
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.dropShadowColor = 0x000000;
 
@@ -273,7 +273,7 @@ var BitmapText = new Class({
              *
              * @name Phaser.GameObjects.BitmapText#dropShadowAlpha
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.dropShadowAlpha = 0.5;
 
@@ -282,7 +282,7 @@ var BitmapText = new Class({
              *
              * @name Phaser.GameObjects.BitmapText#fromAtlas
              * @type {boolean}
-             * @since 3.54.0
+             * 
              * @readonly
              */
             this.fromAtlas = entry.fromAtlas;
@@ -371,7 +371,7 @@ var BitmapText = new Class({
      * Spacing is applied after the kerning values have been set.
      *
      * @method Phaser.GameObjects.BitmapText#setLetterSpacing
-     * @since 3.4.0
+     * 
      *
      * @param {number} [spacing=0] - The amount of horizontal space to add between each character.
      *
@@ -460,7 +460,7 @@ var BitmapText = new Class({
      *
      * @method Phaser.GameObjects.BitmapText#setDropShadow
      * @webglOnly
-     * @since 3.50.0
+     * 
      *
      * @param {number} [x=0] - The horizontal offset of the drop shadow.
      * @param {number} [y=0] - The vertical offset of the drop shadow.
@@ -520,7 +520,7 @@ var BitmapText = new Class({
      *
      * @method Phaser.GameObjects.BitmapText#setCharacterTint
      * @webglOnly
-     * @since 3.50.0
+     * 
      *
      * @param {number} [start=0] - The starting character to begin the tint at. If negative, it counts back from the end of the text.
      * @param {number} [length=1] - The number of characters to tint. Remember that spaces count as a character too. Pass -1 to tint all characters from `start` onwards.
@@ -626,7 +626,7 @@ var BitmapText = new Class({
      *
      * @method Phaser.GameObjects.BitmapText#setWordTint
      * @webglOnly
-     * @since 3.50.0
+     * 
      *
      * @param {(string|number)} word - The word to search for. Either a string, or an index of the word in the words array.
      * @param {number} [count=1] - The number of matching words to tint. Pass -1 to tint all matching words.
@@ -719,7 +719,7 @@ var BitmapText = new Class({
      * character positions during render. It will only scan characters in their un-translated state.
      *
      * @method Phaser.GameObjects.BitmapText#getCharacterAt
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x position to check.
      * @param {number} y - The y position to check.
@@ -819,7 +819,7 @@ var BitmapText = new Class({
      * You can set the whitespace character to be searched for by setting the `wordWrapCharCode` parameter or property.
      *
      * @method Phaser.GameObjects.BitmapText#setMaxWidth
-     * @since 3.21.0
+     * 
      *
      * @param {number} value - The maximum display width of this BitmapText in pixels. Set to zero to disable.
      * @param {number} [wordWrapCharCode] - The character code to check for when word wrapping. Defaults to 32 (the space character).
@@ -999,7 +999,7 @@ var BitmapText = new Class({
      *
      * @name Phaser.GameObjects.BitmapText#maxWidth
      * @type {number}
-     * @since 3.21.0
+     * 
      */
     maxWidth: {
 
@@ -1146,7 +1146,7 @@ var BitmapText = new Class({
      *
      * @method Phaser.GameObjects.BitmapText#preDestroy
      * @protected
-     * @since 3.50.0
+     * 
      */
     preDestroy: function () {
         this.charColors.length = 0;

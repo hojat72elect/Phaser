@@ -68,7 +68,7 @@ var Map = new Class({
      * If the element already exists, the value will be skipped.
      *
      * @method Phaser.Structs.Map#setAll
-     * @since 3.70.0
+     * 
      *
      * @generic K
      * @generic V

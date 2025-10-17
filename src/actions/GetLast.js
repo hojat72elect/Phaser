@@ -6,7 +6,7 @@
  * To use this with a Group: `GetLast(group.getChildren(), compare, index)`
  *
  * @function Phaser.Actions.GetLast
- * @since 3.3.0
+ * 
  *
  * @generic {Phaser.GameObjects.GameObject[]} G - [items]
  *

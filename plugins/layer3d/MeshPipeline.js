@@ -18,7 +18,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.WebGLPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -114,7 +114,7 @@ var MeshPipeline = new Class({
      * Should only be called when changing pipeline.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MeshPipeline#bind
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [reset=false] - Should the pipeline be fully re-bound after a renderer pipeline clear?
      *
@@ -143,7 +143,7 @@ var MeshPipeline = new Class({
      * that requests it, allowing you to perform per-object GL set-up.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MeshPipeline#onBind
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.GameObjects.Mesh} mesh - The Mesh that requested this pipeline.
      *

@@ -6,7 +6,7 @@ var Vector2 = require('../../math/Vector2');
  * `point` object.
  *
  * @function Phaser.Tilemaps.Components.HexagonalTileToWorldXY
- * @since 3.50.0
+ * 
  *
  * @param {number} tileX - The x coordinate, in tiles, not pixels.
  * @param {number} tileY - The y coordinate, in tiles, not pixels.

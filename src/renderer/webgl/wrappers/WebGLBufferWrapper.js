@@ -18,7 +18,7 @@ var Class = require('../../../utils/Class');
  * @class WebGLBufferWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers
  * @constructor
- * @since 3.80.0
+ * 
  *
  * @param {WebGLRenderingContext} gl - The WebGLRenderingContext to create the WebGLBuffer for.
  * @param {ArrayBuffer|number} initialDataOrSize - Either an ArrayBuffer of data, or the size of the buffer to create.
@@ -40,7 +40,7 @@ var WebGLBufferWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#webGLBuffer
              * @type {?WebGLBuffer}
              * @default null
-             * @since 3.80.0
+             * 
              */
             this.webGLBuffer = null;
 
@@ -49,7 +49,7 @@ var WebGLBufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#gl
              * @type {WebGLRenderingContext}
-             * @since 3.80.0
+             * 
              */
             this.gl = gl;
 
@@ -60,7 +60,7 @@ var WebGLBufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#initialDataOrSize
              * @type {ArrayBuffer|number}
-             * @since 3.80.0
+             * 
              */
             this.initialDataOrSize = initialDataOrSize;
 
@@ -69,7 +69,7 @@ var WebGLBufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#bufferType
              * @type {GLenum}
-             * @since 3.80.0
+             * 
              */
             this.bufferType = bufferType;
 
@@ -78,7 +78,7 @@ var WebGLBufferWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#bufferUsage
              * @type {GLenum}
-             * @since 3.80.0
+             * 
              */
             this.bufferUsage = bufferUsage;
 
@@ -92,7 +92,7 @@ var WebGLBufferWrapper = new Class({
      * called again if the WebGLBuffer needs re-creating.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#createResource
-     * @since 3.80.0
+     * 
      */
     createResource: function () {
         if (this.initialDataOrSize === null) {
@@ -121,7 +121,7 @@ var WebGLBufferWrapper = new Class({
      * Remove this WebGLBufferWrapper from the GL context.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper#destroy
-     * @since 3.80.0
+     * 
      */
     destroy: function () {
         var gl = this.gl;

@@ -15,7 +15,7 @@ var Enable = {
      * bodies, something that isn't possible if you're just changing its position directly.
      *
      * @method Phaser.Physics.Arcade.Components.Enable#setDirectControl
-     * @since 3.70.0
+     * 
      *
      * @param {boolean} [value=true] - `true` if the Body calculate velocity based on changes in position, otherwise `false`.
      *
@@ -113,7 +113,7 @@ var Enable = {
      * in the Physics World, based on its Game Object.
      *
      * @method Phaser.Physics.Arcade.Components.Enable#refreshBody
-     * @since 3.1.0
+     * 
      *
      * @return {this} This Game Object.
      *

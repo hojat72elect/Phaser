@@ -7,7 +7,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_ERROR
  * @type {string}
- * @since 3.20.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which threw the error.
  * @param {DOMException|string} event - The native DOM event the browser raised during playback.

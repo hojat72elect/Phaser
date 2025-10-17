@@ -134,7 +134,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#pipelines
              * @type {Phaser.Renderer.WebGL.PipelineManager}
-             * @since 3.50.0
+             * 
              */
             this.pipelines = null;
 
@@ -218,7 +218,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#maxTextures
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.maxTextures = 0;
 
@@ -229,7 +229,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#textureIndexes
              * @type {array}
-             * @since 3.50.0
+             * 
              */
             this.textureIndexes;
 
@@ -238,7 +238,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glBufferWrappers
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper[]}
-             * @since 3.80.0
+             * 
              */
             this.glBufferWrappers = [];
 
@@ -247,7 +247,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glProgramWrappers
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper[]}
-             * @since 3.80.0
+             * 
              */
             this.glProgramWrappers = [];
 
@@ -256,7 +256,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glTextureWrappers
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper[]}
-             * @since 3.80.0
+             * 
              */
             this.glTextureWrappers = [];
 
@@ -265,7 +265,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glFramebufferWrappers
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper[]}
-             * @since 3.80.0
+             * 
              */
             this.glFramebufferWrappers = [];
 
@@ -274,7 +274,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glAttribLocationWrappers
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper[]}
-             * @since 3.80.0
+             * 
              */
             this.glAttribLocationWrappers = [];
 
@@ -283,7 +283,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glUniformLocationWrappers
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper[]}
-             * @since 3.80.0
+             * 
              */
             this.glUniformLocationWrappers = [];
 
@@ -302,7 +302,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#fboStack
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper[]}
-             * @since 3.50.0
+             * 
              */
             this.fboStack = [];
 
@@ -423,7 +423,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#instancedArraysExtension
              * @type {ANGLE_instanced_arrays}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.instancedArraysExtension = null;
 
@@ -436,7 +436,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#vaoExtension
              * @type {OES_vertex_array_object}
              * @default null
-             * @since 3.50.0
+             * 
              */
             this.vaoExtension = null;
 
@@ -457,7 +457,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glFormats
              * @type {array}
-             * @since 3.2.0
+             * 
              */
             this.glFormats;
 
@@ -468,7 +468,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#compression
              * @type {Phaser.Types.Renderer.WebGL.WebGLTextureCompression}
-             * @since 3.8.0
+             * 
              */
             this.compression;
 
@@ -501,7 +501,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#normalTexture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
              * @readonly
-             * @since 3.80.0
+             * 
              */
             this.normalTexture = null;
 
@@ -512,7 +512,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#whiteTexture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
              * @readonly
-             * @since 3.50.0
+             * 
              */
             this.whiteTexture = null;
 
@@ -597,7 +597,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#finalType
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.finalType = false;
 
@@ -627,7 +627,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#mipmapFilter
              * @type {GLenum}
-             * @since 3.21.0
+             * 
              */
             this.mipmapFilter = null;
 
@@ -637,7 +637,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#defaultScissor
              * @type {number[]}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.defaultScissor = [0, 0, 0, 0];
 
@@ -646,7 +646,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#isBooted
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.isBooted = false;
 
@@ -657,7 +657,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#renderTarget
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.50.0
+             * 
              */
             this.renderTarget = null;
 
@@ -666,7 +666,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#projectionMatrix
              * @type {Phaser.Math.Matrix4}
-             * @since 3.50.0
+             * 
              */
             this.projectionMatrix;
 
@@ -675,7 +675,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#projectionWidth
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.projectionWidth = 0;
 
@@ -684,7 +684,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#projectionHeight
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.projectionHeight = 0;
 
@@ -954,7 +954,7 @@ var WebGLRenderer = new Class({
      * If you do override them, make sure that your handlers invoke the methods `WebGLRenderer.dispatchContextLost` and `WebGLRenderer.dispatchContextRestored` in due course, otherwise the renderer will not be able to restore itself fully.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setContextHandlers
-     * @since 3.85.0
+     * 
      *
      * @param {function} [contextLost] - Custom handler for responding to the WebGL context lost event. Set as `undefined` to use the default handler.
      * @param {function} [contextRestored] - Custom handler for responding to the WebGL context restored event. Set as `undefined` to use the default handler.
@@ -991,7 +991,7 @@ var WebGLRenderer = new Class({
      * If you override the context loss handler via the `setContextHandlers` method then be sure to invoke this method in due course.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#dispatchContextLost
-     * @since 3.85.0
+     * 
      *
      * @param {WebGLContextEvent } event - The WebGL context lost Event.
      */
@@ -1012,7 +1012,7 @@ var WebGLRenderer = new Class({
      * If you override the context restored handler via the `setContextHandlers` method then be sure to invoke this method in due course.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#dispatchContextRestored
-     * @since 3.85.0
+     * 
      *
      * @param {WebGLContextEvent } event - The WebGL context restored Event.
      */
@@ -1332,7 +1332,7 @@ var WebGLRenderer = new Class({
      * Make sure to call `endCapture` when you are finished.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#beginCapture
-     * @since 3.50.0
+     * 
      *
      * @param {number} [width] - Optional new width of the Render Target.
      * @param {number} [height] - Optional new height of the Render Target.
@@ -1357,7 +1357,7 @@ var WebGLRenderer = new Class({
      * `resetViewport` and `resetScissor` accordingly.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#endCapture
-     * @since 3.50.0
+     * 
      *
      * @return {Phaser.Renderer.WebGL.RenderTarget} A reference to the WebGL Renderer Render Target.
      */
@@ -1497,7 +1497,7 @@ var WebGLRenderer = new Class({
      * Gets the aspect ratio of the WebGLRenderer dimensions.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getAspectRatio
-     * @since 3.50.0
+     * 
      *
      * @return {number} The aspect ratio of the WebGLRenderer dimensions.
      */
@@ -1509,7 +1509,7 @@ var WebGLRenderer = new Class({
      * Sets the Projection Matrix of this renderer to the given dimensions.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#setProjectionMatrix
-     * @since 3.50.0
+     * 
      *
      * @param {number} width - The new width of the Projection Matrix.
      * @param {number} height - The new height of the Projection Matrix.
@@ -1534,7 +1534,7 @@ var WebGLRenderer = new Class({
      * as a result of the capture process.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#resetProjectionMatrix
-     * @since 3.50.0
+     * 
      *
      * @return {this} This WebGLRenderer instance.
      */
@@ -1665,7 +1665,7 @@ var WebGLRenderer = new Class({
      * modifying the scissor stack.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#resetScissor
-     * @since 3.50.0
+     * 
      */
     resetScissor: function () {
         var gl = this.gl;
@@ -1727,7 +1727,7 @@ var WebGLRenderer = new Class({
      * Resets the gl viewport to the current renderer dimensions.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#resetViewport
-     * @since 3.50.0
+     * 
      */
     resetViewport: function () {
         var gl = this.gl;
@@ -1849,7 +1849,7 @@ var WebGLRenderer = new Class({
      * Call `popFramebuffer` to remove it again.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#pushFramebuffer
-     * @since 3.50.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper} framebuffer - The framebuffer that needs to be bound.
      * @param {boolean} [updateScissor=false] - Set the gl scissor to match the frame buffer size? Or, if `null` given, pop the scissor from the stack.
@@ -1957,7 +1957,7 @@ var WebGLRenderer = new Class({
      * Pops the previous framebuffer from the fbo stack and sets it.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#popFramebuffer
-     * @since 3.50.0
+     * 
      *
      * @param {boolean} [updateScissor=false] - If a framebuffer is given, set the gl scissor to match the frame buffer size? Or, if `null` given, pop the scissor from the stack.
      * @param {boolean} [setViewport=true] - Should the WebGL viewport be set?
@@ -2053,7 +2053,7 @@ var WebGLRenderer = new Class({
      * changing anything, or flushing.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#resetProgram
-     * @since 3.50.0
+     * 
      *
      * @return {this} This WebGLRenderer instance.
      */
@@ -2290,7 +2290,7 @@ var WebGLRenderer = new Class({
      * Creates a WebGLAttribLocationWrapper instance based on the given WebGLProgramWrapper and attribute name.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createAttribLocation
-     * @since 3.80.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper} program - The WebGLProgramWrapper instance.
      * @param {string} name - The name of the attribute.
@@ -2305,7 +2305,7 @@ var WebGLRenderer = new Class({
      * Creates a WebGLUniformLocationWrapper instance based on the given WebGLProgramWrapper and uniform name.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createUniformLocation
-     * @since 3.80.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper} program - The WebGLProgramWrapper instance.
      * @param {string} name - The name of the uniform.
@@ -2397,7 +2397,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#deleteAttribLocation
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLAttribLocationWrapper} attrib - The attrib location to be deleted.
-     * @since 3.80.0
+     * 
      */
     deleteAttribLocation: function (attrib) {
         if (attrib) {
@@ -2413,7 +2413,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#deleteUniformLocation
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLUniformLocationWrapper} uniform - The uniform location to be deleted.
-     * @since 3.80.0
+     * 
      */
     deleteUniformLocation: function (uniform) {
         if (uniform) {
@@ -2489,7 +2489,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getCurrentStencilMask
      * @private
-     * @since 3.50.0
+     * 
      */
     getCurrentStencilMask: function () {
         var prev = null;
@@ -2977,7 +2977,7 @@ var WebGLRenderer = new Class({
      * Creates a new WebGL Texture based on the given Canvas Element.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createCanvasTexture
-     * @since 3.20.0
+     * 
      *
      * @param {HTMLCanvasElement} srcCanvas - The Canvas to create the WebGL Texture from.
      * @param {boolean} [noRepeat=false] - Should this canvas be allowed to set `REPEAT` (such as for Text objects?)
@@ -3000,7 +3000,7 @@ var WebGLRenderer = new Class({
      * Updates a WebGL Texture based on the given Canvas Element.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#updateCanvasTexture
-     * @since 3.20.0
+     * 
      *
      * @param {HTMLCanvasElement} srcCanvas - The Canvas to update the WebGL Texture from.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} dstTexture - The destination WebGLTextureWrapper to update.
@@ -3026,7 +3026,7 @@ var WebGLRenderer = new Class({
      * If the `dstTexture` parameter is given, the WebGL Texture is updated, rather than created fresh.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#videoToTexture
-     * @since 3.85.0
+     * 
      *
      * @param {HTMLVideoElement} srcVideo - The Video to create the WebGL Texture from
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} [dstTexture] - The destination WebGLTextureWrapper to set.
@@ -3076,7 +3076,7 @@ var WebGLRenderer = new Class({
      * Creates a new WebGL Texture based on the given HTML Video Element.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createVideoTexture
-     * @since 3.20.0
+     * 
      *
      * @param {HTMLVideoElement} srcVideo - The Video to create the WebGL Texture from
      * @param {boolean} [noRepeat=false] - Should this canvas be allowed to set `REPEAT`?
@@ -3099,7 +3099,7 @@ var WebGLRenderer = new Class({
      * Updates a WebGL Texture based on the given HTML Video Element.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#updateVideoTexture
-     * @since 3.20.0
+     * 
      *
      * @param {HTMLVideoElement} srcVideo - The Video to update the WebGL Texture with.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} dstTexture - The destination WebGLTextureWrapper to update.
@@ -3127,7 +3127,7 @@ var WebGLRenderer = new Class({
      * The texture will be filtered with `gl.NEAREST` and will not be mipped.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createUint8ArrayTexture
-     * @since 3.80.0
+     * 
      * @param {Uint8Array} data - The Uint8Array to create the texture from.
      * @param {number} width - The width of the texture.
      * @param {number} height - The height of the texture.
@@ -3190,7 +3190,7 @@ var WebGLRenderer = new Class({
      * hardware / driver support for a given size.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getMaxTextureSize
-     * @since 3.8.0
+     * 
      *
      * @return {number} The maximum supported texture size.
      */

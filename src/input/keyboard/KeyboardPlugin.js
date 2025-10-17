@@ -147,7 +147,7 @@ var KeyboardPlugin = new Class({
              * @name Phaser.Input.Keyboard.KeyboardPlugin#prevCode
              * @type {string}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.prevCode = null;
 
@@ -157,7 +157,7 @@ var KeyboardPlugin = new Class({
              * @name Phaser.Input.Keyboard.KeyboardPlugin#prevTime
              * @type {number}
              * @private
-             * @since 3.50.0
+             * 
              */
             this.prevTime = 0;
 
@@ -167,7 +167,6 @@ var KeyboardPlugin = new Class({
              * @name Phaser.Input.Keyboard.KeyboardPlugin#prevType
              * @type {string}
              * @private
-             * @since 3.50.1
              */
             this.prevType = null;
 
@@ -574,7 +573,7 @@ var KeyboardPlugin = new Class({
      * Removes all Key objects created by _this_ Keyboard Plugin.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#removeAllKeys
-     * @since 3.24.0
+     * 
      *
      * @param {boolean} [destroy=false] - Call `Key.destroy` on each removed Key object?
      * @param {boolean} [removeCapture=false] - Remove all key captures for Key objects owened by this plugin?

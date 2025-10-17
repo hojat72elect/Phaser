@@ -20,7 +20,7 @@ var IsSizePowerOfTwo = require('../../../math/pow2/IsSizePowerOfTwo');
  * @class WebGLTextureWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers
  * @constructor
- * @since 3.80.0
+ * 
  *
  * @param {WebGLRenderingContext} gl - WebGL context the texture belongs to.
  * @param {number} mipLevel - Mip level of the texture.
@@ -51,7 +51,7 @@ var WebGLTextureWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#webGLTexture
              * @type {?WebGLTexture}
              * @default null
-             * @since 3.80.0
+             * 
              */
             this.webGLTexture = null;
 
@@ -61,7 +61,7 @@ var WebGLTextureWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#isRenderTexture
              * @type {boolean}
              * @default false
-             * @since 3.80.0
+             * 
              */
             this.isRenderTexture = false;
 
@@ -70,7 +70,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#gl
              * @type {WebGLRenderingContext}
-             * @since 3.80.0
+             * 
              */
             this.gl = gl;
 
@@ -79,7 +79,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#mipLevel
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.mipLevel = mipLevel;
 
@@ -88,7 +88,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#minFilter
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.minFilter = minFilter;
 
@@ -97,7 +97,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#magFilter
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.magFilter = magFilter;
 
@@ -106,7 +106,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#wrapT
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.wrapT = wrapT;
 
@@ -115,7 +115,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#wrapS
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.wrapS = wrapS;
 
@@ -124,7 +124,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#format
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.format = format;
 
@@ -133,7 +133,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#pixels
              * @type {?object}
-             * @since 3.80.0
+             * 
              */
             this.pixels = pixels;
 
@@ -142,7 +142,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#width
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.width = width;
 
@@ -151,7 +151,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#height
              * @type {number}
-             * @since 3.80.0
+             * 
              */
             this.height = height;
 
@@ -160,7 +160,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#pma
              * @type {boolean}
-             * @since 3.80.0
+             * 
              */
             this.pma = (pma === undefined || pma === null) ? true : pma;
 
@@ -169,7 +169,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#forceSize
              * @type {boolean}
-             * @since 3.80.0
+             * 
              */
             this.forceSize = !!forceSize;
 
@@ -178,7 +178,7 @@ var WebGLTextureWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#flipY
              * @type {boolean}
-             * @since 3.80.0
+             * 
              */
             this.flipY = !!flipY;
 
@@ -190,7 +190,7 @@ var WebGLTextureWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#__SPECTOR_Metadata
              * @type {object}
              * @private
-             * @since 3.80.0
+             * 
              */
             // eslint-disable-next-line camelcase
             this.__SPECTOR_Metadata = {};
@@ -205,7 +205,7 @@ var WebGLTextureWrapper = new Class({
      * called again if the WebGLTexture needs re-creating.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#createResource
-     * @since 3.80.0
+     * 
      */
     createResource: function () {
         var gl = this.gl;
@@ -240,7 +240,7 @@ var WebGLTextureWrapper = new Class({
      * This should only be used when the source is a Canvas or Video element.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#update
-     * @since 3.80.0
+     * 
      *
      * @param {?object} source - The source to update the WebGLTexture with.
      * @param {number} width - The new width of the WebGLTexture.
@@ -284,7 +284,7 @@ var WebGLTextureWrapper = new Class({
      *
      * @function Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#_processTexture
      * @protected
-     * @since 3.85.0
+     * 
      * @ignore
      */
     _processTexture: function () {
@@ -357,7 +357,7 @@ var WebGLTextureWrapper = new Class({
      *
      * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#spectorMetadata
      * @type {object}
-     * @since 3.80.0
+     * 
      */
     spectorMetadata: {
 
@@ -380,7 +380,7 @@ var WebGLTextureWrapper = new Class({
      * Deletes the WebGLTexture from the GPU, if it has not been already.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#destroy
-     * @since 3.80.0
+     * 
      */
     destroy: function () {
         if (this.webGLTexture === null) {

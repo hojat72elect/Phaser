@@ -15,7 +15,7 @@
  *
  * @event Phaser.Scenes.Events#TRANSITION_OUT
  * @type {string}
- * @since 3.5.0
+ * 
  *
  * @param {Phaser.Scene} target - A reference to the Scene that is being transitioned to.
  * @param {number} duration - The duration of the transition in ms.

@@ -324,7 +324,7 @@ var Shape = new Class({
      * Calling this will adjust the scale.
      *
      * @method Phaser.GameObjects.Shape#setDisplaySize
-     * @since 3.53.0
+     * 
      *
      * @param {number} width - The display width of this Shape.
      * @param {number} height - The display height of this Shape.

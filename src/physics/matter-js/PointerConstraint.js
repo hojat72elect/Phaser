@@ -172,7 +172,7 @@ var PointerConstraint = new Class({
      * A Pointer has been released from the Scene. If it was the one this constraint was using, it's cleared.
      *
      * @method Phaser.Physics.Matter.PointerConstraint#onUp
-     * @since 3.22.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - A reference to the Pointer that was pressed.
      */

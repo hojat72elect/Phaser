@@ -208,7 +208,7 @@ var Factory = new Class({
      * If you pas in an `options` object, any settings in there will override those in the PhysicsEditor config object.
      *
      * @method Phaser.Physics.Matter.Factory#fromPhysicsEditor
-     * @since 3.22.0
+     * 
      *
      * @param {number} x - The horizontal world location of the body.
      * @param {number} y - The vertical world location of the body.
@@ -253,7 +253,7 @@ var Factory = new Class({
      * ```
      *
      * @method Phaser.Physics.Matter.Factory#fromSVG
-     * @since 3.22.0
+     * 
      *
      * @param {number} x - The X coordinate of the body.
      * @param {number} y - The Y coordinate of the body.
@@ -336,7 +336,7 @@ var Factory = new Class({
      * At the time of writing, only the Phaser Physics Tracer App exports in this format.
      *
      * @method Phaser.Physics.Matter.Factory#fromJSON
-     * @since 3.22.0
+     * 
      *
      * @param {number} x - The X coordinate of the body.
      * @param {number} y - The Y coordinate of the body.
@@ -879,7 +879,7 @@ var Factory = new Class({
      * to link with this Game Object.
      *
      * @method Phaser.Physics.Matter.Factory#gameObject
-     * @since 3.3.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to inject the Matter Components in to.
      * @param {(Phaser.Types.Physics.Matter.MatterBodyConfig|MatterJS.Body)} [options] - A Matter Body configuration object, or an instance of a Matter Body.
@@ -895,7 +895,7 @@ var Factory = new Class({
      * Destroys this Factory.
      *
      * @method Phaser.Physics.Matter.Factory#destroy
-     * @since 3.5.0
+     * 
      */
     destroy: function () {
         this.world = null;

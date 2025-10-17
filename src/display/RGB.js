@@ -9,7 +9,7 @@ var NOOP = require('../utils/NOOP');
  * @class RGB
  * @memberof Phaser.Display
  * @constructor
- * @since 3.50.0
+ * 
  *
  * @param {number} [red=0] - The red color value. A number between 0 and 1.
  * @param {number} [green=0] - The green color value. A number between 0 and 1.
@@ -26,7 +26,7 @@ var RGB = new Class({
              * @name Phaser.Display.RGB#_rgb
              * @type {number[]}
              * @private
-             * @since 3.50.0
+             * 
              */
             this._rgb = [0, 0, 0];
 
@@ -37,7 +37,7 @@ var RGB = new Class({
              *
              * @name Phaser.Display.RGB#onChangeCallback
              * @type {function}
-             * @since 3.50.0
+             * 
              */
             this.onChangeCallback = NOOP;
 
@@ -46,7 +46,7 @@ var RGB = new Class({
              *
              * @name Phaser.Display.RGB#dirty
              * @type {boolean}
-             * @since 3.50.0
+             * 
              */
             this.dirty = false;
 
@@ -58,7 +58,7 @@ var RGB = new Class({
      * dirty and then invokes the `onChangeCallback`, if set.
      *
      * @method Phaser.Display.RGB#set
-     * @since 3.50.0
+     * 
      *
      * @param {number} [red=0] - The red color value. A number between 0 and 1.
      * @param {number} [green=0] - The green color value. A number between 0 and 1.
@@ -89,7 +89,7 @@ var RGB = new Class({
      * a boolean `true` value if they are equal, otherwise it returns `false`.
      *
      * @method Phaser.Display.RGB#equals
-     * @since 3.50.0
+     * 
      *
      * @param {number} red - The red value to compare with this object.
      * @param {number} green - The green value to compare with this object.
@@ -109,7 +109,7 @@ var RGB = new Class({
      * new RGB values.
      *
      * @method Phaser.Display.RGB#onChange
-     * @since 3.50.0
+     * 
      */
     onChange: function () {
         this.dirty = true;
@@ -127,7 +127,7 @@ var RGB = new Class({
      *
      * @name Phaser.Display.RGB#r
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     r: {
 
@@ -150,7 +150,7 @@ var RGB = new Class({
      *
      * @name Phaser.Display.RGB#g
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     g: {
 
@@ -173,7 +173,7 @@ var RGB = new Class({
      *
      * @name Phaser.Display.RGB#b
      * @type {number}
-     * @since 3.50.0
+     * 
      */
     b: {
 
@@ -192,7 +192,7 @@ var RGB = new Class({
      * Nulls any external references this object contains.
      *
      * @method Phaser.Display.RGB#destroy
-     * @since 3.50.0
+     * 
      */
     destroy: function () {
         this.onChangeCallback = null;

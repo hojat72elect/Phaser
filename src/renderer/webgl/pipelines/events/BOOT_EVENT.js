@@ -4,7 +4,7 @@
  * This event is dispatched by a WebGLPipeline when it has completed its `boot` phase.
  *
  * @event Phaser.Renderer.WebGL.Pipelines.Events#BOOT
- * @since 3.50.0
+ * 
  *
  * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The pipeline that booted.
  */

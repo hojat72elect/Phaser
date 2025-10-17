@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Renderer.WebGL.WebGLPipelineConfig
- * @since 3.50.0
+ * 
  *
  * @property {Phaser.Game} game - The Phaser.Game instance that owns this pipeline.
  * @property {string} [name] - The name of the pipeline.

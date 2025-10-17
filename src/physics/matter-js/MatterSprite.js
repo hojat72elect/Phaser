@@ -91,7 +91,7 @@ var MatterSprite = new Class({
              * @name Phaser.Physics.Matter.Sprite#_crop
              * @type {object}
              * @private
-             * @since 3.24.0
+             * 
              */
             this._crop = this.resetCropObject();
 

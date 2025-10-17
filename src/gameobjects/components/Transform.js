@@ -276,7 +276,7 @@ var Transform = {
      * Copies an object's coordinates to this Game Object's position.
      *
      * @method Phaser.GameObjects.Components.Transform#copyPosition
-     * @since 3.50.0
+     * 
      *
      * @param {(Phaser.Types.Math.Vector2Like|Phaser.Types.Math.Vector3Like|Phaser.Types.Math.Vector4Like)} source - An object with numeric 'x', 'y', 'z', or 'w' properties. Undefined values are not copied.
      *
@@ -309,7 +309,7 @@ var Transform = {
      * guaranteed to be within the area.
      *
      * @method Phaser.GameObjects.Components.Transform#setRandomPosition
-     * @since 3.8.0
+     * 
      *
      * @param {number} [x=0] - The x position of the top-left of the random area.
      * @param {number} [y=0] - The y position of the top-left of the random area.
@@ -490,7 +490,7 @@ var Transform = {
      * Gets the local transform matrix for this Game Object.
      *
      * @method Phaser.GameObjects.Components.Transform#getLocalTransformMatrix
-     * @since 3.4.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} [tempMatrix] - The matrix to populate with the values from this Game Object.
      *
@@ -508,7 +508,7 @@ var Transform = {
      * Gets the world transform matrix for this Game Object, factoring in any parent Containers.
      *
      * @method Phaser.GameObjects.Components.Transform#getWorldTransformMatrix
-     * @since 3.4.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} [tempMatrix] - The matrix to populate with the values from this Game Object.
      * @param {Phaser.GameObjects.Components.TransformMatrix} [parentMatrix] - A temporary matrix to hold parent values during the calculations.
@@ -562,7 +562,7 @@ var Transform = {
      * Game Object belongs.
      *
      * @method Phaser.GameObjects.Components.Transform#getLocalPoint
-     * @since 3.50.0
+     * 
      *
      * @param {number} x - The x position to translate.
      * @param {number} y - The y position to translate.
@@ -604,7 +604,7 @@ var Transform = {
      * Gets the world position of this Game Object, factoring in any parent Containers.
      *
      * @method Phaser.GameObjects.Components.Transform#getWorldPoint
-     * @since 3.88.0
+     * 
      *
      * @param {Phaser.Math.Vector2} [point] - A Vector2, or point-like object, to store the result in.
      * @param {Phaser.GameObjects.Components.TransformMatrix} [tempMatrix] - A temporary matrix to hold the Game Object's values.

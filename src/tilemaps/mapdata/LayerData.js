@@ -40,7 +40,7 @@ var LayerData = new Class({
              *
              * @name Phaser.Tilemaps.LayerData#id
              * @type {number}
-             * @since 3.70.0
+             * 
              */
             this.id = GetFastValue(config, 'id', 0);
 
@@ -121,7 +121,7 @@ var LayerData = new Class({
              *
              * @name Phaser.Tilemaps.LayerData#orientation
              * @type {Phaser.Tilemaps.OrientationType}
-             * @since 3.50.0
+             * 
              */
             this.orientation = GetFastValue(config, 'orientation', CONST.ORTHOGONAL);
 
@@ -230,7 +230,7 @@ var LayerData = new Class({
              *
              * @name Phaser.Tilemaps.LayerData#hexSideLength
              * @type {number}
-             * @since 3.50.0
+             * 
              */
             this.hexSideLength = GetFastValue(config, 'hexSideLength', 0);
 

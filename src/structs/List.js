@@ -66,7 +66,7 @@ var List = new Class({
              *
              * @name Phaser.Structs.List#addCallback
              * @type {function}
-             * @since 3.4.0
+             * 
              */
             this.addCallback = NOOP;
 
@@ -75,7 +75,7 @@ var List = new Class({
              *
              * @name Phaser.Structs.List#removeCallback
              * @type {function}
-             * @since 3.4.0
+             * 
              */
             this.removeCallback = NOOP;
 
@@ -84,7 +84,7 @@ var List = new Class({
              *
              * @name Phaser.Structs.List#_sortKey
              * @type {string}
-             * @since 3.4.0
+             * 
              */
             this._sortKey = '';
         },
@@ -333,7 +333,7 @@ var List = new Class({
      * Above means toward the end of the List.
      *
      * @method Phaser.Structs.List#moveAbove
-     * @since 3.55.0
+     * 
      *
      * @genericUse {T} - [child1,child2]
      *
@@ -350,7 +350,7 @@ var List = new Class({
      * Below means toward the start of the List.
      *
      * @method Phaser.Structs.List#moveBelow
-     * @since 3.55.0
+     * 
      *
      * @genericUse {T} - [child1,child2]
      *

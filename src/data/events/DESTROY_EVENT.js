@@ -5,6 +5,6 @@
  *
  * @event Phaser.Data.Events#DESTROY
  * @type {string}
- * @since 3.50.0
+ * 
  */
 module.exports = 'destroy';

@@ -190,7 +190,7 @@ var TouchManager = new Class({
      * Use this if you need to disable the OS context menu on mobile.
      *
      * @method Phaser.Input.Touch.TouchManager#disableContextMenu
-     * @since 3.20.0
+     * 
      *
      * @return {this} This Touch Manager instance.
      */

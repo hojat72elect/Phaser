@@ -8,7 +8,7 @@ var _FLAG = 2; // 0010
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.AlphaSingle
- * @since 3.22.0
+ * 
  */
 
 var AlphaSingle = {

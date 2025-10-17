@@ -20,7 +20,7 @@ var RotateRight = require('../RotateRight');
  * ```
  *
  * @function Phaser.Utils.Array.Matrix.Translate
- * @since 3.50.0
+ * 
  *
  * @generic T
  * @genericUse {T[][]} - [matrix,$return]

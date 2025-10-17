@@ -17,7 +17,7 @@ var Class = require('../../../utils/Class');
  * @class WebGLProgramWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers
  * @constructor
- * @since 3.80.0
+ * 
  *
  * @param {WebGLRenderingContext} gl - The WebGLRenderingContext to create the WebGLProgram for.
  * @param {string} vertexSource - The vertex shader source code as a string.
@@ -38,7 +38,7 @@ var WebGLProgramWrapper = new Class({
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#webGLProgram
              * @type {?WebGLProgram}
              * @default null
-             * @since 3.80.0
+             * 
              */
             this.webGLProgram = null;
 
@@ -47,7 +47,7 @@ var WebGLProgramWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#gl
              * @type {WebGLRenderingContext}
-             * @since 3.80.0
+             * 
              */
             this.gl = gl;
 
@@ -56,7 +56,7 @@ var WebGLProgramWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#vertexSource
              * @type {string}
-             * @since 3.80.0
+             * 
              */
             this.vertexSource = vertexSource;
 
@@ -65,7 +65,7 @@ var WebGLProgramWrapper = new Class({
              *
              * @name Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#fragmentSource
              * @type {string}
-             * @since 3.80.0
+             * 
              */
             this.fragmentSource = fragmentSource;
 
@@ -80,7 +80,7 @@ var WebGLProgramWrapper = new Class({
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#createResource
      * @throws {Error} If the shaders failed to compile or link.
-     * @since 3.80.0
+     * 
      */
     createResource: function () {
         var gl = this.gl;
@@ -130,7 +130,7 @@ var WebGLProgramWrapper = new Class({
      * Remove this WebGLProgram from the GL context.
      *
      * @method Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper#destroy
-     * @since 3.80.0
+     * 
      */
     destroy: function () {
         if (!this.webGLProgram) {

@@ -8,7 +8,7 @@ var SafeRange = require('./SafeRange');
  * You can optionally specify a callback to be invoked for the item/s successfully removed from the array.
  *
  * @function Phaser.Utils.Array.RemoveBetween
- * @since 3.4.0
+ * 
  *
  * @param {array} array - The array to be modified.
  * @param {number} startIndex - The start index to remove from.

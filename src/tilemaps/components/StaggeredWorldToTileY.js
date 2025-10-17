@@ -3,7 +3,7 @@
  * layers position, scale and scroll.
  *
  * @function Phaser.Tilemaps.Components.StaggeredWorldToTileY
- * @since 3.50.0
+ * 
  *
  * @param {number} worldY - The y coordinate to be converted, in pixels, not tiles.
  * @param {boolean} snapToFloor - Whether or not to round the tile coordinate down to the nearest integer.

@@ -294,7 +294,7 @@ var Game = new Class({
              * @name Phaser.Game#pendingDestroy
              * @type {boolean}
              * @private
-             * @since 3.5.0
+             * 
              */
             this.pendingDestroy = false;
 
@@ -304,7 +304,7 @@ var Game = new Class({
              * @name Phaser.Game#removeCanvas
              * @type {boolean}
              * @private
-             * @since 3.5.0
+             * 
              */
             this.removeCanvas = false;
 
@@ -326,7 +326,7 @@ var Game = new Class({
              * @name Phaser.Game#hasFocus
              * @type {boolean}
              * @readonly
-             * @since 3.9.0
+             * 
              */
             this.hasFocus = false;
 
@@ -513,7 +513,7 @@ var Game = new Class({
      * @method Phaser.Game#headlessStep
      * @fires Phaser.Game#PRE_RENDER
      * @fires Phaser.Game#POST_RENDER
-     * @since 3.2.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -710,7 +710,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#runDestroy
      * @private
-     * @since 3.5.0
+     * 
      */
     runDestroy: function () {
         this.scene.destroy();

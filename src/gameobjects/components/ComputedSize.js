@@ -92,7 +92,7 @@ var ComputedSize = {
      * size of the hit area. To do this you should adjust the `input.hitArea` object directly.
      *
      * @method Phaser.GameObjects.Components.ComputedSize#setSize
-     * @since 3.4.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -112,7 +112,7 @@ var ComputedSize = {
      * Calling this will adjust the scale.
      *
      * @method Phaser.GameObjects.Components.ComputedSize#setDisplaySize
-     * @since 3.4.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.

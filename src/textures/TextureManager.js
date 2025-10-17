@@ -1078,7 +1078,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#addUint8Array
      * @fires Phaser.Textures.Events#ADD
-     * @since 3.80.0
+     * 
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {Uint8Array} data - The color data for the texture.
