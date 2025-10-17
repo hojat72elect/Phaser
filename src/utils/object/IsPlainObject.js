@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * This is a slightly modified version of jQuery.isPlainObject.
  * A plain object is an object whose internal class property is [object Object].
  *

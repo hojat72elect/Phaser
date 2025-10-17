@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var AddBlendFS = require('../shaders/AddBlend-frag');
 var BlendModes = require('../../BlendModes');
 var Class = require('../../../utils/Class');

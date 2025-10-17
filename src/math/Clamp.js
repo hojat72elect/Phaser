@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Force a value within the boundaries by clamping it to the range `min`, `max`.
  *
  * @function Phaser.Math.Clamp

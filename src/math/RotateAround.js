@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Rotate a `point` around `x` and `y` to the given `angle`, at the same distance.
  *
  * In polar notation, this maps a point from (r, t) to (r, angle), vs. the origin (x, y).

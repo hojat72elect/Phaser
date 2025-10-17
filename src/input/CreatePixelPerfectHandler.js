@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Creates a new Pixel Perfect Handler function.
  *
  * Access via `InputPlugin.makePixelPerfect` rather than calling it directly.

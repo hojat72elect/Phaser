@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Checks if the given `width` and `height` are a power of two.
  * Useful for checking texture dimensions.
  *

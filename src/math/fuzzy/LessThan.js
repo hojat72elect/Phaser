@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Check whether `a` is fuzzily less than `b`.
  *
  * `a` is fuzzily less than `b` if it is less than `b + epsilon`.

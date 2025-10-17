@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Checks if the given tile coordinates are within the bounds of the layer.
  *
  * @function Phaser.Tilemaps.Components.IsInLayerBounds

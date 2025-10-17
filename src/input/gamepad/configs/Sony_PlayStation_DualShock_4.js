@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * PlayStation DualShock 4 Gamepad Configuration.
  * Sony PlayStation DualShock 4 (v2) wireless controller
  *

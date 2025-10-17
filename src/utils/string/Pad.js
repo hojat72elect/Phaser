@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Takes the given string and pads it out, to the length required, using the character
  * specified. For example if you need a string to be 6 characters long, you can call:
  *

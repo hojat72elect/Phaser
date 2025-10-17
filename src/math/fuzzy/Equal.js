@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Check whether the given values are fuzzily equal.
  *
  * Two numbers are fuzzily equal if their difference is less than `epsilon`.

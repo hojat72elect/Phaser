@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Gamepad Disconnected Event.
  *
  * This event is dispatched by the Gamepad Plugin when a Gamepad has been disconnected.

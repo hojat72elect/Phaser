@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Bounds = require('./lib/geometry/Bounds');
 var Class = require('../../utils/Class');
 var Composite = require('./lib/body/Composite');

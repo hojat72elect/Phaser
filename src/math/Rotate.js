@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Rotate a given point by a given angle around the origin (0, 0), in an anti-clockwise direction.
  *
  * @function Phaser.Math.Rotate

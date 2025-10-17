@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Parses an XML Texture Atlas object and adds all the Frames into a Texture.
  *
  * @function Phaser.Textures.Parsers.AtlasXML

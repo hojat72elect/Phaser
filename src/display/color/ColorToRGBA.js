@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Converts the given color value into an Object containing r,g,b and a properties.
  *
  * @function Phaser.Display.Color.ColorToRGBA

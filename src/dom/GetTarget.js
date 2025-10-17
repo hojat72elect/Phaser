@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Attempts to get the target DOM element based on the given value, which can be either
  * a string, in which case it will be looked-up by ID, or an element node. If nothing
  * can be found it will return a reference to the document.body.

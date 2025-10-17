@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Converts an RGB color value to HSV (hue, saturation and value).
  * Conversion formula from http://en.wikipedia.org/wiki/HSL_color_space.
  * Assumes RGB values are contained in the set [0, 255] and returns h, s and v in the set [0, 1].

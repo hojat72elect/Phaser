@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 //  This is based off an explanation and expanded math presented by Paul Bourke:
 //  See http://paulbourke.net/geometry/pointlineplane/
 

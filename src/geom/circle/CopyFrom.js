@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Copies the `x`, `y` and `radius` properties from the `source` Circle
  * into the given `dest` Circle, then returns the `dest` Circle.
  *

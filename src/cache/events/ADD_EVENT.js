@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Cache Add Event.
  *
  * This event is dispatched by any Cache that extends the BaseCache each time a new object is added to it.

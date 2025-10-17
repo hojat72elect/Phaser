@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Checks if two Rectangles intersect.
  *
  * A Rectangle intersects another Rectangle if any part of its bounds is within the other Rectangle's bounds.

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Compute a random position vector in a spherical area, optionally defined by the given radius.
  *
  * @function Phaser.Math.RandomXYZ

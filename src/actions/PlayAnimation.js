@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Play an animation on all Game Objects in the array that have an Animation component.
  *
  * You can pass either an animation key, or an animation configuration object for more control over the playback.

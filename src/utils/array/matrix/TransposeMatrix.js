@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Transposes the elements of the given matrix (array of arrays).
  *
  * The transpose of a matrix is a new matrix whose rows are the columns of the original.

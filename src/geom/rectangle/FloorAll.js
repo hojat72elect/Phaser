@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Rounds a Rectangle's position and size down to the largest integer less than or equal to each current coordinate or dimension.
  *
  * @function Phaser.Geom.Rectangle.FloorAll

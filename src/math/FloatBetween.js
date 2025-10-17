@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Generate a random floating point number between the two given bounds, minimum inclusive, maximum exclusive.
  *
  * @function Phaser.Math.FloatBetween

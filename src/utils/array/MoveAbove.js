@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Moves the given array element above another one in the array.
  * If the given element is already above the other, it isn't moved.
  * Above means toward the end of the array.

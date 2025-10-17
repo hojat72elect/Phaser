@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Audio Data Decoded Event.
  *
  * This event is dispatched by the Web Audio Sound Manager as a result of calling the `decodeAudio` method.

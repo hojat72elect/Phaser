@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * This event is dispatched when the Scene Manager has created the System Scene,
  * which other plugins and systems may use to initialize themselves.
  *

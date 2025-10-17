@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Provides methods used for getting and setting the Scroll Factor of a Game Object.
  *
  * @namespace Phaser.GameObjects.Components.ScrollFactor

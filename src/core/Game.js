@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var AddToDOM = require('../dom/AddToDOM');
 var AnimationManager = require('../animations/AnimationManager');
 var CacheManager = require('../cache/CacheManager');

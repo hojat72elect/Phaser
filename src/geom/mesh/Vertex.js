@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Class = require('../../utils/Class');
 var Utils = require('../../renderer/webgl/Utils');
 var Vector3 = require('../../math/Vector3');

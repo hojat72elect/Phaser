@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Sets a global collision callback for the given tile index within the layer. This will affect all
  * tiles on this layer that have the same index. If a callback is already set for the tile index it
  * will be replaced. Set the callback to null to remove it. If you want to set a callback for a tile

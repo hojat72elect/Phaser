@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Using Bresenham's line algorithm this will return an array of all coordinates on this line.
  *
  * The `start` and `end` points are rounded before this runs as the algorithm works on integers.

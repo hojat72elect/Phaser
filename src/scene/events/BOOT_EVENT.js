@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Scene Systems Boot Event.
  *
  * This event is dispatched by a Scene during the Scene Systems boot process. Primarily used by Scene Plugins.

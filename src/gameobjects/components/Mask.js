@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var BitmapMask = require('../../display/mask/BitmapMask');
 var GeometryMask = require('../../display/mask/GeometryMask');
 

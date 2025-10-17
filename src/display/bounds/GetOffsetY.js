@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Returns the amount the Game Object is visually offset from its y coordinate.
  * This is the same as `width * origin.y`.
  * This value will only be > 0 if `origin.y` is not equal to zero.

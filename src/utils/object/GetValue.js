@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Retrieves a value from an object, or an alternative object, falling to a back-up default value if not found.
  *
  * The key is a string, which can be split based on the use of the period character.

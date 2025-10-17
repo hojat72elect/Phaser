@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Clamp = require('./Clamp');
 var Class = require('../utils/Class');
 var Matrix4 = require('./Matrix4');

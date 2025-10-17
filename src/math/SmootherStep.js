@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Calculate a smoother interpolation percentage of `x` between `min` and `max`.
  *
  * The function receives the number `x` as an argument and returns 0 if `x` is less than or equal to the left edge,

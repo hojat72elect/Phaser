@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Converts from tile X coordinates (tile units) to world X coordinates (pixels), factoring in the
  * layer's position, scale and scroll.
  *

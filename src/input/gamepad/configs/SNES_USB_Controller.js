@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Tatar SNES USB Controller Gamepad Configuration.
  * USB Gamepad  (STANDARD GAMEPAD Vendor: 0079 Product: 0011)
  *

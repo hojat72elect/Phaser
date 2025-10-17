@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Positions the Game Object so that the center top of its bounds aligns with the given coordinate.
  *
  * @function Phaser.Display.Bounds.SetCenterY

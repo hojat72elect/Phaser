@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Takes a string and replaces instances of markers with values in the given array.
  * The markers take the form of `%1`, `%2`, etc. I.e.:
  *

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The File Load Progress Event.
  *
  * This event is dispatched by the Loader Plugin during the load of a file, if the browser receives a DOM ProgressEvent and

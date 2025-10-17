@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Parses out the Wangset information from Tiled 1.1.5+ map data, if present.
  *
  * Since a given tile can be in more than one wangset, the resulting properties

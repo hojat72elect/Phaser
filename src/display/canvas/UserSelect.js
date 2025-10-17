@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Sets the user-select property on the canvas style. Can be used to disable default browser selection actions.
  *
  * @function Phaser.Display.Canvas.UserSelect

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * @typedef {object} Phaser.Physics.Matter.Events.CollisionActiveEvent
  *
  * @property {Phaser.Types.Physics.Matter.MatterCollisionPair[]} pairs - A list of all affected pairs in the collision.

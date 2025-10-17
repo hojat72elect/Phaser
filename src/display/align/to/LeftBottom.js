@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var GetBottom = require('../../bounds/GetBottom');
 var GetLeft = require('../../bounds/GetLeft');
 var SetBottom = require('../../bounds/SetBottom');

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Snap a value to nearest grid slice, using ceil.
  *
  * Example: if you have an interval gap of `5` and a position of `12`... you will snap to `15`.

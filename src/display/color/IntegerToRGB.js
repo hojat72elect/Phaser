@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Return the component parts of a color as an Object with the properties alpha, red, green, blue.
  *
  * Alpha will only be set if it exists in the given color (0xAARRGGBB)

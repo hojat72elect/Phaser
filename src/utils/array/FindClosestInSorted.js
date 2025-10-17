@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Searches a pre-sorted array for the closet value to the given number.
  *
  * If the `key` argument is given it will assume the array contains objects that all have the required `key` property name,

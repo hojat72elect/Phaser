@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Calculate the full bounds, in local and world space, of a BitmapText Game Object.
  *
  * Returns a BitmapTextSize object that contains global and local variants of the Game Objects x and y coordinates and

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Round a given number so it is further away from zero. That is, positive numbers are rounded up, and negative numbers are rounded down.
  *
  * @function Phaser.Math.RoundAwayFromZero

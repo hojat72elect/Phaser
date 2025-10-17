@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Merges a Rectangle with a list of points by repositioning and/or resizing it such that all points are located on or within its bounds.
  *
  * @function Phaser.Geom.Rectangle.MergePoints

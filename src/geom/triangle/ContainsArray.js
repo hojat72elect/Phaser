@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 //  http://www.blackpawn.com/texts/pointinpoly/
 
 //  points is an array of Point-like objects with public x/y properties

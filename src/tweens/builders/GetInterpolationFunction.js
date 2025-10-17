@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Bezier = require('../../math/interpolation/BezierInterpolation');
 var CatmullRom = require('../../math/interpolation/CatmullRomInterpolation');
 var Linear = require('../../math/interpolation/LinearInterpolation');

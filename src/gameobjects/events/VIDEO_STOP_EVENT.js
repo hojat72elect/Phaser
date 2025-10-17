@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Video Game Object Stopped Event.
  *
  * This event is dispatched when a Video is stopped from playback via a call to the `Video.stop` method,

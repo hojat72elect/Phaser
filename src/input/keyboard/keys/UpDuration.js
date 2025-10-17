@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Returns `true` if the Key was released within the `duration` value given, based on the current
  * game clock time. Or returns `false` if it either isn't up, or was released longer ago than the given duration.
  *

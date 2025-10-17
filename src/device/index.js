@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 //  This singleton is instantiated as soon as Phaser loads,
 //  before a Phaser.Game instance has even been created.
 //  Which means all instances of Phaser Games can share it,

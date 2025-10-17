@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var MarchingAnts = require('../geom/rectangle/MarchingAnts');
 var RotateLeft = require('../utils/array/RotateLeft');
 var RotateRight = require('../utils/array/RotateRight');

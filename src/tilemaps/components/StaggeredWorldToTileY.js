@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Converts from world Y coordinates (pixels) to staggered tile Y coordinates (tile units), factoring in the
  * layers position, scale and scroll.
  *

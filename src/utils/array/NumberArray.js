@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Create an array representing the range of numbers (usually integers), between, and inclusive of,
  * the given `start` and `end` arguments. For example:
  *

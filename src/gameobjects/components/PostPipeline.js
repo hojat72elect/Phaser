@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var DeepCopy = require('../../utils/object/DeepCopy');
 var FX = require('../components/FX');
 var SpliceOne = require('../../utils/array/SpliceOne');

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Game Object Drag Enter Event.
  *
  * This event is dispatched by an interactive Game Object if a pointer drags it into a drag target.

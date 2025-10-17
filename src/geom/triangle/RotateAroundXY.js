@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Rotates an entire Triangle at a given angle about a specific point.
  *
  * @function Phaser.Geom.Triangle.RotateAroundXY

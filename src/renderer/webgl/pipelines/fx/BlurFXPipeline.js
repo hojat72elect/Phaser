@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Class = require('../../../../utils/Class');
 var BlurLowFrag = require('../../shaders/FXBlurLow-frag');
 var BlurMedFrag = require('../../shaders/FXBlurMed-frag');

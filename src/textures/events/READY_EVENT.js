@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * This internal event signifies that the Texture Manager is now ready and the Game can continue booting.
  *
  * When a Phaser Game instance is booting for the first time, the Texture Manager has to wait on a couple of non-blocking

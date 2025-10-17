@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Gets the shortest angle between `angle1` and `angle2`.
  *
  * Both angles must be in the range -180 to 180, which is the same clamped

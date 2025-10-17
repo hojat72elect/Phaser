@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Arne16 = require('./palettes/Arne16');
 var CanvasPool = require('../display/canvas/CanvasPool');
 var GetValue = require('../utils/object/GetValue');

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Calculates a Catmull-Rom value from the given points, based on an alpha of 0.5.
  *
  * @function Phaser.Math.CatmullRom

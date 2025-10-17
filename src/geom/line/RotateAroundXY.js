@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Rotate a line around the given coordinates by the given angle in radians.
  *
  * @function Phaser.Geom.Line.RotateAroundXY

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Calculates the square of magnitude of given point.(Can be used for fast magnitude calculation of point)
  *
  * @function Phaser.Geom.Point.GetMagnitudeSq

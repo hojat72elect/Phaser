@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Internally used method to keep track of the tile indexes that collide within a layer. This
  * updates LayerData.collideIndexes to either contain or not contain the given `tileIndex`.
  *

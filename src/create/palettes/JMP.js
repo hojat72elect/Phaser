@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * A 16 color JMP palette by [Arne](http://androidarts.com/palette/16pal.htm)
  *
  * @name Phaser.Create.Palettes.JMP

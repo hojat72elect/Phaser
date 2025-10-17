@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Contains methods for changing the collision filter of a Matter Body. Should be used as a mixin and not called directly.
  *
  * @namespace Phaser.Physics.Matter.Components.Collision

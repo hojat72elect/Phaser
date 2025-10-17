@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Provides methods used for getting and setting the origin of a Game Object.
  * Values are normalized, given in the range 0 to 1.
  * Display values contain the calculated pixel values.

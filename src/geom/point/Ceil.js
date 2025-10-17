@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Apply `Math.ceil()` to each coordinate of the given Point.
  *
  * @function Phaser.Geom.Point.Ceil

@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var Commands = require('./Commands');
 var GetCalcMatrix = require('../GetCalcMatrix');
 var TransformMatrix = require('../components/TransformMatrix');

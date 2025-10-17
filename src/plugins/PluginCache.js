@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 //  Contains the plugins that Phaser uses globally and locally.
 //  These are the source objects, not instantiated.
 var corePlugins = {};

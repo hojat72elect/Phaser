@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * @typedef {object} Phaser.Physics.Matter.Events.BeforeAddEvent
  *
  * @property {any[]} object - An array of the object(s) to be added. May be a single body, constraint, composite or a mixture of these.

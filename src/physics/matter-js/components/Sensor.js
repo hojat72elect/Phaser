@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Enables a Matter-enabled Game Object to be a sensor. Should be used as a mixin and not directly.
  *
  * @namespace Phaser.Physics.Matter.Components.Sensor

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Sound Resume Event.
  *
  * This event is dispatched by both Web Audio and HTML5 Audio Sound objects when they are resumed from a paused state.

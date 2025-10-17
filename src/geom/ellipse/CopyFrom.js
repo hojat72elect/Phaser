@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Copies the `x`, `y`, `width` and `height` properties from the `source` Ellipse
  * into the given `dest` Ellipse, then returns the `dest` Ellipse.
  *

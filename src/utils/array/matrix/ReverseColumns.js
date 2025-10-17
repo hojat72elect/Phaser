@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Reverses the columns in the given Array Matrix.
  *
  * A matrix is a two-dimensional array (array of arrays), where all sub-arrays (rows)

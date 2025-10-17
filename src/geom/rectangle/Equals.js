@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Compares the `x`, `y`, `width` and `height` properties of two rectangles.
  *
  * @function Phaser.Geom.Rectangle.Equals

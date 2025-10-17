@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Decode base-64 encoded data, for example as exported by Tiled.
  *
  * @function Phaser.Tilemaps.Parsers.Tiled.Base64Decode

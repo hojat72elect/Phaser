@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Moves the given array element below another one in the array.
  * If the given element is already below the other, it isn't moved.
  * Below means toward the start of the array.

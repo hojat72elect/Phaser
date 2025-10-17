@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Determines if the two objects (either Rectangles or Rectangle-like) have the same width and height values under strict equality.
  *
  * @function Phaser.Geom.Rectangle.SameDimensions

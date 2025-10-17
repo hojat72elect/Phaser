@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Nudges (translates) the top left corner of a Rectangle by a given offset.
  *
  * @function Phaser.Geom.Rectangle.Offset

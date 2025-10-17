@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Offsets the Ellipse by the values given in the `x` and `y` properties of the Point object.
  *
  * @function Phaser.Geom.Ellipse.OffsetPoint

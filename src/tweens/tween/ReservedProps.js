@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 //  RESERVED properties that a Tween config object uses
 
 //  completeDelay: The time the tween will wait before the onComplete event is dispatched once it has completed

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Scene Systems Sleep Event.
  *
  * This event is dispatched by a Scene when it is sent to sleep, either directly via the `sleep` method,

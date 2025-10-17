@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Video Game Object Error Event.
  *
  * This event is dispatched when a Video tries to play a source that does not exist, or is the wrong file type.

@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Passes all provided Game Objects to the Input Manager to enable them for input with identical areas and callbacks.
  *
  * @see {@link Phaser.GameObjects.GameObject#setInteractive}

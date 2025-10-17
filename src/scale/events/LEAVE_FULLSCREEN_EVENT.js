@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Scale Manager was in fullscreen mode, but has since left, either directly via game code,
  * or via a user gestured, such as pressing the ESC key.
  *

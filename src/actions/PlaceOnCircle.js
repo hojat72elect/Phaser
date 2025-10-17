@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Takes an array of Game Objects and positions them on evenly spaced points around the perimeter of a Circle.
  *
  * If you wish to pass a `Phaser.GameObjects.Circle` Shape to this function, you should pass its `geom` property.

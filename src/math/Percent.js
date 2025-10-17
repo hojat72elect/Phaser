@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Work out what percentage `value` is of the range between `min` and `max`.
  * If `max` isn't given then it will return the percentage of `value` to `min`.
  *

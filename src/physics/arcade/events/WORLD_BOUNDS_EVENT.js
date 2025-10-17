@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Arcade Physics World Bounds Event.
  *
  * This event is dispatched by an Arcade Physics World instance if a body makes contact with the world bounds _and_

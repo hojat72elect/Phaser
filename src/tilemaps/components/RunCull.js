@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Returns the tiles in the given layer that are within the cameras viewport. This is used internally.
  *
  * @function Phaser.Tilemaps.Components.RunCull

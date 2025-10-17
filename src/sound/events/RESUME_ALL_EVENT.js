@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Resume All Sounds Event.
  *
  * This event is dispatched by the Base Sound Manager, or more typically, an instance of the Web Audio Sound Manager,

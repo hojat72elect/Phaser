@@ -1,9 +1,3 @@
-/**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
 var CircleToRectangle = require('../../geom/intersects/CircleToRectangle');
 var Class = require('../../utils/Class');
 var DistanceBetween = require('../../math/distance/DistanceBetween');

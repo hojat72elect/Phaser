@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Checks for intersection between the given tile rectangle-like object and an Arcade Physics body.
  *
  * @function Phaser.Physics.Arcade.Tilemap.TileIntersectsBody

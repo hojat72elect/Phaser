@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * This module implements a modified ear slicing algorithm, optimized by z-order curve hashing and extended to
  * handle holes, twisted polygons, degeneracies and self-intersections in a way that doesn't guarantee correctness
  * of triangulation, but attempts to always produce acceptable results for practical data.

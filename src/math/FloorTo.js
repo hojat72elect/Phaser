@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * Floors to some place comparative to a `base`, default is 10 for decimal place.
  *
  * The `place` is represented by the power applied to `base` to get that place.

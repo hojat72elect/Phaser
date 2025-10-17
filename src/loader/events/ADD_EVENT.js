@@ -1,10 +1,4 @@
 /**
- * @author       Richard Davey <rich@phaser.io>
- * @copyright    2013-2025 Phaser Studio Inc.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-
-/**
  * The Loader Plugin Add File Event.
  *
  * This event is dispatched when a new file is successfully added to the Loader and placed into the load queue.
