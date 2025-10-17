@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Scenes.CreateSceneFromObjectConfig
- * @since 3.17.0
+ * 
  *
  * @property {Phaser.Types.Scenes.SceneInitCallback} [init] - The scene's init callback.
  * @property {Phaser.Types.Scenes.ScenePreloadCallback} [preload] - The scene's preload callback.

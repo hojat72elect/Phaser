@@ -27,7 +27,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {string} [texture='__WHITE'] - The unique string-based key of the texture to use for displacement, which must exist in the Texture Manager.
@@ -58,7 +58,7 @@ var Displacement = new Class({
              *
              * @name Phaser.FX.Displacement#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = x;
 
@@ -67,7 +67,7 @@ var Displacement = new Class({
              *
              * @name Phaser.FX.Displacement#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = y;
 
@@ -76,7 +76,7 @@ var Displacement = new Class({
              *
              * @name Phaser.FX.Displacement#glTexture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.60.0
+             * 
              */
             this.glTexture;
 
@@ -89,7 +89,7 @@ var Displacement = new Class({
      * You can only use a whole texture, not a frame from a texture atlas or sprite sheet.
      *
      * @method Phaser.FX.Displacement#setTexture
-     * @since 3.60.0
+     * 
      *
      * @param {string} [texture='__WHITE'] - The unique string-based key of the texture to use for displacement, which must exist in the Texture Manager.
      *

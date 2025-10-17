@@ -394,7 +394,7 @@ var Face = new Class({
      * are updated.
      *
      * @method Phaser.Geom.Mesh.Face#scrollUV
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The amount to scroll the UV u coordinate by.
      * @param {number} y - The amount to scroll the UV v coordinate by.
@@ -418,7 +418,7 @@ var Face = new Class({
      * are updated.
      *
      * @method Phaser.Geom.Mesh.Face#scaleUV
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The amount to scale the UV u coordinate by.
      * @param {number} y - The amount to scale the UV v coordinate by.
@@ -437,7 +437,7 @@ var Face = new Class({
      * Sets the color value for each Vertex in this Face.
      *
      * @method Phaser.Geom.Mesh.Face#setColor
-     * @since 3.60.0
+     * 
      *
      * @param {number} color - The color value for each vertex.
      *
@@ -456,7 +456,7 @@ var Face = new Class({
      * with the new translated values, updating their `tx`, `ty` and `ta` properties.
      *
      * @method Phaser.Geom.Mesh.Face#update
-     * @since 3.60.0
+     * 
      *
      * @param {number} alpha - The alpha of the parent object.
      * @param {number} a - The parent transform matrix data a component.

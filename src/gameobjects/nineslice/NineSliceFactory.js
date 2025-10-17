@@ -73,7 +73,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @method Phaser.GameObjects.GameObjectFactory#nineslice
  * @webglOnly
- * @since 3.60.0
+ * 
  *
  * @param {number} x - The horizontal position of the center of this Game Object in the world.
  * @param {number} y - The vertical position of the center of this Game Object in the world.

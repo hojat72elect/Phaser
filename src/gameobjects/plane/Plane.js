@@ -39,7 +39,7 @@ var UUID = require('../../utils/string/UUID');
  * @extends Phaser.GameObjects.Mesh
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Plane belongs. A Plane can only belong to one Scene at a time.
  * @param {number} [x] - The horizontal position of this Plane in the world.
@@ -74,7 +74,7 @@ var Plane = new Class({
              *
              * @name Phaser.GameObjects.Plane#anims
              * @type {Phaser.Animations.AnimationState}
-             * @since 3.60.0
+             * 
              */
             this.anims = new AnimationState(this);
 
@@ -86,7 +86,7 @@ var Plane = new Class({
              * @name Phaser.GameObjects.Plane#gridWidth
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.gridWidth;
 
@@ -98,7 +98,7 @@ var Plane = new Class({
              * @name Phaser.GameObjects.Plane#gridHeight
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.gridHeight;
 
@@ -110,7 +110,7 @@ var Plane = new Class({
              * @name Phaser.GameObjects.Plane#isTiled
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isTiled;
 
@@ -121,7 +121,7 @@ var Plane = new Class({
              * @name Phaser.GameObjects.Plane#_checkerboard
              * @type {?WebGLTexture}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._checkerboard = null;
 
@@ -180,7 +180,7 @@ var Plane = new Class({
      * more fine-grained control over the texture tiling.
      *
      * @method Phaser.GameObjects.Plane#preDestroy
-     * @since 3.60.0
+     * 
      *
      * @param {number} [width=8] - The width of this Plane, in cells, not pixels.
      * @param {number} [height=8] - The height of this Plane, in cells, not pixels.
@@ -227,7 +227,7 @@ var Plane = new Class({
      * if required.
      *
      * @method Phaser.GameObjects.Plane#setSizeToFrame
-     * @since 3.60.0
+     * 
      * @override
      *
      * @param {boolean} [resetUV=true] - Reset all of the cell UV coordinates?
@@ -329,7 +329,7 @@ var Plane = new Class({
      * that of the current texture frame the Plane is using.
      *
      * @method Phaser.GameObjects.Plane#setViewHeight
-     * @since 3.60.0
+     * 
      *
      * @param {number} [value] - The height, in pixels, to set this Plane view height to.
      */
@@ -358,7 +358,7 @@ var Plane = new Class({
      * your game.
      *
      * @method Phaser.GameObjects.Plane#createCheckerboard
-     * @since 3.60.0
+     * 
      *
      * @param {number} [color1=0xffffff] - The odd cell color, specified as a hex value.
      * @param {number} [color2=0x0000ff] - The even cell color, specified as a hex value.
@@ -418,7 +418,7 @@ var Plane = new Class({
      * and reset the internal flag for it.
      *
      * @method Phaser.GameObjects.Plane#removeCheckerboard
-     * @since 3.60.0
+     * 
      */
     removeCheckerboard: function () {
         if (this._checkerboard) {
@@ -483,7 +483,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#play
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
@@ -549,7 +549,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#playReverse
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
@@ -576,7 +576,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#playAfterDelay
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {number} delay - The delay, in milliseconds, to wait before starting the animation playing.
@@ -602,7 +602,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#playAfterRepeat
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {number} [repeatCount=1] - How many times should the animation repeat before the next one starts?
@@ -622,7 +622,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#stop
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -642,7 +642,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#stopAfterDelay
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.60.0
+     * 
      *
      * @param {number} delay - The number of milliseconds to wait before stopping this animation.
      *
@@ -664,7 +664,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#stopAfterRepeat
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.60.0
+     * 
      *
      * @param {number} [repeatCount=1] - How many times should the animation repeat before stopping?
      *
@@ -687,7 +687,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#stopOnFrame
      * @fires Phaser.Animations.Events#ANIMATION_STOP
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Animations.AnimationFrame} frame - The frame to check before stopping this animation.
      *
@@ -703,7 +703,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#preUpdate
      * @protected
-     * @since 3.60.0
+     * 
      *
      * @param {number} time - The current timestamp.
      * @param {number} delta - The delta time, in ms, elapsed since the last frame.
@@ -719,7 +719,7 @@ var Plane = new Class({
      *
      * @method Phaser.GameObjects.Plane#preDestroy
      * @private
-     * @since 3.60.0
+     * 
      */
     preDestroy: function () {
         this.clear();

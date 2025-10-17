@@ -163,7 +163,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#body
              * @type {MatterJS.BodyFactory}
-             * @since 3.18.0
+             * 
              */
             this.body = Body;
 
@@ -192,7 +192,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#collision
              * @type {MatterJS.Collision}
-             * @since 3.60.0
+             * 
              */
             this.collision = Collision;
 
@@ -276,7 +276,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#bodies
              * @type {MatterJS.BodiesFactory}
-             * @since 3.18.0
+             * 
              */
             this.bodies = Bodies;
 
@@ -364,7 +364,7 @@ var MatterPhysics = new Class({
              *
              * @name Phaser.Physics.Matter.MatterPhysics#verts
              * @type {MatterJS.VerticesFactory}
-             * @since 3.14.0
+             * 
              */
             this.verts = Vertices;
 

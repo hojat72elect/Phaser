@@ -22,7 +22,7 @@ var Shape = require('../Shape');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -74,7 +74,7 @@ var IsoBox = new Class({
              * @name Phaser.GameObjects.IsoBox#projection
              * @type {number}
              * @default 4
-             * @since 3.13.0
+             * 
              */
             this.projection = 4;
 
@@ -83,7 +83,7 @@ var IsoBox = new Class({
              *
              * @name Phaser.GameObjects.IsoBox#fillTop
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillTop = fillTop;
 
@@ -92,7 +92,7 @@ var IsoBox = new Class({
              *
              * @name Phaser.GameObjects.IsoBox#fillLeft
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillLeft = fillLeft;
 
@@ -101,7 +101,7 @@ var IsoBox = new Class({
              *
              * @name Phaser.GameObjects.IsoBox#fillRight
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillRight = fillRight;
 
@@ -111,7 +111,7 @@ var IsoBox = new Class({
              * @name Phaser.GameObjects.IsoBox#showTop
              * @type {boolean}
              * @default true
-             * @since 3.13.0
+             * 
              */
             this.showTop = true;
 
@@ -121,7 +121,7 @@ var IsoBox = new Class({
              * @name Phaser.GameObjects.IsoBox#showLeft
              * @type {boolean}
              * @default true
-             * @since 3.13.0
+             * 
              */
             this.showLeft = true;
 
@@ -131,7 +131,7 @@ var IsoBox = new Class({
              * @name Phaser.GameObjects.IsoBox#showRight
              * @type {boolean}
              * @default true
-             * @since 3.13.0
+             * 
              */
             this.showRight = true;
 
@@ -148,7 +148,7 @@ var IsoBox = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoBox#setProjection
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the projection to.
      *
@@ -165,7 +165,7 @@ var IsoBox = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoBox#setFaces
-     * @since 3.13.0
+     * 
      *
      * @param {boolean} [showTop=true] - Show the top-face of the iso box.
      * @param {boolean} [showLeft=true] - Show the left-face of the iso box.
@@ -196,7 +196,7 @@ var IsoBox = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoBox#setFillStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [fillTop] - The color used to fill the top of the iso box.
      * @param {number} [fillLeft] - The color used to fill in the left-facing side of the iso box.

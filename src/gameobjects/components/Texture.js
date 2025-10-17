@@ -36,7 +36,7 @@ var Texture = {
      * @name Phaser.GameObjects.Components.Texture#isCropped
      * @type {boolean}
      * @private
-     * @since 3.11.0
+     * 
      */
     isCropped: false,
 

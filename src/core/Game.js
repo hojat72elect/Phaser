@@ -87,7 +87,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#domContainer
              * @type {HTMLDivElement}
-             * @since 3.17.0
+             * 
              */
             this.domContainer = null;
 
@@ -229,7 +229,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#scale
              * @type {Phaser.Scale.ScaleManager}
-             * @since 3.16.0
+             * 
              */
             this.scale = new ScaleManager(this, this.config);
 
@@ -283,7 +283,7 @@ var Game = new Class({
                  *
                  * @name Phaser.Game#facebook
                  * @type {Phaser.FacebookInstantGamesPlugin}
-                 * @since 3.13.0
+                 * 
                  */
                 this.facebook = new FacebookInstantGamesPlugin(this);
             }
@@ -315,7 +315,7 @@ var Game = new Class({
              * @name Phaser.Game#noReturn
              * @type {boolean}
              * @private
-             * @since 3.12.0
+             * 
              */
             this.noReturn = false;
 
@@ -337,7 +337,7 @@ var Game = new Class({
              *
              * @name Phaser.Game#isPaused
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.isPaused = false;
 
@@ -394,7 +394,7 @@ var Game = new Class({
      * @method Phaser.Game#texturesReady
      * @private
      * @fires Phaser.Game#READY
-     * @since 3.12.0
+     * 
      */
     texturesReady: function () {
         //  Start all the other systems
@@ -577,7 +577,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#pause
      * @fires Phaser.Core.Events#PAUSE
-     * @since 3.60.0
+     * 
      */
     pause: function () {
         var wasPaused = this.isPaused;
@@ -611,7 +611,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#resume
      * @fires Phaser.Core.Events#RESUME
-     * @since 3.60.0
+     * 
      */
     resume: function () {
         var wasPaused = this.isPaused;
@@ -657,7 +657,7 @@ var Game = new Class({
      * When the game starts running, the frame is incremented every time Request Animation Frame, or Set Timeout, fires.
      *
      * @method Phaser.Game#getFrame
-     * @since 3.16.0
+     * 
      *
      * @return {number} The current game frame.
      */
@@ -669,7 +669,7 @@ var Game = new Class({
      * Returns the time that the current game step started at, as based on `performance.now`.
      *
      * @method Phaser.Game#getTime
-     * @since 3.16.0
+     * 
      *
      * @return {number} The current game timestamp.
      */

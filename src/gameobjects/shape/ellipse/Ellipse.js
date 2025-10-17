@@ -26,7 +26,7 @@ var Shape = require('../Shape');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -69,7 +69,7 @@ var Ellipse = new Class({
              * @name Phaser.GameObjects.Ellipse#_smoothness
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._smoothness = 64;
 
@@ -93,7 +93,7 @@ var Ellipse = new Class({
      * @name Phaser.GameObjects.Ellipse#smoothness
      * @type {number}
      * @default 64
-     * @since 3.13.0
+     * 
      */
     smoothness: {
 
@@ -114,7 +114,7 @@ var Ellipse = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Ellipse#setSize
-     * @since 3.13.0
+     * 
      *
      * @param {number} width - The width of the ellipse.
      * @param {number} height - The height of the ellipse.
@@ -138,7 +138,7 @@ var Ellipse = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Ellipse#setSmoothness
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the smoothness to.
      *
@@ -155,7 +155,7 @@ var Ellipse = new Class({
      *
      * @method Phaser.GameObjects.Ellipse#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

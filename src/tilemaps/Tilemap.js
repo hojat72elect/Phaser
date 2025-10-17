@@ -166,7 +166,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#renderOrder
              * @type {string}
-             * @since 3.12.0
+             * 
              */
             this.renderOrder = mapData.renderOrder;
 
@@ -250,7 +250,7 @@ var Tilemap = new Class({
              *
              * @name Phaser.Tilemaps.Tilemap#tiles
              * @type {array}
-             * @since 3.60.0
+             * 
              * @see Phaser.Tilemaps.Parsers.Tiled.BuildTilesetIndex
              */
             this.tiles = mapData.tiles;
@@ -337,7 +337,7 @@ var Tilemap = new Class({
      * own `setRenderOrder` methods to change them as needed.
      *
      * @method Phaser.Tilemaps.Tilemap#setRenderOrder
-     * @since 3.12.0
+     * 
      *
      * @param {(number|string)} renderOrder - The render (draw) order value. Either an integer between 0 and 3, or a string: 'right-down', 'left-down', 'right-up' or 'left-up'.
      *
@@ -1468,7 +1468,7 @@ var Tilemap = new Class({
      * Gets the Tileset that has the given `name`, or null if an invalid `name` is given.
      *
      * @method Phaser.Tilemaps.Tilemap#getTileset
-     * @since 3.14.0
+     * 
      *
      * @param {string} name - The name of the Tileset to get.
      *
@@ -1764,7 +1764,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#removeLayer
-     * @since 3.17.0
+     * 
      *
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The tile layer to be removed.
      *
@@ -1798,7 +1798,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#destroyLayer
-     * @since 3.17.0
+     * 
      *
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The tile layer to be destroyed.
      *
@@ -1853,7 +1853,7 @@ var Tilemap = new Class({
      * and optionally recalculates the collision information.
      *
      * @method Phaser.Tilemaps.Tilemap#removeTile
-     * @since 3.17.0
+     * 
      *
      * @param {(Phaser.Tilemaps.Tile|Phaser.Tilemaps.Tile[])} tiles - The Tile to remove, or an array of Tiles.
      * @param {number} [replaceIndex=-1] - After removing the Tile, insert a brand new Tile into its location with the given index. Leave as -1 to just remove the tile.
@@ -1996,7 +1996,7 @@ var Tilemap = new Class({
      * place the debug representation wherever you want on the screen.
      *
      * @method Phaser.Tilemaps.Tilemap#renderDebugFull
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.Graphics} graphics - The target Graphics object to draw upon.
      * @param {Phaser.Types.Tilemaps.StyleConfig} [styleConfig] - An object specifying the colors to use for the debug drawing.
@@ -2555,7 +2555,7 @@ var Tilemap = new Class({
      * If no layer is specified, the maps current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#getTileCorners
-     * @since 3.60.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.

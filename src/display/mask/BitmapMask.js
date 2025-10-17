@@ -80,7 +80,7 @@ var BitmapMask = new Class({
              * @name Phaser.Display.Masks.BitmapMask#isStencil
              * @type {boolean}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.isStencil = false;
         },
@@ -166,7 +166,7 @@ var BitmapMask = new Class({
      * so be sure to call `clearMask` on any Game Object using it, before destroying it.
      *
      * @method Phaser.Display.Masks.BitmapMask#destroy
-     * @since 3.7.0
+     * 
      */
     destroy: function () {
         this.bitmapMask = null;
@@ -204,7 +204,7 @@ var BitmapMask = new Class({
  * render as a normal Game Object and will also serve as a mask.
  *
  * @method Phaser.GameObjects.GameObjectFactory#bitmapMask
- * @since 3.60.0
+ * 
  *
  * @param {(Phaser.GameObjects.GameObject|Phaser.Textures.DynamicTexture)} [maskObject] - The Game Object or Texture that will be used as the mask. If `null` it will generate an Image Game Object using the rest of the arguments.
  * @param {number} [x] - If creating a Game Object, the horizontal position in the world.

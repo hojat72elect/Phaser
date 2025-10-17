@@ -69,7 +69,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#downElement
              * @type {any}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.downElement;
 
@@ -80,7 +80,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#upElement
              * @type {any}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.upElement;
 
@@ -111,7 +111,7 @@ var Pointer = new Class({
              * @type {number}
              * @readonly
              * @default 0
-             * @since 3.18.0
+             * 
              */
             this.button = 0;
 
@@ -153,7 +153,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#prevPosition
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.11.0
+             * 
              */
             this.prevPosition = new Vector2();
 
@@ -163,7 +163,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#midPoint
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.16.0
+             * 
              */
             this.midPoint = new Vector2(-1, -1);
 
@@ -178,7 +178,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#velocity
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.velocity = new Vector2();
 
@@ -193,7 +193,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#angle
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.angle = 0;
 
@@ -211,7 +211,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#distance
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.distance = 0;
 
@@ -231,7 +231,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#smoothFactor
              * @type {number}
              * @default 0
-             * @since 3.16.0
+             * 
              */
             this.smoothFactor = 0;
 
@@ -247,7 +247,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#motionFactor
              * @type {number}
              * @default 0.2
-             * @since 3.16.0
+             * 
              */
             this.motionFactor = 0.2;
 
@@ -260,7 +260,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#worldX
              * @type {number}
              * @default 0
-             * @since 3.10.0
+             * 
              */
             this.worldX = 0;
 
@@ -273,7 +273,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#worldY
              * @type {number}
              * @default 0
-             * @since 3.10.0
+             * 
              */
             this.worldY = 0;
 
@@ -385,7 +385,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#wasCanceled
              * @type {boolean}
              * @default false
-             * @since 3.15.0
+             * 
              */
             this.wasCanceled = false;
 
@@ -414,7 +414,7 @@ var Pointer = new Class({
              *
              * @name Phaser.Input.Pointer#identifier
              * @type {number}
-             * @since 3.10.0
+             * 
              */
             this.identifier = 0;
 
@@ -424,7 +424,7 @@ var Pointer = new Class({
              *
              * @name Phaser.Input.Pointer#pointerId
              * @type {number}
-             * @since 3.10.0
+             * 
              */
             this.pointerId = null;
 
@@ -434,7 +434,7 @@ var Pointer = new Class({
              *
              * @name Phaser.Input.Pointer#active
              * @type {boolean}
-             * @since 3.10.0
+             * 
              */
             this.active = (id === 0) ? true : false;
 
@@ -450,7 +450,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#locked
              * @readonly
              * @type {boolean}
-             * @since 3.19.0
+             * 
              */
             this.locked = false;
 
@@ -460,7 +460,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#deltaX
              * @type {number}
              * @default 0
-             * @since 3.18.0
+             * 
              */
             this.deltaX = 0;
 
@@ -471,7 +471,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#deltaY
              * @type {number}
              * @default 0
-             * @since 3.18.0
+             * 
              */
             this.deltaY = 0;
 
@@ -481,7 +481,7 @@ var Pointer = new Class({
              * @name Phaser.Input.Pointer#deltaZ
              * @type {number}
              * @default 0
-             * @since 3.18.0
+             * 
              */
             this.deltaZ = 0;
         },
@@ -494,7 +494,7 @@ var Pointer = new Class({
      * updated by an input event, such as a mouse move, so should be used immediately.
      *
      * @method Phaser.Input.Pointer#updateWorldPoint
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera which is being tested against.
      *
@@ -532,7 +532,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#updateMotion
      * @private
-     * @since 3.16.0
+     * 
      */
     updateMotion: function () {
         var cx = this.position.x;
@@ -690,7 +690,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#wheel
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {WheelEvent} event - The Wheel Event to process.
      */
@@ -815,7 +815,7 @@ var Pointer = new Class({
      *
      * @method Phaser.Input.Pointer#touchcancel
      * @private
-     * @since 3.15.0
+     * 
      *
      * @param {Touch} touch - The Changed Touch from the Touch Event.
      * @param {TouchEvent} event - The full Touch Event.
@@ -919,7 +919,7 @@ var Pointer = new Class({
      * Checks to see if the release of the left button was the most recent activity on this Pointer.
      *
      * @method Phaser.Input.Pointer#leftButtonReleased
-     * @since 3.18.0
+     * 
      *
      * @return {boolean} `true` if the release of the left button was the most recent activity on this Pointer.
      */
@@ -931,7 +931,7 @@ var Pointer = new Class({
      * Checks to see if the release of the right button was the most recent activity on this Pointer.
      *
      * @method Phaser.Input.Pointer#rightButtonReleased
-     * @since 3.18.0
+     * 
      *
      * @return {boolean} `true` if the release of the right button was the most recent activity on this Pointer.
      */
@@ -943,7 +943,7 @@ var Pointer = new Class({
      * Checks to see if the release of the middle button was the most recent activity on this Pointer.
      *
      * @method Phaser.Input.Pointer#middleButtonReleased
-     * @since 3.18.0
+     * 
      *
      * @return {boolean} `true` if the release of the middle button was the most recent activity on this Pointer.
      */
@@ -955,7 +955,7 @@ var Pointer = new Class({
      * Checks to see if the release of the back button was the most recent activity on this Pointer.
      *
      * @method Phaser.Input.Pointer#backButtonReleased
-     * @since 3.18.0
+     * 
      *
      * @return {boolean} `true` if the release of the back button was the most recent activity on this Pointer.
      */
@@ -967,7 +967,7 @@ var Pointer = new Class({
      * Checks to see if the release of the forward button was the most recent activity on this Pointer.
      *
      * @method Phaser.Input.Pointer#forwardButtonReleased
-     * @since 3.18.0
+     * 
      *
      * @return {boolean} `true` if the release of the forward button was the most recent activity on this Pointer.
      */
@@ -986,7 +986,7 @@ var Pointer = new Class({
      * then see the `Pointer.distance` property.
      *
      * @method Phaser.Input.Pointer#getDistance
-     * @since 3.13.0
+     * 
      *
      * @return {number} The distance the Pointer moved.
      */
@@ -1006,7 +1006,7 @@ var Pointer = new Class({
      * the Pointer was when the button was released.
      *
      * @method Phaser.Input.Pointer#getDistanceX
-     * @since 3.16.0
+     * 
      *
      * @return {number} The horizontal distance the Pointer moved.
      */
@@ -1026,7 +1026,7 @@ var Pointer = new Class({
      * the Pointer was when the button was released.
      *
      * @method Phaser.Input.Pointer#getDistanceY
-     * @since 3.16.0
+     * 
      *
      * @return {number} The vertical distance the Pointer moved.
      */
@@ -1046,7 +1046,7 @@ var Pointer = new Class({
      * the last button on the Pointer was released.
      *
      * @method Phaser.Input.Pointer#getDuration
-     * @since 3.16.0
+     * 
      *
      * @return {number} The duration the Pointer was held down for in milliseconds.
      */
@@ -1071,7 +1071,7 @@ var Pointer = new Class({
      * see the `Pointer.angle` property.
      *
      * @method Phaser.Input.Pointer#getAngle
-     * @since 3.16.0
+     * 
      *
      * @return {number} The angle between the Pointer's coordinates in radians.
      */
@@ -1106,7 +1106,7 @@ var Pointer = new Class({
      * Internally it uses the Smooth Step interpolation calculation.
      *
      * @method Phaser.Input.Pointer#getInterpolatedPosition
-     * @since 3.11.0
+     * 
      *
      * @param {number} [steps=10] - The number of interpolation steps to use.
      * @param {array} [out] - An array to store the results in. If not provided a new one will be created.
@@ -1140,7 +1140,7 @@ var Pointer = new Class({
      * Fully reset this Pointer back to its unitialized state.
      *
      * @method Phaser.Input.Pointer#reset
-     * @since 3.60.0
+     * 
      */
     reset: function () {
         this.event = null;
@@ -1242,7 +1242,7 @@ var Pointer = new Class({
      * @name Phaser.Input.Pointer#time
      * @type {number}
      * @readonly
-     * @since 3.16.0
+     * 
      */
     time: {
 

@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.TweenPropConfig
- * @since 3.18.0
+ * 
  *
  * @property {(number|number[]|string|Phaser.Types.Tweens.GetEndCallback|Phaser.Types.Tweens.TweenPropConfig)} [value] - What the property will be at the END of the Tween.
  * @property {Phaser.Types.Tweens.GetActiveCallback} [getActive] - What the property will be set to immediately when this tween becomes active.

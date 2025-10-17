@@ -17,7 +17,7 @@ var ScriptFile = require('./ScriptFile');
  * @extends Phaser.Loader.MultiFile
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.17.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.MultiScriptFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -70,7 +70,7 @@ var MultiScriptFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.MultiScriptFile#addToCache
-     * @since 3.17.0
+     * 
      */
     addToCache: function () {
         if (this.isReadyToProcess()) {
@@ -158,7 +158,7 @@ var MultiScriptFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#scripts
  * @fires Phaser.Loader.Events#ADD
- * @since 3.17.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.MultiScriptFileConfig|Phaser.Types.Loader.FileTypes.MultiScriptFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string[]} [url] - An array of absolute or relative URLs to load the script files from. They are processed in the order given in the array.

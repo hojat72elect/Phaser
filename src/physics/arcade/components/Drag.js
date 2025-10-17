@@ -100,7 +100,7 @@ var Drag = {
      * deceleration, where-as smaller values, such as 0.5 will stop an object almost immediately.
      *
      * @method Phaser.Physics.Arcade.Components.Drag#setDamping
-     * @since 3.10.0
+     * 
      *
      * @param {boolean} value - `true` to use damping for deceleration, or `false` to use linear deceleration.
      *

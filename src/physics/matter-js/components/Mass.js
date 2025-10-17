@@ -51,7 +51,7 @@ var Mass = {
      * @name Phaser.Physics.Matter.Components.Mass#centerOfMass
      * @type {Phaser.Math.Vector2}
      * @readonly
-     * @since 3.10.0
+     * 
      *
      * @return {Phaser.Math.Vector2} The center of mass.
      */

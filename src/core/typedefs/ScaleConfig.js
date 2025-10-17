@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Core.ScaleConfig
- * @since 3.16.0
+ * 
  *
  * @property {(number|string)} [width=1024] - The base width of your game. Can be an integer or a string: '100%'. If a string it will only work if you have set a parent element that has a size.
  * @property {(number|string)} [height=768] - The base height of your game. Can be an integer or a string: '100%'. If a string it will only work if you have set a parent element that has a size.

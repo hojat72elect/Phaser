@@ -8,6 +8,6 @@
  * The Custom Event Event.
  *
  * @event SpinePluginEvents#EVENT
- * @since 3.19.0
+ * 
  */
 module.exports = 'event';

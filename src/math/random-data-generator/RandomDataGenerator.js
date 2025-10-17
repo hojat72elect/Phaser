@@ -441,7 +441,7 @@ var RandomDataGenerator = new Class({
      * Shuffles the given array, using the current seed.
      *
      * @method Phaser.Math.RandomDataGenerator#shuffle
-     * @since 3.7.0
+     * 
      *
      * @generic T
      * @genericUse {T[]} - [array,$return]

@@ -359,7 +359,7 @@ var Mesh = new Class({
              * @name Phaser.GameObjects.Mesh#fov
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.fov;
 
@@ -800,7 +800,7 @@ var Mesh = new Class({
      * before being compared against the vertices.
      *
      * @method Phaser.GameObjects.Mesh#hasFaceAt
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The x position to check against.
      * @param {number} y - The y position to check against.
@@ -1114,7 +1114,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#clearTint
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -1134,7 +1134,7 @@ var Mesh = new Class({
      * mesh.setInteractive({ useHandCursor: true });
      *
      * @method Phaser.GameObjects.Mesh#setInteractive
-     * @since 3.60.0
+     * 
      *
      * @param {(Phaser.Types.Input.InputConfiguration)} [config] - An input configuration object but it will ignore hitArea, hitAreaCallback and pixelPerfect with associated alphaTolerance properties.
      *
@@ -1178,7 +1178,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#setTint
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} [tint=0xffffff] - The tint being applied to all vertices of this Mesh Game Object.
      *
@@ -1218,7 +1218,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#uvScroll
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The amount to horizontally shift the UV coordinates by.
      * @param {number} y - The amount to vertically shift the UV coordinates by.
@@ -1253,7 +1253,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#uvScale
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The amount to horizontally scale the UV coordinates by.
      * @param {number} y - The amount to vertically scale the UV coordinates by.
@@ -1277,7 +1277,7 @@ var Mesh = new Class({
      * @method Phaser.GameObjects.Mesh#tint
      * @type {number}
      * @webglOnly
-     * @since 3.60.0
+     * 
      */
     tint: {
 
@@ -1293,7 +1293,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#rotateX
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     rotateX: {
 
@@ -1314,7 +1314,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#rotateY
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     rotateY: {
 
@@ -1335,7 +1335,7 @@ var Mesh = new Class({
      *
      * @method Phaser.GameObjects.Mesh#rotateZ
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     rotateZ: {
 

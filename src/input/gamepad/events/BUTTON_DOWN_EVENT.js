@@ -9,7 +9,7 @@
  *
  * @event Phaser.Input.Gamepad.Events#BUTTON_DOWN
  * @type {string}
- * @since 3.10.0
+ * 
  *
  * @param {Phaser.Input.Gamepad} pad - A reference to the Gamepad on which the button was pressed.
  * @param {Phaser.Input.Gamepad.Button} button - A reference to the Button which was pressed.

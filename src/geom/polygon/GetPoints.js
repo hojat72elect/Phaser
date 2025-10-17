@@ -7,7 +7,7 @@ var Perimeter = require('./Perimeter');
  * based on the given quantity or stepRate values.
  *
  * @function Phaser.Geom.Polygon.GetPoints
- * @since 3.12.0
+ * 
  *
  * @param {Phaser.Geom.Polygon} polygon - The Polygon to get the points from.
  * @param {number} quantity - The amount of points to return. If a falsey value the quantity will be derived from the `stepRate` instead.

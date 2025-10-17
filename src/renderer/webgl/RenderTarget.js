@@ -149,7 +149,7 @@ var RenderTarget = new Class({
              * @name Phaser.Renderer.WebGL.RenderTarget#hasDepthBuffer
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.hasDepthBuffer = addDepthBuffer;
 
@@ -161,7 +161,7 @@ var RenderTarget = new Class({
              *
              * @name Phaser.Renderer.WebGL.RenderTarget#forceClamp
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.forceClamp = forceClamp;
 

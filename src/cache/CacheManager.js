@@ -110,7 +110,7 @@ var CacheManager = new Class({
              *
              * @name Phaser.Cache.CacheManager#html
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.12.0
+             * 
              */
             this.html = new BaseCache();
 

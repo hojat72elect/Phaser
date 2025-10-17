@@ -24,7 +24,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -45,7 +45,7 @@ var DisplacementFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = 0.005;
 
@@ -54,7 +54,7 @@ var DisplacementFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = 0.005;
 
@@ -63,7 +63,7 @@ var DisplacementFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.DisplacementFXPipeline#glTexture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.60.0
+             * 
              */
             this.glTexture;
         },

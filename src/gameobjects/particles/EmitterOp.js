@@ -98,7 +98,7 @@ var EmitterOp = new Class({
              * @name Phaser.GameObjects.Particles.EmitterOp#yoyo
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.yoyo = false;
 
@@ -108,7 +108,7 @@ var EmitterOp = new Class({
              * @name Phaser.GameObjects.Particles.EmitterOp#direction
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.direction = 0;
 
@@ -130,7 +130,7 @@ var EmitterOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterOp#current
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.current = 0;
 
@@ -158,7 +158,7 @@ var EmitterOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterOp#interpolation
              * @type {?function}
-             * @since 3.60.0
+             * 
              */
             this.interpolation = null;
 
@@ -200,7 +200,7 @@ var EmitterOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterOp#active
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.active = true;
 
@@ -212,7 +212,7 @@ var EmitterOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterOp#method
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.method = 0;
 
@@ -223,7 +223,7 @@ var EmitterOp = new Class({
              * @name Phaser.GameObjects.Particles.EmitterOp#_onEmit
              * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnEmitCallback}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._onEmit;
 
@@ -234,7 +234,7 @@ var EmitterOp = new Class({
              * @name Phaser.GameObjects.Particles.EmitterOp#_onUpdate
              * @type {Phaser.Types.GameObjects.Particles.EmitterOpOnUpdateCallback}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._onUpdate;
         },
@@ -349,7 +349,7 @@ var EmitterOp = new Class({
      * method is required in order to return values from this op function.
      *
      * @method Phaser.GameObjects.Particles.EmitterOp#getMethod
-     * @since 3.60.0
+     * 
      *
      * @return {number} A number between 0 and 9 which should be passed to `setMethods`.
      */
@@ -590,7 +590,7 @@ var EmitterOp = new Class({
      * This method is only used when you have provided a custom emit callback.
      *
      * @method Phaser.GameObjects.Particles.EmitterOp#proxyEmit
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The particle.
      * @param {string} key - The name of the property.
@@ -612,7 +612,7 @@ var EmitterOp = new Class({
      * This method is only used when you have provided a custom update callback.
      *
      * @method Phaser.GameObjects.Particles.EmitterOp#proxyUpdate
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The particle.
      * @param {string} key - The name of the property.
@@ -699,7 +699,7 @@ var EmitterOp = new Class({
      * {@link Phaser.GameObjects.Particles.EmitterOp#end} range.
      *
      * @method Phaser.GameObjects.Particles.EmitterOp#randomRangedIntEmit
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The particle.
      * @param {string} key - The key of the property.
@@ -837,7 +837,7 @@ var EmitterOp = new Class({
      * EmitterOp is destroyed.
      *
      * @method Phaser.GameObjects.Particles.EmitterOp#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         this.propertyValue = null;

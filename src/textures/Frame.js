@@ -245,7 +245,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#u0
              * @type {number}
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this.u0 = 0;
 
@@ -255,7 +255,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#v0
              * @type {number}
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this.v0 = 0;
 
@@ -265,7 +265,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#u1
              * @type {number}
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this.u1 = 0;
 
@@ -275,7 +275,7 @@ var Frame = new Class({
              * @name Phaser.Textures.Frame#v1
              * @type {number}
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this.v1 = 0;
 
@@ -379,7 +379,7 @@ var Frame = new Class({
      * and should rarely be changed on-the-fly.
      *
      * @method Phaser.Textures.Frame#setSize
-     * @since 3.7.0
+     * 
      *
      * @param {number} width - The width of the frame before being trimmed.
      * @param {number} height - The height of the frame before being trimmed.
@@ -526,7 +526,7 @@ var Frame = new Class({
      * Please use that method to crop a Game Object.
      *
      * @method Phaser.Textures.Frame#setCropUVs
-     * @since 3.11.0
+     * 
      *
      * @param {object} crop - The crop data object. This is the `GameObject._crop` property.
      * @param {number} x - The x coordinate to start the crop from. Cannot be negative or exceed the Frame width.
@@ -649,7 +649,7 @@ var Frame = new Class({
      * Called automatically by `setFrame`.
      *
      * @method Phaser.Textures.Frame#updateCropUVs
-     * @since 3.11.0
+     * 
      *
      * @param {object} crop - The crop data object. This is the `GameObject._crop` property.
      * @param {boolean} flipX - Does the parent Game Object have flipX set?
@@ -810,7 +810,7 @@ var Frame = new Class({
      * @name Phaser.Textures.Frame#glTexture
      * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
      * @readonly
-     * @since 3.11.0
+     * 
      */
     glTexture: {
 

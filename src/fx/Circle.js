@@ -29,7 +29,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [thickness=8] - The width of the circle around the texture, in pixels.
@@ -65,7 +65,7 @@ var Circle = new Class({
              *
              * @name Phaser.FX.Circle#scale
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.scale = scale;
 
@@ -78,7 +78,7 @@ var Circle = new Class({
              *
              * @name Phaser.FX.Circle#feather
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.feather = feather;
 
@@ -89,7 +89,7 @@ var Circle = new Class({
              *
              * @name Phaser.FX.Circle#thickness
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.thickness = thickness;
 
@@ -98,7 +98,7 @@ var Circle = new Class({
              *
              * @name Phaser.FX.Circle#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 0.2, 0.7];
 
@@ -107,7 +107,7 @@ var Circle = new Class({
              *
              * @name Phaser.FX.Circle#glcolor2
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor2 = [1, 0, 0, 0.4];
 
@@ -125,7 +125,7 @@ var Circle = new Class({
      *
      * @name Phaser.FX.Circle#color
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color: {
 
@@ -150,7 +150,7 @@ var Circle = new Class({
      *
      * @name Phaser.FX.Circle#backgroundColor
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     backgroundColor: {
 

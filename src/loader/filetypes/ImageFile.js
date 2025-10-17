@@ -89,7 +89,7 @@ var ImageFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.ImageFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -120,7 +120,7 @@ var ImageFile = new Class({
      *
      * @method Phaser.Loader.FileTypes.ImageFile#onProcessImage
      * @private
-     * @since 3.60.0
+     * 
      */
     onProcessImage: function () {
         var result = this.state;
@@ -139,7 +139,7 @@ var ImageFile = new Class({
      *
      * @method Phaser.Loader.FileTypes.ImageFile#loadImage
      * @private
-     * @since 3.60.0
+     * 
      */
     loadImage: function () {
         this.state = CONST.FILE_LOADING;
@@ -169,7 +169,7 @@ var ImageFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.ImageFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         //  Check if we have a linked normal map

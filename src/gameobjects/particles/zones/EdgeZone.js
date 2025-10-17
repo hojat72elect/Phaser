@@ -134,7 +134,7 @@ var EdgeZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.EdgeZone#total
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.total = total;
 

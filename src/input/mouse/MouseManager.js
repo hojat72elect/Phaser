@@ -113,7 +113,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseMove
              * @type {function}
-             * @since 3.10.0
+             * 
              */
             this.onMouseMove = NOOP;
 
@@ -124,7 +124,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseDown
              * @type {function}
-             * @since 3.10.0
+             * 
              */
             this.onMouseDown = NOOP;
 
@@ -135,7 +135,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseUp
              * @type {function}
-             * @since 3.10.0
+             * 
              */
             this.onMouseUp = NOOP;
 
@@ -146,7 +146,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseDownWindow
              * @type {function}
-             * @since 3.17.0
+             * 
              */
             this.onMouseDownWindow = NOOP;
 
@@ -157,7 +157,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseUpWindow
              * @type {function}
-             * @since 3.17.0
+             * 
              */
             this.onMouseUpWindow = NOOP;
 
@@ -168,7 +168,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseOver
              * @type {function}
-             * @since 3.16.0
+             * 
              */
             this.onMouseOver = NOOP;
 
@@ -179,7 +179,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseOut
              * @type {function}
-             * @since 3.16.0
+             * 
              */
             this.onMouseOut = NOOP;
 
@@ -190,7 +190,7 @@ var MouseManager = new Class({
              *
              * @name Phaser.Input.Mouse.MouseManager#onMouseWheel
              * @type {function}
-             * @since 3.18.0
+             * 
              */
             this.onMouseWheel = NOOP;
 

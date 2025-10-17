@@ -12,7 +12,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_LOCKED
  * @type {string}
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which raised the event.
  */

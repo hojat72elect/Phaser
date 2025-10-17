@@ -18,7 +18,7 @@ var InputPluginCache = {};
  *
  * @function Phaser.Input.InputPluginCache.register
  * @static
- * @since 3.10.0
+ * 
  *
  * @param {string} key - A reference used to get this plugin from the plugin cache.
  * @param {function} plugin - The plugin to be stored. Should be the core object, not instantiated.
@@ -35,7 +35,7 @@ InputPluginCache.register = function (key, plugin, mapping, settingsKey, configK
  *
  * @function Phaser.Input.InputPluginCache.getPlugin
  * @static
- * @since 3.10.0
+ * 
  *
  * @param {string} key - The key of the input plugin to get.
  *
@@ -50,7 +50,7 @@ InputPluginCache.getPlugin = function (key) {
  *
  * @function Phaser.Input.InputPluginCache.install
  * @static
- * @since 3.10.0
+ * 
  *
  * @param {Phaser.Input.InputPlugin} target - The target InputPlugin to install the plugins into.
  */
@@ -76,7 +76,7 @@ InputPluginCache.install = function (target) {
  *
  * @function Phaser.Input.InputPluginCache.remove
  * @static
- * @since 3.10.0
+ * 
  *
  * @param {string} key - The key of the input plugin to remove.
  */

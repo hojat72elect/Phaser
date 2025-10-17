@@ -14,7 +14,7 @@ var Vector2 = require('../math/Vector2');
  * @class Size
  * @memberof Phaser.Structs
  * @constructor
- * @since 3.16.0
+ * 
  *
  * @param {number} [width=0] - The width of the Size component.
  * @param {number} [height=width] - The height of the Size component. If not given, it will use the `width`.
@@ -45,7 +45,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#_width
              * @type {number}
              * @private
-             * @since 3.16.0
+             * 
              */
             this._width = width;
 
@@ -55,7 +55,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#_height
              * @type {number}
              * @private
-             * @since 3.16.0
+             * 
              */
             this._height = height;
 
@@ -65,7 +65,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#_parent
              * @type {any}
              * @private
-             * @since 3.16.0
+             * 
              */
             this._parent = parent;
 
@@ -76,7 +76,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#aspectMode
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.aspectMode = aspectMode;
 
@@ -89,7 +89,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#aspectRatio
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.aspectRatio = (height === 0) ? 1 : width / height;
 
@@ -101,7 +101,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#minWidth
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.minWidth = 0;
 
@@ -113,7 +113,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#minHeight
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.minHeight = 0;
 
@@ -124,7 +124,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#maxWidth
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.maxWidth = Number.MAX_VALUE;
 
@@ -135,7 +135,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#maxHeight
              * @type {number}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.maxHeight = Number.MAX_VALUE;
 
@@ -149,7 +149,7 @@ var Size = new Class({
              * @name Phaser.Structs.Size#snapTo
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.snapTo = new Vector2();
         },
@@ -170,7 +170,7 @@ var Size = new Class({
      * Calling this method automatically recalculates the `width` and the `height`, if required.
      *
      * @method Phaser.Structs.Size#setAspectMode
-     * @since 3.16.0
+     * 
      *
      * @param {number} [value=0] - The aspect mode value.
      *
@@ -199,7 +199,7 @@ var Size = new Class({
      * Calling this method automatically recalculates the `width` and the `height`, if required.
      *
      * @method Phaser.Structs.Size#setSnap
-     * @since 3.16.0
+     * 
      *
      * @param {number} [snapWidth=0] - The amount to snap the width to. If you don't want to snap the width, pass a value of zero.
      * @param {number} [snapHeight=snapWidth] - The amount to snap the height to. If not provided it will use the `snapWidth` value. If you don't want to snap the height, pass a value of zero.
@@ -236,7 +236,7 @@ var Size = new Class({
      * Calling this method automatically calls `setSize`.
      *
      * @method Phaser.Structs.Size#setParent
-     * @since 3.16.0
+     * 
      *
      * @param {any} [parent] - Sets the parent of this Size component. Don't provide a value to clear an existing parent.
      *
@@ -259,7 +259,7 @@ var Size = new Class({
      * _can_ be exceed in some situations.
      *
      * @method Phaser.Structs.Size#setMin
-     * @since 3.16.0
+     * 
      *
      * @param {number} [width=0] - The minimum allowed width of the Size component.
      * @param {number} [height=width] - The minimum allowed height of the Size component. If not given, it will use the `width`.
@@ -289,7 +289,7 @@ var Size = new Class({
      * _can_ be exceed in some situations.
      *
      * @method Phaser.Structs.Size#setMax
-     * @since 3.16.0
+     * 
      *
      * @param {number} [width=Number.MAX_VALUE] - The maximum allowed width of the Size component.
      * @param {number} [height=width] - The maximum allowed height of the Size component. If not given, it will use the `width`.
@@ -326,7 +326,7 @@ var Size = new Class({
      * be clamped to the range specified by the parent.
      *
      * @method Phaser.Structs.Size#setSize
-     * @since 3.16.0
+     * 
      *
      * @param {number} [width=0] - The new width of the Size component.
      * @param {number} [height=width] - The new height of the Size component. If not given, it will use the `width`.
@@ -376,7 +376,7 @@ var Size = new Class({
      * It then calls `setSize` immediately using the current dimensions.
      *
      * @method Phaser.Structs.Size#setAspectRatio
-     * @since 3.16.0
+     * 
      *
      * @param {number} ratio - The new aspect ratio.
      *
@@ -394,7 +394,7 @@ var Size = new Class({
      * It _doesn't_ change the `aspectMode` and still factors in size limits such as the min max and parent bounds.
      *
      * @method Phaser.Structs.Size#resize
-     * @since 3.16.0
+     * 
      *
      * @param {number} width - The new width of the Size component.
      * @param {number} [height=width] - The new height of the Size component. If not given, it will use the `width`.
@@ -413,7 +413,7 @@ var Size = new Class({
      * Takes a new width and passes it through the min/max clamp and then checks it doesn't exceed the parent width.
      *
      * @method Phaser.Structs.Size#getNewWidth
-     * @since 3.16.0
+     * 
      *
      * @param {number} value - The value to clamp and check.
      * @param {boolean} [checkParent=true] - Check the given value against the parent, if set.
@@ -438,7 +438,7 @@ var Size = new Class({
      * Takes a new height and passes it through the min/max clamp and then checks it doesn't exceed the parent height.
      *
      * @method Phaser.Structs.Size#getNewHeight
-     * @since 3.16.0
+     * 
      *
      * @param {number} value - The value to clamp and check.
      * @param {boolean} [checkParent=true] - Check the given value against the parent, if set.
@@ -469,7 +469,7 @@ var Size = new Class({
      * it cannot exceed that of the parent.
      *
      * @method Phaser.Structs.Size#constrain
-     * @since 3.16.0
+     * 
      *
      * @param {number} [width=0] - The new width of the Size component.
      * @param {number} [height] - The new height of the Size component. If not given, it will use the width value.
@@ -537,7 +537,7 @@ var Size = new Class({
      * it cannot exceed that of the parent.
      *
      * @method Phaser.Structs.Size#fitTo
-     * @since 3.16.0
+     * 
      *
      * @param {number} [width=0] - The new width of the Size component.
      * @param {number} [height] - The new height of the Size component. If not given, it will use the width value.
@@ -557,7 +557,7 @@ var Size = new Class({
      * on the longest axis.
      *
      * @method Phaser.Structs.Size#envelop
-     * @since 3.16.0
+     * 
      *
      * @param {number} [width=0] - The new width of the Size component.
      * @param {number} [height] - The new height of the Size component. If not given, it will use the width value.
@@ -574,7 +574,7 @@ var Size = new Class({
      * Depending on the aspect mode, changing the width may also update the height and aspect ratio.
      *
      * @method Phaser.Structs.Size#setWidth
-     * @since 3.16.0
+     * 
      *
      * @param {number} width - The new width of the Size component.
      *
@@ -590,7 +590,7 @@ var Size = new Class({
      * Depending on the aspect mode, changing the height may also update the width and aspect ratio.
      *
      * @method Phaser.Structs.Size#setHeight
-     * @since 3.16.0
+     * 
      *
      * @param {number} height - The new height of the Size component.
      *
@@ -604,7 +604,7 @@ var Size = new Class({
      * Returns a string representation of this Size component.
      *
      * @method Phaser.Structs.Size#toString
-     * @since 3.16.0
+     * 
      *
      * @return {string} A string representation of this Size component.
      */
@@ -617,7 +617,7 @@ var Size = new Class({
      * properties of the given DOM Element. The properties are set as `px` values.
      *
      * @method Phaser.Structs.Size#setCSS
-     * @since 3.17.0
+     * 
      *
      * @param {HTMLElement} element - The DOM Element to set the CSS style on.
      */
@@ -633,7 +633,7 @@ var Size = new Class({
      * to the given Size component. Note that the parent, if set, is not copied across.
      *
      * @method Phaser.Structs.Size#copy
-     * @since 3.16.0
+     * 
      *
      * @param {Phaser.Structs.Size} destination - The Size component to copy the values to.
      *
@@ -655,7 +655,7 @@ var Size = new Class({
      * A destroyed Size component cannot be re-used.
      *
      * @method Phaser.Structs.Size#destroy
-     * @since 3.16.0
+     * 
      */
     destroy: function () {
         this._parent = null;
@@ -674,7 +674,7 @@ var Size = new Class({
      *
      * @name Phaser.Structs.Size#width
      * @type {number}
-     * @since 3.16.0
+     * 
      */
     width: {
 
@@ -700,7 +700,7 @@ var Size = new Class({
      *
      * @name Phaser.Structs.Size#height
      * @type {number}
-     * @since 3.16.0
+     * 
      */
     height: {
 
@@ -722,7 +722,7 @@ var Size = new Class({
  * @name Phaser.Structs.Size.NONE
  * @constant
  * @type {number}
- * @since 3.16.0
+ * 
  */
 Size.NONE = 0;
 
@@ -732,7 +732,7 @@ Size.NONE = 0;
  * @name Phaser.Structs.Size.WIDTH_CONTROLS_HEIGHT
  * @constant
  * @type {number}
- * @since 3.16.0
+ * 
  */
 Size.WIDTH_CONTROLS_HEIGHT = 1;
 
@@ -742,7 +742,7 @@ Size.WIDTH_CONTROLS_HEIGHT = 1;
  * @name Phaser.Structs.Size.HEIGHT_CONTROLS_WIDTH
  * @constant
  * @type {number}
- * @since 3.16.0
+ * 
  */
 Size.HEIGHT_CONTROLS_WIDTH = 2;
 
@@ -752,7 +752,7 @@ Size.HEIGHT_CONTROLS_WIDTH = 2;
  * @name Phaser.Structs.Size.FIT
  * @constant
  * @type {number}
- * @since 3.16.0
+ * 
  */
 Size.FIT = 3;
 
@@ -762,7 +762,7 @@ Size.FIT = 3;
  * @name Phaser.Structs.Size.ENVELOP
  * @constant
  * @type {number}
- * @since 3.16.0
+ * 
  */
 Size.ENVELOP = 4;
 

@@ -79,7 +79,7 @@ var TransformMatrix = new Class({
              *
              * @name Phaser.GameObjects.Components.TransformMatrix#quad
              * @type {Float32Array}
-             * @since 3.60.0
+             * 
              */
             this.quad = new Float32Array(8);
         },
@@ -165,7 +165,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#e
      * @type {number}
-     * @since 3.11.0
+     * 
      */
     e: {
 
@@ -184,7 +184,7 @@ var TransformMatrix = new Class({
      *
      * @name Phaser.GameObjects.Components.TransformMatrix#f
      * @type {number}
-     * @since 3.11.0
+     * 
      */
     f: {
 
@@ -259,7 +259,7 @@ var TransformMatrix = new Class({
      * @name Phaser.GameObjects.Components.TransformMatrix#rotationNormalized
      * @type {number}
      * @readonly
-     * @since 3.19.0
+     * 
      */
     rotationNormalized: {
 
@@ -462,7 +462,7 @@ var TransformMatrix = new Class({
      * The offsetY is added to the ty value: `offsetY * b + offsetY * d + ty`.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#multiplyWithOffset
-     * @since 3.11.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} src - The source Matrix to copy from.
      * @param {number} offsetX - Horizontal offset to factor in to the multiplication.
@@ -602,7 +602,7 @@ var TransformMatrix = new Class({
      * Set the values of this Matrix to copy those of the matrix given.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#copyFrom
-     * @since 3.11.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} src - The source Matrix to copy from.
      *
@@ -626,7 +626,7 @@ var TransformMatrix = new Class({
      * Where array indexes 0, 1, 2, 3, 4 and 5 are mapped to a, b, c, d, e and f.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#copyFromArray
-     * @since 3.11.0
+     * 
      *
      * @param {array} src - The array of values to set into this matrix.
      *
@@ -650,7 +650,7 @@ var TransformMatrix = new Class({
      * This will use the Context.transform method.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#copyToContext
-     * @since 3.12.0
+     * 
      *
      * @param {CanvasRenderingContext2D} ctx - The Canvas Rendering Context to copy the matrix values to.
      *
@@ -669,7 +669,7 @@ var TransformMatrix = new Class({
      * This will use the Context.setTransform method.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#setToContext
-     * @since 3.12.0
+     * 
      *
      * @param {CanvasRenderingContext2D} ctx - The Canvas Rendering Context to copy the matrix values to.
      *
@@ -688,7 +688,7 @@ var TransformMatrix = new Class({
      * Where array indexes 0, 1, 2, 3, 4 and 5 are mapped to a, b, c, d, e and f.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#copyToArray
-     * @since 3.12.0
+     * 
      *
      * @param {array} [out] - The array to copy the matrix values in to.
      *
@@ -832,7 +832,7 @@ var TransformMatrix = new Class({
      * Can be used to translate points from world to local space.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#applyInverse
-     * @since 3.12.0
+     * 
      *
      * @param {number} x - The x position to translate.
      * @param {number} y - The y position to translate.
@@ -870,7 +870,7 @@ var TransformMatrix = new Class({
      * from this method.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#setQuad
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
@@ -954,7 +954,7 @@ var TransformMatrix = new Class({
      * This is the same as `x * a + y * c + e`.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getX
-     * @since 3.12.0
+     * 
      *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
@@ -970,7 +970,7 @@ var TransformMatrix = new Class({
      * This is the same as `x * b + y * d + f`.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getY
-     * @since 3.12.0
+     * 
      *
      * @param {number} x - The x value.
      * @param {number} y - The y value.
@@ -1033,7 +1033,7 @@ var TransformMatrix = new Class({
      * Returns a string that can be used in a CSS Transform call as a `matrix` property.
      *
      * @method Phaser.GameObjects.Components.TransformMatrix#getCSSMatrix
-     * @since 3.12.0
+     * 
      *
      * @return {string} A string containing the CSS Transform matrix values.
      */

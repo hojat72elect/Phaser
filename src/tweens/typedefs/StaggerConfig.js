@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.StaggerConfig
- * @since 3.19.0
+ * 
  *
  * @property {number} [start=0] - The value to start the stagger from. Can be used as a way to offset the stagger while still using a range for the value.
  * @property {(string|function)} [ease='Linear'] - An ease to apply across the staggered values. Can either be a string, such as 'sine.inout', or a function.

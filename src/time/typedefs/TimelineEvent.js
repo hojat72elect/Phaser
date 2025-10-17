@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Time.TimelineEvent
- * @since 3.60.0
+ * 
  *
  * @property {boolean} complete - Has this event completed yet?
  * @property {boolean} once - Is this a once only event?

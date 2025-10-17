@@ -42,7 +42,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#texture
              * @type {Phaser.Textures.Texture}
              * @default null
-             * @since 3.60.0
+             * 
              */
             this.texture = null;
 
@@ -83,7 +83,7 @@ var Particle = new Class({
              *
              * @name Phaser.GameObjects.Particles.Particle#worldPosition
              * @type {Phaser.Math.Vector2}
-             * @since 3.60.0
+             * 
              */
             this.worldPosition = new Vector2();
 
@@ -253,7 +253,7 @@ var Particle = new Class({
              * @name Phaser.GameObjects.Particles.Particle#holdCurrent
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.holdCurrent = 0;
 
@@ -298,7 +298,7 @@ var Particle = new Class({
              * @type {boolean}
              * @private
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isCropped = false;
 
@@ -312,7 +312,7 @@ var Particle = new Class({
              *
              * @name Phaser.GameObjects.Particles.Particle#scene
              * @type {Phaser.Scene}
-             * @since 3.60.0
+             * 
              */
             this.scene = emitter.scene;
 
@@ -327,7 +327,7 @@ var Particle = new Class({
              *
              * @name Phaser.GameObjects.Particles.Particle#anims
              * @type {?Phaser.Animations.AnimationState}
-             * @since 3.60.0
+             * 
              * @see Phaser.GameObjects.Particles.ParticleEmitter#setAnim
              */
             this.anims = null;
@@ -342,7 +342,7 @@ var Particle = new Class({
              *
              * @name Phaser.GameObjects.Particles.Particle#bounds
              * @type {Phaser.Geom.Rectangle}
-             * @since 3.60.0
+             * 
              */
             this.bounds = new Rectangle();
         },
@@ -353,7 +353,7 @@ var Particle = new Class({
      * Passes on all parameters to the `ParticleEmitter` to emit directly.
      *
      * @method Phaser.GameObjects.Particles.Particle#emit
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Symbol)} event - The event name.
      * @param {any} [a1] - Optional argument 1.
@@ -385,7 +385,7 @@ var Particle = new Class({
      * the Particle to be removed the next time its parent Emitter runs an update.
      *
      * @method Phaser.GameObjects.Particles.Particle#kill
-     * @since 3.60.0
+     * 
      */
     kill: function () {
         this.lifeCurrent = 0;
@@ -397,7 +397,7 @@ var Particle = new Class({
      * If the parameters are left undefined, it resets the particle back to 0x0.
      *
      * @method Phaser.GameObjects.Particles.Particle#setPosition
-     * @since 3.60.0
+     * 
      *
      * @param {number} [x=0] - The x coordinate to set this Particle to.
      * @param {number} [y=0] - The y coordinate to set this Particle to.
@@ -674,7 +674,7 @@ var Particle = new Class({
      * This is a NOOP method and does nothing when called.
      *
      * @method Phaser.GameObjects.Particles.Particle#setSizeToFrame
-     * @since 3.60.0
+     * 
      */
     setSizeToFrame: function () {
         //  NOOP
@@ -687,7 +687,7 @@ var Particle = new Class({
      * Once calculated the bounds can be accessed via the `Particle.bounds` property.
      *
      * @method Phaser.GameObjects.Particles.Particle#getBounds
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} [matrix] - Optional transform matrix to apply to this particle.
      *
@@ -738,7 +738,7 @@ var Particle = new Class({
      * Destroys this Particle.
      *
      * @method Phaser.GameObjects.Particles.Particle#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         if (this.anims) {

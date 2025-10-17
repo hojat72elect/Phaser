@@ -87,7 +87,7 @@ var StaticBody = new Class({
              * @name Phaser.Physics.Arcade.StaticBody#isBody
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isBody = true;
 
@@ -479,7 +479,7 @@ var StaticBody = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.10.0
+             * 
              */
             this._dx = 0;
 
@@ -491,7 +491,7 @@ var StaticBody = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.10.0
+             * 
              */
             this._dy = 0;
         },
@@ -822,7 +822,7 @@ var StaticBody = new Class({
      * NOOP
      *
      * @method Phaser.Physics.Arcade.StaticBody#postUpdate
-     * @since 3.12.0
+     * 
      */
     postUpdate: function () {
     },

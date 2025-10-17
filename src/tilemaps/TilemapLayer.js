@@ -250,7 +250,7 @@ var TilemapLayer = new Class({
              * @name Phaser.Tilemaps.TilemapLayer#tempVec
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.60.0
+             * 
              */
             this.tempVec = new Vector2();
 
@@ -640,7 +640,7 @@ var TilemapLayer = new Class({
      *
      * @method Phaser.Tilemaps.TilemapLayer#setTint
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} [tint=0xffffff] - The tint color being applied to each tile within the region. Given as a hex value, i.e. `0xff0000` for red. Set to white (`0xffffff`) to reset the tint.
      * @param {number} [tileX] - The left most tile index (in tile coordinates) to use as the origin of the area to search.
@@ -739,7 +739,7 @@ var TilemapLayer = new Class({
      * Gets a tile at the given world coordinates from the given isometric layer.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getIsoTileAtWorldXY
-     * @since 3.60.0
+     * 
      *
      * @param {number} worldX - X position to get the tile from (given in pixels)
      * @param {number} worldY - Y position to get the tile from (given in pixels)
@@ -1329,7 +1329,7 @@ var TilemapLayer = new Class({
      * of course, return an array of 6 corner vectors.
      *
      * @method Phaser.Tilemaps.TilemapLayer#getTileCorners
-     * @since 3.60.0
+     * 
      *
      * @param {number} tileX - The x coordinate, in tiles, not pixels.
      * @param {number} tileY - The y coordinate, in tiles, not pixels.

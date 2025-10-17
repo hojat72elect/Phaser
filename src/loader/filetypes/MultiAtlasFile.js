@@ -18,7 +18,7 @@ var MultiFile = require('../MultiFile');
  * @extends Phaser.Loader.MultiFile
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.7.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.MultiAtlasFileConfig)} key - The key of the file. Must be unique within both the Loader and the Texture Manager. Or a config object.
@@ -65,7 +65,7 @@ var MultiAtlasFile = new Class({
      * Called by each File when it finishes loading.
      *
      * @method Phaser.Loader.FileTypes.MultiAtlasFile#onFileComplete
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
@@ -133,7 +133,7 @@ var MultiAtlasFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.MultiAtlasFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         if (this.isReadyToProcess()) {
@@ -258,7 +258,7 @@ var MultiAtlasFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#multiatlas
  * @fires Phaser.Loader.Events#ADD
- * @since 3.7.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.MultiAtlasFileConfig|Phaser.Types.Loader.FileTypes.MultiAtlasFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [atlasURL] - The absolute or relative URL to load the texture atlas json data file from. If undefined or `null` it will be set to `<key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".

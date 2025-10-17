@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Time.TimelineEventConfig
- * @since 3.60.0
+ * 
  *
  * @property {number} [at=0] - The time (in ms) at which the Event will fire. The Timeline starts at 0.
  * @property {number} [in] - If the Timeline is running, this is the time (in ms) at which the Event will fire based on its current elapsed value. If set it will override the `at` property.

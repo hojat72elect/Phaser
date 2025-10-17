@@ -30,7 +30,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [radius=0.5] - The radius of the bokeh effect.
@@ -81,7 +81,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#radius
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.radius = radius;
 
@@ -90,7 +90,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#amount
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.amount = amount;
 
@@ -99,7 +99,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#contrast
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.contrast = contrast;
 
@@ -108,7 +108,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#isTiltShift
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.isTiltShift = isTiltShift;
 
@@ -119,7 +119,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = strength;
 
@@ -130,7 +130,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#blurX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.blurX = blurX;
 
@@ -141,7 +141,7 @@ var Bokeh = new Class({
              *
              * @name Phaser.FX.Bokeh#blurY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.blurY = blurY;
         }

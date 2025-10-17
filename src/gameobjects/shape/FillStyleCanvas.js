@@ -2,7 +2,7 @@
  * Sets the fillStyle on the target context based on the given Shape.
  *
  * @method Phaser.GameObjects.Shape#FillStyleCanvas
- * @since 3.13.0
+ * 
  * @private
  *
  * @param {CanvasRenderingContext2D} ctx - The context to set the fill style on.

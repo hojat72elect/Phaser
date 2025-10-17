@@ -709,7 +709,7 @@ var Matrix4 = new Class({
      * Translate this Matrix using the given values.
      *
      * @method Phaser.Math.Matrix4#translateXYZ
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The x component.
      * @param {number} y - The y component.
@@ -748,7 +748,7 @@ var Matrix4 = new Class({
      * Apply a scale transformation to this Matrix.
      *
      * @method Phaser.Math.Matrix4#scaleXYZ
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The x component.
      * @param {number} y - The y component.

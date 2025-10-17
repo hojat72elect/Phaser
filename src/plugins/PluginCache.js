@@ -155,7 +155,7 @@ PluginCache.removeCustom = function (key) {
  * So be sure you only call this if you do not wish to run Phaser again.
  *
  * @method Phaser.Plugins.PluginCache.destroyCorePlugins
- * @since 3.12.0
+ * 
  */
 PluginCache.destroyCorePlugins = function () {
     for (var key in corePlugins) {
@@ -169,7 +169,7 @@ PluginCache.destroyCorePlugins = function () {
  * Removes all Custom Plugins.
  *
  * @method Phaser.Plugins.PluginCache.destroyCustomPlugins
- * @since 3.12.0
+ * 
  */
 PluginCache.destroyCustomPlugins = function () {
     for (var key in customPlugins) {

@@ -22,7 +22,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -43,7 +43,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = 0;
 
@@ -52,7 +52,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = 0;
 
@@ -61,7 +61,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#decay
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.decay = 0.1;
 
@@ -70,7 +70,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#power
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.power = 1;
 
@@ -79,7 +79,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [0, 0, 0, 1];
 
@@ -90,7 +90,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#samples
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.samples = 6;
 
@@ -99,7 +99,7 @@ var ShadowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShadowFXPipeline#intensity
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.intensity = 1;
         },

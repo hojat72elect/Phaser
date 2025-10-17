@@ -359,7 +359,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#contextLostHandler
              * @type {function}
-             * @since 3.19.0
+             * 
              */
             this.contextLostHandler = NOOP;
 
@@ -369,7 +369,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#contextRestoredHandler
              * @type {function}
-             * @since 3.19.0
+             * 
              */
             this.contextRestoredHandler = NOOP;
 
@@ -379,7 +379,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#previousContextLostHandler
              * @type {function}
-             * @since 3.19.0
+             * 
              */
             this.previousContextLostHandler = NOOP;
 
@@ -389,7 +389,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#previousContextRestoredHandler
              * @type {function}
-             * @since 3.19.0
+             * 
              */
             this.previousContextRestoredHandler = NOOP;
 
@@ -478,7 +478,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#drawingBufferHeight
              * @type {number}
              * @readonly
-             * @since 3.11.0
+             * 
              */
             this.drawingBufferHeight = 0;
 
@@ -489,7 +489,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#blankTexture
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
              * @readonly
-             * @since 3.12.0
+             * 
              */
             this.blankTexture = null;
 
@@ -521,7 +521,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#maskCount
              * @type {number}
-             * @since 3.17.0
+             * 
              */
             this.maskCount = 0;
 
@@ -530,7 +530,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#maskStack
              * @type {Phaser.Display.Masks.GeometryMask[]}
-             * @since 3.17.0
+             * 
              */
             this.maskStack = [];
 
@@ -539,7 +539,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentMask
              * @type {any}
-             * @since 3.17.0
+             * 
              */
             this.currentMask = {mask: null, camera: null};
 
@@ -548,7 +548,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentCameraMask
              * @type {any}
-             * @since 3.17.0
+             * 
              */
             this.currentCameraMask = {mask: null, camera: null};
 
@@ -558,7 +558,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#glFuncMap
              * @type {any}
-             * @since 3.17.0
+             * 
              */
             this.glFuncMap = null;
 
@@ -568,7 +568,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#currentType
              * @type {string}
-             * @since 3.19.0
+             * 
              */
             this.currentType = '';
 
@@ -578,7 +578,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#newType
              * @type {boolean}
-             * @since 3.19.0
+             * 
              */
             this.newType = false;
 
@@ -588,7 +588,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#nextTypeMatch
              * @type {boolean}
-             * @since 3.19.0
+             * 
              */
             this.nextTypeMatch = false;
 
@@ -695,7 +695,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#maskSource
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.60.0
+             * 
              */
             this.maskSource = null;
 
@@ -706,7 +706,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#maskTarget
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.60.0
+             * 
              */
             this.maskTarget = null;
 
@@ -717,7 +717,7 @@ var WebGLRenderer = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLRenderer#spector
              * @type {function}
-             * @since 3.60.0
+             * 
              */
             this.spector = null;
 
@@ -727,7 +727,7 @@ var WebGLRenderer = new Class({
              * @name Phaser.Renderer.WebGL.WebGLRenderer#_debugCapture
              * @type {boolean}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._debugCapture = false;
 
@@ -874,7 +874,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#boot
      * @private
-     * @since 3.11.0
+     * 
      */
     boot: function () {
         var game = this.game;
@@ -1087,7 +1087,7 @@ var WebGLRenderer = new Class({
      * Create temporary WebGL textures to stop WebGL errors on macOS.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#createTemporaryTextures
-     * @since 3.60.0
+     * 
      */
     createTemporaryTextures: function () {
         var gl = this.gl;
@@ -1120,7 +1120,7 @@ var WebGLRenderer = new Class({
      * This method will capture the current WebGL frame and send it to the Spector.js tool for inspection.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#captureFrame
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [quickCapture=false] - If `true` thumbnails are not captured in order to speed up the capture.
      * @param {boolean} [fullCapture=false] - If `true` all details are captured.
@@ -1155,7 +1155,7 @@ var WebGLRenderer = new Class({
      * This method will capture the next WebGL frame and send it to the Spector.js tool for inspection.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#captureNextFrame
-     * @since 3.60.0
+     * 
      */
     captureNextFrame: function () {
         if (DEBUG && this.spector && !this._debugCapture) {
@@ -1180,7 +1180,7 @@ var WebGLRenderer = new Class({
      * This method will return the current FPS of the WebGL canvas.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getFps
-     * @since 3.60.0
+     * 
      *
      * @return {number} The current FPS of the WebGL canvas.
      */
@@ -1206,7 +1206,7 @@ var WebGLRenderer = new Class({
      * All logs can be filtered searching for "LOG".
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#log
-     * @since 3.60.0
+     * 
      *
      * @param {...*} arguments - The arguments to log to Spector.
      *
@@ -1237,7 +1237,7 @@ var WebGLRenderer = new Class({
      * the thumbnails are not captured in order to speed up the capture.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#startCapture
-     * @since 3.60.0
+     * 
      *
      * @param {number} [commandCount=0] - The number of commands to capture. If zero it will capture for 10 seconds.
      * @param {boolean} [quickCapture=false] - If `true` thumbnails are not captured in order to speed up the capture.
@@ -1278,7 +1278,7 @@ var WebGLRenderer = new Class({
      * or did not find any commands.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#stopCapture
-     * @since 3.60.0
+     * 
      *
      * @return {object} The current capture.
      */
@@ -1296,7 +1296,7 @@ var WebGLRenderer = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#onCapture
      * @private
-     * @since 3.60.0
+     * 
      *
      * @param {object} capture - The capture data.
      */
@@ -1314,7 +1314,7 @@ var WebGLRenderer = new Class({
      * The event handler that manages the `resize` event dispatched by the Scale Manager.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#onResize
-     * @since 3.16.0
+     * 
      *
      * @param {Phaser.Structs.Size} gameSize - The default Game Size object. This is the un-modified game dimensions.
      * @param {Phaser.Structs.Size} baseSize - The base Size object. The game dimensions. The canvas width / height values match this.
@@ -1410,7 +1410,7 @@ var WebGLRenderer = new Class({
      * which formats it supports, see the `Phaser.Renderer.WebGL.WebGLRenderer#compression` property instead.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getCompressedTextures
-     * @since 3.60.0
+     * 
      *
      * @return {Phaser.Types.Renderer.WebGL.WebGLTextureCompression} The compression object.
      */
@@ -1453,7 +1453,7 @@ var WebGLRenderer = new Class({
      * Returns a compressed texture format GLenum name based on the given format.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#getCompressedTextureName
-     * @since 3.60.0
+     * 
      *
      * @param {string} baseFormat - The Base Format to check.
      * @param {GLenum} [format] - An optional GLenum format to check within the base format.
@@ -1472,7 +1472,7 @@ var WebGLRenderer = new Class({
      * Checks if the given compressed texture format is supported, or not.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#supportsCompressedTexture
-     * @since 3.60.0
+     * 
      *
      * @param {string} baseFormat - The Base Format to check.
      * @param {GLenum} [format] - An optional GLenum format to check within the base format.
@@ -1712,7 +1712,7 @@ var WebGLRenderer = new Class({
      * Is there an active stencil mask?
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#hasActiveStencilMask
-     * @since 3.17.0
+     * 
      *
      * @return {boolean} `true` if there is an active stencil mask, otherwise `false`.
      */
@@ -1993,7 +1993,7 @@ var WebGLRenderer = new Class({
      * Restores the previous framebuffer from the fbo stack and sets it.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#restoreFramebuffer
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [updateScissor=false] - If a framebuffer is given, set the gl scissor to match the frame buffer size? Or, if `null` given, pop the scissor from the stack.
      * @param {boolean} [setViewport=true] - Should the WebGL viewport be set?
@@ -2183,7 +2183,7 @@ var WebGLRenderer = new Class({
      * The framebuffer for the masked object is also bound for further use.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#beginBitmapMask
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Display.Masks.BitmapMask} mask - The BitmapMask instance that called beginMask.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera rendering the current mask.
@@ -2208,7 +2208,7 @@ var WebGLRenderer = new Class({
      * The framebuffer for the masked object is also bound for further use.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#drawBitmapMask
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Display.Masks.BitmapMask} mask - The BitmapMask instance that called beginMask.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera rendering the current mask.
@@ -2715,7 +2715,7 @@ var WebGLRenderer = new Class({
      * of the current stencil mask.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#clearStencilMask
-     * @since 3.60.0
+     * 
      */
     clearStencilMask: function () {
         this.gl.disable(this.gl.STENCIL_TEST);
@@ -2726,7 +2726,7 @@ var WebGLRenderer = new Class({
      * before `clearStencilMask` was called.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#restoreStencilMask
-     * @since 3.60.0
+     * 
      */
     restoreStencilMask: function () {
         var gl = this.gl;
@@ -2788,7 +2788,7 @@ var WebGLRenderer = new Class({
      * which gets more expensive the larger the canvas size gets, so please be careful how you employ this in your game.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#snapshotArea
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The x coordinate to grab from. This is based on the game viewport, not the world.
      * @param {number} y - The y coordinate to grab from. This is based on the game viewport, not the world.
@@ -2828,7 +2828,7 @@ var WebGLRenderer = new Class({
      * using less memory.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#snapshotPixel
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The x coordinate of the pixel to get. This is based on the game viewport, not the world.
      * @param {number} y - The y coordinate of the pixel to get. This is based on the game viewport, not the world.
@@ -2855,7 +2855,7 @@ var WebGLRenderer = new Class({
      * which gets more expensive the larger the canvas size gets, so please be careful how you employ this in your game.
      *
      * @method Phaser.Renderer.WebGL.WebGLRenderer#snapshotFramebuffer
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper} framebuffer - The framebuffer to grab from.
      * @param {number} bufferWidth - The width of the framebuffer.

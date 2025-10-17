@@ -26,7 +26,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [color1=0xff0000] - The first gradient color, given as a number value.
@@ -71,7 +71,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#alpha
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.alpha = alpha;
 
@@ -83,7 +83,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#size
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.size = size;
 
@@ -92,7 +92,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#fromX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.fromX = fromX;
 
@@ -101,7 +101,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#fromY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.fromY = fromY;
 
@@ -110,7 +110,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#toX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.toX = toX;
 
@@ -119,7 +119,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#toY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.toY = toY;
 
@@ -128,7 +128,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#glcolor1
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor1 = [255, 0, 0];
 
@@ -137,7 +137,7 @@ var Gradient = new Class({
              *
              * @name Phaser.FX.Gradient#glcolor2
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor2 = [0, 255, 0];
 
@@ -155,7 +155,7 @@ var Gradient = new Class({
      *
      * @name Phaser.FX.Gradient#color1
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color1: {
 
@@ -180,7 +180,7 @@ var Gradient = new Class({
      *
      * @name Phaser.FX.Gradient#color2
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color2: {
 

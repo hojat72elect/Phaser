@@ -45,7 +45,7 @@ var Rectangle = new Class({
              * @name Phaser.Geom.Rectangle#type
              * @type {number}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.type = GEOM_CONST.RECTANGLE;
 

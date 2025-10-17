@@ -8,6 +8,6 @@
  * The Interrupted Event.
  *
  * @event SpinePluginEvents#INTERRUPTED
- * @since 3.19.0
+ * 
  */
 module.exports = 'interrupted';

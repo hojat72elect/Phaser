@@ -166,7 +166,7 @@ var Animation = new Class({
              * @name Phaser.Animations.Animation#showBeforeDelay
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.showBeforeDelay = GetValue(config, 'showBeforeDelay', false);
 
@@ -196,7 +196,7 @@ var Animation = new Class({
              * @name Phaser.Animations.Animation#randomFrame
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.randomFrame = GetValue(config, 'randomFrame', false);
 
@@ -535,7 +535,7 @@ var Animation = new Class({
      *
      * @method Phaser.Animations.Animation#handleYoyoFrame
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {Phaser.Animations.AnimationState} state - The Animation State to advance.
      * @param {boolean} isReverse - Is animation in reverse mode? (Default: false)
@@ -572,7 +572,7 @@ var Animation = new Class({
      * Returns the animation last frame.
      *
      * @method Phaser.Animations.Animation#getLastFrame
-     * @since 3.12.0
+     * 
      *
      * @return {Phaser.Animations.AnimationFrame} The last Animation Frame.
      */
@@ -618,7 +618,7 @@ var Animation = new Class({
      *
      * @method Phaser.Animations.Animation#updateAndGetNextTick
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {Phaser.Animations.AnimationState} state - The Animation State.
      * @param {Phaser.Animations.AnimationFrame} frame - An Animation frame.

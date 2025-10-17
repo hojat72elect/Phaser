@@ -916,7 +916,7 @@ var Vector3 = new Class({
  * @constant
  * @name Phaser.Math.Vector3.ZERO
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.ZERO = new Vector3();
 
@@ -928,7 +928,7 @@ Vector3.ZERO = new Vector3();
  * @constant
  * @name Phaser.Math.Vector3.RIGHT
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.RIGHT = new Vector3(1, 0, 0);
 
@@ -940,7 +940,7 @@ Vector3.RIGHT = new Vector3(1, 0, 0);
  * @constant
  * @name Phaser.Math.Vector3.LEFT
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.LEFT = new Vector3(-1, 0, 0);
 
@@ -952,7 +952,7 @@ Vector3.LEFT = new Vector3(-1, 0, 0);
  * @constant
  * @name Phaser.Math.Vector3.UP
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.UP = new Vector3(0, -1, 0);
 
@@ -964,7 +964,7 @@ Vector3.UP = new Vector3(0, -1, 0);
  * @constant
  * @name Phaser.Math.Vector3.DOWN
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.DOWN = new Vector3(0, 1, 0);
 
@@ -976,7 +976,7 @@ Vector3.DOWN = new Vector3(0, 1, 0);
  * @constant
  * @name Phaser.Math.Vector3.FORWARD
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.FORWARD = new Vector3(0, 0, 1);
 
@@ -988,7 +988,7 @@ Vector3.FORWARD = new Vector3(0, 0, 1);
  * @constant
  * @name Phaser.Math.Vector3.BACK
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.BACK = new Vector3(0, 0, -1);
 
@@ -1000,7 +1000,7 @@ Vector3.BACK = new Vector3(0, 0, -1);
  * @constant
  * @name Phaser.Math.Vector3.ONE
  * @type {Phaser.Math.Vector3}
- * @since 3.16.0
+ * 
  */
 Vector3.ONE = new Vector3(1, 1, 1);
 

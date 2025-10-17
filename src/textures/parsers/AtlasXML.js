@@ -4,7 +4,7 @@
  * @function Phaser.Textures.Parsers.AtlasXML
  * @memberof Phaser.Textures.Parsers
  * @private
- * @since 3.7.0
+ * 
  *
  * @param {Phaser.Textures.Texture} texture - The Texture to add the Frames to.
  * @param {number} sourceIndex - The index of the TextureSource.

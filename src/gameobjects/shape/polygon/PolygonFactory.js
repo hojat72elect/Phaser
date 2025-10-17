@@ -25,7 +25,7 @@ var Polygon = require('./Polygon');
  * on the coordinates of the points provided, the final shape may be rendered offset from its origin.
  *
  * @method Phaser.GameObjects.GameObjectFactory#polygon
- * @since 3.13.0
+ * 
  *
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
  * @param {number} [y=0] - The vertical position of this Game Object in the world.

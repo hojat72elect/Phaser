@@ -46,7 +46,7 @@ var Utils = require('../renderer/webgl/Utils');
  * @extends Phaser.Textures.Texture
  * @memberof Phaser.Textures
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Textures.TextureManager} manager - A reference to the Texture Manager this Texture belongs to.
  * @param {string} key - The unique string-based key of this Texture.
@@ -77,7 +77,7 @@ var DynamicTexture = new Class({
              * @name Phaser.Textures.DynamicTexture#type
              * @type {string}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.type = 'DynamicTexture';
 
@@ -107,7 +107,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#width
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.width = -1;
 
@@ -118,7 +118,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#height
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.height = -1;
 
@@ -129,7 +129,7 @@ var DynamicTexture = new Class({
              * @name Phaser.Textures.DynamicTexture#isDrawing
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isDrawing = false;
 
@@ -148,7 +148,7 @@ var DynamicTexture = new Class({
              * @name Phaser.Textures.DynamicTexture#context
              * @readonly
              * @type {CanvasRenderingContext2D}
-             * @since 3.7.0
+             * 
              */
             this.context = (isCanvas) ? source.getContext('2d', {willReadFrequently: true}) : null;
 
@@ -157,7 +157,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#dirty
              * @type {boolean}
-             * @since 3.12.0
+             * 
              */
             this.dirty = false;
 
@@ -175,7 +175,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#isSpriteTexture
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.isSpriteTexture = true;
 
@@ -185,7 +185,7 @@ var DynamicTexture = new Class({
              * @name Phaser.Textures.DynamicTexture#_eraseMode
              * @type {boolean}
              * @private
-             * @since 3.16.0
+             * 
              */
             this._eraseMode = false;
 
@@ -199,7 +199,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#camera
              * @type {Phaser.Cameras.Scene2D.Camera}
-             * @since 3.12.0
+             * 
              */
             this.camera = new Camera(0, 0, width, height).setScene(manager.game.scene.systemScene, false);
 
@@ -212,7 +212,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#renderTarget
              * @type {Phaser.Renderer.WebGL.RenderTarget}
-             * @since 3.60.0
+             * 
              */
             this.renderTarget = (!isCanvas) ? new RenderTarget(renderer, width, height, 1, 0, false, false, true, false) : null;
 
@@ -223,7 +223,7 @@ var DynamicTexture = new Class({
              *
              * @name Phaser.Textures.DynamicTexture#pipeline
              * @type {Phaser.Renderer.WebGL.Pipelines.SinglePipeline}
-             * @since 3.60.0
+             * 
              */
             this.pipeline = (!isCanvas) ? renderer.pipelines.get(PIPELINES.SINGLE_PIPELINE) : null;
 
@@ -241,7 +241,7 @@ var DynamicTexture = new Class({
      * If the dimensions given are the same as those already being used, calling this method will do nothing.
      *
      * @method Phaser.Textures.DynamicTexture#setSize
-     * @since 3.10.0
+     * 
      *
      * @param {number} width - The new width of this Dynamic Texture.
      * @param {number} [height=width] - The new height of this Dynamic Texture. If not specified, will be set the same as the `width`.
@@ -351,7 +351,7 @@ var DynamicTexture = new Class({
      * drawing anything to it, otherwise you will get inverted frames in WebGL.
      *
      * @method Phaser.Textures.DynamicTexture#setIsSpriteTexture
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} value - Is this Render Target being used as a Sprite Texture, or not?
      *
@@ -494,7 +494,7 @@ var DynamicTexture = new Class({
      * `originY` properties both to zero.
      *
      * @method Phaser.Textures.DynamicTexture#stamp
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture. Set to `null` to skip this argument if not required.
@@ -600,7 +600,7 @@ var DynamicTexture = new Class({
      * calling this method, otherwise you will get vertically inverted frames in WebGL.
      *
      * @method Phaser.Textures.DynamicTexture#erase
-     * @since 3.16.0
+     * 
      *
      * @param {any} entries - Any renderable Game Object, or Group, Container, Display List, Render Texture, Texture Frame, or an array of any of these.
      * @param {number} [x=0] - The x position to draw the Frame at, or the offset applied to the object.
@@ -708,7 +708,7 @@ var DynamicTexture = new Class({
      * calling this method, otherwise you will get vertically inverted frames in WebGL.
      *
      * @method Phaser.Textures.DynamicTexture#drawFrame
-     * @since 3.12.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture. Set to `null` to skip this argument if not required.
@@ -747,7 +747,7 @@ var DynamicTexture = new Class({
      * calling this method, otherwise you will get vertically inverted frames in WebGL.
      *
      * @method Phaser.Textures.DynamicTexture#repeat
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture. Set to `null` to skip this argument if not required.
@@ -1211,7 +1211,7 @@ var DynamicTexture = new Class({
      *
      * @method Phaser.Textures.DynamicTexture#batchList
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {array} children - The array of Game Objects, Textures or Frames to draw.
      * @param {number} [x=0] - The x position to offset the Game Object by.
@@ -1257,7 +1257,7 @@ var DynamicTexture = new Class({
      *
      * @method Phaser.Textures.DynamicTexture#batchGroup
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {array} children - The array of Game Objects to draw.
      * @param {number} [x=0] - The x position to offset the Game Objects by.
@@ -1285,7 +1285,7 @@ var DynamicTexture = new Class({
      *
      * @method Phaser.Textures.DynamicTexture#batchGameObject
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to draw.
      * @param {number} [x=0] - The x position to draw the Game Object at.
@@ -1354,7 +1354,7 @@ var DynamicTexture = new Class({
      *
      * @method Phaser.Textures.DynamicTexture#batchTextureFrameKey
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture.
@@ -1376,7 +1376,7 @@ var DynamicTexture = new Class({
      *
      * @method Phaser.Textures.DynamicTexture#batchTextureFrame
      * @private
-     * @since 3.12.0
+     * 
      *
      * @param {Phaser.Textures.Frame} textureFrame - The Texture Frame to draw.
      * @param {number} [x=0] - The x position to draw the Frame at.
@@ -1440,7 +1440,7 @@ var DynamicTexture = new Class({
      * the larger the resolution this Dynamic Texture has, so please be careful how you employ this in your game.
      *
      * @method Phaser.Textures.DynamicTexture#snapshotArea
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The x coordinate to grab from.
      * @param {number} y - The y coordinate to grab from.
@@ -1478,7 +1478,7 @@ var DynamicTexture = new Class({
      * the larger the resolution this Dynamic Texture has, so please be careful how you employ this in your game.
      *
      * @method Phaser.Textures.DynamicTexture#snapshot
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.Types.Renderer.Snapshot.SnapshotCallback} callback - The Function to invoke after the snapshot image is created.
      * @param {string} [type='image/png'] - The format of the image to create, usually `image/png` or `image/jpeg`.
@@ -1503,7 +1503,7 @@ var DynamicTexture = new Class({
      * Canvas or Image object, so is a lot faster to execute, using less memory than the other snapshot methods.
      *
      * @method Phaser.Textures.DynamicTexture#snapshotPixel
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The x coordinate of the pixel to get.
      * @param {number} y - The y coordinate of the pixel to get.
@@ -1519,7 +1519,7 @@ var DynamicTexture = new Class({
      * Returns the underlying WebGLTextureWrapper, if not running in Canvas mode.
      *
      * @method Phaser.Textures.DynamicTexture#getWebGLTexture
-     * @since 3.60.0
+     * 
      *
      * @return {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} The underlying WebGLTextureWrapper, if not running in Canvas mode.
      */
@@ -1533,7 +1533,7 @@ var DynamicTexture = new Class({
      * Renders this Dynamic Texture onto the Stamp Game Object as a BitmapMask.
      *
      * @method Phaser.Textures.DynamicTexture#renderWebGL
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - A reference to the current active WebGL renderer.
      * @param {Phaser.GameObjects.Image} src - The Game Object being rendered in this call.
@@ -1553,7 +1553,7 @@ var DynamicTexture = new Class({
      * This is a NOOP method. Bitmap Masks are not supported by the Canvas Renderer.
      *
      * @method Phaser.Textures.DynamicTexture#renderCanvas
-     * @since 3.60.0
+     * 
      *
      * @param {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)} renderer - The Canvas Renderer which would be rendered to.
      * @param {Phaser.GameObjects.GameObject} mask - The masked Game Object which would be rendered.
@@ -1567,7 +1567,7 @@ var DynamicTexture = new Class({
      * Destroys this Texture and releases references to its sources and frames.
      *
      * @method Phaser.Textures.DynamicTexture#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         var stamp = this.manager.stamp;

@@ -3,7 +3,7 @@
  * Based on code by @tylerjpeterson
  *
  * @function Phaser.DOM.GetInnerHeight
- * @since 3.16.0
+ * 
  *
  * @param {boolean} iOS - Is this running on iOS?
  *

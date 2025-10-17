@@ -21,7 +21,7 @@
  *
  * @event Phaser.Tweens.Events#TWEEN_UPDATE
  * @type {string}
- * @since 3.19.0
+ * 
  *
  * @param {Phaser.Tweens.Tween} tween - A reference to the Tween instance that emitted the event.
  * @param {string} key - The property on the target that has just updated, i.e. `x` or `scaleY`, or whatever property you are tweening.

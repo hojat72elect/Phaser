@@ -130,7 +130,7 @@ var Tileset = new Class({
              *
              * @name Phaser.Tilemaps.Tileset#tileOffset
              * @type {Phaser.Math.Vector2}
-             * @since 3.60.0
+             * 
              */
             this.tileOffset = new Vector2();
 
@@ -154,7 +154,7 @@ var Tileset = new Class({
              * @name Phaser.Tilemaps.Tileset#glTexture
              * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
              * @readonly
-             * @since 3.11.0
+             * 
              */
             this.glTexture = null;
 

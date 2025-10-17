@@ -23,7 +23,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -44,7 +44,7 @@ var ShineFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#speed
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.speed = 0.5;
 
@@ -53,7 +53,7 @@ var ShineFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#lineWidth
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.lineWidth = 0.5;
 
@@ -62,7 +62,7 @@ var ShineFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#gradient
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.gradient = 3;
 
@@ -71,7 +71,7 @@ var ShineFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.ShineFXPipeline#reveal
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.reveal = false;
         },

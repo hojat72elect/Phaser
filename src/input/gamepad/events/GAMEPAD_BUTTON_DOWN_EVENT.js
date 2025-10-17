@@ -12,7 +12,7 @@
  *
  * @event Phaser.Input.Gamepad.Events#GAMEPAD_BUTTON_DOWN
  * @type {string}
- * @since 3.10.0
+ * 
  *
  * @param {number} index - The index of the button that was pressed.
  * @param {number} value - The value of the button at the time it was pressed. Between 0 and 1. Some Gamepads have pressure-sensitive buttons.

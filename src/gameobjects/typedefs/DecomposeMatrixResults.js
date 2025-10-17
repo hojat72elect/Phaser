@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.DecomposeMatrixResults
- * @since 3.60.0
+ * 
  *
  * @property {number} translateX - The translated x value.
  * @property {number} translateY - The translated y value.

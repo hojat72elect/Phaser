@@ -77,7 +77,7 @@ var Vector4 = require('../../math/Vector4');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.17.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -119,7 +119,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#parent
              * @type {Element}
-             * @since 3.17.0
+             * 
              */
             this.parent = scene.sys.game.domContainer;
 
@@ -132,7 +132,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#cache
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.17.0
+             * 
              */
             this.cache = scene.sys.cache.html;
 
@@ -142,7 +142,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#node
              * @type {Element}
-             * @since 3.17.0
+             * 
              */
             this.node;
 
@@ -157,7 +157,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#transformOnly
              * @type {boolean}
-             * @since 3.17.0
+             * 
              */
             this.transformOnly = false;
 
@@ -168,7 +168,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#skewX
              * @type {number}
-             * @since 3.17.0
+             * 
              */
             this.skewX = 0;
 
@@ -179,7 +179,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#skewY
              * @type {number}
-             * @since 3.17.0
+             * 
              */
             this.skewY = 0;
 
@@ -194,7 +194,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#rotate3d
              * @type {Phaser.Math.Vector4}
-             * @since 3.17.0
+             * 
              */
             this.rotate3d = new Vector4();
 
@@ -206,7 +206,7 @@ var DOMElement = new Class({
              *
              * @name Phaser.GameObjects.DOMElement#rotate3dAngle
              * @type {string}
-             * @since 3.17.0
+             * 
              */
             this.rotate3dAngle = 'deg';
 
@@ -233,7 +233,7 @@ var DOMElement = new Class({
              * @name Phaser.GameObjects.DOMElement#width
              * @type {number}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.width = 0;
 
@@ -247,7 +247,7 @@ var DOMElement = new Class({
              * @name Phaser.GameObjects.DOMElement#height
              * @type {number}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.height = 0;
 
@@ -259,7 +259,7 @@ var DOMElement = new Class({
              * @name Phaser.GameObjects.DOMElement#displayWidth
              * @type {number}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.displayWidth = 0;
 
@@ -271,7 +271,7 @@ var DOMElement = new Class({
              * @name Phaser.GameObjects.DOMElement#displayHeight
              * @type {number}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.displayHeight = 0;
 
@@ -281,7 +281,7 @@ var DOMElement = new Class({
              * @name Phaser.GameObjects.DOMElement#handler
              * @type {number}
              * @private
-             * @since 3.17.0
+             * 
              */
             this.handler = this.dispatchNativeEvent.bind(this);
 
@@ -327,7 +327,7 @@ var DOMElement = new Class({
      * For more information see: https://developer.mozilla.org/en-US/docs/Web/CSS/transform
      *
      * @method Phaser.GameObjects.DOMElement#setSkew
-     * @since 3.17.0
+     * 
      *
      * @param {number} [x=0] - The angle, in radians, by which to skew the DOM Element on the horizontal axis.
      * @param {number} [y=x] - The angle, in radians, by which to skew the DOM Element on the vertical axis.
@@ -359,7 +359,7 @@ var DOMElement = new Class({
      * **Changing this value changes it globally for all DOM Elements, as they all share the same parent container.**
      *
      * @method Phaser.GameObjects.DOMElement#setPerspective
-     * @since 3.17.0
+     * 
      *
      * @param {number} value - The perspective value, in pixels, that determines the distance between the z plane and the user.
      *
@@ -383,7 +383,7 @@ var DOMElement = new Class({
      *
      * @name Phaser.GameObjects.DOMElement#perspective
      * @type {number}
-     * @since 3.17.0
+     * 
      */
     perspective: {
 
@@ -412,7 +412,7 @@ var DOMElement = new Class({
      * ```
      *
      * @method Phaser.GameObjects.DOMElement#addListener
-     * @since 3.17.0
+     * 
      *
      * @param {string} events - The DOM event/s to listen for. You can specify multiple events by separating them with spaces.
      *
@@ -434,7 +434,7 @@ var DOMElement = new Class({
      * Removes one or more native DOM event listeners from the underlying Element of this Game Object.
      *
      * @method Phaser.GameObjects.DOMElement#removeListener
-     * @since 3.17.0
+     * 
      *
      * @param {string} events - The DOM event/s to stop listening for. You can specify multiple events by separating them with spaces.
      *
@@ -457,7 +457,7 @@ var DOMElement = new Class({
      *
      * @method Phaser.GameObjects.DOMElement#dispatchNativeEvent
      * @private
-     * @since 3.17.0
+     * 
      *
      * @param {any} event - The native DOM event.
      */
@@ -499,7 +499,7 @@ var DOMElement = new Class({
      * Any event listeners you may have previously created will need to be re-created after this call.
      *
      * @method Phaser.GameObjects.DOMElement#createElement
-     * @since 3.17.0
+     * 
      *
      * @param {string} tagName - A string that specifies the type of element to be created. The nodeName of the created element is initialized with the value of tagName. Don't use qualified names (like "html:a") with this method.
      * @param {(string|any)} [style] - Either a DOMString that holds the CSS styles to be applied to the created element, or an object the styles will be ready from.
@@ -554,7 +554,7 @@ var DOMElement = new Class({
      * ```
      *
      * @method Phaser.GameObjects.DOMElement#setElement
-     * @since 3.17.0
+     * 
      *
      * @param {(string|Element)} element - If a string it is passed to `getElementById()`, or it should be a reference to an existing Element.
      * @param {(string|any)} [style] - Either a DOMString that holds the CSS styles to be applied to the created element, or an object the styles will be ready from.
@@ -646,7 +646,7 @@ var DOMElement = new Class({
      * Any event listeners you may have previously created will need to be re-created after this call.
      *
      * @method Phaser.GameObjects.DOMElement#createFromCache
-     * @since 3.17.0
+     * 
      *
      * @param {string} The key of the html cache entry to use for this DOM Element.
      * @param {string} [tagName='div'] - The tag name of the element into which all of the loaded html will be inserted. Defaults to a plain div tag.
@@ -687,7 +687,7 @@ var DOMElement = new Class({
      * Any event listeners you may have previously created will need to be re-created after this call.
      *
      * @method Phaser.GameObjects.DOMElement#createFromHTML
-     * @since 3.17.0
+     * 
      *
      * @param {string} html - A string of html to be set as the `innerHTML` property of the created element.
      * @param {string} [tagName='div'] - The tag name of the element into which all of the html will be inserted. Defaults to a plain div tag.
@@ -726,7 +726,7 @@ var DOMElement = new Class({
      * `node` property of this Game Object to be `null`.
      *
      * @method Phaser.GameObjects.DOMElement#removeElement
-     * @since 3.17.0
+     * 
      *
      * @return {this} This DOM Element instance.
      */
@@ -747,7 +747,7 @@ var DOMElement = new Class({
      * This is called automatically whenever a new element is created or set.
      *
      * @method Phaser.GameObjects.DOMElement#updateSize
-     * @since 3.17.0
+     * 
      *
      * @return {this} This DOM Element instance.
      */
@@ -769,7 +769,7 @@ var DOMElement = new Class({
      * if found, or `null` if not.
      *
      * @method Phaser.GameObjects.DOMElement#getChildByProperty
-     * @since 3.17.0
+     * 
      *
      * @param {string} property - The property to search the children for.
      * @param {string} value - The value the property must strictly equal.
@@ -797,7 +797,7 @@ var DOMElement = new Class({
      * Be aware that class and id names are case-sensitive.
      *
      * @method Phaser.GameObjects.DOMElement#getChildByID
-     * @since 3.17.0
+     * 
      *
      * @param {string} id - The id to search the children for.
      *
@@ -814,7 +814,7 @@ var DOMElement = new Class({
      * Be aware that class and id names are case-sensitive.
      *
      * @method Phaser.GameObjects.DOMElement#getChildByName
-     * @since 3.17.0
+     * 
      *
      * @param {string} name - The name to search the children for.
      *
@@ -828,7 +828,7 @@ var DOMElement = new Class({
      * Sets the `className` property of the DOM Element node and updates the internal sizes.
      *
      * @method Phaser.GameObjects.DOMElement#setClassName
-     * @since 3.17.0
+     * 
      *
      * @param {string} className - A string representing the class or space-separated classes of the element.
      *
@@ -850,7 +850,7 @@ var DOMElement = new Class({
      * Note that only certain types of Elements can have `innerText` set on them.
      *
      * @method Phaser.GameObjects.DOMElement#setText
-     * @since 3.17.0
+     * 
      *
      * @param {string} text - A DOMString representing the rendered text content of the element.
      *
@@ -870,7 +870,7 @@ var DOMElement = new Class({
      * Sets the `innerHTML` property of the DOM Element node and updates the internal sizes.
      *
      * @method Phaser.GameObjects.DOMElement#setHTML
-     * @since 3.17.0
+     * 
      *
      * @param {string} html - A DOMString of html to be set as the `innerHTML` property of the element.
      *
@@ -891,7 +891,7 @@ var DOMElement = new Class({
      *
      * @method Phaser.GameObjects.DOMElement#preRender
      * @private
-     * @since 3.60.0
+     * 
      */
     preRender: function () {
         var parent = this.parentContainer;
@@ -908,7 +908,7 @@ var DOMElement = new Class({
      * DOMElements always return `true` as they need to still set values during the render pass, even if not visible.
      *
      * @method Phaser.GameObjects.DOMElement#willRender
-     * @since 3.17.0
+     * 
      *
      * @return {boolean} `true` if the Game Object should be rendered, otherwise `false`.
      */
@@ -921,7 +921,7 @@ var DOMElement = new Class({
      *
      * @method Phaser.GameObjects.DOMElement#preDestroy
      * @private
-     * @since 3.17.0
+     * 
      */
     preDestroy: function () {
         this.removeElement();

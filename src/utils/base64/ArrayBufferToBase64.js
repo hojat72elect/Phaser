@@ -15,7 +15,7 @@ var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
  * See https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs for more details.
  *
  * @function Phaser.Utils.Base64.ArrayBufferToBase64
- * @since 3.18.0
+ * 
  *
  * @param {ArrayBuffer} arrayBuffer - The Array Buffer to encode.
  * @param {string} [mediaType] - An optional media type, i.e. `audio/ogg` or `image/jpeg`. If included the resulting string will be a data URI.

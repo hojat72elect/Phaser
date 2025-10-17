@@ -11,7 +11,7 @@ var Point = require('../point/Point');
  * Get the nearest point on a line perpendicular to the given point.
  *
  * @function Phaser.Geom.Line.GetNearestPoint
- * @since 3.16.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

@@ -76,7 +76,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#fragSrc
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.fragSrc = fragmentShader;
 
@@ -85,7 +85,7 @@ var WebGLShader = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLShader#vertSrc
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.vertSrc = vertexShader;
 
@@ -674,7 +674,7 @@ var WebGLShader = new Class({
      * one within the pipeline it belongs to.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#setBoolean
-     * @since 3.60.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} value - The new value of the `boolean` uniform.
@@ -1115,7 +1115,7 @@ var WebGLShader = new Class({
      * don't want to change the vertex shader src, pass `undefined` as the parameter.
      *
      * @method Phaser.Renderer.WebGL.WebGLShader#createProgram
-     * @since 3.60.0
+     * 
      *
      * @param {string} [vertSrc] - The source code of the vertex shader. If not given, uses the source already defined in this Shader.
      * @param {string} [fragSrc] - The source code of the fragment shader. If not given, uses the source already defined in this Shader.

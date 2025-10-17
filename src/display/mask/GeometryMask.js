@@ -48,7 +48,7 @@ var GeometryMask = new Class({
              *
              * @name Phaser.Display.Masks.GeometryMask#invertAlpha
              * @type {boolean}
-             * @since 3.16.0
+             * 
              */
             this.invertAlpha = false;
 
@@ -58,7 +58,7 @@ var GeometryMask = new Class({
              * @name Phaser.Display.Masks.GeometryMask#isStencil
              * @type {boolean}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.isStencil = true;
 
@@ -68,7 +68,7 @@ var GeometryMask = new Class({
              *
              * @name Phaser.Display.Masks.GeometryMask#level
              * @type {boolean}
-             * @since 3.17.0
+             * 
              */
             this.level = 0;
         },
@@ -97,7 +97,7 @@ var GeometryMask = new Class({
      * This is a WebGL only feature.
      *
      * @method Phaser.Display.Masks.GeometryMask#setInvertAlpha
-     * @since 3.17.0
+     * 
      *
      * @param {boolean} [value=true] - Invert the alpha of this mask?
      *
@@ -151,7 +151,7 @@ var GeometryMask = new Class({
      * Applies the current stencil mask to the renderer.
      *
      * @method Phaser.Display.Masks.GeometryMask#applyStencil
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.WebGLRenderer} renderer - The WebGL Renderer instance to draw to.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The camera the Game Object is being rendered through.
@@ -271,7 +271,7 @@ var GeometryMask = new Class({
      * so be sure to call `clearMask` on any Game Object using it, before destroying it.
      *
      * @method Phaser.Display.Masks.GeometryMask#destroy
-     * @since 3.7.0
+     * 
      */
     destroy: function () {
         this.geometryMask = null;

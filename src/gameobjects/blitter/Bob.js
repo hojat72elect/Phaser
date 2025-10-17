@@ -141,7 +141,7 @@ var Bob = new Class({
              * @type {boolean}
              * @private
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.hasTransformComponent = true;
         },

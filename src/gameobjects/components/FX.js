@@ -59,7 +59,7 @@ var SpliceOne = require('../../utils/array/SpliceOne');
  * @class FX
  * @memberof Phaser.GameObjects.Components
  * @constructor
- * @since 3.60.0
+ * 
  * @webglOnly
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that owns this FX Component.
@@ -76,7 +76,7 @@ var FX = new Class({
              * @name Phaser.GameObjects.Components.FX#gameObject
              * @type {Phaser.GameObjects.GameObject}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.gameObject = gameObject;
 
@@ -86,7 +86,7 @@ var FX = new Class({
              * @name Phaser.GameObjects.Components.FX#isPost
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isPost = isPost;
 
@@ -98,7 +98,7 @@ var FX = new Class({
              *
              * @name Phaser.GameObjects.Components.FX#enabled
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.enabled = false;
 
@@ -111,7 +111,7 @@ var FX = new Class({
              *
              * @name Phaser.GameObjects.Components.FX#list
              * @type {Phaser.FX.Controller[]}
-             * @since 3.60.0
+             * 
              */
             this.list = [];
 
@@ -129,7 +129,7 @@ var FX = new Class({
              * @name Phaser.GameObjects.Components.FX#padding
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.padding = 0;
         },
@@ -147,7 +147,7 @@ var FX = new Class({
      *
      * @method Phaser.GameObjects.Components.FX#setPadding
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} [padding=0] - The amount of padding to add to this Game Object.
      *
@@ -171,7 +171,7 @@ var FX = new Class({
      * It's invoked prior to the copy, allowing you to set shader uniforms, etc on the pipeline.
      *
      * @method Phaser.GameObjects.Components.FX#onFXCopy
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Pipelines.PreFXPipeline} pipeline - The PreFX Pipeline that invoked this callback.
      */
@@ -186,7 +186,7 @@ var FX = new Class({
      * It's invoked prior to the draw, allowing you to set shader uniforms, etc on the pipeline.
      *
      * @method Phaser.GameObjects.Components.FX#onFX
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Pipelines.PreFXPipeline} pipeline - The PreFX Pipeline that invoked this callback.
      */
@@ -203,7 +203,7 @@ var FX = new Class({
      * This only applies to Pre FX. Post FX are always enabled.
      *
      * @method Phaser.GameObjects.Components.FX#enable
-     * @since 3.60.0
+     * 
      *
      * @param {number} [padding=0] - The amount of padding to add to this Game Object.
      */
@@ -237,7 +237,7 @@ var FX = new Class({
      * To remove both at once use the `GameObject.clearFX` method instead.
      *
      * @method Phaser.GameObjects.Components.FX#clear
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -265,7 +265,7 @@ var FX = new Class({
      * If found, the controller is removed from this component and then destroyed.
      *
      * @method Phaser.GameObjects.Components.FX#remove
-     * @since 3.60.0
+     * 
      *
      * @generic {Phaser.FX.Controller} T
      * @genericUse {T} - [fx]
@@ -321,7 +321,7 @@ var FX = new Class({
      * Optionally, set `clear` to destroy all current FX Controllers.
      *
      * @method Phaser.GameObjects.Components.FX#disable
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [clear=false] - Destroy and remove all FX Controllers that are part of this component.
      *
@@ -353,7 +353,7 @@ var FX = new Class({
      * `clear` first.
      *
      * @method Phaser.GameObjects.Components.FX#add
-     * @since 3.60.0
+     * 
      *
      * @generic {Phaser.FX.Controller} T
      * @genericUse {T} - [fx]
@@ -402,7 +402,7 @@ var FX = new Class({
      * the inside of the Game Object. The color and strength of the glow can be modified.
      *
      * @method Phaser.GameObjects.Components.FX#addGlow
-     * @since 3.60.0
+     * 
      *
      * @param {number} [color=0xffffff] - The color of the glow effect as a number value.
      * @param {number} [outerStrength=4] - The strength of the glow outward from the edge of the Sprite.
@@ -425,7 +425,7 @@ var FX = new Class({
      * help to enhance the visual appeal and immersion, making the 2D game world appear more dynamic and three-dimensional.
      *
      * @method Phaser.GameObjects.Components.FX#addShadow
-     * @since 3.60.0
+     * 
      *
      * @param {number} [x=0] - The horizontal offset of the shadow effect.
      * @param {number} [y=0] - The vertical offset of the shadow effect.
@@ -450,7 +450,7 @@ var FX = new Class({
      * during a transition or to censor specific content.
      *
      * @method Phaser.GameObjects.Components.FX#addPixelate
-     * @since 3.60.0
+     * 
      *
      * @param {number} [amount=1] - The amount of pixelation to apply.
      *
@@ -468,7 +468,7 @@ var FX = new Class({
      * enhance immersion, and provide a cinematic or artistic quality to the game's visuals.
      *
      * @method Phaser.GameObjects.Components.FX#addVignette
-     * @since 3.60.0
+     * 
      *
      * @param {number} [x=0.5] - The horizontal offset of the vignette effect. This value is normalized to the range 0 to 1.
      * @param {number} [y=0.5] - The vertical offset of the vignette effect. This value is normalized to the range 0 to 1.
@@ -490,7 +490,7 @@ var FX = new Class({
      * material properties.
      *
      * @method Phaser.GameObjects.Components.FX#addShine
-     * @since 3.60.0
+     * 
      *
      * @param {number} [speed=0.5] - The speed of the Shine effect.
      * @param {number} [lineWidth=0.5] - The line width of the Shine effect.
@@ -512,7 +512,7 @@ var FX = new Class({
      * from the bokeh effect produced by an out-of-focus lens or the shadow of an object under usual illumination.
      *
      * @method Phaser.GameObjects.Components.FX#addBlur
-     * @since 3.60.0
+     * 
      *
      * @param {number} [quality=0] - The quality of the blur effect. Can be either 0 for Low Quality, 1 for Medium Quality or 2 for High Quality.
      * @param {number} [x=2] - The horizontal offset of the blur effect.
@@ -536,7 +536,7 @@ var FX = new Class({
      * progress or health status through color changes.
      *
      * @method Phaser.GameObjects.Components.FX#addGradient
-     * @since 3.60.0
+     * 
      *
      * @param {number} [color1=0xff0000] - The first gradient color, given as a number value.
      * @param {number} [color2=0x00ff00] - The second gradient color, given as a number value.
@@ -562,7 +562,7 @@ var FX = new Class({
      * camera or eye capturing the scene.
      *
      * @method Phaser.GameObjects.Components.FX#addBloom
-     * @since 3.60.0
+     * 
      *
      * @param {number} [color] - The color of the Bloom, as a hex value.
      * @param {number} [offsetX=1] - The horizontal offset of the bloom effect.
@@ -587,7 +587,7 @@ var FX = new Class({
      * or achieving a specific visual style.
      *
      * @method Phaser.GameObjects.Components.FX#addColorMatrix
-     * @since 3.60.0
+     * 
      *
      * @return {Phaser.FX.ColorMatrix} The ColorMatrix FX Controller.
      */
@@ -607,7 +607,7 @@ var FX = new Class({
      * the Game Object, should it have one.
      *
      * @method Phaser.GameObjects.Components.FX#addCircle
-     * @since 3.60.0
+     * 
      *
      * @param {number} [thickness=8] - The width of the circle around the texture, in pixels.
      * @param {number} [color=0xfeedb6] - The color of the circular ring, given as a number value.
@@ -628,7 +628,7 @@ var FX = new Class({
      * a Game Object. The amount of the effect can be modified in real-time.
      *
      * @method Phaser.GameObjects.Components.FX#addBarrel
-     * @since 3.60.0
+     * 
      *
      * @param {number} [amount=1] - The amount of distortion applied to the barrel effect. A value of 1 is no distortion. Typically keep this within +- 1.
      *
@@ -648,7 +648,7 @@ var FX = new Class({
      * stylistic appearances.
      *
      * @method Phaser.GameObjects.Components.FX#addDisplacement
-     * @since 3.60.0
+     * 
      *
      * @param {string} [texture='__WHITE'] - The unique string-based key of the texture to use for displacement, which must exist in the Texture Manager.
      * @param {number} [x=0.005] - The amount of horizontal displacement to apply. A very small float number, such as 0.005.
@@ -678,7 +678,7 @@ var FX = new Class({
      * It is up to you to set the `progress` value yourself, i.e. via a Tween, in order to transition the effect.
      *
      * @method Phaser.GameObjects.Components.FX#addWipe
-     * @since 3.60.0
+     * 
      *
      * @param {number} [wipeWidth=0.1] - The width of the wipe effect. This value is normalized in the range 0 to 1.
      * @param {number} [direction=0] - The direction of the wipe effect. Either 0 or 1. Set in conjunction with the axis property.
@@ -708,7 +708,7 @@ var FX = new Class({
      * It is up to you to set the `progress` value yourself, i.e. via a Tween, in order to transition the effect.
      *
      * @method Phaser.GameObjects.Components.FX#addReveal
-     * @since 3.60.0
+     * 
      *
      * @param {number} [wipeWidth=0.1] - The width of the wipe effect. This value is normalized in the range 0 to 1.
      * @param {number} [direction=0] - The direction of the wipe effect. Either 0 or 1. Set in conjunction with the axis property.
@@ -731,7 +731,7 @@ var FX = new Class({
      * See also Tilt Shift.
      *
      * @method Phaser.GameObjects.Components.FX#addBokeh
-     * @since 3.60.0
+     * 
      *
      * @param {number} [radius=0.5] - The radius of the bokeh effect.
      * @param {number} [amount=1] - The amount of the bokeh effect.
@@ -753,7 +753,7 @@ var FX = new Class({
      * See also Bokeh.
      *
      * @method Phaser.GameObjects.Components.FX#addTiltShift
-     * @since 3.60.0
+     * 
      *
      * @param {number} [radius=0.5] - The radius of the bokeh effect.
      * @param {number} [amount=1] - The amount of the bokeh effect.
@@ -774,7 +774,7 @@ var FX = new Class({
      * Called automatically when Game Objects are destroyed.
      *
      * @method Phaser.GameObjects.Components.FX#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         this.clear();

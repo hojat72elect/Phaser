@@ -2,7 +2,7 @@
  * Sets the strokeStyle and lineWidth on the target context based on the given Shape.
  *
  * @method Phaser.GameObjects.Shape#LineStyleCanvas
- * @since 3.13.0
+ * 
  * @private
  *
  * @param {CanvasRenderingContext2D} ctx - The context to set the stroke style on.

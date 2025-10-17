@@ -7,7 +7,7 @@ var Point = require('../point/Point');
  * The inner Rectangle must be fully contained within the outer rectangle.
  *
  * @function Phaser.Geom.Rectangle.RandomOutside
- * @since 3.10.0
+ * 
  *
  * @generic {Phaser.Geom.Point} O - [out,$return]
  *

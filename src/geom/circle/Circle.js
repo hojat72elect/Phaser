@@ -44,7 +44,7 @@ var Circle = new Class({
              * @name Phaser.Geom.Circle#type
              * @type {number}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.type = GEOM_CONST.CIRCLE;
 

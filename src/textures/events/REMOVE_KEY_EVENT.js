@@ -16,6 +16,6 @@
  *
  * @event Phaser.Textures.Events#REMOVE_KEY
  * @type {string}
- * @since 3.60.0
+ * 
  */
 module.exports = 'removetexture-';

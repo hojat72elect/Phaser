@@ -54,7 +54,7 @@ var SnapFloor = require('../../math/snap/SnapFloor');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Input.Keyboard
  * @constructor
- * @since 3.10.0
+ * 
  *
  * @param {Phaser.Input.InputPlugin} sceneInputPlugin - A reference to the Scene Input Plugin that the KeyboardPlugin belongs to.
  */
@@ -72,7 +72,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#game
              * @type {Phaser.Game}
-             * @since 3.16.0
+             * 
              */
             this.game = sceneInputPlugin.systems.game;
 
@@ -81,7 +81,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#scene
              * @type {Phaser.Scene}
-             * @since 3.10.0
+             * 
              */
             this.scene = sceneInputPlugin.scene;
 
@@ -90,7 +90,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#settings
              * @type {Phaser.Types.Scenes.SettingsObject}
-             * @since 3.10.0
+             * 
              */
             this.settings = this.scene.sys.settings;
 
@@ -99,7 +99,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#sceneInputPlugin
              * @type {Phaser.Input.InputPlugin}
-             * @since 3.10.0
+             * 
              */
             this.sceneInputPlugin = sceneInputPlugin;
 
@@ -108,7 +108,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#manager
              * @type {Phaser.Input.Keyboard.KeyboardManager}
-             * @since 3.16.0
+             * 
              */
             this.manager = sceneInputPlugin.manager.keyboard;
 
@@ -119,7 +119,7 @@ var KeyboardPlugin = new Class({
              * @name Phaser.Input.Keyboard.KeyboardPlugin#enabled
              * @type {boolean}
              * @default true
-             * @since 3.10.0
+             * 
              */
             this.enabled = true;
 
@@ -128,7 +128,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#keys
              * @type {Phaser.Input.Keyboard.Key[]}
-             * @since 3.10.0
+             * 
              */
             this.keys = [];
 
@@ -137,7 +137,7 @@ var KeyboardPlugin = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardPlugin#combos
              * @type {Phaser.Input.Keyboard.KeyCombo[]}
-             * @since 3.10.0
+             * 
              */
             this.combos = [];
 
@@ -181,7 +181,7 @@ var KeyboardPlugin = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#boot
      * @private
-     * @since 3.10.0
+     * 
      */
     boot: function () {
         var settings = this.settings.input;
@@ -204,7 +204,7 @@ var KeyboardPlugin = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#start
      * @private
-     * @since 3.10.0
+     * 
      */
     start: function () {
         this.sceneInputPlugin.manager.events.on(InputEvents.MANAGER_PROCESS, this.update, this);
@@ -221,7 +221,7 @@ var KeyboardPlugin = new Class({
      * Checks to see if both this plugin and the Scene to which it belongs is active.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#isActive
-     * @since 3.10.0
+     * 
      *
      * @return {boolean} `true` if the plugin and the Scene it belongs to is active.
      */
@@ -262,7 +262,7 @@ var KeyboardPlugin = new Class({
      * You can also provide an array mixing both strings and key code integers.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#addCapture
-     * @since 3.16.0
+     * 
      *
      * @param {(string|number|number[]|any[])} keycode - The Key Codes to enable event capture for.
      *
@@ -303,7 +303,7 @@ var KeyboardPlugin = new Class({
      * You can also provide an array mixing both strings and key code integers.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#removeCapture
-     * @since 3.16.0
+     * 
      *
      * @param {(string|number|number[]|any[])} keycode - The Key Codes to disable event capture for.
      *
@@ -319,7 +319,7 @@ var KeyboardPlugin = new Class({
      * Returns an array that contains all of the keyboard captures currently enabled.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#getCaptures
-     * @since 3.16.0
+     * 
      *
      * @return {number[]} An array of all the currently capturing key codes.
      */
@@ -332,7 +332,7 @@ var KeyboardPlugin = new Class({
      * You can use this to re-enable event capturing if you had paused it via `disableGlobalCapture`.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#enableGlobalCapture
-     * @since 3.16.0
+     * 
      *
      * @return {this} This KeyboardPlugin object.
      */
@@ -347,7 +347,7 @@ var KeyboardPlugin = new Class({
      * You can use this to temporarily disable event capturing if, for example, you swap to a DOM element.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#disableGlobalCapture
-     * @since 3.16.0
+     * 
      *
      * @return {this} This KeyboardPlugin object.
      */
@@ -363,7 +363,7 @@ var KeyboardPlugin = new Class({
      * Note that this is a global change. It will clear all event captures across your game, not just for this specific Scene.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#clearCaptures
-     * @since 3.16.0
+     * 
      *
      * @return {this} This KeyboardPlugin object.
      */
@@ -377,7 +377,7 @@ var KeyboardPlugin = new Class({
      * Creates and returns an object containing 4 hotkeys for Up, Down, Left and Right, and also Space Bar and shift.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#createCursorKeys
-     * @since 3.10.0
+     * 
      *
      * @return {Phaser.Types.Input.Keyboard.CursorKeys} An object containing the properties: `up`, `down`, `left`, `right`, `space` and `shift`.
      */
@@ -414,7 +414,7 @@ var KeyboardPlugin = new Class({
      * To use non-alpha numeric keys, use a string, such as 'UP', 'SPACE' or 'LEFT'.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#addKeys
-     * @since 3.10.0
+     * 
      *
      * @param {(object|string)} keys - An object containing Key Codes, or a comma-separated string.
      * @param {boolean} [enableCapture=true] - Automatically call `preventDefault` on the native DOM browser event for the key codes being added.
@@ -459,7 +459,7 @@ var KeyboardPlugin = new Class({
      * If a Key object is given, and one already exists matching the same key code, the existing one is replaced with the new one.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#addKey
-     * @since 3.10.0
+     * 
      *
      * @param {(Phaser.Input.Keyboard.Key|string|number)} key - Either a Key object, a string, such as `A` or `SPACE`, or a key code value.
      * @param {boolean} [enableCapture=true] - Automatically call `preventDefault` on the native DOM browser event for the key codes being added.
@@ -518,7 +518,7 @@ var KeyboardPlugin = new Class({
      * The given argument can be either a Key object, a string, such as `A` or `SPACE`, or a key code value.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#removeKey
-     * @since 3.10.0
+     * 
      *
      * @param {(Phaser.Input.Keyboard.Key|string|number)} key - Either a Key object, a string, such as `A` or `SPACE`, or a key code value.
      * @param {boolean} [destroy=false] - Call `Key.destroy` on the removed Key object?
@@ -640,7 +640,7 @@ var KeyboardPlugin = new Class({
      * ```
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#createCombo
-     * @since 3.10.0
+     * 
      *
      * @param {(string|number[]|object[])} keys - The keys that comprise this combo.
      * @param {Phaser.Types.Input.Keyboard.KeyComboConfig} [config] - A Key Combo configuration object.
@@ -662,7 +662,7 @@ var KeyboardPlugin = new Class({
      * If the Keyboard Plugin has been disabled, this method will always return `false`.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#checkDown
-     * @since 3.11.0
+     * 
      *
      * @param {Phaser.Input.Keyboard.Key} key - A Key object.
      * @param {number} [duration=0] - The duration which must have elapsed before this Key is considered as being down.
@@ -692,7 +692,7 @@ var KeyboardPlugin = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#update
      * @private
-     * @since 3.10.0
+     * 
      */
     update: function () {
         var queue = this.manager.queue;
@@ -792,7 +792,7 @@ var KeyboardPlugin = new Class({
      * invoked directly at any time you require.
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#resetKeys
-     * @since 3.15.0
+     * 
      *
      * @return {this} This KeyboardPlugin object.
      */
@@ -818,7 +818,7 @@ var KeyboardPlugin = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#shutdown
      * @private
-     * @since 3.10.0
+     * 
      */
     shutdown: function () {
         this.removeAllKeys(true);
@@ -839,7 +839,7 @@ var KeyboardPlugin = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardPlugin#destroy
      * @private
-     * @since 3.10.0
+     * 
      */
     destroy: function () {
         this.shutdown();
@@ -869,7 +869,7 @@ var KeyboardPlugin = new Class({
      * @name Phaser.Input.Keyboard.KeyboardPlugin#time
      * @type {number}
      * @private
-     * @since 3.11.0
+     * 
      */
     time: {
 
@@ -887,7 +887,7 @@ var KeyboardPlugin = new Class({
  *
  * @name Phaser.Input.InputPlugin#keyboard
  * @type {?Phaser.Input.Keyboard.KeyboardPlugin}
- * @since 3.10.0
+ * 
  */
 InputPluginCache.register('KeyboardPlugin', KeyboardPlugin, 'keyboard', 'keyboard', 'inputKeyboard');
 

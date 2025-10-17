@@ -131,7 +131,7 @@ var SceneManager = new Class({
              * @name Phaser.Scenes.SceneManager#customViewports
              * @type {number}
              * @default 0
-             * @since 3.12.0
+             * 
              */
             this.customViewports = 0;
 
@@ -143,7 +143,7 @@ var SceneManager = new Class({
              *
              * @name Phaser.Scenes.SceneManager#systemScene
              * @type {Phaser.Scene}
-             * @since 3.60.0
+             * 
              */
             this.systemScene;
 
@@ -755,7 +755,7 @@ var SceneManager = new Class({
      * the array returned in normal or reversed order.
      *
      * @method Phaser.Scenes.SceneManager#getScenes
-     * @since 3.16.0
+     * 
      *
      * @generic {Phaser.Scene[]} T - [$return]
      * @genericUse {T} - [$return]
@@ -847,7 +847,7 @@ var SceneManager = new Class({
      * Determines whether a Scene is paused.
      *
      * @method Phaser.Scenes.SceneManager#isPaused
-     * @since 3.17.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -1018,7 +1018,7 @@ var SceneManager = new Class({
      * Scene, then `run` on the modal Scene.
      *
      * @method Phaser.Scenes.SceneManager#run
-     * @since 3.10.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]

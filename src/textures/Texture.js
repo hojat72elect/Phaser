@@ -172,7 +172,7 @@ var Texture = new Class({
      * as it does not happen automatically.
      *
      * @method Phaser.Textures.Texture#remove
-     * @since 3.19.0
+     * 
      *
      * @param {string} name - The key of the Frame to remove.
      *
@@ -410,7 +410,7 @@ var Texture = new Class({
      * This will return the actual DOM Image.
      *
      * @method Phaser.Textures.Texture#getDataSourceImage
-     * @since 3.7.0
+     * 
      *
      * @param {(string|number)} [name] - The string-based name, or integer based index, of the Frame to get from this Texture.
      *

@@ -96,7 +96,7 @@ var ProcessQueue = new Class({
      * Checks the given item to see if it is already active within this Process Queue.
      *
      * @method Phaser.Structs.ProcessQueue#isActive
-     * @since 3.60.0
+     * 
      *
      * @genericUse {T} - [item]
      * @genericUse {Phaser.Structs.ProcessQueue.<T>} - [$return]
@@ -113,7 +113,7 @@ var ProcessQueue = new Class({
      * Checks the given item to see if it is already pending addition to this Process Queue.
      *
      * @method Phaser.Structs.ProcessQueue#isPending
-     * @since 3.60.0
+     * 
      *
      * @genericUse {T} - [item]
      * @genericUse {Phaser.Structs.ProcessQueue.<T>} - [$return]
@@ -130,7 +130,7 @@ var ProcessQueue = new Class({
      * Checks the given item to see if it is already pending destruction from this Process Queue.
      *
      * @method Phaser.Structs.ProcessQueue#isDestroying
-     * @since 3.60.0
+     * 
      *
      * @genericUse {T} - [item]
      * @genericUse {Phaser.Structs.ProcessQueue.<T>} - [$return]

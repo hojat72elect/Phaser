@@ -2,7 +2,7 @@
  * Defines an operation yielding a value incremented continuously across an interpolated data set.
  *
  * @typedef {object} Phaser.Types.GameObjects.Particles.EmitterOpInterpolationConfig
- * @since 3.60.0
+ * 
  *
  * @property {number[]} values - The array of number values to interpolate through.
  * @property {(string|function)} [interpolation='Linear'] - The interpolation function to use. Typically one of `linear`, `bezier` or `catmull` or a custom function.

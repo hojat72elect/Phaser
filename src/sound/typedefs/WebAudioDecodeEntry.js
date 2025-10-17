@@ -2,7 +2,7 @@
  * An entry in the Web Audio Decoding Queue.
  *
  * @typedef {object} Phaser.Types.Sound.WebAudioDecodeEntry
- * @since 3.60.0
+ * 
  *
  * @property {string} key - The key of the sound.
  * @property {function} success - The callback to invoke on successful decoding.

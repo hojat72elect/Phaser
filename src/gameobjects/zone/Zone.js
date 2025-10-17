@@ -246,7 +246,7 @@ var Zone = new Class({
      *
      * @method Phaser.GameObjects.Zone#setAlpha
      * @private
-     * @since 3.11.0
+     * 
      */
     setAlpha: function () {
     },
@@ -257,7 +257,7 @@ var Zone = new Class({
      *
      * @method Phaser.GameObjects.Zone#setBlendMode
      * @private
-     * @since 3.16.2
+     * 
      */
     setBlendMode: function () {
     },

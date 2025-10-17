@@ -258,7 +258,7 @@ var Scene = new Class({
                  *
                  * @name Phaser.Scene#facebook
                  * @type {Phaser.FacebookInstantGamesPlugin}
-                 * @since 3.12.0
+                 * 
                  */
                 this.facebook;
             }
@@ -270,7 +270,7 @@ var Scene = new Class({
              *
              * @name Phaser.Scene#scale
              * @type {Phaser.Scale.ScaleManager}
-             * @since 3.16.2
+             * 
              */
             this.scale;
 

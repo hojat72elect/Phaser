@@ -121,7 +121,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#body
              * @type {?MatterJS.BodyType}
-             * @since 3.16.2
+             * 
              */
             this.body = null;
 
@@ -130,7 +130,7 @@ var PointerConstraint = new Class({
              *
              * @name Phaser.Physics.Matter.PointerConstraint#part
              * @type {?MatterJS.BodyType}
-             * @since 3.16.2
+             * 
              */
             this.part = null;
 
@@ -189,7 +189,7 @@ var PointerConstraint = new Class({
      *
      * @method Phaser.Physics.Matter.PointerConstraint#getBody
      * @fires Phaser.Physics.Matter.Events#DRAG_START
-     * @since 3.16.2
+     * 
      *
      * @return {boolean} `true` if a body was found and set, otherwise `false`.
      */
@@ -224,7 +224,7 @@ var PointerConstraint = new Class({
      * as well as the `body` property of this class. The part is also set.
      *
      * @method Phaser.Physics.Matter.PointerConstraint#hitTestBody
-     * @since 3.16.2
+     * 
      *
      * @param {MatterJS.BodyType} body - The Matter Body to check.
      * @param {Phaser.Math.Vector2} position - A translated hit test position.
@@ -313,7 +313,7 @@ var PointerConstraint = new Class({
      *
      * @method Phaser.Physics.Matter.PointerConstraint#stopDrag
      * @fires Phaser.Physics.Matter.Events#DRAG_END
-     * @since 3.16.2
+     * 
      */
     stopDrag: function () {
         var body = this.body;

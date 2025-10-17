@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Particles.ParticleEmitterOps
- * @since 3.60.0
+ * 
  *
  * @property {Phaser.GameObjects.Particles.EmitterOp} accelerationX - The accelerationX EmitterOp instance. This is an onEmit and onUpdate operator.
  * @property {Phaser.GameObjects.Particles.EmitterOp} accelerationY - The accelerationY EmitterOp instance. This is an onEmit and onUpdate operator.

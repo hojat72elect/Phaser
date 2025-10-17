@@ -1,7 +1,7 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.TweenBuilderConfig
  * @extends object
- * @since 3.18.0
+ * 
  *
  * @property {any} targets - The object, or an array of objects, to run the tween on.
  * @property {(number|function)} [delay=0] - The number of milliseconds to delay before the tween will start.

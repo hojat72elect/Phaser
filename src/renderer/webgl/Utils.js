@@ -163,7 +163,7 @@ module.exports = {
      * consts with the configuration values.
      *
      * @function Phaser.Renderer.WebGL.Utils.setGlowQuality
-     * @since 3.60.0
+     * 
      *
      * @param {string} shader - The Fragment Shader source code to operate on.
      * @param {Phaser.Game} game - The Phaser Game instance.

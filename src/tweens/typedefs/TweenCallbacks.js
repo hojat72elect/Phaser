@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.TweenCallbacks
- * @since 3.60.0
+ * 
  *
  * @property {Phaser.Types.Tweens.TweenOnActiveCallback} [onActive] - A function to call when the tween becomes active within the Tween Manager.
  * @property {Phaser.Types.Tweens.TweenOnStartCallback} [onStart] - A function to call when the tween starts playback, after any delays have expired.

@@ -242,7 +242,7 @@ var Factory = new Class({
      * and can be tested for collision, have velocity, etc.
      *
      * @method Phaser.Physics.Arcade.Factory#body
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The horizontal position of this Body in the physics world.
      * @param {number} y - The vertical position of this Body in the physics world.
@@ -272,7 +272,7 @@ var Factory = new Class({
      * and can be tested for collision, etc.
      *
      * @method Phaser.Physics.Arcade.Factory#staticBody
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The horizontal position of this Body in the physics world.
      * @param {number} y - The vertical position of this Body in the physics world.

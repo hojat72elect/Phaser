@@ -17,7 +17,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.12.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.HTMLTextureFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -75,7 +75,7 @@ var HTMLTextureFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.HTMLTextureFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -129,7 +129,7 @@ var HTMLTextureFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.HTMLTextureFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         this.cache.addImage(this.key, this.data);
@@ -208,7 +208,7 @@ var HTMLTextureFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#htmlTexture
  * @fires Phaser.Loader.Events#ADD
- * @since 3.12.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.HTMLTextureFileConfig|Phaser.Types.Loader.FileTypes.HTMLTextureFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.html`, i.e. if `key` was "alien" then the URL will be "alien.html".

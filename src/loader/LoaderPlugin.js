@@ -80,7 +80,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#cacheManager
              * @type {Phaser.Cache.CacheManager}
-             * @since 3.7.0
+             * 
              */
             this.cacheManager = scene.sys.cache;
 
@@ -89,7 +89,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#textureManager
              * @type {Phaser.Textures.TextureManager}
-             * @since 3.7.0
+             * 
              */
             this.textureManager = scene.sys.textures;
 
@@ -99,7 +99,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#sceneManager
              * @type {Phaser.Scenes.SceneManager}
              * @protected
-             * @since 3.16.0
+             * 
              */
             this.sceneManager = scene.sys.game.scene;
 
@@ -115,7 +115,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#prefix
              * @type {string}
              * @default ''
-             * @since 3.7.0
+             * 
              */
             this.prefix = '';
 
@@ -207,7 +207,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#imageLoadType
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.imageLoadType = GetFastValue(sceneConfig, 'imageLoadType', gameConfig.loaderImageLoadType);
 
@@ -219,7 +219,7 @@ var LoaderPlugin = new Class({
              *
              * @name Phaser.Loader.LoaderPlugin#localSchemes
              * @type {string[]}
-             * @since 3.60.0
+             * 
              */
             this.localSchemes = GetFastValue(sceneConfig, 'localScheme', gameConfig.loaderLocalScheme);
 
@@ -294,7 +294,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#_deleteQueue
              * @type {Phaser.Structs.Set.<Phaser.Loader.File>}
              * @private
-             * @since 3.7.0
+             * 
              */
             this._deleteQueue = new CustomSet();
 
@@ -305,7 +305,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#totalFailed
              * @type {number}
              * @default 0
-             * @since 3.7.0
+             * 
              */
             this.totalFailed = 0;
 
@@ -316,7 +316,7 @@ var LoaderPlugin = new Class({
              * @name Phaser.Loader.LoaderPlugin#totalComplete
              * @type {number}
              * @default 0
-             * @since 3.7.0
+             * 
              */
             this.totalComplete = 0;
 
@@ -465,7 +465,7 @@ var LoaderPlugin = new Class({
      * file _already_ in the load queue. To reset it, call this method with no arguments.
      *
      * @method Phaser.Loader.LoaderPlugin#setPrefix
-     * @since 3.7.0
+     * 
      *
      * @param {string} [prefix] - The prefix to use. Leave empty to reset.
      *
@@ -549,7 +549,7 @@ var LoaderPlugin = new Class({
      * in a Cache, the Texture Manager, or the list or inflight queues.
      *
      * @method Phaser.Loader.LoaderPlugin#keyExists
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The file to check the key of.
      *
@@ -602,7 +602,7 @@ var LoaderPlugin = new Class({
      * see the `LoaderPlugin.pack` method.
      *
      * @method Phaser.Loader.LoaderPlugin#addPack
-     * @since 3.7.0
+     * 
      *
      * @param {any} pack - The Pack File data to be parsed and have each entry in it added to the load queue.
      * @param {string} [packKey] - An optional key to use from the pack file data.
@@ -904,7 +904,7 @@ var LoaderPlugin = new Class({
      * Called automatically during the load process.
      *
      * @method Phaser.Loader.LoaderPlugin#update
-     * @since 3.10.0
+     * 
      */
     update: function () {
         if (this.state === CONST.LOADER_LOADING && this.list.size > 0 && this.inflight.size < this.maxParallelDownloads) {
@@ -922,7 +922,7 @@ var LoaderPlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#checkLoadQueue
      * @private
-     * @since 3.7.0
+     * 
      */
     checkLoadQueue: function () {
         this.list.each(function (file) {
@@ -998,7 +998,7 @@ var LoaderPlugin = new Class({
      * It is then removed from the queue. If there are no more files to load `loadComplete` is called.
      *
      * @method Phaser.Loader.LoaderPlugin#fileProcessComplete
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The file that has finished processing.
      */
@@ -1046,7 +1046,7 @@ var LoaderPlugin = new Class({
      * @method Phaser.Loader.LoaderPlugin#loadComplete
      * @fires Phaser.Loader.Events#COMPLETE
      * @fires Phaser.Loader.Events#POST_PROCESS
-     * @since 3.7.0
+     * 
      */
     loadComplete: function () {
         this.emit(Events.POST_PROCESS, this);
@@ -1073,7 +1073,7 @@ var LoaderPlugin = new Class({
      * Adds a File into the pending-deletion queue.
      *
      * @method Phaser.Loader.LoaderPlugin#flagForRemoval
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The File to be queued for deletion when the Loader completes.
      */

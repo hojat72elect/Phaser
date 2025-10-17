@@ -104,7 +104,7 @@ var Light = new Class({
      *
      * @name Phaser.GameObjects.Light#displayWidth
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     displayWidth: {
 
@@ -123,7 +123,7 @@ var Light = new Class({
      *
      * @name Phaser.GameObjects.Light#displayHeight
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     displayHeight: {
 
@@ -142,7 +142,7 @@ var Light = new Class({
      *
      * @name Phaser.GameObjects.Light#width
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     width: {
 
@@ -161,7 +161,7 @@ var Light = new Class({
      *
      * @name Phaser.GameObjects.Light#height
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     height: {
 

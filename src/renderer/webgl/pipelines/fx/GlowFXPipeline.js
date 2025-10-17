@@ -25,7 +25,7 @@ var Utils = require('../../Utils');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  * @param {object} config - The configuration options for this pipeline.
@@ -50,7 +50,7 @@ var GlowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#outerStrength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.outerStrength = 4;
 
@@ -59,7 +59,7 @@ var GlowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#innerStrength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.innerStrength = 0;
 
@@ -68,7 +68,7 @@ var GlowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#knockout
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.knockout = false;
 
@@ -77,7 +77,7 @@ var GlowFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GlowFXPipeline#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 1, 1, 1];
         },

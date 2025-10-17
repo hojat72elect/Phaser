@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Scale.Zoom
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  * @typedef {Phaser.Scale.Zoom} Phaser.Scale.ZoomType
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
      * @name Phaser.Scale.Zoom.NO_ZOOM
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     NO_ZOOM: 1,
 
@@ -34,7 +34,7 @@ module.exports = {
      * @name Phaser.Scale.Zoom.ZOOM_2X
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     ZOOM_2X: 2,
 
@@ -44,7 +44,7 @@ module.exports = {
      * @name Phaser.Scale.Zoom.ZOOM_4X
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     ZOOM_4X: 4,
 
@@ -55,7 +55,7 @@ module.exports = {
      * @name Phaser.Scale.Zoom.MAX_ZOOM
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     MAX_ZOOM: -1
 

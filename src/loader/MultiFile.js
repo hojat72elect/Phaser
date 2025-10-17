@@ -12,7 +12,7 @@ var Events = require('./events');
  * @class MultiFile
  * @memberof Phaser.Loader
  * @constructor
- * @since 3.7.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - The Loader that is going to load this File.
  * @param {string} type - The file type string for sorting within the Loader.
@@ -38,7 +38,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#loader
              * @type {Phaser.Loader.LoaderPlugin}
-             * @since 3.7.0
+             * 
              */
             this.loader = loader;
 
@@ -47,7 +47,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#type
              * @type {string}
-             * @since 3.7.0
+             * 
              */
             this.type = type;
 
@@ -56,7 +56,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#key
              * @type {string}
-             * @since 3.7.0
+             * 
              */
             this.key = key;
 
@@ -81,7 +81,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#files
              * @type {Phaser.Loader.File[]}
-             * @since 3.7.0
+             * 
              */
             this.files = finalFiles;
 
@@ -90,7 +90,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#state
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.state = CONST.FILE_PENDING;
 
@@ -100,7 +100,7 @@ var MultiFile = new Class({
              * @name Phaser.Loader.MultiFile#complete
              * @type {boolean}
              * @default false
-             * @since 3.7.0
+             * 
              */
             this.complete = false;
 
@@ -109,7 +109,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#pending
              * @type {number}
-             * @since 3.7.0
+             * 
              */
 
             this.pending = finalFiles.length;
@@ -120,7 +120,7 @@ var MultiFile = new Class({
              * @name Phaser.Loader.MultiFile#failed
              * @type {number}
              * @default 0
-             * @since 3.7.0
+             * 
              */
             this.failed = 0;
 
@@ -129,7 +129,7 @@ var MultiFile = new Class({
              *
              * @name Phaser.Loader.MultiFile#config
              * @type {any}
-             * @since 3.7.0
+             * 
              */
             this.config = {};
 
@@ -173,7 +173,7 @@ var MultiFile = new Class({
      * Checks if this MultiFile is ready to process its children or not.
      *
      * @method Phaser.Loader.MultiFile#isReadyToProcess
-     * @since 3.7.0
+     * 
      *
      * @return {boolean} `true` if all children of this MultiFile have loaded, otherwise `false`.
      */
@@ -185,7 +185,7 @@ var MultiFile = new Class({
      * Adds another child to this MultiFile, increases the pending count and resets the completion status.
      *
      * @method Phaser.Loader.MultiFile#addToMultiFile
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} files - The File to add to this MultiFile.
      *
@@ -207,7 +207,7 @@ var MultiFile = new Class({
      * Called by each File when it finishes loading.
      *
      * @method Phaser.Loader.MultiFile#onFileComplete
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
@@ -223,7 +223,7 @@ var MultiFile = new Class({
      * Called by each File that fails to load.
      *
      * @method Phaser.Loader.MultiFile#onFileFailed
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The File that has failed to load.
      */
@@ -247,7 +247,7 @@ var MultiFile = new Class({
      * @method Phaser.Loader.MultiFile#pendingDestroy
      * @fires Phaser.Loader.Events#FILE_COMPLETE
      * @fires Phaser.Loader.Events#FILE_KEY_COMPLETE
-     * @since 3.60.0
+     * 
      */
     pendingDestroy: function () {
         if (this.state === CONST.FILE_PENDING_DESTROY) {
@@ -273,7 +273,7 @@ var MultiFile = new Class({
      * Destroy this Multi File and any references it holds.
      *
      * @method Phaser.Loader.MultiFile#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         this.loader = null;

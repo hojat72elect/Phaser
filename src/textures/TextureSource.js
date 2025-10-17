@@ -39,7 +39,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.7.0
+             * 
              */
             this.renderer = game.renderer;
 
@@ -61,7 +61,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#source
              * @type {(HTMLImageElement|HTMLCanvasElement|HTMLVideoElement|Phaser.GameObjects.RenderTexture|Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper|Phaser.Types.Textures.CompressedTextureData|Phaser.Textures.DynamicTexture)}
-             * @since 3.12.0
+             * 
              */
             this.source = source;
 
@@ -151,7 +151,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#isRenderTexture
              * @type {boolean}
-             * @since 3.12.0
+             * 
              */
             this.isRenderTexture = (source.type === 'RenderTexture' || source.type === 'DynamicTexture');
 
@@ -160,7 +160,7 @@ var TextureSource = new Class({
              *
              * @name Phaser.Textures.TextureSource#isGLTexture
              * @type {boolean}
-             * @since 3.19.0
+             * 
              */
             this.isGLTexture = source instanceof WebGLTextureWrapper;
 
@@ -295,7 +295,7 @@ var TextureSource = new Class({
      * it updates the WebGLTexture using the canvas data.
      *
      * @method Phaser.Textures.TextureSource#update
-     * @since 3.7.0
+     * 
      */
     update: function () {
         var renderer = this.renderer;

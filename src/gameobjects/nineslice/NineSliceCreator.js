@@ -10,7 +10,7 @@ var NineSlice = require('./NineSlice');
  * Note: This method will only be available if the Nine Slice Game Object and WebGL support have been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#nineslice
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Types.GameObjects.NineSlice.NineSliceConfig} config - The configuration object this Game Object will use to create itself.
  * @param {boolean} [addToScene] - Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.

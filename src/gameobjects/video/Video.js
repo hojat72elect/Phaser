@@ -231,7 +231,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#frameReady
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.frameReady = false;
 
@@ -258,7 +258,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#isStalled
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isStalled = false;
 
@@ -268,7 +268,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#failedPlayAttempts
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.failedPlayAttempts = 0;
 
@@ -289,7 +289,7 @@ var Video = new Class({
              *
              * @name Phaser.GameObjects.Video#metadata
              * @type {VideoFrameCallbackMetadata}
-             * @since 3.60.0
+             * 
              */
             this.metadata;
 
@@ -378,7 +378,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_loadCallbackHandler
              * @type {function}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._loadCallbackHandler = this.loadErrorHandler.bind(this);
 
@@ -437,7 +437,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_playingMarker
              * @type {boolean}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._playingMarker = false;
 
@@ -447,7 +447,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_lastUpdate
              * @type {number}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._lastUpdate = 0;
 
@@ -459,7 +459,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#cacheKey
              * @type {string}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.cacheKey = '';
 
@@ -472,7 +472,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#isSeeking
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isSeeking = false;
 
@@ -482,7 +482,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_playCalled
              * @type {boolean}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._playCalled = false;
 
@@ -502,7 +502,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_rfvCallbackId
              * @type {number}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._rfvCallbackId = 0;
 
@@ -514,7 +514,7 @@ var Video = new Class({
              * @name Phaser.GameObjects.Video#_device
              * @type {string[]}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._device = game.device.video;
 
@@ -558,7 +558,7 @@ var Video = new Class({
      * go through the unlock process again.
      *
      * @method Phaser.GameObjects.Video#load
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the Video this Game Object will play, as stored in the Video Cache.
      *
@@ -640,7 +640,7 @@ var Video = new Class({
      * go through the unlock process again.
      *
      * @method Phaser.GameObjects.Video#loadURL
-     * @since 3.60.0
+     * 
      *
      * @param {(string|string[]|Phaser.Types.Loader.FileTypes.VideoFileURLConfig|Phaser.Types.Loader.FileTypes.VideoFileURLConfig[])} [urls] - The absolute or relative URL to load the video files from.
      * @param {boolean} [noAudio=false] - Does the video have an audio track? If not you can enable auto-playing on it.
@@ -693,7 +693,7 @@ var Video = new Class({
      * the URL, where-as the other two methods enforce these checks.
      *
      * @method Phaser.GameObjects.Video#loadHandler
-     * @since 3.60.0
+     * 
      *
      * @param {string} [url] - The absolute or relative URL to load the video file from. Set to `null` if passing in a MediaStream object.
      * @param {boolean} [noAudio] - Does the video have an audio track? If not you can enable auto-playing on it.
@@ -794,7 +794,7 @@ var Video = new Class({
      * @fires Phaser.GameObjects.Events#VIDEO_COMPLETE
      * @fires Phaser.GameObjects.Events#VIDEO_PLAY
      * @fires Phaser.GameObjects.Events#VIDEO_TEXTURE
-     * @since 3.60.0
+     * 
      *
      * @param {DOMHighResTimeStamp} now - The current time in milliseconds.
      * @param {VideoFrameCallbackMetadata} metadata - Useful metadata about the video frame that was most recently presented for composition. See https://wicg.github.io/video-rvfc/#video-frame-metadata-callback
@@ -1011,7 +1011,7 @@ var Video = new Class({
      * Adds the loading specific event handlers to the video element.
      *
      * @method Phaser.GameObjects.Video#addLoadEventHandlers
-     * @since 3.60.0
+     * 
      */
     addLoadEventHandlers: function () {
         var video = this.video;
@@ -1027,7 +1027,7 @@ var Video = new Class({
      * Removes the loading specific event handlers from the video element.
      *
      * @method Phaser.GameObjects.Video#removeLoadEventHandlers
-     * @since 3.60.0
+     * 
      */
     removeLoadEventHandlers: function () {
         var video = this.video;
@@ -1042,7 +1042,7 @@ var Video = new Class({
      * Adds the playback specific event handlers to the video element.
      *
      * @method Phaser.GameObjects.Video#addEventHandlers
-     * @since 3.60.0
+     * 
      */
     addEventHandlers: function () {
         var video = this.video;
@@ -1063,7 +1063,7 @@ var Video = new Class({
      * Removes the playback specific event handlers from the video element.
      *
      * @method Phaser.GameObjects.Video#removeEventHandlers
-     * @since 3.60.0
+     * 
      */
     removeEventHandlers: function () {
         var video = this.video;
@@ -1086,7 +1086,7 @@ var Video = new Class({
      * See https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play#browser_compatibility for details.
      *
      * @method Phaser.GameObjects.Video#createPlayPromise
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [catchError=true] - Should the error be caught and the video marked as failed to play?
      */
@@ -1334,7 +1334,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#playSuccess
      * @fires Phaser.GameObjects.Events#VIDEO_UNLOCKED
-     * @since 3.60.0
+     * 
      */
     playSuccess: function () {
         if (!this._playCalled) {
@@ -1372,7 +1372,7 @@ var Video = new Class({
      * @fires Phaser.GameObjects.Events#VIDEO_ERROR
      * @fires Phaser.GameObjects.Events#VIDEO_UNSUPPORTED
      * @fires Phaser.GameObjects.Events#VIDEO_LOCKED
-     * @since 3.60.0
+     * 
      *
      * @param {DOMException} error - The Promise DOM Exception error.
      */
@@ -1402,7 +1402,7 @@ var Video = new Class({
      * This is the legacy handler for browsers that don't support Promise based playback.
      *
      * @method Phaser.GameObjects.Video#legacyPlayHandler
-     * @since 3.60.0
+     * 
      */
     legacyPlayHandler: function () {
         var video = this.video;
@@ -1419,7 +1419,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#playingHandler
      * @fires Phaser.GameObjects.Events#VIDEO_PLAYING
-     * @since 3.60.0
+     * 
      */
     playingHandler: function () {
         this.isStalled = false;
@@ -1504,7 +1504,7 @@ var Video = new Class({
      *
      * @method Phaser.GameObjects.Video#stalledHandler
      * @fires Phaser.GameObjects.Events#VIDEO_STALLED
-     * @since 3.60.0
+     * 
      *
      * @param {Event} event - The error Event.
      */
@@ -1870,7 +1870,7 @@ var Video = new Class({
      * Call `Video.resume` to resume playback.
      *
      * @method Phaser.GameObjects.Video#pause
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Video Game Object for method chaining.
      */
@@ -1886,7 +1886,7 @@ var Video = new Class({
      * Call `Video.pause` to pause playback.
      *
      * @method Phaser.GameObjects.Video#resume
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Video Game Object for method chaining.
      */

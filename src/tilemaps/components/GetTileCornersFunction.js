@@ -7,7 +7,7 @@ var GetTileCorners = require('./GetTileCorners');
  * Gets the correct function to use to get the tile corners, based on the map orientation.
  *
  * @function Phaser.Tilemaps.Components.GetTileCornersFunction
- * @since 3.60.0
+ * 
  *
  * @param {number} orientation - The Tilemap orientation constant.
  *

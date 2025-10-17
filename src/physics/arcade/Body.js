@@ -84,7 +84,7 @@ var Body = new Class({
              * @name Phaser.Physics.Arcade.Body#isBody
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isBody = true;
 
@@ -496,7 +496,7 @@ var Body = new Class({
              * @name Phaser.Physics.Arcade.Body#maxSpeed
              * @type {number}
              * @default -1
-             * @since 3.16.0
+             * 
              */
             this.maxSpeed = -1;
 
@@ -526,7 +526,7 @@ var Body = new Class({
              * @name Phaser.Physics.Arcade.Body#useDamping
              * @type {boolean}
              * @default false
-             * @since 3.10.0
+             * 
              */
             this.useDamping = false;
 
@@ -1048,7 +1048,7 @@ var Body = new Class({
      * This method is only called if the physics world is going to run a step this frame.
      *
      * @method Phaser.Physics.Arcade.Body#resetFlags
-     * @since 3.18.0
+     * 
      *
      * @param {boolean} [clear=false] - Set the `wasTouching` values to their defaults.
      */
@@ -1088,7 +1088,7 @@ var Body = new Class({
      * This method is called every game frame, regardless if the world steps or not.
      *
      * @method Phaser.Physics.Arcade.Body#preUpdate
-     * @since 3.17.0
+     * 
      *
      * @param {boolean} willStep - Will this Body run an update as well?
      * @param {number} delta - The delta time, in seconds, elapsed since the last frame.
@@ -1354,7 +1354,7 @@ var Body = new Class({
      * If the given `gameObject` doesn't have a `body` property, it is created and this Body is assigned to it.
      *
      * @method Phaser.Physics.Arcade.Body#setGameObject
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to assign this Body to.
      * @param {boolean} [enable=true] - Automatically enable this Body for physics.
@@ -1949,7 +1949,7 @@ var Body = new Class({
      * Sets the Body's maximum velocity.
      *
      * @method Phaser.Physics.Arcade.Body#setMaxVelocity
-     * @since 3.10.0
+     * 
      *
      * @param {number} x - The horizontal velocity, in pixels per second.
      * @param {number} [y=x] - The vertical velocity, in pixels per second.
@@ -1998,7 +1998,7 @@ var Body = new Class({
      * Sets the maximum speed the Body can move.
      *
      * @method Phaser.Physics.Arcade.Body#setMaxSpeed
-     * @since 3.16.0
+     * 
      *
      * @param {number} value - The maximum speed value, in pixels per second. Set to a negative value to disable.
      *
@@ -2462,7 +2462,7 @@ var Body = new Class({
      * Sets the Body's `enable` property.
      *
      * @method Phaser.Physics.Arcade.Body#setEnable
-     * @since 3.15.0
+     * 
      *
      * @param {boolean} [value=true] - The value to assign to `enable`.
      *

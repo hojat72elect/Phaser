@@ -39,7 +39,7 @@ var SpriteSheetFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.SpriteSheetFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         //  Check if we have a linked normal map

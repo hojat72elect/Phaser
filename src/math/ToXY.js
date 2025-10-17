@@ -8,7 +8,7 @@ var Vector2 = require('./Vector2');
  * If the given index is out of range an empty Vector2 is returned.
  *
  * @function Phaser.Math.ToXY
- * @since 3.19.0
+ * 
  *
  * @param {number} index - The position within the grid to get the x/y value for.
  * @param {number} width - The width of the grid.

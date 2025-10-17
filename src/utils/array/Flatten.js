@@ -2,7 +2,7 @@
  * Takes an array and flattens it, returning a shallow-copy flattened array.
  *
  * @function Phaser.Utils.Array.Flatten
- * @since 3.60.0
+ * 
  *
  * @param {array} array - The array to flatten.
  * @param {array} [output] - An array to hold the results in.

@@ -51,7 +51,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.17.0
+             * 
              */
             this.renderer;
 
@@ -61,7 +61,7 @@ var Systems = new Class({
                  *
                  * @name Phaser.Scenes.Systems#facebook
                  * @type {Phaser.FacebookInstantGamesPlugin}
-                 * @since 3.12.0
+                 * 
                  */
                 this.facebook;
             }
@@ -157,7 +157,7 @@ var Systems = new Class({
              *
              * @name Phaser.Scenes.Systems#scale
              * @type {Phaser.Scale.ScaleManager}
-             * @since 3.15.0
+             * 
              */
             this.scale;
 
@@ -291,7 +291,7 @@ var Systems = new Class({
              * @name Phaser.Scenes.Systems#sceneUpdate
              * @type {function}
              * @private
-             * @since 3.10.0
+             * 
              */
             this.sceneUpdate = NOOP;
         },
@@ -537,7 +537,7 @@ var Systems = new Class({
      * Returns the current status of this Scene.
      *
      * @method Phaser.Scenes.Systems#getStatus
-     * @since 3.60.0
+     * 
      *
      * @return {number} The status of this Scene. One of the `Phaser.Scene` constants.
      */
@@ -549,7 +549,7 @@ var Systems = new Class({
      * Can this Scene receive Input events?
      *
      * @method Phaser.Scenes.Systems#canInput
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this Scene can receive Input events.
      */
@@ -587,7 +587,7 @@ var Systems = new Class({
      * Is this Scene paused?
      *
      * @method Phaser.Scenes.Systems#isPaused
-     * @since 3.13.0
+     * 
      *
      * @return {boolean} `true` if this Scene is paused, otherwise `false`.
      */

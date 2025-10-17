@@ -19,7 +19,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_STALLED
  * @type {string}
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which threw the error.
  * @param {Event} event - The native DOM event the browser raised during playback.

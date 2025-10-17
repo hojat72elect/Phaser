@@ -5,7 +5,7 @@
  * hexadecimal digit from 0 to f, and `y` is replaced with a random hexadecimal digit from 8 to b.
  *
  * @function Phaser.Utils.String.UUID
- * @since 3.12.0
+ * 
  *
  * @return {string} The UUID string.
  */

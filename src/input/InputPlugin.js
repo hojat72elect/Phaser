@@ -116,7 +116,7 @@ var InputPlugin = new Class({
              * @name Phaser.Input.InputPlugin#pluginEvents
              * @type {Phaser.Events.EventEmitter}
              * @private
-             * @since 3.10.0
+             * 
              */
             this.pluginEvents = new EventEmitter();
 
@@ -218,7 +218,7 @@ var InputPlugin = new Class({
              * @name Phaser.Input.InputPlugin#_eventContainer
              * @type {Phaser.Types.Input.EventData}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._eventContainer = {
                 stopPropagation: function () {
@@ -232,7 +232,7 @@ var InputPlugin = new Class({
              * @name Phaser.Input.InputPlugin#_eventData
              * @type {object}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._eventData = _eventData;
 
@@ -344,7 +344,7 @@ var InputPlugin = new Class({
              * @name Phaser.Input.InputPlugin#_dragState
              * @type {number[]}
              * @private
-             * @since 3.16.0
+             * 
              */
             this._dragState = [];
 
@@ -374,7 +374,7 @@ var InputPlugin = new Class({
              * @name Phaser.Input.InputPlugin#_updatedThisFrame
              * @type {boolean}
              * @private
-             * @since 3.18.0
+             * 
              */
             this._updatedThisFrame = false;
 
@@ -439,7 +439,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#onGameOver
      * @fires Phaser.Input.Events#GAME_OVER
      * @private
-     * @since 3.16.2
+     * 
      */
     onGameOver: function (event) {
         if (this.isActive()) {
@@ -453,7 +453,7 @@ var InputPlugin = new Class({
      * @method Phaser.Input.InputPlugin#onGameOut
      * @fires Phaser.Input.Events#GAME_OUT
      * @private
-     * @since 3.16.2
+     * 
      */
     onGameOut: function (event) {
         if (this.isActive()) {
@@ -511,7 +511,7 @@ var InputPlugin = new Class({
      * Checks to see if the Input Manager, this plugin and the Scene to which it belongs are all active and input enabled.
      *
      * @method Phaser.Input.InputPlugin#isActive
-     * @since 3.10.0
+     * 
      *
      * @return {boolean} `true` if the plugin and the Scene it belongs to is active.
      */
@@ -556,7 +556,7 @@ var InputPlugin = new Class({
      * It emits events for plugins to listen to and also handles polling updates, if enabled.
      *
      * @method Phaser.Input.InputPlugin#updatePoll
-     * @since 3.18.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -1023,7 +1023,7 @@ var InputPlugin = new Class({
      * 5 = Pointer actively dragging but has been released, notify draglist
      *
      * @method Phaser.Input.InputPlugin#getDragState
-     * @since 3.16.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to get the drag state for.
      *
@@ -1046,7 +1046,7 @@ var InputPlugin = new Class({
      * 5 = Pointer actively dragging but has been released, notify draglist
      *
      * @method Phaser.Input.InputPlugin#setDragState
-     * @since 3.16.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to set the drag state for.
      * @param {number} state - The drag state value. An integer between 0 and 5.
@@ -1061,7 +1061,7 @@ var InputPlugin = new Class({
      *
      * @method Phaser.Input.InputPlugin#processDragThresholdEvent
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to check the drag thresholds on.
      * @param {number} time - The current time.
@@ -1093,7 +1093,7 @@ var InputPlugin = new Class({
      * @private
      * @fires Phaser.Input.Events#DRAG_START
      * @fires Phaser.Input.Events#GAMEOBJECT_DRAG_START
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to process the drag event on.
      *
@@ -1145,7 +1145,7 @@ var InputPlugin = new Class({
      *
      * @method Phaser.Input.InputPlugin#processDragDownEvent
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to process the drag event on.
      *
@@ -1214,7 +1214,7 @@ var InputPlugin = new Class({
      * @fires Phaser.Input.Events#GAMEOBJECT_DRAG
      * @fires Phaser.Input.Events#GAMEOBJECT_DRAG_LEAVE
      * @fires Phaser.Input.Events#GAMEOBJECT_DRAG_OVER
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to process the drag event on.
      *
@@ -1342,7 +1342,7 @@ var InputPlugin = new Class({
      * @fires Phaser.Input.Events#GAMEOBJECT_DRAG_END
      * @fires Phaser.Input.Events#GAMEOBJECT_DROP
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to process the drag event on.
      *
@@ -1470,7 +1470,7 @@ var InputPlugin = new Class({
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_WHEEL
      * @fires Phaser.Input.Events#GAMEOBJECT_WHEEL
      * @fires Phaser.Input.Events#POINTER_WHEEL
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to check for events against.
      *
@@ -1533,7 +1533,7 @@ var InputPlugin = new Class({
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_OVER
      * @fires Phaser.Input.Events#GAMEOBJECT_OVER
      * @fires Phaser.Input.Events#POINTER_OVER
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to check for events against.
      *
@@ -1607,7 +1607,7 @@ var InputPlugin = new Class({
      * @fires Phaser.Input.Events#GAMEOBJECT_POINTER_OUT
      * @fires Phaser.Input.Events#GAMEOBJECT_OUT
      * @fires Phaser.Input.Events#POINTER_OUT
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The pointer to check for events against.
      *
@@ -2119,7 +2119,7 @@ var InputPlugin = new Class({
      * Render Textures, Text, Tilemaps, Containers or Particles.
      *
      * @method Phaser.Input.InputPlugin#makePixelPerfect
-     * @since 3.10.0
+     * 
      *
      * @param {number} [alphaTolerance=1] - The alpha level that the pixel should be above to be included as a successful interaction.
      *
@@ -2421,7 +2421,7 @@ var InputPlugin = new Class({
      * work.
      *
      * @method Phaser.Input.InputPlugin#enableDebug
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to create the input debug shape for.
      * @param {number} [color=0x00ff00] - The outline color of the debug shape.
@@ -2536,7 +2536,7 @@ var InputPlugin = new Class({
      * The shape is destroyed immediately and the `hitAreaDebug` property is set to `null`.
      *
      * @method Phaser.Input.InputPlugin#removeDebug
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to remove the input debug shape from.
      *
@@ -2778,7 +2778,7 @@ var InputPlugin = new Class({
      * via this method.
      *
      * @method Phaser.Input.InputPlugin#addPointer
-     * @since 3.10.0
+     * 
      *
      * @param {number} [quantity=1] The number of new Pointers to create. A maximum of 10 is allowed in total.
      *
@@ -2809,7 +2809,7 @@ var InputPlugin = new Class({
      * It's up to you to pick a suitable cursor format that works across the range of browsers you need to support.
      *
      * @method Phaser.Input.InputPlugin#setDefaultCursor
-     * @since 3.10.0
+     * 
      *
      * @param {string} cursor - The CSS to be used when setting the default cursor.
      *
@@ -2907,7 +2907,7 @@ var InputPlugin = new Class({
      * party component, such as Vue, and you need to tell Phaser to reset the Pointer states.
      *
      * @method Phaser.Input.InputPlugin#resetPointers
-     * @since 3.60.0
+     * 
      */
     resetPointers: function () {
         var pointers = this.manager.pointers;
@@ -2983,7 +2983,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#isOver
      * @type {boolean}
      * @readonly
-     * @since 3.16.0
+     * 
      */
     isOver: {
 
@@ -3001,7 +3001,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#mousePointer
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     mousePointer: {
 
@@ -3034,7 +3034,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer1
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer1: {
 
@@ -3051,7 +3051,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer2
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer2: {
 
@@ -3068,7 +3068,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer3
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer3: {
 
@@ -3085,7 +3085,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer4
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer4: {
 
@@ -3102,7 +3102,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer5
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer5: {
 
@@ -3119,7 +3119,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer6
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer6: {
 
@@ -3136,7 +3136,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer7
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer7: {
 
@@ -3153,7 +3153,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer8
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer8: {
 
@@ -3170,7 +3170,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer9
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer9: {
 
@@ -3187,7 +3187,7 @@ var InputPlugin = new Class({
      * @name Phaser.Input.InputPlugin#pointer10
      * @type {Phaser.Input.Pointer}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     pointer10: {
 

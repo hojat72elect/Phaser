@@ -26,7 +26,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [color=0xffffff] - The color of the Bloom, as a hex value.
@@ -74,7 +74,7 @@ var Bloom = new Class({
              *
              * @name Phaser.FX.Bloom#steps
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.steps = steps;
 
@@ -83,7 +83,7 @@ var Bloom = new Class({
              *
              * @name Phaser.FX.Bloom#offsetX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.offsetX = offsetX;
 
@@ -92,7 +92,7 @@ var Bloom = new Class({
              *
              * @name Phaser.FX.Bloom#offsetY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.offsetY = offsetY;
 
@@ -101,7 +101,7 @@ var Bloom = new Class({
              *
              * @name Phaser.FX.Bloom#blurStrength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.blurStrength = blurStrength;
 
@@ -110,7 +110,7 @@ var Bloom = new Class({
              *
              * @name Phaser.FX.Bloom#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = strength;
 
@@ -119,7 +119,7 @@ var Bloom = new Class({
              *
              * @name Phaser.FX.Bloom#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 1, 1];
 
@@ -133,7 +133,7 @@ var Bloom = new Class({
      *
      * @name Phaser.FX.Bloom#color
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color: {
 

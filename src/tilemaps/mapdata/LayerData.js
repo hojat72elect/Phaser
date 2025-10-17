@@ -241,7 +241,7 @@ var LayerData = new Class({
              *
              * @name Phaser.Tilemaps.LayerData#staggerAxis
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.staggerAxis = GetFastValue(config, 'staggerAxis', 'y');
 
@@ -254,7 +254,7 @@ var LayerData = new Class({
              *
              * @name Phaser.Tilemaps.LayerData#staggerIndex
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.staggerIndex = GetFastValue(config, 'staggerIndex', 'odd');
         }

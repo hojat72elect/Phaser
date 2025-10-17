@@ -20,7 +20,7 @@ var TriangleRender = require('./TriangleRender');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -90,7 +90,7 @@ var Triangle = new Class({
      * Sets the data for the lines that make up this Triangle shape.
      *
      * @method Phaser.GameObjects.Triangle#setTo
-     * @since 3.13.0
+     * 
      *
      * @param {number} [x1=0] - The horizontal position of the first point in the triangle.
      * @param {number} [y1=0] - The vertical position of the first point in the triangle.
@@ -112,7 +112,7 @@ var Triangle = new Class({
      *
      * @method Phaser.GameObjects.Triangle#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

@@ -25,7 +25,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [x=0.5] - The horizontal offset of the vignette effect. This value is normalized to the range 0 to 1.
@@ -60,7 +60,7 @@ var Vignette = new Class({
              *
              * @name Phaser.FX.Vignette#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = x;
 
@@ -69,7 +69,7 @@ var Vignette = new Class({
              *
              * @name Phaser.FX.Vignette#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = y;
 
@@ -78,7 +78,7 @@ var Vignette = new Class({
              *
              * @name Phaser.FX.Vignette#radius
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.radius = radius;
 
@@ -87,7 +87,7 @@ var Vignette = new Class({
              *
              * @name Phaser.FX.Vignette#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = strength;
         }

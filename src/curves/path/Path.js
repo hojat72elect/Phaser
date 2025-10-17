@@ -458,7 +458,7 @@ var Path = new Class({
      * Returns the Curve that forms the Path at the given normalized location (between 0 and 1).
      *
      * @method Phaser.Curves.Path#getCurveAt
-     * @since 3.60.0
+     * 
      *
      * @param {number} t - The normalized location on the Path, between 0 and 1.
      *

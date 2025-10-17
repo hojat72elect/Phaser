@@ -8,6 +8,6 @@
  * The Complete Event.
  *
  * @event SpinePluginEvents#COMPLETE
- * @since 3.19.0
+ * 
  */
 module.exports = 'complete';

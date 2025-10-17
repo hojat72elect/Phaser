@@ -9,7 +9,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_PLAYING
  * @type {string}
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object which started playback.
  */

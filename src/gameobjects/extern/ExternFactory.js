@@ -7,7 +7,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  * Note: This method will only be available if the Extern Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#extern
- * @since 3.16.0
+ * 
  *
  * @return {Phaser.GameObjects.Extern} The Game Object that was created.
  */

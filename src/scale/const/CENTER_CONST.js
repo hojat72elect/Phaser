@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Scale.Center
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  * @typedef {Phaser.Scale.Center} Phaser.Scale.CenterType
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
      * @name Phaser.Scale.Center.NO_CENTER
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     NO_CENTER: 0,
 
@@ -39,7 +39,7 @@ module.exports = {
      * @name Phaser.Scale.Center.CENTER_BOTH
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     CENTER_BOTH: 1,
 
@@ -53,7 +53,7 @@ module.exports = {
      * @name Phaser.Scale.Center.CENTER_HORIZONTALLY
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     CENTER_HORIZONTALLY: 2,
 
@@ -67,7 +67,7 @@ module.exports = {
      * @name Phaser.Scale.Center.CENTER_VERTICALLY
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     CENTER_VERTICALLY: 3
 

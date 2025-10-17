@@ -10,7 +10,7 @@
  * Does not modify either of the passed Vectors.
  *
  * @function Phaser.Math.LinearXY
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Math.Vector2} vector1 - Starting vector
  * @param {Phaser.Math.Vector2} vector2 - Ending vector

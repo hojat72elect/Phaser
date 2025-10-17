@@ -23,7 +23,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -44,7 +44,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#alpha
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.alpha = 0.2;
 
@@ -56,7 +56,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#size
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.size = 0;
 
@@ -65,7 +65,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#fromX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.fromX = 0;
 
@@ -74,7 +74,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#fromY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.fromY = 0;
 
@@ -83,7 +83,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#toX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.toX = 0;
 
@@ -92,7 +92,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#toY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.toY = 1;
 
@@ -101,7 +101,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#glcolor1
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor1 = [255, 0, 0];
 
@@ -110,7 +110,7 @@ var GradientFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.GradientFXPipeline#glcolor2
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor2 = [0, 255, 0];
         },

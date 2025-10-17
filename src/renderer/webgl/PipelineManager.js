@@ -152,7 +152,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#default
              * @type {Phaser.Renderer.WebGL.WebGLPipeline}
              * @default null
-             * @since 3.60.0
+             * 
              */
             this.default = null;
 
@@ -223,7 +223,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#MOBILE_PIPELINE
              * @type {Phaser.Renderer.WebGL.Pipelines.MobilePipeline}
              * @default null
-             * @since 3.60.0
+             * 
              */
             this.MOBILE_PIPELINE = null;
 
@@ -236,7 +236,7 @@ var PipelineManager = new Class({
              * @name Phaser.Renderer.WebGL.PipelineManager#FX_PIPELINE
              * @type {Phaser.Renderer.WebGL.Pipelines.FXPipeline}
              * @default null
-             * @since 3.60.0
+             * 
              */
             this.FX_PIPELINE = null;
 
@@ -309,7 +309,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#renderTargets
              * @type {Phaser.Renderer.WebGL.RenderTarget[]}
-             * @since 3.60.0
+             * 
              */
             this.renderTargets = [];
 
@@ -318,7 +318,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#maxDimension
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.maxDimension = 0;
 
@@ -329,7 +329,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#frameInc
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.frameInc = 32;
 
@@ -339,7 +339,7 @@ var PipelineManager = new Class({
              *
              * @name Phaser.Renderer.WebGL.PipelineManager#targetIndex
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.targetIndex = 0;
         },
@@ -491,7 +491,7 @@ var PipelineManager = new Class({
      * only impact Game Objects created after you call it.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#setDefaultPipeline
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Renderer.WebGL.WebGLPipeline)} pipeline - Either the string-based name of the pipeline to get, or a pipeline instance to look-up.
      *
@@ -1184,7 +1184,7 @@ var PipelineManager = new Class({
      * Sets the FX Pipeline to be the currently bound pipeline.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#setFX
-     * @since 3.60.0
+     * 
      *
      * @return {Phaser.Renderer.WebGL.Pipelines.FXPipeline} The FX Pipeline instance.
      */
@@ -1318,7 +1318,7 @@ var PipelineManager = new Class({
      * size of the renderer.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#getRenderTarget
-     * @since 3.60.0
+     * 
      *
      * @param {number} size - The maximum dimension required.
      *
@@ -1349,7 +1349,7 @@ var PipelineManager = new Class({
      * useful for double-buffer style effects such as blurs.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#getSwapRenderTarget
-     * @since 3.60.0
+     * 
      *
      * @return {Phaser.Renderer.WebGL.RenderTarget} The Render Target swap frame.
      */
@@ -1362,7 +1362,7 @@ var PipelineManager = new Class({
      * useful for double-buffer style effects such as blurs.
      *
      * @method Phaser.Renderer.WebGL.PipelineManager#getAltSwapRenderTarget
-     * @since 3.60.0
+     * 
      *
      * @return {Phaser.Renderer.WebGL.RenderTarget} The Render Target swap frame.
      */

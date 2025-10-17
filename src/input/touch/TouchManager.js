@@ -82,7 +82,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchStartWindow
              * @type {function}
-             * @since 3.17.0
+             * 
              */
             this.onTouchStartWindow = NOOP;
 
@@ -112,7 +112,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchEndWindow
              * @type {function}
-             * @since 3.17.0
+             * 
              */
             this.onTouchEndWindow = NOOP;
 
@@ -122,7 +122,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchCancel
              * @type {function}
-             * @since 3.15.0
+             * 
              */
             this.onTouchCancel = NOOP;
 
@@ -132,7 +132,7 @@ var TouchManager = new Class({
              *
              * @name Phaser.Input.Touch.TouchManager#onTouchCancelWindow
              * @type {function}
-             * @since 3.18.0
+             * 
              */
             this.onTouchCancelWindow = NOOP;
 
@@ -146,7 +146,7 @@ var TouchManager = new Class({
              * @name Phaser.Input.Touch.TouchManager#isTop
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isTop = true;
 

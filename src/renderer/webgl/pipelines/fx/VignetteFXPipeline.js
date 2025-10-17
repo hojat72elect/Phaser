@@ -22,7 +22,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -43,7 +43,7 @@ var VignetteFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = 0.5;
 
@@ -52,7 +52,7 @@ var VignetteFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = 0.5;
 
@@ -61,7 +61,7 @@ var VignetteFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#radius
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.radius = 0.5;
 
@@ -70,7 +70,7 @@ var VignetteFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.VignetteFXPipeline#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = 0.5;
         },

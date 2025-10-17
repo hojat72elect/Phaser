@@ -16,7 +16,7 @@ var IntegerToRGB = require('../../display/color/IntegerToRGB');
  * @extends Phaser.GameObjects.Particles.EmitterOp
  * @memberof Phaser.GameObjects.Particles
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {string} key - The name of the property.
  */
@@ -40,7 +40,7 @@ var EmitterColorOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterColorOp#r
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.r = [];
 
@@ -51,7 +51,7 @@ var EmitterColorOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterColorOp#g
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.g = [];
 
@@ -62,7 +62,7 @@ var EmitterColorOp = new Class({
              *
              * @name Phaser.GameObjects.Particles.EmitterColorOp#b
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.b = [];
         },
@@ -72,7 +72,7 @@ var EmitterColorOp = new Class({
      * method is required in order to return values from this op function.
      *
      * @method Phaser.GameObjects.Particles.EmitterColorOp#getMethod
-     * @since 3.60.0
+     * 
      *
      * @return {number} A number between 0 and 9 which should be passed to `setMethods`.
      */
@@ -84,7 +84,7 @@ var EmitterColorOp = new Class({
      * Sets the EmitterColorOp method values, if in use.
      *
      * @method Phaser.GameObjects.Particles.EmitterColorOp#setMethods
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Emitter Op object.
      */
@@ -132,7 +132,7 @@ var EmitterColorOp = new Class({
      * Sets the Ease function to use for Color interpolation.
      *
      * @method Phaser.GameObjects.Particles.EmitterColorOp#setEase
-     * @since 3.60.0
+     * 
      *
      * @param {string} ease - The string-based name of the Ease function to use.
      */
@@ -148,7 +148,7 @@ var EmitterColorOp = new Class({
      * It prepares the particle for easing by {@link Phaser.GameObjects.Particles.EmitterColorOp#easeValueUpdate}.
      *
      * @method Phaser.GameObjects.Particles.EmitterColorOp#easedValueEmit
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The particle.
      * @param {string} key - The name of the property.
@@ -167,7 +167,7 @@ var EmitterColorOp = new Class({
      * range.
      *
      * @method Phaser.GameObjects.Particles.EmitterColorOp#easeValueUpdate
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The particle.
      * @param {string} key - The name of the property.

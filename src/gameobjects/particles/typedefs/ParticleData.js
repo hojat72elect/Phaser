@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Particles.ParticleData
- * @since 3.60.0
+ * 
  *
  * @property {Phaser.Types.GameObjects.Particles.ParticleDataValue} [tint={min:0xffffff,max:0xffffff}]
  * @property {Phaser.Types.GameObjects.Particles.ParticleDataValue} [alpha={min:1,max:1}]

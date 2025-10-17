@@ -106,7 +106,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#panEffect
              * @type {Phaser.Cameras.Scene2D.Effects.Pan}
-             * @since 3.11.0
+             * 
              */
             this.panEffect = new Effects.Pan(this);
 
@@ -126,7 +126,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#zoomEffect
              * @type {Phaser.Cameras.Scene2D.Effects.Zoom}
-             * @since 3.11.0
+             * 
              */
             this.zoomEffect = new Effects.Zoom(this);
 
@@ -180,7 +180,7 @@ var Camera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.Camera#deadzone
              * @type {?Phaser.Geom.Rectangle}
-             * @since 3.11.0
+             * 
              */
             this.deadzone = null;
 
@@ -213,7 +213,7 @@ var Camera = new Class({
      * Calling this method with no arguments will reset an active deadzone.
      *
      * @method Phaser.Cameras.Scene2D.Camera#setDeadzone
-     * @since 3.11.0
+     * 
      *
      * @param {number} [width] - The width of the deadzone rectangle in pixels. If not specified the deadzone is removed.
      * @param {number} [height] - The height of the deadzone rectangle in pixels.
@@ -392,7 +392,7 @@ var Camera = new Class({
      * @method Phaser.Cameras.Scene2D.Camera#pan
      * @fires Phaser.Cameras.Scene2D.Events#PAN_START
      * @fires Phaser.Cameras.Scene2D.Events#PAN_COMPLETE
-     * @since 3.11.0
+     * 
      *
      * @param {number} x - The destination x coordinate to scroll the center of the Camera viewport to.
      * @param {number} y - The destination y coordinate to scroll the center of the Camera viewport to.
@@ -439,7 +439,7 @@ var Camera = new Class({
      * @method Phaser.Cameras.Scene2D.Camera#zoomTo
      * @fires Phaser.Cameras.Scene2D.Events#ZOOM_START
      * @fires Phaser.Cameras.Scene2D.Events#ZOOM_COMPLETE
-     * @since 3.11.0
+     * 
      *
      * @param {number} zoom - The target Camera zoom value.
      * @param {number} [duration=1000] - The duration of the effect in milliseconds.

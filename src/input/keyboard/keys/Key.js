@@ -30,7 +30,7 @@ var Key = new Class({
              *
              * @name Phaser.Input.Keyboard.Key#plugin
              * @type {Phaser.Input.Keyboard.KeyboardPlugin}
-             * @since 3.17.0
+             * 
              */
             this.plugin = plugin;
 
@@ -119,7 +119,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#metaKey
              * @type {boolean}
              * @default false
-             * @since 3.16.0
+             * 
              */
             this.metaKey = false;
 
@@ -174,7 +174,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#emitOnRepeat
              * @type {boolean}
              * @default false
-             * @since 3.16.0
+             * 
              */
             this.emitOnRepeat = false;
 
@@ -216,7 +216,7 @@ var Key = new Class({
              * @name Phaser.Input.Keyboard.Key#_tick
              * @type {number}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._tick = -1;
         },
@@ -226,7 +226,7 @@ var Key = new Class({
      * or emit the event just once, on first press, and then skip future events (false).
      *
      * @method Phaser.Input.Keyboard.Key#setEmitOnRepeat
-     * @since 3.16.0
+     * 
      *
      * @param {boolean} value - Emit `down` events on repeated key down actions, or just once?
      *
@@ -244,7 +244,7 @@ var Key = new Class({
      *
      * @method Phaser.Input.Keyboard.Key#onDown
      * @fires Phaser.Input.Keyboard.Events#DOWN
-     * @since 3.16.0
+     * 
      *
      * @param {KeyboardEvent} event - The native DOM Keyboard event.
      */
@@ -283,7 +283,7 @@ var Key = new Class({
      *
      * @method Phaser.Input.Keyboard.Key#onUp
      * @fires Phaser.Input.Keyboard.Events#UP
-     * @since 3.16.0
+     * 
      *
      * @param {KeyboardEvent} event - The native DOM Keyboard event.
      */
@@ -344,7 +344,7 @@ var Key = new Class({
      * use the `Key.duration` property value instead.
      *
      * @method Phaser.Input.Keyboard.Key#getDuration
-     * @since 3.17.0
+     * 
      *
      * @return {number} The duration, in ms, that the Key has been held down for if currently down.
      */
@@ -360,7 +360,7 @@ var Key = new Class({
      * Removes any bound event handlers and removes local references.
      *
      * @method Phaser.Input.Keyboard.Key#destroy
-     * @since 3.16.0
+     * 
      */
     destroy: function () {
         this.removeAllListeners();

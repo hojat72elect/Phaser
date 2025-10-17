@@ -14,7 +14,7 @@ var Class = require('../utils/Class');
  * @class ObjectHelper
  * @memberof Phaser.Tilemaps
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Tilemaps.Tileset[]} tilesets - The backing tileset data.
  */
@@ -28,7 +28,7 @@ var ObjectHelper = new Class({
              *
              * @name Phaser.Tilemaps.ObjectHelper#gids
              * @type {array}
-             * @since 3.60.0
+             * 
              */
             this.gids = [];
 
@@ -48,7 +48,7 @@ var ObjectHelper = new Class({
              * @name Phaser.Tilemaps.ObjectHelper#_gids
              * @type {array}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._gids = this.gids;
         },
@@ -59,7 +59,7 @@ var ObjectHelper = new Class({
      *
      * @name Phaser.Tilemaps.ObjectHelper#enabled
      * @type {boolean}
-     * @since 3.60.0
+     * 
      */
     enabled: {
 
@@ -77,7 +77,7 @@ var ObjectHelper = new Class({
      * Gets the Tiled `type` field value from the object or the `gid` behind it.
      *
      * @method Phaser.Tilemaps.ObjectHelper#getTypeIncludingTile
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tilemaps.TiledObject} obj - The Tiled object to investigate.
      *
@@ -116,7 +116,7 @@ var ObjectHelper = new Class({
      * the tileset is the same as texture frame `3` from the image of the tileset.
      *
      * @method Phaser.Tilemaps.ObjectHelper#setTextureAndFrame
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The Game Object to modify.
      * @param {string|Phaser.Textures.Texture} [key] - The texture key to set (or else the `obj.gid`'s tile is used if available).
@@ -152,7 +152,7 @@ var ObjectHelper = new Class({
      * Sets the `sprite.data` field from the tiled properties on the object and its tile (if any).
      *
      * @method Phaser.Tilemaps.ObjectHelper#setPropertiesFromTiledObject
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite
      * @param {Phaser.Types.Tilemaps.TiledObject} obj
@@ -173,7 +173,7 @@ var ObjectHelper = new Class({
      * Sets the sprite data from the JSON object.
      *
      * @method Phaser.Tilemaps.ObjectHelper#setFromJSON
-     * @since 3.60.0
+     * 
      * @private
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The object for which to populate `data`.

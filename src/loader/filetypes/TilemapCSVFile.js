@@ -63,7 +63,7 @@ var TilemapCSVFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.TilemapCSVFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -77,7 +77,7 @@ var TilemapCSVFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.TilemapCSVFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         var tiledata = {format: this.tilemapFormat, data: this.data};

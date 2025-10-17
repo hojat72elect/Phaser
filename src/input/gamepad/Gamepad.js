@@ -42,7 +42,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#pad
              * @type {any}
-             * @since 3.10.0
+             * 
              */
             this.pad = pad;
 
@@ -109,7 +109,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#vibration
              * @type {GamepadHapticActuator}
-             * @since 3.10.0
+             * 
              */
             this.vibration = pad.vibrationActuator;
 
@@ -123,7 +123,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_LCLeft
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._LCLeft = (buttons[14]) ? buttons[14] : _noButton;
 
@@ -133,7 +133,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_LCRight
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._LCRight = (buttons[15]) ? buttons[15] : _noButton;
 
@@ -143,7 +143,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_LCTop
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._LCTop = (buttons[12]) ? buttons[12] : _noButton;
 
@@ -153,7 +153,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_LCBottom
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._LCBottom = (buttons[13]) ? buttons[13] : _noButton;
 
@@ -163,7 +163,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_RCLeft
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._RCLeft = (buttons[2]) ? buttons[2] : _noButton;
 
@@ -173,7 +173,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_RCRight
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._RCRight = (buttons[1]) ? buttons[1] : _noButton;
 
@@ -183,7 +183,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_RCTop
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._RCTop = (buttons[3]) ? buttons[3] : _noButton;
 
@@ -193,7 +193,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_RCBottom
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._RCBottom = (buttons[0]) ? buttons[0] : _noButton;
 
@@ -203,7 +203,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_FBLeftTop
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._FBLeftTop = (buttons[4]) ? buttons[4] : _noButton;
 
@@ -213,7 +213,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_FBLeftBottom
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._FBLeftBottom = (buttons[6]) ? buttons[6] : _noButton;
 
@@ -223,7 +223,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_FBRightTop
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._FBRightTop = (buttons[5]) ? buttons[5] : _noButton;
 
@@ -233,7 +233,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_FBRightBottom
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._FBRightBottom = (buttons[7]) ? buttons[7] : _noButton;
 
@@ -245,7 +245,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_HAxisLeft
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._HAxisLeft = (axes[0]) ? axes[0] : _noAxis;
 
@@ -255,7 +255,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_VAxisLeft
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._VAxisLeft = (axes[1]) ? axes[1] : _noAxis;
 
@@ -265,7 +265,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_HAxisRight
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._HAxisRight = (axes[2]) ? axes[2] : _noAxis;
 
@@ -275,7 +275,7 @@ var Gamepad = new Class({
              * @name Phaser.Input.Gamepad.Gamepad#_VAxisRight
              * @type {Phaser.Input.Gamepad.Button}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._VAxisRight = (axes[3]) ? axes[3] : _noAxis;
 
@@ -288,7 +288,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#leftStick
              * @type {Phaser.Math.Vector2}
-             * @since 3.10.0
+             * 
              */
             this.leftStick = new Vector2();
 
@@ -301,7 +301,7 @@ var Gamepad = new Class({
              *
              * @name Phaser.Input.Gamepad.Gamepad#rightStick
              * @type {Phaser.Math.Vector2}
-             * @since 3.10.0
+             * 
              */
             this.rightStick = new Vector2();
 
@@ -320,7 +320,7 @@ var Gamepad = new Class({
      * Gets the total number of axis this Gamepad claims to support.
      *
      * @method Phaser.Input.Gamepad.Gamepad#getAxisTotal
-     * @since 3.10.0
+     * 
      *
      * @return {number} The total number of axes this Gamepad claims to support.
      */
@@ -334,7 +334,7 @@ var Gamepad = new Class({
      * The return value will be a float between 0 and 1.
      *
      * @method Phaser.Input.Gamepad.Gamepad#getAxisValue
-     * @since 3.10.0
+     * 
      *
      * @param {number} index - The index of the axes to get the value for.
      *
@@ -349,7 +349,7 @@ var Gamepad = new Class({
      * The value is a float between 0 and 1 and is the amount below which the axis is considered as not having been moved.
      *
      * @method Phaser.Input.Gamepad.Gamepad#setAxisThreshold
-     * @since 3.10.0
+     * 
      *
      * @param {number} value - A value between 0 and 1.
      */
@@ -363,7 +363,7 @@ var Gamepad = new Class({
      * Gets the total number of buttons this Gamepad claims to have.
      *
      * @method Phaser.Input.Gamepad.Gamepad#getButtonTotal
-     * @since 3.10.0
+     * 
      *
      * @return {number} The total number of buttons this Gamepad claims to have.
      */
@@ -379,7 +379,7 @@ var Gamepad = new Class({
      * for a pressure-sensitive digital button, such as the shoulder buttons on a Dual Shock.
      *
      * @method Phaser.Input.Gamepad.Gamepad#getButtonValue
-     * @since 3.10.0
+     * 
      *
      * @param {number} index - The index of the button to get the value for.
      *
@@ -394,7 +394,7 @@ var Gamepad = new Class({
      * The index must be valid within the range of buttons supported by this Gamepad.
      *
      * @method Phaser.Input.Gamepad.Gamepad#isButtonDown
-     * @since 3.10.0
+     * 
      *
      * @param {number} index - The index of the button to get the value for.
      *
@@ -454,7 +454,7 @@ var Gamepad = new Class({
      * Destroys this Gamepad instance, its buttons and axes, and releases external references it holds.
      *
      * @method Phaser.Input.Gamepad.Gamepad#destroy
-     * @since 3.10.0
+     * 
      */
     destroy: function () {
         this.removeAllListeners();
@@ -514,7 +514,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#left
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     left: {
 
@@ -531,7 +531,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#right
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     right: {
 
@@ -548,7 +548,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#up
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     up: {
 
@@ -565,7 +565,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#down
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     down: {
 
@@ -583,7 +583,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#A
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     A: {
 
@@ -601,7 +601,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#Y
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     Y: {
 
@@ -619,7 +619,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#X
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     X: {
 
@@ -637,7 +637,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#B
      * @type {boolean}
-     * @since 3.10.0
+     * 
      */
     B: {
 
@@ -656,7 +656,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#L1
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     L1: {
 
@@ -675,7 +675,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#L2
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     L2: {
 
@@ -694,7 +694,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#R1
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     R1: {
 
@@ -713,7 +713,7 @@ var Gamepad = new Class({
      *
      * @name Phaser.Input.Gamepad.Gamepad#R2
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     R2: {
 

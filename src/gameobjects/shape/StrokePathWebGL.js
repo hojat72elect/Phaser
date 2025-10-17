@@ -4,7 +4,7 @@ var Utils = require('../../renderer/webgl/Utils');
  * Renders a stroke outline around the given Shape.
  *
  * @method Phaser.GameObjects.Shape#StrokePathWebGL
- * @since 3.13.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The WebGL Pipeline used to render this Shape.

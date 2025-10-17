@@ -24,7 +24,7 @@ var Shape = require('../Shape');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -71,7 +71,7 @@ var Star = new Class({
              * @name Phaser.GameObjects.Star#_points
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._points = points;
 
@@ -82,7 +82,7 @@ var Star = new Class({
              * @name Phaser.GameObjects.Star#_innerRadius
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._innerRadius = innerRadius;
 
@@ -93,7 +93,7 @@ var Star = new Class({
              * @name Phaser.GameObjects.Star#_outerRadius
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._outerRadius = outerRadius;
 
@@ -113,7 +113,7 @@ var Star = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Star#setPoints
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The amount of points the Star will have.
      *
@@ -130,7 +130,7 @@ var Star = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Star#setInnerRadius
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The amount to set the inner radius to.
      *
@@ -147,7 +147,7 @@ var Star = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Star#setOuterRadius
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The amount to set the outer radius to.
      *
@@ -165,7 +165,7 @@ var Star = new Class({
      * @name Phaser.GameObjects.Star#points
      * @type {number}
      * @default 5
-     * @since 3.13.0
+     * 
      */
     points: {
 
@@ -187,7 +187,7 @@ var Star = new Class({
      * @name Phaser.GameObjects.Star#innerRadius
      * @type {number}
      * @default 32
-     * @since 3.13.0
+     * 
      */
     innerRadius: {
 
@@ -209,7 +209,7 @@ var Star = new Class({
      * @name Phaser.GameObjects.Star#outerRadius
      * @type {number}
      * @default 64
-     * @since 3.13.0
+     * 
      */
     outerRadius: {
 
@@ -230,7 +230,7 @@ var Star = new Class({
      *
      * @method Phaser.GameObjects.Star#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

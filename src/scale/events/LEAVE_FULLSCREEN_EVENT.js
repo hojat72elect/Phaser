@@ -4,6 +4,6 @@
  *
  * @event Phaser.Scale.Events#LEAVE_FULLSCREEN
  * @type {string}
- * @since 3.16.1
+ * 
  */
 module.exports = 'leavefullscreen';

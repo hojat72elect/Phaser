@@ -83,7 +83,7 @@ var BaseCache = new Class({
      * This performs the same action as `BaseCache.has` and is called directly by the Loader.
      *
      * @method Phaser.Cache.BaseCache#exists
-     * @since 3.7.0
+     * 
      *
      * @param {string} key - The unique key of the item to be checked in this cache.
      *
@@ -138,7 +138,7 @@ var BaseCache = new Class({
      * Returns all keys in use in this cache.
      *
      * @method Phaser.Cache.BaseCache#getKeys
-     * @since 3.17.0
+     * 
      *
      * @return {string[]} Array containing all the keys.
      */

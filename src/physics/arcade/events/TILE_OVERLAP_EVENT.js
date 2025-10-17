@@ -12,7 +12,7 @@
  *
  * @event Phaser.Physics.Arcade.Events#TILE_OVERLAP
  * @type {string}
- * @since 3.16.1
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object involved in the overlap. This is the parent of `body`.
  * @param {Phaser.Tilemaps.Tile} tile - The tile the body overlapped.

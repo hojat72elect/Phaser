@@ -85,7 +85,7 @@ var Vertex = require('../../geom/mesh/Vertex');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -151,7 +151,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#_width
              * @private
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this._width;
 
@@ -161,7 +161,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#_height
              * @private
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this._height;
 
@@ -171,7 +171,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#_originX
              * @private
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this._originX = 0.5;
 
@@ -181,7 +181,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#_originY
              * @private
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this._originY = 0.5;
 
@@ -191,7 +191,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#_sizeComponent
              * @private
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this._sizeComponent = true;
 
@@ -218,7 +218,7 @@ var NineSlice = new Class({
              *
              * @name Phaser.GameObjects.NineSlice#vertices
              * @type {Phaser.Geom.Mesh.Vertex[]}
-             * @since 3.60.0
+             * 
              */
             this.vertices = [];
 
@@ -228,7 +228,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#leftWidth
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.leftWidth;
 
@@ -238,7 +238,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#rightWidth
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.rightWidth;
 
@@ -251,7 +251,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#topHeight
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.topHeight;
 
@@ -263,7 +263,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#bottomHeight
              * @type {number}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.bottomHeight;
 
@@ -275,7 +275,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#tint
              * @type {number}
              * @default 0xffffff
-             * @since 3.60.0
+             * 
              */
             this.tint = 0xffffff;
 
@@ -288,7 +288,7 @@ var NineSlice = new Class({
              * @name Phaser.GameObjects.NineSlice#tintFill
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.tintFill = false;
 
@@ -301,7 +301,7 @@ var NineSlice = new Class({
              *
              * @name Phaser.GameObjects.NineSlice#is3Slice
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.is3Slice = (!topHeight && !bottomHeight);
 
@@ -337,7 +337,7 @@ var NineSlice = new Class({
      * Please note that you cannot change a 9-slice to a 3-slice or vice versa.
      *
      * @method Phaser.GameObjects.NineSlice#setSlices
-     * @since 3.60.0
+     * 
      *
      * @param {number} [width=256] - The width of the Nine Slice Game Object. You can adjust the width post-creation.
      * @param {number} [height=256] - The height of the Nine Slice Game Object. If this is a 3 slice object the height will be fixed to the height of the texture and cannot be changed.
@@ -436,7 +436,7 @@ var NineSlice = new Class({
      * method if the Nine Slice changes size. Only if it changes texture frame.
      *
      * @method Phaser.GameObjects.NineSlice#updateUVs
-     * @since 3.60.0
+     * 
      */
     updateUVs: function () {
         var left = this.leftWidth;
@@ -474,7 +474,7 @@ var NineSlice = new Class({
      * after creation.
      *
      * @method Phaser.GameObjects.NineSlice#updateVertices
-     * @since 3.60.0
+     * 
      */
     updateVertices: function () {
         var left = this.leftWidth;
@@ -507,7 +507,7 @@ var NineSlice = new Class({
      * is left public should an extended class require it.
      *
      * @method Phaser.GameObjects.NineSlice#updateQuad
-     * @since 3.60.0
+     * 
      *
      * @param {number} offset - The offset in the vertices array of the quad to update.
      * @param {number} x1 - The top-left quad coordinate.
@@ -539,7 +539,7 @@ var NineSlice = new Class({
      * is left public should an extended class require it.
      *
      * @method Phaser.GameObjects.NineSlice#updateQuadUVs
-     * @since 3.60.0
+     * 
      *
      * @param {number} offset - The offset in the vertices array of the quad to update.
      * @param {number} u1 - The top-left UV coordinate.
@@ -589,7 +589,7 @@ var NineSlice = new Class({
      *
      * @method Phaser.GameObjects.NineSlice#clearTint
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -614,7 +614,7 @@ var NineSlice = new Class({
      *
      * @method Phaser.GameObjects.NineSlice#setTint
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} [color=0xffffff] - The tint being applied to the entire Game Object.
      *
@@ -648,7 +648,7 @@ var NineSlice = new Class({
      *
      * @method Phaser.GameObjects.NineSlice#setTintFill
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {number} [color=0xffffff] - The tint being applied to the entire Game Object.
      *
@@ -672,7 +672,7 @@ var NineSlice = new Class({
      * @type {boolean}
      * @webglOnly
      * @readonly
-     * @since 3.60.0
+     * 
      */
     isTinted: {
 
@@ -694,7 +694,7 @@ var NineSlice = new Class({
      *
      * @name Phaser.GameObjects.NineSlice#width
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     width: {
 
@@ -725,7 +725,7 @@ var NineSlice = new Class({
      *
      * @name Phaser.GameObjects.NineSlice#height
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     height: {
 
@@ -752,7 +752,7 @@ var NineSlice = new Class({
      *
      * @name Phaser.GameObjects.NineSlice#displayWidth
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     displayWidth: {
 
@@ -775,7 +775,7 @@ var NineSlice = new Class({
      *
      * @name Phaser.GameObjects.NineSlice#displayHeight
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     displayHeight: {
 
@@ -803,7 +803,7 @@ var NineSlice = new Class({
      * size of the hit area.
      *
      * @method Phaser.GameObjects.NineSlice#setSize
-     * @since 3.60.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -832,7 +832,7 @@ var NineSlice = new Class({
      * Calling this will adjust the scale.
      *
      * @method Phaser.GameObjects.NineSlice#setDisplaySize
-     * @since 3.60.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -854,7 +854,7 @@ var NineSlice = new Class({
      *
      * @name Phaser.GameObjects.NineSlice#originX
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     originX: {
 
@@ -877,7 +877,7 @@ var NineSlice = new Class({
      *
      * @name Phaser.GameObjects.NineSlice#originY
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     originY: {
 
@@ -898,7 +898,7 @@ var NineSlice = new Class({
      * The values are given in the range 0 to 1.
      *
      * @method Phaser.GameObjects.NineSlice#setOrigin
-     * @since 3.60.0
+     * 
      *
      * @param {number} [x=0.5] - The horizontal origin value.
      * @param {number} [y=x] - The vertical origin value. If not defined it will be set to the value of `x`.
@@ -928,7 +928,7 @@ var NineSlice = new Class({
      * You should not call this method.
      *
      * @method Phaser.GameObjects.NineSlice#setSizeToFrame
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Game Object instance.
      */
@@ -951,7 +951,7 @@ var NineSlice = new Class({
      *
      * @method Phaser.GameObjects.NineSlice#preDestroy
      * @private
-     * @since 3.60.0
+     * 
      */
     preDestroy: function () {
         this.vertices = [];

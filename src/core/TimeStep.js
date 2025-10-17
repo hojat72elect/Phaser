@@ -126,7 +126,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#fpsLimit
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.fpsLimit = GetValue(config, 'limit', 0);
 
@@ -140,7 +140,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#hasFpsLimit
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.hasFpsLimit = (this.fpsLimit > 0);
 
@@ -150,7 +150,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#_limitRate
              * @type {number}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._limitRate = (this.hasFpsLimit) ? (1000 / this.fpsLimit) : 0;
 
@@ -407,7 +407,7 @@ var TimeStep = new Class({
              * @name Phaser.Core.TimeStep#now
              * @type {number}
              * @default 0
-             * @since 3.18.0
+             * 
              */
             this.now = 0;
 
@@ -538,7 +538,7 @@ var TimeStep = new Class({
      * Called automatically as part of the step.
      *
      * @method Phaser.Core.TimeStep#smoothDelta
-     * @since 3.60.0
+     * 
      *
      * @param {number} delta - The delta value for this step.
      *
@@ -615,7 +615,7 @@ var TimeStep = new Class({
      * Compute the new exponential moving average with an alpha of 0.25.
      *
      * @method Phaser.Core.TimeStep#updateFPS
-     * @since 3.60.0
+     * 
      *
      * @param {number} time - The timestamp passed in from RequestAnimationFrame or setTimeout.
      */
@@ -631,7 +631,7 @@ var TimeStep = new Class({
      * You generally should never call this method directly.
      *
      * @method Phaser.Core.TimeStep#stepLimitFPS
-     * @since 3.60.0
+     * 
      *
      * @param {number} time - The timestamp passed in from RequestAnimationFrame or setTimeout.
      */
@@ -784,7 +784,7 @@ var TimeStep = new Class({
      * Gets the duration which the game has been running, in seconds.
      *
      * @method Phaser.Core.TimeStep#getDuration
-     * @since 3.17.0
+     * 
      *
      * @return {number} The duration in seconds.
      */
@@ -796,7 +796,7 @@ var TimeStep = new Class({
      * Gets the duration which the game has been running, in ms.
      *
      * @method Phaser.Core.TimeStep#getDurationMS
-     * @since 3.17.0
+     * 
      *
      * @return {number} The duration in ms.
      */

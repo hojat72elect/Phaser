@@ -156,7 +156,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix1
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.11.0
+             * 
              */
             this._tempMatrix1 = new TransformMatrix();
 
@@ -166,7 +166,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix2
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.11.0
+             * 
              */
             this._tempMatrix2 = new TransformMatrix();
 
@@ -176,7 +176,7 @@ var MultiPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.MultiPipeline#_tempMatrix3
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.11.0
+             * 
              */
             this._tempMatrix3 = new TransformMatrix();
 
@@ -583,7 +583,7 @@ var MultiPipeline = new Class({
      * Adds a Texture Frame into the batch for rendering.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#batchTextureFrame
-     * @since 3.12.0
+     * 
      *
      * @param {Phaser.Textures.Frame} frame - The Texture Frame to be rendered.
      * @param {number} x - The horizontal position to render the texture at.
@@ -964,7 +964,7 @@ var MultiPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MultiPipeline#destroy
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#DESTROY
-     * @since 3.60.0
+     * 
      *
      * @return {this} This WebGLPipeline instance.
      */

@@ -136,7 +136,7 @@ var AnimationState = new Class({
              * @name Phaser.Animations.AnimationState#nextAnim
              * @type {?(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)}
              * @default null
-             * @since 3.16.0
+             * 
              */
             this.nextAnim = null;
 
@@ -227,7 +227,7 @@ var AnimationState = new Class({
              * @name Phaser.Animations.AnimationState#randomFrame
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.randomFrame = false;
 
@@ -312,7 +312,7 @@ var AnimationState = new Class({
              *
              * @name Phaser.Animations.AnimationState#showBeforeDelay
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.showBeforeDelay = false;
 
@@ -489,7 +489,7 @@ var AnimationState = new Class({
      * Call this method with no arguments to reset all currently chained animations.
      *
      * @method Phaser.Animations.AnimationState#chain
-     * @since 3.16.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig|string[]|Phaser.Animations.Animation[]|Phaser.Types.Animations.PlayAnimationConfig[])} [key] - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object, or an array of them.
      *
@@ -903,7 +903,7 @@ var AnimationState = new Class({
      *
      * @method Phaser.Animations.AnimationState#playReverse
      * @fires Phaser.Animations.Events#ANIMATION_START
-     * @since 3.12.0
+     * 
      *
      * @param {(string|Phaser.Animations.Animation|Phaser.Types.Animations.PlayAnimationConfig)} key - The string-based key of the animation to play, or an Animation instance, or a `PlayAnimationConfig` object.
      * @param {boolean} [ignoreIfPlaying=false] - If an animation is already playing then ignore this call.
@@ -1076,7 +1076,7 @@ var AnimationState = new Class({
      * Reverse the Animation that is already playing on the Game Object.
      *
      * @method Phaser.Animations.AnimationState#reverse
-     * @since 3.12.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object that owns this Animation Component.
      */
@@ -1532,7 +1532,7 @@ var AnimationState = new Class({
      * playing in reverse, calling this method doesn't then change the direction to forwards.
      *
      * @method Phaser.Animations.AnimationState#nextFrame
-     * @since 3.16.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
      */
@@ -1552,7 +1552,7 @@ var AnimationState = new Class({
      * playing in forwards, calling this method doesn't then change the direction to backwards.
      *
      * @method Phaser.Animations.AnimationState#previousFrame
-     * @since 3.16.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject} The Game Object this Animation Component belongs to.
      */
@@ -1717,7 +1717,7 @@ var AnimationState = new Class({
      * This will only create the 3 animations defined. Note that the tag names are case-sensitive.
      *
      * @method Phaser.Animations.AnimationState#createFromAseprite
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the loaded Aseprite atlas. It must have been loaded prior to calling this method.
      * @param {string[]} [tags] - An array of Tag names. If provided, only animations found in this array will be created.

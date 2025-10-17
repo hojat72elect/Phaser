@@ -43,7 +43,7 @@ var AnimationJSONFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.AnimationJSONFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         //  We need to hook into this event:
@@ -57,7 +57,7 @@ var AnimationJSONFile = new Class({
      * Called at the end of the load process, after the Loader has finished all files in its queue.
      *
      * @method Phaser.Loader.FileTypes.AnimationJSONFile#onLoadComplete
-     * @since 3.7.0
+     * 
      */
     onLoadComplete: function () {
         this.loader.systems.anims.fromJSON(this.data);

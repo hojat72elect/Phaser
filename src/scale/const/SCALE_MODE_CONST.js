@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Scale.ScaleModes
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  * @typedef {Phaser.Scale.ScaleModes} Phaser.Scale.ScaleModeType
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.NONE
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     NONE: 0,
 
@@ -36,7 +36,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.WIDTH_CONTROLS_HEIGHT
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     WIDTH_CONTROLS_HEIGHT: 1,
 
@@ -46,7 +46,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.HEIGHT_CONTROLS_WIDTH
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     HEIGHT_CONTROLS_WIDTH: 2,
 
@@ -58,7 +58,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.FIT
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     FIT: 3,
 
@@ -69,7 +69,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.ENVELOP
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     ENVELOP: 4,
 
@@ -79,7 +79,7 @@ module.exports = {
      * @name Phaser.Scale.ScaleModes.RESIZE
      * @type {number}
      * @const
-     * @since 3.16.0
+     * 
      */
     RESIZE: 5,
 

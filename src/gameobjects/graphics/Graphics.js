@@ -301,7 +301,7 @@ var Graphics = new Class({
      *
      * @method Phaser.GameObjects.Graphics#fillGradientStyle
      * @webglOnly
-     * @since 3.12.0
+     * 
      *
      * @param {number} topLeft - The top left fill color.
      * @param {number} topRight - The top right fill color.
@@ -352,7 +352,7 @@ var Graphics = new Class({
      *
      * @method Phaser.GameObjects.Graphics#lineGradientStyle
      * @webglOnly
-     * @since 3.12.0
+     * 
      *
      * @param {number} lineWidth - The stroke width.
      * @param {number} topLeft - The tint being applied to the top-left of the Game Object.
@@ -431,7 +431,7 @@ var Graphics = new Class({
      * It was added to match the CanvasRenderingContext 2D API.
      *
      * @method Phaser.GameObjects.Graphics#fill
-     * @since 3.16.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -466,7 +466,7 @@ var Graphics = new Class({
      * It was added to match the CanvasRenderingContext 2D API.
      *
      * @method Phaser.GameObjects.Graphics#stroke
-     * @since 3.16.0
+     * 
      *
      * @return {this} This Game Object.
      */
@@ -641,7 +641,7 @@ var Graphics = new Class({
      * Fill a rounded rectangle with the given position, size and radius.
      *
      * @method Phaser.GameObjects.Graphics#fillRoundedRect
-     * @since 3.11.0
+     * 
      *
      * @param {number} x - The x coordinate of the top-left of the rectangle.
      * @param {number} y - The y coordinate of the top-left of the rectangle.
@@ -721,7 +721,7 @@ var Graphics = new Class({
      * Stroke a rounded rectangle with the given position, size and radius.
      *
      * @method Phaser.GameObjects.Graphics#strokeRoundedRect
-     * @since 3.11.0
+     * 
      *
      * @param {number} x - The x coordinate of the top-left of the rectangle.
      * @param {number} y - The y coordinate of the top-left of the rectangle.

@@ -26,7 +26,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [speed=0.5] - The speed of the Shine effect.
@@ -61,7 +61,7 @@ var Shine = new Class({
              *
              * @name Phaser.FX.Shine#speed
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.speed = speed;
 
@@ -70,7 +70,7 @@ var Shine = new Class({
              *
              * @name Phaser.FX.Shine#lineWidth
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.lineWidth = lineWidth;
 
@@ -79,7 +79,7 @@ var Shine = new Class({
              *
              * @name Phaser.FX.Shine#gradient
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.gradient = gradient;
 
@@ -88,7 +88,7 @@ var Shine = new Class({
              *
              * @name Phaser.FX.Shine#reveal
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.reveal = reveal;
         }

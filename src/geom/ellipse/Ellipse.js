@@ -48,7 +48,7 @@ var Ellipse = new Class({
              * @name Phaser.Geom.Ellipse#type
              * @type {number}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.type = GEOM_CONST.ELLIPSE;
 

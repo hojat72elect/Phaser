@@ -14,7 +14,7 @@ var TWEEN_CONST = require('./const');
  * @class BaseTweenData
  * @memberof Phaser.Tweens
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Tweens.Tween} tween - The tween this TweenData instance belongs to.
  * @param {number} targetIndex - The target index within the Tween targets array.
@@ -44,7 +44,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#tween
              * @type {Phaser.Tweens.Tween}
-             * @since 3.60.0
+             * 
              */
             this.tween = tween;
 
@@ -53,7 +53,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#targetIndex
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.targetIndex = targetIndex;
 
@@ -64,7 +64,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#duration
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.duration = (duration <= 0) ? 0.01 : duration;
 
@@ -74,7 +74,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#totalDuration
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.totalDuration = 0;
 
@@ -85,7 +85,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#delay
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.delay = 0;
 
@@ -94,7 +94,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#getDelay
              * @type {function}
-             * @since 3.60.0
+             * 
              */
             this.getDelay = delay;
 
@@ -104,7 +104,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#yoyo
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.yoyo = yoyo;
 
@@ -113,7 +113,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#hold
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.hold = hold;
 
@@ -128,7 +128,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#repeat
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.repeat = repeat;
 
@@ -137,7 +137,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#repeatDelay
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.repeatDelay = repeatDelay;
 
@@ -146,7 +146,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#repeatCounter
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.repeatCounter = 0;
 
@@ -157,7 +157,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#flipX
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.flipX = flipX;
 
@@ -168,7 +168,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#flipY
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.flipY = flipY;
 
@@ -177,7 +177,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#progress
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.progress = 0;
 
@@ -187,7 +187,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#elapsed
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.elapsed = 0;
 
@@ -196,7 +196,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#state
              * @type {Phaser.Tweens.StateType}
-             * @since 3.60.0
+             * 
              */
             this.state = 0;
 
@@ -205,7 +205,7 @@ var BaseTweenData = new Class({
              *
              * @name Phaser.Tweens.BaseTweenData#isCountdown
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.isCountdown = false;
         },
@@ -214,7 +214,7 @@ var BaseTweenData = new Class({
      * Returns a reference to the target object belonging to this TweenData.
      *
      * @method Phaser.Tweens.BaseTweenData#getTarget
-     * @since 3.60.0
+     * 
      *
      * @return {object} The target object. Can be any JavaScript object, but is typically a Game Object.
      */
@@ -226,7 +226,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData's target object property to be the given value.
      *
      * @method Phaser.Tweens.BaseTweenData#setTargetValue
-     * @since 3.60.0
+     * 
      *
      * @param {number} [value] - The value to set on the target. If not given, sets it to the last `current` value.
      */
@@ -242,7 +242,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to CREATED.
      *
      * @method Phaser.Tweens.BaseTweenData#setCreatedState
-     * @since 3.60.0
+     * 
      */
     setCreatedState: function () {
         this.state = TWEEN_CONST.CREATED;
@@ -253,7 +253,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to DELAY.
      *
      * @method Phaser.Tweens.BaseTweenData#setDelayState
-     * @since 3.60.0
+     * 
      */
     setDelayState: function () {
         this.state = TWEEN_CONST.DELAY;
@@ -264,7 +264,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to PENDING_RENDER.
      *
      * @method Phaser.Tweens.BaseTweenData#setPendingRenderState
-     * @since 3.60.0
+     * 
      */
     setPendingRenderState: function () {
         this.state = TWEEN_CONST.PENDING_RENDER;
@@ -275,7 +275,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to PLAYING_FORWARD.
      *
      * @method Phaser.Tweens.BaseTweenData#setPlayingForwardState
-     * @since 3.60.0
+     * 
      */
     setPlayingForwardState: function () {
         this.state = TWEEN_CONST.PLAYING_FORWARD;
@@ -286,7 +286,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to PLAYING_BACKWARD.
      *
      * @method Phaser.Tweens.BaseTweenData#setPlayingBackwardState
-     * @since 3.60.0
+     * 
      */
     setPlayingBackwardState: function () {
         this.state = TWEEN_CONST.PLAYING_BACKWARD;
@@ -297,7 +297,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to HOLD_DELAY.
      *
      * @method Phaser.Tweens.BaseTweenData#setHoldState
-     * @since 3.60.0
+     * 
      */
     setHoldState: function () {
         this.state = TWEEN_CONST.HOLD_DELAY;
@@ -308,7 +308,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to REPEAT_DELAY.
      *
      * @method Phaser.Tweens.BaseTweenData#setRepeatState
-     * @since 3.60.0
+     * 
      */
     setRepeatState: function () {
         this.state = TWEEN_CONST.REPEAT_DELAY;
@@ -319,7 +319,7 @@ var BaseTweenData = new Class({
      * Sets this TweenData state to COMPLETE.
      *
      * @method Phaser.Tweens.BaseTweenData#setCompleteState
-     * @since 3.60.0
+     * 
      */
     setCompleteState: function () {
         this.state = TWEEN_CONST.COMPLETE;
@@ -330,7 +330,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of CREATED, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isCreated
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of CREATED, otherwise `false`.
      */
@@ -342,7 +342,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of DELAY, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isDelayed
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of DELAY, otherwise `false`.
      */
@@ -354,7 +354,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of PENDING_RENDER, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isPendingRender
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of PENDING_RENDER, otherwise `false`.
      */
@@ -366,7 +366,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of PLAYING_FORWARD, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isPlayingForward
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of PLAYING_FORWARD, otherwise `false`.
      */
@@ -378,7 +378,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of PLAYING_BACKWARD, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isPlayingBackward
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of PLAYING_BACKWARD, otherwise `false`.
      */
@@ -390,7 +390,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of HOLD_DELAY, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isHolding
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of HOLD_DELAY, otherwise `false`.
      */
@@ -402,7 +402,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of REPEAT_DELAY, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isRepeating
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of REPEAT_DELAY, otherwise `false`.
      */
@@ -414,7 +414,7 @@ var BaseTweenData = new Class({
      * Returns `true` if this TweenData has a _current_ state of COMPLETE, otherwise `false`.
      *
      * @method Phaser.Tweens.BaseTweenData#isComplete
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenData has a _current_ state of COMPLETE, otherwise `false`.
      */
@@ -429,7 +429,7 @@ var BaseTweenData = new Class({
      * @method Phaser.Tweens.BaseTweenData#setStateFromEnd
      * @fires Phaser.Tweens.Events#TWEEN_REPEAT
      * @fires Phaser.Tweens.Events#TWEEN_YOYO
-     * @since 3.60.0
+     * 
      *
      * @param {number} diff - Any extra time that needs to be accounted for in the elapsed and progress values.
      */
@@ -449,7 +449,7 @@ var BaseTweenData = new Class({
      *
      * @method Phaser.Tweens.BaseTweenData#setStateFromStart
      * @fires Phaser.Tweens.Events#TWEEN_REPEAT
-     * @since 3.60.0
+     * 
      *
      * @param {number} diff - Any extra time that needs to be accounted for in the elapsed and progress values.
      */
@@ -467,7 +467,7 @@ var BaseTweenData = new Class({
      * Called automatically by the parent Tween. Should not be called directly.
      *
      * @method Phaser.Tweens.BaseTweenData#reset
-     * @since 3.60.0
+     * 
      */
     reset: function () {
         var tween = this.tween;
@@ -534,7 +534,7 @@ var BaseTweenData = new Class({
      * @method Phaser.Tweens.BaseTweenData#onRepeat
      * @fires Phaser.Tweens.Events#TWEEN_REPEAT
      * @fires Phaser.Tweens.Events#TWEEN_YOYO
-     * @since 3.60.0
+     * 
      *
      * @param {number} diff - Any extra time that needs to be accounted for in the elapsed and progress values.
      * @param {boolean} setStart - Set the TweenData start values?
@@ -603,7 +603,7 @@ var BaseTweenData = new Class({
      * Immediately destroys this TweenData, nulling of all its references.
      *
      * @method Phaser.Tweens.BaseTweenData#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         this.tween = null;

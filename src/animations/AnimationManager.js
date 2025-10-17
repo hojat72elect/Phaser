@@ -286,7 +286,7 @@ var AnimationManager = new Class({
      * Animations are global. Keys created in one scene can be used from any other Scene in your game. They are not Scene specific.
      *
      * @method Phaser.Animations.AnimationManager#exists
-     * @since 3.16.0
+     * 
      *
      * @param {string} key - The key of the Animation to check.
      *
@@ -739,7 +739,7 @@ var AnimationManager = new Class({
      * entry using this texture will be included in the result.
      *
      * @method Phaser.Animations.AnimationManager#getAnimsFromTexture
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Textures.Texture|Phaser.Textures.Frame)} key - The unique string-based key of the Texture, or a Texture, or Frame instance.
      *

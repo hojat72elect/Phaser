@@ -115,7 +115,7 @@ var Button = new Class({
      * Destroys this Button instance and releases external references it holds.
      *
      * @method Phaser.Input.Gamepad.Button#destroy
-     * @since 3.10.0
+     * 
      */
     destroy: function () {
         this.pad = null;

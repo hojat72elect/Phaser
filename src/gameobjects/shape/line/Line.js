@@ -25,7 +25,7 @@ var LineRender = require('./LineRender');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -78,7 +78,7 @@ var Line = new Class({
              *
              * @name Phaser.GameObjects.Line#lineWidth
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.lineWidth = 1;
 
@@ -88,7 +88,7 @@ var Line = new Class({
              * @name Phaser.GameObjects.Line#_startWidth
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._startWidth = 1;
 
@@ -98,7 +98,7 @@ var Line = new Class({
              * @name Phaser.GameObjects.Line#_endWidth
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._endWidth = 1;
 
@@ -121,7 +121,7 @@ var Line = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Line#setLineWidth
-     * @since 3.13.0
+     * 
      *
      * @param {number} startWidth - The start width of the line.
      * @param {number} [endWidth] - The end width of the line. Only used in WebGL.
@@ -145,7 +145,7 @@ var Line = new Class({
      * Sets the start and end coordinates of this Line.
      *
      * @method Phaser.GameObjects.Line#setTo
-     * @since 3.13.0
+     * 
      *
      * @param {number} [x1=0] - The horizontal position of the start of the line.
      * @param {number} [y1=0] - The vertical position of the start of the line.

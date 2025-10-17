@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Tweens.States
  * @memberof Phaser.Tweens
- * @since 3.60.0
+ * 
  */
 
 /**
@@ -11,7 +11,7 @@
  *
  * @typedef {Phaser.Tweens.States} Phaser.Tweens.StateType
  * @memberof Phaser.Tweens
- * @since 3.60.0
+ * 
  */
 
 var TWEEN_CONST = {
@@ -181,7 +181,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.FINISHED
      * @type {number}
      * @const
-     * @since 3.60.0
+     * 
      */
     FINISHED: 27,
 
@@ -191,7 +191,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.DESTROYED
      * @type {number}
      * @const
-     * @since 3.60.0
+     * 
      */
     DESTROYED: 28,
 
@@ -204,7 +204,7 @@ var TWEEN_CONST = {
      * @name Phaser.Tweens.States.MAX
      * @type {number}
      * @const
-     * @since 3.60.0
+     * 
      */
     MAX: 999999999999
 

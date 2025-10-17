@@ -5,7 +5,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.MOUSE_DOWN
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     MOUSE_DOWN: 0,
 
@@ -14,7 +14,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.MOUSE_MOVE
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     MOUSE_MOVE: 1,
 
@@ -23,7 +23,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.MOUSE_UP
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     MOUSE_UP: 2,
 
@@ -32,7 +32,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.TOUCH_START
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     TOUCH_START: 3,
 
@@ -41,7 +41,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.TOUCH_MOVE
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     TOUCH_MOVE: 4,
 
@@ -50,7 +50,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.TOUCH_END
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     TOUCH_END: 5,
 
@@ -59,7 +59,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.POINTER_LOCK_CHANGE
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     POINTER_LOCK_CHANGE: 6,
 
@@ -68,7 +68,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.TOUCH_CANCEL
      * @type {number}
-     * @since 3.15.0
+     * 
      */
     TOUCH_CANCEL: 7,
 
@@ -77,7 +77,7 @@ var INPUT_CONST = {
      *
      * @name Phaser.Input.MOUSE_WHEEL
      * @type {number}
-     * @since 3.18.0
+     * 
      */
     MOUSE_WHEEL: 8
 

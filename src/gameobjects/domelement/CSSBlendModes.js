@@ -6,7 +6,7 @@
  * @enum {string}
  * @memberof Phaser
  * @readonly
- * @since 3.12.0
+ * 
  */
 
 module.exports = [

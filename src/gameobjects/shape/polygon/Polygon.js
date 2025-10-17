@@ -35,7 +35,7 @@ var Smooth = require('../../../geom/polygon/Smooth');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -83,7 +83,7 @@ var Polygon = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Polygon#smooth
-     * @since 3.13.0
+     * 
      *
      * @param {number} [iterations=1] - The number of times to apply the polygon smoothing.
      *
@@ -118,7 +118,7 @@ var Polygon = new Class({
      * at a high frequency, or with too many points.
      *
      * @method Phaser.GameObjects.Polygon#setTo
-     * @since 3.60.0
+     * 
      *
      * @param {(string|number[]|Phaser.Types.Math.Vector2Like[])} [points] - Points defining the perimeter of this polygon. Please check function description above for the different supported formats.
      *
@@ -141,7 +141,7 @@ var Polygon = new Class({
      *
      * @method Phaser.GameObjects.Polygon#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

@@ -27,7 +27,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.Display.ColorMatrix
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  */
@@ -45,7 +45,7 @@ var ColorMatrix = new Class({
              *
              * @name Phaser.FX.ColorMatrix#type
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.type = FX_CONST.COLOR_MATRIX;
 
@@ -54,7 +54,7 @@ var ColorMatrix = new Class({
              *
              * @name Phaser.FX.ColorMatrix#gameObject
              * @type {Phaser.GameObjects.GameObject}
-             * @since 3.60.0
+             * 
              */
             this.gameObject = gameObject;
 
@@ -64,7 +64,7 @@ var ColorMatrix = new Class({
              *
              * @name Phaser.FX.ColorMatrix#active
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.active = true;
         },

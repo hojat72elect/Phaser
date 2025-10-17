@@ -19,7 +19,7 @@ var GameObjectFactory = require('../../GameObjectFactory');
  * such as half-circles.
  *
  * @method Phaser.GameObjects.GameObjectFactory#arc
- * @since 3.13.0
+ * 
  *
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
  * @param {number} [y=0] - The vertical position of this Game Object in the world.
@@ -44,7 +44,7 @@ GameObjectFactory.register('arc', function (x, y, radius, startAngle, endAngle, 
  * Note: This method will only be available if the Arc Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#circle
- * @since 3.13.0
+ * 
  *
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
  * @param {number} [y=0] - The vertical position of this Game Object in the world.

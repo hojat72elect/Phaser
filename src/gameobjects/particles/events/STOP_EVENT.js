@@ -15,7 +15,7 @@
  *
  * @event Phaser.GameObjects.Particles.Events#STOP
  * @type {string}
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.Particles.ParticleEmitter} emitter - A reference to the Particle Emitter that just completed.
  */

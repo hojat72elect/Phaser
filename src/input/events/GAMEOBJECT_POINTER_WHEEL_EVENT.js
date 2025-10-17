@@ -20,7 +20,7 @@
  *
  * @event Phaser.Input.Events#GAMEOBJECT_POINTER_WHEEL
  * @type {string}
- * @since 3.18.0
+ * 
  *
  * @param {Phaser.Input.Pointer} pointer - The Pointer responsible for triggering this event.
  * @param {number} deltaX - The horizontal scroll amount that occurred due to the user moving a mouse wheel or similar input device.

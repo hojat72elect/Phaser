@@ -69,7 +69,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#events
              * @type {Phaser.Events.EventEmitter}
-             * @since 3.60.0
+             * 
              */
             this.events = scene.sys.events;
 
@@ -95,7 +95,7 @@ var TweenManager = new Class({
              * @name Phaser.Tweens.TweenManager#paused
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.paused = false;
 
@@ -108,7 +108,7 @@ var TweenManager = new Class({
              * @name Phaser.Tweens.TweenManager#processing
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.processing = false;
 
@@ -117,7 +117,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#tweens
              * @type {Phaser.Tweens.Tween[]}
-             * @since 3.60.0
+             * 
              */
             this.tweens = [];
 
@@ -126,7 +126,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#time
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.time = 0;
 
@@ -135,7 +135,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#startTime
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.startTime = 0;
 
@@ -144,7 +144,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#nextTime
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.nextTime = 0;
 
@@ -153,7 +153,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#prevTime
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.prevTime = 0;
 
@@ -166,7 +166,7 @@ var TweenManager = new Class({
              * @name Phaser.Tweens.TweenManager#maxLag
              * @type {number}
              * @default 500
-             * @since 3.60.0
+             * 
              */
             this.maxLag = 500;
 
@@ -179,7 +179,7 @@ var TweenManager = new Class({
              * @name Phaser.Tweens.TweenManager#lagSkip
              * @type {number}
              * @default 33
-             * @since 3.60.0
+             * 
              */
             this.lagSkip = 33;
 
@@ -188,7 +188,7 @@ var TweenManager = new Class({
              *
              * @name Phaser.Tweens.TweenManager#gap
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.gap = 1000 / 240;
 
@@ -344,7 +344,7 @@ var TweenManager = new Class({
      * If you wish to chain Tweens together for sequential playback, see the `TweenManager.chain` method.
      *
      * @method Phaser.Tweens.TweenManager#addMultiple
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.TweenBuilderConfig[]|object[]} configs - An array of Tween Configuration objects.
      *
@@ -389,7 +389,7 @@ var TweenManager = new Class({
      * Please note that Tweens will not manipulate any target property that begins with an underscore.
      *
      * @method Phaser.Tweens.TweenManager#chain
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.TweenChainBuilderConfig|object} tweens - A Tween Chain configuration object.
      *
@@ -410,7 +410,7 @@ var TweenManager = new Class({
      * If there are no chained Tweens an empty array is returned.
      *
      * @method Phaser.Tweens.TweenManager#getChainedTweens
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to return the chain from.
      *
@@ -428,7 +428,7 @@ var TweenManager = new Class({
      * Will return `false` if not present, or has a state of `REMOVED` or `DESTROYED`.
      *
      * @method Phaser.Tweens.TweenManager#has
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween instance to check.
      *
@@ -520,7 +520,7 @@ var TweenManager = new Class({
      * ```
      *
      * @method Phaser.Tweens.TweenManager#stagger
-     * @since 3.19.0
+     * 
      *
      * @param {(number|number[])} value - The amount to stagger by, or an array containing two elements representing the min and max values to stagger between.
      * @param {Phaser.Types.Tweens.StaggerConfig} config - The configuration object for the Stagger function.
@@ -546,7 +546,7 @@ var TweenManager = new Class({
      * Call it with the arguments `500` and `33` to reset to the defaults.
      *
      * @method Phaser.Tweens.TweenManager#setLagSmooth
-     * @since 3.60.0
+     * 
      *
      * @param {number} [limit=0] - If the browser exceeds this amount, in milliseconds, it will act as if the 'skip' amount has elapsed instead.
      * @param {number} [skip=0] - The amount, in milliseconds, to use as the step delta should the browser lag beyond the 'limit'.
@@ -575,7 +575,7 @@ var TweenManager = new Class({
      * you need to in certain situations.
      *
      * @method Phaser.Tweens.TweenManager#setFps
-     * @since 3.60.0
+     * 
      *
      * @param {number} [fps=240] - The frame rate to tick at.
      *
@@ -599,7 +599,7 @@ var TweenManager = new Class({
      * You should not typically call this method directly.
      *
      * @method Phaser.Tweens.TweenManager#getDelta
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [tick=false] - Is this a manual tick, or an automated tick?
      *
@@ -636,7 +636,7 @@ var TweenManager = new Class({
      * paused.
      *
      * @method Phaser.Tweens.TweenManager#tick
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Tween Manager instance.
      */
@@ -667,7 +667,7 @@ var TweenManager = new Class({
      * Called automatically by `update` and `tick`.
      *
      * @method Phaser.Tweens.TweenManager#step
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [tick=false] - Is this a manual tick, or an automated tick?
      */
@@ -733,7 +733,7 @@ var TweenManager = new Class({
      * The removed tween is _not_ destroyed. It is just removed from this Tween Manager.
      *
      * @method Phaser.Tweens.TweenManager#remove
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to be removed.
      *
@@ -761,7 +761,7 @@ var TweenManager = new Class({
      * Then it will seek to position 0 and playback will start on the next frame.
      *
      * @method Phaser.Tweens.TweenManager#reset
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to be reset.
      *

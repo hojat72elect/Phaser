@@ -23,7 +23,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -52,7 +52,7 @@ var BloomFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#steps
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.steps = 4;
 
@@ -61,7 +61,7 @@ var BloomFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#offsetX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.offsetX = 1;
 
@@ -70,7 +70,7 @@ var BloomFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#offsetY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.offsetY = 1;
 
@@ -79,7 +79,7 @@ var BloomFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#blurStrength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.blurStrength = 1;
 
@@ -88,7 +88,7 @@ var BloomFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = 1;
 
@@ -97,7 +97,7 @@ var BloomFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BloomFXPipeline#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 1, 1];
         },

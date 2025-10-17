@@ -32,7 +32,7 @@ var Point = new Class({
              * @name Phaser.Geom.Point#type
              * @type {number}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.type = GEOM_CONST.POINT;
 

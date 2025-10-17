@@ -506,7 +506,7 @@ var EllipseCurve = new Class({
      *
      * @name Phaser.Curves.Ellipse#angle
      * @type {number}
-     * @since 3.14.0
+     * 
      */
     angle: {
 

@@ -25,7 +25,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -61,7 +61,7 @@ var BlurFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = 2;
 
@@ -70,7 +70,7 @@ var BlurFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = 2;
 
@@ -87,7 +87,7 @@ var BlurFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#steps
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.steps = 4;
 
@@ -96,7 +96,7 @@ var BlurFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = 1;
 
@@ -105,7 +105,7 @@ var BlurFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 1, 1];
         },
@@ -114,7 +114,7 @@ var BlurFXPipeline = new Class({
      * Sets the quality of the blur effect to low.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#setQualityLow
-     * @since 3.60.0
+     * 
      *
      * @return {this} This FX Pipeline.
      */
@@ -128,7 +128,7 @@ var BlurFXPipeline = new Class({
      * Sets the quality of the blur effect to medium.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#setQualityMedium
-     * @since 3.60.0
+     * 
      *
      * @return {this} This FX Pipeline.
      */
@@ -142,7 +142,7 @@ var BlurFXPipeline = new Class({
      * Sets the quality of the blur effect to high.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.FX.BlurFXPipeline#setQualityHigh
-     * @since 3.60.0
+     * 
      *
      * @return {this} This FX Pipeline.
      */

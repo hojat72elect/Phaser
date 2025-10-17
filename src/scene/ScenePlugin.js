@@ -469,7 +469,7 @@ var ScenePlugin = new Class({
      * Scene, then `run` on the modal Scene.
      *
      * @method Phaser.Scenes.ScenePlugin#run
-     * @since 3.10.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -744,7 +744,7 @@ var ScenePlugin = new Class({
      * Checks if the given Scene is paused or not?
      *
      * @method Phaser.Scenes.ScenePlugin#isPaused
-     * @since 3.17.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -1018,7 +1018,7 @@ var ScenePlugin = new Class({
      * Return the status of the Scene.
      *
      * @method Phaser.Scenes.ScenePlugin#getStatus
-     * @since 3.60.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]
@@ -1039,7 +1039,7 @@ var ScenePlugin = new Class({
      * Retrieves the numeric index of a Scene in the Scenes list.
      *
      * @method Phaser.Scenes.ScenePlugin#getIndex
-     * @since 3.7.0
+     * 
      *
      * @generic {Phaser.Scene} T
      * @genericUse {(T|string)} - [key]

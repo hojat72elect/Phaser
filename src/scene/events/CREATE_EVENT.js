@@ -11,7 +11,7 @@
  *
  * @event Phaser.Scenes.Events#CREATE
  * @type {string}
- * @since 3.17.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene that emitted this event.
  */

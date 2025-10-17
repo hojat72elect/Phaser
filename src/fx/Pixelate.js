@@ -26,7 +26,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [amount=1] - The amount of pixelation to apply.
@@ -49,7 +49,7 @@ var Pixelate = new Class({
              *
              * @name Phaser.FX.Pixelate#amount
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.amount = amount;
         }

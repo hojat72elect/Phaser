@@ -33,7 +33,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -56,7 +56,7 @@ var WipeFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#progress
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.progress = 0;
 
@@ -65,7 +65,7 @@ var WipeFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#wipeWidth
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.wipeWidth = 0.1;
 
@@ -74,7 +74,7 @@ var WipeFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#direction
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.direction = 0;
 
@@ -83,7 +83,7 @@ var WipeFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#axis
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.axis = 0;
 
@@ -92,7 +92,7 @@ var WipeFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.WipeFXPipeline#reveal
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.reveal = false;
         },

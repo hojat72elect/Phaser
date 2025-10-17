@@ -76,7 +76,7 @@ var LightPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#inverseRotationMatrix
              * @type {Float32Array}
              * @private
-             * @since 3.16.0
+             * 
              */
             this.inverseRotationMatrix = new Float32Array([
                 1, 0, 0,
@@ -89,7 +89,7 @@ var LightPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#currentNormalMap;
              * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.60.0
+             * 
              */
             this.currentNormalMap;
 
@@ -109,7 +109,7 @@ var LightPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#tempVec2
              * @type {Phaser.Math.Vector2}
-             * @since 3.60.0
+             * 
              */
             this.tempVec2 = new Vec2();
 
@@ -119,7 +119,7 @@ var LightPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#_tempMatrix
              * @type {Phaser.GameObjects.Components.TransformMatrix}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._tempMatrix = new TransformMatrix();
 
@@ -129,7 +129,7 @@ var LightPipeline = new Class({
              * @name Phaser.Renderer.WebGL.Pipelines.LightPipeline#_tempMatrix2
              * @type {Phaser.GameObjects.Components.TransformMatrix}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._tempMatrix2 = new TransformMatrix();
         },
@@ -141,7 +141,7 @@ var LightPipeline = new Class({
      * tasks that the pipeline may need that relied on game systems such as the Texture Manager.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#boot
-     * @since 3.11.0
+     * 
      */
     boot: function () {
         WebGLPipeline.prototype.boot.call(this);
@@ -208,7 +208,7 @@ var LightPipeline = new Class({
      * Only works in 2D space.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.LightPipeline#setNormalMapRotation
-     * @since 3.16.0
+     * 
      *
      * @param {number} rotation - The angle of rotation in radians.
      */

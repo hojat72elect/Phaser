@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.Tweens.GetStartCallback
- * @since 3.18.0
+ * 
  *
  * @param {any} target - The tween target.
  * @param {string} key - The target property.

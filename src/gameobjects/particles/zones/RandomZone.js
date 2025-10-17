@@ -50,7 +50,7 @@ var RandomZone = new Class({
              *
              * @name Phaser.GameObjects.Particles.Zones.RandomZone#total
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.total = -1;
         },

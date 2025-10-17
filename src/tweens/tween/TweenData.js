@@ -21,7 +21,7 @@ var Events = require('../events');
  * @memberof Phaser.Tweens
  * @extends Phaser.Tweens.BaseTweenData
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Tweens.Tween} tween - The tween this TweenData instance belongs to.
  * @param {number} targetIndex - The target index within the Tween targets array.
@@ -56,7 +56,7 @@ var TweenData = new Class({
              * @name Phaser.Tweens.TweenData#key
              * @type {string}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.key = key;
 
@@ -68,7 +68,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#getActiveValue
              * @type {?Phaser.Types.Tweens.GetActiveCallback}
-             * @since 3.60.0
+             * 
              */
             this.getActiveValue = getActive;
 
@@ -81,7 +81,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#getEndValue
              * @type {Phaser.Types.Tweens.GetEndCallback}
-             * @since 3.60.0
+             * 
              */
             this.getEndValue = getEnd;
 
@@ -94,7 +94,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#getStartValue
              * @type {Phaser.Types.Tweens.GetStartCallback}
-             * @since 3.60.0
+             * 
              */
             this.getStartValue = getStart;
 
@@ -103,7 +103,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#ease
              * @type {function}
-             * @since 3.60.0
+             * 
              */
             this.ease = ease;
 
@@ -112,7 +112,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#start
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.start = 0;
 
@@ -121,7 +121,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#previous
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.previous = 0;
 
@@ -130,7 +130,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#current
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.current = 0;
 
@@ -139,7 +139,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#end
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.end = 0;
 
@@ -149,7 +149,7 @@ var TweenData = new Class({
              * @name Phaser.Tweens.TweenData#interpolation
              * @type {?function}
              * @default null
-             * @since 3.60.0
+             * 
              */
             this.interpolation = interpolation;
 
@@ -158,7 +158,7 @@ var TweenData = new Class({
              *
              * @name Phaser.Tweens.TweenData#interpolationData
              * @type {?number[]}
-             * @since 3.60.0
+             * 
              */
             this.interpolationData = interpolationData;
         },
@@ -169,7 +169,7 @@ var TweenData = new Class({
      * Called automatically by the parent Tween. Should not be called directly.
      *
      * @method Phaser.Tweens.TweenData#reset
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [isSeeking=false] - Is the Tween Data being reset as part of a Tween seek?
      */
@@ -199,7 +199,7 @@ var TweenData = new Class({
      * @method Phaser.Tweens.TweenData#update
      * @fires Phaser.Tweens.Events#TWEEN_UPDATE
      * @fires Phaser.Tweens.Events#TWEEN_REPEAT
-     * @since 3.60.0
+     * 
      *
      * @param {number} delta - The elapsed delta time in ms.
      *
@@ -331,7 +331,7 @@ var TweenData = new Class({
      * parent Tween and also invoke the given callback, if provided.
      *
      * @method Phaser.Tweens.TweenData#dispatchEvent
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
@@ -360,7 +360,7 @@ var TweenData = new Class({
      * Immediately destroys this TweenData, nulling of all its references.
      *
      * @method Phaser.Tweens.TweenData#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         BaseTweenData.prototype.destroy.call(this);

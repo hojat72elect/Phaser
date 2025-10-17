@@ -68,7 +68,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#isSeeking
              * @type {boolean}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.isSeeking = false;
 
@@ -78,7 +78,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#isInfinite
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isInfinite = false;
 
@@ -88,7 +88,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#elapsed
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.elapsed = 0;
 
@@ -98,7 +98,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#totalElapsed
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.totalElapsed = 0;
 
@@ -110,7 +110,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#duration
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.duration = 0;
 
@@ -120,7 +120,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#progress
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.progress = 0;
 
@@ -132,7 +132,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#totalDuration
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.totalDuration = 0;
 
@@ -144,7 +144,7 @@ var Tween = new Class({
              * @name Phaser.Tweens.Tween#totalProgress
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.totalProgress = 0;
 
@@ -165,7 +165,7 @@ var Tween = new Class({
      * yourself.
      *
      * @method Phaser.Tweens.Tween#add
-     * @since 3.60.0
+     * 
      *
      * @param {number} targetIndex - The target index within the Tween targets array.
      * @param {string} key - The property of the target to tween.
@@ -200,7 +200,7 @@ var Tween = new Class({
      * yourself.
      *
      * @method Phaser.Tweens.Tween#addFrame
-     * @since 3.60.0
+     * 
      *
      * @param {number} targetIndex - The target index within the Tween targets array.
      * @param {string} texture - The texture to set on the target at the end of the tween.
@@ -392,7 +392,7 @@ var Tween = new Class({
      * the next tween in the chain, if any.
      *
      * @method Phaser.Tweens.Tween#onCompleteHandler
-     * @since 3.60.0
+     * 
      */
     onCompleteHandler: function () {
         this.progress = 1;
@@ -528,7 +528,7 @@ var Tween = new Class({
      * This is called automatically and should not typically be invoked directly.
      *
      * @method Phaser.Tweens.Tween#initTweenData
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [isSeeking=false] - Is the Tween Data being reset as part of a seek?
      */
@@ -572,7 +572,7 @@ var Tween = new Class({
      *
      * @method Phaser.Tweens.Tween#reset
      * @fires Phaser.Tweens.Events#TWEEN_ACTIVE
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [skipInit=false] - Skip resetting the TweenData and Active State?
      *
@@ -700,7 +700,7 @@ var Tween = new Class({
      * If the Tween is paused or has already finished, calling this will have no effect.
      *
      * @method Phaser.Tweens.Tween#forward
-     * @since 3.60.0
+     * 
      *
      * @param {number} ms - The number of milliseconds to advance this Tween by.
      *
@@ -722,7 +722,7 @@ var Tween = new Class({
      * If the Tween is paused or has already finished, calling this will have no effect.
      *
      * @method Phaser.Tweens.Tween#rewind
-     * @since 3.60.0
+     * 
      *
      * @param {number} ms - The number of milliseconds to rewind this Tween by.
      *
@@ -738,7 +738,7 @@ var Tween = new Class({
      * Internal method that will emit a Tween based Event and invoke the given callback.
      *
      * @method Phaser.Tweens.Tween#dispatchEvent
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
@@ -765,7 +765,7 @@ var Tween = new Class({
      * destroyed cannot ever be played or used again.
      *
      * @method Phaser.Tweens.Tween#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         BaseTween.prototype.destroy.call(this);

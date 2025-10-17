@@ -5,7 +5,7 @@
  *
  * @event Phaser.Scale.Events#ORIENTATION_CHANGE
  * @type {string}
- * @since 3.16.1
+ * 
  *
  * @param {string} orientation - The new orientation value. Either `Phaser.Scale.Orientation.LANDSCAPE` or `Phaser.Scale.Orientation.PORTRAIT`.
  */

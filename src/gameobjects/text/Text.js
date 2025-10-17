@@ -117,7 +117,7 @@ var Text = new Class({
              *
              * @name Phaser.GameObjects.Text#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.12.0
+             * 
              */
             this.renderer = scene.sys.renderer;
 
@@ -182,7 +182,7 @@ var Text = new Class({
              * @name Phaser.GameObjects.Text#_text
              * @type {string}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._text = undefined;
 
@@ -226,7 +226,7 @@ var Text = new Class({
              *
              * @name Phaser.GameObjects.Text#lineSpacing
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.lineSpacing = 0;
 
@@ -239,7 +239,7 @@ var Text = new Class({
              *
              * @name Phaser.GameObjects.Text#letterSpacing
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.letterSpacing = 0;
 
@@ -254,7 +254,7 @@ var Text = new Class({
              * @name Phaser.GameObjects.Text#_crop
              * @type {object}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._crop = this.resetCropObject();
 
@@ -602,7 +602,7 @@ var Text = new Class({
      * An array of strings will be joined with `\n` line breaks.
      *
      * @method Phaser.GameObjects.Text#appendText
-     * @since 3.60.0
+     * 
      *
      * @param {(string|string[])} value - The string, or array of strings, to be appended to the existing content of this Text object.
      * @param {boolean} [addCR=true] - Insert a carriage-return before the string value.
@@ -982,7 +982,7 @@ var Text = new Class({
      * Therefore, please use with caution, as the more high res Text you have, the more memory it uses.
      *
      * @method Phaser.GameObjects.Text#setResolution
-     * @since 3.12.0
+     * 
      *
      * @param {number} value - The resolution for this Text object to use.
      *
@@ -999,7 +999,7 @@ var Text = new Class({
      * This only has an effect if this Text object consists of multiple lines of text.
      *
      * @method Phaser.GameObjects.Text#setLineSpacing
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The amount to add to the font height to achieve the overall line height.
      *

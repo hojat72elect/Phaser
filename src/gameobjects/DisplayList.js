@@ -196,7 +196,7 @@ var DisplayList = new Class({
      * This is a reference to the main list array, not a copy of it, so be careful not to modify it.
      *
      * @method Phaser.GameObjects.DisplayList#getChildren
-     * @since 3.12.0
+     * 
      *
      * @return {Phaser.GameObjects.GameObject[]} The group members.
      */

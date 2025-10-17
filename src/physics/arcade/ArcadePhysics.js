@@ -301,7 +301,7 @@ var ArcadePhysics = new Class({
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#collideTiles
      * @fires Phaser.Physics.Arcade.Events#TILE_COLLIDE
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.Tilemaps.Tile[]} tiles - An array of Tiles to check for collision against.
@@ -328,7 +328,7 @@ var ArcadePhysics = new Class({
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#overlapTiles
      * @fires Phaser.Physics.Arcade.Events#TILE_OVERLAP
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.Tilemaps.Tile[]} tiles - An array of Tiles to check for collision against.
@@ -645,7 +645,7 @@ var ArcadePhysics = new Class({
      * otherwise the search is O(N) for Dynamic Bodies.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#overlapRect
-     * @since 3.17.0
+     * 
      *
      * @param {number} x - The top-left x coordinate of the area to search within.
      * @param {number} y - The top-left y coordinate of the area to search within.

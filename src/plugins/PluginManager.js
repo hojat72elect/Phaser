@@ -726,7 +726,7 @@ var PluginManager = new Class({
      * This is usually called from within your Plugin destruction code to help clean-up after your plugin has been removed.
      *
      * @method Phaser.Plugins.PluginManager#removeGameObject
-     * @since 3.19.0
+     * 
      *
      * @param {string} key - The key of the Game Object to be removed from the factories.
      * @param {boolean} [removeFromFactory=true] - Should the Game Object be removed from the Game Object Factory?

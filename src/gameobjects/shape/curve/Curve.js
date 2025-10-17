@@ -25,7 +25,7 @@ var Shape = require('../Shape');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -61,7 +61,7 @@ var Curve = new Class({
              * @name Phaser.GameObjects.Curve#_smoothness
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._smoothness = 32;
 
@@ -72,7 +72,7 @@ var Curve = new Class({
              * @name Phaser.GameObjects.Curve#_curveBounds
              * @type {Phaser.Geom.Rectangle}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._curveBounds = new Rectangle();
 
@@ -94,7 +94,7 @@ var Curve = new Class({
      * @name Phaser.GameObjects.Curve#smoothness
      * @type {number}
      * @default 32
-     * @since 3.13.0
+     * 
      */
     smoothness: {
 
@@ -116,7 +116,7 @@ var Curve = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Curve#setSmoothness
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the smoothness to.
      *
@@ -133,7 +133,7 @@ var Curve = new Class({
      *
      * @method Phaser.GameObjects.Curve#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

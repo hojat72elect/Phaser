@@ -19,7 +19,7 @@ var Class = require('../../utils/Class');
  * @class BaseShader
  * @memberof Phaser.Display
  * @constructor
- * @since 3.17.0
+ * 
  *
  * @param {string} key - The key of this shader. Must be unique within the shader cache.
  * @param {string} [fragmentSrc] - The fragment source for the shader.
@@ -76,7 +76,7 @@ var BaseShader = new Class({
              *
              * @name Phaser.Display.BaseShader#key
              * @type {string}
-             * @since 3.17.0
+             * 
              */
             this.key = key;
 
@@ -85,7 +85,7 @@ var BaseShader = new Class({
              *
              * @name Phaser.Display.BaseShader#fragmentSrc
              * @type {string}
-             * @since 3.17.0
+             * 
              */
             this.fragmentSrc = fragmentSrc;
 
@@ -94,7 +94,7 @@ var BaseShader = new Class({
              *
              * @name Phaser.Display.BaseShader#vertexSrc
              * @type {string}
-             * @since 3.17.0
+             * 
              */
             this.vertexSrc = vertexSrc;
 
@@ -103,7 +103,7 @@ var BaseShader = new Class({
              *
              * @name Phaser.Display.BaseShader#uniforms
              * @type {?any}
-             * @since 3.17.0
+             * 
              */
             this.uniforms = uniforms;
         }

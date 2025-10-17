@@ -12,7 +12,7 @@ var Class = require('../../utils/Class');
  * @class ParticleProcessor
  * @memberof Phaser.GameObjects.Particles
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {number} [x=0] - The x coordinate of the Particle Processor, in world space.
  * @param {number} [y=0] - The y coordinate of the Particle Processor, in world space.
@@ -40,7 +40,7 @@ var ParticleProcessor = new Class({
              *
              * @name Phaser.GameObjects.Particles.ParticleProcessor#manager
              * @type {Phaser.GameObjects.Particles.ParticleEmitter}
-             * @since 3.60.0
+             * 
              */
             this.emitter;
 
@@ -49,7 +49,7 @@ var ParticleProcessor = new Class({
              *
              * @name Phaser.GameObjects.Particles.ParticleProcessor#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = x;
 
@@ -58,7 +58,7 @@ var ParticleProcessor = new Class({
              *
              * @name Phaser.GameObjects.Particles.ParticleProcessor#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = y;
 
@@ -70,7 +70,7 @@ var ParticleProcessor = new Class({
              *
              * @name Phaser.GameObjects.Particles.ParticleProcessor#active
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.active = active;
         },
@@ -81,7 +81,7 @@ var ParticleProcessor = new Class({
      * their velocityX/Y values based on the criteria of this processor.
      *
      * @method Phaser.GameObjects.Particles.ParticleProcessor#update
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.GameObjects.Particles.Particle} particle - The Particle to update.
      * @param {number} delta - The delta time in ms.
@@ -97,7 +97,7 @@ var ParticleProcessor = new Class({
      * This is called automatically when the owning Particle Emitter is destroyed.
      *
      * @method Phaser.GameObjects.Particles.ParticleProcessor#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         this.emitter = null;

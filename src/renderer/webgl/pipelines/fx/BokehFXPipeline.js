@@ -27,7 +27,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -48,7 +48,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#isTiltShift
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.isTiltShift = false;
 
@@ -59,7 +59,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = 1;
 
@@ -70,7 +70,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#blurX
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.blurX = 1;
 
@@ -81,7 +81,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#blurY
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.blurY = 1;
 
@@ -94,7 +94,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#radius
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.radius = 0.5;
 
@@ -103,7 +103,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#amount
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.amount = 1;
 
@@ -112,7 +112,7 @@ var BokehFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.BokehFXPipeline#contrast
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.contrast = 0.2;
         },

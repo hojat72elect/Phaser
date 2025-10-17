@@ -9,7 +9,7 @@ var Vector2 = require('../../math/Vector2');
  * Should be applied as a mixin and not used directly.
  *
  * @namespace Phaser.GameObjects.Components.PathFollower
- * @since 3.17.0
+ * 
  */
 
 var PathFollower = {
@@ -334,7 +334,7 @@ var PathFollower = {
      * Called automatically by the Scene step, should not typically be called directly.
      *
      * @method Phaser.GameObjects.Components.PathFollower#pathUpdate
-     * @since 3.17.0
+     * 
      */
     pathUpdate: function () {
         var tween = this.pathTween;

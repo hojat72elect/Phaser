@@ -4,7 +4,7 @@ var Vector2 = require('../../math/Vector2');
  * Gets the corners of the Tile as an array of Vector2s.
  *
  * @function Phaser.Tilemaps.Components.GetTileCorners
- * @since 3.60.0
+ * 
  *
  * @param {number} tileX - The x coordinate, in tiles, not pixels.
  * @param {number} tileY - The y coordinate, in tiles, not pixels.

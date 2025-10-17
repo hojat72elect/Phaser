@@ -9,7 +9,7 @@
  * otherwise the search is O(N) for Dynamic Bodies.
  *
  * @function Phaser.Physics.Arcade.Components.OverlapRect
- * @since 3.17.0
+ * 
  *
  * @param {number} x - The top-left x coordinate of the area to search within.
  * @param {number} y - The top-left y coordinate of the area to search within.

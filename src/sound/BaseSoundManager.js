@@ -56,7 +56,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#jsonCache
              * @type {Phaser.Cache.BaseCache}
              * @readonly
-             * @since 3.7.0
+             * 
              */
             this.jsonCache = game.cache.json;
 
@@ -154,7 +154,7 @@ var BaseSoundManager = new Class({
              * @name Phaser.Sound.BaseSoundManager#gameLostFocus
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.gameLostFocus = false;
 
@@ -168,7 +168,7 @@ var BaseSoundManager = new Class({
              *
              * @name Phaser.Sound.BaseSoundManager#listenerPosition
              * @type {Phaser.Math.Vector2}
-             * @since 3.60.0
+             * 
              */
             this.listenerPosition = new Vector2();
 
@@ -286,7 +286,7 @@ var BaseSoundManager = new Class({
      * property set to `true`.
      *
      * @method Phaser.Sound.BaseSoundManager#getAllPlaying
-     * @since 3.60.0
+     * 
      *
      * @generic {Phaser.Sound.BaseSound} T
      * @genericUse {T[]} - [$return]
@@ -462,7 +462,7 @@ var BaseSoundManager = new Class({
      * Calling this method does nothing on HTML5Audio.
      *
      * @method Phaser.Sound.BaseSoundManager#setListenerPosition
-     * @since 3.60.0
+     * 
      *
      * @param {number} [x] - The x position of the Spatial Audio listener.
      * @param {number} [y] - The y position of the Spatial Audio listener.

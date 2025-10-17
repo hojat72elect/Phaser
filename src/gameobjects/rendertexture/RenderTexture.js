@@ -93,7 +93,7 @@ var RenderTexture = new Class({
              *
              * @name Phaser.GameObjects.RenderTexture#camera
              * @type {Phaser.Cameras.Scene2D.BaseCamera}
-             * @since 3.12.0
+             * 
              */
             this.camera = this.texture.camera;
 
@@ -103,7 +103,7 @@ var RenderTexture = new Class({
              * @name Phaser.GameObjects.RenderTexture#_saved
              * @type {boolean}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._saved = false;
         },
@@ -158,7 +158,7 @@ var RenderTexture = new Class({
      * If the dimensions given are the same as those already being used, calling this method will do nothing.
      *
      * @method Phaser.GameObjects.RenderTexture#resize
-     * @since 3.10.0
+     * 
      *
      * @param {number} width - The new width of the Render Texture.
      * @param {number} [height=width] - The new height of the Render Texture. If not specified, will be set the same as the `width`.
@@ -203,7 +203,7 @@ var RenderTexture = new Class({
      * using it first, before destroying this Render Texture.
      *
      * @method Phaser.GameObjects.RenderTexture#saveTexture
-     * @since 3.12.0
+     * 
      *
      * @param {string} key - The unique key to store the texture as within the global Texture Manager.
      *
@@ -274,7 +274,7 @@ var RenderTexture = new Class({
      * `originY` properties both to zero.
      *
      * @method Phaser.GameObjects.RenderTexture#stamp
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture. Set to `null` to skip this argument if not required.
@@ -329,7 +329,7 @@ var RenderTexture = new Class({
      * separate calls.
      *
      * @method Phaser.GameObjects.RenderTexture#erase
-     * @since 3.16.0
+     * 
      *
      * @param {any} entries - Any renderable Game Object, or Group, Container, Display List, Render Texture, Texture Frame, or an array of any of these.
      * @param {number} [x=0] - The x position to draw the Frame at, or the offset applied to the object.
@@ -423,7 +423,7 @@ var RenderTexture = new Class({
      * If you need to draw a Sprite to this Render Texture, use the `draw` method instead.
      *
      * @method Phaser.GameObjects.RenderTexture#drawFrame
-     * @since 3.12.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture. Set to `null` to skip this argument if not required.
@@ -456,7 +456,7 @@ var RenderTexture = new Class({
      * to disable this if this call is part of a larger batch draw.
      *
      * @method Phaser.GameObjects.RenderTexture#repeat
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the texture to be used, as stored in the Texture Manager.
      * @param {(string|number)} [frame] - The name or index of the frame within the Texture. Set to `null` to skip this argument if not required.
@@ -726,7 +726,7 @@ var RenderTexture = new Class({
      * the larger the resolution this Render Texture has, so please be careful how you employ this in your game.
      *
      * @method Phaser.GameObjects.RenderTexture#snapshotArea
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The x coordinate to grab from.
      * @param {number} y - The y coordinate to grab from.
@@ -760,7 +760,7 @@ var RenderTexture = new Class({
      * the larger the resolution this Render Texture has, so please be careful how you employ this in your game.
      *
      * @method Phaser.GameObjects.RenderTexture#snapshot
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.Types.Renderer.Snapshot.SnapshotCallback} callback - The Function to invoke after the snapshot image is created.
      * @param {string} [type='image/png'] - The format of the image to create, usually `image/png` or `image/jpeg`.
@@ -785,7 +785,7 @@ var RenderTexture = new Class({
      * Canvas or Image object, so is a lot faster to execute, using less memory than the other snapshot methods.
      *
      * @method Phaser.GameObjects.RenderTexture#snapshotPixel
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The x coordinate of the pixel to get.
      * @param {number} y - The y coordinate of the pixel to get.

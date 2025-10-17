@@ -97,7 +97,7 @@ var Axis = new Class({
      * Destroys this Axis instance and releases external references it holds.
      *
      * @method Phaser.Input.Gamepad.Axis#destroy
-     * @since 3.10.0
+     * 
      */
     destroy: function () {
         this.pad = null;

@@ -8,7 +8,7 @@ var GameObjectFactory = require('../GameObjectFactory');
  *
  * @method Phaser.GameObjects.GameObjectFactory#shader
  * @webglOnly
- * @since 3.17.0
+ * 
  *
  * @param {(string|Phaser.Display.BaseShader)} key - The key of the shader to use from the shader cache, or a BaseShader instance.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.

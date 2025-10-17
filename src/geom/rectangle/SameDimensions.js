@@ -2,7 +2,7 @@
  * Determines if the two objects (either Rectangles or Rectangle-like) have the same width and height values under strict equality.
  *
  * @function Phaser.Geom.Rectangle.SameDimensions
- * @since 3.15.0
+ * 
  *
  * @param {Phaser.Geom.Rectangle} rect - The first Rectangle object.
  * @param {Phaser.Geom.Rectangle} toCompare - The second Rectangle object.

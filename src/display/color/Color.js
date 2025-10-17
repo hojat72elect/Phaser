@@ -92,7 +92,7 @@ var Color = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.13.0
+             * 
              */
             this._h = 0;
 
@@ -104,7 +104,7 @@ var Color = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.13.0
+             * 
              */
             this._s = 0;
 
@@ -116,7 +116,7 @@ var Color = new Class({
              * @type {number}
              * @default 0
              * @private
-             * @since 3.13.0
+             * 
              */
             this._v = 0;
 
@@ -126,7 +126,7 @@ var Color = new Class({
              * @name Phaser.Display.Color#_locked
              * @type {boolean}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._locked = false;
 
@@ -290,7 +290,7 @@ var Color = new Class({
      * Sets the color based on the hue, saturation and lightness values given.
      *
      * @method Phaser.Display.Color#setFromHSV
-     * @since 3.13.0
+     * 
      *
      * @param {number} h - The hue, in the range 0 - 1. This is the base color.
      * @param {number} s - The saturation, in the range 0 - 1. This controls how much of the hue will be in the final color, where 1 is fully saturated and 0 will give you white.
@@ -341,7 +341,7 @@ var Color = new Class({
      *
      * @method Phaser.Display.Color#updateHSV
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {Phaser.Display.Color} This Color object.
      */
@@ -371,7 +371,7 @@ var Color = new Class({
      * Sets this Color object to be grayscaled based on the shade value given.
      *
      * @method Phaser.Display.Color#gray
-     * @since 3.13.0
+     * 
      *
      * @param {number} shade - A value between 0 and 255.
      *
@@ -385,7 +385,7 @@ var Color = new Class({
      * Sets this Color object to be a random color between the `min` and `max` values given.
      *
      * @method Phaser.Display.Color#random
-     * @since 3.13.0
+     * 
      *
      * @param {number} [min=0] - The minimum random color value. Between 0 and 255.
      * @param {number} [max=255] - The maximum random color value. Between 0 and 255.
@@ -411,7 +411,7 @@ var Color = new Class({
      * Sets this Color object to be a random grayscale color between the `min` and `max` values given.
      *
      * @method Phaser.Display.Color#randomGray
-     * @since 3.13.0
+     * 
      *
      * @param {number} [min=0] - The minimum random color value. Between 0 and 255.
      * @param {number} [max=255] - The maximum random color value. Between 0 and 255.
@@ -436,7 +436,7 @@ var Color = new Class({
      * The saturation is the amount of the base color in the hue.
      *
      * @method Phaser.Display.Color#saturate
-     * @since 3.13.0
+     * 
      *
      * @param {number} amount - The percentage amount to change this color by. A value between 0 and 100.
      *
@@ -453,7 +453,7 @@ var Color = new Class({
      * The saturation is the amount of the base color in the hue.
      *
      * @method Phaser.Display.Color#desaturate
-     * @since 3.13.0
+     * 
      *
      * @param {number} amount - The percentage amount to change this color by. A value between 0 and 100.
      *
@@ -469,7 +469,7 @@ var Color = new Class({
      * Increase the lightness of this Color by the percentage amount given.
      *
      * @method Phaser.Display.Color#lighten
-     * @since 3.13.0
+     * 
      *
      * @param {number} amount - The percentage amount to change this color by. A value between 0 and 100.
      *
@@ -485,7 +485,7 @@ var Color = new Class({
      * Decrease the lightness of this Color by the percentage amount given.
      *
      * @method Phaser.Display.Color#darken
-     * @since 3.13.0
+     * 
      *
      * @param {number} amount - The percentage amount to change this color by. A value between 0 and 100.
      *
@@ -501,7 +501,7 @@ var Color = new Class({
      * Brighten this Color by the percentage amount given.
      *
      * @method Phaser.Display.Color#brighten
-     * @since 3.13.0
+     * 
      *
      * @param {number} amount - The percentage amount to change this color by. A value between 0 and 100.
      *
@@ -765,7 +765,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#h
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     h: {
 
@@ -787,7 +787,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#s
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     s: {
 
@@ -809,7 +809,7 @@ var Color = new Class({
      *
      * @name Phaser.Display.Color#v
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     v: {
 

@@ -12,7 +12,7 @@ var Line = require('../../geom/line/Line');
  * @extends Phaser.GameObjects.GameObject
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.AlphaSingle
  * @extends Phaser.GameObjects.Components.BlendMode
@@ -64,7 +64,7 @@ var Shape = new Class({
              * @name Phaser.GameObjects.Shape#geom
              * @type {any}
              * @readonly
-             * @since 3.13.0
+             * 
              */
             this.geom = data;
 
@@ -74,7 +74,7 @@ var Shape = new Class({
              * @name Phaser.GameObjects.Shape#pathData
              * @type {number[]}
              * @readonly
-             * @since 3.13.0
+             * 
              */
             this.pathData = [];
 
@@ -84,7 +84,7 @@ var Shape = new Class({
              * @name Phaser.GameObjects.Shape#pathIndexes
              * @type {number[]}
              * @readonly
-             * @since 3.13.0
+             * 
              */
             this.pathIndexes = [];
 
@@ -93,7 +93,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#fillColor
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillColor = 0xffffff;
 
@@ -102,7 +102,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#fillAlpha
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillAlpha = 1;
 
@@ -111,7 +111,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#strokeColor
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.strokeColor = 0xffffff;
 
@@ -120,7 +120,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#strokeAlpha
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.strokeAlpha = 1;
 
@@ -129,7 +129,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#lineWidth
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.lineWidth = 1;
 
@@ -139,7 +139,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#isFilled
              * @type {boolean}
-             * @since 3.13.0
+             * 
              */
             this.isFilled = false;
 
@@ -149,7 +149,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#isStroked
              * @type {boolean}
-             * @since 3.13.0
+             * 
              */
             this.isStroked = false;
 
@@ -159,7 +159,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#closePath
              * @type {boolean}
-             * @since 3.13.0
+             * 
              */
             this.closePath = true;
 
@@ -170,7 +170,7 @@ var Shape = new Class({
              * @name Phaser.GameObjects.Shape#_tempLine
              * @type {Phaser.Geom.Line}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._tempLine = new Line();
 
@@ -183,7 +183,7 @@ var Shape = new Class({
              *
              * @name Phaser.GameObjects.Shape#width
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.width = 0;
 
@@ -214,7 +214,7 @@ var Shape = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Shape#setFillStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [color] - The color used to fill this shape. If not provided the Shape will not be filled.
      * @param {number} [alpha=1] - The alpha value used when filling this shape, if a fill color is given.
@@ -247,7 +247,7 @@ var Shape = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Shape#setStrokeStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [lineWidth] - The width of line to stroke with. If not provided or undefined the Shape will not be stroked.
      * @param {number} [color] - The color used to stroke this shape. If not provided the Shape will not be stroked.
@@ -279,7 +279,7 @@ var Shape = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Shape#setClosePath
-     * @since 3.13.0
+     * 
      *
      * @param {boolean} value - Set to `true` if the Shape should be closed when stroked, otherwise `false`.
      *
@@ -304,7 +304,7 @@ var Shape = new Class({
      *
      * @method Phaser.GameObjects.Shape#setSize
      * @private
-     * @since 3.13.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -343,7 +343,7 @@ var Shape = new Class({
      *
      * @method Phaser.GameObjects.Shape#preDestroy
      * @protected
-     * @since 3.13.0
+     * 
      */
     preDestroy: function () {
         this.geom = null;
@@ -361,7 +361,7 @@ var Shape = new Class({
      *
      * @name Phaser.GameObjects.Shape#displayWidth
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     displayWidth: {
 
@@ -384,7 +384,7 @@ var Shape = new Class({
      *
      * @name Phaser.GameObjects.Shape#displayHeight
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     displayHeight: {
 

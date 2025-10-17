@@ -75,7 +75,7 @@ var CameraManager = new Class({
              *
              * @name Phaser.Cameras.Scene2D.CameraManager#roundPixels
              * @type {boolean}
-             * @since 3.11.0
+             * 
              */
             this.roundPixels = scene.sys.game.config.roundPixels;
 
@@ -116,7 +116,7 @@ var CameraManager = new Class({
              *
              * @name Phaser.Cameras.Scene2D.CameraManager#default
              * @type {Phaser.Cameras.Scene2D.Camera}
-             * @since 3.17.0
+             * 
              */
             this.default;
 
@@ -305,7 +305,7 @@ var CameraManager = new Class({
      *
      * @method Phaser.Cameras.Scene2D.CameraManager#getNextID
      * @private
-     * @since 3.11.0
+     * 
      *
      * @return {number} The next available Camera ID, or 0 if they're all already in use.
      */
@@ -344,7 +344,7 @@ var CameraManager = new Class({
      * If the optional `isVisible` argument is set it will only count Cameras that are currently visible.
      *
      * @method Phaser.Cameras.Scene2D.CameraManager#getTotal
-     * @since 3.11.0
+     * 
      *
      * @param {boolean} [isVisible=false] - Set the `true` to only include visible Cameras in the total.
      *
@@ -465,7 +465,7 @@ var CameraManager = new Class({
      * The first camera in the array is the top-most camera in the camera list.
      *
      * @method Phaser.Cameras.Scene2D.CameraManager#getCamerasBelowPointer
-     * @since 3.10.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to check against.
      *
@@ -636,7 +636,7 @@ var CameraManager = new Class({
      * The event handler that manages the `resize` event dispatched by the Scale Manager.
      *
      * @method Phaser.Cameras.Scene2D.CameraManager#onResize
-     * @since 3.18.0
+     * 
      *
      * @param {Phaser.Structs.Size} gameSize - The default Game Size object. This is the un-modified game dimensions.
      * @param {Phaser.Structs.Size} baseSize - The base Size object. The game dimensions. The canvas width / height values match this.

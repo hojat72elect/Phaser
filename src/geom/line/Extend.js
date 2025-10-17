@@ -11,7 +11,7 @@ var Length = require('./Length');
  * Pass a value of zero to leave the start or end point unchanged.
  *
  * @function Phaser.Geom.Line.Extend
- * @since 3.16.0
+ * 
  *
  * @param {Phaser.Geom.Line} line - The line instance to extend.
  * @param {number} left - The amount to extend the start of the line by.

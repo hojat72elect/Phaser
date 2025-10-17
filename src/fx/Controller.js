@@ -9,7 +9,7 @@ var Class = require('../utils/Class');
  * @class Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {number} type - The FX Type constant.
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
@@ -24,7 +24,7 @@ var Controller = new Class({
              *
              * @name Phaser.FX.Controller#type
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.type = type;
 
@@ -33,7 +33,7 @@ var Controller = new Class({
              *
              * @name Phaser.FX.Controller#gameObject
              * @type {Phaser.GameObjects.GameObject}
-             * @since 3.60.0
+             * 
              */
             this.gameObject = gameObject;
 
@@ -47,7 +47,7 @@ var Controller = new Class({
              *
              * @name Phaser.FX.Controller#active
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.active = true;
         },
@@ -58,7 +58,7 @@ var Controller = new Class({
      * A disabled FX Controller will not be updated.
      *
      * @method Phaser.FX.Controller#setActive
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} value - `true` to enable this FX Controller, or `false` to disable it.
      *
@@ -74,7 +74,7 @@ var Controller = new Class({
      * Destroys this FX Controller.
      *
      * @method Phaser.FX.Controller#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         this.gameObject = null;

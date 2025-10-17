@@ -8,7 +8,7 @@
  *
  * @event Phaser.Physics.Matter.Events#DRAG_START
  * @type {string}
- * @since 3.16.2
+ * 
  *
  * @param {MatterJS.BodyType} body - The Body that has started being dragged. This is a Matter Body, not a Phaser Game Object.
  * @param {MatterJS.BodyType} part - The part of the body that was clicked on.

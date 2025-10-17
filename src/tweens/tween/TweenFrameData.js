@@ -21,7 +21,7 @@ var Events = require('../events');
  * @memberof Phaser.Tweens
  * @extends Phaser.Tweens.BaseTweenData
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Tweens.Tween} tween - The tween this TweenData instance belongs to.
  * @param {number} targetIndex - The target index within the Tween targets array.
@@ -52,7 +52,7 @@ var TweenFrameData = new Class({
              * @name Phaser.Tweens.TweenFrameData#key
              * @type {string}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.key = 'texture';
 
@@ -61,7 +61,7 @@ var TweenFrameData = new Class({
              *
              * @name Phaser.Tweens.TweenFrameData#startTexture
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.startTexture = null;
 
@@ -70,7 +70,7 @@ var TweenFrameData = new Class({
              *
              * @name Phaser.Tweens.TweenFrameData#endTexture
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.endTexture = texture;
 
@@ -79,7 +79,7 @@ var TweenFrameData = new Class({
              *
              * @name Phaser.Tweens.TweenFrameData#startFrame
              * @type {(string|number)}
-             * @since 3.60.0
+             * 
              */
             this.startFrame = null;
 
@@ -88,7 +88,7 @@ var TweenFrameData = new Class({
              *
              * @name Phaser.Tweens.TweenFrameData#endFrame
              * @type {(string|number)}
-             * @since 3.60.0
+             * 
              */
             this.endFrame = frame;
 
@@ -98,7 +98,7 @@ var TweenFrameData = new Class({
              *
              * @name Phaser.Tweens.TweenFrameData#yoyo
              * @type {boolean}
-             * @since 3.60.0
+             * 
              */
             this.yoyo = (repeat !== 0) ? true : false;
         },
@@ -109,7 +109,7 @@ var TweenFrameData = new Class({
      * Called automatically by the parent Tween. Should not be called directly.
      *
      * @method Phaser.Tweens.TweenFrameData#reset
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [isSeeking=false] - Is the Tween Data being reset as part of a Tween seek?
      */
@@ -134,7 +134,7 @@ var TweenFrameData = new Class({
      * @method Phaser.Tweens.TweenFrameData#update
      * @fires Phaser.Tweens.Events#TWEEN_UPDATE
      * @fires Phaser.Tweens.Events#TWEEN_REPEAT
-     * @since 3.60.0
+     * 
      *
      * @param {number} delta - The elapsed delta time in ms.
      *
@@ -238,7 +238,7 @@ var TweenFrameData = new Class({
      * parent Tween and also invoke the given callback, if provided.
      *
      * @method Phaser.Tweens.TweenFrameData#dispatchEvent
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
@@ -264,7 +264,7 @@ var TweenFrameData = new Class({
      * Immediately destroys this TweenData, nulling of all its references.
      *
      * @method Phaser.Tweens.TweenFrameData#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         BaseTweenData.prototype.destroy.call(this);

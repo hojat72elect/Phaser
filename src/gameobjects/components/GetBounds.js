@@ -17,7 +17,7 @@ var GetBounds = {
      *
      * @method Phaser.GameObjects.Components.GetBounds#prepareBoundsOutput
      * @private
-     * @since 3.18.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -105,7 +105,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getTopCenter
-     * @since 3.18.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -159,7 +159,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getLeftCenter
-     * @since 3.18.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -186,7 +186,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getRightCenter
-     * @since 3.18.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *
@@ -240,7 +240,7 @@ var GetBounds = {
      * unless the `includeParent` argument is set to `true`.
      *
      * @method Phaser.GameObjects.Components.GetBounds#getBottomCenter
-     * @since 3.18.0
+     * 
      *
      * @generic {Phaser.Types.Math.Vector2Like} O - [output,$return]
      *

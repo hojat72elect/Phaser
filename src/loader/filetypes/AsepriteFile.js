@@ -75,7 +75,7 @@ var AsepriteFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.AsepriteFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         if (this.isReadyToProcess()) {

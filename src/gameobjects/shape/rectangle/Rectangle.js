@@ -19,7 +19,7 @@ var RectangleRender = require('./RectangleRender');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} x - The horizontal position of this Game Object in the world.
@@ -124,7 +124,7 @@ var Rectangle = new Class({
      * size of the hit area. To do this you should adjust the `input.hitArea` object directly.
      *
      * @method Phaser.GameObjects.Rectangle#setSize
-     * @since 3.13.0
+     * 
      *
      * @param {number} width - The width of this Game Object.
      * @param {number} height - The height of this Game Object.
@@ -156,7 +156,7 @@ var Rectangle = new Class({
      *
      * @method Phaser.GameObjects.Rectangle#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

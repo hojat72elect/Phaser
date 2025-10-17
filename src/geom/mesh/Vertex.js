@@ -174,7 +174,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#tu
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.tu = u;
 
@@ -183,7 +183,7 @@ var Vertex = new Class({
              *
              * @name Phaser.Geom.Mesh.Vertex#tv
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.tv = v;
         },
@@ -221,7 +221,7 @@ var Vertex = new Class({
      * are updated.
      *
      * @method Phaser.Geom.Mesh.Vertex#scrollUV
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The amount to scroll the UV u coordinate by.
      * @param {number} y - The amount to scroll the UV v coordinate by.
@@ -244,7 +244,7 @@ var Vertex = new Class({
      * are updated.
      *
      * @method Phaser.Geom.Mesh.Vertex#scaleUV
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The amount to scale the UV u coordinate by.
      * @param {number} y - The amount to scale the UV v coordinate by.
@@ -296,7 +296,7 @@ var Vertex = new Class({
      * by an identity matrix and dimensions, storing the results in `vx`, `vy` and `vz`.
      *
      * @method Phaser.Geom.Mesh.Vertex#resize
-     * @since 3.60.0
+     * 
      *
      * @param {number} x - The x position of the vertex.
      * @param {number} y - The y position of the vertex.

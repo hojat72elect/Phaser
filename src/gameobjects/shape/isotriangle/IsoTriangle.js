@@ -23,7 +23,7 @@ var Shape = require('../Shape');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -79,7 +79,7 @@ var IsoTriangle = new Class({
              * @name Phaser.GameObjects.IsoTriangle#projection
              * @type {number}
              * @default 4
-             * @since 3.13.0
+             * 
              */
             this.projection = 4;
 
@@ -88,7 +88,7 @@ var IsoTriangle = new Class({
              *
              * @name Phaser.GameObjects.IsoTriangle#fillTop
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillTop = fillTop;
 
@@ -97,7 +97,7 @@ var IsoTriangle = new Class({
              *
              * @name Phaser.GameObjects.IsoTriangle#fillLeft
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillLeft = fillLeft;
 
@@ -106,7 +106,7 @@ var IsoTriangle = new Class({
              *
              * @name Phaser.GameObjects.IsoTriangle#fillRight
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.fillRight = fillRight;
 
@@ -116,7 +116,7 @@ var IsoTriangle = new Class({
              * @name Phaser.GameObjects.IsoTriangle#showTop
              * @type {boolean}
              * @default true
-             * @since 3.13.0
+             * 
              */
             this.showTop = true;
 
@@ -126,7 +126,7 @@ var IsoTriangle = new Class({
              * @name Phaser.GameObjects.IsoTriangle#showLeft
              * @type {boolean}
              * @default true
-             * @since 3.13.0
+             * 
              */
             this.showLeft = true;
 
@@ -136,7 +136,7 @@ var IsoTriangle = new Class({
              * @name Phaser.GameObjects.IsoTriangle#showRight
              * @type {boolean}
              * @default true
-             * @since 3.13.0
+             * 
              */
             this.showRight = true;
 
@@ -146,7 +146,7 @@ var IsoTriangle = new Class({
              * @name Phaser.GameObjects.IsoTriangle#isReversed
              * @type {boolean}
              * @default false
-             * @since 3.13.0
+             * 
              */
             this.isReversed = reversed;
 
@@ -163,7 +163,7 @@ var IsoTriangle = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoTriangle#setProjection
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the projection to.
      *
@@ -180,7 +180,7 @@ var IsoTriangle = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoTriangle#setReversed
-     * @since 3.13.0
+     * 
      *
      * @param {boolean} reversed - Sets if the iso triangle will be rendered upside down or not.
      *
@@ -197,7 +197,7 @@ var IsoTriangle = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoTriangle#setFaces
-     * @since 3.13.0
+     * 
      *
      * @param {boolean} [showTop=true] - Show the top-face of the iso triangle (only if `reversed` is true)
      * @param {boolean} [showLeft=true] - Show the left-face of the iso triangle.
@@ -228,7 +228,7 @@ var IsoTriangle = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.IsoTriangle#setFillStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [fillTop] - The color used to fill the top of the iso triangle.
      * @param {number} [fillLeft] - The color used to fill in the left-facing side of the iso triangle.

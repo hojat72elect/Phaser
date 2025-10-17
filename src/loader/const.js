@@ -140,7 +140,7 @@ var FILE_CONST = {
      *
      * @name Phaser.Loader.FILE_PENDING_DESTROY
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     FILE_PENDING_DESTROY: 20
 

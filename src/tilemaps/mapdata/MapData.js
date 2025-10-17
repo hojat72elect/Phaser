@@ -56,7 +56,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#infinite
              * @type {boolean}
-             * @since 3.17.0
+             * 
              */
             this.infinite = GetFastValue(config, 'infinite', false);
 
@@ -124,7 +124,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#renderOrder
              * @type {string}
-             * @since 3.12.0
+             * 
              */
             this.renderOrder = GetFastValue(config, 'renderOrder', 'right-down');
 
@@ -232,7 +232,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#staggerAxis
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.staggerAxis = GetFastValue(config, 'staggerAxis', 'y');
 
@@ -245,7 +245,7 @@ var MapData = new Class({
              *
              * @name Phaser.Tilemaps.MapData#staggerIndex
              * @type {string}
-             * @since 3.60.0
+             * 
              */
             this.staggerIndex = GetFastValue(config, 'staggerIndex', 'odd');
         }

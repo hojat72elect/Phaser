@@ -7,7 +7,7 @@ var Intersects = require('../intersects/RectangleToRectangle');
  * If they do not intersect, the `out` Rectangle will have a width and height of zero.
  *
  * @function Phaser.Geom.Rectangle.Intersection
- * @since 3.11.0
+ * 
  *
  * @generic {Phaser.Geom.Rectangle} O - [rect,$return]
  *

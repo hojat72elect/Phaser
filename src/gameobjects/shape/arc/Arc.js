@@ -28,7 +28,7 @@ var Shape = require('../Shape');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -78,7 +78,7 @@ var Arc = new Class({
              * @name Phaser.GameObjects.Arc#_startAngle
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._startAngle = startAngle;
 
@@ -88,7 +88,7 @@ var Arc = new Class({
              * @name Phaser.GameObjects.Arc#_endAngle
              * @type {number}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._endAngle = endAngle;
 
@@ -98,7 +98,7 @@ var Arc = new Class({
              * @name Phaser.GameObjects.Arc#_anticlockwise
              * @type {boolean}
              * @private
-             * @since 3.13.0
+             * 
              */
             this._anticlockwise = anticlockwise;
 
@@ -109,7 +109,7 @@ var Arc = new Class({
              * @type {number}
              * @default 0.01
              * @private
-             * @since 3.13.0
+             * 
              */
             this._iterations = 0.01;
 
@@ -134,7 +134,7 @@ var Arc = new Class({
      * @name Phaser.GameObjects.Arc#iterations
      * @type {number}
      * @default 0.01
-     * @since 3.13.0
+     * 
      */
     iterations: {
 
@@ -155,7 +155,7 @@ var Arc = new Class({
      *
      * @name Phaser.GameObjects.Arc#radius
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     radius: {
 
@@ -179,7 +179,7 @@ var Arc = new Class({
      *
      * @name Phaser.GameObjects.Arc#startAngle
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     startAngle: {
 
@@ -200,7 +200,7 @@ var Arc = new Class({
      *
      * @name Phaser.GameObjects.Arc#endAngle
      * @type {number}
-     * @since 3.13.0
+     * 
      */
     endAngle: {
 
@@ -221,7 +221,7 @@ var Arc = new Class({
      *
      * @name Phaser.GameObjects.Arc#anticlockwise
      * @type {boolean}
-     * @since 3.13.0
+     * 
      */
     anticlockwise: {
 
@@ -242,7 +242,7 @@ var Arc = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Arc#setRadius
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the radius to.
      *
@@ -261,7 +261,7 @@ var Arc = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Arc#setIterations
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the iterations to.
      *
@@ -282,7 +282,7 @@ var Arc = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Arc#setStartAngle
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the starting angle to.
      *
@@ -303,7 +303,7 @@ var Arc = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Arc#setEndAngle
-     * @since 3.13.0
+     * 
      *
      * @param {number} value - The value to set the ending angle to.
      *
@@ -324,7 +324,7 @@ var Arc = new Class({
      *
      * @method Phaser.GameObjects.Arc#updateData
      * @private
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Game Object instance.
      */

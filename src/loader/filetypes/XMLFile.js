@@ -61,7 +61,7 @@ var XMLFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.XMLFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;

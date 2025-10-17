@@ -18,7 +18,7 @@ var Triangle = require('./Triangle');
  * face. If you require that, consider using a Polygon instead.
  *
  * @method Phaser.GameObjects.GameObjectFactory#triangle
- * @since 3.13.0
+ * 
  *
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
  * @param {number} [y=0] - The vertical position of this Game Object in the world.

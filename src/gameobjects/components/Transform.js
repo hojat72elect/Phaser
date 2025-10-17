@@ -24,7 +24,7 @@ var Transform = {
      * @type {boolean}
      * @readonly
      * @default true
-     * @since 3.60.0
+     * 
      */
     hasTransformComponent: true,
 
@@ -114,7 +114,7 @@ var Transform = {
      * @name Phaser.GameObjects.Components.Transform#scale
      * @type {number}
      * @default 1
-     * @since 3.18.0
+     * 
      */
     scale: {
 
@@ -640,7 +640,7 @@ var Transform = {
      * The returned value is in radians and will be zero if this Game Object has no parent container.
      *
      * @method Phaser.GameObjects.Components.Transform#getParentRotation
-     * @since 3.18.0
+     * 
      *
      * @return {number} The sum total rotation, in radians, of all parent containers of this Game Object.
      */

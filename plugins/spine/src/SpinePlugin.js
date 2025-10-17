@@ -125,7 +125,7 @@ var NOOP = require('../../../src/utils/NOOP');
  * @class SpinePlugin
  * @extends Phaser.Plugins.ScenePlugin
  * @constructor
- * @since 3.19.0
+ * 
  *
  * @param {Phaser.Scene} scene - A reference to the Scene that has installed this plugin.
  * @param {Phaser.Plugins.PluginManager} pluginManager - A reference to the Phaser Plugin Manager.
@@ -148,7 +148,7 @@ var SpinePlugin = new Class({
              * @name SpinePlugin#isWebGL
              * @type {boolean}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.isWebGL = (game.config.renderType === 2);
 
@@ -160,7 +160,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#cache
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.19.0
+             * 
              */
             this.cache = game.cache.addCustom('spine');
 
@@ -172,7 +172,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#spineTextures
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.19.0
+             * 
              */
             this.spineTextures = game.cache.addCustom('spineTextures');
 
@@ -181,7 +181,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#json
              * @type {Phaser.Cache.BaseCache}
-             * @since 3.19.0
+             * 
              */
             this.json = game.cache.json;
 
@@ -190,7 +190,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#textures
              * @type {Phaser.Textures.TextureManager}
-             * @since 3.19.0
+             * 
              */
             this.textures = game.textures;
 
@@ -200,7 +200,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#drawDebug
              * @type {boolean}
-             * @since 3.19.0
+             * 
              */
             this.drawDebug = false;
 
@@ -211,7 +211,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#gl
              * @type {WebGLRenderingContext}
-             * @since 3.19.0
+             * 
              */
             this.gl;
 
@@ -220,7 +220,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.19.0
+             * 
              */
             this.renderer;
 
@@ -233,7 +233,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#sceneRenderer
              * @type {spine.webgl.SceneRenderer}
-             * @since 3.19.0
+             * 
              */
             this.sceneRenderer;
 
@@ -242,7 +242,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#skeletonRenderer
              * @type {(spine.canvas.SkeletonRenderer|spine.webgl.SkeletonRenderer)}
-             * @since 3.19.0
+             * 
              */
             this.skeletonRenderer;
 
@@ -253,7 +253,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#skeletonDebugRenderer
              * @type {spine.webgl.skeletonDebugRenderer}
-             * @since 3.19.0
+             * 
              */
             this.skeletonDebugRenderer;
 
@@ -263,7 +263,7 @@ var SpinePlugin = new Class({
              *
              * @name SpinePlugin#plugin
              * @type {spine}
-             * @since 3.19.0
+             * 
              */
             this.plugin = Spine;
 
@@ -273,7 +273,7 @@ var SpinePlugin = new Class({
              * @name SpinePlugin#temp1
              * @private
              * @type {spine.webgl.Vector3}
-             * @since 3.19.0
+             * 
              */
             this.temp1;
 
@@ -283,7 +283,7 @@ var SpinePlugin = new Class({
              * @name SpinePlugin#temp2
              * @private
              * @type {spine.webgl.Vector3}
-             * @since 3.19.0
+             * 
              */
             this.temp2;
 
@@ -417,7 +417,7 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#boot
      * @private
-     * @since 3.19.0
+     * 
      */
     boot: function () {
         if (this.isWebGL) {
@@ -441,7 +441,7 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#bootCanvas
      * @private
-     * @since 3.19.0
+     * 
      */
     bootCanvas: function () {
         this.skeletonRenderer = new Spine.canvas.SkeletonRenderer(this.scene.sys.context);
@@ -452,7 +452,7 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#bootWebGL
      * @private
-     * @since 3.19.0
+     * 
      */
     bootWebGL: function () {
         //  Monkeypatch the Spine setBlendMode functions, or batching is destroyed!
@@ -495,7 +495,7 @@ var SpinePlugin = new Class({
      * then returns it. You do not normally need to invoke this method directly.
      *
      * @method SpinePlugin#getAtlasCanvas
-     * @since 3.19.0
+     * 
      *
      * @param {string} key - The key of the Spine Atlas to create.
      *
@@ -530,7 +530,7 @@ var SpinePlugin = new Class({
      * then returns it. You do not normally need to invoke this method directly.
      *
      * @method SpinePlugin#getAtlasWebGL
-     * @since 3.19.0
+     * 
      *
      * @param {string} key - The key of the Spine Atlas to create.
      *
@@ -632,7 +632,7 @@ var SpinePlugin = new Class({
      *
      * @method Phaser.Loader.LoaderPlugin#spine
      * @fires Phaser.Loader.Events#ADD
-     * @since 3.19.0
+     * 
      *
      * @param {(string|Phaser.Types.Loader.FileTypes.JSONFileConfig|Phaser.Types.Loader.FileTypes.JSONFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
      * @param {string} jsonURL - The absolute or relative URL to load the Spine json file from. If undefined or `null` it will be set to `<key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
@@ -675,7 +675,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#worldToLocal
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The screen space x coordinate to convert.
      * @param {number} y - The screen space y coordinate to convert.
@@ -711,7 +711,7 @@ var SpinePlugin = new Class({
      * Returns a Spine Vector2 based on the given x and y values.
      *
      * @method SpinePlugin#getVector2
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The Vector x value.
      * @param {number} y - The Vector y value.
@@ -728,7 +728,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#getVector3
-     * @since 3.19.0
+     * 
      *
      * @param {number} x - The Vector x value.
      * @param {number} y - The Vector y value.
@@ -746,7 +746,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugBones
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -768,7 +768,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugRegionAttachments
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -790,7 +790,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugBoundingBoxes
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -812,7 +812,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugMeshHull
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -834,7 +834,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugMeshTriangles
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -856,7 +856,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugPaths
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -878,7 +878,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugSkeletonXY
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -900,7 +900,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setDebugClipping
-     * @since 3.19.0
+     * 
      *
      * @param {boolean} [value=true] - The value to set in the debug property.
      *
@@ -922,7 +922,7 @@ var SpinePlugin = new Class({
      * Only works in WebGL.
      *
      * @method SpinePlugin#setEffect
-     * @since 3.19.0
+     * 
      *
      * @param {spine.VertexEffect} [effect] - The vertex effect to set on the Skeleton Renderer.
      *
@@ -940,7 +940,7 @@ var SpinePlugin = new Class({
      * The Skeleton data should have already been loaded before calling this method.
      *
      * @method SpinePlugin#createSkeleton
-     * @since 3.19.0
+     * 
      *
      * @param {string} key - The key of the Spine skeleton data, as loaded by the plugin. If the Spine JSON contains multiple skeletons, reference them with a period, i.e. `set.spineBoy`.
      * @param {object} [skeletonJSON] - Optional Skeleton JSON data to use, instead of getting it from the cache.
@@ -1003,7 +1003,7 @@ var SpinePlugin = new Class({
      * The returned object contains two properties: `state` and `stateData` respectively.
      *
      * @method SpinePlugin#createAnimationState
-     * @since 3.19.0
+     * 
      *
      * @param {spine.Skeleton} skeleton - The Skeleton to create the Animation State for.
      *
@@ -1026,7 +1026,7 @@ var SpinePlugin = new Class({
      * `size` - The width and height of the AABB.
      *
      * @method SpinePlugin#getBounds
-     * @since 3.19.0
+     * 
      *
      * @param {spine.Skeleton} skeleton - The Skeleton to get the bounds from.
      *
@@ -1047,7 +1047,7 @@ var SpinePlugin = new Class({
      * Only called if running in WebGL.
      *
      * @method SpinePlugin#onResize
-     * @since 3.19.0
+     * 
      */
     onResize: function () {
         var renderer = this.renderer;
@@ -1069,7 +1069,7 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#shutdown
      * @private
-     * @since 3.19.0
+     * 
      */
     shutdown: function () {
         var eventEmitter = this.systems.events;
@@ -1088,7 +1088,7 @@ var SpinePlugin = new Class({
      *
      * @method SpinePlugin#destroy
      * @private
-     * @since 3.19.0
+     * 
      */
     destroy: function () {
         this.shutdown();
@@ -1159,7 +1159,7 @@ SpinePlugin.SpineContainer = SpineContainer;
  * name, then use `SpinePlugin.make` instead.
  *
  * @method SpinePlugin#add
- * @since 3.19.0
+ * 
  *
  * @param {number} x - The horizontal position of this Game Object in the world.
  * @param {number} y - The vertical position of this Game Object in the world.
@@ -1193,7 +1193,7 @@ SpinePlugin.SpineContainer = SpineContainer;
  * ```
  *
  * @method SpinePlugin#make
- * @since 3.19.0
+ * 
  *
  * @param {any} config - The configuration object this Game Object will use to create itself.
  * @param {boolean} [addToScene] - Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.

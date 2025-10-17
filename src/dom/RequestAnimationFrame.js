@@ -62,7 +62,7 @@ var RequestAnimationFrame = new Class({
              * @name Phaser.DOM.RequestAnimationFrame#delay
              * @type {number}
              * @default 0
-             * @since 3.60.0
+             * 
              */
             this.delay = 0;
 

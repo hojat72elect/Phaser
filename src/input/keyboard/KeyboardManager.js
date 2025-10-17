@@ -17,7 +17,7 @@ var NOOP = require('../../utils/NOOP');
  * @class KeyboardManager
  * @memberof Phaser.Input.Keyboard
  * @constructor
- * @since 3.16.0
+ * 
  *
  * @param {Phaser.Input.InputManager} inputManager - A reference to the Input Manager.
  */
@@ -31,7 +31,7 @@ var KeyboardManager = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardManager#manager
              * @type {Phaser.Input.InputManager}
-             * @since 3.16.0
+             * 
              */
             this.manager = inputManager;
 
@@ -41,7 +41,7 @@ var KeyboardManager = new Class({
              * @name Phaser.Input.Keyboard.KeyboardManager#queue
              * @type {KeyboardEvent[]}
              * @private
-             * @since 3.16.0
+             * 
              */
             this.queue = [];
 
@@ -59,7 +59,7 @@ var KeyboardManager = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardManager#preventDefault
              * @type {boolean}
-             * @since 3.16.0
+             * 
              */
             this.preventDefault = true;
 
@@ -86,7 +86,7 @@ var KeyboardManager = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardManager#captures
              * @type {number[]}
-             * @since 3.16.0
+             * 
              */
             this.captures = [];
 
@@ -97,7 +97,7 @@ var KeyboardManager = new Class({
              * @name Phaser.Input.Keyboard.KeyboardManager#enabled
              * @type {boolean}
              * @default false
-             * @since 3.16.0
+             * 
              */
             this.enabled = false;
 
@@ -107,7 +107,7 @@ var KeyboardManager = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardManager#target
              * @type {any}
-             * @since 3.16.0
+             * 
              */
             this.target;
 
@@ -118,7 +118,7 @@ var KeyboardManager = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardManager#onKeyDown
              * @type {function}
-             * @since 3.16.00
+             * 0
              */
             this.onKeyDown = NOOP;
 
@@ -129,7 +129,7 @@ var KeyboardManager = new Class({
              *
              * @name Phaser.Input.Keyboard.KeyboardManager#onKeyUp
              * @type {function}
-             * @since 3.16.00
+             * 0
              */
             this.onKeyUp = NOOP;
 
@@ -141,7 +141,7 @@ var KeyboardManager = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#boot
      * @private
-     * @since 3.16.0
+     * 
      */
     boot: function () {
         var config = this.manager.config;
@@ -167,7 +167,7 @@ var KeyboardManager = new Class({
      * This is called automatically and does not need to be manually invoked.
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#startListeners
-     * @since 3.16.0
+     * 
      */
     startListeners: function () {
         var _this = this;
@@ -221,7 +221,7 @@ var KeyboardManager = new Class({
      * This is called automatically and does not need to be manually invoked.
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#stopListeners
-     * @since 3.16.0
+     * 
      */
     stopListeners: function () {
         var target = this.target;
@@ -238,7 +238,7 @@ var KeyboardManager = new Class({
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#postUpdate
      * @private
-     * @since 3.16.0
+     * 
      */
     postUpdate: function () {
         this.queue = [];
@@ -279,7 +279,7 @@ var KeyboardManager = new Class({
      * If there are active captures after calling this method, the `preventDefault` property is set to `true`.
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#addCapture
-     * @since 3.16.0
+     * 
      *
      * @param {(string|number|number[]|any[])} keycode - The Key Codes to enable capture for, preventing them reaching the browser.
      */
@@ -340,7 +340,7 @@ var KeyboardManager = new Class({
      * If there are no captures left after calling this method, the `preventDefault` property is set to `false`.
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#removeCapture
-     * @since 3.16.0
+     * 
      *
      * @param {(string|number|number[]|any[])} keycode - The Key Codes to disable capture for, allowing them reaching the browser again.
      */
@@ -372,7 +372,7 @@ var KeyboardManager = new Class({
      * Removes all keyboard captures and sets the `preventDefault` property to `false`.
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#clearCaptures
-     * @since 3.16.0
+     * 
      */
     clearCaptures: function () {
         this.captures = [];
@@ -384,7 +384,7 @@ var KeyboardManager = new Class({
      * Destroys this Keyboard Manager instance.
      *
      * @method Phaser.Input.Keyboard.KeyboardManager#destroy
-     * @since 3.16.0
+     * 
      */
     destroy: function () {
         this.stopListeners();

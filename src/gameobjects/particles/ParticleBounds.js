@@ -21,7 +21,7 @@ var Rectangle = require('../../geom/rectangle/Rectangle');
  * @extends Phaser.GameObjects.Particles.ParticleProcessor
  * @memberof Phaser.GameObjects.Particles
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {number} x - The x position (top-left) of the bounds, in world space.
  * @param {number} y - The y position (top-left) of the bounds, in world space.
@@ -62,7 +62,7 @@ var ParticleBounds = new Class({
              *
              * @name Phaser.GameObjects.Particles.ParticleBounds#bounds
              * @type {Phaser.Geom.Rectangle}
-             * @since 3.60.0
+             * 
              */
             this.bounds = new Rectangle(x, y, width, height);
 
@@ -72,7 +72,7 @@ var ParticleBounds = new Class({
              * @name Phaser.GameObjects.Particles.ParticleBounds#collideLeft
              * @type {boolean}
              * @default true
-             * @since 3.60.0
+             * 
              */
             this.collideLeft = collideLeft;
 
@@ -82,7 +82,7 @@ var ParticleBounds = new Class({
              * @name Phaser.GameObjects.Particles.ParticleBounds#collideRight
              * @type {boolean}
              * @default true
-             * @since 3.60.0
+             * 
              */
             this.collideRight = collideRight;
 
@@ -92,7 +92,7 @@ var ParticleBounds = new Class({
              * @name Phaser.GameObjects.Particles.ParticleBounds#collideTop
              * @type {boolean}
              * @default true
-             * @since 3.60.0
+             * 
              */
             this.collideTop = collideTop;
 
@@ -102,7 +102,7 @@ var ParticleBounds = new Class({
              * @name Phaser.GameObjects.Particles.ParticleBounds#collideBottom
              * @type {boolean}
              * @default true
-             * @since 3.60.0
+             * 
              */
             this.collideBottom = collideBottom;
         },

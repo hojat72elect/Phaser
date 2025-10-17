@@ -7,7 +7,7 @@ var SpliceOne = require('../../utils/array/SpliceOne');
  *
  * @namespace Phaser.GameObjects.Components.PostPipeline
  * @webglOnly
- * @since 3.60.0
+ * 
  */
 
 var PostPipeline = {
@@ -18,7 +18,7 @@ var PostPipeline = {
      * @name Phaser.GameObjects.Components.PostPipeline#hasPostPipeline
      * @type {boolean}
      * @webglOnly
-     * @since 3.60.0
+     * 
      */
     hasPostPipeline: false,
 
@@ -33,7 +33,7 @@ var PostPipeline = {
      * @name Phaser.GameObjects.Components.PostPipeline#postPipelines
      * @type {Phaser.Renderer.WebGL.Pipelines.PostFXPipeline[]}
      * @webglOnly
-     * @since 3.60.0
+     * 
      */
     postPipelines: null,
 
@@ -43,7 +43,7 @@ var PostPipeline = {
      * @name Phaser.GameObjects.Components.PostPipeline#postPipelineData
      * @type {object}
      * @webglOnly
-     * @since 3.60.0
+     * 
      */
     postPipelineData: null,
 
@@ -75,7 +75,7 @@ var PostPipeline = {
      * @name Phaser.GameObjects.Components.PostPipeline#preFX
      * @type {?Phaser.GameObjects.Components.FX}
      * @webglOnly
-     * @since 3.60.0
+     * 
      */
     preFX: null,
 
@@ -100,7 +100,7 @@ var PostPipeline = {
      * @name Phaser.GameObjects.Components.PostPipeline#postFX
      * @type {Phaser.GameObjects.Components.FX}
      * @webglOnly
-     * @since 3.60.0
+     * 
      */
     postFX: null,
 
@@ -114,7 +114,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#initPostPipeline
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [preFX=false] - Does this Game Object support Pre FX?
      */
@@ -147,7 +147,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#setPostPipeline
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {(string|string[]|function|function[]|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline[])} pipelines - Either the string-based name of the pipeline, or a pipeline instance, or class, or an array of them.
      * @param {object} [pipelineData] - Optional pipeline data object that is set in to the `postPipelineData` property of this Game Object.
@@ -196,7 +196,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#setPostPipelineData
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The key of the pipeline data to set, update, or delete.
      * @param {any} [value] - The value to be set with the key. If `undefined` then `key` will be deleted from the object.
@@ -220,7 +220,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#getPostPipeline
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {(string|function|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline)} pipeline - The string-based name of the pipeline, or a pipeline class.
      *
@@ -250,7 +250,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#resetPostPipeline
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [resetData=false] - Reset the `postPipelineData` object to being an empty object?
      */
@@ -280,7 +280,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#removePostPipeline
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @param {string|Phaser.Renderer.WebGL.Pipelines.PostFXPipeline} pipeline - The string-based name of the pipeline, or a pipeline class.
      *
@@ -317,7 +317,7 @@ var PostPipeline = {
      *
      * @method Phaser.GameObjects.Components.PostPipeline#clearFX
      * @webglOnly
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Game Object.
      */

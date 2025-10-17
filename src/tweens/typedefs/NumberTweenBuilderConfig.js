@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Tweens.NumberTweenBuilderConfig
- * @since 3.18.0
+ * 
  *
  * @property {number} [from=0] - The start number.
  * @property {number} [to=1] - The end number.

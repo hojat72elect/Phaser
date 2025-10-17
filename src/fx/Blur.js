@@ -26,7 +26,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [quality=0] - The quality of the blur effect. Can be either 0 for Low Quality, 1 for Medium Quality or 2 for High Quality.
@@ -80,7 +80,7 @@ var Blur = new Class({
              *
              * @name Phaser.FX.Blur#quality
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.quality = quality;
 
@@ -89,7 +89,7 @@ var Blur = new Class({
              *
              * @name Phaser.FX.Blur#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = x;
 
@@ -98,7 +98,7 @@ var Blur = new Class({
              *
              * @name Phaser.FX.Blur#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = y;
 
@@ -115,7 +115,7 @@ var Blur = new Class({
              *
              * @name Phaser.FX.Blur#steps
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.steps = steps;
 
@@ -124,7 +124,7 @@ var Blur = new Class({
              *
              * @name Phaser.FX.Blur#strength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.strength = strength;
 
@@ -133,7 +133,7 @@ var Blur = new Class({
              *
              * @name Phaser.FX.Blur#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 1, 1];
 
@@ -147,7 +147,7 @@ var Blur = new Class({
      *
      * @name Phaser.FX.Blur#color
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color: {
 

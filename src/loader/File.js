@@ -39,7 +39,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#cache
              * @type {(Phaser.Cache.BaseCache|Phaser.Textures.TextureManager)}
-             * @since 3.7.0
+             * 
              */
             this.cache = GetFastValue(fileConfig, 'cache', false);
 
@@ -204,7 +204,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#multiFile
              * @type {?Phaser.Loader.MultiFile}
-             * @since 3.7.0
+             * 
              */
             this.multiFile;
 
@@ -215,7 +215,7 @@ var File = new Class({
              *
              * @name Phaser.Loader.File#linkFile
              * @type {?Phaser.Loader.File}
-             * @since 3.7.0
+             * 
              */
             this.linkFile;
 
@@ -252,7 +252,7 @@ var File = new Class({
      * Links this File with another, so they depend upon each other for loading and processing.
      *
      * @method Phaser.Loader.File#setLink
-     * @since 3.7.0
+     * 
      *
      * @param {Phaser.Loader.File} fileB - The file to link to this one.
      */
@@ -414,7 +414,7 @@ var File = new Class({
      * Checks on the state of its multifile, if set.
      *
      * @method Phaser.Loader.File#onProcessComplete
-     * @since 3.7.0
+     * 
      */
     onProcessComplete: function () {
         this.state = CONST.FILE_COMPLETE;
@@ -431,7 +431,7 @@ var File = new Class({
      * Checks on the state of its multifile, if set.
      *
      * @method Phaser.Loader.File#onProcessError
-     * @since 3.7.0
+     * 
      */
     onProcessError: function () {
         // eslint-disable-next-line no-console
@@ -452,7 +452,7 @@ var File = new Class({
      * loaded or will conflict.
      *
      * @method Phaser.Loader.File#hasCacheConflict
-     * @since 3.7.0
+     * 
      *
      * @return {boolean} `true` if adding this file will cause a conflict, otherwise `false`.
      */
@@ -465,7 +465,7 @@ var File = new Class({
      * This method is often overridden by specific file types.
      *
      * @method Phaser.Loader.File#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         if (this.cache && this.data) {
@@ -480,7 +480,7 @@ var File = new Class({
      * @method Phaser.Loader.File#pendingDestroy
      * @fires Phaser.Loader.Events#FILE_COMPLETE
      * @fires Phaser.Loader.Events#FILE_KEY_COMPLETE
-     * @since 3.7.0
+     * 
      */
     pendingDestroy: function (data) {
         if (this.state === CONST.FILE_PENDING_DESTROY) {
@@ -506,7 +506,7 @@ var File = new Class({
      * Destroy this File and any references it holds.
      *
      * @method Phaser.Loader.File#destroy
-     * @since 3.7.0
+     * 
      */
     destroy: function () {
         this.loader = null;
@@ -525,7 +525,7 @@ var File = new Class({
  *
  * @method Phaser.Loader.File.createObjectURL
  * @static
- * @since 3.7.0
+ * 
  *
  * @param {HTMLImageElement} image - Image object which 'src' attribute should be set to object URL.
  * @param {Blob} blob - A Blob object to create an object URL for.
@@ -554,7 +554,7 @@ File.createObjectURL = function (image, blob, defaultType) {
  *
  * @method Phaser.Loader.File.revokeObjectURL
  * @static
- * @since 3.7.0
+ * 
  *
  * @param {HTMLImageElement} image - Image object which 'src' attribute should be revoked.
  */

@@ -39,7 +39,7 @@ var Vector2 = require('../../math/Vector2');
  * @class BaseCamera
  * @memberof Phaser.Cameras.Scene2D
  * @constructor
- * @since 3.12.0
+ * 
  *
  * @extends Phaser.Events.EventEmitter
  * @extends Phaser.GameObjects.Components.Alpha
@@ -91,7 +91,7 @@ var BaseCamera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.BaseCamera#sceneManager
              * @type {Phaser.Scenes.SceneManager}
-             * @since 3.12.0
+             * 
              */
             this.sceneManager;
 
@@ -100,7 +100,7 @@ var BaseCamera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.BaseCamera#scaleManager
              * @type {Phaser.Scale.ScaleManager}
-             * @since 3.16.0
+             * 
              */
             this.scaleManager;
 
@@ -109,7 +109,7 @@ var BaseCamera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.BaseCamera#cameraManager
              * @type {Phaser.Cameras.Scene2D.CameraManager}
-             * @since 3.17.0
+             * 
              */
             this.cameraManager;
 
@@ -120,7 +120,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#id
              * @type {number}
              * @readonly
-             * @since 3.11.0
+             * 
              */
             this.id = 0;
 
@@ -153,7 +153,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#visible
              * @type {boolean}
              * @default true
-             * @since 3.10.0
+             * 
              */
 
             /**
@@ -177,7 +177,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#worldView
              * @type {Phaser.Geom.Rectangle}
              * @readonly
-             * @since 3.11.0
+             * 
              */
             this.worldView = new Rectangle();
 
@@ -191,7 +191,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#dirty
              * @type {boolean}
              * @default true
-             * @since 3.11.0
+             * 
              */
             this.dirty = true;
 
@@ -228,7 +228,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#_width
              * @type {number}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._width = width;
 
@@ -241,7 +241,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#_height
              * @type {number}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._height = height;
 
@@ -269,7 +269,7 @@ var BaseCamera = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this._scrollX = 0;
 
@@ -287,7 +287,7 @@ var BaseCamera = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this._scrollY = 0;
 
@@ -342,7 +342,7 @@ var BaseCamera = new Class({
              * @type {number}
              * @private
              * @default 0
-             * @since 3.11.0
+             * 
              */
             this._rotation = 0;
 
@@ -383,7 +383,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#alpha
              * @type {number}
              * @default 1
-             * @since 3.11.0
+             * 
              */
 
             /**
@@ -419,7 +419,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#midPoint
              * @type {Phaser.Math.Vector2}
              * @readonly
-             * @since 3.11.0
+             * 
              */
             this.midPoint = new Vector2(width / 2, height / 2);
 
@@ -436,7 +436,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#originX
              * @type {number}
              * @default 0.5
-             * @since 3.11.0
+             * 
              */
             this.originX = 0.5;
 
@@ -453,7 +453,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#originY
              * @type {number}
              * @default 0.5
-             * @since 3.11.0
+             * 
              */
             this.originY = 0.5;
 
@@ -464,7 +464,7 @@ var BaseCamera = new Class({
              * @type {boolean}
              * @private
              * @default false
-             * @since 3.12.0
+             * 
              */
             this._customViewport = false;
 
@@ -474,7 +474,7 @@ var BaseCamera = new Class({
              *
              * @name Phaser.Cameras.Scene2D.BaseCamera#mask
              * @type {?(Phaser.Display.Masks.BitmapMask|Phaser.Display.Masks.GeometryMask)}
-             * @since 3.17.0
+             * 
              */
             this.mask = null;
 
@@ -488,7 +488,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#_maskCamera
              * @type {?Phaser.Cameras.Scene2D.BaseCamera}
              * @private
-             * @since 3.17.0
+             * 
              */
             this._maskCamera = null;
 
@@ -515,7 +515,7 @@ var BaseCamera = new Class({
              * @name Phaser.Cameras.Scene2D.BaseCamera#isSceneCamera
              * @type {boolean}
              * @default true
-             * @since 3.60.0
+             * 
              */
             this.isSceneCamera = true;
 
@@ -556,7 +556,7 @@ var BaseCamera = new Class({
      * Alpha values are provided as a float between 0, fully transparent, and 1, fully opaque.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#setAlpha
-     * @since 3.11.0
+     * 
      *
      * @param {number} [value=1] - The Camera alpha value.
      *
@@ -574,7 +574,7 @@ var BaseCamera = new Class({
      * A value of 0 would rotate from the top-left of the viewport. A value of 1 from the bottom right.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#setOrigin
-     * @since 3.11.0
+     * 
      *
      * @param {number} [x=0.5] - The horizontal origin value.
      * @param {number} [y=x] - The vertical origin value. If not defined it will be set to the value of `x`.
@@ -601,7 +601,7 @@ var BaseCamera = new Class({
      * the Camera there. The results are clamped based on the Camera bounds, if set.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#getScroll
-     * @since 3.11.0
+     * 
      *
      * @param {number} x - The horizontal coordinate to center on.
      * @param {number} y - The vertical coordinate to center on.
@@ -633,7 +633,7 @@ var BaseCamera = new Class({
      * Calling this does not change the scrollY value.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#centerOnX
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The horizontal coordinate to center on.
      *
@@ -658,7 +658,7 @@ var BaseCamera = new Class({
      * Calling this does not change the scrollX value.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#centerOnY
-     * @since 3.16.0
+     * 
      *
      * @param {number} y - The vertical coordinate to center on.
      *
@@ -682,7 +682,7 @@ var BaseCamera = new Class({
      * Moves the Camera so that it is centered on the given coordinates, bounds allowing.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#centerOn
-     * @since 3.11.0
+     * 
      *
      * @param {number} x - The horizontal coordinate to center on.
      * @param {number} y - The vertical coordinate to center on.
@@ -914,7 +914,7 @@ var BaseCamera = new Class({
      * Do not call this method if you are not using camera bounds.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#clampX
-     * @since 3.11.0
+     * 
      *
      * @param {number} x - The value to horizontally scroll clamp.
      *
@@ -942,7 +942,7 @@ var BaseCamera = new Class({
      * Do not call this method if you are not using camera bounds.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#clampY
-     * @since 3.11.0
+     * 
      *
      * @param {number} y - The value to vertically scroll clamp.
      *
@@ -1095,7 +1095,7 @@ var BaseCamera = new Class({
      * The rectangle is a copy of the bounds, so is safe to modify.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#getBounds
-     * @since 3.16.0
+     * 
      *
      * @param {Phaser.Geom.Rectangle} [out] - An optional Rectangle to store the bounds in. If not given, a new Rectangle will be created.
      *
@@ -1369,7 +1369,7 @@ var BaseCamera = new Class({
      * that allows you to limit what is visible during the render pass.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#setMask
-     * @since 3.17.0
+     * 
      *
      * @param {(Phaser.Display.Masks.BitmapMask|Phaser.Display.Masks.GeometryMask)} mask - The mask this Camera will use when rendering.
      * @param {boolean} [fixedPosition=true] - Should the mask translate along with the Camera, or be fixed in place and not impacted by the Cameras transform?
@@ -1392,7 +1392,7 @@ var BaseCamera = new Class({
      * Clears the mask that this Camera was using.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#clearMask
-     * @since 3.17.0
+     * 
      *
      * @param {boolean} [destroyMask=false] - Destroy the mask before clearing it?
      *
@@ -1418,7 +1418,7 @@ var BaseCamera = new Class({
      * An invisible Camera will skip rendering and input tests of everything it can see.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#setVisible
-     * @since 3.10.0
+     * 
      *
      * @param {boolean} value - The visible state of the Camera.
      *
@@ -1479,7 +1479,7 @@ var BaseCamera = new Class({
      * Camera.
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#setIsSceneCamera
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} value - Is this being used as a Scene Camera, or a Texture camera?
      */
@@ -1494,7 +1494,7 @@ var BaseCamera = new Class({
      *
      * @method Phaser.Cameras.Scene2D.BaseCamera#updateSystem
      * @private
-     * @since 3.12.0
+     * 
      */
     updateSystem: function () {
         if (!this.scaleManager || !this.isSceneCamera) {
@@ -1806,7 +1806,7 @@ var BaseCamera = new Class({
      * @type {number}
      * @private
      * @default 0
-     * @since 3.11.0
+     * 
      */
     rotation: {
 
@@ -1827,7 +1827,7 @@ var BaseCamera = new Class({
      * @name Phaser.Cameras.Scene2D.BaseCamera#centerX
      * @type {number}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     centerX: {
 
@@ -1843,7 +1843,7 @@ var BaseCamera = new Class({
      * @name Phaser.Cameras.Scene2D.BaseCamera#centerY
      * @type {number}
      * @readonly
-     * @since 3.10.0
+     * 
      */
     centerY: {
 
@@ -1865,7 +1865,7 @@ var BaseCamera = new Class({
      * @name Phaser.Cameras.Scene2D.BaseCamera#displayWidth
      * @type {number}
      * @readonly
-     * @since 3.11.0
+     * 
      */
     displayWidth: {
 
@@ -1887,7 +1887,7 @@ var BaseCamera = new Class({
      * @name Phaser.Cameras.Scene2D.BaseCamera#displayHeight
      * @type {number}
      * @readonly
-     * @since 3.11.0
+     * 
      */
     displayHeight: {
 

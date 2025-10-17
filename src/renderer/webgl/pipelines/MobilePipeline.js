@@ -45,7 +45,7 @@ var WebGLPipeline = require('../WebGLPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.MultiPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Types.Renderer.WebGL.WebGLPipelineConfig} config - The configuration options for this pipeline.
  */
@@ -93,7 +93,7 @@ var MobilePipeline = new Class({
      * tasks that the pipeline may need that relied on game systems such as the Texture Manager.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.MobilePipeline#boot
-     * @since 3.60.0
+     * 
      */
     boot: function () {
         WebGLPipeline.prototype.boot.call(this);

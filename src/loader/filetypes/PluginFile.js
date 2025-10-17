@@ -75,7 +75,7 @@ var PluginFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.PluginFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         var pluginManager = this.loader.systems.plugins;

@@ -51,7 +51,7 @@ var NoAudioSoundManager = new Class({
      * Adds a new sound into the sound manager.
      *
      * @method Phaser.Sound.NoAudioSoundManager#add
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - An optional config object containing default sound settings.
@@ -72,7 +72,7 @@ var NoAudioSoundManager = new Class({
      * The JSON follows the format of that created by https://github.com/tonistiigi/audiosprite
      *
      * @method Phaser.Sound.NoAudioSoundManager#addAudioSprite
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - Asset key for the sound.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - An optional config object containing default sound settings.

@@ -655,7 +655,7 @@ var Vector2 = new Class({
      * Project this Vector onto another.
      *
      * @method Phaser.Math.Vector2#project
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Math.Vector2} src - The vector to project onto.
      *
@@ -689,7 +689,7 @@ Vector2.ZERO = new Vector2();
  * @constant
  * @name Phaser.Math.Vector2.RIGHT
  * @type {Phaser.Math.Vector2}
- * @since 3.16.0
+ * 
  */
 Vector2.RIGHT = new Vector2(1, 0);
 
@@ -701,7 +701,7 @@ Vector2.RIGHT = new Vector2(1, 0);
  * @constant
  * @name Phaser.Math.Vector2.LEFT
  * @type {Phaser.Math.Vector2}
- * @since 3.16.0
+ * 
  */
 Vector2.LEFT = new Vector2(-1, 0);
 
@@ -713,7 +713,7 @@ Vector2.LEFT = new Vector2(-1, 0);
  * @constant
  * @name Phaser.Math.Vector2.UP
  * @type {Phaser.Math.Vector2}
- * @since 3.16.0
+ * 
  */
 Vector2.UP = new Vector2(0, -1);
 
@@ -725,7 +725,7 @@ Vector2.UP = new Vector2(0, -1);
  * @constant
  * @name Phaser.Math.Vector2.DOWN
  * @type {Phaser.Math.Vector2}
- * @since 3.16.0
+ * 
  */
 Vector2.DOWN = new Vector2(0, 1);
 
@@ -737,7 +737,7 @@ Vector2.DOWN = new Vector2(0, 1);
  * @constant
  * @name Phaser.Math.Vector2.ONE
  * @type {Phaser.Math.Vector2}
- * @since 3.16.0
+ * 
  */
 Vector2.ONE = new Vector2(1, 1);
 

@@ -67,7 +67,7 @@ var SVGFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.SVGFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -157,7 +157,7 @@ var SVGFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.SVGFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         this.cache.addImage(this.key, this.data);

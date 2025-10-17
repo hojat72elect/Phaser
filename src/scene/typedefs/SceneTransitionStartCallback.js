@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.Scenes.SceneTransitionOnStartCallback
- * @since 3.60.0
+ * 
  *
  * @this Phaser.Scene
  * @param {Phaser.Scene} fromScene - Scene instance to transition from.

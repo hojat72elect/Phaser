@@ -66,7 +66,7 @@ var Tint = {
      * @name Phaser.GameObjects.Components.Tint#tintFill
      * @type {boolean}
      * @default false
-     * @since 3.11.0
+     * 
      */
     tintFill: false,
 
@@ -155,7 +155,7 @@ var Tint = {
      *
      * @method Phaser.GameObjects.Components.Tint#setTintFill
      * @webglOnly
-     * @since 3.11.0
+     * 
      *
      * @param {number} [topLeft=0xffffff] - The tint being applied to the top-left of the Game Object. If not other values are given this value is applied evenly, tinting the whole Game Object.
      * @param {number} [topRight] - The tint being applied to the top-right of the Game Object.
@@ -202,7 +202,7 @@ var Tint = {
      * @type {boolean}
      * @webglOnly
      * @readonly
-     * @since 3.11.0
+     * 
      */
     isTinted: {
 

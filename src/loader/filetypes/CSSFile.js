@@ -17,7 +17,7 @@ var IsPlainObject = require('../../utils/object/IsPlainObject');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.17.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.CSSFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -60,7 +60,7 @@ var CSSFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.CSSFile#onProcess
-     * @since 3.17.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -124,7 +124,7 @@ var CSSFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#css
  * @fires Phaser.Loader.Events#ADD
- * @since 3.17.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.CSSFileConfig|Phaser.Types.Loader.FileTypes.CSSFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.css`, i.e. if `key` was "alien" then the URL will be "alien.css".

@@ -7,6 +7,6 @@
  *
  * @event Phaser.Core.Events#CONTEXT_LOST
  * @type {string}
- * @since 3.19.0
+ * 
  */
 module.exports = 'contextlost';

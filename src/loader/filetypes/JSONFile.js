@@ -78,7 +78,7 @@ var JSONFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.JSONFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         if (this.state !== CONST.FILE_POPULATED) {

@@ -37,7 +37,7 @@ var Polygon = new Class({
              * @name Phaser.Geom.Polygon#type
              * @type {number}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.type = GEOM_CONST.POLYGON;
 
@@ -180,7 +180,7 @@ var Polygon = new Class({
      * based on the given quantity or stepRate values.
      *
      * @method Phaser.Geom.Polygon#getPoints
-     * @since 3.12.0
+     * 
      *
      * @generic {Phaser.Geom.Point[]} O - [output,$return]
      *

@@ -159,7 +159,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_lineSpacing
              * @type {number}
              * @private
-             * @since 3.60.0
+             * 
              */
             this._lineSpacing = 0;
 
@@ -179,7 +179,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_align
              * @type {number}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._align = align;
 
@@ -199,7 +199,7 @@ var BitmapText = new Class({
              * @name Phaser.GameObjects.BitmapText#_dirty
              * @type {boolean}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._dirty = true;
 
@@ -301,7 +301,7 @@ var BitmapText = new Class({
      * This only has any effect if this BitmapText contains more than one line of text.
      *
      * @method Phaser.GameObjects.BitmapText#setLeftAlign
-     * @since 3.11.0
+     * 
      *
      * @return {this} This BitmapText Object.
      */
@@ -318,7 +318,7 @@ var BitmapText = new Class({
      * This only has any effect if this BitmapText contains more than one line of text.
      *
      * @method Phaser.GameObjects.BitmapText#setCenterAlign
-     * @since 3.11.0
+     * 
      *
      * @return {this} This BitmapText Object.
      */
@@ -335,7 +335,7 @@ var BitmapText = new Class({
      * This only has any effect if this BitmapText contains more than one line of text.
      *
      * @method Phaser.GameObjects.BitmapText#setRightAlign
-     * @since 3.11.0
+     * 
      *
      * @return {this} This BitmapText Object.
      */
@@ -398,7 +398,7 @@ var BitmapText = new Class({
      * Only has an effect if this BitmapText object contains multiple lines of text.
      *
      * @method Phaser.GameObjects.BitmapText#setLineSpacing
-     * @since 3.60.0
+     * 
      *
      * @param {number} [spacing=0] - The amount of space to add between each line in multi-line text.
      *
@@ -773,7 +773,7 @@ var BitmapText = new Class({
      * unless overridden via the arguments.
      *
      * @method Phaser.GameObjects.BitmapText#setFont
-     * @since 3.11.0
+     * 
      *
      * @param {string} font - The key of the font to use from the Bitmap Font cache.
      * @param {number} [size] - The font size of this Bitmap Text. If not specified the current size will be used.
@@ -881,7 +881,7 @@ var BitmapText = new Class({
      *
      * @name Phaser.GameObjects.BitmapText#align
      * @type {number}
-     * @since 3.11.0
+     * 
      */
     align: {
 
@@ -972,7 +972,7 @@ var BitmapText = new Class({
      *
      * @name Phaser.GameObjects.BitmapText#lineSpacing
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     lineSpacing: {
 
@@ -1064,7 +1064,7 @@ var BitmapText = new Class({
      * @name Phaser.GameObjects.BitmapText#displayWidth
      * @type {number}
      * @readonly
-     * @since 3.60.0
+     * 
      */
     displayWidth: {
 
@@ -1094,7 +1094,7 @@ var BitmapText = new Class({
      * @name Phaser.GameObjects.BitmapText#displayHeight
      * @type {number}
      * @readonly
-     * @since 3.60.0
+     * 
      */
     displayHeight: {
 
@@ -1161,7 +1161,7 @@ var BitmapText = new Class({
  *
  * @name Phaser.GameObjects.BitmapText.ALIGN_LEFT
  * @type {number}
- * @since 3.11.0
+ * 
  */
 BitmapText.ALIGN_LEFT = 0;
 
@@ -1170,7 +1170,7 @@ BitmapText.ALIGN_LEFT = 0;
  *
  * @name Phaser.GameObjects.BitmapText.ALIGN_CENTER
  * @type {number}
- * @since 3.11.0
+ * 
  */
 BitmapText.ALIGN_CENTER = 1;
 
@@ -1179,7 +1179,7 @@ BitmapText.ALIGN_CENTER = 1;
  *
  * @name Phaser.GameObjects.BitmapText.ALIGN_RIGHT
  * @type {number}
- * @since 3.11.0
+ * 
  */
 BitmapText.ALIGN_RIGHT = 2;
 
@@ -1207,7 +1207,7 @@ BitmapText.ParseFromAtlas = ParseFromAtlas;
  * Parse an XML font to Bitmap Font data for the Bitmap Font cache.
  *
  * @method Phaser.GameObjects.BitmapText.ParseXMLBitmapFont
- * @since 3.17.0
+ * 
  *
  * @param {XMLDocument} xml - The XML Document to parse the font from.
  * @param {Phaser.Textures.Frame} frame - The texture frame to take into account when creating the uv data.

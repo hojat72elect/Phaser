@@ -83,7 +83,7 @@ var Events = require('./events');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Time
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene which owns this Timeline.
  * @param {Phaser.Types.Time.TimelineEventConfig|Phaser.Types.Time.TimelineEventConfig[]} [config] - The configuration object for this Timeline Event, or an array of them.
@@ -102,7 +102,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#scene
              * @type {Phaser.Scene}
-             * @since 3.60.0
+             * 
              */
             this.scene = scene;
 
@@ -111,7 +111,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#systems
              * @type {Phaser.Scenes.Systems}
-             * @since 3.60.0
+             * 
              */
             this.systems = scene.sys;
 
@@ -122,7 +122,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#elapsed
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.elapsed = 0;
 
@@ -156,7 +156,7 @@ var Timeline = new Class({
              * @name Phaser.Time.Timeline#paused
              * @type {boolean}
              * @default true
-             * @since 3.60.0
+             * 
              */
             this.paused = true;
 
@@ -174,7 +174,7 @@ var Timeline = new Class({
              * @name Phaser.Time.Timeline#complete
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.complete = false;
 
@@ -187,7 +187,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#totalComplete
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.totalComplete = 0;
 
@@ -218,7 +218,7 @@ var Timeline = new Class({
              *
              * @name Phaser.Time.Timeline#events
              * @type {Phaser.Types.Time.TimelineEvent[]}
-             * @since 3.60.0
+             * 
              */
             this.events = [];
 
@@ -237,7 +237,7 @@ var Timeline = new Class({
      * Updates the elapsed time counter, if this Timeline is not paused.
      *
      * @method Phaser.Time.Timeline#preUpdate
-     * @since 3.60.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -269,7 +269,7 @@ var Timeline = new Class({
      *
      * @method Phaser.Time.Timeline#update
      * @fires Phaser.Time.Events#COMPLETE
-     * @since 3.60.0
+     * 
      *
      * @param {number} time - The current time. Either a High Resolution Timer value if it comes from Request Animation Frame, or Date.now if using SetTimeout.
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
@@ -381,7 +381,7 @@ var Timeline = new Class({
      * If you wish to resume a paused Timeline, then use the `Timeline.resume` method instead.
      *
      * @method Phaser.Time.Timeline#play
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [fromStart=true] - Reset this Timeline back to the start before playing.
      *
@@ -415,7 +415,7 @@ var Timeline = new Class({
      * Note that if any Tweens have been started prior to calling this method, they will **not** be paused as well.
      *
      * @method Phaser.Time.Timeline#pause
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Timeline instance.
      */
@@ -474,7 +474,7 @@ var Timeline = new Class({
      * If you need to reset the Timeline to the start, then call the `Timeline.reset` method.
      *
      * @method Phaser.Time.Timeline#resume
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Timeline instance.
      */
@@ -502,7 +502,7 @@ var Timeline = new Class({
      * If you wish to reset the Timeline to the start, then call the `Timeline.reset` method.
      *
      * @method Phaser.Time.Timeline#stop
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Timeline instance.
      */
@@ -527,7 +527,7 @@ var Timeline = new Class({
      * Any Tweens that were currently running by this Timeline will be stopped.
      *
      * @method Phaser.Time.Timeline#reset
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [loop=false] - Set to true if you do not want to reset the loop counters.
      *
@@ -578,7 +578,7 @@ var Timeline = new Class({
      * ```
      *
      * @method Phaser.Time.Timeline#add
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Time.TimelineEventConfig|Phaser.Types.Time.TimelineEventConfig[]} config - The configuration object for this Timeline Event, or an array of them.
      *
@@ -647,7 +647,7 @@ var Timeline = new Class({
      * Any Tweens that were currently running as a result of this Timeline will be stopped.
      *
      * @method Phaser.Time.Timeline#clear
-     * @since 3.60.0
+     * 
      *
      * @return {this} This Timeline instance.
      */
@@ -676,7 +676,7 @@ var Timeline = new Class({
      * A Timeline is playing if it is not paused or not complete.
      *
      * @method Phaser.Time.Timeline#isPlaying
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this Timeline is playing, otherwise `false`.
      */
@@ -698,7 +698,7 @@ var Timeline = new Class({
      * not the 'duration' of the events (as this is unknown to the Timeline).
      *
      * @method Phaser.Time.Timeline#getProgress
-     * @since 3.60.0
+     * 
      *
      * @return {number} A number between 0 and 1 representing the progress of this Timeline.
      */
@@ -719,7 +719,7 @@ var Timeline = new Class({
      * also call it directly should you need to destroy the Timeline earlier.
      *
      * @method Phaser.Time.Timeline#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         var eventEmitter = this.systems.events;
@@ -810,7 +810,7 @@ var Timeline = new Class({
  * {@link Phaser.Types.Time.TimelineEventConfig} typedef for more details.
  *
  * @method Phaser.GameObjects.GameObjectFactory#timeline
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Types.Time.TimelineEventConfig|Phaser.Types.Time.TimelineEventConfig[]} config - The configuration object for this Timeline Event, or an array of them.
  *

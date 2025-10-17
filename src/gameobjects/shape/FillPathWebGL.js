@@ -4,7 +4,7 @@ var Utils = require('../../renderer/webgl/Utils');
  * Renders a filled path for the given Shape.
  *
  * @method Phaser.GameObjects.Shape#FillPathWebGL
- * @since 3.13.0
+ * 
  * @private
  *
  * @param {Phaser.Renderer.WebGL.WebGLPipeline} pipeline - The WebGL Pipeline used to render this Shape.

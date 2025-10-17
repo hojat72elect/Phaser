@@ -37,7 +37,7 @@ var TextureCrop = {
      *
      * @name Phaser.GameObjects.Components.TextureCrop#isCropped
      * @type {boolean}
-     * @since 3.11.0
+     * 
      */
     isCropped: false,
 
@@ -67,7 +67,7 @@ var TextureCrop = {
      * the renderer to skip several internal calculations.
      *
      * @method Phaser.GameObjects.Components.TextureCrop#setCrop
-     * @since 3.11.0
+     * 
      *
      * @param {(number|Phaser.Geom.Rectangle)} [x] - The x coordinate to start the crop from. Cannot be negative or exceed the Frame width. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
      * @param {number} [y] - The y coordinate to start the crop from. Cannot be negative or exceed the Frame height.
@@ -180,7 +180,7 @@ var TextureCrop = {
      *
      * @method Phaser.GameObjects.Components.TextureCrop#resetCropObject
      * @private
-     * @since 3.12.0
+     * 
      *
      * @return {object} The crop object.
      */

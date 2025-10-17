@@ -5,7 +5,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.CIRCLE
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     CIRCLE: 0,
 
@@ -14,7 +14,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.ELLIPSE
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     ELLIPSE: 1,
 
@@ -23,7 +23,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.LINE
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     LINE: 2,
 
@@ -32,7 +32,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.POINT
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     POINT: 3,
 
@@ -41,7 +41,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.POLYGON
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     POLYGON: 4,
 
@@ -50,7 +50,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.RECTANGLE
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     RECTANGLE: 5,
 
@@ -59,7 +59,7 @@ var GEOM_CONST = {
      *
      * @name Phaser.Geom.TRIANGLE
      * @type {number}
-     * @since 3.19.0
+     * 
      */
     TRIANGLE: 6
 

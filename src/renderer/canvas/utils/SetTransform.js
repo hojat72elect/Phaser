@@ -16,7 +16,7 @@ var GetCalcMatrix = require('../../../gameobjects/GetCalcMatrix');
  * This function is only meant to be used internally. Most of the Canvas Renderer classes use it.
  *
  * @function Phaser.Renderer.Canvas.SetTransform
- * @since 3.12.0
+ * 
  *
  * @param {Phaser.Renderer.Canvas.CanvasRenderer} renderer - A reference to the current active Canvas renderer.
  * @param {CanvasRenderingContext2D} ctx - The canvas context to set the transform on.

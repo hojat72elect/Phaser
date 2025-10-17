@@ -116,7 +116,7 @@ var SpineFile = new Class({
      * Called by each File when it finishes loading.
      *
      * @method Phaser.Loader.FileTypes.SpineFile#onFileComplete
-     * @since 3.19.0
+     * 
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
@@ -185,7 +185,7 @@ var SpineFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.SpineFile#addToCache
-     * @since 3.19.0
+     * 
      */
     addToCache: function () {
         if (this.isReadyToProcess()) {

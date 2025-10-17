@@ -12,7 +12,7 @@
  *
  * @event Phaser.GameObjects.Events#VIDEO_TEXTURE
  * @type {string}
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.Video} video - The Video Game Object that emitted the event.
  * @param {Phaser.Textures.Texture} texture - The Texture that was created.

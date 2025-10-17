@@ -22,7 +22,7 @@ var GameObjectFactory = require('../../GameObjectFactory');
  * Modify these values to create more interesting shapes.
  *
  * @method Phaser.GameObjects.GameObjectFactory#star
- * @since 3.13.0
+ * 
  *
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
  * @param {number} [y=0] - The vertical position of this Game Object in the world.

@@ -127,7 +127,7 @@ var Flash = new Class({
              * @type {number}
              * @private
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this._alpha;
 

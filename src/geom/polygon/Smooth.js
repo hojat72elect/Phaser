@@ -19,7 +19,7 @@ var copy = function (out, a) {
  * Takes a Polygon object and applies Chaikin's smoothing algorithm on its points.
  *
  * @function Phaser.Geom.Polygon.Smooth
- * @since 3.13.0
+ * 
  *
  * @generic {Phaser.Geom.Polygon} O - [polygon,$return]
  *

@@ -26,7 +26,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [color=0xffffff] - The color of the glow effect as a number value.
@@ -58,7 +58,7 @@ var Glow = new Class({
              *
              * @name Phaser.FX.Glow#outerStrength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.outerStrength = outerStrength;
 
@@ -67,7 +67,7 @@ var Glow = new Class({
              *
              * @name Phaser.FX.Glow#innerStrength
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.innerStrength = innerStrength;
 
@@ -76,7 +76,7 @@ var Glow = new Class({
              *
              * @name Phaser.FX.Glow#knockout
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.knockout = knockout;
 
@@ -85,7 +85,7 @@ var Glow = new Class({
              *
              * @name Phaser.FX.Glow#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 1, 1, 1];
 
@@ -99,7 +99,7 @@ var Glow = new Class({
      *
      * @name Phaser.FX.Glow#color
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color: {
 

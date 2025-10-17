@@ -221,7 +221,7 @@ var WebAudioSoundManager = new Class({
      * @method Phaser.Sound.WebAudioSoundManager#decodeAudio
      * @fires Phaser.Sound.Events#DECODED
      * @fires Phaser.Sound.Events#DECODED_ALL
-     * @since 3.18.0
+     * 
      *
      * @param {(Phaser.Types.Sound.DecodeAudioConfig[]|string)} [audioKey] - The string-based key to be used to reference the decoded audio in the audio cache, or an array of audio config objects.
      * @param {(ArrayBuffer|string)} [audioData] - The audio data, either a base64 encoded string, an audio media-type data uri, or an ArrayBuffer instance.
@@ -285,7 +285,7 @@ var WebAudioSoundManager = new Class({
      * Calling this method does nothing on HTML5Audio.
      *
      * @method Phaser.Sound.WebAudioSoundManager#setListenerPosition
-     * @since 3.60.0
+     * 
      *
      * @param {number} [x] - The x position of the Spatial Audio listener.
      * @param {number} [y] - The y position of the Spatial Audio listener.

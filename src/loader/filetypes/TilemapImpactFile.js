@@ -15,7 +15,7 @@ var TILEMAP_FORMATS = require('../../tilemaps/Formats');
  * @extends Phaser.Loader.File
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.7.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.TilemapImpactFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -40,7 +40,7 @@ var TilemapImpactFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.TilemapImpactFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         var tiledata = {format: TILEMAP_FORMATS.WELTMEISTER, data: this.data};
@@ -111,7 +111,7 @@ var TilemapImpactFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#tilemapImpact
  * @fires Phaser.Loader.Events#ADD
- * @since 3.7.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.TilemapImpactFileConfig|Phaser.Types.Loader.FileTypes.TilemapImpactFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string} [url] - The absolute or relative URL to load this file from. If undefined or `null` it will be set to `<key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".

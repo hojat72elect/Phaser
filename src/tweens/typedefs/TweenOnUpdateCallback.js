@@ -1,6 +1,6 @@
 /**
  * @callback Phaser.Types.Tweens.TweenOnUpdateCallback
- * @since 3.18.0
+ * 
  *
  * @param {Phaser.Tweens.Tween} tween - A reference to the Tween.
  * @param {any} target - The current target of the Tween. If this Tween has multiple targets, this will be a reference to just the single one being updated prior to this callback.

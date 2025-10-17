@@ -1691,7 +1691,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Matter.World#renderBodies
      * @private
-     * @since 3.14.0
+     * 
      *
      * @param {array} bodies - An array of bodies from the localWorld.
      */
@@ -1945,7 +1945,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Matter.World#renderJoints
      * @private
-     * @since 3.14.0
+     * 
      */
     renderJoints: function () {
         var graphics = this.debugGraphic;
@@ -2058,7 +2058,7 @@ var World = new Class({
      * later in the same game.
      *
      * @method Phaser.Physics.Matter.World#resetCollisionIDs
-     * @since 3.17.0
+     * 
      */
     resetCollisionIDs: function () {
         Body._nextCollidingGroupId = 1;

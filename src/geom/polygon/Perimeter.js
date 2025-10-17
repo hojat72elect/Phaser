@@ -5,7 +5,7 @@ var Line = require('../line/Line');
  * Returns the perimeter of the given Polygon.
  *
  * @function Phaser.Geom.Polygon.Perimeter
- * @since 3.12.0
+ * 
  *
  * @param {Phaser.Geom.Polygon} polygon - The Polygon to get the perimeter of.
  *

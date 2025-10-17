@@ -79,7 +79,7 @@ var GameObject = new Class({
              *
              * @name Phaser.GameObjects.GameObject#state
              * @type {(number|string)}
-             * @since 3.16.0
+             * 
              */
             this.state = 0;
 
@@ -251,7 +251,7 @@ var GameObject = new Class({
      * If you need to store complex data about your Game Object, look at using the Data Component instead.
      *
      * @method Phaser.GameObjects.GameObject#setState
-     * @since 3.16.0
+     * 
      *
      * @param {(number|string)} value - The state of the Game Object.
      *
@@ -480,7 +480,7 @@ var GameObject = new Class({
      * If want to completely remove interaction from this Game Object then use `removeInteractive` instead.
      *
      * @method Phaser.GameObjects.GameObject#disableInteractive
-     * @since 3.7.0
+     * 
      *
      * @param {boolean} [resetCursor=false] - Should the currently active Input cursor, if any, be reset to the default cursor?
      *
@@ -517,7 +517,7 @@ var GameObject = new Class({
      * shape is a Rectangle, which it is by default.)
      *
      * @method Phaser.GameObjects.GameObject#removeInteractive
-     * @since 3.7.0
+     * 
      *
      * @param {boolean} [resetCursor=false] - Should the currently active Input cursor, if any, be reset to the default cursor?
      *

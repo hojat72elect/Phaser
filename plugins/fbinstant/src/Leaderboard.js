@@ -19,7 +19,7 @@ var LeaderboardScore = require('./LeaderboardScore');
  * @memberOf Phaser
  * @constructor
  * @extends Phaser.Events.EventEmitter
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.FacebookInstantGamesPlugin} plugin - A reference to the Facebook Instant Games Plugin.
  * @param {any} data - An Instant Game leaderboard instance.
@@ -38,7 +38,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#plugin
              * @type {Phaser.FacebookInstantGamesPlugin}
-             * @since 3.13.0
+             * 
              */
             this.plugin = plugin;
 
@@ -47,7 +47,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#ref
              * @type {any}
-             * @since 3.13.0
+             * 
              */
             this.ref = data;
 
@@ -56,7 +56,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#name
              * @type {string}
-             * @since 3.13.0
+             * 
              */
             this.name = data.getName();
 
@@ -65,7 +65,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#contextID
              * @type {string}
-             * @since 3.13.0
+             * 
              */
             this.contextID = data.getContextID();
 
@@ -75,7 +75,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#entryCount
              * @type {integer}
-             * @since 3.13.0
+             * 
              */
             this.entryCount = 0;
 
@@ -85,7 +85,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#playerScore
              * @type {LeaderboardScore}
-             * @since 3.13.0
+             * 
              */
             this.playerScore = null;
 
@@ -96,7 +96,7 @@ var Leaderboard = new Class({
              *
              * @name Phaser.FacebookInstantGamesLeaderboard#scores
              * @type {LeaderboardScore[]}
-             * @since 3.13.0
+             * 
              */
             this.scores = [];
 
@@ -111,7 +111,7 @@ var Leaderboard = new Class({
      * When the call completes this Leaderboard will emit the `getentrycount` event along with the count and name of the Leaderboard.
      *
      * @method Phaser.FacebookInstantGamesLeaderboard#getEntryCount
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Leaderboard instance.
      */
@@ -141,7 +141,7 @@ var Leaderboard = new Class({
      * If the save fails the event will send `null` as the score value.
      *
      * @method Phaser.FacebookInstantGamesLeaderboard#setScore
-     * @since 3.13.0
+     * 
      *
      * @param {integer} score - The new score for the player. Must be a 64-bit integer number.
      * @param {(string|any)} [data] - Metadata to associate with the stored score. Must be less than 2KB in size. If an object is given it will be passed to `JSON.stringify`.
@@ -187,7 +187,7 @@ var Leaderboard = new Class({
      * If the player has not yet saved a score, the event will send `null` as the score value, and `playerScore` will be set to `null` as well.
      *
      * @method Phaser.FacebookInstantGamesLeaderboard#getPlayerScore
-     * @since 3.13.0
+     * 
      *
      * @return {this} This Leaderboard instance.
      */
@@ -220,7 +220,7 @@ var Leaderboard = new Class({
      * When the call completes this Leaderboard will emit the `getscores` event along with an array of LeaderboardScore entries and the name of the Leaderboard.
      *
      * @method Phaser.FacebookInstantGamesLeaderboard#getScores
-     * @since 3.13.0
+     * 
      *
      * @param {integer} [count=10] - The number of entries to attempt to fetch from the leaderboard. Currently, up to a maximum of 100 entries may be fetched per query.
      * @param {integer} [offset=0] - The offset from the top of the leaderboard that entries will be fetched from.
@@ -261,7 +261,7 @@ var Leaderboard = new Class({
      * When the call completes this Leaderboard will emit the `getconnectedscores` event along with an array of LeaderboardScore entries and the name of the Leaderboard.
      *
      * @method Phaser.FacebookInstantGamesLeaderboard#getConnectedScores
-     * @since 3.16.0
+     * 
      *
      * @return {this} This Leaderboard instance.
      */

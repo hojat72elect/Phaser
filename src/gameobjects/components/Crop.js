@@ -2,7 +2,7 @@
  * Provides methods used for getting and setting the texture of a Game Object.
  *
  * @namespace Phaser.GameObjects.Components.Crop
- * @since 3.12.0
+ * 
  */
 
 var Crop = {
@@ -32,7 +32,7 @@ var Crop = {
      *
      * @name Phaser.GameObjects.Components.Crop#isCropped
      * @type {boolean}
-     * @since 3.11.0
+     * 
      */
     isCropped: false,
 
@@ -62,7 +62,7 @@ var Crop = {
      * the renderer to skip several internal calculations.
      *
      * @method Phaser.GameObjects.Components.Crop#setCrop
-     * @since 3.11.0
+     * 
      *
      * @param {(number|Phaser.Geom.Rectangle)} [x] - The x coordinate to start the crop from. Cannot be negative or exceed the Frame width. Or a Phaser.Geom.Rectangle object, in which case the rest of the arguments are ignored.
      * @param {number} [y] - The y coordinate to start the crop from. Cannot be negative or exceed the Frame height.
@@ -94,7 +94,7 @@ var Crop = {
      *
      * @method Phaser.GameObjects.Components.Crop#resetCropObject
      * @private
-     * @since 3.12.0
+     * 
      *
      * @return {object} The crop object.
      */

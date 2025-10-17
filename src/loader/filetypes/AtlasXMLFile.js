@@ -18,7 +18,7 @@ var XMLFile = require('./XMLFile');
  * @extends Phaser.Loader.MultiFile
  * @memberof Phaser.Loader.FileTypes
  * @constructor
- * @since 3.7.0
+ * 
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
  * @param {(string|Phaser.Types.Loader.FileTypes.AtlasXMLFileConfig)} key - The key to use for this file, or a file configuration object.
@@ -73,7 +73,7 @@ var AtlasXMLFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.AtlasXMLFile#addToCache
-     * @since 3.7.0
+     * 
      */
     addToCache: function () {
         if (this.isReadyToProcess()) {
@@ -180,7 +180,7 @@ var AtlasXMLFile = new Class({
  *
  * @method Phaser.Loader.LoaderPlugin#atlasXML
  * @fires Phaser.Loader.Events#ADD
- * @since 3.7.0
+ * 
  *
  * @param {(string|Phaser.Types.Loader.FileTypes.AtlasXMLFileConfig|Phaser.Types.Loader.FileTypes.AtlasXMLFileConfig[])} key - The key to use for this file, or a file configuration object, or array of them.
  * @param {string|string[]} [textureURL] - The absolute or relative URL to load the texture image file from. If undefined or `null` it will be set to `<key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".

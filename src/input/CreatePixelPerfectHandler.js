@@ -4,7 +4,7 @@
  * Access via `InputPlugin.makePixelPerfect` rather than calling it directly.
  *
  * @function Phaser.Input.CreatePixelPerfectHandler
- * @since 3.10.0
+ * 
  *
  * @param {Phaser.Textures.TextureManager} textureManager - A reference to the Texture Manager.
  * @param {number} alphaTolerance - The alpha level that the pixel should be above to be included as a successful interaction.

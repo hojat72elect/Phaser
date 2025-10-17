@@ -84,7 +84,7 @@ var DataManager = new Class({
              * @name Phaser.Data.DataManager#values
              * @type {Object.<string, *>}
              * @default {}
-             * @since 3.10.0
+             * 
              */
             this.values = {};
 
@@ -325,7 +325,7 @@ var DataManager = new Class({
      * @fires Phaser.Data.Events#CHANGE_DATA
      * @fires Phaser.Data.Events#CHANGE_DATA_KEY
      * @private
-     * @since 3.10.0
+     * 
      *
      * @param {string} key - The key to set the value for.
      * @param {*} data - The value to set.
@@ -479,7 +479,7 @@ var DataManager = new Class({
      * @method Phaser.Data.DataManager#removeValue
      * @private
      * @fires Phaser.Data.Events#REMOVE_DATA
-     * @since 3.10.0
+     * 
      *
      * @param {string} key - The key to set the value for.
      *

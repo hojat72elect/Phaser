@@ -68,7 +68,7 @@ var GLSLFile = new Class({
      * This method controls what extra work this File does with its loaded data.
      *
      * @method Phaser.Loader.FileTypes.GLSLFile#onProcess
-     * @since 3.7.0
+     * 
      */
     onProcess: function () {
         this.state = CONST.FILE_PROCESSING;
@@ -82,7 +82,7 @@ var GLSLFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.GLSLFile#addToCache
-     * @since 3.17.0
+     * 
      */
     addToCache: function () {
         var data = this.data.split('\n');
@@ -129,7 +129,7 @@ var GLSLFile = new Class({
      * Returns the name of the shader from the header block.
      *
      * @method Phaser.Loader.FileTypes.GLSLFile#getShaderName
-     * @since 3.17.0
+     * 
      *
      * @param {string[]} headerSource - The header data.
      *
@@ -151,7 +151,7 @@ var GLSLFile = new Class({
      * Returns the type of the shader from the header block.
      *
      * @method Phaser.Loader.FileTypes.GLSLFile#getShaderType
-     * @since 3.17.0
+     * 
      *
      * @param {string[]} headerSource - The header data.
      *
@@ -173,7 +173,7 @@ var GLSLFile = new Class({
      * Returns the shader uniforms from the header block.
      *
      * @method Phaser.Loader.FileTypes.GLSLFile#getShaderUniforms
-     * @since 3.17.0
+     * 
      *
      * @param {string[]} headerSource - The header data.
      *
@@ -208,7 +208,7 @@ var GLSLFile = new Class({
      *
      * @method Phaser.Loader.FileTypes.GLSLFile#extractBlock
      * @private
-     * @since 3.17.0
+     * 
      *
      * @param {string[]} data - The array of shader data to process.
      * @param {number} offset - The offset to start processing from.

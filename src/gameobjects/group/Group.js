@@ -126,7 +126,7 @@ var Group = new Class({
              * @name Phaser.GameObjects.Group#name
              * @type {string}
              * @default ''
-             * @since 3.18.0
+             * 
              */
             this.name = GetFastValue(config, 'name', '');
 

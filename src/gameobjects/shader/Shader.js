@@ -55,7 +55,7 @@ var RenderEvents = require('../../renderer/events');
  * @memberof Phaser.GameObjects
  * @constructor
  * @webglOnly
- * @since 3.17.0
+ * 
  *
  * @extends Phaser.GameObjects.Components.ComputedSize
  * @extends Phaser.GameObjects.Components.Depth
@@ -115,7 +115,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#blendMode
              * @type {number}
              * @private
-             * @since 3.17.0
+             * 
              */
             this.blendMode = -1;
 
@@ -125,7 +125,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#shader
              * @type {Phaser.Display.BaseShader}
-             * @since 3.17.0
+             * 
              */
             this.shader;
 
@@ -137,7 +137,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#renderer
              * @type {(Phaser.Renderer.Canvas.CanvasRenderer|Phaser.Renderer.WebGL.WebGLRenderer)}
-             * @since 3.17.0
+             * 
              */
             this.renderer = renderer;
 
@@ -146,7 +146,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#gl
              * @type {WebGLRenderingContext}
-             * @since 3.17.0
+             * 
              */
             this.gl = renderer.gl;
 
@@ -155,7 +155,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#vertexData
              * @type {ArrayBuffer}
-             * @since 3.17.0
+             * 
              */
             this.vertexData = new ArrayBuffer(6 * (Float32Array.BYTES_PER_ELEMENT * 2));
 
@@ -164,7 +164,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#vertexBuffer
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
-             * @since 3.17.0
+             * 
              */
             this.vertexBuffer = renderer.createVertexBuffer(this.vertexData.byteLength, this.gl.STREAM_DRAW);
 
@@ -195,7 +195,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#program
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLProgramWrapper}
-             * @since 3.17.0
+             * 
              */
             this.program = null;
 
@@ -204,7 +204,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#bytes
              * @type {Uint8Array}
-             * @since 3.17.0
+             * 
              */
             this.bytes = new Uint8Array(this.vertexData);
 
@@ -213,7 +213,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#vertexViewF32
              * @type {Float32Array}
-             * @since 3.17.0
+             * 
              */
             this.vertexViewF32 = new Float32Array(this.vertexData);
 
@@ -223,7 +223,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_tempMatrix1
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.17.0
+             * 
              */
             this._tempMatrix1 = new TransformMatrix();
 
@@ -233,7 +233,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_tempMatrix2
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.17.0
+             * 
              */
             this._tempMatrix2 = new TransformMatrix();
 
@@ -243,7 +243,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_tempMatrix3
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.17.0
+             * 
              */
             this._tempMatrix3 = new TransformMatrix();
 
@@ -253,7 +253,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#viewMatrix
              * @type {Float32Array}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.viewMatrix = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
@@ -263,7 +263,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#projectionMatrix
              * @type {Float32Array}
              * @readonly
-             * @since 3.17.0
+             * 
              */
             this.projectionMatrix = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
@@ -282,7 +282,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#uniforms
              * @type {any}
-             * @since 3.17.0
+             * 
              */
             this.uniforms = {};
 
@@ -292,7 +292,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#pointer
              * @type {Phaser.Input.Pointer}
-             * @since 3.17.0
+             * 
              */
             this.pointer = null;
 
@@ -302,7 +302,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_rendererWidth
              * @type {number}
              * @private
-             * @since 3.17.0
+             * 
              */
             this._rendererWidth = renderer.width;
 
@@ -312,7 +312,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_rendererHeight
              * @type {number}
              * @private
-             * @since 3.17.0
+             * 
              */
             this._rendererHeight = renderer.height;
 
@@ -322,7 +322,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#_textureCount
              * @type {number}
              * @private
-             * @since 3.17.0
+             * 
              */
             this._textureCount = 0;
 
@@ -332,7 +332,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#framebuffer
              * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLFramebufferWrapper}
-             * @since 3.19.0
+             * 
              */
             this.framebuffer = null;
 
@@ -342,7 +342,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#glTexture
              * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.19.0
+             * 
              */
             this.glTexture = null;
 
@@ -356,7 +356,7 @@ var Shader = new Class({
              * @name Phaser.GameObjects.Shader#renderToTexture
              * @type {boolean}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.renderToTexture = false;
 
@@ -367,7 +367,7 @@ var Shader = new Class({
              *
              * @name Phaser.GameObjects.Shader#texture
              * @type {Phaser.Textures.Texture}
-             * @since 3.19.0
+             * 
              */
             this.texture = null;
 
@@ -430,7 +430,7 @@ var Shader = new Class({
      * to use a specific frame from a Render Texture.
      *
      * @method Phaser.GameObjects.Shader#setRenderToTexture
-     * @since 3.19.0
+     * 
      *
      * @param {string} [key] - The unique key to store the texture as within the global Texture Manager.
      * @param {boolean} [flipY=false] - Does this texture need vertically flipping before rendering? This should usually be set to `true` if being fed from a buffer.
@@ -483,7 +483,7 @@ var Shader = new Class({
      * with the given source. Finally, the shader uniforms are initialized.
      *
      * @method Phaser.GameObjects.Shader#setShader
-     * @since 3.17.0
+     * 
      *
      * @param {(string|Phaser.Display.BaseShader)} key - The key of the shader to use from the shader cache, or a BaseShader instance.
      * @param {string[]} [textures] - Optional array of texture keys to bind to the iChannel0...3 uniforms. The textures must already exist in the Texture Manager.
@@ -571,7 +571,7 @@ var Shader = new Class({
      * automatically every frame. Call this method with no arguments to unbind the pointer.
      *
      * @method Phaser.GameObjects.Shader#setPointer
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.Input.Pointer} [pointer] - The Pointer to bind to this shader.
      *
@@ -589,7 +589,7 @@ var Shader = new Class({
      * as well as being bound to the `uProjectionMatrix` uniform.
      *
      * @method Phaser.GameObjects.Shader#projOrtho
-     * @since 3.17.0
+     * 
      *
      * @param {number} left - The left value.
      * @param {number} right - The right value.
@@ -639,7 +639,7 @@ var Shader = new Class({
      *
      * @method Phaser.GameObjects.Shader#initUniforms
      * @private
-     * @since 3.17.0
+     * 
      */
     initUniforms: function () {
         var map = this.renderer.glFuncMap;
@@ -683,7 +683,7 @@ var Shader = new Class({
      * see the `Shader.setSampler2D` method.
      *
      * @method Phaser.GameObjects.Shader#setSampler2DBuffer
-     * @since 3.19.0
+     * 
      *
      * @param {string} uniformKey - The key of the sampler2D uniform to be updated, i.e. `iChannel0`.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - A texture reference.
@@ -727,7 +727,7 @@ var Shader = new Class({
      * If you wish to use another Shader as a sampler2D input for this shader, see the `Shader.setSampler2DBuffer` method.
      *
      * @method Phaser.GameObjects.Shader#setSampler2D
-     * @since 3.17.0
+     * 
      *
      * @param {string} uniformKey - The key of the sampler2D uniform to be updated, i.e. `iChannel0`.
      * @param {string} textureKey - The key of the texture, as stored in the Texture Manager. Must already be loaded.
@@ -796,7 +796,7 @@ var Shader = new Class({
      * The change to the uniform will take effect the next time the shader is rendered.
      *
      * @method Phaser.GameObjects.Shader#setUniform
-     * @since 3.17.0
+     * 
      *
      * @param {string} key - The key of the uniform to modify. Use dots for deep properties, i.e. `resolution.value.x`.
      * @param {any} value - The value to set into the uniform.
@@ -813,7 +813,7 @@ var Shader = new Class({
      * Returns the uniform object for the given key, or `null` if the uniform couldn't be found.
      *
      * @method Phaser.GameObjects.Shader#getUniform
-     * @since 3.17.0
+     * 
      *
      * @param {string} key - The key of the uniform to return the value for.
      *
@@ -830,7 +830,7 @@ var Shader = new Class({
      * from a texture, only the full image. Also, lots of shaders expect textures to be power-of-two sized.
      *
      * @method Phaser.GameObjects.Shader#setChannel0
-     * @since 3.17.0
+     * 
      *
      * @param {string} textureKey - The key of the texture, as stored in the Texture Manager. Must already be loaded.
      * @param {any} [textureData] - Additional texture data.
@@ -848,7 +848,7 @@ var Shader = new Class({
      * from a texture, only the full image. Also, lots of shaders expect textures to be power-of-two sized.
      *
      * @method Phaser.GameObjects.Shader#setChannel1
-     * @since 3.17.0
+     * 
      *
      * @param {string} textureKey - The key of the texture, as stored in the Texture Manager. Must already be loaded.
      * @param {any} [textureData] - Additional texture data.
@@ -866,7 +866,7 @@ var Shader = new Class({
      * from a texture, only the full image. Also, lots of shaders expect textures to be power-of-two sized.
      *
      * @method Phaser.GameObjects.Shader#setChannel2
-     * @since 3.17.0
+     * 
      *
      * @param {string} textureKey - The key of the texture, as stored in the Texture Manager. Must already be loaded.
      * @param {any} [textureData] - Additional texture data.
@@ -884,7 +884,7 @@ var Shader = new Class({
      * from a texture, only the full image. Also, lots of shaders expect textures to be power-of-two sized.
      *
      * @method Phaser.GameObjects.Shader#setChannel3
-     * @since 3.17.0
+     * 
      *
      * @param {string} textureKey - The key of the texture, as stored in the Texture Manager. Must already be loaded.
      * @param {any} [textureData] - Additional texture data.
@@ -901,7 +901,7 @@ var Shader = new Class({
      *
      * @method Phaser.GameObjects.Shader#initSampler2D
      * @private
-     * @since 3.17.0
+     * 
      *
      * @param {any} uniform - The sampler2D uniform to process.
      */
@@ -958,7 +958,7 @@ var Shader = new Class({
      *
      * @method Phaser.GameObjects.Shader#syncUniforms
      * @private
-     * @since 3.17.0
+     * 
      */
     syncUniforms: function () {
         var gl = this.gl;
@@ -1015,7 +1015,7 @@ var Shader = new Class({
      * for flush to be called.
      *
      * @method Phaser.GameObjects.Shader#load
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.Components.TransformMatrix} [matrix2D] - The transform matrix to use during rendering.
      */
@@ -1082,7 +1082,7 @@ var Shader = new Class({
      * Sets the active shader, loads the vertex buffer and then draws.
      *
      * @method Phaser.GameObjects.Shader#flush
-     * @since 3.17.0
+     * 
      */
     flush: function () {
         //  Bind
@@ -1144,7 +1144,7 @@ var Shader = new Class({
      *
      * @method Phaser.GameObjects.Shader#setAlpha
      * @private
-     * @since 3.17.0
+     * 
      */
     setAlpha: function () {
     },
@@ -1155,7 +1155,7 @@ var Shader = new Class({
      *
      * @method Phaser.GameObjects.Shader#setBlendMode
      * @private
-     * @since 3.17.0
+     * 
      */
     setBlendMode: function () {
     },
@@ -1190,7 +1190,7 @@ var Shader = new Class({
      *
      * @method Phaser.GameObjects.Shader#preDestroy
      * @protected
-     * @since 3.17.0
+     * 
      */
     preDestroy: function () {
         var renderer = this.renderer;

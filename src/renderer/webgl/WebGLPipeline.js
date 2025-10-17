@@ -182,7 +182,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#activeBuffer
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLBufferWrapper}
-             * @since 3.60.0
+             * 
              */
             this.activeBuffer;
 
@@ -231,7 +231,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#active
              * @type {boolean}
-             * @since 3.10.0
+             * 
              */
             this.active = true;
 
@@ -275,7 +275,7 @@ var WebGLPipeline = new Class({
              * @name Phaser.Renderer.WebGL.WebGLPipeline#isPreFX
              * @type {boolean}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.isPreFX = false;
 
@@ -387,7 +387,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#batch
              * @type {Phaser.Types.Renderer.WebGL.WebGLPipelineBatchEntry[]}
-             * @since 3.60.0
+             * 
              */
             this.batch = [];
 
@@ -400,7 +400,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#currentBatch
              * @type {?Phaser.Types.Renderer.WebGL.WebGLPipelineBatchEntry}
-             * @since 3.60.0
+             * 
              */
             this.currentBatch = null;
 
@@ -413,7 +413,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#currentTexture
              * @type {?Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper}
-             * @since 3.60.0
+             * 
              */
             this.currentTexture = null;
 
@@ -437,7 +437,7 @@ var WebGLPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.WebGLPipeline#activeTextures
              * @type {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper[]}
-             * @since 3.60.0
+             * 
              */
             this.activeTextures = [];
 
@@ -461,7 +461,7 @@ var WebGLPipeline = new Class({
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#boot
      * @fires Phaser.Renderer.WebGL.Pipelines.Events#BOOT
-     * @since 3.11.0
+     * 
      */
     boot: function () {
         var i;
@@ -742,7 +742,7 @@ var WebGLPipeline = new Class({
      * and pushes the entry into the batch.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#createBatch
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The texture assigned to this batch entry.
      *
@@ -770,7 +770,7 @@ var WebGLPipeline = new Class({
      * increases the batch entry unit and maxUnit values by 1.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#addTextureToBatch
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The texture assigned to this batch entry.
      */
@@ -800,7 +800,7 @@ var WebGLPipeline = new Class({
      * advanced.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#pushBatch
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} texture - The texture assigned to this batch entry.
      *
@@ -893,7 +893,7 @@ var WebGLPipeline = new Class({
      * it will trigger a flush to happen.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#vertexAvailable
-     * @since 3.60.0
+     * 
      *
      * @return {number} The number of vertices that can still be added to the current batch before it will flush.
      */
@@ -992,7 +992,7 @@ var WebGLPipeline = new Class({
      * them back again.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#flipProjectionMatrix
-     * @since 3.60.0
+     * 
      *
      * @param {boolean} [flipY=true] - Flip the y and bottom values?
      */
@@ -1942,7 +1942,7 @@ var WebGLPipeline = new Class({
      * being set.
      *
      * @method Phaser.Renderer.WebGL.WebGLPipeline#setBoolean
-     * @since 3.60.0
+     * 
      *
      * @param {string} name - The name of the uniform to set.
      * @param {boolean} value - The new value of the `boolean` uniform.

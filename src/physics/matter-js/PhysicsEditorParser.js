@@ -17,7 +17,7 @@ var Vertices = require('./lib/geometry/Vertices');
  * created and exported with PhysicsEditor (https://www.codeandweb.com/physicseditor).
  *
  * @namespace Phaser.Physics.Matter.PhysicsEditorParser
- * @since 3.10.0
+ * 
  */
 var PhysicsEditorParser = {
 
@@ -25,7 +25,7 @@ var PhysicsEditorParser = {
      * Parses a body element exported by PhysicsEditor.
      *
      * @function Phaser.Physics.Matter.PhysicsEditorParser.parseBody
-     * @since 3.10.0
+     * 
      *
      * @param {number} x - The horizontal world location of the body.
      * @param {number} y - The vertical world location of the body.
@@ -70,7 +70,7 @@ var PhysicsEditorParser = {
      * Parses an element of the "fixtures" list exported by PhysicsEditor
      *
      * @function Phaser.Physics.Matter.PhysicsEditorParser.parseFixture
-     * @since 3.10.0
+     * 
      *
      * @param {object} fixtureConfig - The fixture object to parse.
      *
@@ -100,7 +100,7 @@ var PhysicsEditorParser = {
      * Parses the "vertices" lists exported by PhysicsEditor.
      *
      * @function Phaser.Physics.Matter.PhysicsEditorParser.parseVertices
-     * @since 3.10.0
+     * 
      *
      * @param {array} vertexSets - The vertex lists to parse.
      * @param {Phaser.Types.Physics.Matter.MatterBodyConfig} [options] - An optional Body configuration object that is used to set initial Body properties on creation.

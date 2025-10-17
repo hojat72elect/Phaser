@@ -164,7 +164,7 @@ var CanvasRenderer = new Class({
              *
              * @name Phaser.Renderer.Canvas.CanvasRenderer#snapshotState
              * @type {Phaser.Types.Renderer.Snapshot.SnapshotState}
-             * @since 3.16.0
+             * 
              */
             this.snapshotState = {
                 x: 0,
@@ -183,7 +183,7 @@ var CanvasRenderer = new Class({
              * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix1
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.11.0
+             * 
              */
             this._tempMatrix1 = new TransformMatrix();
 
@@ -193,7 +193,7 @@ var CanvasRenderer = new Class({
              * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix2
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.11.0
+             * 
              */
             this._tempMatrix2 = new TransformMatrix();
 
@@ -203,7 +203,7 @@ var CanvasRenderer = new Class({
              * @name Phaser.Renderer.Canvas.CanvasRenderer#_tempMatrix3
              * @private
              * @type {Phaser.GameObjects.Components.TransformMatrix}
-             * @since 3.11.0
+             * 
              */
             this._tempMatrix3 = new TransformMatrix();
 
@@ -270,7 +270,7 @@ var CanvasRenderer = new Class({
      * The event handler that manages the `resize` event dispatched by the Scale Manager.
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#onResize
-     * @since 3.16.0
+     * 
      *
      * @param {Phaser.Structs.Size} gameSize - The default Game Size object. This is the un-modified game dimensions.
      * @param {Phaser.Structs.Size} baseSize - The base Size object. The game dimensions multiplied by the resolution. The canvas width / height values match this.
@@ -329,7 +329,7 @@ var CanvasRenderer = new Class({
      * Changes the Canvas Rendering Context that all draw operations are performed against.
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#setContext
-     * @since 3.12.0
+     * 
      *
      * @param {?CanvasRenderingContext2D} [ctx] - The new Canvas Rendering Context to draw everything to. Leave empty to reset to the Game Canvas.
      *
@@ -535,7 +535,7 @@ var CanvasRenderer = new Class({
      * more expensive the larger the canvas size gets, so please be careful how you employ this in your game.
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#snapshotCanvas
-     * @since 3.19.0
+     * 
      *
      * @param {HTMLCanvasElement} canvas - The canvas to grab from.
      * @param {Phaser.Types.Renderer.Snapshot.SnapshotCallback} callback - The Function to invoke after the snapshot image is created.
@@ -603,7 +603,7 @@ var CanvasRenderer = new Class({
      * more expensive the larger the canvas size gets, so please be careful how you employ this in your game.
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#snapshotArea
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The x coordinate to grab from.
      * @param {number} y - The y coordinate to grab from.
@@ -643,7 +643,7 @@ var CanvasRenderer = new Class({
      * using less memory.
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#snapshotPixel
-     * @since 3.16.0
+     * 
      *
      * @param {number} x - The x coordinate of the pixel to get.
      * @param {number} y - The y coordinate of the pixel to get.
@@ -663,7 +663,7 @@ var CanvasRenderer = new Class({
      * Takes a Sprite Game Object, or any object that extends it, and draws it to the current context.
      *
      * @method Phaser.Renderer.Canvas.CanvasRenderer#batchSprite
-     * @since 3.12.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The texture based Game Object to draw.
      * @param {Phaser.Textures.Frame} frame - The frame to draw, doesn't have to be that owned by the Game Object.

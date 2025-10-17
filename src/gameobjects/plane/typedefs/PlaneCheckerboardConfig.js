@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.GameObjects.Plane.PlaneCheckerboardConfig
- * @since 3.60.0
+ * 
  *
  * @property {number} [color1=0xffffff] - The odd cell color, specified as a hex value.
  * @property {number} [color2=0x0000ff] - The even cell color, specified as a hex value.

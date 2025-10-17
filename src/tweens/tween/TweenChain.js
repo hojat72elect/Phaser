@@ -24,7 +24,7 @@ var TWEEN_CONST = require('./const');
  * @memberof Phaser.Tweens
  * @extends Phaser.Tweens.BaseTween
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {(Phaser.Tweens.TweenManager|Phaser.Tweens.TweenChain)} parent - A reference to the Tween Manager, or TweenChain, that owns this TweenChain.
  */
@@ -42,7 +42,7 @@ var TweenChain = new Class({
              *
              * @name Phaser.Tweens.TweenChain#currentTween
              * @type {Phaser.Tweens.Tween}
-             * @since 3.60.0
+             * 
              */
             this.currentTween = null;
 
@@ -51,7 +51,7 @@ var TweenChain = new Class({
              *
              * @name Phaser.Tweens.TweenChain#currentIndex
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.currentIndex = 0;
         },
@@ -63,7 +63,7 @@ var TweenChain = new Class({
      *
      * @method Phaser.Tweens.TweenChain#init
      * @fires Phaser.Tweens.Events#TWEEN_ACTIVE
-     * @since 3.60.0
+     * 
      *
      * @return {this} This TweenChain instance.
      */
@@ -94,7 +94,7 @@ var TweenChain = new Class({
      * Please note that Tweens will not manipulate any target property that begins with an underscore.
      *
      * @method Phaser.Tweens.TweenChain#add
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.TweenBuilderConfig[]|object[]} tweens - An array of Tween configuration objects for the Tweens in this chain.
      *
@@ -131,7 +131,7 @@ var TweenChain = new Class({
      * to the next tween in the chain. If there are no more tweens, this chain will complete.
      *
      * @method Phaser.Tweens.TweenChain#remove
-     * @since 3.60.0
+     * 
      * @override
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to be removed.
@@ -157,7 +157,7 @@ var TweenChain = new Class({
      * See if any of the tweens in this Tween Chain is currently acting upon the given target.
      *
      * @method Phaser.Tweens.TweenChain#hasTarget
-     * @since 3.60.0
+     * 
      *
      * @param {object} target - The target to check against this TweenChain.
      *
@@ -183,7 +183,7 @@ var TweenChain = new Class({
      * `onActive` callback and event again.
      *
      * @method Phaser.Tweens.TweenChain#restart
-     * @since 3.60.0
+     * 
      *
      * @return {this} This TweenChain instance.
      */
@@ -211,7 +211,7 @@ var TweenChain = new Class({
      * It will seek to position 0 and playback will start on the next frame.
      *
      * @method Phaser.Tweens.TweenChain#reset
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to be reset.
      *
@@ -229,7 +229,7 @@ var TweenChain = new Class({
      * Re-initialises the given Tween and sets it to the Active state.
      *
      * @method Phaser.Tweens.TweenChain#makeActive
-     * @since 3.60.0
+     * 
      * @override
      *
      * @param {Phaser.Tweens.Tween} tween - The Tween to check.
@@ -250,7 +250,7 @@ var TweenChain = new Class({
      * @method Phaser.Tweens.TweenChain#nextState
      * @fires Phaser.Tweens.Events#TWEEN_COMPLETE
      * @fires Phaser.Tweens.Events#TWEEN_LOOP
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if this TweenChain has completed, otherwise `false`.
      */
@@ -293,7 +293,7 @@ var TweenChain = new Class({
      * Calling this method after the TweenChain has completed will start the chain playing again from the beginning.
      *
      * @method Phaser.Tweens.TweenChain#play
-     * @since 3.60.0
+     * 
      *
      * @return {this} This TweenChain instance.
      */
@@ -323,7 +323,7 @@ var TweenChain = new Class({
      * Internal method that resets all of the Tweens and the current index pointer.
      *
      * @method Phaser.Tweens.TweenChain#resetTweens
-     * @since 3.60.0
+     * 
      */
     resetTweens: function () {
         var data = this.data;
@@ -343,7 +343,7 @@ var TweenChain = new Class({
      * @fires Phaser.Tweens.Events#TWEEN_COMPLETE
      * @fires Phaser.Tweens.Events#TWEEN_LOOP
      * @fires Phaser.Tweens.Events#TWEEN_START
-     * @since 3.60.0
+     * 
      *
      * @param {number} delta - The delta time in ms since the last frame. This is a smoothed and capped value based on the FPS rate.
      *
@@ -416,7 +416,7 @@ var TweenChain = new Class({
      * advance playback for some reason.
      *
      * @method Phaser.Tweens.TweenChain#nextTween
-     * @since 3.60.0
+     * 
      *
      * @return {boolean} `true` if there are no more Tweens in the chain, otherwise `false`.
      */
@@ -437,7 +437,7 @@ var TweenChain = new Class({
      * entry in the TweenChain data array.
      *
      * @method Phaser.Tweens.TweenChain#setCurrentTween
-     * @since 3.60.0
+     * 
      *
      * @param {number} index - The index of the Tween to be made current.
      */
@@ -453,7 +453,7 @@ var TweenChain = new Class({
      * Internal method that will emit a TweenChain based Event and invoke the given callback.
      *
      * @method Phaser.Tweens.TweenChain#dispatchEvent
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {Phaser.Types.Tweens.TweenCallbackTypes} [callback] - The name of the callback to be invoked. Can be `null` or `undefined` to skip invocation.
@@ -472,7 +472,7 @@ var TweenChain = new Class({
      * Immediately destroys this TweenChain, nulling of all its references.
      *
      * @method Phaser.Tweens.TweenChain#destroy
-     * @since 3.60.0
+     * 
      */
     destroy: function () {
         BaseTween.prototype.destroy.call(this);
@@ -488,7 +488,7 @@ var TweenChain = new Class({
  * Note: This method will only be available if Tweens have been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#tweenchain
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Types.Tweens.TweenBuilderConfig|object} config - The TweenChain configuration.
  *
@@ -504,7 +504,7 @@ GameObjectFactory.register('tweenchain', function (config) {
  * Note: This method will only be available if Tweens have been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectCreator#tweenchain
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Types.Tweens.TweenBuilderConfig|object} config - The TweenChain configuration.
  *

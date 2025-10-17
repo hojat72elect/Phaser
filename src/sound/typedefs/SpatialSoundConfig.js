@@ -4,7 +4,7 @@
  * See https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Web_audio_spatialization_basics
  *
  * @typedef {object} Phaser.Types.Sound.SpatialSoundConfig
- * @since 3.60.0
+ * 
  *
  * @property {number} [x=0] - The horizontal position of the audio in a right-hand Cartesian coordinate system.
  * @property {number} [y=0] - The vertical position of the audio in a right-hand Cartesian coordinate system.

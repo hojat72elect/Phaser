@@ -1,6 +1,6 @@
 /**
  * @typedef {object} Phaser.Types.Renderer.Snapshot.SnapshotState
- * @since 3.16.1
+ * 
  *
  * @property {Phaser.Types.Renderer.Snapshot.SnapshotCallback} callback - The function to call after the snapshot is taken.
  * @property {string} [type='image/png'] - The format of the image to create, usually `image/png` or `image/jpeg`.

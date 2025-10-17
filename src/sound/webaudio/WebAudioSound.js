@@ -103,7 +103,7 @@ var WebAudioSound = new Class({
              *
              * @name Phaser.Sound.WebAudioSound#spatialNode
              * @type {PannerNode}
-             * @since 3.60.0
+             * 
              */
             this.spatialNode = null;
 
@@ -113,7 +113,7 @@ var WebAudioSound = new Class({
              *
              * @name Phaser.Sound.WebAudioSound#spatialSource
              * @type {Phaser.Types.Math.Vector2Like}
-             * @since 3.60.0
+             * 
              */
             this.spatialSource = null;
 
@@ -504,7 +504,7 @@ var WebAudioSound = new Class({
      *
      * @name Phaser.Sound.WebAudioSound#x
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     x: {
 
@@ -536,7 +536,7 @@ var WebAudioSound = new Class({
      *
      * @name Phaser.Sound.WebAudioSound#y
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     y: {
 

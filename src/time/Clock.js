@@ -56,7 +56,7 @@ var Clock = new Class({
              *
              * @name Phaser.Time.Clock#startTime
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.startTime = 0;
 

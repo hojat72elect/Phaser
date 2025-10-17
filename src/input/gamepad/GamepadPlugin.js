@@ -48,7 +48,7 @@ var InputEvents = require('../events');
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Input.Gamepad
  * @constructor
- * @since 3.10.0
+ * 
  *
  * @param {Phaser.Input.InputPlugin} sceneInputPlugin - A reference to the Scene Input Plugin that the KeyboardPlugin belongs to.
  */
@@ -66,7 +66,7 @@ var GamepadPlugin = new Class({
              *
              * @name Phaser.Input.Gamepad.GamepadPlugin#scene
              * @type {Phaser.Scene}
-             * @since 3.10.0
+             * 
              */
             this.scene = sceneInputPlugin.scene;
 
@@ -75,7 +75,7 @@ var GamepadPlugin = new Class({
              *
              * @name Phaser.Input.Gamepad.GamepadPlugin#settings
              * @type {Phaser.Types.Scenes.SettingsObject}
-             * @since 3.10.0
+             * 
              */
             this.settings = this.scene.sys.settings;
 
@@ -84,7 +84,7 @@ var GamepadPlugin = new Class({
              *
              * @name Phaser.Input.Gamepad.GamepadPlugin#sceneInputPlugin
              * @type {Phaser.Input.InputPlugin}
-             * @since 3.10.0
+             * 
              */
             this.sceneInputPlugin = sceneInputPlugin;
 
@@ -95,7 +95,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#enabled
              * @type {boolean}
              * @default true
-             * @since 3.10.0
+             * 
              */
             this.enabled = true;
 
@@ -105,7 +105,7 @@ var GamepadPlugin = new Class({
              *
              * @name Phaser.Input.Gamepad.GamepadPlugin#target
              * @type {any}
-             * @since 3.10.0
+             * 
              */
             this.target;
 
@@ -115,7 +115,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#gamepads
              * @type {Phaser.Input.Gamepad.Gamepad[]}
              * @default []
-             * @since 3.10.0
+             * 
              */
             this.gamepads = [];
 
@@ -125,7 +125,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#queue
              * @type {GamepadEvent[]}
              * @private
-             * @since 3.10.0
+             * 
              */
             this.queue = [];
 
@@ -135,7 +135,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#onGamepadHandler
              * @type {function}
              * @private
-             * @since 3.10.0
+             * 
              */
             this.onGamepadHandler;
 
@@ -145,7 +145,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#_pad1
              * @type {Phaser.Input.Gamepad.Gamepad}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._pad1;
 
@@ -155,7 +155,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#_pad2
              * @type {Phaser.Input.Gamepad.Gamepad}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._pad2;
 
@@ -165,7 +165,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#_pad3
              * @type {Phaser.Input.Gamepad.Gamepad}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._pad3;
 
@@ -175,7 +175,7 @@ var GamepadPlugin = new Class({
              * @name Phaser.Input.Gamepad.GamepadPlugin#_pad4
              * @type {Phaser.Input.Gamepad.Gamepad}
              * @private
-             * @since 3.10.0
+             * 
              */
             this._pad4;
 
@@ -189,7 +189,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#boot
      * @private
-     * @since 3.10.0
+     * 
      */
     boot: function () {
         var game = this.scene.sys.game;
@@ -209,7 +209,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#start
      * @private
-     * @since 3.10.0
+     * 
      */
     start: function () {
         if (this.enabled) {
@@ -225,7 +225,7 @@ var GamepadPlugin = new Class({
      * Checks to see if both this plugin and the Scene to which it belongs is active.
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#isActive
-     * @since 3.10.0
+     * 
      *
      * @return {boolean} `true` if the plugin and the Scene it belongs to is active.
      */
@@ -239,7 +239,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#startListeners
      * @private
-     * @since 3.10.0
+     * 
      */
     startListeners: function () {
         var _this = this;
@@ -275,7 +275,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#stopListeners
      * @private
-     * @since 3.10.0
+     * 
      */
     stopListeners: function () {
         this.target.removeEventListener('gamepadconnected', this.onGamepadHandler);
@@ -292,7 +292,7 @@ var GamepadPlugin = new Class({
      * Disconnects all current Gamepads.
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#disconnectAll
-     * @since 3.10.0
+     * 
      */
     disconnectAll: function () {
         for (var i = 0; i < this.gamepads.length; i++) {
@@ -308,7 +308,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#refreshPads
      * @private
-     * @since 3.10.0
+     * 
      */
     refreshPads: function () {
         var connectedPads = navigator.getGamepads();
@@ -362,7 +362,7 @@ var GamepadPlugin = new Class({
      * Returns an array of all currently connected Gamepads.
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#getAll
-     * @since 3.10.0
+     * 
      *
      * @return {Phaser.Input.Gamepad.Gamepad[]} An array of all currently connected Gamepads.
      */
@@ -383,7 +383,7 @@ var GamepadPlugin = new Class({
      * Looks-up a single Gamepad based on the given index value.
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#getPad
-     * @since 3.10.0
+     * 
      *
      * @param {number} index - The index of the Gamepad to get.
      *
@@ -408,7 +408,7 @@ var GamepadPlugin = new Class({
      * @private
      * @fires Phaser.Input.Gamepad.Events#CONNECTED
      * @fires Phaser.Input.Gamepad.Events#DISCONNECTED
-     * @since 3.10.0
+     * 
      */
     update: function () {
         if (!this.enabled) {
@@ -444,7 +444,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#shutdown
      * @private
-     * @since 3.10.0
+     * 
      */
     shutdown: function () {
         this.stopListeners();
@@ -457,7 +457,7 @@ var GamepadPlugin = new Class({
      *
      * @method Phaser.Input.Gamepad.GamepadPlugin#destroy
      * @private
-     * @since 3.10.0
+     * 
      */
     destroy: function () {
         this.shutdown();
@@ -481,7 +481,7 @@ var GamepadPlugin = new Class({
      *
      * @name Phaser.Input.Gamepad.GamepadPlugin#total
      * @type {number}
-     * @since 3.10.0
+     * 
      */
     total: {
 
@@ -500,7 +500,7 @@ var GamepadPlugin = new Class({
      *
      * @name Phaser.Input.Gamepad.GamepadPlugin#pad1
      * @type {Phaser.Input.Gamepad.Gamepad}
-     * @since 3.10.0
+     * 
      */
     pad1: {
 
@@ -519,7 +519,7 @@ var GamepadPlugin = new Class({
      *
      * @name Phaser.Input.Gamepad.GamepadPlugin#pad2
      * @type {Phaser.Input.Gamepad.Gamepad}
-     * @since 3.10.0
+     * 
      */
     pad2: {
 
@@ -538,7 +538,7 @@ var GamepadPlugin = new Class({
      *
      * @name Phaser.Input.Gamepad.GamepadPlugin#pad3
      * @type {Phaser.Input.Gamepad.Gamepad}
-     * @since 3.10.0
+     * 
      */
     pad3: {
 
@@ -557,7 +557,7 @@ var GamepadPlugin = new Class({
      *
      * @name Phaser.Input.Gamepad.GamepadPlugin#pad4
      * @type {Phaser.Input.Gamepad.Gamepad}
-     * @since 3.10.0
+     * 
      */
     pad4: {
 
@@ -575,7 +575,7 @@ var GamepadPlugin = new Class({
  *
  * @name Phaser.Input.InputPlugin#gamepad
  * @type {?Phaser.Input.Gamepad.GamepadPlugin}
- * @since 3.10.0
+ * 
  */
 InputPluginCache.register('GamepadPlugin', GamepadPlugin, 'gamepad', 'gamepad', 'inputGamepad');
 

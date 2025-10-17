@@ -147,7 +147,7 @@ var World = new Class({
              * @readonly
              * @type {number}
              * @default 60
-             * @since 3.10.0
+             * 
              */
             this.fps = GetValue(config, 'fps', 60);
 
@@ -168,7 +168,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#_elapsed
              * @private
              * @type {number}
-             * @since 3.10.0
+             * 
              */
             this._elapsed = 0;
 
@@ -178,7 +178,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#_frameTime
              * @private
              * @type {number}
-             * @since 3.10.0
+             * 
              */
             this._frameTime = 1 / this.fps;
 
@@ -188,7 +188,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#_frameTimeMS
              * @private
              * @type {number}
-             * @since 3.10.0
+             * 
              */
             this._frameTimeMS = 1000 * this._frameTime;
 
@@ -198,7 +198,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#stepsLastFrame
              * @readonly
              * @type {number}
-             * @since 3.10.0
+             * 
              */
             this.stepsLastFrame = 0;
 
@@ -212,7 +212,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#timeScale
              * @type {number}
              * @default 1
-             * @since 3.10.0
+             * 
              */
             this.timeScale = GetValue(config, 'timeScale', 1);
 
@@ -342,7 +342,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#useTree
              * @type {boolean}
              * @default true
-             * @since 3.10.0
+             * 
              */
             this.useTree = GetValue(config, 'useTree', true);
 
@@ -379,7 +379,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#_tempMatrix
              * @type {Phaser.GameObjects.Components.TransformMatrix}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._tempMatrix = new TransformMatrix();
 
@@ -389,7 +389,7 @@ var World = new Class({
              * @name Phaser.Physics.Arcade.World#_tempMatrix2
              * @type {Phaser.GameObjects.Components.TransformMatrix}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._tempMatrix2 = new TransformMatrix();
 
@@ -398,7 +398,7 @@ var World = new Class({
              *
              * @name Phaser.Physics.Arcade.World#tileFilterOptions
              * @type {Phaser.Types.Tilemaps.FilteringOptions}
-             * @since 3.60.0
+             * 
              */
             this.tileFilterOptions = {isColliding: true, isNotEmpty: true, hasInterestingFace: true};
 
@@ -523,7 +523,7 @@ var World = new Class({
      * The body is enabled and added to the local search trees.
      *
      * @method Phaser.Physics.Arcade.World#add
-     * @since 3.10.0
+     * 
      *
      * @param {(Phaser.Physics.Arcade.Body|Phaser.Physics.Arcade.StaticBody)} body - The Body to be added to the simulation.
      *
@@ -878,7 +878,7 @@ var World = new Class({
      * You can optionally advance the simulation directly yourself by calling the `step` method.
      *
      * @method Phaser.Physics.Arcade.World#setFPS
-     * @since 3.10.0
+     * 
      *
      * @param {number} framerate - The frame rate to advance the simulation at.
      *
@@ -974,7 +974,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#step
      * @fires Phaser.Physics.Arcade.Events#WORLD_STEP
-     * @since 3.10.0
+     * 
      *
      * @param {number} delta - The delta time amount, in seconds, by which to advance the simulation.
      */
@@ -1130,7 +1130,7 @@ var World = new Class({
      * Calculates a Body's angular velocity.
      *
      * @method Phaser.Physics.Arcade.World#computeAngularVelocity
-     * @since 3.10.0
+     * 
      *
      * @param {Phaser.Physics.Arcade.Body} body - The Body to compute the velocity for.
      * @param {number} delta - The delta value to be used in the calculation, in seconds.
@@ -2006,7 +2006,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#collideTiles
      * @fires Phaser.Physics.Arcade.Events#TILE_COLLIDE
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.Tilemaps.Tile[]} tiles - An array of Tiles to check for collision against.
@@ -2039,7 +2039,7 @@ var World = new Class({
      *
      * @method Phaser.Physics.Arcade.World#overlapTiles
      * @fires Phaser.Physics.Arcade.Events#TILE_OVERLAP
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.Tilemaps.Tile[]} tiles - An array of Tiles to check for collision against.
@@ -2111,7 +2111,7 @@ var World = new Class({
      * @fires Phaser.Physics.Arcade.Events#TILE_COLLIDE
      * @fires Phaser.Physics.Arcade.Events#TILE_OVERLAP
      * @private
-     * @since 3.17.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} sprite - The first object to check for collision.
      * @param {Phaser.Tilemaps.TilemapLayer} tilemapLayer - The second object to check for collision.

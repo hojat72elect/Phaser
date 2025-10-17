@@ -54,7 +54,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#scaleManager
              * @type {Phaser.Scale.ScaleManager}
-             * @since 3.16.0
+             * 
              */
             this.scaleManager;
 
@@ -102,7 +102,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#isOver
              * @type {boolean}
              * @readonly
-             * @since 3.16.0
+             * 
              */
             this.isOver = true;
 
@@ -113,7 +113,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#defaultCursor
              * @type {string}
-             * @since 3.10.0
+             * 
              */
             this.defaultCursor = '';
 
@@ -122,7 +122,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#keyboard
              * @type {?Phaser.Input.Keyboard.KeyboardManager}
-             * @since 3.16.0
+             * 
              */
             this.keyboard = (config.inputKeyboard) ? new Keyboard(this) : null;
 
@@ -153,7 +153,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#pointers
              * @type {Phaser.Input.Pointer[]}
-             * @since 3.10.0
+             * 
              */
             this.pointers = [];
 
@@ -166,7 +166,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#pointersTotal
              * @type {number}
              * @readonly
-             * @since 3.10.0
+             * 
              */
             this.pointersTotal = config.inputActivePointers;
 
@@ -185,7 +185,7 @@ var InputManager = new Class({
              *
              * @name Phaser.Input.InputManager#mousePointer
              * @type {?Phaser.Input.Pointer}
-             * @since 3.10.0
+             * 
              */
             this.mousePointer = (config.inputMouse) ? this.pointers[0] : null;
 
@@ -223,7 +223,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#time
              * @type {number}
              * @readonly
-             * @since 3.16.2
+             * 
              */
             this.time = 0;
 
@@ -264,7 +264,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#_tempMatrix2
              * @type {Phaser.GameObjects.Components.TransformMatrix}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._tempMatrix2 = new TransformMatrix();
 
@@ -274,7 +274,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#_tempSkip
              * @type {boolean}
              * @private
-             * @since 3.18.0
+             * 
              */
             this._tempSkip = false;
 
@@ -284,7 +284,7 @@ var InputManager = new Class({
              * @name Phaser.Input.InputManager#mousePointerContainer
              * @type {Phaser.Input.Pointer[]}
              * @private
-             * @since 3.18.0
+             * 
              */
             this.mousePointerContainer = [this.mousePointer];
 
@@ -321,7 +321,7 @@ var InputManager = new Class({
      * @method Phaser.Input.InputManager#setCanvasOver
      * @fires Phaser.Input.Events#GAME_OVER
      * @private
-     * @since 3.16.0
+     * 
      *
      * @param {(MouseEvent|TouchEvent)} event - The DOM Event.
      */
@@ -337,7 +337,7 @@ var InputManager = new Class({
      * @method Phaser.Input.InputManager#setCanvasOut
      * @fires Phaser.Input.Events#GAME_OUT
      * @private
-     * @since 3.16.0
+     * 
      *
      * @param {(MouseEvent|TouchEvent)} event - The DOM Event.
      */
@@ -352,7 +352,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#preRender
      * @private
-     * @since 3.18.0
+     * 
      */
     preRender: function () {
         var time = this.game.loop.now;
@@ -394,7 +394,7 @@ var InputManager = new Class({
      * It's up to you to pick a suitable cursor format that works across the range of browsers you need to support.
      *
      * @method Phaser.Input.InputManager#setDefaultCursor
-     * @since 3.10.0
+     * 
      *
      * @param {string} cursor - The CSS to be used when setting the default cursor.
      */
@@ -415,7 +415,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#setCursor
      * @private
-     * @since 3.10.0
+     * 
      *
      * @param {Phaser.Types.Input.InteractiveObject} interactiveObject - The Interactive Object that called this method.
      */
@@ -432,7 +432,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#resetCursor
      * @private
-     * @since 3.10.0
+     * 
      *
      * @param {Phaser.Types.Input.InteractiveObject} interactiveObject - The Interactive Object that called this method. Pass `null` if you just want to set the force value.
      * @param {boolean} [forceReset=false] - Should the reset happen regardless of the object's cursor state? Default false.
@@ -455,7 +455,7 @@ var InputManager = new Class({
      * via this method.
      *
      * @method Phaser.Input.InputManager#addPointer
-     * @since 3.10.0
+     * 
      *
      * @param {number} [quantity=1] The number of new Pointers to create. A maximum of 10 is allowed in total.
      *
@@ -495,7 +495,7 @@ var InputManager = new Class({
      * for DOM top-level event handling simulation.
      *
      * @method Phaser.Input.InputManager#updateInputPlugins
-     * @since 3.16.0
+     * 
      *
      * @param {number} type - The type of event to process.
      * @param {Phaser.Input.Pointer[]} pointers - An array of Pointers on which the event occurred.
@@ -528,7 +528,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onTouchStart
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
@@ -562,7 +562,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onTouchMove
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
@@ -611,7 +611,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onTouchEnd
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
@@ -643,7 +643,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onTouchCancel
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {TouchEvent} event - The native DOM Touch event.
      */
@@ -675,7 +675,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onMouseDown
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
@@ -696,7 +696,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onMouseMove
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
@@ -717,7 +717,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onMouseUp
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
@@ -738,7 +738,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#onMouseWheel
      * @private
-     * @since 3.18.0
+     * 
      *
      * @param {WheelEvent} event - The native DOM Wheel event.
      */
@@ -758,7 +758,7 @@ var InputManager = new Class({
      * @method Phaser.Input.InputManager#onPointerLockChange
      * @fires Phaser.Input.Events#POINTERLOCK_CHANGE
      * @private
-     * @since 3.19.0
+     * 
      *
      * @param {MouseEvent} event - The native DOM Mouse event.
      */
@@ -778,7 +778,7 @@ var InputManager = new Class({
      *
      * @method Phaser.Input.InputManager#inputCandidate
      * @private
-     * @since 3.10.0
+     * 
      *
      * @param {Phaser.GameObjects.GameObject} gameObject - The Game Object to test.
      * @param {Phaser.Cameras.Scene2D.Camera} camera - The Camera which is being tested against.
@@ -952,7 +952,7 @@ var InputManager = new Class({
      * Transforms the pageX and pageY values of a Pointer into the scaled coordinate space of the Input Manager.
      *
      * @method Phaser.Input.InputManager#transformPointer
-     * @since 3.10.0
+     * 
      *
      * @param {Phaser.Input.Pointer} pointer - The Pointer to transform the values for.
      * @param {number} pageX - The Page X value.

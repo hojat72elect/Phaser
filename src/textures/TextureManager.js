@@ -134,7 +134,7 @@ var TextureManager = new Class({
              * @name Phaser.Textures.TextureManager#stamp
              * @type {Phaser.GameObjects.Image}
              * @readonly
-             * @since 3.60.0
+             * 
              */
             this.stamp;
 
@@ -143,7 +143,7 @@ var TextureManager = new Class({
              *
              * @name Phaser.Textures.TextureManager#stampCrop
              * @type {Phaser.Geom.Rectangle}
-             * @since 3.60.0
+             * 
              */
             this.stampCrop = new Rectangle();
 
@@ -154,7 +154,7 @@ var TextureManager = new Class({
              * @name Phaser.Textures.TextureManager#silentWarnings
              * @type {boolean}
              * @default false
-             * @since 3.60.0
+             * 
              */
             this.silentWarnings = false;
 
@@ -224,7 +224,7 @@ var TextureManager = new Class({
      * If you wish to avoid the console.warn then use `TextureManager.exists` instead.
      *
      * @method Phaser.Textures.TextureManager#checkKey
-     * @since 3.7.0
+     * 
      *
      * @param {string} key - The texture key to check.
      *
@@ -254,7 +254,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#remove
      * @fires Phaser.Textures.Events#REMOVE
-     * @since 3.7.0
+     * 
      *
      * @param {(string|Phaser.Textures.Texture)} key - The key of the Texture to remove, or a reference to it.
      *
@@ -290,7 +290,7 @@ var TextureManager = new Class({
      * Removes a key from the Texture Manager but does not destroy the Texture that was using the key.
      *
      * @method Phaser.Textures.TextureManager#removeKey
-     * @since 3.17.0
+     * 
      *
      * @param {string} key - The key to remove from the texture list.
      *
@@ -362,7 +362,7 @@ var TextureManager = new Class({
      * see the WebGL Snapshot function instead.
      *
      * @method Phaser.Textures.TextureManager#getBase64
-     * @since 3.12.0
+     * 
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {(string|number)} [frame] - The string-based name, or integer based index, of the Frame to get from the Texture.
@@ -460,7 +460,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#addGLTexture
      * @fires Phaser.Textures.Events#ADD
-     * @since 3.19.0
+     * 
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper} glTexture - The source Render Texture.
@@ -496,7 +496,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#addCompressedTexture
      * @fires Phaser.Textures.Events#ADD
-     * @since 3.60.0
+     * 
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {Phaser.Types.Textures.CompressedTextureData} textureData - The Compressed Texture data object.
@@ -542,7 +542,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#addRenderTexture
      * @fires Phaser.Textures.Events#ADD
-     * @since 3.12.0
+     * 
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {Phaser.GameObjects.RenderTexture} renderTexture - The source Render Texture.
@@ -708,7 +708,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#addDynamicTexture
      * @fires Phaser.Textures.Events#ADD
-     * @since 3.60.0
+     * 
      *
      * @param {(string|Phaser.Textures.DynamicTexture)} key - The string-based key of this Texture. Must be unique within the Texture Manager. Or, a DynamicTexture instance.
      * @param {number} [width=256] - The width of this Dynamic Texture in pixels. Defaults to 256 x 256. Ignored if an instance is passed as the key.
@@ -891,7 +891,7 @@ var TextureManager = new Class({
      *
      * @method Phaser.Textures.TextureManager#addAtlasXML
      * @fires Phaser.Textures.Events#ADD
-     * @since 3.7.0
+     * 
      *
      * @param {string} key - The unique string-based key of the Texture.
      * @param {(HTMLImageElement|Phaser.Textures.Texture)} source - The source Image element, or a Phaser Texture.
@@ -1224,7 +1224,7 @@ var TextureManager = new Class({
      * 5) A Frame instance - returns itself
      *
      * @method Phaser.Textures.TextureManager#parseFrame
-     * @since 3.60.0
+     * 
      *
      * @param {(string|array|object|Phaser.Textures.Texture|Phaser.Textures.Frame)} key - The key to be parsed.
      *
@@ -1317,7 +1317,7 @@ var TextureManager = new Class({
      * is out of bounds it will return null.
      *
      * @method Phaser.Textures.TextureManager#getPixelAlpha
-     * @since 3.10.0
+     * 
      *
      * @param {number} x - The x coordinate of the pixel within the Texture.
      * @param {number} y - The y coordinate of the pixel within the Texture.
@@ -1385,7 +1385,7 @@ var TextureManager = new Class({
      * all existing references will be retained.
      *
      * @method Phaser.Textures.TextureManager#renameTexture
-     * @since 3.12.0
+     * 
      *
      * @param {string} currentKey - The current string-based key of the Texture you wish to rename.
      * @param {string} newKey - The new unique string-based key to use for the Texture.
@@ -1436,7 +1436,7 @@ var TextureManager = new Class({
      * Resets the internal Stamp object, ready for drawing and returns it.
      *
      * @method Phaser.Textures.TextureManager#resetStamp
-     * @since 3.60.0
+     * 
      *
      * @param {number} [alpha=1] - The alpha to use.
      * @param {number} [tint=0xffffff] - WebGL only. The tint color to use.

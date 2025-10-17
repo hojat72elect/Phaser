@@ -243,7 +243,7 @@ var TextStyle = new Class({
              * @name Phaser.GameObjects.TextStyle#resolution
              * @type {number}
              * @default 0
-             * @since 3.12.0
+             * 
              */
             this.resolution;
 
@@ -725,7 +725,7 @@ var TextStyle = new Class({
      * Please use with caution, as the more high res Text you have, the more memory it uses up.
      *
      * @method Phaser.GameObjects.TextStyle#setResolution
-     * @since 3.12.0
+     * 
      *
      * @param {number} value - The resolution for this Text object to use.
      *

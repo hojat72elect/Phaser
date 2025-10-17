@@ -10,7 +10,7 @@
  *
  * @event Phaser.Data.Events#CHANGE_DATA_KEY
  * @type {string}
- * @since 3.16.1
+ * 
  *
  * @param {any} parent - A reference to the object that owns the instance of the Data Manager responsible for this event.
  * @param {any} value - The item that was updated in the Data Manager. This can be of any data type, i.e. a string, boolean, number, object or instance.

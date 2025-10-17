@@ -26,7 +26,7 @@ var PostFXPipeline = require('../PostFXPipeline');
  * @extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline
  * @memberof Phaser.Renderer.WebGL.Pipelines.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.Game} game - A reference to the Phaser Game instance.
  */
@@ -50,7 +50,7 @@ var CircleFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#scale
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.scale = 1;
 
@@ -63,7 +63,7 @@ var CircleFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#feather
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.feather = 0.005;
 
@@ -74,7 +74,7 @@ var CircleFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#thickness
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.thickness = 8;
 
@@ -83,7 +83,7 @@ var CircleFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [1, 0.2, 0.7];
 
@@ -92,7 +92,7 @@ var CircleFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.FX.CircleFXPipeline#glcolor2
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor2 = [1, 0, 0, 0.4];
         },

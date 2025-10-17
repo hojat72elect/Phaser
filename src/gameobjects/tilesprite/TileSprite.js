@@ -123,7 +123,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#_tilePosition
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._tilePosition = new Vector2();
 
@@ -133,7 +133,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#_tileScale
              * @type {Phaser.Math.Vector2}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._tileScale = new Vector2(1, 1);
 
@@ -164,7 +164,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#canvas
              * @type {?HTMLCanvasElement}
-             * @since 3.12.0
+             * 
              */
             this.canvas = CanvasPool.create(this, width, height);
 
@@ -174,7 +174,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#context
              * @type {CanvasRenderingContext2D}
-             * @since 3.12.0
+             * 
              */
             this.context = this.canvas.getContext('2d', {willReadFrequently: false});
 
@@ -184,7 +184,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#displayTexture
              * @type {Phaser.Textures.Texture|Phaser.Textures.CanvasTexture}
              * @private
-             * @since 3.12.0
+             * 
              */
             this.displayTexture = displayTexture;
 
@@ -194,7 +194,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#displayFrame
              * @type {Phaser.Textures.Frame}
              * @private
-             * @since 3.12.0
+             * 
              */
             this.displayFrame = displayFrame;
 
@@ -204,7 +204,7 @@ var TileSprite = new Class({
              * @name Phaser.GameObjects.TileSprite#_crop
              * @type {object}
              * @private
-             * @since 3.12.0
+             * 
              */
             this._crop = this.resetCropObject();
 
@@ -260,7 +260,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#fillCanvas
              * @type {HTMLCanvasElement}
-             * @since 3.12.0
+             * 
              */
             this.fillCanvas = CanvasPool.create2D(this, this.potWidth, this.potHeight);
 
@@ -269,7 +269,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#fillContext
              * @type {CanvasRenderingContext2D}
-             * @since 3.12.0
+             * 
              */
             this.fillContext = this.fillCanvas.getContext('2d', {willReadFrequently: false});
 
@@ -279,7 +279,7 @@ var TileSprite = new Class({
              *
              * @name Phaser.GameObjects.TileSprite#fillPattern
              * @type {?(Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper|CanvasPattern)}
-             * @since 3.12.0
+             * 
              */
             this.fillPattern = null;
 
@@ -375,7 +375,7 @@ var TileSprite = new Class({
      * Sets {@link Phaser.GameObjects.TileSprite#tileScaleX} and {@link Phaser.GameObjects.TileSprite#tileScaleY}.
      *
      * @method Phaser.GameObjects.TileSprite#setTileScale
-     * @since 3.12.0
+     * 
      *
      * @param {number} [x] - The horizontal scale of the tiling texture. If not given it will use the current `tileScaleX` value.
      * @param {number} [y=x] - The vertical scale of the tiling texture. If not given it will use the `x` value.
@@ -464,7 +464,7 @@ var TileSprite = new Class({
      *
      * @method Phaser.GameObjects.TileSprite#updateCanvas
      * @private
-     * @since 3.12.0
+     * 
      */
     updateCanvas: function () {
         var canvas = this.canvas;
@@ -592,7 +592,7 @@ var TileSprite = new Class({
      * @name Phaser.GameObjects.TileSprite#tileScaleX
      * @type {number}
      * @default 1
-     * @since 3.11.0
+     * 
      */
     tileScaleX: {
 
@@ -613,7 +613,7 @@ var TileSprite = new Class({
      * @name Phaser.GameObjects.TileSprite#tileScaleY
      * @type {number}
      * @default 1
-     * @since 3.11.0
+     * 
      */
     tileScaleY: {
 

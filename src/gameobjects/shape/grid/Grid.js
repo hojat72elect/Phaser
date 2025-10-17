@@ -23,7 +23,7 @@ var GridRender = require('./GridRender');
  * @extends Phaser.GameObjects.Shape
  * @memberof Phaser.GameObjects
  * @constructor
- * @since 3.13.0
+ * 
  *
  * @param {Phaser.Scene} scene - The Scene to which this Game Object belongs. A Game Object can only belong to one Scene at a time.
  * @param {number} [x=0] - The horizontal position of this Game Object in the world.
@@ -75,7 +75,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#cellWidth
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.cellWidth = cellWidth;
 
@@ -85,7 +85,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#cellHeight
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.cellHeight = cellHeight;
 
@@ -94,7 +94,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#showCells
              * @type {boolean}
-             * @since 3.13.0
+             * 
              */
             this.showCells = true;
 
@@ -103,7 +103,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#outlineFillColor
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.outlineFillColor = 0;
 
@@ -112,7 +112,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#outlineFillAlpha
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.outlineFillAlpha = 0;
 
@@ -121,7 +121,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#showOutline
              * @type {boolean}
-             * @since 3.13.0
+             * 
              */
             this.showOutline = true;
 
@@ -130,7 +130,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#showAltCells
              * @type {boolean}
-             * @since 3.13.0
+             * 
              */
             this.showAltCells = false;
 
@@ -139,7 +139,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#altFillColor
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.altFillColor;
 
@@ -149,7 +149,7 @@ var Grid = new Class({
              *
              * @name Phaser.GameObjects.Grid#altFillAlpha
              * @type {number}
-             * @since 3.13.0
+             * 
              */
             this.altFillAlpha;
 
@@ -176,7 +176,7 @@ var Grid = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Grid#setFillStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [fillColor] - The color the grid cells will be filled with, i.e. 0xff0000 for red.
      * @param {number} [fillAlpha=1] - The alpha the grid cells will be filled with. You can also set the alpha of the overall Shape using its `alpha` property.
@@ -209,7 +209,7 @@ var Grid = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Grid#setAltFillStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [fillColor] - The color the alternating grid cells will be filled with, i.e. 0xff0000 for red.
      * @param {number} [fillAlpha=1] - The alpha the alternating grid cells will be filled with. You can also set the alpha of the overall Shape using its `alpha` property.
@@ -243,7 +243,7 @@ var Grid = new Class({
      * This call can be chained.
      *
      * @method Phaser.GameObjects.Grid#setOutlineStyle
-     * @since 3.13.0
+     * 
      *
      * @param {number} [fillColor] - The color the lines between the grid cells will be filled with, i.e. 0xff0000 for red.
      * @param {number} [fillAlpha=1] - The alpha the lines between the grid cells will be filled with. You can also set the alpha of the overall Shape using its `alpha` property.

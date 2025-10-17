@@ -44,7 +44,7 @@ var Line = new Class({
              * @name Phaser.Geom.Line#type
              * @type {number}
              * @readonly
-             * @since 3.19.0
+             * 
              */
             this.type = GEOM_CONST.LINE;
 

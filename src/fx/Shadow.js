@@ -25,7 +25,7 @@ var FX_CONST = require('./const');
  * @extends Phaser.FX.Controller
  * @memberof Phaser.FX
  * @constructor
- * @since 3.60.0
+ * 
  *
  * @param {Phaser.GameObjects.GameObject} gameObject - A reference to the Game Object that has this fx.
  * @param {number} [x=0] - The horizontal offset of the shadow effect.
@@ -69,7 +69,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#x
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.x = x;
 
@@ -78,7 +78,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#y
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.y = y;
 
@@ -87,7 +87,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#decay
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.decay = decay;
 
@@ -96,7 +96,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#power
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.power = power;
 
@@ -105,7 +105,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#glcolor
              * @type {number[]}
-             * @since 3.60.0
+             * 
              */
             this.glcolor = [0, 0, 0, 1];
 
@@ -116,7 +116,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#samples
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.samples = samples;
 
@@ -125,7 +125,7 @@ var Shadow = new Class({
              *
              * @name Phaser.FX.Shadow#intensity
              * @type {number}
-             * @since 3.60.0
+             * 
              */
             this.intensity = intensity;
 
@@ -139,7 +139,7 @@ var Shadow = new Class({
      *
      * @name Phaser.FX.Shadow#color
      * @type {number}
-     * @since 3.60.0
+     * 
      */
     color: {
 

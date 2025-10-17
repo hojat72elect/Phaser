@@ -78,7 +78,7 @@ var Sprite = new Class({
              * @name Phaser.GameObjects.Sprite#_crop
              * @type {object}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._crop = this.resetCropObject();
 
@@ -442,7 +442,7 @@ var Sprite = new Class({
      *
      * @method Phaser.GameObjects.Sprite#preDestroy
      * @private
-     * @since 3.14.0
+     * 
      */
     preDestroy: function () {
         this.anims.destroy();

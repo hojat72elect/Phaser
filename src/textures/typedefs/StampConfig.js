@@ -2,7 +2,7 @@
  * An object containing the position and color data for a single pixel in a CanvasTexture.
  *
  * @typedef {object} Phaser.Types.Textures.StampConfig
- * @since 3.60.0
+ * 
  *
  * @property {number} [alpha=1] -  The alpha value used by the stamp.
  * @property {number} [tint=0xffffff] -  The tint color value used by the stamp. WebGL only.

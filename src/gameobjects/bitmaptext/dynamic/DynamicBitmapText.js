@@ -119,7 +119,7 @@ var DynamicBitmapText = new Class({
              *
              * @name Phaser.GameObjects.DynamicBitmapText#callbackData
              * @type {Phaser.Types.GameObjects.BitmapText.DisplayCallbackConfig}
-             * @since 3.11.0
+             * 
              */
             this.callbackData = {
                 parent: this,

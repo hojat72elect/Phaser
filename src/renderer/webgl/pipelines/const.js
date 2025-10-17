@@ -96,7 +96,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.MOBILE_PIPELINE
      * @type {string}
      * @const
-     * @since 3.60.0
+     * 
      */
     MOBILE_PIPELINE: 'MobilePipeline',
 
@@ -106,7 +106,7 @@ var PIPELINE_CONST = {
      * @name Phaser.Renderer.WebGL.Pipelines.FX_PIPELINE
      * @type {string}
      * @const
-     * @since 3.60.0
+     * 
      */
     FX_PIPELINE: 'FxPipeline'
 

@@ -4,7 +4,7 @@
  * can be found it will return a reference to the document.body.
  *
  * @function Phaser.DOM.GetTarget
- * @since 3.16.0
+ * 
  *
  * @param {HTMLElement} element - The DOM element to look-up.
  */

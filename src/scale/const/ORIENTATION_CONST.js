@@ -3,7 +3,7 @@
  *
  * @namespace Phaser.Scale.Orientation
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 /**
@@ -13,7 +13,7 @@
  *
  * @typedef {Phaser.Scale.Orientation} Phaser.Scale.OrientationType
  * @memberof Phaser.Scale
- * @since 3.16.0
+ * 
  */
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
      * @name Phaser.Scale.Orientation.LANDSCAPE
      * @type {string}
      * @const
-     * @since 3.16.0
+     * 
      */
     LANDSCAPE: 'landscape-primary',
 
@@ -44,7 +44,7 @@ module.exports = {
      * @name Phaser.Scale.Orientation.PORTRAIT
      * @type {string}
      * @const
-     * @since 3.16.0
+     * 
      */
     PORTRAIT: 'portrait-primary',
 
@@ -54,7 +54,7 @@ module.exports = {
      * @name Phaser.Scale.Orientation.PORTRAIT_SECONDARY
      * @type {string}
      * @const
-     * @since 3.16.0
+     * 
      */
     PORTRAIT_SECONDARY: 'portrait-secondary'
 

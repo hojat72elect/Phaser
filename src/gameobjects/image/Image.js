@@ -74,7 +74,7 @@ var Image = new Class({
              * @name Phaser.GameObjects.Image#_crop
              * @type {object}
              * @private
-             * @since 3.11.0
+             * 
              */
             this._crop = this.resetCropObject();
 

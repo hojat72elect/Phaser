@@ -19,7 +19,7 @@
  * ```
  *
  * @function Phaser.Utils.Objects.SetValue
- * @since 3.17.0
+ * 
  *
  * @param {object} source - The object to set the value in.
  * @param {string} key - The name of the property in the object. If a property is nested, the names of its preceding properties should be separated by a dot (`.`)

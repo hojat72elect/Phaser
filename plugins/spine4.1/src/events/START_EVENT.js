@@ -8,6 +8,6 @@
  * The Start Event.
  *
  * @event SpinePluginEvents#START
- * @since 3.19.0
+ * 
  */
 module.exports = 'start';

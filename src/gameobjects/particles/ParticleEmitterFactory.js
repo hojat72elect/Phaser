@@ -13,7 +13,7 @@ var ParticleEmitter = require('./ParticleEmitter');
  * Note: This method will only be available if the Particles Game Object has been built into Phaser.
  *
  * @method Phaser.GameObjects.GameObjectFactory#particles
- * @since 3.60.0
+ * 
  *
  * @param {number} [x] - The horizontal position of this Game Object in the world.
  * @param {number} [y] - The vertical position of this Game Object in the world.

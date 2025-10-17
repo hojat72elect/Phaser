@@ -138,7 +138,7 @@ var PostFXPipeline = new Class({
              *
              * @name Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#controller
              * @type {Phaser.FX.Controller}
-             * @since 3.60.0
+             * 
              */
             this.controller;
 
@@ -298,7 +298,7 @@ var PostFXPipeline = new Class({
      * This is called internally and not typically required outside.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#getController
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.FX.Controller} [controller] - An FX Controller, or undefined.
      *
@@ -323,7 +323,7 @@ var PostFXPipeline = new Class({
      * these things if you call this method directly.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#copySprite
-     * @since 3.60.0
+     * 
      *
      * @param {Phaser.Renderer.WebGL.RenderTarget} source - The source Render Target.
      * @param {Phaser.Renderer.WebGL.RenderTarget} target - The target Render Target.
@@ -586,7 +586,7 @@ var PostFXPipeline = new Class({
      * Destroys all shader instances, removes all object references and nulls all external references.
      *
      * @method Phaser.Renderer.WebGL.Pipelines.PostFXPipeline#destroy
-     * @since 3.60.0
+     * 
      *
      * @return {this} This WebGLPipeline instance.
      */

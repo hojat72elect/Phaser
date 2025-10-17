@@ -14,7 +14,7 @@ var CONST = require('../const');
  * All values for this function are in radians.
  *
  * @function Phaser.Math.Angle.CounterClockwise
- * @since 3.16.0
+ * 
  *
  * @param {number} angle - The angle to convert, in radians.
  *
